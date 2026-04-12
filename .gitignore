@@ -1,0 +1,18 @@
+# docs
+docs/*
+!docs/requirements.txt
+!docs/data/
+# デモファイル
+demo/
+demo.py
+demo*.py
+*demo.py
+*deom*.py
+# その他
+.vscode/
+.DS_Store
+.dll
+.exe
+.ini
+__pycache__
+*.pyc

@@ -1,0 +1,126 @@
+For_GUI_development
+├── .gitattributes
+├── .gitignore
+├── .gitmessage
+├── README.md
+├── docs
+│   ├── data
+│   │   ├── browser_jp.csv
+│   │   └── color.csv
+│   └── requirements.txt
+├── gittree.py
+├── pyproject.toml
+├── src
+│   ├── __init__.py
+│   ├── __init__.pyi
+│   ├── types
+│   │   ├── __init__.py
+│   │   ├── __init__.pyi
+│   │   ├── basic.py
+│   │   └── widget.py
+│   └── widget
+│    ├── __init__.py
+│    ├── _color.py
+│    ├── _dialog
+│    │   ├── __init__.py
+│    │   ├── __init__.pyi
+│    │   ├── dialogs.py
+│    │   └── popup.py
+│    ├── _font.py
+│    ├── _function.py
+│    ├── _log
+│    │   ├── __init__.py
+│    │   ├── __init__.pyi
+│    │   ├── _clearsave.py
+│    │   ├── _data.py
+│    │   ├── _logfile.py
+│    │   ├── data
+│    │   │   └── log.log
+│    │   ├── logs.py
+│    │   └── logtext.py
+│    ├── _save.py
+│    ├── _time.py
+│    ├── _time.pyi
+│    ├── base.py
+│    ├── base.pyi
+│    ├── basic
+│    │   ├── Image
+│    │   │   ├── __init__.py
+│    │   │   └── _photo.py
+│    │   ├── Link
+│    │   │   └── __init__.py
+│    │   ├── __init__.py
+│    │   ├── __init__.pyi
+│    │   ├── btnpop
+│    │   │   └── __init__.py
+│    │   ├── calendar
+│    │   │   ├── __init__.py
+│    │   │   ├── _calendar.py
+│    │   │   └── tooltip.py
+│    │   ├── element.py
+│    │   ├── expansion
+│    │   │   └── __init__.py
+│    │   └── ttkelement.py
+│    ├── data
+│    │   ├── __init__.py
+│    │   └── color.json
+│    ├── developer.py
+│    ├── developer.pyi
+│    ├── graph
+│    │   ├── Graph.py
+│    │   ├── Graph.pyi
+│    │   ├── _2D
+│    │   │   ├── LineGraph.py
+│    │   │   ├── Scatter.py
+│    │   │   ├── bargraph.py
+│    │   │   ├── boxplot.py
+│    │   │   ├── bubble.py
+│    │   │   ├── ecdf.py
+│    │   │   ├── errorbar.py
+│    │   │   ├── eventplot.py
+│    │   │   ├── hexbin.py
+│    │   │   ├── hist.py
+│    │   │   ├── hist2d.py
+│    │   │   ├── linefill.py
+│    │   │   ├── pie.py
+│    │   │   ├── stack.py
+│    │   │   ├── stem.py
+│    │   │   ├── step.py
+│    │   │   ├── violinplot.py
+│    │   │   └── waterfall.py
+│    │   ├── _3D
+│    │   │   └── DScatter.py
+│    │   ├── __init__.py
+│    │   ├── __init__.pyi
+│    │   ├── _graphhelp.py
+│    │   └── support
+│    │    ├── Graphhelp.py
+│    │    ├── Graphhelp.pyi
+│    │    ├── List.py
+│    │    └── List.pyi
+│    ├── window.py
+│    └── window.pyi
+├── tests
+│   ├── _import.py
+│   ├── data
+│   │   ├── csv
+│   │   │   ├── __init__.py
+│   │   │   ├── japan_population.csv
+│   │   │   └── school_test_demo_data.csv
+│   │   └── img
+│   │    └── Lenna.png
+│   ├── test-all.py
+│   ├── test-graph
+│   │   ├── _import.py
+│   │   ├── test-graph-schooldata.py
+│   │   ├── test-graph.py
+│   │   └── test-japanese.py
+│   ├── test-log
+│   │   ├── _import.py
+│   │   ├── test-log.log
+│   │   └── test-log.py
+│   └── test-widget
+│    ├── _import.py
+│    ├── test-all.py
+│    └── test-expansion.py
+└── tree.txt

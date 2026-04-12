@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.pdf binary
+docs/* linguist-documentation
+.vscode/* linguist-documentation
+test/* linguist-documentation
+demo/* linguist-documentation
