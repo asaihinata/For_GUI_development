@@ -10,8 +10,7 @@ class Color:
  :param color: 16進数カラーコード,カラー名,rgb,rgba,hsvを16進数カラーコードを指定する。
  :type color: str
  :param other: colorを16進数カラーコードに変換する際,何らかの例外が発生した際に返す値を指定する。
- :type other: str|None
- :raises ValueError: colorが色ではない時に発生させる。'''
+ :type other: str|None'''
   self.txt=self._color(color,other)
  def _color(self,color,other):
   if isinstance(color,str):

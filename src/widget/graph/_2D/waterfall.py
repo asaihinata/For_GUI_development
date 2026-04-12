@@ -1,6 +1,6 @@
 from .._graphhelp import *
 def _waterfall_sum(data):
- arr,set_num=np.array([]),0
+ arr,set_num=np.array([],dtype=object),0
  for i,num in enumerate(data):
   arr=np.append(arr,0 if i==0 else set_num)
   set_num=set_num+num

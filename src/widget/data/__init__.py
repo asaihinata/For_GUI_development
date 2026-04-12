@@ -13,7 +13,7 @@ def getjson(file:str)->dict:
  try:
   jsonpath=join(dirname(__file__),f'{file}.json')
   if not isfile(jsonpath):
-   raise FileNotFoundError('ファイルが見つかりません。')
+   raise FileNotFoundError('ファイルが見つかりません')
   with open(jsonpath,'r',encoding='utf-8')as f:return load(f)
  except Exception as e:
   raise Exception(e)

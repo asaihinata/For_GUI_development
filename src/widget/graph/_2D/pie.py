@@ -20,8 +20,8 @@ class Pie(twoDElement):
   self.plot(self.data,startangle=self.startangle,shadow=self.shadow,counterclock=self.counterclock,label=self.label,labeldistance=self.labeldistance,explode=self.explode,startangletype=self.startangletype,alpha=self.alpha)
  def plot(self,data,startangle=0.0,shadow=False,counterclock=True,label=None,labeldistance=1.1,explode=None,startangletype=True,alpha=1):
   self.clear()
-  if not startangletype:startangle=float(Angle(startangle,now='radian',do='degrees'))
-  pie=list(np.array(self.ax.pie(data,labels=label,startangle=90-startangle,shadow=shadow,counterclock=counterclock,labeldistance=labeldistance,explode=explode)).T.tolist())
+  if startangletype==False:startangle=float(Angle(startangle,now='radian',do='degrees'))
+  pie=np.array(self.ax.pie(data,labels=label,startangle=90-startangle,shadow=shadow,counterclock=counterclock,labeldistance=labeldistance,explode=explode)).T.tolist()
   for i in pie:i[0].set_alpha(self.alpha)
   self.graphdata=pie
   self.legend()
@@ -41,5 +41,5 @@ class Pie(twoDElement):
   self.labeldistance=num0(kw.get('labeldistance'),self.labeldistance)
   self.plot(self.data,startangle=self.startangle,shadow=self.shadow,counterclock=self.counterclock,label=self.label,labeldistance=self.labeldistance,explode=self.explode,startangletype=self.startangletype)
   self._redraw()
- def get(self):return self.graphdata[0]
+ def get(self):return self.graphdata
  def getdata(self):return self.data

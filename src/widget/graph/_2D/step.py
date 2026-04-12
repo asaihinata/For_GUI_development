@@ -35,7 +35,7 @@ class Step(twoDElement):
   def _array(min,max):
    if max<min:min,max=max,min
    step=(max-min)/(len1-1)
-   return np.array([float(step*i+min)for i in range(len1)])
+   return np.array([float(step*i+min)for i in range(len1)],dtype=object)
   if isinstance(ranges,np.ndarray) and len(ranges.shape)==1 and ranges.shape[0]==len1:return ranges
   elif isinstance(ranges,(tuple,list)):
    lens=len(ranges)

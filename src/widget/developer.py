@@ -25,7 +25,7 @@ class randoms:
  @classmethod
  def rand(cls,size=None):return cls._rand(size)
  @classmethod
- def randint(cls,low,high=None,size=None,endpoint=False):
+ def randint(cls,low=1,high=None,size=None,endpoint=False):
   if not isinstance(low,int):
    raise ValueError('lowに数値を指定してください')
   if high is not None and not isinstance(high,int):
@@ -113,10 +113,10 @@ class randoms:
    raise TypeError('配列の型を指定してください')
   return choice(array(list(arr)if isinstance(arr,LIST) else arr,dtype=object),size=size)
 class LIST:
- __slots__=('lists')
  def __init__(self,lists=None,*arg):
   if isinstance(lists,list):self.lists=lists
-  elif isinstance(lists,(tuple,range,LIST)):self.lists=list(lists)
+  elif isinstance(lists,(tuple,range)):self.lists=list(lists)
+  elif isinstance(lists,LIST):self.lists=lists.lists
   elif isinstance(lists,ndarray):self.lists=lists.tolist()
   else:self.lists=[lists]
   for i in arg:self.lists.append(i)
@@ -136,7 +136,7 @@ class LIST:
   if isinstance(lists,LIST)and(len(lists)==lens):
    lists=list(lists)
    for i in range(lens):
-    if self.lists[i]!=lists[i]:
+    if self.lists[i]==lists[i]:
      judge=False
      break
   else:judge=False
@@ -152,13 +152,13 @@ class LIST:
   else:judge=True
   return judge
  def __add__(self,val):
-  if isinstance(val,LIST):self.lists=self.lists+list(val)
+  if isinstance(val,LIST):self.lists=self.lists+val.lists
   elif isinstance(val,(list,tuple)):
    for i in val:self.lists.append(i)
   else:self.lists.append(val)
   return self
  def __radd__(self,val):
-  if isinstance(val,LIST):val=list(val)+self.lists
+  if isinstance(val,LIST):val=val.lists+self.lists
   else:
    if isinstance(val,tuple):val=list(val)
    elif not isinstance(val,list):val=[val]
@@ -166,17 +166,16 @@ class LIST:
   self.lists=val
   return self
  def __iadd__(self,val):
-  self.lists.append(val)
+  if isinstance(val,LIST):self.lists=self.lists+val.lists
+  elif isinstance(val,(range,list,tuple)):
+   for i in list(val):self.lists.append(i)
+  else:self.lists.append(val)
   return self
  def __mul__(self,val):
   if isinstance(val,int)and 1<=val:
    lin=self.lists
    for _ in range(val-1):self.lists=self.lists+lin
   return self
- def __delattr__(self,item):
-  if item=='lists':
-   raise AttributeError(r'The \'lists\' attribute can\'t be deleted.')
-  super().__delattr__(item)
  def __getattribute__(self,name):return super().__getattribute__(name)
  def _flatten(self,lists):
   for i in lists:
@@ -195,7 +194,6 @@ class LIST:
   self.lists=sort(self.lists,type)
   return self
 class sort:
- __slots__=('order','data')
  def __init__(self,data,types=True):
   if not isinstance(data,(list,tuple,LIST)):
    raise ValueError('dataに配列の型を指定してください')
@@ -212,16 +210,12 @@ class sort:
   self.order=not self.order
   self.data=sorted(self.data,key=sort._ascending) if self.order else sorted(self.data,key=sort._descending)
   return self
- def __delattr__(self,item):
-  if item in ['order','data']:
-   raise AttributeError(f'The \'{item}\' attribute can\'t be deleted.')
-  super().__delattr__(item)
  def __eq__(self,lists):
   lens,judge=len(self),True
   if isinstance(lists,sort)and(len(lists)==lens):
    lists=list(lists)
    for i in range(lens):
-    if self.data[i]!=lists[i]:
+    if self.data[i]==lists[i]:
      judge=False
      break
   else:judge=False
@@ -263,7 +257,6 @@ class sort:
   if all(ord(i)>127 or i.isspace() for i in item_str):return(1,item_str,'')
   return(0,item_str,'')
 class Number:
- __slots__=('val',)
  def __init__(self,val):
   if not isinstance(val,(Number,int,float)):
    raise TypeError('valに数値を指定してください')
@@ -271,10 +264,6 @@ class Number:
   else:self.val=val
  @classmethod
  def __instancecheck__(cls,ins):return isinstance(ins,Number)
- def __delattr__(self,item):
-  if item=='val':
-   raise AttributeError(f'The \'val\' attribute can\'t be deleted.')
-  super().__delattr__(item)
  def __getattribute__(self,name):return super().__getattribute__(name)
  def __int__(self):return int(self.val)
  def __float__(self):return float(self.val)

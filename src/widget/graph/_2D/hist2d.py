@@ -10,7 +10,7 @@ class Hist2d(twoDElement):
   elif len(self.y.shape)!=1:
    raise TypeError('yの多次元配列のエラー')
   if len(self.x)!=len(self.y):
-   raise TypeError('データの数を同じにしてください。')
+   raise TypeError('データの数を同じにしてください')
   self.max,self.min=nums(kw.get('max')),nums(kw.get('min'))
   if isinstance(self.max,Numbertype) and isinstance(self.min,Numbertype) and self.max<self.min:self.max,self.min=self.min,self.max
   self.xmax=self._powsmax(nums(kw.get('xmax')),self.x)
@@ -40,7 +40,7 @@ class Hist2d(twoDElement):
   elif len(self.y.shape)!=1:
    raise TypeError('yの多次元配列のエラー')
   if len(self.x)!=len(self.y):
-   raise TypeError('データの数を同じにしてください。')
+   raise TypeError('データの数を同じにしてください')
   self.max,self.min=nums(kw.get('max'),self.max),nums(kw.get('min'),self.min)
   if isinstance(self.max,Numbertype) and isinstance(self.min,Numbertype) and self.max<self.min:self.max,self.min=self.min,self.max
   self.xmax=self._powsmax(nums(kw.get('xmax'),self.xmax),self.x)

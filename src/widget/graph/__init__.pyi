@@ -555,7 +555,7 @@ alpha:Numbertype,
 graph_grid:Colortype,
 title:str
 )->NoReturn:'''円グラフを再表示させる。'''
- def get(self)->list[list[list[Wedge],list[Text]]|tuple[list[Wedge],list[Text],list[Text]]]:'''`matplotlib.axes.Axes.pie`の戻り値を配列で返す。'''
+ def get(self)->tuple[tuple[Wedge,Text],...]:'''`matplotlib.axes.Axes.pie`の戻り値を配列で返す。'''
  def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
 class Boxplot:
  def __init__(
