@@ -6,8 +6,7 @@ if __name__=='__main__':
  name=__name__,
  format=['lineno','message','asctime'],
  logfile=True,
- file=logfile,
- lclear='once'
+ file=logfile
  ).get_logger()
  print(f'\'{logfile}\'ファイルにログを保存する。')
  logger.debug('デバッグログ')
