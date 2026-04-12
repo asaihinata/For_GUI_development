@@ -3336,8 +3336,8 @@ labelalpha:Numbertype=1
  :type gridsize: int|tuple[int,int]
  :param extent: 各ポイントの値を指定する。
  :type extent: tuple[float,float,float,float]|None
- :param xscale, yscale: 軸のスケールを指定する。
- :type xscale, yscale: Literal['linear','log']
+ :param xscale,yscale: 軸のスケールを指定する。
+ :type xscale,yscale: Literal['linear','log']
  :param mincnt: 描画する`bins`の最小カウント数を指定する。
  :type mincnt: int
  :param bins: ビンのカウント方法を指定する。

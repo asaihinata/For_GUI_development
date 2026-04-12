@@ -1,7 +1,7 @@
 from collections.abc import Iterator
 from typing import Any,Iterable,NoReturn,overload
-from numpy import int64,ndarray
-from numpy._typing import _ShapeLike
+from numpy import float64,int64,ndarray
+from numpy._typing import NDArray,_ShapeLike
 from numpy.random import Generator
 from ..types import Numbertype
 class clear:
@@ -178,16 +178,16 @@ endpoint:bool=False
  @classmethod
  def normal(
 self,
-loc:Numbertype=0,
-scale:Numbertype=1,
+low:Numbertype=0,
+high:Numbertype=1,
 lenght:int=1,
 hierarchy:int=1
 )->ndarray:'''指定された行数と列数分のランダムに生成された正規分布のnumpyの配列を返す。
 
- :param loc: 分布の平均値を指定する。
- :type loc: int
- :param scale: 分布の標準偏差を指定する。
- :type scale: int
+ :param low: 分布の平均値を指定する。
+ :type low: int
+ :param high: 分布の標準偏差を指定する。
+ :type high: int
  :param lenght: 生成される配列の列数を指定する。
  :type lenght: int
  :param hierarchy: 生成される配列の行数を指定する。
@@ -198,48 +198,76 @@ hierarchy:int=1
  @classmethod
  def rands(
 cls,
-mins:Numbertype=0,
-maxs:Numbertype=1,
-lenght:int=1,
-hierarchy:int=1,
-number:bool=True
-)->ndarray:'''指定されたサイズのランダムに生成された値(整数)の配列を返す。
+low:Numbertype=...,
+high:Numbertype|None=...,
+lenght:int=...,
+)->NDArray[float64]:'''指定されたの個数のランダムに生成された値の配列を返す。
 
- :param mins: 生成される値の最低値を指定する。
- :type mins: Numbertype
- :param maxs: 生成される値の最大値を指定する。
- :type maxs: Numbertype
- :param lenght: 生成される配列の列数を指定する。
+ :param low: ランダムに生成される値の最小値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type low: int
+ :param high: ランダムに生成される値の最大値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type high: int|None
+ :param lenght: 生成される配列の要素の列数を指定する。
  :type lenght: int
- :param hierarchy: 生成される配列の行数を指定する。
- :type hierarchy: int
- :param number: ランダムに生成される値がint型かfloat型かを指定する。
- :type number: bool
- :return: 指定されたサイズのランダムに生成された値(整数)の配列を返す。
- :rtype: ndarray'''
+ :return: 指定されたの個数のランダムに生成された値の配列を返す。
+ :rtype: NDArray[float64]'''
  @overload
  @classmethod
  def rands(
 cls,
-mins:Numbertype=0,
-maxs:Numbertype=1,
-lenght:int=1,
-hierarchy:int=1,
-number:bool=False
-)->ndarray:'''指定されたサイズのランダムに生成された値(浮動小数点)の配列を返す。
+low:Numbertype=...,
+high:Numbertype|None=...,
+lenght:int=...,
+hierarchy:int|None=None,
+)->NDArray[float64]:'''指定されたのサイズのランダムに生成された値の配列を返す。
 
- :param mins: 生成される値の最低値を指定する。
- :type mins: Numbertype
- :param maxs: 生成される値の最大値を指定する。
- :type maxs: Numbertype
- :param lenght: 生成される配列の列数を指定する。
+ :param low: ランダムに生成される値の最小値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type low: int
+ :param high: ランダムに生成される値の最大値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type high: int|None
+ :param lenght: 生成される配列の要素の列数を指定する。
  :type lenght: int
- :param hierarchy: 生成される配列の行数を指定する。
+ :param hierarchy: 生成される配列の要素の行数を指定する。
  :type hierarchy: int
- :param number: ランダムに生成される値がint型かfloat型かを指定する。
- :type number: bool
- :return: 指定されたサイズのランダムに生成された値(浮動小数点)の配列を返す。
- :rtype: ndarray'''
+ :return: 指定されたのサイズのランダムに生成された値の配列を返す。
+ :rtype: NDArray[float64]'''
+ @overload
+ @classmethod
+ def randsint(
+cls,
+low:Numbertype=...,
+high:Numbertype|None=...,
+lenght:int=...,
+)->NDArray[int64]:'''指定されたの個数のランダムに生成された整数の配列を返す。
+
+ :param low: ランダムに生成される値の最小値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type low: int
+ :param high: ランダムに生成される値の最大値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type high: int|None
+ :param lenght: 生成される配列の要素の列数を指定する。
+ :type lenght: int
+ :return: 指定されたの個数のランダムに生成された整数の配列を返す。
+ :rtype: NDArray[int64]'''
+ @overload
+ @classmethod
+ def randsint(
+cls,
+low:Numbertype=...,
+high:Numbertype|None=...,
+lenght:int=...,
+hierarchy:int|None=None,
+)->NDArray[int64]:'''指定されたのサイズのランダムに生成された整数の配列を返す。
+
+ :param low: ランダムに生成される値の最小値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type low: int
+ :param high: ランダムに生成される値の最大値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type high: int|None
+ :param lenght: 生成される配列の要素の列数を指定する。
+ :type lenght: int
+ :param hierarchy: 生成される配列の要素の行数を指定する。
+ :type hierarchy: int
+ :return: 指定されたのサイズのランダムに生成された整数の配列を返す。
+ :rtype: NDArray[int64]'''
  @classmethod
  def listrand(
 cls,

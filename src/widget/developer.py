@@ -4,7 +4,6 @@ from platform import system
 from sys import getsizeof
 from numpy import array,ndarray
 from numpy.random import choice,default_rng
-from ..types import Numbertype
 __all__=['clear','LIST','Number','randoms','sort']
 class clear:
  '''コンソールを削除する。'''
@@ -35,22 +34,73 @@ class randoms:
  @classmethod
  def randrange(cls,min=0,max=1,size=None):
   if not isinstance(min,(int,float,Number)) and not isinstance(max,(int,float,Number)):
-   raise TypeError('minとmaxの型が数値の型ではありません。')
+   raise TypeError('minとmaxの型が数値の型ではありません')
   elif not isinstance(min,(int,float,Number)):
-   raise TypeError('minの型が数値の型ではありません。')
+   raise TypeError('minの型が数値の型ではありません')
   elif not isinstance(max,(int,float,Number)):
-   raise TypeError('maxの型が数値の型ではありません。')
+   raise TypeError('maxの型が数値の型ではありません')
   if max<min:min,max=max,min
   return cls._randrange(min,max,size)
  @classmethod
- def normal(cls,loc=0,scale=1,lenght=1,hierarchy=1):
-  if not isinstance(scale,Numbertype):scale=loc
-  return cls.rng.normal(loc,scale,(hierarchy,lenght))
+ def normal(cls,low=0,high=1,lenght=None,hierarchy=None):
+  if not isinstance(low,(int,float,Number)):
+   raise TypeError('lowには数値型を指定してください')
+  elif isinstance(low,Number):low=low.val
+  if not isinstance(high,(int,float,Number)):
+   raise TypeError('highには数値型を指定してください')
+  elif isinstance(high,Number):high=high.val
+  if not isinstance(lenght,int):
+   raise TypeError('lenghtにはint型を指定してください')
+  elif lenght<=0:
+   raise ValueError('lenghtには1以上の正の整数を指定してください')
+  if hierarchy is not None:
+   if not isinstance(hierarchy,int):
+    raise TypeError('hierarchyにはNoneを除くint型を指定してください')
+   elif hierarchy<=0:
+    raise ValueError('hierarchyには1以上の正の整数を指定してください')
+  return cls.rng.normal(low,high,(hierarchy,lenght)) if isinstance(hierarchy,int) and 2<=hierarchy else cls.rng.normal(low,high,lenght)
  @classmethod
- def rands(cls,mins=0,maxs=1,lenght=1,hierarchy=1,number=True):
-  if maxs<mins:mins,maxs=maxs,mins
-  if number:return cls.rng.integers(low=mins,high=maxs,size=(hierarchy,lenght))
-  return cls.rng.uniform(low=mins,high=maxs,size=(hierarchy,lenght))
+ def rands(cls,low=1,high=None,lenght=1,hierarchy=None):
+  if not isinstance(low,(int,float,Number)):
+   raise TypeError('lowには数値型を指定してください')
+  elif isinstance(low,Number):low=low.val
+  if high==None:low,high=0,low
+  elif not isinstance(high,(int,float,Number)):
+   raise TypeError('highには数値型を指定してください')
+  elif isinstance(high,Number):high=high.val
+  if not isinstance(lenght,int):
+   raise TypeError('lenghtにはint型を指定してください')
+  elif lenght<=0:
+   raise ValueError('lenghtには1以上の正の整数を指定してください')
+  if hierarchy is not None:
+   if not isinstance(hierarchy,int):
+    raise TypeError('hierarchyにはNoneを除くint型を指定してください')
+   elif hierarchy<=0:
+    raise ValueError('hierarchyには1以上の正の整数を指定してください')
+  if high<low:high,high=high,low
+  if isinstance(hierarchy,int) and 2<=hierarchy:return cls.rng.uniform(low=low,high=high,size=(hierarchy,lenght))
+  else:return cls.rng.uniform(low=low,high=high,size=lenght)
+ @classmethod
+ def randsint(cls,low=1,high=None,lenght=1,hierarchy=None):
+  if not isinstance(low,(int,float,Number)):
+   raise TypeError('lowには数値型を指定してください')
+  elif isinstance(low,Number):low=low.val
+  if high==None:low,high=0,low
+  elif not isinstance(high,(int,float,Number)):
+   raise TypeError('highには数値型を指定してください')
+  elif isinstance(high,Number):high=high.val
+  if not isinstance(lenght,int):
+   raise TypeError('lenghtにはint型を指定してください')
+  elif lenght<=0:
+   raise ValueError('lenghtには1以上の正の整数を指定してください')
+  if hierarchy is not None:
+   if not isinstance(hierarchy,int):
+    raise TypeError('hierarchyにはNoneを除くint型を指定してください')
+   elif hierarchy<=0:
+    raise ValueError('hierarchyには1以上の正の整数を指定してください')
+  if high<low:high,high=high,low
+  if isinstance(hierarchy,int) and 2<=hierarchy:return cls.rng.integers(low=low,high=high,size=(hierarchy,lenght))
+  else:return cls.rng.integers(low=low,high=high,size=lenght)
  @staticmethod
  def _rand(size):return randoms.rng.random(size)
  @staticmethod
@@ -148,7 +198,8 @@ class sort:
  __slots__=('order','data')
  def __init__(self,data,types=True):
   if not isinstance(data,(list,tuple,LIST)):
-   raise ValueError('配列を指定する必要がある。')
+   raise ValueError('dataに配列の型を指定してください')
+  if isinstance(data,LIST):data=list(data)
   self.order=types if isinstance(types,bool) else True
   self.data=sorted(data,key=sort._ascending) if self.order else sorted(data,key=sort._descending)
  @classmethod
@@ -215,7 +266,7 @@ class Number:
  __slots__=('val',)
  def __init__(self,val):
   if not isinstance(val,(Number,int,float)):
-   raise TypeError('数値を指定しなさい。')
+   raise TypeError('valに数値を指定してください')
   if isinstance(val,Number):self.val=val.val
   else:self.val=val
  @classmethod
