@@ -99,6 +99,8 @@ class sgg:
  @staticmethod
  def Eventplot(**kw):return{'count':counts(),'type':'Eventplot',**kw}
  @staticmethod
+ def Hatplot(**kw):return{'count':counts(),'type':'Hatplot',**kw}
+ @staticmethod
  def Hist2d(**kw):return{'count':counts(),'type':'Hist2d',**kw}
  @staticmethod
  def Violinplot(**kw):return{'count':counts(),'type':'Violinplot',**kw}

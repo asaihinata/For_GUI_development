@@ -7,6 +7,7 @@ from ._2D.eventplot import Eventplot
 from ._2D.hexbin import Hexbin
 from ._2D.hist2d import Hist2d
 from ._2D.hist import Hist
+from ._2D.hatplot import Hatplot
 from ._2D.linefill import Linefill
 from ._2D.linegraph import LineGraph
 from ._2D.pie import Pie

@@ -150,6 +150,7 @@ class WindowController:
   elif t=='Step':widget=Step(parent,kw)
   elif t=='Stack':widget=Stack(parent,kw)
   elif t=='Hist':widget=Hist(parent,kw)
+  elif t=='Hatplot':widget=Hatplot(parent,kw)
   elif t=='Hist2d':widget=Hist2d(parent,kw)
   elif t=='Bubble':widget=Bubble(parent,kw)
   elif t=='Linefill':widget=Linefill(parent,kw)

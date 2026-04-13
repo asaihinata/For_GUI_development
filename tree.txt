@@ -8,7 +8,6 @@ For_GUI_development
 │   │   ├── browser_jp.csv
 │   │   └── color.csv
 │   └── requirements.txt
-├── gittree.py
 ├── pyproject.toml
 ├── src
 │   ├── __init__.py
@@ -31,7 +30,6 @@ For_GUI_development
 │    ├── _log
 │    │   ├── __init__.py
 │    │   ├── __init__.pyi
-│    │   ├── _clearsave.py
 │    │   ├── _data.py
 │    │   ├── _logfile.py
 │    │   ├── data
@@ -70,8 +68,6 @@ For_GUI_development
 │    │   ├── Graph.py
 │    │   ├── Graph.pyi
 │    │   ├── _2D
-│    │   │   ├── LineGraph.py
-│    │   │   ├── Scatter.py
 │    │   │   ├── bargraph.py
 │    │   │   ├── boxplot.py
 │    │   │   ├── bubble.py
@@ -82,14 +78,16 @@ For_GUI_development
 │    │   │   ├── hist.py
 │    │   │   ├── hist2d.py
 │    │   │   ├── linefill.py
+│    │   │   ├── linegraph.py
 │    │   │   ├── pie.py
+│    │   │   ├── scatter.py
 │    │   │   ├── stack.py
 │    │   │   ├── stem.py
 │    │   │   ├── step.py
 │    │   │   ├── violinplot.py
 │    │   │   └── waterfall.py
 │    │   ├── _3D
-│    │   │   └── DScatter.py
+│    │   │   └── dscatter.py
 │    │   ├── __init__.py
 │    │   ├── __init__.pyi
 │    │   ├── _graphhelp.py
@@ -101,7 +99,6 @@ For_GUI_development
 │    ├── window.py
 │    └── window.pyi
 ├── tests
-│   ├── _import.py
 │   ├── data
 │   │   ├── csv
 │   │   │   ├── __init__.py
@@ -111,16 +108,13 @@ For_GUI_development
 │   │    └── Lenna.png
 │   ├── test-all.py
 │   ├── test-graph
-│   │   ├── _import.py
 │   │   ├── test-graph-schooldata.py
 │   │   ├── test-graph.py
 │   │   └── test-japanese.py
 │   ├── test-log
-│   │   ├── _import.py
 │   │   ├── test-log.log
 │   │   └── test-log.py
 │   └── test-widget
-│    ├── _import.py
 │    ├── test-all.py
 │    └── test-expansion.py
 └── tree.txt
