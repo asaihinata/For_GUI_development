@@ -16,7 +16,6 @@ class Errorbar(twoDElement):
   self.xlolims=bols(kw.get('xlolims'),False)
   self.yuplims=bols(kw.get('yuplims'),False)
   self.ylolims=bols(kw.get('ylolims'),False)
-  self.colorlist=self._list_loop(self.colorlist,self.max_depth)
   self.barsabove=bols(kw.get('barsabove'),False)
   self.line=kw.get('linestyle')
   self.marker=kw.get('marker','o')
@@ -31,14 +30,13 @@ class Errorbar(twoDElement):
   self.plot(self.x,self.y,label=self.label,xerr=self.xerr,yerr=self.yerr,fmt=self.fmt,linewidth=self.linewidth,capsize=self.capsize,barsabove=self.barsabove,capthick=self.capthick,xuplims=self.xuplims,xlolims=self.xlolims,yuplims=self.yuplims,ylolims=self.ylolims,errorevery=self.errorevery,alpha=self.alpha)
  def plot(self,x,y,label=None,xerr=None,yerr=None,fmt='',linewidth=1.5,capsize=0,barsabove=False,capthick=10,xuplims=False,xlolims=False,yuplims=False,ylolims=False,errorevery=1,alpha=1):
   self.clear()
-  self.graphdata=[self.ax.errorbar(xs,ys,fmt=fmt,xerr=xerr,yerr=yerr,label=label[i],ecolor=self.colorlist[i],elinewidth=linewidth,capthick=capthick,capsize=capsize,barsabove=barsabove,xuplims=xuplims,xlolims=xlolims,uplims=yuplims,lolims=ylolims,errorevery=errorevery,alpha=alpha)for i,(xs,ys) in enumerate(product(x,y))]
+  self.graphdata=[self.ax.errorbar(xs,ys,fmt=fmt,xerr=xerr,yerr=yerr,label=label[i],elinewidth=linewidth,capthick=capthick,capsize=capsize,barsabove=barsabove,xuplims=xuplims,xlolims=xlolims,uplims=yuplims,lolims=ylolims,errorevery=errorevery,alpha=alpha)for i,(xs,ys) in enumerate(product(x,y))]
   self.legend()
   self._apply_labels(self.xlabel,self.ylabel)
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
   if isinstance(x,NpArraytype):self.x=self._manyarr(x)
   if isinstance(y,NpArraytype):self.y=self._manyarr(y)
-  self.colorlist=self._list_loop(self.colorlist,self.max_depth)
   err,xerr,yerr=kw.get('err',self.err),kw.get('xerr',self.xerr),kw.get('yerr',self.yerr)
   if err!=None:
    self.err=self._dataarr(err,False)

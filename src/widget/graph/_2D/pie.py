@@ -6,7 +6,6 @@ class Pie(twoDElement):
   self.labelplace=self._getlabelplace(kw.get('labelplace'),'upper left')
   self.anchor=self._anchor(kw.get('anchor'),(1,1))
   self.data=self._dataarr(kw.get('data'))
-  self.colorlist=self._list_loop(self.colorlist,self.max_depth)
   self.label=self.pielabel(self.data,kw.get('label'))[0]
   self.startangle=nums(kw.get('startangle'),0)
   self.startangletype=bols(kw.get('startangletype'))
@@ -28,7 +27,6 @@ class Pie(twoDElement):
  def update(self,data=None,**kw):
   self._updates(**kw)
   if isinstance(data,NpArraytype):self.data=self._dataarr(data)
-  self.colorlist=self._list_loop(self.colorlist,self.max_depth)
   explode=kw.get('explode',self.explode)
   if isinstance(explode,(list,tuple)) and all(isinstance(i,(int,float,Number))for i in explode):self.explode=list(map(float,explode))
   elif isinstance(explode,(int,float,Number)):self.explode=[float(explode) for _ in range(self.max_depth)]

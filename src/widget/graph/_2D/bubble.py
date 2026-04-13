@@ -6,7 +6,6 @@ class Bubble(twoDElement):
   x,y=self._xys(kw.get('x'),kw.get('y'))
   self.x=self._manyarr(x)
   self.y=self._manyarr(y)
-  self.colorlist=self._list_loop(self.colorlist,self.max_depth)
   self.label=self.labels(kw.get('label'))[0]
   self.marker=self.markers(kw.get('marker','o'),self.max_depth)
   self.alpha=range_num(num0s(kw.get('alpha'),0.5),0,1,0.5)
@@ -16,7 +15,7 @@ class Bubble(twoDElement):
   self.plot(self.x,self.y,self.datas,marker=self.marker,alpha=self.alpha,label=self.label)
  def plot(self,x,y,data,marker=None,alpha=0.5,label=None):
   self.clear()
-  self.graphdata=[self.ax.scatter(xs,ys,marker=marker[i],s=data[i],alpha=alpha,c=self.colorlist[i],edgecolors=self.colorlist[i],label=label[i])for i,(xs,ys) in enumerate(product(x,y))]
+  self.graphdata=[self.ax.scatter(xs,ys,marker=marker[i],s=data[i],alpha=alpha,label=label[i])for i,(xs,ys) in enumerate(product(x,y))]
   self.legend()
   self._apply_labels(self.xlabel,self.ylabel)
  def update(self,x=None,y=None,data=None,**kw):
@@ -26,7 +25,6 @@ class Bubble(twoDElement):
   if isinstance(y,NpArraytype):self.y=self._manyarr(y)
   if isinstance(data,NpArraytype):self.data=self._arr(kw.get('data',self.data))
   self.datas=np.multiply(self.data,self.bubblesize)
-  self.colorlist=self._list_loop(self.colorlist,self.max_depth)
   self.marker=self.markers(kw.get('marker',self.marker),self.max_depth)
   self.plot(self.x,self.y,marker=self.marker,alpha=self.alpha,label=self.label)
   self._redraw()

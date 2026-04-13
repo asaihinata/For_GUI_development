@@ -3,7 +3,6 @@ class Hist(twoDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.data=self._dataarr(kw.get('data'))
-  self.colorlist=self._list_loop(self.colorlist,self.max_depth)
   self.label=self.labels(kw.get('label'))[0]
   bins=kw.get('bins')
   if isinstance(bins,(list,range,tuple,np.ndarray)) or bins in ['auto','fd','doane','scott','stone','rice','sturges','sqrt']:self.bins=bins
@@ -19,7 +18,7 @@ class Hist(twoDElement):
   self.plot(self.data,label=self.label,bins=self.bins,ranges=self.range,bottom=self.bottom,orientation=self.orientation,width=self.width,alpha=self.alpha)
  def plot(self,data,label=None,bins=10,ranges=None,bottom=0,orientation='vertical',width=None,alpha=1):
   self.clear()
-  self.graphdata=[self.ax.hist(data,label=label,bins=bins,range=ranges,bottom=bottom,rwidth=width,orientation=orientation,color=self.colorlist[0],alpha=alpha)]
+  self.graphdata=[self.ax.hist(data,label=label,bins=bins,range=ranges,bottom=bottom,rwidth=width,orientation=orientation,alpha=alpha)]
   self.xtickslist,self.xtickslists,pows=[],[],np.pow(10,self.decimalpoint)
   for i in self.graphdata[0][1]:
    self.xtickslist.append(i)

@@ -1,4 +1,5 @@
 from os import getcwd
+from cycler import cycler
 from matplotlib.axes._axes import Axes
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
@@ -24,7 +25,7 @@ class GElement:
   self.graph_bg=parsecolor(kw.get('bg'),'#ffffff')
   self.graph_grid=parsecolor(kw.get('graph_grid'),'#b7b7b7')
   self.title=kw.get('title')
-  self.colorlist=self._color_check(kw.get('color',graph_color))
+  rcParams['axes.prop_cycle']=cycler(color=self._color_check(kw.get('color',graph_color)))
   self.alpha=range_num(num0s(kw.get('alpha'),1),0,1,1)
   self.dpi=num1s(kw.get('dpi'),100)
   self.width,self.height=self._size(kw.get('size'))

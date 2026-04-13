@@ -6,14 +6,13 @@ class DScatter(threeDElement):
   self.x=self._manyarr(kw.get('x'))
   self.y=self._manyarr(kw.get('y'))
   self.z=self._manyarr(kw.get('z'))
-  self.colorlist=self._list_loop(self.colorlist,self.max_depth)
   self.label=self.labels(kw.get('label'))[0]
   self.marker=self.markers(kw.get('marker','o'),self.max_depth)
   self.s=num1s(kw.get('markersize'),10)
   self.plot(self.x,self.y,self.z,marker=self.marker,alpha=self.alpha,label=self.label)
  def plot(self,x,y,z,label=None,marker='o',alpha=1):
   self.clear()
-  self.graphdata=[self.ax.scatter(xs,ys,zs,label=label[i],marker=marker[i],alpha=alpha,c=self.colorlist[i],edgecolors=self.colorlist[i])for i,(xs,ys,zs) in enumerate(product(x,y,z))]
+  self.graphdata=[self.ax.scatter(xs,ys,zs,label=label[i],marker=marker[i],alpha=alpha)for i,(xs,ys,zs) in enumerate(product(x,y,z))]
   self._apply_labels(self.xlabel,self.ylabel,self.zlabel)
   self.legend()
  def update(self,x=None,y=None,z=None,**kw):

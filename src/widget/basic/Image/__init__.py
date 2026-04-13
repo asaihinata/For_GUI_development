@@ -61,9 +61,9 @@ class Barcode(Element):
   self.data=kw.get('data')
   self.data_type=kw.get('data_type','Code128')
   self.names=kw.get('name','No Barcode image')
-  for key,item in {'EAN-8':'ean8','EAN-13':'ean13','JAN':'jan','Code39':'code39','Code128':'code128'}.items():
-   if self.data_type==key:
-    self.set,self.item=key,item
+  for k,v in {'EAN-8':'ean8','EAN-13':'ean13','JAN':'jan','Code39':'code39','Code128':'code128'}.items():
+   if self.data_type==k:
+    self.set,self.item=k,v
     break
   else:self.set,self.item='Code128','code128'
   try:

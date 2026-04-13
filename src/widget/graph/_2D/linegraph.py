@@ -6,7 +6,6 @@ class LineGraph(twoDElement):
   x,y=self._xys(kw.get('x'),kw.get('y'))
   self.x=self._manyarr(x)
   self.y=self._manyarr(y)
-  self.colorlist=self._list_loop(self.colorlist,self.max_depth)
   self.label=self.labels(kw.get('label'))[0]
   self.marker=self.markers(kw.get('marker'),self.max_depth)
   self.markersize=num0(kw.get('markersize'),10)
@@ -15,7 +14,7 @@ class LineGraph(twoDElement):
   self.plot(self.x,self.y,marker=self.marker,linewidth=self.linewidth,linestyle=self.line,markersize=self.markersize,alpha=self.alpha,label=self.label)
  def plot(self,x,y,marker='o',linewidth=2,linestyle='-',markersize=10,alpha=1,label=None):
   self.clear()
-  self.graphdata=[self.ax.plot(xs,ys,marker=marker[i],linewidth=linewidth,markersize=markersize,linestyle=linestyle[i],alpha=alpha,color=self.colorlist[i],markeredgecolor=self.colorlist[i],markerfacecolor=self.colorlist[i],label=label[i])for i,(xs,ys) in enumerate(product(x,y))]
+  self.graphdata=[self.ax.plot(xs,ys,marker=marker[i],linewidth=linewidth,markersize=markersize,linestyle=linestyle[i],alpha=alpha,label=label[i])for i,(xs,ys) in enumerate(product(x,y))]
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
  def update(self,x=None,y=None,**kw):

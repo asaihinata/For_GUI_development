@@ -64,10 +64,10 @@ class Stem(twoDElement):
     if i in stem_color_list:set_color_arr.append(i)
    if len(set_color_arr)==0:color=stem_color_list
   else:color=stem_color_list
-  for key,val in {'r':['r','red'],'g':['g','green'],'b':['b','blue'],'c':['c','cyan'],'m':['m','magenta'],'y':['y','yellow'],'k':['k','black'],'w':['w','white']}.items():
+  for k,v in {'r':['r','red'],'g':['g','green'],'b':['b','blue'],'c':['c','cyan'],'m':['m','magenta'],'y':['y','yellow'],'k':['k','black'],'w':['w','white']}.items():
    if isinstance(color,str):
-    if color in val:set_arr=[key]
+    if color in v:set_arr=[k]
    if isinstance(color,Arraytype):
     for i in color:
-     if i in val:set_arr.append(key)
+     if i in v:set_arr.append(k)
   return set_arr

@@ -12,7 +12,7 @@ def typelist(val:Any)->bool:
  '''val`が配列かを調べる'''
  if isinstance(val,(LIST,tuple,list)):return True
  return False
-def listchose(val:str,arr:list,other:str=None)->str:
+def listchose(val:str,arr:list,other:str|None=None)->str:
  '''`val`が`arr`の配列内の要素に存在するかを調べる。存在しなかった場合,otherを返す。もしotherがNoneの場合で尚且つarrが配列の場合,arrの最初の要素を返す。
 
  :param val: 検索したい値を指定する。
@@ -20,7 +20,7 @@ def listchose(val:str,arr:list,other:str=None)->str:
  :param arr: 検索するデータを指定する。
  :type arr: list
  :param other: `val`が`arr`に存在しなかった場合に返す値を指定する。
- :type other: str
+ :type other: str|None
  :return: 配列の要素を返す。
  :rtype: str'''
  if isinstance(arr,(tuple,list))and other==None:other=arr[0]

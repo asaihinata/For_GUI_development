@@ -748,7 +748,7 @@ class Calendar(Frame):
     raise TypeError('date option should be a %s instance'%(Calendar.date))
    try:return tuple(ev_id for ev_id in self._calevent_dates[date] if tag in self.calevents[ev_id]['tags']) if tag!=None else tuple(self._calevent_dates[date])
    except KeyError:return()
-  elif tag!=None:return tuple(ev_id for ev_id,prop in self.calevents.items() if tag in prop['tags'])
+  elif tag!=None:return tuple(k for k,v in self.calevents.items() if tag in v['tags'])
   else:return tuple(self.calevents.keys())
  def _tag_initialize(self,tag):
   props=dict(foreground='white',background='royal blue')
@@ -785,5 +785,5 @@ class Calendar(Frame):
    raise TypeError('Expected a dictionary or keyword arguments.')
   kw=cnf.copy()
   kw.update(kw)
-  for item,value in kw.items():self[item]=value
+  for k,v in kw.items():self[k]=v
  config=configure

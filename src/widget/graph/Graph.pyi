@@ -8,7 +8,6 @@ graph_color:list
 class GElement:
  fig:Figure
  graphdata:list
- colorlist:list
  size:TupleNumbertype2
  fg:Colortype
  graph_bg:Colortype

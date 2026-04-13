@@ -21,8 +21,8 @@ class Hatch:
 class Solid:
  def __init__(self,solid=None):self.solid=[self._get(i) for i in solid] if isinstance(solid,(list,tuple)) else [self._get(solid)]
  def _get(self,val):
-  for i,key in FMTSOLID.items():
-   if val in key:return i
+  for k,v in FMTSOLID.items():
+   if val in v:return k
   return 'solid'
  def __iter__(self):return iter(self.solid)
  def __len__(self):return len(self.solid)
@@ -30,8 +30,8 @@ class Solid:
 class NSolid:
  def __init__(self,solid=None):self.solid=[self._get(i) for i in solid] if isinstance(solid,(list,tuple)) else [self._get(solid)]
  def _get(self,val):
-  for i,key in SOLID.items():
-   if val in key:return i
+  for k,v in SOLID.items():
+   if val in v:return k
   return None
  def __iter__(self):return iter(self.solid)
  def __len__(self):return len(self.solid)
@@ -52,9 +52,9 @@ class FMT:
   self.t=''
   if marker!=None and marker in FMTMARKERS:self.t=self.t+marker
   if line!=None and isinstance(line,str):
-   for val,key in FMTSOLID.items():
-    if line in key:
-     self.t=self.t+val
+   for k,v in FMTSOLID.items():
+    if line in v:
+     self.t=self.t+k
      break
   if color!=None and color in COLOR:self.t=self.t+color
  def __str__(self):return str(self.t)
