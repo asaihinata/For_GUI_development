@@ -6,7 +6,7 @@ __all__=['fonts']
 class fonts(Font):
  def __init__(
 self,
-family:fontname='Arial',
+family:fontname='Meiryo',
 size:Numbertype=14,
 weight:Literal['normal','bold']='normal',
 slant:Literal['roman','italic']='roman',

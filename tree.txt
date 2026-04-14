@@ -74,6 +74,7 @@ For_GUI_development
 │    │   │   ├── ecdf.py
 │    │   │   ├── errorbar.py
 │    │   │   ├── eventplot.py
+│    │   │   ├── hatplot.py
 │    │   │   ├── hexbin.py
 │    │   │   ├── hist.py
 │    │   │   ├── hist2d.py
@@ -92,10 +93,13 @@ For_GUI_development
 │    │   ├── __init__.pyi
 │    │   ├── _graphhelp.py
 │    │   └── support
+│    │    ├── Axis.py
+│    │    ├── Axis.pyi
 │    │    ├── Graphhelp.py
 │    │    ├── Graphhelp.pyi
 │    │    ├── List.py
-│    │    └── List.pyi
+│    │    ├── List.pyi
+│    │    └── __init__.py
 │    ├── window.py
 │    └── window.pyi
 ├── tests

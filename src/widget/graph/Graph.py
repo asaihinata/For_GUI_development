@@ -1,9 +1,8 @@
 from os import getcwd
-from cycler import cycler
 from matplotlib.axes._axes import Axes
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-from matplotlib.pyplot import rcParams
+from matplotlib.pyplot import cycler,rcParams
 from matplotlib.ticker import LinearLocator,MaxNLocator
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import array,ndarray
@@ -12,11 +11,11 @@ from .._function import bols,listchose,num0s,num1s,nums,parsecolor,range_num
 from .._log import Logger
 from .._save import autofile_save
 from ..developer import LIST
-from .support.Graphhelp import Marker,NSolid,Solid
-from .support.List import Manylist,Onelist
+from .support import Manylist,Marker,NSolid,Onelist,Solid
 __all__=['twoDElement','threeDElement']
 logger=Logger(name='Graph',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 graph_color=['#4477aa','#ee7733','#228833','#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']
+rcParams['font.family']='Meiryo'
 class GElement:
  def __init__(self,master,kw):
   self.master,self.widget,self.graph,self.graphdata,self._canvas_widget,self.max_depth=master,None,True,[],None,1
