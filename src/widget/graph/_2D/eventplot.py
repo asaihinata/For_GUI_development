@@ -19,6 +19,7 @@ class Eventplot(twoDElement):
    if orientation=='vertical':self.ax.set_xticks(self.x,lab)
    else:self.ax.set_yticks(self.x,lab)
   self.legend()
+  self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
   if isinstance(data,NpArraytype):self.data=self._dataarr(data)

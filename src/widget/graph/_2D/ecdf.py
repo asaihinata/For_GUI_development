@@ -13,6 +13,7 @@ class Ecdf(twoDElement):
   self.clear()
   self.graphdata=[self.ax.ecdf(data[i],compress=compress,complementary=complementary,orientation=orientation,linewidth=linewidth,linestyle=line[i],alpha=alpha)for i in range(self.max_depth)]
   self._apply_labels(self.xlabel,self.ylabel)
+  self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
   if isinstance(data,NpArraytype):self.data=self._manyarr(data)

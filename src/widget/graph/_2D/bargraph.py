@@ -16,6 +16,7 @@ class BarGraph(twoDElement):
    self.graphdata.append(self.ax.bar(xs,ys,log=logs,label=label[i],alpha=alpha,width=width,align=align))
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
+  self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
   if isinstance(x,NpArraytype):self.x=self._onearr(x)
@@ -44,6 +45,7 @@ class BarhGraph(twoDElement):
    self.graphdata.append(self.ax.barh(xs,ys,label=label[i],alpha=alpha,height=height,align=align,log=logs))
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
+  self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
   if isinstance(x,NpArraytype):self.x=self._onearr(x)

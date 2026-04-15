@@ -15,6 +15,7 @@ class Scatter(twoDElement):
   self.graphdata=[self.ax.scatter(xs,ys,marker=marker[i],s=s,alpha=alpha,linewidth=linewidth,label=label[i])for i,(xs,ys) in enumerate(product(x,y))]
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
+  self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
   if isinstance(x,NpArraytype):self.x=self._manyarr(x)

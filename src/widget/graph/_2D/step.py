@@ -16,6 +16,7 @@ class Step(twoDElement):
   self._apply_labels(self.xlabel,self.ylabel)
   self.ax.set_xticks(np.arange(data.shape[1]+1),labels=range.astype('U5'))
   self.legend()
+  self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
   if isinstance(data,NpArraytype):self.data=self._manyarr(data)

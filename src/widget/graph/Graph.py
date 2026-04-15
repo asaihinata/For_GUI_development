@@ -120,6 +120,8 @@ class GElement:
     if judge:relist=set_arr
   return relist
  def _list_loop(self,lin,num):return LIST(lin).get(num)
+ def _adjustment(self):
+  self.fig.tight_layout()
 class twoDElement(GElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)

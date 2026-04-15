@@ -12,6 +12,7 @@ class Hatplot(twoDElement):
   self.graphdata=self.hat_graph(x,y,self.label)
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
+  self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
   if isinstance(x,NpArraytype):self.x=self._onearr(x)

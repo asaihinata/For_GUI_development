@@ -29,6 +29,7 @@ class Hist2d(twoDElement):
   self.graphdata=[self.ax.hist2d(x,y,bins=bins,alpha=alpha,density=density,range=range,label=self.label,cmax=max,cmin=min)]
   self._apply_labels(self.xlabel,self.ylabel)
   if label!=None:self.legend()
+  self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
   if isinstance(x,NpArraytype):self.x=self._dataarr(x)

@@ -127,6 +127,7 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
  :return: 決定したグラフの大きさをタプルで返す。
  :rtype: TupleNumbertype2'''
  def _apply_theme_colors(self)->NoReturn:'''目盛り,目盛りラベル,グリッド線,グラフのタイトル,軸ラベルの文字色を決定させる。'''
+ def _adjustment(self)->NoReturn:'''グラフの調整を行う'''
 class twoDElement(GElement):
  def __init__(
 self,

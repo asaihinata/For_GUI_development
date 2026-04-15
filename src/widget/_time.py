@@ -19,7 +19,8 @@ class times:
    self.second=self._valset(second,'second',0,60)
    self.microsecond=self._valset(microsecond,'microsecond',0,1000000)
    self.timezone=_timezonecheck(timezone)
-   self.fold=_fold(fold)
+   if isinstance(fold,bool) or (fold in [0,1]):self.fold=int(fold)
+   else:self.fold=0
    self.datetimes=datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.microsecond,tzinfo=self.timezone,fold=self.fold)
  def _valset(self,val,name,mins,maxs):
   if not isinstance(val,int):
@@ -82,4 +83,3 @@ class times:
    if not 1<=mins<=9999:mins=1
    times.minsyear,times.maxsyear=mins,maxs
 def _timezonecheck(time):return ZoneInfo(time if time in available_timezones() else 'Asia/Tokyo')
-def _fold(val):return int(val) if isinstance(val,bool)or(val in [0,1]) else 0

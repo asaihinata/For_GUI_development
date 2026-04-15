@@ -16,8 +16,9 @@ class Bubble(twoDElement):
  def plot(self,x,y,data,marker=None,alpha=0.5,label=None):
   self.clear()
   self.graphdata=[self.ax.scatter(xs,ys,marker=marker[i],s=data[i],alpha=alpha,label=label[i])for i,(xs,ys) in enumerate(product(x,y))]
-  self.legend()
   self._apply_labels(self.xlabel,self.ylabel)
+  self.legend()
+  self._adjustment()
  def update(self,x=None,y=None,data=None,**kw):
   self._updates(**kw)
   self.bubblesize=nums(kw.get('bubblesize'),self.bubblesize)

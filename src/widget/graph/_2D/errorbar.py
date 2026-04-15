@@ -31,8 +31,9 @@ class Errorbar(twoDElement):
  def plot(self,x,y,label=None,xerr=None,yerr=None,fmt='',linewidth=1.5,capsize=0,barsabove=False,capthick=10,xuplims=False,xlolims=False,yuplims=False,ylolims=False,errorevery=1,alpha=1):
   self.clear()
   self.graphdata=[self.ax.errorbar(xs,ys,fmt=fmt,xerr=xerr,yerr=yerr,label=label[i],elinewidth=linewidth,capthick=capthick,capsize=capsize,barsabove=barsabove,xuplims=xuplims,xlolims=xlolims,uplims=yuplims,lolims=ylolims,errorevery=errorevery,alpha=alpha)for i,(xs,ys) in enumerate(product(x,y))]
-  self.legend()
   self._apply_labels(self.xlabel,self.ylabel)
+  self.legend()
+  self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
   if isinstance(x,NpArraytype):self.x=self._manyarr(x)

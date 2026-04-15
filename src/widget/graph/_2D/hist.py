@@ -26,6 +26,7 @@ class Hist(twoDElement):
   self._apply_labels(self.xlabel,self.ylabel)
   self.ax.set_xticks(self.xtickslist,self.xtickslists)
   self.legend()
+  self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
   if isinstance(data,NpArraytype):self.data=self._dataarr(data)

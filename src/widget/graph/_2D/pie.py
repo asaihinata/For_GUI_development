@@ -24,6 +24,7 @@ class Pie(twoDElement):
   for i in pie:i[0].set_alpha(self.alpha)
   self.graphdata=pie
   self.legend()
+  self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
   if isinstance(data,NpArraytype):self.data=self._dataarr(data)

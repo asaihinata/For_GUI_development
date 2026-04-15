@@ -19,6 +19,7 @@ class Hexbin(twoDElement):
   self.clear()
   self.graphdata=[self.ax.hexbin(x,y,c,bins=bins,gridsize=gridsize,xscale=xscale,yscale=yscale,mincnt=mincnt,marginals=marginals,extent=extent)]
   self._apply_labels(self.xlabel,self.ylabel)
+  self._adjustment()
  def update(self,x=None,y=None,c=None,**kw):
   self._updates(**kw)
   if isinstance(x,NpArraytype):self.x=self._dataarr(x)

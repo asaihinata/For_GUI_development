@@ -15,6 +15,7 @@ class DScatter(threeDElement):
   self.graphdata=[self.ax.scatter(xs,ys,zs,label=label[i],marker=marker[i],alpha=alpha)for i,(xs,ys,zs) in enumerate(product(x,y,z))]
   self._apply_labels(self.xlabel,self.ylabel,self.zlabel)
   self.legend()
+  self._adjustment()
  def update(self,x=None,y=None,z=None,**kw):
   self._updates(**kw)
   if isinstance(x,NpArraytype):self.x=self._manyarr(x)

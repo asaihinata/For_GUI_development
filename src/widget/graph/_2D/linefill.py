@@ -19,6 +19,7 @@ class Linefill(twoDElement):
    self.graphdata.append([fill,plot[0]])
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
+  self._adjustment()
  def update(self,x=None,ymax=None,ymin=None,**kw):
   self._updates(**kw)
   if isinstance(x,NpArraytype):self.x=self._dataarr(x,False)

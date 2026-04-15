@@ -24,6 +24,7 @@ class Violinplot(twoDElement):
   violinplot=self.ax.violinplot(data,positions=positions,widths=width,points=points,showextrema=showextrema,showmedians=showmedians,showmeans=showmeans,side=side,orientation=orientation,bw_method=bwmethod)
   for i in violinplot['bodies']:i.set_alpha(alpha)
   self.graphdata=[violinplot]
+  self._adjustment()
  def update(self,data=None,x=None,y=None,**kw):
   self._updates(**kw)
   if isinstance(data,NpArraytype):self.data=self._dataarr(data)

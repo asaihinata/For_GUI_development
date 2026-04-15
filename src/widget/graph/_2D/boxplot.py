@@ -23,6 +23,7 @@ class Boxplot(twoDElement):
   else:self.ax.set_yticklabels(label)
   self._apply_labels(self.xlabel,self.ylabel)
   if legend:self.legend()
+  self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
   if isinstance(data,NpArraytype):self.data=self._manyarr(data)

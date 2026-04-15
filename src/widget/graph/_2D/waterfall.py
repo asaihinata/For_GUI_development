@@ -81,6 +81,7 @@ class Waterfallh(twoDElement):
   self._vlines(np.cumsum(y),height,color,linestyle)
   self.ax.set_yticks(np.arange(len(x)),labels=x)
   self._apply_labels(self.xlabel,self.ylabel)
+  self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
   self.sums=bols(kw.get('sums'),self.sums)
