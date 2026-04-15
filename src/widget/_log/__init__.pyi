@@ -32,7 +32,7 @@ file:str=...
  :raises FileNotFoundError: ログファイルが存在しない場合に発生させる。
  :return: ログファイルのログを返す。
  :rtype: str'''
- def get_logger(self)->str|None:'''ログファイルのファイルパスを返す。'''
+ def get_logfilepath(self)->str|None:'''ログファイルのファイルパスを返す。'''
  @classmethod
  def clear(cls)->NoReturn:'''コンソールを消す。'''
  def __str__(self)->str:...

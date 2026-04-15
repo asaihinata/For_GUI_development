@@ -46,7 +46,7 @@ class TooltipWrapper:
  def configure(self,**kw):
   try:self._delay=int(kw.pop('delay',self._delay))
   except ValueError:
-   raise ValueError('expected integer for the delay option.')
+   raise ValueError('expectedにはint型が必要です')
   self.tooltip.configure(**kw)
  def add_tooltip(self,widget,text):
   self.widgets[str(widget)]=text

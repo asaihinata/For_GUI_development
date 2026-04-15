@@ -31,19 +31,19 @@ class Logger:
   parts=[]
   if isinstance(f,str):
    if f not in formats_dict:
-    raise ValueError('invalid format key')
+    raise ValueError('無効なフォーマットキー')
    return formats_dict[f]
   elif isinstance(f,(list,tuple)):
    for key in f:
     if key not in formats_dict:
-     raise ValueError(f'invalid format key:{key}')
+     raise ValueError(f'無効なフォーマットキー:{key}')
     parts.append(formats_dict[key])
    return self.sep.join(parts)
   elif isinstance(f,dict):
    led=len(f)-1
    for i,(key,option) in enumerate(f.items()):
     if key not in formats_dict:
-     raise ValueError(f'invalid format key:{key}')
+     raise ValueError(f'無効なフォーマットキー:{key}')
     base=formats_dict[key]
     settxt=base if option==None else f'{option.get('before')}{base}{option.get('after',self.sep)}'
     if led!=i:settxt=settxt+self.sep

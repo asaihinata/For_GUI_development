@@ -1,6 +1,7 @@
 from os.path import splitext
 from pathlib import Path
 from PIL.Image import Image
+from PIL.PngImagePlugin import PngImageFile
 from ._dialog import asksaveasfilename
 __all__=['autofile_save','autoimg_save']
 file_dict=[('All files','*.*'),('avif file','*.avif'),('bmp file','*.bmp'),('blp file','*.blp'),('eps file','*.eps'),('gif file','*.gif'),('ico file','*.ico'),('im file','*.im'),('jpg file','*.jpg'),('jp2 file','*.jp2'),('png file','*.png'),('tif file','*.tif'),('webp file','*.webp'),('dib file','*.dib'),('jpeg file','*.jpeg'),('j2k file','*.j2k'),('tiff file','*.tiff')]
@@ -36,12 +37,12 @@ defaultextension:str='.txt'
   elif get_path=='':self.get_path=None
  def __str__(self):
   if self.get_path is None:
-   raise ValueError('パスが存在しません')
+   raise FileNotFoundError('ファイルが存在しません')
   else:return self.get_path
 class autoimg_save:
  def __init__(
 self,
-data:Image=None,
+data:PngImageFile=None,
 title:str='image file save',
 filetypes:list[tuple[str,str]]=[('All files','*.*'),('avif file','*.avif'),('bmp file','*.bmp'),('blp file','*.blp'),('eps file','*.eps'),('gif file','*.gif'),('ico file','*.ico'),('im file','*.im'),('jpg file','*.jpg'),('jp2 file','*.jp2'),('png file','*.png'),('tif file','*.tif'),('webp file','*.webp'),('dib file','*.dib'),('jpeg file','*.jpeg'),('j2k file','*.j2k'),('tiff file','*.tiff')],
 initialdir:str=None,
@@ -63,14 +64,13 @@ defaultextension:str='.png'
  :param defaultextension: 拡張子が設定されていない時のデフォルトを指定する。
  :type defaultextension: str'''
   self.data=data
-  if not isinstance(self.data,Image):
-   raise ValueError('Not PIL data')
+  if not isinstance(self.data,PngImageFile):
+   raise TypeError('dataがPngImageFileの型ではありません')
   if not isinstance(filetypes,list)and not isinstance(filetypes[0],(tuple,list)):filetypes=file_dict
   try:
    if not Path(initialdir).is_dir():initialdir=None
   except:initialdir=None
   self.get_path=asksaveasfilename(title=title,initialfile=initialfile,initialdir=initialdir,filetypes=filetypes,defaultextension=defaultextension)
   if self.get_path=='':self.get_path=None
-  else:self.saves()
- def saves(self):self.data.save(self.get_path)
+  else:self.data.save(self.get_path)
  def __str__(self):return self.get_path

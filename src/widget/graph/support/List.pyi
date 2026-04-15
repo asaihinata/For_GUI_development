@@ -22,7 +22,7 @@ class Onelist(Datalist):
  :param data: 一次元配列を指定する。
  :type data: tuple|list|ndarray|LIST
  :raises TypeError: `data`に配列の型以外で指定した場合に発生させる。
- :raises ValueError: `data`を多次元配列で指定した場合に発生させる。'''
+ :raises TypeError: `data`を多次元配列で指定した場合に発生させる。'''
  def __iter__(self)->Iterator[Any]:...
  def __len__(self)->int:...
 class Conectlist(Datalist):

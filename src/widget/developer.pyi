@@ -58,8 +58,8 @@ endpoint:bool=...
  :type size: int|tuple[int,int]|None
  :param endpoint: 生成される値の区間を指定する。
  :type endpoint: bool
- :raises ValueError: `low`にint型を指定しなかった場合に発生させる
- :raises ValueError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
+ :raises TypeError: `low`にint型を指定しなかった場合に発生させる
+ :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
  :return: ランダムに生成された整数を返す。
  :rtype: int64|ndarray'''
  @overload
@@ -77,8 +77,8 @@ endpoint:bool=...
  :type high: int|None
  :param endpoint: 生成される値の区間を指定する。
  :type endpoint: bool
- :raises ValueError: `low`にint型を指定しなかった場合に発生させる
- :raises ValueError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
+ :raises TypeError: `low`にint型を指定しなかった場合に発生させる
+ :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
  :return: ランダムに生成された整数を返す。
  :rtype: int64'''
  @overload
@@ -99,8 +99,8 @@ endpoint:bool=...
  :type size: int|tuple[int,int]|None
  :param endpoint: 生成される値の区間を指定する。
  :type endpoint: bool
- :raises ValueError: `low`にint型を指定しなかった場合に発生させる。
- :raises ValueError: `high`にNoneを除くint型を指定しなかった場合に発生させる。
+ :raises TypeError: `low`にint型を指定しなかった場合に発生させる。
+ :raises TypeError: `high`にNoneを除くint型を指定しなかった場合に発生させる。
  :return: ランダムに生成された整数を返す。
  :rtype: int64|ndarray'''
  @overload
@@ -121,8 +121,8 @@ endpoint:bool=True
  :type size: int|tuple[int,int]|None
  :param endpoint: 生成される値の区間を[`low`,`high`]に指定する。
  :type endpoint: bool
- :raises ValueError: `low`にint型を指定しなかった場合に発生させる
- :raises ValueError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
+ :raises TypeError: `low`にint型を指定しなかった場合に発生させる
+ :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
  :return: ランダムに生成された整数を返す。
  :rtype: int64|ndarray'''
  @overload
@@ -143,8 +143,8 @@ endpoint:bool=False
  :type size: int|tuple[int,int]|None
  :param endpoint: 生成される値の区間を[`low`,`high`)に指定する。
  :type endpoint: bool
- :raises ValueError: `low`にint型を指定しなかった場合に発生させる
- :raises ValueError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
+ :raises TypeError: `low`にint型を指定しなかった場合に発生させる
+ :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
  :return: ランダムに生成された整数を返す。
  :rtype: int64|ndarray'''
  @overload
@@ -286,20 +286,30 @@ class sort:
  __class__:type
  __firstlineno__:int
  @overload
+ def __init__(self,data:list|tuple|LIST,type:bool)->None:'''配列内の要素を昇順で並べ変える。
+
+ :param data: 並べ替えたい配列を指定する。
+ :type data: list|tuple|LIST
+ :param type: 昇順か降順かを指定する。
+ :type type: bool
+ :raises TypeError: dataに配列の型を指定しなかった場合に発生させる'''
+ @overload
  def __init__(self,data:list|tuple|LIST,type:bool=True)->None:'''配列内の要素を昇順で並べ変える。
 
  :param data: 並べ替えたい配列を指定する。
  :type data: list|tuple|LIST
- :param type: 昇順(True)か降順(False)かを指定する。
- :type type: bool'''
+ :param type: 昇順か降順かを指定する。
+ :type type: bool
+ :raises TypeError: dataに配列の型を指定しなかった場合に発生させる'''
  @overload
  def __init__(self,data:list|tuple|LIST,type:bool=False)->None:'''配列内の要素を降順で並べ変える。
 
  :param data: 並べ替えたい配列を指定する。
  :type data: list|tuple|LIST
- :param type: 昇順(True)か降順(False)かを指定する。
- :type type: bool'''
- def __dir__(self)->list:...
+ :param type: 昇順か降順かを指定する。
+ :type type: bool
+ :raises TypeError: dataに配列の型を指定しなかった場合に発生させる'''
+ def __dir__(self)->list[str]:...
  @classmethod
  def __instancecheck__(cls,ins)->bool:...
  def __contains__(self,val:Any)->bool:...
@@ -311,7 +321,7 @@ class LIST:
  __static_attributes__:tuple[str]
  __class__:type
  __firstlineno__:int
- def __init__(self,lists:list|tuple|range|ndarray,*arg:tuple)->None:'''配列を作成する。'''
+ def __init__(self,lists:Any,*arg:tuple)->None:'''配列を作成する。'''
  def __add__(self,val:list|tuple|LIST)->LIST:...
  def __radd__(self,val:list|tuple|LIST)->LIST:...
  def __iadd__(self,val:Any)->LIST:...
@@ -342,10 +352,10 @@ class Number:
  __static_attributes__:tuple[str]
  __class__:type
  __firstlineno__:int
- def __init__(self,val:int|float|Number)->None:'''数値に関するクラス
+ def __init__(self,val:int|float|bool|Number)->None:'''数値に関するクラス
 
  :param val: 数値を指定する。
- :type val: int|float|Number
+ :type val: int|float|bool|Number
  :raises TypeError: `val`に数値以外を指定した場合に発生させる。'''
  def __dir__(self)->list[str]:...
  def __getattribute__(self,name:Any)->Any:...
@@ -354,6 +364,12 @@ class Number:
  def __int__(self)->int:...
  def __float__(self)->float:...
  def __str__(self)->str:...
+ def __bool__(self)->bool:'''値が0以上ならTrueを,0未満ならFalseを返す。'''
+ def __format__(self,format_spec:str)->str:...
+ def format(self,format_spec:str)->str:...
+ def __len__(self)->int:...
+ def len(self)->int:...
+ def types(self)->Numbertype:...
  def __add__(self,val:int|float|Number)->Number:...
  def __sub__(self,val:int|float|Number)->Number:...
  def __mul__(self,val:int|float|Number)->Number:...
@@ -374,8 +390,8 @@ class Number:
  def __isub__(self,val:int|float|Number)->Number:...
  def __imul__(self,val:int|float|Number)->Number:...
  def __itruediv__(self,val:int|float|Number)->Number:...
- def __eq__(self,val:int|float|Number)->bool:...
- def __ne__(self,val:int|float|Number)->bool:...
+ def __eq__(self,val:Any)->bool:...
+ def __ne__(self,val:Any)->bool:...
  def __lt__(self,val:int|float|Number)->bool:...
  def __le__(self,val:int|float|Number)->bool:...
  def __gt__(self,val:int|float|Number)->bool:...
@@ -386,3 +402,4 @@ class Number:
  def __floor__(self)->Number:...
  def __neg__(self)->Number:...
  def __pos__(self)->Number:...
+ def value(self)->Numbertype:...

@@ -67,6 +67,7 @@ dpi:Numbertype=100
  :type ex: Literal['.eps','.jpg','.jpeg','.pdf','.pgf','.png','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']
  :param dpi: グラフの解像度を指定する。
  :type dpi: Numbertype
+ :return: 
  :rtype: NoReturn'''
  def _color_check(self,color:list)->list:...
  def _list_loop(self,lin:list|tuple,num:int)->list:...
@@ -87,6 +88,7 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
 
  :param serch: `MARKERS`に調べたいマーカーを指定する。
  :type serch: str
+ :return: 
  :rtype: str
 参考
 ----
@@ -95,11 +97,13 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
 
  :param serch: `FMTSOLID`に調べたいを指定する。
  :type serch: str
+ :return: 
  :rtype: str'''
  def nlines(self,serch:str)->str:'''serch`で指定した枠線が`SOLID`に存在するかを調べる
 
  :param serch: `SOLID`に調べたいを指定する。
  :type serch: str
+ :return: 
  :rtype: str
 参考
 ----
@@ -107,7 +111,8 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
  def _arr(self,val:NpArraytype,j:bool=True)->ndarray:'''
  :param val: 配列を指定する。
  :type val: NpArraytype
- :raises ValueError: NpArraytype型以外を指定した場合に発生させる。
+ :raises TypeError: NpArraytype型以外を指定した場合に発生させる。
+ :return: 
  :rtype: ndarray'''
  def _floatarr(self,val:NpArraytype)->ndarray:...
  def _manyarr(self,val:NpArraytype,j:bool=True)->ndarray:...
@@ -204,6 +209,7 @@ ylabel:labeltype=None
  :type label: labeltype
  :param ylabel: y軸のラベルを指定する。
  :type ylabel: labeltype
+ :return: 
  :rtype: NoReturn'''
  def _xys(self,x,y)->tuple:...
  def clear(self)->NoReturn:'''グラフ内のグラフをクリアする。'''

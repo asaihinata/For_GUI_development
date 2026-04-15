@@ -27,9 +27,9 @@ class randoms:
  @classmethod
  def randint(cls,low=1,high=None,size=None,endpoint=False):
   if not isinstance(low,int):
-   raise ValueError('lowに数値を指定してください')
+   raise TypeError('lowに数値を指定してください')
   if high is not None and not isinstance(high,int):
-   raise ValueError('highに数値を指定してください')
+   raise TypeError('highに数値を指定してください')
   return cls._randint(low,high=high,size=size,endpoint=endpoint)
  @classmethod
  def randrange(cls,min=0,max=1,size=None):
@@ -113,7 +113,7 @@ class randoms:
    raise TypeError('配列の型を指定してください')
   return choice(array(list(arr)if isinstance(arr,LIST) else arr,dtype=object),size=size)
 class LIST:
- def __init__(self,lists=None,*arg):
+ def __init__(self,lists,*arg):
   if isinstance(lists,list):self.lists=lists
   elif isinstance(lists,(tuple,range)):self.lists=list(lists)
   elif isinstance(lists,LIST):self.lists=lists.lists
@@ -196,8 +196,8 @@ class LIST:
 class sort:
  def __init__(self,data,types=True):
   if not isinstance(data,(list,tuple,LIST)):
-   raise ValueError('dataに配列の型を指定してください')
-  if isinstance(data,LIST):data=list(data)
+   raise TypeError('dataに配列の型を指定してください')
+  if isinstance(data,LIST):data=data.lists
   self.order=types if isinstance(types,bool) else True
   self.data=sorted(data,key=sort._ascending) if self.order else sorted(data,key=sort._descending)
  @classmethod
@@ -233,6 +233,7 @@ class sort:
  @staticmethod
  def _ascending(item):
   if isinstance(item,(int,float)):return(0,item,'')
+  elif isinstance(item,Number):return(0,item.val,'')
   item_str=str(item)
   if item_str.isdigit():return(1,int(item_str),'')
   if item_str.isascii() and item_str.isalpha():return(2,[(i.lower(),0 if i.islower() else 1) for i in item_str])
@@ -246,6 +247,7 @@ class sort:
  @staticmethod
  def _descending(item):
   if isinstance(item,(int,float)):return(5,item,'')
+  if isinstance(item,Number):return(5,item.val,'')
   item_str=str(item)
   if item_str.isdigit():return(4,int(item_str),'')
   if item_str.isascii() and item_str.isalpha():return(3,[(i.lower(),5 if i.islower() else 4) for i in item_str])
@@ -258,16 +260,26 @@ class sort:
   return(0,item_str,'')
 class Number:
  def __init__(self,val):
-  if not isinstance(val,(Number,int,float)):
+  if not isinstance(val,(Number,int,float,bool)):
    raise TypeError('valに数値を指定してください')
   if isinstance(val,Number):self.val=val.val
+  elif isinstance(val,bool):self.val=int(val)
   else:self.val=val
  @classmethod
  def __instancecheck__(cls,ins):return isinstance(ins,Number)
  def __getattribute__(self,name):return super().__getattribute__(name)
+ def __sizeof__(self):return super().__sizeof__()+getsizeof(self.val)
  def __int__(self):return int(self.val)
  def __float__(self):return float(self.val)
  def __str__(self):return str(self.val)
+ def __len__(self):return len(str(self.val))
+ def len(self):return len(str(self.val))
+ def __bool__(self):
+  if 0<=self.val:return True
+  return False
+ def __format__(self,format_spec):return format(self.val,format_spec)
+ def format(self,format_spec):return format(self.val,format_spec)
+ def types(self):return type(self.val)
  def __add__(self,val):
   self.val=self.val+self._maths_(val)
   return self
@@ -314,7 +326,7 @@ class Number:
   self.val+=self._maths_(val)
   return self
  def __isub__(self,val):
-  self.val-self._maths_(val)
+  self.val-=self._maths_(val)
   return self
  def __imul__(self,val):
   self.val*=self._maths_(val)
@@ -344,8 +356,8 @@ class Number:
   self.val=-self.val
   return self
  def __pos__(self):return self
- def __sizeof__(self):return super().__sizeof__()+getsizeof(self.val)
  def _maths_(self,val):
   if isinstance(val,Number):return val.val
   elif isinstance(val,(int,float)):return val
-  raise ValueError('数値を指定してください')
+  raise TypeError('数値の型を指定してください')
+ def value(self):return self.val

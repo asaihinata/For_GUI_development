@@ -89,7 +89,7 @@ class GElement:
   return(lis.get(nums),label)
  def _arr(self,val,j=True):
   if not isinstance(val,(list,tuple,ndarray)):
-   raise ValueError('配列で指定してください')
+   raise TypeError('配列の型を指定してください')
   if isinstance(val,ndarray):reval=val
   elif isinstance(val,(list,tuple)):reval=array(val)
   if len(reval.shape)==1:reval=array([reval])
@@ -102,7 +102,7 @@ class GElement:
  def _onearr(self,val,j=True):return self._arr(list(Onelist(val)),j)
  def _dataarr(self,val,j=True):
   if not isinstance(val,(list,tuple,ndarray)):
-   raise ValueError('配列で指定してください')
+   raise TypeError('配列の型を指定してください')
   if isinstance(val,ndarray):reval=val
   elif isinstance(val,(list,tuple)):reval=array(val)
   if j==True:self.max_depth=max(self.max_depth,reval.shape[0])
@@ -172,7 +172,7 @@ class twoDElement(GElement):
   elif isinstance(data,list):return array([data])
   elif isinstance(data,(tuple,LIST)):return array([list(data)])
   elif isinstance(data,ndarray):return data
-  raise TypeError('dataは配列を指定してください')
+  raise TypeError('dataには配列の型を指定してください')
  def _xys(self,x,y):
   x,y=self._arys(x),self._arys(y)
   if 2<=x.shape[0] and 2<=y.shape[0]:

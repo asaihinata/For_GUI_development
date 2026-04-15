@@ -14,7 +14,7 @@ class Datalist:
 class Manylist(Datalist):
  def __init__(self,data=None):
   if not isinstance(data,(tuple,list,np.ndarray,LIST)):
-   raise TypeError('data\'s type is list like.')
+   raise TypeError('dataには配列の型を指定してください')
   if isinstance(data,tuple):self.data=np.array(list(data),dtype=object)
   elif isinstance(data,LIST):self.data=np.array(data.lists,dtype=object)
   elif isinstance(data,list):self.data=np.array(data,dtype=object)
@@ -25,20 +25,20 @@ class Manylist(Datalist):
 class Onelist(Datalist):
  def __init__(self,data=None):
   if not isinstance(data,(tuple,list,np.ndarray,LIST)):
-   raise TypeError('data\'s type is list like.')
+   raise TypeError('dataには配列の型を指定してください')
   if isinstance(data,tuple):self.data=np.array(list(data),dtype=object)
   elif isinstance(data,LIST):self.data=np.array(data.lists,dtype=object)
   elif isinstance(data,list):self.data=np.array(data,dtype=object)
   else:self.data=data
   if 1<self.data.ndim:
-   raise ValueError('一次元の配列を指定してください。')
+   raise TypeError('一次元の配列を指定してください')
   super().__init__(self.data)
  def __iter__(self):return iter(self.data.tolist())
  def __len__(self):return len(self.data)
 class Conectlist(Datalist):
  def __init__(self,data=None):
   if not isinstance(data,(tuple,list,np.ndarray,LIST)):
-   raise TypeError('data\'s type is list like.')
+   raise TypeError('dataには配列の型を指定してください')
   if isinstance(data,tuple):self.data=np.array(list(data),dtype=object)
   elif isinstance(data,LIST):self.data=np.array(data.lists,dtype=object)
   elif isinstance(data,list):self.data=np.array(data,dtype=object)

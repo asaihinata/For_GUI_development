@@ -18,7 +18,7 @@ class WindowController:
   self.title=kw.get('title','window')
   self.layout=kw.get('layout',[])
   if self.layout==None or not isinstance(self.layout,(list,tuple)):
-   raise ValueError('layoutに配列を指定してください')
+   raise TypeError('layoutに配列の型を指定してください')
   self.bg=parsecolor(kw.get('bg'),'#64778d')
   self.scroll_y=bols(kw.get('scroll_y'),False)
   self.scroll_x=bols(kw.get('scroll_x'),False)

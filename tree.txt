@@ -93,8 +93,6 @@ For_GUI_development
 │    │   ├── __init__.pyi
 │    │   ├── _graphhelp.py
 │    │   └── support
-│    │    ├── Axis.py
-│    │    ├── Axis.pyi
 │    │    ├── Graphhelp.py
 │    │    ├── Graphhelp.pyi
 │    │    ├── List.py

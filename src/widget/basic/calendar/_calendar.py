@@ -26,7 +26,7 @@ class Calendar(Frame):
   bd=num0(kw.get('borderwidth',2))
   self.firstweekday=kw.get('firstweekday','sunday')
   if self.firstweekday not in ['monday','sunday']:
-   raise ValueError('\'firstweekday\' option should be \'monday\' or \'sunday\'.')
+   raise ValueError('\'firstweekday\'オプションは\'monday\'または\'sunday\'にする必要があります')
   self._cal=TextCalendar((self.firstweekday=='sunday')*6)
   self.weekenddays=kw.get('weekenddays')
   if not self.weekenddays:
@@ -304,7 +304,7 @@ class Calendar(Frame):
     except Exception:
      if self._sel_date==None:self._textvariable.set('')
      else:self._textvariable.set(self.format_date(self._sel_date))
-     raise ValueError('%r is not a valid date.'%date)
+     raise ValueError(f'{date}は有効な日付パターンではありません')
     else:
      self._date=self._sel_date.replace(day=1)
      self._display_calendar()
@@ -594,7 +594,7 @@ class Calendar(Frame):
   pattern=date_pattern.lower()
   if ((search(r'^y+[^a-zA-Z]*m{1,2}[^a-z]*d{1,2}[^mdy]*$',pattern)!=None) or (search(r'^m{1,2}[^a-zA-Z]*d{1,2}[^a-z]*y+[^mdy]*$',pattern)!=None) or (search(r'^d{1,2}[^a-zA-Z]*m{1,2}[^a-z]*y+[^mdy]*$',pattern)!=None)):
    return pattern.replace('m','M')
-  raise ValueError('%r is not a valid date pattern'%date_pattern)
+  raise ValueError(f'{date_pattern}は有効な日付パターンではありません')
  def format_date(self,date=None):return format_date(date,self._properties['date_pattern'],self._properties['locale'])
  def parse_date(self,date):
   date_format=self._properties['date_pattern'].lower()
@@ -614,7 +614,7 @@ class Calendar(Frame):
  def see(self,date):
   if isinstance(date,datetime):date=date.date()
   elif not isinstance(date,datetime):
-   raise TypeError('expected %s for the \'date\' argument.'%datetime)
+   raise TypeError('date引数にはdatetimeを指定してください')
   self._date=self._date.replace(month=date.month,year=date.year)
   self._display_calendar()
   self._btns_date_range()
@@ -632,7 +632,7 @@ class Calendar(Frame):
     else:
      try:self._sel_date=self.parse_date(date)
      except Exception:
-      raise ValueError('%r!=a valid date.'%date)
+      raise ValueError(f'{date}は有効な日付ではありません')
     if self['mindate']!=None and self._sel_date<self['mindate']:self._sel_date=self['mindate']
     elif self['maxdate']!=None and self._sel_date>self['maxdate']:self._sel_date=self['maxdate']
     if self._textvariable!=None:self._textvariable.set(self.format_date(self._sel_date))
@@ -643,7 +643,7 @@ class Calendar(Frame):
  def get_displayed_month(self):return self._date.month,self._date.year
  def get_date(self):return self.format_date(self._sel_date) if self._sel_date!=None else ''
  def calevent_create(self,date,text,tags=[]):
-  if isinstance(date,Calendar.datetime):date=date.date()
+  if isinstance(date,datetime):date=date.date()
   if not isinstance(date,Calendar.date):
    raise TypeError('date option should be a %s instance'%(Calendar.date))
   ev_id=max(self.calevents)+1 if self.calevents else 0
