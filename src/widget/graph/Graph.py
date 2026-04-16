@@ -1,21 +1,23 @@
 from os import getcwd
+from cycler import cycler
 from matplotlib.axes._axes import Axes
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-from matplotlib.pyplot import cycler,rcParams
+from matplotlib.pyplot import rcParams
 from matplotlib.ticker import LinearLocator,MaxNLocator
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import array,ndarray
 from ...types import Arraytype,Numbertype
-from .._function import bols,listchose,num0s,num1s,nums,parsecolor,range_num
+from .._function import bols,list2num,listchose,num0s,num1s,nums,parsecolor,range_num
 from .._log import Logger
 from .._save import autofile_save
-from ..developer import LIST
+from ..developer import LIST,Number
 from .support import Manylist,Marker,NSolid,Onelist,Solid
 __all__=['twoDElement','threeDElement']
 logger=Logger(name='Graph',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 graph_color=['#4477aa','#ee7733','#228833','#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']
 rcParams['font.family']='Meiryo'
+rcParams['axes.prop_cycle']=cycler(color=graph_color)
 class GElement:
  def __init__(self,master,kw):
   self.master,self.widget,self.graph,self.graphdata,self._canvas_widget,self.max_depth=master,None,True,[],None,1
@@ -24,7 +26,8 @@ class GElement:
   self.graph_bg=parsecolor(kw.get('bg'),'#ffffff')
   self.graph_grid=parsecolor(kw.get('graph_grid'),'#b7b7b7')
   self.title=kw.get('title')
-  rcParams['axes.prop_cycle']=cycler(color=self._color_check(kw.get('color',graph_color)))
+  color=self._color_check(kw.get('color',graph_color))
+  rcParams['axes.prop_cycle']=cycler(color=color)
   self.alpha=range_num(num0s(kw.get('alpha'),1),0,1,1)
   self.dpi=num1s(kw.get('dpi'),100)
   self.width,self.height=self._size(kw.get('size'))
@@ -41,6 +44,7 @@ class GElement:
   self.labelalpha=range_num(num0s(kw.get('labelalpha'),1),0,1,1)
   # 目盛り
   self.ticksshow=bols(kw.get('ticksshow'),False)
+  self.tight_layout=bols(kw.get('tight_layout'))
  def photo(self,filename='Graph',ex='.png',dpi=100):
   try:self.fig.savefig(str(autofile_save(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=filename,initialdir=getcwd())),dpi=num1s(dpi,100))
   except Exception as e:
@@ -120,8 +124,6 @@ class GElement:
     if judge:relist=set_arr
   return relist
  def _list_loop(self,lin,num):return LIST(lin).get(num)
- def _adjustment(self):
-  self.fig.tight_layout()
 class twoDElement(GElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
@@ -142,6 +144,28 @@ class twoDElement(GElement):
   self.yticksshow=bols(kw.get('yticksshow'),False)
   self.xticksdirection=listchose(kw.get('xticksdirection'),['out','in','inout'])
   self.yticksdirection=listchose(kw.get('yticksdirection'),['out','in','inout'])
+  xticksrange=kw.get('xticksrange',0)
+  yticksrange=kw.get('yticksrange',0)
+  if isinstance(xticksrange,(int,float)):
+   xticksrange=abs(xticksrange)
+   negnum=xticksrange*-1
+   self.xticksrange=(negnum,xticksrange)
+  elif isinstance(xticksrange,Number):
+   xticksrange=abs(xticksrange).value()
+   negnum=xticksrange*-1
+   self.xticksrange=(negnum,xticksrange,negnum,xticksrange)
+  elif list2num(xticksrange):self.xticksrange=xticksrange
+  else:self.xticksrange=(0,0)
+  if isinstance(yticksrange,(int,float)):
+   yticksrange=abs(yticksrange)
+   negnum=yticksrange*-1
+   self.yticksrange=(negnum,yticksrange)
+  elif isinstance(yticksrange,Number):
+   yticksrange=abs(yticksrange).value()
+   negnum=yticksrange*-1
+   self.yticksrange=(negnum,yticksrange,negnum,yticksrange)
+  elif list2num(yticksrange):self.yticksrange=yticksrange
+  else:self.yticksrange=(0,0)
   # その他
   self.x:ndarray
   self.y:ndarray
@@ -198,6 +222,14 @@ class twoDElement(GElement):
    if self.yticksshow:self.ax.set_yticks([])
   rcParams['xtick.direction']=self.xticksdirection
   rcParams['ytick.direction']=self.yticksdirection
+ def _adjustment(self):
+  xlimmins,xlimmaxs=self.xticksrange
+  xlimmin,xlimmax=self.ax.get_xlim()
+  ylimmins,ylimmaxs=self.yticksrange
+  ylimmin,ylimmax=self.ax.get_ylim()
+  self.ax.set_xlim(xlimmin+xlimmins,xlimmax+xlimmaxs)
+  self.ax.set_ylim(ylimmin+ylimmins,ylimmax+ylimmaxs)
+  if self.tight_layout:self.fig.tight_layout()
  def clear(self):
   self.graphdata=[]
   self.ax.clear()
@@ -239,6 +271,39 @@ class threeDElement(GElement):
   self.zticksshow=bols(kw.get('zticksshow'),False)
   self.xticksdirection=listchose(kw.get('xticksdirection'),['out','in','inout'])
   self.yticksdirection=listchose(kw.get('yticksdirection'),['out','in','inout'])
+  xticksrange=kw.get('xticksrange',0)
+  yticksrange=kw.get('yticksrange',0)
+  zticksrange=kw.get('zticksrange',0)
+  if isinstance(xticksrange,(int,float)):
+   xticksrange=abs(xticksrange)
+   negnum=xticksrange*-1
+   self.xticksrange=(negnum,xticksrange)
+  elif isinstance(xticksrange,Number):
+   xticksrange=abs(xticksrange).value()
+   negnum=xticksrange*-1
+   self.xticksrange=(negnum,xticksrange,negnum,xticksrange)
+  elif list2num(xticksrange):self.xticksrange=xticksrange
+  else:self.xticksrange=(0,0)
+  if isinstance(yticksrange,(int,float)):
+   yticksrange=abs(yticksrange)
+   negnum=yticksrange*-1
+   self.yticksrange=(negnum,yticksrange)
+  elif isinstance(yticksrange,Number):
+   yticksrange=abs(yticksrange).value()
+   negnum=yticksrange*-1
+   self.yticksrange=(negnum,yticksrange,negnum,yticksrange)
+  elif list2num(yticksrange):self.yticksrange=yticksrange
+  else:self.yticksrange=(0,0)
+  if isinstance(zticksrange,(int,float)):
+   zticksrange=abs(zticksrange)
+   negnum=zticksrange*-1
+   self.zticksrange=(negnum,zticksrange)
+  elif isinstance(zticksrange,Number):
+   zticksrange=abs(zticksrange).value()
+   negnum=zticksrange*-1
+   self.zticksrange=(negnum,zticksrange,negnum,zticksrange)
+  elif list2num(zticksrange):self.zticksrange=zticksrange
+  else:self.zticksrange=(0,0)
   # その他
   if bols(kw.get('mouse_rotation')):self.ax.disable_mouse_rotation()
   self.ax.view_init(self.elev,self.azim)
@@ -283,6 +348,17 @@ class threeDElement(GElement):
   self.ax.set_ylabel(ylabel,color=self.fg)
   self.ax.set_zlabel(zlabel,color=self.fg)
   self._apply_grid()
+ def _adjustment(self):
+  xlimmins,xlimmaxs=self.xticksrange
+  xlimmin,xlimmax=self.ax.get_xlim()
+  ylimmins,ylimmaxs=self.yticksrange
+  ylimmin,ylimmax=self.ax.get_ylim()
+  zlimmins,zlimmaxs=self.zticksrange
+  zlimmin,zlimmax=self.ax.get_zlim()
+  self.ax.set_xlim(xlimmin+xlimmins,xlimmax+xlimmaxs)
+  self.ax.set_ylim(ylimmin+ylimmins,ylimmax+ylimmaxs)
+  self.ax.set_zlim(zlimmin+zlimmins,zlimmax+zlimmaxs)
+  if self.tight_layout:self.fig.tight_layout()
  def clear(self):
   self.graphdata=[]
   self.ax.clear()
