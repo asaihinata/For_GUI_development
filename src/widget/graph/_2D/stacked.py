@@ -9,8 +9,8 @@ class Stacked(twoDElement):
    raise ValueError('配列のエラー')
   self.label=self.labels(kw.get('label'),self.data.shape[1])[0]
   self.width=range_num(num0s(kw.get('width'),0.8),0,1,0.8)
-  self.anchor=self._anchor(kw.get('labelanchor'),(0,1))
-  self.labelplace=self._getlabelplace(self.anchor,kw.get('labelplace','lower left'))
+  self.anchor=self._anchor(kw.get('labelanchor'),(1,0.85))
+  self.labelplace=self._getlabelplace(self.anchor,kw.get('labelplace','center left'))
   self.plot(self.data,self.dataname,label=self.label,width=self.width)
  def plot(self,data,dataname,label=None,width=0.8):
   self.clear()
@@ -23,7 +23,7 @@ class Stacked(twoDElement):
   for i,labels in enumerate(label):
    lisarr=self.ax.bar(dataname,data_percent[i],bottom=bottom,label=labels,width=width)
    bottom+=data_percent[i]
-  self.legend(ncols=data.shape[0])
+  self.legend()
   self.ax.set_ylim(0,100)
   self.ax.yaxis.set_major_formatter(PercentFormatter(xmax=100))
   return lisarr
@@ -47,8 +47,8 @@ class Stackedh(twoDElement):
   if self.data.shape[0]!=self.dataname.shape[0]:
    raise ValueError('配列のエラー')
   self.label=self.labels(kw.get('label'),self.data.shape[1])[0]
-  self.anchor=self._anchor(kw.get('labelanchor'),(0,1))
-  self.labelplace=self._getlabelplace(self.anchor,kw.get('labelplace','lower left'))
+  self.anchor=self._anchor(kw.get('labelanchor'),(1,0.85))
+  self.labelplace=self._getlabelplace(self.anchor,kw.get('labelplace','center left'))
   self.height=range_num(num0s(kw.get('height'),0.8),0,1,0.8)
   self.plot(self.data,self.dataname,label=self.label,height=self.height)
  def plot(self,data,dataname,label=None,height=0.8):
@@ -65,7 +65,7 @@ class Stackedh(twoDElement):
   for i,labels in enumerate(label):
    lisarr=self.ax.barh(dataname,data_percent[i],left=left,label=labels,height=height)
    left+=data_percent[i]
-  self.legend(ncols=data.shape[0])
+  self.legend()
   return lisarr
  def update(self,data=None,dataname=None,**kw):
   self._updates(**kw)
