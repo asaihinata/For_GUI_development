@@ -11,7 +11,7 @@ class times:
  minute:int
  second:int
  microsecond:int
- datetimes:datetime.datetime
+ datetimes:datetime.datetime|datetime.date
  @overload
  def __init__(
 self,
@@ -63,12 +63,33 @@ fold:int|bool=0
  @overload
  def __init__(
 self,
-date:datetime.datetime|datetime.date|times|None=None
+dates:datetime.datetime|datetime.date|times|None=None
 )->None:'''日付と時間を作成するクラス'''
+ def __eq__(self,val:datetime.datetime|datetime.date|times)->bool:''':return: `self`==`val`を返す。
+ :rtype: bool'''
+ def __ne__(self,val:datetime.datetime|datetime.date|times)->bool:''':return: `self`!=`val`を返す。
+ :rtype: bool'''
+ def __lt__(self,val:datetime.datetime|datetime.date|times)->bool:''':return: `self`<`val`を返す。
+ :rtype: bool'''
+ def __le__(self,val:datetime.datetime|datetime.date|times)->bool:''':return: `self`<=`val`を返す。
+ :rtype: bool'''
+ def __gt__(self,val:datetime.datetime|datetime.date|times)->bool:''':return: `self`>`val`を返す。
+ :rtype: bool'''
+ def __ge__(self,val:datetime.datetime|datetime.date|times)->bool:''':return: `self`>=`val`を返す。
+ :rtype: bool'''
+ def __add__(self,val:datetime.timedelta)->times:''':return: `self`+`val`を返す。
+ :rtype: times'''
+ def __sub__(self,val:datetime.timedelta)->times:''':return: `self`-`val`を返す。
+ :rtype: times'''
+ def __radd__(self,val:datetime.timedelta)->times:''':return: `self`+`val`を返す。
+ :rtype: times'''
+ def __rsub__(self,val:datetime.timedelta)->times:''':return: `self`-`val`を返す。
+ :rtype: times'''
  def date(self)->datetime.datetime|None:'''日付時刻を返す。
 
  :return: 日付時刻を返す。
  :rtype: datetime.datetime|None'''
+ def getdate(self)->tuple[int,int,int,int,int,int,int]:'''日付時刻の値を返す。'''
  def astimezone(self,timezone:datetime._TzInfo='Asia/Tokyo')->datetime.datetime:...
  def time(self)->datetime._Time:...
  def timetz(self)->datetime._Time:...

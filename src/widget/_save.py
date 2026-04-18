@@ -1,6 +1,5 @@
 from os.path import splitext
 from pathlib import Path
-from PIL.Image import Image
 from PIL.PngImagePlugin import PngImageFile
 from ._dialog import asksaveasfilename
 __all__=['autofile_save','autoimg_save']
