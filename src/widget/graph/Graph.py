@@ -26,8 +26,8 @@ class GElement:
   self.graph_bg=parsecolor(kw.get('bg'),'#ffffff')
   self.graph_grid=parsecolor(kw.get('graph_grid'),'#b7b7b7')
   self.title=kw.get('title')
-  color=self._color_check(kw.get('color',graph_color))
-  rcParams['axes.prop_cycle']=cycler(color=color)
+  self.color=self._color_check(kw.get('color',graph_color))
+  rcParams['axes.prop_cycle']=cycler(color=self.color)
   self.alpha=range_num(num0s(kw.get('alpha'),1),0,1,1)
   self.dpi=num1s(kw.get('dpi'),100)
   self.width,self.height=self._size(kw.get('size'))
@@ -65,8 +65,8 @@ class GElement:
  def markers(self,serch=None,num=None):return self._list_loop(list(Marker(serch)),num)
  def lines(self,serch=None,num=None):return self._list_loop(list(Solid(serch)),num)
  def nlines(self,serch=None,num=None):return self._list_loop(list(NSolid(serch)),num)
- def legend(self):
-  if self.labeljudge:self.ax.legend(bbox_to_anchor=self.anchor,loc=self.labelplace,title=self.labeltitle,frameon=self.labelframe,shadow=self.labelshadow,framealpha=self.labelalpha)
+ def legend(self,ncols=1):
+  if self.labeljudge:self.ax.legend(ncols=ncols,bbox_to_anchor=self.anchor,loc=self.labelplace,title=self.labeltitle,frameon=self.labelframe,shadow=self.labelshadow,framealpha=self.labelalpha)
  def _anchor(self,val,other=None):
   if(isinstance(val,(list,tuple)) and (len(val)==2 or len(val)==4) and all(isinstance(i,(int,float))for i in val)):return val
   return other
@@ -118,7 +118,7 @@ class GElement:
    set_arr,judge=[],False
    for i in color:
     c=parsecolor(i)
-    if c!=None:
+    if c is not None:
      judge=True
      set_arr.append(c)
     if judge:relist=set_arr

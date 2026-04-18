@@ -1,7 +1,7 @@
 from ..types import Any,Numbertype
 from ._color import Color
 from .developer import LIST,Number
-__all__=['bols','ints','listchose','nums','parsecolor','typelist','int0','int0s','int1s','list2float','list2int','list2num','list4float','list4int','list4num','num0','num0s','num1s','range_num']
+__all__=['bols','ints','listchose','nums','parsecolor','typelist','int0','int0s','int1s','list2float','list2int','list2num','list4float','list4int','list4num','num0','num0s','num1s','range_num','Color']
 def list2num(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,(list,tuple)) and len(lin)==2 and all(isinstance(i,(int,float,Number))for i in lin) else False
 def list2int(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,(list,tuple)) and len(lin)==2 and all(isinstance(i,int)for i in lin) else False
 def list2float(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,(list,tuple)) and len(lin)==2 and all(isinstance(i,float)for i in lin) else False

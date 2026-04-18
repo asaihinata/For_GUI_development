@@ -106,6 +106,10 @@ class sgg:
  def Violinplot(**kw):return{'count':counts(),'type':'Violinplot',**kw}
  @staticmethod
  def Hexbin(**kw):return{'count':counts(),'type':'Hexbin',**kw}
+ @staticmethod
+ def Stacked(**kw):return{'count':counts(),'type':'Stacked',**kw}
+ @staticmethod
+ def Stackedh(**kw):return{'count':counts(),'type':'Stackedh',**kw}
  @classmethod
  def Popup(cls,**kw):return popup(**kw)
  @classmethod

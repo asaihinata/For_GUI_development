@@ -1,3 +1,4 @@
+from ._2D.stacked import Stacked,Stackedh
 from ._2D.bargraph import BarGraph,BarhGraph
 from ._2D.boxplot import Boxplot
 from ._2D.bubble import Bubble

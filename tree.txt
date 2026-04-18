@@ -102,7 +102,6 @@ For_GUI_development
 │       ├── window.py
 │       └── window.pyi
 ├── tests
-│   ├── _import.py
 │   ├── data
 │   │   ├── csv
 │   │   │   ├── __init__.py
@@ -112,16 +111,13 @@ For_GUI_development
 │   │       └── Lenna.png
 │   ├── test-all.py
 │   ├── test-graph
-│   │   ├── _import.py
 │   │   ├── test-graph-schooldata.py
 │   │   ├── test-graph.py
 │   │   └── test-japanese.py
 │   ├── test-log
-│   │   ├── _import.py
 │   │   ├── test-log.log
 │   │   └── test-log.py
 │   └── test-widget
-│       ├── _import.py
 │       ├── test-all.py
 │       └── test-expansion.py
 └── tree.txt

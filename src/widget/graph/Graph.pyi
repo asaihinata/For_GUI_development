@@ -16,6 +16,7 @@ class GElement:
  dpi:Numbertype
  alpha:Numbertype
  ax:Axes|Axes3D
+ color:list[str]
  def __init__(
 self,
 master:Misc=...,
@@ -44,7 +45,6 @@ alpha=1
   self.fig:Figure
   self._canvas_widget:None
   self.graphdata:list
-  self.colorlist:list
   self.size:TupleNumbertype2
   self.fg:Colortype
   self.graph_bg:Colortype
@@ -71,7 +71,7 @@ dpi:Numbertype=100
  :rtype: NoReturn'''
  def _color_check(self,color:list)->list:...
  def _list_loop(self,lin:list|tuple,num:int)->list:...
- def legend(self,anchor:TupleNumbertype2|None=None)->NoReturn:...
+ def legend(self,ncols:Numbertype=1)->NoReturn:...
  def _anchor(
 self,
 val:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=None,

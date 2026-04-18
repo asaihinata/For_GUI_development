@@ -9,6 +9,7 @@ demo*.py
 *demo.py
 *deom*.py
 # その他
+.gitmessage
 .vscode/
 .DS_Store
 .dll
