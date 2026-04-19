@@ -11,5 +11,5 @@ def getjson(file:str)->dict:
  :rtype: dict'''
  jsonpath=join(dirname(__file__),f'{file}.json')
  if not isfile(jsonpath):
-  raise FileNotFoundError('ファイルが見つかりません')
+  raise FileNotFoundError('指定されたファイルが見つかりません')
  with open(jsonpath,'r',encoding='utf-8')as f:return load(f)

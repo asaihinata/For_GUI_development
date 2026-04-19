@@ -1,7 +1,6 @@
 For_GUI_development
 ├── .gitattributes
 ├── .gitignore
-├── .gitmessage
 ├── README.md
 ├── docs
 │   ├── data
@@ -83,9 +82,9 @@ For_GUI_development
 │       │   │   ├── pie.py
 │       │   │   ├── scatter.py
 │       │   │   ├── stack.py
+│       │   │   ├── stacked.py
 │       │   │   ├── stem.py
 │       │   │   ├── step.py
-│       │   │   ├── survey.py
 │       │   │   ├── violinplot.py
 │       │   │   └── waterfall.py
 │       │   ├── _3D
