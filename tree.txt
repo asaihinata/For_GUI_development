@@ -73,6 +73,7 @@ For_GUI_development
 │       │   │   ├── ecdf.py
 │       │   │   ├── errorbar.py
 │       │   │   ├── eventplot.py
+│       │   │   ├── funnelplot.py
 │       │   │   ├── hatplot.py
 │       │   │   ├── hexbin.py
 │       │   │   ├── hist.py

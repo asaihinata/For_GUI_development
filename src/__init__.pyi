@@ -362,9 +362,9 @@ bd:Numbertype=0
  def Checkbox(
 text:str=...,
 default:bool=False,
-key:str=...,
 wraplength:Numbertype=0,
-bd:Numbertype=0
+bd:Numbertype=0,
+key:str=...
 )->dict[str,Any]:'''チェックボタンを生成する。
 
  :param text: Checkboxウィジェットに表記させる文字を指定する。
@@ -2284,6 +2284,10 @@ labelalpha:Numbertype=1,
 key:str=...
 )->dict[str,Any]:'''ハットグラフを生成する。
 
+ :param x: `x`のデータを指定する。
+ :type x: o_array
+ :param data: `data`のデータを指定する。
+ :type data: o_array
  :param label: ラベルを指定する。
  :type label: labeltype
  :param xlabel: x軸のラベルを指定する。

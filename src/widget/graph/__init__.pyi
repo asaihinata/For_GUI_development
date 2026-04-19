@@ -13,7 +13,6 @@ from ..developer import Number
 class LineGraph:
  def __init__(
 self,
-master:Misc=None,
 x:n_array=...,
 y:n_array=...,
 label:labeltype=...,
@@ -52,7 +51,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''折線グラフを作成する。
 
  :param x: `x`のデータを指定する。
@@ -185,7 +185,6 @@ tuple[float64,float64]
 class BarGraph:
  def __init__(
 self,
-master:Misc=None,
 x:o_array=...,
 y:n_array=...,
 logs:bool=False,
@@ -223,7 +222,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''x軸向きの棒グラフを作成する。
 
  :param x: `x`のデータを指定する。
@@ -353,7 +353,6 @@ tuple[float64,float64]
 class BarhGraph:
  def __init__(
 self,
-master:Misc=None,
 x:o_array=...,
 y:n_array=...,
 logs:bool=False,
@@ -520,7 +519,6 @@ tuple[float64,float64]
 class Stacked:
  def __init__(
 self,
-master:Misc=None,
 data:n_array=...,
 dataname:o_array=...,
 width:Numbertype=0.8,
@@ -556,7 +554,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''積み上げ縦棒グラフを生成する。
 
  :param data: `data`を指定する。
@@ -679,7 +678,6 @@ tuple[float64,float64]
 class Stackedh:
  def __init__(
 self,
-master:Misc=None,
 data:n_array=...,
 dataname:o_array=...,
 height:Numbertype=0.8,
@@ -715,7 +713,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''積み上げ横棒グラフを生成する。
 
  :param data: `data`を指定する。
@@ -838,7 +837,6 @@ tuple[float64,float64]
 class Pie:
  def __init__(
 self,
-master:Misc=None,
 data:o_array=...,
 startangle:Numbertype=0,
 startangletype:bool=True,
@@ -905,7 +903,6 @@ title:str
 class Boxplot:
  def __init__(
 self,
-master:Misc=None,
 data:n_array=...,
 width:Numbertype=0.15,
 whis:float|TupleFloat2=1.5,
@@ -946,7 +943,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''箱ひげ図を作成する。
 
  :param data: dataのデータを指定する。
@@ -1083,7 +1081,6 @@ tuple[float64,float64]
 class Waterfall:
  def __init__(
 self,
-master:Misc=None,
 x:o_array=...,
 y:o_array=...,
 sums:bool=False,
@@ -1123,7 +1120,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''x軸向きの滝グラフを作成する。
 
  :param x: `x`のデータを指定する。
@@ -1259,7 +1257,6 @@ tuple[float64,float64]
 class Waterfallh:
  def __init__(
 self,
-master:Misc=None,
 x:o_array=...,
 y:o_array=...,
 ucolor:Colortype='#156082',
@@ -1299,7 +1296,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''y軸向きの滝グラフを作成する。
 
  :param x: `x`のデータを指定する。
@@ -1436,7 +1434,6 @@ tuple[float64,float64]
 class Scatter:
  def __init__(
 self,
-master:Misc=None,
 x:n_array=...,
 y:n_array=...,
 xlabel:str=...,
@@ -1473,7 +1470,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''散布図を作成する。
 
  :param x: `x`のデータを指定する。
@@ -1601,7 +1599,6 @@ tuple[float64,float64]
 class DScatter:
  def __init__(
 self,
-master:Misc=None,
 x:n_array=...,
 y:n_array=...,
 z:n_array=...,
@@ -1791,7 +1788,6 @@ tuple[float64,float64]
 class Stem:
  def __init__(
 self,
-master:Misc=None,
 x:n_array=...,
 y:n_array=...,
 label:labeltype=...,
@@ -1830,7 +1826,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''幹図を作成する。
 
  :param x: `x`のデータを指定する。
@@ -1963,7 +1960,6 @@ tuple[float64,float64]
 class Hist:
  def __init__(
 self,
-master:Misc=None,
 data:o_array=...,
 xlabel:str=...,
 ylabel:str=...,
@@ -2198,7 +2194,6 @@ tuple[float64,float64]
 class Step:
  def __init__(
 self,
-master:Misc=None,
 data:n_array=...,
 linewidth:Numbertype=2,
 xlabel:str=...,
@@ -2364,7 +2359,6 @@ tuple[float64,float64]
 class Stack:
  def __init__(
 self,
-master:Misc=None,
 x:n_array=...,
 y:n_array=...,
 xlabel:str=...,
@@ -2401,7 +2395,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''積み上げエリアチャートを作成する。
 
  :param x: `x`のデータを指定する。
@@ -2528,7 +2523,6 @@ tuple[float64,float64]
 class Bubble:
  def __init__(
 self,
-master:Misc=None,
 x:n_array=...,
 y:n_array=...,
 data:n_array=...,
@@ -2564,7 +2558,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''バブルグラフを作成する。
 
  :param x: `x`のデータを指定する。
@@ -2698,7 +2693,6 @@ tuple[float64,float64]
 class Linefill:
  def __init__(
 self,
-master:Misc=None,
 x:o_array=...,
 ymin:n_array=...,
 ymax:n_array=...,
@@ -2736,7 +2730,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''2つの水平曲線の間の領域を埋めるグラフを作成する。
 
  :param x: 曲線を定義する節点のx座標を指定する。
@@ -2867,7 +2862,6 @@ tuple[float64,float64]
 class Ecdf:
  def __init__(
 self,
-master:Misc=None,
 data:n_array=...,
 complementary:bool=False,
 compress:bool=False,
@@ -2903,7 +2897,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''経験的累積分布関数を作成する。
 
  :param complementary: 補累積分布を描画するか指定する。
@@ -3034,7 +3029,6 @@ tuple[float64,float64]
 class Errorbar:
  def __init__(
 self,
-master:Misc=None,
 x:n_array=...,
 y:n_array=...,
 err:o_array=...,
@@ -3080,7 +3074,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''誤差範囲付きの線グラフもしくはマーカーグラフ,あるいはその両方のエラーグラフを作成する。
 
  :param x: `x`のデータを指定する。
@@ -3244,7 +3239,6 @@ tuple[float64,float64]
 class Eventplot:
  def __init__(
 self,
-master:Misc=None,
 data:o_array=...,
 linewidth:Numbertype=1,
 linelength:Numbertype=1,
@@ -3282,7 +3276,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''イベントグラフを作成する。
 
  :param data: `data`のデータを指定する。
@@ -3409,7 +3404,6 @@ tuple[float64,float64]
 class Hist2d:
  def __init__(
 self,
-master:Misc=None,
 x:o_array=...,
 y:o_array=...,
 max:Numbertype=...,
@@ -3590,7 +3584,6 @@ tuple[float64,float64]
 class Violinplot:
  def __init__(
 self,
-master:Misc=None,
 data:n_array=...,
 x:o_array=...,
 y:o_array=...,
@@ -3631,7 +3624,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''バイオリングラフを作成する。
 
  :param data: 入力データを指定する。
@@ -3777,7 +3771,6 @@ tuple[float64,float64]
 class Hexbin:
  def __init__(
 self,
-master:Misc=None,
 x:o_array=...,
 y:o_array=...,
 c:o_array|None=None,
@@ -3817,7 +3810,8 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''2次元六角形グラフを作成する。
 
  :param x: `x`のデータを指定する。
@@ -3958,9 +3952,10 @@ tuple[float64,float64]
 class Hatplot:
  def __init__(
 self,
-master:Misc=None,
-label:labeltype=...,
+x:o_array,
+data:o_array,
 color:Colortype='#4477aa',
+label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
 size:TupleNumbertype2=(500,400),
@@ -3991,9 +3986,14 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1
+labelalpha:Numbertype=1,
+master:Misc=None
 )->None:'''ハットグラフを作成する。
 
+ :param x: `x`のデータを指定する。
+ :type x: o_array
+ :param data: `data`のデータを指定する。
+ :type data: o_array
  :param label: ラベルを指定する。
  :type label: labeltype
  :param xlabel: x軸のラベルを指定する。
@@ -4062,7 +4062,10 @@ labelalpha:Numbertype=1
  :type labelalpha: Numbertype'''
  def update(
 self,
-
+x:o_array,
+data:o_array,
+label:labeltype,
+color:Colortype,
 fg:Colortype,
 bg:Colortype,
 alpha:Numbertype,
