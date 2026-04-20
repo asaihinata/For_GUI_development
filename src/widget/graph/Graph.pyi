@@ -6,6 +6,7 @@ from numpy import float64,ndarray
 from ...types import *
 graph_color:list
 class GElement:
+ master:Misc
  fig:Figure
  graphdata:list
  size:TupleNumbertype2
@@ -67,8 +68,64 @@ dpi:Numbertype=100
  :type ex: Literal['.eps','.jpg','.jpeg','.pdf','.pgf','.png','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']
  :param dpi: グラフの解像度を指定する。
  :type dpi: Numbertype
- :return: 
+ :return:
  :rtype: NoReturn'''
+ def winsize(self)->tuple[int,int]:'''ウィジェットの現在の幅と高さを返す。
+
+ :return: ウィジェットの現在の幅と高さをタプルで返す。
+ :rtype: tuple[int,int]'''
+ def winwidth(self)->int:'''ウィジェットの現在の幅を返す。
+
+ :return: ウィジェットの現在の幅を返す。
+ :rtype: int'''
+ def winheight(self)->int:'''ウィジェットの現在の高さを返す。
+
+ :return: ウィジェットの現在の高さを返す。
+ :rtype: int'''
+ def winxy(self)->tuple[int,int]:'''親ウィジェット内での座標を返す。
+
+ :return: 親ウィジェット内での座標を返す。
+ :rtype: tuple[int,int]'''
+ def winx(self)->int:'''親ウィジェット内での左端のx座標を返す。
+
+ :return: 親ウィジェット内での左端のx座標を返す。
+ :rtype: int'''
+ def winy(self)->int:'''親ウィジェット内での上端のy座標を返す。
+
+ :return: 親ウィジェット内での上端のy座標を返す。
+ :rtype: int'''
+ def geometry(self)->tuple[float,float,float,float]:'''ウィジェットのサイズと位置を返す。
+
+ :return: ウィジェットのサイズと位置を返す。
+ :rtype: tuple[float,float,float,float]'''
+ def rootxy(self)->tuple[int,int]:'''画面全体に対するウィジェットの座標を返す。
+
+ :return: 画面全体に対するウィジェットの座標を返す。
+ :rtype: tuple[int,int]'''
+ def rootx(self)->int:'''画面全体に対するウィジェットの左端のx座標を返す。
+
+ :return: 画面全体に対するウィジェットの左端のx座標を返す。
+ :rtype: int'''
+ def rooty(self)->int:'''画面全体に対するウィジェットの上端のy座標を返す。
+
+ :return: 画面全体に対するウィジェットの上端のy座標を返す。
+ :rtype: int'''
+ def reqsize(self)->tuple[int,int]:'''ウィジェットが必要とする幅の長さと高さを返す。
+
+ :return: ウィジェットが必要とする幅の長さと高さを返す。
+ :rtype: tuple[int,int]'''
+ def reqwidth(self)->int:'''ウィジェットが必要とする幅の長さを返す。
+
+ :return: ウィジェットが必要とする幅の長さを返す。
+ :rtype: int'''
+ def reqheight(self)->int:'''ウィジェットが必要とする高さを返す。
+
+ :return: ウィジェットが必要とする高さを返す。
+ :rtype: int'''
+ def visual(self)->str:'''色の表現形式を返す。'''
+ def screen(self)->str:'''スクリーンの名前を返す。'''
+ def id(self)->int:'''ウィジェットのウィンドウ識別子を返す。'''
+ def name(self):'''ウィジェットのインスタンス名を返す。'''
  def _color_check(self,color:list)->list:...
  def _list_loop(self,lin:list|tuple,num:int)->list:...
  def legend(self,ncols:Numbertype=1)->NoReturn:...
@@ -88,7 +145,7 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
 
  :param serch: `MARKERS`に調べたいマーカーを指定する。
  :type serch: str
- :return: 
+ :return:
  :rtype: str
 参考
 ----
@@ -97,13 +154,13 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
 
  :param serch: `FMTSOLID`に調べたいを指定する。
  :type serch: str
- :return: 
+ :return:
  :rtype: str'''
  def nlines(self,serch:str)->str:'''serch`で指定した枠線が`SOLID`に存在するかを調べる
 
  :param serch: `SOLID`に調べたいを指定する。
  :type serch: str
- :return: 
+ :return:
  :rtype: str
 参考
 ----
@@ -112,7 +169,7 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
  :param val: 配列を指定する。
  :type val: NpArraytype
  :raises TypeError: NpArraytype型以外を指定した場合に発生させる。
- :return: 
+ :return:
  :rtype: ndarray'''
  def _floatarr(self,val:NpArraytype)->ndarray:...
  def _manyarr(self,val:NpArraytype,j:bool=True)->ndarray:...
@@ -210,7 +267,7 @@ ylabel:labeltype=None
  :type label: labeltype
  :param ylabel: y軸のラベルを指定する。
  :type ylabel: labeltype
- :return: 
+ :return:
  :rtype: NoReturn'''
  def _xys(self,x,y)->tuple:...
  def clear(self)->NoReturn:'''グラフ内のグラフをクリアする。'''

@@ -4,7 +4,9 @@ from datetime import date,datetime,timedelta
 from zoneinfo import ZoneInfo,available_timezones
 __all__=['times']
 class times:
- maxsyear,minsyear,datetimes=9999,1,None
+ maxsyear=9999
+ minsyear=1
+ datetimes=None
  def __init__(self,year=None,month=None,day=None,hour=0,minute=0,second=0,microsecond=0,timezone='Asia/Tokyo',fold=0,dates=None):
   if isinstance(dates,(datetime,date)):self.datetimes=dates
   elif isinstance(dates,times):self.datetimes=dates.datetimes

@@ -1,4 +1,5 @@
 from os import getcwd
+from re import findall
 from cycler import cycler
 from matplotlib.axes._axes import Axes
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -20,7 +21,12 @@ rcParams['font.family']='Meiryo'
 rcParams['axes.prop_cycle']=cycler(color=graph_color)
 class GElement:
  def __init__(self,master,kw):
-  self.master,self.widget,self.graph,self.graphdata,self._canvas_widget,self.max_depth=master,None,True,[],None,1
+  self.master=master
+  self.widget=None
+  self.graph=True
+  self.graphdata=[]
+  self._canvas_widget=None
+  self.max_depth=1
   # グラフの基盤
   self.fg=parsecolor(kw.get('fg'),'#000000')
   self.graph_bg=parsecolor(kw.get('bg'),'#ffffff')
@@ -49,6 +55,31 @@ class GElement:
   try:self.fig.savefig(str(autofile_save(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=filename,initialdir=getcwd())),dpi=num1s(dpi,100))
   except Exception as e:
    logger.error(f'error:{e}')
+ def winsize(self):
+  root=self.master
+  return root.winfo_width(),root.winfo_height()
+ def winwidth(self):return self.master.winfo_width()
+ def winheight(self):return self.master.winfo_height()
+ def winxy(self):
+  root=self.master
+  return root.winfo_x(),root.winfo_y()
+ def winx(self):return self.master.winfo_x()
+ def winy(self):return self.master.winfo_y()
+ def geometry(self):return[float(i) for i in findall(r'\d+',self.master.winfo_geometry())]
+ def rootxy(self):
+  root=self.master
+  return root.winfo_rootx(),root.winfo_rooty()
+ def rootx(self):return self.master.winfo_rootx()
+ def rooty(self):return self.master.winfo_rooty()
+ def visual(self):return self.master.winfo_visual()
+ def screen(self):return self.master.winfo_screen()
+ def reqsize(self):
+  root=self.master
+  return root.winfo_reqwidth(),root.winfo_reqheight()
+ def reqwidth(self):return self.master.winfo_reqwidth()
+ def reqheight(self):return self.master.winfo_reqheight()
+ def id(self):return self.master.winfo_id()
+ def name(self):return self.master.winfo_name()
  def _pack(self):
   self._canvas_widget=FigureCanvasTkAgg(self.fig,master=self.master).get_tk_widget()
   self._canvas_widget.pack(side='left',padx=5,pady=5)

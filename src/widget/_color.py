@@ -1,7 +1,12 @@
 from re import compile,findall
 from .data import getjson
 __all__=['Color']
-COLOR_DATA,HEX6_RE,HEX3_RE,RGB_RE,RGBA_RE,HSV_RE=getjson('color'),compile(r'^#[0-9a-f]{6}$'),compile(r'^#[0-9a-f]{3}$'),compile(r'^rgb\((\d+),(\d+),(\d+)\)$'),compile(r'^rgba\((\d+),(\d+),(\d+),([0-9.]+)\)$'),compile(r'^hsv\((\d+),(\d+),(\d+)\)$')
+COLOR_DATA=getjson('color')
+HEX6_RE=compile(r'^#[0-9a-f]{6}$')
+HEX3_RE=compile(r'^#[0-9a-f]{3}$')
+RGB_RE=compile(r'^rgb\((\d+),(\d+),(\d+)\)$')
+RGBA_RE=compile(r'^rgba\((\d+),(\d+),(\d+),([0-9.]+)\)$')
+HSV_RE=compile(r'^hsv\((\d+),(\d+),(\d+)\)$')
 class Color:
  '''16進数カラーコード,カラー名,rgb,rgba,hsvを16進数カラーコードに変換する。'''
  def __init__(self,color:str,other:str|None=None)->None:
@@ -48,9 +53,3 @@ class Color:
   elif i==4:return t,p,v
   else:return v,p,q
  def __str__(self):return str(self.txt)
-if __name__=='__main__':
- print(Color(color='red'))
- print(Color(color='re'))
- print(Color(color='re',other='red'))
- print(Color(color='#ffffff'))
- print(Color(color='#fff'))

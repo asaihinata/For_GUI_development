@@ -10,7 +10,124 @@ from numpy._typing import _AnyShape
 from numpy.typing import ArrayLike
 from ...types import *
 from ..developer import Number
-class LineGraph:
+class _Gset:
+ def winsize(self)->tuple[int,int]:'''ウィジェットの現在の幅と高さを返す。
+
+ :return: ウィジェットの現在の幅と高さをタプルで返す。
+ :rtype: tuple[int,int]'''
+ def winwidth(self)->int:'''ウィジェットの現在の幅を返す。
+
+ :return: ウィジェットの現在の幅を返す。
+ :rtype: int'''
+ def winheight(self)->int:'''ウィジェットの現在の高さを返す。
+
+ :return: ウィジェットの現在の高さを返す。
+ :rtype: int'''
+ def winxy(self)->tuple[int,int]:'''親ウィジェット内での座標を返す。
+
+ :return: 親ウィジェット内での座標を返す。
+ :rtype: tuple[int,int]'''
+ def winx(self)->int:'''親ウィジェット内での左端のx座標を返す。
+
+ :return: 親ウィジェット内での左端のx座標を返す。
+ :rtype: int'''
+ def winy(self)->int:'''親ウィジェット内での上端のy座標を返す。
+
+ :return: 親ウィジェット内での上端のy座標を返す。
+ :rtype: int'''
+ def geometry(self)->tuple[float,float,float,float]:'''ウィジェットのサイズと位置を返す。
+
+ :return: ウィジェットのサイズと位置を返す。
+ :rtype: tuple[float,float,float,float]'''
+ def rootxy(self)->tuple[int,int]:'''画面全体に対するウィジェットの座標を返す。
+
+ :return: 画面全体に対するウィジェットの座標を返す。
+ :rtype: tuple[int,int]'''
+ def rootx(self)->int:'''画面全体に対するウィジェットの左端のx座標を返す。
+
+ :return: 画面全体に対するウィジェットの左端のx座標を返す。
+ :rtype: int'''
+ def rooty(self)->int:'''画面全体に対するウィジェットの上端のy座標を返す。
+
+ :return: 画面全体に対するウィジェットの上端のy座標を返す。
+ :rtype: int'''
+ def reqsize(self)->tuple[int,int]:'''ウィジェットが必要とする幅の長さと高さを返す。
+
+ :return: ウィジェットが必要とする幅の長さと高さを返す。
+ :rtype: tuple[int,int]'''
+ def reqwidth(self)->int:'''ウィジェットが必要とする幅の長さを返す。
+
+ :return: ウィジェットが必要とする幅の長さを返す。
+ :rtype: int'''
+ def reqheight(self)->int:'''ウィジェットが必要とする高さを返す。
+
+ :return: ウィジェットが必要とする高さを返す。
+ :rtype: int'''
+ def visual(self)->str:'''色の表現形式を返す。'''
+ def screen(self)->str:'''スクリーンの名前を返す。'''
+ def id(self)->int:'''ウィジェットのウィンドウ識別子を返す。'''
+ def name(self):'''ウィジェットのインスタンス名を返す。'''
+class _2Gset(_Gset):
+ def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
+ def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
+ def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
+ def getbound(self)->tuple[
+tuple[float64,float64],
+tuple[float64,float64]
+]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
+
+ :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
+ :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
+ def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
+
+ :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
+ :rtype: tuple[float64,float64]'''
+ def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
+
+ :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
+ :rtype: tuple[float64,float64]'''
+ def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
+
+ :return: x軸,y軸の目盛りの位置を返す。
+ :rtype: tuple[ndarray,ndarray]'''
+ def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
+
+ :return: x軸の目盛りの位置を返す。
+ :rtype: ndarray'''
+ def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
+
+ :return: y軸の目盛りの位置を返す。
+ :rtype: ndarray'''
+class _3Gset(_Gset):
+ def invert(self)->NoReturn:'''x軸,y軸,z軸の軸を反転させる。'''
+ def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
+ def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
+ def invert_z(self)->NoReturn:'''z軸の軸を反転させる。'''
+ def getbound(self)->tuple[
+tuple[float64,float64],
+tuple[float64,float64],
+tuple[float64,float64]
+]:'''x軸,y軸,z軸の順で表示されている範囲の下限値と上限値を返す。
+
+ :return: x軸,y軸,z軸の順で表示されている範囲の下限値と上限値のtupleを返す。
+ :rtype: tuple[tuple[float64,float64],tuple[float64,float64],tuple[float64,float64]]'''
+ def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
+
+ :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
+ :rtype: tuple[float64,float64]'''
+ def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
+
+ :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
+ :rtype: tuple[float64,float64]'''
+ def getzbound(self)->tuple[float64,float64]:'''表示されているz軸の範囲の下限値と上限値を昇順で返す。
+
+ :return: 表示されているz軸の範囲の下限値と上限値のtupleを返す。
+ :rtype: tuple[float64,float64]'''
+ def getticks(self)->tuple[ndarray,ndarray,ndarray]:'''x軸,y軸,z軸の目盛りの位置を座標で返します。'''
+ def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返します。'''
+ def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返します。'''
+ def getzticks(self)->ndarray:'''z軸の目盛りの位置を座標で返します。'''
+class LineGraph(_2Gset):
  def __init__(
 self,
 x:n_array=...,
@@ -149,40 +266,10 @@ markersize:Numbertype,
 linestyle:str,
 linewidth:Numbertype,
 )->NoReturn:'''折線グラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[Line2D]:'''`Line2D`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
-class BarGraph:
+class BarGraph(_2Gset):
  def __init__(
 self,
 x:o_array=...,
@@ -317,40 +404,10 @@ title:str,
 width:Numbertype,
 align:Literal['center','edge']
 )->NoReturn:'''棒グラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
-class BarhGraph:
+class BarhGraph(_2Gset):
  def __init__(
 self,
 x:o_array=...,
@@ -483,40 +540,10 @@ ylabel:str,
 graph_grid:Colortype,
 title:str
 )->NoReturn:'''横向き棒グラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
-class Stacked:
+class Stacked(_2Gset):
  def __init__(
 self,
 data:n_array=...,
@@ -643,39 +670,9 @@ ylabel:str,
 graph_grid:Colortype,
 title:str
 )->NoReturn:'''積み上げ縦棒グラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
  def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
-class Stackedh:
+class Stackedh(_2Gset):
  def __init__(
 self,
 data:n_array=...,
@@ -802,39 +799,9 @@ ylabel:str,
 graph_grid:Colortype,
 title:str
 )->NoReturn:'''積み上げ横棒グラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
  def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
-class Pie:
+class Pie(_2Gset):
  def __init__(
 self,
 data:o_array=...,
@@ -900,7 +867,7 @@ title:str
 )->NoReturn:'''円グラフを再表示させる。'''
  def get(self)->tuple[tuple[Wedge,Text],...]:'''`matplotlib.axes.Axes.pie`の戻り値を配列で返す。'''
  def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
-class Boxplot:
+class Boxplot(_2Gset):
  def __init__(
 self,
 data:n_array=...,
@@ -1046,39 +1013,9 @@ ylabel:str,
 graph_grid:Colortype,
 title:str
 )->NoReturn:'''箱ひげ図を再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[dict[str,Any]]:'''`matplotlib.axes.Axes.boxplot`の戻り値の配列を返す。'''
  def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
-class Waterfall:
+class Waterfall(_2Gset):
  def __init__(
 self,
 x:o_array=...,
@@ -1221,40 +1158,10 @@ dcolor:Colortype,
 width:Numbertype,
 align:Literal['center','edge'],
 )->NoReturn:'''滝グラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
-class Waterfallh:
+class Waterfallh(_2Gset):
  def __init__(
 self,
 x:o_array=...,
@@ -1398,40 +1305,10 @@ dcolor:Colortype,
 height:Numbertype,
 align:Literal['center','edge'],
 )->NoReturn:'''横向きの滝グラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
-class Scatter:
+class Scatter(_2Gset):
  def __init__(
 self,
 x:n_array=...,
@@ -1563,40 +1440,10 @@ ylabel:str,
 graph_grid:Colortype,
 title:str
 )->NoReturn:'''散布図を再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[PathCollection]:'''`PathCollection`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
-class DScatter:
+class DScatter(_3Gset):
  def __init__(
 self,
 x:n_array=...,
@@ -1753,39 +1600,11 @@ xlabel:str,
 ylabel:str,
 zlabel:str
 )->NoReturn:'''3Dの散布図を再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸,z軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def invert_z(self)->NoReturn:'''z軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''x軸,y軸,z軸の順で表示されている範囲の下限値と上限値を返す。
-
- :return: x軸,y軸,z軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getzbound(self)->tuple[float64,float64]:'''表示されているz軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているz軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray,ndarray]:'''x軸,y軸,z軸の目盛りの位置を座標で返します。'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返します。'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返します。'''
- def getzticks(self)->ndarray:'''z軸の目盛りの位置を座標で返します。'''
  def get(self)->list[PathCollection]:'''`PathCollection`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
  def getz(self)->ndarray[_AnyShape,dtype[Any]]:'''`z`のデータを取得する。'''
-class Stem:
+class Stem(_2Gset):
  def __init__(
 self,
 x:n_array=...,
@@ -1924,40 +1743,10 @@ orientation:Literal['horizontal','vertical'],
 marker:Literal['o','+','*','.','x','_','|','square','diamond','^','v','<','>','pentagram','hexagram']=...,
 line:Literal['-','--','-.','-.']=...
 )->NoReturn:'''幹図を再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[StemContainer]:'''`StemContainer`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
-class Hist:
+class Hist(_2Gset):
  def __init__(
 self,
 data:o_array=...,
@@ -2100,36 +1889,6 @@ bottom:Numbertype,
 orientation:Literal['horizontal','vertical'],
 width:Numbertype
 )->NoReturn:'''ヒストグラムを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[ndarray|list[ndarray],ndarray,BarContainer|Polygon|list[BarContainer|Polygon]]:'''`matplotlib.axes.Axes.hist`の戻り値を配列で返す。'''
  def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
  @overload
@@ -2191,7 +1950,7 @@ tuple[float64,float64]
  :param num: 戻り値をfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :rtype: float'''
-class Step:
+class Step(_2Gset):
  def __init__(
 self,
 data:n_array=...,
@@ -2324,39 +2083,9 @@ alpha:Numbertype,
 graph_grid:Colortype,
 title:str
 )->NoReturn:'''階段グラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[StepPatch]:'''`StepPatch`の配列を返す。'''
  def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
-class Stack:
+class Stack(_2Gset):
  def __init__(
 self,
 x:n_array=...,
@@ -2487,40 +2216,10 @@ ylabel:str,
 graph_grid:Colortype,
 title:str
 )->NoReturn:'''積み上げエリアチャートを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[FillBetweenPolyCollection]:'''`FillBetweenPolyCollection`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
-class Bubble:
+class Bubble(_2Gset):
  def __init__(
 self,
 x:n_array=...,
@@ -2656,41 +2355,11 @@ linewidth:Numbertype,
 xlabel:str,
 ylabel:str
 )->NoReturn:'''バブルグラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[PathCollection]:'''`PathCollection`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
  def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
-class Linefill:
+class Linefill(_2Gset):
  def __init__(
 self,
 x:o_array=...,
@@ -2825,41 +2494,11 @@ alpha:Numbertype,
 graph_grid:Colortype,
 title:str
 )->NoReturn:'''2つの水平曲線の間の領域を埋めるグラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[FillBetweenPolyCollection,Line2D]:'''`PathCollection`と`Line2D`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def getymin(self)->ndarray[_AnyShape,dtype[Any]]:'''`ymin`のデータを取得する。'''
  def getymax(self)->ndarray[_AnyShape,dtype[Any]]:'''`ymax`のデータを取得する。'''
-class Ecdf:
+class Ecdf(_2Gset):
  def __init__(
 self,
 data:n_array=...,
@@ -2994,39 +2633,9 @@ decimalpoint:Numbertype,
 graph_grid:Colortype,
 title:str
 )->NoReturn:'''経験的累積分布関数を再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[Line2D]:'''`Line2D`の配列を返す。'''
  def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
-class Errorbar:
+class Errorbar(_2Gset):
  def __init__(
 self,
 x:n_array=...,
@@ -3203,40 +2812,10 @@ decimalpoint:Numbertype,
 graph_grid:Colortype,
 title:str
 )->NoReturn:'''エラーグラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[ErrorbarContainer]:'''`ErrorbarContainer`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
-class Eventplot:
+class Eventplot(_2Gset):
  def __init__(
 self,
 data:o_array=...,
@@ -3369,39 +2948,9 @@ alpha:Numbertype,
 graph_grid:Colortype,
 title:str
 )->NoReturn:'''円グラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[EventCollection]:'''`EventCollection`の配列を返す。'''
  def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
-class Hist2d:
+class Hist2d(_2Gset):
  def __init__(
 self,
 x:o_array=...,
@@ -3548,40 +3097,10 @@ title:str
 
  :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる。
  :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[ndarray,ndarray,ndarray,QuadMesh]:'''`matplotlib.axes.Axes.hist2d`の戻り値を配列で返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
-class Violinplot:
+class Violinplot(_2Gset):
  def __init__(
 self,
 data:n_array=...,
@@ -3736,39 +3255,9 @@ decimalpoint:Numbertype,
 graph_grid:Colortype,
 title:str
 )->NoReturn:'''バイオリングラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[dict[str,Collection]]:'''`matplotlib.axes.Axes.violinplot`のバイオリンプロットの各コンポーネントの辞書型が入った配列を返す。'''
  def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
-class Hexbin:
+class Hexbin(_2Gset):
  def __init__(
 self,
 x:o_array=...,
@@ -3916,40 +3405,10 @@ decimalpoint:Numbertype,
 graph_grid:Colortype,
 title:str
 )->NoReturn:'''2次元六角形グラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[PolyCollection]:'''`PolyCollection`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
-class Hatplot:
+class Hatplot(_2Gset):
  def __init__(
 self,
 x:o_array,
@@ -4074,36 +3533,6 @@ ylabel:str,
 graph_grid:Colortype,
 title:str,
 )->NoReturn:'''ハットグラフを再表示させる。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
- def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
-]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
- :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
- :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
- :return: x軸,y軸の目盛りの位置を返す。
- :rtype: tuple[ndarray,ndarray]'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
- :return: x軸の目盛りの位置を返す。
- :rtype: ndarray'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
- :return: y軸の目盛りの位置を返す。
- :rtype: ndarray'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
