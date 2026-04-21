@@ -141,6 +141,7 @@ class WindowController:
   elif t=='LineGraph':widget=LineGraph(parent,kw)
   elif t=='BarGraph':widget=BarGraph(parent,kw)
   elif t=='BarhGraph':widget=BarhGraph(parent,kw)
+  elif t=='Funne':widget=Funne(parent,kw)
   elif t=='Stacked':widget=Stacked(parent,kw)
   elif t=='Stackedh':widget=Stackedh(parent,kw)
   elif t=='Scatter':widget=Scatter(parent,kw)

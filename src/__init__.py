@@ -69,6 +69,8 @@ class sgg:
  @staticmethod
  def BarhGraph(**kw):return{'count':counts(),'type':'BarhGraph',**kw}
  @staticmethod
+ def Funne(**kw):return{'count':counts(),'type':'Funne',**kw}
+ @staticmethod
  def Pie(**kw):return{'count':counts(),'type':'Pie',**kw}
  @staticmethod
  def Boxplot(**kw):return{'count':counts(),'type':'Boxplot',**kw}

@@ -155,7 +155,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -222,8 +224,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -296,7 +302,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -361,8 +369,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -432,7 +444,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -497,8 +511,154 @@ align:Literal['center','edge']='center'
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
+ :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
+ :type ticksshow: bool
+ :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
+ :type xticksshow: bool
+ :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
+ :type yticksshow: bool
+ :param xticksdirection: x軸の目盛りの向きを指定する。
+ :type xticksdirection: Literal['out','in','inout']
+ :param yticksdirection: y軸の目盛りの向きを指定する。
+ :type yticksdirection: Literal['out','in','inout']
+ :param xnumticks: x軸の目盛りの数を指定する。
+ :type xnumticks: Numbertype|None
+ :param ynumticks: y軸の目盛りの数を指定する。
+ :type ynumticks: Numbertype|None
+ :param labelanchor: 凡例の位置を指定する。
+ :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param labelplace: 凡例の位置の基準点を指定する。
+ :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param labeltitle: 凡例のタイトルを指定する。
+ :type labeltitle: bool
+ :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type labelframe: bool
+ :param labelshadow: 凡例に影を付与するか指定する。
+ :type labelshadow: bool
+ :param labelalpha: 凡例の背景の透明度を指定する。
+ :type labelalpha: Numbertype'''
+ def update(
+self,
+x:o_array,
+y:n_array,
+height:Numbertype,
+align:Literal['center','edge'],
+logs:bool,
+fg:Colortype,
+bg:Colortype,
+alpha:Numbertype,
+xlabel:str,
+ylabel:str,
+graph_grid:Colortype,
+title:str
+)->NoReturn:'''横向き棒グラフを再表示させる。'''
+ def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
+ def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
+ def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+class Funne(_2Gset):
+ def __init__(
+self,
+x:o_array=...,
+y:n_array=...,
+logs:bool=False,
+label:labeltype=...,
+xlabel:str=...,
+ylabel:str=...,
+color:Colortype|tuple[Colortype,...]=...,
+size:TupleNumbertype2=(500,400),
+fg:Colortype='#000000',
+bg:Colortype='#ffffff',
+title:str=...,
+dpi:Numbertype=100,
+alpha:Numbertype=1,
+graph_grid:Colortype='#b7b7b7',
+grid_xy:bool=True,
+grid_x:bool=False,
+grid_y:bool=False,
+y_verwrit:Literal['vertical','horizontal']='vertical',
+tight_layout:bool=True,
+xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
+yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
+xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
+ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
+ticksshow:bool=False,
+xticksshow:bool=False,
+xticksdirection:Literal['out','in','inout']='out',
+yticksshow:bool=False,
+yticksdirection:Literal['out','in','inout']='out',
+xnumticks:Numbertype|None=None,
+ynumticks:Numbertype|None=None,
+labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+labeltitle:str=...,
+labelframe:bool=True,
+labelshadow:bool=False,
+labelheight:Numbertype=1,
+align:Literal['center','edge']='center'
+)->None:'''
+
+ :param x: `x`のデータを指定する。
+ :type x: o_array
+ :param y: `y`のデータを指定する。
+ :type y: n_array
+ :param logs: x軸を対数スケールにするかを指定する。
+ :type logs: bool
+ :param label: ラベルを指定する。
+ :type label: labeltype
+ :param xlabel: x軸のラベルを指定する。
+ :type xlabel: str
+ :param ylabel: y軸のラベルを指定する。
+ :type ylabel: str
+ :param height: 棒グラフのバーの幅を指定する。
+ :type height: Numbertype
+ :param align: x軸の棒グラフバーの配置を指定する。
+ :type align: Literal['center','edge']
+ :param title: グラフのタイトルを指定する。
+ :type title: str
+ :param color: 色を指定する。
+ :type color: Colortype|tuple[Colortype,...]
+ :param size: 表示させるグラフの大きさを指定する。
+ :type size: TupleNumbertype2
+ :param fg: グラフ内の文字色を指定する。
+ :type fg: Colortype
+ :param bg: グラフ内の背景色を指定する。
+ :type bg: Colortype
+ :param dpi: 1インチあたりのドット数を指定する。
+ :type dpi: Numbertype
+ :param alpha: グラフの透明度を指定する。
+ :type alpha: Numbertype
+ :param graph_grid: グラフのグリッド線の色を指定する。
+ :type graph_grid: Colortype
+ :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
+ :type grid_xy: bool
+ :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
+ :type grid_x: bool
+ :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
+ :type grid_y: bool
+ :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
+ :type y_verwrit: Literal['horizontal','vertical']
+ :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
+ :type tight_layout: bool
+ :param xticksrange: x軸の目盛の範囲を変更する。
+ :type xticksrange: int|float|Number|tuple[int|tuple|Number,...]
+ :param yticksrange: y軸の目盛の範囲を変更する。
+ :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
+ :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
+ :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
+ :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
+ :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -568,7 +728,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
@@ -629,8 +791,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -697,7 +863,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
@@ -758,8 +926,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -897,7 +1069,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -966,8 +1140,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -1044,7 +1222,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -1107,8 +1287,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -1190,7 +1374,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -1253,8 +1439,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -1334,7 +1524,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -1397,8 +1589,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -1470,8 +1666,11 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 zmajorint:bool=True,
+zmajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
@@ -1541,10 +1740,16 @@ azim:Numbertype=45
  :type zticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param zmajorint: z軸の目盛りを整数で自動調整させるか指定する。
  :type zmajorint: bool
+ :param zmajormaxbins: z軸の目盛りの数の最大数を指定する。
+ :type zmajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸,z軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -1632,7 +1837,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -1699,8 +1906,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -1775,7 +1986,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -1843,8 +2056,12 @@ labely_verwrit:Literal['vertical','horizontal']='vertical'
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -1976,7 +2193,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -2039,8 +2258,12 @@ label:labeltype=...
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -2111,7 +2334,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -2174,8 +2399,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -2244,7 +2473,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -2311,8 +2542,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -2386,7 +2621,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -2451,8 +2688,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -2523,7 +2764,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -2590,8 +2833,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -2670,7 +2917,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -2759,8 +3008,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -2842,7 +3095,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -2907,8 +3162,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -2961,7 +3220,7 @@ xmax:Numbertype=...,
 xmin:Numbertype=...,
 ymax:Numbertype=...,
 ymin:Numbertype=...,
-bins:int|TupleInt2|ArrayLike|tuple[ArrayLike,ArrayLike]=10,
+bins:int|TupleInt2|ArrayLike|tuple[ArrayLike,ArrayLike]=...,
 density:bool=False,
 xlabel:str=...,
 ylabel:str=...,
@@ -2980,7 +3239,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -3044,8 +3305,12 @@ labely_verwrit:Literal['vertical','horizontal']='vertical'
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -3130,7 +3395,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -3207,8 +3474,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -3286,7 +3557,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -3359,8 +3632,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
@@ -3432,7 +3709,9 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
+xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
+ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
 xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
@@ -3491,8 +3770,12 @@ master:Misc=None
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
+ :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
+ :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
+ :type ymajormaxbins: Numbertype|Number
  :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
  :type ticksshow: bool
  :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。

@@ -1,7 +1,7 @@
 from ..types import Any,Numbertype
 from ._color import Color
 from .developer import LIST,Number
-__all__=['bols','ints','listchose','nums','parsecolor','typelist','int0','int0s','int1s','list2float','list2int','list2num','list4float','list4int','list4num','num0','num0s','num1s','range_num','Color']
+__all__=['bols','Color','ints','intsmin','listchose','nums','numsmin','parsecolor','typelist','int0','int0s','int1s','list2float','list2int','list2num','list4float','list4int','list4num','num0','num0s','num1s','range_num']
 def list2num(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,(list,tuple)) and len(lin)==2 and all(isinstance(i,(int,float,Number))for i in lin) else False
 def list2int(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,(list,tuple)) and len(lin)==2 and all(isinstance(i,int)for i in lin) else False
 def list2float(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,(list,tuple)) and len(lin)==2 and all(isinstance(i,float)for i in lin) else False
@@ -26,6 +26,13 @@ def listchose(val:str,arr:list,other:str|None=None)->str:
  if isinstance(arr,(tuple,list))and other==None:other=arr[0]
  elif not isinstance(arr,(tuple,list))and other==None:other=arr
  if val in arr:return val
+ return other
+def numsmin(val:Numbertype|Number,mins:Numbertype|Number=0,other:Any=None)->Numbertype|Number|Any:
+ if not isinstance(val,(Numbertype,Number)) or not isinstance(mins,(Numbertype,Number)):
+  return other
+ if isinstance(val,Number):val=val.val
+ if isinstance(mins,Number):mins=mins.val
+ if mins<val:return val
  return other
 def nums(val:Numbertype,other:Numbertype=None)->Numbertype:
  '''`val`が数値かを調べる。
@@ -67,6 +74,11 @@ def num0(val:Numbertype=0,mins:Numbertype=0)->Numbertype:
  :return: 数値を返す。
  :rtype: Numbertype'''
  return val if isinstance(val,(int,float))and 0<val else mins
+def intsmin(val:int,mins:int=0,other:Any=None)->int:
+ if not isinstance(val,int) or not isinstance(mins,int):
+  return other
+ if mins<val:return val
+ return other
 def ints(val:int=0,other:int=None)->int:
  '''`val`がint型かを調べる。
 

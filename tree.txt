@@ -5,7 +5,8 @@ For_GUI_development
 ├── docs
 │   ├── data
 │   │   ├── browser_jp.csv
-│   │   └── color.csv
+│   │   ├── color.csv
+│   │   └── jp_name.csv
 │   └── requirements.txt
 ├── pyproject.toml
 ├── src

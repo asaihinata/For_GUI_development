@@ -9,7 +9,7 @@ from matplotlib.ticker import LinearLocator,MaxNLocator
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import array,ndarray
 from ...types import Arraytype,Numbertype
-from .._function import bols,list2num,listchose,num0s,num1s,nums,parsecolor,range_num
+from .._function import bols,list2num,listchose,num0s,num1s,nums,parsecolor,range_num,numsmin
 from .._log import Logger
 from .._save import autofile_save
 from ..developer import LIST,Number
@@ -166,11 +166,11 @@ class twoDElement(GElement):
   self.grid_xy=bols(kw.get('grid_xy'))
   self.grid_x=bols(kw.get('grid_x'),False)
   self.grid_y=bols(kw.get('grid_y'),False)
-  self.xmajorint=bols(kw.get('xmajorint'))
-  self.ymajorint=bols(kw.get('ymajorint'))
   # グラフの基盤
   self.ax:Axes=self.fig.add_subplot(111)
   # 目盛り
+  self.xmajorint=bols(kw.get('xmajorint'))
+  self.ymajorint=bols(kw.get('ymajorint'))
   self.xticksshow=bols(kw.get('xticksshow'),False)
   self.yticksshow=bols(kw.get('yticksshow'),False)
   self.xticksdirection=listchose(kw.get('xticksdirection'),['out','in','inout'])
@@ -204,9 +204,11 @@ class twoDElement(GElement):
   self.setxy=bols(kw.get('setxy'))
   self.xnumticks=num0s(kw.get('xnumticks'),None)
   self.ynumticks=num0s(kw.get('ynumticks'),None)
-  self.ax.xaxis.set_major_locator(MaxNLocator(integer=self.xmajorint))
+  self.xmajormaxbins=numsmin(kw.get('xmajormaxbins'),2,10)
+  self.ymajormaxbins=numsmin(kw.get('ymajormaxbins'),2,10)
+  self.ax.xaxis.set_major_locator(MaxNLocator(nbins=self.xmajormaxbins,integer=self.xmajorint))
   self.ax.xaxis.set_major_locator(LinearLocator(numticks=self.xnumticks))
-  self.ax.yaxis.set_major_locator(MaxNLocator(integer=self.ymajorint))
+  self.ax.yaxis.set_major_locator(MaxNLocator(nbins=self.ymajormaxbins,integer=self.ymajorint))
   self.ax.yaxis.set_major_locator(LinearLocator(numticks=self.ynumticks))
  def _apply_theme_colors(self):
   self.ax.set_facecolor(self.graph_bg)
@@ -342,12 +344,15 @@ class threeDElement(GElement):
   self.xnumticks=num0s(kw.get('xnumticks'),None)
   self.ynumticks=num0s(kw.get('ynumticks'),None)
   self.znumticks=num0s(kw.get('znumticks'),None)
+  self.xmajormaxbins=numsmin(kw.get('xmajormaxbins'),2,10)
+  self.ymajormaxbins=numsmin(kw.get('ymajormaxbins'),2,10)
+  self.zmajormaxbins=numsmin(kw.get('zmajormaxbins'),2,10)
   self.ax.xaxis.set_major_locator(LinearLocator(numticks=self.xnumticks))
   self.ax.yaxis.set_major_locator(LinearLocator(numticks=self.ynumticks))
   self.ax.zaxis.set_major_locator(LinearLocator(numticks=self.znumticks))
-  self.ax.xaxis.set_major_locator(MaxNLocator(integer=self.xmajorint))
-  self.ax.yaxis.set_major_locator(MaxNLocator(integer=self.ymajorint))
-  self.ax.zaxis.set_major_locator(MaxNLocator(integer=self.zmajorint))
+  self.ax.xaxis.set_major_locator(MaxNLocator(nbins=self.xmajormaxbins,integer=self.xmajorint))
+  self.ax.yaxis.set_major_locator(MaxNLocator(nbins=self.ymajormaxbins,integer=self.ymajorint))
+  self.ax.zaxis.set_major_locator(MaxNLocator(nbins=self.zmajormaxbins,integer=self.zmajorint))
  def _updates(self,**kw):
   self.fg=parsecolor(kw.get('fg'),self.fg)
   self.graph_bg=parsecolor(kw.get('bg'),self.graph_bg)

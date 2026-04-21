@@ -4,21 +4,23 @@ from platform import system
 from sys import getsizeof
 from numpy import array,ndarray
 from numpy.random import choice,default_rng
-__all__=['clear','LIST','Number','randoms','sort']
+__all__=['clear','LIST','Number','rand','rands','sort']
 class clear:
  '''コンソールを削除する。'''
  def __init__(self):sys('cls' if system()=='Windows'else'clear')
  def __str__(self):return 'clear'
  @classmethod
  def __instancecheck__(cls,ins):return isinstance(ins,clear)
-class randoms:
+class rand:
  '''ランダムな値を生成する。'''
- seeds,rng=42,default_rng(seed=42)
- def __new__(cls):cls.seeds,cls.rng=42,default_rng(seed=42)
- def __init__(self):self.seeds,self.rng=42,default_rng(seed=42)
+ seeds=42
+ rng=default_rng(seed=42)
+ def __init__(self):
+  self.seeds=rand.seeds
+  self.rng=rand.rng
  def __sizeof__(self):return super().__sizeof__()+getsizeof(self.rng)+getsizeof(self.seeds)
  @classmethod
- def __instancecheck__(cls,ins):return isinstance(ins,randoms)
+ def __instancecheck__(cls,ins):return isinstance(ins,rand)
  @classmethod
  def seed(cls,seeds):
   if isinstance(seeds,int):cls.seeds,cls.rng=seeds,default_rng(seed=seeds)
@@ -102,13 +104,107 @@ class randoms:
   if isinstance(hierarchy,int) and 2<=hierarchy:return cls.rng.integers(low=low,high=high,size=(hierarchy,lenght))
   else:return cls.rng.integers(low=low,high=high,size=lenght)
  @staticmethod
- def _rand(size):return randoms.rng.random(size)
+ def _rand(size):return rand.rng.random(size)
  @staticmethod
- def _randint(low,high=None,size=None,endpoint=False):return randoms.rng.integers(low,high=high,size=size,endpoint=endpoint)
+ def _randint(low,high=None,size=None,endpoint=False):return rand.rng.integers(low,high=high,size=size,endpoint=endpoint)
  @staticmethod
- def _randrange(low,high,size):return randoms.rng.random(size)*(high-low)+low
+ def _randrange(low,high,size):return rand.rng.random(size)*(high-low)+low
  @classmethod
  def listrand(cls,arr,size=None):
+  if not isinstance(arr,(LIST,list,tuple,ndarray)):
+   raise TypeError('配列の型を指定してください')
+  return choice(array(list(arr)if isinstance(arr,LIST) else arr,dtype=object),size=size)
+class rands:
+ '''ランダムな値を生成する。'''
+ def __init__(self,seed=42):
+  if not isinstance(seed,int):seed=42
+  self.seeds=seed
+  self.rng=default_rng(seed=seed)
+ def __sizeof__(self):return super().__sizeof__()+getsizeof(self.rng)+getsizeof(self.seeds)
+ @classmethod
+ def __instancecheck__(cls,ins):return isinstance(ins,rands)
+ def seed(self,seed):
+  if isinstance(seed,int):
+   self.seeds=seed
+   self.rng=default_rng(seed=seed)
+ def rand(self,size=None):
+  return self.rng.random(size)
+ def randint(self,low=1,high=None,size=None,endpoint=False):
+  if not isinstance(low,int):
+   raise TypeError('lowに数値を指定してください')
+  if high is not None and not isinstance(high,int):
+   raise TypeError('highに数値を指定してください')
+  return self.rng.integers(low,high=high,size=size,endpoint=endpoint)
+ def randrange(self,min=0,max=1,size=None):
+  if not isinstance(min,(int,float,Number)) and not isinstance(max,(int,float,Number)):
+   raise TypeError('minとmaxの型が数値の型ではありません')
+  elif not isinstance(min,(int,float,Number)):
+   raise TypeError('minの型が数値の型ではありません')
+  elif not isinstance(max,(int,float,Number)):
+   raise TypeError('maxの型が数値の型ではありません')
+  if max<min:min,max=max,min
+  return self.rng.random(size)*(max-min)+max
+ def normal(self,low=0,high=1,lenght=None,hierarchy=None):
+  if not isinstance(low,(int,float,Number)):
+   raise TypeError('lowには数値型を指定してください')
+  elif isinstance(low,Number):low=low.val
+  if not isinstance(high,(int,float,Number)):
+   raise TypeError('highには数値型を指定してください')
+  elif isinstance(high,Number):high=high.val
+  if not isinstance(lenght,int):
+   raise TypeError('lenghtにはint型を指定してください')
+  elif lenght<=0:
+   raise ValueError('lenghtには1以上の正の整数を指定してください')
+  if hierarchy is not None:
+   if not isinstance(hierarchy,int):
+    raise TypeError('hierarchyにはNoneを除くint型を指定してください')
+   elif hierarchy<=0:
+    raise ValueError('hierarchyには1以上の正の整数を指定してください')
+  if isinstance(hierarchy,int) and 2<=hierarchy:
+   return self.rng.normal(low,high,(hierarchy,lenght))
+  else:
+   return self.rng.normal(low,high,lenght)
+ def rands(self,low=1,high=None,lenght=1,hierarchy=None):
+  if not isinstance(low,(int,float,Number)):
+   raise TypeError('lowには数値型を指定してください')
+  elif isinstance(low,Number):low=low.val
+  if high==None:low,high=0,low
+  elif not isinstance(high,(int,float,Number)):
+   raise TypeError('highには数値型を指定してください')
+  elif isinstance(high,Number):high=high.val
+  if not isinstance(lenght,int):
+   raise TypeError('lenghtにはint型を指定してください')
+  elif lenght<=0:
+   raise ValueError('lenghtには1以上の正の整数を指定してください')
+  if hierarchy is not None:
+   if not isinstance(hierarchy,int):
+    raise TypeError('hierarchyにはNoneを除くint型を指定してください')
+   elif hierarchy<=0:
+    raise ValueError('hierarchyには1以上の正の整数を指定してください')
+  if high<low:high,high=high,low
+  if isinstance(hierarchy,int) and 2<=hierarchy:return self.rng.uniform(low=low,high=high,size=(hierarchy,lenght))
+  else:return self.rng.uniform(low=low,high=high,size=lenght)
+ def randsint(self,low=1,high=None,lenght=1,hierarchy=None):
+  if not isinstance(low,(int,float,Number)):
+   raise TypeError('lowには数値型を指定してください')
+  elif isinstance(low,Number):low=low.val
+  if high==None:low,high=0,low
+  elif not isinstance(high,(int,float,Number)):
+   raise TypeError('highには数値型を指定してください')
+  elif isinstance(high,Number):high=high.val
+  if not isinstance(lenght,int):
+   raise TypeError('lenghtにはint型を指定してください')
+  elif lenght<=0:
+   raise ValueError('lenghtには1以上の正の整数を指定してください')
+  if hierarchy is not None:
+   if not isinstance(hierarchy,int):
+    raise TypeError('hierarchyにはNoneを除くint型を指定してください')
+   elif hierarchy<=0:
+    raise ValueError('hierarchyには1以上の正の整数を指定してください')
+  if high<low:high,high=high,low
+  if isinstance(hierarchy,int) and 2<=hierarchy:return self.rng.integers(low=low,high=high,size=(hierarchy,lenght))
+  else:return self.rng.integers(low=low,high=high,size=lenght)
+ def listrand(self,arr,size=None):
   if not isinstance(arr,(LIST,list,tuple,ndarray)):
    raise TypeError('配列の型を指定してください')
   return choice(array(list(arr)if isinstance(arr,LIST) else arr,dtype=object),size=size)

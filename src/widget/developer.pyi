@@ -9,7 +9,7 @@ class clear:
  def __dir__(self)->list[str]:...
  @classmethod
  def __instancecheck__(cls,ins:Any)->bool:...
-class randoms:
+class rand:
  seeds:int
  rng:Generator
  __firstlineno__:int
@@ -20,9 +20,6 @@ class randoms:
  def __dir__(self)->Iterable[str]:...
  @classmethod
  def __instancecheck__(cls,ins:Any)->bool:...
- def __new__(cls)->None:
-  cls.seeds:int
-  cls.rng:Generator
  def __init__(self)->None:
   self.seeds:int
   self.rng:Generator
@@ -281,6 +278,259 @@ size:int|tuple[int,int]|None=None
  :type size: int|tuple[int,int]|None
  :return: 配列から重複ありのランダムに選択された要素の配列を返す。
  :rtype: ndarray'''
+class rands:
+ seeds:int
+ rng:Generator
+ __firstlineno__:int
+ __module__:str
+ __dict__:dict[str,Any]
+ __doc__:str
+ __sizeof__:int
+ def __dir__(self)->Iterable[str]:...
+ @classmethod
+ def __instancecheck__(cls,ins:Any)->bool:...
+ def __init__(self)->None:
+  self.seeds:int
+  self.rng:Generator
+ @overload
+ def rand(self)->float:'''0から1の間の値をランダムに生成する。
+
+ :return: 0から1の間の値をランダムに生成された値を返す。
+ :rtype: float'''
+ @overload
+ def rand(self,size:_ShapeLike=None)->ndarray:'''0から1の間の値をランダムに生成した`numpy`の配列を作る。
+
+ :param size: 配列のサイズを指定する。
+ :type size: _ShapeLike
+ :return: `numpy`の配列を返す。
+ :rtype: ndarray'''
+ @overload
+ def randint(
+self,
+low:int,
+high:int|None=None,
+size:int|tuple[int,int]|None=...,
+endpoint:bool=...
+)->int64|ndarray:'''ランダムに生成された整数を作成する。
+
+ :param low: ランダムに生成される整数の最小値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type low: int
+ :param high: ランダムに生成される整数の最大値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type high: int|None
+ :param size: 生成される配列の大きさを指定する。
+ :type size: int|tuple[int,int]|None
+ :param endpoint: 生成される値の区間を指定する。
+ :type endpoint: bool
+ :raises TypeError: `low`にint型を指定しなかった場合に発生させる
+ :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
+ :return: ランダムに生成された整数を返す。
+ :rtype: int64|ndarray'''
+ @overload
+ def randint(
+self,
+low:int,
+high:int|None=None,
+endpoint:bool=...
+)->int64:'''ランダムに生成された整数を作成する。
+
+ :param low: ランダムに生成される整数の最小値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type low: int
+ :param high: ランダムに生成される整数の最大値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type high: int|None
+ :param endpoint: 生成される値の区間を指定する。
+ :type endpoint: bool
+ :raises TypeError: `low`にint型を指定しなかった場合に発生させる
+ :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
+ :return: ランダムに生成された整数を返す。
+ :rtype: int64'''
+ @overload
+ def randint(
+self,
+low:int,
+high:int|None=None,
+size:int|tuple[int,int]|None=None,
+endpoint:bool=...
+)->ndarray:'''ランダムに生成された整数を作成する。
+
+ :param low: ランダムに生成される整数の最小値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type low: int
+ :param high: ランダムに生成される整数の最大値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type high: int|None
+ :param size: 生成される配列の大きさを指定する。
+ :type size: int|tuple[int,int]|None
+ :param endpoint: 生成される値の区間を指定する。
+ :type endpoint: bool
+ :raises TypeError: `low`にint型を指定しなかった場合に発生させる。
+ :raises TypeError: `high`にNoneを除くint型を指定しなかった場合に発生させる。
+ :return: ランダムに生成された整数を返す。
+ :rtype: int64|ndarray'''
+ @overload
+ def randint(
+self,
+low:int,
+high:int|None=None,
+size:int|tuple[int,int]|None=...,
+endpoint:bool=True
+)->int64|ndarray:'''ランダムに生成された整数を作成する。
+
+ :param low: ランダムに生成される整数の最小値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type low: int
+ :param high: ランダムに生成される整数の最大値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type high: int|None
+ :param size: 生成される配列の大きさを指定する。
+ :type size: int|tuple[int,int]|None
+ :param endpoint: 生成される値の区間を[`low`,`high`]に指定する。
+ :type endpoint: bool
+ :raises TypeError: `low`にint型を指定しなかった場合に発生させる
+ :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
+ :return: ランダムに生成された整数を返す。
+ :rtype: int64|ndarray'''
+ @overload
+ def randint(
+self,
+low:int,
+high:int|None=None,
+size:int|tuple[int,int]|None=...,
+endpoint:bool=False
+)->int64|ndarray:'''ランダムに生成された整数を作成する。
+
+ :param low: ランダムに生成される整数の最小値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type low: int
+ :param high: ランダムに生成される整数の最大値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type high: int|None
+ :param size: 生成される配列の大きさを指定する。
+ :type size: int|tuple[int,int]|None
+ :param endpoint: 生成される値の区間を[`low`,`high`)に指定する。
+ :type endpoint: bool
+ :raises TypeError: `low`にint型を指定しなかった場合に発生させる
+ :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
+ :return: ランダムに生成された整数を返す。
+ :rtype: int64|ndarray'''
+ @overload
+ def randrange(self,min=0,max=1)->float:'''`min`から`max`の範囲の値をランダムに生成する。
+
+ :param min: ランダムに生成する値の最小値を指定する。
+ :type min: int
+ :param max: ランダムに生成する値の最大値を指定する。
+ :type max: int
+ :return: 範囲内のランダムに生成された値を返す。
+ :rtype: float'''
+ @overload
+ def randrange(self,min=0,max=1,size:_ShapeLike=None)->ndarray:
+  '''`min`から`max`の範囲の値をランダムに生成された値の配列を作成する。
+
+ :param min: ランダムに生成する値の最小値を指定する。
+ :type min: int
+ :param max: ランダムに生成する値の最大値を指定する。
+ :type max: int
+ :param size: 配列の大きさを指定する。
+ :type size: _ShapeLike
+ :return: `min`から`max`の範囲の値をランダムに生成された値の配列を返す。
+ :rtype: ndarray'''
+ def seed(self,seeds:int)->NoReturn:'''seed値を変更する。
+
+ :param seeds: seed値を指定する。
+ :type seeds: int'''
+ def normal(
+self,
+low:Numbertype=0,
+high:Numbertype=1,
+lenght:int=1,
+hierarchy:int=1
+)->ndarray:'''指定された行数と列数分のランダムに生成された正規分布のnumpyの配列を返す。
+
+ :param low: 分布の平均値を指定する。
+ :type low: int
+ :param high: 分布の標準偏差を指定する。
+ :type high: int
+ :param lenght: 生成される配列の列数を指定する。
+ :type lenght: int
+ :param hierarchy: 生成される配列の行数を指定する。
+ :type hierarchy: int
+ :return: 指定された行数と列数分の正規分布のnumpyの配列を返す。
+ :rtype: ndarray'''
+ @overload
+ def rands(
+self,
+low:Numbertype=...,
+high:Numbertype|None=...,
+lenght:int=...,
+)->NDArray[float64]:'''指定されたの個数のランダムに生成された値の配列を返す。
+
+ :param low: ランダムに生成される値の最小値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type low: int
+ :param high: ランダムに生成される値の最大値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type high: int|None
+ :param lenght: 生成される配列の要素の列数を指定する。
+ :type lenght: int
+ :return: 指定されたの個数のランダムに生成された値の配列を返す。
+ :rtype: NDArray[float64]'''
+ @overload
+ def rands(
+self,
+low:Numbertype=...,
+high:Numbertype|None=...,
+lenght:int=...,
+hierarchy:int|None=None,
+)->NDArray[float64]:'''指定されたのサイズのランダムに生成された値の配列を返す。
+
+ :param low: ランダムに生成される値の最小値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type low: int
+ :param high: ランダムに生成される値の最大値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type high: int|None
+ :param lenght: 生成される配列の要素の列数を指定する。
+ :type lenght: int
+ :param hierarchy: 生成される配列の要素の行数を指定する。
+ :type hierarchy: int
+ :return: 指定されたのサイズのランダムに生成された値の配列を返す。
+ :rtype: NDArray[float64]'''
+ @overload
+ def randsint(
+self,
+low:Numbertype=...,
+high:Numbertype|None=...,
+lenght:int=...,
+)->NDArray[int64]:'''指定されたの個数のランダムに生成された整数の配列を返す。
+
+ :param low: ランダムに生成される値の最小値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type low: int
+ :param high: ランダムに生成される値の最大値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type high: int|None
+ :param lenght: 生成される配列の要素の列数を指定する。
+ :type lenght: int
+ :return: 指定されたの個数のランダムに生成された整数の配列を返す。
+ :rtype: NDArray[int64]'''
+ @overload
+ def randsint(
+self,
+low:Numbertype=...,
+high:Numbertype|None=...,
+lenght:int=...,
+hierarchy:int|None=None,
+)->NDArray[int64]:'''指定されたのサイズのランダムに生成された整数の配列を返す。
+
+ :param low: ランダムに生成される値の最小値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type low: int
+ :param high: ランダムに生成される値の最大値を指定する。ただし`high`がNoneの場合,`low`が0に,`high`が`low`になる。
+ :type high: int|None
+ :param lenght: 生成される配列の要素の列数を指定する。
+ :type lenght: int
+ :param hierarchy: 生成される配列の要素の行数を指定する。
+ :type hierarchy: int
+ :return: 指定されたのサイズのランダムに生成された整数の配列を返す。
+ :rtype: NDArray[int64]'''
+ def listrand(
+self,
+arr:LIST|list|tuple|ndarray,
+size:int|tuple[int,int]|None=None
+)->ndarray:'''配列から重複ありのランダムに選択された要素の配列を作成する。
+
+ :param arr: 配列を指定する。
+ :type arr: LIST|list|tuple|ndarray
+ :param size: 作成する配列の大きさを指定する。
+ :type size: int|tuple[int,int]|None
+ :return: 配列から重複ありのランダムに選択された要素の配列を返す。
+ :rtype: ndarray'''
 class sort:
  __static_attributes__:tuple[str]
  __class__:type
@@ -352,6 +602,7 @@ class Number:
  __static_attributes__:tuple[str]
  __class__:type
  __firstlineno__:int
+ val:Numbertype
  def __init__(self,val:int|float|bool|Number)->None:'''数値に関するクラス
 
  :param val: 数値を指定する。

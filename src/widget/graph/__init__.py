@@ -4,6 +4,7 @@ from ._2D.bubble import Bubble
 from ._2D.ecdf import Ecdf
 from ._2D.errorbar import Errorbar
 from ._2D.eventplot import Eventplot
+from ._2D.funnelplot import Funne
 from ._2D.hatplot import Hatplot
 from ._2D.hexbin import Hexbin
 from ._2D.hist2d import Hist2d
