@@ -900,7 +900,7 @@ labelframe:bool=True,
 labelshadow:bool=False,
 labelalpha:Numbertype=1,
 key:str=...
-)->dict[str,Any]:'''x軸向きにバーを設置した棒グラフを生成する。
+)->dict[str,Any]:'''縦軸棒グラフを生成する。
 
  :param x: `x`のデータを指定する。
  :type x: o_array
@@ -916,9 +916,9 @@ key:str=...
  :type ylabel: str
  :param linewidth: 折線グラフの線の幅を指定する。
  :type linewidth: Numbertype
- :param width: 棒グラフのバー幅を指定する。
+ :param width: 縦軸棒グラフのバー幅を指定する。
  :type width: Numbertype
- :param align: x軸の棒グラフバーの配置を指定する。
+ :param align: x軸の縦軸棒グラフバーの配置を指定する。
  :type align: Literal['center','edge']
  :param title: グラフのタイトルを指定する。
  :type title: str
@@ -1028,7 +1028,7 @@ alpha:Numbertype=1,
 height:Numbertype=1,
 align:Literal['center','edge']='center',
 key:str=...
-)->dict[str,Any]:'''y軸向きにバーを設置した棒グラフを生成する。
+)->dict[str,Any]:'''横軸棒グラフを生成する。
 
  :param x: `x`のデータを指定する。
  :type x: o_array
@@ -1044,9 +1044,9 @@ key:str=...
  :type ylabel: str
  :param linewidth: 折線グラフの線の幅を指定する。
  :type linewidth: Numbertype
- :param height: 棒グラフのバーの幅を指定する。
+ :param height: 横軸棒グラフのバーの幅を指定する。
  :type height: Numbertype
- :param align: x軸の棒グラフバーの配置を指定する。
+ :param align: x軸の横軸棒グラフバーの配置を指定する。
  :type align: Literal['center','edge']
  :param title: グラフのタイトルを指定する。
  :type title: str

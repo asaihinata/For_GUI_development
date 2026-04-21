@@ -1,47 +1,47 @@
 from test_data import *
-if __name__=='__main__':
+if __name__=="__main__":
  layout=[
  [
- sgg.LineGraph(x=Linex,y=Liney,title='折り線グラフ',xlabel='xlabel',ylabel='ylabel'),
- sgg.Pie(data=Piedata,title='円グラフ',label=Pielabel)
+ sgg.LineGraph(x=linex1,y=liney1,title="折り線グラフ",xlabel="xlabel",ylabel="ylabel"),
+ sgg.Pie(data=piedata,title="円グラフ",label=pielabel)
  ],
  [
- sgg.BarGraph(x=BarGraphx1,y=BarGraphy1,title='棒グラフ(縦)',xlabel='xlabel',ylabel='ylabel',width=0.5),
- sgg.BarhGraph(x=BarGraphx2,y=BarGraphy2,title='棒グラフ(横)',xlabel='xlabel',ylabel='ylabel',height=0.5)
+ sgg.BarGraph(x=bargraphx1,y=bargraphy1,title="棒グラフ(縦)",xlabel="xlabel",ylabel="ylabel",width=0.5),
+ sgg.BarhGraph(x=bargraphx2,y=bargraphy2,title="棒グラフ(横)",xlabel="xlabel",ylabel="ylabel",height=0.5)
  ],
  [
- sgg.Scatter(x=Scatterx1,y=Scattery1,title='散布図',xlabel='xlabel',ylabel='ylabel'),
- sgg.Scatter(x=Scatterx2,y=Scattery2,title='散布図')
+ sgg.Scatter(x=scatterx1,y=scattery1,title="散布図",xlabel="xlabel",ylabel="ylabel"),
+ sgg.Scatter(x=scatterx2,y=scattery2,title="散布図")
  ],
  [
- sgg.DScatter(x=dscatterx,y=dscattery,z=dscatterz,title='3D 散布図',xlabel='x',ylabel='y',zlabel='z'),
- sgg.Hist(data=histdata,title='ヒストグラフ')
+ sgg.DScatter(x=dscatterx,y=dscattery,z=dscatterz,title="3D 散布図",xlabel="x",ylabel="y",zlabel="z"),
+ sgg.Hist(data=histdata,title="ヒストグラフ")
  ],
  [
- sgg.Stem(x=Stemx,y=Stemy,title='ステムグラフ'),
- sgg.Boxplot(data=boxdata,title='箱ひげ図',whis=1.5)
+ sgg.Stem(x=stemx,y=stemy,title="ステムグラフ"),
+ sgg.Boxplot(data=boxdata,title="箱ひげ図",whis=1.5)
  ],
  [
- sgg.Waterfall(x=waterfallx,y=waterfally,width=0.5,title='ウォーターフォール',linestyle='dotted'),
- sgg.Waterfallh(x=waterfallx,y=waterfally,height=0.5,title='ウォーターフォール')
+ sgg.Waterfall(x=waterfallx,y=waterfally,width=0.5,title="ウォーターフォール",linestyle="dotted"),
+ sgg.Waterfallh(x=waterfallx,y=waterfally,height=0.5,title="ウォーターフォール")
  ],
  [
- sgg.Step(data=stepdata,title='階段グラフ'),
- sgg.Stack(x=Stackx,y=Stacky,title='積み上げグラフ')
+ sgg.Step(data=stepdata,title="階段グラフ"),
+ sgg.Stack(x=stackx,y=stacky,title="積み上げグラフ")
  ],
  [
- sgg.Bubble(x=bubble_x,y=bubble_y,data=bubble_data,title=f'バブルグラフ',label=['バブルデモ1','バブルデモ2'],bubblesize=100,xlabel='xラベル',ylabel='yラベル'),
- sgg.Eventplot(data=eventdata,linestyle='dashed',label=['a','b','c'],title='イベントグラフ')
+ sgg.Bubble(x=bubble_x,y=bubble_y,data=bubble_data,title=f"バブルグラフ",label=["バブルデモ1","バブルデモ2"],bubblesize=100,xlabel="xラベル",ylabel="yラベル"),
+ sgg.Eventplot(data=eventdata,linestyle="dashed",label=["a","b","c"],title="イベントグラフ")
  ],
  [
- sgg.Errorbar(x=errorbarx,y=errorbary,err=err,title='エラーバー'),
- sgg.Errorbar(x=errorbarx,y=errorbary,xerr=xerr,yerr=yerr,title='エラーバー')
+ sgg.Errorbar(x=errorbarx,y=errorbary,err=err,title="エラーバー"),
+ sgg.Errorbar(x=errorbarx,y=errorbary,xerr=xerr,yerr=yerr,title="エラーバー")
  ],
  [
- sgg.Errorbar(x=errorbarx,y=errorbary,xerr=xerr,title='エラーバー'),
- sgg.Errorbar(x=errorbarx,y=errorbary,yerr=yerr,title='エラーバー')
+ sgg.Errorbar(x=errorbarx,y=errorbary,xerr=xerr,title="エラーバー"),
+ sgg.Errorbar(x=errorbarx,y=errorbary,yerr=yerr,title="エラーバー")
  ],
- [sgg.Ecdf(data=ecdfdata,title='経験的累積分布関数のグラフ')]
+ [sgg.Ecdf(data=ecdfdata,title="経験的累積分布関数のグラフ")]
  ]
- win=sgg.window(title='デモ',layout=layout,scroll_x=True,scroll_y=True,maxmine=True)
+ win=sgg.window(title="デモ",layout=layout,scroll_x=True,scroll_y=True,maxmine=True)
  win.run()

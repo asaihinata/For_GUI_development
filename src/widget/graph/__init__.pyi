@@ -319,7 +319,7 @@ labelframe:bool=True,
 labelshadow:bool=False,
 labelalpha:Numbertype=1,
 master:Misc=None
-)->None:'''x軸向きの棒グラフを作成する。
+)->None:'''縦軸棒グラフを作成する。
 
  :param x: `x`のデータを指定する。
  :type x: o_array
@@ -415,7 +415,7 @@ graph_grid:Colortype,
 title:str,
 width:Numbertype,
 align:Literal['center','edge']
-)->NoReturn:'''棒グラフを再表示させる。'''
+)->NoReturn:'''縦軸棒グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
@@ -461,7 +461,7 @@ labelframe:bool=True,
 labelshadow:bool=False,
 labelheight:Numbertype=1,
 align:Literal['center','edge']='center'
-)->None:'''y軸向きの棒グラフを作成する。
+)->None:'''横軸棒グラフを作成する。
 
  :param x: `x`のデータを指定する。
  :type x: o_array
@@ -557,7 +557,7 @@ xlabel:str,
 ylabel:str,
 graph_grid:Colortype,
 title:str
-)->NoReturn:'''横向き棒グラフを再表示させる。'''
+)->NoReturn:'''横軸棒グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''

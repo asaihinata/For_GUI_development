@@ -2,6 +2,7 @@
 docs/*
 !docs/requirements.txt
 !docs/data/
+!docs/for_development/
 # デモファイル
 demo/
 demo.py
