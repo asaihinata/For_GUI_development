@@ -1,11 +1,12 @@
 from re import fullmatch
 from numpy import pi
+from matplotlib.lines import Line2D
 from ....types import Numbertype
 from ..._function import listchose
 __all__=['Angle','FMT','FMTSOLID','FMTSOLIDLIST','Hatch','Marker','NSolid','SCapstyle','Solid','SOLIDLIST','Textcoords','XYcoords']
 COLOR=['b','c','g','k','m','r','w','y']
 HATCH=[None,'o','oo','O','OO','x','xx','*','**','*-','+','++','+o','-','--','-\\\\','.','..','/','//','/o','O.','O|','\\','\\\\','\\|','o-','x*','|','|*','||']
-MARKERS=[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','o','p','P','s','v','x','X','$\\alpha$','$\\beta$','$\\gamma$','*','+',',','.','<','>','^','_','|']
+MARKERS=[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
 FMTMARKERS=['.','s','o','p','v','*','^','D']
 FMTSOLID={'-':['-','solid'],'--':['--','dashed'],'-.':['-.','dashdot'],':':[':','dotted']}
 FMTSOLIDLIST=['dashdot','dashed','dotted','solid','-','--','-.',':']
@@ -38,7 +39,9 @@ class NSolid:
  def __str__(self):return self.solid[0]
 class Marker:
  def __init__(self,marker=None):self.marker=[self._get(i) for i in marker] if isinstance(marker,(list,tuple)) else [self._get(marker)]
- def _get(self,val):return val if(isinstance(val,str)and fullmatch(r'\$[a-zA-Z]\$',val)or(val in MARKERS)) else None
+ def _get(self,val):
+  if(isinstance(val,str)and fullmatch(r'\$[a-zA-Z]\$',val)or(val in MARKERS)):return val
+  else:return None
  def __iter__(self):return iter(self.marker)
  def __len__(self):return len(self.marker)
  def __str__(self):return self.marker[0]

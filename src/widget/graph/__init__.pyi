@@ -137,7 +137,7 @@ xlabel:str=...,
 ylabel:str=...,
 linewidth:Numbertype=2,
 markersize:Numbertype=10,
-marker:Literal['1','2','3','4','8','circle','d','diamond','D','h','hline','H','none','None',None,'o','octagon','p','pentagon','pixel','plus','point','P','s','square','star','triangle','v','vline','x','X','hexagon1','hexagon2',' ','*','+',',','.','<','>',']','^','_','plus-filled','thin_diamond','tri_down','tri_left','tri_right','tri_up','triangle_down','triangle_left','triangle_right','triangle_up','|']=None,
+marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']=None,
 linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
 color:Colortype|tuple[Colortype,...]=...,
 size:TupleNumbertype2=(500,400),
@@ -189,7 +189,7 @@ master:Misc=None
  :param markersize: 折線グラフのマーカーの大きさを指定する。
  :type markersize: Numbertype
  :param marker: 折線グラフのマーカーを指定する。
- :type marker: Literal['1','2','3','4','8','circle','d','diamond','D','h','hline','H','none','None',None,'o','octagon','p','pentagon','pixel','plus','point','P','s','square','star','triangle','v','vline','x','X','hexagon1','hexagon2',' ','*','+',',','.','<','>',']','^','_','plus-filled','thin_diamond','tri_down','tri_left','tri_right','tri_up','triangle_down','triangle_left','triangle_right','triangle_up','|']
+ :type marker: Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
  :param linestyle: 折線グラフの線の種類を指定する。
  :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',': ','none',None,' ','']
  :param title: グラフのタイトルを指定する。
@@ -1506,7 +1506,7 @@ y:n_array=...,
 xlabel:str=...,
 ylabel:str=...,
 label:labeltype=...,
-marker:Literal['1','2','3','4','8','circle','d','diamond','D','h','hline','H','none','None',None,'o','octagon','p','pentagon','pixel','plus','point','P','s','square','star','triangle','v','vline','x','X','hexagon1','hexagon2',' ','*','+',',','.','<','>',']','^','_','plus-filled','thin_diamond','tri_down','tri_left','tri_right','tri_up','triangle_down','triangle_left','triangle_right','triangle_up','|']='o',
+marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
 markersize:Numbertype=10,
 color:Colortype|tuple[Colortype,...]=...,
 size:TupleNumbertype2=(500,400),
@@ -1554,7 +1554,7 @@ master:Misc=None
  :param label: ラベルを指定する。
  :type label: labeltype
  :param marker: 散布図のマーカーを指定する。
- :type marker: Literal['1','2','3','4','8','circle','d','diamond','D','h','hline','H','none','None',None,'o','octagon','p','pentagon','pixel','plus','point','P','s','square','star','triangle','v','vline','x','X','hexagon1','hexagon2',' ','*','+',',','.','<','>',']','^','_','plus-filled','thin_diamond','tri_down','tri_left','tri_right','tri_up','triangle_down','triangle_left','triangle_right','triangle_up','|']
+ :type marker: Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
  :param markersize: 散布図のマーカーの大きさを指定する。
  :type markersize: Numbertype
  :param title: グラフのタイトルを指定する。
@@ -1648,7 +1648,7 @@ z:n_array=...,
 xlabel:str=...,
 ylabel:str=...,
 zlabel:str=...,
-marker:Literal['1','2','3','4','8','circle','d','diamond','D','h','hline','H','none','None',None,'o','octagon','p','pentagon','pixel','plus','point','P','s','square','star','triangle','v','vline','x','X','hexagon1','hexagon2',' ','*','+',',','.','<','>',']','^','_','plus-filled','thin_diamond','tri_down','tri_left','tri_right','tri_up','triangle_down','triangle_left','triangle_right','triangle_up','|']='o',
+marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
 markersize:Numbertype=10,
 color:Colortype|tuple[Colortype,...]=...,
 size:TupleNumbertype2=(500,400),
@@ -1703,7 +1703,7 @@ azim:Numbertype=45
  :param zlabel: z軸のラベルを指定する。
  :type zlabel: str
  :param marker: 散布図のマーカーを指定する。
- :type marker: Literal['1','2','3','4','8','circle','d','diamond','D','h','hline','H','none','None',None,'o','octagon','p','pentagon','pixel','plus','point','P','s','square','star','triangle','v','vline','x','X','hexagon1','hexagon2',' ','*','+',',','.','<','>',']','^','_','plus-filled','thin_diamond','tri_down','tri_left','tri_right','tri_up','triangle_down','triangle_left','triangle_right','triangle_up','|']
+ :type marker: Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
  :param markersize: 散布図のマーカーの大きさを指定する。
  :type markersize: Numbertype
  :param title: グラフのタイトルを指定する。
@@ -2457,7 +2457,7 @@ data:n_array=...,
 bubblesize:Numbertype=1,
 xlabel:str=...,
 ylabel:str=...,
-marker:Literal['1','2','3','4','8','circle','d','diamond','D','h','hline','H','none','None',None,'o','octagon','p','pentagon','pixel','plus','point','P','s','square','star','triangle','v','vline','x','X','hexagon1','hexagon2',' ','*','+',',','.','<','>',']','^','_','plus-filled','thin_diamond','tri_down','tri_left','tri_right','tri_up','triangle_down','triangle_left','triangle_right','triangle_up','|']='o',
+marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
 color:Colortype|tuple[Colortype,...]=...,
 size:TupleNumbertype2=(500,400),
 fg:Colortype='#000000',
@@ -2507,7 +2507,7 @@ master:Misc=None
  :param label: ラベルを指定する。
  :type label: labeltype
  :param marker: バブルグラフのマーカーを指定する。
- :type marker: Literal['1','2','3','4','8','circle','d','diamond','D','h','hline','H','none','None',None,'o','octagon','p','pentagon','pixel','plus','point','P','s','square','star','triangle','v','vline','x','X','hexagon1','hexagon2',' ','*','+',',','.','<','>',']','^','_','plus-filled','thin_diamond','tri_down','tri_left','tri_right','tri_up','triangle_down','triangle_left','triangle_right','triangle_up','|']
+ :type marker: Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
  :param markersize: 散布図のマーカーの大きさを指定する。
  :type markersize: Numbertype
  :param title: グラフのタイトルを指定する。
@@ -2958,8 +2958,6 @@ master:Misc=None
  :type barsabove: bool
  :param linestyle: データ点とデータ点を結ぶ線の種類を指定する。
  :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
- :param marker: データ点のマーカーの種類を指定する。
- :type marker: Literal['.','s','o','p','v','*','^','D']
  :param marker: データ点のマーカーの種類を指定する。
  :type marker: Literal['.','s','o','p','v','*','^','D']
  :param linewidth: データ点を結ぶ線の太さを指定する。

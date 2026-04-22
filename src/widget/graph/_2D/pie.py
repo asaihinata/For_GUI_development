@@ -14,7 +14,8 @@ class Pie(twoDElement):
   self.labeldistance=num0(kw.get('labeldistance'),1.1)
   explode=kw.get('explode')
   if isinstance(explode,(list,tuple)) and all(isinstance(i,(int,float,Number))for i in explode):self.explode=list(map(float,explode))
-  elif isinstance(explode,(int,float,Number)):self.explode=[float(explode) for _ in range(self.max_depth)]
+  elif isinstance(explode,(int,float)):self.explode=[float(explode) for _ in range(self.max_depth)]
+  elif isinstance(explode,Number):self.explode=[float(explode.val) for _ in range(self.max_depth)]
   else:self.explode=None
   self.plot(self.data,startangle=self.startangle,shadow=self.shadow,counterclock=self.counterclock,label=self.label,labeldistance=self.labeldistance,explode=self.explode,startangletype=self.startangletype,alpha=self.alpha)
  def plot(self,data,startangle=0.0,shadow=False,counterclock=True,label=None,labeldistance=1.1,explode=None,startangletype=True,alpha=1):

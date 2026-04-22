@@ -218,7 +218,7 @@ class twoDElement(GElement):
    self.ax.title.set_color(self.fg)
   self.ax.xaxis.label.set_color(self.fg)
   self.ax.yaxis.label.set_color(self.fg)
-  if self.grid_xy:self.ax.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
+  if self.grid_xy:self.ax.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6,which='both')
   else:
    self.ax.grid(False)
    if self.grid_x:self.ax.xaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
