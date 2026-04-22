@@ -30,18 +30,17 @@ if __name__=="__main__":
  sgg.Stack(x=stackx,y=stacky,title="積み上げグラフ")
  ],
  [
- sgg.Bubble(x=bubble_x,y=bubble_y,data=bubble_data,title=f"バブルグラフ",label=["バブルデモ1","バブルデモ2"],bubblesize=100,xlabel="xラベル",ylabel="yラベル"),
- sgg.Eventplot(data=eventdata,linestyle="dashed",label=["a","b","c"],title="イベントグラフ")
+ sgg.Eventplot(data=eventdata,linestyle="dashed",label=["a","b","c"],title="イベントグラフ"),
+ sgg.Errorbar(x=errorbarx,y=errorbary,err=err,title="エラーバー")
  ],
  [
- sgg.Errorbar(x=errorbarx,y=errorbary,err=err,title="エラーバー"),
- sgg.Errorbar(x=errorbarx,y=errorbary,xerr=xerr,yerr=yerr,title="エラーバー")
+ sgg.Errorbar(x=errorbarx,y=errorbary,xerr=xerr,yerr=yerr,title="エラーバー"),
+ sgg.Errorbar(x=errorbarx,y=errorbary,xerr=xerr,title="エラーバー")
  ],
  [
- sgg.Errorbar(x=errorbarx,y=errorbary,xerr=xerr,title="エラーバー"),
- sgg.Errorbar(x=errorbarx,y=errorbary,yerr=yerr,title="エラーバー")
- ],
- [sgg.Ecdf(data=ecdfdata,title="経験的累積分布関数のグラフ")]
+ sgg.Errorbar(x=errorbarx,y=errorbary,yerr=yerr,title="エラーバー"),
+ sgg.Ecdf(data=ecdfdata,title="経験的累積分布関数のグラフ")
+ ]
  ]
  win=sgg.window(title="デモ",layout=layout,scroll_x=True,scroll_y=True,maxmine=True)
  win.run()

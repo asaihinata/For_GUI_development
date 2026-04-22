@@ -2,8 +2,8 @@ from test_data import *
 if __name__=="__main__":
  layout=[
   [
-   sgg.Scatter(x=scatterx1,y=scattery1,title="散布図の基本1",xlabel="xlabel",ylabel="ylabel"),
-   sgg.Scatter(x=scatterx2,y=scattery2,title="散布図の基本2",xlabel="xlabel",ylabel="ylabel")
+   sgg.Scatter(x=scatterx1,y=scattery1,title="散布図の基本1",xlabel="x軸のラベル",ylabel="y軸のラベル"),
+   sgg.Scatter(x=scatterx2,y=scattery2,title="散布図の基本2",xlabel="x軸のラベル",ylabel="y軸のラベル")
   ],
   [
    sgg.Scatter(x=scatterx1,y=scattery1,title="マーカーの指定",marker="d"),
