@@ -20,7 +20,7 @@ class Stem(twoDElement):
   self.clear()
   for i,(xs,ys) in enumerate(product(x,y)):
    stem=self.ax.stem(xs,ys,linefmt=self._lsmc(i),markerfmt=self._markerfmt(marker)[i],basefmt=self._lsmc(i),bottom=bottom,orientation=orientation,label=label[i])
-   for j in stem.get_children():j.set_alpha(self.alpha)
+   for j in stem.get_children():j.set_alpha(alpha)
    self.graphdata.append(stem)
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
@@ -64,11 +64,11 @@ class Stem(twoDElement):
    for i in color:
     if i in stem_color_list:set_color_arr.append(i)
    if len(set_color_arr)==0:color=stem_color_list
+  elif isinstance(color,str):color=color
   else:color=stem_color_list
   for k,v in {'r':['r','red'],'g':['g','green'],'b':['b','blue'],'c':['c','cyan'],'m':['m','magenta'],'y':['y','yellow'],'k':['k','black'],'w':['w','white']}.items():
-   if isinstance(color,str):
-    if color in v:set_arr=[k]
-   if isinstance(color,Arraytype):
+   if isinstance(color,str) and color in v:set_arr=[k]
+   elif isinstance(color,Arraytype):
     for i in color:
      if i in v:set_arr.append(k)
   return set_arr

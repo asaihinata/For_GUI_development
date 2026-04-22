@@ -18,7 +18,7 @@ if __name__=="__main__":
  sgg.Hist(data=histdata,title="ヒストグラフ")
  ],
  [
- sgg.Stem(x=stemx,y=stemy,title="ステムグラフ"),
+ sgg.Stem(x=stemx1,y=stemy1,title="ステムグラフ"),
  sgg.Boxplot(data=boxdata1,title="箱ひげ図",whis=1.5)
  ],
  [

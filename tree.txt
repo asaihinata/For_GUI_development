@@ -115,14 +115,18 @@ For_GUI_development
 │   │       └── Lenna.png
 │   ├── test_all.py
 │   ├── test_graph
-│   │   ├── test_bargraph.py
-│   │   ├── test_data.py
-│   │   ├── test_graph.py
-│   │   ├── test_graph_schooldata.py
-│   │   ├── test_japanese.py
-│   │   ├── test_linegraph.py
-│   │   ├── test_pie.py
-│   │   └── test_scatter.py
+│   │   ├── application
+│   │   │   ├── test_graph_schooldata.py
+│   │   │   └── test_japanese.py
+│   │   ├── basic
+│   │   │   ├── test_bargraph.py
+│   │   │   ├── test_boxplot.py
+│   │   │   ├── test_dscatter.py
+│   │   │   ├── test_graph.py
+│   │   │   ├── test_linegraph.py
+│   │   │   ├── test_pie.py
+│   │   │   └── test_scatter.py
+│   │   └── test_data.py
 │   ├── test_log
 │   │   ├── test_log.log
 │   │   └── test_log.py

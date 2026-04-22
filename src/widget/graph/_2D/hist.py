@@ -22,12 +22,13 @@ class Hist(twoDElement):
  def plot(self,data,label=None,bins=10,ranges=None,bottom=0,orientation='vertical',width=None,alpha=1):
   self.clear()
   self.graphdata=self.ax.hist(data,label=label,bins=bins,range=ranges,bottom=bottom,rwidth=width,orientation=orientation,alpha=alpha)
-  self.xtickslist,self.xtickslists,pows=[],[],np.pow(10,self.decimalpoint)
+  self.tickslist,self.tickslists,pows=[],[],np.pow(10,self.decimalpoint)
   for i in self.graphdata[1]:
-   self.xtickslist.append(i)
-   self.xtickslists.append(np.floor(i*pows)/pows)
+   self.tickslist.append(i)
+   self.tickslists.append(np.floor(i*pows)/pows)
   self._apply_labels(self.xlabel,self.ylabel)
-  self.ax.set_xticks(self.xtickslist,self.xtickslists)
+  if orientation=='vertical':self.ax.set_xticks(self.tickslist,self.tickslists)
+  else:self.ax.set_yticks(self.tickslist,self.tickslists)
   self.legend()
   self._adjustment()
  def update(self,data=None,**kw):
