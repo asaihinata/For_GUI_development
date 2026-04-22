@@ -13,7 +13,7 @@ class Boxplot(twoDElement):
   self.notch=bols(kw.get('notch'),False)
   self.showfliers=bols(kw.get('showfliers'))
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
-  self.plot(self.data,label=self.label,width=self.width,whis=self.whis,fill=self.fill,showfliers=self.showfliers,notch=self.notch,orientation=self.orientation,alpha=self.alpha)
+  self.plot(self.data,label=self.label,width=self.width,legend=self.legends,whis=self.whis,fill=self.fill,showfliers=self.showfliers,notch=self.notch,orientation=self.orientation,alpha=self.alpha)
  def plot(self,data,label=None,width=0.15,whis=1.5,fill=False,legend=True,showfliers=True,notch=False,orientation='vertical',alpha=1):
   self.clear()
   boxplot=self.ax.boxplot(data.T,showfliers=showfliers,label=label,widths=width,whis=whis,patch_artist=fill,notch=notch,orientation=orientation)
@@ -37,7 +37,7 @@ class Boxplot(twoDElement):
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)
   self.width=range_num(num0s(kw.get('width'),self.width),0,1,self.width)
   self.whis=self._boxplot_whis(kw.get('whis',self.whis))
-  self.plot(self.data,label=self.label,width=self.width,whis=self.whis,fill=self.fill,showfliers=self.showfliers,notch=self.notch,orientation=self.orientation)
+  self.plot(self.data,label=self.label,width=self.width,legend=self.legends,whis=self.whis,fill=self.fill,showfliers=self.showfliers,notch=self.notch,orientation=self.orientation,alpha=self.alpha)
   self._redraw()
  def get(self):return self.graphdata
  def getdata(self):return self.data

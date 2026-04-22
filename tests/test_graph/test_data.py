@@ -29,7 +29,8 @@ xerr=[2,1,2]
 yerr=[1,2,1]
 stepdata=[1,3,5,6]
 histdata=rand.normal(low=50,high=10,lenght=1000)
-boxdata=rand.normal(low=100,high=10,lenght=100)
+boxdata1=rand.normal(low=100,high=10,lenght=100)
+boxdata2=rand.normal(low=90,high=20,lenght=150,hierarchy=2)
 eventdata=np.random.gamma(4,size=(3,50))
 ecdfdata=4+rand.normal(low=0,high=1.5,lenght=100)
 bubble_x=[[100,300,400,500],[200,500,100,200]]

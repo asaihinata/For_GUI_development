@@ -2046,9 +2046,9 @@ key:str=...
  :type labelalpha: Numbertype'''
  @staticmethod
  def DScatter(
-x:n_array,
-y:n_array,
-z:n_array,
+x:o_array,
+y:o_array,
+z:o_array,
 xlabel:str=...,
 ylabel:str=...,
 zlabel:str=...,
@@ -2097,11 +2097,11 @@ key:str=...
 )->dict[str,Any]:'''3Dの散布図を生成する。
 
  :param x: `x`のデータを指定する。
- :type x: n_array
+ :type x: o_array
  :param y: `y`のデータを指定する。
- :type y: n_array
+ :type y: o_array
  :param z: `z`のデータを指定する。
- :type z: n_array
+ :type z: o_array
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。

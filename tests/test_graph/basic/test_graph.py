@@ -19,7 +19,7 @@ if __name__=="__main__":
  ],
  [
  sgg.Stem(x=stemx,y=stemy,title="ステムグラフ"),
- sgg.Boxplot(data=boxdata,title="箱ひげ図",whis=1.5)
+ sgg.Boxplot(data=boxdata1,title="箱ひげ図",whis=1.5)
  ],
  [
  sgg.Waterfall(x=waterfallx,y=waterfally,width=0.5,title="ウォーターフォール",linestyle="dotted"),
