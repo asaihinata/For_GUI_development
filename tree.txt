@@ -105,7 +105,7 @@ For_GUI_development
 │       │       └── __init__.py
 │       ├── window.py
 │       └── window.pyi
-├── tests
+├── test
 │   ├── data
 │   │   ├── csv
 │   │   │   ├── __init__.py
@@ -118,15 +118,31 @@ For_GUI_development
 │   │   ├── application
 │   │   │   ├── test_graph_schooldata.py
 │   │   │   └── test_japanese.py
-│   │   ├── basic
-│   │   │   ├── test_bargraph.py
-│   │   │   ├── test_boxplot.py
-│   │   │   ├── test_dscatter.py
-│   │   │   ├── test_graph.py
-│   │   │   ├── test_linegraph.py
-│   │   │   ├── test_pie.py
-│   │   │   └── test_scatter.py
-│   │   └── test_data.py
+│   │   └── basic
+│   │       ├── test_bargraph.py
+│   │       ├── test_barhgraph.py
+│   │       ├── test_boxplot.py
+│   │       ├── test_dscatter.py
+│   │       ├── test_ecdf.py
+│   │       ├── test_errorbar.py
+│   │       ├── test_eventplot.py
+│   │       ├── test_funne.py
+│   │       ├── test_graph.py
+│   │       ├── test_hexbin.py
+│   │       ├── test_hist.py
+│   │       ├── test_hist2d.py
+│   │       ├── test_linefill.py
+│   │       ├── test_linegraph.py
+│   │       ├── test_pie.py
+│   │       ├── test_scatter.py
+│   │       ├── test_stack.py
+│   │       ├── test_stacked.py
+│   │       ├── test_stackedh.py
+│   │       ├── test_stem.py
+│   │       ├── test_step.py
+│   │       ├── test_violinplot.py
+│   │       ├── test_waterfall.py
+│   │       └── test_waterfallh.py
 │   ├── test_log
 │   │   ├── test_log.log
 │   │   └── test_log.py
