@@ -107,10 +107,6 @@ For_GUI_development
 │       └── window.pyi
 ├── test
 │   ├── data
-│   │   ├── csv
-│   │   │   ├── __init__.py
-│   │   │   ├── japan_population.csv
-│   │   │   └── school_test_demo_data.csv
 │   │   └── img
 │   │       └── Lenna.png
 │   ├── test_all.py
@@ -118,35 +114,40 @@ For_GUI_development
 │   │   ├── application
 │   │   │   ├── test_graph_schooldata.py
 │   │   │   └── test_japanese.py
-│   │   └── basic
-│   │       ├── test_bargraph.py
-│   │       ├── test_barhgraph.py
-│   │       ├── test_boxplot.py
-│   │       ├── test_dscatter.py
-│   │       ├── test_ecdf.py
-│   │       ├── test_errorbar.py
-│   │       ├── test_eventplot.py
-│   │       ├── test_funne.py
-│   │       ├── test_graph.py
-│   │       ├── test_hexbin.py
-│   │       ├── test_hist.py
-│   │       ├── test_hist2d.py
-│   │       ├── test_linefill.py
-│   │       ├── test_linegraph.py
-│   │       ├── test_pie.py
-│   │       ├── test_scatter.py
-│   │       ├── test_stack.py
-│   │       ├── test_stacked.py
-│   │       ├── test_stackedh.py
-│   │       ├── test_stem.py
-│   │       ├── test_step.py
-│   │       ├── test_violinplot.py
-│   │       ├── test_waterfall.py
-│   │       └── test_waterfallh.py
+│   │   ├── basic
+│   │   │   ├── test_bargraph.py
+│   │   │   ├── test_barhgraph.py
+│   │   │   ├── test_boxplot.py
+│   │   │   ├── test_dscatter.py
+│   │   │   ├── test_ecdf.py
+│   │   │   ├── test_errorbar.py
+│   │   │   ├── test_eventplot.py
+│   │   │   ├── test_funne.py
+│   │   │   ├── test_graph.py
+│   │   │   ├── test_hexbin.py
+│   │   │   ├── test_hist.py
+│   │   │   ├── test_hist2d.py
+│   │   │   ├── test_linefill.py
+│   │   │   ├── test_linegraph.py
+│   │   │   ├── test_pie.py
+│   │   │   ├── test_scatter.py
+│   │   │   ├── test_stack.py
+│   │   │   ├── test_stacked.py
+│   │   │   ├── test_stackedh.py
+│   │   │   ├── test_stem.py
+│   │   │   ├── test_step.py
+│   │   │   ├── test_violinplot.py
+│   │   │   ├── test_waterfall.py
+│   │   │   └── test_waterfallh.py
+│   │   └── data
+│   │       └── csv
+│   │           ├── __init__.py
+│   │           ├── japan_population.csv
+│   │           └── school_test_demo_data.csv
 │   ├── test_log
 │   │   ├── test_log.log
 │   │   └── test_log.py
 │   └── test_widget
 │       ├── test_all.py
 │       └── test_expansion.py
-└── tree.txt
+└── tree.tx

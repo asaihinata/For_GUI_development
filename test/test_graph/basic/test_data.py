@@ -55,3 +55,5 @@ linefillx=np.linspace(0,8,16)
 linefillymax=3+4*linefillx/8+np.random.uniform(0.0,0.5,len(linefillx))
 linefillymin=1+2*linefillx/8+np.random.uniform(0.0,0.5,len(linefillx))
 funnedata=[30,40,50]
+hatplotx=[15,15,20,20,25]
+hatplotdata=[25,30,30,30,20]
