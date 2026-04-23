@@ -1,9 +1,13 @@
 from test_data import *
 if __name__=="__main__":
+ print(f"{stemx1=}")
+ print(f"{stemy1=}")
+ print(f"{stemx2=}")
+ print(f"{stemy2=}")
  layout=[
   [
-   sgg.Stem(x=stemx1,y=stemy1,title="幹図の基本1",xlabel="x軸のラベル",ylabel="y軸のラベル"),
-   sgg.Stem(x=stemx2,y=stemy2,title="幹図の基本2",xlabel="x軸のラベル",ylabel="y軸のラベル")
+   sgg.Stem(x=stemx1,y=stemy1,title="幹図の基本1",xlabel=xlabel,ylabel=ylabel),
+   sgg.Stem(x=stemx2,y=stemy2,title="幹図の基本2",xlabel=xlabel,ylabel=ylabel)
   ],
   [
    sgg.Stem(x=stemx1,y=stemy1,title="マーカーを変更する",marker="^"),
@@ -18,5 +22,5 @@ if __name__=="__main__":
    sgg.Stem(x=stemx1,y=stemy1,title="幹図の線を変更する",line="--")
   ]
  ]
- win=sgg.window(title="幹図(デモ)",layout=layout,scroll_x=True,scroll_y=True,maxmine=True)
+ win=sgg.window(title="幹図(デモ)",layout=layout,scroll=True,maxmine=True)
  win.run()

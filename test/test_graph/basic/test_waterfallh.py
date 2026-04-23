@@ -1,8 +1,10 @@
 from test_data import *
 if __name__=="__main__":
+ print(f"{waterfallx=}")
+ print(f"{waterfally=}")
  layout=[
   [
-   sgg.Waterfallh(x=waterfallx,y=waterfally,title="ウォーターフォールの基本",xlabel="x軸のラベル",ylabel="y軸のラベル"),
+   sgg.Waterfallh(x=waterfallx,y=waterfally,title="横向きのウォーターフォールの基本",xlabel=xlabel,ylabel=ylabel),
    sgg.Waterfallh(x=waterfallx,y=waterfally,title="バーの幅を変更する",width=0.5)
   ],
   [
@@ -18,5 +20,5 @@ if __name__=="__main__":
    sgg.Waterfallh(x=waterfallx,y=waterfally,title="合計を表示させる",sums=True,sumstext="合計")
   ]
  ]
- win=sgg.window(title="横向きのウォーターフォール(デモ)",layout=layout,scroll_x=True,scroll_y=True,maxmine=True)
+ win=sgg.window(title="横向きのウォーターフォール(デモ)",layout=layout,scroll=True,maxmine=True)
  win.run()

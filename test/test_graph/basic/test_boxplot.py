@@ -1,9 +1,11 @@
 from test_data import *
 if __name__=="__main__":
+ print(f"{boxdata1=}")
+ print(f"{boxdata2=}")
  layout=[
   [
-   sgg.Boxplot(data=boxdata1,title="箱ひげ図の基本1",xlabel="x軸のラベル",ylabel="y軸のラベル"),
-   sgg.Boxplot(data=boxdata2,title="箱ひげ図の基本2",xlabel="x軸のラベル",ylabel="y軸のラベル")
+   sgg.Boxplot(data=boxdata1,title="箱ひげ図の基本1",xlabel=xlabel,ylabel=ylabel),
+   sgg.Boxplot(data=boxdata2,title="箱ひげ図の基本2",xlabel=xlabel,ylabel=ylabel)
   ],
   [
    sgg.Boxplot(data=boxdata1,title="凡例を非表示にする",legend=False),
@@ -21,5 +23,5 @@ if __name__=="__main__":
    sgg.Boxplot(data=boxdata1,title="箱ひげ図の幅を変更する",width=0.5)
   ]
  ]
- win=sgg.window(title="箱ひげ図(デモ)",layout=layout,scroll_x=True,scroll_y=True,maxmine=True)
+ win=sgg.window(title="箱ひげ図(デモ)",layout=layout,scroll=True,maxmine=True)
  win.run()

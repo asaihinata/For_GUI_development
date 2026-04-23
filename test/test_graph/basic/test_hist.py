@@ -1,8 +1,9 @@
 from test_data import *
 if __name__=="__main__":
+ print(f"{histdata=}")
  layout=[
   [
-   sgg.Hist(data=histdata,title="ヒストグラフの基本",xlabel="x軸のラベル",ylabel="y軸のラベル"),
+   sgg.Hist(data=histdata,title="ヒストグラフの基本",xlabel=xlabel,ylabel=ylabel),
    sgg.Hist(data=histdata,title="表示される範囲を指定する",min=50,max=75)
   ],
   [
@@ -18,5 +19,5 @@ if __name__=="__main__":
    sgg.Hist(data=histdata,title="幅を指定する",width=0.4)
   ]
  ]
- win=sgg.window(title="ヒストグラフ(デモ)",layout=layout,scroll_x=True,scroll_y=True,maxmine=True)
+ win=sgg.window(title="ヒストグラフ(デモ)",layout=layout,scroll=True,maxmine=True)
  win.run()

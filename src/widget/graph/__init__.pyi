@@ -603,20 +603,20 @@ labelframe:bool=True,
 labelshadow:bool=False,
 labelheight:Numbertype=1,
 align:Literal['center','edge']='center'
-)->None:'''
+)->None:'''じょうごグラフを生成する。
 
- :param x: `x`のデータを指定する。
- :type x: o_array
- :param y: `y`のデータを指定する。
- :type y: n_array
- :param logs: x軸を対数スケールにするかを指定する。
- :type logs: bool
+ :param data: `data`のデータを指定する。
+ :type data: o_array
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。2n+1(nは正の整数)の整数を指定する。
+ :type xmajormaxbins: int
  :param label: ラベルを指定する。
  :type label: labeltype
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
  :type ylabel: str
+ :param linewidth: 折線グラフの線の幅を指定する。
+ :type linewidth: Numbertype
  :param height: 棒グラフのバーの幅を指定する。
  :type height: Numbertype
  :param align: x軸の棒グラフバーの配置を指定する。
@@ -653,8 +653,6 @@ align:Literal['center','edge']='center'
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
- :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
- :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
  :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
@@ -688,10 +686,7 @@ align:Literal['center','edge']='center'
  def update(
 self,
 x:o_array,
-y:n_array,
 height:Numbertype,
-align:Literal['center','edge'],
-logs:bool,
 fg:Colortype,
 bg:Colortype,
 alpha:Numbertype,
@@ -699,7 +694,7 @@ xlabel:str,
 ylabel:str,
 graph_grid:Colortype,
 title:str
-)->NoReturn:'''横向き棒グラフを再表示させる。'''
+)->NoReturn:'''じょうごグラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
@@ -2600,7 +2595,6 @@ self,
 x:o_array=...,
 ymin:n_array=...,
 ymax:n_array=...,
-linewidth:Numbertype=0,
 centerlinewidth:Numbertype=2,
 xlabel:str=...,
 ylabel:str=...,
@@ -2638,7 +2632,7 @@ labelframe:bool=True,
 labelshadow:bool=False,
 labelalpha:Numbertype=1,
 master:Misc=None
-)->None:'''2つの水平曲線の間の領域を埋めるグラフを作成する。
+)->None:'''積上げ面グラフを作成する。
 
  :param x: 曲線を定義する節点のx座標を指定する。
  :type x: o_array
@@ -2646,8 +2640,6 @@ master:Misc=None
  :type ymin: n_array
  :param ymax: 2つ目の曲線を定義する節点のy座標を指定する。
  :type ymax: n_array
- :param linewidth: 境界線の太さを指定する。
- :type linewidth: Numbertype
  :param centerlinewidth: 線の太さを指定する。
  :type centerlinewidth: Numbertype
  :param xlabel: x軸のラベルを指定する。
@@ -2725,7 +2717,6 @@ self,
 x:o_array,
 ymin:n_array,
 ymax:n_array,
-linewidth:Numbertype,
 centerlinewidth:Numbertype,
 xlabel:str,
 ylabel:str,
@@ -2954,7 +2945,7 @@ master:Misc=None
  :type yuplims: bool
  :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
  :type ylolims: bool
- :param barsabove: マーカーの位置を指定する。
+ :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する。
  :type barsabove: bool
  :param linestyle: データ点とデータ点を結ぶ線の種類を指定する。
  :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
@@ -3072,8 +3063,8 @@ self,
 data:o_array=...,
 linewidth:Numbertype=1,
 linelength:Numbertype=1,
-orientation:Literal['vertical','horizontal']='vertical',
 linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':']='solid',
+orientation:Literal['vertical','horizontal']='vertical',
 xlabel:str=...,
 ylabel:str=...,
 label:labeltype=...,
@@ -3118,10 +3109,10 @@ master:Misc=None
  :type linewidth: Numbertype
  :param linelength: 線の合計の高さを指定する。
  :type linelength: Numbertype
- :param orientation: 向きを指定する。
- :type orientation: Literal['vertical','horizontal']
  :param linestyle: 線の種類を指定する。
  :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
+ :param orientation: 向きを指定する。
+ :type orientation: Literal['vertical','horizontal']
  :param label: ラベルを指定する。
  :type label: labeltype
  :param xlabel: x軸のラベルを指定する。
@@ -3267,8 +3258,8 @@ labely_verwrit:Literal['vertical','horizontal']='vertical'
  :type ymax,ymin: Numbertype
  :param bins: ビンの数を指定する。
  :type bins: int|tuple[int,int]|ArrayLike|tuple[ArrayLike,ArrayLike]
- :param bins: ヒストグラムを正規化かするか指定する。
- :type bins: bool
+ :param density: ヒストグラムを正規化かするか指定する。
+ :type density: bool
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -3537,7 +3528,6 @@ extent:tuple[float,float,float,float]|None=None,
 xscale:Literal['linear','log']='linear',
 yscale:Literal['linear','log']='linear',
 mincnt:int=1,
-marginals:bool=False,
 bins:Literal['log']|int|tuple[float,...]|None=None,
 size:TupleNumbertype2=(500,400),
 fg:Colortype='#000000',
@@ -3590,8 +3580,6 @@ master:Misc=None
  :type mincnt: int
  :param bins: ビンのカウント方法を指定する。
  :type bins: Literal['log']|int|tuple[float,...]|None
- :param marginals: データの周辺分布を表示させるか指定する。
- :type marginals: bool
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -3672,7 +3660,6 @@ extent:tuple[float,float,float,float]|None,
 xscale:Literal['linear','log'],
 yscale:Literal['linear','log'],
 mincnt:int,
-marginals:bool,
 fg:Colortype,
 bg:Colortype,
 alpha:Numbertype,

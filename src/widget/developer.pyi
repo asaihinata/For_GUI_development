@@ -39,6 +39,30 @@ class rand:
  :rtype: ndarray'''
  @overload
  @classmethod
+ def randn(cls,size:None|_ShapeLike=None)->float|NDArray[float64]:'''標準正規分布(平均0,標準偏差1)に従う乱数を生成する。
+
+ :param size: サイズを指定する。
+ :type size: None|_ShapeLike
+ :return: 乱数の値を返す
+ :rtype: float|NDArray[float64]'''
+ @overload
+ @classmethod
+ def randn(cls,size:None=None)->float:'''標準正規分布(平均0,標準偏差1)に従う乱数を生成する。
+
+ :param size: サイズを指定する。
+ :type size: None
+ :return: 乱数の値を返す
+ :rtype: float'''
+ @overload
+ @classmethod
+ def randn(cls,size:_ShapeLike=None)->NDArray[float64]:'''標準正規分布(平均0,標準偏差1)に従う乱数を生成する。
+
+ :param size: サイズを指定する。
+ :type size: _ShapeLike
+ :return: 乱数の値を返す
+ :rtype: NDArray[float64]'''
+ @overload
+ @classmethod
  def randint(
 cls,
 low:int,
@@ -55,8 +79,6 @@ endpoint:bool=...
  :type size: int|tuple[int,int]|None
  :param endpoint: 生成される値の区間を指定する。
  :type endpoint: bool
- :raises TypeError: `low`にint型を指定しなかった場合に発生させる
- :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
  :return: ランダムに生成された整数を返す。
  :rtype: int64|ndarray'''
  @overload
@@ -74,8 +96,6 @@ endpoint:bool=...
  :type high: int|None
  :param endpoint: 生成される値の区間を指定する。
  :type endpoint: bool
- :raises TypeError: `low`にint型を指定しなかった場合に発生させる
- :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
  :return: ランダムに生成された整数を返す。
  :rtype: int64'''
  @overload
@@ -96,8 +116,6 @@ endpoint:bool=...
  :type size: int|tuple[int,int]|None
  :param endpoint: 生成される値の区間を指定する。
  :type endpoint: bool
- :raises TypeError: `low`にint型を指定しなかった場合に発生させる。
- :raises TypeError: `high`にNoneを除くint型を指定しなかった場合に発生させる。
  :return: ランダムに生成された整数を返す。
  :rtype: int64|ndarray'''
  @overload
@@ -118,8 +136,6 @@ endpoint:bool=True
  :type size: int|tuple[int,int]|None
  :param endpoint: 生成される値の区間を[`low`,`high`]に指定する。
  :type endpoint: bool
- :raises TypeError: `low`にint型を指定しなかった場合に発生させる
- :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
  :return: ランダムに生成された整数を返す。
  :rtype: int64|ndarray'''
  @overload
@@ -140,8 +156,6 @@ endpoint:bool=False
  :type size: int|tuple[int,int]|None
  :param endpoint: 生成される値の区間を[`low`,`high`)に指定する。
  :type endpoint: bool
- :raises TypeError: `low`にint型を指定しなかった場合に発生させる
- :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
  :return: ランダムに生成された整数を返す。
  :rtype: int64|ndarray'''
  @overload
@@ -305,6 +319,27 @@ class rands:
  :return: `numpy`の配列を返す。
  :rtype: ndarray'''
  @overload
+ def randn(self,size:None|_ShapeLike=None)->float|NDArray[float64]:'''標準正規分布(平均0,標準偏差1)に従う乱数を生成する。
+
+ :param size: サイズを指定する。
+ :type size: None|_ShapeLike
+ :return: 乱数の値を返す
+ :rtype: float|NDArray[float64]'''
+ @overload
+ def randn(self,size:None=None)->float:'''標準正規分布(平均0,標準偏差1)に従う乱数を生成する。
+
+ :param size: サイズを指定する。
+ :type size: None
+ :return: 乱数の値を返す
+ :rtype: float'''
+ @overload
+ def randn(self,size:_ShapeLike=None)->NDArray[float64]:'''標準正規分布(平均0,標準偏差1)に従う乱数を生成する。
+
+ :param size: サイズを指定する。
+ :type size: _ShapeLike
+ :return: 乱数の値を返す
+ :rtype: NDArray[float64]'''
+ @overload
  def randint(
 self,
 low:int,
@@ -321,8 +356,6 @@ endpoint:bool=...
  :type size: int|tuple[int,int]|None
  :param endpoint: 生成される値の区間を指定する。
  :type endpoint: bool
- :raises TypeError: `low`にint型を指定しなかった場合に発生させる
- :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
  :return: ランダムに生成された整数を返す。
  :rtype: int64|ndarray'''
  @overload
@@ -339,8 +372,6 @@ endpoint:bool=...
  :type high: int|None
  :param endpoint: 生成される値の区間を指定する。
  :type endpoint: bool
- :raises TypeError: `low`にint型を指定しなかった場合に発生させる
- :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
  :return: ランダムに生成された整数を返す。
  :rtype: int64'''
  @overload
@@ -381,8 +412,6 @@ endpoint:bool=True
  :type size: int|tuple[int,int]|None
  :param endpoint: 生成される値の区間を[`low`,`high`]に指定する。
  :type endpoint: bool
- :raises TypeError: `low`にint型を指定しなかった場合に発生させる
- :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
  :return: ランダムに生成された整数を返す。
  :rtype: int64|ndarray'''
  @overload
@@ -402,8 +431,6 @@ endpoint:bool=False
  :type size: int|tuple[int,int]|None
  :param endpoint: 生成される値の区間を[`low`,`high`)に指定する。
  :type endpoint: bool
- :raises TypeError: `low`にint型を指定しなかった場合に発生させる
- :raises TypeError: `high`にNoneを除く,int型を指定しなかった場合に発生させる
  :return: ランダムに生成された整数を返す。
  :rtype: int64|ndarray'''
  @overload

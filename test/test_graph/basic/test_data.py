@@ -1,4 +1,8 @@
 from _import import *
+rand.seed(1)
+xlabel="x軸のラベル"
+ylabel="y軸のラベル"
+zlabel="z軸のラベル"
 linex1=[1,2,3]
 liney1=[50,60,90]
 linex2=[1,2,3]
@@ -21,14 +25,14 @@ waterfallx=["1月","2月","3月","4月","5月","6月"]
 waterfally=[30,-10,10,5,10,-80]
 stackx=[1,2,3]
 stacky=[[20,50,60],[10,20,30]]
-errorbarx=[2,4,6]
-errorbary=[3.6,5,4.2]
+errorbarx=[2,4,6,9,12]
+errorbary=[2,3,2,2,2]
+err=[1,1.5,0.5,1,0.5]
+xerr=[2,1,2,1,2]
+yerr=[1,2,1,2,1]
 dscatterx=[1,2,3,4]
 dscattery=[3,4,9,10]
 dscatterz=[10,20,30,40]
-err=[0.9,1.2,0.5]
-xerr=[2,1,2]
-yerr=[1,2,1]
 stepdata=[1,3,5,6]
 histdata=rand.normal(low=50,high=10,lenght=1000)
 boxdata1=rand.normal(low=100,high=10,lenght=100)
@@ -38,3 +42,16 @@ ecdfdata=4+rand.normal(low=0,high=1.5,lenght=100)
 bubble_x=[[100,300,400,500],[200,500,100,200]]
 bubble_y=[[100,200,300,400],[400,300,200,100]]
 bubble_data=[[1,5,7,9],[1,5,7,9]]
+stackeddata=[[2,3,4,5],[2,3,4,5],[2,3,4,5]]
+stackeddataname=["dataname1","dataname2","dataname3"]
+violindata=rand.normal((3,5,4),(0.75,1,0.75),lenght=3,hierarchy=200)
+hexbinx1=rand.randn((1,5000))
+hexbiny1=1.2*hexbinx1+rand.randn((1,5000))/3
+hexbinx2=rand.rand((1,5000))
+hexbiny2=1.2*hexbinx2+rand.rand((1,5000))/3
+hist2dx=rand.randn(5000)
+hist2dy=1.2*hist2dx+rand.randn(5000)/3
+linefillx=np.linspace(0,8,16)
+linefillymax=3+4*linefillx/8+np.random.uniform(0.0,0.5,len(linefillx))
+linefillymin=1+2*linefillx/8+np.random.uniform(0.0,0.5,len(linefillx))
+funnedata=[30,40,50]

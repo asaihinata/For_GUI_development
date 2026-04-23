@@ -1114,9 +1114,8 @@ key:str=...
  :type labelalpha: Numbertype'''
  @staticmethod
  def Funne(
-x:o_array,
-y:n_array,
-logs:bool=False,
+data:o_array,
+xmajormaxbins:int=11,
 label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
@@ -1136,7 +1135,6 @@ tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 xmajorint:bool=True,
-xmajormaxbins:Numbertype|Number=10,
 ymajorint:bool=True,
 ymajormaxbins:Numbertype|Number=10,
 ticksshow:bool=False,
@@ -1156,14 +1154,12 @@ alpha:Numbertype=1,
 height:Numbertype=1,
 align:Literal['center','edge']='center',
 key:str=...
-)->dict[str,Any]:'''
+)->dict[str,Any]:'''じょうごグラフを生成する。
 
- :param x: `x`のデータを指定する。
- :type x: o_array
- :param y: `y`のデータを指定する。
- :type y: n_array
- :param logs: x軸を対数スケールにするかを指定する。
- :type logs: bool
+ :param data: `data`のデータを指定する。
+ :type data: o_array
+ :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。2n+1(nは正の整数)の整数を指定する。
+ :type xmajormaxbins: int
  :param label: ラベルを指定する。
  :type label: labeltype
  :param xlabel: x軸のラベルを指定する。
@@ -1208,8 +1204,6 @@ key:str=...
  :type yticksrange: int|float|Number|tuple[int|tuple|Number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
- :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。
- :type xmajormaxbins: Numbertype|Number
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
  :type ymajorint: bool
  :param ymajormaxbins: y軸の目盛りの数の最大数を指定する。
@@ -2955,7 +2949,6 @@ key:str=...
 x:o_array,
 ymin:n_array=...,
 ymax:n_array=...,
-linewidth:Numbertype=0,
 centerlinewidth:Numbertype=2,
 xlabel:str=...,
 ylabel:str=...,
@@ -2993,7 +2986,7 @@ labelframe:bool=True,
 labelshadow:bool=False,
 labelalpha:Numbertype=1,
 key:str=...
-)->dict[str,Any]:'''2つの水平曲線の間の領域を埋めるグラフを作成する。
+)->dict[str,Any]:'''積上げ面グラフを作成する。
 
  :param x: 曲線を定義する節点のx座標を指定する。
  :type x: o_array
@@ -3001,8 +2994,6 @@ key:str=...
  :type ymin: n_array
  :param ymax: 2つ目の曲線を定義する節点のy座標を指定する。
  :type ymax: n_array
- :param linewidth: 境界線の太さを指定する。
- :type linewidth: Numbertype
  :param centerlinewidth: 線の太さを指定する。
  :type centerlinewidth: Numbertype
  :param xlabel: x軸のラベルを指定する。
@@ -3274,12 +3265,10 @@ key:str=...
  :type yuplims: bool
  :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
  :type ylolims: bool
- :param barsabove: マーカーの位置を指定する。
+ :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する。
  :type barsabove: bool
  :param linestyle: データ点とデータ点を結ぶ線の種類を指定する。
  :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
- :param marker: データ点のマーカーの種類を指定する。
- :type marker: Literal['.','s','o','p','v','*','^','D']
  :param marker: データ点のマーカーの種類を指定する。
  :type marker: Literal['.','s','o','p','v','*','^','D']
  :param linewidth: データ点を結ぶ線の太さを指定する。
@@ -3365,8 +3354,8 @@ key:str=...
 data:o_array,
 linewidth:Numbertype=1,
 linelength:Numbertype=1,
-orientation:Literal['vertical','horizontal']='vertical',
 linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':']='solid',
+orientation:Literal['vertical','horizontal']='vertical',
 xlabel:str=...,
 ylabel:str=...,
 label:labeltype=...,
@@ -3411,10 +3400,10 @@ key:str=...
  :type linewidth: Numbertype
  :param linelength: 線の合計の高さを指定する。
  :type linelength: Numbertype
- :param orientation: 向きを指定する。
- :type orientation: Literal['horizontal','vertical']
  :param linestyle: 線の種類を指定する。
  :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
+ :param orientation: 向きを指定する。
+ :type orientation: Literal['horizontal','vertical']
  :param label: ラベルを指定する。
  :type label: labeltype
  :param xlabel: x軸のラベルを指定する。
@@ -3547,8 +3536,8 @@ key:str=...
  :type ymax,ymin: Numbertype
  :param bins: ビンの数を指定する。
  :type bins: int|tuple[int,int]|ArrayLike|tuple[ArrayLike,ArrayLike]
- :param bins: ヒストグラムを正規化かするか指定する。
- :type bins: bool
+ :param density: ヒストグラムを正規化かするかを指定する。
+ :type density: bool
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -3771,7 +3760,6 @@ extent:tuple[float,float,float,float]|None=None,
 xscale:Literal['linear','log']='linear',
 yscale:Literal['linear','log']='linear',
 mincnt:int=1,
-marginals:bool=False,
 bins:Literal['log']|int|tuple[float,...]|None=None,
 size:TupleNumbertype2=(500,400),
 fg:Colortype='#000000',
@@ -3806,7 +3794,7 @@ labelframe:bool=True,
 labelshadow:bool=False,
 labelalpha:Numbertype=1,
 key:str=...
-)->dict[str,Any]:'''バイオリングラフを作成する。
+)->dict[str,Any]:'''2次元六角形グラフを作成する。
 
  :param x: `x`のデータを指定する。
  :type x: o_array
@@ -3824,8 +3812,6 @@ key:str=...
  :type mincnt: int
  :param bins: ビンのカウント方法を指定する。
  :type bins: Literal['log']|int|tuple[float,...]|None
- :param marginals: データの周辺分布を表示させるか指定する。
- :type marginals: bool
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。

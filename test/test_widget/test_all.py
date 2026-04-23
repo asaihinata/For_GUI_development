@@ -154,5 +154,5 @@ if __name__=="__main__":
  [sgg.Errorbar(x=x7,y=y7,yerr=yerr,title="エラーバー")],
  [sgg.Ecdf(data=ecdfdata,title="経験的累積分布関数のグラフ")]
  ]
- win=sgg.window(title="デモ",layout=layout,load=[progress_start],scroll_x=True,scroll_y=True,maxmine=True)
+ win=sgg.window(title="デモ",layout=layout,load=[progress_start],scroll=True,maxmine=True)
  win.run()

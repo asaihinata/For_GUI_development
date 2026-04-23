@@ -1,5 +1,6 @@
 from test_data import *
 if __name__=="__main__":
+ print(f"{piedata=}")
  layout=[
   [
    sgg.Pie(data=piedata,title="円グラフの基本",label=pielabel),
@@ -18,5 +19,5 @@ if __name__=="__main__":
    sgg.Pie(data=piedata,title="一部のウェッジを離す",label=pielabel,explode=[0.2,0,0,0,0])
   ]
  ]
- win=sgg.window(title="円グラフ(デモ)",layout=layout,scroll_x=True,scroll_y=True,maxmine=True)
+ win=sgg.window(title="円グラフ(デモ)",layout=layout,scroll=True,maxmine=True)
  win.run()

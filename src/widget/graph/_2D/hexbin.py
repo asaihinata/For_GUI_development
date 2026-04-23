@@ -11,13 +11,12 @@ class Hexbin(twoDElement):
   self.xscale=listchose(kw.get('xscale'),['linear','log'])
   self.yscale=listchose(kw.get('yscale'),['linear','log'])
   self.mincnt=int1s(kw.get('mincnt'))
-  self.marginals=bols(kw.get('marginals'),False)
   bins=kw.get('bins')
   self.bins=bins if(bins=='log' or isinstance(bins,(int,float)) or (isinstance(bins,(list,tuple)) and (isinstance(i,(int,float))for i in bins)))else None
-  self.plot(self.x,self.y,self.c,gridsize=self.gridsize,xscale=self.xscale,yscale=self.yscale,mincnt=self.mincnt,marginals=self.marginals,extent=self.extent,bins=self.bins)
- def plot(self,x,y,c,gridsize=100,xscale='linear',yscale='linear',mincnt=None,marginals=False,extent=None,bins=None):
+  self.plot(self.x,self.y,self.c,gridsize=self.gridsize,xscale=self.xscale,yscale=self.yscale,mincnt=self.mincnt,extent=self.extent,bins=self.bins)
+ def plot(self,x,y,c,gridsize=100,xscale='linear',yscale='linear',mincnt=None,extent=None,bins=None):
   self.clear()
-  self.graphdata=[self.ax.hexbin(x,y,c,bins=bins,gridsize=gridsize,xscale=xscale,yscale=yscale,mincnt=mincnt,marginals=marginals,extent=extent)]
+  self.graphdata=self.ax.hexbin(x,y,c,bins=bins,gridsize=gridsize,xscale=xscale,yscale=yscale,mincnt=mincnt,extent=extent)
   self._apply_labels(self.xlabel,self.ylabel)
   self._adjustment()
  def update(self,x=None,y=None,c=None,**kw):
@@ -31,11 +30,10 @@ class Hexbin(twoDElement):
   self.xscale=listchose(kw.get('xscale'),['linear','log'],self.xscale)
   self.yscale=listchose(kw.get('yscale'),['linear','log'],self.yscale)
   self.mincnt=int1s(kw.get('mincnt',self.mincnt))
-  self.marginals=bols(kw.get('marginals'),self.marginals)
   bins=kw.get('bins',self.bins)
   self.bins=bins if(bins=='log' or isinstance(bins,(int,float)) or (isinstance(bins,(list,tuple)) and (isinstance(i,(int,float))for i in bins)))else None
-  self.plot(self.x,self.y,self.c,gridsize=self.gridsize,xscale=self.xscale,yscale=self.yscale,mincnt=self.mincnt,marginals=self.marginals,extent=self.extent,bins=self.bins)
+  self.plot(self.x,self.y,self.c,gridsize=self.gridsize,xscale=self.xscale,yscale=self.yscale,mincnt=self.mincnt,extent=self.extent,bins=self.bins)
   self._redraw()
- def get(self):return self.graphdata
+ def get(self):return [self.graphdata]
  def getx(self):return self.x
  def gety(self):return self.y

@@ -2,19 +2,19 @@ from test_data import *
 if __name__=="__main__":
  layout=[
  [
- sgg.LineGraph(x=linex1,y=liney1,title="折り線グラフ",xlabel="xlabel",ylabel="ylabel"),
+ sgg.LineGraph(x=linex1,y=liney1,title="折り線グラフ",xlabel=xlabel,ylabel=ylabel),
  sgg.Pie(data=piedata,title="円グラフ",label=pielabel)
  ],
  [
- sgg.BarGraph(x=bargraphx1,y=bargraphy1,title="棒グラフ(縦)",xlabel="xlabel",ylabel="ylabel",width=0.5),
- sgg.BarhGraph(x=bargraphx2,y=bargraphy2,title="棒グラフ(横)",xlabel="xlabel",ylabel="ylabel",height=0.5)
+ sgg.BarGraph(x=bargraphx1,y=bargraphy1,title="棒グラフ(縦)",xlabel=xlabel,ylabel=ylabel,width=0.5),
+ sgg.BarhGraph(x=bargraphx2,y=bargraphy2,title="棒グラフ(横)",xlabel=xlabel,ylabel=ylabel,height=0.5)
  ],
  [
- sgg.Scatter(x=scatterx1,y=scattery1,title="散布図",xlabel="xlabel",ylabel="ylabel"),
+ sgg.Scatter(x=scatterx1,y=scattery1,title="散布図",xlabel=xlabel,ylabel=ylabel),
  sgg.Scatter(x=scatterx2,y=scattery2,title="散布図")
  ],
  [
- sgg.DScatter(x=dscatterx,y=dscattery,z=dscatterz,title="3D 散布図",xlabel="x",ylabel="y",zlabel="z"),
+ sgg.DScatter(x=dscatterx,y=dscattery,z=dscatterz,title="3D 散布図",xlabel=xlabel,ylabel=ylabel,zlabel=zlabel),
  sgg.Hist(data=histdata,title="ヒストグラフ")
  ],
  [
@@ -42,5 +42,5 @@ if __name__=="__main__":
  sgg.Ecdf(data=ecdfdata,title="経験的累積分布関数のグラフ")
  ]
  ]
- win=sgg.window(title="デモ",layout=layout,scroll_x=True,scroll_y=True,maxmine=True)
+ win=sgg.window(title="デモ",layout=layout,scroll=True,maxmine=True)
  win.run()
