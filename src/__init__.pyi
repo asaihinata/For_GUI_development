@@ -69,27 +69,6 @@ relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat'
  :param text: Textsウィジェットに表記させる文字を指定する。
  :type text: str'''
  @staticmethod
- def Expansion(
-range:int|TupleInt2|TupleInt4|None=30,
-local:int|float|tuple[int|float,int|float]|None=None,
-time:int|float=50,
-size:TupleNumbertype2=(300,300),
-takefocus:bool=True,
-relief:Literal['solid','raised','sunken','flat','ridge','groove']='solid',
-key:str=...,
-bd:Numbertype=2,
-pady:Numbertype=...,
-padx:Numbertype=...,
-cursor:_Cursor=...
-)->dict[str,Any]:'''マウスの先もしくは指定した座標の箇所を拡大する拡大鏡を設置する。
-
- :param time: マウス先の座標を再描画させる時間(ミリ秒)を指定する。
- :type time: int|float
- :param range: 表示させる範囲を指定する。
- :type range: int|TupleInt2|TupleInt4|None
- :param local: 拡大する座標を指定する。座標を指定した場合,拡大する場所は固定する。
- :type local: int|float|tuple[int|float,int|float]|None'''
- @staticmethod
  def Link(
 text:str=...,
 link:Linktype|None=None,

@@ -101,7 +101,6 @@ class WindowController:
   if t=='Menus':widget=Menus(parent,kw)
   elif t=='Menubuttons':widget=Menubuttons(parent,kw)
   elif t=='Texts':widget=Texts(parent,kw)
-  elif t=='Expansion':widget=Expansion(parent,kw)
   elif t=='Link':widget=Link(parent,kw)
   elif t=='Images':widget=Images(parent,kw)
   elif t=='Buttons':widget=Buttons(parent,kw)

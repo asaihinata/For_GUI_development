@@ -13,8 +13,6 @@ class sgg:
  @staticmethod
  def Texts(**kw):return{'count':counts(),'type':'Texts',**kw}
  @staticmethod
- def Expansion(**kw):return{'count':counts(),'type':'Expansion',**kw}
- @staticmethod
  def Link(**kw):return{'count':counts(),'type':'Link',**kw}
  @staticmethod
  def Images(**kw):return{'count':counts(),'type':'Images',**kw}

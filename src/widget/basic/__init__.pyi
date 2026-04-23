@@ -10,8 +10,6 @@ class Texts(Element):
  def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
  def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
  def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
-class Expansion(Element):
- def delta(self)->NoReturn:'''ウィジェットを削除する。'''
 class Buttons(Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
