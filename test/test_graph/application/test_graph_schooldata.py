@@ -1,5 +1,4 @@
 from _import import *
-from data.csv import getcsv
 if __name__=="__main__":
  data=np.array(getcsv("school_test_demo_data.csv"))
  layout=[]

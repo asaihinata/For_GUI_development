@@ -1,5 +1,4 @@
 from _import import *
-from data.csv import getcsv
 if __name__=="__main__":
  data=np.array(getcsv("japan_population.csv"))[1:4,2:8].astype(np.int64)
  layout=[
