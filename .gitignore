@@ -3,6 +3,7 @@ docs/*
 !docs/requirements.txt
 !docs/data/
 !docs/for_development/
+!docs/img/
 # デモファイル
 demo/
 demo.py
@@ -11,7 +12,7 @@ demo*.py
 *deom*.py
 # その他
 .gitmessage
-.vscode/
+.vscode/settings.json
 .DS_Store
 .dll
 .exe

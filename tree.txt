@@ -7,6 +7,8 @@ For_GUI_development
  │   ├── for_development
  │   │   ├── explanation_graph1.png
  │   │   └── explanation_graph2.png
+ │   ├── img
+ │   │   └── icon.png
  │   └── requirements.txt
  ├── pyproject.toml
  ├── README.md

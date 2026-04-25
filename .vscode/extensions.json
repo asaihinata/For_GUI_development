@@ -1,0 +1,48 @@
+{
+    "[python]": {
+        "files.trimTrailingWhitespace": false
+    },
+    "asciiTreeGenerator.directoryIgnore": [
+        ".vscode",
+        "reference",
+        "branch.txt",
+        "commit.txt",
+        "todo.txt",
+        "memo.txt",
+        "my_demo"
+    ],
+    "editor.tabSize": 4,
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/_import.py": true,
+        "**/test_data.py": true,
+        ".git": true,
+        "README.md": false
+    },
+    "gitlens.codeLens.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "markdown.styles": [
+        ".crossnote/style.less"
+    ],
+    "material-icon-theme.folders.associations": {
+        "test_graph": "test",
+        "test_log": "test",
+        "test_widget": "test"
+    },
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "search.exclude": {
+        "**/.git": true,
+        "**/color.json": true,
+        "**/demo": true,
+        "**/docs": true,
+        "**/test/test_graph/basic/test_data.py": true,
+        "**/tests": true,
+        ".gitattributes": true,
+        ".gitignore": true,
+        ".gitmessage": true,
+        ".vscode/extensions.json": true,
+        "README.md": true,
+        "pyproject.toml": true,
+        "tree.txt": true
+    }
+}
