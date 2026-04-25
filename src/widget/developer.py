@@ -35,6 +35,8 @@ class rand:
  @staticmethod
  def _randint(low,high=None,size=None,endpoint=False):return rand.rng.integers(low,high=high,size=size,endpoint=endpoint)
  @classmethod
+ def gamma(cls,shape,scale=1,size=None):return rand.rng.gamma(shape,scale,size)
+ @classmethod
  def randrange(cls,min=0,max=1,size=None):
   if max<min:min,max=max,min
   return cls._randrange(min,max,size)
@@ -75,6 +77,7 @@ class rands:
   if isinstance(seed,int):
    self.seeds=seed
    self.rng=default_rng(seed=seed)
+ def gamma(self,shape,scale=1,size=None):return self.rng.gamma(shape,scale,size)
  def rand(self,size=None):return self.rng.random(size)
  def randn(self,size=None):return self.rng.standard_normal(size)
  def randint(self,low=1,high=None,size=None,endpoint=False):

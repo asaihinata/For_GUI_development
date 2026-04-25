@@ -1,7 +1,7 @@
 from collections.abc import Iterator
 from typing import Any,Iterable,NoReturn,overload
 from numpy import float64,int64,ndarray
-from numpy._typing import NDArray,_ShapeLike
+from numpy._typing import NDArray,_ShapeLike,_ArrayLikeFloat_co,_FloatLike_co
 from numpy.random import Generator
 from ..types import Numbertype
 class clear:
@@ -61,6 +61,13 @@ class rand:
  :type size: _ShapeLike
  :return: 乱数の値を返す
  :rtype: NDArray[float64]'''
+ @overload
+ @overload
+ @classmethod
+ def gamma(cls,shape:_FloatLike_co,scale:_FloatLike_co=1,size:None=None)->float:...
+ @overload
+ @classmethod
+ def gamma(cls,shape:_ArrayLikeFloat_co,scale:_ArrayLikeFloat_co=1,size:_ShapeLike|None=None)->NDArray[float64]:...
  @overload
  @classmethod
  def randint(
@@ -433,6 +440,10 @@ endpoint:bool=False
  :type endpoint: bool
  :return: ランダムに生成された整数を返す。
  :rtype: int64|ndarray'''
+ @overload
+ def gamma(self,shape:_FloatLike_co,scale:_FloatLike_co=1,size:None=None)->float:...
+ @overload
+ def gamma(self,shape:_ArrayLikeFloat_co,scale:_ArrayLikeFloat_co=1,size:_ShapeLike|None=None)->NDArray[float64]:...
  @overload
  def randrange(self,min=0,max=1)->float:'''`min`から`max`の範囲の値をランダムに生成する。
 

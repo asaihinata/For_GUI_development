@@ -37,7 +37,7 @@ stepdata=[1,3,5,6]
 histdata=rand.normal(low=50,high=10,lenght=1000)
 boxdata1=rand.normal(low=100,high=10,lenght=100)
 boxdata2=rand.normal(low=90,high=20,lenght=150,hierarchy=2)
-eventdata=np.random.gamma(4,size=(3,50))
+eventdata=rand.gamma(4,size=(3,50))
 ecdfdata=4+rand.normal(low=0,high=1.5,lenght=100)
 bubble_x=[[100,300,400,500],[200,500,100,200]]
 bubble_y=[[100,200,300,400],[400,300,200,100]]
@@ -52,8 +52,8 @@ hexbiny2=1.2*hexbinx2+rand.rand((1,5000))/3
 hist2dx=rand.randn(5000)
 hist2dy=1.2*hist2dx+rand.randn(5000)/3
 linefillx=np.linspace(0,8,16)
-linefillymax=3+4*linefillx/8+np.random.uniform(0.0,0.5,len(linefillx))
-linefillymin=1+2*linefillx/8+np.random.uniform(0.0,0.5,len(linefillx))
+linefillymax=3+4*linefillx/8+rand.rands(0.0,0.5,len(linefillx))
+linefillymin=1+2*linefillx/8+rand.rands(0.0,0.5,len(linefillx))
 funnedata=[30,40,50]
 hatplotx=[15,15,20,20,25]
 hatplotdata=[25,30,30,30,20]
