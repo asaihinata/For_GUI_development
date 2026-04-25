@@ -636,6 +636,46 @@ class LIST:
  def sort(self,type:bool=True)->LIST:'''LISTの要素を昇順で並べ替える。'''
  @overload
  def sort(self,type:bool=False)->LIST:'''LISTの要素を降順で並べ替える。'''
+ def count(self,val:Any)->int:'''指定した`val`が配列内にいくつ出現するか調べる。
+
+ :param val: _description_
+ :type val: Any
+ :return: 配列内の出現数を返す。
+ :rtype: int'''
+ def empty(self)->bool:'''`LIST`が空かを調べる。
+
+ :return: `LIST`が空かを調べる。
+ :rtype: bool'''
+ @overload
+ @classmethod
+ def range(cls,start:int=...,end:int=...,step:int=...)->LIST:'''stepの間隔でstartからendまでの範囲を生成する。
+
+ :param start: 開始の値を指定する。
+ :type start: int
+ :param end: 終了の値を指定する。
+ :type end: int
+ :param step: 間隔を指定する。
+ :type step: int
+ :return:
+ :rtype: LIST'''
+ @overload
+ @classmethod
+ def range(cls,end:int=...)->LIST:'''1の間隔で0からendまでの範囲を生成する。
+
+ :param end: 終了の値を指定する。
+ :type end: int
+ :return:
+ :rtype: LIST'''
+ @overload
+ @classmethod
+ def range(cls,start:int=...,end:int=...)->LIST:'''1の間隔でstartからendまでの範囲を生成する。
+
+ :param start: 開始の値を指定する。
+ :type start: int
+ :param end: 終了の値を指定する。
+ :type end: int
+ :return:
+ :rtype: LIST'''
 class Number:
  __static_attributes__:tuple[str]
  __class__:type

@@ -50,6 +50,6 @@ class WindowController:
  :type ex: str'''
  def foreground(self,bools:bool=True)->NoReturn:'''ウィンドウを常に最前面にするか指定する。'''
  def fullscreen(self,bools:bool=True)->NoReturn:'''ウィンドウをフルスクリーンにする操作をする。'''
- def alpha(self,val:float=1)->NoReturn:'''ウィンドウの透明度を指定する。'''
+ def alpha(self,val:float=1.0)->NoReturn:'''ウィンドウの透明度を指定する。'''
  def deiconify(self)->NoReturn:'''ウィンドウを再び画面に表示させる。'''
  def withdraw(self)->NoReturn:'''ウィンドウを非表示にする。'''

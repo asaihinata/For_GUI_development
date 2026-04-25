@@ -187,6 +187,16 @@ class LIST:
   if not isinstance(type,bool):type=True
   self.lists=sort(self.lists,type)
   return self
+ def count(self,val):return self.lists.count(val)
+ def empty(self):return self.lists==[]
+ @classmethod
+ def range(cls,start=0,end=None,step=1):
+  if not isinstance(start,int):
+   raise TypeError('startには整数の型を指定してください')
+  if not isinstance(step,int):
+   raise TypeError('stepには整数の型を指定してください')
+  if not isinstance(end,int):end,start=start,0
+  return LIST(lists=range(start,end,step))
 class sort:
  def __init__(self,data,types=True):
   if not isinstance(data,(list,tuple,LIST)):

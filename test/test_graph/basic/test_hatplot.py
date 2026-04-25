@@ -5,6 +5,7 @@ if __name__=="__main__":
  layout=[
   [
    sgg.Hatplot(x=hatplotx,data=hatplotdata,title="ハットグラフの基本",xlabel=xlabel,ylabel=ylabel,yticksrange=5),
+   sgg.Hatplot(x=hatplotx,data=hatplotdata,title="ハットの色を変える",color="red",yticksrange=5)
   ]
  ]
  win=sgg.window(title="ハットグラフ(デモ)",layout=layout,scroll=True,maxmine=True)
