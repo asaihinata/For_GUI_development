@@ -1,3 +1,4 @@
+from tkinter import Misc
 from ..types import Arraytype,Callable,Numbertype,TupleNumbertype2
 class Element:
  def _size_width(self,val:Numbertype,other:Numbertype=None)->Numbertype:...
@@ -60,3 +61,5 @@ class Element:
  def screen(self)->str:'''スクリーンの名前を返す。'''
  def id(self)->int:'''ウィジェットのウィンドウ識別子を返す。'''
  def name(self):'''ウィジェットのインスタンス名を返す。'''
+class _Element(Element):
+ master:Misc

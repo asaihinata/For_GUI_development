@@ -1,8 +1,8 @@
 from datetime import datetime
 from tkinter import Widget
 from ...types import Any,Colortype,Literal,NoReturn,Numbertype,TupleInt2
-from ..base import Element
-class Texts(Element):
+from ..base import _Element
+class Texts(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
@@ -10,7 +10,7 @@ class Texts(Element):
  def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
  def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
  def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
-class Buttons(Element):
+class Buttons(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
@@ -18,7 +18,7 @@ class Buttons(Element):
  def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
  def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
  def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
-class Input(Element):
+class Input(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''Inputウィジェットに記入されている文字を取得する。
 
@@ -41,7 +41,7 @@ class Input(Element):
  :rtype: bool'''
  def select_cansel(self)->NoReturn:'''Inputウィジェット内の選択状態を解除する。'''
  def all_delta(self)->NoReturn:'''Inputウィジェット内の文字を全て削除する。'''
-class Multiline(Element):
+class Multiline(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
  def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
@@ -58,7 +58,7 @@ class Multiline(Element):
  :return: Multilineウィジェットに記入されている文字を返す。
  :rtype: str'''
  def all_delta(self)->NoReturn:'''Multilineウィジェット内の文字を全て削除する。'''
-class InputNumber(Element):
+class InputNumber(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
  def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
@@ -68,7 +68,7 @@ class InputNumber(Element):
 
  :return: InputNumberウィジェットに入力されている数値を返す。
  :rtype: Numbertype'''
-class Listboxs(Element):
+class Listboxs(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
  def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
@@ -105,7 +105,7 @@ class Listboxs(Element):
 
  :param lists: 新しく表示させたいListboxsウィジェットの項目を指定する。
  :type lists: tuple[str,...]'''
-class Radio(Element):
+class Radio(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
@@ -113,7 +113,7 @@ class Radio(Element):
  def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
  def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
  def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
-class Checkbox(Element):
+class Checkbox(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
@@ -129,7 +129,7 @@ class Checkbox(Element):
 
  :param value: チェック状態を指定する。チェック状態にする場合Trueを,未チェック状態にする場合Falseを指定する。
  :type value: bool'''
-class Tree(Element):
+class Tree(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_iid(self)->list:'''Treeウィジェットの全てのiidを取得する。
 
@@ -164,10 +164,10 @@ class Tree(Element):
  :param iid: 削除したい`iid`を指定する。
  :type iid: str'''
  def clear_width(self)->NoReturn:'''Treeウィジェットのセルの幅を均等に戻す。'''
-class Table(Element):
+class Table(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def clear_width(self)->NoReturn:'''Tableウィジェットのセルの幅を均等に戻す。'''
-class Slidebar(Element):
+class Slidebar(_Element):
  def get(self)->Numbertype:'''Slidebarウィジェットの現在の値を取得する。
 
  :return: Slidebarウィジェットの現在の値を返す。
@@ -181,7 +181,7 @@ class Slidebar(Element):
 
  :param val: 変更後の数値を指定する。
  :type val: Numbertype'''
-class Menus(Element):
+class Menus(_Element):
  def get(self)->list:'''Menusウィジェットで表示されている配列を取得する。
 
  :return: Menusウィジェットで表示されている配列を返す。
@@ -198,7 +198,7 @@ class Menus(Element):
  :type label: str
  :param submenu_lists: メニューに追加させるドロップダウンを指定する。
  :type submenu_lists: list'''
-class Menubuttons(Element):
+class Menubuttons(_Element):
  def get(self)->list:'''Menubuttonsウィジェットで表示されている配列を取得する。
 
  :return: Menusウィジェットで表示されている配列を返す。
@@ -217,19 +217,19 @@ class Menubuttons(Element):
  :type label: str
  :param submenu_lists: メニューに追加させるドロップダウンを指定する。
  :type submenu_lists: list'''
-class Frames(Element):
+class Frames(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
  def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
  def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
  def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
-class Column(Element):
+class Column(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
  def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
  def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
  def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
-class Tab(Element):
+class Tab(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def _add_tab(self,frame:Widget,title:str=...):'''Tabウィジェットに新しいタブを追加する。
 
@@ -237,7 +237,7 @@ class Tab(Element):
  :type frame: Widget
  :param title: タイトルを指定する。
  :type title: str'''
-class TCombobox(Element):
+class TCombobox(_Element):
  def get_text(self)->str:'''TComboboxウィジェットに記載されている文字を取得する。
 
  :return: TComboboxウィジェットに記載されている文字を返す。
@@ -247,7 +247,7 @@ class TCombobox(Element):
  :param text: 文字を指定する。
  :type text: str'''
  def clear(self)->NoReturn:'''TComboboxウィジェットの文字を削除する。'''
-class TProgressbar(Element):
+class TProgressbar(_Element):
  def start(self)->NoReturn:'''TProgressbarをプログレスバーのバーを変化させる。'''
  def stop(self)->NoReturn:'''TProgressbarをプログレスバーのバーの変化を止める。'''
  def set(self,val:Numbertype)->NoReturn:'''TProgressbarウィジェットの値を指定する。
@@ -258,7 +258,7 @@ class TProgressbar(Element):
 
  :return: TProgressbarの値を返す。
  :rtype: Numbertype'''
-class Link(Element):
+class Link(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
@@ -268,13 +268,13 @@ class Link(Element):
  def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
  def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
  def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
-class Images(Element):
+class Images(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
-class QRcode(Element):
+class QRcode(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
-class Barcode(Element):
+class Barcode(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
-class Calendars(Element):
+class Calendars(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def move_date(self,year:int=None,month:int=None,day:int=None)->NoReturn:'''指定したyear,month,dayに移動する。
 
@@ -296,7 +296,7 @@ class Calendars(Element):
 
  :return: Calendarsウィジェットで表示されている年と月をタプルで(月,年)で返す。
  :rtype: TupleInt2'''
-class FolderLoad(Element):
+class FolderLoad(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
@@ -313,7 +313,7 @@ class FolderLoad(Element):
 
  :return: ファイルもしくはフォルダのパスを返す。
  :rtype: str'''
-class FileLoad(Element):
+class FileLoad(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
@@ -330,7 +330,7 @@ class FileLoad(Element):
 
  :return: ファイルもしくはフォルダのパスを返す。
  :rtype: str'''
-class Savebtn(Element):
+class Savebtn(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
@@ -347,7 +347,7 @@ class Savebtn(Element):
 
  :return: ファイルもしくはフォルダのパスを返す。
  :rtype: str'''
-class Colorbtn(Element):
+class Colorbtn(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
