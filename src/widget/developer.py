@@ -2,7 +2,7 @@ from math import ceil,floor
 from os import system as sys
 from platform import system
 from sys import getsizeof
-from numpy import array,ndarray
+from numpy import array,full,ndarray
 from numpy.random import choice,default_rng
 __all__=['clear','LIST','Number','rand','rands','sort']
 class clear:
@@ -63,7 +63,7 @@ class rand:
   else:return cls.rng.integers(low=low,high=high,size=lenght)
  @classmethod
  def listrand(cls,arr,size=None):
-  return choice(array(list(arr)if isinstance(arr,LIST) else arr,dtype=object),size=size)
+  return choice(array(list(arr)if isinstance(arr,LIST) else arr),size=size)
 class rands:
  '''ランダムな値を生成する。'''
  def __init__(self,seed=42):
@@ -190,13 +190,30 @@ class LIST:
  def count(self,val):return self.lists.count(val)
  def empty(self):return self.lists==[]
  @classmethod
- def range(cls,start=0,end=None,step=1):
+ def range(cls,start=0,end=None,step=1,endpoint=False):
   if not isinstance(start,int):
    raise TypeError('startには整数の型を指定してください')
   if not isinstance(step,int):
    raise TypeError('stepには整数の型を指定してください')
   if not isinstance(end,int):end,start=start,0
-  return LIST(lists=range(start,end,step))
+  if not isinstance(endpoint,bool):endpoint=False
+  return LIST(lists=range(start,end+int(endpoint),step))
+ @classmethod
+ def full(cls,val,size=None):
+  if(
+   (
+    isinstance(size,int) and 1<=size
+   ) or
+   (
+    isinstance(size,(list,tuple)) and
+    all((isinstance(i,int) and 1<=i)for i in size)
+   ) or
+   (
+    isinstance(size,LIST) and
+    all((isinstance(i,int) and 1<=i)for i in size)
+   )
+   ):return LIST(full(size,val))
+  return LIST(full(1,val))
 class sort:
  def __init__(self,data,types=True):
   if not isinstance(data,(list,tuple,LIST)):

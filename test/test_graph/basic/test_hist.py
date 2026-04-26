@@ -1,5 +1,10 @@
 from test_data import *
 if __name__=="__main__":
+ def updates():
+  radomdata=rand.normal(low=50,high=10,lenght=1000)
+  print(f"{radomdata=}")
+  hist:Hist=win.get("hist")
+  hist.update(radomdata)
  print(f"{histdata=}")
  layout=[
   [
@@ -17,6 +22,10 @@ if __name__=="__main__":
   [
    sgg.Hist(data=histdata,title="binsを指定する",bins=[30,40,50]),
    sgg.Hist(data=histdata,title="幅を指定する",width=0.4)
+  ],
+  [
+   sgg.Hist(data=histdata,title="グラフを更新する",key="hist"),
+   sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
  win=sgg.window(title="ヒストグラフ(デモ)",layout=layout,scroll=True,maxmine=True)

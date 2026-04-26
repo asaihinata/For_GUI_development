@@ -1,5 +1,10 @@
 from test_data import *
 if __name__=="__main__":
+ def updates():
+  radomdata=rand.randsint(-100,100,6)
+  print(f"{radomdata=}")
+  waterfall:Waterfall=win.get("waterfall")
+  waterfall.update(y=radomdata)
  print(f"{waterfallx=}")
  print(f"{waterfally=}")
  layout=[
@@ -18,6 +23,10 @@ if __name__=="__main__":
   [
    sgg.Waterfall(x=waterfallx,y=waterfally,title="合計を表示させる",sums=True),
    sgg.Waterfall(x=waterfallx,y=waterfally,title="合計を表示させる",sums=True,sumstext="合計")
+  ],
+  [
+   sgg.Waterfall(x=waterfallx,y=waterfally,title="グラフを更新する",key="waterfall"),
+   sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
  win=sgg.window(title="ウォーターフォール(デモ)",layout=layout,scroll=True,maxmine=True)

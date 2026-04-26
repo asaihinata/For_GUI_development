@@ -1,5 +1,10 @@
 from test_data import *
 if __name__=="__main__":
+ def updates():
+  radomdata=rand.randint(0,10,5)
+  print(f"{radomdata=}")
+  scatter:Scatter=win.get("scatter")
+  scatter.update(y=radomdata)
  print(f"{scatterx1=}")
  print(f"{scattery1=}")
  print(f"{scatterx2=}")
@@ -12,6 +17,10 @@ if __name__=="__main__":
   [
    sgg.Scatter(x=scatterx1,y=scattery1,title="マーカーの指定",marker="d"),
    sgg.Scatter(x=scatterx1,y=scattery1,title="マーカーサイズの変更",marker="d",markersize=20)
+  ],
+  [
+   sgg.Scatter(x=scatterx1,y=scattery1,title="グラフを更新する",key="scatter"),
+   sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
  win=sgg.window(title="散布図(デモ)",layout=layout,scroll=True,maxmine=True)

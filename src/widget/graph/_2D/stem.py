@@ -34,7 +34,7 @@ class Stem(twoDElement):
   self.marker=self._list_loop(self._markerfmt(kw.get('marker',self.marker)),self.max_depth)
   self.bottom=num0s(kw.get('bottom'),self.bottom)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)
-  self.plot(self.x,self.y,xlabel=self.xlable,ylabel=self.ylable,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker)
+  self.plot(self.x,self.y,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker)
   self._redraw()
  def get(self):return self.graphdata
  def getx(self):return self.x

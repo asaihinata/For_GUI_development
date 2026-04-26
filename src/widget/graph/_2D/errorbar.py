@@ -5,13 +5,13 @@ class Errorbar(twoDElement):
   super().__init__(master,kw)
   self.x=self._manyarr(kw.get('x'))
   self.y=self._manyarr(kw.get('y'))
-  self.xerr,self.yerr=None,None
   err,xerr,yerr=kw.get('err'),kw.get('xerr'),kw.get('yerr')
-  if err!=None:
+  self.xerr,self.yerr=None,None
+  if err is not None:
    self.err=self._dataarr(err,False)
    self.xerr,self.yerr=self.err,self.err
-  if xerr!=None:self.xerr=self._dataarr(xerr,False)
-  if yerr!=None:self.yerr=self._dataarr(yerr,False)
+  if xerr is not None:self.xerr=self._dataarr(xerr,False)
+  if yerr is not None:self.yerr=self._dataarr(yerr,False)
   self.xuplims=bols(kw.get('xuplims'),False)
   self.xlolims=bols(kw.get('xlolims'),False)
   self.yuplims=bols(kw.get('yuplims'),False)
@@ -39,11 +39,11 @@ class Errorbar(twoDElement):
   if isinstance(x,NpArraytype):self.x=self._manyarr(x)
   if isinstance(y,NpArraytype):self.y=self._manyarr(y)
   err,xerr,yerr=kw.get('err',self.err),kw.get('xerr',self.xerr),kw.get('yerr',self.yerr)
-  if err!=None:
+  if err is not None:
    self.err=self._dataarr(err,False)
    self.xerr,self.yerr=self.err,self.err
-  if xerr!=None:self.xerr=self._dataarr(xerr,False)
-  if yerr!=None:self.yerr=self._dataarr(yerr,False)
+  if xerr is not None:self.xerr=self._dataarr(xerr,False)
+  if yerr is not None:self.yerr=self._dataarr(yerr,False)
   self.xuplims=bols(kw.get('xuplims'),self.xuplims)
   self.xlolims=bols(kw.get('xlolims'),self.xlolims)
   self.yuplims=bols(kw.get('yuplims'),self.yuplims)

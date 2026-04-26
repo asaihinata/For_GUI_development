@@ -81,8 +81,8 @@ class GElement:
  def id(self):return self.master.winfo_id()
  def name(self):return self.master.winfo_name()
  def _pack(self):
-  self._canvas_widget=FigureCanvasTkAgg(self.fig,master=self.master).get_tk_widget()
-  self._canvas_widget.pack(side='left',padx=5,pady=5)
+  self._canvas_widget=FigureCanvasTkAgg(self.fig,master=self.master)
+  self._canvas_widget.get_tk_widget().pack(side='left',padx=5,pady=5)
  def _redraw(self):
   if self._canvas_widget is not None:self._canvas_widget.draw()
  def _size(self,sizes=(500,400)):
@@ -123,10 +123,11 @@ class GElement:
   else:lis=LIST(lists='')
   return(lis.get(nums),label)
  def _arr(self,val,j=True):
-  if not isinstance(val,(list,tuple,ndarray)):
+  if not isinstance(val,(list,tuple,LIST,ndarray)):
    raise TypeError('配列の型を指定してください')
   if isinstance(val,ndarray):reval=val
   elif isinstance(val,(list,tuple)):reval=array(val)
+  elif isinstance(val,LIST):reval=array(list(val))
   if len(reval.shape)==1:reval=array([reval])
   if j==True:self.max_depth=max(self.max_depth,reval.shape[0])
   return reval
@@ -136,10 +137,11 @@ class GElement:
   return self._arr([val])
  def _onearr(self,val,j=True):return self._arr(list(Onelist(val)),j)
  def _dataarr(self,val,j=True):
-  if not isinstance(val,(list,tuple,ndarray)):
+  if not isinstance(val,(list,tuple,ndarray,LIST)):
    raise TypeError('配列の型を指定してください')
   if isinstance(val,ndarray):reval=val
   elif isinstance(val,(list,tuple)):reval=array(val)
+  elif isinstance(val,LIST):reval=array(list(val))
   if j==True:self.max_depth=max(self.max_depth,reval.shape[0])
   return reval
  def _color_check(self,color):

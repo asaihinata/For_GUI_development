@@ -1,5 +1,12 @@
 from test_data import *
 if __name__=="__main__":
+ def updates():
+  radomdata1=rand.randn((1,5000))
+  radomdata2=1.2*radomdata1+rand.randn((1,5000))/3
+  print(f"{radomdata1=}")
+  print(f"{radomdata2=}")
+  hexbin:Hexbin=win.get("hexbin")
+  hexbin.update(x=radomdata1,y=radomdata2)
  print(f"{hexbinx1=}")
  print(f"{hexbiny1=}")
  print(f"{hexbinx2=}")
@@ -19,6 +26,10 @@ if __name__=="__main__":
   ],
   [
    sgg.Hexbin(x=hexbinx1,y=hexbiny1,title="binsを指定する",bins="log")
+  ],
+  [
+   sgg.Hexbin(x=hexbinx1,y=hexbiny1,title="グラフを更新する",key="hexbin"),
+   sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
  win=sgg.window(title="2次元六角形グラフ(デモ)",layout=layout,scroll=True,maxmine=True)

@@ -1,5 +1,10 @@
 from test_data import *
 if __name__=="__main__":
+ def updates():
+  radomdata=4+rand.normal(low=0,high=1.5,lenght=100)
+  print(f"{radomdata=}")
+  ecdf:Ecdf=win.get("ecdf")
+  ecdf.update(radomdata)
  print(f"{ecdfdata=}")
  layout=[
   [
@@ -13,6 +18,10 @@ if __name__=="__main__":
   [
    sgg.Ecdf(data=ecdfdata,title="線の幅を変える",linewidth=3),
    sgg.Ecdf(data=ecdfdata,title="線の種類を変える",linestyle="dotted")
+  ],
+  [
+   sgg.Ecdf(data=ecdfdata,title="経験グラフを更新する",key="ecdf"),
+   sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
  win=sgg.window(title="経験的累積分布関数(デモ)",layout=layout,scroll=True,maxmine=True)

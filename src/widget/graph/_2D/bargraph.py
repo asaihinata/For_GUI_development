@@ -24,7 +24,7 @@ class BarGraph(twoDElement):
   self.width=range_num(num0s(kw.get('width'),self.width),0,1,self.width)
   self.align=listchose(kw.get('align'),['center','edge'],self.align)
   self.logs=bols(kw.get('logs'),self.logs)
-  self.plot(self.x,self.y,label=self.label,alpha=self.alpha,width=self.width,align=self.align,log=self.logs)
+  self.plot(self.x,self.y,label=self.label,alpha=self.alpha,width=self.width,align=self.align,logs=self.logs)
   self._redraw()
  def get(self):return self.graphdata
  def getx(self):return self.x
@@ -53,7 +53,7 @@ class BarhGraph(twoDElement):
   self.height=range_num(num0s(kw.get('height'),self.height),0,1,self.height)
   self.align=listchose(kw.get('align'),['center','edge'],self.align)
   self.logs=bols(kw.get('logs'),self.logs)
-  self.plot(self.x,self.y,label=self.label,alpha=self.alpha,height=self.height,align=self.align,log=self.logs)
+  self.plot(self.x,self.y,label=self.label,alpha=self.alpha,height=self.height,align=self.align,logs=self.logs)
   self._redraw()
  def get(self):return self.graphdata
  def getx(self):return self.x

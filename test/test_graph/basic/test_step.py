@@ -1,5 +1,10 @@
 from test_data import *
 if __name__=="__main__":
+ def updates():
+  radomdata=rand.randint(1,10,5)
+  print(f"{radomdata=}")
+  step:Step=win.get("step")
+  step.update(radomdata)
  print(f"{stepdata=}")
  layout=[
   [
@@ -12,6 +17,10 @@ if __name__=="__main__":
   ],
   [
    sgg.Step(data=stepdata,title="階段の向きを変更する",orientation="horizontal")
+  ],
+  [
+   sgg.Step(data=stepdata,title="グラフを更新する",key="step"),
+   sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
  win=sgg.window(title="階段グラフ(デモ)",layout=layout,scroll=True,maxmine=True)

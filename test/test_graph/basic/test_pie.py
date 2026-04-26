@@ -1,5 +1,10 @@
 from test_data import *
 if __name__=="__main__":
+ def updates():
+  radomdata=rand.randsint(30,50,lenght=5)
+  print(f"{radomdata=}")
+  pies:Pie=win.get("pie")
+  pies.update(radomdata)
  print(f"{piedata=}")
  layout=[
   [
@@ -17,6 +22,10 @@ if __name__=="__main__":
   [
    sgg.Pie(data=piedata,title="全体のウェッジを離す",label=pielabel,explode=0.2),
    sgg.Pie(data=piedata,title="一部のウェッジを離す",label=pielabel,explode=[0.2,0,0,0,0])
+  ],
+  [
+   sgg.Pie(data=piedata,title="円グラフの基本",label=pielabel,key="pie"),
+   sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
  win=sgg.window(title="円グラフ(デモ)",layout=layout,scroll=True,maxmine=True)

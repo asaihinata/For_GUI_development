@@ -1,5 +1,10 @@
 from test_data import *
 if __name__=="__main__":
+ def updates():
+  radomdata=rand.randint(0,3,5)
+  print(f"{radomdata=}")
+  error:Errorbar=win.get("errorbar")
+  error.update(y=radomdata)
  print(f"{errorbarx=}")
  print(f"{errorbary=}")
  print(f"{err=}")
@@ -32,6 +37,10 @@ if __name__=="__main__":
   ],
   [
    sgg.Errorbar(x=errorbarx,y=errorbary,err=err,title="エラーバーの線の幅を変更する",linewidth=2)
+  ],
+  [
+   sgg.Errorbar(x=errorbarx,y=errorbary,err=err,title="グラフを更新する",key="errorbar"),
+   sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
  win=sgg.window(title="エラーバー(デモ)",layout=layout,scroll=True,maxmine=True)

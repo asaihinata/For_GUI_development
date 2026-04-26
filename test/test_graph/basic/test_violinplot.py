@@ -1,5 +1,10 @@
 from test_data import *
 if __name__=="__main__":
+ def updates():
+  radomdata=rand.normal((3,5,4),(0.75,1,0.75),lenght=3,hierarchy=200)
+  print(f"{radomdata=}")
+  violin:Violinplot=win.get("violin")
+  violin.update(radomdata)
  print(f"{violindata=}")
  layout=[
   [
@@ -24,6 +29,10 @@ if __name__=="__main__":
   ],
   [
    sgg.Violinplot(data=violindata,title="推定器の帯域幅を指定する",bw_method="silverman")
+  ],
+  [
+   sgg.Violinplot(data=violindata,title="グラフを更新する",key="violin"),
+   sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
  win=sgg.window(title="バイオリングラフ(デモ)",layout=layout,scroll=True,maxmine=True)

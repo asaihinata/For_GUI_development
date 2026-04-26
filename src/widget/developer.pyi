@@ -1,9 +1,10 @@
 from collections.abc import Iterator
 from typing import Any,Iterable,NoReturn,overload
 from numpy import float64,int64,ndarray
-from numpy._typing import NDArray,_ShapeLike,_ArrayLikeFloat_co,_FloatLike_co
+from numpy._core.numeric import _AnyShapeT
+from numpy._typing import NDArray,_ArrayLikeFloat_co,_FloatLike_co,_ShapeLike
 from numpy.random import Generator
-from ..types import Numbertype
+from ..types import *
 class clear:
  def __init__(self)->None:...
  def __dir__(self)->list[str]:...
@@ -648,7 +649,13 @@ class LIST:
  :rtype: bool'''
  @overload
  @classmethod
- def range(cls,start:int=...,end:int=...,step:int=...)->LIST:'''stepの間隔でstartからendまでの範囲を生成する。
+ def range(
+cls,
+start:int=...,
+end:int=...,
+step:int=...,
+endpoint:bool=False
+)->LIST:'''stepの間隔でstartからendまでの範囲を生成する。
 
  :param start: 開始の値を指定する。
  :type start: int
@@ -656,11 +663,16 @@ class LIST:
  :type end: int
  :param step: 間隔を指定する。
  :type step: int
+ :param endpoint: 範囲にendを含むか指定する。
+ :type endpoint: bool
  :return:
  :rtype: LIST'''
  @overload
  @classmethod
- def range(cls,end:int=...)->LIST:'''1の間隔で0からendまでの範囲を生成する。
+ def range(
+cls,
+end:int=...
+)->LIST:'''1の間隔で0からendまでの範囲を生成する。
 
  :param end: 終了の値を指定する。
  :type end: int
@@ -668,13 +680,30 @@ class LIST:
  :rtype: LIST'''
  @overload
  @classmethod
- def range(cls,start:int=...,end:int=...)->LIST:'''1の間隔でstartからendまでの範囲を生成する。
+ def range(
+cls,
+start:int=...,
+end:int=...
+)->LIST:'''1の間隔でstartからendまでの範囲を生成する。
 
  :param start: 開始の値を指定する。
  :type start: int
  :param end: 終了の値を指定する。
  :type end: int
  :return:
+ :rtype: LIST'''
+ @classmethod
+ def full(
+cls,
+val:Any,
+size:int|_AnyShapeT=...
+)->LIST:'''`val`を`size`の大きさの配列を作成する。
+
+ :param val: 埋めたい値を指定する。
+ :type val: Any
+ :param size: サイズを指定する。
+ :type size: int|_AnyShapeT
+ :return: `val`を`size`の大きさで埋めた配列を返す。
  :rtype: LIST'''
 class Number:
  __static_attributes__:tuple[str]

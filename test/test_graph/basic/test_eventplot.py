@@ -1,5 +1,10 @@
 from test_data import *
 if __name__=="__main__":
+ def updates():
+  radomdata=rand.gamma(4,size=(3,50))
+  print(f"{radomdata=}")
+  event:Eventplot=win.get("event")
+  event.update(radomdata)
  print(f"{eventdata=}")
  layout=[
   [
@@ -13,6 +18,10 @@ if __name__=="__main__":
   [
    sgg.Eventplot(data=eventdata,title="線の幅を変更する",linelength=0.5),
    sgg.Eventplot(data=eventdata,title="線の高さを変更する",linewidth=2)
+  ],
+  [
+   sgg.Eventplot(data=eventdata,title="グラフを更新する",key="event"),
+   sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
  win=sgg.window(title="イベントグラフ(デモ)",layout=layout,scroll=True,maxmine=True)

@@ -20,7 +20,6 @@ For_GUI_development
  │   ├── types
  │   │   ├── __init__.py
  │   │   ├── __init__.pyi
- │   │   ├── basic.py
  │   │   └── widget.py
  │   └── widget
  │       ├── __init__.py
@@ -159,7 +158,6 @@ For_GUI_development
  │   └── style.less
  ├── .gitattributes
  ├── .gitignore
- ├── .gitmessage
  └── .vscode
      ├── extensions.json
      └── settings.json

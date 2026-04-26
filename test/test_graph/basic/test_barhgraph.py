@@ -1,5 +1,10 @@
 from test_data import *
 if __name__=="__main__":
+ def updates():
+  radomdata=rand.randint(30,60,size=5)
+  print(f"{radomdata=}")
+  barhGraph:BarhGraph=win.get("BarhGraph")
+  barhGraph.update(y=radomdata)
  print(f"{bargraphx1=}")
  print(f"{bargraphx2=}")
  print(f"{bargraphy1=}")
@@ -15,6 +20,10 @@ if __name__=="__main__":
   ],
   [
    sgg.BarhGraph(x=bargraphx1,y=bargraphy1,title="グラフの幅の変更",height=0.4)
+  ],
+  [
+   sgg.BarhGraph(x=bargraphx1,y=bargraphy1,title="グラフを更新する",key="BarhGraph"),
+   sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
  win=sgg.window(title="横軸棒グラフ(デモ)",layout=layout,scroll=True,maxmine=True)

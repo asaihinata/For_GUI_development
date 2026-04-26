@@ -3,13 +3,7 @@
         "files.trimTrailingWhitespace": false
     },
     "asciiTreeGenerator.directoryIgnore": [
-        ".vscode",
-        "reference",
-        "branch.txt",
-        "commit.txt",
-        "todo.txt",
-        "memo.txt",
-        "my_demo"
+        ".vscode"
     ],
     "editor.tabSize": 4,
     "files.exclude": {
