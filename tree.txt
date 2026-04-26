@@ -1,4 +1,5 @@
 For_GUI_development
+ ├── README.md
  ├── docs
  │   ├── data
  │   │   ├── browser_jp.csv
@@ -10,99 +11,100 @@ For_GUI_development
  │   ├── img
  │   │   └── icon.png
  │   └── requirements.txt
+ ├── package-lock.json
+ ├── package.json
  ├── pyproject.toml
- ├── README.md
  ├── src
- │   ├── types
- │   │   ├── basic.py
- │   │   ├── widget.py
- │   │   ├── __init__.py
- │   │   └── __init__.pyi
- │   ├── widget
- │   │   ├── base.py
- │   │   ├── base.pyi
- │   │   ├── basic
- │   │   │   ├── btnpop
- │   │   │   │   └── __init__.py
- │   │   │   ├── calendar
- │   │   │   │   ├── tooltip.py
- │   │   │   │   ├── _calendar.py
- │   │   │   │   └── __init__.py
- │   │   │   ├── element.py
- │   │   │   ├── Image
- │   │   │   │   ├── _photo.py
- │   │   │   │   └── __init__.py
- │   │   │   ├── Link
- │   │   │   │   └── __init__.py
- │   │   │   ├── ttkelement.py
- │   │   │   ├── __init__.py
- │   │   │   └── __init__.pyi
- │   │   ├── data
- │   │   │   ├── color.json
- │   │   │   └── __init__.py
- │   │   ├── developer.py
- │   │   ├── developer.pyi
- │   │   ├── graph
- │   │   │   ├── Graph.py
- │   │   │   ├── Graph.pyi
- │   │   │   ├── support
- │   │   │   │   ├── Graphhelp.py
- │   │   │   │   ├── Graphhelp.pyi
- │   │   │   │   ├── List.py
- │   │   │   │   ├── List.pyi
- │   │   │   │   └── __init__.py
- │   │   │   ├── _2D
- │   │   │   │   ├── bargraph.py
- │   │   │   │   ├── boxplot.py
- │   │   │   │   ├── bubble.py
- │   │   │   │   ├── ecdf.py
- │   │   │   │   ├── errorbar.py
- │   │   │   │   ├── eventplot.py
- │   │   │   │   ├── funnelplot.py
- │   │   │   │   ├── hatplot.py
- │   │   │   │   ├── hexbin.py
- │   │   │   │   ├── hist.py
- │   │   │   │   ├── hist2d.py
- │   │   │   │   ├── linefill.py
- │   │   │   │   ├── linegraph.py
- │   │   │   │   ├── pie.py
- │   │   │   │   ├── scatter.py
- │   │   │   │   ├── stack.py
- │   │   │   │   ├── stacked.py
- │   │   │   │   ├── stem.py
- │   │   │   │   ├── step.py
- │   │   │   │   ├── violinplot.py
- │   │   │   │   └── waterfall.py
- │   │   │   ├── _3D
- │   │   │   │   └── dscatter.py
- │   │   │   ├── _graphhelp.py
- │   │   │   ├── __init__.py
- │   │   │   └── __init__.pyi
- │   │   ├── window.py
- │   │   ├── window.pyi
- │   │   ├── _color.py
- │   │   ├── _dialog
- │   │   │   ├── dialogs.py
- │   │   │   ├── popup.py
- │   │   │   ├── __init__.py
- │   │   │   └── __init__.pyi
- │   │   ├── _font.py
- │   │   ├── _function.py
- │   │   ├── _log
- │   │   │   ├── data
- │   │   │   │   └── log.log
- │   │   │   ├── logs.py
- │   │   │   ├── logtext.py
- │   │   │   ├── _data.py
- │   │   │   ├── _logfile.py
- │   │   │   ├── __init__.py
- │   │   │   └── __init__.pyi
- │   │   ├── _save.py
- │   │   ├── _time.py
- │   │   ├── _time.pyi
- │   │   └── __init__.py
  │   ├── __init__.py
- │   └── __init__.pyi
+ │   ├── __init__.pyi
+ │   ├── types
+ │   │   ├── __init__.py
+ │   │   ├── __init__.pyi
+ │   │   ├── basic.py
+ │   │   └── widget.py
+ │   └── widget
+ │       ├── __init__.py
+ │       ├── _color.py
+ │       ├── _dialog
+ │       │   ├── __init__.py
+ │       │   ├── __init__.pyi
+ │       │   ├── dialogs.py
+ │       │   └── popup.py
+ │       ├── _font.py
+ │       ├── _function.py
+ │       ├── _log
+ │       │   ├── __init__.py
+ │       │   ├── __init__.pyi
+ │       │   ├── _data.py
+ │       │   ├── _logfile.py
+ │       │   ├── data
+ │       │   │   └── log.log
+ │       │   ├── logs.py
+ │       │   └── logtext.py
+ │       ├── _save.py
+ │       ├── _time.py
+ │       ├── _time.pyi
+ │       ├── base.py
+ │       ├── base.pyi
+ │       ├── basic
+ │       │   ├── Image
+ │       │   │   ├── __init__.py
+ │       │   │   └── _photo.py
+ │       │   ├── Link
+ │       │   │   └── __init__.py
+ │       │   ├── __init__.py
+ │       │   ├── __init__.pyi
+ │       │   ├── btnpop
+ │       │   │   └── __init__.py
+ │       │   ├── calendar
+ │       │   │   ├── __init__.py
+ │       │   │   ├── _calendar.py
+ │       │   │   └── tooltip.py
+ │       │   ├── element.py
+ │       │   └── ttkelement.py
+ │       ├── data
+ │       │   ├── __init__.py
+ │       │   └── color.json
+ │       ├── developer.py
+ │       ├── developer.pyi
+ │       ├── graph
+ │       │   ├── Graph.py
+ │       │   ├── Graph.pyi
+ │       │   ├── _2D
+ │       │   │   ├── bargraph.py
+ │       │   │   ├── boxplot.py
+ │       │   │   ├── bubble.py
+ │       │   │   ├── ecdf.py
+ │       │   │   ├── errorbar.py
+ │       │   │   ├── eventplot.py
+ │       │   │   ├── funnelplot.py
+ │       │   │   ├── hatplot.py
+ │       │   │   ├── hexbin.py
+ │       │   │   ├── hist.py
+ │       │   │   ├── hist2d.py
+ │       │   │   ├── linefill.py
+ │       │   │   ├── linegraph.py
+ │       │   │   ├── pie.py
+ │       │   │   ├── scatter.py
+ │       │   │   ├── stack.py
+ │       │   │   ├── stacked.py
+ │       │   │   ├── stem.py
+ │       │   │   ├── step.py
+ │       │   │   ├── violinplot.py
+ │       │   │   └── waterfall.py
+ │       │   ├── _3D
+ │       │   │   └── dscatter.py
+ │       │   ├── __init__.py
+ │       │   ├── __init__.pyi
+ │       │   ├── _graphhelp.py
+ │       │   └── support
+ │       │       ├── Graphhelp.py
+ │       │       ├── Graphhelp.pyi
+ │       │       ├── List.py
+ │       │       ├── List.pyi
+ │       │       └── __init__.py
+ │       ├── window.py
+ │       └── window.pyi
  ├── test
  │   ├── data
  │   │   └── img
@@ -140,13 +142,24 @@ For_GUI_development
  │   │   │   └── test_waterfallh.py
  │   │   └── data
  │   │       └── csv
+ │   │           ├── __init__.py
  │   │           ├── japan_population.csv
- │   │           ├── school_test_demo_data.csv
- │   │           └── __init__.py
+ │   │           └── school_test_demo_data.csv
  │   ├── test_log
  │   │   ├── test_log.log
  │   │   └── test_log.py
  │   └── test_widget
  │       └── basic
  │           └── test_all.py
- └── tree.txt
+ ├── tree.txt
+ ├── .crossnote
+ │   ├── config.js
+ │   ├── head.html
+ │   ├── parser.js
+ │   └── style.less
+ ├── .gitattributes
+ ├── .gitignore
+ ├── .gitmessage
+ └── .vscode
+     ├── extensions.json
+     └── settings.json
