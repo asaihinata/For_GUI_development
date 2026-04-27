@@ -14,7 +14,8 @@ class Step(twoDElement):
   self.clear()
   self.graphdata=[self.ax.stairs(d,linewidth=linewidth,baseline=baseline,fill=fill,orientation=orientation,label=self.label[i],alpha=alpha)for i,d in enumerate(data)]
   self._apply_labels(self.xlabel,self.ylabel)
-  self.ax.set_xticks(np.arange(data.shape[1]+1),labels=range.astype('U5'))
+  if orientation=='vertical':self.ax.set_xticks(np.arange(data.shape[1]+1),labels=range.astype('U5'))
+  else:self.ax.set_yticks(np.arange(data.shape[1]+1),labels=range.astype('U5'))
   self.legend()
   self._adjustment()
  def update(self,data=None,**kw):
@@ -33,8 +34,7 @@ class Step(twoDElement):
   len1=data.shape[1]+1
   def _array(min,max):
    if max<min:min,max=max,min
-   step=(max-min)/(len1-1)
-   return np.array([float(step*i+min)for i in range(len1)],dtype=object)
+   return np.array([float((max-min)*i/(len1-1)+min)for i in range(len1)],dtype=object)
   if isinstance(ranges,np.ndarray) and len(ranges.shape)==1 and ranges.shape[0]==len1:return ranges
   elif isinstance(ranges,(tuple,list)):
    lens=len(ranges)

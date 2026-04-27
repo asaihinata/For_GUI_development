@@ -13,9 +13,11 @@ class clear:
  def __instancecheck__(cls,ins):return isinstance(ins,clear)
 class rand:
  '''ランダムな値を生成する。'''
+ seeds=42
+ rng=default_rng(seed=42)
  def __init__(self):
-  self.seeds=42
-  self.rng=default_rng(seed=42)
+  self.seeds=rand.seeds
+  self.rng=rand.rng
  def __sizeof__(self):return super().__sizeof__()+getsizeof(self.rng)+getsizeof(self.seeds)
  @classmethod
  def __instancecheck__(cls,ins):return isinstance(ins,rand)

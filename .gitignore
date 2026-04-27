@@ -19,3 +19,4 @@ demo*.py
 .ini
 __pycache__
 *.pyc
+.env
