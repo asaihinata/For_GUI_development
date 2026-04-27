@@ -1,6 +1,5 @@
 from re import fullmatch
 from numpy import pi
-from matplotlib.lines import Line2D
 from ....types import Numbertype
 from ..._function import listchose
 __all__=['Angle','FMT','FMTSOLID','FMTSOLIDLIST','Hatch','Marker','NSolid','SCapstyle','Solid','SOLIDLIST','Textcoords','XYcoords']

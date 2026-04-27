@@ -3,7 +3,7 @@ from matplotlib.axes._axes import Axes
 from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import float64,ndarray
-from ...types import *
+from ....types import *
 graph_color:list
 class GElement:
  master:Misc
