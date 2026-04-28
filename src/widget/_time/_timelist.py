@@ -23,7 +23,3 @@ class timeslist:
    raise IndexError('配列の範囲外です')
   elif isinstance(val,slice):return self.datelist[val]
   raise TypeError('リストのインデックスはintまたはslicesである必要があります')
- def __dir__(self):return self.dir()
- def dir(self):return iter([attr for attr in dir(timeslist) if not attr.startswith('_') or attr.startswith('__')])
- @classmethod
- def dir(cls):return iter([attr for attr in dir(timeslist) if not attr.startswith('_') or attr.startswith('__')])
