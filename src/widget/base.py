@@ -43,7 +43,7 @@ class Element:
     if isinstance(f,FunctionType):
      try:f()
      except Exception as e:
-      logger.error(f'function({funcs}) error.\n{e}')
+      logger.error(f'function({funcs.__name__}) error.\n{e}')
     else:
      logger.warning(f'{f} is not function type')
   else:return None

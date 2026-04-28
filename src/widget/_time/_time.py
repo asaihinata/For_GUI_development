@@ -89,6 +89,7 @@ class times:
  def isoweekday(self):return self.datetimes.isoweekday()
  def isocalendar(self):return self.datetimes.isocalendar()
  def ctime(self):return self.datetimes.ctime()
+ def strptime(self,format='%Y/%m/%d,%H:%M:%S'):return datetime.strptime(self.datetimes.strftime(format),format)
  def strftime(self,format='%Y/%m/%d,%H:%M:%S'):return self.datetimes.strftime(format)
  def replace(self,year=None,month=None,day=None,hour=None,minute=None,second=None,microsecond=None,timezone=True,fold=None):
   if year is None:year=self.year

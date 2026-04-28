@@ -41,8 +41,12 @@ For_GUI_development
  │       │   ├── logs.py
  │       │   └── logtext.py
  │       ├── _save.py
- │       ├── _time.py
- │       ├── _time.pyi
+ │       ├── _time
+ │       │   ├── __init__.py
+ │       │   ├── _time.py
+ │       │   ├── _time.pyi
+ │       │   ├── _timelist.py
+ │       │   └── _timelist.pyi
  │       ├── base.py
  │       ├── base.pyi
  │       ├── basic
@@ -67,8 +71,12 @@ For_GUI_development
  │       ├── developer.py
  │       ├── developer.pyi
  │       ├── graph
- │       │   ├── Graph.py
- │       │   ├── Graph.pyi
+ │       │   ├── Graph
+ │       │   │   ├── Graph.py
+ │       │   │   ├── __init__.py
+ │       │   │   ├── __init__.pyi
+ │       │   │   ├── threeDElement.py
+ │       │   │   └── twoDElement.py
  │       │   ├── _2D
  │       │   │   ├── bargraph.py
  │       │   │   ├── boxplot.py
@@ -159,5 +167,4 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-     ├── extensions.json
-     └── settings.json
+     └── extensions.json

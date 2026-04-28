@@ -125,8 +125,11 @@ class LIST:
   self.lists=reversed(self.lists)
   return self
  def __getitem__(self,val):
-  if isinstance(val,int)and 0<=val<len(self):return self.lists[val]
-  return self.lists[0]
+  if isinstance(val,int):
+   if 0<=val<len(self):return self.lists[val]
+   raise IndexError('配列の範囲外です')
+  elif isinstance(val,slice):return self.lists[val]
+  raise TypeError('リストのインデックスはintまたはslicesである必要があります')
  def __eq__(self,lists):
   lens,judge=len(self),True
   if isinstance(lists,LIST)and(len(lists)==lens):
