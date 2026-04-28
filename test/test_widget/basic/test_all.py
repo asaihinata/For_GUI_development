@@ -1,5 +1,5 @@
-from os.path import join,normpath
-from pathlib import Path
+import os
+import pathlib
 from _import import *
 if __name__=="__main__":
  def txtchange():win.get("txt1").set_text("!!!変わった!!!")
@@ -8,7 +8,7 @@ if __name__=="__main__":
  def colors():sgg.Popup(message=win.get("color_select").get_color())
  def progress_start():
   win.get("prigress").start()
- Lennapath=normpath(join(Path(__file__).parent,"data/img/Lenna.png"))
+ Lennapath=os.path.normpath(os.path.join(pathlib.Path(__file__).parent,"data/img/Lenna.png"))
  x1,y1=[[10,20,30],[100,200,300]],[1,2,3]
  x2,y2=["1月","2月","3月"],[[100,200,300],[10,20,30]]
  x3,y3=["1月","2月","3月","4月","5月"],[5,6,7,8,9]

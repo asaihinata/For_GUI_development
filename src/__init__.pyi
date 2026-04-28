@@ -3861,3 +3861,161 @@ key:str=...
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
  :type labelalpha: Numbertype'''
+ @classmethod
+ def Popup(
+cls,
+title:str='Information',
+message:str='Information message',
+icon:Literal['info','warning','error','question']='info'
+)->str:'''指定されたタイトルとメッセージを持つ情報メッセージボックスを作成して表示します。
+
+ :param title: 情報メッセージボックスに表示させるタイトル名を指定する。
+ :type title: str
+ :param icon: 情報メッセージボックスに表示させるアイコンを指定する。
+ :type icon: Literal['info','warning','error','question']
+ :param message: 情報メッセージボックスに表示させるメッセージを指定する。
+ :type message: str'''
+ @classmethod
+ def Popupwarning(
+cls,
+title:str='Warning',
+message:str='Warning message',
+icon:Literal['info','warning','error','question']='warning'
+)->str:'''指定されたタイトルとメッセージを含む警告メッセージボックスを作成して表示します。
+
+ :param title: 警告メッセージボックスに表示させるタイトル名を指定する。
+ :type title: str
+ :param message: 警告メッセージボックスに表示させるメッセージを指定する。
+ :type message: str
+ :param icon: 警告メッセージボックスに表示させるアイコンを指定する。
+ :type icon: Literal['info','warning','error','question']
+ :return: ダイアログで選択された値を返す。
+ :rtype: str'''
+ @classmethod
+ def Popupwarningyesno(
+cls,
+title:str='Warning',
+message:str='Warning message',
+icon:Literal['info','warning','error','question']='warning'
+)->Union[str]:'''指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つ警告メッセージボックスを作成して表示します。
+
+ :param title: 警告メッセージボックスに表示させるタイトル名を指定する。
+ :type title: str
+ :param message: 警告メッセージボックスに表示させるメッセージを指定する。
+ :type message: str
+ :param icon: 警告メッセージボックスに表示させるアイコンを指定する。
+ :type icon: Literal['info','warning','error','question']
+ :return: ダイアログで選択された値を返す。
+ :rtype: Union[str] ('yes','no')'''
+ @classmethod
+ def Popuperror(
+cls,
+title:str='Error',
+message:str='Error message',
+icon:Literal['info','warning','error','question']='error'
+)->str:'''指定されたタイトルとメッセージを持つエラーメッセージボックスを作成して表示します。
+
+ :param title: エラーメッセージボックスに表示させるタイトル名を指定する。
+ :type title: str
+ :param message: エラーメッセージボックスに表示させるメッセージを指定する。
+ :type message: str
+ :param icon: エラーメッセージボックスに表示させるアイコンを指定する。
+ :type icon: Literal['info','warning','error','question']
+ :return: ダイアログで選択された値を返す。
+ :rtype: str'''
+ @classmethod
+ def Popuperroryesno(
+cls,
+title:str='Error',
+message:str='Error message',
+icon:Literal['info','warning','error','question']='error'
+)->Union[str]:'''指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つエラーメッセージボックスを作成して表示します。
+
+ :param title: エラーメッセージボックスに表示させるタイトル名を指定する。
+ :type title: str
+ :param message: エラーメッセージボックスに表示させるメッセージを指定する。
+ :type message: str
+ :param icon: エラーメッセージボックスに表示させるアイコンを指定する。
+ :type icon: Literal['info','warning','error','question']
+ :return: ダイアログで選択された値を返す。
+ :rtype: Union[str] ('yes','no')'''
+ @classmethod
+ def Popupquestion(
+cls,
+title:str='Question',
+message:str='Question message',
+icon:Literal['info','warning','error','question']='question'
+)->Union[str]:'''「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる。
+
+ :param title: ダイアログに表示させるタイトル名を指定する。
+ :type title: str
+ :param message: ダイアログに表示させるメッセージを指定する。
+ :type message: str
+ :param icon: ダイアログに表示させるアイコンを指定する。
+ :type icon: Literal['info','warning','error','question']
+ :return: ダイアログで選択された値を返す。
+ :rtype: Union[str] ('yes','no')'''
+ @classmethod
+ def Popupokcancel(
+cls,
+title:str='Question',
+message:str='Question message',
+icon:Literal['info','warning','error','question']='question'
+)->bool:'''「OK」か「キャンセル」を選択させるダイアログを表示させる。
+
+ :param title: ダイアログに表示させるタイトル名を指定する。
+ :type title: str
+ :param message: ダイアログに表示させるメッセージを指定する。
+ :type message: str
+ :param icon: ダイアログに表示させるアイコンを指定する。
+ :type icon: Literal['info','warning','error','question']
+ :return: ダイアログで選択された値を返す。
+ :rtype: bool'''
+ @classmethod
+ def Popupyesno(
+cls,
+title:str='Question',
+message:str='Question message',
+icon:Literal['info','warning','error','question']='question'
+)->bool:'''「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる。「はい」の場合はTrueを,「いいえ」の場合はFalseを返す。
+
+ :param title: ダイアログに表示させるタイトル名を指定する。
+ :type title: str
+ :param message: ダイアログに表示させるメッセージを指定する。
+ :type message: str
+ :param icon: ダイアログに表示させるアイコンを指定する。
+ :type icon: Literal['info','warning','error','question']
+ :return: ダイアログで選択された値を返す。
+ :rtype: bool'''
+ @classmethod
+ def Popupyesnocancel(
+cls,
+title:str='Question',
+message:str='Question message',
+icon:Literal['info','warning','error','question']='question'
+)->Union[bool,None]:'''「はい(Yes)」「いいえ(No)」「キャンセル(Cancel)」を選択させるダイアログを表示させる。「はい」の場合はTrueを,「いいえ」の場合はFalseを返す,「キャンセル(Cancel)」もしくはダイアログを閉じた場合Noneを返す。
+
+ :param title: ダイアログに表示させるタイトル名を指定する。
+ :type title: str
+ :param message: ダイアログに表示させるメッセージを指定する。
+ :type message: str
+ :param icon: ダイアログに表示させるアイコンを指定する。
+ :type icon: Literal['info','warning','error','question']
+ :return: ダイアログで選択された値を返す。
+ :rtype: Union[bool,None]'''
+ @classmethod
+ def Popuptry(
+cls,
+title:str='Question',
+message:str='Question message',
+icon:Literal['info','warning','error','question']='question'
+)->bool:'''操作を再試行するかどうかを尋ねる「再試行」ボタンと「キャンセル」ボタンが設置されたダイアログを表示させる。回答が「再試行」の場合はTrueを,「キャンセル」の場合はFalseを返します。
+
+ :param title: ダイアログに表示させるタイトル名を指定する。
+ :type title: str
+ :param message: ダイアログに表示させるメッセージを指定する。
+ :type message: str
+ :param icon: ダイアログに表示させるアイコンを指定する。
+ :type icon: Literal['info','warning','error','question']
+ :return: ダイアログで選択された値を返す。
+ :rtype: bool'''

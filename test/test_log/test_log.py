@@ -1,7 +1,7 @@
-from os.path import abspath,dirname,join,normpath
+import os
 from _import import *
 if __name__=="__main__":
- logfile=normpath(join(dirname(abspath(__file__)),"test_log.log"))
+ logfile=os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),"test_log.log"))
  logger=Logger(
  name=__name__,
  format=["lineno","message","asctime"],

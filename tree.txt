@@ -153,7 +153,8 @@ For_GUI_development
  │   │   │       ├── japan_population.csv
  │   │   │       └── school_test_demo_data.csv
  │   │   └── style
- │   │       └── test_linestyles.py
+ │   │       ├── test_linestyles.py
+ │   │       └── test_marker.py
  │   ├── test_log
  │   │   ├── test_log.log
  │   │   └── test_log.py
