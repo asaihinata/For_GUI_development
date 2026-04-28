@@ -87,10 +87,11 @@ class Waterfallh(twoDElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  self.sums=bols(kw.get('sums'),self.sums)
-  self.sumstext=kw.get('sumstext',self.sumstext)
   if isinstance(y,NpArraytype):self.y=self._dataarr(y,False)
   if isinstance(x,NpArraytype):self.x=_bar_x_lists(self._onearr(x),len(self.y))
+  self.bottom=_waterfall_sum(self.y)
+  self.sums=bols(kw.get('sums'),self.sums)
+  self.sumstext=kw.get('sumstext',self.sumstext)
   self.ucolor=parsecolor(kw.get('ucolor'),self.ucolor)
   self.dcolor=parsecolor(kw.get('dcolor'),self.dcolor)
   self.height=range_num(num0s(kw.get('height'),self.height),0,1,self.height)

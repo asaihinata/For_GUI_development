@@ -12,6 +12,7 @@ demo*.py
 *deom*.py
 # その他
 .gitmessage
+my-project.code-workspace
 .vscode/settings.json
 .DS_Store
 .dll

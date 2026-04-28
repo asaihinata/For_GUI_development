@@ -13,5 +13,5 @@ if __name__=="__main__":
    )
   ]
  ]
- win=sgg.window(title="人口の変化(デモ)",layout=layout,scroll=True,maxmine=True)
+ win=sgg.window(title="人口の変化(test)",layout=layout,scroll=True,maxmine=True)
  win.run()

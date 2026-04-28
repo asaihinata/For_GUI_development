@@ -1,4 +1,4 @@
-from test_data import *
+from _import import *
 if __name__=="__main__":
  def updates():
   radomdata=4+rand.normal(low=0,high=1.5,lenght=100)
@@ -24,5 +24,5 @@ if __name__=="__main__":
    sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
- win=sgg.window(title="経験的累積分布関数(デモ)",layout=layout,scroll=True,maxmine=True)
+ win=sgg.window(title="経験的累積分布関数(test)",layout=layout,scroll=True,maxmine=True)
  win.run()

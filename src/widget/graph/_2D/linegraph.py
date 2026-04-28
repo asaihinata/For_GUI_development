@@ -3,9 +3,8 @@ from .._graphhelp import *
 class LineGraph(twoDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  x,y=self._xys(kw.get('x'),kw.get('y'))
-  self.x=self._manyarr(x)
-  self.y=self._manyarr(y)
+  self.x=self._manyarr(kw.get('x'))
+  self.y=self._manyarr(kw.get('y'))
   self.label=self.labels(kw.get('label'))[0]
   self.marker=self.markers(kw.get('marker'),self.max_depth)
   self.markersize=num0(kw.get('markersize'),10)

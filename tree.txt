@@ -147,11 +147,13 @@ For_GUI_development
  │   │   │   ├── test_violinplot.py
  │   │   │   ├── test_waterfall.py
  │   │   │   └── test_waterfallh.py
- │   │   └── data
- │   │       └── csv
- │   │           ├── __init__.py
- │   │           ├── japan_population.csv
- │   │           └── school_test_demo_data.csv
+ │   │   ├── data
+ │   │   │   └── csv
+ │   │   │       ├── __init__.py
+ │   │   │       ├── japan_population.csv
+ │   │   │       └── school_test_demo_data.csv
+ │   │   └── style
+ │   │       └── test_linestyles.py
  │   ├── test_log
  │   │   ├── test_log.log
  │   │   └── test_log.py

@@ -8,5 +8,5 @@ if __name__=="__main__":
    datas=data[j+i*5]
    tab.append([datas[0],[[sgg.BarGraph(x=["国語","社会","数学","理科"],y=datas[1::].astype(np.int64),title="教科別の点数",xlabel="教科名",ylabel="点数")]]])
   layout.append([sgg.Tab(tabs=tab)])
- win=sgg.window(title="テストの結果(デモ)",layout=layout,scroll=True,maxmine=True)
+ win=sgg.window(title="テストの結果(test)",layout=layout,scroll=True,maxmine=True)
  win.run()

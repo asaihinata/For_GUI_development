@@ -1,4 +1,4 @@
-from test_data import *
+from _import import *
 if __name__=="__main__":
  def updates():
   radomdata=rand.normal((3,5,4),(0.75,1,0.75),lenght=3,hierarchy=200)
@@ -35,5 +35,5 @@ if __name__=="__main__":
    sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
- win=sgg.window(title="バイオリングラフ(デモ)",layout=layout,scroll=True,maxmine=True)
+ win=sgg.window(title="バイオリングラフ(test)",layout=layout,scroll=True,maxmine=True)
  win.run()

@@ -1,4 +1,4 @@
-from test_data import *
+from _import import *
 if __name__=="__main__":
  def updates():
   radomdata1=3+4*linefillx/8+rand.rands(0.0,0.5,len(linefillx))
@@ -20,5 +20,5 @@ if __name__=="__main__":
    sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
- win=sgg.window(title="積上げ面グラフ(デモ)",layout=layout,scroll=True,maxmine=True)
+ win=sgg.window(title="積上げ面グラフ(test)",layout=layout,scroll=True,maxmine=True)
  win.run()

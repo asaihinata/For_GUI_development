@@ -1,4 +1,4 @@
-from test_data import *
+from _import import *
 if __name__=="__main__":
  def updates():
   radomdata=rand.randint(1,10,5)
@@ -23,5 +23,5 @@ if __name__=="__main__":
    sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]
- win=sgg.window(title="階段グラフ(デモ)",layout=layout,scroll=True,maxmine=True)
+ win=sgg.window(title="階段グラフ(test)",layout=layout,scroll=True,maxmine=True)
  win.run()
