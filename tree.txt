@@ -75,6 +75,13 @@ For_GUI_development
  │       │   │   ├── Graph.py
  │       │   │   ├── __init__.py
  │       │   │   ├── __init__.pyi
+ │       │   │   ├── style
+ │       │   │   │   └── axis
+ │       │   │   │       ├── __init__.py
+ │       │   │   │       ├── __init__.pyi
+ │       │   │   │       ├── xaxis.py
+ │       │   │   │       ├── yaxis.py
+ │       │   │   │       └── zaxis.py
  │       │   │   ├── threeDElement.py
  │       │   │   └── twoDElement.py
  │       │   ├── _2D

@@ -4,7 +4,7 @@ from platform import system
 from sys import getsizeof
 from numpy import array,full,ndarray
 from numpy.random import choice,default_rng
-__all__=['clear','LIST','Number','rand','rands','sort']
+__all__=['clear','LIST','LISTNumber','Number','rand','rands','sort']
 class clear:
  '''コンソールを削除する。'''
  def __init__(self):sys('cls' if system()=='Windows'else'clear')
@@ -387,3 +387,13 @@ class Number:
   elif isinstance(val,(int,float)):return val
   raise TypeError('数値の型を指定してください')
  def value(self):return self.val
+class LISTNumber:
+ def __init__(self,obj):
+  if not isinstance(obj,(list,LIST,tuple)):
+   raise TypeError('型によるエラー')
+  self.lists=obj
+  self.judge=all(isinstance(i,(int,float,Number))for i in self.lists)
+ def __bool__(self):return self.judge
+ def __iter__(self):return iter(self.number())
+ def __len__(self):return len(self.lists)
+ def number(self):return list(i.val if isinstance(i,Number) else i for i in self.lists)

@@ -51,14 +51,14 @@ class twoDElement(GElement):
   self.x:ndarray
   self.y:ndarray
   self.data:ndarray
-  self.setxy=bols(kw.get('setxy'))
   self.xnumticks=num0s(kw.get('xnumticks'),None)
   self.ynumticks=num0s(kw.get('ynumticks'),None)
   self.xmajormaxbins=numsmin(kw.get('xmajormaxbins'),2,10)
   self.ymajormaxbins=numsmin(kw.get('ymajormaxbins'),2,10)
+ def _plot(self):
   self.ax.xaxis.set_major_locator(MaxNLocator(nbins=self.xmajormaxbins,integer=self.xmajorint))
-  self.ax.xaxis.set_major_locator(LinearLocator(numticks=self.xnumticks))
   self.ax.yaxis.set_major_locator(MaxNLocator(nbins=self.ymajormaxbins,integer=self.ymajorint))
+  self.ax.xaxis.set_major_locator(LinearLocator(numticks=self.xnumticks))
   self.ax.yaxis.set_major_locator(LinearLocator(numticks=self.ynumticks))
  def _apply_theme_colors(self):
   self.ax.set_facecolor(self.graph_bg)
@@ -82,12 +82,6 @@ class twoDElement(GElement):
   elif isinstance(data,(tuple,LIST)):return array([list(data)])
   elif isinstance(data,ndarray):return data
   raise TypeError('dataには配列の型を指定してください')
- def _xys(self,x,y):
-  x,y=self._arys(x),self._arys(y)
-  if 2<=x.shape[0] and 2<=y.shape[0]:
-   if self.setxy:x=x[0]
-   else:y=y[0]
-  return x,y
  def _updates(self,**kw):
   self.fg=parsecolor(kw.get('fg'),self.fg)
   self.graph_bg=parsecolor(kw.get('bg'),self.graph_bg)
@@ -116,6 +110,7 @@ class twoDElement(GElement):
  def clear(self):
   self.graphdata=[]
   self.ax.clear()
+  self._plot()
   self._ticks()
   self._apply_theme_colors()
  def invert(self):

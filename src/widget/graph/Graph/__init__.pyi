@@ -269,7 +269,6 @@ ylabel:labeltype=None
  :type ylabel: labeltype
  :return:
  :rtype: NoReturn'''
- def _xys(self,x,y)->tuple:...
  def clear(self)->NoReturn:'''グラフ内のグラフをクリアする。'''
  def invert(self)->NoReturn:'''x軸,y軸を反転させる。'''
  def invert_x(self)->NoReturn:'''x軸を反転させる。'''

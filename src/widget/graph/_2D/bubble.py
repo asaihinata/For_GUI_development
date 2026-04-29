@@ -3,9 +3,8 @@ from .._graphhelp import *
 class Bubble(twoDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  x,y=self._xys(kw.get('x'),kw.get('y'))
-  self.x=self._manyarr(x)
-  self.y=self._manyarr(y)
+  self.x=self._manyarr(kw.get('x'))
+  self.y=self._manyarr(kw.get('y'))
   self.label=self.labels(kw.get('label'))[0]
   self.marker=self.markers(kw.get('marker','o'),self.max_depth)
   self.alpha=range_num(num0s(kw.get('alpha'),0.5),0,1,0.5)
