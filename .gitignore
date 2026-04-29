@@ -10,14 +10,19 @@ demo.py
 demo*.py
 *demo.py
 *deom*.py
-# その他
-.gitmessage
+# vscode
 my-project.code-workspace
 .vscode/settings.json
+.vscode/tasks.json
+# 隠しファイル
+.gitmessage
 .DS_Store
+.env
+# Python
+__pycache__
+*.pyc
+*.log
+# その他
 .dll
 .exe
 .ini
-__pycache__
-*.pyc
-.env
