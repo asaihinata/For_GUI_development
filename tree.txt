@@ -43,10 +43,9 @@ For_GUI_development
  │       ├── _save.py
  │       ├── _time
  │       │   ├── __init__.py
+ │       │   ├── __init__.pyi
  │       │   ├── _time.py
- │       │   ├── _time.pyi
- │       │   ├── _timelist.py
- │       │   └── _timelist.pyi
+ │       │   └── _timelist.py
  │       ├── base.py
  │       ├── base.pyi
  │       ├── basic
@@ -76,6 +75,7 @@ For_GUI_development
  │       │   │   ├── __init__.py
  │       │   │   ├── __init__.pyi
  │       │   │   ├── style
+ │       │   │   │   ├── __init__.py
  │       │   │   │   └── axis
  │       │   │   │       ├── __init__.py
  │       │   │   │       ├── __init__.pyi

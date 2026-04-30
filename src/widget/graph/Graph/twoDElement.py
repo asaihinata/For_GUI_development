@@ -4,7 +4,7 @@ from matplotlib.ticker import LinearLocator,MaxNLocator
 from numpy import array,ndarray
 from ..._function import bols,list2num,listchose,num0s,numsmin,parsecolor,range_num
 from ...developer import LIST,Number
-from .Graph import GElement
+from .Graph import GElement,Xaxis,Yaxis
 class twoDElement(GElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)

@@ -7,7 +7,7 @@ class times:
  maxsyear=9999
  minsyear=1
  datetimes=None
- def __init__(self,year=None,month=None,day=None,hour=0,minute=0,second=0,microsecond=0,timezone='Asia/Tokyo',fold=0,dates=None):
+ def __init__(self,year=None,month=None,day=None,hour=0,minute=0,second=0,microsecond=0,timezone=None,fold=0,dates=None):
   if isinstance(dates,(datetime,date)):self.datetimes=dates
   elif isinstance(dates,times):self.datetimes=dates.datetimes
   else:
@@ -24,10 +24,13 @@ class times:
    self.minute=_valset(minute,'minute',0,60)
    self.second=_valset(second,'second',0,60)
    self.microsecond=_valset(microsecond,'microsecond',0,1000000)
-   self.timezone=_timezonecheck(timezone)
    if isinstance(fold,bool) or (fold in [0,1]):self.fold=int(fold)
    else:self.fold=0
-   self.datetimes=datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.microsecond,tzinfo=self.timezone,fold=self.fold)
+   if isinstance(timezone,str):
+    self.timezone=_timezonecheck(timezone)
+    self.datetimes=datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.microsecond,tzinfo=self.timezone,fold=self.fold)
+   else:
+    self.datetimes=datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.microsecond,fold=self.fold)
  @classmethod
  def __instancecheck__(cls,ins):return isinstance(ins,times)
  def __str__(self):return str(self.datetimes)

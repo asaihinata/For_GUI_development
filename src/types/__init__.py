@@ -1,5 +1,5 @@
 from os import PathLike
-from typing import Any,Callable,Literal,NoReturn
+from typing import Any,Callable,Literal,NoReturn,Sequence,TypeVar
 from numpy import floating,int_,ndarray,str_
 from numpy.typing import NDArray
 # str type
@@ -23,6 +23,7 @@ type NpArraytype=ndarray|list|tuple
 NpArraytype=(ndarray,list,tuple)
 type nNpArraytype=ndarray|list|tuple|None
 nNpArraytype=(ndarray,list,tuple,None)
+Listlike=TypeVar('Listlike',bound=Sequence[Any])
 # list like and number type
 type TupleNumbertype2=tuple[Numbertype,Numbertype]
 type TupleNumbertype4=tuple[Numbertype,Numbertype,Numbertype,Numbertype]

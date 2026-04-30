@@ -1,2 +1,2 @@
-from ._time import *
-from ._timelist import *
+from ._time import times
+from ._timelist import timeslist

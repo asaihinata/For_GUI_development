@@ -11,6 +11,10 @@ type Colortype=str
 '''Colortype型
 
 色名の型ヒント'''
+Listlike=TypeVar('TypeVar',Sequence[Any])
+'''Listlike型
+
+一次元の配列の型'''
 type Linktype=str
 '''Linktype型
 

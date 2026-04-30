@@ -10,7 +10,7 @@ def _bar_x_lists(lists,ylen):
  else:
   lists=lists[0]
   xlen=len(lists)
-  return[str(i) for i in lists] if xlen==ylen or xlen<ylen else [lists[i] for i in range(xlen)]
+  return np.array([str(i) for i in lists] if xlen==ylen or xlen<ylen else [lists[i] for i in range(xlen)])
 class Waterfall(twoDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)

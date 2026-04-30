@@ -5,6 +5,7 @@ numpy==2.4.4
 pillow==12.2.0
 PyAutoGUI==0.9.54
 python-barcode==0.16.1
+python-dateutil==2.9.0.post0
 qrcode==8.2
 requests==2.33.1
 setuptools==82.0.1

@@ -3,7 +3,7 @@ from matplotlib.ticker import LinearLocator,MaxNLocator
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ..._function import bols,list2num,listchose,num0s,nums,numsmin,parsecolor,range_num
 from ...developer import Number
-from .Graph import GElement
+from .Graph import GElement,Xaxis,Yaxis,Zaxis
 class threeDElement(GElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
