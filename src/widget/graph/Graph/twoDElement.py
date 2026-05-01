@@ -5,7 +5,7 @@ from numpy import array,ndarray
 from ..._function import bols,list2num,listchose,num0s,numsmin,parsecolor,range_num
 from ...developer import LIST,Number
 from .Graph import GElement
-from .style import Xlabel,Ylabel,Title
+from .style import Title,Xlabel,Ylabel
 __all__=['twoDElement']
 class twoDElement(GElement):
  def __init__(self,master,kw):

@@ -4,7 +4,7 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ..._function import bols,list2num,listchose,num0s,nums,numsmin,parsecolor,range_num
 from ...developer import Number
 from .Graph import GElement
-from .style import Xlabel,Ylabel,Zlabel,Title
+from .style import Title,Xlabel,Ylabel,Zlabel
 __all__=['threeDElement']
 class threeDElement(GElement):
  def __init__(self,master,kw):
