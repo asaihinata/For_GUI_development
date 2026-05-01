@@ -13,11 +13,11 @@ from ..._log import Logger
 from ..._save import autofile_save
 from ...developer import LIST
 from ..support import Manylist,Marker,NSolid,Onelist,Solid
-from .style import Xaxis,Yaxis,Zaxis
 logger=Logger(name='Graph',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 graph_color=['#4477aa','#ee7733',"#111211",'#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']
 rcParams['font.family']='Meiryo'
 rcParams['axes.prop_cycle']=cycler(color=graph_color)
+__all__=['GElement']
 class GElement:
  def __init__(self,master,kw):
   self.master=master

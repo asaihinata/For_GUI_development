@@ -1,7 +1,8 @@
-'''x軸のスタイルの設定'''
+'''z軸のスタイルの設定'''
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ....._function import listchose
 from .....developer import LISTNumber
+__all__=['Zaxis']
 class Zaxis:
  def __init__(self,ax):
   if isinstance(ax,Axes3D):self.ax=ax

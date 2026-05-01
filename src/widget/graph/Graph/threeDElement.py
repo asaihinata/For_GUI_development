@@ -3,7 +3,9 @@ from matplotlib.ticker import LinearLocator,MaxNLocator
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ..._function import bols,list2num,listchose,num0s,nums,numsmin,parsecolor,range_num
 from ...developer import Number
-from .Graph import GElement,Xaxis,Yaxis,Zaxis
+from .Graph import GElement
+from .style import Xlabel,Ylabel,Zlabel,Title
+__all__=['threeDElement']
 class threeDElement(GElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
@@ -93,8 +95,7 @@ class threeDElement(GElement):
  def _apply_theme_colors(self):
   self.ax.set_facecolor(self.graph_bg)
   self.ax.tick_params(colors=self.fg)
-  self.ax.set_title(self.title)
-  self.ax.title.set_color(self.fg)
+  if self.title is not None:Title(self.ax,self.title,color=self.fg)
   self.ax.xaxis.label.set_color(self.fg)
   self.ax.yaxis.label.set_color(self.fg)
   self.ax.zaxis.label.set_color(self.fg)
@@ -106,9 +107,9 @@ class threeDElement(GElement):
    if self.grid_y:self.ax.yaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
    if self.grid_z:self.ax.zaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
  def _apply_labels(self,xlabel,ylabel,zlabel):
-  self.ax.set_xlabel(xlabel,color=self.fg)
-  self.ax.set_ylabel(ylabel,color=self.fg)
-  self.ax.set_zlabel(zlabel,color=self.fg)
+  Xlabel(self.ax,xlabel,color=self.fg)
+  Ylabel(self.ax,ylabel,color=self.fg)
+  Zlabel(self.ax,zlabel,color=self.fg)
   self._apply_grid()
  def _adjustment(self):
   xlimmins,xlimmaxs=self.xticksrange

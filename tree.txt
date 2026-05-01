@@ -76,12 +76,20 @@ For_GUI_development
  │       │   │   ├── __init__.pyi
  │       │   │   ├── style
  │       │   │   │   ├── __init__.py
- │       │   │   │   └── axis
- │       │   │   │       ├── __init__.py
- │       │   │   │       ├── __init__.pyi
- │       │   │   │       ├── xaxis.py
- │       │   │   │       ├── yaxis.py
- │       │   │   │       └── zaxis.py
+ │       │   │   │   ├── axis
+ │       │   │   │   │   ├── __init__.py
+ │       │   │   │   │   ├── __init__.pyi
+ │       │   │   │   │   ├── xaxis.py
+ │       │   │   │   │   ├── yaxis.py
+ │       │   │   │   │   └── zaxis.py
+ │       │   │   │   ├── label
+ │       │   │   │   │   ├── __init__.py
+ │       │   │   │   │   ├── __init__.pyi
+ │       │   │   │   │   ├── xlabel.py
+ │       │   │   │   │   ├── ylabel.py
+ │       │   │   │   │   └── zlabel.py
+ │       │   │   │   ├── title.py
+ │       │   │   │   └── title.pyi
  │       │   │   ├── threeDElement.py
  │       │   │   └── twoDElement.py
  │       │   ├── _2D

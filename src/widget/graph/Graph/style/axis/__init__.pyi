@@ -2,8 +2,8 @@ from typing import Iterable,Literal,NoReturn
 from matplotlib.axes._axes import Axes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 class Xaxis:
- ax:Axes
- def __init__(self,ax:Axes)->None:...
+ ax:Axes|Axes3D
+ def __init__(self,ax:Axes|Axes3D)->None:...
  def set_log(
 self,
 base:float|int=10,
@@ -20,8 +20,8 @@ subs:Iterable[int]|None=None
  :return:
  :rtype: NoReturn'''
 class Yaxis:
- ax:Axes
- def __init__(self,ax:Axes)->None:...
+ ax:Axes|Axes3D
+ def __init__(self,ax:Axes|Axes3D)->None:...
  def set_log(
 self,
 base:float|int=10,

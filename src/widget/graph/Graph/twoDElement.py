@@ -4,7 +4,9 @@ from matplotlib.ticker import LinearLocator,MaxNLocator
 from numpy import array,ndarray
 from ..._function import bols,list2num,listchose,num0s,numsmin,parsecolor,range_num
 from ...developer import LIST,Number
-from .Graph import GElement,Xaxis,Yaxis
+from .Graph import GElement
+from .style import Xlabel,Ylabel,Title
+__all__=['twoDElement']
 class twoDElement(GElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
@@ -63,9 +65,7 @@ class twoDElement(GElement):
  def _apply_theme_colors(self):
   self.ax.set_facecolor(self.graph_bg)
   self.ax.tick_params(colors=self.fg)
-  if self.title!=None:
-   self.ax.set_title(self.title)
-   self.ax.title.set_color(self.fg)
+  if self.title!=None:Title(self.ax,self.title,color=self.fg)
   self.ax.xaxis.label.set_color(self.fg)
   self.ax.yaxis.label.set_color(self.fg)
   if self.grid_xy:self.ax.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6,which='both')
@@ -74,8 +74,8 @@ class twoDElement(GElement):
    if self.grid_x:self.ax.xaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
    if self.grid_y:self.ax.yaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
  def _apply_labels(self,xlabel,ylabel):
-  self.ax.set_xlabel(xlabel,color=self.fg)
-  self.ax.set_ylabel(ylabel,color=self.fg,rotation=self.y_verwrit)
+  Xlabel(self.ax,xlabel,color=self.fg)
+  Ylabel(self.ax,ylabel,color=self.fg)
  def _arys(self,data):
   if any(isinstance(i,(list,tuple))for i in data):return array(data)
   elif isinstance(data,list):return array([data])
