@@ -3,7 +3,8 @@ For_GUI_development
  ├── docs
  │   ├── data
  │   │   ├── browser_jp.csv
- │   │   ├── color.csv
+ │   │   ├── color1.csv
+ │   │   ├── color2.csv
  │   │   └── jp_name.csv
  │   ├── for_development
  │   │   ├── explanation_graph1.png
@@ -83,6 +84,9 @@ For_GUI_development
  │       │   │   │   │   ├── xaxis.py
  │       │   │   │   │   ├── yaxis.py
  │       │   │   │   │   └── zaxis.py
+ │       │   │   │   ├── color
+ │       │   │   │   │   ├── __init__.py
+ │       │   │   │   │   └── __init__.pyi
  │       │   │   │   ├── font
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   ├── __init__.pyi

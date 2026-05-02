@@ -139,14 +139,14 @@ linewidth:Numbertype=2,
 markersize:Numbertype=10,
 marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']=None,
 linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
-color:Colortype|tuple[Colortype,...]=...,
+color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -195,19 +195,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -260,12 +260,12 @@ master:Misc=None
 self,
 x:n_array,
 y:n_array,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 xlabel:str,
 ylabel:str,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str,
 marker:str,
 markersize:Numbertype,
@@ -286,14 +286,14 @@ label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
 width:Numbertype=1,
-color:Colortype|tuple[Colortype,...]=...,
+color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -340,19 +340,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -406,12 +406,12 @@ self,
 x:o_array,
 y:n_array,
 logs:bool,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 xlabel:str,
 ylabel:str,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str,
 width:Numbertype,
 align:Literal['center','edge']
@@ -428,14 +428,14 @@ logs:bool=False,
 label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
-color:Colortype|tuple[Colortype,...]=...,
+color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -482,19 +482,19 @@ align:Literal['center','edge']='center'
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -550,12 +550,12 @@ y:n_array,
 height:Numbertype,
 align:Literal['center','edge'],
 logs:bool,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 xlabel:str,
 ylabel:str,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''横軸棒グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
@@ -570,14 +570,14 @@ logs:bool=False,
 label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
-color:Colortype|tuple[Colortype,...]=...,
+color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -624,19 +624,19 @@ align:Literal['center','edge']='center'
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -687,12 +687,12 @@ align:Literal['center','edge']='center'
 self,
 x:o_array,
 height:Numbertype,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 xlabel:str,
 ylabel:str,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''じょうごグラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
@@ -708,13 +708,13 @@ label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
-color:Colortype|tuple[Colortype,...]=...,
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
+color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -757,19 +757,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -823,12 +823,12 @@ self,
 data:n_array,
 dataname:o_array,
 width:Numbertype,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 xlabel:str,
 ylabel:str,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''積み上げ縦棒グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
@@ -843,13 +843,13 @@ label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
-color:Colortype|tuple[Colortype,...]=...,
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
+color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -892,19 +892,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -958,12 +958,12 @@ self,
 data:n_array,
 dataname:o_array,
 height:Numbertype,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 xlabel:str,
 ylabel:str,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''積み上げ横棒グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
@@ -979,10 +979,10 @@ counterclock:bool=False,
 labeldistance:Numbertype=1.1,
 explode:list[int,float,Number]|tuple[int,float,Number]|int|float|Number=...,
 label:labeltype=...,
-color:tuple[Colortype,...]=...,
+color:tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100
 )->None:'''円グラフを作成する。
@@ -1006,13 +1006,13 @@ dpi:Numbertype=100
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: tuple[Colortype,...]
+ :type color: tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
@@ -1026,10 +1026,10 @@ explode:tuple[int,float,Number]|int|float|Number,
 startangle:Numbertype,
 shadow:bool,
 counterclock:bool,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''円グラフを再表示させる。'''
  def get(self)->tuple[tuple[Wedge,Text],...]:'''`matplotlib.axes.Axes.pie`の戻り値を配列で返す。'''
@@ -1048,14 +1048,14 @@ orientation:Literal['vertical','horizontal']='vertical',
 label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
-color:Colortype|tuple[Colortype,...]=...,
+color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -1106,19 +1106,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -1178,12 +1178,12 @@ fill:bool,
 notch:bool,
 showfliers:bool,
 orientation:Literal['horizontal','vertical'],
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 xlabel:str,
 ylabel:str,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''箱ひげ図を再表示させる。'''
  def get(self)->list[dict[str,Any]]:'''`matplotlib.axes.Axes.boxplot`の戻り値の配列を返す。'''
@@ -1195,20 +1195,20 @@ x:o_array=...,
 y:o_array=...,
 sums:bool=False,
 sumstext:str='sum',
-ucolor:Colortype='#156082',
-dcolor:Colortype='#e97132',
+ucolor:ColorType='#156082',
+dcolor:ColorType='#e97132',
 width:Numbertype=1,
-colorline:Colortype='#4477aa',
+colorline:ColorType='#4477aa',
 linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
 xlabel:str=...,
 ylabel:str=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -1245,7 +1245,7 @@ master:Misc=None
  :param sumstext: 合計のラベルを指定する。
  :type sumstext: str
  :param colorline: バーとバーを繋げる線の色を指定する。
- :type colorline: Colortype
+ :type colorline: ColorType
  :param linestyle: バーとバーを繋げる線の種類を指定する。
  :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']
  :param xlabel: x軸のラベルを指定する。
@@ -1257,15 +1257,15 @@ master:Misc=None
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -1315,25 +1315,25 @@ master:Misc=None
  :param labelalpha: 凡例の背景の透明度を指定する。
  :type labelalpha: Numbertype
  :param ucolor: 上昇バーの色を指定する。
- :type ucolor: Colortype
+ :type ucolor: ColorType
  :param dcolor: 下降バーの色を指定する。
- :type dcolor: Colortype
+ :type dcolor: ColorType
  :param width: バーの幅を指定する。
  :type width: Numbertype'''
  def update(
 self,
 x:o_array,
 y:o_array,
-colorline:Colortype,
+colorline:ColorType,
 linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ',''],
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 xlabel:str,
 ylabel:str,
-graph_grid:Colortype,
-ucolor:Colortype,
-dcolor:Colortype,
+graph_grid:ColorType,
+ucolor:ColorType,
+dcolor:ColorType,
 width:Numbertype,
 align:Literal['center','edge'],
 )->NoReturn:'''滝グラフを再表示させる。'''
@@ -1345,22 +1345,22 @@ class Waterfallh(_2Gset):
 self,
 x:o_array=...,
 y:o_array=...,
-ucolor:Colortype='#156082',
-dcolor:Colortype='#e97132',
+ucolor:ColorType='#156082',
+dcolor:ColorType='#e97132',
 height:Numbertype=1,
 sums:bool=False,
 sumstext:str='sum',
-colorline:Colortype='#4477aa',
+colorline:ColorType='#4477aa',
 linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
 xlabel:str=...,
 ylabel:str=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -1397,7 +1397,7 @@ master:Misc=None
  :param sumstext: 合計のラベルを指定する。
  :type sumstext: str
  :param colorline: バーとバーを繋げる線の色を指定する。
- :type colorline: Colortype
+ :type colorline: ColorType
  :param linestyle: バーとバーを繋げる線の種類を指定する。
  :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']
  :param xlabel: x軸のラベルを指定する。
@@ -1409,15 +1409,15 @@ master:Misc=None
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -1467,26 +1467,26 @@ master:Misc=None
  :param labelalpha: 凡例の背景の透明度を指定する。
  :type labelalpha: Numbertype
  :param ucolor: 上昇バーの色を指定する。
- :type ucolor: Colortype
+ :type ucolor: ColorType
  :param dcolor: 下降バーの色を指定する。
- :type dcolor: Colortype
+ :type dcolor: ColorType
  :param height: バーの幅を指定する。
  :type height: Numbertype'''
  def update(
 self,
 x:o_array,
 y:o_array,
-colorline:Colortype,
+colorline:ColorType,
 linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ',''],
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 xlabel:str,
 ylabel:str,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str,
-ucolor:Colortype,
-dcolor:Colortype,
+ucolor:ColorType,
+dcolor:ColorType,
 height:Numbertype,
 align:Literal['center','edge'],
 )->NoReturn:'''横向きの滝グラフを再表示させる。'''
@@ -1503,14 +1503,14 @@ ylabel:str=...,
 label:labeltype=...,
 marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
 markersize:Numbertype=10,
-color:Colortype|tuple[Colortype,...]=...,
+color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -1555,19 +1555,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -1623,12 +1623,12 @@ y:n_array,
 marker:str,
 markersize:Numbertype,
 linewidth:Numbertype,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 xlabel:str,
 ylabel:str,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''散布図を再表示させる。'''
  def get(self)->list[PathCollection]:'''`PathCollection`の配列を返す。'''
@@ -1645,14 +1645,14 @@ ylabel:str=...,
 zlabel:str=...,
 marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
 markersize:Numbertype=10,
-color:Colortype|tuple[Colortype,...]=...,
+color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xyz:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -1704,19 +1704,19 @@ azim:Numbertype=45
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xyz: x軸,y軸,z軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`,`grid_z`より優先度が高い。
  :type grid_xyz: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。`grid_xyz`より優先度が低い。
@@ -1786,10 +1786,10 @@ self,
 x:o_array,
 y:o_array,
 z:o_array,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str,
 marker:str,
 markersize:Numbertype,
@@ -1818,12 +1818,12 @@ marker:Literal['o','+','*','.','x','_','|','square','diamond','^','v','<','>','p
 line:Literal['-','--','-.','-.']=...,
 color:Literal['r','g','b','c','m','y','k','w']|list[Literal['r','g','b','c','m','y','k','w']]|tuple[Literal['r','g','b','c','m','y','k','w']]=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -1876,15 +1876,15 @@ master:Misc=None
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -1937,12 +1937,12 @@ master:Misc=None
 self,
 x:n_array,
 y:n_array,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 xlabel:str,
 ylabel:str,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str,
 bottom:Numbertype,
 orientation:Literal['horizontal','vertical'],
@@ -1966,14 +1966,14 @@ decimalpoint:Numbertype=0,
 orientation:Literal['vertical','horizontal']='vertical',
 bottom:Numbertype=0,
 bins:int|list|range|tuple|ndarray|Literal['auto','fd','doane','scott','stone','rice','sturges','sqrt']=10,
-color:Colortype|tuple[Colortype,...]=...,
+color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -2024,19 +2024,19 @@ labely_verwrit:Literal['vertical','horizontal']='vertical'
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -2088,11 +2088,11 @@ labely_verwrit:Literal['vertical','horizontal']='vertical'
  def update(
 self,
 data:o_array,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 decimalpoint:Numbertype,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str,
 bins:int|list|range|tuple|ndarray|Literal['auto','fd','doane','scott','stone','rice','sturges','sqrt'],
 min:Numbertype,
@@ -2174,13 +2174,13 @@ fill:bool=False,
 baseline:Numbertype=0,
 orientation:Literal['vertical','horizontal']='vertical',
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
-color:Colortype|tuple[Colortype,...]=...,
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
+color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -2226,19 +2226,19 @@ label:labeltype=...
  :param label: ラベルを指定する。
  :type label: labeltype
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -2295,10 +2295,10 @@ range:int|float|ListNumbertype2|TupleNumbertype2,
 fill:bool,
 baseline:Numbertype,
 orientation:Literal['horizontal','vertical'],
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''階段グラフを再表示させる。'''
  def get(self)->list[StepPatch]:'''`StepPatch`の配列を返す。'''
@@ -2313,14 +2313,14 @@ ylabel:str=...,
 label:labeltype=...,
 hatch:Literal[None,'o','oo','O','OO','x','xx','*','**','*-','+','++','+o','-','--',r'-\\','.','..','/','//','/o','O.','O|','\\','\\\\','\\|','o-','x*','|','|*','||']=None,
 baseline:Literal['zero','sym','wiggle','weighted_wiggle']='zero',
-color:Colortype|tuple[Colortype,...]=...,
+color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -2365,19 +2365,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -2432,12 +2432,12 @@ x:n_array,
 y:n_array,
 hatch:Literal[None,'o','oo','O','OO','x','xx','*','**','*-','+','++','+o','-','--',r'-\\','.','..','/','//','/o','O.','O|','\\','\\\\','\\|','o-','x*','|','|*','||'],
 baseline:Literal['zero','sym','wiggle','weighted_wiggle'],
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 xlabel:str,
 ylabel:str,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''積み上げエリアチャートを再表示させる。'''
  def get(self)->list[FillBetweenPolyCollection]:'''`FillBetweenPolyCollection`の配列を返す。'''
@@ -2453,14 +2453,14 @@ bubblesize:Numbertype=1,
 xlabel:str=...,
 ylabel:str=...,
 marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
-color:Colortype|tuple[Colortype,...]=...,
+color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=0.5,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -2508,19 +2508,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -2574,10 +2574,10 @@ self,
 x:n_array,
 y:n_array,
 bubblesize:Numbertype,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str,
 marker:str,
 markersize:Numbertype,
@@ -2600,13 +2600,13 @@ xlabel:str=...,
 ylabel:str=...,
 label:labeltype=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
-color:Colortype|tuple[Colortype,...]=...,
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
+color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=0.5,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -2651,19 +2651,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -2720,10 +2720,10 @@ ymax:n_array,
 centerlinewidth:Numbertype,
 xlabel:str,
 ylabel:str,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''2つの水平曲線の間の領域を埋めるグラフを再表示させる。'''
  def get(self)->list[FillBetweenPolyCollection,Line2D]:'''`PathCollection`と`Line2D`の配列を返す。'''
@@ -2740,13 +2740,13 @@ orientation:Literal['vertical','horizontal']='vertical',
 linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':']='-',
 linewidth:Numbertype=1.5,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
-color:Colortype|tuple[Colortype,...]=...,
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
+color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -2795,19 +2795,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -2864,11 +2864,11 @@ compress:bool,
 orientation:Literal['horizontal','vertical'],
 linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':'],
 linewidth:Numbertype,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 decimalpoint:Numbertype,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''経験的累積分布関数を再表示させる。'''
  def get(self)->list[Line2D]:'''`Line2D`の配列を返す。'''
@@ -2892,14 +2892,14 @@ linewidth:Numbertype=1.5,
 capthick:Numbertype=10,
 capsize:Numbertype=0,
 errorevery:int|list[int]|tuple[int]=1,
-color:Colortype|tuple[Colortype,...]=...,
+color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -2968,19 +2968,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -3047,11 +3047,11 @@ linewidth:Numbertype,
 capthick:Numbertype,
 capsize:Numbertype,
 errorevery:int|list[int]|tuple[int],
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 decimalpoint:Numbertype,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''エラーグラフを再表示させる。'''
  def get(self)->list[ErrorbarContainer]:'''`ErrorbarContainer`の配列を返す。'''
@@ -3068,14 +3068,14 @@ orientation:Literal['vertical','horizontal']='vertical',
 xlabel:str=...,
 ylabel:str=...,
 label:labeltype=...,
-color:Colortype|tuple[Colortype,...]=...,
+color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -3122,19 +3122,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -3190,10 +3190,10 @@ linewidth:Numbertype,
 linelength:Numbertype,
 orientation:Literal['vertical','horizontal'],
 linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':'],
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''円グラフを再表示させる。'''
  def get(self)->list[EventCollection]:'''`EventCollection`の配列を返す。'''
@@ -3215,12 +3215,12 @@ xlabel:str=...,
 ylabel:str=...,
 label:labeltype=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -3271,15 +3271,15 @@ labely_verwrit:Literal['vertical','horizontal']='vertical'
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -3342,10 +3342,10 @@ ymax:Numbertype,
 ymin:Numbertype,
 bins:int|TupleInt2|ArrayLike|tuple[ArrayLike,ArrayLike],
 density:bool,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''2次元ヒストグラムを再表示させる。
 
@@ -3369,13 +3369,13 @@ points:Numbertype=100,
 bw_method:Literal['scott','silverman']|float|Callable[[GaussianKDE],float]='scott',
 side:Literal['both','low','high']='both',
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
-color:Colortype|tuple[Colortype,...]=...,
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
+color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -3434,19 +3434,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -3508,11 +3508,11 @@ showmedians:bool,
 points:Numbertype,
 bw_method:Literal['scott','silverman']|float|Callable[[GaussianKDE],float],
 side:Literal['both','low','high'],
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 decimalpoint:Numbertype,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''バイオリングラフを再表示させる。'''
  def get(self)->list[dict[str,Collection]]:'''`matplotlib.axes.Axes.violinplot`のバイオリンプロットの各コンポーネントの辞書型が入った配列を返す。'''
@@ -3530,13 +3530,13 @@ yscale:Literal['linear','log']='linear',
 mincnt:int=1,
 bins:Literal['log']|int|tuple[float,...]|None=None,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
-color:Colortype|tuple[Colortype,...]=...,
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
+color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -3589,19 +3589,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype|tuple[Colortype,...]
+ :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -3660,11 +3660,11 @@ extent:tuple[float,float,float,float]|None,
 xscale:Literal['linear','log'],
 yscale:Literal['linear','log'],
 mincnt:int,
-fg:Colortype,
-bg:Colortype,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 decimalpoint:Numbertype,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str
 )->NoReturn:'''2次元六角形グラフを再表示させる。'''
  def get(self)->list[PolyCollection]:'''`PolyCollection`の配列を返す。'''
@@ -3675,17 +3675,17 @@ class Hatplot(_2Gset):
 self,
 x:o_array,
 data:o_array,
-color:Colortype='#4477aa',
+color:ColorType='#4477aa',
 label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
 title:str=...,
 dpi:Numbertype=100,
 alpha:Numbertype=1,
-graph_grid:Colortype='#b7b7b7',
+graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
@@ -3726,19 +3726,19 @@ master:Misc=None
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
- :type color: Colortype
+ :type color: ColorType
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: Numbertype
  :param alpha: グラフの透明度を指定する。
  :type alpha: Numbertype
  :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
  :type grid_xy: bool
  :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
@@ -3792,13 +3792,13 @@ self,
 x:o_array,
 data:o_array,
 label:labeltype,
-color:Colortype,
-fg:Colortype,
-bg:Colortype,
+color:ColorType,
+fg:ColorType,
+bg:ColorType,
 alpha:Numbertype,
 xlabel:str,
 ylabel:str,
-graph_grid:Colortype,
+graph_grid:ColorType,
 title:str,
 )->NoReturn:'''ハットグラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''

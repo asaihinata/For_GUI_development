@@ -9,9 +9,9 @@ class GElement:
  fig:Figure
  graphdata:list
  size:TupleNumbertype2
- fg:Colortype
- graph_bg:Colortype
- graph_grid:Colortype
+ fg:ColorType
+ graph_bg:ColorType
+ graph_grid:ColorType
  title:str
  dpi:Numbertype
  alpha:Numbertype
@@ -21,9 +21,9 @@ class GElement:
 self,
 master:Misc=...,
 size:TupleNumbertype2=(500,400),
-fg:Colortype='#000000',
-bg:Colortype='#ffffff',
-graph_grid:Colortype='#b7b7b7',
+fg:ColorType='#000000',
+bg:ColorType='#ffffff',
+graph_grid:ColorType='#b7b7b7',
 title:str=...,
 dpi:Numbertype=100,
 alpha=1
@@ -33,11 +33,11 @@ alpha=1
  :param size: グラフの大きさをタプルで指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
- :type fg: Colortype
+ :type fg: ColorType
  :param bg: グラフ内の背景色を指定する。
- :type bg: Colortype
+ :type bg: ColorType
  :param graph_grid: グラフ内の線を指定する。
- :type graph_grid: Colortype
+ :type graph_grid: ColorType
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param dpi: グラフの解像度を指定する。
@@ -46,9 +46,9 @@ alpha=1
   self._canvas_widget:None
   self.graphdata:list
   self.size:TupleNumbertype2
-  self.fg:Colortype
-  self.graph_bg:Colortype
-  self.graph_grid:Colortype
+  self.fg:ColorType
+  self.graph_bg:ColorType
+  self.graph_grid:ColorType
   self.title:str
   self.dpi:Numbertype
   self.alpha:Numbertype
@@ -249,9 +249,9 @@ setxy:bool=True
   self.ymajorint:bool
  def _updates(
 self,
-fg:Colortype,
-bg:Colortype,
-graph_grid:Colortype,
+fg:ColorType,
+bg:ColorType,
+graph_grid:ColorType,
 title:str,
 xlabel:labeltype,
 ylabel:labeltype
@@ -368,9 +368,9 @@ yticksdirection:Literal['out','in','inout']='out'
   self.azim:Numbertype
  def _updates(
 self,
-fg:Colortype,
-bg:Colortype,
-graph_grid:Colortype,
+fg:ColorType,
+bg:ColorType,
+graph_grid:ColorType,
 title:str,
 elev:Numbertype,
 azim:Numbertype,

@@ -3,14 +3,11 @@ from os import PathLike
 from typing import *
 from numpy import floating,int_,ndarray,str_
 from numpy.typing import NDArray
+from matplotlib.typing import *
 type StrPathtype=str|PathLike[str]
 '''StrPathtype型
 
 フォルダやファイルのパス名の型ヒント'''
-type Colortype=str
-'''Colortype型
-
-色名の型ヒント'''
 Listlike=TypeVar('TypeVar',Sequence[Any])
 '''Listlike型
 

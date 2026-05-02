@@ -13,3 +13,4 @@ class FontFile:
    raise ValueError('ファイルの拡張子がafm,otf,ttc,ttfのどれかではありません')
   self.Properties=FontProperties(fname=path)
  def __str__(self):return str(self.path)
+ def __fspath__(self):return self.path

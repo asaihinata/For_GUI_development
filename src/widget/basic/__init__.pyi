@@ -1,23 +1,23 @@
 from datetime import datetime
 from tkinter import Widget
-from ...types import Any,Colortype,Literal,NoReturn,Numbertype,TupleInt2
+from ...types import Any,ColorType,Literal,NoReturn,Numbertype,TupleInt2
 from ..base import _Element
 class Texts(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
 class Buttons(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
 class Input(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''Inputウィジェットに記入されている文字を取得する。
@@ -25,10 +25,10 @@ class Input(_Element):
  :return: Inputウィジェットに記入されている文字を返す。
  :rtype: str'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
  def inserts(self,text:str='',place:int|Literal['end']='end')->NoReturn:'''挿入する位置を指定し,Inputウィジェットにその指定した場所のテキストを挿入する。
 
  :param text: 挿入する文字を指定する。
@@ -43,10 +43,10 @@ class Input(_Element):
  def all_delta(self)->NoReturn:'''Inputウィジェット内の文字を全て削除する。'''
 class Multiline(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
  def inserts(self,text:str='',place:int|Literal['end']='end')->NoReturn:'''挿入する位置を指定し,Multilineウィジェットにその指定した場所のテキストを挿入する。
 
  :param text: 挿入する文字を指定する。
@@ -60,20 +60,20 @@ class Multiline(_Element):
  def all_delta(self)->NoReturn:'''Multilineウィジェット内の文字を全て削除する。'''
 class InputNumber(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
  def get_number(self)->Numbertype:'''InputNumberウィジェットに入力されている数値を取得する。
 
  :return: InputNumberウィジェットに入力されている数値を返す。
  :rtype: Numbertype'''
 class Listboxs(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
  def select_set(self,val:int)->NoReturn:'''読み込み時にListboxsウィジェットで選択される項目を指定する。
 
  :param val: 読み込み時にListboxsウィジェットで選択される項目を指定する。
@@ -109,18 +109,18 @@ class Radio(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
 class Checkbox(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
  def get_value(self)->bool:'''Checkboxウィジェットにチェックされているか判定する。未チェックの場合Falseを返す。
 
  :return: Checkboxウィジェットにチェックされているか判定する。
@@ -173,10 +173,10 @@ class Slidebar(_Element):
  :return: Slidebarウィジェットの現在の値を返す。
  :rtype: Numbertype'''
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
  def set(self,val:Numbertype)->NoReturn:'''Slidebarウィジェットの変更後の数値を設定する。
 
  :param val: 変更後の数値を指定する。
@@ -187,10 +187,10 @@ class Menus(_Element):
  :return: Menusウィジェットで表示されている配列を返す。
  :rtype: list'''
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
  def clear(self)->NoReturn:'''Menusウィジェットのlistを空にしMenusウィジェットを非表示にする。'''
  def addmenu(self,label:str,submenu_lists:list)->NoReturn:'''Menusウィジェットに新しくメニューを追加する。
 
@@ -206,10 +206,10 @@ class Menubuttons(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
  def clear(self)->NoReturn:'''Menubuttonsウィジェットのlistを空にしMenusウィジェットを非表示にする。'''
  def addmenu(self,label:str,submenu_lists:list)->NoReturn:'''Menubuttonsウィジェットに新しくメニューを追加する。
 
@@ -219,16 +219,16 @@ class Menubuttons(_Element):
  :type submenu_lists: list'''
 class Frames(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
 class Column(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
 class Tab(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def _add_tab(self,frame:Widget,title:str=...):'''Tabウィジェットに新しいタブを追加する。
@@ -264,10 +264,10 @@ class Link(_Element):
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
  def get_link(self)->str:'''Linkウィジェットに登録されているURLを取得する。'''
  def set_link(self,link:str)->NoReturn:'''LinkウィジェットのURLを変更する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
 class Images(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
 class QRcode(_Element):
@@ -300,10 +300,10 @@ class FolderLoad(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
  def dgettitle(self)->str:'''ダイアログに表示されるタイトルを取得する。
 
  :return: ダイアログのタイトルを返す。
@@ -317,10 +317,10 @@ class FileLoad(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
  def dgettitle(self)->str:'''ダイアログに表示されるタイトルを取得する。
 
  :return: ダイアログのタイトルを返す。
@@ -334,10 +334,10 @@ class Savebtn(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
  def dgettitle(self)->str:'''ダイアログに表示されるタイトルを取得する。
 
  :return: ダイアログのタイトルを返す。
@@ -351,10 +351,10 @@ class Colorbtn(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str)->NoReturn:'''ウィジェットが表示している文字を変更する。'''
- def get_fg(self)->Colortype:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:Colortype)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->Colortype:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:Colortype)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
+ def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
+ def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
+ def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
+ def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
  def dgettitle(self)->str:'''ダイアログに表示されるタイトルを取得する。
 
  :return: ダイアログのタイトルを返す。

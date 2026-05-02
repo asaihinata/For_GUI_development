@@ -18,7 +18,7 @@ y:int|float|Number|None=None,
  :param title: タイトルを指定する。
  :type title: str
  :param loc: タイトルの表示場所を指定する。
- :type loc: Literal["center","left","right"]|None
+ :type loc: Literal['center','left','right']|None
  :param pad: タイトルと上部の軸との距離をポイント単位で指定する。
  :type pad: int|float|Number|None
  :param y: タイトルを表示する垂直軸の位置を指定する。
@@ -27,7 +27,7 @@ y:int|float|Number|None=None,
  :raises TypeError: `pad`がNoneもしくは数値の型を指定しなかった場合に発生させる
  :raises TypeError: `y`がNoneもしくは数値の型を指定しなかった場合に発生させる'''
  def __str__(self)->str:...
- def title(self)->Text:'''ax.set_titleで返ってきた戻り値を返す。
+ def title(self)->Text:'''ax.set_titleの戻り値を返す。
 
- :return: ax.set_titleで返ってきた戻り値を返す。
+ :return: ax.set_titleの戻り値を返す。
  :rtype: Text'''
