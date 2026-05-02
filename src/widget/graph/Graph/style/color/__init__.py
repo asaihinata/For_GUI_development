@@ -17,7 +17,7 @@ class Color:
    if not isinstance(alpha,(int,float)):
     raise TypeError('alphaは数値の型を指定してください')
    if not 0<=alpha<=1:
-    raise ValueError('0<=alpha<=1の範囲で指定してください')
+    raise ValueError('0.0<=alpha<=1.0の範囲で指定してください')
   self.color=np.array([np.frompyfunc(to_rgba,2,1)(i,alpha) for i in self.color])
   return self
  def torgb(self):

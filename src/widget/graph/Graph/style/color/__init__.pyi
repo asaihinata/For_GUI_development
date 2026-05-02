@@ -4,6 +4,7 @@ from matplotlib.typing import ColorType
 import numpy as np
 __all__=['Color']
 class Color:
+ __dict__:dict[str,Any]
  color:np.ndarray
  def __init__(
 self,

@@ -394,6 +394,5 @@ class LISTNumber:
   self.lists=obj
   self.judge=all(isinstance(i,(int,float,Number))for i in self.lists)
  def __bool__(self):return self.judge
- def __iter__(self):return iter(self.number())
+ def __iter__(self):return iter([i.val if isinstance(i,Number) else i for i in self.lists])
  def __len__(self):return len(self.lists)
- def number(self):return list(i.val if isinstance(i,Number) else i for i in self.lists)

@@ -87,6 +87,9 @@ For_GUI_development
  │       │   │   │   ├── color
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   └── __init__.pyi
+ │       │   │   │   ├── developer
+ │       │   │   │   │   ├── __init__.py
+ │       │   │   │   │   └── __init__.pyi
  │       │   │   │   ├── font
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   ├── __init__.pyi
@@ -98,6 +101,9 @@ For_GUI_development
  │       │   │   │   │   ├── xlabel.py
  │       │   │   │   │   ├── ylabel.py
  │       │   │   │   │   └── zlabel.py
+ │       │   │   │   ├── legend
+ │       │   │   │   │   ├── __init__.py
+ │       │   │   │   │   └── __init__.pyi
  │       │   │   │   ├── title.py
  │       │   │   │   └── title.pyi
  │       │   │   ├── threeDElement.py
