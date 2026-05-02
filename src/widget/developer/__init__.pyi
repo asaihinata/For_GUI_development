@@ -4,7 +4,7 @@ from numpy import float64,int64,ndarray
 from numpy._core.numeric import _AnyShapeT
 from numpy._typing import NDArray,_ArrayLikeFloat_co,_FloatLike_co,_ShapeLike
 from numpy.random import Generator
-from ..types import *
+from ...types import *
 class clear:
  def __init__(self)->None:...
  def __dir__(self)->list[str]:...

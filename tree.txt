@@ -67,8 +67,9 @@ For_GUI_development
  │       ├── data
  │       │   ├── __init__.py
  │       │   └── color.json
- │       ├── developer.py
- │       ├── developer.pyi
+ │       ├── developer
+ │       │   ├── __init__.py
+ │       │   └── __init__.pyi
  │       ├── graph
  │       │   ├── Graph
  │       │   │   ├── Graph.py
@@ -82,6 +83,11 @@ For_GUI_development
  │       │   │   │   │   ├── xaxis.py
  │       │   │   │   │   ├── yaxis.py
  │       │   │   │   │   └── zaxis.py
+ │       │   │   │   ├── font
+ │       │   │   │   │   ├── __init__.py
+ │       │   │   │   │   ├── __init__.pyi
+ │       │   │   │   │   ├── fontfile.py
+ │       │   │   │   │   └── fontmanager.py
  │       │   │   │   ├── label
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   ├── __init__.pyi
