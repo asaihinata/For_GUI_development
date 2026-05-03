@@ -22,7 +22,6 @@ if __name__=="__main__":
  boxdata=rand.normal(low=100,high=10,lenght=100)
  eventdata=np.random.gamma(4,size=(3,50))
  ecdfdata=4+rand.normal(low=0,high=1.5,lenght=100)
- bubble_x,bubble_y,bubble_data=[[100,300,400,500],[200,500,100,200]],[[100,200,300,400],[400,300,200,100]],[[1,5,7,9],[1,5,7,9]]
  menus=[
  ["ファイル",
  ["開く",
@@ -144,7 +143,6 @@ if __name__=="__main__":
  [sgg.Waterfallh(x=x5,y=y5,height=0.5,title="ウォーターフォール")],
  [sgg.Step(data=stepdata,title="階段グラフ")],
  [sgg.Stack(x=x6,y=y6,title="積み上げグラフ")],
- [sgg.Bubble(x=bubble_x,y=bubble_y,data=bubble_data,title=f"バブルグラフ",label=["バブルデモ1","バブルデモ2"],bubblesize=100,xlabel="xラベル",ylabel="yラベル")],
  [sgg.Eventplot(data=eventdata,linestyle="dashed",label=["a","b","c"],title="イベントグラフ")],
  [sgg.Errorbar(x=x7,y=y7,err=err,title="エラーバー")],
  [sgg.Errorbar(x=x7,y=y7,xerr=xerr,yerr=yerr,title="エラーバー")],

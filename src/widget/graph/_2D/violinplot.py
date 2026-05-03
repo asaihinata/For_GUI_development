@@ -26,9 +26,9 @@ class Violinplot(twoDElement):
   self._adjustment()
  def update(self,data=None,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(data,ndarray|list|tuple):self.data=self._dataarr(data)
-  if isinstance(x,ndarray|list|tuple):self.data=self._dataarr(x)
-  if isinstance(y,ndarray|list|tuple):self.data=self._dataarr(y)
+  if isinstance(data,np.ndarray|list|tuple):self.data=self._dataarr(data)
+  if isinstance(x,np.ndarray|list|tuple):self.data=self._dataarr(x)
+  if isinstance(y,np.ndarray|list|tuple):self.data=self._dataarr(y)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)
   self.width=range_num(num0s(kw.get('width'),self.width),0,1,self.width)
   self.showextrema=bols(kw.get('showextrema'),self.showextrema)

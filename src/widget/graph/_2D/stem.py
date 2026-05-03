@@ -27,8 +27,8 @@ class Stem(twoDElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,ndarray|list|tuple):self.x=self._manyarr(x)
-  if isinstance(y,ndarray|list|tuple):self.y=self._manyarr(y)
+  if isinstance(x,np.ndarray|list|tuple):self.x=self._manyarr(x)
+  if isinstance(y,np.ndarray|list|tuple):self.y=self._manyarr(y)
   self.colorlist=self._list_loop(self._stem_color_check(self.colorlist),self.max_depth)
   self.line=self._list_loop(self._linefmt(kw.get('line',self.line)),self.max_depth)
   self.marker=self._list_loop(self._markerfmt(kw.get('marker',self.marker)),self.max_depth)

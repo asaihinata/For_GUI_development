@@ -19,8 +19,8 @@ class BarGraph(twoDElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,ndarray|list|tuple):self.x=self._onearr(x)
-  if isinstance(y,ndarray|list|tuple):self.y=self._manyarr(y)
+  if isinstance(x,np.ndarray|list|tuple):self.x=self._onearr(x)
+  if isinstance(y,np.ndarray|list|tuple):self.y=self._manyarr(y)
   self.width=range_num(num0s(kw.get('width'),self.width),0,1,self.width)
   self.align=listchose(kw.get('align'),['center','edge'],self.align)
   self.logs=bols(kw.get('logs'),self.logs)
@@ -48,8 +48,8 @@ class BarhGraph(twoDElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,ndarray|list|tuple):self.x=self._onearr(x)
-  if isinstance(y,ndarray|list|tuple):self.y=self._manyarr(y)
+  if isinstance(x,np.ndarray|list|tuple):self.x=self._onearr(x)
+  if isinstance(y,np.ndarray|list|tuple):self.y=self._manyarr(y)
   self.height=range_num(num0s(kw.get('height'),self.height),0,1,self.height)
   self.align=listchose(kw.get('align'),['center','edge'],self.align)
   self.logs=bols(kw.get('logs'),self.logs)

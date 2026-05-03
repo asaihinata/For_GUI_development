@@ -26,7 +26,7 @@ class Boxplot(twoDElement):
   self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,ndarray|list|tuple):self.data=self._manyarr(data)
+  if isinstance(data,np.ndarray|list|tuple):self.data=self._manyarr(data)
   label=kw.get('label',self.label)
   if label==None:label=[f'box{i}'for i in range(self.max_depth)]
   self.label=self.labels(label)[0]

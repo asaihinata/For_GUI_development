@@ -6,7 +6,7 @@ def _waterfall_sum(data):
   set_num=set_num+num
  return arr
 def _bar_x_lists(lists,ylen):
- if ylen==None or not isinstance(lists,ndarray|list|tuple):return None
+ if ylen==None or not isinstance(lists,np.ndarray|list|tuple):return None
  else:
   lists=lists[0]
   xlen=len(lists)
@@ -37,8 +37,8 @@ class Waterfall(twoDElement):
   self._apply_labels(self.xlabel,self.ylabel)
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(y,ndarray|list|tuple):self.y=self._dataarr(y,False)
-  if isinstance(x,ndarray|list|tuple):self.x=_bar_x_lists(self._onearr(x),len(self.y))
+  if isinstance(y,np.ndarray|list|tuple):self.y=self._dataarr(y,False)
+  if isinstance(x,np.ndarray|list|tuple):self.x=_bar_x_lists(self._onearr(x),len(self.y))
   self.sums=bols(kw.get('sums'),self.sums)
   self.sumstext=kw.get('sumstext',self.sumstext)
   self.bottom=_waterfall_sum(self.y)
@@ -87,8 +87,8 @@ class Waterfallh(twoDElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(y,ndarray|list|tuple):self.y=self._dataarr(y,False)
-  if isinstance(x,ndarray|list|tuple):self.x=_bar_x_lists(self._onearr(x),len(self.y))
+  if isinstance(y,np.ndarray|list|tuple):self.y=self._dataarr(y,False)
+  if isinstance(x,np.ndarray|list|tuple):self.x=_bar_x_lists(self._onearr(x),len(self.y))
   self.bottom=_waterfall_sum(self.y)
   self.sums=bols(kw.get('sums'),self.sums)
   self.sumstext=kw.get('sumstext',self.sumstext)
