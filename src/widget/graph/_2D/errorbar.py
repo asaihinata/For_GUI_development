@@ -36,8 +36,8 @@ class Errorbar(twoDElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,NpArraytype):self.x=self._manyarr(x)
-  if isinstance(y,NpArraytype):self.y=self._manyarr(y)
+  if isinstance(x,ndarray|list|tuple):self.x=self._manyarr(x)
+  if isinstance(y,ndarray|list|tuple):self.y=self._manyarr(y)
   err,xerr,yerr=kw.get('err',self.err),kw.get('xerr',self.xerr),kw.get('yerr',self.yerr)
   if err is not None:
    self.err=self._dataarr(err,False)

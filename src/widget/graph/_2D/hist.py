@@ -33,7 +33,7 @@ class Hist(twoDElement):
   self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,NpArraytype):self.data=self._dataarr(data)
+  if isinstance(data,ndarray|list|tuple):self.data=self._dataarr(data)
   self.bins=num1s(kw.get('bins'),self.bins)
   self.min=nums(kw.get('min'),np.min(self.data))
   self.max=nums(kw.get('max'),np.max(self.data))

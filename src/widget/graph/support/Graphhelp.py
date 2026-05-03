@@ -1,6 +1,5 @@
 from re import fullmatch
 from numpy import pi
-from ....types import Numbertype
 from ..._function import listchose
 __all__=['Angle','FMT','FMTSOLID','FMTSOLIDLIST','Hatch','Marker','NSolid','SCapstyle','Solid','SOLIDLIST','Textcoords','XYcoords']
 COLOR=['b','c','g','k','m','r','w','y']
@@ -64,7 +63,7 @@ class FMT:
 class Angle:
  def __init__(self,val,now='degrees',do='radian'):
   now,do=listchose(now,['degrees','radian']),listchose(do,['degrees','radian'])
-  if not isinstance(val,Numbertype):val=0
+  if not isinstance(val,int|float):val=0
   if now==do:self.val=val
   elif now=='degrees' and do=='radian':self.val=val*(pi/180)
   elif now=='radian' and do=='degrees':self.val=val*(180/pi)

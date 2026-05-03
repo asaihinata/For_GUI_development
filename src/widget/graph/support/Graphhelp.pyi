@@ -1,6 +1,5 @@
 from collections.abc import Iterator
 from typing import Literal
-from ....types import Numbertype
 __all__:list
 class Hatch:
  '''塗りつぶすアイコンの設定に関するクラス'''
@@ -51,7 +50,7 @@ class Angle:
  '''角度をサポートする。'''
  def __init__(
 self,
-val:Numbertype,
+val:int|float,
 now:Literal['degrees','radian']='degrees',
 do:Literal['radian','degrees']='radian'
 )->None:...

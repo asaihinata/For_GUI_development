@@ -18,8 +18,8 @@ class Scatter(twoDElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,NpArraytype):self.x=self._manyarr(x)
-  if isinstance(y,NpArraytype):self.y=self._manyarr(y)
+  if isinstance(x,ndarray|list|tuple):self.x=self._manyarr(x)
+  if isinstance(y,ndarray|list|tuple):self.y=self._manyarr(y)
   self.marker=self.markers(kw.get('marker',self.marker),self.max_depth)
   self.s=num1s(kw.get('markersize'),self.s)
   self.alpha=range_num(num0s(kw.get('alpha'),self.alpha),0,1,self.alpha)

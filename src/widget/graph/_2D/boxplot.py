@@ -26,7 +26,7 @@ class Boxplot(twoDElement):
   self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,NpArraytype):self.data=self._manyarr(data)
+  if isinstance(data,ndarray|list|tuple):self.data=self._manyarr(data)
   label=kw.get('label',self.label)
   if label==None:label=[f'box{i}'for i in range(self.max_depth)]
   self.label=self.labels(label)[0]
@@ -42,12 +42,12 @@ class Boxplot(twoDElement):
  def get(self):return self.graphdata
  def getdata(self):return self.data
  def _boxplot_whis(self,data):
-  if isinstance(data,Arraytype):
+  if isinstance(data,list|tuple):
    x,y=data[0],data[1]
-   if isinstance(x,Numbertype)and isinstance(y,Numbertype):
+   if isinstance(x,int|float)and isinstance(y,int|float):
     if y<x:x,y=y,x
     if not 0<=x<=100:x=0
     if not 0<=y<=100:y=100
     return(float(x),float(y))
-  elif isinstance(data,Numbertype):return float(data)
+  elif isinstance(data,int|float):return float(data)
   return 1.5

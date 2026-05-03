@@ -7,7 +7,6 @@ from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import array,ndarray
-from ....types import Arraytype,Numbertype
 from ..._function import bols,listchose,num0s,num1s,parsecolor,range_num
 from ..._log import Logger
 from ..._save import autofile_save
@@ -85,11 +84,11 @@ class GElement:
  def _redraw(self):
   if self._canvas_widget is not None:self._canvas_widget.draw()
  def _size(self,sizes=(500,400)):
-  if isinstance(sizes,Arraytype)and len(list(sizes))==2:
+  if isinstance(sizes,list|tuple)and len(list(sizes))==2:
    if(isinstance(i,int|float)for i in sizes):return tuple(sizes)
    else:
-    if not isinstance(sizes[0],Numbertype):sizes[0]=500
-    if not isinstance(sizes[1],Numbertype):sizes[1]=400
+    if not isinstance(sizes[0],int|float):sizes[0]=500
+    if not isinstance(sizes[1],int|float):sizes[1]=400
     return sizes
   else:return(500,400)
  def markers(self,serch=None,num=None):return self._list_loop(list(Marker(serch)),num)

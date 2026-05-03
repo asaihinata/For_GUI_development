@@ -135,8 +135,8 @@ y:n_array=...,
 label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
-linewidth:Numbertype=2,
-markersize:Numbertype=10,
+linewidth:int|float=2,
+markersize:int|float=10,
 marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']=None,
 linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
 color:ColorType|tuple[ColorType,...]=...,
@@ -144,8 +144,8 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -166,7 +166,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''折線グラフを作成する。
 
@@ -181,9 +181,9 @@ master:Misc=None
  :param ylabel: y軸のラベルを指定する。
  :type ylabel: str
  :param linewidth: 折線グラフの線の幅を指定する。
- :type linewidth: Numbertype
+ :type linewidth: int|float
  :param markersize: 折線グラフのマーカーの大きさを指定する。
- :type markersize: Numbertype
+ :type markersize: int|float
  :param marker: 折線グラフのマーカーを指定する。
  :type marker: Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
  :param linestyle: 折線グラフの線の種類を指定する。
@@ -199,9 +199,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -243,22 +243,22 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 x:n_array,
 y:n_array,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
 title:str,
 marker:str,
-markersize:Numbertype,
+markersize:int|float,
 linestyle:str,
-linewidth:Numbertype,
+linewidth:int|float,
 )->NoReturn:'''折線グラフを再表示させる。'''
  def get(self)->list[Line2D]:'''`Line2D`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
@@ -273,14 +273,14 @@ align:Literal['center','edge']='center',
 label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
-width:Numbertype=1,
+width:int|float=1,
 color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -301,7 +301,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''縦軸棒グラフを作成する。
 
@@ -318,7 +318,7 @@ master:Misc=None
  :param ylabel: y軸のラベルを指定する。
  :type ylabel: str
  :param width: 棒グラフのバー幅を指定する。
- :type width: Numbertype
+ :type width: int|float
  :param align: x軸の棒グラフバーの配置を指定する。
  :type align: Literal['center','edge']
  :param title: グラフのタイトルを指定する。
@@ -332,9 +332,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -376,7 +376,7 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 x:o_array,
@@ -384,12 +384,12 @@ y:n_array,
 logs:bool,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
 title:str,
-width:Numbertype,
+width:int|float,
 align:Literal['center','edge']
 )->NoReturn:'''縦軸棒グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
@@ -409,8 +409,8 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -431,7 +431,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelheight:Numbertype=1,
+labelheight:int|float=1,
 align:Literal['center','edge']='center'
 )->None:'''横軸棒グラフを作成する。
 
@@ -448,7 +448,7 @@ align:Literal['center','edge']='center'
  :param ylabel: y軸のラベルを指定する。
  :type ylabel: str
  :param height: 棒グラフのバーの幅を指定する。
- :type height: Numbertype
+ :type height: int|float
  :param align: x軸の棒グラフバーの配置を指定する。
  :type align: Literal['center','edge']
  :param title: グラフのタイトルを指定する。
@@ -462,9 +462,9 @@ align:Literal['center','edge']='center'
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -506,17 +506,17 @@ align:Literal['center','edge']='center'
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 x:o_array,
 y:n_array,
-height:Numbertype,
+height:int|float,
 align:Literal['center','edge'],
 logs:bool,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
@@ -539,8 +539,8 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -561,7 +561,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelheight:Numbertype=1,
+labelheight:int|float=1,
 align:Literal['center','edge']='center'
 )->None:'''じょうごグラフを生成する。
 
@@ -576,9 +576,9 @@ align:Literal['center','edge']='center'
  :param ylabel: y軸のラベルを指定する。
  :type ylabel: str
  :param linewidth: 折線グラフの線の幅を指定する。
- :type linewidth: Numbertype
+ :type linewidth: int|float
  :param height: 棒グラフのバーの幅を指定する。
- :type height: Numbertype
+ :type height: int|float
  :param align: x軸の棒グラフバーの配置を指定する。
  :type align: Literal['center','edge']
  :param title: グラフのタイトルを指定する。
@@ -592,9 +592,9 @@ align:Literal['center','edge']='center'
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -636,14 +636,14 @@ align:Literal['center','edge']='center'
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 x:o_array,
-height:Numbertype,
+height:int|float,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
@@ -657,7 +657,7 @@ class Stacked(_2Gset):
 self,
 data:n_array=...,
 dataname:o_array=...,
-width:Numbertype=0.8,
+width:int|float=0.8,
 label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
@@ -666,8 +666,8 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -688,7 +688,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''積み上げ縦棒グラフを生成する。
 
@@ -697,7 +697,7 @@ master:Misc=None
  :param dataname: カテゴリ名を指定する。
  :type dataname: o_array
  :param width: 積み上げ縦棒グラフの幅のサイズを指定する。
- :type width: Numbertype
+ :type width: int|float
  :param label: ラベルを指定する。
  :type label: labeltype
  :param xlabel: x軸のラベルを指定する。
@@ -715,9 +715,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -759,15 +759,15 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 data:n_array,
 dataname:o_array,
-width:Numbertype,
+width:int|float,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
@@ -780,7 +780,7 @@ class Stackedh(_2Gset):
 self,
 data:n_array=...,
 dataname:o_array=...,
-height:Numbertype=0.8,
+height:int|float=0.8,
 label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
@@ -789,8 +789,8 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -811,7 +811,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''積み上げ横棒グラフを生成する。
 
@@ -820,7 +820,7 @@ master:Misc=None
  :param dataname: カテゴリ名を指定する。
  :type dataname: o_array
  :param height: 積み上げ横棒グラフの高さのサイズを指定する。
- :type height: Numbertype
+ :type height: int|float
  :param label: ラベルを指定する。
  :type label: labeltype
  :param xlabel: x軸のラベルを指定する。
@@ -838,9 +838,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -882,15 +882,15 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 data:n_array,
 dataname:o_array,
-height:Numbertype,
+height:int|float,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
@@ -902,11 +902,11 @@ class Pie(_2Gset):
  def __init__(
 self,
 data:o_array=...,
-startangle:Numbertype=0,
+startangle:int|float=0,
 startangletype:bool=True,
 shadow:bool=False,
 counterclock:bool=False,
-labeldistance:Numbertype=1.1,
+labeldistance:int|float=1.1,
 explode:list[int,float,Number]|tuple[int,float,Number]|int|float|Number=...,
 label:labeltype=...,
 color:tuple[ColorType,...]=...,
@@ -914,7 +914,7 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100
+dpi:int|float=100
 )->None:'''円グラフを作成する。
 
  :param data: データを指定する。
@@ -922,7 +922,7 @@ dpi:Numbertype=100
  :param label: ラベルを指定する。
  :type label: labeltype
  :param startangle: 各要素の出力を開始する角度を指定する。
- :type startangle: Numbertype
+ :type startangle: int|float
  :param startangletype: 各要素の出力を開始する角度を度数法(True)か弧度法(False)かを指定する。
  :type startangletype: bool
  :param shadow: 円グラフに影を追加するか指定する。
@@ -930,7 +930,7 @@ dpi:Numbertype=100
  :param counterclock: 時計回りで出力するか指定する。
  :type counterclock: bool
  :param labeldistance: 中心からラベルの距離を指定する。
- :type labeldistance: Numbertype
+ :type labeldistance: int|float
  :param explode: 中心から各セグメントの離す距離を指定する。
  :type explode: list[int,float,Number]|tuple[int,float,Number]|int|float|Number
  :param title: グラフのタイトルを指定する。
@@ -944,21 +944,21 @@ dpi:Numbertype=100
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype'''
+ :type alpha: int|float'''
  def update(
 self,
 data:o_array,
-labeldistance:Numbertype,
+labeldistance:int|float,
 startangletype:bool,
 explode:tuple[int,float,Number]|int|float|Number,
-startangle:Numbertype,
+startangle:int|float,
 shadow:bool,
 counterclock:bool,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 graph_grid:ColorType,
 title:str
 )->NoReturn:'''円グラフを再表示させる。'''
@@ -968,7 +968,7 @@ class Boxplot(_2Gset):
  def __init__(
 self,
 data:n_array=...,
-width:Numbertype=0.15,
+width:int|float=0.15,
 whis:float|TupleFloat2=1.5,
 legend:bool=True,
 fill:bool=False,
@@ -983,8 +983,8 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -1005,7 +1005,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''箱ひげ図を作成する。
 
@@ -1040,9 +1040,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -1084,12 +1084,12 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 data:n_array,
-width:Numbertype,
-whis:Numbertype,
+width:int|float,
+whis:int|float,
 label:labeltype,
 legend:bool,
 fill:bool,
@@ -1098,7 +1098,7 @@ showfliers:bool,
 orientation:Literal['horizontal','vertical'],
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
@@ -1115,7 +1115,7 @@ sums:bool=False,
 sumstext:str='sum',
 ucolor:ColorType='#156082',
 dcolor:ColorType='#e97132',
-width:Numbertype=1,
+width:int|float=1,
 colorline:ColorType='#4477aa',
 linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
 xlabel:str=...,
@@ -1124,8 +1124,8 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -1146,7 +1146,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''x軸向きの滝グラフを作成する。
 
@@ -1175,9 +1175,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -1219,13 +1219,13 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype
+ :type labelalpha: int|float
  :param ucolor: 上昇バーの色を指定する。
  :type ucolor: ColorType
  :param dcolor: 下降バーの色を指定する。
  :type dcolor: ColorType
  :param width: バーの幅を指定する。
- :type width: Numbertype'''
+ :type width: int|float'''
  def update(
 self,
 x:o_array,
@@ -1234,13 +1234,13 @@ colorline:ColorType,
 linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ',''],
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
 ucolor:ColorType,
 dcolor:ColorType,
-width:Numbertype,
+width:int|float,
 align:Literal['center','edge'],
 )->NoReturn:'''滝グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
@@ -1253,7 +1253,7 @@ x:o_array=...,
 y:o_array=...,
 ucolor:ColorType='#156082',
 dcolor:ColorType='#e97132',
-height:Numbertype=1,
+height:int|float=1,
 sums:bool=False,
 sumstext:str='sum',
 colorline:ColorType='#4477aa',
@@ -1264,8 +1264,8 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -1286,7 +1286,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''y軸向きの滝グラフを作成する。
 
@@ -1315,9 +1315,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -1359,13 +1359,13 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype
+ :type labelalpha: int|float
  :param ucolor: 上昇バーの色を指定する。
  :type ucolor: ColorType
  :param dcolor: 下降バーの色を指定する。
  :type dcolor: ColorType
  :param height: バーの幅を指定する。
- :type height: Numbertype'''
+ :type height: int|float'''
  def update(
 self,
 x:o_array,
@@ -1374,14 +1374,14 @@ colorline:ColorType,
 linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ',''],
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
 title:str,
 ucolor:ColorType,
 dcolor:ColorType,
-height:Numbertype,
+height:int|float,
 align:Literal['center','edge'],
 )->NoReturn:'''横向きの滝グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
@@ -1396,14 +1396,14 @@ xlabel:str=...,
 ylabel:str=...,
 label:labeltype=...,
 marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
-markersize:Numbertype=10,
+markersize:int|float=10,
 color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -1424,7 +1424,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''散布図を作成する。
 
@@ -1441,7 +1441,7 @@ master:Misc=None
  :param marker: 散布図のマーカーを指定する。
  :type marker: Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
  :param markersize: 散布図のマーカーの大きさを指定する。
- :type markersize: Numbertype
+ :type markersize: int|float
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
@@ -1453,9 +1453,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -1497,17 +1497,17 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 x:n_array,
 y:n_array,
 marker:str,
-markersize:Numbertype,
-linewidth:Numbertype,
+markersize:int|float,
+linewidth:int|float,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
@@ -1526,14 +1526,14 @@ xlabel:str=...,
 ylabel:str=...,
 zlabel:str=...,
 marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
-markersize:Numbertype=10,
+markersize:int|float=10,
 color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xyz:bool=True,
 grid_x:bool=False,
@@ -1551,15 +1551,15 @@ yticksshow:bool=False,
 zticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-znumticks:Numbertype|None=None,
+znumticks:int|float|None=None,
 labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
 labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
 labelmouse_rotation:bool=True,
-elev:Numbertype=30,
-azim:Numbertype=45
+elev:int|float=30,
+azim:int|float=45
 )->None:'''3Dの散布図を作成する。
 
  :param x: `x`のデータを指定する。
@@ -1577,7 +1577,7 @@ azim:Numbertype=45
  :param marker: 散布図のマーカーを指定する。
  :type marker: Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
  :param markersize: 散布図のマーカーの大きさを指定する。
- :type markersize: Numbertype
+ :type markersize: int|float
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
@@ -1589,9 +1589,9 @@ azim:Numbertype=45
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xyz: x軸,y軸,z軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`,`grid_z`より優先度が高い。
@@ -1625,7 +1625,7 @@ azim:Numbertype=45
  :param zticksshow: z軸のグリッド線と目盛り値について表示するかを指定する。
  :type zticksshow: bool
  :param znumticks: z軸の目盛りの数を指定する。
- :type znumticks: Numbertype|None
+ :type znumticks: int|float|None
  :param xticksdirection: x軸の目盛りの向きを指定する。
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
@@ -1641,13 +1641,13 @@ azim:Numbertype=45
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype
+ :type labelalpha: int|float
  :param mouse_rotation: 表示されているグラフをマウスで操作できるか指定する。
  :type mouse_rotation: bool
  :param elev: 仰角を度数表記で指定する。
- :type elev: Numbertype
+ :type elev: int|float
  :param azim: 方位角を度数表記で指定する。
- :type azim: Numbertype'''
+ :type azim: int|float'''
  def update(
 self,
 x:o_array,
@@ -1655,14 +1655,14 @@ y:o_array,
 z:o_array,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 graph_grid:ColorType,
 title:str,
 marker:str,
-markersize:Numbertype,
-linewidth:Numbertype,
-elev:Numbertype,
-azim:Numbertype,
+markersize:int|float,
+linewidth:int|float,
+elev:int|float,
+azim:int|float,
 xlabel:str,
 ylabel:str,
 zlabel:str
@@ -1680,7 +1680,7 @@ label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
 orientation:Literal['vertical','horizontal']='vertical',
-bottom:Numbertype=0,
+bottom:int|float=0,
 marker:Literal['o','+','*','.','x','_','|','square','diamond','^','v','<','>','pentagram','hexagram']=...,
 line:Literal['-','--','-.','-.']=...,
 color:Literal['r','g','b','c','m','y','k','w']|list[Literal['r','g','b','c','m','y','k','w']]|tuple[Literal['r','g','b','c','m','y','k','w']]=...,
@@ -1688,8 +1688,8 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -1710,7 +1710,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''幹図を作成する。
 
@@ -1727,7 +1727,7 @@ master:Misc=None
  :param orientation: 茎の向きを指定する。
  :type orientation: Literal['horizontal','vertical']
  :param bottom: ベースラインの位置を指定する。
- :type bottom: Numbertype
+ :type bottom: int|float
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param marker: 幹のマーカーの種類を指定する。
@@ -1743,9 +1743,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -1787,19 +1787,19 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 x:n_array,
 y:n_array,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
 title:str,
-bottom:Numbertype,
+bottom:int|float,
 orientation:Literal['horizontal','vertical'],
 marker:Literal['o','+','*','.','x','_','|','square','diamond','^','v','<','>','pentagram','hexagram']=...,
 line:Literal['-','--','-.','-.']=...
@@ -1814,20 +1814,20 @@ data:o_array=...,
 xlabel:str=...,
 ylabel:str=...,
 label:labeltype=...,
-width:Numbertype=1,
-min:Numbertype=...,
-max:Numbertype=...,
-decimalpoint:Numbertype=0,
+width:int|float=1,
+min:int|float=...,
+max:int|float=...,
+decimalpoint:int|float=0,
 orientation:Literal['vertical','horizontal']='vertical',
-bottom:Numbertype=0,
+bottom:int|float=0,
 bins:int|list|range|tuple|ndarray|Literal['auto','fd','doane','scott','stone','rice','sturges','sqrt']=10,
 color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -1859,17 +1859,17 @@ labely_verwrit:Literal['vertical','horizontal']='vertical'
  :param label: ラベルを指定する。
  :type label: labeltype
  :param width: ヒストグラムのバーのサイズを指定する。
- :type width: Numbertype
+ :type width: int|float
  :param orientation: ヒストグラムの向きを指定する。
  :type orientation: Literal['horizontal','vertical']
  :param bottom: ヒストグラムのバーの位置を指定する。
- :type bottom: Numbertype
+ :type bottom: int|float
  :param min: ヒストグラムで表示される最小値を指定する。
- :type min: Numbertype
+ :type min: int|float
  :param max: ヒストグラムで表示される最大値を指定する。
- :type max: Numbertype
+ :type max: int|float
  :param decimalpoint: ヒストグラムのbinの小数点を指定する。
- :type decimalpoint: Numbertype
+ :type decimalpoint: int|float
  :param bins: binsを指定する。
  :type bins: int|list|range|tuple|ndarray|Literal['auto','fd','doane','scott','stone','rice','sturges','sqrt']
  :param title: グラフのタイトルを指定する。
@@ -1883,9 +1883,9 @@ labely_verwrit:Literal['vertical','horizontal']='vertical'
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -1925,7 +1925,7 @@ labely_verwrit:Literal['vertical','horizontal']='vertical'
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype
+ :type labelalpha: int|float
  :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
  :type y_verwrit: Literal['horizontal','vertical']'''
  def update(
@@ -1933,16 +1933,16 @@ self,
 data:o_array,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
-decimalpoint:Numbertype,
+alpha:int|float,
+decimalpoint:int|float,
 graph_grid:ColorType,
 title:str,
 bins:int|list|range|tuple|ndarray|Literal['auto','fd','doane','scott','stone','rice','sturges','sqrt'],
-min:Numbertype,
-max:Numbertype,
-bottom:Numbertype,
+min:int|float,
+max:int|float,
+bottom:int|float,
 orientation:Literal['horizontal','vertical'],
-width:Numbertype
+width:int|float
 )->NoReturn:'''ヒストグラムを再表示させる。'''
  def get(self)->list[ndarray|list[ndarray],ndarray,BarContainer|Polygon|list[BarContainer|Polygon]]:'''`matplotlib.axes.Axes.hist`の戻り値を配列で返す。'''
  def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
@@ -2009,20 +2009,20 @@ class Step(_2Gset):
  def __init__(
 self,
 data:n_array=...,
-linewidth:Numbertype=2,
+linewidth:int|float=2,
 xlabel:str=...,
 ylabel:str=...,
 range:int|float|ListNumbertype2|TupleNumbertype2=...,
 fill:bool=False,
-baseline:Numbertype=0,
+baseline:int|float=0,
 orientation:Literal['vertical','horizontal']='vertical',
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -2053,11 +2053,11 @@ label:labeltype=...
  :param data: dataのデータを指定する。
  :type data: n_array
  :param linewidth: 線の幅を指定する。
- :type linewidth: Numbertype
+ :type linewidth: int|float
  :param range: 階段の端の座標を配列もしくは数値で指定する。
  :type range: int|float|ListNumbertype2|TupleNumbertype2
  :param baseline: 階段の下端の開始位置を指定する。
- :type baseline: Numbertype
+ :type baseline: int|float
  :param fill: 階段の下部から`baseline`の間を塗りつぶすかを指定する。
  :type fill: bool
  :param orientation: グラフの向きを指定する。
@@ -2073,9 +2073,9 @@ label:labeltype=...
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -2115,20 +2115,20 @@ label:labeltype=...
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype
+ :type labelalpha: int|float
  :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
  :type y_verwrit: Literal['horizontal','vertical']'''
  def update(
 self,
 data:n_array,
-linewidth:Numbertype,
+linewidth:int|float,
 range:int|float|ListNumbertype2|TupleNumbertype2,
 fill:bool,
-baseline:Numbertype,
+baseline:int|float,
 orientation:Literal['horizontal','vertical'],
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 graph_grid:ColorType,
 title:str
 )->NoReturn:'''階段グラフを再表示させる。'''
@@ -2149,8 +2149,8 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -2171,7 +2171,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''積み上げエリアチャートを作成する。
 
@@ -2200,9 +2200,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -2244,7 +2244,7 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 x:n_array,
@@ -2253,7 +2253,7 @@ hatch:Literal[None,'o','oo','O','OO','x','xx','*','**','*-','+','++','+o','-','-
 baseline:Literal['zero','sym','wiggle','weighted_wiggle'],
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
@@ -2268,7 +2268,7 @@ self,
 x:n_array=...,
 y:n_array=...,
 data:n_array=...,
-bubblesize:Numbertype=1,
+bubblesize:int|float=1,
 xlabel:str=...,
 ylabel:str=...,
 marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
@@ -2277,8 +2277,8 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=0.5,
+dpi:int|float=100,
+alpha:int|float=0.5,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -2298,7 +2298,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''バブルグラフを作成する。
 
@@ -2309,7 +2309,7 @@ master:Misc=None
  :param data: バブルグラフのバブルの大きさを指定する。
  :type data: n_array
  :param bubblesize: バブルの大きさの倍率を指定する。
- :type bubblesize: Numbertype
+ :type bubblesize: int|float
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -2319,7 +2319,7 @@ master:Misc=None
  :param marker: バブルグラフのマーカーを指定する。
  :type marker: Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
  :param markersize: 散布図のマーカーの大きさを指定する。
- :type markersize: Numbertype
+ :type markersize: int|float
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
@@ -2331,9 +2331,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -2375,20 +2375,20 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 x:n_array,
 y:n_array,
-bubblesize:Numbertype,
+bubblesize:int|float,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 graph_grid:ColorType,
 title:str,
 marker:str,
-markersize:Numbertype,
-linewidth:Numbertype,
+markersize:int|float,
+linewidth:int|float,
 xlabel:str,
 ylabel:str
 )->NoReturn:'''バブルグラフを再表示させる。'''
@@ -2402,7 +2402,7 @@ self,
 x:o_array=...,
 ymin:n_array=...,
 ymax:n_array=...,
-centerlinewidth:Numbertype=2,
+centerlinewidth:int|float=2,
 xlabel:str=...,
 ylabel:str=...,
 label:labeltype=...,
@@ -2411,8 +2411,8 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=0.5,
+dpi:int|float=100,
+alpha:int|float=0.5,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -2433,7 +2433,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''積上げ面グラフを作成する。
 
@@ -2444,7 +2444,7 @@ master:Misc=None
  :param ymax: 2つ目の曲線を定義する節点のy座標を指定する。
  :type ymax: n_array
  :param centerlinewidth: 線の太さを指定する。
- :type centerlinewidth: Numbertype
+ :type centerlinewidth: int|float
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -2462,9 +2462,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -2506,18 +2506,18 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 x:o_array,
 ymin:n_array,
 ymax:n_array,
-centerlinewidth:Numbertype,
+centerlinewidth:int|float,
 xlabel:str,
 ylabel:str,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 graph_grid:ColorType,
 title:str
 )->NoReturn:'''2つの水平曲線の間の領域を埋めるグラフを再表示させる。'''
@@ -2533,14 +2533,14 @@ complementary:bool=False,
 compress:bool=False,
 orientation:Literal['vertical','horizontal']='vertical',
 linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':']='-',
-linewidth:Numbertype=1.5,
+linewidth:int|float=1.5,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -2561,7 +2561,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''経験的累積分布関数を作成する。
 
@@ -2574,7 +2574,7 @@ master:Misc=None
  :param linestyle: 線の種類を指定する。
  :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
  :param linewidth: 線の太さを指定する。
- :type linewidth: Numbertype
+ :type linewidth: int|float
  :param data: 入力データを指定する。
  :type data: n_array
  :param xlabel: x軸のラベルを指定する。
@@ -2594,9 +2594,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -2638,7 +2638,7 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 data:o_array,
@@ -2646,11 +2646,11 @@ complementary:bool,
 compress:bool,
 orientation:Literal['horizontal','vertical'],
 linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':'],
-linewidth:Numbertype,
+linewidth:int|float,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
-decimalpoint:Numbertype,
+alpha:int|float,
+decimalpoint:int|float,
 graph_grid:ColorType,
 title:str
 )->NoReturn:'''経験的累積分布関数を再表示させる。'''
@@ -2671,17 +2671,17 @@ ylolims:bool=False,
 barsabove:bool=False,
 linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':']='solid',
 marker:Literal['.','s','o','p','v','*','^','D']=None,
-linewidth:Numbertype=1.5,
-capthick:Numbertype=10,
-capsize:Numbertype=0,
+linewidth:int|float=1.5,
+capthick:int|float=10,
+capsize:int|float=0,
 errorevery:int|list[int]|tuple[int]=1,
 color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -2702,7 +2702,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''誤差範囲付きの線グラフもしくはマーカーグラフ,あるいはその両方のエラーグラフを作成する。
 
@@ -2731,11 +2731,11 @@ master:Misc=None
  :param marker: データ点のマーカーの種類を指定する。
  :type marker: Literal['.','s','o','p','v','*','^','D']
  :param linewidth: データ点を結ぶ線の太さを指定する。
- :type linewidth: Numbertype
+ :type linewidth: int|float
  :param capthick: キャップの厚みを指定する。
- :type capthick: Numbertype
+ :type capthick: int|float
  :param capsize: エラーバーの先端にあるキャップの長さを指定する。
- :type capsize: Numbertype
+ :type capsize: int|float
  :param errorevery: エラーバーを表示する頻度を指定する。
  :type errorevery: int|list[int]|tuple[int]
  :param xlabel: x軸のラベルを指定する。
@@ -2755,9 +2755,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -2799,7 +2799,7 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 x:n_array,
@@ -2814,14 +2814,14 @@ ylolims:bool,
 barsabove:bool,
 linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':'],
 marker:Literal['.','s','o','p','v','*','^','D'],
-linewidth:Numbertype,
-capthick:Numbertype,
-capsize:Numbertype,
+linewidth:int|float,
+capthick:int|float,
+capsize:int|float,
 errorevery:int|list[int]|tuple[int],
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
-decimalpoint:Numbertype,
+alpha:int|float,
+decimalpoint:int|float,
 graph_grid:ColorType,
 title:str
 )->NoReturn:'''エラーグラフを再表示させる。'''
@@ -2832,8 +2832,8 @@ class Eventplot(_2Gset):
  def __init__(
 self,
 data:o_array=...,
-linewidth:Numbertype=1,
-linelength:Numbertype=1,
+linewidth:int|float=1,
+linelength:int|float=1,
 linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':']='solid',
 orientation:Literal['vertical','horizontal']='vertical',
 xlabel:str=...,
@@ -2844,8 +2844,8 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -2866,16 +2866,16 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''イベントグラフを作成する。
 
  :param data: `data`のデータを指定する。
  :type data: o_array
  :param linewidth: エラーバーの線の太さを指定する。
- :type linewidth: Numbertype
+ :type linewidth: int|float
  :param linelength: 線の合計の高さを指定する。
- :type linelength: Numbertype
+ :type linelength: int|float
  :param linestyle: 線の種類を指定する。
  :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
  :param orientation: 向きを指定する。
@@ -2897,9 +2897,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -2941,17 +2941,17 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 data:o_array,
-linewidth:Numbertype,
-linelength:Numbertype,
+linewidth:int|float,
+linelength:int|float,
 orientation:Literal['vertical','horizontal'],
 linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':'],
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 graph_grid:ColorType,
 title:str
 )->NoReturn:'''円グラフを再表示させる。'''
@@ -2962,12 +2962,12 @@ class Hist2d(_2Gset):
 self,
 x:o_array=...,
 y:o_array=...,
-max:Numbertype=...,
-min:Numbertype=...,
-xmax:Numbertype=...,
-xmin:Numbertype=...,
-ymax:Numbertype=...,
-ymin:Numbertype=...,
+max:int|float=...,
+min:int|float=...,
+xmax:int|float=...,
+xmin:int|float=...,
+ymax:int|float=...,
+ymin:int|float=...,
 bins:int|TupleInt2|ArrayLike|tuple[ArrayLike,ArrayLike]=...,
 density:bool=False,
 xlabel:str=...,
@@ -2977,8 +2977,8 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -3006,11 +3006,11 @@ labely_verwrit:Literal['vertical','horizontal']='vertical'
  :param y: `y`のデータを一次元配列で指定する。
  :type y: o_array
  :param max,min: 表示させたいカウントの範囲を指定する。
- :type max,min: Numbertype
+ :type max,min: int|float
  :param xmax,xmin: x軸の`bins`の範囲を指定する。
- :type xmax,xmin: Numbertype
+ :type xmax,xmin: int|float
  :param ymax,ymin: y軸の`bins`の範囲を指定する。
- :type ymax,ymin: Numbertype
+ :type ymax,ymin: int|float
  :param bins: ビンの数を指定する。
  :type bins: int|tuple[int,int]|ArrayLike|tuple[ArrayLike,ArrayLike]
  :param density: ヒストグラムを正規化かするか指定する。
@@ -3030,9 +3030,9 @@ labely_verwrit:Literal['vertical','horizontal']='vertical'
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -3072,7 +3072,7 @@ labely_verwrit:Literal['vertical','horizontal']='vertical'
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype
+ :type labelalpha: int|float
  :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
  :type y_verwrit: Literal['horizontal','vertical']
  :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる。
@@ -3081,17 +3081,17 @@ labely_verwrit:Literal['vertical','horizontal']='vertical'
 self,
 x:o_array,
 y:o_array,
-max:Numbertype,
-min:Numbertype,
-xmax:Numbertype,
-xmin:Numbertype,
-ymax:Numbertype,
-ymin:Numbertype,
+max:int|float,
+min:int|float,
+xmax:int|float,
+xmin:int|float,
+ymax:int|float,
+ymin:int|float,
 bins:int|TupleInt2|ArrayLike|tuple[ArrayLike,ArrayLike],
 density:bool,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 graph_grid:ColorType,
 title:str
 )->NoReturn:'''2次元ヒストグラムを再表示させる。
@@ -3108,11 +3108,11 @@ data:n_array=...,
 x:o_array=...,
 y:o_array=...,
 orientation:Literal['vertical','horizontal']='vertical',
-width:Numbertype=1,
+width:int|float=1,
 showextrema:bool=True,
 showmeans:bool=False,
 showmedians:bool=False,
-points:Numbertype=100,
+points:int|float=100,
 bw_method:Literal['scott','silverman']|float|Callable[[GaussianKDE],float]='scott',
 side:Literal['both','low','high']='both',
 size:TupleNumbertype2=(500,400),
@@ -3120,8 +3120,8 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -3142,7 +3142,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''バイオリングラフを作成する。
 
@@ -3155,7 +3155,7 @@ master:Misc=None
  :param orientation: バイオリンが設置される軸の向きを指定する。
  :type orientation: Literal['vertical','horizontal']
  :param width: バイオリンの幅を指定する。
- :type width: Numbertype
+ :type width: int|float
  :param showextrema: 極値を線で示すか指定する。
  :type showextrema: bool
  :param showmeans: 平均値を線で示すかどうか指定する。
@@ -3163,7 +3163,7 @@ master:Misc=None
  :param showmedians: 中央値を線で示すかどうか指定する。
  :type showmedians: bool
  :param points: 各ガウスカーネル密度推定値を評価する点の数を指定する。
- :type points: Numbertype
+ :type points: int|float
  :param bw_method: 推定器の帯域幅を計算するために使用されるメソッドを指定する。
  :type bw_method: Literal['scott','silverman']|float|Callable[[GaussianKDE],float]
  :param side: バイオリンの左右対称もしくは左右(上下)のみを描画するか指定する。
@@ -3185,9 +3185,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -3229,24 +3229,24 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 data:n_array,
 x:o_array,
 y:o_array,
 orientation:Literal['vertical','horizontal'],
-width:Numbertype,
+width:int|float,
 showextrema:bool,
 showmeans:bool,
 showmedians:bool,
-points:Numbertype,
+points:int|float,
 bw_method:Literal['scott','silverman']|float|Callable[[GaussianKDE],float],
 side:Literal['both','low','high'],
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
-decimalpoint:Numbertype,
+alpha:int|float,
+decimalpoint:int|float,
 graph_grid:ColorType,
 title:str
 )->NoReturn:'''バイオリングラフを再表示させる。'''
@@ -3269,8 +3269,8 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -3291,7 +3291,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''2次元六角形グラフを作成する。
 
@@ -3328,9 +3328,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -3372,7 +3372,7 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 x:o_array,
@@ -3385,8 +3385,8 @@ yscale:Literal['linear','log'],
 mincnt:int,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
-decimalpoint:Numbertype,
+alpha:int|float,
+decimalpoint:int|float,
 graph_grid:ColorType,
 title:str
 )->NoReturn:'''2次元六角形グラフを再表示させる。'''
@@ -3406,8 +3406,8 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
-dpi:Numbertype=100,
-alpha:Numbertype=1,
+dpi:int|float=100,
+alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -3428,7 +3428,7 @@ labelplace:Literal['upper right','upper left','lower left','lower right','right'
 labeltitle:str=...,
 labelframe:bool=True,
 labelshadow:bool=False,
-labelalpha:Numbertype=1,
+labelalpha:int|float=1,
 master:Misc=None
 )->None:'''ハットグラフを作成する。
 
@@ -3453,9 +3453,9 @@ master:Misc=None
  :param bg: グラフ内の背景色を指定する。
  :type bg: ColorType
  :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: Numbertype
+ :type alpha: int|float
  :param graph_grid: グラフのグリッド線の色を指定する。
  :type graph_grid: ColorType
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -3497,7 +3497,7 @@ master:Misc=None
  :param labelshadow: 凡例に影を付与するか指定する。
  :type labelshadow: bool
  :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: Numbertype'''
+ :type labelalpha: int|float'''
  def update(
 self,
 x:o_array,
@@ -3506,7 +3506,7 @@ label:labeltype,
 color:ColorType,
 fg:ColorType,
 bg:ColorType,
-alpha:Numbertype,
+alpha:int|float,
 xlabel:str,
 ylabel:str,
 graph_grid:ColorType,

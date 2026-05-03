@@ -16,7 +16,7 @@ class Ecdf(twoDElement):
   self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,NpArraytype):self.data=self._manyarr(data)
+  if isinstance(data,ndarray|list|tuple):self.data=self._manyarr(data)
   self.complementary=bols(kw.get('complementary'),self.complementary)
   self.compress=bols(kw.get('compress'),self.compress)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)

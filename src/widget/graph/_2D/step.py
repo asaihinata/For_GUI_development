@@ -20,7 +20,7 @@ class Step(twoDElement):
   self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,NpArraytype):self.data=self._manyarr(data)
+  if isinstance(data,ndarray|list|tuple):self.data=self._manyarr(data)
   self.range=self._steprange(kw.get('range',self.range),self.data)
   self.linewidth=num0(kw.get('linewidth'),self.linewidth)
   self.fill=bols(kw.get('fill'),self.fill)

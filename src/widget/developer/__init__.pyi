@@ -197,8 +197,8 @@ endpoint:bool=False
  @classmethod
  def normal(
 self,
-low:Numbertype=0,
-high:Numbertype=1,
+low:int|float=0,
+high:int|float=1,
 lenght:int=1,
 hierarchy:int=1
 )->ndarray:'''指定された行数と列数分のランダムに生成された正規分布のnumpyの配列を返す。
@@ -217,8 +217,8 @@ hierarchy:int=1
  @classmethod
  def rands(
 cls,
-low:Numbertype=...,
-high:Numbertype|None=...,
+low:int|float=...,
+high:int|float|None=...,
 lenght:int=...,
 )->NDArray[float64]:'''指定されたの個数のランダムに生成された値の配列を返す。
 
@@ -234,8 +234,8 @@ lenght:int=...,
  @classmethod
  def rands(
 cls,
-low:Numbertype=...,
-high:Numbertype|None=...,
+low:int|float=...,
+high:int|float|None=...,
 lenght:int=...,
 hierarchy:int|None=None,
 )->NDArray[float64]:'''指定されたのサイズのランダムに生成された値の配列を返す。
@@ -254,8 +254,8 @@ hierarchy:int|None=None,
  @classmethod
  def randsint(
 cls,
-low:Numbertype=...,
-high:Numbertype|None=...,
+low:int|float=...,
+high:int|float|None=...,
 lenght:int=...,
 )->NDArray[int64]:'''指定されたの個数のランダムに生成された整数の配列を返す。
 
@@ -271,8 +271,8 @@ lenght:int=...,
  @classmethod
  def randsint(
 cls,
-low:Numbertype=...,
-high:Numbertype|None=...,
+low:int|float=...,
+high:int|float|None=...,
 lenght:int=...,
 hierarchy:int|None=None,
 )->NDArray[int64]:'''指定されたのサイズのランダムに生成された整数の配列を返す。
@@ -472,8 +472,8 @@ endpoint:bool=False
  :type seeds: int'''
  def normal(
 self,
-low:Numbertype=0,
-high:Numbertype=1,
+low:int|float=0,
+high:int|float=1,
 lenght:int=1,
 hierarchy:int=1
 )->ndarray:'''指定された行数と列数分のランダムに生成された正規分布のnumpyの配列を返す。
@@ -491,8 +491,8 @@ hierarchy:int=1
  @overload
  def rands(
 self,
-low:Numbertype=...,
-high:Numbertype|None=...,
+low:int|float=...,
+high:int|float|None=...,
 lenght:int=...,
 )->NDArray[float64]:'''指定されたの個数のランダムに生成された値の配列を返す。
 
@@ -507,8 +507,8 @@ lenght:int=...,
  @overload
  def rands(
 self,
-low:Numbertype=...,
-high:Numbertype|None=...,
+low:int|float=...,
+high:int|float|None=...,
 lenght:int=...,
 hierarchy:int|None=None,
 )->NDArray[float64]:'''指定されたのサイズのランダムに生成された値の配列を返す。
@@ -526,8 +526,8 @@ hierarchy:int|None=None,
  @overload
  def randsint(
 self,
-low:Numbertype=...,
-high:Numbertype|None=...,
+low:int|float=...,
+high:int|float|None=...,
 lenght:int=...,
 )->NDArray[int64]:'''指定されたの個数のランダムに生成された整数の配列を返す。
 
@@ -542,8 +542,8 @@ lenght:int=...,
  @overload
  def randsint(
 self,
-low:Numbertype=...,
-high:Numbertype|None=...,
+low:int|float=...,
+high:int|float|None=...,
 lenght:int=...,
 hierarchy:int|None=None,
 )->NDArray[int64]:'''指定されたのサイズのランダムに生成された整数の配列を返す。
@@ -711,7 +711,7 @@ class Number:
  __static_attributes__:tuple[str]
  __class__:type
  __firstlineno__:int
- val:Numbertype
+ val:int|float
  def __init__(self,val:int|float|bool|Number)->None:'''数値に関するクラス
 
  :param val: 数値を指定する。
@@ -729,7 +729,7 @@ class Number:
  def format(self,format_spec:str)->str:...
  def __len__(self)->int:...
  def len(self)->int:...
- def types(self)->Numbertype:...
+ def types(self)->int|float:...
  def __add__(self,val:int|float|Number)->Number:...
  def __sub__(self,val:int|float|Number)->Number:...
  def __mul__(self,val:int|float|Number)->Number:...
@@ -762,7 +762,7 @@ class Number:
  def __floor__(self)->Number:...
  def __neg__(self)->Number:...
  def __pos__(self)->Number:...
- def value(self)->Numbertype:...
+ def value(self)->int|float:...
 class LISTNumber:
  lists:list|LIST|tuple
  judge:bool

@@ -6,32 +6,15 @@ from matplotlib.typing import ColorType
 # str type
 type StrPathtype=str|PathLike[str]
 StrPathtype=(str,PathLike)
-type Linktype=str
-Linktype=str
-type fontname=str
-fontname=str
-# number type
-type Numbertype=int|float
-Numbertype=(int,float)
-# list like type
-type Arraytype=list|tuple
-Arraytype=(list,tuple)
-type nArraytype=list|tuple|None
-nArraytype=(list,tuple,None)
-type NpArraytype=ndarray|list|tuple
-NpArraytype=(ndarray,list,tuple)
-type nNpArraytype=ndarray|list|tuple|None
-nNpArraytype=(ndarray,list,tuple,None)
-Listlike=TypeVar('Listlike',bound=Sequence[Any])
 # list like and number type
-type TupleNumbertype2=tuple[Numbertype,Numbertype]
-type TupleNumbertype4=tuple[Numbertype,Numbertype,Numbertype,Numbertype]
+type TupleNumbertype2=tuple[int|float,int|float]
+type TupleNumbertype4=tuple[int|float,int|float,int|float,int|float]
 type TupleInt2=tuple[int,int]
 type TupleInt4=tuple[int,int,int,int]
 type TupleFloat2=tuple[float,float]
 type TupleFloat4=tuple[float,float,float,float]
-type ListNumbertype2=list[Numbertype,Numbertype]
-type ListNumbertype4=list[Numbertype,Numbertype,Numbertype,Numbertype]
+type ListNumbertype2=list[int|float,int|float]
+type ListNumbertype4=list[int|float,int|float,int|float,int|float]
 type ListInt2=list[int,int]
 type ListInt4=list[int,int,int,int]
 type ListFloat2=list[float,float]

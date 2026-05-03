@@ -1,13 +1,13 @@
 from tkinter import Misc,Tk
 from tkinter.font import Font,families
-from ..types import Literal,Numbertype,fontname
+from ..types import Literal
 from ._function import bols,listchose,nums
 __all__=['fonts']
 class fonts(Font):
  def __init__(
 self,
-family:fontname='Meiryo',
-size:Numbertype=14,
+family:str='Meiryo',
+size:int|float=14,
 weight:Literal['normal','bold']='normal',
 slant:Literal['roman','italic']='roman',
 underline:bool=False,
@@ -17,9 +17,9 @@ root:Misc=None
   '''フォントに関するクラス
 
  :param family: フォント名を指定する。
- :type family: fontname
+ :type family: str
  :param size: フォントサイズを指定する。
- :type size: Numbertype
+ :type size: int|float
  :param weight: フォントの太字を指定する。
  :type weight: Literal['normal','bold']
  :param slant: フォントの斜体を指定する。

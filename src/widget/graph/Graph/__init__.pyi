@@ -13,8 +13,8 @@ class GElement:
  graph_bg:ColorType
  graph_grid:ColorType
  title:str
- dpi:Numbertype
- alpha:Numbertype
+ dpi:int|float
+ alpha:int|float
  ax:Axes|Axes3D
  color:list[str]
  def __init__(
@@ -25,7 +25,7 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 graph_grid:ColorType='#b7b7b7',
 title:str=...,
-dpi:Numbertype=100,
+dpi:int|float=100,
 alpha=1
 )->None:
   '''2Dグラフと3Dグラフの基盤のグラフを作成する。
@@ -41,7 +41,7 @@ alpha=1
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param dpi: グラフの解像度を指定する。
- :type dpi: Numbertype'''
+ :type dpi: int|float'''
   self.fig:Figure
   self._canvas_widget:None
   self.graphdata:list
@@ -50,15 +50,15 @@ alpha=1
   self.graph_bg:ColorType
   self.graph_grid:ColorType
   self.title:str
-  self.dpi:Numbertype
-  self.alpha:Numbertype
+  self.dpi:int|float
+  self.alpha:int|float
   self.ax:Axes|Axes3D
   self.max_depth:int
  def photo(
 self,
 filename:str='Graph',
 ex:Literal['.eps','.jpg','.jpeg','.pdf','.pgf','.png','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']='.png',
-dpi:Numbertype=100
+dpi:int|float=100
 )->NoReturn:'''グラフを画像にして画像を保存する。
 
  :param filename: 画像を保存するファイル名を指定する。
@@ -66,7 +66,7 @@ dpi:Numbertype=100
  :param ex: 画像ファイルの拡張子を指定する。
  :type ex: Literal['.eps','.jpg','.jpeg','.pdf','.pgf','.png','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']
  :param dpi: グラフの解像度を指定する。
- :type dpi: Numbertype
+ :type dpi: int|float
  :return:
  :rtype: NoReturn'''
  def winsize(self)->tuple[int,int]:'''ウィジェットの現在の幅と高さを返す。
@@ -127,7 +127,7 @@ dpi:Numbertype=100
  def name(self):'''ウィジェットのインスタンス名を返す。'''
  def _color_check(self,color:list)->list:...
  def _list_loop(self,lin:list|tuple,num:int)->list:...
- def legend(self,ncols:Numbertype=1)->NoReturn:...
+ def legend(self,ncols:int|float=1)->NoReturn:...
  def _anchor(
 self,
 val:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=None,
@@ -138,7 +138,7 @@ self,
 place:str|int=...,
 other:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right'
 )->str:'''凡例の位置の基準を決定する。'''
- def pielabel(self,data:NpArraytype,label:Arraytype)->list:...
+ def pielabel(self,data:ndarray|list|tuple,label:list|tuple)->list:...
  def labels(self,label:labeltype)->list:...
  def markers(self,serch:str)->str:'''`serch`で指定したマーカーが`MARKERS`に存在するかを調べる
 
@@ -164,16 +164,16 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
 参考
 ----
 * https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html'''
- def _arr(self,val:NpArraytype,j:bool=True)->ndarray:'''
+ def _arr(self,val:ndarray|list|tuple,j:bool=True)->ndarray:'''
  :param val: 配列を指定する。
- :type val: NpArraytype
+ :type val: ndarray|list|tuple
  :raises TypeError: NpArraytype型以外を指定した場合に発生させる。
  :return:
  :rtype: ndarray'''
- def _floatarr(self,val:NpArraytype)->ndarray:...
- def _manyarr(self,val:NpArraytype,j:bool=True)->ndarray:...
- def _onearr(self,val:NpArraytype,j:bool=True)->ndarray:...
- def _dataarr(self,val:NpArraytype,j:bool=True)->ndarray:...
+ def _floatarr(self,val:ndarray|list|tuple)->ndarray:...
+ def _manyarr(self,val:ndarray|list|tuple,j:bool=True)->ndarray:...
+ def _onearr(self,val:ndarray|list|tuple,j:bool=True)->ndarray:...
+ def _dataarr(self,val:ndarray|list|tuple,j:bool=True)->ndarray:...
  def _pack(self)->NoReturn:'''ウィジェットを親ウィジェット内に配置します。'''
  def _redraw(self)->NoReturn:...
  def _size(self,sizes:TupleNumbertype2=(500,400))->TupleNumbertype2:'''グラフの大きさのサイズを定める。
@@ -188,9 +188,9 @@ class twoDElement(GElement):
  def __init__(
 self,
 master:Misc=None,
-data:NpArraytype=None,
-x:NpArraytype=None,
-y:NpArraytype=None,
+data:ndarray|list|tuple=None,
+x:ndarray|list|tuple=None,
+y:ndarray|list|tuple=None,
 label:labeltype=None,
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -207,11 +207,11 @@ setxy:bool=True
   '''2Dグラフの基盤のグラフを作成する。
 
  :param data: dataを指定する。
- :type data: NpArraytype
+ :type data: ndarray|list|tuple
  :param x: x軸のデータを指定する。
- :type x: NpArraytype
+ :type x: ndarray|list|tuple
  :param y: y軸のデータを指定する。
- :type y: NpArraytype
+ :type y: ndarray|list|tuple
  :param label: グラフのラベルを指定する。
  :type label: labeltype
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
@@ -285,9 +285,9 @@ class threeDElement(GElement):
  def __init__(
 self,
 master:Misc=None,
-x:NpArraytype=None,
-y:NpArraytype=None,
-z:NpArraytype=None,
+x:ndarray|list|tuple=None,
+y:ndarray|list|tuple=None,
+z:ndarray|list|tuple=None,
 label:labeltype=None,
 grid_xyz:bool=True,
 grid_x:bool=False,
@@ -296,8 +296,8 @@ grid_z:bool=False,
 xmajorint:bool=True,
 ymajorint:bool=True,
 zmajorint:bool=True,
-elev:Numbertype=30,
-azim:Numbertype=45,
+elev:int|float=30,
+azim:int|float=45,
 mouse_rotation:bool=True,
 xticksshow:bool=False,
 yticksshow:bool=False,
@@ -308,11 +308,11 @@ yticksdirection:Literal['out','in','inout']='out'
   '''3Dのグラフを作成する。
 
  :param x: x軸のデータを指定する。
- :type x: NpArraytype
+ :type x: ndarray|list|tuple
  :param y: y軸のデータを指定する。
- :type y: NpArraytype
+ :type y: ndarray|list|tuple
  :param z: z軸のデータを指定する。
- :type z: NpArraytype
+ :type z: ndarray|list|tuple
  :param xlabel: x軸のラベルを指定する。
  :type label: labeltype
  :param ylabel: y軸のラベルを指定する。
@@ -336,9 +336,9 @@ yticksdirection:Literal['out','in','inout']='out'
  :param mouse_rotation: グラフをマウスでできるか指定する。
  :type mouse_rotation: bool
  :param elev: 仰角を度数表記で指定する。
- :type elev: Numbertype
+ :type elev: int|float
  :param azim: 方位角を度数表記で指定する。
- :type azim: Numbertype
+ :type azim: int|float
  :param xticksshow: x軸の目盛りを線を表示させるか指定する。
  :type xticksshow: bool
  :param yticksshow: y軸の目盛りを線を表示させるか指定する。
@@ -350,9 +350,9 @@ yticksdirection:Literal['out','in','inout']='out'
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']'''
   self.ax:Axes3D
-  self.x:NpArraytype
-  self.y:NpArraytype
-  self.z:NpArraytype
+  self.x:ndarray|list|tuple
+  self.y:ndarray|list|tuple
+  self.z:ndarray|list|tuple
   self.label:labeltype
   self.xlabel:labeltype
   self.ylabel:labeltype
@@ -364,16 +364,16 @@ yticksdirection:Literal['out','in','inout']='out'
   self.xmajorint:bool
   self.ymajorint:bool
   self.zmajorint:bool
-  self.elev:Numbertype
-  self.azim:Numbertype
+  self.elev:int|float
+  self.azim:int|float
  def _updates(
 self,
 fg:ColorType,
 bg:ColorType,
 graph_grid:ColorType,
 title:str,
-elev:Numbertype,
-azim:Numbertype,
+elev:int|float,
+azim:int|float,
 xlabel:labeltype,
 ylabel:labeltype,
 zlabel:labeltype

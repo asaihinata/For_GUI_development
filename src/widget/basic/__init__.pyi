@@ -1,6 +1,6 @@
 from datetime import datetime
 from tkinter import Widget
-from ...types import Any,ColorType,Literal,NoReturn,Numbertype,TupleInt2
+from ...types import Any,ColorType,Literal,NoReturn,TupleInt2
 from ..base import _Element
 class Texts(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
@@ -64,10 +64,10 @@ class InputNumber(_Element):
  def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
  def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
  def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
- def get_number(self)->Numbertype:'''InputNumberウィジェットに入力されている数値を取得する。
+ def get_number(self)->int|float:'''InputNumberウィジェットに入力されている数値を取得する。
 
  :return: InputNumberウィジェットに入力されている数値を返す。
- :rtype: Numbertype'''
+ :rtype: int|float'''
 class Listboxs(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
@@ -168,19 +168,19 @@ class Table(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def clear_width(self)->NoReturn:'''Tableウィジェットのセルの幅を均等に戻す。'''
 class Slidebar(_Element):
- def get(self)->Numbertype:'''Slidebarウィジェットの現在の値を取得する。
+ def get(self)->int|float:'''Slidebarウィジェットの現在の値を取得する。
 
  :return: Slidebarウィジェットの現在の値を返す。
- :rtype: Numbertype'''
+ :rtype: int|float'''
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
  def set_fg(self,fg:ColorType)->NoReturn:'''ウィジェットが表示している文字色を変更する。'''
  def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
  def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
- def set(self,val:Numbertype)->NoReturn:'''Slidebarウィジェットの変更後の数値を設定する。
+ def set(self,val:int|float)->NoReturn:'''Slidebarウィジェットの変更後の数値を設定する。
 
  :param val: 変更後の数値を指定する。
- :type val: Numbertype'''
+ :type val: int|float'''
 class Menus(_Element):
  def get(self)->list:'''Menusウィジェットで表示されている配列を取得する。
 
@@ -250,14 +250,14 @@ class TCombobox(_Element):
 class TProgressbar(_Element):
  def start(self)->NoReturn:'''TProgressbarをプログレスバーのバーを変化させる。'''
  def stop(self)->NoReturn:'''TProgressbarをプログレスバーのバーの変化を止める。'''
- def set(self,val:Numbertype)->NoReturn:'''TProgressbarウィジェットの値を指定する。
+ def set(self,val:int|float)->NoReturn:'''TProgressbarウィジェットの値を指定する。
 
  :param val: TProgressbarウィジェットの値を指定する。
- :type val: Numbertype'''
- def get(self)->Numbertype:'''TProgressbarの値を取得する。
+ :type val: int|float'''
+ def get(self)->int|float:'''TProgressbarの値を取得する。
 
  :return: TProgressbarの値を返す。
- :rtype: Numbertype'''
+ :rtype: int|float'''
 class Link(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''

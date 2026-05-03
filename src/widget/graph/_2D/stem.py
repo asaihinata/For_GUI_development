@@ -27,8 +27,8 @@ class Stem(twoDElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,NpArraytype):self.x=self._manyarr(x)
-  if isinstance(y,NpArraytype):self.y=self._manyarr(y)
+  if isinstance(x,ndarray|list|tuple):self.x=self._manyarr(x)
+  if isinstance(y,ndarray|list|tuple):self.y=self._manyarr(y)
   self.colorlist=self._list_loop(self._stem_color_check(self.colorlist),self.max_depth)
   self.line=self._list_loop(self._linefmt(kw.get('line',self.line)),self.max_depth)
   self.marker=self._list_loop(self._markerfmt(kw.get('marker',self.marker)),self.max_depth)
@@ -42,7 +42,7 @@ class Stem(twoDElement):
  def _linefmt(self,line):
   set_arr=[]
   if isinstance(line,str):set_arr=[listchose(line,stem_line_list)]
-  elif isinstance(line,Arraytype):
+  elif isinstance(line,list|tuple):
    for i in line:
     if i in stem_line_list:set_arr.append(i)
   if len(set_arr)==0:return stem_line_list
@@ -50,7 +50,7 @@ class Stem(twoDElement):
  def _markerfmt(self,marker):
   set_arr=[]
   if isinstance(marker,str):set_arr=[listchose(marker,stem_mark_list)]
-  elif isinstance(marker,Arraytype):
+  elif isinstance(marker,list|tuple):
    for i in marker:
     if i in stem_mark_list:set_arr.append(i)
   if len(set_arr)==0:set_arr=stem_mark_list
@@ -68,7 +68,7 @@ class Stem(twoDElement):
   else:color=stem_color_list
   for k,v in {'r':['r','red'],'g':['g','green'],'b':['b','blue'],'c':['c','cyan'],'m':['m','magenta'],'y':['y','yellow'],'k':['k','black'],'w':['w','white']}.items():
    if isinstance(color,str) and color in v:set_arr=[k]
-   elif isinstance(color,Arraytype):
+   elif isinstance(color,list|tuple):
     for i in color:
      if i in v:set_arr.append(k)
   return set_arr

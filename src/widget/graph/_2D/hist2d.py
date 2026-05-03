@@ -12,7 +12,7 @@ class Hist2d(twoDElement):
   if len(self.x)!=len(self.y):
    raise TypeError('データの数を同じにしてください')
   self.max,self.min=nums(kw.get('max')),nums(kw.get('min'))
-  if isinstance(self.max,Numbertype) and isinstance(self.min,Numbertype) and self.max<self.min:self.max,self.min=self.min,self.max
+  if isinstance(self.max,int|float) and isinstance(self.min,int|float) and self.max<self.min:self.max,self.min=self.min,self.max
   self.xmax=self._powsmax(nums(kw.get('xmax')),self.x)
   self.xmin=self._powsmin(nums(kw.get('xmin')),self.x)
   self.ymax=self._powsmax(nums(kw.get('ymax')),self.y)
@@ -32,8 +32,8 @@ class Hist2d(twoDElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,NpArraytype):self.x=self._dataarr(x)
-  if isinstance(y,NpArraytype):self.y=self._dataarr(y)
+  if isinstance(x,ndarray|list|tuple):self.x=self._dataarr(x)
+  if isinstance(y,ndarray|list|tuple):self.y=self._dataarr(y)
   if len(self.x.shape)!=1 and len(self.y.shape)!=1:
    raise TypeError('多次元配列のエラー')
   elif len(self.x.shape)!=1:
@@ -43,7 +43,7 @@ class Hist2d(twoDElement):
   if len(self.x)!=len(self.y):
    raise TypeError('データの数を同じにしてください')
   self.max,self.min=nums(kw.get('max'),self.max),nums(kw.get('min'),self.min)
-  if isinstance(self.max,Numbertype) and isinstance(self.min,Numbertype) and self.max<self.min:self.max,self.min=self.min,self.max
+  if isinstance(self.max,int|float) and isinstance(self.min,int|float) and self.max<self.min:self.max,self.min=self.min,self.max
   self.xmax=self._powsmax(nums(kw.get('xmax'),self.xmax),self.x)
   self.xmin=self._powsmin(nums(kw.get('xmin'),self.xmin),self.x)
   self.ymax=self._powsmax(nums(kw.get('ymax'),self.ymax),self.y)

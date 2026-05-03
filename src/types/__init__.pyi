@@ -4,50 +4,18 @@ from typing import *
 from numpy import floating,int_,ndarray,str_
 from numpy.typing import NDArray
 from matplotlib.typing import *
-type StrPathtype=str|PathLike[str]
-'''StrPathtype型
-
-フォルダやファイルのパス名の型ヒント'''
 Listlike=TypeVar('TypeVar',Sequence[Any])
 '''Listlike型
 
 一次元の配列の型'''
-type Linktype=str
-'''Linktype型
-
-URLのリンクの型ヒント'''
-type fontname=str
-'''fontname型
-
-フォント名の型ヒント'''
-type Numbertype=int|float
-'''Numbertype型
-
-int型,float型の型ヒント'''
-type Arraytype=list|tuple
-'''Arraytype型
-
-list型,tuple型の型ヒント'''
-type nArraytype=list|tuple|None
-'''Arraytype型
-
-list型,tuple型,Noneの型ヒント'''
-type NpArraytype=ndarray|list|tuple
-'''NpArraytype型
-
-ndarray型,list型,tuple型の型ヒント'''
-type nNpArraytype=ndarray|list|tuple|None
-'''nNpArraytype型
-
-ndarray型,list型,tuple型,Noneの型ヒント'''
-type TupleNumbertype2=tuple[Numbertype,Numbertype]
+type TupleNumbertype2=tuple[int|float,int|float]
 '''TupleNumbertype2型
 
-tuple[Numbertype,Numbertype]の型ヒント'''
-type TupleNumbertype4=tuple[Numbertype,Numbertype,Numbertype,Numbertype]
+tuple[int|float,int|float]の型ヒント'''
+type TupleNumbertype4=tuple[int|float,int|float,int|float,int|float]
 '''TupleNumbertype4型
 
-tuple[Numbertype,Numbertype,Numbertype,Numbertype]の型ヒント'''
+tuple[int|float,int|float,int|float,int|float]の型ヒント'''
 type TupleInt2=tuple[int,int]
 '''TupleInt2型
 
@@ -64,14 +32,14 @@ type TupleFloat4=tuple[float,float,float,float]
 '''TupleFloat4型
 
 tuple[float,float,float,float]の型ヒント'''
-type ListNumbertype2=list[Numbertype,Numbertype]
+type ListNumbertype2=list[int|float,int|float]
 '''ListNumbertype2型
 
-list[Numbertype,Numbertype]の型ヒント'''
-type ListNumbertype4=list[Numbertype,Numbertype,Numbertype,Numbertype]
+list[int|float,int|float]の型ヒント'''
+type ListNumbertype4=list[int|float,int|float,int|float,int|float]
 '''ListNumbertype4型
 
-list[Numbertype,Numbertype,Numbertype,Numbertype]の型ヒント'''
+list[int|float,int|float,int|float,int|float]の型ヒント'''
 type ListInt2=list[int,int]
 '''ListInt2型
 
