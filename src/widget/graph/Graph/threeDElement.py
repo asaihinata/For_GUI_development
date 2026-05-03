@@ -74,13 +74,6 @@ class threeDElement(GElement):
   self.xmajormaxbins=numsmin(kw.get('xmajormaxbins'),2,10)
   self.ymajormaxbins=numsmin(kw.get('ymajormaxbins'),2,10)
   self.zmajormaxbins=numsmin(kw.get('zmajormaxbins'),2,10)
- def _plot(self):
-  self.ax.xaxis.set_major_locator(LinearLocator(numticks=self.xnumticks))
-  self.ax.yaxis.set_major_locator(LinearLocator(numticks=self.ynumticks))
-  self.ax.zaxis.set_major_locator(LinearLocator(numticks=self.znumticks))
-  self.ax.xaxis.set_major_locator(MaxNLocator(nbins=self.xmajormaxbins,integer=self.xmajorint))
-  self.ax.yaxis.set_major_locator(MaxNLocator(nbins=self.ymajormaxbins,integer=self.ymajorint))
-  self.ax.zaxis.set_major_locator(MaxNLocator(nbins=self.zmajormaxbins,integer=self.zmajorint))
  def _updates(self,**kw):
   self.fg=parsecolor(kw.get('fg'),self.fg)
   self.graph_bg=parsecolor(kw.get('bg'),self.graph_bg)
@@ -125,7 +118,6 @@ class threeDElement(GElement):
  def clear(self):
   self.graphdata=[]
   self.ax.clear()
-  self._plot()
   self._ticks()
   self._apply_theme_colors()
  def _ticks(self):

@@ -1,11 +1,11 @@
 from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
-from matplotlib.ticker import LinearLocator,MaxNLocator
+# from matplotlib.ticker import LinearLocator,MaxNLocator
 from numpy import array,ndarray
 from ..._function import bols,list2num,listchose,num0s,numsmin,parsecolor,range_num
 from ...developer import LIST,Number
 from .Graph import GElement
-from .style import Title,Xlabel,Ylabel
+from .style import Title,Xaxis,Xlabel,Yaxis,Ylabel
 __all__=['twoDElement']
 class twoDElement(GElement):
  def __init__(self,master,kw):
@@ -57,11 +57,6 @@ class twoDElement(GElement):
   self.ynumticks=num0s(kw.get('ynumticks'),None)
   self.xmajormaxbins=numsmin(kw.get('xmajormaxbins'),2,10)
   self.ymajormaxbins=numsmin(kw.get('ymajormaxbins'),2,10)
- def _plot(self):
-  self.ax.xaxis.set_major_locator(MaxNLocator(nbins=self.xmajormaxbins,integer=self.xmajorint))
-  self.ax.yaxis.set_major_locator(MaxNLocator(nbins=self.ymajormaxbins,integer=self.ymajorint))
-  self.ax.xaxis.set_major_locator(LinearLocator(numticks=self.xnumticks))
-  self.ax.yaxis.set_major_locator(LinearLocator(numticks=self.ynumticks))
  def _apply_theme_colors(self):
   self.ax.set_facecolor(self.graph_bg)
   self.ax.tick_params(colors=self.fg)
@@ -110,7 +105,6 @@ class twoDElement(GElement):
  def clear(self):
   self.graphdata=[]
   self.ax.clear()
-  self._plot()
   self._ticks()
   self._apply_theme_colors()
  def invert(self):
