@@ -2,7 +2,7 @@ from math import ceil,floor
 from os import system as sys
 from platform import system
 from sys import getsizeof
-from numpy import array,full,ndarray
+import numpy as np
 from numpy.random import choice,default_rng
 __all__=['clear','LIST','LISTNumber','Number','rand','rands','sort']
 class clear:
@@ -65,7 +65,7 @@ class rand:
   else:return cls.rng.integers(low=low,high=high,size=lenght)
  @classmethod
  def listrand(cls,arr,size=None):
-  return choice(array(list(arr)if isinstance(arr,LIST) else arr),size=size)
+  return choice(np.array(list(arr)if isinstance(arr,LIST) else arr),size=size)
 class rands:
  '''ランダムな値を生成する。'''
  def __init__(self,seed=42):
@@ -107,13 +107,13 @@ class rands:
   if isinstance(hierarchy,int) and 2<=hierarchy:return self.rng.integers(low=low,high=high,size=(hierarchy,lenght))
   else:return self.rng.integers(low=low,high=high,size=lenght)
  def listrand(self,arr,size=None):
-  return choice(array(list(arr)if isinstance(arr,LIST) else arr,dtype=object),size=size)
+  return choice(np.array(list(arr)if isinstance(arr,LIST) else arr,dtype=object),size=size)
 class LIST:
  def __init__(self,lists,*arg):
   if isinstance(lists,list):self.lists=lists
   elif isinstance(lists,(tuple,range)):self.lists=list(lists)
   elif isinstance(lists,LIST):self.lists=lists.lists
-  elif isinstance(lists,ndarray):self.lists=lists.tolist()
+  elif isinstance(lists,np.ndarray):self.lists=lists.tolist()
   else:self.lists=[lists]
   for i in arg:self.lists.append(i)
  @classmethod
@@ -217,8 +217,8 @@ class LIST:
     isinstance(size,LIST) and
     all((isinstance(i,int) and 1<=i)for i in size)
    )
-   ):return LIST(full(size,val))
-  return LIST(full(1,val))
+   ):return LIST(np.full(size,val))
+  return LIST(np.full(1,val))
 class sort:
  def __init__(self,data,types=True):
   if not isinstance(data,list|tuple|LIST):
@@ -286,7 +286,7 @@ class sort:
   return(0,item_str,'')
 class Number:
  def __init__(self,val):
-  if not isinstance(val,Number|int|float|bool):
+  if not isinstance(val,bool|float|int|Number|np.float16|np.float32|np.float64|np.int16|np.int32|np.int64|np.int8|np.uint16|np.uint32|np.uint64|np.uint8):
    raise TypeError('valに数値を指定してください')
   if isinstance(val,Number):self.val=val.val
   elif isinstance(val,bool):self.val=int(val)
@@ -387,6 +387,7 @@ class Number:
   elif isinstance(val,int|float):return val
   raise TypeError('数値の型を指定してください')
  def value(self):return self.val
+ def __dir__(self):return['__abs__','__add__','__bool__','__ceil__','__class__','__delattr__','__dict__','__dir__','__doc__','__eq__','__firstlineno__','__float__','__floor__','__floordiv__','__format__','__ge__','__getattribute__','__getstate__','__gt__','__hash__','__iadd__','__imul__','__init__','__init_subclass__','__instancecheck__','__int__','__ipow__','__isub__','__itruediv__','__le__','__len__','__lt__','__module__','__mul__','__ne__','__neg__','__new__','__pos__','__pow__','__radd__','__reduce__','__reduce_ex__','__repr__','__rfloordiv__','__rmod__','__rmul__','__round__','__rpow__','__rsub__','__rtruediv__','__setattr__','__sizeof__','__static_attributes__','__str__','__sub__','__subclasshook__','__truediv__','__weakref__','format','len','types','val','value']
 class LISTNumber:
  def __init__(self,obj):
   if not isinstance(obj,list|LIST|tuple):
