@@ -2,7 +2,7 @@ from typing import Any,Literal
 from matplotlib.text import Text
 from matplotlib.axes._axes import Axes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from ....developer import Number
+from .....developer import Number
 class Title:
  def __init__(
 self,

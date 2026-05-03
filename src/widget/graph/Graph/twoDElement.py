@@ -1,6 +1,5 @@
 from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
-# from matplotlib.ticker import LinearLocator,MaxNLocator
 from numpy import array,ndarray
 from ..._function import bols,list2num,listchose,num0s,numsmin,parsecolor,range_num
 from ...developer import LIST,Number

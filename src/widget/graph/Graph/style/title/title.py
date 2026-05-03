@@ -1,7 +1,7 @@
 '''タイトルの設定'''
 from matplotlib.axes._axes import Axes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from ....developer import Number
+from .....developer import Number
 __all__=['Title']
 class Title:
  def __init__(self,ax,title,loc=None,pad=None,y=None,**kwargs):

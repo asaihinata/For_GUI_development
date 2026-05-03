@@ -1,5 +1,4 @@
 from matplotlib.pyplot import rcParams
-from matplotlib.ticker import LinearLocator,MaxNLocator
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ..._function import bols,list2num,listchose,num0s,nums,numsmin,parsecolor,range_num
 from ...developer import Number
