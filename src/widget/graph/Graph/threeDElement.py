@@ -67,12 +67,6 @@ class threeDElement(GElement):
   if bols(kw.get('mouse_rotation')):self.ax.disable_mouse_rotation()
   self.ax.view_init(self.elev,self.azim)
   self._apply_theme_colors()
-  self.xnumticks=num0s(kw.get('xnumticks'),None)
-  self.ynumticks=num0s(kw.get('ynumticks'),None)
-  self.znumticks=num0s(kw.get('znumticks'),None)
-  self.xmajormaxbins=numsmin(kw.get('xmajormaxbins'),2,10)
-  self.ymajormaxbins=numsmin(kw.get('ymajormaxbins'),2,10)
-  self.zmajormaxbins=numsmin(kw.get('zmajormaxbins'),2,10)
  def _updates(self,**kw):
   self.fg=parsecolor(kw.get('fg'),self.fg)
   self.graph_bg=parsecolor(kw.get('bg'),self.graph_bg)

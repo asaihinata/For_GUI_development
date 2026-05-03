@@ -52,10 +52,6 @@ class twoDElement(GElement):
   self.x:ndarray
   self.y:ndarray
   self.data:ndarray
-  self.xnumticks=num0s(kw.get('xnumticks'),None)
-  self.ynumticks=num0s(kw.get('ynumticks'),None)
-  self.xmajormaxbins=numsmin(kw.get('xmajormaxbins'),2,10)
-  self.ymajormaxbins=numsmin(kw.get('ymajormaxbins'),2,10)
  def _apply_theme_colors(self):
   self.ax.set_facecolor(self.graph_bg)
   self.ax.tick_params(colors=self.fg)
