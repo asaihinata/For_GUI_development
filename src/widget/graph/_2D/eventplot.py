@@ -14,7 +14,7 @@ class Eventplot(twoDElement):
   self.clear()
   self.graphdata=[self.ax.eventplot(np.array(ds,dtype=object),alpha=alpha,lineoffsets=i,linelengths=linelength,linewidths=linewidth,orientation=orientation,linestyles=linestyle[i],label=label[i])[0]for i,ds in enumerate(data)]
   self._apply_labels(self.xlabel,self.ylabel)
-  lab=label if isinstance(self.lab,(str,list,tuple)) else None
+  lab=label if isinstance(self.lab,str|list|tuple) else None
   if lab!=None:
    if orientation=='vertical':self.ax.set_xticks(self.x,lab)
    else:self.ax.set_yticks(self.x,lab)

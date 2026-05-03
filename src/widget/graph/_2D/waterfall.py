@@ -33,7 +33,7 @@ class Waterfall(twoDElement):
   self.ax.set_xticks(np.arange(len(x)),labels=x)
   yticks=self.ax.get_yticks()
   self.ax.set_ylim(yticks.min(),yticks.max())
-  self._horiline(np.cumsum(y),width,color,linestyle)
+  if width!=1:self._horiline(np.cumsum(y),width,color,linestyle)
   self._apply_labels(self.xlabel,self.ylabel)
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
@@ -79,7 +79,7 @@ class Waterfallh(twoDElement):
   if sums:x,y,bottom=np.append(x,sumstext),np.append(y,y.sum()),np.append(bottom,0)
   self.color=np.where(y<=0,self.dcolor,self.ucolor)
   self.graphdata=[self.ax.barh(x,y,color=self.color,alpha=alpha,height=height,align='center',left=bottom)]
-  self._vlines(np.cumsum(y),height,color,linestyle)
+  if height!=1:self._vlines(np.cumsum(y),height,color,linestyle)
   self.ax.set_yticks(np.arange(len(x)),labels=x)
   xticks=self.ax.get_xticks()
   self.ax.set_xlim(xticks.min(),xticks.max())
