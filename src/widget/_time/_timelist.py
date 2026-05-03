@@ -7,7 +7,7 @@ class timeslist:
  def __init__(self,dates):
   if isinstance(dates,np.ndarray):
    self.datelist=dates.astype('datetime64')
-  elif isinstance(dates,(list,tuple)):
+  elif isinstance(dates,list|tuple):
    dates=np.array(dates)
    if len(dates.shape)==1:
     self.datelist=np.array([d for d in self._serch_time(dates)])

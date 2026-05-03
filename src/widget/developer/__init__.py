@@ -152,7 +152,7 @@ class LIST:
   return judge
  def __add__(self,val):
   if isinstance(val,LIST):self.lists=self.lists+val.lists
-  elif isinstance(val,(list,tuple)):
+  elif isinstance(val,list|tuple):
    for i in val:self.lists.append(i)
   else:self.lists.append(val)
   return self
@@ -166,7 +166,7 @@ class LIST:
   return self
  def __iadd__(self,val):
   if isinstance(val,LIST):self.lists=self.lists+val.lists
-  elif isinstance(val,(range,list,tuple)):
+  elif isinstance(val,range|list|tuple):
    for i in list(val):self.lists.append(i)
   else:self.lists.append(val)
   return self
@@ -210,7 +210,7 @@ class LIST:
     isinstance(size,int) and 1<=size
    ) or
    (
-    isinstance(size,(list,tuple)) and
+    isinstance(size,list|tuple) and
     all((isinstance(i,int) and 1<=i)for i in size)
    ) or
    (
@@ -221,7 +221,7 @@ class LIST:
   return LIST(full(1,val))
 class sort:
  def __init__(self,data,types=True):
-  if not isinstance(data,(list,tuple,LIST)):
+  if not isinstance(data,list|tuple|LIST):
    raise TypeError('dataに配列の型を指定してください')
   if isinstance(data,LIST):data=data.lists
   self.order=types if isinstance(types,bool) else True
@@ -258,7 +258,7 @@ class sort:
   return judge
  @staticmethod
  def _ascending(item):
-  if isinstance(item,(int,float)):return(0,item,'')
+  if isinstance(item,int|float):return(0,item,'')
   elif isinstance(item,Number):return(0,item.val,'')
   item_str=str(item)
   if item_str.isdigit():return(1,int(item_str),'')
@@ -272,7 +272,7 @@ class sort:
   return(5,item_str,'')
  @staticmethod
  def _descending(item):
-  if isinstance(item,(int,float)):return(5,item,'')
+  if isinstance(item,int|float):return(5,item,'')
   if isinstance(item,Number):return(5,item.val,'')
   item_str=str(item)
   if item_str.isdigit():return(4,int(item_str),'')
@@ -286,7 +286,7 @@ class sort:
   return(0,item_str,'')
 class Number:
  def __init__(self,val):
-  if not isinstance(val,(Number,int,float,bool)):
+  if not isinstance(val,Number|int|float|bool):
    raise TypeError('valに数値を指定してください')
   if isinstance(val,Number):self.val=val.val
   elif isinstance(val,bool):self.val=int(val)
@@ -384,15 +384,15 @@ class Number:
  def __pos__(self):return self
  def _maths_(self,val):
   if isinstance(val,Number):return val.val
-  elif isinstance(val,(int,float)):return val
+  elif isinstance(val,int|float):return val
   raise TypeError('数値の型を指定してください')
  def value(self):return self.val
 class LISTNumber:
  def __init__(self,obj):
-  if not isinstance(obj,(list,LIST,tuple)):
+  if not isinstance(obj,list|LIST|tuple):
    raise TypeError('型によるエラー')
   self.lists=obj
-  self.judge=all(isinstance(i,(int,float,Number))for i in self.lists)
+  self.judge=all(isinstance(i,int|float|Number)for i in self.lists)
  def __bool__(self):return self.judge
  def __iter__(self):return iter([i.val if isinstance(i,Number) else i for i in self.lists])
  def __len__(self):return len(self.lists)

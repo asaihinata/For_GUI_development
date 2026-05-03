@@ -11,7 +11,7 @@ class Calendars(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.borderwidth=num0(kw.get('bd'))
-  self.dates=kw.get('date') if isinstance(kw.get('date'),(datetime,date)) else date.today()
+  self.dates=kw.get('date') if isinstance(kw.get('date'),datetime|date) else date.today()
   self.year,self.month,self.day=self.dates.year,self.dates.month,self.dates.day
   self.showweek=bols(kw.get('showweek'),False)
   self.showotherdays=bols(kw.get('showotherdays'))

@@ -2,9 +2,9 @@ from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
 from numpy import array,ndarray
 from ..._function import bols,list2num,listchose,num0s,numsmin,parsecolor,range_num
-from ...developer import LIST,Number
+from ...developer import Number
 from .Graph import GElement
-from .style import Title,Xaxis,Xlabel,Yaxis,Ylabel
+from .style import Title,Xlabel,Ylabel
 __all__=['twoDElement']
 class twoDElement(GElement):
  def __init__(self,master,kw):
@@ -28,7 +28,7 @@ class twoDElement(GElement):
   self.yticksdirection=listchose(kw.get('yticksdirection'),['out','in','inout'])
   xticksrange=kw.get('xticksrange',0)
   yticksrange=kw.get('yticksrange',0)
-  if isinstance(xticksrange,(int,float)):
+  if isinstance(xticksrange,int|float):
    xticksrange=abs(xticksrange)
    negnum=xticksrange*-1
    self.xticksrange=(negnum,xticksrange)
@@ -38,7 +38,7 @@ class twoDElement(GElement):
    self.xticksrange=(negnum,xticksrange,negnum,xticksrange)
   elif list2num(xticksrange):self.xticksrange=xticksrange
   else:self.xticksrange=(0,0)
-  if isinstance(yticksrange,(int,float)):
+  if isinstance(yticksrange,int|float):
    yticksrange=abs(yticksrange)
    negnum=yticksrange*-1
    self.yticksrange=(negnum,yticksrange)
@@ -71,9 +71,9 @@ class twoDElement(GElement):
   Xlabel(self.ax,xlabel,color=self.fg)
   Ylabel(self.ax,ylabel,color=self.fg)
  def _arys(self,data):
-  if any(isinstance(i,(list,tuple))for i in data):return array(data)
+  if any(isinstance(i,list|tuple)for i in data):return array(data)
   elif isinstance(data,list):return array([data])
-  elif isinstance(data,(tuple,LIST)):return array([list(data)])
+  elif isinstance(data,tuple|list):return array([list(data)])
   elif isinstance(data,ndarray):return data
   raise TypeError('dataには配列の型を指定してください')
  def _updates(self,**kw):

@@ -7,7 +7,7 @@ from .....developer import LISTNumber
 __all__=['Yaxis']
 class Yaxis:
  def __init__(self,ax):
-  if not isinstance(ax,(Axes,Axes3D)):
+  if not isinstance(ax,Axes|Axes3D):
    raise TypeError('axの型が違います')
   self.ax=ax
   self.yax=ax.yaxis

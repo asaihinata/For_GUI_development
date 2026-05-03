@@ -9,7 +9,7 @@ class Ylabel:
    raise TypeError('axの型が違います')
   self.ax=ax
   self.txt=text
-  if labelpad is None or isinstance(labelpad,(int,float)):self.labelpad=labelpad
+  if labelpad is None or isinstance(labelpad,int|float):self.labelpad=labelpad
   elif isinstance(labelpad,Number):self.labelpad=labelpad.val
   else:
    raise TypeError('labelpadにはNoneもしくは数値の型を指定してください')

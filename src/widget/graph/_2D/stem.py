@@ -60,7 +60,7 @@ class Stem(twoDElement):
   return f'{LIST(self.line).get(vals)[val]}{LIST(self.marker).get(vals)[val]}{LIST(self.colorlist).get(vals)[val]}'
  def _stem_color_check(self,color):
   set_arr,set_color_arr=[],[]
-  if isinstance(color,(list,tuple)):
+  if isinstance(color,list|tuple):
    for i in color:
     if i in stem_color_list:set_color_arr.append(i)
    if len(set_color_arr)==0:color=stem_color_list

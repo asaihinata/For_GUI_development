@@ -9,11 +9,11 @@ class Title:
    raise TypeError('axの型が違います')
   self.ax=ax
   self.titles=title
-  if pad is None or isinstance(pad,(int,float)):self.pad=pad
+  if pad is None or isinstance(pad,int|float):self.pad=pad
   elif isinstance(pad,Number):self.pad=pad.val
   else:
    raise TypeError('padにはNoneもしくは数値の型を指定してください')
-  if y is None or isinstance(y,(int,float)):self.y=y
+  if y is None or isinstance(y,int|float):self.y=y
   elif isinstance(y,Number):self.y=y.val
   else:
    raise TypeError('yにはNoneもしくは数値の型を指定してください')

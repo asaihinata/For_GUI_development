@@ -138,7 +138,7 @@ class Multiline(Element):
   self.insertwidth=num0(kw.get('insertwidth'),2)
   self.widget=Text(self.master,takefocus=self.takefocus,insertbackground=self.insertbackground,insertwidth=self.insertwidth,padx=self.padx,pady=self.pady,relief=self.relief,cursor=self.cursor,bg=self.bg,fg=self.fg,font=self.font,width=self.width,height=self.height,state=self.state,wrap=self.wrap,borderwidth=self.borderwidth)
   if self.text!=None:
-   if isinstance(self.text,(list,tuple)):
+   if isinstance(self.text,list|tuple):
     savetext=''
     lens=len(list(self.text))-1
     for i,item in enumerate(list(self.text)):savetext=(savetext+item) if i==lens else (savetext+f'{item}\n')
@@ -208,7 +208,7 @@ class InputNumber(Element):
 class Listboxs(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.values=kw.get('values') if isinstance(kw.get('values'),(tuple,list)) else []
+  self.values=kw.get('values') if isinstance(kw.get('values'),tuple|list) else []
   self.bg=parsecolor(kw.get('bg'),'#e0e0e0')
   self.selectforeground=parsecolor(kw.get('selectfg'),'#000000')
   self.selectbackground=parsecolor(kw.get('selectbg'),'#1967d2')
@@ -226,7 +226,7 @@ class Listboxs(Element):
    elif len(self.values)<val:val=len(self.values)-1
    self.widget.selection_set(val)
  def apend(self,lists=[],place='end'):
-  if isinstance(lists,(list,tuple)):
+  if isinstance(lists,list|tuple):
    for i in lists:self.widget.insert(place,i)
  def clear(self):self.widget.delete(0,'end')
  def dele(self,*index):
@@ -241,7 +241,7 @@ class Listboxs(Element):
   elif len(val)==0:return None
   else:return[self.values[i] for i in val]
  def set(self,lists):
-  if isinstance(lists,(list,tuple)):
+  if isinstance(lists,list|tuple):
    self.clear()
    self.apend(lists,'end')
  def delta(self):

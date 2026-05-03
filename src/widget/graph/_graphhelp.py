@@ -20,5 +20,5 @@ def datareversed(data:NpArraytype)->NpArraytype:
  :type data: NpArraytype
  :rtype: NpArraytype'''
  if isinstance(data,list):return data.reverse()
- if isinstance(data,(tuple,np.ndarray)):return data[::-1]
+ if isinstance(data,tuple|np.ndarray):return data[::-1]
  return data

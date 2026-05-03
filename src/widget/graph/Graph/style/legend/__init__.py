@@ -41,16 +41,16 @@ frameon=None,handler_map=None,
 title_fontproperties=None,
 alignment='center',ncol=1,draggable=False
 ):
-  if not isinstance(ax,(Axes,Axes3D)):
+  if not isinstance(ax,Axes|Axes3D):
    raise TypeError('axの型が違います')
   self.ax=ax
   if(
      (isinstance(loc,str) and loc in LOC.keys()) or
-     (isinstance(loc,(list,tuple)) and list2float(loc)) or
+     (isinstance(loc,list|tuple) and list2float(loc)) or
      (isinstance(loc,int) and 0<=loc<=10)
     ):loc=loc
   else:loc='best'
-  if numpoints is not None and isinstance(numpoints,(int|float|Number)) and numpoints<=0:
+  if numpoints is not None and isinstance(numpoints,int|float|Number) and numpoints<=0:
    numpoints=1
   labelcolor=np.array(Color(labelcolor))
   self.ax.legend(

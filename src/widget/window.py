@@ -17,7 +17,7 @@ class WindowController:
  def __init__(self,kw):
   self.title=kw.get('title','window')
   self.layout=kw.get('layout',[])
-  if self.layout==None or not isinstance(self.layout,(list,tuple)):
+  if self.layout==None or not isinstance(self.layout,list|tuple):
    raise TypeError('layoutに配列の型を指定してください')
   self.bg=parsecolor(kw.get('bg'),'#64778d')
   self.scroll=bols(kw.get('scroll'),False)
@@ -119,7 +119,7 @@ class WindowController:
   elif t=='Tab':
    widget=Tab(parent,kw)
    for tab in kw.get('tabs',[]):
-    if not isinstance(tab,(list,tuple)) or len(tab)==0:continue
+    if not isinstance(tab,list|tuple) or len(tab)==0:continue
     frame=Frame(widget.widget,bg=widget.bg)
     widget._add_tab(frame,tab[0])
     if 1<len(tab) and isinstance(tab[1],list):

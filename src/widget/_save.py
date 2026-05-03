@@ -65,7 +65,7 @@ defaultextension:str='.png'
   self.data=data
   if not isinstance(self.data,PngImageFile):
    raise TypeError('dataがPngImageFileの型ではありません')
-  if not isinstance(filetypes,list)and not isinstance(filetypes[0],(tuple,list)):filetypes=file_dict
+  if not isinstance(filetypes,list)and not isinstance(filetypes[0],tuple|list):filetypes=file_dict
   try:
    if not Path(initialdir).is_dir():initialdir=None
   except:initialdir=None

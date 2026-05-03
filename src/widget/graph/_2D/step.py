@@ -36,9 +36,9 @@ class Step(twoDElement):
    if max<min:min,max=max,min
    return np.array([float((max-min)*i/(len1-1)+min)for i in range(len1)],dtype=object)
   if isinstance(ranges,np.ndarray) and len(ranges.shape)==1 and ranges.shape[0]==len1:return ranges
-  elif isinstance(ranges,(tuple,list)):
+  elif isinstance(ranges,tuple|list):
    lens=len(ranges)
-   if lens==2 and all(isinstance(ranges[i],(int,float))for i in range(2)):return _array(ranges[0],ranges[1])
+   if lens==2 and all(isinstance(ranges[i],int|float)for i in range(2)):return _array(ranges[0],ranges[1])
    elif len1==lens:return np.array([str(i) for i in ranges],dtype=np.str_)
-  elif isinstance(ranges,(int,float)):return _array(0,ranges)
+  elif isinstance(ranges,int|float):return _array(0,ranges)
   return np.arange(len1)

@@ -28,17 +28,17 @@ class Element:
   self.font=fonts(self.family,self.font_size,self.weight,self.slant,self.underline,self.overstrike,self.master)
   self.anchor=listchose(kw.get('anchor'),['w','n','s','e','nw','ne','se','sw','center'])
   self.width,self.height=self._size(kw.get('size'))
- def _size_width(self,val,other=None):return(val if isinstance(val,(int,float))else other)
- def _size_height(self,val,other=None):return(val if isinstance(val,(int,float))else other)
+ def _size_width(self,val,other=None):return(val if isinstance(val,int|float)else other)
+ def _size_height(self,val,other=None):return(val if isinstance(val,int|float)else other)
  def _size(self,size,other=(None,None)):
-  if isinstance(size,(list,tuple)) and len(size)==2 and (all(isinstance(i,(int,float))for i in size) or (isinstance(size[0],(int,float)) and size[1] is None) or (isinstance(size[1],(int,float)) and size[0] is None)):return size
+  if isinstance(size,list|tuple) and len(size)==2 and (all(isinstance(i,int|float)for i in size) or (isinstance(size[0],int|float) and size[1] is None) or (isinstance(size[1],int|float) and size[0] is None)):return size
   return other
  def _exec_funcs(self,funcs=None):
   if isinstance(funcs,FunctionType):
    try:funcs()
    except Exception as e:
     logger.error(f'function({funcs.__name__}) error.\n{e}')
-  elif isinstance(funcs,(list,tuple)):
+  elif isinstance(funcs,list|tuple):
    for f in funcs:
     if isinstance(f,FunctionType):
      try:f()

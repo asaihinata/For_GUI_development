@@ -13,13 +13,13 @@ SOLID={'solid':['-','solid'],'dashed':['--','dashed'],'dashdot':['-.','dashdot']
 SOLIDLIST=['dashdot','dashed','dotted','none',None,'None','solid','',' ','-','--','-.',':']
 # スタイル
 class Hatch:
- def __init__(self,hatch=None):self.hatch=[self._get(i) for i in hatch] if isinstance(hatch,(list,tuple)) else [self._get(hatch)]
+ def __init__(self,hatch=None):self.hatch=[self._get(i) for i in hatch] if isinstance(hatch,list|tuple) else [self._get(hatch)]
  def _get(self,val):return val if val in HATCH else None
  def __iter__(self):return iter(self.hatch)
  def __len__(self):return len(self.hatch)
  def __str__(self):return self.hatch[0]
 class Solid:
- def __init__(self,solid=None):self.solid=[self._get(i) for i in solid] if isinstance(solid,(list,tuple)) else [self._get(solid)]
+ def __init__(self,solid=None):self.solid=[self._get(i) for i in solid] if isinstance(solid,list|tuple) else [self._get(solid)]
  def _get(self,val):
   for k,v in FMTSOLID.items():
    if val in v:return k
@@ -28,7 +28,7 @@ class Solid:
  def __len__(self):return len(self.solid)
  def __str__(self):return self.solid[0]
 class NSolid:
- def __init__(self,solid=None):self.solid=[self._get(i) for i in solid] if isinstance(solid,(list,tuple)) else [self._get(solid)]
+ def __init__(self,solid=None):self.solid=[self._get(i) for i in solid] if isinstance(solid,list|tuple) else [self._get(solid)]
  def _get(self,val):
   for k,v in SOLID.items():
    if val in v:return k
@@ -37,7 +37,7 @@ class NSolid:
  def __len__(self):return len(self.solid)
  def __str__(self):return self.solid[0]
 class Marker:
- def __init__(self,marker=None):self.marker=[self._get(i) for i in marker] if isinstance(marker,(list,tuple)) else [self._get(marker)]
+ def __init__(self,marker=None):self.marker=[self._get(i) for i in marker] if isinstance(marker,list|tuple) else [self._get(marker)]
  def _get(self,val):
   if(isinstance(val,str)and fullmatch(r'\$[a-zA-Z]\$',val)or(val in MARKERS)):return val
   else:return None
@@ -45,7 +45,7 @@ class Marker:
  def __len__(self):return len(self.marker)
  def __str__(self):return self.marker[0]
 class SCapstyle:
- def __init__(self,style='butt'):self.style=[listchose(i,['butt','projecting','round']) for i in style] if isinstance(style,(list,tuple)) else [listchose(style,['butt','projecting','round'])]
+ def __init__(self,style='butt'):self.style=[listchose(i,['butt','projecting','round']) for i in style] if isinstance(style,list|tuple) else [listchose(style,['butt','projecting','round'])]
  def __iter__(self):return iter(self.style)
  def __len__(self):return len(self.style)
  def __str__(self):return self.style[0]

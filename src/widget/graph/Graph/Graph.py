@@ -13,11 +13,11 @@ from ..._log import Logger
 from ..._save import autofile_save
 from ...developer import LIST
 from ..support import Manylist,Marker,NSolid,Onelist,Solid
+__all__=['GElement']
 logger=Logger(name='Graph',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 graph_color=['#4477aa','#ee7733',"#111211",'#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']
 rcParams['font.family']='Meiryo'
 rcParams['axes.prop_cycle']=cycler(color=graph_color)
-__all__=['GElement']
 class GElement:
  def __init__(self,master,kw):
   self.master=master
@@ -86,7 +86,7 @@ class GElement:
   if self._canvas_widget is not None:self._canvas_widget.draw()
  def _size(self,sizes=(500,400)):
   if isinstance(sizes,Arraytype)and len(list(sizes))==2:
-   if(isinstance(i,(int,float))for i in sizes):return tuple(sizes)
+   if(isinstance(i,int|float)for i in sizes):return tuple(sizes)
    else:
     if not isinstance(sizes[0],Numbertype):sizes[0]=500
     if not isinstance(sizes[1],Numbertype):sizes[1]=400
@@ -98,7 +98,7 @@ class GElement:
  def legend(self,ncols=1):
   if self.labeljudge:self.ax.legend(ncols=ncols,bbox_to_anchor=self.anchor,loc=self.labelplace,title=self.labeltitle,frameon=self.labelframe,shadow=self.labelshadow,framealpha=self.labelalpha)
  def _anchor(self,val,other=None):
-  if(isinstance(val,(list,tuple)) and (len(val)==2 or len(val)==4) and all(isinstance(i,(int,float))for i in val)):return val
+  if(isinstance(val,list|tuple) and (len(val)==2 or len(val)==4) and all(isinstance(i,int|float)for i in val)):return val
   return other
  def _getlabelplace(self,place,other='upper right'):
   labelplacelist=['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
@@ -107,7 +107,7 @@ class GElement:
   return listchose(other,labelplacelist)
  def pielabel(self,data,label=None):
   lls=label
-  if isinstance(lls,(list,tuple)):
+  if isinstance(lls,list|tuple):
    ldt,lla=len(data),len(lls)
    if lla<ldt:
     for i in range(ldt-lla):lls.append(lla+i+1)
@@ -115,17 +115,17 @@ class GElement:
   else:self.labeljudge=False
   return(lls,label,type(label))
  def labels(self,label,nums=None):
-  if not isinstance(nums,(int,float)):nums=self.max_depth
+  if not isinstance(nums,int|float):nums=self.max_depth
   if label==None:self.labeljudge=False
   if isinstance(label,str):lis=LIST(lists=[label])
-  elif isinstance(label,(list,tuple)):lis=LIST(lists=label)
+  elif isinstance(label,list|tuple):lis=LIST(lists=label)
   else:lis=LIST(lists='')
   return(lis.get(nums),label)
  def _arr(self,val,j=True):
-  if not isinstance(val,(list,tuple,LIST,ndarray)):
+  if not isinstance(val,list|tuple|LIST|ndarray):
    raise TypeError('配列の型を指定してください')
   if isinstance(val,ndarray):reval=val
-  elif isinstance(val,(list,tuple)):reval=array(val)
+  elif isinstance(val,list|tuple):reval=array(val)
   elif isinstance(val,LIST):reval=array(list(val))
   if len(reval.shape)==1:reval=array([reval])
   if j==True:self.max_depth=max(self.max_depth,reval.shape[0])
@@ -136,17 +136,17 @@ class GElement:
   return self._arr([val])
  def _onearr(self,val,j=True):return self._arr(list(Onelist(val)),j)
  def _dataarr(self,val,j=True):
-  if not isinstance(val,(list,tuple,ndarray,LIST)):
+  if not isinstance(val,list|tuple|ndarray|LIST):
    raise TypeError('配列の型を指定してください')
   if isinstance(val,ndarray):reval=val
-  elif isinstance(val,(list,tuple)):reval=array(val)
+  elif isinstance(val,list|tuple):reval=array(val)
   elif isinstance(val,LIST):reval=array(list(val))
   if j==True:self.max_depth=max(self.max_depth,reval.shape[0])
   return reval
  def _color_check(self,color):
   relist=graph_color
   if isinstance(color,str):relist=[parsecolor(color,graph_color[0])]
-  elif isinstance(color,(list,tuple)):
+  elif isinstance(color,list|tuple):
    set_arr,judge=[],False
    for i in color:
     c=parsecolor(i)

@@ -73,5 +73,5 @@ class Hist2d(twoDElement):
    return np.pow(10,np.ceil(np.log10(mins))-1)
   return val
  def _bins(self,val):
-  if(isinstance(val,int)or(isinstance(val,np.ndarray)and len(val.shape)==1 and 2<=val.shape[0])or(isinstance(val,(list,tuple))and((len(val)==2 and all(isinstance(val[i],(list,tuple))for i in range(2)))or(1<=len(val)and all(isinstance(i,int)for i in val))))):return val
+  if(isinstance(val,int)or(isinstance(val,np.ndarray)and len(val.shape)==1 and 2<=val.shape[0])or(isinstance(val,list|tuple)and((len(val)==2 and all(isinstance(val[i],list|tuple)for i in range(2)))or(1<=len(val)and all(isinstance(i,int)for i in val))))):return val
   return 10

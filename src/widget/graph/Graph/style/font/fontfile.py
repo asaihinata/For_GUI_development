@@ -4,7 +4,7 @@ from matplotlib.font_manager import FontProperties
 __all__=['FontFile']
 class FontFile:
  def __init__(self,path):
-  if not isinstance(path,(str,Path,PathLike)):
+  if not isinstance(path,str|Path|PathLike):
    raise TypeError('pathの型が違います')
   self.path=Path(path)
   if not self.path.exists():

@@ -12,7 +12,7 @@ class Hexbin(twoDElement):
   self.yscale=listchose(kw.get('yscale'),['linear','log'])
   self.mincnt=int1s(kw.get('mincnt'))
   bins=kw.get('bins')
-  self.bins=bins if(bins=='log' or isinstance(bins,(int,float)) or (isinstance(bins,(list,tuple)) and (isinstance(i,(int,float))for i in bins)))else None
+  self.bins=bins if(bins=='log' or isinstance(bins,int|float) or (isinstance(bins,list|tuple) and (isinstance(i,int|float)for i in bins)))else None
   self.plot(self.x,self.y,self.c,gridsize=self.gridsize,xscale=self.xscale,yscale=self.yscale,mincnt=self.mincnt,extent=self.extent,bins=self.bins)
  def plot(self,x,y,c,gridsize=100,xscale='linear',yscale='linear',mincnt=None,extent=None,bins=None):
   self.clear()
@@ -31,7 +31,7 @@ class Hexbin(twoDElement):
   self.yscale=listchose(kw.get('yscale'),['linear','log'],self.yscale)
   self.mincnt=int1s(kw.get('mincnt',self.mincnt))
   bins=kw.get('bins',self.bins)
-  self.bins=bins if(bins=='log' or isinstance(bins,(int,float)) or (isinstance(bins,(list,tuple)) and (isinstance(i,(int,float))for i in bins)))else None
+  self.bins=bins if(bins=='log' or isinstance(bins,int|float) or (isinstance(bins,list|tuple) and (isinstance(i,int|float)for i in bins)))else None
   self.plot(self.x,self.y,self.c,gridsize=self.gridsize,xscale=self.xscale,yscale=self.yscale,mincnt=self.mincnt,extent=self.extent,bins=self.bins)
   self._redraw()
  def get(self):return [self.graphdata]

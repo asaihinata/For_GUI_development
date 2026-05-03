@@ -33,7 +33,7 @@ class Logger:
    if f not in formats_dict:
     raise ValueError('無効なフォーマットキー')
    return formats_dict[f]
-  elif isinstance(f,(list,tuple)):
+  elif isinstance(f,list|tuple):
    for key in f:
     if key not in formats_dict:
      raise ValueError(f'無効なフォーマットキー:{key}')

@@ -8,7 +8,7 @@ class Hist(twoDElement):
    raise ValueError('配列に多次元配列で指定されています')
   sturges=self._sturges()
   bins=kw.get('bins')
-  if isinstance(bins,(list,range,tuple,np.ndarray)) or bins in ['auto','fd','doane','scott','stone','rice','sturges','sqrt']:self.bins=bins
+  if isinstance(bins,list|range|tuple|np.ndarray) or bins in ['auto','fd','doane','scott','stone','rice','sturges','sqrt']:self.bins=bins
   elif isinstance(bins,int):self.bins=num1s(bins,sturges)
   else:self.bins=sturges
   self.min=nums(kw.get('min'),np.min(self.data))

@@ -24,7 +24,7 @@ class Errorbar(twoDElement):
   self.capthick=nums(kw.get('capthick'),10)
   self.capsize=nums(kw.get('capsize'),0)
   errorevery=kw.get('errorevery')
-  if((isinstance(errorevery,(list,tuple))and len(errorevery)==2 and all(isinstance(i,int)for i in errorevery)) or isinstance(errorevery,int)):self.errorevery=errorevery
+  if((isinstance(errorevery,list|tuple)and len(errorevery)==2 and all(isinstance(i,int)for i in errorevery)) or isinstance(errorevery,int)):self.errorevery=errorevery
   else:self.errorevery=1
   self.label=self.labels(kw.get('label'))[0]
   self.plot(self.x,self.y,label=self.label,xerr=self.xerr,yerr=self.yerr,fmt=self.fmt,linewidth=self.linewidth,capsize=self.capsize,barsabove=self.barsabove,capthick=self.capthick,xuplims=self.xuplims,xlolims=self.xlolims,yuplims=self.yuplims,ylolims=self.ylolims,errorevery=self.errorevery,alpha=self.alpha)
@@ -56,7 +56,7 @@ class Errorbar(twoDElement):
   self.capthick=nums(kw.get('capthick'),self.capthick)
   self.capsize=nums(kw.get('capsize'),self.capsize)
   errorevery=kw.get('errorevery',self.errorevery)
-  self.errorevery=errorevery if(isinstance(errorevery,(list,tuple))and len(errorevery)==2 and all(isinstance(i,int)for i in errorevery))or isinstance(errorevery,int) else 1
+  self.errorevery=errorevery if(isinstance(errorevery,list|tuple)and len(errorevery)==2 and all(isinstance(i,int)for i in errorevery))or isinstance(errorevery,int) else 1
   self.plot(self.x,self.y,label=self.label,xerr=self.xerr,yerr=self.yerr,fmt=self.fmt,linewidth=self.linewidth,capsize=self.capsize,barsabove=self.barsabove,capthick=self.capthick,xuplims=self.xuplims,xlolims=self.xlolims,yuplims=self.yuplims,ylolims=self.ylolims,errorevery=self.errorevery)
   self._redraw()
  def get(self):return self.graphdata

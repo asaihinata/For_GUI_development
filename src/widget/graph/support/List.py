@@ -13,7 +13,7 @@ class Datalist:
  def inversion(self):return self.data[::-1]
 class Manylist(Datalist):
  def __init__(self,data=None):
-  if not isinstance(data,(tuple,list,np.ndarray,LIST)):
+  if not isinstance(data,tuple|list|np.ndarray|LIST):
    raise TypeError('dataには配列の型を指定してください')
   if isinstance(data,tuple):self.data=np.array(list(data),dtype=object)
   elif isinstance(data,LIST):self.data=np.array(data.lists,dtype=object)
@@ -24,7 +24,7 @@ class Manylist(Datalist):
  def __len__(self):return len(self.data)
 class Onelist(Datalist):
  def __init__(self,data=None):
-  if not isinstance(data,(tuple,list,np.ndarray,LIST)):
+  if not isinstance(data,tuple|list|np.ndarray|LIST):
    raise TypeError('dataには配列の型を指定してください')
   if isinstance(data,tuple):self.data=np.array(list(data),dtype=object)
   elif isinstance(data,LIST):self.data=np.array(data.lists,dtype=object)
@@ -37,7 +37,7 @@ class Onelist(Datalist):
  def __len__(self):return len(self.data)
 class Conectlist(Datalist):
  def __init__(self,data=None):
-  if not isinstance(data,(tuple,list,np.ndarray,LIST)):
+  if not isinstance(data,tuple|list|np.ndarray|LIST):
    raise TypeError('dataには配列の型を指定してください')
   if isinstance(data,tuple):self.data=np.array(list(data),dtype=object)
   elif isinstance(data,LIST):self.data=np.array(data.lists,dtype=object)

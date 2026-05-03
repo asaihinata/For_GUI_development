@@ -33,7 +33,7 @@ class threeDElement(GElement):
   xticksrange=kw.get('xticksrange',0)
   yticksrange=kw.get('yticksrange',0)
   zticksrange=kw.get('zticksrange',0)
-  if isinstance(xticksrange,(int,float)):
+  if isinstance(xticksrange,int|float):
    xticksrange=abs(xticksrange)
    negnum=xticksrange*-1
    self.xticksrange=(negnum,xticksrange)
@@ -43,7 +43,7 @@ class threeDElement(GElement):
    self.xticksrange=(negnum,xticksrange,negnum,xticksrange)
   elif list2num(xticksrange):self.xticksrange=xticksrange
   else:self.xticksrange=(0,0)
-  if isinstance(yticksrange,(int,float)):
+  if isinstance(yticksrange,int|float):
    yticksrange=abs(yticksrange)
    negnum=yticksrange*-1
    self.yticksrange=(negnum,yticksrange)
@@ -53,7 +53,7 @@ class threeDElement(GElement):
    self.yticksrange=(negnum,yticksrange,negnum,yticksrange)
   elif list2num(yticksrange):self.yticksrange=yticksrange
   else:self.yticksrange=(0,0)
-  if isinstance(zticksrange,(int,float)):
+  if isinstance(zticksrange,int|float):
    zticksrange=abs(zticksrange)
    negnum=zticksrange*-1
    self.zticksrange=(negnum,zticksrange)

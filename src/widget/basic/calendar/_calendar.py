@@ -285,7 +285,7 @@ class Calendar(Frame):
     self._btns_date_range()
  def _check_weekenddays(self,days):
   set_day=days
-  if isinstance(days,(list,tuple)):
+  if isinstance(days,list|tuple):
    if len(days)==2:
     if set_day[0] not in range(1,8):set_day[0]=1
     if set_day[1] not in range(1,8):set_day[1]=7

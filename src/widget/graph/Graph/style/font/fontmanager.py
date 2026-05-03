@@ -6,7 +6,7 @@ class Fontmanager:
  def __len__(self):return len(self.fontmanager)
  def __contains__(self,val):return val in self.fontmanager
  def __getitem__(self,val):
-  if not isinstance(val,(int,slice)):return None
+  if not isinstance(val,int|slice):return None
   return self.fontmanager[val]
  def __reversed__(self):return reversed(self.fontmanager)
  @classmethod

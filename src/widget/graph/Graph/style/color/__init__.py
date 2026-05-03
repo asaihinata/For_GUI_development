@@ -3,7 +3,7 @@ import numpy as np
 __all__=['Color']
 class Color:
  def __init__(self,color):
-  if isinstance(color,(list,tuple)):colors=np.array(color)
+  if isinstance(color,list|tuple):colors=np.array(color)
   elif isinstance(color,np.ndarray):colors=color
   elif isinstance(color,str):colors=np.array([color])
   self.color=np.array([np.frompyfunc(to_rgba,1,1)(i) for i in colors])
@@ -14,7 +14,7 @@ class Color:
   return self
  def torgba(self,alpha=None):
   if alpha is not None:
-   if not isinstance(alpha,(int,float)):
+   if not isinstance(alpha,int|float):
     raise TypeError('alphaは数値の型を指定してください')
    if not 0<=alpha<=1:
     raise ValueError('0.0<=alpha<=1.0の範囲で指定してください')

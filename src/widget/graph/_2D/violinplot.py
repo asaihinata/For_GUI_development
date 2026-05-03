@@ -12,7 +12,7 @@ class Violinplot(twoDElement):
   self.showmedians=bols(kw.get('showmedians'),False)
   self.points=num1s(kw.get('points'),100)
   bwmethod=kw.get('bw_method')
-  if bwmethod in ['scott','silverman'] or isinstance(bwmethod,(int,float,FunctionType)):self.bwmethod=bwmethod
+  if bwmethod in ['scott','silverman'] or isinstance(bwmethod,int|float|FunctionType):self.bwmethod=bwmethod
   else:self.bwmethod='scott'
   self.side=listchose(kw.get('side'),['both','low','high'])
   self.plot(self.data,self.x,self.y,alpha=self.alpha,width=self.width,points=self.points,showextrema=self.showextrema,showmeans=self.showmeans,showmedians=self.showmedians,side=self.side,orientation=self.orientation,bwmethod=self.bwmethod)
@@ -36,7 +36,7 @@ class Violinplot(twoDElement):
   self.showmedians=bols(kw.get('showmedians'),self.showmedians)
   self.points=num1s(kw.get('points'),self.points)
   bwmethod=kw.get('bw_method',self.bwmethod)
-  if bwmethod in ['scott','silverman'] or isinstance(bwmethod,(int,float,FunctionType)):self.bwmethod=bwmethod
+  if bwmethod in ['scott','silverman'] or isinstance(bwmethod,int|float|FunctionType):self.bwmethod=bwmethod
   else:self.bwmethod=self.bwmethod
   self.side=listchose(kw.get('side'),['both','low','high'],self.side)
   self.plot(self.data,self.x,self.y,alpha=self.alpha,width=self.width,points=self.points,showextrema=self.showextrema,showmeans=self.showmeans,showmedians=self.showmedians,side=self.side,orientation=self.orientation,bwmethod=self.bwmethod)

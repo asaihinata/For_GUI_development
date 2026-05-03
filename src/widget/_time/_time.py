@@ -8,7 +8,7 @@ class times:
  minsyear=1
  datetimes=None
  def __init__(self,year=None,month=None,day=None,hour=0,minute=0,second=0,microsecond=0,timezone=None,fold=0,dates=None):
-  if isinstance(dates,(datetime,date)):self.datetimes=dates
+  if isinstance(dates,datetime|date):self.datetimes=dates
   elif isinstance(dates,times):self.datetimes=dates.datetimes
   else:
    def _valset(val,name,mins,maxs):
@@ -35,27 +35,27 @@ class times:
  def __instancecheck__(cls,ins):return isinstance(ins,times)
  def __str__(self):return str(self.datetimes)
  def __eq__(self,val):
-  if isinstance(val,(datetime,date)):return self.datetimes==val
+  if isinstance(val,datetime|date):return self.datetimes==val
   elif isinstance(val,times):return self.datetimes==val.datetimes
   raise NotImplemented
  def __ne__(self,val):
-  if isinstance(val,(datetime,date)):return self.datetimes!=val
+  if isinstance(val,datetime|date):return self.datetimes!=val
   elif isinstance(val,times):return self.datetimes!=val.datetimes
   raise NotImplemented
  def __lt__(self,val):
-  if isinstance(val,(datetime,date)):return self.datetimes<val
+  if isinstance(val,datetime|date):return self.datetimes<val
   elif isinstance(val,times):return self.datetimes<val.datetimes
   raise NotImplemented
  def __le__(self,val):
-  if isinstance(val,(datetime,date)):return self.datetimes<=val
+  if isinstance(val,datetime|date):return self.datetimes<=val
   elif isinstance(val,times):return self.datetimes<=val.datetimes
   raise NotImplemented
  def __gt__(self,val):
-  if isinstance(val,(datetime,date)):return self.datetimes>val
+  if isinstance(val,datetime|date):return self.datetimes>val
   elif isinstance(val,times):return self.datetimes>val.datetimes
   raise NotImplemented
  def __ge__(self,val):
-  if isinstance(val,(datetime,date)):return self.datetimes>=val
+  if isinstance(val,datetime|date):return self.datetimes>=val
   elif isinstance(val,times):return self.datetimes>=val.datetimes
   raise NotImplemented
  def __add__(self,val):
