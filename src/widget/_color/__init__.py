@@ -1,11 +1,10 @@
 from csv import reader
-from re import compile,findall
-import numpy as np
 from os.path import join
 from pathlib import Path
+from re import compile, findall
+import numpy as np
 __all__=['Color','COLOR_DATA']
-with open(join(Path(__file__).parent,'color.csv'),encoding="utf-8-sig")as f:
- COLOR_DATA=np.asarray(list(reader(f)))
+with open(join(Path(__file__).parent,'color.csv'),encoding="utf-8-sig")as f:COLOR_DATA=np.asarray(list(reader(f)))
 HEX6_RE=compile(r'^#[0-9a-f]{6}$')
 HEX3_RE=compile(r'^#[0-9a-f]{3}$')
 RGB_RE=compile(r'^rgb\((\d+),(\d+),(\d+)\)$')

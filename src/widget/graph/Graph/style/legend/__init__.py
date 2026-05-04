@@ -6,17 +6,10 @@ from ..color import Color
 from ..developer import *
 __all__=['Legends']
 LOC={
-'best':0,
-'upper right':1,
-'upper left':2,
-'lower left':3,
-'lower right':4,
-'right':5,
-'center left':6,
-'center right':7,
-'lower center':8,
-'upper center':9,
-'center':10
+'best':0,'upper right':1,'upper left':2,
+'lower left':3,'lower right':4,'right':5,
+'center left':6,'center right':7,'lower center':8,
+'upper center':9,'center':10
 }
 class Legends:
  def __init__(
