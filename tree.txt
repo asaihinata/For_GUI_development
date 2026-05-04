@@ -87,6 +87,11 @@ For_GUI_development
  │       │   │   │   ├── color
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   └── __init__.pyi
+ │       │   │   │   ├── composite
+ │       │   │   │   │   ├── __init__.py
+ │       │   │   │   │   ├── fmt.py
+ │       │   │   │   │   ├── marker.py
+ │       │   │   │   │   └── solid.py
  │       │   │   │   ├── developer
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   └── __init__.pyi
@@ -105,8 +110,8 @@ For_GUI_development
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   └── __init__.pyi
  │       │   │   │   └── title
- │       │   │   │       ├── title.py
- │       │   │   │       └── title.pyi
+ │       │   │   │       ├── __init__.py
+ │       │   │   │       └── __init__.pyi
  │       │   │   ├── threeDElement.py
  │       │   │   └── twoDElement.py
  │       │   ├── _2D
@@ -199,6 +204,7 @@ For_GUI_development
  │   ├── head.html
  │   ├── parser.js
  │   └── style.less
+ ├── .editorconfig
  ├── .gitattributes
  ├── .gitignore
  └── .vscode

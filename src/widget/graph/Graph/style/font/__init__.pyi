@@ -5,7 +5,7 @@ from typing import Any
 from matplotlib.font_manager import FontEntry,FontProperties
 class FontFile:
  Properties:FontProperties
- def __init__(self,path:str|Path|PathLike):'''指定されたフォントファイルのフォントを使用できるようにする。
+ def __init__(self,path:str|Path|PathLike)->None:'''指定されたフォントファイルのフォントを使用できるようにする。
 
  :param path: フォントファイルのパスを指定する。
  :type path: str|Path|PathLike
