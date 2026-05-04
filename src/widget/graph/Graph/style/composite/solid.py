@@ -1,12 +1,12 @@
-from collections.abc import Iterable
-from typing import Any, Literal
+from collections.abc import Iterator
+from typing import Any,Literal
 from matplotlib.lines import Line2D
 from .fmt import FMT
 class Solid:
  solid_list:list[str]=list(Line2D.lineStyles.keys())
  def __init__(
 self,
-solid:Literal['-', '--', '-.', ':', 'None', ' ', '']|None=None,
+solid:Literal['-','--','-.',':','None',' ','']|None=None,
 fmtmarker:Literal[
 '.',',','o',
 'v','^','<',
@@ -27,6 +27,6 @@ fmtcolor:Literal['b','g','r','c','m','y','k','w']|None=None
   else:
    self.solid='-'
  def __str__(self)->str:return str(self.solid)
- def __iter__(self)->Iterable[str]:return iter(self.solid_list)
+ def __iter__(self)->Iterator[str]:return iter(self.solid_list)
  def __len__(self)->int:return len(self.solid_list)
  def __contains__(self,item:Any)->bool:return item in self.solid_list

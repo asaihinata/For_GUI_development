@@ -71,8 +71,24 @@ For_GUI_development
  │       │   ├── element.py
  │       │   └── ttkelement.py
  │       ├── developer
+ │       │   ├── LIST
+ │       │   │   ├── __init__.py
+ │       │   │   └── __init__.pyi
+ │       │   ├── Number
+ │       │   │   ├── LISTNumber.py
+ │       │   │   ├── Number.py
+ │       │   │   ├── __init__.py
+ │       │   │   └── __init__.pyi
  │       │   ├── __init__.py
- │       │   └── __init__.pyi
+ │       │   ├── clear.py
+ │       │   ├── random
+ │       │   │   ├── __init__.py
+ │       │   │   ├── __init__.pyi
+ │       │   │   ├── rand.py
+ │       │   │   └── rands.py
+ │       │   └── sort
+ │       │       ├── __init__.py
+ │       │       └── __init__.pyi
  │       ├── graph
  │       │   ├── Graph
  │       │   │   ├── Graph.py

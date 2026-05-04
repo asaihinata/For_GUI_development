@@ -1,7 +1,7 @@
 from csv import reader
 from os.path import join
 from pathlib import Path
-from re import compile, findall
+from re import compile,findall
 import numpy as np
 __all__=['Color','COLOR_DATA']
 with open(join(Path(__file__).parent,'color.csv'),encoding="utf-8-sig")as f:COLOR_DATA=np.asarray(list(reader(f)))
