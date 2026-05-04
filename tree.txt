@@ -24,7 +24,9 @@ For_GUI_development
  │   │   └── widget.py
  │   └── widget
  │       ├── __init__.py
- │       ├── _color.py
+ │       ├── _color
+ │       │   ├── __init__.py
+ │       │   └── color.csv
  │       ├── _dialog
  │       │   ├── __init__.py
  │       │   ├── __init__.pyi
@@ -41,7 +43,10 @@ For_GUI_development
  │       │   │   └── log.log
  │       │   ├── logs.py
  │       │   └── logtext.py
- │       ├── _save.py
+ │       ├── _save
+ │       │   ├── __init__.py
+ │       │   ├── savefile.py
+ │       │   └── saveimg.py
  │       ├── _time
  │       │   ├── __init__.py
  │       │   ├── __init__.pyi
@@ -65,9 +70,6 @@ For_GUI_development
  │       │   │   └── tooltip.py
  │       │   ├── element.py
  │       │   └── ttkelement.py
- │       ├── data
- │       │   ├── __init__.py
- │       │   └── color.json
  │       ├── developer
  │       │   ├── __init__.py
  │       │   └── __init__.pyi
