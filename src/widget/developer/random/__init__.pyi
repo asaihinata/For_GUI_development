@@ -3,7 +3,7 @@ from typing import Any,NoReturn,overload
 import numpy as np
 from numpy._typing import NDArray,_ArrayLikeFloat_co,_FloatLike_co,_ShapeLike
 from numpy.random import Generator
-from ..LIST import LIST
+from ...developer import LIST
 class rand:
  seeds:int
  rng:Generator

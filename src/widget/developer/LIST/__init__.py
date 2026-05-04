@@ -1,5 +1,5 @@
 import numpy as np
-from ..sort import sort
+from ...developer import sort
 class LIST:
  def __init__(self,lists,*arg):
   if isinstance(lists,list):self.lists=lists

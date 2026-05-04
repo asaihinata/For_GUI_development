@@ -1,6 +1,6 @@
 from collections.abc import Iterator
 from typing import Any,overload
-from ..LIST import LIST
+from ...developer import LIST
 class sort:
  __static_attributes__:tuple[str]
  __class__:type

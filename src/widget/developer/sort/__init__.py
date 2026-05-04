@@ -1,5 +1,4 @@
-from ..LIST import LIST
-from ..Number import Number
+from ...developer import LIST,Number
 class sort:
  def __init__(self,data,types=True):
   if not isinstance(data,list|tuple|LIST):

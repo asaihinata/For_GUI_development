@@ -1,8 +1,7 @@
 from sys import getsizeof
 import numpy as np
 from numpy.random import choice,default_rng
-from ..LIST import LIST
-from ..Number import Number
+from ...developer import LIST,Number
 class rands:
  '''ランダムな値を生成する。'''
  def __init__(self,seed=42):
@@ -43,5 +42,4 @@ class rands:
   if high<low:high,high=high,low
   if isinstance(hierarchy,int) and 2<=hierarchy:return self.rng.integers(low=low,high=high,size=(hierarchy,lenght))
   else:return self.rng.integers(low=low,high=high,size=lenght)
- def listrand(self,arr,size=None):
-  return choice(np.array(list(arr)if isinstance(arr,LIST) else arr,dtype=object),size=size)
+ def listrand(self,arr,size=None):return choice(np.asarray(arr.lists if isinstance(arr,LIST) else arr),size=size)

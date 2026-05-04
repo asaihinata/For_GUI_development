@@ -1,6 +1,6 @@
 from typing import Any,Iterator
 import numpy as np
-from ..LIST import LIST
+from ...developer import LIST
 class Number:
  __static_attributes__:tuple[str]
  __class__:type

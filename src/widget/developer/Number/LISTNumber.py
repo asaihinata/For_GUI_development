@@ -1,4 +1,4 @@
-from ..LIST import LIST
+from ...developer import LIST
 from .Number import Number
 class LISTNumber:
  def __init__(self,obj):
