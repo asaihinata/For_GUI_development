@@ -1,6 +1,6 @@
 from datetime import datetime
 from tkinter import Widget
-from ...types import Any,ColorType,Literal,NoReturn,TupleInt2
+from ...typing import Any,ColorType,Literal,NoReturn,TupleInt2
 from ..base import _Element
 class Texts(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''

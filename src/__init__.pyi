@@ -4,7 +4,7 @@ from typing import Union
 from matplotlib.mlab import GaussianKDE
 from numpy import ndarray
 from numpy.typing import ArrayLike
-from .types import *
+from .typing import *
 from .widget import *
 class sgg:
  @classmethod

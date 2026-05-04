@@ -1,6 +1,6 @@
 import japanize_matplotlib
 import numpy as np
-from ...types import *
+from ...typing import *
 from .._function import *
 from .Graph import threeDElement,twoDElement
 from .support.Graphhelp import *

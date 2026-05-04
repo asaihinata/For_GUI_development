@@ -1,5 +1,5 @@
 import logging
-from ...types import NoReturn
+from ...typing import NoReturn
 class Logger:
  def __init__(
 self,

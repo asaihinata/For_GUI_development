@@ -1,4 +1,4 @@
-from ..types import Any
+from ..typing import Any
 from ._color import Color
 from .developer import LIST,Number
 __all__=['bols','Color','ints','intsmin','listchose','nums','numsmin','parsecolor','typelist','int0','int0s','int1s','list2float','list2int','list2num','list4float','list4int','list4num','num0','num0s','num1s','range_num']

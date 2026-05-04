@@ -18,7 +18,7 @@ For_GUI_development
  ├── src
  │   ├── __init__.py
  │   ├── __init__.pyi
- │   ├── types
+ │   ├── typing
  │   │   ├── __init__.py
  │   │   ├── __init__.pyi
  │   │   └── widget.py
@@ -86,9 +86,11 @@ For_GUI_development
  │       │   │   ├── __init__.pyi
  │       │   │   ├── rand.py
  │       │   │   └── rands.py
- │       │   └── sort
- │       │       ├── __init__.py
- │       │       └── __init__.pyi
+ │       │   ├── sort
+ │       │   │   ├── __init__.py
+ │       │   │   └── __init__.pyi
+ │       │   └── typing
+ │       │       └── __init__.py
  │       ├── graph
  │       │   ├── Graph
  │       │   │   ├── Graph.py
