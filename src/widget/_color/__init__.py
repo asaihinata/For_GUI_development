@@ -1,7 +1,11 @@
+from csv import reader
 from re import compile,findall
-from .data import getjson
-__all__=['Color']
-COLOR_DATA=getjson('color')
+import numpy as np
+from os.path import join
+from pathlib import Path
+__all__=['Color','COLOR_DATA']
+with open(join(Path(__file__).parent,'color.csv'),encoding="utf-8-sig")as f:
+ COLOR_DATA=np.asarray(list(reader(f)))
 HEX6_RE=compile(r'^#[0-9a-f]{6}$')
 HEX3_RE=compile(r'^#[0-9a-f]{3}$')
 RGB_RE=compile(r'^rgb\((\d+),(\d+),(\d+)\)$')
@@ -20,8 +24,7 @@ class Color:
  def _color(self,color,other):
   if isinstance(color,str):
    c=color.strip().lower()
-   colorname=COLOR_DATA.get(c)
-   if colorname!=None:return colorname
+   if np.where(c in COLOR_DATA,True,False):return COLOR_DATA[np.where(c==COLOR_DATA)[0]][0][1]
    elif c[0]=='#' and HEX6_RE.match(c):return c
    elif c[0]=='#' and HEX3_RE.match(c):return f'#{''.join([i*2 for i in findall(r'[0-9a-fA-F]',c)])}'
    rgb_match=RGB_RE.match(c)
