@@ -2,7 +2,6 @@ from os.path import splitext
 from pathlib import Path
 from .._dialog import asksaveasfilename
 __all__=['autofile_save']
-file_dict=[('All files','*.*'),('avif file','*.avif'),('bmp file','*.bmp'),('blp file','*.blp'),('eps file','*.eps'),('gif file','*.gif'),('ico file','*.ico'),('im file','*.im'),('jpg file','*.jpg'),('jp2 file','*.jp2'),('png file','*.png'),('tif file','*.tif'),('webp file','*.webp'),('dib file','*.dib'),('jpeg file','*.jpeg'),('j2k file','*.j2k'),('tiff file','*.tiff')]
 class autofile_save:
  def __init__(
 self,

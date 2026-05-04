@@ -235,7 +235,7 @@ class WindowController:
  def tookphoto(self,file='window',ex='.png'):
   root=self.root
   winx,winy=root.winfo_rootx(),root.winfo_rooty()
-  ImageGrab.grab(bbox=(winx,winy,winx+root.winfo_width(),winy+root.winfo_height())).save(str(autofile_save(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=file,initialdir=getcwd())))
+  ImageGrab.grab(bbox=(winx,winy,winx+root.winfo_width(),winy+root.winfo_height())).save(autofile_save(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=file,initialdir=getcwd()).__fspath__())
  def winsize(self):
   root=self.root
   return root.winfo_width(),root.winfo_height()

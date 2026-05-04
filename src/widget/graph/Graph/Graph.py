@@ -1,4 +1,4 @@
-from os import getcwd
+from os import fspath,getcwd
 from re import findall
 from cycler import cycler
 from matplotlib.axes._axes import Axes
@@ -50,7 +50,7 @@ class GElement:
   self.ticksshow=bols(kw.get('ticksshow'),False)
   self.tight_layout=bols(kw.get('tight_layout'))
  def photo(self,filename='Graph',ex='.png',dpi=100):
-  try:self.fig.savefig(str(autofile_save(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=filename,initialdir=getcwd())),dpi=num1s(dpi,100))
+  try:self.fig.savefig(fspath(autofile_save(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=filename,initialdir=getcwd())),dpi=num1s(dpi,100))
   except Exception as e:
    logger.error(f'error:{e}')
  def winsize(self):
