@@ -1,5 +1,5 @@
 from sys import getsizeof
-import numpy as np
+from numpy import asarray
 from numpy.random import choice,default_rng
 from ...developer import LIST,Number
 class rands:
@@ -42,4 +42,4 @@ class rands:
   if high<low:high,high=high,low
   if isinstance(hierarchy,int) and 2<=hierarchy:return self.rng.integers(low=low,high=high,size=(hierarchy,lenght))
   else:return self.rng.integers(low=low,high=high,size=lenght)
- def listrand(self,arr,size=None):return choice(np.asarray(arr.lists if isinstance(arr,LIST) else arr),size=size)
+ def listrand(self,arr,size=None):return choice(asarray(arr.lists if isinstance(arr,LIST) else arr),size=size)
