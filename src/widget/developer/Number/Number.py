@@ -1,6 +1,7 @@
 from math import ceil,floor
 from sys import getsizeof
 import numpy as np
+__all__=['Number']
 class Number:
  def __init__(self,val):
   if not isinstance(val,bool|float|int|Number|np.float16|np.float32|np.float64|np.int16|np.int32|np.int64|np.int8|np.uint16|np.uint32|np.uint64|np.uint8):

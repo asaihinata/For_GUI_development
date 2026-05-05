@@ -114,7 +114,9 @@ For_GUI_development
  │       │   │   │   │   └── solid.py
  │       │   │   │   ├── developer
  │       │   │   │   │   ├── __init__.py
- │       │   │   │   │   └── __init__.pyi
+ │       │   │   │   │   ├── __init__.pyi
+ │       │   │   │   │   ├── _function.py
+ │       │   │   │   │   └── angle.py
  │       │   │   │   ├── font
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   ├── __init__.pyi

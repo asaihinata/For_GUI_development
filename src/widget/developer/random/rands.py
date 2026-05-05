@@ -2,6 +2,7 @@ from sys import getsizeof
 from numpy import asarray
 from numpy.random import choice,default_rng
 from ...developer import LIST,Number
+__all__=['rands']
 class rands:
  '''ランダムな値を生成する。'''
  def __init__(self,seed=42):

@@ -1,11 +1,12 @@
 from ...developer import LIST,Number
+__all__=['sort']
 class sort:
  def __init__(self,data,types=True):
   if not isinstance(data,list|tuple|LIST):
    raise TypeError('dataに配列の型を指定してください')
   if isinstance(data,LIST):data=data.lists
   self.order=types if isinstance(types,bool) else True
-  self.data=sorted(data,key=sort._ascending) if self.order else sorted(data,key=sort._descending)
+  self.data=sorted(self.data,key=sort._ascending if self.order else sort._descending)
  @classmethod
  def __instancecheck__(cls,ins):return isinstance(ins,sort)
  def __contains__(self,val):return val in self.data
@@ -14,7 +15,7 @@ class sort:
  def __len__(self):return len(self.data)
  def __reversed__(self):
   self.order=not self.order
-  self.data=sorted(self.data,key=sort._ascending) if self.order else sorted(self.data,key=sort._descending)
+  self.data=sorted(self.data,key=sort._ascending if self.order else sort._descending)
   return self
  def __eq__(self,lists):
   lens,judge=len(self),True
