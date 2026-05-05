@@ -8,7 +8,7 @@ class Title:
   if not isinstance(ax,Axes|Axes3D):
    raise TypeError('axの型が違います')
   self.ax=ax
-  self.titles=title
+  self.label=title
   if pad is None or isinstance(pad,int|float):self.pad=pad
   elif isinstance(pad,Number):self.pad=pad.val
   else:
@@ -19,6 +19,5 @@ class Title:
    raise TypeError('yにはNoneもしくは数値の型を指定してください')
   if loc in ['left','center','right']:self.loc=loc
   else:self.loc=None
-  self.title_data=self.ax.set_title(self.titles,loc=self.loc,pad=self.pad,y=self.y,**kwargs)
- def __str__(self):return str(self.titles)
+  self.title_data=self.ax.set_title(self.label,loc=self.loc,pad=self.pad,**kwargs)
  def title(self):return self.title_data
