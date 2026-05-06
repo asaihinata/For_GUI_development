@@ -1,11 +1,19 @@
 from collections.abc import Iterator
 from os import PathLike
 from pathlib import Path
-from typing import Any
+from typing import Any,Literal
 from matplotlib.font_manager import FontEntry,FontProperties
 class FontFile:
  Properties:FontProperties
- def __init__(self,path:str|Path|PathLike)->None:'''指定されたフォントファイルのフォントを使用できるようにする。
+ def __init__(
+self,
+path:str|Path|PathLike,
+style:Literal['normal','italic','oblique']|None=...,
+variant:Literal['normal','small-caps']|None=...,
+weight:int|str|None=...,
+stretch:int|str|None=...,
+size:float|str|None=...
+)->None:'''指定されたフォントファイルのフォントを使用できるようにする。
 
  :param path: フォントファイルのパスを指定する。
  :type path: str|Path|PathLike

@@ -7,6 +7,7 @@ from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import array,ndarray
+from .style import Color
 from ..._function import bols,listchose,num0s,num1s,parsecolor,range_num
 from ..._log import Logger
 from ..._save import autofile_save
@@ -49,6 +50,14 @@ class GElement:
   # 目盛り
   self.ticksshow=bols(kw.get('ticksshow'),False)
   self.tight_layout=bols(kw.get('tight_layout'))
+  # タイトル
+  titlefg=kw.get('titlefg')
+  if titlefg is None:self.titlefg=self.fg
+  else:self.titlefg=titlefg
+  self.titleha=kw.get('titleha')
+  self.titleva=kw.get('titleva')
+  self.titlerotation=kw.get('titlerotation')
+  self.titlerotation_mode=kw.get('titlerotation_mode')
  def photo(self,filename='Graph',ex='.png',dpi=100):
   try:self.fig.savefig(fspath(autofile_save(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=filename,initialdir=getcwd())),dpi=num1s(dpi,100))
   except Exception as e:

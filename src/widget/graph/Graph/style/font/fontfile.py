@@ -1,16 +1,17 @@
 from os import PathLike
+from os.path import isfile
 from pathlib import Path
 from matplotlib.font_manager import FontProperties
+from matplotlib import rcParams
 __all__=['FontFile']
 class FontFile:
- def __init__(self,path):
-  if not isinstance(path,str|Path|PathLike):
-   raise TypeError('pathの型が違います')
-  self.path=Path(path)
-  if not self.path.exists():
-   raise FileNotFoundError('パスが存在していません')
-  if not self.path.suffix in ['.afm','.otf','.ttc','.ttf']:
-   raise ValueError('ファイルの拡張子がafm,otf,ttc,ttfのどれかではありません')
-  self.Properties=FontProperties(fname=path)
+ def __init__(self,path,style=None,variant=None,weight=None,stretch=None,size=None):
+  if isfile(path):
+   self.path=Path(path)
+   if not self.path.suffix in ['.afm','.otf','.ttc','.ttf']:
+    raise ValueError('ファイルの拡張子がafm,otf,ttc,ttfのどれかではありません')
+   self.Properties=FontProperties(fname=path,style=style,variant=variant,weight=weight,stretch=stretch,size=size)
+  else:
+   self.Properties=FontProperties(family=rcParams['font.family'],style=style,variant=variant,weight=weight,stretch=stretch,size=size)
  def __str__(self):return str(self.path)
  def __fspath__(self):return self.path

@@ -2,34 +2,12 @@ from typing import Any,overload
 import numpy as np
 from .....developer import Number
 Typenumberlike=bool|float|int|Number|np.float16|np.float32|np.float64|np.int16|np.int32|np.int64|np.int8|np.uint16|np.uint32|np.uint64|np.uint8
-def num1s(val:int|float|Number=0,mins:int|float|Number=1)->int|float|Number:
- '''`val`が1以上の数値かを調べる。
-
- :param val: 調べたい数値を指定する。
- :type val: int|float|Number
- :param mins: 調べたい数値`val`の最低値を指定する。
- :type mins: int|float|Number
- :return: 数値を返す。
- :rtype: int|float|Number'''
-def num0s(val:int|float|Number=0,mins:int|float|Number=0)->int|float|Number:
- '''`val`が0以上の数値かを調べる。
-
- :param val: 調べたい数値を指定する。
- :type val: int|float|Number
- :param mins: 調べたい数値`val`の最低値を指定する。
- :type mins: int|float|Number
- :return: 数値を返す。
- :rtype: int|float|Number'''
-def num0(val:int|float|Number=0,mins:int|float|Number=0)->int|float|Number:
- '''`val`が0より大きい数値かを調べる。
-
- :param val: 調べたい数値を指定する。
- :type val: int|float|Number
- :param mins: 調べたい数値`val`の最低値を指定する。
- :type mins: int|float|Number
- :return: 数値を返す。
- :rtype: int|float|Number'''
+def range_zero_one(val:float,out:float=1.0,endpoint:bool=True)->float:...
+def num1s(val:int|float|Number=0,mins:int|float|Number=1)->int|float|Number:...
+def num0s(val:int|float|Number=0,mins:int|float|Number=0)->int|float|Number:...
+def num0(val:int|float|Number=0,mins:int|float|Number=0)->int|float|Number:...
 def list2float(lin:list[Any]|tuple[Any]=None)->bool:...
+def listchose(val:str,arr:list,other:str|None=None)->str:...
 class Angle:
  @overload
  def __init__(

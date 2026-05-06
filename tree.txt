@@ -134,9 +134,11 @@ For_GUI_development
  │       │   │   │   ├── legend
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   └── __init__.pyi
- │       │   │   │   └── title
- │       │   │   │       ├── __init__.py
- │       │   │   │       └── __init__.pyi
+ │       │   │   │   ├── title
+ │       │   │   │   │   ├── __init__.py
+ │       │   │   │   │   └── __init__.pyi
+ │       │   │   │   └── typing
+ │       │   │   │       └── __init__.py
  │       │   │   ├── threeDElement.py
  │       │   │   └── twoDElement.py
  │       │   ├── _2D
