@@ -7,8 +7,7 @@ from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import array,ndarray
-from ..._function import (bols,listchose,num0s,num1s,nums,parsecolor,
-                          range_num)
+from ..._function import bols,listchose,num0s,num1s,nums,parsecolor,range_num
 from ..._log import Logger
 from ..._save import autofile_save
 from ...developer import LIST

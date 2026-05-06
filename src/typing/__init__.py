@@ -1,6 +1,5 @@
 from os import PathLike
-from typing import (Any,Callable,Literal,NoReturn,Sequence,TypeAlias,
-                    TypeVar)
+from typing import Any,Callable,Literal,NoReturn,Sequence,TypeAlias,TypeVar
 from matplotlib.typing import ColorType
 from numpy import floating,int_,ndarray,str_
 from numpy.typing import NDArray

@@ -1,5 +1,4 @@
 from typing import Any,Iterator
-import numpy as np
 from ...developer import LIST
 from ...developer.typing import Numberlike
 class Number:

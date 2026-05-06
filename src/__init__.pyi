@@ -686,7 +686,6 @@ y:n_array,
 label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 linewidth:int|float=2,
 alpha:int|float=1,
 markersize:int|float=10,
@@ -760,8 +759,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -816,7 +813,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -875,8 +871,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -928,7 +922,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -990,8 +983,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -1042,7 +1033,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -1102,8 +1092,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -1155,7 +1143,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -1208,8 +1195,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -1261,7 +1246,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -1314,8 +1298,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -1420,7 +1402,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -1479,8 +1460,6 @@ key:str=...
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
  :type ylabel: str
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -1533,7 +1512,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -1591,8 +1569,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -1653,7 +1629,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -1711,8 +1686,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -1772,7 +1745,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -1827,8 +1799,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -2015,7 +1985,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -2078,8 +2047,6 @@ key:str=...
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
  :type ylabel: str
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -2146,7 +2113,6 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 label:labeltype=...,
 xlabel:str=...,
 ylabel:str=...,
@@ -2240,7 +2206,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -2291,8 +2256,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -2363,7 +2326,6 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 xlabel:str=...,
 ylabel:str=...,
 key:str=...
@@ -2466,7 +2428,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -2523,8 +2484,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -2580,7 +2539,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -2639,8 +2597,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -2693,7 +2649,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -2748,8 +2703,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -2801,7 +2754,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -2860,8 +2812,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -2926,7 +2876,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -3005,8 +2954,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -3060,7 +3007,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -3117,8 +3063,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -3191,7 +3135,6 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 xlabel:str=...,
 ylabel:str=...,
 key:str=...
@@ -3268,8 +3211,6 @@ key:str=...
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
  :type legendalpha: int|float
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる。
  :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる。'''
  @classmethod
@@ -3297,7 +3238,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -3366,8 +3306,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
@@ -3423,7 +3361,6 @@ graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['vertical','horizontal']='vertical',
 tight_layout:bool=True,
 xticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
 yticksrange:int|float|Number|tuple[int|tuple|Number,...]=0,
@@ -3486,8 +3423,6 @@ key:str=...
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。

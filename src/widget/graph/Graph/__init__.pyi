@@ -176,7 +176,6 @@ label:labeltype=None,
 grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
-y_verwrit:Literal['horizontal','vertical']='vertical',
 xmajorint:bool=True,
 ymajorint:bool=True,
 xticksshow:bool=False,
@@ -200,8 +199,6 @@ setxy:bool=True
  :type grid_x: bool
  :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
  :type grid_y: bool
- :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -224,7 +221,6 @@ setxy:bool=True
   self.grid_xy:bool
   self.grid_x:bool
   self.grid_y:bool
-  self.y_verwrit:str
   self.xmajorint:bool
   self.ymajorint:bool
  def _updates(

@@ -1,6 +1,4 @@
-from tkinter import (BooleanVar,Button,Checkbutton,Entry,Frame,IntVar,
-                     Label,LabelFrame,Listbox,Menu,Menubutton,Radiobutton,
-                     Scale,Spinbox,StringVar,Text)
+from tkinter import BooleanVar,Button,Checkbutton,Entry,Frame,IntVar,Label,LabelFrame,Listbox,Menu,Menubutton,Radiobutton,Scale,Spinbox,StringVar,Text
 from tkinter.ttk import Notebook,Style,Treeview
 from .._function import bols,listchose,num0,nums,parsecolor
 from .._log import Logger

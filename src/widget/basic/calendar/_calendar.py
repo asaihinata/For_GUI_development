@@ -4,8 +4,7 @@ from re import findall,search
 from tkinter import StringVar
 from tkinter.ttk import Button,Frame,Label,Style
 from babel.core import default_locale
-from babel.dates import (format_date,get_date_format,get_day_names,
-                         get_month_names,parse_date)
+from babel.dates import format_date,get_date_format,get_day_names,get_month_names,parse_date
 from ..._function import listchose,num0
 from .tooltip import TooltipWrapper
 class Calendar(Frame):

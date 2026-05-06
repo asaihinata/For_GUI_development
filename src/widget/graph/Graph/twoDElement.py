@@ -1,8 +1,7 @@
 from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
 from numpy import array,ndarray
-from ..._function import (bols,list2num,listchose,num0s,numsmin,
-                          parsecolor,range_num)
+from ..._function import bols,list2num,listchose,num0s,parsecolor,range_num
 from ...developer import Number
 from .Graph import GElement
 from .style import FontFile,Fontmanager,Fontname,Title,Xlabel,Ylabel
