@@ -1,9 +1,9 @@
+import numpy as np
 from matplotlib.axes._axes import Axes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-import numpy as np
 from .....developer import Number
-from ..color import Color
 from ..developer import *
+from ..tool import Color
 __all__=['Legends']
 LOC={
 'best':0,'upper right':1,'upper left':2,

@@ -18,7 +18,8 @@ rotation='horizontal',
 rotation_mode=True,
 angle='degree',
 alpha=1,
-zorder=4
+zorder=4,
+font=None
 ):
   if not isinstance(ax,Axes|Axes3D):
    raise TypeError('axの型が違います')
@@ -52,6 +53,7 @@ va=va,
 rotation=rotation,
 rotation_mode=rotation_mode,
 alpha=alpha,
-zorder=zorder
+zorder=zorder,
+fontproperties=font
 )
  def title(self):return self.title_data

@@ -107,9 +107,6 @@ For_GUI_development
  │       │   │   │   │   ├── xaxis.py
  │       │   │   │   │   ├── yaxis.py
  │       │   │   │   │   └── zaxis.py
- │       │   │   │   ├── color
- │       │   │   │   │   ├── __init__.py
- │       │   │   │   │   └── __init__.pyi
  │       │   │   │   ├── composite
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   ├── fmt.py
@@ -120,11 +117,6 @@ For_GUI_development
  │       │   │   │   │   ├── __init__.pyi
  │       │   │   │   │   ├── _function.py
  │       │   │   │   │   └── angle.py
- │       │   │   │   ├── font
- │       │   │   │   │   ├── __init__.py
- │       │   │   │   │   ├── __init__.pyi
- │       │   │   │   │   ├── fontfile.py
- │       │   │   │   │   └── fontmanager.py
  │       │   │   │   ├── label
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   ├── __init__.pyi
@@ -137,6 +129,16 @@ For_GUI_development
  │       │   │   │   ├── title
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   └── __init__.pyi
+ │       │   │   │   ├── tool
+ │       │   │   │   │   ├── __init__.py
+ │       │   │   │   │   ├── color
+ │       │   │   │   │   │   ├── __init__.py
+ │       │   │   │   │   │   └── __init__.pyi
+ │       │   │   │   │   └── font
+ │       │   │   │   │       ├── __init__.py
+ │       │   │   │   │       ├── __init__.pyi
+ │       │   │   │   │       ├── fontfile.py
+ │       │   │   │   │       └── fontmanager.py
  │       │   │   │   └── typing
  │       │   │   │       └── __init__.py
  │       │   │   ├── threeDElement.py

@@ -21,6 +21,17 @@ size:float|str|None=...
  :raises FileNotFoundError: ファイルが見つからなかった場合に発生させる
  :raises ValueError: ファイルの拡張子がafm,otf,ttc,ttfのどれかではなかった場合に発生させる'''
  def __str__(self)->str:...
+class Fontname:
+ Properties:FontProperties
+ def __init__(
+self,
+family:str,
+style:Literal['normal','italic','oblique']|None=...,
+variant:Literal['normal','small-caps']|None=...,
+weight:int|str|None=...,
+stretch:int|str|None=...,
+size:float|str|None=...
+):...
 class Fontmanager:
  '''認識されているフォントについて調べる。'''
  fontmanager:list[FontEntry]

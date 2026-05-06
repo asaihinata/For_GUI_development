@@ -55,7 +55,17 @@ class twoDElement(GElement):
  def _apply_theme_colors(self):
   self.ax.set_facecolor(self.graph_bg)
   self.ax.tick_params(colors=self.fg)
-  if self.title is not None:Title(self.ax,self.title,color=self.titlefg,ha=self.titleha,va=self.titleva,rotation=self.titlerotation,rotation_mode=self.titlerotation_mode)
+  if self.title is not None:
+   Title(
+self.ax,
+self.title,
+color=self.titlefg,
+ha=self.titleha,
+va=self.titleva,
+rotation=self.titlerotation,
+rotation_mode=self.titlerotation_mode,
+font=self.titlefont
+)
   self.ax.xaxis.label.set_color(self.fg)
   self.ax.yaxis.label.set_color(self.fg)
   if self.grid_xy:self.ax.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6,which='both')

@@ -7,7 +7,7 @@ from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import array,ndarray
-from .style import Color
+from .style import FontFile,Fontmanager,Fontname
 from ..._function import bols,listchose,num0s,num1s,parsecolor,range_num
 from ..._log import Logger
 from ..._save import autofile_save
@@ -58,6 +58,17 @@ class GElement:
   self.titleva=kw.get('titleva')
   self.titlerotation=kw.get('titlerotation')
   self.titlerotation_mode=kw.get('titlerotation_mode')
+  self.titlefontname=kw.get('titlefontname',None)
+  self.titlefontpath=kw.get('titlefontpath',None)
+  fontfamily=Fontname(rcParams['font.family'][0])
+  if self.titlefontname is None and self.titlefontpath is None:self.titlefont=fontfamily
+  elif self.titlefontname is None and self.titlefontpath is not None:self.titlefont=FontFile(self.titlefontpath)
+  elif self.titlefontname is not None and self.titlefontpath is None:
+   if self.titlefontname in Fontmanager.name():self.titlefont=Fontname(self.titlefontname)
+   else:self.titlefont=fontfamily
+  elif self.titlefontname is not None and self.titlefontpath is not None:self.titlefont=FontFile(self.titlefontpath)
+  else:self.titlefont=fontfamily
+  self.titlefont=self.titlefont.Properties
  def photo(self,filename='Graph',ex='.png',dpi=100):
   try:self.fig.savefig(fspath(autofile_save(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=filename,initialdir=getcwd())),dpi=num1s(dpi,100))
   except Exception as e:
