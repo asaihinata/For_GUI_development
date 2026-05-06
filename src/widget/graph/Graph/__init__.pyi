@@ -1,9 +1,12 @@
 from tkinter import Misc
+
 from matplotlib.axes._axes import Axes
 from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from numpy import float64,ndarray
+from numpy import float64, ndarray
+
 from ....typing import *
+
 class GElement:
  master:Misc
  fig:Figure

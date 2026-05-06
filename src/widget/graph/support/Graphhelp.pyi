@@ -1,5 +1,6 @@
 from collections.abc import Iterator
 from typing import Literal
+
 __all__:list
 class Hatch:
  '''塗りつぶすアイコンの設定に関するクラス'''

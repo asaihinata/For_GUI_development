@@ -1,6 +1,7 @@
 '''ウィジェットの型ヒント'''
 from widget.basic import *
 from widget.graph import *
+
 __all__=['allwidget','graphtype','widgettype']
 type graphtype=BarGraph|BarhGraph|Boxplot|LineGraph|Scatter|Stem|Hist|Pie|Waterfall|Waterfallh|DScatter
 '''graphtype型

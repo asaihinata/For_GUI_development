@@ -1,5 +1,7 @@
 from os.path import split
-from tkinter import _destroy_temp_root,_get_temp_root
+from tkinter import _destroy_temp_root, _get_temp_root
+
+
 class Dialog:
  command=None
  def __init__(self,master=None,**options):

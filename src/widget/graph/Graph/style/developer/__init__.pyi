@@ -1,6 +1,9 @@
-from typing import Any,overload
+from typing import Any, overload
+
 import numpy as np
+
 from .....developer import Number
+
 Typenumberlike=bool|float|int|Number|np.float16|np.float32|np.float64|np.int16|np.int32|np.int64|np.int8|np.uint16|np.uint32|np.uint64|np.uint8
 def range_zero_one(val:float,out:float=1.0,endpoint:bool=True)->float:...
 def num1s(val:int|float|Number=0,mins:int|float|Number=1)->int|float|Number:...

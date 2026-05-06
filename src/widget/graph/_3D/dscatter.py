@@ -1,5 +1,8 @@
 from itertools import product
+
 from .._graphhelp import *
+
+
 class DScatter(threeDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)

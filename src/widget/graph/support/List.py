@@ -1,5 +1,7 @@
 import numpy as np
+
 from ...developer import LIST
+
 __all__=['Conectlist','Datalist','Manylist','Onelist']
 class Datalist:
  def __init__(self,data):

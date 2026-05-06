@@ -1,4 +1,5 @@
-from ...developer import LIST,Number
+from ...developer import LIST, Number
+
 __all__=['sort']
 class sort:
  def __init__(self,data,types=True):

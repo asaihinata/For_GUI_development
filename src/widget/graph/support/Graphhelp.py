@@ -1,6 +1,9 @@
 from re import fullmatch
+
 from numpy import pi
+
 from ..._function import listchose
+
 __all__=['Angle','FMT','FMTSOLID','FMTSOLIDLIST','Hatch','Marker','NSolid','SCapstyle','Solid','SOLIDLIST','Textcoords','XYcoords']
 COLOR=['b','c','g','k','m','r','w','y']
 HATCH=[None,'o','oo','O','OO','x','xx','*','**','*-','+','++','+o','-','--','-\\\\','.','..','/','//','/o','O.','O|','\\','\\\\','\\|','o-','x*','|','|*','||']

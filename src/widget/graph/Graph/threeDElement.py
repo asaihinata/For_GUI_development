@@ -1,9 +1,13 @@
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from ..._function import bols,list2num,listchose,num0s,nums,numsmin,parsecolor,range_num
+
+from ..._function import (bols, list2num, listchose, num0s, nums, numsmin,
+                          parsecolor, range_num)
 from ...developer import Number
 from .Graph import GElement
-from .style import Title,Xlabel,Ylabel,Zlabel,FontFile,Fontmanager,Fontname
+from .style import (FontFile, Fontmanager, Fontname, Title, Xlabel, Ylabel,
+                    Zlabel)
+
 __all__=['threeDElement']
 class threeDElement(GElement):
  def __init__(self,master,kw):
@@ -79,8 +83,7 @@ class threeDElement(GElement):
   zticksrange=kw.get('zticksrange',0)
   if isinstance(xticksrange,int|float):
    xticksrange=abs(xticksrange)
-   negnum=xticksrange*-1
-   self.xticksrange=(negnum,xticksrange)
+   self.xticksrange=(xticksrange*-1,xticksrange)
   elif isinstance(xticksrange,Number):
    xticksrange=abs(xticksrange).value()
    negnum=xticksrange*-1
@@ -89,8 +92,7 @@ class threeDElement(GElement):
   else:self.xticksrange=(0,0)
   if isinstance(yticksrange,int|float):
    yticksrange=abs(yticksrange)
-   negnum=yticksrange*-1
-   self.yticksrange=(negnum,yticksrange)
+   self.yticksrange=(yticksrange*-1,yticksrange)
   elif isinstance(yticksrange,Number):
    yticksrange=abs(yticksrange).value()
    negnum=yticksrange*-1

@@ -1,11 +1,14 @@
 from datetime import datetime
-from tkinter import StringVar,_Cursor
+from tkinter import StringVar, _Cursor
 from typing import Union
+
 from matplotlib.mlab import GaussianKDE
 from numpy import ndarray
 from numpy.typing import ArrayLike
+
 from .typing import *
 from .widget import *
+
 class sgg:
  @classmethod
  def window(

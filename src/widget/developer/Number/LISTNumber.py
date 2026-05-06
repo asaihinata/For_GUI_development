@@ -1,5 +1,6 @@
 from ...developer import LIST
 from .Number import Number
+
 __all__=['LISTNumber']
 class LISTNumber:
  def __init__(self,obj):

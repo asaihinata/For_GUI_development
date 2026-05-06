@@ -1,6 +1,8 @@
 from tkinter import Tk
-from ..typing import Any,NoReturn
+
+from ..typing import Any, NoReturn
 from ..typing.widget import allwidget
+
 class WindowController:
  __firstlineno__:int
  __module__:str

@@ -1,8 +1,11 @@
 '''グラフのx,y,z,dataの配列の変換を手助ける。'''
 from collections.abc import Iterator
 from typing import Any
+
 from numpy import ndarray
+
 from ...developer import LIST
+
 class Datalist:
  def __init__(self,data:ndarray)->None:...
  def T(self)->ndarray:...

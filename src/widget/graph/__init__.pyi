@@ -1,15 +1,19 @@
 from tkinter import Misc
-from matplotlib.collections import EventCollection,FillBetweenPolyCollection,PathCollection,PolyCollection,QuadMesh
-from matplotlib.container import BarContainer,ErrorbarContainer,StemContainer
+
+from matplotlib.collections import (EventCollection, FillBetweenPolyCollection,
+                                    PathCollection, PolyCollection, QuadMesh)
+from matplotlib.container import BarContainer, ErrorbarContainer, StemContainer
 from matplotlib.lines import Line2D
 from matplotlib.mlab import GaussianKDE
-from matplotlib.patches import Polygon,StepPatch,Wedge
+from matplotlib.patches import Polygon, StepPatch, Wedge
 from matplotlib.text import Text
-from numpy import dtype,float64,ndarray
+from numpy import dtype, float64, ndarray
 from numpy._typing import _AnyShape
 from numpy.typing import ArrayLike
+
 from ...typing import *
 from ..developer import Number
+
 class _Gset:
  def winsize(self)->tuple[int,int]:'''ウィジェットの現在の幅と高さを返す。
 

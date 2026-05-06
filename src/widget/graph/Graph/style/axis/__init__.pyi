@@ -1,8 +1,10 @@
 from collections.abc import Sequence
-from typing import Iterable,Literal,NoReturn
+from typing import Iterable, Literal, NoReturn
+
 from matplotlib.axes._axes import Axes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy.typing import ArrayLike
+
 class Xaxis:
  ax:Axes|Axes3D
  def __init__(self,ax:Axes|Axes3D)->None:...

@@ -1,8 +1,11 @@
 from os import PathLike
-from typing import Any,TypeAlias,Callable,Literal,NoReturn,Sequence,TypeVar
-from numpy import floating,int_,ndarray,str_
-from numpy.typing import NDArray
+from typing import (Any, Callable, Literal, NoReturn, Sequence, TypeAlias,
+                    TypeVar)
+
 from matplotlib.typing import ColorType
+from numpy import floating, int_, ndarray, str_
+from numpy.typing import NDArray
+
 # str type
 type StrPathtype=str|PathLike[str]
 StrPathtype=(str,PathLike)

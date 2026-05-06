@@ -1,4 +1,6 @@
 from .dialogs import Message
+
+
 def _show(title=None,message=None,_icon=None,_type=None,**kw):
  if _icon and 'icon' not in kw:kw['icon']=_icon
  if _type and 'type' not in kw:kw['type']=_type

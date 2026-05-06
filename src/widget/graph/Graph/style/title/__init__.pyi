@@ -1,8 +1,11 @@
 from typing import Literal
+
 from matplotlib.axes._axes import Axes
 from matplotlib.text import Text
 from mpl_toolkits.mplot3d.axes3d import Axes3D
+
 from ..typing import *
+
 class Title:
  def __init__(
 self,

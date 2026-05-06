@@ -1,10 +1,14 @@
 from io import BytesIO
-from os.path import basename,isfile,splitext
+from os.path import basename, isfile, splitext
 from pathlib import Path
 from urllib.parse import urlparse
-from PIL import Image,ImageTk
+
+from PIL import Image, ImageTk
 from requests import get
+
 from ..._function import list2num
+
+
 class Photo:
  savefile={'bytos':False}
  img=None

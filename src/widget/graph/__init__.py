@@ -1,4 +1,4 @@
-from ._2D.bargraph import BarGraph,BarhGraph
+from ._2D.bargraph import BarGraph, BarhGraph
 from ._2D.boxplot import Boxplot
 from ._2D.bubble import Bubble
 from ._2D.ecdf import Ecdf
@@ -7,16 +7,16 @@ from ._2D.eventplot import Eventplot
 from ._2D.funnelplot import Funne
 from ._2D.hatplot import Hatplot
 from ._2D.hexbin import Hexbin
-from ._2D.hist2d import Hist2d
 from ._2D.hist import Hist
+from ._2D.hist2d import Hist2d
 from ._2D.linefill import Linefill
 from ._2D.linegraph import LineGraph
 from ._2D.pie import Pie
 from ._2D.scatter import Scatter
 from ._2D.stack import Stack
-from ._2D.stacked import Stacked,Stackedh
+from ._2D.stacked import Stacked, Stackedh
 from ._2D.stem import Stem
 from ._2D.step import Step
 from ._2D.violinplot import Violinplot
-from ._2D.waterfall import Waterfall,Waterfallh
+from ._2D.waterfall import Waterfall, Waterfallh
 from ._3D.dscatter import DScatter

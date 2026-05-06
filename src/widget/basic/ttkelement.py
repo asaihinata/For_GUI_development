@@ -1,7 +1,9 @@
-from tkinter.ttk import Combobox,Progressbar,Style
-from .._function import listchose,num0
+from tkinter.ttk import Combobox, Progressbar, Style
+
+from .._function import listchose, num0
 from .._log import Logger
 from ..base import Element
+
 logger=Logger(name='ttkelement',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class TCombobox(Element):
  def __init__(self,master,kw):

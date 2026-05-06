@@ -1,4 +1,6 @@
-from logging import FileHandler,Logger
+from logging import FileHandler, Logger
+
+
 class LogFile:
  def __init__(self,file:str,logger:Logger,level:int,format:str):
   self.log_file_pas=file

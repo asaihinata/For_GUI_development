@@ -1,4 +1,5 @@
 from .....developer import Number
+
 __all__=['list2float','num0','num0s','num1s','listchose','range_zero_one']
 def range_zero_one(val,out=1.0,endpoint=True):
  if not isinstance(val,int|float):return out

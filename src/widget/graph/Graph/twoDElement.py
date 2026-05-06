@@ -1,10 +1,13 @@
 from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
-from numpy import array,ndarray
-from ..._function import bols,list2num,listchose,num0s,numsmin,parsecolor,range_num
+from numpy import array, ndarray
+
+from ..._function import (bols, list2num, listchose, num0s, numsmin,
+                          parsecolor, range_num)
 from ...developer import Number
 from .Graph import GElement
-from .style import Title,Xlabel,Ylabel,FontFile,Fontmanager,Fontname
+from .style import FontFile, Fontmanager, Fontname, Title, Xlabel, Ylabel
+
 __all__=['twoDElement']
 class twoDElement(GElement):
  def __init__(self,master,kw):
@@ -44,7 +47,6 @@ class twoDElement(GElement):
    else:self.ylabelfont=self.labelfont
   elif self.ylabelfontname is not None and self.ylabelfontpath is not None:self.ylabelfont=FontFile(self.ylabelfontpath)
   else:self.ylabelfont=self.labelfont
-  self.y_verwrit=listchose(kw.get('y_verwrit'),['vertical','horizontal'])
   # グリッド線
   self.grid_xy=bols(kw.get('grid_xy'))
   self.grid_x=bols(kw.get('grid_x'),False)
@@ -62,8 +64,7 @@ class twoDElement(GElement):
   yticksrange=kw.get('yticksrange',0)
   if isinstance(xticksrange,int|float):
    xticksrange=abs(xticksrange)
-   negnum=xticksrange*-1
-   self.xticksrange=(negnum,xticksrange)
+   self.xticksrange=(xticksrange*-1,xticksrange)
   elif isinstance(xticksrange,Number):
    xticksrange=abs(xticksrange).value()
    negnum=xticksrange*-1
@@ -72,8 +73,7 @@ class twoDElement(GElement):
   else:self.xticksrange=(0,0)
   if isinstance(yticksrange,int|float):
    yticksrange=abs(yticksrange)
-   negnum=yticksrange*-1
-   self.yticksrange=(negnum,yticksrange)
+   self.yticksrange=(yticksrange*-1,yticksrange)
   elif isinstance(yticksrange,Number):
    yticksrange=abs(yticksrange).value()
    negnum=yticksrange*-1

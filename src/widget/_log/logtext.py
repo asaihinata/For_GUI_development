@@ -1,5 +1,8 @@
-from logging import Formatter,LogRecord
-from ._data import COLORS,RESET
+from logging import Formatter, LogRecord
+
+from ._data import COLORS, RESET
+
+
 class TextFormatter(Formatter):
  formats=None
  def format(self,record):

@@ -1,7 +1,10 @@
 from sys import getsizeof
+
 from numpy import asarray
-from numpy.random import choice,default_rng
-from ...developer import LIST,Number
+from numpy.random import choice, default_rng
+
+from ...developer import LIST, Number
+
 __all__=['rand']
 class rand:
  '''ランダムな値を生成する。'''

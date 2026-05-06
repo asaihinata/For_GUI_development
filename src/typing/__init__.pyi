@@ -1,9 +1,11 @@
 '''基本的な型ヒント'''
 from os import PathLike
 from typing import *
-from numpy import floating,int_,ndarray,str_
-from numpy.typing import NDArray
+
 from matplotlib.typing import *
+from numpy import floating, int_, ndarray, str_
+from numpy.typing import NDArray
+
 Listlike=TypeVar('TypeVar',Sequence[Any])
 '''Listlike型
 

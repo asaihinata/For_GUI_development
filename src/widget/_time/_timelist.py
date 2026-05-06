@@ -1,7 +1,10 @@
-from datetime import date,datetime,time
-from dateutil.parser import parse
+from datetime import date, datetime, time
+
 import numpy as np
+from dateutil.parser import parse
+
 from ._time import times
+
 __all__=['timeslist']
 class timeslist:
  def __init__(self,dates):

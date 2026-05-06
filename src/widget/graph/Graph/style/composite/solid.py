@@ -1,7 +1,10 @@
 from collections.abc import Iterator
-from typing import Any,Literal
+from typing import Any, Literal
+
 from matplotlib.lines import Line2D
+
 from .fmt import FMT
+
 __all__=['Solid']
 class Solid:
  solid_list:list[str]=list(Line2D.lineStyles.keys())

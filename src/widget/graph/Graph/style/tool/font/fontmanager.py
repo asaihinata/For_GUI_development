@@ -1,4 +1,5 @@
-from matplotlib.font_manager import FontEntry,findSystemFonts,fontManager
+from matplotlib.font_manager import FontEntry, findSystemFonts, fontManager
+
 __all__=['Fontmanager','Fontentry']
 class Fontmanager:
  fontmanager=fontManager.ttflist

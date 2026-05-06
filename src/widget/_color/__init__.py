@@ -1,8 +1,10 @@
 from os.path import join
 from pathlib import Path
-from re import compile,findall
-from numpy import ndarray,where
+from re import compile, findall
+
+from numpy import ndarray, where
 from polars import read_csv
+
 __all__=['Color','COLOR_DATA']
 COLOR_DATA:ndarray=read_csv(join(Path(__file__).parent,'color.csv'),encoding='utf-8-sig',has_header=False).to_numpy()
 HEX6_RE=compile(r'^#[0-9a-f]{6}$')

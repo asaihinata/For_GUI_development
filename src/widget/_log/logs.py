@@ -1,11 +1,13 @@
-from logging import StreamHandler,getLogger
+from logging import StreamHandler, getLogger
 from os import system as sys
-from os.path import dirname,isfile,join,normpath
+from os.path import dirname, isfile, join, normpath
 from pathlib import Path
 from platform import system
+
 from ._data import formats_dict
 from ._logfile import LogFile
-from .logtext import ColorFormatter,TextFormatter
+from .logtext import ColorFormatter, TextFormatter
+
 __all__=['Logger']
 class Logger:
  log_file_pas=None

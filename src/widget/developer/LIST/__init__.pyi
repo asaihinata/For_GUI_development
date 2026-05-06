@@ -1,6 +1,8 @@
 from collections.abc import Iterator
-from typing import Any,NoReturn,overload
+from typing import Any, NoReturn, overload
+
 from numpy._core.numeric import _AnyShapeT
+
 class LIST:
  __static_attributes__:tuple[str]
  __class__:type
