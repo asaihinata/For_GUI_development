@@ -19,4 +19,3 @@ class Fontname:
  def __init__(self,family,style=None,variant=None,weight=None,stretch=None,size=None):
   if family in self.name:self.Properties=FontProperties(family=family,style=style,variant=variant,weight=weight,stretch=stretch,size=size)
   else:self.Properties=FontProperties(family=rcParams['font.family'],style=style,variant=variant,weight=weight,stretch=stretch,size=size)
-  print(self.Properties)

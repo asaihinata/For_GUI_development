@@ -4,14 +4,46 @@ from numpy import array,ndarray
 from ..._function import bols,list2num,listchose,num0s,numsmin,parsecolor,range_num
 from ...developer import Number
 from .Graph import GElement
-from .style import Title,Xlabel,Ylabel
+from .style import Title,Xlabel,Ylabel,FontFile,Fontmanager,Fontname
 __all__=['twoDElement']
 class twoDElement(GElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   # ラベル
   self.xlabel=kw.get('xlabel')
+  self.xlabelfg=kw.get('xlabelfg',self.labelfg)
+  self.xlabelha=kw.get('xlabelha',self.labelha)
+  self.xlabelva=kw.get('xlabelva',self.labelva)
+  self.xlabelalpha=kw.get('xlabelalpha',self.labelzorder)
+  self.xlabelzorder=kw.get('xlabelzorder',self.labelzorder)
+  self.xlabelrotation=kw.get('xlabelrotation',self.labelrotation)
+  self.xlabelrotation_mode=kw.get('xlabelrotation_mode',self.labelrotation_mode)
+  self.xlabelfontname=kw.get('xlabelfontname',None)
+  self.xlabelfontpath=kw.get('xlabelfontpath',None)
+  if self.xlabelfontname is None and self.xlabelfontpath is None:self.xlabelfont=self.labelfont
+  elif self.xlabelfontname is None and self.xlabelfontpath is not None:self.xlabelfont=FontFile(self.xlabelfontpath)
+  elif self.xlabelfontname is not None and self.xlabelfontpath is None:
+   if self.xlabelfontname in Fontmanager.name():self.xlabelfont=Fontname(self.xlabelfontname)
+   else:self.xlabelfont=self.labelfont
+  elif self.xlabelfontname is not None and self.xlabelfontpath is not None:self.xlabelfont=FontFile(self.xlabelfontpath)
+  else:self.xlabelfont=self.labelfont
   self.ylabel=kw.get('ylabel')
+  self.ylabelfg=kw.get('ylabelfg',self.labelfg)
+  self.ylabelha=kw.get('ylabelha',self.labelha)
+  self.ylabelva=kw.get('ylabelva',self.labelva)
+  self.ylabelalpha=kw.get('ylabelalpha',self.labelzorder)
+  self.ylabelzorder=kw.get('ylabelzorder',self.labelzorder)
+  self.ylabelrotation=kw.get('ylabelrotation',self.labelrotation)
+  self.ylabelrotation_mode=kw.get('ylabelrotation_mode',self.labelrotation_mode)
+  self.ylabelfontname=kw.get('ylabelfontname',None)
+  self.ylabelfontpath=kw.get('ylabelfontpath',None)
+  if self.ylabelfontname is None and self.ylabelfontpath is None:self.ylabelfont=self.labelfont
+  elif self.ylabelfontname is None and self.ylabelfontpath is not None:self.ylabelfont=FontFile(self.ylabelfontpath)
+  elif self.ylabelfontname is not None and self.ylabelfontpath is None:
+   if self.ylabelfontname in Fontmanager.name():self.ylabelfont=Fontname(self.ylabelfontname)
+   else:self.ylabelfont=self.labelfont
+  elif self.ylabelfontname is not None and self.ylabelfontpath is not None:self.ylabelfont=FontFile(self.ylabelfontpath)
+  else:self.ylabelfont=self.labelfont
   self.y_verwrit=listchose(kw.get('y_verwrit'),['vertical','horizontal'])
   # グリッド線
   self.grid_xy=bols(kw.get('grid_xy'))
@@ -64,7 +96,9 @@ ha=self.titleha,
 va=self.titleva,
 rotation=self.titlerotation,
 rotation_mode=self.titlerotation_mode,
-font=self.titlefont
+font=self.titlefont,
+alpha=self.titlealpha,
+zorder=self.titlezorder
 )
   self.ax.xaxis.label.set_color(self.fg)
   self.ax.yaxis.label.set_color(self.fg)
@@ -74,8 +108,32 @@ font=self.titlefont
    if self.grid_x:self.ax.xaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
    if self.grid_y:self.ax.yaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
  def _apply_labels(self,xlabel,ylabel):
-  if xlabel is not None:Xlabel(self.ax,xlabel,color=self.fg)
-  if ylabel is not None:Ylabel(self.ax,ylabel,color=self.fg)
+  if xlabel is not None:
+   Xlabel(
+self.ax,
+xlabel,
+color=self.xlabelfg,
+ha=self.xlabelha,
+va=self.xlabelva,
+font=self.xlabelfont,
+rotation=self.xlabelrotation,
+rotation_mode=self.xlabelrotation_mode,
+alpha=self.xlabelalpha,
+zorder=self.xlabelzorder
+)
+  if ylabel is not None:
+   Ylabel(
+self.ax,
+ylabel,
+color=self.ylabelfg,
+ha=self.ylabelha,
+va=self.ylabelva,
+font=self.ylabelfont,
+rotation=self.ylabelrotation,
+rotation_mode=self.ylabelrotation_mode,
+alpha=self.ylabelalpha,
+zorder=self.ylabelzorder
+)
  def _arys(self,data):
   if any(isinstance(i,list|tuple)for i in data):return array(data)
   elif isinstance(data,list):return array([data])

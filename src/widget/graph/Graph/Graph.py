@@ -8,7 +8,7 @@ from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import array,ndarray
 from .style import FontFile,Fontmanager,Fontname
-from ..._function import bols,listchose,num0s,num1s,parsecolor,range_num
+from ..._function import bols,listchose,num0s,num1s,parsecolor,range_num,nums
 from ..._log import Logger
 from ..._save import autofile_save
 from ...developer import LIST
@@ -30,7 +30,6 @@ class GElement:
   self.fg=parsecolor(kw.get('fg'),'#000000')
   self.graph_bg=parsecolor(kw.get('bg'),'#ffffff')
   self.graph_grid=parsecolor(kw.get('graph_grid'),'#b7b7b7')
-  self.title=kw.get('title')
   self.color=self._color_check(kw.get('color',graph_color))
   rcParams['axes.prop_cycle']=cycler(color=self.color)
   self.alpha=range_num(num0s(kw.get('alpha'),1),0,1,1)
@@ -39,18 +38,42 @@ class GElement:
   # グラフの表示
   self.fig=Figure(figsize=(self.width/self.dpi,self.height/self.dpi),dpi=self.dpi,facecolor=self.graph_bg)
   self.ax:Axes|Axes3D=None
-  # ラベル
-  self.labeljudge=True
-  self.anchor=self._anchor(kw.get('labelanchor'))
-  self.labelplace=self._getlabelplace(self.anchor,kw.get('labelplace'))
-  self.labeltitle=kw.get('labeltitle')
-  self.labelframe=bols(kw.get('labelframe'))
-  self.labelshadow=bols(kw.get('labelshadow'),False)
+  # 凡例
+  self.legendjudge=True
+  self.anchor=self._anchor(kw.get('legendanchor'))
+  self.legendplace=self._getlegendplace(self.anchor,kw.get('legendplace'))
+  self.legendtitle=kw.get('legendtitle')
+  self.legendframe=bols(kw.get('legendframe'))
+  self.legendshadow=bols(kw.get('legendshadow'),False)
+  self.legendalpha=range_num(num0s(kw.get('legendalpha'),1),0,1,1)
+  # 軸ラベル
   self.labelalpha=range_num(num0s(kw.get('labelalpha'),1),0,1,1)
+  labelfg=kw.get('labelfg')
+  if labelfg is None:self.labelfg=self.fg
+  else:self.labelfg=labelfg
+  self.labelzorder=nums(kw.get('labelzorder'),4)
+  self.labelha=kw.get('labelha')
+  self.labelva=kw.get('labelva')
+  self.labelrotation=kw.get('labelrotation')
+  self.labelrotation_mode=kw.get('labelrotation_mode')
+  self.labelfontname=kw.get('labelfontname',None)
+  self.labelfontpath=kw.get('labelfontpath',None)
+  fontfamily=Fontname(rcParams['font.family'][0])
+  if self.labelfontname is None and self.labelfontpath is None:self.labelfont=fontfamily
+  elif self.labelfontname is None and self.labelfontpath is not None:self.labelfont=FontFile(self.labelfontpath)
+  elif self.labelfontname is not None and self.labelfontpath is None:
+   if self.labelfontname in Fontmanager.name():self.labelfont=Fontname(self.labelfontname)
+   else:self.labelfont=fontfamily
+  elif self.labelfontname is not None and self.labelfontpath is not None:self.labelfont=FontFile(self.labelfontpath)
+  else:self.labelfont=fontfamily
+  self.labelfont=self.labelfont.Properties
   # 目盛り
   self.ticksshow=bols(kw.get('ticksshow'),False)
   self.tight_layout=bols(kw.get('tight_layout'))
   # タイトル
+  self.title=kw.get('title')
+  self.titlealpha=range_num(num0s(kw.get('titlealpha'),1),0,1,1)
+  self.titlezorder=nums(kw.get('titlezorder'),4)
   titlefg=kw.get('titlefg')
   if titlefg is None:self.titlefg=self.fg
   else:self.titlefg=titlefg
@@ -115,11 +138,11 @@ class GElement:
  def lines(self,serch=None,num=None):return self._list_loop(list(Solid(serch)),num)
  def nlines(self,serch=None,num=None):return self._list_loop(list(NSolid(serch)),num)
  def legend(self,ncols=1):
-  if self.labeljudge:self.ax.legend(ncols=ncols,bbox_to_anchor=self.anchor,loc=self.labelplace,title=self.labeltitle,frameon=self.labelframe,shadow=self.labelshadow,framealpha=self.labelalpha)
+  if self.legendjudge:self.ax.legend(ncols=ncols,bbox_to_anchor=self.anchor,loc=self.legendplace,title=self.legendtitle,frameon=self.legendframe,shadow=self.legendshadow,framealpha=self.legendalpha)
  def _anchor(self,val,other=None):
   if(isinstance(val,list|tuple) and (len(val)==2 or len(val)==4) and all(isinstance(i,int|float)for i in val)):return val
   return other
- def _getlabelplace(self,place,other='upper right'):
+ def _getlegendplace(self,place,other='upper right'):
   labelplacelist=['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
   if isinstance(place,int) and 0<=place<=10:return labelplacelist[int]
   elif place in labelplacelist:return place
@@ -131,11 +154,11 @@ class GElement:
    if lla<ldt:
     for i in range(ldt-lla):lls.append(lla+i+1)
    elif ldt<lla:lls=lls[:ldt]
-  else:self.labeljudge=False
+  else:self.legendjudge=False
   return(lls,label,type(label))
  def labels(self,label,nums=None):
   if not isinstance(nums,int|float):nums=self.max_depth
-  if label==None:self.labeljudge=False
+  if label==None:self.legendjudge=False
   if isinstance(label,str):lis=LIST(lists=[label])
   elif isinstance(label,list|tuple):lis=LIST(lists=label)
   else:lis=LIST(lists='')

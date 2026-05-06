@@ -4,6 +4,11 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ..developer import Rad,listchose,range_zero_one
 __all__=['Title']
 class Title:
+ fontsize_list=['xx-small','x-small','small','medium','large','x-large','xx-large']
+ fontstretch_list=['ultra-condensed','extra-condensed','condensed','semi-condensed','normal','semi-expanded','expanded','extra-expanded','ultra-expanded']
+ fontstyle_list=['normal','italic','oblique']
+ fontvariant_list=['normal','small-caps']
+ fontweight_list=['ultralight','light','normal','regular','book','medium','roman','semibold','demibold','demi','bold','heavy','extra bold','black']
  def __init__(
 self,
 ax,
@@ -19,12 +24,25 @@ rotation_mode=True,
 angle='degree',
 alpha=1,
 zorder=4,
-font=None
+font=None,
+fontsize=12,
+fontstretch=None,
+fontstyle=None,
+fontvariant=None,
+fontweight=None
 ):
   if not isinstance(ax,Axes|Axes3D):
    raise TypeError('axの型が違います')
   self.ax=ax
   alpha=range_zero_one(alpha)
+  if isinstance(fontsize,int|float) or fontsize in self.fontsize_list:fontsize=fontsize
+  else:fontsize=12
+  if (isinstance(fontstretch,int|float) and 0<=fontstretch<=1000) or fontstretch in self.fontstretch_list:fontstretch=fontstretch
+  else:fontstretch='normal'
+  fontstyle=listchose(fontstyle,self.fontstyle_list)
+  fontvariant=listchose(fontvariant,self.fontvariant_list)
+  if (isinstance(fontweight,int|float) and 0<=fontweight<=1000) or fontweight in self.fontweight_list:fontweight=fontweight
+  else:fontweight='normal'
   if not isinstance(zorder,int|float|None):zorder=4
   if isinstance(pad,int|float|None):pad=pad
   else:
@@ -54,6 +72,11 @@ rotation=rotation,
 rotation_mode=rotation_mode,
 alpha=alpha,
 zorder=zorder,
-fontproperties=font
+fontproperties=font,
+fontsize=fontsize,
+fontstretch=fontstretch,
+fontstyle=fontstyle,
+fontvariant=fontvariant,
+fontweight=fontweight
 )
  def title(self):return self.title_data

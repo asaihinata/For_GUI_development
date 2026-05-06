@@ -3,7 +3,7 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ..._function import bols,list2num,listchose,num0s,nums,numsmin,parsecolor,range_num
 from ...developer import Number
 from .Graph import GElement
-from .style import Title,Xlabel,Ylabel,Zlabel
+from .style import Title,Xlabel,Ylabel,Zlabel,FontFile,Fontmanager,Fontname
 __all__=['threeDElement']
 class threeDElement(GElement):
  def __init__(self,master,kw):
@@ -14,8 +14,52 @@ class threeDElement(GElement):
   self.ax:Axes3D=self.fig.add_subplot(111,projection='3d')
   # ラベル
   self.xlabel=kw.get('xlabel')
+  self.xlabelfg=kw.get('xlabelfg',self.labelfg)
+  self.xlabelha=kw.get('xlabelha',self.labelha)
+  self.xlabelva=kw.get('xlabelva',self.labelva)
+  self.xlabelrotation=kw.get('xlabelrotation',self.labelrotation)
+  self.xlabelrotation_mode=kw.get('xlabelrotation_mode',self.labelrotation_mode)
+  self.xlabelfontname=kw.get('xlabelfontname',None)
+  self.xlabelfontpath=kw.get('xlabelfontpath',None)
+  if self.xlabelfontname is None and self.xlabelfontpath is None:self.xlabelfont=self.labelfont
+  elif self.xlabelfontname is None and self.xlabelfontpath is not None:self.xlabelfont=FontFile(self.xlabelfontpath).Properties
+  elif self.xlabelfontname is not None and self.xlabelfontpath is None:
+   if self.xlabelfontname in Fontmanager.name():self.xlabelfont=Fontname(self.xlabelfontname).Properties
+   else:self.xlabelfont=self.labelfont
+  elif self.xlabelfontname is not None and self.xlabelfontpath is not None:self.xlabelfont=FontFile(self.xlabelfontpath).Properties
+  else:self.xlabelfont=self.labelfont
   self.ylabel=kw.get('ylabel')
+  self.ylabelfg=kw.get('ylabelfg',self.labelfg)
+  self.ylabelha=kw.get('ylabelha',self.labelha)
+  self.ylabelva=kw.get('ylabelva',self.labelva)
+  self.ylabelrotation=kw.get('ylabelrotation',self.labelrotation)
+  self.ylabelrotation_mode=kw.get('ylabelrotation_mode',self.labelrotation_mode)
+  self.ylabelfontname=kw.get('ylabelfontname',None)
+  self.ylabelfontpath=kw.get('ylabelfontpath',None)
+  if self.ylabelfontname is None and self.ylabelfontpath is None:self.ylabelfont=self.labelfont
+  elif self.ylabelfontname is None and self.ylabelfontpath is not None:self.ylabelfont=FontFile(self.ylabelfontpath)
+  elif self.ylabelfontname is not None and self.ylabelfontpath is None:
+   if self.ylabelfontname in Fontmanager.name():self.ylabelfont=Fontname(self.ylabelfontname)
+   else:self.ylabelfont=self.labelfont
+  elif self.ylabelfontname is not None and self.ylabelfontpath is not None:self.ylabelfont=FontFile(self.ylabelfontpath)
+  else:self.ylabelfont=self.labelfont
+  self.ylabelfont=self.ylabelfont.Properties
   self.zlabel=kw.get('zlabel')
+  self.zlabelfg=kw.get('zlabelfg',self.labelfg)
+  self.zlabelha=kw.get('zlabelha',self.labelha)
+  self.zlabelva=kw.get('zlabelva',self.labelva)
+  self.zlabelrotation=kw.get('zlabelrotation',self.labelrotation)
+  self.zlabelrotation_mode=kw.get('zlabelrotation_mode',self.labelrotation_mode)
+  self.zlabelfontname=kw.get('zlabelfontname',None)
+  self.zlabelfontpath=kw.get('zlabelfontpath',None)
+  if self.zlabelfontname is None and self.zlabelfontpath is None:self.zlabelfont=self.labelfont
+  elif self.zlabelfontname is None and self.zlabelfontpath is not None:self.zlabelfont=FontFile(self.zlabelfontpath)
+  elif self.zlabelfontname is not None and self.zlabelfontpath is None:
+   if self.zlabelfontname in Fontmanager.name():self.zlabelfont=Fontname(self.zlabelfontname)
+   else:self.zlabelfont=self.labelfont
+  elif self.zlabelfontname is not None and self.zlabelfontpath is not None:self.zlabelfont=FontFile(self.zlabelfontpath)
+  else:self.zlabelfont=self.labelfont
+  self.zlabelfont=self.zlabelfont.Properties
   # グリッド線
   self.grid_xyz=bols(kw.get('grid_xyz'))
   self.grid_x=bols(kw.get('grid_x'),False)

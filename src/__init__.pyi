@@ -354,7 +354,7 @@ key:str=...
  def Frames(
 title:str=...,
 layout:list=...,
-labelanchor:Literal['nw','n','ne','w','center','e','sw','s','se']='nw',
+legendanchor:Literal['nw','n','ne','w','center','e','sw','s','se']='nw',
 key:str=...,
 takefocus:bool=True,
 pady:int|float=...,
@@ -374,8 +374,8 @@ bd:int|float=1
 
  :param layout: Framesウィジェットに表示させるウィジェットを指定する。各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます。
  :type layout: list[list]
- :param labelanchor: タイトルを表記する場所を指定する。
- :type labelanchor: Literal['nw','n','ne','w','center','e','sw','s','se']
+ :param legendanchor: タイトルを表記する場所を指定する。
+ :type legendanchor: Literal['nw','n','ne','w','center','e','sw','s','se']
  :param title: Framesウィジェットのタイトルを指定する。
  :type title: str'''
  @staticmethod
@@ -740,12 +740,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''折線グラフを生成する。
 
@@ -811,18 +811,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def BarGraph(
 x:o_array,
@@ -856,12 +856,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''縦軸棒グラフを生成する。
 
@@ -927,18 +927,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def BarhGraph(
 x:o_array,
@@ -969,12 +969,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 alpha:int|float=1,
 height:int|float=1,
 align:Literal['center','edge']='center',
@@ -1043,18 +1043,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def Funne(
 data:o_array,
@@ -1084,12 +1084,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 alpha:int|float=1,
 height:int|float=1,
 align:Literal['center','edge']='center',
@@ -1156,18 +1156,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def Stacked(
 data:n_array,
@@ -1198,12 +1198,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=(0,1),
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='lower left',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=(0,1),
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='lower left',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''積み上げ縦棒グラフを生成する。
 
@@ -1263,18 +1263,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def Stackedh(
 data:n_array,
@@ -1305,12 +1305,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=(0,1),
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='lower left',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=(0,1),
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='lower left',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''積み上げ横棒グラフを生成する。
 
@@ -1370,18 +1370,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def Pie(
 data:o_array,
@@ -1466,12 +1466,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''箱ひげ図を生成する。
 
@@ -1537,18 +1537,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def Waterfall(
 x:o_array,
@@ -1580,12 +1580,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 ucolor:ColorType='#156082',
 dcolor:ColorType='#e97132',
 width:int|float=1,
@@ -1650,18 +1650,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float
  :param ucolor: 上昇バーの色を指定する。
  :type ucolor: ColorType
  :param dcolor: 下降バーの色を指定する。
@@ -1701,12 +1701,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 ucolor:ColorType='#156082',
 dcolor:ColorType='#e97132',
 height:int|float=1,
@@ -1771,18 +1771,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float
  :param ucolor: 上昇バーの色を指定する。
  :type ucolor: ColorType
  :param dcolor: 下降バーの色を指定する。
@@ -1821,12 +1821,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''散布図を生成する。
 
@@ -1888,18 +1888,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def DScatter(
 x:o_array,
@@ -1935,12 +1935,12 @@ zticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
 znumticks:int|float|None=None,
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 mouse_rotation:bool=True,
 elev:int|float=30,
 azim:int|float=45,
@@ -2015,18 +2015,18 @@ key:str=...
  :type yticksdirection: Literal['out','in','inout']
  :param znumticks: z軸の目盛りの数を指定する。
  :type znumticks: int|float|None
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float
  :param mouse_rotation: 表示されているグラフをマウスで操作できるか指定する。
  :type mouse_rotation: bool
  :param elev: 仰角を度数表記で指定する。
@@ -2066,12 +2066,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''幹図を生成する。
 
@@ -2141,18 +2141,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def Step(
 data:n_array,
@@ -2181,12 +2181,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 y_verwrit:Literal['vertical','horizontal']='vertical',
 label:labeltype=...,
 xlabel:str=...,
@@ -2250,18 +2250,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float
  :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
  :type y_verwrit: Literal['horizontal','vertical']'''
  @staticmethod
@@ -2293,12 +2293,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''ハットグラフを生成する。
 
@@ -2356,18 +2356,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def Hist(
 data:o_array,
@@ -2400,12 +2400,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 y_verwrit:Literal['vertical','horizontal']='vertical',
 xlabel:str=...,
 ylabel:str=...,
@@ -2476,18 +2476,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float
  :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
  :type y_verwrit: Literal['horizontal','vertical']'''
  @staticmethod
@@ -2521,12 +2521,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''積み上げエリアチャートを生成する。
 
@@ -2590,18 +2590,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def Bubble(
 x:n_array,
@@ -2636,12 +2636,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''バブルグラフを生成する。
 
@@ -2707,18 +2707,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def Linefill(
 x:o_array,
@@ -2750,12 +2750,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''積上げ面グラフを作成する。
 
@@ -2817,18 +2817,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def Ecdf(
 data:n_array,
@@ -2859,12 +2859,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''経験的累積分布関数を作成する。
 
@@ -2930,18 +2930,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def Errorbar(
 x:n_array,
@@ -2985,12 +2985,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''誤差範囲付きの線グラフもしくはマーカーグラフ,あるいはその両方のエラーグラフを作成する。
 
@@ -3076,18 +3076,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def Eventplot(
 data:o_array,
@@ -3120,12 +3120,12 @@ xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksshow:bool=False,
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''イベントグラフを作成する。
 
@@ -3189,18 +3189,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def Hist2d(
 x:o_array,
@@ -3235,12 +3235,12 @@ xticksshow:bool=False,
 yticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 y_verwrit:Literal['vertical','horizontal']='vertical',
 xlabel:str=...,
 ylabel:str=...,
@@ -3307,18 +3307,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float
  :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
  :type y_verwrit: Literal['horizontal','vertical']
  :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる。
@@ -3359,12 +3359,12 @@ xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksshow:bool=False,
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''バイオリングラフを作成する。
 
@@ -3440,18 +3440,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @classmethod
  def Hexbin(
 self,
@@ -3486,12 +3486,12 @@ xticksshow:bool=False,
 xticksdirection:Literal['out','in','inout']='out',
 yticksshow:bool=False,
 yticksdirection:Literal['out','in','inout']='out',
-labelanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-labelplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-labeltitle:str=...,
-labelframe:bool=True,
-labelshadow:bool=False,
-labelalpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''2次元六角形グラフを作成する。
 
@@ -3561,18 +3561,18 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']
- :param labelanchor: 凡例の位置を指定する。
- :type labelanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param labelplace: 凡例の位置の基準点を指定する。
- :type labelplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param labeltitle: 凡例のタイトルを指定する。
- :type labeltitle: bool
- :param labelframe: 凡例の背景を含む外枠を表示するか指定する。
- :type labelframe: bool
- :param labelshadow: 凡例に影を付与するか指定する。
- :type labelshadow: bool
- :param labelalpha: 凡例の背景の透明度を指定する。
- :type labelalpha: int|float'''
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @classmethod
  def Popup(
 cls,
