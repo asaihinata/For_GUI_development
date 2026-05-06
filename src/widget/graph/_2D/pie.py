@@ -3,7 +3,7 @@ from .._graphhelp import *
 class Pie(twoDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.labelplace=self._getlabelplace(kw.get('labelplace'),'upper left')
+  self.labelplace=self._getlegendplace(kw.get('labelplace'),'upper left')
   self.anchor=self._anchor(kw.get('anchor'),(1,1))
   self.data=self._dataarr(kw.get('data'))
   self.label=self.pielabel(self.data,kw.get('label'))[0]

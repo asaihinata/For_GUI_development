@@ -19,6 +19,8 @@ class threeDElement(GElement):
   self.xlabelfg=kw.get('xlabelfg',self.labelfg)
   self.xlabelha=kw.get('xlabelha',self.labelha)
   self.xlabelva=kw.get('xlabelva',self.labelva)
+  self.xlabelalpha=kw.get('xlabelalpha',self.labelalpha)
+  self.xlabelzorder=kw.get('xlabelzorder',self.labelzorder)
   self.xlabelrotation=kw.get('xlabelrotation',self.labelrotation)
   self.xlabelrotation_mode=kw.get('xlabelrotation_mode',self.labelrotation_mode)
   self.xlabelfontname=kw.get('xlabelfontname',None)
@@ -28,12 +30,14 @@ class threeDElement(GElement):
   elif self.xlabelfontname is not None and self.xlabelfontpath is None:
    if self.xlabelfontname in Fontmanager.name():self.xlabelfont=Fontname(self.xlabelfontname).Properties
    else:self.xlabelfont=self.labelfont
-  elif self.xlabelfontname is not None and self.xlabelfontpath is not None:self.xlabelfont=FontFile(self.xlabelfontpath).Properties
+  elif self.xlabelfontname is not None and self.xlabelfontpath is not None:self.xlabelfont=FontFile(self.xlabelfontpath)
   else:self.xlabelfont=self.labelfont
   self.ylabel=kw.get('ylabel')
   self.ylabelfg=kw.get('ylabelfg',self.labelfg)
   self.ylabelha=kw.get('ylabelha',self.labelha)
   self.ylabelva=kw.get('ylabelva',self.labelva)
+  self.ylabelalpha=kw.get('ylabelalpha',self.labelalpha)
+  self.ylabelzorder=kw.get('ylabelzorder',self.labelzorder)
   self.ylabelrotation=kw.get('ylabelrotation',self.labelrotation)
   self.ylabelrotation_mode=kw.get('ylabelrotation_mode',self.labelrotation_mode)
   self.ylabelfontname=kw.get('ylabelfontname',None)
@@ -45,11 +49,12 @@ class threeDElement(GElement):
    else:self.ylabelfont=self.labelfont
   elif self.ylabelfontname is not None and self.ylabelfontpath is not None:self.ylabelfont=FontFile(self.ylabelfontpath)
   else:self.ylabelfont=self.labelfont
-  self.ylabelfont=self.ylabelfont.Properties
   self.zlabel=kw.get('zlabel')
   self.zlabelfg=kw.get('zlabelfg',self.labelfg)
   self.zlabelha=kw.get('zlabelha',self.labelha)
   self.zlabelva=kw.get('zlabelva',self.labelva)
+  self.zlabelalpha=kw.get('zlabelalpha',self.labelalpha)
+  self.zlabelzorder=kw.get('zlabelzorder',self.labelzorder)
   self.zlabelrotation=kw.get('zlabelrotation',self.labelrotation)
   self.zlabelrotation_mode=kw.get('zlabelrotation_mode',self.labelrotation_mode)
   self.zlabelfontname=kw.get('zlabelfontname',None)
@@ -61,7 +66,6 @@ class threeDElement(GElement):
    else:self.zlabelfont=self.labelfont
   elif self.zlabelfontname is not None and self.zlabelfontpath is not None:self.zlabelfont=FontFile(self.zlabelfontpath)
   else:self.zlabelfont=self.labelfont
-  self.zlabelfont=self.zlabelfont.Properties
   # グリッド線
   self.grid_xyz=bols(kw.get('grid_xyz'))
   self.grid_x=bols(kw.get('grid_x'),False)
@@ -125,7 +129,19 @@ class threeDElement(GElement):
  def _apply_theme_colors(self):
   self.ax.set_facecolor(self.graph_bg)
   self.ax.tick_params(colors=self.fg)
-  if self.title is not None:Title(self.ax,self.title,color=self.titlefg,ha=self.titleha,va=self.titleva,rotation=self.titlerotation,rotation_mode=self.titlerotation_mode)
+  if self.title is not None:
+   Title(
+self.ax,
+self.title,
+color=self.titlefg,
+ha=self.titleha,
+va=self.titleva,
+rotation=self.titlerotation,
+rotation_mode=self.titlerotation_mode,
+font=self.titlefont,
+alpha=self.titlealpha,
+zorder=self.titlezorder
+)
   self.ax.xaxis.label.set_color(self.fg)
   self.ax.yaxis.label.set_color(self.fg)
   self.ax.zaxis.label.set_color(self.fg)
@@ -137,9 +153,45 @@ class threeDElement(GElement):
    if self.grid_y:self.ax.yaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
    if self.grid_z:self.ax.zaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
  def _apply_labels(self,xlabel,ylabel,zlabel):
-  if xlabel is not None:Xlabel(self.ax,xlabel,color=self.fg)
-  if ylabel is not None:Ylabel(self.ax,ylabel,color=self.fg)
-  if zlabel is not None:Zlabel(self.ax,zlabel,color=self.fg)
+  if xlabel is not None:
+   Xlabel(
+self.ax,
+xlabel,
+color=self.xlabelfg,
+ha=self.xlabelha,
+va=self.xlabelva,
+font=self.xlabelfont,
+rotation=self.xlabelrotation,
+rotation_mode=self.xlabelrotation_mode,
+alpha=self.xlabelalpha,
+zorder=self.xlabelzorder
+)
+  if ylabel is not None:
+   Ylabel(
+self.ax,
+xlabel,
+color=self.ylabelfg,
+ha=self.ylabelha,
+va=self.ylabelva,
+font=self.ylabelfont,
+rotation=self.ylabelrotation,
+rotation_mode=self.ylabelrotation_mode,
+alpha=self.ylabelalpha,
+zorder=self.ylabelzorder
+)
+  if zlabel is not None:
+   Zlabel(
+self.ax,
+zlabel,
+color=self.zlabelfg,
+ha=self.zlabelha,
+va=self.zlabelva,
+font=self.zlabelfont,
+rotation=self.zlabelrotation,
+rotation_mode=self.zlabelrotation_mode,
+alpha=self.zlabelalpha,
+zorder=self.zlabelzorder
+)
   self._apply_grid()
  def _adjustment(self):
   xlimmins,xlimmaxs=self.xticksrange

@@ -118,7 +118,7 @@ self,
 val:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=None,
 other:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=None
 )->None:'''凡例の位置を決定する。'''
- def _getlabelplace(
+ def _getlegendplace(
 self,
 place:str|int=...,
 other:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right'
