@@ -1,6 +1,5 @@
 import numpy as np
-from matplotlib.colors import cnames, to_hex, to_rgb, to_rgba
-
+from matplotlib.colors import cnames,to_hex,to_rgb,to_rgba
 __all__=['Color']
 class Color:
  NONERGBACOLOR=np.array([0,0,0,1])

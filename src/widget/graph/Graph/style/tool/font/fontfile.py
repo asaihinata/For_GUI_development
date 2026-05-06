@@ -1,9 +1,7 @@
 from os.path import isfile
 from pathlib import Path
-
 from matplotlib import rcParams
-from matplotlib.font_manager import FontProperties, fontManager
-
+from matplotlib.font_manager import FontProperties,fontManager
 __all__=['FontFile','Fontname']
 class FontFile:
  def __init__(self,path,style=None,variant=None,weight=None,stretch=None,size=None):

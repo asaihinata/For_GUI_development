@@ -1,13 +1,11 @@
 from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
-from numpy import array, ndarray
-
-from ..._function import (bols, list2num, listchose, num0s, numsmin,
-                          parsecolor, range_num)
+from numpy import array,ndarray
+from ..._function import (bols,list2num,listchose,num0s,numsmin,
+                          parsecolor,range_num)
 from ...developer import Number
 from .Graph import GElement
-from .style import FontFile, Fontmanager, Fontname, Title, Xlabel, Ylabel
-
+from .style import FontFile,Fontmanager,Fontname,Title,Xlabel,Ylabel
 __all__=['twoDElement']
 class twoDElement(GElement):
  def __init__(self,master,kw):

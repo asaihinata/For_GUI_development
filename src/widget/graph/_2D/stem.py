@@ -1,8 +1,6 @@
 from itertools import product
-
 from ...developer import LIST
 from .._graphhelp import *
-
 stem_line_list=['-','--','-.','-.']
 stem_mark_list=['o','+','*','.','x','_','|','square','diamond','^','v','<','>','pentagram','hexagram']
 stem_color_list=['r','g','b','c','m','y','k','w']

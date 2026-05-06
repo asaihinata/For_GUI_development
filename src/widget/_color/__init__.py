@@ -1,10 +1,8 @@
 from os.path import join
 from pathlib import Path
-from re import compile, findall
-
-from numpy import ndarray, where
+from re import compile,findall
+from numpy import ndarray,where
 from polars import read_csv
-
 __all__=['Color','COLOR_DATA']
 COLOR_DATA:ndarray=read_csv(join(Path(__file__).parent,'color.csv'),encoding='utf-8-sig',has_header=False).to_numpy()
 HEX6_RE=compile(r'^#[0-9a-f]{6}$')
@@ -16,7 +14,6 @@ class Color:
  '''16進数カラーコード,カラー名,rgb,rgba,hsvを16進数カラーコードに変換する。'''
  def __init__(self,color:str,other:str|None=None)->None:
   '''colorで指定した16進数カラーコード,カラー名,rgb,rgba,hsvを16進数カラーコードに変換する。
-
  :param color: 16進数カラーコード,カラー名,rgb,rgba,hsvを16進数カラーコードを指定する。
  :type color: str
  :param other: colorを16進数カラーコードに変換する際,何らかの例外が発生した際に返す値を指定する。

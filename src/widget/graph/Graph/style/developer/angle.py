@@ -1,7 +1,5 @@
 import numpy as np
-
 from .....developer import Number
-
 __all__=['Angle','Deg','Rad']
 class Angle:
  def __init__(self,angle,dtype=True):

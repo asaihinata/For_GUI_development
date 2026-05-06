@@ -1,5 +1,4 @@
 from matplotlib.text import Text
-
 __all__=['Texts']
 class Texts(Text):
  def __init__(

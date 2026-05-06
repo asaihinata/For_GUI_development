@@ -1,9 +1,7 @@
-from tkinter import Misc, Tk
-from tkinter.font import Font, families
-
+from tkinter import Misc,Tk
+from tkinter.font import Font,families
 from ..typing import Literal
-from ._function import bols, listchose, nums
-
+from ._function import bols,listchose,nums
 __all__=['fonts']
 class fonts(Font):
  def __init__(
@@ -17,7 +15,6 @@ overstrike:bool=False,
 root:Misc=None
 )->None:
   '''フォントに関するクラス
-
  :param family: フォント名を指定する。
  :type family: str
  :param size: フォントサイズを指定する。

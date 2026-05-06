@@ -1,10 +1,8 @@
 from collections.abc import Sequence
-from typing import Iterable, Literal, NoReturn
-
+from typing import Iterable,Literal,NoReturn
 from matplotlib.axes._axes import Axes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy.typing import ArrayLike
-
 class Xaxis:
  ax:Axes|Axes3D
  def __init__(self,ax:Axes|Axes3D)->None:...
@@ -38,7 +36,6 @@ base:float|int=10,
 nonpositive:Literal['clip','mask']='clip',
 subs:Iterable[int]|None=None
 )->NoReturn:'''対数スケールを作成する。
-
  :param base: 対数の底を指定する。
  :type base: float|int
  :param nonpositive: 非正の値に対する動作を指定する。
@@ -80,7 +77,6 @@ base:float|int=10,
 nonpositive:Literal['clip','mask']='clip',
 subs:Iterable[int]|None=None
 )->NoReturn:'''対数スケールを作成する。
-
  :param base: 対数の底を指定する。
  :type base: float|int
  :param nonpositive: 非正の値に対する動作を指定する。
@@ -122,7 +118,6 @@ base:float|int=10,
 nonpositive:Literal['clip','mask']='clip',
 subs:Iterable[int]|None=None
 )->NoReturn:'''対数スケールを作成する。
-
  :param base: 対数の底を指定する。
  :type base: float|int
  :param nonpositive: 非正の値に対する動作を指定する。

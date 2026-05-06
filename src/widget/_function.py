@@ -1,7 +1,6 @@
 from ..typing import Any
 from ._color import Color
-from .developer import LIST, Number
-
+from .developer import LIST,Number
 __all__=['bols','Color','ints','intsmin','listchose','nums','numsmin','parsecolor','typelist','int0','int0s','int1s','list2float','list2int','list2num','list4float','list4int','list4num','num0','num0s','num1s','range_num']
 def list2num(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,list|tuple) and len(lin)==2 and all(isinstance(i,int|float|Number)for i in lin) else False
 def list2int(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,list|tuple) and len(lin)==2 and all(isinstance(i,int)for i in lin) else False
@@ -15,7 +14,6 @@ def typelist(val:Any)->bool:
  return False
 def listchose(val:str,arr:list,other:str|None=None)->str:
  '''`val`が`arr`の配列内の要素に存在するかを調べる。存在しなかった場合,`other`を返す。もし`other`がNoneの場合で尚且つarrが配列の場合,arrの最初の要素を返す。
-
  :param val: 検索したい値を指定する。
  :type val: str
  :param arr: 検索するデータを指定する。
@@ -37,7 +35,6 @@ def numsmin(val:int|float|Number,mins:int|float|Number=0,other:Any=None)->int|fl
  return other
 def nums(val:int|float,other:int|float|Number|None=None)->int|float|Number|None:
  '''`val`が数値かを調べる。
-
  :param val: 調べたい値もしくはデータを指定する。
  :type val: int|float
  :param other: 調べたい値`val`がint|float型ではなかったときに返す値を指定する。
@@ -47,7 +44,6 @@ def nums(val:int|float,other:int|float|Number|None=None)->int|float|Number|None:
  return val if isinstance(val,int|float) else other
 def num1s(val:int|float|Number=0,mins:int|float|Number=1)->int|float|Number:
  '''`val`が1以上の数値かを調べる。
-
  :param val: 調べたい数値を指定する。
  :type val: int|float
  :param mins: 調べたい数値`val`の最低値を指定する。
@@ -57,7 +53,6 @@ def num1s(val:int|float|Number=0,mins:int|float|Number=1)->int|float|Number:
  return val if isinstance(val,int|float|Number)and 1<=val else mins
 def num0s(val:int|float|Number=0,mins:int|float|Number=0)->int|float|Number:
  '''`val`が0以上の数値かを調べる。
-
  :param val: 調べたい数値を指定する。
  :type val: int|float|Number
  :param mins: 調べたい数値`val`の最低値を指定する。
@@ -67,7 +62,6 @@ def num0s(val:int|float|Number=0,mins:int|float|Number=0)->int|float|Number:
  return val if isinstance(val,int|float|Number)and 0<=val else mins
 def num0(val:int|float|Number=0,mins:int|float|Number=0)->int|float|Number:
  '''`val`が0より大きい数値かを調べる。
-
  :param val: 調べたい数値を指定する。
  :type val: int|float
  :param mins: 調べたい数値`val`の最低値を指定する。
@@ -82,7 +76,6 @@ def intsmin(val:int,mins:int=0,other:Any=None)->int:
  return other
 def ints(val:int=0,other:int=None)->int:
  '''`val`がint型かを調べる。
-
  :param val: 調べたい数値を指定する。
  :type val: int
  :param other: 調べたい値`val`がint型ではなかったときに返す値を指定する。
@@ -92,7 +85,6 @@ def ints(val:int=0,other:int=None)->int:
  return val if isinstance(val,int) else other
 def int1s(val:int=0,mins:int=1)->int:
  '''`val`が1以上の正の整数かを調べる。
-
  :param val: 調べたい数値を指定する。
  :type val: int
  :param mins: 調べたい数値`val`の最低値を指定する。
@@ -102,7 +94,6 @@ def int1s(val:int=0,mins:int=1)->int:
  return val if isinstance(val,int)and 1<=val else mins
 def int0s(val:int=0,mins:int=0)->int:
  '''`val`が0以上の正の整数かを調べる。
-
  :param val: 調べたい数値を指定する。
  :type val: int
  :param mins: 調べたい数値`val`の最低値を指定する。
@@ -112,7 +103,6 @@ def int0s(val:int=0,mins:int=0)->int:
  return val if isinstance(val,int)and 0<=val else mins
 def int0(val:int=0,mins:int=0)->int:
  '''`val`が0より大きいの正の整数かを調べる。
-
  :param val: 調べたい数値を指定する。
  :type val: int
  :param mins: 調べたい数値`val`の最低値を指定する。
@@ -127,7 +117,6 @@ maxs:int|float=None,
 others:int|float=None
 )->int|float:
  '''`val`が`mins`から`maxs`の範囲内化を調べる。
-
  :param val: 範囲内かを調べたい数値を指定する。
  :type val: int|float
  :param mins: 範囲の最低値を指定する。
@@ -144,7 +133,6 @@ others:int|float=None
  return others
 def bols(j:bool,o:bool=True)->bool:
  '''`j`がbool型かを判断する。
-
  :param j: bool型か調べたい値を指定する。
  :type j: bool
  :param other: `j`がbool型ではなかったときに返す値を指定する。
@@ -155,7 +143,6 @@ def bols(j:bool,o:bool=True)->bool:
  return o
 def parsecolor(val:str,other:str=None)->str:
  '''`Color`を文字列で返す。
-
  :param value: 色名を指定する。
  :type value: str
  :param other: `value`がNoneなどの色の値ではない時に指定する色を指定する。

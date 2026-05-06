@@ -1,6 +1,4 @@
 from .._graphhelp import *
-
-
 class Boxplot(twoDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)

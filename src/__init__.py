@@ -1,6 +1,4 @@
 from .widget import *
-
-
 def counts():
  sgg.count+=1
  return sgg.count

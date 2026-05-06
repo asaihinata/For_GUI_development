@@ -1,7 +1,5 @@
 import logging
-
 from ...typing import NoReturn
-
 class Logger:
  def __init__(
 self,
@@ -12,7 +10,6 @@ sep:str='|',
 logfile:bool=False,
 file:str=...
 )->None:'''ログを作成する。
-
  :param name: ログ名を指定する。
  :type name: str
  :param level: ログレベルを指定する。
@@ -26,11 +23,9 @@ file:str=...
  :param file: ログの保存先のファイルを指定する。
  :type file: str'''
  def get_logger(self)->logging.Logger:'''logging.Loggerを返す。
-
  :return: `logging.Logger`を返す。
  :rtype: logging.Logger'''
  def read_log(self)->str:'''ログファイルのログを読み取る。
-
  :raises FileNotFoundError: ログファイルが存在しない場合に発生させる。
  :return: ログファイルのログを返す。
  :rtype: str'''

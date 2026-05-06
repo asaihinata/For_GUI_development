@@ -1,6 +1,4 @@
 from .._graphhelp import *
-
-
 def _waterfall_sum(data):
  arr,set_num=np.array([],dtype=object),0
  for i,num in enumerate(data):

@@ -1,8 +1,6 @@
 from collections.abc import Iterator
-from typing import Any, NoReturn, overload
-
+from typing import Any,NoReturn,overload
 from numpy._core.numeric import _AnyShapeT
-
 class LIST:
  __static_attributes__:tuple[str]
  __class__:type
@@ -37,13 +35,11 @@ class LIST:
  @overload
  def sort(self,type:bool=False)->LIST:'''LISTの要素を降順で並べ替える。'''
  def count(self,val:Any)->int:'''指定した`val`が配列内にいくつ出現するか調べる。
-
  :param val: _description_
  :type val: Any
  :return: 配列内の出現数を返す。
  :rtype: int'''
  def empty(self)->bool:'''`LIST`が空かを調べる。
-
  :return: `LIST`が空かを調べる。
  :rtype: bool'''
  @overload
@@ -55,7 +51,6 @@ end:int=...,
 step:int=...,
 endpoint:bool=False
 )->LIST:'''stepの間隔でstartからendまでの範囲を生成する。
-
  :param start: 開始の値を指定する。
  :type start: int
  :param end: 終了の値を指定する。
@@ -72,7 +67,6 @@ endpoint:bool=False
 cls,
 end:int=...
 )->LIST:'''1の間隔で0からendまでの範囲を生成する。
-
  :param end: 終了の値を指定する。
  :type end: int
  :return:
@@ -84,7 +78,6 @@ cls,
 start:int=...,
 end:int=...
 )->LIST:'''1の間隔でstartからendまでの範囲を生成する。
-
  :param start: 開始の値を指定する。
  :type start: int
  :param end: 終了の値を指定する。
@@ -97,7 +90,6 @@ cls,
 val:Any,
 size:int|_AnyShapeT=...
 )->LIST:'''`val`を`size`の大きさの配列を作成する。
-
  :param val: 埋めたい値を指定する。
  :type val: Any
  :param size: サイズを指定する。

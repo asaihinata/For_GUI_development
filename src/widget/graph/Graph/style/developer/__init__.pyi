@@ -1,9 +1,6 @@
-from typing import Any, overload
-
+from typing import Any,overload
 import numpy as np
-
 from .....developer import Number
-
 Typenumberlike=bool|float|int|Number|np.float16|np.float32|np.float64|np.int16|np.int32|np.int64|np.int8|np.uint16|np.uint32|np.uint64|np.uint8
 def range_zero_one(val:float,out:float=1.0,endpoint:bool=True)->float:...
 def num1s(val:int|float|Number=0,mins:int|float|Number=1)->int|float|Number:...
@@ -18,7 +15,6 @@ self,
 angle:Typenumberlike,
 dtype:bool=...
 )->None:'''度数法と弧度法の変換するクラス。
-
  :param angle: 変換したい角度を指定する。
  :type angle: Typenumberlike
  :param dtype: 弧度法から度数法に変換するか,度数法から弧度法に変換するか指定する。
@@ -30,7 +26,6 @@ self,
 angle:Typenumberlike,
 dtype:bool=True
 )->None:'''弧度法から度数法に変換する。
-
  :param angle: 変換したい角度を指定する。
  :type angle: Typenumberlike
  :param dtype: 弧度法から度数法に変換するか,度数法から弧度法に変換するか指定する。
@@ -42,7 +37,6 @@ self,
 angle:Typenumberlike,
 dtype:bool=False
 )->None:'''度数法から弧度法に変換する。
-
  :param angle: 変換したい角度を指定する。
  :type angle: Typenumberlike
  :param dtype: 弧度法から度数法に変換するか,度数法から弧度法に変換するか指定する。

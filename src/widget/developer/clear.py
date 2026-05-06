@@ -1,7 +1,6 @@
 from os import system as sys
 from platform import system
 from typing import Any
-
 __all__=['clear']
 class clear:
  '''コンソールを削除する。'''

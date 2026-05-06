@@ -1,12 +1,10 @@
-from tkinter import (BooleanVar, Button, Checkbutton, Entry, Frame, IntVar,
-                     Label, LabelFrame, Listbox, Menu, Menubutton, Radiobutton,
-                     Scale, Spinbox, StringVar, Text)
-from tkinter.ttk import Notebook, Style, Treeview
-
-from .._function import bols, listchose, num0, nums, parsecolor
+from tkinter import (BooleanVar,Button,Checkbutton,Entry,Frame,IntVar,
+                     Label,LabelFrame,Listbox,Menu,Menubutton,Radiobutton,
+                     Scale,Spinbox,StringVar,Text)
+from tkinter.ttk import Notebook,Style,Treeview
+from .._function import bols,listchose,num0,nums,parsecolor
 from .._log import Logger
 from ..base import Element
-
 logger=Logger(name='element',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class Texts(Element):
  def __init__(self,master,kw):

@@ -1,15 +1,12 @@
 from io import BytesIO
 from tkinter import Label
-
 from barcode import get_barcode_class
 from barcode.writer import ImageWriter
 from PIL import ImageTk
 from qrcode import make
-
 from ..._log import Logger
 from ...base import Element
 from ._photo import Photo
-
 __all__=['Barcode','Images','QRcode']
 logger=Logger(name='image',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class Images(Element):

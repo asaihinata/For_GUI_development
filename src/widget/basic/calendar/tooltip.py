@@ -1,8 +1,6 @@
 from sys import platform
 from tkinter import Toplevel
-from tkinter.ttk import Label, Style
-
-
+from tkinter.ttk import Label,Style
 class Tooltip(Toplevel):
  _initialized=False
  def __init__(self,master,**kw):

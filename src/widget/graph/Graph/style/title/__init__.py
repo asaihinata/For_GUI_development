@@ -1,16 +1,9 @@
 '''タイトルの設定'''
 from matplotlib.axes._axes import Axes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-
-from ..developer import Rad, listchose, range_zero_one
-
+from ..developer import Rad,listchose,range_zero_one
 __all__=['Title']
 class Title:
- fontsize_list=['xx-small','x-small','small','medium','large','x-large','xx-large']
- fontstretch_list=['ultra-condensed','extra-condensed','condensed','semi-condensed','normal','semi-expanded','expanded','extra-expanded','ultra-expanded']
- fontstyle_list=['normal','italic','oblique']
- fontvariant_list=['normal','small-caps']
- fontweight_list=['ultralight','light','normal','regular','book','medium','roman','semibold','demibold','demi','bold','heavy','extra bold','black']
  def __init__(
 self,
 ax,
@@ -37,13 +30,13 @@ fontweight=None
    raise TypeError('axの型が違います')
   self.ax=ax
   alpha=range_zero_one(alpha)
-  if isinstance(fontsize,int|float) or fontsize in self.fontsize_list:fontsize=fontsize
+  if isinstance(fontsize,int|float) or fontsize in ['xx-small','x-small','small','medium','large','x-large','xx-large']:fontsize=fontsize
   else:fontsize=12
-  if (isinstance(fontstretch,int|float) and 0<=fontstretch<=1000) or fontstretch in self.fontstretch_list:fontstretch=fontstretch
+  if (isinstance(fontstretch,int|float) and 0<=fontstretch<=1000) or fontstretch in ['ultra-condensed','extra-condensed','condensed','semi-condensed','normal','semi-expanded','expanded','extra-expanded','ultra-expanded']:fontstretch=fontstretch
   else:fontstretch='normal'
-  fontstyle=listchose(fontstyle,self.fontstyle_list)
-  fontvariant=listchose(fontvariant,self.fontvariant_list)
-  if (isinstance(fontweight,int|float) and 0<=fontweight<=1000) or fontweight in self.fontweight_list:fontweight=fontweight
+  fontstyle=listchose(fontstyle,['normal','italic','oblique'])
+  fontvariant=listchose(fontvariant,['normal','small-caps'])
+  if (isinstance(fontweight,int|float) and 0<=fontweight<=1000) or fontweight in ['ultralight','light','normal','regular','book','medium','roman','semibold','demibold','demi','bold','heavy','extra bold','black']:fontweight=fontweight
   else:fontweight='normal'
   if not isinstance(zorder,int|float|None):zorder=4
   if isinstance(pad,int|float|None):pad=pad
@@ -63,7 +56,7 @@ fontweight=None
   else:rotation='horizontal'
   if isinstance(rotation_mode,bool) and rotation_mode:rotation_mode='default'
   else:rotation_mode='anchor'
-  self.title_data=self.ax.set_title(
+  self.title=self.ax.set_title(
 title,
 loc=loc,
 pad=pad,
@@ -81,4 +74,3 @@ fontstyle=fontstyle,
 fontvariant=fontvariant,
 fontweight=fontweight
 )
- def title(self):return self.title_data

@@ -1,11 +1,9 @@
 from re import findall
 from tkinter import Misc
-
 from ..typing import FunctionType
 from ._font import fonts
-from ._function import bols, listchose, num0, parsecolor
+from ._function import bols,listchose,num0,parsecolor
 from ._log import Logger
-
 __all__=['Element']
 logger=Logger(name='base',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class Element:

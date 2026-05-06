@@ -1,9 +1,7 @@
 from collections.abc import Iterator
 from typing import Literal
-
 from matplotlib.markers import MarkerStyle
 from matplotlib.transforms import Affine2D
-
 __all__=['Marker']
 class Marker:
  marker_list=list(MarkerStyle.markers.keys())

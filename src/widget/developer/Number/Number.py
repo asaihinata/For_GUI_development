@@ -1,8 +1,6 @@
-from math import ceil, floor
+from math import ceil,floor
 from sys import getsizeof
-
 import numpy as np
-
 __all__=['Number']
 class Number:
  def __init__(self,val):

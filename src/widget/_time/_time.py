@@ -1,8 +1,7 @@
 '''日付や時間に関するモジュール'''
 from calendar import monthrange
-from datetime import date, datetime, timedelta
-from zoneinfo import ZoneInfo, available_timezones
-
+from datetime import date,datetime,timedelta
+from zoneinfo import ZoneInfo,available_timezones
 __all__=['times']
 class times:
  maxsyear=9999

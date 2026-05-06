@@ -1,8 +1,6 @@
 from matplotlib.text import Text
 from matplotlib.transforms import IdentityTransform
-
 from ...style import Color
-
 class Texts(Text):
  def __init__(
 self,

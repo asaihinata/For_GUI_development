@@ -1,70 +1,54 @@
 from tkinter import Misc
-
-from matplotlib.collections import (EventCollection, FillBetweenPolyCollection,
-                                    PathCollection, PolyCollection, QuadMesh)
-from matplotlib.container import BarContainer, ErrorbarContainer, StemContainer
+from matplotlib.collections import (EventCollection,FillBetweenPolyCollection,
+                                    PathCollection,PolyCollection,QuadMesh)
+from matplotlib.container import BarContainer,ErrorbarContainer,StemContainer
 from matplotlib.lines import Line2D
 from matplotlib.mlab import GaussianKDE
-from matplotlib.patches import Polygon, StepPatch, Wedge
+from matplotlib.patches import Polygon,StepPatch,Wedge
 from matplotlib.text import Text
-from numpy import dtype, float64, ndarray
+from numpy import dtype,float64,ndarray
 from numpy._typing import _AnyShape
 from numpy.typing import ArrayLike
-
 from ...typing import *
 from ..developer import Number
-
 class _Gset:
  def winsize(self)->tuple[int,int]:'''ウィジェットの現在の幅と高さを返す。
-
  :return: ウィジェットの現在の幅と高さをタプルで返す。
  :rtype: tuple[int,int]'''
  def winwidth(self)->int:'''ウィジェットの現在の幅を返す。
-
  :return: ウィジェットの現在の幅を返す。
  :rtype: int'''
  def winheight(self)->int:'''ウィジェットの現在の高さを返す。
-
  :return: ウィジェットの現在の高さを返す。
  :rtype: int'''
  def winxy(self)->tuple[int,int]:'''親ウィジェット内での座標を返す。
-
  :return: 親ウィジェット内での座標を返す。
  :rtype: tuple[int,int]'''
  def winx(self)->int:'''親ウィジェット内での左端のx座標を返す。
-
  :return: 親ウィジェット内での左端のx座標を返す。
  :rtype: int'''
  def winy(self)->int:'''親ウィジェット内での上端のy座標を返す。
-
  :return: 親ウィジェット内での上端のy座標を返す。
  :rtype: int'''
  def geometry(self)->tuple[float,float,float,float]:'''ウィジェットのサイズと位置を返す。
-
  :return: ウィジェットのサイズと位置を返す。
  :rtype: tuple[float,float,float,float]'''
  def rootxy(self)->tuple[int,int]:'''画面全体に対するウィジェットの座標を返す。
-
  :return: 画面全体に対するウィジェットの座標を返す。
  :rtype: tuple[int,int]'''
  def rootx(self)->int:'''画面全体に対するウィジェットの左端のx座標を返す。
-
  :return: 画面全体に対するウィジェットの左端のx座標を返す。
  :rtype: int'''
  def rooty(self)->int:'''画面全体に対するウィジェットの上端のy座標を返す。
-
  :return: 画面全体に対するウィジェットの上端のy座標を返す。
  :rtype: int'''
  def reqsize(self)->tuple[int,int]:'''ウィジェットが必要とする幅の長さと高さを返す。
-
  :return: ウィジェットが必要とする幅の長さと高さを返す。
  :rtype: tuple[int,int]'''
  def reqwidth(self)->int:'''ウィジェットが必要とする幅の長さを返す。
-
  :return: ウィジェットが必要とする幅の長さを返す。
  :rtype: int'''
  def reqheight(self)->int:'''ウィジェットが必要とする高さを返す。
-
  :return: ウィジェットが必要とする高さを返す。
  :rtype: int'''
  def visual(self)->str:'''色の表現形式を返す。'''
@@ -79,27 +63,21 @@ class _2Gset(_Gset):
 tuple[float64,float64],
 tuple[float64,float64]
 ]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
-
  :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
  :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
  def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
  :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
  :rtype: tuple[float64,float64]'''
  def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
  :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
  :rtype: tuple[float64,float64]'''
  def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
-
  :return: x軸,y軸の目盛りの位置を返す。
  :rtype: tuple[ndarray,ndarray]'''
  def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
-
  :return: x軸の目盛りの位置を返す。
  :rtype: ndarray'''
  def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
-
  :return: y軸の目盛りの位置を返す。
  :rtype: ndarray'''
 class _3Gset(_Gset):
@@ -112,19 +90,15 @@ tuple[float64,float64],
 tuple[float64,float64],
 tuple[float64,float64]
 ]:'''x軸,y軸,z軸の順で表示されている範囲の下限値と上限値を返す。
-
  :return: x軸,y軸,z軸の順で表示されている範囲の下限値と上限値のtupleを返す。
  :rtype: tuple[tuple[float64,float64],tuple[float64,float64],tuple[float64,float64]]'''
  def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
-
  :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
  :rtype: tuple[float64,float64]'''
  def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
-
  :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
  :rtype: tuple[float64,float64]'''
  def getzbound(self)->tuple[float64,float64]:'''表示されているz軸の範囲の下限値と上限値を昇順で返す。
-
  :return: 表示されているz軸の範囲の下限値と上限値のtupleを返す。
  :rtype: tuple[float64,float64]'''
  def getticks(self)->tuple[ndarray,ndarray,ndarray]:'''x軸,y軸,z軸の目盛りの位置を座標で返します。'''
@@ -173,7 +147,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''折線グラフを作成する。
-
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -308,7 +281,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''縦軸棒グラフを作成する。
-
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -438,7 +410,6 @@ legendshadow:bool=False,
 labelheight:int|float=1,
 align:Literal['center','edge']='center'
 )->None:'''横軸棒グラフを作成する。
-
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -568,7 +539,6 @@ legendshadow:bool=False,
 labelheight:int|float=1,
 align:Literal['center','edge']='center'
 )->None:'''じょうごグラフを生成する。
-
  :param data: `data`のデータを指定する。
  :type data: o_array
  :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。2n+1(nは正の整数)の整数を指定する。
@@ -695,7 +665,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''積み上げ縦棒グラフを生成する。
-
  :param data: `data`を指定する。
  :type data: n_array
  :param dataname: カテゴリ名を指定する。
@@ -818,7 +787,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''積み上げ横棒グラフを生成する。
-
  :param data: `data`を指定する。
  :type data: n_array
  :param dataname: カテゴリ名を指定する。
@@ -920,7 +888,6 @@ bg:ColorType='#ffffff',
 title:str=...,
 dpi:int|float=100
 )->None:'''円グラフを作成する。
-
  :param data: データを指定する。
  :type data: o_array
  :param label: ラベルを指定する。
@@ -1012,7 +979,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''箱ひげ図を作成する。
-
  :param data: dataのデータを指定する。
  :type data: n_array
  :param label: 箱ひげ図のデータ名を指定する。指定しなかった場合`box`+データの数になる。例)box0,box1
@@ -1153,7 +1119,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''x軸向きの滝グラフを作成する。
-
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -1293,7 +1258,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''y軸向きの滝グラフを作成する。
-
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -1431,7 +1395,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''散布図を作成する。
-
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -1565,7 +1528,6 @@ labelmouse_rotation:bool=True,
 elev:int|float=30,
 azim:int|float=45
 )->None:'''3Dの散布図を作成する。
-
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -1717,7 +1679,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''幹図を作成する。
-
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -1853,7 +1814,6 @@ legendframe:bool=True,
 legendshadow:bool=False,
 labely_verwrit:Literal['vertical','horizontal']='vertical'
 )->None:'''ヒストグラムを作成する。
-
  :param data: dataのデータを指定する。
  :type data: o_array
  :param xlabel: x軸のラベルを指定する。
@@ -1952,60 +1912,51 @@ width:int|float
  def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
  @overload
  def getrange(self,num:bool)->tuple[float64,float64]|tuple[float,float]:'''ヒストグラムの`bins`の上限値と下限値をtuple型で返す。
-
  :param num: 戻り値内の数値がfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :return: ヒストグラムの`bins`の上限値と下限値を返す。
  :rtype: tuple[float64,float64]|tuple[float,float]'''
  @overload
  def getrange(self,num:bool=True)->tuple[float64,float64]:'''ヒストグラムの`bins`の上限値と下限値をtuple型で返す。
-
  :param num: 戻り値内の数値がfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :return: ヒストグラムの`bins`の上限値と下限値を返す。
  :rtype: tuple[float64,float64]'''
  @overload
  def getrange(self,num:bool=False)->tuple[float,float]:'''ヒストグラムの`bins`の上限値と下限値をtuple型で返す。
-
  :param num: 戻り値内の数値がfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :return: ヒストグラムの`bins`の上限値と下限値を返す。
  :rtype: tuple[float,float]'''
  @overload
  def getmin(self,num:bool)->float64|float:'''ヒストグラムの`bins`の下限値を返す。
-
  :param num: 戻り値をfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :rtype: float64|float'''
  @overload
  def getmin(self,num:bool=True)->float64:'''ヒストグラムの`bins`の下限値を返す。
-
  :param num: 戻り値をfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :return: ヒストグラムの`bins`の下限値を返す。
  :rtype: float64'''
  @overload
  def getmin(self,num:bool=False)->float:'''ヒストグラムの`bins`の下限値を返す。
-
  :param num: 戻り値をfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :return: ヒストグラムの`bins`の下限値を返す。
  :rtype: float'''
  @overload
  def getmax(self,num:bool)->float64|float:'''ヒストグラムの`bins`の上限値を返す。
-
  :param num: 戻り値をfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :rtype: float64|float'''
  @overload
  def getmax(self,num:bool=True)->float64:'''ヒストグラムの`bins`の上限値を返す。
-
  :param num: 戻り値をfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :rtype: float64'''
  @overload
  def getmax(self,num:bool=False)->float:'''ヒストグラムの`bins`の上限値を返す。
-
  :param num: 戻り値をfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :rtype: float'''
@@ -2049,7 +2000,6 @@ legendshadow:bool=False,
 labely_verwrit:Literal['vertical','horizontal']='vertical',
 label:labeltype=...
 )->None:'''階段グラフを作成する。
-
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -2178,7 +2128,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''積み上げエリアチャートを作成する。
-
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -2305,7 +2254,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''バブルグラフを作成する。
-
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -2440,7 +2388,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''積上げ面グラフを作成する。
-
  :param x: 曲線を定義する節点のx座標を指定する。
  :type x: o_array
  :param ymin: 最初の曲線を定義する節点のy座標を指定する。
@@ -2568,7 +2515,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''経験的累積分布関数を作成する。
-
  :param complementary: 補累積分布を描画するか指定する。
  :type complementary: bool
  :param compress: 同一値のデータをまとめて最適化するかどうか指定する。
@@ -2709,7 +2655,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''誤差範囲付きの線グラフもしくはマーカーグラフ,あるいはその両方のエラーグラフを作成する。
-
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -2873,7 +2818,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''イベントグラフを作成する。
-
  :param data: `data`のデータを指定する。
  :type data: o_array
  :param linewidth: エラーバーの線の太さを指定する。
@@ -3004,7 +2948,6 @@ legendframe:bool=True,
 legendshadow:bool=False,
 labely_verwrit:Literal['vertical','horizontal']='vertical'
 )->None:'''2次元ヒストグラムを作成する。
-
  :param x: `x`のデータを一次元配列で指定する。
  :type x: o_array
  :param y: `y`のデータを一次元配列で指定する。
@@ -3099,7 +3042,6 @@ alpha:int|float,
 graph_grid:ColorType,
 title:str
 )->NoReturn:'''2次元ヒストグラムを再表示させる。
-
  :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる。
  :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる。'''
  def get(self)->list[ndarray,ndarray,ndarray,QuadMesh]:'''`matplotlib.axes.Axes.hist2d`の戻り値を配列で返す。'''
@@ -3149,7 +3091,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''バイオリングラフを作成する。
-
  :param data: 入力データを指定する。
  :type data: n_array
  :param x: `orientation`が`vertical`の時にx軸上にバイオリンが設置される配列を指定する。
@@ -3298,7 +3239,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''2次元六角形グラフを作成する。
-
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -3435,7 +3375,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 master:Misc=None
 )->None:'''ハットグラフを作成する。
-
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param data: `data`のデータを指定する。

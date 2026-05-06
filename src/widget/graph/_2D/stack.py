@@ -1,8 +1,5 @@
 from itertools import product
-
 from .._graphhelp import *
-
-
 class Stack(twoDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)

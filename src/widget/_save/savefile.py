@@ -1,8 +1,6 @@
 from os.path import splitext
 from pathlib import Path
-
 from .._dialog import asksaveasfilename
-
 __all__=['autofile_save']
 class autofile_save:
  def __init__(
@@ -14,7 +12,6 @@ initialfile:str=None,
 defaultextension:str='.txt'
 )->None:
   '''ファイルを保存する際,保存するファイル名を尋ねるダイアログを表示し,保存先のフォルダパスを取得する。
-
  :param title: ダイアログのタイトルを指定する。
  :type title: str
  :param filetypes: 保存できるファイル形式の選択肢を指定する。

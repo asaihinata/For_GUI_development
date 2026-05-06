@@ -1,7 +1,5 @@
 from ...developer import Number
 from .._graphhelp import *
-
-
 class Pie(twoDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)

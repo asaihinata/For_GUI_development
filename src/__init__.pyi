@@ -1,14 +1,11 @@
 from datetime import datetime
-from tkinter import StringVar, _Cursor
+from tkinter import StringVar,_Cursor
 from typing import Union
-
 from matplotlib.mlab import GaussianKDE
 from numpy import ndarray
 from numpy.typing import ArrayLike
-
 from .typing import *
 from .widget import *
-
 class sgg:
  @classmethod
  def window(
@@ -24,7 +21,6 @@ size:TupleNumbertype2=(None,None),
 maxmine:bool=False,
 location:TupleNumbertype2=(0,0)
 )->WindowController:'''ウィンドウを生成する。
-
  :param layout: ウィンドウで表示されるウィジェットを指定する。各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます。
  :type layout: list|tuple
  :param title: ウィンドウに表示されるタイトル名を指定する。
@@ -68,7 +64,6 @@ justify:Literal['left','center','right']='left',
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='w',
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat'
 )->dict[str,Any]:'''テキストを生成する。
-
  :param text: Textsウィジェットに表記させる文字を指定する。
  :type text: str'''
  @staticmethod
@@ -95,7 +90,6 @@ justify:Literal['left','center','right']='left',
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='w',
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat'
 )->dict[str,Any]:'''リンクテキストを生成する。
-
  :param text: Linkウィジェットに表記させる文字を指定する。
  :type text: str
  :param link: Linkウィジェットが押されたときにブラウザで開くURLのリンクを指定する。
@@ -109,7 +103,6 @@ name:str='No Images',
 takefocus:bool=True,
 key:str=...
 )->dict[str,Any]:'''画像を生成する。
-
  :param path: Imagesウィジェットに表示させる画像のパスを指定する。
  :type path: str
  :param byto: Imagesウィジェットに表示させる画像のバイトデータを指定する。
@@ -141,7 +134,6 @@ size:TupleNumbertype2=(None,None),
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat',
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='w'
 )->dict[str,Any]:'''ボタンを生成する。
-
  :param text: Buttonsウィジェットに表記させる文字を指定する。
  :type text: str
  :param function: Buttonsウィジェットが押された時実行される関数を指定する。
@@ -168,7 +160,6 @@ overstrike:bool=False,
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat',
 justify:Literal['left','center','right']='left'
 )->dict[str,Any]:'''入力欄を生成する。
-
  :param text: Inputウィジェットに表記させる文字を指定する。
  :type text: str
  :param width: Inputウィジェットの幅の長さを指定する。
@@ -205,7 +196,6 @@ state:Literal['normal','disabled']='normal',
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat',
 justify:Literal['left','center','right']='left'
 )->dict[str,Any]:'''テキストエリアを生成する。
-
  :param text: Multilineウィジェットに表記させる文字を指定する。
  :type text: str
  :param insertwidth: Multilineウィジェットの入力時の挿入ポイントの幅を指定する。
@@ -227,7 +217,6 @@ rowheight:int|float=50,
 bg:ColorType='#e0e0e0',
 key:str=...
 )->dict[str,Any]:'''表を生成する。
-
  :param header_fg: Tableウィジェットの見出しの文字色を指定する。
  :type header_fg: ColorType
  :param header_bg: Tableウィジェットの見出しの背景色を指定する。
@@ -256,7 +245,6 @@ header_bg:ColorType='#cccccc',
 rowheight:int|float=50,
 side_header:str=...
 )->dict[str,Any]:'''ツリーを生成する。
-
  :param header_fg: Treeウィジェットの見出しの文字色を指定する。
  :type header_fg: ColorType
  :param header_bg: Treeウィジェットの見出しの背景色を指定する。
@@ -295,7 +283,6 @@ exportselection:bool=False,
 selectmode:Literal['browse','single','multiple','extended']='browse',
 key:str=...
 )->dict[str,Any]:'''リストボックスを生成する。
-
  :param values: Listboxウィジェットに表記させるリストを指定する。
  :type values: list|tuple
  :param selectfg: Listboxウィジェットのリストに選択されているリストの文字色を指定する。
@@ -320,7 +307,6 @@ bd:int|float=0,
 padx:int|float=...,
 pady:int|float=...
 )->dict[str,Any]:'''コンボボックスを生成する。
-
  :param values: 選択項目を指定する。
  :type values: list
  :param default: 入力項目の初期テキストを指定する。
@@ -335,7 +321,6 @@ key:str=...,
 wraplength:int|float=0,
 bd:int|float=0
 )->dict[str,Any]:'''ラジオボタンを生成する。読み込み時,グループの最初のRadioウィジェットが選択される。
-
  :param text: Radioウィジェットに表記させる文字を指定する。
  :type text: str
  :param group: Radioウィジェットのグループを指定する。同じ名前にすることで,そのグループ内で排他的な選択を実施する。
@@ -348,7 +333,6 @@ wraplength:int|float=0,
 bd:int|float=0,
 key:str=...
 )->dict[str,Any]:'''チェックボタンを生成する。
-
  :param text: Checkboxウィジェットに表記させる文字を指定する。
  :type text: str
  :param default: 読み込み時,Checkboxウィジェットがチェックするかを指定する。
@@ -374,7 +358,6 @@ fg:ColorType=...,
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='solid',
 bd:int|float=1
 )->dict[str,Any]:'''枠線付きのフレームを生成する。
-
  :param layout: Framesウィジェットに表示させるウィジェットを指定する。各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます。
  :type layout: list[list]
  :param legendanchor: タイトルを表記する場所を指定する。
@@ -399,7 +382,6 @@ overstrike:bool=False,
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat',
 key:str=...
 )->dict[str,Any]:'''メニューバーを生成する。
-
  :param list: Menusウィジェットに表示させるメニューを指定する。
  :type list: list
  :param tearoff: メニューウィジェットを独立したウィンドウにするかを指定する。
@@ -426,7 +408,6 @@ bd:int|float=0,
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='w',
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat'
 )->dict[str,Any]:'''メニューボタンを生成する。
-
  :param text: MenuButtonsウィジェットのボタンに表記させる文字を指定する。
  :type text: str
  :param list: MenuButtonsウィジェットに表示させるメニューを指定する。
@@ -452,7 +433,6 @@ bg:ColorType=...,
 fg:ColorType=...,
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat'
 )->dict[str,Any]:'''フレームを生成する。
-
  :param layout: Columnウィジェットに表示させるウィジェットを指定する。各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます。
  :type layout: list[list]'''
  @staticmethod
@@ -467,7 +447,6 @@ max:int|float=100,
 key:str=...,
 bd:int|float=1
 )->dict[str,Any]:'''スライダーを生成する。
-
  :param digits: スケールの値を文字列として取得した際の数値の最大桁数を指定する。
  :type digits: int
  :param resolution: スライダーのステップ数を指定する。
@@ -497,7 +476,6 @@ bg:ColorType=...,
 bd:int|float=0,
 justify:Literal['left','center','right']='left'
 )->dict[str,Any]:'''数値専用の入力欄を生成する。
-
  :param wrap: 数値が`max`もしくは`min`で指定した範囲外を選択しようとした場合,`max`より大きい数値の場合は`min`へ`min`より小さい数値の場合は`max`へ移動するかを指定する。
  :type wrap: bool
  :param insertwidth: InputNumberウィジェットの入力時の挿入ポイントの幅を指定する。
@@ -523,7 +501,6 @@ wraplength:int|float=0,
 bd:int|float=0,
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='center'
 )->dict[str,Any]:'''ファイルパスを取得するダイアログを発生させるボタンを生成する。
-
  :param text: FileLoadウィジェットのボタンに表示させる文字を指定する。
  :type text: str
  :param title: ファイルを選択するダイアログのタイトルを指定する。
@@ -538,7 +515,6 @@ wraplength:int|float=0,
 bd:int|float=0,
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='center'
 )->dict[str,Any]:'''ファイルパスを取得するダイアログを発生させるボタンを生成する。
-
  :param text: FolderLoadウィジェットのボタンに表示させる文字を指定する。
  :type text: str
  :param title: フォルダを選択するダイアログのタイトルを指定する。
@@ -558,7 +534,6 @@ wraplength:int|float=0,
 bd:int|float=0,
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='center'
 )->dict[str,Any]:'''ファイルもしくはフォルダを選択し,選択されたパスを取得するダイアログを発生させるボタンを生成する。
-
  :param text: Savebtnウィジェットのボタンに表示させる文字を指定する。
  :type text: str
  :param title: フォルダを選択するダイアログのタイトルを指定する。
@@ -583,7 +558,6 @@ wraplength:int|float=0,
 bd:int|float=0,
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='center'
 )->dict[str,Any]:'''色を選択し,選択された色を取得するダイアログを発生させるボタンを生成する。
-
  :param color: ダイアログで選択される色の初期値を選択する。
  :type color: ColorType
  :param text: Colorbtnウィジェットのボタンに表示させる文字を指定する。
@@ -616,7 +590,6 @@ maxdate:datetime|None=None,
 mindate:datetime|None=None,
 showotherdays:bool=True
 )->dict[str,Any]:'''カレンダーを生成する。
-
  :param date: Calendarsウィジェットに表示する日付を指定する。
  :type date: datetime
  :param selectmode: ユーザーがマウスクリックで選択した日を変更できるかどうかを指定する。
@@ -662,7 +635,6 @@ slant:Literal['roman','italic']='roman',
 underline:bool=False,
 overstrike:bool=False
 )->dict[str,Any]:'''タブを生成する。
-
  :param tabs: Tabウィジェットに表示させるウィジェットを指定する。配列の最初の要素にタブ名を,次の要素にTabウィジェットに表示させる`layout`を指定する。
  :type tabs: list[list[str,list[list]]]'''
  @staticmethod
@@ -674,7 +646,6 @@ mode:Literal['determinate','indeterminate']='determinate',
 orient:Literal['horizontal','vertical']='horizontal',
 key:str=...
 )->dict[str,Any]:'''プログレスバーを生成する。
-
  :param length: TProgressbarウィジェットの長さを指定する。
  :type length: int|float
  :param orient: TProgressbarウィジェットの向きを指定する。
@@ -692,7 +663,6 @@ data_type:Literal['EAN-8','EAN-13','JAN','Code39','Code128']='Code128',
 name:str='No Barcode image',
 key:str=...
 )->dict[str,Any]:'''バーコードを生成する。
-
  :param data: バーコードで表示させる値を指定する。
  :type data: str
  :param data_type: バーコードの形式を指定する。
@@ -705,7 +675,6 @@ text:str=...,
 name:str='No Qrcode image',
 key:str=...
 )->dict[str,Any]:'''QRコードを生成する。
-
  :param text: QRコードを読みっとった際に表示させる値を指定する。
  :type text: str
  :param name: QRコードを生成する際,何らかの例外が起こった場合に表示する文字を指定する。
@@ -751,7 +720,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''折線グラフを生成する。
-
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -867,7 +835,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''縦軸棒グラフを生成する。
-
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -983,7 +950,6 @@ height:int|float=1,
 align:Literal['center','edge']='center',
 key:str=...
 )->dict[str,Any]:'''横軸棒グラフを生成する。
-
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -1098,7 +1064,6 @@ height:int|float=1,
 align:Literal['center','edge']='center',
 key:str=...
 )->dict[str,Any]:'''じょうごグラフを生成する。
-
  :param data: `data`のデータを指定する。
  :type data: o_array
  :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。2n+1(nは正の整数)の整数を指定する。
@@ -1209,7 +1174,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''積み上げ縦棒グラフを生成する。
-
  :param data: `data`を指定する。
  :type data: n_array
  :param dataname: カテゴリ名を指定する。
@@ -1316,7 +1280,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''積み上げ横棒グラフを生成する。
-
  :param data: `data`を指定する。
  :type data: n_array
  :param dataname: カテゴリ名を指定する。
@@ -1404,7 +1367,6 @@ dpi:int|float=100,
 alpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''円グラフを生成する。
-
  :param data: `data`のデータを指定する。
  :type data: o_array
  :param label: ラベルを指定する。
@@ -1477,7 +1439,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''箱ひげ図を生成する。
-
  :param data: `data`のデータを指定する。
  :type data: n_array
  :param label: 箱ひげ図のデータ名を指定する。指定しなかった場合`box`+データの数になる。例)box0,box1
@@ -1594,7 +1555,6 @@ dcolor:ColorType='#e97132',
 width:int|float=1,
 key:str=...
 )->dict[str,Any]:'''x軸向きにバーを設置された滝グラフを生成する。
-
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -1715,7 +1675,6 @@ dcolor:ColorType='#e97132',
 height:int|float=1,
 key:str=...
 )->dict[str,Any]:'''y軸向きにバーを設置された滝グラフを生成する。
-
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -1832,7 +1791,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''散布図を生成する。
-
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -1949,7 +1907,6 @@ elev:int|float=30,
 azim:int|float=45,
 key:str=...
 )->dict[str,Any]:'''3Dの散布図を生成する。
-
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -2077,7 +2034,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''幹図を生成する。
-
  :param x: `x`のデータを指定する。
  :type x: ndarray|list|tuple
  :param y: `y`のデータを指定する。
@@ -2196,7 +2152,6 @@ xlabel:str=...,
 ylabel:str=...,
 key:str=...
 )->dict[str,Any]:'''階段グラフを生成する。
-
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -2304,7 +2259,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''ハットグラフを生成する。
-
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param data: `data`のデータを指定する。
@@ -2414,7 +2368,6 @@ xlabel:str=...,
 ylabel:str=...,
 key:str=...
 )->dict[str,Any]:'''ヒストグラムを生成する。
-
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -2532,7 +2485,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''積み上げエリアチャートを生成する。
-
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -2647,7 +2599,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''バブルグラフを生成する。
-
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -2761,7 +2712,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''積上げ面グラフを作成する。
-
  :param x: 曲線を定義する節点のx座標を指定する。
  :type x: o_array
  :param ymin: 最初の曲線を定義する節点のy座標を指定する。
@@ -2870,7 +2820,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''経験的累積分布関数を作成する。
-
  :param data: 入力データを指定する。
  :type data: n_array
  :param complementary: 補累積分布を描画するか指定する。
@@ -2996,7 +2945,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''誤差範囲付きの線グラフもしくはマーカーグラフ,あるいはその両方のエラーグラフを作成する。
-
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -3131,7 +3079,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''イベントグラフを作成する。
-
  :param data: `data`のデータを指定する。
  :type data: o_array
  :param linewidth: エラーバーの線の太さを指定する。
@@ -3249,7 +3196,6 @@ xlabel:str=...,
 ylabel:str=...,
 key:str=...
 )->dict[str,Any]:'''2次元ヒストグラムを生成する。
-
  :param x: `x`のデータを一次元配列で指定する。
  :type x: o_array
  :param y: `y`のデータを一次元配列で指定する。
@@ -3370,7 +3316,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''バイオリングラフを作成する。
-
  :param data: 入力データを指定する。
  :type data: n_array
  :param x: `orientation`が`vertical`の時にx軸上にバイオリンが設置される配列を指定する。
@@ -3497,7 +3442,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''2次元六角形グラフを作成する。
-
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -3583,7 +3527,6 @@ title:str='Information',
 message:str='Information message',
 icon:Literal['info','warning','error','question']='info'
 )->str:'''指定されたタイトルとメッセージを持つ情報メッセージボックスを作成して表示します。
-
  :param title: 情報メッセージボックスに表示させるタイトル名を指定する。
  :type title: str
  :param icon: 情報メッセージボックスに表示させるアイコンを指定する。
@@ -3597,7 +3540,6 @@ title:str='Warning',
 message:str='Warning message',
 icon:Literal['info','warning','error','question']='warning'
 )->str:'''指定されたタイトルとメッセージを含む警告メッセージボックスを作成して表示します。
-
  :param title: 警告メッセージボックスに表示させるタイトル名を指定する。
  :type title: str
  :param message: 警告メッセージボックスに表示させるメッセージを指定する。
@@ -3613,7 +3555,6 @@ title:str='Warning',
 message:str='Warning message',
 icon:Literal['info','warning','error','question']='warning'
 )->Union[str]:'''指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つ警告メッセージボックスを作成して表示します。
-
  :param title: 警告メッセージボックスに表示させるタイトル名を指定する。
  :type title: str
  :param message: 警告メッセージボックスに表示させるメッセージを指定する。
@@ -3629,7 +3570,6 @@ title:str='Error',
 message:str='Error message',
 icon:Literal['info','warning','error','question']='error'
 )->str:'''指定されたタイトルとメッセージを持つエラーメッセージボックスを作成して表示します。
-
  :param title: エラーメッセージボックスに表示させるタイトル名を指定する。
  :type title: str
  :param message: エラーメッセージボックスに表示させるメッセージを指定する。
@@ -3645,7 +3585,6 @@ title:str='Error',
 message:str='Error message',
 icon:Literal['info','warning','error','question']='error'
 )->Union[str]:'''指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つエラーメッセージボックスを作成して表示します。
-
  :param title: エラーメッセージボックスに表示させるタイトル名を指定する。
  :type title: str
  :param message: エラーメッセージボックスに表示させるメッセージを指定する。
@@ -3661,7 +3600,6 @@ title:str='Question',
 message:str='Question message',
 icon:Literal['info','warning','error','question']='question'
 )->Union[str]:'''「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる。
-
  :param title: ダイアログに表示させるタイトル名を指定する。
  :type title: str
  :param message: ダイアログに表示させるメッセージを指定する。
@@ -3677,7 +3615,6 @@ title:str='Question',
 message:str='Question message',
 icon:Literal['info','warning','error','question']='question'
 )->bool:'''「OK」か「キャンセル」を選択させるダイアログを表示させる。
-
  :param title: ダイアログに表示させるタイトル名を指定する。
  :type title: str
  :param message: ダイアログに表示させるメッセージを指定する。
@@ -3693,7 +3630,6 @@ title:str='Question',
 message:str='Question message',
 icon:Literal['info','warning','error','question']='question'
 )->bool:'''「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる。「はい」の場合はTrueを,「いいえ」の場合はFalseを返す。
-
  :param title: ダイアログに表示させるタイトル名を指定する。
  :type title: str
  :param message: ダイアログに表示させるメッセージを指定する。
@@ -3709,7 +3645,6 @@ title:str='Question',
 message:str='Question message',
 icon:Literal['info','warning','error','question']='question'
 )->Union[bool,None]:'''「はい(Yes)」「いいえ(No)」「キャンセル(Cancel)」を選択させるダイアログを表示させる。「はい」の場合はTrueを,「いいえ」の場合はFalseを返す,「キャンセル(Cancel)」もしくはダイアログを閉じた場合Noneを返す。
-
  :param title: ダイアログに表示させるタイトル名を指定する。
  :type title: str
  :param message: ダイアログに表示させるメッセージを指定する。
@@ -3725,7 +3660,6 @@ title:str='Question',
 message:str='Question message',
 icon:Literal['info','warning','error','question']='question'
 )->bool:'''操作を再試行するかどうかを尋ねる「再試行」ボタンと「キャンセル」ボタンが設置されたダイアログを表示させる。回答が「再試行」の場合はTrueを,「キャンセル」の場合はFalseを返します。
-
  :param title: ダイアログに表示させるタイトル名を指定する。
  :type title: str
  :param message: ダイアログに表示させるメッセージを指定する。

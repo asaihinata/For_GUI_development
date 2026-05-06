@@ -1,7 +1,5 @@
 import numpy as np
-
 from ...developer import sort
-
 __all__=['LIST']
 class LIST:
  def __init__(self,lists,*arg):
