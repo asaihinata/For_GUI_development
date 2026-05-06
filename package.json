@@ -1,7 +1,7 @@
 {
 "name":"for_gui_development",
 "version":"1.0.0",
-"description":"<div class=\"top\"> <div class=\"box\"><img src=\"./docs/img/icon.png\"></div> <div class=\"box\"><h1>フレームワーク</h1></div> </div> GUIのフレームワーク",
+"description":"<div class=\"top\"><div class=\"box\"><img src=\"./docs/img/icon.png\"></div><div class=\"box\"><h1>フレームワーク</h1></div></div>GUIのフレームワーク",
 "main":"index.js",
 "directories":{"doc":"docs","test":"test"},
 "scripts":{"test":"echo \"Error:no test specified\" && exit 1","prepare":"husky","lint":"eslint ."},
