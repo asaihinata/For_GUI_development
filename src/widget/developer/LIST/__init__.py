@@ -1,5 +1,4 @@
 import numpy as np
-from ...developer import sort
 __all__=['LIST']
 class LIST:
  def __init__(self,lists,*arg):
@@ -83,7 +82,7 @@ class LIST:
   return(self.lists*(val//len(self.lists)+1))[:val]
  def sort(self,type=True):
   if not isinstance(type,bool):type=True
-  self.lists=sort(self.lists,type)
+  self.lists=sorted(self.lists,key=_ascending if type else _descending)
   return self
  def count(self,val):return self.lists.count(val)
  def empty(self):return self.lists==[]
@@ -112,3 +111,27 @@ class LIST:
    )
    ):return LIST(np.full(size,val))
   return LIST(np.full(1,val))
+def _ascending(item):
+ if isinstance(item,int|float):return(0,item,'')
+ item_str=str(item)
+ if item_str.isdigit():return(1,int(item_str),'')
+ if item_str.isascii() and item_str.isalpha():return(2,[(i.lower(),0 if i.islower() else 1) for i in item_str])
+ if any(i.isdigit() for i in item_str):
+  has_ascii,has_japanese=any(i.isascii() for i in item_str),any(ord(i)>127 for i in item_str)
+  if has_ascii and not has_japanese:return(3,item_str,'')
+  elif has_japanese and has_ascii:return(5,item_str,'')
+  return(4,item_str,'')
+ if all(ord(i)>127 or i.isspace() for i in item_str):return(4,item_str,'')
+ return(5,item_str,'')
+def _descending(item):
+ if isinstance(item,int|float):return(5,item,'')
+ item_str=str(item)
+ if item_str.isdigit():return(4,int(item_str),'')
+ if item_str.isascii() and item_str.isalpha():return(3,[(i.lower(),5 if i.islower() else 4) for i in item_str])
+ if any(i.isdigit() for i in item_str):
+  has_ascii,has_japanese=any(i.isascii() for i in item_str),any(ord(i)>127 for i in item_str)
+  if has_ascii and not has_japanese:return(2,item_str,'')
+  elif has_japanese and has_ascii:return(0,item_str,'')
+  return(1,item_str,'')
+ if all(ord(i)>127 or i.isspace() for i in item_str):return(1,item_str,'')
+ return(0,item_str,'')

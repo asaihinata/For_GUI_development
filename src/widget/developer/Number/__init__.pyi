@@ -1,5 +1,4 @@
 from typing import Any,Iterator
-from ...developer import LIST
 from ...developer.typing import Numberlike
 class Number:
  __static_attributes__:tuple[str]
@@ -60,11 +59,11 @@ val:Numberlike
  def __pos__(self)->Number:...
  def value(self)->int|float:...
 class LISTNumber:
- lists:list[int|float]|LIST[int|float]|tuple[int|float]
+ lists:list[int|float]|tuple[int|float]
  judge:bool
- def __init__(self,obj:list|LIST|tuple):'''一次元配列内のNumberを含む数値を数値に変換する。
+ def __init__(self,obj:list|tuple):'''一次元配列内のNumberを含む数値を数値に変換する。
  :param obj: 変換したい配列を指定する。
- :type obj: list|LIST|tuple'''
+ :type obj: list|tuple'''
  def __bool__(self)->bool:'''配列内の全ての要素が数値のみTrueを返す。'''
  def __iter__(self)->Iterator[Any]:...
  def __len__(self)->int:...

@@ -1,12 +1,10 @@
-from ...developer import LIST,Number
 __all__=['sort']
 class sort:
  def __init__(self,data,types=True):
-  if not isinstance(data,list|tuple|LIST):
+  if not isinstance(data,list|tuple):
    raise TypeError('dataに配列の型を指定してください')
-  if isinstance(data,LIST):data=data.lists
   self.order=types if isinstance(types,bool) else True
-  self.data=sorted(self.data,key=sort._ascending if self.order else sort._descending)
+  self.data=sorted(data,key=sort._ascending if self.order else sort._descending)
  @classmethod
  def __instancecheck__(cls,ins):return isinstance(ins,sort)
  def __contains__(self,val):return val in self.data
@@ -40,7 +38,6 @@ class sort:
  @staticmethod
  def _ascending(item):
   if isinstance(item,int|float):return(0,item,'')
-  elif isinstance(item,Number):return(0,item.val,'')
   item_str=str(item)
   if item_str.isdigit():return(1,int(item_str),'')
   if item_str.isascii() and item_str.isalpha():return(2,[(i.lower(),0 if i.islower() else 1) for i in item_str])
@@ -54,7 +51,6 @@ class sort:
  @staticmethod
  def _descending(item):
   if isinstance(item,int|float):return(5,item,'')
-  if isinstance(item,Number):return(5,item.val,'')
   item_str=str(item)
   if item_str.isdigit():return(4,int(item_str),'')
   if item_str.isascii() and item_str.isalpha():return(3,[(i.lower(),5 if i.islower() else 4) for i in item_str])

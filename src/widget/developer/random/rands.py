@@ -1,7 +1,6 @@
 from sys import getsizeof
 from numpy import asarray
 from numpy.random import choice,default_rng
-from ...developer import LIST,Number
 __all__=['rands']
 class rands:
  '''ランダムな値を生成する。'''
@@ -25,22 +24,16 @@ class rands:
   if max<min:min,max=max,min
   return self.rng.random(size)*(max-min)+max
  def normal(self,low=0,high=1,lenght=None,hierarchy=None):
-  if isinstance(low,Number):low=low.val
-  if isinstance(high,Number):high=high.val
   if isinstance(hierarchy,int) and 2<=hierarchy:
    return self.rng.normal(low,high,(hierarchy,lenght))
   else:
    return self.rng.normal(low,high,lenght)
  def rands(self,low=1,high=None,lenght=1,hierarchy=None):
-  if isinstance(low,Number):low=low.val
-  if isinstance(high,Number):high=high.val
   if high<low:high,high=high,low
   if isinstance(hierarchy,int) and 2<=hierarchy:return self.rng.uniform(low=low,high=high,size=(hierarchy,lenght))
   else:return self.rng.uniform(low=low,high=high,size=lenght)
  def randsint(self,low=1,high=None,lenght=1,hierarchy=None):
-  if isinstance(low,Number):low=low.val
-  if isinstance(high,Number):high=high.val
   if high<low:high,high=high,low
   if isinstance(hierarchy,int) and 2<=hierarchy:return self.rng.integers(low=low,high=high,size=(hierarchy,lenght))
   else:return self.rng.integers(low=low,high=high,size=lenght)
- def listrand(self,arr,size=None):return choice(asarray(arr.lists if isinstance(arr,LIST) else arr),size=size)
+ def listrand(self,arr,size=None):return choice(asarray(arr),size=size)

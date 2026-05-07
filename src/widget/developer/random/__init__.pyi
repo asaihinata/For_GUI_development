@@ -3,7 +3,6 @@ from typing import Any,NoReturn,overload
 import numpy as np
 from numpy._typing import NDArray,_ArrayLikeFloat_co,_FloatLike_co,_ShapeLike
 from numpy.random import Generator
-from ...developer import LIST
 class rand:
  seeds:int
  rng:Generator
@@ -266,11 +265,11 @@ hierarchy:int|None=None,
  @classmethod
  def listrand(
 cls,
-arr:LIST|list|tuple|np.ndarray,
+arr:list|tuple|np.ndarray,
 size:int|tuple[int,int]|None=None
 )->np.ndarray:'''配列から重複ありのランダムに選択された要素の配列を作成する。
  :param arr: 配列を指定する。
- :type arr: LIST|list|tuple|np.ndarray
+ :type arr: list|tuple|np.ndarray
  :param size: 作成する配列の大きさを指定する。
  :type size: int|tuple[int,int]|None
  :return: 配列から重複ありのランダムに選択された要素の配列を返す。
@@ -517,11 +516,11 @@ hierarchy:int|None=None,
  :rtype: NDArray[np.int64]'''
  def listrand(
 self,
-arr:LIST|list|tuple|np.ndarray,
+arr:list|tuple|np.ndarray,
 size:int|tuple[int,int]|None=None
 )->np.ndarray:'''配列から重複ありのランダムに選択された要素の配列を作成する。
  :param arr: 配列を指定する。
- :type arr: LIST|list|tuple|np.ndarray
+ :type arr: list|tuple|np.ndarray
  :param size: 作成する配列の大きさを指定する。
  :type size: int|tuple[int,int]|None
  :return: 配列から重複ありのランダムに選択された要素の配列を返す。

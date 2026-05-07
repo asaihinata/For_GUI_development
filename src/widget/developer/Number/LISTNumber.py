@@ -1,9 +1,8 @@
-from ...developer import LIST
 from .Number import Number
 __all__=['LISTNumber']
 class LISTNumber:
  def __init__(self,obj):
-  if not isinstance(obj,list|LIST|tuple):
+  if not isinstance(obj,list|tuple):
    raise TypeError('型によるエラー')
   self.lists=[i.val if isinstance(i,Number) else i for i in obj]
   self.judge=all(isinstance(i,int|float)for i in self.lists)

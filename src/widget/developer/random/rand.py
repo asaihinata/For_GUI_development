@@ -1,7 +1,6 @@
 from sys import getsizeof
 from numpy import asarray
 from numpy.random import choice,default_rng
-from ...developer import LIST,Number
 __all__=['rand']
 class rand:
  '''ランダムな値を生成する。'''
@@ -38,22 +37,16 @@ class rand:
  def _randrange(low,high,size):return rand.rng.random(size)*(high-low)+low
  @classmethod
  def normal(cls,low=0,high=1,lenght=None,hierarchy=None):
-  if isinstance(low,Number):low=low.val
-  if isinstance(high,Number):high=high.val
   return cls.rng.normal(low,high,(hierarchy,lenght)) if isinstance(hierarchy,int) and 2<=hierarchy else cls.rng.normal(low,high,lenght)
  @classmethod
  def rands(cls,low=1,high=None,lenght=1,hierarchy=None):
-  if isinstance(low,Number):low=low.val
-  if isinstance(high,Number):high=high.val
   if high<low:high,high=high,low
   if isinstance(hierarchy,int) and 2<=hierarchy:return cls.rng.uniform(low=low,high=high,size=(hierarchy,lenght))
   else:return cls.rng.uniform(low=low,high=high,size=lenght)
  @classmethod
  def randsint(cls,low=1,high=None,lenght=1,hierarchy=None):
-  if isinstance(low,Number):low=low.val
-  if isinstance(high,Number):high=high.val
   if high<low:high,high=high,low
   if isinstance(hierarchy,int) and 2<=hierarchy:return cls.rng.integers(low=low,high=high,size=(hierarchy,lenght))
   else:return cls.rng.integers(low=low,high=high,size=lenght)
  @classmethod
- def listrand(cls,arr,size=None):return choice(asarray(arr.lists if isinstance(arr,LIST) else arr),size=size)
+ def listrand(cls,arr,size=None):return choice(asarray(arr),size=size)
