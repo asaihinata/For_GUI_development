@@ -2,8 +2,6 @@ import numpy as np
 from matplotlib.colors import cnames,to_hex,to_rgb,to_rgba
 __all__=['Color']
 class Color:
- NONERGBACOLOR=np.array([0,0,0,1])
- NONERGBCOLOR=np.array([0,0,0])
  def __init__(self,color,keep_alpha=False):
   if not isinstance(keep_alpha,bool):keep_alpha=False
   else:keep_alpha=keep_alpha

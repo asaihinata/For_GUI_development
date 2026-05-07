@@ -1,4 +1,6 @@
 from datetime import datetime
+from os import PathLike
+from pathlib import Path
 from tkinter import StringVar,_Cursor
 from typing import Union
 from matplotlib.mlab import GaussianKDE
@@ -20,7 +22,8 @@ scroll_y:bool=...,
 size:TupleNumbertype2=(None,None),
 maxmine:bool=False,
 location:TupleNumbertype2=(0,0)
-)->WindowController:'''ウィンドウを生成する。
+)->WindowController:'''ウィンドウを作成する。
+
  :param layout: ウィンドウで表示されるウィジェットを指定する。各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます。
  :type layout: list|tuple
  :param title: ウィンドウに表示されるタイトル名を指定する。
@@ -63,7 +66,8 @@ cursor:_Cursor=...,
 justify:Literal['left','center','right']='left',
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='w',
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat'
-)->dict[str,Any]:'''テキストを生成する。
+)->dict[str,Any]:'''テキストを作成する。
+
  :param text: Textsウィジェットに表記させる文字を指定する。
  :type text: str'''
  @staticmethod
@@ -89,7 +93,8 @@ size:TupleNumbertype2=(None,None),
 justify:Literal['left','center','right']='left',
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='w',
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat'
-)->dict[str,Any]:'''リンクテキストを生成する。
+)->dict[str,Any]:'''リンクテキストを作成する。
+
  :param text: Linkウィジェットに表記させる文字を指定する。
  :type text: str
  :param link: Linkウィジェットが押されたときにブラウザで開くURLのリンクを指定する。
@@ -102,7 +107,8 @@ size:TupleNumbertype2=(None,None),
 name:str='No Images',
 takefocus:bool=True,
 key:str=...
-)->dict[str,Any]:'''画像を生成する。
+)->dict[str,Any]:'''画像を作成する。
+
  :param path: Imagesウィジェットに表示させる画像のパスを指定する。
  :type path: str
  :param byto: Imagesウィジェットに表示させる画像のバイトデータを指定する。
@@ -133,7 +139,8 @@ overstrike:bool=False,
 size:TupleNumbertype2=(None,None),
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat',
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='w'
-)->dict[str,Any]:'''ボタンを生成する。
+)->dict[str,Any]:'''ボタンを作成する。
+
  :param text: Buttonsウィジェットに表記させる文字を指定する。
  :type text: str
  :param function: Buttonsウィジェットが押された時実行される関数を指定する。
@@ -159,7 +166,8 @@ underline:bool=False,
 overstrike:bool=False,
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat',
 justify:Literal['left','center','right']='left'
-)->dict[str,Any]:'''入力欄を生成する。
+)->dict[str,Any]:'''入力欄を作成する。
+
  :param text: Inputウィジェットに表記させる文字を指定する。
  :type text: str
  :param width: Inputウィジェットの幅の長さを指定する。
@@ -195,7 +203,8 @@ wrap:Literal['none','word','char']='none',
 state:Literal['normal','disabled']='normal',
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat',
 justify:Literal['left','center','right']='left'
-)->dict[str,Any]:'''テキストエリアを生成する。
+)->dict[str,Any]:'''テキストエリアを作成する。
+
  :param text: Multilineウィジェットに表記させる文字を指定する。
  :type text: str
  :param insertwidth: Multilineウィジェットの入力時の挿入ポイントの幅を指定する。
@@ -216,7 +225,8 @@ colwidth:int|float=120,
 rowheight:int|float=50,
 bg:ColorType='#e0e0e0',
 key:str=...
-)->dict[str,Any]:'''表を生成する。
+)->dict[str,Any]:'''表を作成する。
+
  :param header_fg: Tableウィジェットの見出しの文字色を指定する。
  :type header_fg: ColorType
  :param header_bg: Tableウィジェットの見出しの背景色を指定する。
@@ -244,7 +254,8 @@ header_fg:ColorType='#000000',
 header_bg:ColorType='#cccccc',
 rowheight:int|float=50,
 side_header:str=...
-)->dict[str,Any]:'''ツリーを生成する。
+)->dict[str,Any]:'''ツリーを作成する。
+
  :param header_fg: Treeウィジェットの見出しの文字色を指定する。
  :type header_fg: ColorType
  :param header_bg: Treeウィジェットの見出しの背景色を指定する。
@@ -282,7 +293,8 @@ state:Literal['normal','disabled']='normal',
 exportselection:bool=False,
 selectmode:Literal['browse','single','multiple','extended']='browse',
 key:str=...
-)->dict[str,Any]:'''リストボックスを生成する。
+)->dict[str,Any]:'''リストボックスを作成する。
+
  :param values: Listboxウィジェットに表記させるリストを指定する。
  :type values: list|tuple
  :param selectfg: Listboxウィジェットのリストに選択されているリストの文字色を指定する。
@@ -306,7 +318,8 @@ key:str=...,
 bd:int|float=0,
 padx:int|float=...,
 pady:int|float=...
-)->dict[str,Any]:'''コンボボックスを生成する。
+)->dict[str,Any]:'''コンボボックスを作成する。
+
  :param values: 選択項目を指定する。
  :type values: list
  :param default: 入力項目の初期テキストを指定する。
@@ -320,7 +333,8 @@ group:str='default',
 key:str=...,
 wraplength:int|float=0,
 bd:int|float=0
-)->dict[str,Any]:'''ラジオボタンを生成する。読み込み時,グループの最初のRadioウィジェットが選択される。
+)->dict[str,Any]:'''ラジオボタンを作成する。
+読み込み時,グループの最初のRadioウィジェットが選択される。
  :param text: Radioウィジェットに表記させる文字を指定する。
  :type text: str
  :param group: Radioウィジェットのグループを指定する。同じ名前にすることで,そのグループ内で排他的な選択を実施する。
@@ -332,7 +346,8 @@ default:bool=False,
 wraplength:int|float=0,
 bd:int|float=0,
 key:str=...
-)->dict[str,Any]:'''チェックボタンを生成する。
+)->dict[str,Any]:'''チェックボタンを作成する。
+
  :param text: Checkboxウィジェットに表記させる文字を指定する。
  :type text: str
  :param default: 読み込み時,Checkboxウィジェットがチェックするかを指定する。
@@ -357,7 +372,8 @@ bg:ColorType=...,
 fg:ColorType=...,
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='solid',
 bd:int|float=1
-)->dict[str,Any]:'''枠線付きのフレームを生成する。
+)->dict[str,Any]:'''枠線付きのフレームを作成する。
+
  :param layout: Framesウィジェットに表示させるウィジェットを指定する。各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます。
  :type layout: list[list]
  :param legendanchor: タイトルを表記する場所を指定する。
@@ -381,7 +397,8 @@ underline:bool=False,
 overstrike:bool=False,
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat',
 key:str=...
-)->dict[str,Any]:'''メニューバーを生成する。
+)->dict[str,Any]:'''メニューバーを作成する。
+
  :param list: Menusウィジェットに表示させるメニューを指定する。
  :type list: list
  :param tearoff: メニューウィジェットを独立したウィンドウにするかを指定する。
@@ -407,7 +424,8 @@ overstrike:bool=False,
 bd:int|float=0,
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='w',
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat'
-)->dict[str,Any]:'''メニューボタンを生成する。
+)->dict[str,Any]:'''メニューボタンを作成する。
+
  :param text: MenuButtonsウィジェットのボタンに表記させる文字を指定する。
  :type text: str
  :param list: MenuButtonsウィジェットに表示させるメニューを指定する。
@@ -432,7 +450,8 @@ overstrike:bool=False,
 bg:ColorType=...,
 fg:ColorType=...,
 relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat'
-)->dict[str,Any]:'''フレームを生成する。
+)->dict[str,Any]:'''フレームを作成する。
+
  :param layout: Columnウィジェットに表示させるウィジェットを指定する。各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます。
  :type layout: list[list]'''
  @staticmethod
@@ -446,7 +465,8 @@ min:int|float=0,
 max:int|float=100,
 key:str=...,
 bd:int|float=1
-)->dict[str,Any]:'''スライダーを生成する。
+)->dict[str,Any]:'''スライダーを作成する。
+
  :param digits: スケールの値を文字列として取得した際の数値の最大桁数を指定する。
  :type digits: int
  :param resolution: スライダーのステップ数を指定する。
@@ -475,7 +495,8 @@ key:str=...,
 bg:ColorType=...,
 bd:int|float=0,
 justify:Literal['left','center','right']='left'
-)->dict[str,Any]:'''数値専用の入力欄を生成する。
+)->dict[str,Any]:'''数値専用の入力欄を作成する。
+
  :param wrap: 数値が`max`もしくは`min`で指定した範囲外を選択しようとした場合,`max`より大きい数値の場合は`min`へ`min`より小さい数値の場合は`max`へ移動するかを指定する。
  :type wrap: bool
  :param insertwidth: InputNumberウィジェットの入力時の挿入ポイントの幅を指定する。
@@ -500,7 +521,8 @@ fg:ColorType=...,
 wraplength:int|float=0,
 bd:int|float=0,
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='center'
-)->dict[str,Any]:'''ファイルパスを取得するダイアログを発生させるボタンを生成する。
+)->dict[str,Any]:'''ファイルパスを取得するダイアログを発生させるボタンを作成する。
+
  :param text: FileLoadウィジェットのボタンに表示させる文字を指定する。
  :type text: str
  :param title: ファイルを選択するダイアログのタイトルを指定する。
@@ -514,7 +536,8 @@ bg:ColorType=...,
 wraplength:int|float=0,
 bd:int|float=0,
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='center'
-)->dict[str,Any]:'''ファイルパスを取得するダイアログを発生させるボタンを生成する。
+)->dict[str,Any]:'''ファイルパスを取得するダイアログを発生させるボタンを作成する。
+
  :param text: FolderLoadウィジェットのボタンに表示させる文字を指定する。
  :type text: str
  :param title: フォルダを選択するダイアログのタイトルを指定する。
@@ -533,7 +556,8 @@ fg:ColorType=...,
 wraplength:int|float=0,
 bd:int|float=0,
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='center'
-)->dict[str,Any]:'''ファイルもしくはフォルダを選択し,選択されたパスを取得するダイアログを発生させるボタンを生成する。
+)->dict[str,Any]:'''ファイルもしくはフォルダを選択し,選択されたパスを取得するダイアログを発生させるボタンを作成する。
+
  :param text: Savebtnウィジェットのボタンに表示させる文字を指定する。
  :type text: str
  :param title: フォルダを選択するダイアログのタイトルを指定する。
@@ -557,7 +581,8 @@ fg:ColorType=...,
 wraplength:int|float=0,
 bd:int|float=0,
 anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='center'
-)->dict[str,Any]:'''色を選択し,選択された色を取得するダイアログを発生させるボタンを生成する。
+)->dict[str,Any]:'''色を選択し,選択された色を取得するダイアログを発生させるボタンを作成する。
+
  :param color: ダイアログで選択される色の初期値を選択する。
  :type color: ColorType
  :param text: Colorbtnウィジェットのボタンに表示させる文字を指定する。
@@ -589,7 +614,8 @@ textvariable:StringVar|None=None,
 maxdate:datetime|None=None,
 mindate:datetime|None=None,
 showotherdays:bool=True
-)->dict[str,Any]:'''カレンダーを生成する。
+)->dict[str,Any]:'''カレンダーを作成する。
+
  :param date: Calendarsウィジェットに表示する日付を指定する。
  :type date: datetime
  :param selectmode: ユーザーがマウスクリックで選択した日を変更できるかどうかを指定する。
@@ -634,7 +660,8 @@ weight:Literal['normal','bold']='normal',
 slant:Literal['roman','italic']='roman',
 underline:bool=False,
 overstrike:bool=False
-)->dict[str,Any]:'''タブを生成する。
+)->dict[str,Any]:'''タブを作成する。
+
  :param tabs: Tabウィジェットに表示させるウィジェットを指定する。配列の最初の要素にタブ名を,次の要素にTabウィジェットに表示させる`layout`を指定する。
  :type tabs: list[list[str,list[list]]]'''
  @staticmethod
@@ -645,7 +672,8 @@ length:int|float=200,
 mode:Literal['determinate','indeterminate']='determinate',
 orient:Literal['horizontal','vertical']='horizontal',
 key:str=...
-)->dict[str,Any]:'''プログレスバーを生成する。
+)->dict[str,Any]:'''プログレスバーを作成する。
+
  :param length: TProgressbarウィジェットの長さを指定する。
  :type length: int|float
  :param orient: TProgressbarウィジェットの向きを指定する。
@@ -662,7 +690,8 @@ data:str=...,
 data_type:Literal['EAN-8','EAN-13','JAN','Code39','Code128']='Code128',
 name:str='No Barcode image',
 key:str=...
-)->dict[str,Any]:'''バーコードを生成する。
+)->dict[str,Any]:'''バーコードを作成する。
+
  :param data: バーコードで表示させる値を指定する。
  :type data: str
  :param data_type: バーコードの形式を指定する。
@@ -674,7 +703,8 @@ key:str=...
 text:str=...,
 name:str='No Qrcode image',
 key:str=...
-)->dict[str,Any]:'''QRコードを生成する。
+)->dict[str,Any]:'''QRコードを作成する。
+
  :param text: QRコードを読みっとった際に表示させる値を指定する。
  :type text: str
  :param name: QRコードを生成する際,何らかの例外が起こった場合に表示する文字を指定する。
@@ -684,8 +714,35 @@ key:str=...
 x:n_array,
 y:n_array,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 linewidth:int|float=2,
 alpha:int|float=1,
 markersize:int|float=10,
@@ -696,6 +753,15 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
@@ -718,7 +784,8 @@ legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
-)->dict[str,Any]:'''折線グラフを生成する。
+)->dict[str,Any]:'''折線グラフを作成する。
+
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -739,6 +806,24 @@ key:str=...
  :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',': ','none',None,' ','']
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -797,8 +882,35 @@ x:o_array,
 y:n_array,
 logs:bool=False,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 linewidth:int|float=2,
 width:int|float=1,
 align:Literal['center','edge']='center',
@@ -807,6 +919,15 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -830,7 +951,8 @@ legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
-)->dict[str,Any]:'''縦軸棒グラフを生成する。
+)->dict[str,Any]:'''縦軸棒グラフを作成する。
+
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -851,6 +973,24 @@ key:str=...
  :type align: Literal['center','edge']
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -909,14 +1049,50 @@ x:o_array,
 y:n_array,
 logs:bool=False,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 linewidth:int|float=2,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
@@ -942,7 +1118,8 @@ alpha:int|float=1,
 height:int|float=1,
 align:Literal['center','edge']='center',
 key:str=...
-)->dict[str,Any]:'''横軸棒グラフを生成する。
+)->dict[str,Any]:'''横軸棒グラフを作成する。
+
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -963,6 +1140,24 @@ key:str=...
  :type align: Literal['center','edge']
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -1020,14 +1215,50 @@ key:str=...
 data:o_array,
 xmajormaxbins:int=11,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 linewidth:int|float=2,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
@@ -1053,7 +1284,8 @@ alpha:int|float=1,
 height:int|float=1,
 align:Literal['center','edge']='center',
 key:str=...
-)->dict[str,Any]:'''じょうごグラフを生成する。
+)->dict[str,Any]:'''じょうごグラフを作成する。
+
  :param data: `data`のデータを指定する。
  :type data: o_array
  :param xmajormaxbins: x軸の目盛りの数の最大数を指定する。2n+1(nは正の整数)の整数を指定する。
@@ -1072,6 +1304,24 @@ key:str=...
  :type align: Literal['center','edge']
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -1130,13 +1380,49 @@ data:n_array,
 dataname:o_array,
 width:int|float=0.8,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -1160,7 +1446,8 @@ legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
-)->dict[str,Any]:'''積み上げ縦棒グラフを生成する。
+)->dict[str,Any]:'''積み上げ縦棒グラフを作成する。
+
  :param data: `data`を指定する。
  :type data: n_array
  :param dataname: カテゴリ名を指定する。
@@ -1175,6 +1462,24 @@ key:str=...
  :type ylabel: str
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -1233,13 +1538,49 @@ data:n_array,
 dataname:o_array,
 height:int|float=0.8,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -1263,7 +1604,8 @@ legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
-)->dict[str,Any]:'''積み上げ横棒グラフを生成する。
+)->dict[str,Any]:'''積み上げ横棒グラフを作成する。
+
  :param data: `data`を指定する。
  :type data: n_array
  :param dataname: カテゴリ名を指定する。
@@ -1278,6 +1620,24 @@ key:str=...
  :type ylabel: str
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -1334,6 +1694,15 @@ key:str=...
  def Pie(
 data:o_array,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 startangle:int|float=0,
 startangletype:bool=True,
 shadow:bool=False,
@@ -1345,10 +1714,20 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 key:str=...
-)->dict[str,Any]:'''円グラフを生成する。
+)->dict[str,Any]:'''円グラフを作成する。
+
  :param data: `data`のデータを指定する。
  :type data: o_array
  :param label: ラベルを指定する。
@@ -1367,6 +1746,24 @@ key:str=...
  :type explode: list[int,float,Number]|tuple[int,float,Number]|int|float|Number
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -1383,6 +1780,15 @@ key:str=...
  def Boxplot(
 data:n_array,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 legend:bool=True,
 fill:bool=False,
 notch:bool=False,
@@ -1391,11 +1797,38 @@ orientation:Literal['vertical','horizontal']='vertical',
 width:int|float=0.15,
 whis:float|TupleFloat2=1.5,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -1419,7 +1852,8 @@ legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
-)->dict[str,Any]:'''箱ひげ図を生成する。
+)->dict[str,Any]:'''箱ひげ図を作成する。
+
  :param data: `data`のデータを指定する。
  :type data: n_array
  :param label: 箱ひげ図のデータ名を指定する。指定しなかった場合`box`+データの数になる。例)box0,box1
@@ -1438,6 +1872,24 @@ key:str=...
  :type whis: float|TupleFloat2
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
@@ -1501,11 +1953,38 @@ sumstext:str='sum',
 colorline:ColorType='#4477aa',
 linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -1532,7 +2011,8 @@ ucolor:ColorType='#156082',
 dcolor:ColorType='#e97132',
 width:int|float=1,
 key:str=...
-)->dict[str,Any]:'''x軸向きにバーを設置された滝グラフを生成する。
+)->dict[str,Any]:'''x軸向きにバーを設置された滝グラフを作成する。
+
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -1551,6 +2031,24 @@ key:str=...
  :type ylabel: str
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
@@ -1617,12 +2115,39 @@ sumstext:str='sum',
 colorline:ColorType='#4477aa',
 linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -1649,7 +2174,8 @@ ucolor:ColorType='#156082',
 dcolor:ColorType='#e97132',
 height:int|float=1,
 key:str=...
-)->dict[str,Any]:'''y軸向きにバーを設置された滝グラフを生成する。
+)->dict[str,Any]:'''y軸向きにバーを設置された滝グラフを作成する。
+
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -1668,6 +2194,24 @@ key:str=...
  :type ylabel: str
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
@@ -1730,8 +2274,35 @@ key:str=...
 x:n_array,
 y:n_array,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
 markersize:int|float=10,
 size:TupleNumbertype2=(500,400),
@@ -1739,6 +2310,15 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -1762,7 +2342,8 @@ legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
-)->dict[str,Any]:'''散布図を生成する。
+)->dict[str,Any]:'''散布図を作成する。
+
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -1779,6 +2360,24 @@ key:str=...
  :type markersize: int|float
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -1837,7 +2436,25 @@ x:o_array,
 y:o_array,
 z:o_array,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 zlabel:str=...,
 marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
 markersize:int|float=10,
@@ -1846,6 +2463,15 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -1876,7 +2502,8 @@ mouse_rotation:bool=True,
 elev:int|float=30,
 azim:int|float=45,
 key:str=...
-)->dict[str,Any]:'''3Dの散布図を生成する。
+)->dict[str,Any]:'''3Dの散布図を作成する。
+
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -1895,6 +2522,24 @@ key:str=...
  :type markersize: int|float
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -1968,8 +2613,35 @@ key:str=...
 x:ndarray|list|tuple=...,
 y:ndarray|list|tuple=...,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 orientation:Literal['vertical','horizontal']='vertical',
 bottom:int|float=0,
 marker:Literal['o','+','*','.','x','_','|','square','diamond','^','v','<','>','pentagram','hexagram']=...,
@@ -1979,6 +2651,15 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -2002,7 +2683,8 @@ legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
-)->dict[str,Any]:'''幹図を生成する。
+)->dict[str,Any]:'''幹図を作成する。
+
  :param x: `x`のデータを指定する。
  :type x: ndarray|list|tuple
  :param y: `y`のデータを指定する。
@@ -2025,6 +2707,24 @@ key:str=...
  :type color: Literal['r','g','b','c','m','y','k','w']|list[Literal['r','g','b','c','m','y','k','w']]|tuple[Literal['r','g','b','c','m','y','k','w']]
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param size: 表示させるグラフの大きさを指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
@@ -2091,6 +2791,15 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -2114,10 +2823,38 @@ legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 key:str=...
-)->dict[str,Any]:'''階段グラフを生成する。
+)->dict[str,Any]:'''階段グラフを作成する。
+
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -2194,12 +2931,48 @@ x:o_array,
 data:o_array,
 color:ColorType='#4477aa',
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -2223,7 +2996,8 @@ legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
-)->dict[str,Any]:'''ハットグラフを生成する。
+)->dict[str,Any]:'''ハットグラフを作成する。
+
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param data: `data`のデータを指定する。
@@ -2236,6 +3010,24 @@ key:str=...
  :type ylabel: str
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType
  :param size: 表示させるグラフの大きさを指定する。
@@ -2292,6 +3084,15 @@ key:str=...
  def Hist(
 data:o_array,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 width:int|float=1,
 min:int|float=...,
 max:int|float=...,
@@ -2304,6 +3105,15 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -2327,9 +3137,28 @@ legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 key:str=...
-)->dict[str,Any]:'''ヒストグラムを生成する。
+)->dict[str,Any]:'''ヒストグラムを作成する。
+
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -2354,6 +3183,24 @@ key:str=...
  :type bins: int|list|range|tuple|np.ndarray|Literal['auto','fd','doane','scott','stone','rice','sturges','sqrt']
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -2413,8 +3260,35 @@ key:str=...
 x:n_array,
 y:n_array,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 hatch:Literal[None,'o','oo','O','OO','x','xx','*','**','*-','+','++','+o','-','--',r'-\\','.','..','/','//','/o','O.','O|','\\','\\\\','\\|','o-','x*','|','|*','||']=None,
 baseline:Literal['zero','sym','wiggle','weighted_wiggle']='zero',
 color:ColorType|tuple[ColorType,...]=...,
@@ -2422,6 +3296,15 @@ size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -2445,7 +3328,8 @@ legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
-)->dict[str,Any]:'''積み上げエリアチャートを生成する。
+)->dict[str,Any]:'''積み上げエリアチャートを作成する。
+
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -2464,6 +3348,24 @@ key:str=...
  :type align: Literal['center','edge']
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -2526,13 +3428,49 @@ marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','no
 markersize:int|float=10,
 linewidth:int|float=2,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=0.5,
 graph_grid:ColorType='#b7b7b7',
@@ -2556,7 +3494,8 @@ legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
-)->dict[str,Any]:'''バブルグラフを生成する。
+)->dict[str,Any]:'''バブルグラフを作成する。
+
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -2577,6 +3516,24 @@ key:str=...
  :type label: labeltype
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -2636,13 +3593,49 @@ ymin:n_array=...,
 ymax:n_array=...,
 centerlinewidth:int|float=2,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -2667,6 +3660,7 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''積上げ面グラフを作成する。
+
  :param x: 曲線を定義する節点のx座標を指定する。
  :type x: o_array
  :param ymin: 最初の曲線を定義する節点のy座標を指定する。
@@ -2683,6 +3677,24 @@ key:str=...
  :type label: labeltype
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -2748,6 +3760,15 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -2772,6 +3793,7 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''経験的累積分布関数を作成する。
+
  :param data: 入力データを指定する。
  :type data: n_array
  :param complementary: 補累積分布を描画するか指定する。
@@ -2792,6 +3814,24 @@ key:str=...
  :type label: labeltype
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -2864,12 +3904,48 @@ capsize:int|float=0,
 errorevery:int|tuple[int,...]=1,
 color:ColorType|tuple[ColorType,...]=...,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -2894,6 +3970,7 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''誤差範囲付きの線グラフもしくはマーカーグラフ,あるいはその両方のエラーグラフを作成する。
+
  :param x: `x`のデータを指定する。
  :type x: n_array
  :param y: `y`のデータを指定する。
@@ -2934,6 +4011,24 @@ key:str=...
  :type label: labeltype
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -2994,13 +4089,49 @@ linelength:int|float=1,
 linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':']='solid',
 orientation:Literal['vertical','horizontal']='vertical',
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 color:ColorType|tuple[ColorType,...]=...,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -3025,6 +4156,7 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''イベントグラフを作成する。
+
  :param data: `data`のデータを指定する。
  :type data: o_array
  :param linewidth: エラーバーの線の太さを指定する。
@@ -3043,6 +4175,24 @@ key:str=...
  :type ylabel: str
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -3108,11 +4258,29 @@ ymin:int|float=...,
 bins:int|TupleInt2|ArrayLike|tuple[ArrayLike,ArrayLike]=10,
 density:bool=False,
 label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorType=...,
+labelha:Literal['left','center','right']|None=None,
+labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Iterable[str]|None=None,
+labelfontpath:str|PathLike|Path|None=None,
 size:TupleNumbertype2=(500,400),
 fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -3136,9 +4304,28 @@ legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
 xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorType=...,
+xlabelha:Literal['left','center','right']|None=None,
+xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Iterable[str]|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
 ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorType=...,
+ylabelha:Literal['left','center','right']|None=None,
+ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Iterable[str]|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
 key:str=...
-)->dict[str,Any]:'''2次元ヒストグラムを生成する。
+)->dict[str,Any]:'''2次元ヒストグラムを作成する。
+
  :param x: `x`のデータを一次元配列で指定する。
  :type x: o_array
  :param y: `y`のデータを一次元配列で指定する。
@@ -3159,6 +4346,24 @@ key:str=...
  :type ylabel: str
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -3233,6 +4438,15 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 graph_grid:ColorType='#b7b7b7',
 grid_xy:bool=True,
@@ -3256,6 +4470,7 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''バイオリングラフを作成する。
+
  :param data: 入力データを指定する。
  :type data: n_array
  :param x: `orientation`が`vertical`の時にx軸上にバイオリンが設置される配列を指定する。
@@ -3286,6 +4501,24 @@ key:str=...
  :type label: labeltype
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -3355,6 +4588,15 @@ fg:ColorType='#000000',
 bg:ColorType='#ffffff',
 color:ColorType|tuple[ColorType,...]=...,
 title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorType=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Iterable[str]|None=None,
+titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 graph_grid:ColorType='#b7b7b7',
@@ -3379,6 +4621,7 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''2次元六角形グラフを作成する。
+
  :param x: `x`のデータを指定する。
  :type x: o_array
  :param y: `y`のデータを指定する。
@@ -3403,6 +4646,24 @@ key:str=...
  :type label: labeltype
  :param title: グラフのタイトルを指定する。
  :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorType
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Iterable[str]|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
  :param color: 色を指定する。
  :type color: ColorType|tuple[ColorType,...]
  :param size: 表示させるグラフの大きさを指定する。
@@ -3461,7 +4722,8 @@ cls,
 title:str='Information',
 message:str='Information message',
 icon:Literal['info','warning','error','question']='info'
-)->str:'''指定されたタイトルとメッセージを持つ情報メッセージボックスを作成して表示します。
+)->str:'''指定されたタイトルとメッセージを持つ情報メッセージボックスを作成して表示させる。
+
  :param title: 情報メッセージボックスに表示させるタイトル名を指定する。
  :type title: str
  :param icon: 情報メッセージボックスに表示させるアイコンを指定する。
@@ -3474,7 +4736,8 @@ cls,
 title:str='Warning',
 message:str='Warning message',
 icon:Literal['info','warning','error','question']='warning'
-)->str:'''指定されたタイトルとメッセージを含む警告メッセージボックスを作成して表示します。
+)->str:'''指定されたタイトルとメッセージを含む警告メッセージボックスを作成して表示させる。
+
  :param title: 警告メッセージボックスに表示させるタイトル名を指定する。
  :type title: str
  :param message: 警告メッセージボックスに表示させるメッセージを指定する。
@@ -3489,7 +4752,8 @@ cls,
 title:str='Warning',
 message:str='Warning message',
 icon:Literal['info','warning','error','question']='warning'
-)->Union[str]:'''指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つ警告メッセージボックスを作成して表示します。
+)->Union[str]:'''指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つ警告メッセージボックスを作成して表示させる。
+
  :param title: 警告メッセージボックスに表示させるタイトル名を指定する。
  :type title: str
  :param message: 警告メッセージボックスに表示させるメッセージを指定する。
@@ -3504,7 +4768,8 @@ cls,
 title:str='Error',
 message:str='Error message',
 icon:Literal['info','warning','error','question']='error'
-)->str:'''指定されたタイトルとメッセージを持つエラーメッセージボックスを作成して表示します。
+)->str:'''指定されたタイトルとメッセージを持つエラーメッセージボックスを作成して表示させる。
+
  :param title: エラーメッセージボックスに表示させるタイトル名を指定する。
  :type title: str
  :param message: エラーメッセージボックスに表示させるメッセージを指定する。
@@ -3519,7 +4784,8 @@ cls,
 title:str='Error',
 message:str='Error message',
 icon:Literal['info','warning','error','question']='error'
-)->Union[str]:'''指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つエラーメッセージボックスを作成して表示します。
+)->Union[str]:'''指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つエラーメッセージボックスを作成して表示させる。
+
  :param title: エラーメッセージボックスに表示させるタイトル名を指定する。
  :type title: str
  :param message: エラーメッセージボックスに表示させるメッセージを指定する。
@@ -3535,6 +4801,7 @@ title:str='Question',
 message:str='Question message',
 icon:Literal['info','warning','error','question']='question'
 )->Union[str]:'''「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる。
+
  :param title: ダイアログに表示させるタイトル名を指定する。
  :type title: str
  :param message: ダイアログに表示させるメッセージを指定する。
@@ -3550,6 +4817,7 @@ title:str='Question',
 message:str='Question message',
 icon:Literal['info','warning','error','question']='question'
 )->bool:'''「OK」か「キャンセル」を選択させるダイアログを表示させる。
+
  :param title: ダイアログに表示させるタイトル名を指定する。
  :type title: str
  :param message: ダイアログに表示させるメッセージを指定する。
@@ -3564,7 +4832,8 @@ cls,
 title:str='Question',
 message:str='Question message',
 icon:Literal['info','warning','error','question']='question'
-)->bool:'''「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる。「はい」の場合はTrueを,「いいえ」の場合はFalseを返す。
+)->bool:'''「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる。
+「はい」の場合はTrueを,「いいえ」の場合はFalseを返す。
  :param title: ダイアログに表示させるタイトル名を指定する。
  :type title: str
  :param message: ダイアログに表示させるメッセージを指定する。
@@ -3579,7 +4848,8 @@ cls,
 title:str='Question',
 message:str='Question message',
 icon:Literal['info','warning','error','question']='question'
-)->Union[bool,None]:'''「はい(Yes)」「いいえ(No)」「キャンセル(Cancel)」を選択させるダイアログを表示させる。「はい」の場合はTrueを,「いいえ」の場合はFalseを返す,「キャンセル(Cancel)」もしくはダイアログを閉じた場合Noneを返す。
+)->Union[bool,None]:'''「はい(Yes)」「いいえ(No)」「キャンセル(Cancel)」を選択させるダイアログを表示させる。
+「はい」の場合はTrueを,「いいえ」の場合はFalseを返す,「キャンセル(Cancel)」もしくはダイアログを閉じた場合Noneを返す。
  :param title: ダイアログに表示させるタイトル名を指定する。
  :type title: str
  :param message: ダイアログに表示させるメッセージを指定する。
@@ -3594,7 +4864,8 @@ cls,
 title:str='Question',
 message:str='Question message',
 icon:Literal['info','warning','error','question']='question'
-)->bool:'''操作を再試行するかどうかを尋ねる「再試行」ボタンと「キャンセル」ボタンが設置されたダイアログを表示させる。回答が「再試行」の場合はTrueを,「キャンセル」の場合はFalseを返します。
+)->bool:'''操作を再試行するかどうかを尋ねる「再試行」ボタンと「キャンセル」ボタンが設置されたダイアログを表示させる。
+回答が「再試行」の場合はTrueを,「キャンセル」の場合はFalseを返します。
  :param title: ダイアログに表示させるタイトル名を指定する。
  :type title: str
  :param message: ダイアログに表示させるメッセージを指定する。

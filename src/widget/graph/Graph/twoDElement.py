@@ -84,19 +84,7 @@ class twoDElement(GElement):
  def _apply_theme_colors(self):
   self.ax.set_facecolor(self.graph_bg)
   self.ax.tick_params(colors=self.fg)
-  if self.title is not None:
-   Title(
-self.ax,
-self.title,
-color=self.titlefg,
-ha=self.titleha,
-va=self.titleva,
-rotation=self.titlerotation,
-rotation_mode=self.titlerotation_mode,
-font=self.titlefont,
-alpha=self.titlealpha,
-zorder=self.titlezorder
-)
+  if self.title is not None:Title(self.ax,self.title,color=self.titlefg,ha=self.titleha,va=self.titleva,rotation=self.titlerotation,rotation_mode=self.titlerotation_mode,font=self.titlefont,alpha=self.titlealpha,zorder=self.titlezorder)
   self.ax.xaxis.label.set_color(self.fg)
   self.ax.yaxis.label.set_color(self.fg)
   if self.grid_xy:self.ax.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6,which='both')
@@ -105,32 +93,8 @@ zorder=self.titlezorder
    if self.grid_x:self.ax.xaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
    if self.grid_y:self.ax.yaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
  def _apply_labels(self,xlabel,ylabel):
-  if xlabel is not None:
-   Xlabel(
-self.ax,
-xlabel,
-color=self.xlabelfg,
-ha=self.xlabelha,
-va=self.xlabelva,
-font=self.xlabelfont,
-rotation=self.xlabelrotation,
-rotation_mode=self.xlabelrotation_mode,
-alpha=self.xlabelalpha,
-zorder=self.xlabelzorder
-)
-  if ylabel is not None:
-   Ylabel(
-self.ax,
-ylabel,
-color=self.ylabelfg,
-ha=self.ylabelha,
-va=self.ylabelva,
-font=self.ylabelfont,
-rotation=self.ylabelrotation,
-rotation_mode=self.ylabelrotation_mode,
-alpha=self.ylabelalpha,
-zorder=self.ylabelzorder
-)
+  if xlabel is not None:Xlabel(self.ax,xlabel,color=self.xlabelfg,ha=self.xlabelha,va=self.xlabelva,font=self.xlabelfont,rotation=self.xlabelrotation,rotation_mode=self.xlabelrotation_mode,alpha=self.xlabelalpha,zorder=self.xlabelzorder)
+  if ylabel is not None:Ylabel(self.ax,ylabel,color=self.ylabelfg,ha=self.ylabelha,va=self.ylabelva,font=self.ylabelfont,rotation=self.ylabelrotation,rotation_mode=self.ylabelrotation_mode,alpha=self.ylabelalpha,zorder=self.ylabelzorder)
  def _arys(self,data):
   if any(isinstance(i,list|tuple)for i in data):return array(data)
   elif isinstance(data,list):return array([data])
