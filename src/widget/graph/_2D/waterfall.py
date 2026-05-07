@@ -1,10 +1,4 @@
 from .._graphhelp import *
-def _waterfall_sum(data):
- arr,set_num=np.array([],dtype=object),0
- for i,num in enumerate(data):
-  arr=np.append(arr,0 if i==0 else set_num)
-  set_num=set_num+num
- return arr
 def _bar_x_lists(lists,ylen):
  if ylen==None or not isinstance(lists,np.ndarray|list|tuple):return None
  else:
@@ -16,7 +10,7 @@ class Waterfall(twoDElement):
   super().__init__(master,kw)
   self.y=self._dataarr(kw.get('y'),False)
   self.x=_bar_x_lists(self._onearr(kw.get('x')),len(self.y))
-  self.bottom=_waterfall_sum(self.y)
+  self.bottom=np.cumsum(np.append(0,self.y)[0:np.array(self.y).size])
   self.ucolor=parsecolor(kw.get('ucolor'),'#156082')
   self.dcolor=parsecolor(kw.get('dcolor'),'#e97132')
   self.width=range_num(num0s(kw.get('width'),1),0,1,1)
@@ -65,7 +59,7 @@ class Waterfallh(twoDElement):
   super().__init__(master,kw)
   self.y=self._dataarr(kw.get('y'),False)
   self.x=_bar_x_lists(self._onearr(kw.get('x')),len(self.y))
-  self.bottom=_waterfall_sum(self.y)
+  self.bottom=np.cumsum(np.append(0,self.y)[0:np.array(self.y).size])
   self.ucolor=parsecolor(kw.get('ucolor'),'#156082')
   self.dcolor=parsecolor(kw.get('dcolor'),'#e97132')
   self.height=range_num(num0s(kw.get('height'),1),0,1,1)
