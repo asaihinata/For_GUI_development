@@ -1,6 +1,6 @@
 from typing import TypeAlias
-from matplotlib.typing import ColorType
 import numpy as np
+from matplotlib.typing import ColorType
 __all__=['ColorType','NumberNone','Numberlike']
 NumberNone:TypeAlias=int|float|None
 Numberlike:TypeAlias=(
