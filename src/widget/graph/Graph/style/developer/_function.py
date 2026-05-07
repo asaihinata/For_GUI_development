@@ -1,5 +1,6 @@
 from .....developer import Number
-__all__=['list2float','num0','num0s','num1s','listchose','range_zero_one']
+from ..typing import Numberlike
+__all__=['listchose','list2float','list2number','num0','num0s','num1s','range_zero_one']
 def range_zero_one(val,out=1.0,endpoint=True):
  if not isinstance(val,int|float):return out
  if not isinstance(endpoint,bool):endpoint=True
@@ -15,6 +16,9 @@ def num0s(val=0,mins=0):
 def num0(val=0,mins=0):
  if isinstance(val,int|float|Number)and 0<val:return val
  return mins
+def list2number(lin=None):
+ if isinstance(lin,list|tuple) and len(lin)==2 and all(isinstance(i,Numberlike)for i in lin):return True
+ return False
 def list2float(lin=None):
  if isinstance(lin,list|tuple) and len(lin)==2 and all(isinstance(i,float)for i in lin):return True
  return False

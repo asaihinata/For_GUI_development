@@ -1,7 +1,5 @@
 from typing import TypeAlias,TypeVar
 import numpy as np
-class LIST:pass
-class Number:pass
 __all__=['_T','Numberlike']
 _T=TypeVar('_T')
 Numberlike:TypeAlias=(
@@ -9,7 +7,6 @@ Numberlike:TypeAlias=(
  np.bool|
  float|
  int|
- Number|
  np.float16|
  np.float32|
  np.float64|
