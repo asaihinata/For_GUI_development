@@ -1,7 +1,6 @@
 import numpy as np
 from matplotlib.axes._axes import Axes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from .....developer import Number
 from ..developer import *
 from ..tool import Color
 __all__=['Legends']
@@ -43,7 +42,7 @@ alignment='center',ncol=1,draggable=False
      (isinstance(loc,int) and 0<=loc<=10)
     ):loc=loc
   else:loc='best'
-  if numpoints is not None and isinstance(numpoints,int|float|Number) and numpoints<=0:
+  if numpoints is not None and isinstance(numpoints,int|float) and numpoints<=0:
    numpoints=1
   labelcolor=np.array(Color(labelcolor))
   self.ax.legend(

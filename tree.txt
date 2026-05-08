@@ -109,6 +109,7 @@ For_GUI_development
  │       │   │   │   │   └── zaxis.py
  │       │   │   │   ├── composite
  │       │   │   │   │   ├── __init__.py
+ │       │   │   │   │   ├── bbox.py
  │       │   │   │   │   ├── fmt.py
  │       │   │   │   │   ├── marker.py
  │       │   │   │   │   └── solid.py

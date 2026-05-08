@@ -24,7 +24,7 @@ fmtcolor:Literal['b','g','r','c','m','y','k','w']|None=None
   if solid in self.solid_list:
    self.solid=solid
   elif (fmtmarker is not None) or (fmtmarker is not None) or (fmtcolor is not None):
-   self.solid=FMT(fmtmarker,fmtsolid,fmtcolor)
+   self.solid=FMT(fmtmarker,fmtsolid,fmtcolor).fmt_txt
   else:
    self.solid='-'
  def __str__(self)->str:return str(self.solid)

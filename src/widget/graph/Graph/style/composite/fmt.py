@@ -4,6 +4,7 @@ FMT_COLOR=['b','g','r','c','m','y','k','w']
 FMT_MARKER=['.',',','o','v','^','<','>','1','2','3','4','8','s','p','P','*','h','H','+','x','X','D','d','|','_']
 FMT_SOLID=['-','--','-.',':']
 class FMT:
+ fmt_txt:str
  def __init__(
 self,
 marker:Literal[
