@@ -28,6 +28,7 @@ microsecond:int=0,
 timezone:datetime._TzInfo='Asia/Tokyo',
 fold:int|bool=0
 )->None:'''日付と時間を作成するクラス
+
 `year`,`month`,`day`の引数は必須である。int型で指定されている引数にint型以外を指定するとTypeErrorを発生させる。範囲を指定されている引数に範囲外を指定するとValueErrorを発生させる。
  :param year: 年を指定する。範囲は`times.maxsyear<=year<=times.minsyear`
  :type year: int
@@ -87,6 +88,7 @@ dates:datetime.datetime|datetime.date|times|None=None
  def __rsub__(self,val:datetime.timedelta)->times:''':return: `self`-`val`を返す。
  :rtype: times'''
  def date(self)->datetime.datetime|None:'''日付時刻を返す。
+
  :return: 日付時刻を返す。
  :rtype: datetime.datetime|None'''
  def getdate(self)->tuple[int,int,int,int,int,int,int]:'''日付時刻の値を返す。'''
@@ -121,37 +123,45 @@ fold:int=...
  def __str__(self)->str:...
  @overload
  def min(self)->datetime.datetime:'''表現できる最も古い日付のdatetime.datetime(`minsyear`,1,1)を返す。
+
  :return: 表現できる最も古い日付のdatetime.datetime(`minsyear`,1,1)を返す。
  :rtype: datetime.datetime'''
  @overload
  @staticmethod
  def min()->datetime.datetime:'''表現できる最も古い日付のdatetime.datetime(`minsyear`,1,1)を返す。
+
  :return: 表現できる最も古い日付のdatetime.datetime(`minsyear`,1,1)を返す。
  :rtype: datetime.datetime'''
  def max(self)->datetime.datetime:'''表現できる最も新しい日付のdatetime.datetime(`maxsyear`,12,31)を返す。
+
  :return: 表現できる最も新しい日付のdatetime.datetime(`maxsyear`,12,31)を返す。
  :rtype: datetime.datetime'''
  @staticmethod
  def max()->datetime.datetime:'''表現できる最も新しい日付のdatetime.datetime(`maxsyear`,12,31)を返す。
+
  :return: 表現できる最も新しい日付のdatetime.datetime(`maxsyear`,12,31)を返す。
  :rtype: datetime.datetime'''
  @staticmethod
  def now(timezone:datetime._TzInfo='Asia/Tokyo')->times:'''現在のローカル日付日時を返す。
+
  :param timezone: タイムゾーンを指定する。
  :type timezone: datetime._TzInfo
  :return: 現在のローカル日付日時を返す。
  :rtype: times'''
  @staticmethod
  def today(timezone:datetime._TzInfo='Asia/Tokyo')->times:'''現在のローカル日付を返す。
+
  :param timezone: タイムゾーンを指定する。
  :type timezone: datetime._TzInfo
  :return: 現在のローカル日付を返す。
  :rtype: times'''
  @staticmethod
  def maxyear(maxs:int)->NoReturn:'''`year`の範囲の最大の年を変更する。
+
  :param maxs: 最大の年を指定する。1<=`maxs`<=9999の範囲を超えた値を指定した場合9999にする。
  :type maxs: int'''
  def minyear(mins:int)->NoReturn:'''`year`の範囲の最小の年を変更する。
+
  :param mins: 最小の年を指定する。1<=`mins`<=9999の範囲を超えた値を指定した場合1にする。
  :type mins: int'''
 class timeslist:

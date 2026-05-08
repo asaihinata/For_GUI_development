@@ -9,12 +9,14 @@ def num0(val:int|float|Number=0,mins:int|float|Number=0)->int|float|Number:...
 def list2float(lin:list[Any]|tuple[Any]=None)->bool:...
 def listchose(val:str,arr:list,other:str|None=None)->str:...
 class Angle:
+ angle:float
  @overload
  def __init__(
 self,
 angle:Typenumberlike,
 dtype:bool=...
 )->None:'''度数法と弧度法の変換するクラス。
+
  :param angle: 変換したい角度を指定する。
  :type angle: Typenumberlike
  :param dtype: 弧度法から度数法に変換するか,度数法から弧度法に変換するか指定する。
@@ -26,6 +28,7 @@ self,
 angle:Typenumberlike,
 dtype:bool=True
 )->None:'''弧度法から度数法に変換する。
+
  :param angle: 変換したい角度を指定する。
  :type angle: Typenumberlike
  :param dtype: 弧度法から度数法に変換するか,度数法から弧度法に変換するか指定する。
@@ -37,6 +40,7 @@ self,
 angle:Typenumberlike,
 dtype:bool=False
 )->None:'''度数法から弧度法に変換する。
+
  :param angle: 変換したい角度を指定する。
  :type angle: Typenumberlike
  :param dtype: 弧度法から度数法に変換するか,度数法から弧度法に変換するか指定する。
@@ -53,13 +57,13 @@ dtype:bool=False
  def __le__(self,val:int|float)->bool:...
  def __gt__(self,val:int|float)->bool:...
  def __ge__(self,val:int|float)->bool:...
-class Rad:
+class Rad(Angle):
  '''弧度法から度数法に変換する。'''
  def __init__(
 self,
 angle:Typenumberlike|Deg|Rad
 )->None:...
-class Deg:
+class Deg(Angle):
  '''度数法から弧度法に変換する。'''
  def __init__(
 self,

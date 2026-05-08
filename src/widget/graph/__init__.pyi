@@ -16,42 +16,55 @@ from ...typing import *
 from ..developer import Number
 class _Gset:
  def winsize(self)->tuple[int,int]:'''ウィジェットの現在の幅と高さを返す。
+
  :return: ウィジェットの現在の幅と高さをタプルで返す。
  :rtype: tuple[int,int]'''
  def winwidth(self)->int:'''ウィジェットの現在の幅を返す。
+
  :return: ウィジェットの現在の幅を返す。
  :rtype: int'''
  def winheight(self)->int:'''ウィジェットの現在の高さを返す。
+
  :return: ウィジェットの現在の高さを返す。
  :rtype: int'''
  def winxy(self)->tuple[int,int]:'''親ウィジェット内での座標を返す。
+
  :return: 親ウィジェット内での座標を返す。
  :rtype: tuple[int,int]'''
  def winx(self)->int:'''親ウィジェット内での左端のx座標を返す。
+
  :return: 親ウィジェット内での左端のx座標を返す。
  :rtype: int'''
  def winy(self)->int:'''親ウィジェット内での上端のy座標を返す。
+
  :return: 親ウィジェット内での上端のy座標を返す。
  :rtype: int'''
  def geometry(self)->tuple[float,float,float,float]:'''ウィジェットのサイズと位置を返す。
+
  :return: ウィジェットのサイズと位置を返す。
  :rtype: tuple[float,float,float,float]'''
  def rootxy(self)->tuple[int,int]:'''画面全体に対するウィジェットの座標を返す。
+
  :return: 画面全体に対するウィジェットの座標を返す。
  :rtype: tuple[int,int]'''
  def rootx(self)->int:'''画面全体に対するウィジェットの左端のx座標を返す。
+
  :return: 画面全体に対するウィジェットの左端のx座標を返す。
  :rtype: int'''
  def rooty(self)->int:'''画面全体に対するウィジェットの上端のy座標を返す。
+
  :return: 画面全体に対するウィジェットの上端のy座標を返す。
  :rtype: int'''
  def reqsize(self)->tuple[int,int]:'''ウィジェットが必要とする幅の長さと高さを返す。
+
  :return: ウィジェットが必要とする幅の長さと高さを返す。
  :rtype: tuple[int,int]'''
  def reqwidth(self)->int:'''ウィジェットが必要とする幅の長さを返す。
+
  :return: ウィジェットが必要とする幅の長さを返す。
  :rtype: int'''
  def reqheight(self)->int:'''ウィジェットが必要とする高さを返す。
+
  :return: ウィジェットが必要とする高さを返す。
  :rtype: int'''
  def visual(self)->str:'''色の表現形式を返す。'''
@@ -67,21 +80,27 @@ class _2Gset(_Gset):
 tuple[float64,float64],
 tuple[float64,float64]
 ]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
+
  :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
  :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
  def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
+
  :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
  :rtype: tuple[float64,float64]'''
  def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
+
  :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
  :rtype: tuple[float64,float64]'''
  def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
+
  :return: x軸,y軸の目盛りの位置を返す。
  :rtype: tuple[ndarray,ndarray]'''
  def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
+
  :return: x軸の目盛りの位置を返す。
  :rtype: ndarray'''
  def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
+
  :return: y軸の目盛りの位置を返す。
  :rtype: ndarray'''
 class _3Gset(_Gset):
@@ -95,15 +114,19 @@ tuple[float64,float64],
 tuple[float64,float64],
 tuple[float64,float64]
 ]:'''x軸,y軸,z軸の順で表示されている範囲の下限値と上限値を返す。
+
  :return: x軸,y軸,z軸の順で表示されている範囲の下限値と上限値のtupleを返す。
  :rtype: tuple[tuple[float64,float64],tuple[float64,float64],tuple[float64,float64]]'''
  def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
+
  :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
  :rtype: tuple[float64,float64]'''
  def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
+
  :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
  :rtype: tuple[float64,float64]'''
  def getzbound(self)->tuple[float64,float64]:'''表示されているz軸の範囲の下限値と上限値を昇順で返す。
+
  :return: 表示されているz軸の範囲の下限値と上限値のtupleを返す。
  :rtype: tuple[float64,float64]'''
  def getticks(self)->tuple[ndarray,ndarray,ndarray]:'''x軸,y軸,z軸の目盛りの位置を座標で返します。'''
@@ -141,7 +164,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -330,7 +353,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -512,7 +535,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -693,7 +716,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -871,7 +894,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -1045,7 +1068,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -1326,7 +1349,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -1510,7 +1533,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -1692,7 +1715,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -1868,7 +1891,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -2049,11 +2072,20 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
 zlabel:str=...,
+zlabelalpha:int|float=1.0,
+zlabelzorder:int|float=4,
+zlabelfg:ColorType=...,
+zlabelha:Literal['left','center','right']|None=None,
+zlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+zlabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+zlabelrotation_mode:bool=True,
+zlabelfontname:str|Iterable[str]|None=None,
+zlabelfontpath:str|PathLike|Path|None=None,
 marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
 markersize:int|float=10,
 color:ColorType|tuple[ColorType,...]=...,
@@ -2258,7 +2290,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -2434,7 +2466,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -2606,53 +2638,63 @@ width:int|float
 )->NoReturn:'''ヒストグラムを再表示させる。'''
  def get(self)->list[ndarray|list[ndarray],ndarray,BarContainer|Polygon|list[BarContainer|Polygon]]:'''`matplotlib.axes.Axes.hist`の戻り値を配列で返す。'''
  def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
+
  @overload
  def getrange(self,num:bool)->tuple[float64,float64]|tuple[float,float]:'''ヒストグラムの`bins`の上限値と下限値をtuple型で返す。
+
  :param num: 戻り値内の数値がfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :return: ヒストグラムの`bins`の上限値と下限値を返す。
  :rtype: tuple[float64,float64]|tuple[float,float]'''
  @overload
  def getrange(self,num:bool=True)->tuple[float64,float64]:'''ヒストグラムの`bins`の上限値と下限値をtuple型で返す。
+
  :param num: 戻り値内の数値がfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :return: ヒストグラムの`bins`の上限値と下限値を返す。
  :rtype: tuple[float64,float64]'''
  @overload
  def getrange(self,num:bool=False)->tuple[float,float]:'''ヒストグラムの`bins`の上限値と下限値をtuple型で返す。
+
  :param num: 戻り値内の数値がfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :return: ヒストグラムの`bins`の上限値と下限値を返す。
  :rtype: tuple[float,float]'''
  @overload
  def getmin(self,num:bool)->float64|float:'''ヒストグラムの`bins`の下限値を返す。
+
  :param num: 戻り値をfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :rtype: float64|float'''
  @overload
  def getmin(self,num:bool=True)->float64:'''ヒストグラムの`bins`の下限値を返す。
+
  :param num: 戻り値をfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :return: ヒストグラムの`bins`の下限値を返す。
  :rtype: float64'''
  @overload
  def getmin(self,num:bool=False)->float:'''ヒストグラムの`bins`の下限値を返す。
+
  :param num: 戻り値をfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :return: ヒストグラムの`bins`の下限値を返す。
  :rtype: float'''
  @overload
  def getmax(self,num:bool)->float64|float:'''ヒストグラムの`bins`の上限値を返す。
+
  :param num: 戻り値をfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :rtype: float64|float'''
  @overload
  def getmax(self,num:bool=True)->float64:'''ヒストグラムの`bins`の上限値を返す。
+
  :param num: 戻り値をfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :rtype: float64'''
  @overload
  def getmax(self,num:bool=False)->float:'''ヒストグラムの`bins`の上限値を返す。
+
  :param num: 戻り値をfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :rtype: float'''
@@ -2677,7 +2719,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -2832,7 +2874,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -3013,7 +3055,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -3190,7 +3232,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -3716,7 +3758,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -3901,7 +3943,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -4059,6 +4101,7 @@ alpha:int|float,
 graph_grid:ColorType,
 title:str
 )->NoReturn:'''2次元ヒストグラムを再表示させる。
+
  :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる。
  :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる。'''
  def get(self)->list[ndarray,ndarray,ndarray,QuadMesh]:'''`matplotlib.axes.Axes.hist2d`の戻り値を配列で返す。'''
@@ -4434,7 +4477,7 @@ ylabelzorder:int|float=4,
 ylabelfg:ColorType=...,
 ylabelha:Literal['left','center','right']|None=None,
 ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Iterable[str]|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,

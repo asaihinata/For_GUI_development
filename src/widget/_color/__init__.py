@@ -14,6 +14,7 @@ class Color:
  '''16進数カラーコード,カラー名,rgb,rgba,hsvを16進数カラーコードに変換する。'''
  def __init__(self,color:str,other:str|None=None)->None:
   '''colorで指定した16進数カラーコード,カラー名,rgb,rgba,hsvを16進数カラーコードに変換する。
+
  :param color: 16進数カラーコード,カラー名,rgb,rgba,hsvを16進数カラーコードを指定する。
  :type color: str
  :param other: colorを16進数カラーコードに変換する際,何らかの例外が発生した際に返す値を指定する。

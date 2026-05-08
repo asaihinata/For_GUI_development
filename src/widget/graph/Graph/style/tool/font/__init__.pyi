@@ -14,6 +14,7 @@ weight:int|str|None=...,
 stretch:int|str|None=...,
 size:float|str|None=...
 )->None:'''指定されたフォントファイルのフォントを使用できるようにする。
+
  :param path: フォントファイルのパスを指定する。
  :type path: str|Path|PathLike
  :raises TypeError: `path`の型がstr,Path,PathLikeではなかった場合に発生させる

@@ -9,6 +9,7 @@ class Number:
 self,
 val:Numberlike
 )->None:'''数値に関するクラス
+
  :param val: 数値を指定する。
  :type val: Numberlike
  :raises TypeError: `val`に数値以外を指定した場合に発生させる。'''
@@ -62,6 +63,7 @@ class LISTNumber:
  lists:list[int|float]|tuple[int|float]
  judge:bool
  def __init__(self,obj:list|tuple):'''一次元配列内のNumberを含む数値を数値に変換する。
+
  :param obj: 変換したい配列を指定する。
  :type obj: list|tuple'''
  def __bool__(self)->bool:'''配列内の全ての要素が数値のみTrueを返す。'''

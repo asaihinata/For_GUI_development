@@ -15,6 +15,7 @@ overstrike:bool=False,
 root:Misc=None
 )->None:
   '''フォントに関するクラス
+
  :param family: フォント名を指定する。
  :type family: str
  :param size: フォントサイズを指定する。

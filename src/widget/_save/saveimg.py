@@ -14,6 +14,7 @@ initialfile:str=None,
 defaultextension:str='.png'
 )->None:
   '''ファイルを保存する際,保存するファイル名を尋ねるダイアログを表示し,保存先のフォルダパスを取得する。
+
  :param data: 画像データを指定する。
  :type data: Image
  :param title: ダイアログのタイトルを指定する。

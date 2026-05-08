@@ -6,6 +6,7 @@ class sort:
  __firstlineno__:int
  @overload
  def __init__(self,data:list|tuple,type:bool)->None:'''配列内の要素を昇順で並べ変える。
+
  :param data: 並べ替えたい配列を指定する。
  :type data: list|tuple
  :param type: 昇順か降順かを指定する。
@@ -13,6 +14,7 @@ class sort:
  :raises TypeError: dataに配列の型を指定しなかった場合に発生させる'''
  @overload
  def __init__(self,data:list|tuple,type:bool=True)->None:'''配列内の要素を昇順で並べ変える。
+
  :param data: 並べ替えたい配列を指定する。
  :type data: list|tuple
  :param type: 昇順か降順かを指定する。
@@ -20,6 +22,7 @@ class sort:
  :raises TypeError: dataに配列の型を指定しなかった場合に発生させる'''
  @overload
  def __init__(self,data:list|tuple,type:bool=False)->None:'''配列内の要素を降順で並べ変える。
+
  :param data: 並べ替えたい配列を指定する。
  :type data: list|tuple
  :param type: 昇順か降順かを指定する。

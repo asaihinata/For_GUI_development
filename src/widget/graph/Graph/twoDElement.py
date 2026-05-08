@@ -1,7 +1,7 @@
 from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
 from numpy import array,ndarray
-from ..._function import bols,list2num,listchose,num0s,parsecolor,range_num
+from ..._function import allNones,bols,list2num,listchose,num0s,parsecolor,range_num
 from ...developer import Number
 from .Graph import GElement
 from .style import FontFile,Fontmanager,Fontname,Title,Xlabel,Ylabel
@@ -11,32 +11,32 @@ class twoDElement(GElement):
   super().__init__(master,kw)
   # ラベル
   self.xlabel=kw.get('xlabel')
-  self.xlabelfg=kw.get('xlabelfg',self.labelfg)
-  self.xlabelha=kw.get('xlabelha',self.labelha)
-  self.xlabelva=kw.get('xlabelva',self.labelva)
-  self.xlabelalpha=kw.get('xlabelalpha',self.labelalpha)
-  self.xlabelzorder=kw.get('xlabelzorder',self.labelzorder)
-  self.xlabelrotation=kw.get('xlabelrotation',self.labelrotation)
-  self.xlabelrotation_mode=kw.get('xlabelrotation_mode',self.labelrotation_mode)
-  self.xlabelfontname=kw.get('xlabelfontname',None)
-  self.xlabelfontpath=kw.get('xlabelfontpath',None)
+  self.xlabelfg=allNones(kw.get('xlabelfg'),self.labelfg,self.fg)
+  self.xlabelha=allNones(kw.get('xlabelha'),self.labelha)
+  self.xlabelva=allNones(kw.get('xlabelva'),self.labelva)
+  self.xlabelalpha=allNones(kw.get('xlabelalpha'),self.labelalpha,1)
+  self.xlabelzorder=allNones(kw.get('xlabelzorder'),self.labelzorder,4)
+  self.xlabelrotation=allNones(kw.get('xlabelrotation'),self.labelrotation,'horizontal')
+  self.xlabelrotation_mode=allNones(kw.get('xlabelrotation_mode'),self.labelrotation_mode,True)
+  self.xlabelfontname=allNones(kw.get('xlabelfontname'),self.labelfontname)
+  self.xlabelfontpath=allNones(kw.get('xlabelfontpath'),self.labelfontpath)
   if self.xlabelfontname is None and self.xlabelfontpath is None:self.xlabelfont=self.labelfont
-  elif self.xlabelfontname is None and self.xlabelfontpath is not None:self.xlabelfont=FontFile(self.xlabelfontpath)
+  elif self.xlabelfontname is None and self.xlabelfontpath is not None:self.xlabelfont=FontFile(self.xlabelfontpath).Properties
   elif self.xlabelfontname is not None and self.xlabelfontpath is None:
-   if self.xlabelfontname in Fontmanager.name():self.xlabelfont=Fontname(self.xlabelfontname)
+   if self.xlabelfontname in Fontmanager.name():self.xlabelfont=Fontname(self.xlabelfontname).Properties
    else:self.xlabelfont=self.labelfont
   elif self.xlabelfontname is not None and self.xlabelfontpath is not None:self.xlabelfont=FontFile(self.xlabelfontpath)
   else:self.xlabelfont=self.labelfont
   self.ylabel=kw.get('ylabel')
-  self.ylabelfg=kw.get('ylabelfg',self.labelfg)
-  self.ylabelha=kw.get('ylabelha',self.labelha)
-  self.ylabelva=kw.get('ylabelva',self.labelva)
-  self.ylabelalpha=kw.get('ylabelalpha',self.labelalpha)
-  self.ylabelzorder=kw.get('ylabelzorder',self.labelzorder)
-  self.ylabelrotation=kw.get('ylabelrotation',self.labelrotation)
-  self.ylabelrotation_mode=kw.get('ylabelrotation_mode',self.labelrotation_mode)
-  self.ylabelfontname=kw.get('ylabelfontname',None)
-  self.ylabelfontpath=kw.get('ylabelfontpath',None)
+  self.ylabelfg=allNones(kw.get('ylabelfg'),self.labelfg,self.fg)
+  self.ylabelha=allNones(kw.get('ylabelha'),self.labelha)
+  self.ylabelva=allNones(kw.get('ylabelva'),self.labelva)
+  self.ylabelalpha=allNones(kw.get('ylabelalpha'),self.labelalpha,1)
+  self.ylabelzorder=allNones(kw.get('ylabelzorder'),self.labelzorder,4)
+  self.ylabelrotation=allNones(kw.get('ylabelrotation'),self.labelrotation,'vertical')
+  self.ylabelrotation_mode=allNones(kw.get('ylabelrotation_mode'),self.labelrotation_mode,True)
+  self.ylabelfontname=allNones(kw.get('ylabelfontname'),self.labelfontname)
+  self.ylabelfontpath=allNones(kw.get('ylabelfontpath'),self.labelfontpath)
   if self.ylabelfontname is None and self.ylabelfontpath is None:self.ylabelfont=self.labelfont
   elif self.ylabelfontname is None and self.ylabelfontpath is not None:self.ylabelfont=FontFile(self.ylabelfontpath)
   elif self.ylabelfontname is not None and self.ylabelfontpath is None:

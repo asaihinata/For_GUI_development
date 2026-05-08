@@ -10,6 +10,7 @@ class Datalist:
  def inversion(self)->ndarray:...
 class Manylist(Datalist):
  def __init__(self,data:tuple|list|ndarray|LIST=None)->None: '''一次元配列を含む多次元配列を許す配列を作成する。
+
  :param data: 配列を指定する。
  :type data: tuple|list|ndarray|LIST
  :raises TypeError: `data`に配列以外の型を指定した場合に発生させる。'''
@@ -17,6 +18,7 @@ class Manylist(Datalist):
  def __len__(self)->int:...
 class Onelist(Datalist):
  def __init__(self,data:tuple|list|ndarray|LIST=None)->None:'''一次元配列のみを許す配列を作成する。
+
  :param data: 一次元配列を指定する。
  :type data: tuple|list|ndarray|LIST
  :raises TypeError: `data`に配列の型以外で指定した場合に発生させる。
@@ -25,6 +27,7 @@ class Onelist(Datalist):
  def __len__(self)->int:...
 class Conectlist(Datalist):
  def __init__(self,data:tuple|list|ndarray|LIST=None)->None:'''配列から一次元配列を作成する。
+
  :param data: 配列を指定する。
  :type data: tuple|list|ndarray|LIST
  :raises TypeError: `data`に配列以外の型を指定した場合に発生させる。'''

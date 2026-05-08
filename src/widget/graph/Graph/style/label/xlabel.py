@@ -1,4 +1,5 @@
 '''x軸ラベルの設定'''
+
 from matplotlib.axes._axes import Axes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ..developer import Rad,listchose,range_zero_one
@@ -42,7 +43,7 @@ fontweight=None
   va=listchose(va,['baseline','bottom','center','center_baseline','top'])
   if rotation in ['horizontal','vertical']:rotation=rotation
   elif isinstance(rotation,int|float):
-   if angle=='radian':rotation=Rad(rotation)
+   if angle=='radian':rotation=Rad(rotation).angle
    elif angle=='degree':rotation=rotation
    else:rotation='horizontal'
   else:rotation='horizontal'

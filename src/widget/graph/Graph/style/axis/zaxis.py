@@ -1,4 +1,5 @@
 '''z軸のスタイルの設定'''
+
 from matplotlib.ticker import FixedLocator,LinearLocator,MaxNLocator,MultipleLocator
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ....._function import listchose

@@ -21,6 +21,7 @@ angle:Literal['degree','radian']='degree',
 alpha:float=1.0,
 zorder:int|float=4
 )->None:'''グラフのタイトルを設定する。
+
  :param title: タイトルを指定する。
  :type title: str
  :param loc: タイトルの表示場所を指定する。

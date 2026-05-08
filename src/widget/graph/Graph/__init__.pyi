@@ -29,6 +29,7 @@ dpi:int|float=100,
 alpha=1
 )->None:
   '''2Dグラフと3Dグラフの基盤のグラフを作成する。
+
  :param size: グラフの大きさをタプルで指定する。
  :type size: TupleNumbertype2
  :param fg: グラフ内の文字色を指定する。
@@ -59,6 +60,7 @@ filename:str='Graph',
 ex:Literal['.eps','.jpg','.jpeg','.pdf','.pgf','.png','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']='.png',
 dpi:int|float=100
 )->NoReturn:'''グラフを画像にして画像を保存する。
+
  :param filename: 画像を保存するファイル名を指定する。
  :type filename: str
  :param ex: 画像ファイルの拡張子を指定する。
@@ -68,42 +70,55 @@ dpi:int|float=100
  :return:
  :rtype: NoReturn'''
  def winsize(self)->tuple[int,int]:'''ウィジェットの現在の幅と高さを返す。
+
  :return: ウィジェットの現在の幅と高さをタプルで返す。
  :rtype: tuple[int,int]'''
  def winwidth(self)->int:'''ウィジェットの現在の幅を返す。
+
  :return: ウィジェットの現在の幅を返す。
  :rtype: int'''
  def winheight(self)->int:'''ウィジェットの現在の高さを返す。
+
  :return: ウィジェットの現在の高さを返す。
  :rtype: int'''
  def winxy(self)->tuple[int,int]:'''親ウィジェット内での座標を返す。
+
  :return: 親ウィジェット内での座標を返す。
  :rtype: tuple[int,int]'''
  def winx(self)->int:'''親ウィジェット内での左端のx座標を返す。
+
  :return: 親ウィジェット内での左端のx座標を返す。
  :rtype: int'''
  def winy(self)->int:'''親ウィジェット内での上端のy座標を返す。
+
  :return: 親ウィジェット内での上端のy座標を返す。
  :rtype: int'''
  def geometry(self)->tuple[float,float,float,float]:'''ウィジェットのサイズと位置を返す。
+
  :return: ウィジェットのサイズと位置を返す。
  :rtype: tuple[float,float,float,float]'''
  def rootxy(self)->tuple[int,int]:'''画面全体に対するウィジェットの座標を返す。
+
  :return: 画面全体に対するウィジェットの座標を返す。
  :rtype: tuple[int,int]'''
  def rootx(self)->int:'''画面全体に対するウィジェットの左端のx座標を返す。
+
  :return: 画面全体に対するウィジェットの左端のx座標を返す。
  :rtype: int'''
  def rooty(self)->int:'''画面全体に対するウィジェットの上端のy座標を返す。
+
  :return: 画面全体に対するウィジェットの上端のy座標を返す。
  :rtype: int'''
  def reqsize(self)->tuple[int,int]:'''ウィジェットが必要とする幅の長さと高さを返す。
+
  :return: ウィジェットが必要とする幅の長さと高さを返す。
  :rtype: tuple[int,int]'''
  def reqwidth(self)->int:'''ウィジェットが必要とする幅の長さを返す。
+
  :return: ウィジェットが必要とする幅の長さを返す。
  :rtype: int'''
  def reqheight(self)->int:'''ウィジェットが必要とする高さを返す。
+
  :return: ウィジェットが必要とする高さを返す。
  :rtype: int'''
  def visual(self)->str:'''色の表現形式を返す。'''
@@ -126,6 +141,7 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
  def pielabel(self,data:ndarray|list|tuple,label:list|tuple)->list:...
  def labels(self,label:labeltype)->list:...
  def markers(self,serch:str)->str:'''`serch`で指定したマーカーが`MARKERS`に存在するかを調べる
+
  :param serch: `MARKERS`に調べたいマーカーを指定する。
  :type serch: str
  :return:
@@ -134,11 +150,13 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
 ----
 * https://matplotlib.org/stable/api/markers_api.html#module-matplotlib.markers'''
  def lines(self,serch:str)->str:'''serch`で指定した枠線が`FMTSOLID`に存在するかを調べる
+
  :param serch: `FMTSOLID`に調べたいを指定する。
  :type serch: str
  :return:
  :rtype: str'''
  def nlines(self,serch:str)->str:'''serch`で指定した枠線が`SOLID`に存在するかを調べる
+
  :param serch: `SOLID`に調べたいを指定する。
  :type serch: str
  :return:
@@ -159,6 +177,7 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
  def _pack(self)->NoReturn:'''ウィジェットを親ウィジェット内に配置します。'''
  def _redraw(self)->NoReturn:...
  def _size(self,sizes:TupleNumbertype2=(500,400))->TupleNumbertype2:'''グラフの大きさのサイズを定める。
+
  :param sizes: グラフの大きさを指定する。
  :type sizes: TupleNumbertype2
  :return: 決定したグラフの大きさをタプルで返す。
@@ -185,6 +204,7 @@ yticksdirection:Literal['out','in','inout']='out',
 setxy:bool=True
 )->None:
   '''2Dグラフの基盤のグラフを作成する。
+
  :param data: dataを指定する。
  :type data: ndarray|list|tuple
  :param x: x軸のデータを指定する。
@@ -237,6 +257,7 @@ self,
 xlabel:labeltype=None,
 ylabel:labeltype=None
 )->NoReturn:'''2Dのグラフのx軸,y軸のラベルを作成する。
+
  :param xlabel: x軸のラベルを指定する。
  :type label: labeltype
  :param ylabel: y軸のラベルを指定する。
@@ -281,6 +302,7 @@ xticksdirection:Literal['out','in','inout']='out',
 yticksdirection:Literal['out','in','inout']='out'
 )->None:
   '''3Dのグラフを作成する。
+
  :param x: x軸のデータを指定する。
  :type x: ndarray|list|tuple
  :param y: y軸のデータを指定する。
@@ -358,6 +380,7 @@ xlabel:labeltype=None,
 ylabel:labeltype=None,
 zlabel:labeltype=None
 )->NoReturn:'''3Dのグラフのx軸,y軸,z軸のラベルを作成する。
+
  :param xlabel: x軸のラベルを指定する。
  :type label: labeltype
  :param ylabel: y軸のラベルを指定する。

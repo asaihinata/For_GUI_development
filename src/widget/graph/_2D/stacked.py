@@ -10,7 +10,7 @@ class Stacked(twoDElement):
   self.label=self.labels(kw.get('label'),self.data.shape[1])[0]
   self.width=range_num(num0s(kw.get('width'),0.8),0,1,0.8)
   self.anchor=self._anchor(kw.get('labelanchor'),(1,0.85))
-  self.labelplace=self._getlabelplace(self.anchor,kw.get('labelplace','center left'))
+  self.labelplace=self._getlegendplace(self.anchor,kw.get('labelplace','center left'))
   self.plot(self.data,self.dataname,label=self.label,width=self.width)
  def plot(self,data,dataname,label=None,width=0.8):
   self.clear()
@@ -48,7 +48,7 @@ class Stackedh(twoDElement):
    raise ValueError('配列のエラー')
   self.label=self.labels(kw.get('label'),self.data.shape[1])[0]
   self.anchor=self._anchor(kw.get('labelanchor'),(1,0.85))
-  self.labelplace=self._getlabelplace(self.anchor,kw.get('labelplace','center left'))
+  self.labelplace=self._getlegendplace(self.anchor,kw.get('labelplace','center left'))
   self.height=range_num(num0s(kw.get('height'),0.8),0,1,0.8)
   self.plot(self.data,self.dataname,label=self.label,height=self.height)
  def plot(self,data,dataname,label=None,height=0.8):
