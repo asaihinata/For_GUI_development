@@ -1,5 +1,4 @@
 '''y軸ラベルの設定'''
-
 from matplotlib.axes._axes import Axes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ..developer import Rad,listchose,range_zero_one
