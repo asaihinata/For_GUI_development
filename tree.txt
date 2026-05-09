@@ -70,7 +70,7 @@ For_GUI_development
  │       │   │   └── tooltip.py
  │       │   ├── element.py
  │       │   └── ttkelement.py
- │       ├── developer
+ │       ├── dev
  │       │   ├── LIST
  │       │   │   ├── __init__.py
  │       │   │   └── __init__.pyi
@@ -118,7 +118,7 @@ For_GUI_development
  │       │   │   │   │   ├── hatch.py
  │       │   │   │   │   ├── marker.py
  │       │   │   │   │   └── solid.py
- │       │   │   │   ├── developer
+ │       │   │   │   ├── dev
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   ├── __init__.pyi
  │       │   │   │   │   ├── _function.py
@@ -175,7 +175,8 @@ For_GUI_development
  │       │   │   └── dscatter.py
  │       │   ├── __init__.py
  │       │   ├── __init__.pyi
- │       │   └── _graphhelp.py
+ │       │   └── dev
+ │       │       └── __init__.py
  │       ├── window.py
  │       └── window.pyi
  ├── test

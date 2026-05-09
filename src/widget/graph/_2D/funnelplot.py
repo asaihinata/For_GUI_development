@@ -1,5 +1,5 @@
 from matplotlib.ticker import MaxNLocator
-from .._graphhelp import *
+from ..dev import *
 class Funne(twoDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)

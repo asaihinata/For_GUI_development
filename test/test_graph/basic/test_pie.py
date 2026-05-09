@@ -24,7 +24,7 @@ if __name__=="__main__":
    sgg.Pie(data=piedata,title="一部のウェッジを離す",label=pielabel,explode=[0.2,0,0,0,0])
   ],
   [
-   sgg.Pie(data=piedata,title="円グラフの基本",label=pielabel,key="pie"),
+   sgg.Pie(data=piedata,title="グラフを更新する",label=pielabel,key="pie"),
    sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]

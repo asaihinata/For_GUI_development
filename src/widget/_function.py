@@ -1,22 +1,21 @@
 from typing import Any
 from ._color import Color
-from .developer import LIST,Number
 __all__=['allNone','allNones','bols','Color','ints','intsmin','listchose','nums','numsmin','parsecolor','typelist','int0','int0s','int1s','list2float','list2int','list2num','list4float','list4int','list4num','num0','num0s','num1s','range_num']
 def allNone(a:Any,b:Any=None)->bool:return True if a is None and b is None else False
 def allNones(a:Any,b:Any=None,other:Any=None)->Any:
  if (a is not None and b is not None) or (a is not None and b is None):return a
  elif (a is None and b is not None):return b
  return other
-def list2num(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,list|tuple) and len(lin)==2 and all(isinstance(i,int|float|Number)for i in lin) else False
+def list2num(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,list|tuple) and len(lin)==2 and all(isinstance(i,int|float)for i in lin) else False
 def list2int(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,list|tuple) and len(lin)==2 and all(isinstance(i,int)for i in lin) else False
 def list2float(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,list|tuple) and len(lin)==2 and all(isinstance(i,float)for i in lin) else False
-def list4num(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,list|tuple) and len(lin)==4 and all(isinstance(i,int|float|Number)for i in lin) else False
+def list4num(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,list|tuple) and len(lin)==4 and all(isinstance(i,int|float)for i in lin) else False
 def list4int(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,list|tuple) and len(lin)==4 and all(isinstance(i,int)for i in lin) else False
 def list4float(lin:list[Any]|tuple[Any]=None)->bool:return True if isinstance(lin,list|tuple) and len(lin)==4 and all(isinstance(i,float)for i in lin) else False
 def typelist(val:Any)->bool:
  '''`val`が配列かを調べる'''
 
- if isinstance(val,LIST|tuple|list):return True
+ if isinstance(val,tuple|list):return True
  return False
 def listchose(val:str,arr:list,other:str|None=None)->str:
  '''`val`が`arr`の配列内の要素に存在するかを調べる。存在しなかった場合,`other`を返す。もし`other`がNoneの場合で尚且つarrが配列の場合,arrの最初の要素を返す。
@@ -33,44 +32,42 @@ def listchose(val:str,arr:list,other:str|None=None)->str:
  elif not isinstance(arr,tuple|list)and other==None:other=arr
  if val in arr:return val
  return other
-def numsmin(val:int|float|Number,mins:int|float|Number=0,other:Any=None)->int|float|Number|Any:
- if not isinstance(val,int|float|Number) or not isinstance(mins,int|float|Number):
+def numsmin(val:int|float,mins:int|float=0,other:Any=None)->int|float|Any:
+ if not isinstance(val,int|float) or not isinstance(mins,int|float):
   return other
- if isinstance(val,Number):val=val.val
- if isinstance(mins,Number):mins=mins.val
  if mins<val:return val
  return other
-def nums(val:int|float,other:int|float|Number|None=None)->int|float|Number|None:
+def nums(val:int|float,other:int|float|None=None)->int|float|None:
  '''`val`が数値かを調べる。
 
  :param val: 調べたい値もしくはデータを指定する。
  :type val: int|float
  :param other: 調べたい値`val`がint|float型ではなかったときに返す値を指定する。
- :type other: int|float|Number|None
+ :type other: int|float|None
  :return: 数値を返す。
- :rtype: int|float|Number|None'''
+ :rtype: int|float|None'''
  return val if isinstance(val,int|float) else other
-def num1s(val:int|float|Number=0,mins:int|float|Number=1)->int|float|Number:
+def num1s(val:int|float=0,mins:int|float=1)->int|float:
  '''`val`が1以上の数値かを調べる。
 
  :param val: 調べたい数値を指定する。
  :type val: int|float
  :param mins: 調べたい数値`val`の最低値を指定する。
- :type mins: int|float|Number|None
+ :type mins: int|float|None
  :return: 数値を返す。
- :rtype: int|float|Number|None'''
- return val if isinstance(val,int|float|Number)and 1<=val else mins
-def num0s(val:int|float|Number=0,mins:int|float|Number=0)->int|float|Number:
+ :rtype: int|float|None'''
+ return val if isinstance(val,int|float)and 1<=val else mins
+def num0s(val:int|float=0,mins:int|float=0)->int|float:
  '''`val`が0以上の数値かを調べる。
 
  :param val: 調べたい数値を指定する。
- :type val: int|float|Number
+ :type val: int|float
  :param mins: 調べたい数値`val`の最低値を指定する。
- :type mins: int|float|Number
+ :type mins: int|float
  :return: 数値を返す。
- :rtype: int|float|Number'''
- return val if isinstance(val,int|float|Number)and 0<=val else mins
-def num0(val:int|float|Number=0,mins:int|float|Number=0)->int|float|Number:
+ :rtype: int|float'''
+ return val if isinstance(val,int|float)and 0<=val else mins
+def num0(val:int|float=0,mins:int|float=0)->int|float:
  '''`val`が0より大きい数値かを調べる。
 
  :param val: 調べたい数値を指定する。
@@ -79,7 +76,7 @@ def num0(val:int|float|Number=0,mins:int|float|Number=0)->int|float|Number:
  :type mins: int|float
  :return: 数値を返す。
  :rtype: int|float'''
- return val if isinstance(val,int|float|Number)and 0<val else mins
+ return val if isinstance(val,int|float)and 0<val else mins
 def intsmin(val:int,mins:int=0,other:Any=None)->int:
  if not isinstance(val,int) or not isinstance(mins,int):
   return other

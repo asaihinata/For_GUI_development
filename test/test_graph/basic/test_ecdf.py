@@ -20,7 +20,7 @@ if __name__=="__main__":
    sgg.Ecdf(data=ecdfdata,title="線の種類を変える",linestyle="dotted")
   ],
   [
-   sgg.Ecdf(data=ecdfdata,title="経験グラフを更新する",key="ecdf"),
+   sgg.Ecdf(data=ecdfdata,title="グラフを更新する",key="ecdf"),
    sgg.Buttons(text="更新ボタン",function=updates)
   ]
  ]

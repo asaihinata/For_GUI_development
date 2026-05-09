@@ -1,6 +1,6 @@
 '''z軸ラベルの設定'''
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from ..developer import Rad,listchose,range_zero_one
+from ..dev import Rad,listchose,range_zero_one
 __all__=['Zlabel']
 class Zlabel:
  def __init__(

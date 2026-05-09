@@ -2,7 +2,6 @@ from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
 from numpy import array,ndarray
 from ..._function import allNones,bols,list2num,listchose,num0s,parsecolor,range_num
-from ...developer import Number
 from .Graph import GElement
 from .style import FontFile,Fontmanager,Fontname,Title,Xlabel,Ylabel
 __all__=['twoDElement']
@@ -62,19 +61,11 @@ class twoDElement(GElement):
   if isinstance(xticksrange,int|float):
    xticksrange=abs(xticksrange)
    self.xticksrange=(xticksrange*-1,xticksrange)
-  elif isinstance(xticksrange,Number):
-   xticksrange=abs(xticksrange).value()
-   negnum=xticksrange*-1
-   self.xticksrange=(negnum,xticksrange,negnum,xticksrange)
   elif list2num(xticksrange):self.xticksrange=xticksrange
   else:self.xticksrange=(0,0)
   if isinstance(yticksrange,int|float):
    yticksrange=abs(yticksrange)
    self.yticksrange=(yticksrange*-1,yticksrange)
-  elif isinstance(yticksrange,Number):
-   yticksrange=abs(yticksrange).value()
-   negnum=yticksrange*-1
-   self.yticksrange=(negnum,yticksrange,negnum,yticksrange)
   elif list2num(yticksrange):self.yticksrange=yticksrange
   else:self.yticksrange=(0,0)
   # その他

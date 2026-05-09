@@ -1,5 +1,5 @@
 from typing import Any,Iterator
-from ...developer.typing import Type_Numberlike
+from ...dev.typing import Type_Numberlike
 class Number:
  __static_attributes__:tuple[str]
  __class__:type

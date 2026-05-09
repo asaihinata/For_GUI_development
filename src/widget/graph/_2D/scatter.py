@@ -1,5 +1,5 @@
 from itertools import product
-from .._graphhelp import *
+from ..dev import *
 class Scatter(twoDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)

@@ -3,7 +3,7 @@ from matplotlib.axes._axes import Axes
 from matplotlib.ticker import FixedLocator,LinearLocator,MaxNLocator,MultipleLocator
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ....._function import listchose
-from .....developer import LISTNumber
+from .....dev import LISTNumber
 __all__=['Yaxis']
 class Yaxis:
  def __init__(self,ax):

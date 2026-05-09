@@ -1,4 +1,4 @@
-from .._graphhelp import *
+from ..dev import *
 class Hist(twoDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)

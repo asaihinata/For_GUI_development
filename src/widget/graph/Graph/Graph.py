@@ -10,7 +10,7 @@ from numpy import array,ceil,ndarray,tile
 from ..._function import bols,listchose,num0s,num1s,nums,parsecolor,range_num
 from ..._log import Logger
 from ..._save import autofile_save
-from ...developer import LIST
+from ...dev import LIST
 from .lists import Manylist,Onelist
 from .style import FontFile,Fontmanager,Fontname,Marker,Solid
 __all__=['GElement']
@@ -135,7 +135,7 @@ class GElement:
     return sizes
   else:return(500,400)
  def markers(self,serch=None,num=None):
-  if serch is None:serch="None"
+  if serch is None:serch='None'
   return self._list_loop(Marker(serch).marker,num)
  def lines(self,serch=None,num=None):return self._list_loop(Solid(serch).solid,num)
  def legend(self,ncols=1):

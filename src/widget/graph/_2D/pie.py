@@ -1,4 +1,4 @@
-from .._graphhelp import *
+from ..dev import *
 class Pie(twoDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
@@ -18,7 +18,7 @@ class Pie(twoDElement):
   self.plot(self.data,startangle=self.startangle,shadow=self.shadow,counterclock=self.counterclock,label=self.label,labeldistance=self.labeldistance,explode=self.explode,startangletype=self.startangletype,alpha=self.alpha)
  def plot(self,data,startangle=0.0,shadow=False,counterclock=True,label=None,labeldistance=1.1,explode=None,startangletype=True,alpha=1):
   self.clear()
-  if startangletype==False:startangle=float(Angle(startangle,now='radian',do='degrees'))
+  if startangletype==False:startangle=Rad(startangle).angle
   pie=np.array(self.ax.pie(data,labels=label,startangle=90-startangle,shadow=shadow,counterclock=counterclock,labeldistance=labeldistance,explode=explode)).T.tolist()
   for i in pie:i[0].set_alpha(self.alpha)
   self.graphdata=pie
@@ -27,8 +27,8 @@ class Pie(twoDElement):
   self._updates(**kw)
   if isinstance(data,np.ndarray|list|tuple):self.data=self._dataarr(data)
   explode=kw.get('explode',self.explode)
-  if isinstance(explode,list|tuple) and all(isinstance(i,int|float|Number)for i in explode):self.explode=list(map(float,explode))
-  elif isinstance(explode,int|float|Number):self.explode=[float(explode) for _ in range(self.max_depth)]
+  if isinstance(explode,list|tuple) and all(isinstance(i,int|float)for i in explode):self.explode=list(map(float,explode))
+  elif isinstance(explode,int|float):self.explode=[float(explode) for _ in range(self.max_depth)]
   else:self.explode=None
   self.label=self.pielabel(self.data,kw.get('label',self.label))[0]
   self.startangle=nums(kw.get('startangle'),self.startangle)
