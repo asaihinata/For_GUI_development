@@ -96,6 +96,9 @@ For_GUI_development
  │       │   │   ├── Graph.py
  │       │   │   ├── __init__.py
  │       │   │   ├── __init__.pyi
+ │       │   │   ├── lists
+ │       │   │   │   ├── __init__.py
+ │       │   │   │   └── __init__.pyi
  │       │   │   ├── style
  │       │   │   │   ├── Text
  │       │   │   │   │   ├── __init__.py
@@ -172,10 +175,7 @@ For_GUI_development
  │       │   │   └── dscatter.py
  │       │   ├── __init__.py
  │       │   ├── __init__.pyi
- │       │   ├── _graphhelp.py
- │       │   └── support
- │       │       ├── __init__.py
- │       │       └── __init__.pyi
+ │       │   └── _graphhelp.py
  │       ├── window.py
  │       └── window.pyi
  ├── test
