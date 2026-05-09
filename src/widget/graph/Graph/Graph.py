@@ -6,12 +6,12 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from numpy import array,ndarray,tile,ceil
+from numpy import array,ceil,ndarray,tile
 from ..._function import bols,listchose,num0s,num1s,nums,parsecolor,range_num
 from ..._log import Logger
 from ..._save import autofile_save
 from ...developer import LIST
-from ..support import Manylist,Onelist
+from .lists import Manylist,Onelist
 from .style import FontFile,Fontmanager,Fontname,Marker,Solid
 __all__=['GElement']
 logger=Logger(name='Graph',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()

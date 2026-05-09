@@ -8,7 +8,7 @@ class Color:
   if isinstance(color,list|tuple):colors=np.array(color)
   elif isinstance(color,str):colors=np.array([color.lower()])
   elif isinstance(color,np.ndarray):colors=color
-  else:colors=None
+  else:colors=[None]
   self.color=np.array(['#000000' if i is None else to_hex(i,keep_alpha) for i in colors],dtype=str)
  def tohex(self,keep_alpha=False):
   if not isinstance(keep_alpha,bool):keep_alpha=False

@@ -10,11 +10,11 @@ __all__=['BBox']
 class BBox:
  bbox_dict:dict[str,Any]
  def __init__(
-self,
+self,*,
 alpha:Type_Numberlike=1,
-edgecolor:Type_Color=None,
-facecolor:Type_Color=None,
-color:Type_Color=None,
+edgecolor:Type_Color|None=None,
+facecolor:Type_Color|None=None,
+color:Type_Color|None=None,
 linewidth:Type_Numberlike=2,
 linestyle:Type_Solid='solid',
 antialiased:bool=True,
@@ -30,9 +30,9 @@ visible:bool=True,
 zorder:int|float=4
 ):
   self.alpha=range_zero_one(alpha,1.0)
-  self.edgecolor=bols(edgecolor is None,Color(edgecolor))
-  self.facecolor=bols(facecolor is None,Color(facecolor))
-  self.color=bols(color is None,Color(color))
+  self.edgecolor=bols(edgecolor is not None,Color(edgecolor).color[0])
+  self.facecolor=bols(facecolor is not None,Color(facecolor).color[0])
+  self.color=bols(color is not None,Color(color).color[0])
   self.linewidth=bols(isinstance(linewidth,int|float),linewidth,2)
   self.linestyle=bols(linestyle in Solid(),linestyle,'solid')
   self.antialiased=bols(isinstance(antialiased,bool),antialiased)

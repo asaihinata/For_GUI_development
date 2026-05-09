@@ -3,8 +3,8 @@ import numpy as np
 from ...typing import *
 from .._function import *
 from .Graph import threeDElement,twoDElement
+from .Graph.lists import *
 from .Graph.style import *
-from .support import *
 def mod(a:int|float,b:int|float)->TupleNumbertype2:
  '''整数除算と除算をtuple型で返す。
 
