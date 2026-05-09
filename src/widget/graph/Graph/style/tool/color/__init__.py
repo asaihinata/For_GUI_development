@@ -2,18 +2,28 @@ import numpy as np
 from matplotlib.colors import cnames,to_hex,to_rgb,to_rgba
 __all__=['Color']
 class Color:
- def __init__(self,color,keep_alpha=False):
+ def __init__(
+self,
+color,
+*,
+default_color='#000000',
+keep_alpha=False
+):
+  self.default=default_color
   if not isinstance(keep_alpha,bool):keep_alpha=False
   else:keep_alpha=keep_alpha
-  if isinstance(color,list|tuple):colors=np.array(color)
-  elif isinstance(color,str):colors=np.array([color.lower()])
-  elif isinstance(color,np.ndarray):colors=color
-  else:colors=[None]
-  self.color=np.array(['#000000' if i is None else to_hex(i,keep_alpha) for i in colors],dtype=str)
+  if isinstance(color,Color):
+   self.color=color.color
+  else:
+   if isinstance(color,list|tuple):colors=np.array(color)
+   elif isinstance(color,str):colors=np.array([color.lower()])
+   elif isinstance(color,np.ndarray):colors=color
+   else:colors=[None]
+   self.color=np.array([default_color if i is None else to_hex(i,keep_alpha) for i in colors],dtype=str)
  def tohex(self,keep_alpha=False):
   if not isinstance(keep_alpha,bool):keep_alpha=False
   else:keep_alpha=keep_alpha
-  self.color=np.array(['#000000' if i is None else to_hex(i,keep_alpha) for i in self.color],dtype=str)
+  self.color=np.array([self.default if i is None else to_hex(i,keep_alpha) for i in self.color],dtype=str)
   return self
  def torgba(self,alpha=None):
   if alpha is not None:

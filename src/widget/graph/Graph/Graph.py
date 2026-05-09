@@ -12,7 +12,7 @@ from ..._log import Logger
 from ..._save import autofile_save
 from ...dev import LIST
 from .lists import Manylist,Onelist
-from .style import FontFile,Fontmanager,Fontname,Marker,Solid
+from .style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid
 __all__=['GElement']
 logger=Logger(name='Graph',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 graph_color=['#4477aa','#ee7733','#111211','#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']
@@ -139,7 +139,7 @@ class GElement:
   return self._list_loop(Marker(serch).marker,num)
  def lines(self,serch=None,num=None):return self._list_loop(Solid(serch).solid,num)
  def legend(self,ncols=1):
-  if self.legendjudge:self.ax.legend(ncols=ncols,bbox_to_anchor=self.anchor,loc=self.legendplace,title=self.legendtitle,frameon=self.legendframe,shadow=self.legendshadow,framealpha=self.legendalpha)
+  if self.legendjudge:self.legend_=Legends(self.ax,ncols=ncols,bbox_to_anchor=self.anchor,loc=self.legendplace,title=self.legendtitle,frameon=self.legendframe,shadow=self.legendshadow,framealpha=self.legendalpha)
  def _anchor(self,val,other=None):
   if(isinstance(val,list|tuple) and (len(val)==2 or len(val)==4) and all(isinstance(i,int|float)for i in val)):return val
   return other

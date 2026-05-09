@@ -13,14 +13,7 @@ self,
 ax:Axes|Axes3D,
 handles:Iterable[Artist|tuple[Artist,...]],
 labels:Iterable[str],
-loc:Literal[
-'upper right','upper left','lower left',
-'lower right','right','center left',
-'center right','lower center','upper center',
-'center']
-|tuple[float,float]
-|int
-|None=None,
+loc:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center']|tuple[float,float]|int|None=None,
 numpoints:int|None=None,
 markerscale:float|None=None,
 markerfirst:bool=True,
@@ -29,10 +22,7 @@ scatterpoints:int|None=None,
 scatteryoffsets:Iterable[float]|None=None,
 prop:FontProperties|dict[str,Any]|None=None,
 fontsize:float|str|None=None,
-labelcolor:ColorType
-|Iterable[ColorType]
-|Literal['linecolor','markerfacecolor','mfc','markeredgecolor','mec']
-|None=None,
+labelcolor:ColorType|Iterable[ColorType]|Literal['linecolor','markerfacecolor','mfc','markeredgecolor','mec']|None=None,
 borderpad:float|None=None,
 labelspacing:float|None=None,
 handlelength:float|None=None,
@@ -47,14 +37,9 @@ shadow:bool|dict[str,Any]|None=None,
 title:str|None=None,
 title_fontsize:float|None=None,
 framealpha:float|None=None,
-edgecolor:Literal['inherit']
-|ColorType|None=None,
-facecolor:Literal['inherit']
-|ColorType|None=None,
-bbox_to_anchor:BboxBase
-|tuple[float,float]
-|tuple[float,float,float,float]
-|None=None,
+edgecolor:Literal['inherit']|ColorType|None=None,
+facecolor:Literal['inherit']|ColorType|None=None,
+bbox_to_anchor:BboxBase|tuple[float,float]|tuple[float,float,float,float]|None=None,
 bbox_transform:Transform|None=None,
 frameon:bool|None=None,
 handler_map:dict[Artist|type,HandlerBase]|None=None,

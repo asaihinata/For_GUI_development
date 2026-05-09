@@ -12,7 +12,7 @@ LOC={
 }
 class Legends:
  def __init__(
-self,ax,handles,labels,
+self,ax,*,
 loc=None,numpoints=None,markerscale=None,
 markerfirst=True,reverse=False,
 scatterpoints=None,
@@ -36,23 +36,29 @@ alignment='center',ncol=1,draggable=False
   if not isinstance(ax,Axes|Axes3D):
    raise TypeError('axの型が違います')
   self.ax=ax
+  handles,labels=self.ax.get_legend_handles_labels()
   if(
      (isinstance(loc,str) and loc in LOC.keys()) or
      (isinstance(loc,list|tuple) and list2float(loc)) or
      (isinstance(loc,int) and 0<=loc<=10)
     ):loc=loc
   else:loc='best'
-  if numpoints is not None and isinstance(numpoints,int|float) and numpoints<=0:
+  if isinstance(numpoints,int|float) and numpoints<=0:
    numpoints=1
   labelcolor=np.array(Color(labelcolor))
-  self.ax.legend(
-handles=handles,labels=labels,loc=loc,
-numpoints=numpoints,reverse=reverse,
+  if not isinstance(ncols,int) or (isinstance(ncols,int) and ncols<1):ncols=1
+  self.legend=self.ax.legend(
+handles[::-1],
+labels[::-1],
+loc=loc,
+numpoints=numpoints,
 markerscale=markerscale,
 markerfirst=markerfirst,
+reverse=reverse,
 scatterpoints=scatterpoints,
 scatteryoffsets=scatteryoffsets,
-prop=prop,fontsize=fontsize,
+prop=prop,
+fontsize=fontsize,
 labelcolor=labelcolor,
 borderpad=borderpad,
 labelspacing=labelspacing,
@@ -61,14 +67,21 @@ handleheight=handleheight,
 handletextpad=handletextpad,
 borderaxespad=borderaxespad,
 columnspacing=columnspacing,
-ncols=ncols,mode=mode,fancybox=fancybox,
-shadow=shadow,title=title,
-title_fontsize=title_fontsize,ncol=ncol,
+ncols=ncols,
+mode=mode,
+fancybox=fancybox,
+shadow=shadow,
+title=title,
+title_fontsize=title_fontsize,
 framealpha=framealpha,
-edgecolor=edgecolor,facecolor=facecolor,
+edgecolor=edgecolor,
+facecolor=facecolor,
 bbox_to_anchor=bbox_to_anchor,
 bbox_transform=bbox_transform,
-frameon=frameon,handler_map=handler_map,
+frameon=frameon,
+handler_map=handler_map,
 title_fontproperties=title_fontproperties,
-alignment=alignment,draggable=draggable
+alignment=alignment,
+ncol=ncol,
+draggable=draggable
 )
