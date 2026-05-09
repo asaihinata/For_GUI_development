@@ -110,7 +110,9 @@ For_GUI_development
  │       │   │   │   ├── composite
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   ├── bbox.py
+ │       │   │   │   │   ├── capstyle.py
  │       │   │   │   │   ├── fmt.py
+ │       │   │   │   │   ├── hatch.py
  │       │   │   │   │   ├── marker.py
  │       │   │   │   │   └── solid.py
  │       │   │   │   ├── developer
@@ -172,11 +174,8 @@ For_GUI_development
  │       │   ├── __init__.pyi
  │       │   ├── _graphhelp.py
  │       │   └── support
- │       │       ├── Graphhelp.py
- │       │       ├── Graphhelp.pyi
- │       │       ├── List.py
- │       │       ├── List.pyi
- │       │       └── __init__.py
+ │       │       ├── __init__.py
+ │       │       └── __init__.pyi
  │       ├── window.py
  │       └── window.pyi
  ├── test

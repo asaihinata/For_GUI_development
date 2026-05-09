@@ -17,7 +17,7 @@ class Waterfall(twoDElement):
   self.sums=bols(kw.get('sums'),False)
   self.sumstext=kw.get('sumstext','sum')
   self.colorline=parsecolor(kw.get('colorline'),'#4477aa')
-  self.linestyle=str(NSolid(kw.get('linestyle','-')))
+  self.linestyle=Solid(kw.get('linestyle','-')).solid
   self.plot(self.x,self.y,alpha=self.alpha,width=self.width,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
  def plot(self,x,y,alpha=1,width=1,sums=False,sumstext='sum',bottom=None,color=None,linestyle='-'):
   self.clear()
@@ -66,7 +66,7 @@ class Waterfallh(twoDElement):
   self.sums=bols(kw.get('sums'),False)
   self.sumstext=kw.get('sumstext','sum')
   self.colorline=parsecolor(kw.get('colorline'),'#4477aa')
-  self.linestyle=str(NSolid(kw.get('linestyle','-')))
+  self.linestyle=Solid(kw.get('linestyle','-')).solid
   self.plot(self.x,self.y,alpha=self.alpha,height=self.height,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
  def plot(self,x,y,alpha=1,height=1,sums=False,sumstext='sum',bottom=None,color=None,linestyle='-'):
   self.clear()

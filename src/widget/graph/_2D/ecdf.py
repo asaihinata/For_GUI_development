@@ -6,7 +6,7 @@ class Ecdf(twoDElement):
   self.complementary=bols(kw.get('complementary'),False)
   self.compress=bols(kw.get('compress'),False)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
-  self.line=self.nlines(kw.get('linestyle','-'),self.max_depth)
+  self.line=self.lines(kw.get('linestyle','-'),self.max_depth)
   self.linewidth=num0(kw.get('linewidth'),1.5)
   self.plot(self.data,complementary=self.complementary,compress=self.compress,orientation=self.orientation,linewidth=self.linewidth,line=self.line,alpha=self.alpha)
  def plot(self,data,complementary=False,compress=False,orientation='vertical',linewidth=1.5,line='-',alpha=1):

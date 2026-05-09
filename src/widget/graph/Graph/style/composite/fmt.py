@@ -15,9 +15,9 @@ marker:Literal[
 's','p','P',
 '*','h','H',
 '+','x','X',
-'D','d','|','_'],
-solid:Literal['-','--','-.',':'],
-color:Literal['b','g','r','c','m','y','k','w']
+'D','d','|','_']|None=None,
+solid:Literal['-','--','-.',':']|None=None,
+color:Literal['b','g','r','c','m','y','k','w']|None=None
 )->None:
   if marker in FMT_MARKER:self.marker=marker
   else:self.marker=''
@@ -26,4 +26,4 @@ color:Literal['b','g','r','c','m','y','k','w']
   if color in FMT_COLOR:self.color=color
   else:self.color=''
   self.fmt_txt=f'{self.marker}{self.solid}{self.color}'
- def __str__(self)->str:return str(self.fmt_txt)
+ def __str__(self)->str:return self.fmt_txt

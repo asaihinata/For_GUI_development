@@ -155,15 +155,6 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
  :type serch: str
  :return:
  :rtype: str'''
- def nlines(self,serch:str)->str:'''serch`で指定した枠線が`SOLID`に存在するかを調べる
-
- :param serch: `SOLID`に調べたいを指定する。
- :type serch: str
- :return:
- :rtype: str
-参考
-----
-* https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html'''
  def _arr(self,val:ndarray|list|tuple,j:bool=True)->ndarray:'''
  :param val: 配列を指定する。
  :type val: ndarray|list|tuple

@@ -2,6 +2,7 @@
 from matplotlib.axes._axes import Axes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ..developer import Rad,listchose,range_zero_one
+from ..composite import BBox
 __all__=['Title']
 class Title:
  def __init__(

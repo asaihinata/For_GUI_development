@@ -21,3 +21,4 @@ join:Literal['miter','round','bevel']|None=None
  def __iter__(self)->Iterator[int|str]:return iter(self.marker_list)
  def __len__(self)->int:return len(self.marker_list)
  def __contains__(self,item:str)->bool:return item in self.marker_list
+ def get_marker(self):return self.marker.get_marker()

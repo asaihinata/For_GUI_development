@@ -6,13 +6,13 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from numpy import array,ndarray
+from numpy import array,ndarray,tile,ceil
 from ..._function import bols,listchose,num0s,num1s,nums,parsecolor,range_num
 from ..._log import Logger
 from ..._save import autofile_save
 from ...developer import LIST
-from ..support import Manylist,Marker,NSolid,Onelist,Solid
-from .style import FontFile,Fontmanager,Fontname
+from ..support import Manylist,Onelist
+from .style import FontFile,Fontmanager,Fontname,Marker,Solid
 __all__=['GElement']
 logger=Logger(name='Graph',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 graph_color=['#4477aa','#ee7733','#111211','#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']
@@ -134,9 +134,10 @@ class GElement:
     if not isinstance(sizes[1],int|float):sizes[1]=400
     return sizes
   else:return(500,400)
- def markers(self,serch=None,num=None):return self._list_loop(list(Marker(serch)),num)
- def lines(self,serch=None,num=None):return self._list_loop(list(Solid(serch)),num)
- def nlines(self,serch=None,num=None):return self._list_loop(list(NSolid(serch)),num)
+ def markers(self,serch=None,num=None):
+  if serch is None:serch="None"
+  return self._list_loop(Marker(serch).marker,num)
+ def lines(self,serch=None,num=None):return self._list_loop(Solid(serch).solid,num)
  def legend(self,ncols=1):
   if self.legendjudge:self.ax.legend(ncols=ncols,bbox_to_anchor=self.anchor,loc=self.legendplace,title=self.legendtitle,frameon=self.legendframe,shadow=self.legendshadow,framealpha=self.legendalpha)
  def _anchor(self,val,other=None):
@@ -197,4 +198,7 @@ class GElement:
      set_arr.append(c)
     if judge:relist=set_arr
   return relist
- def _list_loop(self,lin,num):return LIST(lin).get(num)
+ def _list_loop(self,lin,num):
+  if not isinstance(lin,ndarray|list|tuple):lin=array([lin])
+  if not isinstance(num,int):num=0
+  return tile(lin,int(ceil(num/len(lin))))[:num]

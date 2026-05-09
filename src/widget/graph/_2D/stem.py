@@ -1,5 +1,4 @@
 from itertools import product
-from ...developer import LIST
 from .._graphhelp import *
 stem_line_list=['-','--','-.','-.']
 stem_mark_list=['o','+','*','.','x','_','|','square','diamond','^','v','<','>','pentagram','hexagram']
@@ -55,9 +54,7 @@ class Stem(twoDElement):
     if i in stem_mark_list:set_arr.append(i)
   if len(set_arr)==0:set_arr=stem_mark_list
   return set_arr
- def _lsmc(self,val):
-  vals=val+1
-  return f'{LIST(self.line).get(vals)[val]}{LIST(self.marker).get(vals)[val]}{LIST(self.colorlist).get(vals)[val]}'
+ def _lsmc(self,val):return FMT(self.marker[val],self.line[val],self.colorlist[val]).fmt_txt
  def _stem_color_check(self,color):
   set_arr,set_color_arr=[],[]
   if isinstance(color,list|tuple):

@@ -7,7 +7,8 @@ class Stack(twoDElement):
   self.y=self._manyarr(kw.get('y'))
   self.label=self.labels(kw.get('label'))[0]
   self.baseline=listchose(kw.get('baseline'),['zero','sym','wiggle','weighted_wiggle'])
-  self.hatch=self._list_loop(list(Hatch(kw.get('hatch'))),self.max_depth)
+  hatch=kw.get('hatch')
+  self.hatch=self._list_loop('' if hatch is None else Hatch(hatch),self.max_depth)
   self.plot(self.x,self.y,label=self.label,hatch=self.hatch,baseline=self.baseline,alpha=self.alpha)
  def plot(self,x,y,label=None,hatch=None,baseline='zero',alpha=1):
   self.clear()

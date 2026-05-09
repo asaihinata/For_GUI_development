@@ -5,6 +5,7 @@ class LIST:
  __static_attributes__:tuple[str]
  __class__:type
  __firstlineno__:int
+ lists:list
  def __init__(self,lists:Any,*arg:tuple)->None:'''配列を作成する。'''
  def __add__(self,val:list|tuple|LIST)->LIST:...
  def __radd__(self,val:list|tuple|LIST)->LIST:...

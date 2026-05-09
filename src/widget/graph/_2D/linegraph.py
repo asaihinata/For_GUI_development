@@ -8,7 +8,7 @@ class LineGraph(twoDElement):
   self.label=self.labels(kw.get('label'))[0]
   self.marker=self.markers(kw.get('marker'),self.max_depth)
   self.markersize=num0(kw.get('markersize'),10)
-  self.line=self.nlines(kw.get('linestyle','-'),self.max_depth)
+  self.line=self.lines(kw.get('linestyle','-'),self.max_depth)
   self.linewidth=num0(kw.get('linewidth'),2)
   self.plot(self.x,self.y,marker=self.marker,linewidth=self.linewidth,linestyle=self.line,markersize=self.markersize,alpha=self.alpha,label=self.label)
  def plot(self,x,y,marker='o',linewidth=2,linestyle='-',markersize=10,alpha=1,label=None):
@@ -23,7 +23,7 @@ class LineGraph(twoDElement):
   if isinstance(y,np.ndarray|list|tuple):self.y=self._manyarr(y)
   self.marker=self.markers(kw.get('marker',self.marker),self.max_depth)
   self.markersize=num0(kw.get('markersize'),self.markersize)
-  self.line=self.nlines(kw.get('linestyle',self.line),self.max_depth)
+  self.line=self.lines(kw.get('linestyle',self.line),self.max_depth)
   self.linewidth=num0(kw.get('linewidth'),self.linewidth)
   self.plot(self.x,self.y,marker=self.marker,linewidth=self.linewidth,linestyle=self.line,markersize=self.markersize,alpha=self.alpha,label=self.label)
   self._redraw()

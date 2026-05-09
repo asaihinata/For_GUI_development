@@ -27,7 +27,7 @@ fmtcolor:Literal['b','g','r','c','m','y','k','w']|None=None
    self.solid=FMT(fmtmarker,fmtsolid,fmtcolor).fmt_txt
   else:
    self.solid='-'
- def __str__(self)->str:return str(self.solid)
+ def __str__(self)->str:return self.solid
  def __iter__(self)->Iterator[str]:return iter(self.solid_list)
  def __len__(self)->int:return len(self.solid_list)
  def __contains__(self,item:Any)->bool:return item in self.solid_list

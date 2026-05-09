@@ -64,3 +64,4 @@ zorder:int|float=4
 'rasterized':self.rasterized,
 'visible':self.visible,
 'zorder':self.zorder}
+ def get_bbox(self)->dict[str,Any]:return self.bbox_dict
