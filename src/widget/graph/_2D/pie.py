@@ -20,8 +20,7 @@ class Pie(twoDElement):
   self.clear()
   if startangletype==False:startangle=Rad(startangle).angle
   pie=np.array(self.ax.pie(data,labels=label,startangle=90-startangle,shadow=shadow,counterclock=counterclock,labeldistance=labeldistance,explode=explode)).T.tolist()
-  for i in pie:i[0].set_alpha(self.alpha)
-  self.graphdata=pie
+  self.graphdata=[i[0].set_alpha(self.alpha) for i in pie]
   self.legend()
  def update(self,data=None,**kw):
   self._updates(**kw)

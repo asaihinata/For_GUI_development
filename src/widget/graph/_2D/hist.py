@@ -6,11 +6,10 @@ class Hist(twoDElement):
   self.label=self.labels(kw.get('label'))[0]
   if len(self.data.shape)!=1:
    raise ValueError('配列に多次元配列で指定されています')
-  sturges=self._sturges()
   bins=kw.get('bins')
   if isinstance(bins,list|range|tuple|np.ndarray) or bins in ['auto','fd','doane','scott','stone','rice','sturges','sqrt']:self.bins=bins
-  elif isinstance(bins,int):self.bins=num1s(bins,sturges)
-  else:self.bins=sturges
+  elif isinstance(bins,int):self.bins=num1s(bins,round(np.log2(len(self.data))+1))
+  else:self.bins=round(np.log2(len(self.data))+1)
   self.min=nums(kw.get('min'),np.min(self.data))
   self.max=nums(kw.get('max'),np.max(self.data))
   self.range=(self.min,self.max)
@@ -34,7 +33,10 @@ class Hist(twoDElement):
  def update(self,data=None,**kw):
   self._updates(**kw)
   if isinstance(data,np.ndarray|list|tuple):self.data=self._dataarr(data)
-  self.bins=num1s(kw.get('bins'),self.bins)
+  bins=kw.get('bins',self.bins)
+  if isinstance(bins,list|range|tuple|np.ndarray) or bins in ['auto','fd','doane','scott','stone','rice','sturges','sqrt']:self.bins=bins
+  elif isinstance(bins,int):self.bins=num1s(bins,round(np.log2(len(self.data))+1))
+  else:self.bins=round(np.log2(len(self.data))+1)
   self.min=nums(kw.get('min'),np.min(self.data))
   self.max=nums(kw.get('max'),np.max(self.data))
   self.range=(self.min,self.max)
@@ -44,7 +46,6 @@ class Hist(twoDElement):
   self.width=range_num(num0s(kw.get('width'),self.width),0,1,self.width)
   self.plot(self.data,label=self.label,bins=self.bins,ranges=self.range,bottom=self.bottom,orientation=self.orientation,width=self.width)
   self._redraw()
- def _sturges(self):return round(np.log2(len(self.data))+1)
  def get(self):return list(self.graphdata)
  def getrange(self,num=True):return self.range if num else (self.range[0].item(),self.range[1].item())
  def getmin(self,num=True):return self.min if num else self.min.item()
