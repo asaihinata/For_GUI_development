@@ -4,7 +4,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 from PIL import Image,ImageTk
 from requests import get
-from ..._function import list2num
+from ...._function import list2num
+__all__=['Photo']
 class Photo:
  savefile={'bytos':False}
  img=None

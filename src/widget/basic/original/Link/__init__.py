@@ -2,11 +2,11 @@ from os.path import abspath
 from pathlib import Path
 from tkinter import Label
 from webbrowser import open
-from ..._font import fonts
-from ..._function import num0,parsecolor
-from ..._log import Logger
-from ...base import Element
-logger=Logger(name='Link',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
+from ...._font import fonts
+from ...._function import num0,parsecolor
+from ...._log import Logger
+from ....base import Element
+logger=Logger(name='link',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class Link(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)
