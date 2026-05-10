@@ -784,6 +784,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''折線グラフを作成する。
 
@@ -876,7 +877,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def BarGraph(
 x:o_array,
@@ -951,6 +954,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''縦軸棒グラフを作成する。
 
@@ -1043,7 +1047,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def BarhGraph(
 x:o_array,
@@ -1115,6 +1121,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 alpha:int|float=1,
 height:int|float=1,
 align:Literal['center','edge']='center',
@@ -1210,7 +1217,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def Funne(
 data:o_array,
@@ -1281,6 +1290,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 alpha:int|float=1,
 height:int|float=1,
 align:Literal['center','edge']='center',
@@ -1374,7 +1384,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def Stacked(
 data:n_array,
@@ -1446,6 +1458,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''積み上げ縦棒グラフを作成する。
 
@@ -1532,7 +1545,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def Stackedh(
 data:n_array,
@@ -1604,6 +1619,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''積み上げ横棒グラフを作成する。
 
@@ -1690,7 +1706,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def Pie(
 data:o_array,
@@ -1732,6 +1750,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''円グラフを作成する。
 
@@ -1794,7 +1813,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def Boxplot(
 data:n_array,
@@ -1870,6 +1891,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''箱ひげ図を作成する。
 
@@ -1962,7 +1984,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def Waterfall(
 x:o_array,
@@ -2026,6 +2050,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 ucolor:ColorType='#156082',
 dcolor:ColorType='#e97132',
 width:int|float=1,
@@ -2189,6 +2214,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 ucolor:ColorType='#156082',
 dcolor:ColorType='#e97132',
 height:int|float=1,
@@ -2360,6 +2386,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''散布図を作成する。
 
@@ -2448,7 +2475,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def DScatter(
 x:o_array,
@@ -2526,6 +2555,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 mouse_rotation:bool=True,
 elev:int|float=30,
 azim:int|float=45,
@@ -2710,6 +2740,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''幹図を作成する。
 
@@ -2806,7 +2837,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def Step(
 data:n_array,
@@ -2850,6 +2883,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
@@ -3023,6 +3057,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''ハットグラフを作成する。
 
@@ -3107,7 +3142,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def Hist(
 data:o_array,
@@ -3164,6 +3201,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
@@ -3355,6 +3393,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''積み上げエリアチャートを作成する。
 
@@ -3445,7 +3484,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def Bubble(
 x:n_array,
@@ -3521,6 +3562,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''バブルグラフを作成する。
 
@@ -3613,7 +3655,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def Linefill(
 x:o_array,
@@ -3686,6 +3730,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''積上げ面グラフを作成する。
 
@@ -3774,7 +3819,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def Ecdf(
 data:n_array,
@@ -3819,6 +3866,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''経験的累積分布関数を作成する。
 
@@ -3911,7 +3959,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def Errorbar(
 x:n_array,
@@ -3996,6 +4046,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''誤差範囲付きの線グラフもしくはマーカーグラフ,あるいはその両方のエラーグラフを作成する。
 
@@ -4108,7 +4159,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def Eventplot(
 data:o_array,
@@ -4182,6 +4235,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''イベントグラフを作成する。
 
@@ -4272,7 +4326,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @staticmethod
  def Hist2d(
 x:o_array,
@@ -4331,6 +4387,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
@@ -4496,6 +4553,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''バイオリングラフを作成する。
 
@@ -4598,7 +4656,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @classmethod
  def Hexbin(
 self,
@@ -4647,6 +4707,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 key:str=...
 )->dict[str,Any]:'''2次元六角形グラフを作成する。
 
@@ -4743,7 +4804,9 @@ key:str=...
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  @classmethod
  def Popup(
 cls,

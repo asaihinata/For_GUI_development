@@ -207,6 +207,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''折線グラフを作成する。
 
@@ -299,7 +300,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 x:n_array,
@@ -393,6 +396,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''縦軸棒グラフを作成する。
 
@@ -483,7 +487,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 x:o_array,
@@ -664,7 +670,9 @@ align:Literal['center','edge']='center'
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 x:o_array,
@@ -845,7 +853,9 @@ align:Literal['center','edge']='center'
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 x:o_array,
@@ -933,6 +943,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''積み上げ縦棒グラフを作成する。
 
@@ -1019,7 +1030,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 data:n_array,
@@ -1107,6 +1120,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''積み上げ横棒グラフを作成する。
 
@@ -1193,7 +1207,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 data:n_array,
@@ -1249,6 +1265,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 dpi:int|float=100
 )->None:'''円グラフを作成する。
 
@@ -1311,7 +1328,9 @@ dpi:int|float=100
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 data:o_array,
@@ -1406,6 +1425,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''箱ひげ図を作成する。
 
@@ -1500,7 +1520,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 data:n_array,
@@ -1589,6 +1611,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''x軸向きの滝グラフを作成する。
 
@@ -1771,6 +1794,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''y軸向きの滝グラフを作成する。
 
@@ -1960,6 +1984,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''散布図を作成する。
 
@@ -2048,7 +2073,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 x:n_array,
@@ -2351,6 +2378,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''幹図を作成する。
 
@@ -2443,7 +2471,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 x:n_array,
@@ -2943,6 +2973,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''積み上げエリアチャートを作成する。
 
@@ -3031,7 +3062,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 x:n_array,
@@ -3113,6 +3146,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''バブルグラフを作成する。
 
@@ -3205,7 +3239,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 x:n_array,
@@ -3299,6 +3335,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''積上げ面グラフを作成する。
 
@@ -3385,7 +3422,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 x:o_array,
@@ -3449,6 +3488,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''経験的累積分布関数を作成する。
 
@@ -3539,7 +3579,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 data:o_array,
@@ -3612,6 +3654,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''誤差範囲付きの線グラフもしくはマーカーグラフ,あるいはその両方のエラーグラフを作成する。
 
@@ -3722,7 +3765,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 x:n_array,
@@ -3825,6 +3870,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''イベントグラフを作成する。
 
@@ -3915,7 +3961,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 data:o_array,
@@ -4174,6 +4222,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''バイオリングラフを作成する。
 
@@ -4274,7 +4323,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 data:n_array,
@@ -4345,6 +4396,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''2次元六角形グラフを作成する。
 
@@ -4441,7 +4493,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 x:o_array,
@@ -4533,6 +4587,7 @@ legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
 legendalpha:int|float=1,
+legendncols:int=1,
 master:Misc=None
 )->None:'''ハットグラフを作成する。
 
@@ -4617,7 +4672,9 @@ master:Misc=None
  :param legendshadow: 凡例に影を付与するか指定する。
  :type legendshadow: bool
  :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float'''
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
  def update(
 self,
 x:o_array,

@@ -46,6 +46,7 @@ class GElement:
   self.legendframe=bols(kw.get('legendframe'))
   self.legendshadow=bols(kw.get('legendshadow'),False)
   self.legendalpha=range_num(num0s(kw.get('legendalpha'),1),0,1,1)
+  self.legendncols=num1s(kw.get('legendncols',1))
   # 軸ラベル
   self.labelalpha=range_num(num0s(kw.get('labelalpha'),1),0,1,1)
   labelfg=kw.get('labelfg')
@@ -138,8 +139,8 @@ class GElement:
   if serch is None:serch='None'
   return self._list_loop(Marker(serch).marker,num)
  def lines(self,serch=None,num=None):return self._list_loop(Solid(serch).solid,num)
- def legend(self,ncols=1):
-  if self.legendjudge:self.legend_=Legends(self.ax,ncols=ncols,bbox_to_anchor=self.anchor,loc=self.legendplace,title=self.legendtitle,frameon=self.legendframe,shadow=self.legendshadow,framealpha=self.legendalpha)
+ def legend(self):
+  if self.legendjudge:self.legend_=Legends(self.ax,ncols=self.legendncols,bbox_to_anchor=self.anchor,loc=self.legendplace,title=self.legendtitle,frameon=self.legendframe,shadow=self.legendshadow,framealpha=self.legendalpha)
  def _anchor(self,val,other=None):
   if(isinstance(val,list|tuple) and (len(val)==2 or len(val)==4) and all(isinstance(i,int|float)for i in val)):return val
   return other
