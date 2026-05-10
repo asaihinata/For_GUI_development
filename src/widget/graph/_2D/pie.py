@@ -3,7 +3,7 @@ class Pie(twoDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.labelplace=self._getlegendplace(kw.get('labelplace'),'upper left')
-  self.anchor=self._anchor(kw.get('anchor'),(1,1))
+  self.anchor=self._anchor(kw.get('anchor'),(1.2,1.05))
   self.data=self._dataarr(kw.get('data'))
   self.label=self.pielabel(self.data,kw.get('label'))[0]
   self.startangle=nums(kw.get('startangle'),0)

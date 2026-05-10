@@ -145,7 +145,7 @@ class GElement:
   return other
  def _getlegendplace(self,place,other='upper right'):
   labelplacelist=['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
-  if isinstance(place,int) and 0<=place<=10:return labelplacelist[int]
+  if isinstance(place,int) and 0<=place<=10:return labelplacelist[place]
   elif place in labelplacelist:return place
   return listchose(other,labelplacelist)
  def pielabel(self,data,label=None):

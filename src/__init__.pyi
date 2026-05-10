@@ -1726,6 +1726,12 @@ titlefontname:str|Iterable[str]|None=None,
 titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=(1.2,1.05),
+legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper left',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
 key:str=...
 )->dict[str,Any]:'''円グラフを作成する。
 
@@ -1776,7 +1782,19 @@ key:str=...
  :param dpi: 1インチあたりのドット数を指定する。
  :type dpi: int|float
  :param alpha: グラフの透明度を指定する。
- :type alpha: int|float'''
+ :type alpha: int|float
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float'''
  @staticmethod
  def Boxplot(
 data:n_array,
