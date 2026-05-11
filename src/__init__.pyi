@@ -6,8 +6,8 @@ from typing import Union
 from matplotlib.mlab import GaussianKDE
 from numpy import ndarray
 from numpy.typing import ArrayLike
-from .typing import *
 from .widget import *
+from .widget.typing import *
 class sgg:
  @classmethod
  def window(

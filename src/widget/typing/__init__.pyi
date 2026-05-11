@@ -1,4 +1,3 @@
-'''基本的な型ヒント'''
 from os import PathLike
 from typing import *
 from matplotlib.typing import *

@@ -2,7 +2,7 @@ import datetime
 import time
 from collections.abc import Iterator
 from typing import Any,NoReturn,overload
-from ...typing import Listlike
+from ..typing import Listlike
 __all__=['times','timeslist']
 class times:
  maxsyear:int

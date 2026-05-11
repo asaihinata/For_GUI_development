@@ -1,6 +1,6 @@
 from re import findall
 from tkinter import Misc
-from ..typing import FunctionType
+from .typing import FunctionType
 from ._font import fonts
 from ._function import bols,listchose,num0,parsecolor
 from ._log import Logger

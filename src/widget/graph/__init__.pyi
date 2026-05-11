@@ -12,7 +12,7 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import dtype,float64,ndarray
 from numpy._typing import _AnyShape
 from numpy.typing import ArrayLike
-from ...typing import *
+from ..typing import *
 class _Gset:
  def winsize(self)->tuple[int,int]:'''ウィジェットの現在の幅と高さを返す。
 

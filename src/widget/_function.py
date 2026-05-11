@@ -164,4 +164,6 @@ def parsecolor(val:str,other:str=None)->str:
  :type other: str
  :return: 色名を返す。
  :rtype: str'''
- return str(Color(val,other))
+ if val is None:
+  return other
+ return Color(val).color

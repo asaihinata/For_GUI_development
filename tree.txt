@@ -18,15 +18,13 @@ For_GUI_development
  ├── src
  │   ├── __init__.py
  │   ├── __init__.pyi
- │   ├── typing
- │   │   ├── __init__.py
- │   │   ├── __init__.pyi
- │   │   └── widget.py
  │   └── widget
  │       ├── __init__.py
  │       ├── _color
  │       │   ├── __init__.py
- │       │   └── color.csv
+ │       │   ├── _color_data.py
+ │       │   ├── color.csv
+ │       │   └── color.py
  │       ├── _dialog
  │       │   ├── __init__.py
  │       │   ├── __init__.pyi
@@ -222,6 +220,10 @@ For_GUI_development
  │       │   ├── __init__.pyi
  │       │   └── dev
  │       │       └── __init__.py
+ │       ├── typing
+ │       │   ├── __init__.py
+ │       │   ├── __init__.pyi
+ │       │   └── widget.py
  │       ├── window.py
  │       └── window.pyi
  ├── test

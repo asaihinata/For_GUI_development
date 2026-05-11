@@ -1,5 +1,6 @@
 import numpy as np
-from matplotlib.colors import cnames,to_hex,to_rgb,to_rgba
+from matplotlib._color_data import CSS4_COLORS
+from matplotlib.colors import to_hex,to_rgb,to_rgba
 __all__=['Color']
 class Color:
  def __init__(
@@ -46,6 +47,6 @@ keep_alpha=False
   elif isinstance(val,slice):return self.color[val]
   raise TypeError('リストのインデックスはintまたはslicesである必要があります')
  @classmethod
- def colorname(cls):return list(cnames)
+ def colorname(cls):return list(CSS4_COLORS)
  @classmethod
- def colorhex(cls):return list(cnames.values())
+ def colorhex(cls):return list(CSS4_COLORS.values())
