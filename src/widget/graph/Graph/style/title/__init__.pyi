@@ -2,7 +2,7 @@ from typing import Literal
 from matplotlib.axes._axes import Axes
 from matplotlib.text import Text
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from ..typing import ColorType,Type_NumberandNone
+from ..typing import ColorTypes,Type_NumberandNone
 class Title:
  title:Text
  def __init__(
@@ -12,7 +12,7 @@ title:str,
 loc:Literal['center','left','right']='center',
 pad:Type_NumberandNone=6.0,
 y:Type_NumberandNone=None,
-color:ColorType=None,
+color:ColorTypes=None,
 ha:Literal['left','center','right']='center',
 va:Literal['bottom','baseline','center','center_baseline','top']=None,
 rotation:float|Literal['vertical','horizontal']|None='horizontal',
