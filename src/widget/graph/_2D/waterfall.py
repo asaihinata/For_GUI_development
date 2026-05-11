@@ -35,12 +35,12 @@ class Waterfall(twoDElement):
   if isinstance(x,np.ndarray|list|tuple):self.x=_bar_x_lists(self._onearr(x),len(self.y))
   self.sums=bols(kw.get('sums'),self.sums)
   self.sumstext=kw.get('sumstext',self.sumstext)
-  self.bottom=_waterfall_sum(self.y)
+  self.bottom=np.cumsum(np.append(0,self.y)[0:np.array(self.y).size])
   self.ucolor=parsecolor(kw.get('ucolor'),self.ucolor)
   self.dcolor=parsecolor(kw.get('dcolor'),self.dcolor)
   self.width=range_num(num0s(kw.get('width'),self.width),0,1,self.width)
   self.colorline=parsecolor(kw.get('colorline'),self.colorline)
-  self.linestyle=str(NSolid(kw.get('linestyle',self.linestyle)))
+  self.linestyle=Solid(kw.get('linestyle',self.linestyle)).solid
   self.plot(self.x,self.y,alpha=self.alpha,width=self.width,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
   self._redraw()
  def get(self):return self.graphdata
@@ -83,14 +83,14 @@ class Waterfallh(twoDElement):
   self._updates(**kw)
   if isinstance(y,np.ndarray|list|tuple):self.y=self._dataarr(y,False)
   if isinstance(x,np.ndarray|list|tuple):self.x=_bar_x_lists(self._onearr(x),len(self.y))
-  self.bottom=_waterfall_sum(self.y)
+  self.bottom=np.cumsum(np.append(0,self.y)[0:np.array(self.y).size])
   self.sums=bols(kw.get('sums'),self.sums)
   self.sumstext=kw.get('sumstext',self.sumstext)
   self.ucolor=parsecolor(kw.get('ucolor'),self.ucolor)
   self.dcolor=parsecolor(kw.get('dcolor'),self.dcolor)
   self.height=range_num(num0s(kw.get('height'),self.height),0,1,self.height)
   self.colorline=parsecolor(kw.get('colorline'),self.colorline)
-  self.linestyle=str(NSolid(kw.get('linestyle',self.linestyle)))
+  self.linestyle=Solid(kw.get('linestyle',self.linestyle)).solid
   self.plot(self.x,self.y,alpha=self.alpha,height=self.height,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
   self._redraw()
  def get(self):return self.graphdata

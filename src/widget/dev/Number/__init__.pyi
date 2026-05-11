@@ -1,5 +1,5 @@
 from typing import Any,Iterator
-from ..typing import Type_Numberlike
+from ...typing import Type_Numberlike
 class Number:
  __static_attributes__:tuple[str]
  __class__:type
@@ -13,7 +13,6 @@ val:Type_Numberlike
  :param val: 数値を指定する。
  :type val: Type_Numberlike
  :raises TypeError: `val`に数値以外を指定した場合に発生させる。'''
- def __dir__(self)->list[str]:...
  def __getattribute__(self,name:Any)->Any:...
  @classmethod
  def __instancecheck__(cls,ins)->bool:...

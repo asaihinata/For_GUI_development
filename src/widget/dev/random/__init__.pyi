@@ -11,7 +11,6 @@ class rand:
  __dict__:dict[str,Any]
  __doc__:str
  __sizeof__:int
- def __dir__(self)->Iterable[str]:...
  @classmethod
  def __instancecheck__(cls,ins:Any)->bool:...
  def __init__(self)->None:
@@ -301,7 +300,6 @@ class rands:
  __dict__:dict[str,Any]
  __doc__:str
  __sizeof__:int
- def __dir__(self)->Iterable[str]:...
  @classmethod
  def __instancecheck__(cls,ins:Any)->bool:...
  def __init__(self)->None:

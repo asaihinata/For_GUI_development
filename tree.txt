@@ -129,11 +129,9 @@ For_GUI_development
  │       │   │   ├── __init__.pyi
  │       │   │   ├── rand.py
  │       │   │   └── rands.py
- │       │   ├── sort
- │       │   │   ├── __init__.py
- │       │   │   └── __init__.pyi
- │       │   └── typing
- │       │       └── __init__.py
+ │       │   └── sort
+ │       │       ├── __init__.py
+ │       │       └── __init__.pyi
  │       ├── graph
  │       │   ├── Graph
  │       │   │   ├── Graph.py
@@ -221,9 +219,7 @@ For_GUI_development
  │       │   └── dev
  │       │       └── __init__.py
  │       ├── typing
- │       │   ├── __init__.py
- │       │   ├── __init__.pyi
- │       │   └── widget.py
+ │       │   └── __init__.py
  │       ├── window.py
  │       └── window.pyi
  ├── test

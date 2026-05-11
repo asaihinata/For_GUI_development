@@ -1,5 +1,5 @@
 from tkinter import Misc
-from ..typing import Literal
+from typing import Literal
 def askcolor(
 color:str=None,
 title:str=...

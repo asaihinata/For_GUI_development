@@ -1,6 +1,8 @@
 from tkinter import Tk
-from typing import Any,NoReturn
-from .typing.widget import allwidget
+from typing import Any,NoReturn,TypeAlias
+from basic import *
+from graph import *
+AllWidget_Type:TypeAlias=Barcode|BarGraph|BarhGraph|Boxplot|Bubble|Buttons|Calendars|Checkbox|Colorbtn|Column|DScatter|Ecdf|Errorbar|Eventplot|FileLoad|FolderLoad|Frames|Funne|Hatplot|Hexbin|Hist|Images|Input|InputNumber|Linefill|LineGraph|Link|Listboxs|Menubuttons|Menus|Multiline|Pie|QRcode|Radio|Savebtn|Scatter|Slidebar|Stack|Stacked|Stackedh|Stem|Step|Tab|Table|TCombobox|Texts|TProgressbar|Tree|Violinplot|Waterfall|Waterfallh|Hist2d
 class WindowController:
  __firstlineno__:int
  __module__:str
@@ -8,14 +10,13 @@ class WindowController:
  __doc__:str
  __sizeof__:int
  root:Tk
- def __dir__(self)->list[str]:...
  @classmethod
  def __instancecheck__(cls,ins:Any)->bool:...
- def get(self,key:str)->allwidget:'''ウィジェットの情報を取得する。
+ def get(self,key:str)->AllWidget_Type:'''ウィジェットの情報を取得する。
 
  :param key: ウィジェットの情報を取得したい,そのウィジェットの指定されたkeyを指定する。
  :type key: str
- :rtype: allwidget'''
+ :rtype: AllWidget_Type'''
  def get_title(self)->str:'''ウィジェットのタイトルを取得する。'''
  def set_title(self,title:str)->NoReturn:'''ウィジェットのタイトルを設置する。'''
  def close(self)->NoReturn:'''windowウィジェットを終了させる。'''
@@ -30,18 +31,18 @@ class WindowController:
 
  :return: ウィンドウに表示されているウィジェットの数を返す。
  :rtype: int'''
- def widgetdict(self)->dict[str,allwidget]:'''ウィジェットの'key'とウィジェットの辞書を返す。
+ def widgetdict(self)->dict[str,AllWidget_Type]:'''ウィジェットの'key'とウィジェットの辞書を返す。
 
  :return: ウィジェットのキー名とウィジェットの辞書を返す。
- :rtype: dict[str,allwidget]'''
+ :rtype: dict[str,AllWidget_Type]'''
  def widgetlist(self)->list[str]:'''表示されている全てのウィジェットの'key'名の配列を返す。
 
  :return: ウィジェットのキー名とウィジェットの辞書を返す。
  :rtype: list[str]'''
- def widgetall(self)->list[allwidget]:'''表示されている全てのウィジェットの配列を返す。
+ def widgetall(self)->list[AllWidget_Type]:'''表示されている全てのウィジェットの配列を返す。
 
  :return: ウィジェットを返す。
- :rtype: list[allwidget]'''
+ :rtype: list[AllWidget_Type]'''
  def tookphoto(self,file:str='window',ex:str='.png')->NoReturn:'''ウィンドウの画面をスクリーンショットをする。
 
  :param file: ファイル名を指定する。
