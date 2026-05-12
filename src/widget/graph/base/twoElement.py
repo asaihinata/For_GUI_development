@@ -4,8 +4,8 @@ from numpy import array,ndarray
 from ..._function import allNones,bols,list2num,listchose,num0s,parsecolor,range_num
 from .Graph import GElement
 from .style import FontFile,Fontmanager,Fontname,Title,Xlabel,Ylabel
-__all__=['twoDElement']
-class twoDElement(GElement):
+__all__=['twoElement']
+class twoElement(GElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   # ラベル

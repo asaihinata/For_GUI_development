@@ -1,5 +1,5 @@
 from ...dev import *
-class Hist2d(twoDElement):
+class Hist2d(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.x,self.y=self._dataarr(kw.get('x')),self._dataarr(kw.get('y'))

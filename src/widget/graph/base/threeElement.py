@@ -3,8 +3,8 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ..._function import allNones,bols,list2num,listchose,num0s,nums,parsecolor,range_num
 from .Graph import GElement
 from .style import FontFile,Fontmanager,Fontname,Title,Xlabel,Ylabel,Zlabel
-__all__=['threeDElement']
-class threeDElement(GElement):
+__all__=['threeElement']
+class threeElement(GElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   # グラフの基盤

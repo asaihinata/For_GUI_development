@@ -4808,6 +4808,8 @@ key:str=...
  :param legendncols: 凡例の列数を指定する。
  :type legendncols: int'''
  @classmethod
+ def Barpolar(cls,x,y):...
+ @classmethod
  def Popup(
 cls,
 title:str='Information',

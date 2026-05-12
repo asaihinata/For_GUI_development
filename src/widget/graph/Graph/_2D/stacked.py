@@ -1,6 +1,6 @@
 from matplotlib.ticker import PercentFormatter
 from ...dev import *
-class Stacked(twoDElement):
+class Stacked(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.data=self._manyarr(kw.get('data'))
@@ -39,7 +39,7 @@ class Stacked(twoDElement):
   self._redraw()
  def get(self):return self.graphdata
  def getdata(self):return self.data
-class Stackedh(twoDElement):
+class Stackedh(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.data=self._manyarr(kw.get('data'))

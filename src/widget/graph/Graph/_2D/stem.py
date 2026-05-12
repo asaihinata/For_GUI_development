@@ -3,7 +3,7 @@ from ...dev import *
 stem_line_list=['-','--','-.','-.']
 stem_mark_list=['o','+','*','.','x','_','|','square','diamond','^','v','<','>','pentagram','hexagram']
 stem_color_list=['r','g','b','c','m','y','k','w']
-class Stem(twoDElement):
+class Stem(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.x=self._manyarr(kw.get('x'))

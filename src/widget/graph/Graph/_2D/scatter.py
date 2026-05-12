@@ -1,6 +1,6 @@
 from itertools import product
 from ...dev import *
-class Scatter(twoDElement):
+class Scatter(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.x=self._manyarr(kw.get('x'))

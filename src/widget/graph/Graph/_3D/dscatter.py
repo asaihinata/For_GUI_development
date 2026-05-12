@@ -1,6 +1,6 @@
 from itertools import product
 from ...dev import *
-class DScatter(threeDElement):
+class DScatter(threeElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.x=self._manyarr(kw.get('x'))

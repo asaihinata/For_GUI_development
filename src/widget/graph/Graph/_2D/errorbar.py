@@ -1,6 +1,6 @@
 from itertools import product
 from ...dev import *
-class Errorbar(twoDElement):
+class Errorbar(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.x=self._manyarr(kw.get('x'))

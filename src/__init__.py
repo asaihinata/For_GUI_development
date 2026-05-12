@@ -110,6 +110,8 @@ class sgg:
  def Stacked(**kw):return{'count':counts(),'type':'Stacked',**kw}
  @staticmethod
  def Stackedh(**kw):return{'count':counts(),'type':'Stackedh',**kw}
+ @staticmethod
+ def Barpolar(**kw):return{'count':counts(),'type':'Barpolar',**kw}
  @classmethod
  def Popup(cls,**kw):return popup(**kw)
  @classmethod

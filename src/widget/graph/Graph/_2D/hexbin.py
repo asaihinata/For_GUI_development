@@ -1,5 +1,5 @@
 from ...dev import *
-class Hexbin(twoDElement):
+class Hexbin(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.x=self._dataarr(kw.get('x'))

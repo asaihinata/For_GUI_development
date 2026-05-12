@@ -1,5 +1,5 @@
 from ...dev import *
-class Pie(twoDElement):
+class Pie(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.labelplace=self._getlegendplace(kw.get('labelplace'),'upper left')

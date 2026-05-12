@@ -20,3 +20,4 @@ from ._2D.step import Step
 from ._2D.violinplot import Violinplot
 from ._2D.waterfall import Waterfall,Waterfallh
 from ._3D.dscatter import DScatter
+from ._polar.bar import Barpolar

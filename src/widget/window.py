@@ -162,6 +162,7 @@ class WindowController:
   elif t=='Eventplot':widget=Eventplot(parent,kw)
   elif t=='Violinplot':widget=Violinplot(parent,kw)
   elif t=='Hexbin':widget=Hexbin(parent,kw)
+  elif t=='Barpolar':widget=Barpolar(parent,kw)
   else:widget=Texts(parent,{'text':f'Unknown element:{t}'})
   if widget:
    if t=='Menus':self.root.config(menu=widget.widget)

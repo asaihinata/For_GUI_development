@@ -1,5 +1,5 @@
 from ...dev import *
-class Linefill(twoDElement):
+class Linefill(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.x=self._dataarr(kw.get('x'),False)

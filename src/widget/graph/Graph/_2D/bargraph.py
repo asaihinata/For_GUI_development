@@ -1,6 +1,6 @@
 from itertools import product
 from ...dev import *
-class BarGraph(twoDElement):
+class BarGraph(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.x=self._onearr(kw.get('x'))
@@ -29,7 +29,7 @@ class BarGraph(twoDElement):
  def get(self):return self.graphdata
  def getx(self):return self.x
  def gety(self):return self.y
-class BarhGraph(twoDElement):
+class BarhGraph(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.x=self._onearr(kw.get('x'))

@@ -1,5 +1,5 @@
 from ...dev import *
-class Ecdf(twoDElement):
+class Ecdf(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.data=self._manyarr(kw.get('data'))

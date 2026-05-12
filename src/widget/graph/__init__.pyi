@@ -4693,3 +4693,4 @@ title:str,
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
  def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
  def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+class Barpolar:pass

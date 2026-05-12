@@ -2,7 +2,7 @@ import japanize_matplotlib
 import numpy as np
 from ...typing import *
 from ..._function import *
-from ..base import threeDElement,twoDElement
+from ..base import threeElement,twoElement,polarElement
 from ..base.lists import *
 from ..base.style import *
 class Angle:

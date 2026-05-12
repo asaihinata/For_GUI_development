@@ -1,5 +1,5 @@
 from ...dev import *
-class Violinplot(twoDElement):
+class Violinplot(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.data=self._dataarr(kw.get('data'),False)

@@ -168,6 +168,7 @@ For_GUI_development
  │       │   │   │   └── dscatter.py
  │       │   │   ├── __init__.py
  │       │   │   └── _polar
+ │       │   │       └── bar.py
  │       │   ├── __init__.py
  │       │   ├── __init__.pyi
  │       │   ├── base
@@ -177,6 +178,7 @@ For_GUI_development
  │       │   │   ├── lists
  │       │   │   │   ├── __init__.py
  │       │   │   │   └── __init__.pyi
+ │       │   │   ├── polarElement.py
  │       │   │   ├── style
  │       │   │   │   ├── Text
  │       │   │   │   │   ├── __init__.py
@@ -225,8 +227,8 @@ For_GUI_development
  │       │   │   │   │       └── fontmanager.py
  │       │   │   │   └── typing
  │       │   │   │       └── __init__.py
- │       │   │   ├── threeDElement.py
- │       │   │   └── twoDElement.py
+ │       │   │   ├── threeElement.py
+ │       │   │   └── twoElement.py
  │       │   └── dev
  │       │       └── __init__.py
  │       ├── typing

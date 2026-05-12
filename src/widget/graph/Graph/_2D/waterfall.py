@@ -5,7 +5,7 @@ def _bar_x_lists(lists,ylen):
   lists=lists[0]
   xlen=len(lists)
   return np.array([str(i) for i in lists] if xlen==ylen or xlen<ylen else [lists[i] for i in range(xlen)])
-class Waterfall(twoDElement):
+class Waterfall(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.y=self._dataarr(kw.get('y'),False)
@@ -54,7 +54,7 @@ class Waterfall(twoDElement):
    xmaxs.append(ma)
    xmins.append(mi)
   self.ax.hlines(y=lin,xmin=xmins+[0],xmax=xmaxs+[0],colors=color,linestyles=linestyle)
-class Waterfallh(twoDElement):
+class Waterfallh(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.y=self._dataarr(kw.get('y'),False)
