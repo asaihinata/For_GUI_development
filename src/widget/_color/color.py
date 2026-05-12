@@ -1,7 +1,7 @@
 import re
 import numpy as np
 from matplotlib.colors import to_hex
-from ._color_data import COLOR_DATA,ColorData
+from .data import COLOR_DATA,ColorData
 __all__=['Color','COLOR_DATA','ColorData']
 HEX8_RE=re.compile(r'^#[0-9a-f]{8}$')
 HEX6_RE=re.compile(r'^#[0-9a-f]{6}$')

@@ -22,9 +22,10 @@ For_GUI_development
  │       ├── __init__.py
  │       ├── _color
  │       │   ├── __init__.py
- │       │   ├── _color_data.py
- │       │   ├── color.csv
- │       │   └── color.py
+ │       │   ├── color.py
+ │       │   └── data
+ │       │       ├── __init__.py
+ │       │       └── color.csv
  │       ├── _dialog
  │       │   ├── __init__.py
  │       │   ├── __init__.pyi
