@@ -1,5 +1,4 @@
 import numpy as np
-from matplotlib._color_data import CSS4_COLORS
 from matplotlib.colors import to_hex,to_rgb,to_rgba
 __all__=['Color']
 class Color:
@@ -20,7 +19,7 @@ keep_alpha=False
    elif isinstance(color,str):colors=np.array([color.lower()])
    elif isinstance(color,np.ndarray):colors=color
    else:colors=[None]
-   self.color=np.array([default_color if i is None else to_hex(i,keep_alpha) for i in colors],dtype=str)
+   self.color=np.array([self.default if i is None else to_hex(i,keep_alpha) for i in colors],dtype=str)
  def tohex(self,keep_alpha=False):
   if not isinstance(keep_alpha,bool):keep_alpha=False
   else:keep_alpha=keep_alpha
@@ -38,7 +37,7 @@ keep_alpha=False
   self.color=np.array([to_rgb(i) for i in self.color],dtype=float)
   return self
  def __iter__(self):return iter(self.color)
- def __contains__(self,val):return val in self.color
+ def __contains__(self,item):return item in self.color
  def __len__(self):return self.color.size
  def __getitem__(self,val):
   if isinstance(val,int):
@@ -46,7 +45,3 @@ keep_alpha=False
    raise IndexError('配列の範囲外です')
   elif isinstance(val,slice):return self.color[val]
   raise TypeError('リストのインデックスはintまたはslicesである必要があります')
- @classmethod
- def colorname(cls):return list(CSS4_COLORS)
- @classmethod
- def colorhex(cls):return list(CSS4_COLORS.values())

@@ -1,13 +1,14 @@
+'''グラフの線を設定するモジュール'''
 from collections.abc import Iterator
 from typing import Any,Literal
-from matplotlib.lines import Line2D
+from ..typing import Type_Solid
 from .fmt import FMT
 __all__=['Solid']
 class Solid:
- solid_list:list[str]=list(Line2D.lineStyles.keys())
+ solid_list:list[str]=['-','--','-.',':','None',' ','']
  def __init__(
 self,
-solid:Literal['-','--','-.',':','None',' ','']|None=None,
+solid:Type_Solid|None=None,
 fmtmarker:Literal[
 '.',',','o',
 'v','^','<',

@@ -10,7 +10,7 @@ class LIST:
   for i in arg:self.lists.append(i)
  @classmethod
  def __instancecheck__(cls,ins):return isinstance(ins,LIST)
- def __contains__(self,val):return val in self.lists
+ def __contains__(self,item):return item in self.lists
  def __len__(self):return len(self.lists)
  def __iter__(self):return iter(self.lists)
  def __reversed__(self):

@@ -1,3 +1,4 @@
+'''マーカー,線種,色を一度に設定するモジュール'''
 from typing import Literal
 __all__=['FMT','FMT_COLOR','FMT_MARKER','FMT_SOLID']
 FMT_COLOR=['b','g','r','c','m','y','k','w']
@@ -19,11 +20,8 @@ marker:Literal[
 solid:Literal['-','--','-.',':']|None=None,
 color:Literal['b','g','r','c','m','y','k','w']|None=None
 )->None:
-  if marker in FMT_MARKER:self.marker=marker
-  else:self.marker=''
-  if solid in FMT_SOLID:self.solid=solid
-  else:self.solid=''
-  if color in FMT_COLOR:self.color=color
-  else:self.color=''
-  self.fmt_txt=f'{self.marker}{self.solid}{self.color}'
+  self.fmt_txt=f'\
+   {marker if marker in FMT_MARKER else ''}\
+   {solid if solid in FMT_SOLID else ''}\
+   {color if color in FMT_COLOR else ''}'
  def __str__(self)->str:return self.fmt_txt

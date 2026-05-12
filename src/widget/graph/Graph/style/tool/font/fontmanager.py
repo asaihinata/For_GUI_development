@@ -4,7 +4,7 @@ class Fontmanager:
  fontmanager=fontManager.ttflist
  def __iter__(self):return iter(self.fontmanager)
  def __len__(self):return len(self.fontmanager)
- def __contains__(self,val):return val in self.fontmanager
+ def __contains__(self,item):return item in self.fontmanager
  def __getitem__(self,val):
   if not isinstance(val,int|slice):return None
   return self.fontmanager[val]

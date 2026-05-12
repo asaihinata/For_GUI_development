@@ -1,4 +1,4 @@
-'''フレームワーク全体で使用する型'''
+'''フレームワーク全体で使用する型を設定しているモジュール'''
 from collections.abc import Iterable
 from typing import Any,Callable,Collection,Literal,NoReturn,TypeAlias,TypeVar,overload
 import numpy as np

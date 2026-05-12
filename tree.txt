@@ -114,6 +114,14 @@ For_GUI_development
  │       │           ├── _calendar.py
  │       │           └── tooltip.py
  │       ├── dev
+ │       │   ├── Color
+ │       │   │   ├── __init__.py
+ │       │   │   ├── __init__.pyi
+ │       │   │   ├── color.py
+ │       │   │   ├── colorlist.py
+ │       │   │   └── data
+ │       │   │       ├── __init__.py
+ │       │   │       └── color.csv
  │       │   ├── LIST
  │       │   │   ├── __init__.py
  │       │   │   └── __init__.pyi

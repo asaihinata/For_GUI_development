@@ -7,7 +7,7 @@ class sort:
   self.data=sorted(data,key=sort._ascending if self.order else sort._descending)
  @classmethod
  def __instancecheck__(cls,ins):return isinstance(ins,sort)
- def __contains__(self,val):return val in self.data
+ def __contains__(self,item):return item in self.data
  def __iter__(self):return iter(self.data)
  def __bool__(self):return bool(self.order)
  def __len__(self):return len(self.data)
