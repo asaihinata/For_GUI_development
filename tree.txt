@@ -142,6 +142,35 @@ For_GUI_development
  │       │       └── __init__.pyi
  │       ├── graph
  │       │   ├── Graph
+ │       │   │   ├── _2D
+ │       │   │   │   ├── bargraph.py
+ │       │   │   │   ├── boxplot.py
+ │       │   │   │   ├── bubble.py
+ │       │   │   │   ├── ecdf.py
+ │       │   │   │   ├── errorbar.py
+ │       │   │   │   ├── eventplot.py
+ │       │   │   │   ├── funnelplot.py
+ │       │   │   │   ├── hatplot.py
+ │       │   │   │   ├── hexbin.py
+ │       │   │   │   ├── hist.py
+ │       │   │   │   ├── hist2d.py
+ │       │   │   │   ├── linefill.py
+ │       │   │   │   ├── linegraph.py
+ │       │   │   │   ├── pie.py
+ │       │   │   │   ├── scatter.py
+ │       │   │   │   ├── stack.py
+ │       │   │   │   ├── stacked.py
+ │       │   │   │   ├── stem.py
+ │       │   │   │   ├── step.py
+ │       │   │   │   ├── violinplot.py
+ │       │   │   │   └── waterfall.py
+ │       │   │   ├── _3D
+ │       │   │   │   └── dscatter.py
+ │       │   │   ├── __init__.py
+ │       │   │   └── _polar
+ │       │   ├── __init__.py
+ │       │   ├── __init__.pyi
+ │       │   ├── base
  │       │   │   ├── Graph.py
  │       │   │   ├── __init__.py
  │       │   │   ├── __init__.pyi
@@ -198,32 +227,6 @@ For_GUI_development
  │       │   │   │       └── __init__.py
  │       │   │   ├── threeDElement.py
  │       │   │   └── twoDElement.py
- │       │   ├── _2D
- │       │   │   ├── bargraph.py
- │       │   │   ├── boxplot.py
- │       │   │   ├── bubble.py
- │       │   │   ├── ecdf.py
- │       │   │   ├── errorbar.py
- │       │   │   ├── eventplot.py
- │       │   │   ├── funnelplot.py
- │       │   │   ├── hatplot.py
- │       │   │   ├── hexbin.py
- │       │   │   ├── hist.py
- │       │   │   ├── hist2d.py
- │       │   │   ├── linefill.py
- │       │   │   ├── linegraph.py
- │       │   │   ├── pie.py
- │       │   │   ├── scatter.py
- │       │   │   ├── stack.py
- │       │   │   ├── stacked.py
- │       │   │   ├── stem.py
- │       │   │   ├── step.py
- │       │   │   ├── violinplot.py
- │       │   │   └── waterfall.py
- │       │   ├── _3D
- │       │   │   └── dscatter.py
- │       │   ├── __init__.py
- │       │   ├── __init__.pyi
  │       │   └── dev
  │       │       └── __init__.py
  │       ├── typing

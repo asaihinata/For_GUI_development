@@ -13,7 +13,7 @@ from numpy import dtype,float64,ndarray
 from numpy._typing import _AnyShape
 from numpy.typing import ArrayLike
 from ..typing import *
-from .Graph.style import CAPSTYLE_LIST,Hatch,Marker,Solid
+from .base.style import CAPSTYLE_LIST,Hatch,Marker,Solid
 class _Gset:
  def winsize(self)->tuple[int,int]:'''ウィジェットの現在の幅と高さを返す。
 

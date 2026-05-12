@@ -1,5 +1,5 @@
 from itertools import product
-from ..dev import *
+from ...dev import *
 class Errorbar(twoDElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)

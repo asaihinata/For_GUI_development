@@ -1,5 +1,5 @@
 from itertools import product
-from ..dev import *
+from ...dev import *
 stem_line_list=['-','--','-.','-.']
 stem_mark_list=['o','+','*','.','x','_','|','square','diamond','^','v','<','>','pentagram','hexagram']
 stem_color_list=['r','g','b','c','m','y','k','w']

@@ -2,9 +2,9 @@ import japanize_matplotlib
 import numpy as np
 from ...typing import *
 from ..._function import *
-from ..Graph import threeDElement,twoDElement
-from ..Graph.lists import *
-from ..Graph.style import *
+from ..base import threeDElement,twoDElement
+from ..base.lists import *
+from ..base.style import *
 class Angle:
  def __init__(self,angle,dtype=True):
   if not isinstance(angle,bool|float|int|np.float16|np.float32|np.float64|np.int16|np.int32|np.int64|np.int8|np.uint16|np.uint32|np.uint64|np.uint8):
