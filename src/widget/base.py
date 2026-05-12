@@ -2,7 +2,7 @@ from re import findall
 from tkinter import Misc
 from .typing import FunctionType
 from ._font import fonts
-from ._function import bols,listchose,num0,parsecolor
+from ._function import bols,listchose,num0,wparsecolor
 from ._log import Logger
 __all__=['Element']
 logger=Logger(name='base',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
@@ -15,8 +15,8 @@ class Element:
   self.padx=num0(kw.get('padx'),1)
   self.pady=num0(kw.get('pady'),1)
   self.relief=listchose(kw.get('relief'),['flat','raised','sunken','ridge','solid','groove'])
-  self.fg=parsecolor(kw.get('fg'),'#000000')
-  self.bg=parsecolor(kw.get('bg'),'#64778d' if self.back_bg==None else self.back_bg)
+  self.fg=wparsecolor(kw.get('fg'),'#000000')
+  self.bg=wparsecolor(kw.get('bg'),'#64778d' if self.back_bg==None else self.back_bg)
   self.borderwidth=num0(kw.get('bd'))
   self.takefocus=bols(kw.get('takefocus'))
   self.family=kw.get('family')

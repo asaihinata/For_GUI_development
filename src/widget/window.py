@@ -2,7 +2,7 @@ from os import getcwd
 from tkinter import Canvas,Frame,Scrollbar,Tk
 from PIL import ImageGrab
 from .typing import FunctionType
-from ._function import bols,listchose,num0s,parsecolor,range_num,typelist
+from ._function import bols,listchose,num0s,wparsecolor,range_num,typelist
 from ._log import Logger
 from ._save import autofile_save
 from .basic import *
@@ -19,7 +19,7 @@ class WindowController:
   self.layout=kw.get('layout',[])
   if self.layout==None or not isinstance(self.layout,list|tuple):
    raise TypeError('layoutに配列の型を指定してください')
-  self.bg=parsecolor(kw.get('bg'),'#64778d')
+  self.bg=wparsecolor(kw.get('bg'),'#64778d')
   self.scroll=bols(kw.get('scroll'),False)
   self.scroll_x=bols(kw.get('scroll_x'),self.scroll)
   self.scroll_y=bols(kw.get('scroll_y'),self.scroll)

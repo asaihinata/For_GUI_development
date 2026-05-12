@@ -164,6 +164,16 @@ def parsecolor(val:str,other:str=None)->str:
  :type other: str
  :return: 色名を返す。
  :rtype: str'''
- if val is None:
-  return other
+ if val is None:return other
  return Color(val).color
+def wparsecolor(val:str,other:str=None)->str:
+ '''`Color`を文字列で返す。
+
+ :param value: 色名を指定する。
+ :type value: str
+ :param other: `value`がNoneなどの色の値ではない時に指定する色を指定する。
+ :type other: str
+ :return: 色名を返す。
+ :rtype: str'''
+ if val is None:return other
+ return Color(val,keep_alpha=False).color
