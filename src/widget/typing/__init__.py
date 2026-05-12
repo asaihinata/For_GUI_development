@@ -4,7 +4,7 @@ from typing import Any,Callable,Collection,Literal,NoReturn,TypeAlias,TypeVar,ov
 import numpy as np
 from matplotlib.typing import ColorType
 from numpy.typing import NDArray
-__all__=['Any','Callable','Collection','ColorType','ColorTypes','FunctionType','Iterable','labeltype','Literal','NoReturn','overload','ListFloat2','ListFloat4','ListInt2','ListInt4','ListNumbertype2','ListNumbertype4','TupleFloat2','TupleFloat4','TupleInt2','TupleInt4','TupleNumbertype2','TupleNumbertype4','Type_Iterableint','Type_Iterablestr','Type_Number','Type_Numberlike','_T','n_array','o_array']
+__all__=['Any','Callable','Collection','ColorType','ColorTypes','FunctionType','Iterable','labeltype','Literal','NoReturn','overload','ListFloat2','ListFloat4','ListInt2','ListInt4','ListNumbertype2','ListNumbertype4','TupleFloat2','TupleFloat4','TupleInt2','TupleInt4','TupleNumbertype2','TupleNumbertype4','Type_Iterableint','Type_Iterablestr','Type_Number','Type_Numberlike','_T','n_array','o_array','Type_bool']
 _T=TypeVar('_T')
 # Iterable
 Type_Iterablestr:TypeAlias=Iterable[str]
@@ -28,6 +28,8 @@ ListFloat4:TypeAlias=list[float,float,float,float]
 # function type
 def _f():pass
 FunctionType=type(_f)
+# bool
+Type_bool:TypeAlias=bool|np.bool
 # Graph
 labeltype:TypeAlias=str|list|tuple|None
 o_array:TypeAlias=list[int,float,str]|tuple[int,float,str]|NDArray[np.str_]|NDArray[np.int_]|NDArray[np.floating]

@@ -1,14 +1,26 @@
 from collections.abc import Iterator
 from typing import Any,TypeAlias
 import numpy as np
-from matplotlib.typing import ColorType
+from matplotlib.typing import ColorType,RGBAColorType,RGBColorType
 Type_nd:TypeAlias=np.ndarray[np.str_,np.str_]
+Type_Color:TypeAlias=str|ColorType|RGBAColorType|RGBColorType
 class Colors:
- color:str
- def __init__(self,color:str,ranges:bool=True,keep_alpha:bool=True)->None:...
- def tohex(self,keep_alpha:bool|None=None):...
- def torgba(self,alpha:float|None=None):...
- def torgb(self):...
+ color:RGBColorType|RGBAColorType
+ def __init__(
+self,
+color:Type_Color,
+ranges:bool=True,
+keep_alpha:bool=True
+)->None:...
+ def tohex(
+self,
+keep_alpha:bool|None=None
+)->str:...
+ def torgba(
+self,
+alpha:float|None=None
+)->RGBAColorType:...
+ def torgb(self)->RGBColorType:...
 class ColorData:
  colorlist:Type_nd
  def __eq__(self,color)->bool:...

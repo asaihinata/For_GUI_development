@@ -12,6 +12,7 @@ RGBA_RE=compile(r'^rgba\((\d+),(\d+),(\d+),([0-9.]+)\)$')
 HSV_RE=compile(r'^hsv\((\d+),(\d+),(\d+)\)$')
 class Colors:
  def __init__(self,color,ranges=True,keep_alpha=True):
+  if isinstance(color,Colors):color=color.color
   if isinstance(keep_alpha,bool):self.keep_alpha=keep_alpha
   else:self.keep_alpha=True
   if isinstance(ranges,bool):self.ranges=ranges
@@ -50,6 +51,14 @@ class Colors:
    elif not self.ranges and not all(0<=i<=1.0 for i in color):
     raise ValueError('配列内に数値には0から1の範囲で指定してください')
    return np.array(color)
+  elif isinstance(color,np.ndarray):
+   if not all((isinstance(i,Type_Numberlike))for i in color):
+    raise TypeError('配列内に数値の型ではない要素が含まれています')
+   elif self.ranges and not all(0<=i<=255 for i in color):
+    raise ValueError('配列内に数値には0から255の範囲で指定してください')
+   elif not self.ranges and not all(0<=i<=1.0 for i in color):
+    raise ValueError('配列内に数値には0から1の範囲で指定してください')
+   return color
  def _lists(self,arr):
   lens=len(arr)
   if all((isinstance(i,Type_Numberlike) and 0<=i<=255) for i in arr) and (lens==3 or lens==4):return True
