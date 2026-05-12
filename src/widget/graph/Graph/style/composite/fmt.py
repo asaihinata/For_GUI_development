@@ -21,7 +21,7 @@ solid:Literal['-','--','-.',':']|None=None,
 color:Literal['b','g','r','c','m','y','k','w']|None=None
 )->None:
   self.fmt_txt=f'\
-   {marker if marker in FMT_MARKER else ''}\
-   {solid if solid in FMT_SOLID else ''}\
-   {color if color in FMT_COLOR else ''}'
+{marker if marker in FMT_MARKER else ''}\
+{solid if solid in FMT_SOLID else ''}\
+{color if color in FMT_COLOR else ''}'
  def __str__(self)->str:return self.fmt_txt

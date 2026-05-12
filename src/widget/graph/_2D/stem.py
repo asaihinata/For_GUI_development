@@ -18,7 +18,8 @@ class Stem(twoDElement):
  def plot(self,x,y,bottom=0,orientation='vertical',label=None,marker=stem_mark_list,alpha=1):
   self.clear()
   for i,(xs,ys) in enumerate(product(x,y)):
-   stem=self.ax.stem(xs,ys,linefmt=self._lsmc(i),markerfmt=self._markerfmt(marker)[i],basefmt=self._lsmc(i),bottom=bottom,orientation=orientation,label=label[i])
+   fmt=FMT(self.marker[i],self.line[i],self.colorlist[i]).fmt_txt
+   stem=self.ax.stem(xs,ys,linefmt=fmt,markerfmt=self._markerfmt(marker)[i],basefmt=fmt,bottom=bottom,orientation=orientation,label=label[i])
    for j in stem.get_children():j.set_alpha(alpha)
    self.graphdata.append(stem)
   self._apply_labels(self.xlabel,self.ylabel)
@@ -54,7 +55,6 @@ class Stem(twoDElement):
     if i in stem_mark_list:set_arr.append(i)
   if len(set_arr)==0:set_arr=stem_mark_list
   return set_arr
- def _lsmc(self,val):return FMT(self.marker[val],self.line[val],self.colorlist[val]).fmt_txt
  def _stem_color_check(self,color):
   set_arr,set_color_arr=[],[]
   if isinstance(color,list|tuple):
