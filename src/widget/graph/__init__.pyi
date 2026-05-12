@@ -1,6 +1,7 @@
 from os import PathLike
 from pathlib import Path
 from tkinter import Misc
+from typing import TypeAlias
 from matplotlib.axes._axes import Axes
 from matplotlib.collections import EventCollection,FillBetweenPolyCollection,PathCollection,PolyCollection,QuadMesh
 from matplotlib.container import BarContainer,ErrorbarContainer,StemContainer
@@ -14,6 +15,8 @@ from numpy import dtype,float64,ndarray
 from numpy._typing import _AnyShape
 from numpy.typing import ArrayLike
 from ..typing import *
+Typeget_data:TypeAlias=ndarray[_AnyShape,dtype[Any]]
+Typetuple_float64:TypeAlias=tuple[float64,float64]
 class _Gset:
  def winsize(self)->TupleInt2:'''ウィジェットの現在の幅と高さを返す。
 
@@ -77,20 +80,20 @@ class _2Gset(_Gset):
  def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
  def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
  def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
+Typetuple_float64,
+Typetuple_float64
 ]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
 
  :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
+ :rtype: tuple[Typetuple_float64,Typetuple_float64]'''
+ def getxbound(self)->Typetuple_float64:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
 
  :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
+ :rtype: Typetuple_float64'''
+ def getybound(self)->Typetuple_float64:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
 
  :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
+ :rtype: Typetuple_float64'''
  def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
 
  :return: x軸,y軸の目盛りの位置を返す。
@@ -110,25 +113,25 @@ class _3Gset(_Gset):
  def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
  def invert_z(self)->NoReturn:'''z軸の軸を反転させる。'''
  def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64],
-tuple[float64,float64]
+Typetuple_float64,
+Typetuple_float64,
+Typetuple_float64
 ]:'''x軸,y軸,z軸の順で表示されている範囲の下限値と上限値を返す。
 
  :return: x軸,y軸,z軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
+ :rtype: tuple[Typetuple_float64,Typetuple_float64,Typetuple_float64]'''
+ def getxbound(self)->Typetuple_float64:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
 
  :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
+ :rtype: Typetuple_float64'''
+ def getybound(self)->Typetuple_float64:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
 
  :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getzbound(self)->tuple[float64,float64]:'''表示されているz軸の範囲の下限値と上限値を昇順で返す。
+ :rtype: Typetuple_float64'''
+ def getzbound(self)->Typetuple_float64:'''表示されているz軸の範囲の下限値と上限値を昇順で返す。
 
  :return: 表示されているz軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
+ :rtype: Typetuple_float64'''
  def getticks(self)->tuple[ndarray,ndarray,ndarray]:'''x軸,y軸,z軸の目盛りの位置を座標で返します。'''
  def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返します。'''
  def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返します。'''
@@ -139,20 +142,20 @@ class _polarset(_Gset):
  def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
  def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
  def getbound(self)->tuple[
-tuple[float64,float64],
-tuple[float64,float64]
+Typetuple_float64,
+Typetuple_float64
 ]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
 
  :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[tuple[float64,float64],tuple[float64,float64]]'''
- def getxbound(self)->tuple[float64,float64]:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
+ :rtype: tuple[Typetuple_float64,Typetuple_float64]'''
+ def getxbound(self)->Typetuple_float64:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
 
  :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
- def getybound(self)->tuple[float64,float64]:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
+ :rtype: Typetuple_float64'''
+ def getybound(self)->Typetuple_float64:'''表示されているy軸の範囲の下限値と上限値を昇順で返す。
 
  :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[float64,float64]'''
+ :rtype: Typetuple_float64'''
  def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
 
  :return: x軸,y軸の目盛りの位置を返す。
@@ -353,8 +356,8 @@ linestyle:str,
 linewidth:Type_Number,
 )->NoReturn:'''折線グラフを再表示させる。'''
  def get(self)->list[Line2D]:'''`Line2D`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
 class BarGraph(_2Gset):
  def __init__(
 self,
@@ -539,8 +542,8 @@ width:Type_Number,
 align:Literal['center','edge']
 )->NoReturn:'''縦軸棒グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
 class BarhGraph(_2Gset):
  def __init__(
 self,
@@ -722,8 +725,8 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''横軸棒グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
 class Funne(_2Gset):
  def __init__(
 self,
@@ -902,8 +905,8 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''じょうごグラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
 class Stacked(_2Gset):
  def __init__(
 self,
@@ -1080,7 +1083,7 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''積み上げ縦棒グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
- def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
+ def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''
 class Stackedh(_2Gset):
  def __init__(
 self,
@@ -1257,7 +1260,7 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''積み上げ横棒グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
- def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
+ def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''
 class Pie(_2Gset):
  def __init__(
 self,
@@ -1380,7 +1383,7 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''円グラフを再表示させる。'''
  def get(self)->tuple[tuple[Wedge,Text],...]:'''`matplotlib.axes.Axes.pie`の戻り値を配列で返す。'''
- def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
+ def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''
 class Boxplot(_2Gset):
  def __init__(
 self,
@@ -1576,7 +1579,7 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''箱ひげ図を再表示させる。'''
  def get(self)->list[dict[str,Any]]:'''`matplotlib.axes.Axes.boxplot`の戻り値の配列を返す。'''
- def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
+ def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''
 class Waterfall(_2Gset):
  def __init__(
 self,
@@ -1758,8 +1761,8 @@ width:Type_Number,
 align:Literal['center','edge'],
 )->NoReturn:'''滝グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
 class Waterfallh(_2Gset):
  def __init__(
 self,
@@ -1942,8 +1945,8 @@ height:Type_Number,
 align:Literal['center','edge'],
 )->NoReturn:'''横向きの滝グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
 class Scatter(_2Gset):
  def __init__(
 self,
@@ -2125,8 +2128,8 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''散布図を再表示させる。'''
  def get(self)->list[PathCollection]:'''`PathCollection`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
 class DScatter(_3Gset):
  def __init__(
 self,
@@ -2333,9 +2336,9 @@ ylabel:str,
 zlabel:str
 )->NoReturn:'''3Dの散布図を再表示させる。'''
  def get(self)->list[PathCollection]:'''`PathCollection`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
- def getz(self)->ndarray[_AnyShape,dtype[Any]]:'''`z`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
+ def getz(self)->Typeget_data:'''`z`のデータを取得する。'''
 class Stem(_2Gset):
  def __init__(
 self,
@@ -2524,8 +2527,8 @@ marker:Literal['o','+','*','.','x','_','|','square','diamond','^','v','<','>','p
 line:Literal['-','--','-.','-.']=...
 )->NoReturn:'''幹図を再表示させる。'''
  def get(self)->list[StemContainer]:'''`StemContainer`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
 class Hist(_2Gset):
  def __init__(
 self,
@@ -2717,22 +2720,22 @@ orientation:Literal['horizontal','vertical'],
 width:Type_Number
 )->NoReturn:'''ヒストグラムを再表示させる。'''
  def get(self)->list[ndarray|list[ndarray],ndarray,BarContainer|Polygon|list[BarContainer|Polygon]]:'''`matplotlib.axes.Axes.hist`の戻り値を配列で返す。'''
- def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
+ def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''
 
  @overload
- def getrange(self,num:bool)->tuple[float64,float64]|tuple[float,float]:'''ヒストグラムの`bins`の上限値と下限値をtuple型で返す。
+ def getrange(self,num:bool)->Typetuple_float64|tuple[float,float]:'''ヒストグラムの`bins`の上限値と下限値をtuple型で返す。
 
  :param num: 戻り値内の数値がfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :return: ヒストグラムの`bins`の上限値と下限値を返す。
- :rtype: tuple[float64,float64]|tuple[float,float]'''
+ :rtype: Typetuple_float64|tuple[float,float]'''
  @overload
- def getrange(self,num:bool=True)->tuple[float64,float64]:'''ヒストグラムの`bins`の上限値と下限値をtuple型で返す。
+ def getrange(self,num:bool=True)->Typetuple_float64:'''ヒストグラムの`bins`の上限値と下限値をtuple型で返す。
 
  :param num: 戻り値内の数値がfloat64型(True)で返すかfloat型(False)で返すか指定する。
  :type num: bool
  :return: ヒストグラムの`bins`の上限値と下限値を返す。
- :rtype: tuple[float64,float64]'''
+ :rtype: Typetuple_float64'''
  @overload
  def getrange(self,num:bool=False)->tuple[float,float]:'''ヒストグラムの`bins`の上限値と下限値をtuple型で返す。
 
@@ -2932,7 +2935,7 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''階段グラフを再表示させる。'''
  def get(self)->list[StepPatch]:'''`StepPatch`の配列を返す。'''
- def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
+ def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''
 class Stack(_2Gset):
  def __init__(
 self,
@@ -3113,8 +3116,8 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''積み上げエリアチャートを再表示させる。'''
  def get(self)->list[FillBetweenPolyCollection]:'''`FillBetweenPolyCollection`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
 class Bubble(_2Gset):
  def __init__(
 self,
@@ -3292,9 +3295,9 @@ xlabel:str,
 ylabel:str
 )->NoReturn:'''バブルグラフを再表示させる。'''
  def get(self)->list[PathCollection]:'''`PathCollection`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
- def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
+ def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''
 class Linefill(_2Gset):
  def __init__(
 self,
@@ -3473,9 +3476,9 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''2つの水平曲線の間の領域を埋めるグラフを再表示させる。'''
  def get(self)->list[FillBetweenPolyCollection,Line2D]:'''`PathCollection`と`Line2D`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def getymin(self)->ndarray[_AnyShape,dtype[Any]]:'''`ymin`のデータを取得する。'''
- def getymax(self)->ndarray[_AnyShape,dtype[Any]]:'''`ymax`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def getymin(self)->Typeget_data:'''`ymin`のデータを取得する。'''
+ def getymax(self)->Typeget_data:'''`ymax`のデータを取得する。'''
 class Ecdf(_2Gset):
  def __init__(
 self,
@@ -3631,7 +3634,7 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''経験的累積分布関数を再表示させる。'''
  def get(self)->list[Line2D]:'''`Line2D`の配列を返す。'''
- def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
+ def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''
 class Errorbar(_2Gset):
  def __init__(
 self,
@@ -3827,8 +3830,8 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''エラーグラフを再表示させる。'''
  def get(self)->list[ErrorbarContainer]:'''`ErrorbarContainer`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
 class Eventplot(_2Gset):
  def __init__(
 self,
@@ -4011,7 +4014,7 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''円グラフを再表示させる。'''
  def get(self)->list[EventCollection]:'''`EventCollection`の配列を返す。'''
- def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
+ def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''
 class Hist2d(_2Gset):
  def __init__(
 self,
@@ -4203,8 +4206,8 @@ title:str
  :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる。
  :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる。'''
  def get(self)->list[ndarray,ndarray,ndarray,QuadMesh]:'''`matplotlib.axes.Axes.hist2d`の戻り値を配列で返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
 class Violinplot(_2Gset):
  def __init__(
 self,
@@ -4380,7 +4383,7 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''バイオリングラフを再表示させる。'''
  def get(self)->list[dict[str,Collection]]:'''`matplotlib.axes.Axes.violinplot`のバイオリンプロットの各コンポーネントの辞書型が入った配列を返す。'''
- def getdata(self)->ndarray[_AnyShape,dtype[Any]]:'''`data`のデータを取得する。'''
+ def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''
 class Hexbin(_2Gset):
  def __init__(
 self,
@@ -4547,8 +4550,8 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''2次元六角形グラフを再表示させる。'''
  def get(self)->list[PolyCollection]:'''`PolyCollection`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
 class Hatplot(_2Gset):
  def __init__(
 self,
@@ -4723,8 +4726,8 @@ graph_grid:ColorTypes,
 title:str,
 )->NoReturn:'''ハットグラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
 class Barpolar:
  def __init__(
 self,
@@ -4850,5 +4853,5 @@ graph_grid:ColorTypes,
 title:str
 )->NoReturn:'''極軸棒グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
- def getx(self)->ndarray[_AnyShape,dtype[Any]]:'''`x`のデータを取得する。'''
- def gety(self)->ndarray[_AnyShape,dtype[Any]]:'''`y`のデータを取得する。'''
+ def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
+ def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
