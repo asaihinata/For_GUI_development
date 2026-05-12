@@ -1,9 +1,9 @@
-from matplotlib.axes._axes import Axes
+from matplotlib.projections.polar import PolarAxes
 from matplotlib.pyplot import rcParams
 from numpy import array,ndarray
 from ..._function import bols,list2num,listchose,num0s,parsecolor,range_num
 from .Graph import GElement
-from .style import Title,Xlabel,Ylabel
+from .style import Title
 __all__=['polarElement']
 class polarElement(GElement):
  def __init__(self,master,kw):
@@ -13,7 +13,7 @@ class polarElement(GElement):
   self.grid_x=bols(kw.get('grid_x'),False)
   self.grid_y=bols(kw.get('grid_y'),False)
   # グラフの基盤
-  self.ax:Axes=self.fig.add_subplot(111,projection='polar')
+  self.ax:PolarAxes=self.fig.add_subplot(111,projection='polar')
   # 目盛り
   self.xmajorint=bols(kw.get('xmajorint'))
   self.ymajorint=bols(kw.get('ymajorint'))
@@ -48,9 +48,6 @@ class polarElement(GElement):
    self.ax.grid(False)
    if self.grid_x:self.ax.xaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
    if self.grid_y:self.ax.yaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
- def _apply_labels(self,xlabel,ylabel):
-  if xlabel is not None:Xlabel(self.ax,xlabel,color=self.xlabelfg,ha=self.xlabelha,va=self.xlabelva,font=self.xlabelfont,rotation=self.xlabelrotation,rotation_mode=self.xlabelrotation_mode,alpha=self.xlabelalpha,zorder=self.xlabelzorder)
-  if ylabel is not None:Ylabel(self.ax,ylabel,color=self.ylabelfg,ha=self.ylabelha,va=self.ylabelva,font=self.ylabelfont,rotation=self.ylabelrotation,rotation_mode=self.ylabelrotation_mode,alpha=self.ylabelalpha,zorder=self.ylabelzorder)
  def _arys(self,data):
   if any(isinstance(i,list|tuple)for i in data):return array(data)
   elif isinstance(data,list):return array([data])

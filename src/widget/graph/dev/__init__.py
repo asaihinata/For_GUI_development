@@ -1,40 +1,41 @@
 import japanize_matplotlib
 import numpy as np
-from ...typing import *
+from matplotlib.pyplot import cm,rcParams
 from ..._function import *
-from ..base import threeElement,twoElement,polarElement
+from ...typing import *
+from ..base import polarElement,threeElement,twoElement
 from ..base.lists import *
 from ..base.style import *
 class Angle:
- def __init__(self,angle,dtype=True):
-  if not isinstance(angle,bool|float|int|np.float16|np.float32|np.float64|np.int16|np.int32|np.int64|np.int8|np.uint16|np.uint32|np.uint64|np.uint8):
+ def __init__(self,angle:Type_Numberlike,dtype:bool=True)->None:
+  if not isinstance(angle,Type_Numberlike):
    raise TypeError('angleには数値の型を指定してください')
   if isinstance(dtype,bool) and dtype:self.angle=np.rad2deg(angle) # rad to deg
   else:self.angle=np.deg2rad(angle) # deg to rad
- def __str__(self):return str(self.angle)
- def __int__(self):return int(self.angle)
- def __float__(self):return float(self.angle)
- def __eq__(self,val):return self.angle==val
- def __ne__(self,val):return self.angle!=val
- def __lt__(self,val):return self.angle<val
- def __le__(self,val):return self.angle<=val
- def __gt__(self,val):return self.angle>val
- def __ge__(self,val):return self.angle>=val
+ def __str__(self)->str:return str(self.angle)
+ def __int__(self)->int:return int(self.angle)
+ def __float__(self)->float:return float(self.angle)
+ def __eq__(self,val:Type_Numberlike)->bool:return self.angle==val
+ def __ne__(self,val:Type_Numberlike)->bool:return self.angle!=val
+ def __lt__(self,val:Type_Numberlike)->bool:return self.angle<val
+ def __le__(self,val:Type_Numberlike)->bool:return self.angle<=val
+ def __gt__(self,val:Type_Numberlike)->bool:return self.angle>val
+ def __ge__(self,val:Type_Numberlike)->bool:return self.angle>=val
 class Rad(Angle):
- def __init__(self,angle):
+ def __init__(self,angle:Type_Numberlike|Rad|Deg)->None:
   if isinstance(angle,Rad|Deg):angle=angle.angle
   super().__init__(angle)
 class Deg(Angle):
- def __init__(self,angle):
+ def __init__(self,angle:Type_Numberlike|Rad|Deg)->None:
   if isinstance(angle,Rad|Deg):angle=angle.angle
   super().__init__(angle,False)
-def mod(a:int|float,b:int|float)->TupleNumbertype2:
+def mod(a:Type_Number,b:Type_Number)->TupleNumbertype2:
  '''整数除算と除算をtuple型で返す。
 
  :param a: 割られる数を指定する。
- :type a: int|float
+ :type a: Type_Number
  :param b: 割る数を指定する。
- :type b: int|float
+ :type b: Type_Number
  :rtype: TupleNumbertype2'''
  return(a//b,a%b)
 def datareversed(data:np.ndarray|list|tuple)->np.ndarray|list|tuple:
