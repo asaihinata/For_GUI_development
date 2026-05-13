@@ -144,6 +144,8 @@ For_GUI_development
  │       ├── graph
  │       │   ├── Graph
  │       │   │   ├── _2D
+ │       │   │   │   ├── __init__.py
+ │       │   │   │   ├── __init__.pyi
  │       │   │   │   ├── bargraph.py
  │       │   │   │   ├── boxplot.py
  │       │   │   │   ├── bubble.py
@@ -166,12 +168,15 @@ For_GUI_development
  │       │   │   │   ├── violinplot.py
  │       │   │   │   └── waterfall.py
  │       │   │   ├── _3D
+ │       │   │   │   ├── __init__.py
+ │       │   │   │   ├── __init__.pyi
  │       │   │   │   └── dscatter.py
  │       │   │   ├── __init__.py
  │       │   │   └── _polar
- │       │   │       └── bar.py
+ │       │   │       ├── __init__.py
+ │       │   │       ├── __init__.pyi
+ │       │   │       └── barpolar.py
  │       │   ├── __init__.py
- │       │   ├── __init__.pyi
  │       │   ├── base
  │       │   │   ├── Graph.py
  │       │   │   ├── __init__.py
@@ -216,21 +221,21 @@ For_GUI_development
  │       │   │   │   ├── title
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   └── __init__.pyi
- │       │   │   │   ├── tool
- │       │   │   │   │   ├── __init__.py
- │       │   │   │   │   ├── color
- │       │   │   │   │   │   ├── __init__.py
- │       │   │   │   │   │   └── __init__.pyi
- │       │   │   │   │   └── font
- │       │   │   │   │       ├── __init__.py
- │       │   │   │   │       ├── __init__.pyi
- │       │   │   │   │       ├── fontfile.py
- │       │   │   │   │       └── fontmanager.py
- │       │   │   │   └── typing
- │       │   │   │       └── __init__.py
+ │       │   │   │   └── tool
+ │       │   │   │       ├── __init__.py
+ │       │   │   │       ├── color
+ │       │   │   │       │   ├── __init__.py
+ │       │   │   │       │   └── __init__.pyi
+ │       │   │   │       └── font
+ │       │   │   │           ├── __init__.py
+ │       │   │   │           ├── __init__.pyi
+ │       │   │   │           ├── fontfile.py
+ │       │   │   │           └── fontmanager.py
  │       │   │   ├── threeElement.py
  │       │   │   └── twoElement.py
- │       │   └── dev
+ │       │   ├── dev
+ │       │   │   └── __init__.py
+ │       │   └── typing
  │       │       └── __init__.py
  │       ├── typing
  │       │   └── __init__.py

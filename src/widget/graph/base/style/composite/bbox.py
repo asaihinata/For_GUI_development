@@ -4,7 +4,7 @@ from matplotlib import rcParams
 from matplotlib._enums import CapStyle,JoinStyle
 from ..dev import bols,range_zero_one
 from ..tool import Color
-from ..typing import ColorTypes,Type_Numberlike,Type_Solid
+from ....typing import ColorTypes,Type_Numberlike,Type_Solid
 from .solid import Solid
 __all__=['BBox']
 class BBox:
