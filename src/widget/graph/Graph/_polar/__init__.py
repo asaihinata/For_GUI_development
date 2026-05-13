@@ -1,1 +1,2 @@
-from .barpolar import Barpolar
+from .Barpolar import Barpolar
+from .Stempolar import Stempolar

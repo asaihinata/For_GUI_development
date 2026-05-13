@@ -455,6 +455,7 @@ setxy:bool=True
   self.grid_y:bool
   self.xmajorint:bool
   self.ymajorint:bool
+ def _xyd(self,x,y,d)->tuple[ndarray,ndarray]:...
  def _updates(
 self,
 fg:ColorType,

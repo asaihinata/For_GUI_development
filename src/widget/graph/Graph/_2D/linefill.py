@@ -21,9 +21,9 @@ class Linefill(twoElement):
   self._adjustment()
  def update(self,x=None,ymax=None,ymin=None,**kw):
   self._updates(**kw)
-  if isinstance(x,np.ndarray|list|tuple):self.x=self._dataarr(x,False)
-  if isinstance(ymax,np.ndarray|list|tuple):self.ymax=self._manyarr(ymax)
-  if isinstance(ymin,np.ndarray|list|tuple):self.ymin=self._manyarr(ymin)
+  if isinstance(x,nListlike):self.x=self._dataarr(x,False)
+  if isinstance(ymax,nListlike):self.ymax=self._manyarr(ymax)
+  if isinstance(ymin,nListlike):self.ymin=self._manyarr(ymin)
   self.centerlinewidth=num0(kw.get('centerlinewidth'),self.centerlinewidth)
   self.plot(self.x,self.ymax,self.ymin,alpha=self.alpha,centerlinewidth=self.centerlinewidth)
   self._redraw()

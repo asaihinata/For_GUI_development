@@ -24,8 +24,8 @@ class Hatplot(twoElement):
   return[rects,annotate]
  def update(self,x=None,data=None,**kw):
   self._updates(**kw)
-  if isinstance(x,np.ndarray|list|tuple):self.x=self._dataarr(x)
-  if isinstance(data,np.ndarray|list|tuple):self.data=self._dataarr(data)
+  if isinstance(x,nListlike):self.x=self._dataarr(x)
+  if isinstance(data,nListlike):self.data=self._dataarr(data)
   self.color=parsecolor(kw.get('color'),self.color)
   self.label=self.labels(kw.get('label',self.label),2)[0]
   self.plot(self.x,self.data,label=self.label,color=self.color,alpha=self.alpha)

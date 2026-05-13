@@ -18,9 +18,9 @@ class DScatter(threeElement):
   self._adjustment()
  def update(self,x=None,y=None,z=None,**kw):
   self._updates(**kw)
-  if isinstance(x,np.ndarray|list|tuple):self.x=self._manyarr(x)
-  if isinstance(y,np.ndarray|list|tuple):self.y=self._manyarr(y)
-  if isinstance(z,np.ndarray|list|tuple):self.z=self._manyarr(z)
+  if isinstance(x,nListlike):self.x=self._manyarr(x)
+  if isinstance(y,nListlike):self.y=self._manyarr(y)
+  if isinstance(z,nListlike):self.z=self._manyarr(z)
   self.marker=self.markers(kw.get('marker',self.marker),self.max_depth)
   self.s=num1s(kw.get('markersize'),self.s)
   self.label=self.labels(kw.get('label',self.label))[0]

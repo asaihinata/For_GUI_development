@@ -32,7 +32,7 @@ class Hist(twoElement):
   self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,np.ndarray|list|tuple):self.data=self._dataarr(data)
+  if isinstance(data,nListlike):self.data=self._dataarr(data)
   bins=kw.get('bins',self.bins)
   if isinstance(bins,list|range|tuple|np.ndarray) or bins in ['auto','fd','doane','scott','stone','rice','sturges','sqrt']:self.bins=bins
   elif isinstance(bins,int):self.bins=num1s(bins,round(np.log2(len(self.data))+1))

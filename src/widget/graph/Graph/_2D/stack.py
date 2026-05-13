@@ -18,8 +18,8 @@ class Stack(twoElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,np.ndarray|list|tuple):self.x=self._onearr(x)
-  if isinstance(y,np.ndarray|list|tuple):self.y=self._manyarr(y)
+  if isinstance(x,nListlike):self.x=self._onearr(x)
+  if isinstance(y,nListlike):self.y=self._manyarr(y)
   self.label=self.labels(kw.get('label',self.label))[0]
   self.baseline=listchose(kw.get('baseline'),['zero','sym','wiggle','weighted_wiggle'],self.baseline)
   self.hatch=self._list_loop(list(Hatch(kw.get('hatch',self.hatch))),self.max_depth)

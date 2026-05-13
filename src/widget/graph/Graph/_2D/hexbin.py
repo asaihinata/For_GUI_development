@@ -21,9 +21,9 @@ class Hexbin(twoElement):
   self._adjustment()
  def update(self,x=None,y=None,c=None,**kw):
   self._updates(**kw)
-  if isinstance(x,np.ndarray|list|tuple):self.x=self._dataarr(x)
-  if isinstance(y,np.ndarray|list|tuple):self.y=self._dataarr(y)
-  if isinstance(c,np.ndarray|list|tuple):self.c=self._dataarr(c)
+  if isinstance(x,nListlike):self.x=self._dataarr(x)
+  if isinstance(y,nListlike):self.y=self._dataarr(y)
+  if isinstance(c,nListlike):self.c=self._dataarr(c)
   extent,gridsize=kw.get('extent',self.extent),kw.get('gridsize',self.gridsize)
   self.gridsize=gridsize if list2int(gridsize) or isinstance(gridsize,int) else 100
   self.extent=extent if list4float(extent) else None

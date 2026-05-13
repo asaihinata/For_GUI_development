@@ -24,7 +24,7 @@ class Pie(twoElement):
   self.legend()
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,np.ndarray|list|tuple):self.data=self._dataarr(data)
+  if isinstance(data,nListlike):self.data=self._dataarr(data)
   explode=kw.get('explode',self.explode)
   if isinstance(explode,list|tuple) and all(isinstance(i,int|float)for i in explode):self.explode=list(map(float,explode))
   elif isinstance(explode,int|float):self.explode=[float(explode) for _ in range(self.max_depth)]

@@ -29,8 +29,8 @@ class Stacked(twoElement):
   return lisarr
  def update(self,data=None,dataname=None,**kw):
   self._updates(**kw)
-  if isinstance(data,np.ndarray|list|tuple):self.data=self._manyarr(data)
-  if isinstance(dataname,np.ndarray|list|tuple):self.dataname=self._dataarr(dataname,False)
+  if isinstance(data,nListlike):self.data=self._manyarr(data)
+  if isinstance(dataname,nListlike):self.dataname=self._dataarr(dataname,False)
   if self.data.shape[0]!=self.dataname.shape[0]:
    raise ValueError('配列のエラー')
   self.label=self.labels(kw.get('label',self.label),self.data.shape[1])[0]
@@ -69,8 +69,8 @@ class Stackedh(twoElement):
   return lisarr
  def update(self,data=None,dataname=None,**kw):
   self._updates(**kw)
-  if isinstance(data,np.ndarray|list|tuple):self.data=self._manyarr(data)
-  if isinstance(dataname,np.ndarray|list|tuple):self.dataname=self._dataarr(dataname,False)
+  if isinstance(data,nListlike):self.data=self._manyarr(data)
+  if isinstance(dataname,nListlike):self.dataname=self._dataarr(dataname,False)
   if self.data.shape[0]!=self.dataname.shape[0]:
    raise ValueError('配列のエラー')
   self.label=self.labels(kw.get('label',self.label),self.data.shape[1])[0]

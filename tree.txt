@@ -173,9 +173,10 @@ For_GUI_development
  │       │   │   │   └── dscatter.py
  │       │   │   ├── __init__.py
  │       │   │   └── _polar
+ │       │   │       ├── Barpolar.py
+ │       │   │       ├── Stempolar.py
  │       │   │       ├── __init__.py
- │       │   │       ├── __init__.pyi
- │       │   │       └── barpolar.py
+ │       │   │       └── __init__.pyi
  │       │   ├── __init__.py
  │       │   ├── base
  │       │   │   ├── Graph.py

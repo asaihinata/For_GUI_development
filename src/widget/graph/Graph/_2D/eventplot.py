@@ -22,7 +22,7 @@ class Eventplot(twoElement):
   self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,np.ndarray|list|tuple):self.data=self._dataarr(data)
+  if isinstance(data,nListlike):self.data=self._dataarr(data)
   self.label,self.lab=self.labels(kw.get('label',self.label))
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)
   self.linewidth=num0(kw.get('linewidth'),self.linewidth)

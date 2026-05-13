@@ -29,7 +29,7 @@ class Funne(twoElement):
   return bars
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,np.ndarray|list|tuple):self.data=self._dataarr(data)
+  if isinstance(data,nListlike):self.data=self._dataarr(data)
   self.height=range_num(num0s(kw.get('height'),self.height),0,1,self.height)
   xmajormaxbins=intsmin(kw.get('xmajormaxbins'),3,self.xmajormaxbins)
   if not isinstance(xmajormaxbins,int):

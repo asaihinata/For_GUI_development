@@ -1,3 +1,4 @@
+from typing import TypeAlias
 import japanize_matplotlib
 import numpy as np
 from matplotlib.pyplot import cm,rcParams
@@ -6,6 +7,8 @@ from ...typing import *
 from ..base import polarElement,threeElement,twoElement
 from ..base.lists import *
 from ..base.style import *
+Listlike:TypeAlias=list|tuple
+nListlike:TypeAlias=np.ndarray|list|tuple
 class Angle:
  def __init__(self,angle:Type_Numberlike,dtype:bool=True)->None:
   if not isinstance(angle,Type_Numberlike):

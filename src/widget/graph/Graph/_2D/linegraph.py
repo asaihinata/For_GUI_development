@@ -19,8 +19,8 @@ class LineGraph(twoElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,np.ndarray|list|tuple):self.x=self._manyarr(x)
-  if isinstance(y,np.ndarray|list|tuple):self.y=self._manyarr(y)
+  if isinstance(x,nListlike):self.x=self._manyarr(x)
+  if isinstance(y,nListlike):self.y=self._manyarr(y)
   self.marker=self.markers(kw.get('marker',self.marker),self.max_depth)
   self.markersize=num0(kw.get('markersize'),self.markersize)
   self.line=self.lines(kw.get('linestyle',self.line),self.max_depth)

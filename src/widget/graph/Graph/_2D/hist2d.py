@@ -32,8 +32,8 @@ class Hist2d(twoElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,np.ndarray|list|tuple):self.x=self._dataarr(x)
-  if isinstance(y,np.ndarray|list|tuple):self.y=self._dataarr(y)
+  if isinstance(x,nListlike):self.x=self._dataarr(x)
+  if isinstance(y,nListlike):self.y=self._dataarr(y)
   if len(self.x.shape)!=1 and len(self.y.shape)!=1:
    raise TypeError('多次元配列のエラー')
   elif len(self.x.shape)!=1:

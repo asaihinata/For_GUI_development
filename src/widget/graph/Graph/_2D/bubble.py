@@ -21,9 +21,9 @@ class Bubble(twoElement):
  def update(self,x=None,y=None,data=None,**kw):
   self._updates(**kw)
   self.bubblesize=nums(kw.get('bubblesize'),self.bubblesize)
-  if isinstance(x,np.ndarray|list|tuple):self.x=self._manyarr(x)
-  if isinstance(y,np.ndarray|list|tuple):self.y=self._manyarr(y)
-  if isinstance(data,np.ndarray|list|tuple):self.data=self._arr(kw.get('data',self.data))
+  if isinstance(x,nListlike):self.x=self._manyarr(x)
+  if isinstance(y,nListlike):self.y=self._manyarr(y)
+  if isinstance(data,nListlike):self.data=self._arr(kw.get('data',self.data))
   self.datas=np.multiply(self.data,self.bubblesize)
   self.marker=self.markers(kw.get('marker',self.marker),self.max_depth)
   self.plot(self.x,self.y,marker=self.marker,alpha=self.alpha,label=self.label)

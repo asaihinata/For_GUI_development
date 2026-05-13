@@ -1,6 +1,6 @@
 from matplotlib.projections.polar import PolarAxes
 from matplotlib.pyplot import rcParams
-from numpy import array,ndarray
+from numpy import array,linspace,ndarray,pi
 from ..._function import bols,list2num,listchose,num0s,parsecolor,range_num
 from .Graph import GElement
 from .style import Title
@@ -34,9 +34,12 @@ class polarElement(GElement):
   elif list2num(yticksrange):self.yticksrange=yticksrange
   else:self.yticksrange=(0,0)
   # その他
-  self.x:ndarray
-  self.y:ndarray
-  self.data:ndarray
+  self.x,self.y=self._xyd(kw.get('x'),kw.get('y'),kw.get('data'))
+ def _xyd(self,x,y,d=None):
+  if d is None:return self._dataarr(x),self._dataarr(y)
+  else:
+   data=self._dataarr(d)
+   return linspace(0,2*pi,data.size,endpoint=False),data
  def _apply_theme_colors(self):
   self.ax.set_facecolor(self.graph_bg)
   self.ax.tick_params(colors=self.fg)
