@@ -1,2 +1,2 @@
 from .base.style import CAPSTYLE_LIST,Hatch,Marker,Solid
-from .Graph import BarGraph,BarhGraph,Barpolar,Boxplot,Bubble,DScatter,Ecdf,Errorbar,Eventplot,Funne,Hatplot,Hexbin,Hist,Hist2d,Linefill,LineGraph,Pie,Scatter,Stack,Stacked,Stackedh,Stem,Step,Violinplot,Waterfall,Waterfallh,Stempolar
+from .Graph import *
