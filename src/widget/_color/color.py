@@ -1,14 +1,14 @@
-import re
+from re import compile,findall
 import numpy as np
 from matplotlib.colors import to_hex
 from .data import COLOR_DATA,ColorData
 __all__=['Color','COLOR_DATA','ColorData']
-HEX8_RE=re.compile(r'^#[0-9a-f]{8}$')
-HEX6_RE=re.compile(r'^#[0-9a-f]{6}$')
-HEX3_RE=re.compile(r'^#[0-9a-f]{3}$')
-RGB_RE=re.compile(r'^rgb\((\d+),(\d+),(\d+)\)$')
-RGBA_RE=re.compile(r'^rgba\((\d+),(\d+),(\d+),([0-9.]+)\)$')
-HSV_RE=re.compile(r'^hsv\((\d+),(\d+),(\d+)\)$')
+HEX8_RE=compile(r'^#[0-9a-f]{8}$')
+HEX6_RE=compile(r'^#[0-9a-f]{6}$')
+HEX3_RE=compile(r'^#[0-9a-f]{3}$')
+RGB_RE=compile(r'^rgb\((\d+),(\d+),(\d+)\)$')
+RGBA_RE=compile(r'^rgba\((\d+),(\d+),(\d+),([0-9.]+)\)$')
+HSV_RE=compile(r'^hsv\((\d+),(\d+),(\d+)\)$')
 class Color:
  '''16進数カラーコード,カラー名,rgb,rgba,hsvを16進数カラーコードに変換する。'''
  def __init__(self,color,keep_alpha=True)->None:
@@ -26,12 +26,12 @@ class Color:
   def chage(val):return np.array(val[0],np.int8)
   if isinstance(color,str):
    if color[0]=='#':
-    if HEX8_RE.match(color):color=chagehex6(re.findall(HEX8_RE,color))
-    elif HEX6_RE.match(color):color=chagehex6(re.findall(HEX6_RE,color))
-    elif HEX3_RE.match(color):color=chagehex3(re.findall(HEX3_RE,color))
+    if HEX8_RE.match(color):color=chagehex6(findall(HEX8_RE,color))
+    elif HEX6_RE.match(color):color=chagehex6(findall(HEX6_RE,color))
+    elif HEX3_RE.match(color):color=chagehex3(findall(HEX3_RE,color))
     return color
-   elif RGB_RE.match(color):color=chage(re.findall(RGB_RE,color))
-   elif RGBA_RE.match(color):color=chage(re.findall(RGBA_RE,color))
-   elif HSV_RE.match(color):color=chage(re.findall(HSV_RE,color))
+   elif RGB_RE.match(color):color=chage(findall(RGB_RE,color))
+   elif RGBA_RE.match(color):color=chage(findall(RGBA_RE,color))
+   elif HSV_RE.match(color):color=chage(findall(HSV_RE,color))
    else:return self._res(ColorData.get(color)[1])
   return color

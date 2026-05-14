@@ -27,8 +27,7 @@ fontweight=None
   if not isinstance(ax,Axes|Axes3D):
    raise TypeError('axの型が違います')
   self.ax=ax
-  if isinstance(labelpad,int|float|None):labelpad=labelpad
-  else:
+  if not isinstance(labelpad,int|float|None):
    raise TypeError('labelpadにはNoneもしくは数値の型を指定してください')
   if isinstance(fontsize,int|float) or fontsize in ['xx-small','x-small','small','medium','large','x-large','xx-large']:fontsize=fontsize
   else:fontsize=10

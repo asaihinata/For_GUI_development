@@ -39,11 +39,9 @@ fontweight=None
   if (isinstance(fontweight,int|float) and 0<=fontweight<=1000) or fontweight in ['ultralight','light','normal','regular','book','medium','roman','semibold','demibold','demi','bold','heavy','extra bold','black']:fontweight=fontweight
   else:fontweight='normal'
   if not isinstance(zorder,int|float|None):zorder=4
-  if isinstance(pad,int|float|None):pad=pad
-  else:
+  if not isinstance(pad,int|float|None):
    raise TypeError('padにはNoneもしくは数値の型を指定してください')
-  if isinstance(y,int|float|None):y=y
-  else:
+  if not isinstance(y,int|float|None):
    raise TypeError('yにはNoneもしくは数値の型を指定してください')
   loc=listchose(loc,['center','left','right'])
   ha=listchose(ha,['center','left','right'])
