@@ -3,10 +3,12 @@ import japanize_matplotlib
 import numpy as np
 from matplotlib.pyplot import cm,rcParams
 from ..._function import *
-from .typing import *
 from ..base import polarElement,threeElement,twoElement
 from ..base.lists import *
 from ..base.style import *
+from .array import *
+from .maths import *
+from .typing import *
 def mod(a:Type_Number,b:Type_Number)->TupleNumbertype2:
  '''整数除算と除算をtuple型で返す。
 

@@ -1,7 +1,8 @@
 '''閉じられていない線の両端点の描画の方法を設定するモジュール'''
 from collections.abc import Iterator
 from typing import Any,Literal
-__all__:list[str]=['CAPSTYLE_LIST','Capstyle']
+from ....typing import Type_all
+__all__:Type_all=['CAPSTYLE_LIST','Capstyle']
 class CAPSTYLE_LIST:
  '''capstyleのデータクラス'''
  capstyle_list:list[str]=['butt','round','projecting']

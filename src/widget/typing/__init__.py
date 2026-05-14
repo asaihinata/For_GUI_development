@@ -4,14 +4,15 @@ from typing import Any,Callable,Collection,Literal,NoReturn,TypeAlias,TypeVar,ov
 import numpy as np
 from matplotlib.typing import ColorType
 from numpy.typing import NDArray
-__all__=['Any','Callable','Collection','ColorType','ColorTypes','FunctionType','Iterable','ListFloat2','ListFloat4','ListInt2','ListInt4','ListNumbertype2','ListNumbertype4','Literal','NoReturn','TupleFloat2','TupleFloat4','TupleInt2','TupleInt4','TupleNumbertype2','TupleNumbertype4','Type_Iterableint','Type_Iterablestr','Type_Number','Type_Numberlike','Type_bool','_T','labeltype','n_array','o_array','overload']
+Type_all:TypeAlias=list[str]
+__all__:Type_all=['Any','Callable','Collection','ColorType','ColorTypes','FunctionType','Iterable','labeltype','Literal','NoReturn','overload','TypeVar','ListFloat2','ListFloat4','ListInt2','ListInt4','ListNumbertype2','ListNumbertype4','TupleFloat2','TupleFloat4','TupleInt2','TupleInt4','TupleNumbertype2','TupleNumbertype4','Type_Iterableint','Type_Iterablestr','Type_Number','Type_Numberlike','Type_all','Type_bool','_T','n_array','o_array']
 _T=TypeVar('_T')
 # Iterable
 Type_Iterablestr:TypeAlias=Iterable[str]
 Type_Iterableint:TypeAlias=Iterable[int]
 # number
 Type_Number:TypeAlias=int|float
-Type_Numberlike:TypeAlias=bool|np.bool|int|float|np.float16|np.float32|np.float64|np.int16|np.int32|np.int64|np.int8|np.uint16|np.uint32|np.uint64|np.uint8
+Type_Numberlike:TypeAlias=int|float|np.float16|np.float32|np.float64|np.int16|np.int32|np.int64|np.int8|np.uint16|np.uint32|np.uint64|np.uint8
 # list like and number type
 TupleNumbertype2:TypeAlias=tuple[Type_Numberlike,Type_Numberlike]
 TupleNumbertype4:TypeAlias=tuple[Type_Numberlike,Type_Numberlike,Type_Numberlike,Type_Numberlike]

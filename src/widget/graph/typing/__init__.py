@@ -3,7 +3,7 @@ from typing import Literal,TypeAlias
 from numpy import dtype,float64,ndarray
 from numpy._typing import _AnyShape
 from ...typing import *
-Type_NumberandNone:TypeAlias=Type_Number|None
+Type_NumberandNone:TypeAlias=Type_Numberlike|None
 Type_Solid=Literal['-','--','-.',':','None',' ','']
 marKer=['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
 Type_Marker:TypeAlias=Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']

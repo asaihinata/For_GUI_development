@@ -175,6 +175,7 @@ For_GUI_development
  │       │   │   └── _polar
  │       │   │       ├── Barpolar.py
  │       │   │       ├── Errorpolar.py
+ │       │   │       ├── Linepolar.py
  │       │   │       ├── Stempolar.py
  │       │   │       ├── __init__.py
  │       │   │       └── __init__.pyi
@@ -240,10 +241,14 @@ For_GUI_development
  │       │   │   ├── array
  │       │   │   │   ├── __init__.py
  │       │   │   │   └── __init__.pyi
- │       │   │   ├── math
+ │       │   │   ├── maths
  │       │   │   │   ├── __init__.py
- │       │   │   │   └── angle
- │       │   │   │       └── __init__.py
+ │       │   │   │   ├── angle
+ │       │   │   │   │   ├── __init__.py
+ │       │   │   │   │   └── __init__.pyi
+ │       │   │   │   └── maths
+ │       │   │   │       ├── __init__.py
+ │       │   │   │       └── __init__.pyi
  │       │   │   └── typing
  │       │   │       └── __init__.py
  │       │   └── typing
