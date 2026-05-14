@@ -236,7 +236,16 @@ For_GUI_development
  │       │   │   ├── threeElement.py
  │       │   │   └── twoElement.py
  │       │   ├── dev
- │       │   │   └── __init__.py
+ │       │   │   ├── __init__.py
+ │       │   │   ├── array
+ │       │   │   │   ├── __init__.py
+ │       │   │   │   └── __init__.pyi
+ │       │   │   ├── math
+ │       │   │   │   ├── __init__.py
+ │       │   │   │   └── angle
+ │       │   │   │       └── __init__.py
+ │       │   │   └── typing
+ │       │   │       └── __init__.py
  │       │   └── typing
  │       │       └── __init__.py
  │       ├── typing
