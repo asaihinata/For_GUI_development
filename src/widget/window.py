@@ -165,6 +165,7 @@ class WindowController:
   elif t=='Barpolar':widget=Barpolar(parent,kw)
   elif t=='Stempolar':widget=Stempolar(parent,kw)
   elif t=='Errorpolar':widget=Errorpolar(parent,kw)
+  elif t=='Linepolar':widget=Linepolar(parent,kw)
   else:widget=Texts(parent,{'text':f'Unknown element:{t}'})
   if widget:
    if t=='Menus':self.root.config(menu=widget.widget)
