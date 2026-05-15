@@ -1,5 +1,5 @@
 from matplotlib.ticker import PercentFormatter
-from ...dev import *
+from ..dev import *
 class Stacked(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)

@@ -1,4 +1,4 @@
-from ...dev import *
+from ..dev import *
 class Eventplot(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)

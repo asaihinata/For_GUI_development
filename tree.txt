@@ -172,21 +172,20 @@ For_GUI_development
  │       │   │   │   ├── __init__.pyi
  │       │   │   │   └── dscatter.py
  │       │   │   ├── __init__.py
- │       │   │   └── _polar
- │       │   │       ├── Barpolar.py
- │       │   │       ├── Errorpolar.py
- │       │   │       ├── Linepolar.py
- │       │   │       ├── Stempolar.py
- │       │   │       ├── __init__.py
- │       │   │       └── __init__.pyi
+ │       │   │   ├── _polar
+ │       │   │   │   ├── Barpolar.py
+ │       │   │   │   ├── Errorpolar.py
+ │       │   │   │   ├── Linepolar.py
+ │       │   │   │   ├── Stempolar.py
+ │       │   │   │   ├── __init__.py
+ │       │   │   │   └── __init__.pyi
+ │       │   │   └── dev
+ │       │   │       └── __init__.py
  │       │   ├── __init__.py
  │       │   ├── base
  │       │   │   ├── Graph.py
  │       │   │   ├── __init__.py
  │       │   │   ├── __init__.pyi
- │       │   │   ├── lists
- │       │   │   │   ├── __init__.py
- │       │   │   │   └── __init__.pyi
  │       │   │   ├── polarElement.py
  │       │   │   ├── style
  │       │   │   │   ├── Text
@@ -239,18 +238,24 @@ For_GUI_development
  │       │   ├── dev
  │       │   │   ├── __init__.py
  │       │   │   ├── array
- │       │   │   │   ├── __init__.py
- │       │   │   │   └── __init__.pyi
- │       │   │   ├── maths
- │       │   │   │   ├── __init__.py
- │       │   │   │   ├── angle
+ │       │   │   │   ├── NPArray
  │       │   │   │   │   ├── __init__.py
  │       │   │   │   │   └── __init__.pyi
- │       │   │   │   └── maths
+ │       │   │   │   ├── __init__.py
+ │       │   │   │   └── graph_list
+ │       │   │   │       ├── Datalist.py
+ │       │   │   │       ├── Manylist.py
+ │       │   │   │       ├── Onelist.py
  │       │   │   │       ├── __init__.py
  │       │   │   │       └── __init__.pyi
- │       │   │   └── typing
- │       │   │       └── __init__.py
+ │       │   │   └── maths
+ │       │   │       ├── __init__.py
+ │       │   │       ├── angle
+ │       │   │       │   ├── __init__.py
+ │       │   │       │   └── __init__.pyi
+ │       │   │       └── maths
+ │       │   │           ├── __init__.py
+ │       │   │           └── __init__.pyi
  │       │   └── typing
  │       │       └── __init__.py
  │       ├── typing

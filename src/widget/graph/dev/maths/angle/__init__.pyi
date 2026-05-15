@@ -1,4 +1,4 @@
-from ...typing import *
+from ....typing import *
 __all__:Type_all=['Angle','Deg','Rad']
 class Angle:
  angle:float

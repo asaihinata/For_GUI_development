@@ -6,12 +6,12 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from numpy import array,ceil,ndarray,tile
+import numpy as np
 from ..._function import bols,listchose,num0s,num1s,nums,parsecolor,range_num
 from ..._log import Logger
 from ..._save import autofile_save
 from ...dev import LIST
-from .lists import Manylist,Onelist
+from ..dev import *
 from .style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid
 __all__=['GElement']
 logger=Logger(name='Graph',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
@@ -166,25 +166,23 @@ class GElement:
   else:lis=LIST(lists='')
   return(lis.get(nums),label)
  def _arr(self,val,j=True):
-  if not isinstance(val,list|tuple|LIST|ndarray):
+  if not isinstance(val,list|tuple|np.ndarray):
    raise TypeError('配列の型を指定してください')
-  if isinstance(val,ndarray):reval=val
-  elif isinstance(val,list|tuple):reval=array(val)
-  elif isinstance(val,LIST):reval=array(list(val))
-  if len(reval.shape)==1:reval=array([reval])
+  if isinstance(val,np.ndarray):reval=val
+  else:reval=np.array(val)
+  if len(reval.shape)==1:reval=np.array([reval])
   if j==True:self.max_depth=max(self.max_depth,reval.shape[0])
   return reval
  def _manyarr(self,val,j=True):
-  val=self._arr(list(Manylist(val)),j)
+  val=self._arr(Manylist(val).data,j)
   if len(val.shape)==2:return self._arr(val)
   return self._arr([val])
- def _onearr(self,val,j=True):return self._arr(list(Onelist(val)),j)
+ def _onearr(self,val,j=True):return self._arr(Onelist(val).data,j)
  def _dataarr(self,val,j=True):
-  if not isinstance(val,list|tuple|ndarray|LIST):
+  if not isinstance(val,list|tuple|np.ndarray):
    raise TypeError('配列の型を指定してください')
-  if isinstance(val,ndarray):reval=val
-  elif isinstance(val,list|tuple):reval=array(val)
-  elif isinstance(val,LIST):reval=array(list(val))
+  if isinstance(val,np.ndarray):reval=val
+  elif isinstance(val,list|tuple):reval=np.array(val)
   if j==True:self.max_depth=max(self.max_depth,reval.shape[0])
   return reval
  def _color_check(self,color):
@@ -200,6 +198,6 @@ class GElement:
     if judge:relist=set_arr
   return relist
  def _list_loop(self,lin,num):
-  if not isinstance(lin,ndarray|list|tuple):lin=array([lin])
+  if not isinstance(lin,np.ndarray|list|tuple):lin=np.array([lin])
   if not isinstance(num,int):num=0
-  return tile(lin,int(ceil(num/len(lin))))[:num]
+  return np.tile(lin,int(np.ceil(num/len(lin))))[:num]

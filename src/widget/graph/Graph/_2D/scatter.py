@@ -1,5 +1,5 @@
 from itertools import product
-from ...dev import *
+from ..dev import *
 class Scatter(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
