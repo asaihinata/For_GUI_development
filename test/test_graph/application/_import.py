@@ -4,6 +4,6 @@ from sys import path
 import numpy as np
 path.append(abspath(join(dirname(__file__),"..")))
 path.append(str(Path(__file__).parent.resolve().parent.parent.parent))
-from src import *
+from src.sgg import *
 from data.csv import *
 clear()
