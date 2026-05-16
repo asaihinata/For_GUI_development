@@ -2,6 +2,7 @@ from ..dev import *
 class Errorpolar(polarElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
+  self.x,self.y=self._xyd(kw.get('x'),kw.get('y'),kw.get('data'))
   err,xerr,yerr=kw.get('err'),kw.get('xerr'),kw.get('yerr')
   self.xerr,self.yerr=None,None
   if err is not None:

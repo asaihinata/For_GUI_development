@@ -1,15 +1,15 @@
 from ..dev import *
-class Barpolar(polarElement):
+class Scatterpolar(polarElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.x,self.y=self._xyd(kw.get('x'),kw.get('y'),kw.get('data'))
-  self.logs=bols(kw.get('logs'),False)
-  self.width=range_num(num0s(kw.get('width'),1),0,1,1)
-  self.align=listchose(kw.get('align'),['center','edge'])
-  self.plot(self.x,self.y,alpha=self.alpha,width=self.width,align=self.align,logs=self.logs,color=self.color)
- def plot(self,x,y,alpha=1,width=1,align='center',logs=False,color=None):
+  self.marker=Marker(kw.get('marker','o')).marker
+  self.s=num1s(kw.get('markersize'),10)
+  self.linewidth=num0(kw.get('linewidth'),2)
+  self.plot(self.x,self.y,marker=self.marker,linewidth=self.linewidth,alpha=self.alpha,s=self.s)
+ def plot(self,x,y,marker=None,linewidth=2,alpha=1,s=10):
   self.clear()
-  self.graphdata=self.ax.bar(x,y,log=logs,bottom=0,color=color,alpha=alpha,width=width,align=align)
+  self.graphdata=[self.ax.scatter(x,y,marker=marker,s=s,alpha=alpha,linewidth=linewidth)]
   self._adjustment()
  def update(self,x=None,y=None,data=None,**kw):
   self._updates(**kw)

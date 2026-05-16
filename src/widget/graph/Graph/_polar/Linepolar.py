@@ -2,6 +2,7 @@ from ..dev import *
 class Linepolar(polarElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
+  self.x,self.y=self._xyd(kw.get('x'),kw.get('y'),kw.get('data'))
   self.markersize=num0(kw.get('markersize'),10)
   self.marker=Marker(kw.get('marker','.')).marker
   self.line=Solid(kw.get('linestyle','-')).solid

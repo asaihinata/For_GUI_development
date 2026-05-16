@@ -155,7 +155,6 @@ class WindowController:
   elif t=='Hist':widget=Hist(parent,kw)
   elif t=='Hatplot':widget=Hatplot(parent,kw)
   elif t=='Hist2d':widget=Hist2d(parent,kw)
-  elif t=='Bubble':widget=Bubble(parent,kw)
   elif t=='Linefill':widget=Linefill(parent,kw)
   elif t=='Ecdf':widget=Ecdf(parent,kw)
   elif t=='Errorbar':widget=Errorbar(parent,kw)
@@ -166,6 +165,9 @@ class WindowController:
   elif t=='Stempolar':widget=Stempolar(parent,kw)
   elif t=='Errorpolar':widget=Errorpolar(parent,kw)
   elif t=='Linepolar':widget=Linepolar(parent,kw)
+  elif t=='Eventpolar':widget=Eventpolar(parent,kw)
+  elif t=='Scatterpolar':widget=Scatterpolar(parent,kw)
+  elif t=='Violinpolar':widget=Violinpolar(parent,kw)
   else:widget=Texts(parent,{'text':f'Unknown element:{t}'})
   if widget:
    if t=='Menus':self.root.config(menu=widget.widget)

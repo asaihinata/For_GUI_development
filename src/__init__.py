@@ -89,8 +89,6 @@ class sgg:
  @staticmethod
  def Hist(**kw):return{'count':counts(),'type':'Hist',**kw}
  @staticmethod
- def Bubble(**kw):return{'count':counts(),'type':'Bubble',**kw}
- @staticmethod
  def Linefill(**kw):return{'count':counts(),'type':'Linefill',**kw}
  @staticmethod
  def Ecdf(**kw):return{'count':counts(),'type':'Ecdf',**kw}
@@ -118,6 +116,12 @@ class sgg:
  def Errorpolar(**kw):return{'count':counts(),'type':'Errorpolar',**kw}
  @staticmethod
  def Linepolar(**kw):return{'count':counts(),'type':'Linepolar',**kw}
+ @staticmethod
+ def Eventpolar(**kw):return{'count':counts(),'type':'Eventpolar',**kw}
+ @staticmethod
+ def Scatterpolar(**kw):return{'count':counts(),'type':'Scatterpolar',**kw}
+ @staticmethod
+ def Violinpolar(**kw):return{'count':counts(),'type':'Violinpolar',**kw}
  @classmethod
  def Popup(cls,**kw):return popup(**kw)
  @classmethod

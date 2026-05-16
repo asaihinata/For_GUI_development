@@ -3489,177 +3489,6 @@ key:str=...
  :param legendncols: 凡例の列数を指定する。
  :type legendncols: int'''
  @staticmethod
- def Bubble(
-x:n_array,
-y:n_array,
-data:n_array,
-bubblesize:Type_Number=1,
-marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
-markersize:Type_Number=10,
-linewidth:Type_Number=2,
-xlabel:str=...,
-xlabelalpha:Type_Number=1.0,
-xlabelzorder:Type_Number=4,
-xlabelfg:ColorTypes=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
-xlabelrotation_mode:bool=True,
-xlabelfontname:str|Type_Iterablestr|None=None,
-xlabelfontpath:str|PathLike|Path|None=None,
-ylabel:str=...,
-ylabelalpha:Type_Number=1.0,
-ylabelzorder:Type_Number=4,
-ylabelfg:ColorTypes=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
-ylabelrotation_mode:bool=True,
-ylabelfontname:str|Type_Iterablestr|None=None,
-ylabelfontpath:str|PathLike|Path|None=None,
-label:labeltype=...,
-labelalpha:Type_Number=1.0,
-labelzorder:Type_Number=4,
-labelfg:ColorTypes=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
-labelrotation_mode:bool=True,
-labelfontname:str|Type_Iterablestr|None=None,
-labelfontpath:str|PathLike|Path|None=None,
-size:TupleNumbertype2=(500,400),
-fg:ColorTypes='#000000',
-bg:ColorTypes='#ffffff',
-color:ColorTypes|tuple[ColorTypes,...]=...,
-title:str=...,
-titlealpha:Type_Number=1.0,
-titlezorder:Type_Number=4,
-titlefg:ColorTypes=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
-titlerotation_mode:bool=True,
-titlefontname:str|Type_Iterablestr|None=None,
-titlefontpath:str|PathLike|Path|None=None,
-dpi:Type_Number=100,
-alpha:Type_Number=0.5,
-graph_grid:ColorTypes='#b7b7b7',
-grid_xy:bool=True,
-grid_x:bool=False,
-grid_y:bool=False,
-tight_layout:bool=True,
-xticksrange:Type_Number|tuple[int|tuple,...]=0,
-yticksrange:Type_Number|tuple[int|tuple,...]=0,
-xmajorint:bool=True,
-ymajorint:bool=True,
-ticksshow:bool=False,
-xticksshow:bool=False,
-yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
-legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
-legendtitle:str=...,
-legendframe:bool=True,
-legendshadow:bool=False,
-legendalpha:Type_Number=1,
-legendncols:int=1,
-key:str=...
-)->dict[str,Any]:'''バブルグラフを作成する。
-
- :param x: `x`のデータを指定する。
- :type x: n_array
- :param y: `y`のデータを指定する。
- :type y: n_array
- :param data: バブルグラフのバブルの大きさを指定する。
- :type data: n_array
- :param bubblesize: バブルの大きさの倍率を指定する。
- :type bubblesize: Type_Number
- :param marker: バブルグラフのマーカーを指定する。
- :type marker: LiteralLiteral[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
- :param markersize: 散布図のマーカーの大きさを指定する。
- :type markersize: Type_Number
- :param xlabel: x軸のラベルを指定する。
- :type xlabel: str
- :param ylabel: y軸のラベルを指定する。
- :type ylabel: str
- :param label: ラベルを指定する。
- :type label: labeltype
- :param title: グラフのタイトルを指定する。
- :type title: str
- :param titlealpha: グラフの透明度を指定する。
- :type titlealpha: Type_Number
- :param titlezorder: グラフのタイトルの重なりの順を指定する。
- :type titlezorder: Type_Number
- :param titlefg: グラフのタイトルの文字色を指定する。
- :type titlefg: ColorTypes
- :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
- :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
- :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
- :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
- :type titlerotation_mode: bool
- :param titlefontname: グラフのタイトルのフォント名を指定する。
- :type titlefontname: str|Type_Iterablestr|None
- :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
- :type titlefontpath: str|PathLike|Path|None
- :param color: 色を指定する。
- :type color: ColorTypes|tuple[ColorTypes,...]
- :param size: 表示させるグラフの大きさを指定する。
- :type size: TupleNumbertype2
- :param fg: グラフ内の文字色を指定する。
- :type fg: ColorTypes
- :param bg: グラフ内の背景色を指定する。
- :type bg: ColorTypes
- :param dpi: 1インチあたりのドット数を指定する。
- :type dpi: Type_Number
- :param alpha: グラフの透明度を指定する。
- :type alpha: Type_Number
- :param graph_grid: グラフのグリッド線の色を指定する。
- :type graph_grid: ColorTypes
- :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
- :type grid_xy: bool
- :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
- :type grid_x: bool
- :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
- :type grid_y: bool
- :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
- :type tight_layout: bool
- :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_Number|tuple[int|tuple,...]
- :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_Number|tuple[int|tuple,...]
- :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
- :type xmajorint: bool
- :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
- :type ymajorint: bool
- :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
- :type ticksshow: bool
- :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
- :type xticksshow: bool
- :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
- :type yticksshow: bool
- :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
- :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
- :param legendanchor: 凡例の位置を指定する。
- :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
- :param legendtitle: 凡例のタイトルを指定する。
- :type legendtitle: bool
- :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
- :type legendframe: bool
- :param legendshadow: 凡例に影を付与するか指定する。
- :type legendshadow: bool
- :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: Type_Number
- :param legendncols: 凡例の列数を指定する。
- :type legendncols: int'''
- @staticmethod
  def Linefill(
 x:o_array,
 ymin:n_array=...,
@@ -4810,7 +4639,6 @@ key:str=...
  :type legendncols: int'''
  @classmethod
  def Barpolar(
-cls,
 x:o_array=...,
 y:o_array=...,
 logs:bool=False,
@@ -4919,8 +4747,8 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']'''
+ @staticmethod
  def Stempolar(
-cls,
 x:o_array=...,
 y:o_array=...,
 data:o_array=...,
@@ -5032,8 +4860,8 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']'''
+ @staticmethod
  def Errorpolar(
-cls,
 x:o_array=...,
 y:o_array=...,
 data:o_array=...,
@@ -5175,8 +5003,8 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']'''
+ @staticmethod
  def Linepolar(
-cls,
 x:o_array=...,
 y:o_array=...,
 data:o_array=...,
@@ -5308,6 +5136,410 @@ key:str=...
  :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']'''
+
+ @staticmethod
+ def Eventpolar(
+x:o_array=...,
+y:o_array=...,
+data:o_array=...,
+linewidth:Type_Number=2,
+markersize:Type_Number=10,
+marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']=None,
+linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
+alpha:Type_Number=1,
+size:TupleNumbertype2=(500,400),
+fg:ColorTypes='#000000',
+bg:ColorTypes='#ffffff',
+title:str=...,
+titlealpha:Type_Number=1.0,
+titlezorder:Type_Number=4,
+titlefg:ColorTypes=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Type_Iterablestr|None=None,
+titlefontpath:str|PathLike|Path|None=None,
+dpi:Type_Number=100,
+graph_grid:ColorTypes='#b7b7b7',
+grid_xy:bool=True,
+grid_x:bool=False,
+grid_y:bool=False,
+tight_layout:bool=True,
+xticksrange:Type_Number|tuple[int|tuple,...]=0,
+yticksrange:Type_Number|tuple[int|tuple,...]=0,
+xmajorint:bool=True,
+ymajorint:bool=True,
+ticksshow:bool=False,
+xticksshow:bool=False,
+xticksdirection:Literal['out','in','inout']='out',
+yticksshow:bool=False,
+yticksdirection:Literal['out','in','inout']='out',
+key:str=...
+)->dict[str,Any]:'''極軸エラーグラフを作成する。
+
+ :param x: `x`のデータを指定する。
+ :type x: o_array
+ :param y: `y`のデータを指定する。
+ :type y: o_array
+ :param data: `data`のデータを指定する。
+ :type data: o_array
+ :param err: `x`と`y`のデータの誤差の配列を指定する。
+ :type err: o_array
+ :param xerr: `x`のデータの誤差の配列を指定する。
+ :type xerr: o_array
+ :param yerr: `y`のデータの誤差の配列を指定する。
+ :type yerr: o_array
+ :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
+ :type xuplims: bool
+ :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
+ :type xlolims: bool
+ :param yuplims: `y`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
+ :type yuplims: bool
+ :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
+ :type ylolims: bool
+ :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する。
+ :type barsabove: bool
+ :param linestyle: データ点とデータ点を結ぶ線の種類を指定する。
+ :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
+ :param marker: データ点のマーカーの種類を指定する。
+ :type marker: Literal['.','s','o','p','v','*','^','D']
+ :param linewidth: データ点を結ぶ線の太さを指定する。
+ :type linewidth: Type_Number
+ :param capthick: キャップの厚みを指定する。
+ :type capthick: Type_Number
+ :param capsize: エラーバーの先端にあるキャップの長さを指定する。
+ :type capsize: Type_Number
+ :param errorevery: エラーバーを表示する頻度を指定する。
+ :type errorevery: int|list[int]|tuple[int]
+ :param title: グラフのタイトルを指定する。
+ :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: Type_Number
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: Type_Number
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorTypes
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Type_Iterablestr|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
+ :param size: 表示させるグラフの大きさを指定する。
+ :type size: TupleNumbertype2
+ :param fg: グラフ内の文字色を指定する。
+ :type fg: ColorTypes
+ :param bg: グラフ内の背景色を指定する。
+ :type bg: ColorTypes
+ :param dpi: 1インチあたりのドット数を指定する。
+ :type dpi: Type_Number
+ :param alpha: グラフの透明度を指定する。
+ :type alpha: Type_Number
+ :param graph_grid: グラフのグリッド線の色を指定する。
+ :type graph_grid: ColorTypes
+ :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
+ :type grid_xy: bool
+ :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
+ :type grid_x: bool
+ :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
+ :type grid_y: bool
+ :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
+ :type tight_layout: bool
+ :param xticksrange: x軸の目盛の範囲を変更する。
+ :type xticksrange: Type_Number|tuple[int|tuple,...]
+ :param yticksrange: y軸の目盛の範囲を変更する。
+ :type yticksrange: Type_Number|tuple[int|tuple,...]
+ :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
+ :type xmajorint: bool
+ :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
+ :type ymajorint: bool
+ :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
+ :type ticksshow: bool
+ :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
+ :type xticksshow: bool
+ :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
+ :type yticksshow: bool
+ :param xticksdirection: x軸の目盛りの向きを指定する。
+ :type xticksdirection: Literal['out','in','inout']
+ :param yticksdirection: y軸の目盛りの向きを指定する。
+ :type yticksdirection: Literal['out','in','inout']'''
+
+ @staticmethod
+ def Scatterpolar(
+x:o_array=...,
+y:o_array=...,
+data:o_array=...,
+linewidth:Type_Number=2,
+markersize:Type_Number=10,
+marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']=None,
+linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
+alpha:Type_Number=1,
+size:TupleNumbertype2=(500,400),
+fg:ColorTypes='#000000',
+bg:ColorTypes='#ffffff',
+title:str=...,
+titlealpha:Type_Number=1.0,
+titlezorder:Type_Number=4,
+titlefg:ColorTypes=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Type_Iterablestr|None=None,
+titlefontpath:str|PathLike|Path|None=None,
+dpi:Type_Number=100,
+graph_grid:ColorTypes='#b7b7b7',
+grid_xy:bool=True,
+grid_x:bool=False,
+grid_y:bool=False,
+tight_layout:bool=True,
+xticksrange:Type_Number|tuple[int|tuple,...]=0,
+yticksrange:Type_Number|tuple[int|tuple,...]=0,
+xmajorint:bool=True,
+ymajorint:bool=True,
+ticksshow:bool=False,
+xticksshow:bool=False,
+xticksdirection:Literal['out','in','inout']='out',
+yticksshow:bool=False,
+yticksdirection:Literal['out','in','inout']='out',
+key:str=...
+)->dict[str,Any]:'''極軸エラーグラフを作成する。
+
+ :param x: `x`のデータを指定する。
+ :type x: o_array
+ :param y: `y`のデータを指定する。
+ :type y: o_array
+ :param data: `data`のデータを指定する。
+ :type data: o_array
+ :param err: `x`と`y`のデータの誤差の配列を指定する。
+ :type err: o_array
+ :param xerr: `x`のデータの誤差の配列を指定する。
+ :type xerr: o_array
+ :param yerr: `y`のデータの誤差の配列を指定する。
+ :type yerr: o_array
+ :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
+ :type xuplims: bool
+ :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
+ :type xlolims: bool
+ :param yuplims: `y`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
+ :type yuplims: bool
+ :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
+ :type ylolims: bool
+ :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する。
+ :type barsabove: bool
+ :param linestyle: データ点とデータ点を結ぶ線の種類を指定する。
+ :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
+ :param marker: データ点のマーカーの種類を指定する。
+ :type marker: Literal['.','s','o','p','v','*','^','D']
+ :param linewidth: データ点を結ぶ線の太さを指定する。
+ :type linewidth: Type_Number
+ :param capthick: キャップの厚みを指定する。
+ :type capthick: Type_Number
+ :param capsize: エラーバーの先端にあるキャップの長さを指定する。
+ :type capsize: Type_Number
+ :param errorevery: エラーバーを表示する頻度を指定する。
+ :type errorevery: int|list[int]|tuple[int]
+ :param title: グラフのタイトルを指定する。
+ :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: Type_Number
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: Type_Number
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorTypes
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Type_Iterablestr|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
+ :param size: 表示させるグラフの大きさを指定する。
+ :type size: TupleNumbertype2
+ :param fg: グラフ内の文字色を指定する。
+ :type fg: ColorTypes
+ :param bg: グラフ内の背景色を指定する。
+ :type bg: ColorTypes
+ :param dpi: 1インチあたりのドット数を指定する。
+ :type dpi: Type_Number
+ :param alpha: グラフの透明度を指定する。
+ :type alpha: Type_Number
+ :param graph_grid: グラフのグリッド線の色を指定する。
+ :type graph_grid: ColorTypes
+ :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
+ :type grid_xy: bool
+ :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
+ :type grid_x: bool
+ :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
+ :type grid_y: bool
+ :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
+ :type tight_layout: bool
+ :param xticksrange: x軸の目盛の範囲を変更する。
+ :type xticksrange: Type_Number|tuple[int|tuple,...]
+ :param yticksrange: y軸の目盛の範囲を変更する。
+ :type yticksrange: Type_Number|tuple[int|tuple,...]
+ :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
+ :type xmajorint: bool
+ :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
+ :type ymajorint: bool
+ :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
+ :type ticksshow: bool
+ :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
+ :type xticksshow: bool
+ :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
+ :type yticksshow: bool
+ :param xticksdirection: x軸の目盛りの向きを指定する。
+ :type xticksdirection: Literal['out','in','inout']
+ :param yticksdirection: y軸の目盛りの向きを指定する。
+ :type yticksdirection: Literal['out','in','inout']'''
+
+ @staticmethod
+ def Violinpolar(
+x:o_array=...,
+y:o_array=...,
+data:o_array=...,
+linewidth:Type_Number=2,
+markersize:Type_Number=10,
+marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']=None,
+linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
+alpha:Type_Number=1,
+size:TupleNumbertype2=(500,400),
+fg:ColorTypes='#000000',
+bg:ColorTypes='#ffffff',
+title:str=...,
+titlealpha:Type_Number=1.0,
+titlezorder:Type_Number=4,
+titlefg:ColorTypes=...,
+titleha:Literal['left','center','right']|None=None,
+titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
+titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Type_Iterablestr|None=None,
+titlefontpath:str|PathLike|Path|None=None,
+dpi:Type_Number=100,
+graph_grid:ColorTypes='#b7b7b7',
+grid_xy:bool=True,
+grid_x:bool=False,
+grid_y:bool=False,
+tight_layout:bool=True,
+xticksrange:Type_Number|tuple[int|tuple,...]=0,
+yticksrange:Type_Number|tuple[int|tuple,...]=0,
+xmajorint:bool=True,
+ymajorint:bool=True,
+ticksshow:bool=False,
+xticksshow:bool=False,
+xticksdirection:Literal['out','in','inout']='out',
+yticksshow:bool=False,
+yticksdirection:Literal['out','in','inout']='out',
+key:str=...
+)->dict[str,Any]:'''極軸エラーグラフを作成する。
+
+ :param x: `x`のデータを指定する。
+ :type x: o_array
+ :param y: `y`のデータを指定する。
+ :type y: o_array
+ :param data: `data`のデータを指定する。
+ :type data: o_array
+ :param err: `x`と`y`のデータの誤差の配列を指定する。
+ :type err: o_array
+ :param xerr: `x`のデータの誤差の配列を指定する。
+ :type xerr: o_array
+ :param yerr: `y`のデータの誤差の配列を指定する。
+ :type yerr: o_array
+ :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
+ :type xuplims: bool
+ :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
+ :type xlolims: bool
+ :param yuplims: `y`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
+ :type yuplims: bool
+ :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
+ :type ylolims: bool
+ :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する。
+ :type barsabove: bool
+ :param linestyle: データ点とデータ点を結ぶ線の種類を指定する。
+ :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
+ :param marker: データ点のマーカーの種類を指定する。
+ :type marker: Literal['.','s','o','p','v','*','^','D']
+ :param linewidth: データ点を結ぶ線の太さを指定する。
+ :type linewidth: Type_Number
+ :param capthick: キャップの厚みを指定する。
+ :type capthick: Type_Number
+ :param capsize: エラーバーの先端にあるキャップの長さを指定する。
+ :type capsize: Type_Number
+ :param errorevery: エラーバーを表示する頻度を指定する。
+ :type errorevery: int|list[int]|tuple[int]
+ :param title: グラフのタイトルを指定する。
+ :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: Type_Number
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: Type_Number
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorTypes
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Literal['left','center','right']|None
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Literal['vertical','horizontal']|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Type_Iterablestr|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
+ :param size: 表示させるグラフの大きさを指定する。
+ :type size: TupleNumbertype2
+ :param fg: グラフ内の文字色を指定する。
+ :type fg: ColorTypes
+ :param bg: グラフ内の背景色を指定する。
+ :type bg: ColorTypes
+ :param dpi: 1インチあたりのドット数を指定する。
+ :type dpi: Type_Number
+ :param alpha: グラフの透明度を指定する。
+ :type alpha: Type_Number
+ :param graph_grid: グラフのグリッド線の色を指定する。
+ :type graph_grid: ColorTypes
+ :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
+ :type grid_xy: bool
+ :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
+ :type grid_x: bool
+ :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
+ :type grid_y: bool
+ :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
+ :type tight_layout: bool
+ :param xticksrange: x軸の目盛の範囲を変更する。
+ :type xticksrange: Type_Number|tuple[int|tuple,...]
+ :param yticksrange: y軸の目盛の範囲を変更する。
+ :type yticksrange: Type_Number|tuple[int|tuple,...]
+ :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
+ :type xmajorint: bool
+ :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
+ :type ymajorint: bool
+ :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
+ :type ticksshow: bool
+ :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
+ :type xticksshow: bool
+ :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
+ :type yticksshow: bool
+ :param xticksdirection: x軸の目盛りの向きを指定する。
+ :type xticksdirection: Literal['out','in','inout']
+ :param yticksdirection: y軸の目盛りの向きを指定する。
+ :type yticksdirection: Literal['out','in','inout']'''
+
+
  @classmethod
  def Popup(
 cls,

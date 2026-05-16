@@ -2,6 +2,7 @@ from ..dev import *
 class Stempolar(polarElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
+  self.x,self.y=self._xyd(kw.get('x'),kw.get('y'),kw.get('data'))
   self.linefmt=kw.get('linefmt')
   self.markerfmt=kw.get('markerfmt')
   self.basefmt=kw.get('basefmt')

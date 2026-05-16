@@ -24,8 +24,8 @@ bargraphx2=["1月","2月","3月"]
 bargraphy2=rand.randint(30,60,size=(2,3))
 scatterx1=["1月","2月","3月","4月","5月"]
 scattery1=rand.randrange(0,10,size=5)
-scattery2=rand.randrange(100,400,size=(2,3))
 scatterx2=LIST.range(1,3,1,True).lists
+scattery2=rand.randrange(100,400,size=(2,3))
 waterfallx=["1月","2月","3月","4月","5月","6月"]
 waterfally=[30,-10,10,5,10,-80]
 stackx=LIST.range(1,3,1,True).lists

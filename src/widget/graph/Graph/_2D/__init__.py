@@ -1,6 +1,5 @@
 from .bargraph import BarGraph,BarhGraph
 from .boxplot import Boxplot
-from .bubble import Bubble
 from .ecdf import Ecdf
 from .errorbar import Errorbar
 from .eventplot import Eventplot
@@ -19,3 +18,4 @@ from .stem import Stem
 from .step import Step
 from .violinplot import Violinplot
 from .waterfall import Waterfall,Waterfallh
+__all__=['BarGraph','BarhGraph','Boxplot','Ecdf','Errorbar','Eventplot','Funne','Hatplot','Hexbin','Hist','Linefill','LineGraph','Pie','Scatter','Stack','Stacked','Stackedh','Stem','Step','Violinplot','Waterfall','Waterfallh','Hist2d']
