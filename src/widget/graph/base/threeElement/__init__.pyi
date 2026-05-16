@@ -7,9 +7,9 @@ class threeElement(GElement):
  def __init__(
 self,
 master:Misc=None,
-x:ndarray|list|tuple=None,
-y:ndarray|list|tuple=None,
-z:ndarray|list|tuple=None,
+x:nListlike=None,
+y:nListlike=None,
+z:nListlike=None,
 label:labeltype=None,
 grid_xyz:bool=True,
 grid_x:bool=False,
@@ -30,11 +30,11 @@ yticksdirection:Literal['out','in','inout']='out'
   '''3Dのグラフを作成する。
 
  :param x: x軸のデータを指定する。
- :type x: ndarray|list|tuple
+ :type x: nListlike
  :param y: y軸のデータを指定する。
- :type y: ndarray|list|tuple
+ :type y: nListlike
  :param z: z軸のデータを指定する。
- :type z: ndarray|list|tuple
+ :type z: nListlike
  :param xlabel: x軸のラベルを指定する。
  :type label: labeltype
  :param ylabel: y軸のラベルを指定する。
@@ -72,9 +72,9 @@ yticksdirection:Literal['out','in','inout']='out'
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']'''
   self.ax:Axes3D
-  self.x:ndarray|list|tuple
-  self.y:ndarray|list|tuple
-  self.z:ndarray|list|tuple
+  self.x:nListlike
+  self.y:nListlike
+  self.z:nListlike
   self.label:labeltype
   self.xlabel:labeltype
   self.ylabel:labeltype

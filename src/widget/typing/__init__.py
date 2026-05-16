@@ -3,15 +3,14 @@ from collections.abc import Iterable
 from typing import Any,Callable,Collection,Literal,NoReturn,TypeAlias,TypeVar,overload
 import numpy as np
 from numpy import _ArrayT
-from numpy.typing import NDArray
+from numpy.typing import ArrayLike,NDArray
 Type_all:TypeAlias=list[str]
-__all__:Type_all=['_ArrayT','_T','Any','Callable','Collection','ColorType','ColorTypeN','FunctionType','labeltype','ListFloat2','ListFloat4','ListInt2','ListInt4','Listlike','ListNumbertype2','ListNumbertype4','Literal','n_array','nListlike','NoReturn','NPstr2','o_array','overload','RGBAColorType','RGBColorType','TupleFloat2','TupleFloat4','TupleInt2','TupleInt4','TupleNumbertype2','TupleNumbertype4','Type_all','Type_bool','Type_dtype','Type_Iterableint','Type_Iterablestr','Type_npComplex','Type_npComplexs','Type_npFloat','Type_npFloats','Type_npInt','Type_npInts','Type_npUint','Type_Number','Type_Numberlike','Type_NumberlikeN','TypeAlias']
+__all__:Type_all=['_ArrayT','_T','Any','ArrayLike','Callable','Collection','ColorType','ColorTypeN','FunctionType','labeltype','ListFloat2','ListFloat4','ListInt2','ListInt4','Listlike','ListNumbertype2','ListNumbertype4','Literal','n_array','nListlike','NoReturn','NPstr2','o_array','overload','RGBAColorType','RGBColorType','TupleFloat2','TupleFloat4','TupleInt2','TupleInt4','TupleNumbertype2','TupleNumbertype4','Type_all','Type_bool','Type_dtype','Type_Iterableint','Type_Iterablestr','Type_npComplex','Type_npComplexs','Type_npFloat','Type_npFloats','Type_npInt','Type_npInts','Type_npUint','Type_Numberlike','Type_NumberlikeN','TypeAlias']
 _T=TypeVar('_T')
 # Iterable
 Type_Iterablestr:TypeAlias=Iterable[str]
 Type_Iterableint:TypeAlias=Iterable[int]
 # number
-Type_Number:TypeAlias=int|float
 Type_npInt:TypeAlias=np.int8|np.int16|np.int32|np.int64
 Type_npInts:TypeAlias=int|Type_npInt
 Type_npFloat:TypeAlias=np.float16|np.float32|np.float64|np.float96|np.float128
@@ -57,4 +56,4 @@ tuple[RGBColorType,float]|
 tuple[TupleFloat4,float]
 )
 ColorType:TypeAlias=RGBColorType|RGBAColorType
-ColorTypeN:TypeAlias=RGBColorType|RGBAColorType|None
+ColorTypeN:TypeAlias=ColorType|None

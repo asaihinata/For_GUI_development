@@ -1,6 +1,6 @@
-import datetime
-import time
 from collections.abc import Iterator
+from datetime import _IsoCalendarDate,_Time,_TzInfo,date,datetime,timedelta
+from time import struct_time
 from typing import Any,NoReturn,overload
 from ..typing import Listlike
 __all__=['times','timeslist']
@@ -14,7 +14,7 @@ class times:
  minute:int
  second:int
  microsecond:int
- datetimes:datetime.datetime|datetime.date
+ datetimes:datetime|date
  @overload
  def __init__(
 self,
@@ -25,7 +25,7 @@ hour:int=0,
 minute:int=0,
 second:int=0,
 microsecond:int=0,
-timezone:datetime._TzInfo='Asia/Tokyo',
+timezone:_TzInfo='Asia/Tokyo',
 fold:int|bool=0
 )->None:'''日付と時間を作成するクラス
 
@@ -45,7 +45,7 @@ fold:int|bool=0
  :param microsecond: ミリ秒を指定する。範囲は`0<=microsecond<=1000000`
  :type microsecond: int
  :param timezone: タイムゾーンを指定する。
- :type timezone: datetime._TzInfo
+ :type timezone: _TzInfo
  :param fold: 重複する時刻の操作について0,1,bool型で指定する。
  :type fold: int|bool
  :raises TypeError: `year`でint型ではない型を指定した場合に発生させる。
@@ -65,48 +65,48 @@ fold:int|bool=0
  @overload
  def __init__(
 self,
-dates:datetime.datetime|datetime.date|times|None=None
+dates:datetime|date|times|None=None
 )->None:'''日付と時間を作成するクラス'''
- def __eq__(self,val:datetime.datetime|datetime.date|times)->bool:''':return: `self`==`val`を返す。
+ def __eq__(self,val:datetime|date|times)->bool:''':return: `self`==`val`を返す。
  :rtype: bool'''
- def __ne__(self,val:datetime.datetime|datetime.date|times)->bool:''':return: `self`!=`val`を返す。
+ def __ne__(self,val:datetime|date|times)->bool:''':return: `self`!=`val`を返す。
  :rtype: bool'''
- def __lt__(self,val:datetime.datetime|datetime.date|times)->bool:''':return: `self`<`val`を返す。
+ def __lt__(self,val:datetime|date|times)->bool:''':return: `self`<`val`を返す。
  :rtype: bool'''
- def __le__(self,val:datetime.datetime|datetime.date|times)->bool:''':return: `self`<=`val`を返す。
+ def __le__(self,val:datetime|date|times)->bool:''':return: `self`<=`val`を返す。
  :rtype: bool'''
- def __gt__(self,val:datetime.datetime|datetime.date|times)->bool:''':return: `self`>`val`を返す。
+ def __gt__(self,val:datetime|date|times)->bool:''':return: `self`>`val`を返す。
  :rtype: bool'''
- def __ge__(self,val:datetime.datetime|datetime.date|times)->bool:''':return: `self`>=`val`を返す。
+ def __ge__(self,val:datetime|date|times)->bool:''':return: `self`>=`val`を返す。
  :rtype: bool'''
- def __add__(self,val:datetime.timedelta)->times:''':return: `self`+`val`を返す。
+ def __add__(self,val:timedelta)->times:''':return: `self`+`val`を返す。
  :rtype: times'''
- def __sub__(self,val:datetime.timedelta)->times:''':return: `self`-`val`を返す。
+ def __sub__(self,val:timedelta)->times:''':return: `self`-`val`を返す。
  :rtype: times'''
- def __radd__(self,val:datetime.timedelta)->times:''':return: `self`+`val`を返す。
+ def __radd__(self,val:timedelta)->times:''':return: `self`+`val`を返す。
  :rtype: times'''
- def __rsub__(self,val:datetime.timedelta)->times:''':return: `self`-`val`を返す。
+ def __rsub__(self,val:timedelta)->times:''':return: `self`-`val`を返す。
  :rtype: times'''
- def date(self)->datetime.datetime|None:'''日付時刻を返す。
+ def date(self)->datetime|None:'''日付時刻を返す。
 
  :return: 日付時刻を返す。
- :rtype: datetime.datetime|None'''
+ :rtype: datetime|None'''
  def getdate(self)->tuple[int,int,int,int,int,int,int]:'''日付時刻の値を返す。'''
- def astimezone(self,timezone:datetime._TzInfo='Asia/Tokyo')->datetime.datetime:...
- def time(self)->datetime._Time:...
- def timetz(self)->datetime._Time:...
- def utcoffset(self)->datetime.timedelta|None:...
- def dst(self)->datetime.timedelta|None:...
+ def astimezone(self,timezone:_TzInfo='Asia/Tokyo')->datetime:...
+ def time(self)->_Time:...
+ def timetz(self)->_Time:...
+ def utcoffset(self)->timedelta|None:...
+ def dst(self)->timedelta|None:...
  def tzname(self)->str|None:...
- def timetuple(self)->time.struct_time:...
- def utctimetuple(self)->time.struct_time:...
+ def timetuple(self)->struct_time:...
+ def utctimetuple(self)->struct_time:...
  def toordinal(self)->int:...
  def timestamp(self)->float:...
  def weekday(self)->int:...
  def isoweekday(self)->int:...
- def isocalendar(self)->datetime._IsoCalendarDate:...
+ def isocalendar(self)->_IsoCalendarDate:...
  def ctime(self)->str:...
- def strptime(self,format:str='%Y/%m/%d,%H:%M:%S')->datetime.datetime:...
+ def strptime(self,format:str='%Y/%m/%d,%H:%M:%S')->datetime:...
  def strftime(self,format:str='%Y/%m/%d,%H:%M:%S')->str:...
  def replace(
 self,
@@ -117,42 +117,42 @@ hour:int=...,
 minute:int=...,
 second:int=...,
 microsecond:int=...,
-timezone:datetime._TzInfo=...,
+timezone:_TzInfo=...,
 fold:int=...
 )->times:...
  def __str__(self)->str:...
  @overload
- def min(self)->datetime.datetime:'''表現できる最も古い日付のdatetime.datetime(`minsyear`,1,1)を返す。
+ def min(self)->datetime:'''表現できる最も古い日付のdatetime.datetime(`minsyear`,1,1)を返す。
 
  :return: 表現できる最も古い日付のdatetime.datetime(`minsyear`,1,1)を返す。
- :rtype: datetime.datetime'''
+ :rtype: datetime'''
  @overload
  @staticmethod
- def min()->datetime.datetime:'''表現できる最も古い日付のdatetime.datetime(`minsyear`,1,1)を返す。
+ def min()->datetime:'''表現できる最も古い日付のdatetime.datetime(`minsyear`,1,1)を返す。
 
  :return: 表現できる最も古い日付のdatetime.datetime(`minsyear`,1,1)を返す。
- :rtype: datetime.datetime'''
- def max(self)->datetime.datetime:'''表現できる最も新しい日付のdatetime.datetime(`maxsyear`,12,31)を返す。
+ :rtype: datetime'''
+ def max(self)->datetime:'''表現できる最も新しい日付のdatetime.datetime(`maxsyear`,12,31)を返す。
 
  :return: 表現できる最も新しい日付のdatetime.datetime(`maxsyear`,12,31)を返す。
- :rtype: datetime.datetime'''
+ :rtype: datetime'''
  @staticmethod
- def max()->datetime.datetime:'''表現できる最も新しい日付のdatetime.datetime(`maxsyear`,12,31)を返す。
+ def max()->datetime:'''表現できる最も新しい日付のdatetime.datetime(`maxsyear`,12,31)を返す。
 
  :return: 表現できる最も新しい日付のdatetime.datetime(`maxsyear`,12,31)を返す。
- :rtype: datetime.datetime'''
+ :rtype: datetime'''
  @staticmethod
- def now(timezone:datetime._TzInfo='Asia/Tokyo')->times:'''現在のローカル日付日時を返す。
+ def now(timezone:_TzInfo='Asia/Tokyo')->times:'''現在のローカル日付日時を返す。
 
  :param timezone: タイムゾーンを指定する。
- :type timezone: datetime._TzInfo
+ :type timezone: _TzInfo
  :return: 現在のローカル日付日時を返す。
  :rtype: times'''
  @staticmethod
- def today(timezone:datetime._TzInfo='Asia/Tokyo')->times:'''現在のローカル日付を返す。
+ def today(timezone:_TzInfo='Asia/Tokyo')->times:'''現在のローカル日付を返す。
 
  :param timezone: タイムゾーンを指定する。
- :type timezone: datetime._TzInfo
+ :type timezone: _TzInfo
  :return: 現在のローカル日付を返す。
  :rtype: times'''
  @staticmethod
@@ -165,15 +165,15 @@ fold:int=...
  :param mins: 最小の年を指定する。1<=`mins`<=9999の範囲を超えた値を指定した場合1にする。
  :type mins: int'''
 class timeslist:
- datelist:tuple[datetime.datetime|None]
+ datelist:tuple[datetime|None]
  def __init__(
 self,
-dates:str|datetime.datetime|datetime.date|times|Listlike[str|datetime.datetime|datetime.date|times,...]
+dates:str|datetime|date|times|Listlike[str|datetime|date|times,...]
 )->None:...
  @classmethod
  def __instancecheck__(cls,ins:Any)->bool:...
  def __len__(self)->int:...
- def __iter__(self)->Iterator[datetime.datetime]:...
+ def __iter__(self)->Iterator[datetime]:...
  @overload
  def __getitem__(self,val:int|slice)->Any|list:...
  @overload

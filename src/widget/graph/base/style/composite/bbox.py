@@ -4,7 +4,7 @@ from matplotlib import rcParams
 from matplotlib._enums import CapStyle,JoinStyle
 from ..dev import bols,range_zero_one
 from ..tool import Color
-from ....typing import ColorTypes,Type_Numberlike,Type_Solid
+from ....typing import ColorTypeN,Type_Numberlike,Type_Solid
 from .solid import Solid
 __all__=['BBox']
 class BBox:
@@ -12,9 +12,9 @@ class BBox:
  def __init__(
 self,*,
 alpha:Type_Numberlike=1,
-edgecolor:ColorTypes|None=None,
-facecolor:ColorTypes|None=None,
-color:ColorTypes|None=None,
+edgecolor:ColorTypeN=None,
+facecolor:ColorTypeN=None,
+color:ColorTypeN=None,
 linewidth:Type_Numberlike=2,
 linestyle:Type_Solid='solid',
 antialiased:bool=True,

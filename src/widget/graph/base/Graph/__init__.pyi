@@ -4,6 +4,7 @@ from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
 from ...typing import *
+__all__:Type_all=['GElement']
 class GElement:
  master:Misc
  fig:Figure

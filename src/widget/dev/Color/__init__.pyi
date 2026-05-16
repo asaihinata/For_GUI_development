@@ -3,12 +3,12 @@ from typing import Any,TypeAlias
 import numpy as np
 from matplotlib.typing import ColorType,RGBAColorType,RGBColorType
 Type_nd:TypeAlias=np.ndarray[np.str_,np.str_]
-Type_Color:TypeAlias=str|ColorType|RGBAColorType|RGBColorType
+__all__=['Colors','ColorData']
 class Colors:
  color:RGBColorType|RGBAColorType
  def __init__(
 self,
-color:Type_Color,
+color:ColorType,
 ranges:bool=True,
 keep_alpha:bool=True
 )->None:...

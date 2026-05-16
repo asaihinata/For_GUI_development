@@ -5,8 +5,8 @@ from matplotlib.axes._axes import Axes
 from matplotlib.font_manager import FontProperties
 from matplotlib.legend_handler import HandlerBase
 from matplotlib.transforms import BboxBase,Transform
-from matplotlib.typing import ColorType
 from mpl_toolkits.mplot3d.axes3d import Axes3D
+from ....typing import ColorTypeN,ColorType
 class Legends:
  def __init__(
 self,
@@ -37,8 +37,8 @@ shadow:bool|dict[str,Any]|None=None,
 title:str|None=None,
 title_fontsize:float|None=None,
 framealpha:float|None=None,
-edgecolor:Literal['inherit']|ColorType|None=None,
-facecolor:Literal['inherit']|ColorType|None=None,
+edgecolor:Literal['inherit']|ColorTypeN=None,
+facecolor:Literal['inherit']|ColorTypeN=None,
 bbox_to_anchor:BboxBase|tuple[float,float]|tuple[float,float,float,float]|None=None,
 bbox_transform:Transform|None=None,
 frameon:bool|None=None,

@@ -1,22 +1,20 @@
 from collections.abc import Iterator
-from typing import Any,TypeAlias
-from numpy import _ArrayT,_CopyMode,_DTypeT_co,ndarray
-from ....typing import _T,Type_all,Type_NumberandNone,Type_Numberlike
+from numpy import _CopyMode
+from ....typing import _T,Type_all,Type_NumberlikeN,Type_dtype,Type_Numberlike,Any,_ArrayT,ndarray
 __all__:Type_all=['NPArray']
-DType:TypeAlias=_DTypeT_co|None
 class NPArray:
- dtype:DType
+ dtype:Type_dtype
  data:ndarray
  def __init__(
 self,
 data:_ArrayT,
 *,
-dtype:DType=None
+dtype:Type_dtype=None
 )->None:...
  def __iter__(self)->Iterator[Any]:...
  def __array__(
 self,
-dtype:DType=None,
+dtype:Type_dtype=None,
 copy:bool|_CopyMode|None=None
 )->ndarray:...
  def tolist(self)->_T:'''list型に変換する。
@@ -46,9 +44,9 @@ copy:bool|_CopyMode|None=None
  def arange(
 cls,
 start:Type_Numberlike,
-stop:Type_NumberandNone=None,
-step:Type_NumberandNone=None,
-dtype:DType=None
+stop:Type_NumberlikeN=None,
+step:Type_NumberlikeN=None,
+dtype:Type_dtype=None
 )->NPArray:...
  @classmethod
  def linspace(
@@ -57,5 +55,5 @@ start:Type_Numberlike,
 stop:Type_Numberlike,
 num:Type_Numberlike=50,
 endpoint:bool=True,
-dtype:DType=None
+dtype:Type_dtype=None
 ):...

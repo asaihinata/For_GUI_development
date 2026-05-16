@@ -7,9 +7,9 @@ class twoElement(GElement):
  def __init__(
 self,
 master:Misc=None,
-data:ndarray|list|tuple=None,
-x:ndarray|list|tuple=None,
-y:ndarray|list|tuple=None,
+data:nListlike=None,
+x:nListlike=None,
+y:nListlike=None,
 label:labeltype=None,
 grid_xy:bool=True,
 grid_x:bool=False,
@@ -25,11 +25,11 @@ setxy:bool=True
   '''2Dグラフの基盤のグラフを作成する。
 
  :param data: dataを指定する。
- :type data: ndarray|list|tuple
+ :type data: nListlike
  :param x: x軸のデータを指定する。
- :type x: ndarray|list|tuple
+ :type x: nListlike
  :param y: y軸のデータを指定する。
- :type y: ndarray|list|tuple
+ :type y: nListlike
  :param label: グラフのラベルを指定する。
  :type label: labeltype
  :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
