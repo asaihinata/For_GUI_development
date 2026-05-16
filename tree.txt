@@ -19,6 +19,8 @@ For_GUI_development
  │   └── sgg
  │       ├── __init__.py
  │       ├── __init__.pyi
+ │       ├── typing
+ │       │   └── __init__.py
  │       └── widget
  │           ├── __init__.py
  │           ├── _color

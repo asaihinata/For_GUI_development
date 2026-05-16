@@ -5,8 +5,10 @@ from tkinter import StringVar,_Cursor
 from typing import Union
 from matplotlib.mlab import GaussianKDE
 from numpy import ndarray
+from .typing import *
 from .widget import *
 from .widget.typing import *
+Type_ticksrange:TypeAlias=int|float|tuple[Type_Numberlike,...]
 class sgg:
  @classmethod
  def window(
@@ -460,7 +462,7 @@ value:int|float=0,
 digits:int=0,
 resolution:int|float=1,
 length:int|float=200,
-orientation:Literal['horizontal','vertical']='horizontal',
+orientation:Type_orientation='horizontal',
 min:int|float=0,
 max:int|float=100,
 key:str=...,
@@ -474,7 +476,7 @@ bd:int|float=1
  :param length: Slidebarウィジェットの長さを指定する。
  :type length: int|float
  :param orientation: Slidebarウィジェットの向きを指定する。
- :type orientation: Literal['horizontal','vertical']
+ :type orientation: Type_orientation
  :param min: Slidebarウィジェットの数値の最小値を指定する。
  :type min: int|float
  :param max: Slidebarウィジェットの数値の最大値を指定する。
@@ -670,14 +672,14 @@ value:int|float=0,
 max:int|float=100,
 length:int|float=200,
 mode:Literal['determinate','indeterminate']='determinate',
-orient:Literal['horizontal','vertical']='horizontal',
+orient:Type_orientation='horizontal',
 key:str=...
 )->dict[str,Any]:'''プログレスバーを作成する。
 
  :param length: TProgressbarウィジェットの長さを指定する。
  :type length: int|float
  :param orient: TProgressbarウィジェットの向きを指定する。
- :type orient: Literal['horizontal','vertical']
+ :type orient: Type_orientation
  :param mode: 決定的モード(determinate)か非決定的モード(indeterminate)かを指定する。
  :type mode: Literal['determinate','indeterminate']
  :param max: TProgressbarウィジェットの数値の最大値を指定する。
@@ -722,9 +724,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -732,9 +734,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -742,9 +744,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -756,9 +758,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -768,17 +770,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -815,11 +817,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -849,9 +851,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -863,13 +865,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -889,9 +891,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -899,9 +901,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -909,9 +911,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -926,9 +928,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -939,17 +941,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -985,11 +987,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -1019,9 +1021,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1033,13 +1035,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -1059,9 +1061,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -1069,9 +1071,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -1079,9 +1081,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -1094,9 +1096,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -1106,17 +1108,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -1155,11 +1157,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -1189,9 +1191,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1203,13 +1205,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -1228,9 +1230,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -1238,9 +1240,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -1248,9 +1250,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -1263,9 +1265,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -1275,17 +1277,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -1322,11 +1324,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -1356,9 +1358,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1370,13 +1372,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -1396,9 +1398,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -1406,9 +1408,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -1416,9 +1418,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -1430,9 +1432,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -1443,17 +1445,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=(0,1),
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='lower left',
+legendplace:Type_legendplace='lower left',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -1483,11 +1485,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -1517,9 +1519,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1531,13 +1533,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -1557,9 +1559,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -1567,9 +1569,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -1577,9 +1579,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -1591,9 +1593,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -1604,17 +1606,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=(0,1),
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='lower left',
+legendplace:Type_legendplace='lower left',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -1644,11 +1646,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -1678,9 +1680,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1692,13 +1694,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -1716,9 +1718,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -1736,16 +1738,16 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
 dpi:int|float=100,
 alpha:int|float=1,
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=(1.2,1.05),
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper left',
+legendplace:Type_legendplace='upper left',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -1779,11 +1781,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -1805,7 +1807,7 @@ key:str=...
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -1823,9 +1825,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -1833,16 +1835,16 @@ legend:bool=True,
 fill:bool=False,
 notch:bool=False,
 showfliers:bool=True,
-orientation:Literal['vertical','horizontal']='vertical',
+orientation:Type_orientation='vertical',
 width:int|float=0.15,
 whis:float|TupleFloat2=1.5,
 xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -1850,9 +1852,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -1863,9 +1865,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -1876,17 +1878,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -1908,7 +1910,7 @@ key:str=...
  :param showfliers: 外れ値を表示させるか指定する。
  :type showfliers: bool
  :param orientation: 箱ひげ図の向きを指定する。
- :type orientation: Literal['horizontal','vertical']
+ :type orientation: Type_orientation
  :param whis: ヒゲの位置を指定する。
  :type whis: float|TupleFloat2
  :param title: グラフのタイトルを指定する。
@@ -1920,11 +1922,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -1956,9 +1958,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1970,13 +1972,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -1999,9 +2001,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -2009,9 +2011,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -2022,9 +2024,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -2035,17 +2037,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -2082,11 +2084,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -2114,9 +2116,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2128,13 +2130,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -2162,9 +2164,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -2172,9 +2174,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -2186,9 +2188,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -2199,17 +2201,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -2246,11 +2248,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -2278,9 +2280,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2292,13 +2294,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -2322,9 +2324,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -2332,9 +2334,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -2342,9 +2344,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -2358,9 +2360,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -2371,17 +2373,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -2413,11 +2415,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -2447,9 +2449,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2461,13 +2463,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -2487,9 +2489,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -2497,9 +2499,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -2507,9 +2509,9 @@ zlabel:str=...,
 zlabelalpha:int|float=1.0,
 zlabelzorder:int|float=4,
 zlabelfg:ColorTypeN=...,
-zlabelha:Literal['left','center','right']|None=None,
-zlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-zlabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+zlabelha:Type_labelha=None,
+zlabelva:Type_labelva=None,
+zlabelrotation:float|Type_orientation|None='vertical',
 zlabelrotation_mode:bool=True,
 zlabelfontname:str|Type_Iterablestr|None=None,
 zlabelfontpath:str|PathLike|Path|None=None,
@@ -2523,9 +2525,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -2537,8 +2539,8 @@ grid_x:bool=False,
 grid_y:bool=False,
 grid_z:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 zmajorint:bool=True,
@@ -2546,11 +2548,11 @@ ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
 zticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 znumticks:int|float|None=None,
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -2587,11 +2589,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -2623,11 +2625,11 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param zticksrange: z軸の目盛の範囲を変更する。
- :type zticksrange: int|float|tuple[Type_Numberlike,...]
+ :type zticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2643,15 +2645,15 @@ key:str=...
  :param zticksshow: z軸のグリッド線と目盛り値について表示するかを指定する。
  :type zticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param znumticks: z軸の目盛りの数を指定する。
  :type znumticks: int|float|None
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -2674,9 +2676,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -2684,9 +2686,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -2694,13 +2696,13 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
-orientation:Literal['vertical','horizontal']='vertical',
+orientation:Type_orientation='vertical',
 bottom:int|float=0,
 marker:Literal['o','+','*','.','x','_','|','square','diamond','^','v','<','>','pentagram','hexagram']=...,
 line:Literal['-','--','-.','-.']=...,
@@ -2712,9 +2714,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -2725,17 +2727,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -2755,7 +2757,7 @@ key:str=...
  :param ylabel: y軸のラベルを指定する。
  :type ylabel: str
  :param orientation: 茎の向きを指定する。
- :type orientation: Literal['horizontal','vertical']
+ :type orientation: Type_orientation
  :param bottom: ベースラインの位置を指定する。
  :type bottom: int|float
  :param marker: 幹のマーカーの種類を指定する。
@@ -2773,11 +2775,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -2809,9 +2811,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2823,13 +2825,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -2846,7 +2848,7 @@ data:n_array,
 range:int|float|TupleNumbertype2=...,
 fill:bool=False,
 baseline:int|float=0,
-orientation:Literal['vertical','horizontal']='vertical',
+orientation:Type_orientation='vertical',
 size:TupleNumbertype2=(500,400),
 fg:ColorTypeN='#000000',
 bg:ColorTypeN='#ffffff',
@@ -2855,9 +2857,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -2868,17 +2870,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -2888,9 +2890,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -2898,9 +2900,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -2908,9 +2910,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -2930,7 +2932,7 @@ key:str=...
  :param fill: 階段の下部から`baseline`の間を塗りつぶすかを指定する。
  :type fill: bool
  :param orientation: グラフの向きを指定する。
- :type orientation: Literal['horizontal','vertical']
+ :type orientation: Type_orientation
  :param label: ラベルを指定する。
  :type label: labeltype
  :param color: 色を指定する。
@@ -2956,9 +2958,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2970,13 +2972,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -2986,7 +2988,7 @@ key:str=...
  :param legendalpha: 凡例の背景の透明度を指定する。
  :type legendalpha: int|float
  :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']'''
+ :type y_verwrit: Type_orientation'''
  @staticmethod
  def Hatplot(
 x:o_array,
@@ -2996,9 +2998,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -3006,9 +3008,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -3016,9 +3018,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -3029,9 +3031,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -3042,17 +3044,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -3080,11 +3082,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -3114,9 +3116,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3128,13 +3130,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -3152,9 +3154,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -3162,7 +3164,7 @@ width:int|float=1,
 min:int|float=...,
 max:int|float=...,
 decimalpoint:int|float=0,
-orientation:Literal['vertical','horizontal']='vertical',
+orientation:Type_orientation='vertical',
 bottom:int|float=0,
 bins:int|list|range|tuple|ndarray|Literal['auto','fd','doane','scott','stone','rice','sturges','sqrt']=...,
 size:TupleNumbertype2=(500,400),
@@ -3173,9 +3175,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -3186,17 +3188,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -3206,9 +3208,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -3216,9 +3218,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -3236,7 +3238,7 @@ key:str=...
  :param width: ヒストグラムのバーのサイズを指定する。
  :type width: int|float
  :param orientation: ヒストグラムの向きを指定する。
- :type orientation: Literal['horizontal','vertical']
+ :type orientation: Type_orientation
  :param bottom: ヒストグラムのバーの位置を指定する。
  :type bottom: int|float
  :param min: ヒストグラムで表示される最小値を指定する。
@@ -3256,11 +3258,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -3290,9 +3292,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3304,13 +3306,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -3320,7 +3322,7 @@ key:str=...
  :param legendalpha: 凡例の背景の透明度を指定する。
  :type legendalpha: int|float
  :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Literal['horizontal','vertical']'''
+ :type y_verwrit: Type_orientation'''
  @staticmethod
  def Stack(
 x:n_array,
@@ -3329,9 +3331,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -3339,9 +3341,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -3349,9 +3351,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -3365,9 +3367,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -3378,17 +3380,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -3411,8 +3413,6 @@ key:str=...
  :type hatch: Literal[None,'o','oo','O','OO','x','xx','*','**','*-','+','++','+o','-','--',r'-\\','.','..','/','//','/o','O.','O|','\\','\\\\','\\|','o-','x*','|','|*','||']
  :param baseline: 基準値の算出方法を指定する。
  :type baseline: Literal['zero','sym','wiggle','weighted_wiggle']
- :param align: x軸の棒グラフバーの配置を指定する。
- :type align: Literal['center','edge']
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param titlealpha: グラフの透明度を指定する。
@@ -3422,11 +3422,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -3456,9 +3456,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3470,13 +3470,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -3497,9 +3497,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -3507,9 +3507,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -3517,9 +3517,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -3531,9 +3531,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -3544,17 +3544,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -3586,11 +3586,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -3620,9 +3620,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3634,13 +3634,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -3656,7 +3656,7 @@ key:str=...
 data:n_array,
 complementary:bool=False,
 compress:bool=False,
-orientation:Literal['vertical','horizontal']='vertical',
+orientation:Type_orientation='vertical',
 linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
 linewidth:int|float=1.5,
 size:TupleNumbertype2=(500,400),
@@ -3667,9 +3667,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -3680,17 +3680,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -3706,7 +3706,7 @@ key:str=...
  :param compress: 同一値のデータをまとめて最適化するかどうか指定する。
  :type compress: bool
  :param orientation: プロットの向きを指定する。
- :type orientation: Literal['horizontal','vertical']
+ :type orientation: Type_orientation
  :param linestyle: 線の種類を指定する。
  :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']
  :param linewidth: 線の太さを指定する。
@@ -3726,11 +3726,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -3760,9 +3760,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3774,13 +3774,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -3814,9 +3814,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -3824,9 +3824,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -3834,9 +3834,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -3847,9 +3847,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -3860,17 +3860,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -3926,11 +3926,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -3960,9 +3960,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3974,13 +3974,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -3997,14 +3997,14 @@ data:o_array,
 linewidth:int|float=1,
 linelength:int|float=1,
 linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':']='solid',
-orientation:Literal['vertical','horizontal']='vertical',
+orientation:Type_orientation='vertical',
 xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -4012,9 +4012,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -4022,9 +4022,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -4036,9 +4036,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -4049,17 +4049,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Literal['out','in','inout']='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -4077,7 +4077,7 @@ key:str=...
  :param linestyle: 線の種類を指定する。
  :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
  :param orientation: 向きを指定する。
- :type orientation: Literal['horizontal','vertical']
+ :type orientation: Type_orientation
  :param label: ラベルを指定する。
  :type label: labeltype
  :param xlabel: x軸のラベルを指定する。
@@ -4093,11 +4093,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -4127,9 +4127,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -4141,13 +4141,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -4174,9 +4174,9 @@ label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
 labelfg:ColorTypeN=...,
-labelha:Literal['left','center','right']|None=None,
-labelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-labelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
@@ -4188,9 +4188,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -4201,17 +4201,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -4221,9 +4221,9 @@ xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
 xlabelfg:ColorTypeN=...,
-xlabelha:Literal['left','center','right']|None=None,
-xlabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-xlabelrotation:float|Literal['vertical','horizontal']|None='horizontal',
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
 xlabelrotation_mode:bool=True,
 xlabelfontname:str|Type_Iterablestr|None=None,
 xlabelfontpath:str|PathLike|Path|None=None,
@@ -4231,9 +4231,9 @@ ylabel:str=...,
 ylabelalpha:int|float=1.0,
 ylabelzorder:int|float=4,
 ylabelfg:ColorTypeN=...,
-ylabelha:Literal['left','center','right']|None=None,
-ylabelva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-ylabelrotation:float|Literal['vertical','horizontal']|None='vertical',
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
@@ -4267,11 +4267,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -4301,9 +4301,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -4315,13 +4315,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -4338,7 +4338,7 @@ self,
 data:n_array,
 x:o_array,
 y:o_array,
-orientation:Literal['vertical','horizontal']='vertical',
+orientation:Type_orientation='vertical',
 width:int|float=1,
 alpha:int|float=1,
 showextrema:bool=True,
@@ -4355,9 +4355,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -4367,17 +4367,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Literal['out','in','inout']='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -4393,7 +4393,7 @@ key:str=...
  :param y: `orientation`が`horizontal`の時にy軸上にバイオリンが設置される配列を指定する。
  :type y: n_array
  :param orientation: バイオリンが設置される軸の向きを指定する。
- :type orientation: Literal['vertical','horizontal']
+ :type orientation: Type_orientation
  :param width: バイオリンの幅を指定する。
  :type width: int|float
  :param showextrema: 極値を線で示すか指定する。
@@ -4423,11 +4423,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -4457,9 +4457,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -4471,13 +4471,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -4508,9 +4508,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -4521,17 +4521,17 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Literal['out','in','inout']='out',
+yticksdirection:Type_ticksdirection='out',
 legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
-legendplace:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right',
+legendplace:Type_legendplace='upper right',
 legendtitle:str=...,
 legendframe:bool=True,
 legendshadow:bool=False,
@@ -4571,11 +4571,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -4605,9 +4605,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -4619,13 +4619,13 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']
+ :type yticksdirection: Type_ticksdirection
  :param legendanchor: 凡例の位置を指定する。
  :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
  :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
+ :type legendplace: Type_legendplace
  :param legendtitle: 凡例のタイトルを指定する。
  :type legendtitle: bool
  :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
@@ -4652,9 +4652,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -4664,15 +4664,15 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Literal['out','in','inout']='out',
+yticksdirection:Type_ticksdirection='out',
 key:str=...
 )->dict[str,Any]:'''極軸棒グラフを作成する。
 
@@ -4695,11 +4695,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -4729,9 +4729,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -4743,9 +4743,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']'''
+ :type yticksdirection: Type_ticksdirection'''
  @staticmethod
  def Stempolar(
 x:o_array=...,
@@ -4763,9 +4763,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -4775,15 +4775,15 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Literal['out','in','inout']='out',
+yticksdirection:Type_ticksdirection='out',
 key:str=...
 )->dict[str,Any]:'''極軸幹図を作成する。
 
@@ -4810,11 +4810,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -4842,9 +4842,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -4856,9 +4856,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']'''
+ :type yticksdirection: Type_ticksdirection'''
  @staticmethod
  def Errorpolar(
 x:o_array=...,
@@ -4886,9 +4886,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -4898,15 +4898,15 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Literal['out','in','inout']='out',
+yticksdirection:Type_ticksdirection='out',
 key:str=...
 )->dict[str,Any]:'''極軸エラーグラフを作成する。
 
@@ -4953,11 +4953,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -4985,9 +4985,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -4999,9 +4999,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']'''
+ :type yticksdirection: Type_ticksdirection'''
  @staticmethod
  def Linepolar(
 x:o_array=...,
@@ -5019,9 +5019,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -5031,15 +5031,15 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Literal['out','in','inout']='out',
+yticksdirection:Type_ticksdirection='out',
 key:str=...
 )->dict[str,Any]:'''極軸エラーグラフを作成する。
 
@@ -5086,11 +5086,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -5118,9 +5118,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -5132,10 +5132,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']'''
-
+ :type yticksdirection: Type_ticksdirection'''
  @staticmethod
  def Eventpolar(
 x:o_array=...,
@@ -5153,9 +5152,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -5165,15 +5164,15 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Literal['out','in','inout']='out',
+yticksdirection:Type_ticksdirection='out',
 key:str=...
 )->dict[str,Any]:'''極軸エラーグラフを作成する。
 
@@ -5220,11 +5219,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -5252,9 +5251,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -5266,10 +5265,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']'''
-
+ :type yticksdirection: Type_ticksdirection'''
  @staticmethod
  def Scatterpolar(
 x:o_array=...,
@@ -5287,9 +5285,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -5299,15 +5297,15 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Literal['out','in','inout']='out',
+yticksdirection:Type_ticksdirection='out',
 key:str=...
 )->dict[str,Any]:'''極軸エラーグラフを作成する。
 
@@ -5354,11 +5352,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -5386,9 +5384,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -5400,10 +5398,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']'''
-
+ :type yticksdirection: Type_ticksdirection'''
  @staticmethod
  def Violinpolar(
 x:o_array=...,
@@ -5421,9 +5418,9 @@ title:str=...,
 titlealpha:int|float=1.0,
 titlezorder:int|float=4,
 titlefg:ColorTypeN=...,
-titleha:Literal['left','center','right']|None=None,
-titleva:Literal['bottom','baseline','center','center_baseline','top']|None=None,
-titlerotation:float|Literal['vertical','horizontal']|None='horizontal',
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
 titlerotation_mode:bool=True,
 titlefontname:str|Type_Iterablestr|None=None,
 titlefontpath:str|PathLike|Path|None=None,
@@ -5433,15 +5430,15 @@ grid_xy:bool=True,
 grid_x:bool=False,
 grid_y:bool=False,
 tight_layout:bool=True,
-xticksrange:int|float|tuple[Type_Numberlike,...]=0,
-yticksrange:int|float|tuple[Type_Numberlike,...]=0,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
 xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
+xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Literal['out','in','inout']='out',
+yticksdirection:Type_ticksdirection='out',
 key:str=...
 )->dict[str,Any]:'''極軸エラーグラフを作成する。
 
@@ -5488,11 +5485,11 @@ key:str=...
  :param titlefg: グラフのタイトルの文字色を指定する。
  :type titlefg: ColorTypeN
  :param titleha: グラフのタイトルの水平方向の配置を指定する。
- :type titleha: Literal['left','center','right']|None
+ :type titleha: Type_labelha
  :param titleva: グラフのタイトルの垂直方向を指定する。
- :type titleva: Literal['bottom','baseline','center','center_baseline','top']|None
+ :type titleva: Type_labelva
  :param titlerotation: グラフのタイトルの回転角度を指定する。
- :type titlerotation: float|Literal['vertical','horizontal']|None
+ :type titlerotation: float|Type_orientation|None
  :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
  :type titlerotation_mode: bool
  :param titlefontname: グラフのタイトルのフォント名を指定する。
@@ -5520,9 +5517,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: Type_ticksrange
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: Type_ticksrange
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -5534,11 +5531,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
+ :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']'''
-
-
+ :type yticksdirection: Type_ticksdirection'''
  @classmethod
  def Popup(
 cls,
