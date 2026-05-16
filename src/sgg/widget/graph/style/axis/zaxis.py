@@ -1,8 +1,8 @@
 '''z軸のスタイルの設定'''
 from matplotlib.ticker import FixedLocator,LinearLocator,MaxNLocator,MultipleLocator
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from ....._function import listchose
-from .....dev import LISTNumber
+from ...._function import listchose
+from ....dev import LISTNumber
 __all__=['Zaxis']
 class Zaxis:
  def __init__(self,ax):

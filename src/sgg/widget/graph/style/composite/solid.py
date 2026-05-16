@@ -1,7 +1,7 @@
 '''グラフの線を設定するモジュール'''
 from collections.abc import Iterator
 from typing import Any,Literal
-from ....typing import Type_Solid
+from ...typing import Type_Solid
 from .fmt import FMT
 __all__=['Solid']
 class Solid:

@@ -10,7 +10,7 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ...._function import bols,listchose,num0s,num1s,nums,parsecolor,range_num
 from ...._log import Logger
 from ...._save import autofile_save
-from ..style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid
+from ...style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid
 from ...dev import *
 from ....dev import LIST
 __all__=['GElement']

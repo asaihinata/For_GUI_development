@@ -1,7 +1,7 @@
 from typing import Literal
 from matplotlib.axes._axes import Axes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from ....typing import ColorType,Type_NumberlikeN
+from ...typing import ColorType,Type_NumberlikeN
 class Xlabel:
  def __init__(
 self,
