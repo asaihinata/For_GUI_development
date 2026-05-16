@@ -1,1 +1,1 @@
-from ...widget._log.logs import Logger
+from .logs import Logger

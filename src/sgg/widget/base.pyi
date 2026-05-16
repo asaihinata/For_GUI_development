@@ -1,5 +1,5 @@
 from tkinter import Misc
-from .typing import Type_all,Callable,TupleNumbertype2
+from .typing import Callable,TupleNumbertype2,Type_all
 __all__:Type_all=['_Element','Element']
 class Element:
  def _size_width(self,val:int|float,other:int|float=None)->int|float:...

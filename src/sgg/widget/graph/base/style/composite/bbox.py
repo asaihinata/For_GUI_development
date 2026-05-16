@@ -2,9 +2,9 @@
 from typing import Any
 from matplotlib import rcParams
 from matplotlib._enums import CapStyle,JoinStyle
+from ....typing import ColorTypeN,Type_Numberlike,Type_Solid
 from ..dev import bols,range_zero_one
 from ..tool import Color
-from ....typing import ColorTypeN,Type_Numberlike,Type_Solid
 from .solid import Solid
 __all__=['BBox']
 class BBox:

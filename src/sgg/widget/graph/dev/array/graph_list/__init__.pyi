@@ -1,6 +1,6 @@
 from collections.abc import Iterator
-from ....typing import ndarray,Any,nListlike
 from numpy._typing import DTypeLike
+from ....typing import Any,ndarray,nListlike
 __all__=['Manylist','Onelist']
 class Datalist:
  data:ndarray

@@ -1,2 +1,2 @@
-from .......widget.graph.base.style.tool.font.fontfile import *
-from .......widget.graph.base.style.tool.font.fontmanager import *
+from .fontfile import *
+from .fontmanager import *

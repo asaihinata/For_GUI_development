@@ -7,12 +7,12 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from .....widget._function import bols,listchose,num0s,num1s,nums,parsecolor,range_num
-from .....widget._log import Logger
-from .....widget._save import autofile_save
+from ...._function import bols,listchose,num0s,num1s,nums,parsecolor,range_num
+from ...._log import Logger
+from ...._save import autofile_save
+from ..style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid
+from ...dev import *
 from ....dev import LIST
-from .....widget.graph.dev import *
-from .....widget.graph.base.style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid
 __all__=['GElement']
 logger=Logger(name='Graph',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 graph_color=['#4477aa','#ee7733','#111211','#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']

@@ -1,5 +1,5 @@
 import numpy as np
-from ......widget.graph.typing import Type_Numberlike
+from ....typing import Type_Numberlike
 __all__=['Angle','Deg','Rad']
 class Angle:
  def __init__(self,angle,dtype=True):

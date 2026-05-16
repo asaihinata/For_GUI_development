@@ -6,7 +6,7 @@ from matplotlib.font_manager import FontProperties
 from matplotlib.legend_handler import HandlerBase
 from matplotlib.transforms import BboxBase,Transform
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from ....typing import ColorTypeN,ColorType
+from ....typing import ColorType,ColorTypeN
 class Legends:
  def __init__(
 self,

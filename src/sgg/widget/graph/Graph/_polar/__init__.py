@@ -1,8 +1,8 @@
-from .....widget.graph.Graph._polar.Barpolar import Barpolar
-from .....widget.graph.Graph._polar.Errorpolar import Errorpolar
-from .....widget.graph.Graph._polar.Eventpolar import Eventpolar
-from .....widget.graph.Graph._polar.Linepolar import Linepolar
-from .....widget.graph.Graph._polar.Scatterpolar import Scatterpolar
-from .....widget.graph.Graph._polar.Stempolar import Stempolar
-from .....widget.graph.Graph._polar.Violinpolar import Violinpolar
+from .Barpolar import Barpolar
+from .Errorpolar import Errorpolar
+from .Eventpolar import Eventpolar
+from .Linepolar import Linepolar
+from .Scatterpolar import Scatterpolar
+from .Stempolar import Stempolar
+from .Violinpolar import Violinpolar
 __all__=['Barpolar','Errorpolar','Eventpolar','Linepolar','Scatterpolar','Stempolar','Violinpolar']

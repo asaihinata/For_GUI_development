@@ -1,8 +1,8 @@
 from re import compile,findall
 import numpy as np
 from matplotlib.colors import to_hex,to_rgb,to_rgba
-from .colorlist import ColorData
 from ...typing import Type_Numberlike
+from .colorlist import ColorData
 __all__=['Colors']
 HEX8_RE=compile(r'^#[0-9a-f]{8}$')
 HEX6_RE=compile(r'^#[0-9a-f]{6}$')

@@ -1,7 +1,7 @@
 from collections.abc import Iterator
-from numpy import _CopyMode,_ArrayT
+from numpy import _ArrayT,_CopyMode
 from numpy._typing import DTypeLike
-from ....typing import _T,Type_all,Type_NumberlikeN,Type_Numberlike,Any,ndarray
+from ....typing import _T,Any,Type_all,Type_Numberlike,Type_NumberlikeN,ndarray
 __all__:Type_all=['NPArray']
 class NPArray:
  dtype:DTypeLike

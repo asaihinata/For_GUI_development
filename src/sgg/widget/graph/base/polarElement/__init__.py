@@ -1,9 +1,9 @@
 from matplotlib.projections.polar import PolarAxes
 from matplotlib.pyplot import rcParams
 from numpy import array,linspace,ndarray,pi
-from .....widget._function import bols,list2num,listchose,num0s,parsecolor,range_num
-from .....widget.graph.base.Graph import GElement
-from .....widget.graph.base.style import Title
+from ...._function import bols,list2num,listchose,num0s,parsecolor,range_num
+from ..Graph import GElement
+from ..style import Title
 __all__=['polarElement']
 class polarElement(GElement):
  def __init__(self,master,kw):

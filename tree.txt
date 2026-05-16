@@ -194,9 +194,6 @@ For_GUI_development
  │           │   │   │   ├── __init__.py
  │           │   │   │   └── __init__.pyi
  │           │   │   ├── style
- │           │   │   │   ├── Text
- │           │   │   │   │   ├── __init__.py
- │           │   │   │   │   └── __init__.pyi
  │           │   │   │   ├── __init__.py
  │           │   │   │   ├── axis
  │           │   │   │   │   ├── __init__.py

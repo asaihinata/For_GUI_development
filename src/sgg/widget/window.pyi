@@ -1,6 +1,6 @@
 from tkinter import Tk
-from widget.basic import *
-from widget.graph import *
+from .basic import *
+from .graph import *
 from .typing import Any,NoReturn,Type_all
 __all__:Type_all=['WindowController']
 class WindowController:

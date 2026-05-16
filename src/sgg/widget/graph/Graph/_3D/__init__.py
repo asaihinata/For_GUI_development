@@ -1,2 +1,2 @@
-from .....widget.graph.Graph._3D.dscatter import DScatter
+from .dscatter import DScatter
 __all__=['DScatter']

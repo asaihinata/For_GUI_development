@@ -1,9 +1,9 @@
 from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
 from numpy import array,ndarray
-from .....widget._function import allNones,bols,list2num,listchose,num0s,parsecolor,range_num
-from .....widget.graph.base.Graph import GElement
-from .....widget.graph.base.style import FontFile,Fontmanager,Fontname,Title,Xlabel,Ylabel
+from ...._function import allNones,bols,list2num,listchose,num0s,parsecolor,range_num
+from ..Graph import GElement
+from ..style import FontFile,Fontmanager,Fontname,Title,Xlabel,Ylabel
 __all__=['twoElement']
 class twoElement(GElement):
  def __init__(self,master,kw):

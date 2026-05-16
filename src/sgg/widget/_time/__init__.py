@@ -1,2 +1,2 @@
-from ...widget._time._time import times
-from ...widget._time._timelist import timeslist
+from ._time import times
+from ._timelist import timeslist
