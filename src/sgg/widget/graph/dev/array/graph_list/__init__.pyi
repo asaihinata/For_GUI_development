@@ -1,5 +1,6 @@
 from collections.abc import Iterator
-from ....typing import Type_dtype,ndarray,Any,nListlike
+from ....typing import ndarray,Any,nListlike
+from numpy._typing import DTypeLike
 __all__=['Manylist','Onelist']
 class Datalist:
  data:ndarray
@@ -15,6 +16,6 @@ class Datalist:
  @property
  def T(self)->ndarray:...
 class Manylist(Datalist):
- def __init__(self,data:nListlike,dtype:Type_dtype=None):...
+ def __init__(self,data:nListlike,dtype:DTypeLike|None=None):...
 class Onelist(Datalist):
- def __init__(self,data:nListlike,dtype:Type_dtype=None):...
+ def __init__(self,data:nListlike,dtype:DTypeLike|None=None):...
