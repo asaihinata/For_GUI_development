@@ -29,43 +29,6 @@ class GElement:
  alpha:int|float
  ax:Axes|Axes3D
  color:list[str]
- def __init__(
-self,
-master:Misc=...,
-size:TupleNumbertype2=(500,400),
-fg:ColorType='#000000',
-bg:ColorType='#ffffff',
-graph_grid:ColorType='#b7b7b7',
-title:str=...,
-dpi:int|float=100,
-alpha=1
-)->None:
-  '''2Dグラフと3Dグラフの基盤のグラフを作成する。
-
- :param size: グラフの大きさをタプルで指定する。
- :type size: TupleNumbertype2
- :param fg: グラフ内の文字色を指定する。
- :type fg: ColorType
- :param bg: グラフ内の背景色を指定する。
- :type bg: ColorType
- :param graph_grid: グラフ内の線を指定する。
- :type graph_grid: ColorType
- :param title: グラフのタイトルを指定する。
- :type title: str
- :param dpi: グラフの解像度を指定する。
- :type dpi: int|float'''
-  self.fig:Figure
-  self._canvas_widget:None
-  self.graphdata:list
-  self.size:TupleNumbertype2
-  self.fg:ColorType
-  self.graph_bg:ColorType
-  self.graph_grid:ColorType
-  self.title:str
-  self.dpi:int|float
-  self.alpha:int|float
-  self.ax:Axes|Axes3D
-  self.max_depth:int
  def photo(
 self,
 filename:str='Graph',
@@ -185,5 +148,4 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
  :return: 決定したグラフの大きさをタプルで返す。
  :rtype: TupleNumbertype2'''
  def _apply_theme_colors(self)->NoReturn:'''目盛り,目盛りラベル,グリッド線,グラフのタイトル,軸ラベルの文字色を決定させる。'''
- def _adjustment(self)->NoReturn:'''グラフの調整を行う'''
  def _list_loop(self,lin:ndarray|list|tuple,num:int)->list:...

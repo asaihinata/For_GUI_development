@@ -4,9 +4,9 @@ from ...._function import bols,list2num,num0s,parsecolor,range_num
 from ..Graph import GElement
 from ...dev.maths.angle import *
 from ...style import Title
-from ...typing import Type_NumberlikeN
+from ...typing import Type_Numberlike
 __all__=['polarElement']
-circle_val=2*pi
+pi2=2*pi
 class polarElement(GElement):
  Anglegraph=True
  def __init__(self,master,kw):
@@ -33,7 +33,7 @@ class polarElement(GElement):
    self.yticksrange=(yticksrange*-1,yticksrange)
   elif list2num(yticksrange):self.yticksrange=yticksrange
   else:self.yticksrange=(0,0)
- def _places(self,num):return linspace(0,circle_val,num,endpoint=False)
+ def _places(self,num):return linspace(0,2*pi,num,endpoint=False)
  def _xyd(self,x,y,d=None):
   if d is None:return self._dataarr(x),self._dataarr(y)
   else:
@@ -61,8 +61,6 @@ class polarElement(GElement):
   self.graph_bg=parsecolor(kw.get('bg'),self.graph_bg)
   self.graph_grid=parsecolor(kw.get('graph_grid'),self.graph_grid)
   self.title=kw.get('title',self.title)
-  self.xlabel=kw.get('xlabel',self.xlabel)
-  self.ylabel=kw.get('ylabel',self.ylabel)
   self.alpha=range_num(num0s(kw.get('alpha'),self.alpha),0,1,self.alpha)
  def _ticks(self):
   if self.ticksshow:
@@ -84,14 +82,6 @@ class polarElement(GElement):
   self.ax.clear()
   self._ticks()
   self._apply_theme_colors()
- def set_thetalim(self,start=0,end=circle_val):
-  def r(v):return 0<=v<=circle_val
-  if not isinstance(start,Type_NumberlikeN):start=0
-  if not isinstance(end,Type_NumberlikeN):end=circle_val
-  if end<start:start,end=end,start
-  if not r(start):start=0
-  if not r(end):end=circle_val
-  self.ax.set_thetalim(start,end)
  def invert(self):
   self.invert_y()
   self.invert_x()
@@ -103,6 +93,22 @@ class polarElement(GElement):
  def getticks(self):return(self.ax.get_xticks(),self.ax.get_yticks())
  def getxticks(self):return self.ax.get_xticks()
  def getyticks(self):return self.ax.get_yticks()
- def set_Angletype(self,angle):
+ def set_Angletype(self,angle=True):
   if isinstance(angle,bool):self.Anglegraph=angle
+  else:
+   raise TypeError('angleにはbool型を指定してください')
  def get_Angletype(self):return self.Anglegraph
+ def set_thetalim(self,start,end):
+  def r(maxs,start,end):
+   if not isinstance(start,Type_Numberlike):start=0
+   if not isinstance(end,Type_Numberlike):end=maxs
+   if end<start:start,end=end,start
+   if not 0<=start<=maxs:start=0
+   if not 0<=end<=maxs:end=maxs
+   return start,end
+  if self.Anglegraph:
+   s,e=r(360,start,end)
+   return self.ax.set_thetalim(thetamin=s,thetamax=e)
+  else:
+   s,e=r(pi2,start,end)
+   return self.ax.set_thetalim(minval=s,maxval=e)

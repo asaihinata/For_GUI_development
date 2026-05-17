@@ -13,90 +13,6 @@ class threeElement(GElement):
  graph_grid:ColorType
  dpi:int|float
  alpha:int|float
- def __init__(
-self,
-master:Misc=None,
-x:nListlike=None,
-y:nListlike=None,
-z:nListlike=None,
-label:labeltype=None,
-grid_xyz:bool=True,
-grid_x:bool=False,
-grid_y:bool=False,
-grid_z:bool=False,
-xmajorint:bool=True,
-ymajorint:bool=True,
-zmajorint:bool=True,
-elev:int|float=30,
-azim:int|float=45,
-mouse_rotation:bool=True,
-xticksshow:bool=False,
-yticksshow:bool=False,
-zticksshow:bool=False,
-xticksdirection:Literal['out','in','inout']='out',
-yticksdirection:Literal['out','in','inout']='out'
-)->None:
-  '''3Dのグラフを作成する。
-
- :param x: x軸のデータを指定する。
- :type x: nListlike
- :param y: y軸のデータを指定する。
- :type y: nListlike
- :param z: z軸のデータを指定する。
- :type z: nListlike
- :param xlabel: x軸のラベルを指定する。
- :type label: labeltype
- :param ylabel: y軸のラベルを指定する。
- :type ylabel: labeltype
- :param zlabel: z軸のラベルを指定する。
- :type zlabel: labeltype
- :param grid_xyz: x軸,y軸,z軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`,`grid_z`より優先度が高い。
- :type grid_xyz: bool
- :param grid_x: x軸にグリッド線を表示させるか指定する。`grid_xyz`より優先度が低い。
- :type grid_x: bool
- :param grid_y: y軸にグリッド線を表示させるか指定する。`grid_xyz`より優先度が低い。
- :type grid_y: bool
- :param grid_z: z軸にグリッド線を表示させるか指定する。`grid_xyz`より優先度が低い。
- :type grid_z: bool
- :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
- :type xmajorint: bool
- :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
- :type ymajorint: bool
- :param zmajorint: z軸の目盛りを整数で自動調整させるか指定する。
- :type zmajorint: bool
- :param mouse_rotation: グラフをマウスでできるか指定する。
- :type mouse_rotation: bool
- :param elev: 仰角を度数表記で指定する。
- :type elev: int|float
- :param azim: 方位角を度数表記で指定する。
- :type azim: int|float
- :param xticksshow: x軸の目盛りを線を表示させるか指定する。
- :type xticksshow: bool
- :param yticksshow: y軸の目盛りを線を表示させるか指定する。
- :type yticksshow: bool
- :param zticksshow: z軸の目盛りを線を表示させるか指定する。
- :type zticksshow: bool
- :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Literal['out','in','inout']
- :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Literal['out','in','inout']'''
-  self.ax:Axes3D
-  self.x:nListlike
-  self.y:nListlike
-  self.z:nListlike
-  self.label:getLabel
-  self.xlabel:labeltype
-  self.ylabel:labeltype
-  self.zlabel:labeltype
-  self.grid_xyz:bool
-  self.grid_x:bool
-  self.grid_y:bool
-  self.grid_z:bool
-  self.xmajorint:bool
-  self.ymajorint:bool
-  self.zmajorint:bool
-  self.elev:int|float
-  self.azim:int|float
  def _updates(
 self,
 fg:ColorType,
@@ -123,6 +39,7 @@ zlabel:labeltype=None
  :param zlabel: z軸のラベルを指定する。
  :type zlabel: labeltype'''
  def _apply_grid(self)->NoReturn:'''グリッド線を加えるメソッド。'''
+ def _adjustment(self)->NoReturn:'''グラフの調整を行う'''
  def clear(self)->NoReturn:'''グラフ内のグラフをクリアする。'''
  def invert(self)->NoReturn:'''x軸,y軸,z軸を反転させる。'''
  def invert_x(self)->NoReturn:'''x軸を反転させる。'''
