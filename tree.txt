@@ -234,7 +234,11 @@ For_GUI_development
  │           │   │   │   ├── __init__.py
  │           │   │   │   ├── bbox.py
  │           │   │   │   ├── capstyle.py
- │           │   │   │   ├── fmt.py
+ │           │   │   │   ├── fmt
+ │           │   │   │   │   ├── __init__.py
+ │           │   │   │   │   ├── _check.py
+ │           │   │   │   │   ├── _data.py
+ │           │   │   │   │   └── fmt.py
  │           │   │   │   ├── hatch.py
  │           │   │   │   ├── marker.py
  │           │   │   │   └── solid.py
