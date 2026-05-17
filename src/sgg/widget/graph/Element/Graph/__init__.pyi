@@ -4,6 +4,7 @@ from matplotlib.axes._axes import Axes
 from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
+from matplotlib.font_manager import FontProperties
 from ...typing import *
 __all__=['GElement','getLabel']
 class getLabel:
@@ -12,6 +13,9 @@ class getLabel:
  def __iter__(self)->Iterator[Any|None]:...
  def __getitem__(self,val:int)->Any:...
 class GElement:
+ labelfont:FontProperties
+ tight_layout:bool
+ ticksshow:bool
  label:getLabel
  master:Misc
  fig:Figure

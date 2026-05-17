@@ -4670,9 +4670,7 @@ xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Type_ticksdirection='out',
 key:str=...
 )->dict[str,Any]:'''極軸棒グラフを作成する。
 
@@ -4781,9 +4779,7 @@ xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Type_ticksdirection='out',
 key:str=...
 )->dict[str,Any]:'''極軸幹図を作成する。
 
@@ -4904,9 +4900,7 @@ xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Type_ticksdirection='out',
 key:str=...
 )->dict[str,Any]:'''極軸エラーグラフを作成する。
 
@@ -5037,9 +5031,7 @@ xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Type_ticksdirection='out',
 key:str=...
 )->dict[str,Any]:'''極軸エラーグラフを作成する。
 
@@ -5170,9 +5162,7 @@ xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Type_ticksdirection='out',
 key:str=...
 )->dict[str,Any]:'''極軸エラーグラフを作成する。
 
@@ -5303,9 +5293,7 @@ xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Type_ticksdirection='out',
 key:str=...
 )->dict[str,Any]:'''極軸エラーグラフを作成する。
 
@@ -5436,9 +5424,7 @@ xmajorint:bool=True,
 ymajorint:bool=True,
 ticksshow:bool=False,
 xticksshow:bool=False,
-xticksdirection:Type_ticksdirection='out',
 yticksshow:bool=False,
-yticksdirection:Type_ticksdirection='out',
 key:str=...
 )->dict[str,Any]:'''極軸エラーグラフを作成する。
 

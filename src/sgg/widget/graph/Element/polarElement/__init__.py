@@ -1,11 +1,14 @@
 from matplotlib.projections.polar import PolarAxes
-from matplotlib.pyplot import rcParams
 from numpy import array,linspace,ndarray,pi
-from ...._function import bols,list2num,listchose,num0s,parsecolor,range_num
-from ..Graph import GElement,getLabel
+from ...._function import bols,list2num,num0s,parsecolor,range_num
+from ..Graph import GElement
+from ...dev.maths.angle import *
 from ...style import Title
+from ...typing import Type_NumberlikeN
 __all__=['polarElement']
+circle_val=2*pi
 class polarElement(GElement):
+ Anglegraph=True
  def __init__(self,master,kw):
   super().__init__(master,kw)
   # グリッド線
@@ -14,13 +17,10 @@ class polarElement(GElement):
   self.grid_y=bols(kw.get('grid_y'),False)
   # グラフの基盤
   self.ax:PolarAxes=self.fig.add_subplot(111,projection='polar')
+  self.set_Angletype(bols(kw.get('anglegraph')))
   # 目盛り
-  self.xmajorint=bols(kw.get('xmajorint'))
-  self.ymajorint=bols(kw.get('ymajorint'))
   self.xticksshow=bols(kw.get('xticksshow'),False)
   self.yticksshow=bols(kw.get('yticksshow'),False)
-  self.xticksdirection=listchose(kw.get('xticksdirection'),['out','in','inout'])
-  self.yticksdirection=listchose(kw.get('yticksdirection'),['out','in','inout'])
   xticksrange=kw.get('xticksrange',0)
   yticksrange=kw.get('yticksrange',0)
   if isinstance(xticksrange,int|float):
@@ -33,7 +33,7 @@ class polarElement(GElement):
    self.yticksrange=(yticksrange*-1,yticksrange)
   elif list2num(yticksrange):self.yticksrange=yticksrange
   else:self.yticksrange=(0,0)
- def _places(self,num):return linspace(0,2*pi,num,endpoint=False)
+ def _places(self,num):return linspace(0,circle_val,num,endpoint=False)
  def _xyd(self,x,y,d=None):
   if d is None:return self._dataarr(x),self._dataarr(y)
   else:
@@ -71,8 +71,6 @@ class polarElement(GElement):
   else:
    if self.xticksshow:self.ax.set_xticks([])
    if self.yticksshow:self.ax.set_yticks([])
-  rcParams['xtick.direction']=self.xticksdirection
-  rcParams['ytick.direction']=self.yticksdirection
  def _adjustment(self):
   xlimmins,xlimmaxs=self.xticksrange
   xlimmin,xlimmax=self.ax.get_xlim()
@@ -86,6 +84,14 @@ class polarElement(GElement):
   self.ax.clear()
   self._ticks()
   self._apply_theme_colors()
+ def set_thetalim(self,start=0,end=circle_val):
+  def r(v):return 0<=v<=circle_val
+  if not isinstance(start,Type_NumberlikeN):start=0
+  if not isinstance(end,Type_NumberlikeN):end=circle_val
+  if end<start:start,end=end,start
+  if not r(start):start=0
+  if not r(end):end=circle_val
+  self.ax.set_thetalim(start,end)
  def invert(self):
   self.invert_y()
   self.invert_x()
@@ -97,3 +103,6 @@ class polarElement(GElement):
  def getticks(self):return(self.ax.get_xticks(),self.ax.get_yticks())
  def getxticks(self):return self.ax.get_xticks()
  def getyticks(self):return self.ax.get_yticks()
+ def set_Angletype(self,angle):
+  if isinstance(angle,bool):self.Anglegraph=angle
+ def get_Angletype(self):return self.Anglegraph
