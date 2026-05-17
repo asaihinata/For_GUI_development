@@ -7,7 +7,6 @@ class Step(twoElement):
   self.fill=bols(kw.get('fill'),False)
   self.baseline=num0s(kw.get('baseline'))
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
-  self.label=self.labels(kw.get('label'))[0]
   self.linewidth=num0(kw.get('linewidth'),2)
   self.plot(self.data,range=self.range,fill=self.fill,baseline=self.baseline,orientation=self.orientation,alpha=self.alpha)
  def plot(self,data,linewidth=2,range=None,fill=False,baseline=0,orientation='vertical',alpha=1):

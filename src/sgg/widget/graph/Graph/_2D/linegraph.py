@@ -5,7 +5,6 @@ class LineGraph(twoElement):
   super().__init__(master,kw)
   self.x=self._manyarr(kw.get('x'))
   self.y=self._manyarr(kw.get('y'))
-  self.label=self.labels(kw.get('label'))[0]
   self.marker=self.markers(kw.get('marker'),self.max_depth)
   self.markersize=num0(kw.get('markersize'),10)
   self.line=self.lines(kw.get('linestyle','-'),self.max_depth)

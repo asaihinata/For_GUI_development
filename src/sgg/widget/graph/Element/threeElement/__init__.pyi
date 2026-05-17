@@ -2,8 +2,17 @@ from tkinter import Misc
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
 from ...typing import *
-from ..Graph import GElement
+from ..Graph import GElement,getLabel
 class threeElement(GElement):
+ label:getLabel
+ master:Misc
+ graphdata:list
+ size:TupleNumbertype2
+ fg:ColorType
+ graph_bg:ColorType
+ graph_grid:ColorType
+ dpi:int|float
+ alpha:int|float
  def __init__(
 self,
 master:Misc=None,
@@ -75,7 +84,7 @@ yticksdirection:Literal['out','in','inout']='out'
   self.x:nListlike
   self.y:nListlike
   self.z:nListlike
-  self.label:labeltype
+  self.label:getLabel
   self.xlabel:labeltype
   self.ylabel:labeltype
   self.zlabel:labeltype

@@ -11,7 +11,6 @@ class Stem(twoElement):
   self.colorlist=self._list_loop(self._stem_color_check(kw.get('color')),self.max_depth)
   self.line=self._list_loop(self._linefmt(kw.get('line')),self.max_depth)
   self.marker=self._list_loop(self._markerfmt(kw.get('marker')),self.max_depth)
-  self.label=self.labels(kw.get('label'))[0]
   self.bottom=num0s(kw.get('bottom'))
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
   self.plot(self.x,self.y,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker,alpha=self.alpha)

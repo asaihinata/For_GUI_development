@@ -2,7 +2,7 @@ from matplotlib.projections.polar import PolarAxes
 from matplotlib.pyplot import rcParams
 from numpy import array,linspace,ndarray,pi
 from ...._function import bols,list2num,listchose,num0s,parsecolor,range_num
-from ..Graph import GElement
+from ..Graph import GElement,getLabel
 from ...style import Title
 __all__=['polarElement']
 class polarElement(GElement):

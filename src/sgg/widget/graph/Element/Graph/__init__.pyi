@@ -1,11 +1,18 @@
+from collections.abc import Iterator
 from tkinter import Misc
 from matplotlib.axes._axes import Axes
 from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
 from ...typing import *
-__all__:Type_all=['GElement']
+__all__:Type_all=['GElement','getLabel']
+class getLabel:
+ label:ndarray
+ def __init__(self,label:list|tuple|ndarray|None=None)->None:...
+ def __iter__(self)->Iterator[Any|None]:...
+ def __getitem__(self,val:int)->Any:...
 class GElement:
+ label:getLabel
  master:Misc
  fig:Figure
  graphdata:list
@@ -127,7 +134,6 @@ dpi:int|float=100
  def id(self)->int:'''ウィジェットのウィンドウ識別子を返す。'''
  def name(self):'''ウィジェットのインスタンス名を返す。'''
  def _color_check(self,color:list)->list:...
- def _list_loop(self,lin:list|tuple,num:int)->list:...
  def legend(self)->NoReturn:...
  def _anchor(
 self,
@@ -176,3 +182,4 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
  :rtype: TupleNumbertype2'''
  def _apply_theme_colors(self)->NoReturn:'''目盛り,目盛りラベル,グリッド線,グラフのタイトル,軸ラベルの文字色を決定させる。'''
  def _adjustment(self)->NoReturn:'''グラフの調整を行う'''
+ def _list_loop(self,lin:ndarray|list|tuple,num:int)->list:...

@@ -2,8 +2,17 @@ from tkinter import Misc
 from matplotlib.axes._axes import Axes
 from numpy import ndarray
 from ...typing import *
-from ..Graph import GElement
+from ..Graph import GElement,getLabel
 class twoElement(GElement):
+ label:getLabel
+ master:Misc
+ graphdata:list
+ size:TupleNumbertype2
+ fg:ColorType
+ graph_bg:ColorType
+ graph_grid:ColorType
+ dpi:int|float
+ alpha:int|float
  def __init__(
 self,
 master:Misc=None,
@@ -54,7 +63,7 @@ setxy:bool=True
   self.x:ndarray
   self.y:ndarray
   self.data:ndarray
-  self.label:labeltype
+  self.label:getLabel
   self.xlabel:labeltype
   self.ylabel:labeltype
   self.grid_xy:bool

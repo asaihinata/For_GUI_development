@@ -7,14 +7,13 @@ class Stacked(twoElement):
   self.dataname=self._dataarr(kw.get('dataname'),False)
   if self.data.shape[0]!=self.dataname.shape[0]:
    raise ValueError('配列のエラー')
-  self.label=self.labels(kw.get('label'),self.data.shape[1])[0]
   self.width=range_num(num0s(kw.get('width'),0.8),0,1,0.8)
   self.anchor=self._anchor(kw.get('labelanchor'),(1,0.85))
   self.labelplace=self._getlegendplace(self.anchor,kw.get('labelplace','center left'))
-  self.plot(self.data,self.dataname,label=self.label,width=self.width)
+  self.plot(self.data,self.dataname,label=self.label.label,width=self.width)
  def plot(self,data,dataname,label=None,width=0.8):
   self.clear()
-  self.graphdata=[self._survey(data,dataname,label,width=width)]
+  self.graphdata=[self._survey(data,dataname,label=label,width=width)]
   self._apply_labels(self.xlabel,self.ylabel)
   self._adjustment()
  def _survey(self,data:np.ndarray,dataname,label=None,width=0.8):
@@ -33,7 +32,6 @@ class Stacked(twoElement):
   if isinstance(dataname,nListlike):self.dataname=self._dataarr(dataname,False)
   if self.data.shape[0]!=self.dataname.shape[0]:
    raise ValueError('配列のエラー')
-  self.label=self.labels(kw.get('label',self.label),self.data.shape[1])[0]
   self.width=range_num(num0s(kw.get('width'),self.width),0,1,self.width)
   self.plot(self.data,self.dataname,label=self.label,width=self.width)
   self._redraw()
@@ -44,13 +42,11 @@ class Stackedh(twoElement):
   super().__init__(master,kw)
   self.data=self._manyarr(kw.get('data'))
   self.dataname=self._dataarr(kw.get('dataname'),False)
-  if self.data.shape[0]!=self.dataname.shape[0]:
-   raise ValueError('配列のエラー')
-  self.label=self.labels(kw.get('label'),self.data.shape[1])[0]
+  if self.data.shape[0]!=self.dataname.shape[0]:raise ValueError('配列のエラー')
   self.anchor=self._anchor(kw.get('labelanchor'),(1,0.85))
   self.labelplace=self._getlegendplace(self.anchor,kw.get('labelplace','center left'))
   self.height=range_num(num0s(kw.get('height'),0.8),0,1,0.8)
-  self.plot(self.data,self.dataname,label=self.label,height=self.height)
+  self.plot(self.data,self.dataname,label=self.label.label,height=self.height)
  def plot(self,data,dataname,label=None,height=0.8):
   self.clear()
   self.ax.invert_yaxis()
@@ -73,7 +69,7 @@ class Stackedh(twoElement):
   if isinstance(dataname,nListlike):self.dataname=self._dataarr(dataname,False)
   if self.data.shape[0]!=self.dataname.shape[0]:
    raise ValueError('配列のエラー')
-  self.label=self.labels(kw.get('label',self.label),self.data.shape[1])[0]
+  
   self.height=range_num(num0s(kw.get('height'),self.height),0,1,self.height)
   self.plot(self.data,self.dataname,label=self.label,height=self.height)
   self._redraw()

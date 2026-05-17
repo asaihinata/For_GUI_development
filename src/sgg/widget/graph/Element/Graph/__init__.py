@@ -1,6 +1,7 @@
 from os import fspath,getcwd
 from re import findall
 import numpy as np
+from tkinter import Tk
 from cycler import cycler
 from matplotlib.axes._axes import Axes
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -12,15 +13,28 @@ from ...._log import Logger
 from ...._save import autofile_save
 from ...style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid
 from ...dev import *
-from ....dev import LIST
-__all__=['GElement']
+__all__=['GElement','getLabel']
 logger=Logger(name='Graph',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 graph_color=['#4477aa','#ee7733','#111211','#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']
 rcParams['font.family']='Meiryo'
 rcParams['axes.prop_cycle']=cycler(color=graph_color)
+class getLabel:
+ def __init__(self,label=None):
+  if isinstance(label,list|tuple):self.label=np.array(label)
+  elif isinstance(label,np.ndarray):self.label=label
+  else:self.label=None
+ def __iter__(self):
+  if self.label==None:return iter([None])
+  return iter(self.label)
+ def __getitem__(self,val):
+  if self.label is None:return None
+  if not isinstance(val,int) or val<0:val=0
+  if self.label.size<val:val=np.mod(self.label.size,val)
+  return self.label[self.label.size-1-val]
+ def __bool__(self):return self.label is not None
 class GElement:
  def __init__(self,master,kw):
-  self.master=master
+  self.master:Tk=master
   self.widget=None
   self.graph=True
   self.graphdata=[]
@@ -39,7 +53,6 @@ class GElement:
   self.fig=Figure(figsize=(self.width/self.dpi,self.height/self.dpi),dpi=self.dpi,facecolor=self.graph_bg)
   self.ax:Axes|Axes3D=None
   # 凡例
-  self.legendjudge=True
   self.anchor=self._anchor(kw.get('legendanchor'))
   self.legendplace=self._getlegendplace(self.anchor,kw.get('legendplace'))
   self.legendtitle=kw.get('legendtitle')
@@ -47,6 +60,8 @@ class GElement:
   self.legendshadow=bols(kw.get('legendshadow'),False)
   self.legendalpha=range_num(num0s(kw.get('legendalpha'),1),0,1,1)
   self.legendncols=num1s(kw.get('legendncols',1))
+  # ラベル
+  self.label=getLabel(kw.get('label'))
   # 軸ラベル
   self.labelalpha=range_num(num0s(kw.get('labelalpha'),1),0,1,1)
   labelfg=kw.get('labelfg')
@@ -140,7 +155,7 @@ class GElement:
   return self._list_loop(Marker(serch).marker,num)
  def lines(self,serch=None,num=None):return self._list_loop(Solid(serch).solid,num)
  def legend(self):
-  if self.legendjudge:self.legend_=Legends(self.ax,ncols=self.legendncols,bbox_to_anchor=self.anchor,loc=self.legendplace,title=self.legendtitle,frameon=self.legendframe,shadow=self.legendshadow,framealpha=self.legendalpha)
+  if bool(self.label):self.legend_=Legends(self.ax,ncols=self.legendncols,bbox_to_anchor=self.anchor,loc=self.legendplace,title=self.legendtitle,frameon=self.legendframe,shadow=self.legendshadow,framealpha=self.legendalpha)
  def _anchor(self,val,other=None):
   if(isinstance(val,list|tuple) and (len(val)==2 or len(val)==4) and all(isinstance(i,int|float)for i in val)):return val
   return other
@@ -156,15 +171,12 @@ class GElement:
    if lla<ldt:
     for i in range(ldt-lla):lls.append(lla+i+1)
    elif ldt<lla:lls=lls[:ldt]
-  else:self.legendjudge=False
   return(lls,label,type(label))
  def labels(self,label,nums=None):
+  if label==None or label is None:
+   return(None,label)
   if not isinstance(nums,int|float):nums=self.max_depth
-  if label==None:self.legendjudge=False
-  if isinstance(label,str):lis=LIST(lists=[label])
-  elif isinstance(label,list|tuple):lis=LIST(lists=label)
-  else:lis=LIST(lists='')
-  return(lis.get(nums),label)
+  return(self._list_loop(label,nums),label)
  def _arr(self,val,j=True):
   if not isinstance(val,list|tuple|np.ndarray):
    raise TypeError('配列の型を指定してください')

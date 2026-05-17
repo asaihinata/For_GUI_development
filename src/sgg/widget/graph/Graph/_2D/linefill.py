@@ -5,7 +5,6 @@ class Linefill(twoElement):
   self.x=self._dataarr(kw.get('x'),False)
   self.ymax=self._manyarr(kw.get('ymax'))
   self.ymin=self._manyarr(kw.get('ymin'))
-  self.label=self.labels(kw.get('label'))[0]
   self.centerlinewidth=num0(kw.get('centerlinewidth'),2)
   self.alpha=range_num(num0s(kw.get('alpha'),0.5),0,1,0.5)
   self.plot(self.x,self.ymax,self.ymin,alpha=self.alpha,centerlinewidth=self.centerlinewidth)

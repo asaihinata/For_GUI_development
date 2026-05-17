@@ -2,7 +2,7 @@ from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
 from numpy import array,ndarray
 from ...._function import allNones,bols,list2num,listchose,num0s,parsecolor,range_num
-from ..Graph import GElement
+from ..Graph import GElement,getLabel
 from ...style import FontFile,Fontmanager,Fontname,Title,Xlabel,Ylabel
 __all__=['twoElement']
 class twoElement(GElement):

@@ -5,7 +5,6 @@ class Scatter(twoElement):
   super().__init__(master,kw)
   self.x=self._manyarr(kw.get('x'))
   self.y=self._manyarr(kw.get('y'))
-  self.label=self.labels(kw.get('label'))[0]
   self.marker=self.markers(kw.get('marker','o'),self.max_depth)
   self.s=num1s(kw.get('markersize'),10)
   self.linewidth=num0(kw.get('linewidth'),2)

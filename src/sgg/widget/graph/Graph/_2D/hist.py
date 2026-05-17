@@ -3,7 +3,6 @@ class Hist(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.data=self._dataarr(kw.get('data'))
-  self.label=self.labels(kw.get('label'))[0]
   if len(self.data.shape)!=1:
    raise ValueError('配列に多次元配列で指定されています')
   bins=kw.get('bins')
@@ -17,7 +16,7 @@ class Hist(twoElement):
   self.decimalpoint=num0s(kw.get('decimalpoint'),0)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
   self.width=range_num(num0s(kw.get('width'),1),0,1,1)
-  self.plot(self.data,label=self.label,bins=self.bins,ranges=self.range,bottom=self.bottom,orientation=self.orientation,width=self.width,alpha=self.alpha)
+  self.plot(self.data,label=self.label.label,bins=self.bins,ranges=self.range,bottom=self.bottom,orientation=self.orientation,width=self.width,alpha=self.alpha)
  def plot(self,data,label=None,bins=10,ranges=None,bottom=0,orientation='vertical',width=None,alpha=1):
   self.clear()
   self.graphdata=self.ax.hist(data,label=label,bins=bins,range=ranges,bottom=bottom,rwidth=width,orientation=orientation,alpha=alpha)

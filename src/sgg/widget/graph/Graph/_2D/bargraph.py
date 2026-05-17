@@ -6,7 +6,6 @@ class BarGraph(twoElement):
   self.x=self._onearr(kw.get('x'))
   self.y=self._manyarr(kw.get('y'))
   self.logs=bols(kw.get('logs'),False)
-  self.label=self.labels(kw.get('label'))[0]
   self.width=range_num(num0s(kw.get('width'),1),0,1,1)
   self.align=listchose(kw.get('align'),['center','edge'])
   self.plot(self.x,self.y,label=self.label,alpha=self.alpha,width=self.width,align=self.align,logs=self.logs)
@@ -35,7 +34,7 @@ class BarhGraph(twoElement):
   self.x=self._onearr(kw.get('x'))
   self.y=self._manyarr(kw.get('y'))
   self.logs=bols(kw.get('logs'),False)
-  self.label=self.labels(kw.get('label'))[0]
+  
   self.height=range_num(num0s(kw.get('height'),1),0,1,1)
   self.align=listchose(kw.get('align'),['center','edge'])
   self.plot(self.x,self.y,label=self.label,alpha=self.alpha,height=self.height,align=self.align,logs=self.logs)

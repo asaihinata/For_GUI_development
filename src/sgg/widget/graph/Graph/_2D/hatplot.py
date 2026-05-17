@@ -5,8 +5,7 @@ class Hatplot(twoElement):
   self.x=self._dataarr(kw.get('x'))
   self.data=self._dataarr(kw.get('data'))
   self.color=parsecolor(kw.get('color'),'#4477aa')
-  self.label=self.labels(kw.get('label'),2)[0]
-  self.plot(self.x,self.data,label=self.label,color=self.color,alpha=self.alpha)
+  self.plot(self.x,self.data,label=self.label.label,color=self.color,alpha=self.alpha)
  def plot(self,x,data,label=None,color=None,alpha=1):
   self.clear()
   self.graphdata=self.hat_graph(x,data,label=label,color=color,alpha=alpha)
@@ -27,7 +26,7 @@ class Hatplot(twoElement):
   if isinstance(x,nListlike):self.x=self._dataarr(x)
   if isinstance(data,nListlike):self.data=self._dataarr(data)
   self.color=parsecolor(kw.get('color'),self.color)
-  self.label=self.labels(kw.get('label',self.label),2)[0]
+  
   self.plot(self.x,self.data,label=self.label,color=self.color,alpha=self.alpha)
   self._redraw()
  def get(self):return self.graphdata

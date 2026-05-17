@@ -3,9 +3,9 @@ class Boxplot(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.data=self._manyarr(kw.get('data'))
-  label=kw.get('label')
-  if label==None:label=[f'box{i}'for i in range(self.max_depth)]
-  self.label=self.labels(label)[0]
+  label=getLabel(kw.get('label')).label
+  if label==None:self.label=[f'box{i}'for i in range(self.max_depth)]
+  else:self.label=label
   self.legends=bols(kw.get('legend'))
   self.width=range_num(num0s(kw.get('width'),0.15),0,1,0.15)
   self.whis=self._boxplot_whis(kw.get('whis'))
@@ -29,7 +29,6 @@ class Boxplot(twoElement):
   if isinstance(data,nListlike):self.data=self._manyarr(data)
   label=kw.get('label',self.label)
   if label==None:label=[f'box{i}'for i in range(self.max_depth)]
-  self.label=self.labels(label)[0]
   self.legends=bols(kw.get('legend'),self.legends)
   self.fill=bols(kw.get('fill'),self.fill)
   self.notch=bols(kw.get('notch'),self.notch)

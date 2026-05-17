@@ -25,7 +25,8 @@ if __name__=="__main__":
    sgg.Boxplot(data=boxdata1,title="箱ひげ図の髭の開始位置を変更する2",whis=[10,90])
   ],
   [
-   sgg.Boxplot(data=boxdata1,title="箱ひげ図の幅を変更する",width=0.5)
+   sgg.Boxplot(data=boxdata1,title="箱ひげ図の幅を変更する",width=0.5),
+   sgg.Boxplot(data=boxdata1,title="ラベル名を変更する",label=["ラベル1"])
   ],
   [
    sgg.Boxplot(data=boxdata1,title="グラフを更新する",key="boxplot"),

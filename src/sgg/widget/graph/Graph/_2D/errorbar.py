@@ -26,7 +26,6 @@ class Errorbar(twoElement):
   errorevery=kw.get('errorevery')
   if((isinstance(errorevery,list|tuple)and len(errorevery)==2 and all(isinstance(i,int)for i in errorevery)) or isinstance(errorevery,int)):self.errorevery=errorevery
   else:self.errorevery=1
-  self.label=self.labels(kw.get('label'))[0]
   self.plot(self.x,self.y,label=self.label,xerr=self.xerr,yerr=self.yerr,fmt=self.fmt,linewidth=self.linewidth,capsize=self.capsize,barsabove=self.barsabove,capthick=self.capthick,xuplims=self.xuplims,xlolims=self.xlolims,yuplims=self.yuplims,ylolims=self.ylolims,errorevery=self.errorevery,alpha=self.alpha)
  def plot(self,x,y,label=None,xerr=None,yerr=None,fmt='',linewidth=1.5,capsize=0,barsabove=False,capthick=10,xuplims=False,xlolims=False,yuplims=False,ylolims=False,errorevery=1,alpha=1):
   self.clear()
