@@ -240,7 +240,10 @@ For_GUI_development
  │           │   │   │   │   ├── _data.py
  │           │   │   │   │   └── fmt.py
  │           │   │   │   ├── hatch.py
- │           │   │   │   ├── marker.py
+ │           │   │   │   ├── marker
+ │           │   │   │   │   ├── __init__.py
+ │           │   │   │   │   └── __init__.pyi
+ │           │   │   │   ├── solid
  │           │   │   │   └── solid.py
  │           │   │   ├── dev
  │           │   │   │   ├── __init__.py

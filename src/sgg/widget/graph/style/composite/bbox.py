@@ -1,7 +1,7 @@
 '''matplotlib.text.Textに使用するbbox'''
 from matplotlib import rcParams
 from matplotlib._enums import CapStyle,JoinStyle
-from ...typing import ColorType,ColorTypeN,Type_Numberlike,Type_Solid,Literal,Any
+from ...typing import Any,ColorType,ColorTypeN,Literal,Type_Numberlike,Type_Solid
 from ..dev import bols,range_zero_one
 from ..tool import Color
 from .solid import Solid
