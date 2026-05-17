@@ -3,8 +3,7 @@ from collections.abc import Iterable
 from typing import Any,Callable,Collection,Literal,NoReturn,TypeAlias,TypeVar,overload
 import numpy as np
 from numpy.typing import ArrayLike,NDArray
-Type_all:TypeAlias=list[str]
-__all__:Type_all=['_T','ColorType','ColorTypeN','FunctionType','labeltype','ListFloat2','ListFloat4','ListInt2','ListInt4','Listlike','ListNumbertype2','ListNumbertype4','n_array','nListlike','NPstr2','o_array','RGBAColorType','RGBColorType','TupleFloat2','TupleFloat4','TupleInt2','TupleInt4','TupleNumbertype2','TupleNumbertype4','Type_all','Type_bool','Type_Iterableint','Type_Iterablestr','Type_npFloat','Type_npFloats','Type_npInt','Type_npInts','Type_Numberlike','Type_NumberlikeN','ArrayLike','Any','Callable','Collection','Literal','NoReturn','TypeAlias','TypeVar','overload']
+__all__=['_T','ColorType','ColorTypeN','FunctionType','labeltype','ListFloat2','ListFloat4','ListInt2','ListInt4','Listlike','ListNumbertype2','ListNumbertype4','n_array','nListlike','NPstr2','o_array','RGBAColorType','RGBColorType','TupleFloat2','TupleFloat4','TupleInt2','TupleInt4','TupleNumbertype2','TupleNumbertype4','Type_bool','Type_Iterableint','Type_Iterablestr','Type_npFloat','Type_npFloats','Type_npInt','Type_npInts','Type_Numberlike','Type_NumberlikeN','ArrayLike','Any','Callable','Collection','Literal','NoReturn','TypeAlias','TypeVar','overload']
 _T=TypeVar('_T')
 # Iterable
 Type_Iterablestr:TypeAlias=Iterable[str]

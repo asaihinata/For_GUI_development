@@ -1,8 +1,8 @@
 from tkinter import Tk
 from .basic import *
 from .graph import *
-from .typing import Any,NoReturn,Type_all
-__all__:Type_all=['WindowController']
+from .typing import Any,NoReturn
+__all__=['WindowController']
 class WindowController:
  __firstlineno__:int
  __module__:str

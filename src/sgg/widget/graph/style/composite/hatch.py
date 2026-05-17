@@ -1,7 +1,6 @@
 '''塗りつぶし領域の領域内のマーカーを設定するモジュール'''
 from re import fullmatch
-from ...typing import Type_all
-__all__:Type_all=['Hatch','HATCH_DICT','HATCH_LIST']
+__all__=['Hatch','HATCH_DICT','HATCH_LIST']
 HATCH_LIST:list[str]=['/','\\','|','-','+','x','o','O','.','*']
 HATCH_DICT:dict[str,str]={
 '/':'diagonal hatching',

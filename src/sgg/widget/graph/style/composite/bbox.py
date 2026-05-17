@@ -1,13 +1,29 @@
 '''matplotlib.text.Textに使用するbbox'''
-from typing import Any
 from matplotlib import rcParams
 from matplotlib._enums import CapStyle,JoinStyle
-from ...typing import ColorTypeN,Type_Numberlike,Type_Solid
+from ...typing import ColorType,ColorTypeN,Type_Numberlike,Type_Solid,Literal,Any
 from ..dev import bols,range_zero_one
 from ..tool import Color
 from .solid import Solid
 __all__=['BBox']
 class BBox:
+ alpha:float
+ edgecolor:ColorType
+ facecolor:ColorType
+ color:ColorType
+ linewidth:int|float
+ linestyle:str
+ antialiased:bool
+ hatch:bool
+ fill:bool
+ capstyle:Literal['butt','projecting','round']|CapStyle
+ joinstyle:Literal['miter','round','bevel']|JoinStyle
+ hatch_linewidth:int|float
+ in_layout:bool
+ mouseover:bool
+ rasterized:bool
+ visible:bool
+ zorder:int|float
  bbox_dict:dict[str,Any]
  def __init__(
 self,*,

@@ -1,6 +1,6 @@
 import numpy as np
 from ....typing import *
-__all__:Type_all=['sturges']
+__all__=['sturges']
 @overload
 def sturges(
 n:list|tuple|np.ndarray|int,

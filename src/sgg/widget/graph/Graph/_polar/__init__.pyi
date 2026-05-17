@@ -2,7 +2,7 @@ from matplotlib.container import BarContainer,ErrorbarContainer,StemContainer
 from matplotlib.projections.polar import PolarAxes
 from numpy import ndarray
 from ...typing import *
-__all__:Type_all=['Barpolar','Errorpolar','Eventpolar','Linepolar','Scatterpolar','Stempolar','Violinpolar']
+__all__=['Barpolar','Errorpolar','Eventpolar','Linepolar','Scatterpolar','Stempolar','Violinpolar']
 class _polarset:
  ax:PolarAxes
  def winsize(self)->TupleInt2:'''ウィジェットの現在の幅と高さを返す。

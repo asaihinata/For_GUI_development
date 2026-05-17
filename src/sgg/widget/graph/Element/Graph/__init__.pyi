@@ -5,7 +5,7 @@ from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
 from ...typing import *
-__all__:Type_all=['GElement','getLabel']
+__all__=['GElement','getLabel']
 class getLabel:
  label:ndarray
  def __init__(self,label:list|tuple|ndarray|None=None)->None:...
