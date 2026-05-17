@@ -243,7 +243,6 @@ For_GUI_development
  │           │   │   │   ├── marker
  │           │   │   │   │   ├── __init__.py
  │           │   │   │   │   └── __init__.pyi
- │           │   │   │   ├── solid
  │           │   │   │   └── solid.py
  │           │   │   ├── dev
  │           │   │   │   ├── __init__.py
