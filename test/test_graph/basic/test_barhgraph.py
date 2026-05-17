@@ -11,8 +11,8 @@ if __name__=="__main__":
  print(f"{bargraphy2=}")
  layout=[
   [
-   sgg.BarhGraph(x=bargraphx1,y=bargraphy1,title="横軸棒グラフの基本1",xlabel=xlabel,ylabel=ylabel),
-   sgg.BarhGraph(x=bargraphx2,y=bargraphy2,title="横軸棒グラフの基本2",xlabel=xlabel,ylabel=ylabel)
+   sgg.BarhGraph(x=bargraphx1,y=bargraphy1,title="横軸棒グラフの基本1",xlabel=xlabel,ylabel=ylabel,label=["bar1"]),
+   sgg.BarhGraph(x=bargraphx2,y=bargraphy2,title="横軸棒グラフの基本2",xlabel=xlabel,ylabel=ylabel,label=["bar1","bar2"])
   ],
   [
    sgg.BarhGraph(x=bargraphx1,y=bargraphy1,title="x軸を対数スケールにする",logs=True),

@@ -69,7 +69,6 @@ class Stackedh(twoElement):
   if isinstance(dataname,nListlike):self.dataname=self._dataarr(dataname,False)
   if self.data.shape[0]!=self.dataname.shape[0]:
    raise ValueError('配列のエラー')
-  
   self.height=range_num(num0s(kw.get('height'),self.height),0,1,self.height)
   self.plot(self.data,self.dataname,label=self.label,height=self.height)
   self._redraw()

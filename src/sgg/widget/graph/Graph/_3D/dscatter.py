@@ -22,7 +22,6 @@ class DScatter(threeElement):
   if isinstance(z,nListlike):self.z=self._manyarr(z)
   self.marker=self.markers(kw.get('marker',self.marker),self.max_depth)
   self.s=num1s(kw.get('markersize'),self.s)
-  
   self.plot(self.x,self.y,self.z,marker=self.marker,alpha=self.alpha,label=self.label)
   self._redraw()
  def get(self):return self.graphdata

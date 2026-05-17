@@ -26,7 +26,6 @@ class Hatplot(twoElement):
   if isinstance(x,nListlike):self.x=self._dataarr(x)
   if isinstance(data,nListlike):self.data=self._dataarr(data)
   self.color=parsecolor(kw.get('color'),self.color)
-  
   self.plot(self.x,self.data,label=self.label,color=self.color,alpha=self.alpha)
   self._redraw()
  def get(self):return self.graphdata
