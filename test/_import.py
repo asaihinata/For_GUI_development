@@ -3,4 +3,3 @@ from sys import path
 import numpy as np
 path.append(abspath(join(dirname(__file__),"..")))
 from src.sgg import *
-clear()

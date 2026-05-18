@@ -6,4 +6,3 @@ path.append(abspath(join(dirname(__file__),"..")))
 path.append(str(Path(__file__).parent.resolve().parent.parent.parent))
 from src.sgg import *
 from data.csv import *
-clear()

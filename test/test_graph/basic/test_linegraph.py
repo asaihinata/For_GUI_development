@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=rand.randrange(50,80,size=(4,3))
+  radomdata=randrange(50,80,size=(4,3))
   print(f"{radomdata=}")
   lineplot:LineGraph=win.get("lineplot")
   lineplot.update(y=radomdata)

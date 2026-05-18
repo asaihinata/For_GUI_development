@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=rand.randint(20,30,size=5,endpoint=True)
+  radomdata=rng.integers(20,30,size=5,endpoint=True)
   print(f"{radomdata=}")
   hat:Hatplot=win.get("hat")
   hat.update(x=radomdata,data=radomdata+2)

@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=rand.randint(1,10,5)
+  radomdata=rng.integers(1,10,5)
   print(f"{radomdata=}")
   step:Step=win.get("step")
   step.update(radomdata)

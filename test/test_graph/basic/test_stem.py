@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=rand.randrange(50,80,size=(2,3))
+  radomdata=randsint(50,80,lenght=2,hierarchy=3)
   print(f"{radomdata=}")
   stemplot:Stem=win.get("stem")
   stemplot.update(x=radomdata)

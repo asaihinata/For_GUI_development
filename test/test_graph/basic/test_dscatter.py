@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=rand.randint(30,60,size=5)
+  radomdata=rng.integers(30,60,size=5)
   print(f"{radomdata=}")
   dscatter:DScatter=win.get("dscatter")
   dscatter.update(y=radomdata)

@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=rand.normal(low=50,high=10,lenght=1000)
+  radomdata=rng.normal(low=50,high=10,lenght=1000)
   print(f"{radomdata=}")
   hist:Hist=win.get("hist")
   hist.update(radomdata)

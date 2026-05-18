@@ -1,8 +1,8 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata1=rand.randn((1,5000))
-  radomdata2=1.2*radomdata1+rand.randn((1,5000))/3
+  radomdata1=rng.standard_normal((1,5000))
+  radomdata2=1.2*radomdata1+rng.standard_normal((1,5000))/3
   print(f"{radomdata1=}")
   print(f"{radomdata2=}")
   hexbin:Hexbin=win.get("hexbin")

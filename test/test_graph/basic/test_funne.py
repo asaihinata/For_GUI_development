@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=rand.randint(10,50,size=3)
+  radomdata=rng.integers(10,50,size=3)
   print(f"{radomdata=}")
   funne:Funne=win.get("funne")
   funne.update(radomdata)

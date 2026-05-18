@@ -1,8 +1,8 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata1=3+4*linefillx/8+rand.rands(0.0,0.5,len(linefillx))
-  radomdata2=1+2*linefillx/8+rand.rands(0.0,0.5,len(linefillx))
+  radomdata1=3+4*linefillx/8+rng.uniform(0.0,0.5,len(linefillx))
+  radomdata2=1+2*linefillx/8+rng.uniform(0.0,0.5,len(linefillx))
   print(f"{radomdata1=}")
   print(f"{radomdata2=}")
   linefill:Linefill=win.get("linefill")

@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=rand.gamma(4,size=(3,50))
+  radomdata=rng.gamma(4,size=(3,50))
   print(f"{radomdata=}")
   event:Eventplot=win.get("event")
   event.update(radomdata)

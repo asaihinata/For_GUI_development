@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=rand.randint(1,10,(3,3))+2
+  radomdata=rng.integers(1,10,(3,3))+2
   print(f"{radomdata=}")
   stackh:Stackedh=win.get("stackedh")
   stackh.update(radomdata)

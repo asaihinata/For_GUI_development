@@ -117,33 +117,6 @@ For_GUI_development
  │           │           ├── __init__.py
  │           │           ├── _calendar.py
  │           │           └── tooltip.py
- │           ├── dev
- │           │   ├── Color
- │           │   │   ├── __init__.py
- │           │   │   ├── __init__.pyi
- │           │   │   ├── color.py
- │           │   │   ├── colorlist.py
- │           │   │   └── data
- │           │   │       ├── __init__.py
- │           │   │       └── color.csv
- │           │   ├── LIST
- │           │   │   ├── __init__.py
- │           │   │   └── __init__.pyi
- │           │   ├── Number
- │           │   │   ├── LISTNumber.py
- │           │   │   ├── Number.py
- │           │   │   ├── __init__.py
- │           │   │   └── __init__.pyi
- │           │   ├── __init__.py
- │           │   ├── clear.py
- │           │   ├── random
- │           │   │   ├── __init__.py
- │           │   │   ├── __init__.pyi
- │           │   │   ├── rand.py
- │           │   │   └── rands.py
- │           │   └── sort
- │           │       ├── __init__.py
- │           │       └── __init__.pyi
  │           ├── graph
  │           │   ├── Element
  │           │   │   ├── Graph

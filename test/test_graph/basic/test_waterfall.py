@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=rand.randsint(-100,100,6)
+  radomdata=randsint(-100,100,6)
   print(f"{radomdata=}")
   waterfall:Waterfall=win.get("waterfall")
   waterfall.update(y=radomdata)

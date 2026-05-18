@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=rand.randsint(30,50,lenght=5)
+  radomdata=randsint(30,50,lenght=5)
   print(f"{radomdata=}")
   pies:Pie=win.get("pie")
   pies.update(radomdata)

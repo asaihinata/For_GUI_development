@@ -3,7 +3,6 @@ from matplotlib.axes._axes import Axes
 from matplotlib.ticker import FixedLocator,LinearLocator,MaxNLocator,MultipleLocator
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ...._function import listchose
-from ....dev import LISTNumber
 __all__=['Yaxis']
 class Yaxis:
  def __init__(self,ax):
@@ -21,5 +20,4 @@ class Yaxis:
   self.yax.set_major_locator(MaxNLocator(nbins=nbins,steps=steps,integer=integer,symmetric=symmetric,prune=prune,min_n_ticks=min_n_ticks))
  def set_log(self,base=10,nonpositive='clip',subs=None):
   nonpositive=listchose(nonpositive,['clip','mask'])
-  subs=None if subs is None else list(LISTNumber(subs))
   self.ax.set_yscale('log',base=base,nonpositive=nonpositive,subs=subs)

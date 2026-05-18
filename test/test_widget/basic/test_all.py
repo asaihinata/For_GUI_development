@@ -19,10 +19,10 @@ if __name__=="__main__":
  x3D,y3D,z3D=[1,2,3,4],[3,4,9,10],[10,20,30,40]
  err,xerr,yerr=[0.9,1.2,0.5],[1,2,1],[2,1,2]
  stepdata=[1,3,5,6]
- histdata=rand.normal(low=50,high=10,lenght=1000)
- boxdata=rand.normal(low=100,high=10,lenght=100)
+ histdata=np.random.normal(low=50,high=10,lenght=1000)
+ boxdata=np.random.normal(low=100,high=10,lenght=100)
  eventdata=np.random.gamma(4,size=(3,50))
- ecdfdata=4+rand.normal(low=0,high=1.5,lenght=100)
+ ecdfdata=4+np.random.normal(low=0,high=1.5,lenght=100)
  menus=[
  ["ファイル",
  [
