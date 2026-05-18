@@ -1,5 +1,5 @@
 import numpy as np
-from ....typing import *
+from ....typing import Literal,overload
 __all__=['sturges']
 @overload
 def sturges(

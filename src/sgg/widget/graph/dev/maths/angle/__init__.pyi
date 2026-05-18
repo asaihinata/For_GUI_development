@@ -1,4 +1,4 @@
-from ....typing import *
+from ....typing import Type_Numberlike,overload
 __all__=['Angle','Deg','Rad']
 class Angle:
  angle:float
