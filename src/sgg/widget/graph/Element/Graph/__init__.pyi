@@ -1,4 +1,6 @@
 from collections.abc import Iterator
+from os import PathLike
+from pathlib import Path
 from tkinter import Misc
 from matplotlib.axes._axes import Axes
 from matplotlib.figure import Figure
@@ -13,6 +15,7 @@ class getLabel:
  def __init__(self,label:list|tuple|ndarray|None=None)->None:...
  def __iter__(self)->Iterator[Any|None]:...
  def __getitem__(self,val:int)->Any:...
+ def __bool__(self)->bool:...
 class GElement:
  labelfont:FontProperties
  tight_layout:bool
@@ -30,6 +33,16 @@ class GElement:
  alpha:int|float
  ax:Axes|Axes3D|PolarAxes
  color:list[str]
+ max_depth:int
+ titlealpha:int|float
+ titlezorder:int|float
+ titlefg:ColorTypeN
+ titleha:Literal['left','center','right']|None
+ titleva:Literal['bottom','baseline','center','center_baseline','top']|None
+ titlerotation:float|Literal['horizontal','vertical']|None
+ titlerotation_mode:bool
+ titlefontname:str|Type_Iterablestr|None
+ titlefontpath:str|PathLike|Path|None
  def photo(
 self,
 filename:str='Graph',

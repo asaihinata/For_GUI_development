@@ -2,12 +2,9 @@ from os import fspath,getcwd
 from re import findall
 import numpy as np
 from cycler import cycler
-from matplotlib.axes._axes import Axes
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-from matplotlib.projections.polar import PolarAxes
 from matplotlib.pyplot import rcParams
-from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ...._function import bols,listchose,num0s,num1s,nums,parsecolor,range_num
 from ...._log import Logger
 from ...._save import autofile_save
@@ -51,7 +48,6 @@ class GElement:
   self.width,self.height=self._size(kw.get('size'))
   # グラフの表示
   self.fig=Figure(figsize=(self.width/self.dpi,self.height/self.dpi),dpi=self.dpi,facecolor=self.graph_bg)
-  self.ax:Axes|Axes3D|PolarAxes=None
   # 凡例
   self.anchor=self._anchor(kw.get('legendanchor'))
   self.legendplace=self._getlegendplace(self.anchor,kw.get('legendplace'))
