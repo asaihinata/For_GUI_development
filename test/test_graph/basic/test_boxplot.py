@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=rng.normal(low=100,high=10,lenght=100)
+  radomdata=rng.normal(100,10,size=100)
   print(f"{radomdata=}")
   boxplot:Boxplot=win.get("boxplot")
   boxplot.update(radomdata)

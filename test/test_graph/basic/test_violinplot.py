@@ -25,7 +25,7 @@ if __name__=="__main__":
   ],
   [
    sgg.Violinplot(data=violindata,title="中央線を表示する",showmedians=True,alpha=0.5),
-   sgg.Violinplot(data=violindata,title="バイオリンの向きを指定する",side="high")
+   sgg.Violinplot(data=violindata,title="バイオリンの向きを指定する",side="scale")
   ],
   [
    sgg.Violinplot(data=violindata,title="推定器の帯域幅を指定する",bw_method="silverman")

@@ -7,10 +7,10 @@ path.append(str(Path(__file__).parent.resolve().parent.parent.parent))
 from src.sgg import *
 rng=np.random.default_rng(seed=42)
 def randrange(min=0,max=1,size=None):return rng.random(size)*(max-min)+min
-def randsint(low=1,high=None,lenght=1,hierarchy=None):
+def randsint(loc=1,scale=None,lenght=1,hierarchy=None):
  if isinstance(hierarchy,int) and 2<=hierarchy:
-  return rng.integers(low=low,high=high,size=(hierarchy,lenght))
- else:return rng.integers(low=low,high=high,size=lenght)
+  return rng.integers(loc=loc,scale=scale,size=(hierarchy,lenght))
+ else:return rng.integers(loc=loc,scale=scale,size=lenght)
 xlabel="x軸のラベル"
 ylabel="y軸のラベル"
 zlabel="z軸のラベル"
@@ -36,18 +36,18 @@ stackx=np.arange(1,4,1)
 stacky=rng.integers(50,80,size=(2,3))
 errorbarx=np.arange(2,12,2)
 errorbary=rng.integers(0,3,5)
-err=rng.integers(low=2,size=5)
-xerr=rng.integers(low=2,size=5)
-yerr=rng.integers(low=2,size=5)
-dscatterx=np.arange(1,4,1)
+err=rng.integers(2,size=5)
+xerr=rng.integers(2,size=5)
+yerr=rng.integers(2,size=5)
+dscatterx=np.arange(0,4,1)
 dscattery=[3,4,9,10]
 dscatterz=[10,20,30,40]
 stepdata=rng.integers(1,10,size=5)
-histdata=rng.normal(loc=10,scale=50,size=1000)
-boxdata1=rng.normal(loc=10,scale=100,size=100)
-boxdata2=rng.normal(loc=20,scale=90,size=(150,2))
+histdata=rng.normal(10,50,size=1000)
+boxdata1=rng.normal(10,100,size=100)
+boxdata2=rng.normal(20,90,size=(2,150))
 eventdata=rng.gamma(4,size=(3,50))
-ecdfdata=4+rng.normal(loc=0,scale=1.5,size=100)
+ecdfdata=4+rng.normal(0,1.5,size=100)
 stackeddata=rng.integers(1,10,(3,3))+2
 stackeddataname=["dataname1","dataname2","dataname3"]
 violindata=rng.normal((3,5,4),(0.75,1.00,0.75),(200,3))

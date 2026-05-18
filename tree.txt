@@ -137,6 +137,7 @@ For_GUI_development
  │           │   │   │   ├── __init__.py
  │           │   │   │   ├── __init__.pyi
  │           │   │   │   ├── bargraph.py
+ │           │   │   │   ├── barhgraph.py
  │           │   │   │   ├── boxplot.py
  │           │   │   │   ├── ecdf.py
  │           │   │   │   ├── errorbar.py
@@ -152,10 +153,12 @@ For_GUI_development
  │           │   │   │   ├── scatter.py
  │           │   │   │   ├── stack.py
  │           │   │   │   ├── stacked.py
+ │           │   │   │   ├── stackedh.py
  │           │   │   │   ├── stem.py
  │           │   │   │   ├── step.py
  │           │   │   │   ├── violinplot.py
- │           │   │   │   └── waterfall.py
+ │           │   │   │   ├── waterfall.py
+ │           │   │   │   └── waterfallh.py
  │           │   │   ├── _3D
  │           │   │   │   ├── __init__.py
  │           │   │   │   ├── __init__.pyi
