@@ -1,8 +1,8 @@
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ...._function import allNones,bols,list2num,listchose,num0s,nums,parsecolor,range_num
-from ..Graph import GElement,getLabel
 from ...style import FontFile,Fontmanager,Fontname,Title,Xlabel,Ylabel,Zlabel
+from ..Graph import GElement
 __all__=['threeElement']
 class threeElement(GElement):
  def __init__(self,master,kw):

@@ -1,9 +1,9 @@
 from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
-from numpy import array,ndarray
+from numpy import ndarray
 from ...._function import allNones,bols,list2num,listchose,num0s,parsecolor,range_num
-from ..Graph import GElement,getLabel
 from ...style import FontFile,Fontmanager,Fontname,Title,Xlabel,Ylabel
+from ..Graph import GElement
 __all__=['twoElement']
 class twoElement(GElement):
  def __init__(self,master,kw):
@@ -86,12 +86,6 @@ class twoElement(GElement):
  def _apply_labels(self,xlabel,ylabel):
   if xlabel is not None:Xlabel(self.ax,xlabel,color=self.xlabelfg,ha=self.xlabelha,va=self.xlabelva,font=self.xlabelfont,rotation=self.xlabelrotation,rotation_mode=self.xlabelrotation_mode,alpha=self.xlabelalpha,zorder=self.xlabelzorder)
   if ylabel is not None:Ylabel(self.ax,ylabel,color=self.ylabelfg,ha=self.ylabelha,va=self.ylabelva,font=self.ylabelfont,rotation=self.ylabelrotation,rotation_mode=self.ylabelrotation_mode,alpha=self.ylabelalpha,zorder=self.ylabelzorder)
- def _arys(self,data):
-  if any(isinstance(i,list|tuple)for i in data):return array(data)
-  elif isinstance(data,list):return array([data])
-  elif isinstance(data,tuple|list):return array([list(data)])
-  elif isinstance(data,ndarray):return data
-  raise TypeError('dataには配列の型を指定してください')
  def _updates(self,**kw):
   self.fg=parsecolor(kw.get('fg'),self.fg)
   self.graph_bg=parsecolor(kw.get('bg'),self.graph_bg)

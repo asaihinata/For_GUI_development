@@ -2,9 +2,10 @@ from collections.abc import Iterator
 from tkinter import Misc
 from matplotlib.axes._axes import Axes
 from matplotlib.figure import Figure
+from matplotlib.font_manager import FontProperties
+from matplotlib.projections.polar import PolarAxes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
-from matplotlib.font_manager import FontProperties
 from ...typing import *
 __all__=['GElement','getLabel']
 class getLabel:
@@ -27,7 +28,7 @@ class GElement:
  title:str
  dpi:int|float
  alpha:int|float
- ax:Axes|Axes3D
+ ax:Axes|Axes3D|PolarAxes
  color:list[str]
  def photo(
 self,

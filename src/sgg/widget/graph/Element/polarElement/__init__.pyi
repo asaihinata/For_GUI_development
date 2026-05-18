@@ -1,35 +1,24 @@
-from tkinter import Misc
-from matplotlib.projections.polar import PolarAxes
 import numpy as np
+from matplotlib.projections.polar import PolarAxes
 from ...typing import *
 from ..Graph import GElement,getLabel
 class polarElement(GElement):
  label:getLabel
- master:Misc
  ax:PolarAxes
- graphdata:list
- size:TupleNumbertype2
- fg:ColorType
- graph_bg:ColorType
- graph_grid:ColorType
- dpi:int|float
- alpha:int|float
- Anglegraph:bool
- '''度数法で計算するか弧度法で計算するか指定する。
- 
- - True:度数法
- 
- - False:弧度法'''
- def _xyd(self,x,y,d)->tuple[np.ndarray,np.ndarray]:...
  def _updates(
 self,
 fg:ColorType,
 bg:ColorType,
 graph_grid:ColorType,
-title:str,
-xlabel:labeltype,
-ylabel:labeltype
+title:str
 )->NoReturn:...
+ def _places(self,num:int)->ndarray:'''`np.linspace(0,2*np.pi,num,endpoint=False)`を返す。
+
+ :param num: 要素数を指定する。
+ :type num: int
+ :return: `np.linspace(0,2*np.pi,num,endpoint=False)`を返す。
+ :rtype: ndarray'''
+ def _xyd(self,x:nListlike,y:nListlike,d:nListlike|None=None)->tuple[np.ndarray,np.ndarray]:...
  def _apply_labels(
 self,
 xlabel:labeltype=None,
@@ -56,15 +45,51 @@ tuple[float64,float64]
  def getticks(self)->tuple[np.ndarray,np.ndarray]:'''x軸,y軸の目盛りの位置を座標で返します。'''
  def getxticks(self)->np.ndarray:'''x軸の目盛りの位置を座標で返します。'''
  def getyticks(self)->np.ndarray:'''y軸の目盛りの位置を座標で返します。'''
- def set_thetalim(self,start=0,end=2*np.pi)->TupleFloat2:
-  '''_summary_
+ @overload
+ def set_thetalim(
+self,
+min:Type_Numberlike,
+max:Type_Numberlike,
+type:bool
+)->TupleFloat2:'''特定の角度範囲だけを表示させる。
 
-  _extended_summary_
+ :param min: 表示される角度の最小を指定する。
+ :type min: Type_Numberlike
+ :param max: 表示される角度の最大を指定する。
+ :type max: Type_Numberlike
+ :param type: 制限値を指定する。
+ :type type: bool
+ :return: 表示されている角度の範囲と角度の種類を返す。
+ :rtype: TupleFloat2'''
+ @overload
+ def set_thetalim(
+self,
+min:Type_Numberlike,
+max:Type_Numberlike,
+type:bool=True
+)->TupleFloat2:'''特定の角度範囲だけを表示させる。
 
-  :param start: _description_, defaults to 0
-  :type start: int, optional
-  :param end: _description_, defaults to 2*np.pi
-  :type end: _type_, optional
-  :return: _description_
-  :rtype: TupleFloat2
-  '''
+ :param min: 表示される角度の最小を指定する。
+ :type min: Type_Numberlike
+ :param max: 表示される角度の最大を指定する。
+ :type max: Type_Numberlike
+ :param type: 制限値を度数法で指定する。
+ :type type: bool
+ :return: 表示されている角度の範囲と角度の種類を返す。
+ :rtype: TupleFloat2'''
+ @overload
+ def set_thetalim(
+self,
+min:Type_Numberlike,
+max:Type_Numberlike,
+type:bool=False
+)->tuple[TupleFloat2,bool]:'''特定の角度範囲だけを表示させる。
+
+ :param min: 表示される角度の最小を指定する。
+ :type min: Type_Numberlike
+ :param max: 表示される角度の最大を指定する。
+ :type max: Type_Numberlike
+ :param type: 制限値を弧度法で指定する。
+ :type type: bool
+ :return: 表示されている角度の範囲と角度の種類を返す。
+ :rtype: tuple[TupleFloat2,bool]'''

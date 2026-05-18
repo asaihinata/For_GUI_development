@@ -1,18 +1,10 @@
-from tkinter import Misc
 from matplotlib.axes._axes import Axes
 from numpy import ndarray
 from ...typing import *
 from ..Graph import GElement,getLabel
 class twoElement(GElement):
  label:getLabel
- master:Misc
- graphdata:list
- size:TupleNumbertype2
- fg:ColorType
- graph_bg:ColorType
- graph_grid:ColorType
- dpi:int|float
- alpha:int|float
+ ax:Axes
  def _updates(
 self,
 fg:ColorType,

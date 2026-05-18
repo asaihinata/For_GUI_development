@@ -1,14 +1,13 @@
 from matplotlib.projections.polar import PolarAxes
-from numpy import array,linspace,ndarray,pi
+from numpy import linspace,pi
 from ...._function import bols,list2num,num0s,parsecolor,range_num
-from ..Graph import GElement
 from ...dev.maths.angle import *
 from ...style import Title
 from ...typing import Type_Numberlike
+from ..Graph import GElement
 __all__=['polarElement']
 pi2=2*pi
 class polarElement(GElement):
- Anglegraph=True
  def __init__(self,master,kw):
   super().__init__(master,kw)
   # グリッド線
@@ -17,7 +16,6 @@ class polarElement(GElement):
   self.grid_y=bols(kw.get('grid_y'),False)
   # グラフの基盤
   self.ax:PolarAxes=self.fig.add_subplot(111,projection='polar')
-  self.set_Angletype(bols(kw.get('anglegraph')))
   # 目盛り
   self.xticksshow=bols(kw.get('xticksshow'),False)
   self.yticksshow=bols(kw.get('yticksshow'),False)
@@ -50,12 +48,6 @@ class polarElement(GElement):
    self.ax.grid(False)
    if self.grid_x:self.ax.xaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
    if self.grid_y:self.ax.yaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
- def _arys(self,data):
-  if any(isinstance(i,list|tuple)for i in data):return array(data)
-  elif isinstance(data,list):return array([data])
-  elif isinstance(data,tuple|list):return array([list(data)])
-  elif isinstance(data,ndarray):return data
-  raise TypeError('dataには配列の型を指定してください')
  def _updates(self,**kw):
   self.fg=parsecolor(kw.get('fg'),self.fg)
   self.graph_bg=parsecolor(kw.get('bg'),self.graph_bg)
@@ -93,22 +85,18 @@ class polarElement(GElement):
  def getticks(self):return(self.ax.get_xticks(),self.ax.get_yticks())
  def getxticks(self):return self.ax.get_xticks()
  def getyticks(self):return self.ax.get_yticks()
- def set_Angletype(self,angle=True):
-  if isinstance(angle,bool):self.Anglegraph=angle
+ def set_thetalim(self,min,max,type=True):
+  if not isinstance(type,bool):type=True
+  def r(maxs,min,max):
+   if not isinstance(min,Type_Numberlike):min=0
+   if not isinstance(max,Type_Numberlike):max=maxs
+   if max<min:min,max=max,min
+   if not 0<=min<=maxs:min=0
+   if not 0<=max<=maxs:max=maxs
+   return min,max
+  if type:
+   s,e=r(360,min,max)
+   return self.ax.set_thetalim(thetamin=s,thetamax=e),type
   else:
-   raise TypeError('angleにはbool型を指定してください')
- def get_Angletype(self):return self.Anglegraph
- def set_thetalim(self,start,end):
-  def r(maxs,start,end):
-   if not isinstance(start,Type_Numberlike):start=0
-   if not isinstance(end,Type_Numberlike):end=maxs
-   if end<start:start,end=end,start
-   if not 0<=start<=maxs:start=0
-   if not 0<=end<=maxs:end=maxs
-   return start,end
-  if self.Anglegraph:
-   s,e=r(360,start,end)
-   return self.ax.set_thetalim(thetamin=s,thetamax=e)
-  else:
-   s,e=r(pi2,start,end)
-   return self.ax.set_thetalim(minval=s,maxval=e)
+   s,e=r(pi2,min,max)
+   return self.ax.set_thetalim(minval=s,maxval=e),type

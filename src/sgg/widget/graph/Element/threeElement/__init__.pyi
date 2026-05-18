@@ -1,18 +1,10 @@
-from tkinter import Misc
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
 from ...typing import *
 from ..Graph import GElement,getLabel
 class threeElement(GElement):
  label:getLabel
- master:Misc
- graphdata:list
- size:TupleNumbertype2
- fg:ColorType
- graph_bg:ColorType
- graph_grid:ColorType
- dpi:int|float
- alpha:int|float
+ ax:Axes3D
  def _updates(
 self,
 fg:ColorType,

@@ -1,18 +1,18 @@
 from os import fspath,getcwd
 from re import findall
 import numpy as np
-from tkinter import Tk
 from cycler import cycler
 from matplotlib.axes._axes import Axes
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
+from matplotlib.projections.polar import PolarAxes
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ...._function import bols,listchose,num0s,num1s,nums,parsecolor,range_num
 from ...._log import Logger
 from ...._save import autofile_save
-from ...style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid
 from ...dev import *
+from ...style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid
 __all__=['GElement','getLabel']
 logger=Logger(name='Graph',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 graph_color=['#4477aa','#ee7733','#111211','#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']
@@ -34,7 +34,7 @@ class getLabel:
  def __bool__(self):return self.label is not None
 class GElement:
  def __init__(self,master,kw):
-  self.master:Tk=master
+  self.master=master
   self.widget=None
   self.graph=True
   self.graphdata=[]
@@ -51,7 +51,7 @@ class GElement:
   self.width,self.height=self._size(kw.get('size'))
   # グラフの表示
   self.fig=Figure(figsize=(self.width/self.dpi,self.height/self.dpi),dpi=self.dpi,facecolor=self.graph_bg)
-  self.ax:Axes|Axes3D=None
+  self.ax:Axes|Axes3D|PolarAxes=None
   # 凡例
   self.anchor=self._anchor(kw.get('legendanchor'))
   self.legendplace=self._getlegendplace(self.anchor,kw.get('legendplace'))
