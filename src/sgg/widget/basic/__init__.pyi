@@ -270,12 +270,15 @@ class Link(_Element):
  def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
 class Images(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
-class Imagebyto(_Element):
+class Imagebyte(_Element):
+ def delta(self)->NoReturn:'''ウィジェットを削除する。'''
+class Imagelink(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
 class QRcode(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
 class Barcode(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
+ def get_type(self)->str:'''使用されたバーコードの規格を取得する。'''
 class Calendars(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def move_date(self,year:int=None,month:int=None,day:int=None)->NoReturn:'''指定したyear,month,dayに移動する。

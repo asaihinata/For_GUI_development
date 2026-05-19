@@ -4,8 +4,8 @@ from ...._log import Logger
 from ....base import Element
 from ...dev import Img_byte
 logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
-__all__=['Imagebyto']
-class Imagebyto(Element):
+__all__=['Imagebyte']
+class Imagebyte(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.byte=kw.get('byte')

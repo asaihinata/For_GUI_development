@@ -18,10 +18,10 @@ if __name__=="__main__":
  x3D,y3D,z3D=[1,2,3,4],[3,4,9,10],[10,20,30,40]
  err,xerr,yerr=[0.9,1.2,0.5],[1,2,1],[2,1,2]
  stepdata=[1,3,5,6]
- histdata=np.random.normal(low=50,high=10,lenght=1000)
- boxdata=np.random.normal(low=100,high=10,lenght=100)
+ histdata=np.random.normal(50,10,size=1000)
+ boxdata=np.random.normal(100,10,size=100)
  eventdata=np.random.gamma(4,size=(3,50))
- ecdfdata=4+np.random.normal(low=0,high=1.5,lenght=100)
+ ecdfdata=4+np.random.normal(0,1.5,size=100)
  menus=[
  ["ファイル",
  ["開く",
@@ -49,7 +49,7 @@ if __name__=="__main__":
  [sgg.Link(link="https://www.google.com/",text="googleのサイトを開く")],
  [sgg.Images(path=Lennapath)],
  [sgg.Texts(text="↑画像表示(PGM,PPM,GIF,PNG,XBMでしか表示されない)")],
- [sgg.Images(path="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg48GxlSXF_4b4XZmtOALPhe3mD5iREyN-Ks6Q2hdviWeDHOcG_AUOS3nn2i-E9g5jD1_7-2o9PZF5MUQEanceM7b07viAr9M6h4C7jDqGhKdF0LzHzn2IBS_A2Fvpv605wIRf9ohIPiv-HStNDjk8JdN2hU-0GTI-OsjRraMo1HnGkTALf6v7qBbHufj04/s400/pose_galpeace_schoolgirl.png")],
+ [sgg.Imagelink(link="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg48GxlSXF_4b4XZmtOALPhe3mD5iREyN-Ks6Q2hdviWeDHOcG_AUOS3nn2i-E9g5jD1_7-2o9PZF5MUQEanceM7b07viAr9M6h4C7jDqGhKdF0LzHzn2IBS_A2Fvpv605wIRf9ohIPiv-HStNDjk8JdN2hU-0GTI-OsjRraMo1HnGkTALf6v7qBbHufj04/s400/pose_galpeace_schoolgirl.png")],
  [sgg.Texts(text="↑URL画像も読み取れる")],
  [sgg.Texts(text="入力欄->"),sgg.Input(text="入力欄")],
  [sgg.Texts(text="パスワード入力->"),sgg.Input(show="※")],

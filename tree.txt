@@ -77,8 +77,6 @@ For_GUI_development
  │           │   │   │   └── __init__.py
  │           │   │   ├── Image
  │           │   │   │   └── __init__.py
- │           │   │   ├── Imagebyte
- │           │   │   │   └── __init__.py
  │           │   │   ├── Input
  │           │   │   │   └── __init__.py
  │           │   │   ├── InputNumber
@@ -112,6 +110,11 @@ For_GUI_development
  │           │       ├── Barcode
  │           │       │   ├── __init__.py
  │           │       │   └── barcodes.py
+ │           │       ├── Imagebyte
+ │           │       │   └── __init__.py
+ │           │       ├── Imagelink
+ │           │       │   ├── __init__.py
+ │           │       │   └── getdata.py
  │           │       ├── Link
  │           │       │   └── __init__.py
  │           │       ├── QRcode

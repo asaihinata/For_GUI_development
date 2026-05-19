@@ -109,7 +109,7 @@ key:str=...
 
  :param path: Imagesウィジェットに表示させる画像のパスを指定する。
  :type path: Path|WindowsPath'''
- def Imagebyto(
+ def Imagebyte(
 byte:bytes=...,
 takefocus:bool=True,
 key:str=...
@@ -117,6 +117,14 @@ key:str=...
 
  :param byte: Imagebytoに表示させるバイトデータを指定する。
  :type byte: bytes'''
+ def Imagelink(
+link:str=...,
+takefocus:bool=True,
+key:str=...
+)->dict[str,Any]:'''画像を作成する。
+
+ :param link: 画像リンクを指定する。
+ :type link: str'''
  @staticmethod
  def Buttons(
 text:str=...,

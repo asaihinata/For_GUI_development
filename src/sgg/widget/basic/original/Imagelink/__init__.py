@@ -1,23 +1,17 @@
-from pathlib import Path,PosixPath,WindowsPath
 from tkinter import Label
 from PIL import ImageTk
 from ...._log import Logger
 from ....base import Element
-from ...dev import Img_path
+from ...dev import Img_byte
+from .getdata import get_link_img
 logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
-__all__=['Images']
-class Images(Element):
+__all__=['Imagelink']
+class Imagelink(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  path=kw.get('path')
-  if isinstance(path,WindowsPath|PosixPath|Path):self.path=path
-  elif isinstance(path,str):
-   self.path=Path(path)
-   if not self.path.exists():
-    raise FileNotFoundError('ファイルが存在しません')
-  else:
-   raise TypeError('pathには以下の型を指定してください。\nstr,WindowsPath,PosixPath,Path')
-  self.img=Img_path(self.path)
+  self.link=kw.get('link')
+  self.bytedata=get_link_img(self.link)
+  self.img=Img_byte(self.bytedata)
   self.imgs=ImageTk.PhotoImage(image=self.img.imgs.resize(self.img.get_size()))
   self.widget=Label(master,text=None,image=self.imgs,takefocus=self.takefocus)
   self.widget.image=self.imgs
