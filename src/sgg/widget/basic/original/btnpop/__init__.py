@@ -4,7 +4,7 @@ from ...._dialog import askcolor,askdirectory,askopenfilename,asksaveasfilename
 from ...._function import listchose,num0,parsecolor
 from ...._log import Logger
 from ....base import Element
-logger=Logger(name='btnpop',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
+logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 __all__=['Colorbtn','FileLoad','FolderLoad','Savebtn']
 class Btn(Element):
  def __init__(self,master,kw):

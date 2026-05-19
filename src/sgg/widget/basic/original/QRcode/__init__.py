@@ -4,7 +4,7 @@ from qrcode import make
 from ...._log import Logger
 from ....base import Element
 __all__=['QRcode']
-logger=Logger(name='qrcode',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
+logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class QRcode(Element):
  def __init__(self,master,kw:dict):
   super().__init__(master,kw)

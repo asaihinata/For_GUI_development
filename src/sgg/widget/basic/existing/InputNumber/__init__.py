@@ -2,7 +2,7 @@ from tkinter import IntVar,Spinbox
 from ...._function import bols,num0,nums,parsecolor
 from ...._log import Logger
 from ....base import Element
-logger=Logger(name='template',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
+logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class InputNumber(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)

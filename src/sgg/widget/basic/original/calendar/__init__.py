@@ -3,7 +3,7 @@ from ...._function import bols,listchose,num0,parsecolor
 from ...._log import Logger
 from ....base import Element
 from ._calendar import Calendar
-logger=Logger(name='calendar',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
+logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 __all__=['Calendars']
 fotmat_list={'format0':'yyyy/mm/dd','format1':'yyyy-mm-dd','format2':'dd/mm/yyyy','format3':'dd-mm-yyyy'}
 class Calendars(Element):

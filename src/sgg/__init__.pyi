@@ -1,6 +1,6 @@
 from datetime import datetime
 from os import PathLike
-from pathlib import Path
+from pathlib import Path,WindowsPath
 from tkinter import StringVar,_Cursor
 from typing import Union
 from matplotlib.mlab import GaussianKDE
@@ -102,22 +102,21 @@ relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat'
  :type link: str|None'''
  @staticmethod
  def Images(
-path:str=...,
-byto:bytes=...,
-size:TupleNumbertype2=(None,None),
-name:str='No Images',
+path:Path|WindowsPath=...,
 takefocus:bool=True,
 key:str=...
 )->dict[str,Any]:'''画像を作成する。
 
  :param path: Imagesウィジェットに表示させる画像のパスを指定する。
- :type path: str
- :param byto: Imagesウィジェットに表示させる画像のバイトデータを指定する。
- :type byto: bytos
- :param name: 指定されたpathもしくはbytoに何らかの例外が出た場合にImagesウィジェットに表示される文字を指定する。
- :type name: str
- :param size: 画像の大きさを指定する。
- :type size: TupleNumbertype2'''
+ :type path: Path|WindowsPath'''
+ def Imagebyto(
+byte:bytes=...,
+takefocus:bool=True,
+key:str=...
+)->dict[str,Any]:'''画像を作成する。
+
+ :param byte: Imagebytoに表示させるバイトデータを指定する。
+ :type byte: bytes'''
  @staticmethod
  def Buttons(
 text:str=...,
@@ -688,18 +687,15 @@ key:str=...
  :type value: int|float'''
  @staticmethod
  def Barcode(
-data:str=...,
-data_type:Literal['EAN-8','EAN-13','JAN','Code39','Code128']='Code128',
-name:str='No Barcode image',
+data:Any=...,
+fotmat:Literal['codabar','code128','code39','ean','ean13','ean13-guard','ean14','ean8','ean8-guard','gs1','gs1_128','gtin','isbn','isbn10','isbn13','issn','itf','jan','nw-7','pzn','upc','upca']='code39',
 key:str=...
 )->dict[str,Any]:'''バーコードを作成する。
 
  :param data: バーコードで表示させる値を指定する。
  :type data: str
- :param data_type: バーコードの形式を指定する。
- :type data_type: Literal['EAN-8','EAN-13','JAN','Code39','Code128']
- :param name: 何らかの例外が起こりバーコードが表示されなかった場合に表示する文字を指定する。
- :type name: str'''
+ :param format: バーコードの形式を指定する。
+ :type format: Literal['codabar','code128','code39','ean','ean13','ean13-guard','ean14','ean8','ean8-guard','gs1','gs1_128','gtin','isbn','isbn10','isbn13','issn','itf','jan','nw-7','pzn','upc','upca']'''
  @staticmethod
  def QRcode(
 text:str=...,
