@@ -32,8 +32,33 @@ For_GUI_development
  │           ├── _dialog
  │           │   ├── __init__.py
  │           │   ├── __init__.pyi
- │           │   ├── dialogs.py
- │           │   └── popup.py
+ │           │   ├── dialog
+ │           │   │   ├── Chooser.py
+ │           │   │   ├── Directory.py
+ │           │   │   ├── Open.py
+ │           │   │   ├── SaveAs.py
+ │           │   │   └── __init__.py
+ │           │   ├── maindialog
+ │           │   │   ├── Dialog.py
+ │           │   │   ├── Message.py
+ │           │   │   ├── _Dialog.py
+ │           │   │   ├── _Show.py
+ │           │   │   └── __init__.py
+ │           │   └── popup
+ │           │       ├── __init__.py
+ │           │       ├── error
+ │           │       │   └── __init__.py
+ │           │       ├── info
+ │           │       │   └── __init__.py
+ │           │       ├── question
+ │           │       │   ├── __init__.py
+ │           │       │   ├── askokcancel.py
+ │           │       │   ├── askquestion.py
+ │           │       │   ├── askretrycancel.py
+ │           │       │   ├── askyesno.py
+ │           │       │   └── askyesnocancel.py
+ │           │       └── warning
+ │           │           └── __init__.py
  │           ├── _font.py
  │           ├── _function.py
  │           ├── _log
