@@ -270,6 +270,8 @@ class Link(_Element):
  def set_bg(self,bg:ColorType)->NoReturn:'''ウィジェットが表示している背景色を変更する。'''
 class Images(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
+class Imagebyto(_Element):
+ def delta(self)->NoReturn:'''ウィジェットを削除する。'''
 class QRcode(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
 class Barcode(_Element):

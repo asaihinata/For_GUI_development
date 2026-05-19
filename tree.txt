@@ -62,7 +62,10 @@ For_GUI_development
  │           │   ├── dev
  │           │   │   ├── __init__.py
  │           │   │   └── photo
- │           │   │       └── __init__.py
+ │           │   │       ├── __init__.py
+ │           │   │       ├── byte.py
+ │           │   │       ├── conversion.py
+ │           │   │       └── paths.py
  │           │   ├── existing
  │           │   │   ├── Buttons
  │           │   │   │   └── __init__.py
@@ -73,7 +76,9 @@ For_GUI_development
  │           │   │   ├── Frames
  │           │   │   │   └── __init__.py
  │           │   │   ├── Image
- │           │   │   │   └── __init__.py
+ │           │   │   │   ├── __init__.py
+ │           │   │   │   ├── img.py
+ │           │   │   │   └── imgbyte.py
  │           │   │   ├── Input
  │           │   │   │   └── __init__.py
  │           │   │   ├── InputNumber

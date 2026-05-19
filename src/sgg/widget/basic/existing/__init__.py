@@ -2,7 +2,7 @@ from .Buttons import Buttons
 from .Checkbox import Checkbox
 from .Column import Column
 from .Frames import Frames
-from .Image import Images
+from .Image import Images,Imagebyto
 from .Input import Input
 from .InputNumber import InputNumber
 from .Listboxs import Listboxs

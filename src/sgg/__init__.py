@@ -17,6 +17,8 @@ class sgg:
  @staticmethod
  def Images(**kw):return{'count':counts(),'type':'Images',**kw}
  @staticmethod
+ def Imagebyto(**kw):return{'count':counts(),'type':'Imagebyto',**kw}
+ @staticmethod
  def Buttons(**kw):return{'count':counts(),'type':'Buttons',**kw}
  @staticmethod
  def Input(**kw):return{'count':counts(),'type':'Input',**kw}

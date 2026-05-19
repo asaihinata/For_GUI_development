@@ -1,7 +1,30 @@
-from tkinter import Misc
+from tkinter import Misc,_Cursor
 from .typing import Callable,TupleNumbertype2
+from ._font import fonts
 __all__=['_Element','Element']
 class Element:
+ master:Misc=master
+ graph:bool=False
+ cursor:_Cursor
+ back_bg:str
+ justify:str
+ padx:int|float
+ pady:int|float
+ relief:str
+ fg:str
+ bg:str
+ borderwidth:int|float
+ takefocus:bool
+ family:str
+ font_size:int|float
+ weight:str
+ slant:str
+ underline:bool
+ overstrike:bool
+ font:fonts
+ anchor:str
+ width:int
+ height:int
  def _size_width(self,val:int|float,other:int|float=None)->int|float:...
  def _size_height(self,val:int|float,other:int|float=None)->int|float:...
  def _size(self,size:list|tuple,other:TupleNumbertype2|list[int|float,int|float]=(None,None))->TupleNumbertype2:...

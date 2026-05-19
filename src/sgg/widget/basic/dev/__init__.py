@@ -1,1 +1,1 @@
-from .photo import Photo
+from .photo import Img_path,Img_byte

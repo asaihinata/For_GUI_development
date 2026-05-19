@@ -103,6 +103,7 @@ class WindowController:
   elif t=='Texts':widget=Texts(parent,kw)
   elif t=='Link':widget=Link(parent,kw)
   elif t=='Images':widget=Images(parent,kw)
+  elif t=='Imagebyto':widget=Imagebyto(parent,kw)
   elif t=='Buttons':widget=Buttons(parent,kw)
   elif t=='Input':widget=Input(parent,kw)
   elif t=='Multiline':widget=Multiline(parent,kw)

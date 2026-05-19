@@ -4,7 +4,7 @@ from barcode import get_barcode_class
 from barcode.writer import ImageWriter
 from ...._log import Logger
 from ....base import Element
-from ...dev import Photo
+from ...dev import Img_path
 __all__=['Barcode']
 logger=Logger(name='barcode',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class Barcode(Element):
@@ -23,7 +23,7 @@ class Barcode(Element):
    barclass=BytesIO()
    get_barcode_class(self.item)(str(self.data),writer=ImageWriter()).write(barclass)
    barclass.seek(0)
-   (self.path,self.imgs,self.imgdate)=Photo(barclass).data()
+   (self.path,self.imgs,self.imgdate)=Img_path(barclass)
    self.widget=Label(self.master,image=self.path,takefocus=self.takefocus)
    self.widget.image=self.path
   except Exception as e:
