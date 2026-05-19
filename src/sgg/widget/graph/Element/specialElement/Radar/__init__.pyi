@@ -1,10 +1,13 @@
-from numpy import ndarray
+from numpy import ndarray,int64
+from matplotlib.projections.polar import PolarAxes
 from ....typing import *
 from ...Graph import GElement,getLabel
-__all__=['RadarElement','radar_factory']
+__all__=['RadarElement']
 class RadarElement(GElement):
  label:getLabel
+ ax:PolarAxes
  theta:ndarray[float64]
+ thetas:ndarray[int64]
  def _updates(
 self,
 fg:ColorType,
@@ -14,18 +17,6 @@ title:str,
 xlabel:labeltype,
 ylabel:labeltype
 )->NoReturn:...
- def _apply_labels(
-self,
-xlabel:labeltype=None,
-ylabel:labeltype=None
-)->NoReturn:'''2Dのグラフのx軸,y軸のラベルを作成する。
-
- :param xlabel: x軸のラベルを指定する。
- :type label: labeltype
- :param ylabel: y軸のラベルを指定する。
- :type ylabel: labeltype
- :return:
- :rtype: NoReturn'''
  def _adjustment(self)->NoReturn:'''グラフの調整を行う'''
  def clear(self)->NoReturn:'''グラフ内のグラフをクリアする。'''
  def invert(self)->NoReturn:'''x軸,y軸を反転させる。'''

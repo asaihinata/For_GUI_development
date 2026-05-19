@@ -1,15 +1,15 @@
 import numpy as np
-from matplotlib.pyplot import rcParams
-from ....._function import bols,list2num,listchose,num0s,parsecolor,range_num
+from ....._function import bols,list2num,num0s,parsecolor,range_num
 from ....style import Title,Xlabel,Ylabel
 from ...Graph import GElement
 from .custom import radar_factory
-__all__=['RadarElement','radar_factory']
+__all__=['RadarElement']
 class RadarElement(GElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.data=self._manyarr(kw.get('data'))
   self.theta=radar_factory(self.data.shape[1],frame='circle')
+  self.thetas=np.degrees(self.theta)
   # グリッド線
   self.grid_xy=bols(kw.get('grid_xy'))
   self.grid_x=bols(kw.get('grid_x'),False)
@@ -21,8 +21,6 @@ class RadarElement(GElement):
   self.ymajorint=bols(kw.get('ymajorint'))
   self.xticksshow=bols(kw.get('xticksshow'),False)
   self.yticksshow=bols(kw.get('yticksshow'),False)
-  self.xticksdirection=listchose(kw.get('xticksdirection'),['out','in','inout'])
-  self.yticksdirection=listchose(kw.get('yticksdirection'),['out','in','inout'])
   xticksrange=kw.get('xticksrange',0)
   yticksrange=kw.get('yticksrange',0)
   if isinstance(xticksrange,int|float):
@@ -62,8 +60,6 @@ class RadarElement(GElement):
   else:
    if self.xticksshow:self.ax.set_xticks([])
    if self.yticksshow:self.ax.set_yticks([])
-  rcParams['xtick.direction']=self.xticksdirection
-  rcParams['ytick.direction']=self.yticksdirection
  def _adjustment(self):
   xlimmins,xlimmaxs=self.xticksrange
   xlimmin,xlimmax=self.ax.get_xlim()
@@ -71,6 +67,7 @@ class RadarElement(GElement):
   ylimmin,ylimmax=self.ax.get_ylim()
   self.ax.set_xlim(xlimmin+xlimmins,xlimmax+xlimmaxs)
   self.ax.set_ylim(ylimmin+ylimmins,ylimmax+ylimmaxs)
+  self.ax.set_thetagrids(self.thetas)
   if self.tight_layout:self.fig.tight_layout()
  def clear(self):
   self.graphdata=[]

@@ -8,10 +8,10 @@ from matplotlib.transforms import Affine2D
 __all__=['radar_factory']
 def radar_factory(num_vars,frame='circle'):
  theta=np.linspace(0,2*np.pi,num_vars,endpoint=False)
+ thetas=np.degrees(theta)
  class RadarTransform(PolarAxes.PolarTransform):
   def transform_path_non_affine(self,path):
-   if path._interpolation_steps>1:
-    path=path.interpolated(num_vars)
+   if path._interpolation_steps>1:path=path.interpolated(num_vars)
    return Path(self.transform(path.vertices),path.codes)
  class RadarAxes(PolarAxes):
   name='radar'
@@ -22,9 +22,7 @@ def radar_factory(num_vars,frame='circle'):
   def fill(self,*args,closed=True,**kwargs):
    return super().fill(closed=closed,*args,**kwargs)
   def plot(self,*args,**kwargs):
-   lines=super().plot(*args,**kwargs)
-   for line in lines:
-    self._close_line(line)
+   for line in super().plot(*args,**kwargs):self._close_line(line)
   def _close_line(self,line):
    x,y=line.get_data()
    if x[0]!=x[-1]:
@@ -32,7 +30,7 @@ def radar_factory(num_vars,frame='circle'):
     y=np.append(y,y[0])
     line.set_data(x,y)
   def set_varlabels(self,labels=None):
-   self.set_xticks(theta)
+   self.set_thetagrids(thetas,labels)
   def _gen_axes_patch(self):
    if frame=='circle':
     return Circle((0.5,0.5),0.5)
