@@ -1,4 +1,5 @@
 from ..maindialog.Dialog import Dialog
+__all__=['Directory','askdirectory']
 class Directory(Dialog):
  command='tk_chooseDirectory'
  def _fixresult(self,widget,result):

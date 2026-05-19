@@ -1,5 +1,6 @@
 from os.path import split
 from .Dialog import Dialog
+__all__=['_Dialog']
 class _Dialog(Dialog):
  def _fixoptions(self):
   try:self.options['filetypes']=tuple(self.options['filetypes'])

@@ -1,4 +1,5 @@
 from ..maindialog.Dialog import Dialog
+__all__=['Chooser','askcolor']
 class Chooser(Dialog):
  command='tk_chooseColor'
  def _fixoptions(self):

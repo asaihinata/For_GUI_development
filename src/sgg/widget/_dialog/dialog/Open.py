@@ -1,5 +1,6 @@
 from os.path import split
 from ..maindialog._Dialog import _Dialog
+__all__=['Open','askopenfilename']
 class Open(_Dialog):
  command='tk_getOpenFile'
  def _fixresult(self,widget,result):
