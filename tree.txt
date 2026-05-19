@@ -166,6 +166,12 @@ For_GUI_development
  │           │   │   ├── polarElement
  │           │   │   │   ├── __init__.py
  │           │   │   │   └── __init__.pyi
+ │           │   │   ├── specialElement
+ │           │   │   │   ├── Radar
+ │           │   │   │   │   ├── __init__.py
+ │           │   │   │   │   ├── __init__.pyi
+ │           │   │   │   │   └── custom.py
+ │           │   │   │   └── __init__.py
  │           │   │   ├── threeElement
  │           │   │   │   ├── __init__.py
  │           │   │   │   └── __init__.pyi
@@ -214,7 +220,12 @@ For_GUI_development
  │           │   │   │   ├── Violinpolar.py
  │           │   │   │   ├── __init__.py
  │           │   │   │   └── __init__.pyi
- │           │   │   └── dev
+ │           │   │   ├── dev
+ │           │   │   │   └── __init__.py
+ │           │   │   └── special
+ │           │   │       ├── Radar
+ │           │   │       │   ├── Radarplot.py
+ │           │   │       │   └── __init__.py
  │           │   │       └── __init__.py
  │           │   ├── __init__.py
  │           │   ├── dev

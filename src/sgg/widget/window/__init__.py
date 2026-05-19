@@ -170,6 +170,7 @@ class WindowController:
   elif t=='Eventpolar':widget=Eventpolar(parent,kw)
   elif t=='Scatterpolar':widget=Scatterpolar(parent,kw)
   elif t=='Violinpolar':widget=Violinpolar(parent,kw)
+  elif t=='Radarplot':widget=Radarplot(parent,kw)
   else:widget=Texts(parent,{'text':f'Unknown element:{t}'})
   if widget:
    if t=='Menus':self.root.config(menu=widget.widget)

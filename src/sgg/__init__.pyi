@@ -5524,6 +5524,10 @@ key:str=...
  :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Type_ticksdirection'''
+ @staticmethod
+ def Radarplot(
+data=...
+):...
  @classmethod
  def Popup(
 cls,

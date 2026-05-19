@@ -1,0 +1,90 @@
+import numpy as np
+from matplotlib.pyplot import rcParams
+from ....._function import bols,list2num,listchose,num0s,parsecolor,range_num
+from ....style import Title,Xlabel,Ylabel
+from ...Graph import GElement
+from .custom import radar_factory
+__all__=['RadarElement','radar_factory']
+class RadarElement(GElement):
+ def __init__(self,master,kw):
+  super().__init__(master,kw)
+  self.data=self._manyarr(kw.get('data'))
+  self.theta=radar_factory(self.data.shape[1],frame='circle')
+  # グリッド線
+  self.grid_xy=bols(kw.get('grid_xy'))
+  self.grid_x=bols(kw.get('grid_x'),False)
+  self.grid_y=bols(kw.get('grid_y'),False)
+  # グラフの基盤
+  self.ax=self.fig.add_subplot(111,projection='radar')
+  # 目盛り
+  self.xmajorint=bols(kw.get('xmajorint'))
+  self.ymajorint=bols(kw.get('ymajorint'))
+  self.xticksshow=bols(kw.get('xticksshow'),False)
+  self.yticksshow=bols(kw.get('yticksshow'),False)
+  self.xticksdirection=listchose(kw.get('xticksdirection'),['out','in','inout'])
+  self.yticksdirection=listchose(kw.get('yticksdirection'),['out','in','inout'])
+  xticksrange=kw.get('xticksrange',0)
+  yticksrange=kw.get('yticksrange',0)
+  if isinstance(xticksrange,int|float):
+   xticksrange=abs(xticksrange)
+   self.xticksrange=(xticksrange*-1,xticksrange)
+  elif list2num(xticksrange):self.xticksrange=xticksrange
+  else:self.xticksrange=(0,0)
+  if isinstance(yticksrange,int|float):
+   yticksrange=abs(yticksrange)
+   self.yticksrange=(yticksrange*-1,yticksrange)
+  elif list2num(yticksrange):self.yticksrange=yticksrange
+  else:self.yticksrange=(0,0)
+ def _apply_theme_colors(self):
+  self.ax.set_facecolor(self.graph_bg)
+  self.ax.tick_params(colors=self.fg)
+  if self.title is not None:Title(self.ax,self.title,color=self.titlefg,ha=self.titleha,va=self.titleva,rotation=self.titlerotation,rotation_mode=self.titlerotation_mode,font=self.titlefont,alpha=self.titlealpha,zorder=self.titlezorder)
+  self.ax.xaxis.label.set_color(self.fg)
+  self.ax.yaxis.label.set_color(self.fg)
+  if self.grid_xy:self.ax.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6,which='both')
+  else:
+   self.ax.grid(False)
+   if self.grid_x:self.ax.xaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
+   if self.grid_y:self.ax.yaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
+ def _apply_labels(self,xlabel,ylabel):
+  if xlabel is not None:Xlabel(self.ax,xlabel,color=self.xlabelfg,ha=self.xlabelha,va=self.xlabelva,font=self.xlabelfont,rotation=self.xlabelrotation,rotation_mode=self.xlabelrotation_mode,alpha=self.xlabelalpha,zorder=self.xlabelzorder)
+  if ylabel is not None:Ylabel(self.ax,ylabel,color=self.ylabelfg,ha=self.ylabelha,va=self.ylabelva,font=self.ylabelfont,rotation=self.ylabelrotation,rotation_mode=self.ylabelrotation_mode,alpha=self.ylabelalpha,zorder=self.ylabelzorder)
+ def _updates(self,**kw):
+  self.fg=parsecolor(kw.get('fg'),self.fg)
+  self.graph_bg=parsecolor(kw.get('bg'),self.graph_bg)
+  self.graph_grid=parsecolor(kw.get('graph_grid'),self.graph_grid)
+  self.title=kw.get('title',self.title)
+  self.alpha=range_num(num0s(kw.get('alpha'),self.alpha),0,1,self.alpha)
+ def _ticks(self):
+  if self.ticksshow:
+   self.ax.set_xticks([])
+   self.ax.set_yticks([])
+  else:
+   if self.xticksshow:self.ax.set_xticks([])
+   if self.yticksshow:self.ax.set_yticks([])
+  rcParams['xtick.direction']=self.xticksdirection
+  rcParams['ytick.direction']=self.yticksdirection
+ def _adjustment(self):
+  xlimmins,xlimmaxs=self.xticksrange
+  xlimmin,xlimmax=self.ax.get_xlim()
+  ylimmins,ylimmaxs=self.yticksrange
+  ylimmin,ylimmax=self.ax.get_ylim()
+  self.ax.set_xlim(xlimmin+xlimmins,xlimmax+xlimmaxs)
+  self.ax.set_ylim(ylimmin+ylimmins,ylimmax+ylimmaxs)
+  if self.tight_layout:self.fig.tight_layout()
+ def clear(self):
+  self.graphdata=[]
+  self.ax.clear()
+  self._ticks()
+  self._apply_theme_colors()
+ def invert(self):
+  self.invert_y()
+  self.invert_x()
+ def invert_x(self):self.ax.invert_xaxis()
+ def invert_y(self):self.ax.invert_yaxis()
+ def getbound(self):return(self.ax.get_xbound(),self.ax.get_ybound())
+ def getxbound(self):return self.ax.get_xbound()
+ def getybound(self):return self.ax.get_ybound()
+ def getticks(self):return(self.ax.get_xticks(),self.ax.get_yticks())
+ def getxticks(self):return self.ax.get_xticks()
+ def getyticks(self):return self.ax.get_yticks()
