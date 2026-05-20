@@ -2,6 +2,7 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
 from ...typing import *
 from ..Graph import GElement,getLabel
+__all__=['threeElement']
 class threeElement(GElement):
  label:getLabel
  ax:Axes3D

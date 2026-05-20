@@ -2,6 +2,7 @@ from matplotlib.axes._axes import Axes
 from numpy import ndarray
 from ...typing import *
 from ..Graph import GElement,getLabel
+__all__=['twoElement']
 class twoElement(GElement):
  label:getLabel
  ax:Axes

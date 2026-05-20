@@ -6,8 +6,10 @@ __all__=['RadarElement']
 class RadarElement(GElement):
  label:getLabel
  ax:PolarAxes
- theta:ndarray[float64]
- thetas:ndarray[int64]
+ data:ndarray
+ theta:ndarray[float64,dtype[float64]]
+ thetas:ndarray[int64,dtype[int64]]
+ frametype:Literal['circle','polygon']='circle'
  def _updates(
 self,
 fg:ColorType,

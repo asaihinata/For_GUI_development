@@ -7,8 +7,9 @@ __all__=['RadarElement']
 class RadarElement(GElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
+  self.frametype=kw.get('frame','circle')
   self.data=self._manyarr(kw.get('data'))
-  self.theta=radar_factory(self.data.shape[1],frame='circle')
+  self.theta=radar_factory(self.data.shape[1],frame=self.frametype)
   self.thetas=np.degrees(self.theta)
   # グリッド線
   self.grid_xy=bols(kw.get('grid_xy'))
