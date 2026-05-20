@@ -1,8 +1,7 @@
 from pathlib import Path,PosixPath,WindowsPath
 from tkinter import Label
 from PIL import ImageTk
-from ...._log import Logger
-from ....base import Element
+from ...common import *
 from ...dev import Img_path
 logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 __all__=['Images']

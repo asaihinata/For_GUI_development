@@ -1,7 +1,5 @@
 from tkinter.ttk import Progressbar,Style
-from ....dev import listchose,num0
-from ...._log import Logger
-from ....base import Element
+from ...common import *
 logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class TProgressbar(Element):
  def __init__(self,master,kw):

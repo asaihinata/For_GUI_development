@@ -1,12 +1,12 @@
 from os import getcwd
 from tkinter import Canvas,Frame,Scrollbar,Tk
 from PIL import ImageGrab
-from ..dev import bols,listchose,num0s,range_num,typelist,wparsecolor
-from .._log import Logger
-from .._save import autofile_save
+from ...dev import bols,listchose,num0s,range_num,typelist,wparsecolor
+from ..._log import Logger
+from ..._save import autofile_save
 from ..basic import *
-from ..graph import *
-from ..typing import FunctionType
+from ...graph import *
+from ...typing import FunctionType
 __all__=['WindowController']
 logger=Logger(name='window',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class WindowController:

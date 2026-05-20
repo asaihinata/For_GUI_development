@@ -1,5 +1,5 @@
 from tkinter import Misc,_Cursor
-from ..typing import Callable,TupleNumbertype2
+from ...typing import Callable,TupleNumbertype2
 from .._font import fonts
 __all__=['_Element','Element']
 class Element:

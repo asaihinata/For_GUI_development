@@ -1,4 +1,6 @@
 from .widget import *
+from .graph import *
+from ._log import Logger
 def counts():
  sgg.count+=1
  return sgg.count

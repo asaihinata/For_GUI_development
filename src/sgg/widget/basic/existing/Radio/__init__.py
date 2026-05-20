@@ -1,7 +1,5 @@
 from tkinter import Radiobutton,StringVar
-from ....dev import num0
-from ...._log import Logger
-from ....base import Element
+from ...common import *
 logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class Radio(Element):
  groups,text_list,count={},{},0
