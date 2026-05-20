@@ -5168,7 +5168,7 @@ ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
 key:str=...
-)->dict[str,Any]:'''極軸エラーグラフを作成する。
+)->dict[str,Any]:'''極軸イベントグラフを作成する。
 
  :param x: `x`のデータを指定する。
  :type x: o_array
@@ -5299,7 +5299,7 @@ ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
 key:str=...
-)->dict[str,Any]:'''極軸エラーグラフを作成する。
+)->dict[str,Any]:'''極軸散布図を作成する。
 
  :param x: `x`のデータを指定する。
  :type x: o_array
@@ -5430,7 +5430,7 @@ ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
 key:str=...
-)->dict[str,Any]:'''極軸エラーグラフを作成する。
+)->dict[str,Any]:'''極軸イベントグラフを作成する。
 
  :param x: `x`のデータを指定する。
  :type x: o_array

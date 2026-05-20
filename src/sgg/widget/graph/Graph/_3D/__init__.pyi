@@ -2,7 +2,9 @@ from matplotlib.collections import PathCollection
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
 from ...typing import *
-__all__=['DScatter']
+__all__=[
+'DScatter'
+]
 class _3Gset:
  ax:Axes3D
  def winsize(self)->TupleInt2:'''ウィジェットの現在の幅と高さを返す。

@@ -46,3 +46,4 @@ class Violinpolar(polarElement):
  def get(self):return [self.graphdata]
  def getx(self):return self.x
  def gety(self):return self.y
+ def getdata(self):return self.data
