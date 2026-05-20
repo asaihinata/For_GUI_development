@@ -65,8 +65,6 @@ For_GUI_development
  │           │   ├── __init__.pyi
  │           │   ├── _data.py
  │           │   ├── _logfile.py
- │           │   ├── data
- │           │   │   └── log.log
  │           │   ├── logs.py
  │           │   └── logtext.py
  │           ├── _save
@@ -226,12 +224,12 @@ For_GUI_development
  │           │   │   │   ├── Violinpolar.py
  │           │   │   │   ├── __init__.py
  │           │   │   │   └── __init__.pyi
- │           │   │   ├── dev
+ │           │   │   ├── _special
+ │           │   │   │   ├── Radar
+ │           │   │   │   │   ├── Radarplot.py
+ │           │   │   │   │   └── __init__.py
  │           │   │   │   └── __init__.py
- │           │   │   └── special
- │           │   │       ├── Radar
- │           │   │       │   ├── Radarplot.py
- │           │   │       │   └── __init__.py
+ │           │   │   └── dev
  │           │   │       └── __init__.py
  │           │   ├── __init__.py
  │           │   ├── dev
