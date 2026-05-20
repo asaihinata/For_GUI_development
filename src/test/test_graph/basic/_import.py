@@ -4,7 +4,7 @@ from sys import path
 import numpy as np
 path.append(abspath(join(dirname(__file__),"..")))
 path.append(str(Path(__file__).parent.resolve().parent.parent.parent))
-from src.sgg import *
+from sgg import *
 rng=np.random.default_rng(seed=42)
 def randrange(min=0,max=1,size=None):return rng.random(size)*(max-min)+min
 def randsint(loc=1,scale=None,lenght=1,hierarchy=None):

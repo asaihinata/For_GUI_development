@@ -6,7 +6,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
 from ....dev import bols,listchose,num0s,num1s,nums,parsecolor,range_num
-from ...._log import Logger
+from ....log import Logger
 from ...._save import autofile_save
 from ...dev import *
 from ...style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid

@@ -8,8 +8,7 @@ from numpy import ndarray
 from .widget import *
 from .typing import *
 from .graph import *
-from ._log import Logger
-__all__=['Type_legendplace','Type_orientation','Type_ticksdirection','Type_labelha','Type_labelva']
+from .log import Logger
 Type_legendplace:TypeAlias=Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
 Type_orientation:TypeAlias=Literal['horizontal','vertical']
 Type_ticksdirection:TypeAlias=Literal['out','in','inout']

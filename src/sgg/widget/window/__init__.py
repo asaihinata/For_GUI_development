@@ -2,7 +2,7 @@ from os import getcwd
 from tkinter import Canvas,Frame,Scrollbar,Tk
 from PIL import ImageGrab
 from ...dev import bols,listchose,num0s,range_num,typelist,wparsecolor
-from ..._log import Logger
+from ...log import Logger
 from ..._save import autofile_save
 from ..basic import *
 from ...graph import *

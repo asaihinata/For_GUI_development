@@ -16,354 +16,354 @@ For_GUI_development
  ├── package.json
  ├── pyproject.toml
  ├── src
- │   └── sgg
- │       ├── __init__.py
- │       ├── __init__.pyi
- │       ├── _color
- │       │   ├── __init__.py
- │       │   ├── color.py
- │       │   └── data
- │       │       ├── __init__.py
- │       │       └── color.csv
- │       ├── _log
- │       │   ├── __init__.py
- │       │   ├── __init__.pyi
- │       │   ├── _data.py
- │       │   ├── _logfile.py
- │       │   ├── logs.py
- │       │   └── logtext.py
- │       ├── _save
- │       │   ├── __init__.py
- │       │   ├── savefile.py
- │       │   └── saveimg.py
- │       ├── _time
- │       │   ├── __init__.py
- │       │   ├── __init__.pyi
- │       │   ├── _time.py
- │       │   └── _timelist.py
- │       ├── dev
- │       │   ├── __init__.py
- │       │   ├── _darray.py
- │       │   ├── _dbool.py
- │       │   ├── _dcolor.py
- │       │   └── _dnumber.py
- │       ├── graph
- │       │   ├── Element
- │       │   │   ├── Graph
- │       │   │   │   ├── __init__.py
- │       │   │   │   └── __init__.pyi
- │       │   │   ├── __init__.py
- │       │   │   ├── polarElement
- │       │   │   │   ├── __init__.py
- │       │   │   │   └── __init__.pyi
- │       │   │   ├── specialElement
- │       │   │   │   ├── Radar
- │       │   │   │   │   ├── __init__.py
- │       │   │   │   │   ├── __init__.pyi
- │       │   │   │   │   ├── custom.py
- │       │   │   │   │   └── custom.pyi
- │       │   │   │   └── __init__.py
- │       │   │   ├── threeElement
- │       │   │   │   ├── __init__.py
- │       │   │   │   └── __init__.pyi
- │       │   │   └── twoElement
- │       │   │       ├── __init__.py
- │       │   │       └── __init__.pyi
- │       │   ├── Graph
- │       │   │   ├── _2D
- │       │   │   │   ├── __init__.py
- │       │   │   │   ├── __init__.pyi
- │       │   │   │   ├── bargraph.py
- │       │   │   │   ├── barhgraph.py
- │       │   │   │   ├── boxplot.py
- │       │   │   │   ├── ecdf.py
- │       │   │   │   ├── errorbar.py
- │       │   │   │   ├── eventplot.py
- │       │   │   │   ├── funnelplot.py
- │       │   │   │   ├── hatplot.py
- │       │   │   │   ├── hexbin.py
- │       │   │   │   ├── hist.py
- │       │   │   │   ├── hist2d.py
- │       │   │   │   ├── linefill.py
- │       │   │   │   ├── linegraph.py
- │       │   │   │   ├── pie.py
- │       │   │   │   ├── scatter.py
- │       │   │   │   ├── stack.py
- │       │   │   │   ├── stacked.py
- │       │   │   │   ├── stackedh.py
- │       │   │   │   ├── stem.py
- │       │   │   │   ├── step.py
- │       │   │   │   ├── violinplot.py
- │       │   │   │   ├── waterfall.py
- │       │   │   │   └── waterfallh.py
- │       │   │   ├── _3D
- │       │   │   │   ├── __init__.py
- │       │   │   │   ├── __init__.pyi
- │       │   │   │   └── dscatter.py
- │       │   │   ├── __init__.py
- │       │   │   ├── _polar
- │       │   │   │   ├── Barpolar.py
- │       │   │   │   ├── Errorpolar.py
- │       │   │   │   ├── Eventpolar.py
- │       │   │   │   ├── Linepolar.py
- │       │   │   │   ├── Scatterpolar.py
- │       │   │   │   ├── Stempolar.py
- │       │   │   │   ├── Violinpolar.py
- │       │   │   │   ├── __init__.py
- │       │   │   │   └── __init__.pyi
- │       │   │   ├── _special
- │       │   │   │   ├── Radar
- │       │   │   │   │   ├── Radarplot.py
- │       │   │   │   │   └── __init__.py
- │       │   │   │   └── __init__.py
- │       │   │   └── dev
- │       │   │       └── __init__.py
- │       │   ├── __init__.py
- │       │   ├── dev
- │       │   │   ├── __init__.py
- │       │   │   ├── array
- │       │   │   │   ├── NPArray
- │       │   │   │   │   ├── __init__.py
- │       │   │   │   │   └── __init__.pyi
- │       │   │   │   ├── __init__.py
- │       │   │   │   └── graph_list
- │       │   │   │       ├── Datalist.py
- │       │   │   │       ├── Manylist.py
- │       │   │   │       ├── Onelist.py
- │       │   │   │       ├── __init__.py
- │       │   │   │       └── __init__.pyi
- │       │   │   └── maths
- │       │   │       ├── __init__.py
- │       │   │       ├── angle
- │       │   │       │   ├── __init__.py
- │       │   │       │   └── __init__.pyi
- │       │   │       └── maths
- │       │   │           ├── __init__.py
- │       │   │           └── __init__.pyi
- │       │   ├── style
- │       │   │   ├── __init__.py
- │       │   │   ├── axis
- │       │   │   │   ├── __init__.py
- │       │   │   │   ├── __init__.pyi
- │       │   │   │   ├── xaxis.py
- │       │   │   │   ├── yaxis.py
- │       │   │   │   └── zaxis.py
- │       │   │   ├── composite
- │       │   │   │   ├── __init__.py
- │       │   │   │   ├── bbox.py
- │       │   │   │   ├── capstyle.py
- │       │   │   │   ├── fmt
- │       │   │   │   │   ├── __init__.py
- │       │   │   │   │   ├── _check.py
- │       │   │   │   │   ├── _data.py
- │       │   │   │   │   └── fmt.py
- │       │   │   │   ├── hatch.py
- │       │   │   │   ├── marker
- │       │   │   │   │   ├── __init__.py
- │       │   │   │   │   └── __init__.pyi
- │       │   │   │   └── solid.py
- │       │   │   ├── dev
- │       │   │   │   ├── __init__.py
- │       │   │   │   ├── __init__.pyi
- │       │   │   │   ├── _fun.py
- │       │   │   │   └── angle.py
- │       │   │   ├── label
- │       │   │   │   ├── __init__.py
- │       │   │   │   ├── __init__.pyi
- │       │   │   │   ├── xlabel.py
- │       │   │   │   ├── ylabel.py
- │       │   │   │   └── zlabel.py
- │       │   │   ├── legend
- │       │   │   │   ├── __init__.py
- │       │   │   │   └── __init__.pyi
- │       │   │   ├── title
- │       │   │   │   ├── __init__.py
- │       │   │   │   └── __init__.pyi
- │       │   │   └── tool
- │       │   │       ├── __init__.py
- │       │   │       ├── color
- │       │   │       │   ├── __init__.py
- │       │   │       │   └── __init__.pyi
- │       │   │       └── font
- │       │   │           ├── __init__.py
- │       │   │           ├── __init__.pyi
- │       │   │           ├── fontfile.py
- │       │   │           └── fontmanager.py
- │       │   └── typing
- │       │       └── __init__.py
- │       ├── typing
- │       │   └── __init__.py
- │       └── widget
- │           ├── __init__.py
- │           ├── _dialog
- │           │   ├── __init__.py
- │           │   ├── dialog
- │           │   │   ├── Chooser.py
- │           │   │   ├── Directory.py
- │           │   │   ├── Open.py
- │           │   │   ├── SaveAs.py
- │           │   │   ├── __init__.py
- │           │   │   └── __init__.pyi
- │           │   ├── maindialog
- │           │   │   ├── Dialog.py
- │           │   │   ├── Message.py
- │           │   │   ├── _Dialog.py
- │           │   │   ├── _Show.py
- │           │   │   ├── __init__.py
- │           │   │   └── __init__.pyi
- │           │   └── popup
- │           │       ├── __init__.py
- │           │       ├── error
- │           │       │   ├── __init__.py
- │           │       │   └── __init__.pyi
- │           │       ├── info
- │           │       │   ├── __init__.py
- │           │       │   └── __init__.pyi
- │           │       ├── question
- │           │       │   ├── __init__.py
- │           │       │   ├── __init__.pyi
- │           │       │   ├── askokcancel.py
- │           │       │   ├── askquestion.py
- │           │       │   ├── askretrycancel.py
- │           │       │   ├── askyesno.py
- │           │       │   └── askyesnocancel.py
- │           │       ├── typing
- │           │       │   └── __init__.py
- │           │       └── warning
- │           │           ├── __init__.py
- │           │           └── __init__.pyi
- │           ├── _font.py
- │           ├── base
- │           │   ├── __init__.py
- │           │   └── __init__.pyi
- │           ├── basic
- │           │   ├── __init__.py
- │           │   ├── __init__.pyi
- │           │   ├── common.py
- │           │   ├── dev
- │           │   │   ├── __init__.py
- │           │   │   └── photo
- │           │   │       ├── __init__.py
- │           │   │       ├── byte.py
- │           │   │       ├── conversion.py
- │           │   │       └── paths.py
- │           │   ├── existing
- │           │   │   ├── Buttons
- │           │   │   │   └── __init__.py
- │           │   │   ├── Checkbox
- │           │   │   │   └── __init__.py
- │           │   │   ├── Column
- │           │   │   │   └── __init__.py
- │           │   │   ├── Frames
- │           │   │   │   └── __init__.py
- │           │   │   ├── Image
- │           │   │   │   └── __init__.py
- │           │   │   ├── Input
- │           │   │   │   └── __init__.py
- │           │   │   ├── InputNumber
- │           │   │   │   └── __init__.py
- │           │   │   ├── Listboxs
- │           │   │   │   └── __init__.py
- │           │   │   ├── Menubuttons
- │           │   │   │   └── __init__.py
- │           │   │   ├── Menus
- │           │   │   │   └── __init__.py
- │           │   │   ├── Multiline
- │           │   │   │   └── __init__.py
- │           │   │   ├── Radio
- │           │   │   │   └── __init__.py
- │           │   │   ├── Slidebar
- │           │   │   │   └── __init__.py
- │           │   │   ├── TCombobox
- │           │   │   │   └── __init__.py
- │           │   │   ├── TProgressbar
- │           │   │   │   └── __init__.py
- │           │   │   ├── Tab
- │           │   │   │   └── __init__.py
- │           │   │   ├── Table
- │           │   │   │   └── __init__.py
- │           │   │   ├── Texts
- │           │   │   │   └── __init__.py
- │           │   │   ├── Tree
- │           │   │   │   └── __init__.py
- │           │   │   └── __init__.py
- │           │   └── original
- │           │       ├── Barcode
- │           │       │   ├── __init__.py
- │           │       │   └── barcodes.py
- │           │       ├── Imagebyte
- │           │       │   └── __init__.py
- │           │       ├── Imagelink
- │           │       │   ├── __init__.py
- │           │       │   └── getdata.py
- │           │       ├── Link
- │           │       │   └── __init__.py
- │           │       ├── QRcode
- │           │       │   └── __init__.py
- │           │       ├── __init__.py
- │           │       ├── btnpop
- │           │       │   ├── Colorbtn.py
- │           │       │   ├── FileLoad.py
- │           │       │   ├── FolderLoad.py
- │           │       │   ├── Savebtn.py
- │           │       │   ├── __init__.py
- │           │       │   └── btn.py
- │           │       └── calendar
- │           │           ├── __init__.py
- │           │           ├── _calendar.py
- │           │           └── tooltip.py
- │           └── window
- │               ├── __init__.py
- │               └── __init__.pyi
- ├── test
- │   ├── data
- │   │   └── img
- │   │       └── Lenna.png
- │   ├── test_all.py
- │   ├── test_graph
- │   │   ├── application
- │   │   │   ├── test_graph_schooldata.py
- │   │   │   └── test_japanese.py
- │   │   ├── basic
- │   │   │   ├── test_bargraph.py
- │   │   │   ├── test_barhgraph.py
- │   │   │   ├── test_boxplot.py
- │   │   │   ├── test_dscatter.py
- │   │   │   ├── test_ecdf.py
- │   │   │   ├── test_errorbar.py
- │   │   │   ├── test_eventplot.py
- │   │   │   ├── test_funne.py
- │   │   │   ├── test_graph.py
- │   │   │   ├── test_hatplot.py
- │   │   │   ├── test_hexbin.py
- │   │   │   ├── test_hist.py
- │   │   │   ├── test_hist2d.py
- │   │   │   ├── test_linefill.py
- │   │   │   ├── test_linegraph.py
- │   │   │   ├── test_pie.py
- │   │   │   ├── test_scatter.py
- │   │   │   ├── test_stack.py
- │   │   │   ├── test_stacked.py
- │   │   │   ├── test_stackedh.py
- │   │   │   ├── test_stem.py
- │   │   │   ├── test_step.py
- │   │   │   ├── test_violinplot.py
- │   │   │   ├── test_waterfall.py
- │   │   │   └── test_waterfallh.py
- │   │   ├── data
- │   │   │   └── csv
+ │   ├── sgg
+ │   │   ├── __init__.py
+ │   │   ├── __init__.pyi
+ │   │   ├── _color
+ │   │   │   ├── __init__.py
+ │   │   │   ├── color.py
+ │   │   │   └── data
  │   │   │       ├── __init__.py
- │   │   │       ├── japan_population.csv
- │   │   │       └── school_test_demo_data.csv
- │   │   └── style
- │   │       ├── test_linestyles.py
- │   │       └── test_marker.py
- │   ├── test_log
- │   │   ├── test_log.log
- │   │   └── test_log.py
- │   └── test_widget
- │       └── basic
- │           └── test_all.py
+ │   │   │       └── color.csv
+ │   │   ├── _save
+ │   │   │   ├── __init__.py
+ │   │   │   ├── savefile.py
+ │   │   │   └── saveimg.py
+ │   │   ├── _time
+ │   │   │   ├── __init__.py
+ │   │   │   ├── __init__.pyi
+ │   │   │   ├── _time.py
+ │   │   │   └── _timelist.py
+ │   │   ├── dev
+ │   │   │   ├── __init__.py
+ │   │   │   ├── _darray.py
+ │   │   │   ├── _dbool.py
+ │   │   │   ├── _dcolor.py
+ │   │   │   └── _dnumber.py
+ │   │   ├── graph
+ │   │   │   ├── Element
+ │   │   │   │   ├── Graph
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── polarElement
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   ├── specialElement
+ │   │   │   │   │   ├── Radar
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   │   ├── custom.py
+ │   │   │   │   │   │   └── custom.pyi
+ │   │   │   │   │   └── __init__.py
+ │   │   │   │   ├── threeElement
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   └── twoElement
+ │   │   │   │       ├── __init__.py
+ │   │   │   │       └── __init__.pyi
+ │   │   │   ├── Graph
+ │   │   │   │   ├── _2D
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   ├── bargraph.py
+ │   │   │   │   │   ├── barhgraph.py
+ │   │   │   │   │   ├── boxplot.py
+ │   │   │   │   │   ├── ecdf.py
+ │   │   │   │   │   ├── errorbar.py
+ │   │   │   │   │   ├── eventplot.py
+ │   │   │   │   │   ├── funnelplot.py
+ │   │   │   │   │   ├── hatplot.py
+ │   │   │   │   │   ├── hexbin.py
+ │   │   │   │   │   ├── hist.py
+ │   │   │   │   │   ├── hist2d.py
+ │   │   │   │   │   ├── linefill.py
+ │   │   │   │   │   ├── linegraph.py
+ │   │   │   │   │   ├── pie.py
+ │   │   │   │   │   ├── scatter.py
+ │   │   │   │   │   ├── stack.py
+ │   │   │   │   │   ├── stacked.py
+ │   │   │   │   │   ├── stackedh.py
+ │   │   │   │   │   ├── stem.py
+ │   │   │   │   │   ├── step.py
+ │   │   │   │   │   ├── violinplot.py
+ │   │   │   │   │   ├── waterfall.py
+ │   │   │   │   │   └── waterfallh.py
+ │   │   │   │   ├── _3D
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   └── dscatter.py
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── _polar
+ │   │   │   │   │   ├── Barpolar.py
+ │   │   │   │   │   ├── Errorpolar.py
+ │   │   │   │   │   ├── Eventpolar.py
+ │   │   │   │   │   ├── Linepolar.py
+ │   │   │   │   │   ├── Scatterpolar.py
+ │   │   │   │   │   ├── Stempolar.py
+ │   │   │   │   │   ├── Violinpolar.py
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   ├── _special
+ │   │   │   │   │   ├── Radar
+ │   │   │   │   │   │   ├── Radarplot.py
+ │   │   │   │   │   │   └── __init__.py
+ │   │   │   │   │   └── __init__.py
+ │   │   │   │   └── dev
+ │   │   │   │       └── __init__.py
+ │   │   │   ├── __init__.py
+ │   │   │   ├── dev
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── array
+ │   │   │   │   │   ├── NPArray
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── graph_list
+ │   │   │   │   │       ├── Datalist.py
+ │   │   │   │   │       ├── Manylist.py
+ │   │   │   │   │       ├── Onelist.py
+ │   │   │   │   │       ├── __init__.py
+ │   │   │   │   │       └── __init__.pyi
+ │   │   │   │   └── maths
+ │   │   │   │       ├── __init__.py
+ │   │   │   │       ├── angle
+ │   │   │   │       │   ├── __init__.py
+ │   │   │   │       │   └── __init__.pyi
+ │   │   │   │       └── maths
+ │   │   │   │           ├── __init__.py
+ │   │   │   │           └── __init__.pyi
+ │   │   │   ├── style
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── axis
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   ├── xaxis.py
+ │   │   │   │   │   ├── yaxis.py
+ │   │   │   │   │   └── zaxis.py
+ │   │   │   │   ├── composite
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   ├── bbox.py
+ │   │   │   │   │   ├── capstyle.py
+ │   │   │   │   │   ├── fmt
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   ├── _check.py
+ │   │   │   │   │   │   ├── _data.py
+ │   │   │   │   │   │   └── fmt.py
+ │   │   │   │   │   ├── hatch.py
+ │   │   │   │   │   ├── marker
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   └── solid.py
+ │   │   │   │   ├── dev
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   ├── _fun.py
+ │   │   │   │   │   └── angle.py
+ │   │   │   │   ├── label
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   ├── xlabel.py
+ │   │   │   │   │   ├── ylabel.py
+ │   │   │   │   │   └── zlabel.py
+ │   │   │   │   ├── legend
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   ├── title
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   └── tool
+ │   │   │   │       ├── __init__.py
+ │   │   │   │       ├── color
+ │   │   │   │       │   ├── __init__.py
+ │   │   │   │       │   └── __init__.pyi
+ │   │   │   │       └── font
+ │   │   │   │           ├── __init__.py
+ │   │   │   │           ├── __init__.pyi
+ │   │   │   │           ├── fontfile.py
+ │   │   │   │           └── fontmanager.py
+ │   │   │   └── typing
+ │   │   │       └── __init__.py
+ │   │   ├── log
+ │   │   │   ├── __init__.py
+ │   │   │   ├── __init__.pyi
+ │   │   │   ├── _data.py
+ │   │   │   ├── _logfile.py
+ │   │   │   ├── logs.py
+ │   │   │   └── logtext.py
+ │   │   ├── typing
+ │   │   │   └── __init__.py
+ │   │   └── widget
+ │   │       ├── __init__.py
+ │   │       ├── _dialog
+ │   │       │   ├── __init__.py
+ │   │       │   ├── dialog
+ │   │       │   │   ├── Chooser.py
+ │   │       │   │   ├── Directory.py
+ │   │       │   │   ├── Open.py
+ │   │       │   │   ├── SaveAs.py
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── maindialog
+ │   │       │   │   ├── Dialog.py
+ │   │       │   │   ├── Message.py
+ │   │       │   │   ├── _Dialog.py
+ │   │       │   │   ├── _Show.py
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   └── popup
+ │   │       │       ├── __init__.py
+ │   │       │       ├── error
+ │   │       │       │   ├── __init__.py
+ │   │       │       │   └── __init__.pyi
+ │   │       │       ├── info
+ │   │       │       │   ├── __init__.py
+ │   │       │       │   └── __init__.pyi
+ │   │       │       ├── question
+ │   │       │       │   ├── __init__.py
+ │   │       │       │   ├── __init__.pyi
+ │   │       │       │   ├── askokcancel.py
+ │   │       │       │   ├── askquestion.py
+ │   │       │       │   ├── askretrycancel.py
+ │   │       │       │   ├── askyesno.py
+ │   │       │       │   └── askyesnocancel.py
+ │   │       │       ├── typing
+ │   │       │       │   └── __init__.py
+ │   │       │       └── warning
+ │   │       │           ├── __init__.py
+ │   │       │           └── __init__.pyi
+ │   │       ├── _font.py
+ │   │       ├── base
+ │   │       │   ├── __init__.py
+ │   │       │   └── __init__.pyi
+ │   │       ├── basic
+ │   │       │   ├── __init__.py
+ │   │       │   ├── __init__.pyi
+ │   │       │   ├── common.py
+ │   │       │   ├── dev
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── photo
+ │   │       │   │       ├── __init__.py
+ │   │       │   │       ├── byte.py
+ │   │       │   │       ├── conversion.py
+ │   │       │   │       └── paths.py
+ │   │       │   ├── existing
+ │   │       │   │   ├── Buttons
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Checkbox
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Column
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Frames
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Image
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Input
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── InputNumber
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Listboxs
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Menubuttons
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Menus
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Multiline
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Radio
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Slidebar
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── TCombobox
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── TProgressbar
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Tab
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Table
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Texts
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   ├── Tree
+ │   │       │   │   │   └── __init__.py
+ │   │       │   │   └── __init__.py
+ │   │       │   └── original
+ │   │       │       ├── Barcode
+ │   │       │       │   ├── __init__.py
+ │   │       │       │   └── barcodes.py
+ │   │       │       ├── Imagebyte
+ │   │       │       │   └── __init__.py
+ │   │       │       ├── Imagelink
+ │   │       │       │   ├── __init__.py
+ │   │       │       │   └── getdata.py
+ │   │       │       ├── Link
+ │   │       │       │   └── __init__.py
+ │   │       │       ├── QRcode
+ │   │       │       │   └── __init__.py
+ │   │       │       ├── __init__.py
+ │   │       │       ├── btnpop
+ │   │       │       │   ├── Colorbtn.py
+ │   │       │       │   ├── FileLoad.py
+ │   │       │       │   ├── FolderLoad.py
+ │   │       │       │   ├── Savebtn.py
+ │   │       │       │   ├── __init__.py
+ │   │       │       │   └── btn.py
+ │   │       │       └── calendar
+ │   │       │           ├── __init__.py
+ │   │       │           ├── _calendar.py
+ │   │       │           └── tooltip.py
+ │   │       └── window
+ │   │           ├── __init__.py
+ │   │           └── __init__.pyi
+ │   └── test
+ │       ├── data
+ │       │   └── img
+ │       │       └── Lenna.png
+ │       ├── test_all.py
+ │       ├── test_graph
+ │       │   ├── application
+ │       │   │   ├── test_graph_schooldata.py
+ │       │   │   └── test_japanese.py
+ │       │   ├── basic
+ │       │   │   ├── test_bargraph.py
+ │       │   │   ├── test_barhgraph.py
+ │       │   │   ├── test_boxplot.py
+ │       │   │   ├── test_dscatter.py
+ │       │   │   ├── test_ecdf.py
+ │       │   │   ├── test_errorbar.py
+ │       │   │   ├── test_eventplot.py
+ │       │   │   ├── test_funne.py
+ │       │   │   ├── test_graph.py
+ │       │   │   ├── test_hatplot.py
+ │       │   │   ├── test_hexbin.py
+ │       │   │   ├── test_hist.py
+ │       │   │   ├── test_hist2d.py
+ │       │   │   ├── test_linefill.py
+ │       │   │   ├── test_linegraph.py
+ │       │   │   ├── test_pie.py
+ │       │   │   ├── test_scatter.py
+ │       │   │   ├── test_stack.py
+ │       │   │   ├── test_stacked.py
+ │       │   │   ├── test_stackedh.py
+ │       │   │   ├── test_stem.py
+ │       │   │   ├── test_step.py
+ │       │   │   ├── test_violinplot.py
+ │       │   │   ├── test_waterfall.py
+ │       │   │   └── test_waterfallh.py
+ │       │   ├── data
+ │       │   │   └── csv
+ │       │   │       ├── __init__.py
+ │       │   │       ├── japan_population.csv
+ │       │   │       └── school_test_demo_data.csv
+ │       │   └── style
+ │       │       ├── test_linestyles.py
+ │       │       └── test_marker.py
+ │       ├── test_log
+ │       │   ├── test_log.log
+ │       │   └── test_log.py
+ │       └── test_widget
+ │           └── basic
+ │               └── test_all.py
  ├── tree.txt
  ├── .crossnote
  │   ├── config.js
