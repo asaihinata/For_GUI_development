@@ -170,7 +170,8 @@ For_GUI_development
  │           │   │   │   ├── Radar
  │           │   │   │   │   ├── __init__.py
  │           │   │   │   │   ├── __init__.pyi
- │           │   │   │   │   └── custom.py
+ │           │   │   │   │   ├── custom.py
+ │           │   │   │   │   └── custom.pyi
  │           │   │   │   └── __init__.py
  │           │   │   ├── threeElement
  │           │   │   │   ├── __init__.py
