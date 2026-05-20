@@ -31,34 +31,41 @@ For_GUI_development
  │           │       └── color.csv
  │           ├── _dialog
  │           │   ├── __init__.py
- │           │   ├── __init__.pyi
  │           │   ├── dialog
  │           │   │   ├── Chooser.py
  │           │   │   ├── Directory.py
  │           │   │   ├── Open.py
  │           │   │   ├── SaveAs.py
- │           │   │   └── __init__.py
+ │           │   │   ├── __init__.py
+ │           │   │   └── __init__.pyi
  │           │   ├── maindialog
  │           │   │   ├── Dialog.py
  │           │   │   ├── Message.py
  │           │   │   ├── _Dialog.py
  │           │   │   ├── _Show.py
- │           │   │   └── __init__.py
+ │           │   │   ├── __init__.py
+ │           │   │   └── __init__.pyi
  │           │   └── popup
  │           │       ├── __init__.py
  │           │       ├── error
- │           │       │   └── __init__.py
+ │           │       │   ├── __init__.py
+ │           │       │   └── __init__.pyi
  │           │       ├── info
- │           │       │   └── __init__.py
+ │           │       │   ├── __init__.py
+ │           │       │   └── __init__.pyi
  │           │       ├── question
  │           │       │   ├── __init__.py
+ │           │       │   ├── __init__.pyi
  │           │       │   ├── askokcancel.py
  │           │       │   ├── askquestion.py
  │           │       │   ├── askretrycancel.py
  │           │       │   ├── askyesno.py
  │           │       │   └── askyesnocancel.py
+ │           │       ├── typing
+ │           │       │   └── __init__.py
  │           │       └── warning
- │           │           └── __init__.py
+ │           │           ├── __init__.py
+ │           │           └── __init__.pyi
  │           ├── _font.py
  │           ├── _log
  │           │   ├── __init__.py

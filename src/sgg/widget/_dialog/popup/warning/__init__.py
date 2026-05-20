@@ -1,5 +1,5 @@
 from ...maindialog import _iconset,_show
-__all__=['showwarning','popupw','popupwyn','popupwarning','popupwarningyesno']
+__all__=['popupwarning','popupwarningyesno']
 def showwarning(title=None,message=None,**kw):return _show(title,message,'warning','ok',**kw)
 class popupw:
  def get_select(self):return self.retul

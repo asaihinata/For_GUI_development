@@ -1,5 +1,5 @@
 from ...maindialog import _iconset,_show
-__all__=['showerror','popupe','popupeyn','popuperror','popuperroryesno']
+__all__=['popuperror','popuperroryesno']
 def showerror(title=None,message=None,**kw):return _show(title,message,'error','ok',**kw)
 class popupe:
  def get_select(self):return self.retul
