@@ -1,7 +1,8 @@
+from typing import ClassVar
 from ..maindialog.Dialog import Dialog
 __all__=['Chooser','askcolor']
 class Chooser(Dialog):
- command='tk_chooseColor'
+ command:ClassVar[str]='tk_chooseColor'
  def _fixoptions(self):
   try:
    color=self.options['initialcolor']

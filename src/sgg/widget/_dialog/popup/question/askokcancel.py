@@ -1,5 +1,5 @@
 from ...maindialog import _iconset,_show
-__all__=['askokcancel','popupoc','popupokcansel']
+__all__=['popupokcansel']
 def askokcancel(title=None,message=None,**kw):return _show(title,message,'question','okcancel',**kw)=='ok'
 class popupoc:
  def get_select(self):return self.retul

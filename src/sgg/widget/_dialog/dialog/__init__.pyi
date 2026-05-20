@@ -1,12 +1,7 @@
 from collections.abc import Iterable
 from tkinter import Misc,StringVar
-from typing import ClassVar
 from _typeshed import StrOrBytesPath
-from ..maindialog import Dialog,_Dialog
-class Open(_Dialog):command:ClassVar[str]
-class SaveAs(_Dialog):command:ClassVar[str]
-class Directory(Dialog):command:ClassVar[str]
-class Chooser(Dialog):command:ClassVar[str]
+__all__=['askcolor','asksaveasfilename','askopenfilename','askdirectory']
 def askcolor(
 color:str|bytes|None=None,
 *,
@@ -17,7 +12,7 @@ title:str=...
 def asksaveasfilename(
 *,
 confirmoverwrite:bool|None=True,
-defaultextension:str|None="",
+defaultextension:str|None='',
 filetypes:Iterable[tuple[str,str|list[str]|tuple[str,...]]]|None=...,
 initialdir:StrOrBytesPath|None=...,
 initialfile:StrOrBytesPath|None=...,
@@ -27,7 +22,7 @@ typevariable:StringVar|str|None=...,
 )->str:...
 def askopenfilename(
 *,
-defaultextension:str|None="",
+defaultextension:str|None='',
 filetypes:Iterable[tuple[str,str|list[str]|tuple[str,...]]]|None=...,
 initialdir:StrOrBytesPath|None=...,
 initialfile:StrOrBytesPath|None=...,

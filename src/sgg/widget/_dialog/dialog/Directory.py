@@ -1,7 +1,8 @@
+from typing import ClassVar
 from ..maindialog.Dialog import Dialog
 __all__=['Directory','askdirectory']
 class Directory(Dialog):
- command='tk_chooseDirectory'
+ command:ClassVar[str]='tk_chooseDirectory'
  def _fixresult(self,widget,result):
   if result:
    try:result=result.string

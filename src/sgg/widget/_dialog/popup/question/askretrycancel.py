@@ -1,5 +1,5 @@
 from ...maindialog import _iconset,_show
-__all__=['askretrycancel','popuptry','popuptrys']
+__all__=['popuptrys']
 def askretrycancel(title=None,message=None,**kw):return _show(title,message,'warning','retrycancel',**kw)=='retry'
 class popuptry:
  def get_select(self):return self.retul
