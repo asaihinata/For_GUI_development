@@ -5,7 +5,7 @@ from cycler import cycler
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
-from ...._function import bols,listchose,num0s,num1s,nums,parsecolor,range_num
+from ....dev import bols,listchose,num0s,num1s,nums,parsecolor,range_num
 from ...._log import Logger
 from ...._save import autofile_save
 from ...dev import *

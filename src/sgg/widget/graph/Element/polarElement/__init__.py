@@ -1,6 +1,6 @@
 from matplotlib.projections.polar import PolarAxes
 from numpy import linspace,pi
-from ...._function import bols,list2num,num0s,parsecolor,range_num
+from ....dev import bols,list2num,num0s,parsecolor,range_num
 from ...dev.maths.angle import *
 from ...style import Title
 from ...typing import Type_Numberlike

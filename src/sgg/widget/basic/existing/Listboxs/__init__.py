@@ -1,5 +1,5 @@
 from tkinter import Listbox,StringVar
-from ...._function import bols,listchose,nums,parsecolor
+from ....dev import bols,listchose,nums,parsecolor
 from ...._log import Logger
 from ....base import Element
 logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()

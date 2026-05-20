@@ -1,6 +1,6 @@
 from tkinter import Button
 from ...._dialog import askcolor
-from ...._function import parsecolor
+from ....dev import parsecolor
 from .btn import Btn
 __all__=['Colorbtn']
 class Colorbtn(Btn):

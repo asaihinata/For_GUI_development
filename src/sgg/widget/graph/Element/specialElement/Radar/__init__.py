@@ -1,5 +1,5 @@
 import numpy as np
-from ....._function import bols,list2num,num0s,parsecolor,range_num
+from .....dev import bols,list2num,num0s,parsecolor,range_num
 from ....style import Title,Xlabel,Ylabel
 from ...Graph import GElement
 from .custom import radar_factory

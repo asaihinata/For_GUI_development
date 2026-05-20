@@ -1,5 +1,5 @@
 from tkinter import BooleanVar,Checkbutton
-from ...._function import bols,num0
+from ....dev import bols,num0
 from ...._log import Logger
 from ....base import Element
 logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()

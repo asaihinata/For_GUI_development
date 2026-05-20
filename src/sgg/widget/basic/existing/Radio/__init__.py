@@ -1,5 +1,5 @@
 from tkinter import Radiobutton,StringVar
-from ...._function import num0
+from ....dev import num0
 from ...._log import Logger
 from ....base import Element
 logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()

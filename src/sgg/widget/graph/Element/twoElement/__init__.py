@@ -1,7 +1,7 @@
 from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
 from numpy import ndarray
-from ...._function import allNones,bols,list2num,listchose,num0s,parsecolor,range_num
+from ....dev import allNones,bols,list2num,listchose,num0s,parsecolor,range_num
 from ...style import FontFile,Fontmanager,Fontname,Title,Xlabel,Ylabel
 from ..Graph import GElement
 __all__=['twoElement']

@@ -1,6 +1,6 @@
 from tkinter import Misc,Tk
 from tkinter.font import Font,families
-from ._function import bols,listchose,nums
+from .dev import bols,listchose,nums
 from .typing import Literal
 __all__=['fonts']
 class fonts(Font):

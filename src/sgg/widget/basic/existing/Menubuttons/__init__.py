@@ -1,5 +1,5 @@
 from tkinter import Menu,Menubutton
-from ...._function import bols,parsecolor
+from ....dev import bols,parsecolor
 from ...._log import Logger
 from ....base import Element
 logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()

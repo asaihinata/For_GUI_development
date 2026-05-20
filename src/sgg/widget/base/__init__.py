@@ -1,7 +1,7 @@
 from re import findall
 from tkinter import Misc
 from .._font import fonts
-from .._function import bols,listchose,num0,wparsecolor
+from ..dev import bols,listchose,num0,wparsecolor
 from .._log import Logger
 from ..typing import FunctionType
 __all__=['Element']

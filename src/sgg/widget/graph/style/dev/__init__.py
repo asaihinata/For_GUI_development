@@ -1,2 +1,2 @@
-from ._function import *
+from ._fun import *
 from .angle import *

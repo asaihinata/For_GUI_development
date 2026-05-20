@@ -60,7 +60,6 @@ For_GUI_development
  │           │       └── warning
  │           │           └── __init__.py
  │           ├── _font.py
- │           ├── _function.py
  │           ├── _log
  │           │   ├── __init__.py
  │           │   ├── __init__.pyi
@@ -157,6 +156,12 @@ For_GUI_development
  │           │           ├── __init__.py
  │           │           ├── _calendar.py
  │           │           └── tooltip.py
+ │           ├── dev
+ │           │   ├── __init__.py
+ │           │   ├── _darray.py
+ │           │   ├── _dbool.py
+ │           │   ├── _dcolor.py
+ │           │   └── _dnumber.py
  │           ├── graph
  │           │   ├── Element
  │           │   │   ├── Graph
@@ -275,7 +280,7 @@ For_GUI_development
  │           │   │   ├── dev
  │           │   │   │   ├── __init__.py
  │           │   │   │   ├── __init__.pyi
- │           │   │   │   ├── _function.py
+ │           │   │   │   ├── _fun.py
  │           │   │   │   └── angle.py
  │           │   │   ├── label
  │           │   │   │   ├── __init__.py
