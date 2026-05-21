@@ -5,10 +5,9 @@ from tkinter import StringVar,_Cursor
 from typing import Union
 from matplotlib.mlab import GaussianKDE
 from numpy import ndarray
-from .widget import *
-from .typing import *
 from .graph import *
-from .log import Logger
+from .typing import *
+from .widget import *
 Type_legendplace:TypeAlias=Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
 Type_orientation:TypeAlias=Literal['horizontal','vertical']
 Type_ticksdirection:TypeAlias=Literal['out','in','inout']

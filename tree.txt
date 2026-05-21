@@ -25,6 +25,13 @@ For_GUI_development
  │   │   │   └── data
  │   │   │       ├── __init__.py
  │   │   │       └── color.csv
+ │   │   ├── _log
+ │   │   │   ├── __init__.py
+ │   │   │   ├── __init__.pyi
+ │   │   │   ├── _data.py
+ │   │   │   ├── _logfile.py
+ │   │   │   ├── logs.py
+ │   │   │   └── logtext.py
  │   │   ├── _save
  │   │   │   ├── __init__.py
  │   │   │   ├── savefile.py
@@ -184,13 +191,6 @@ For_GUI_development
  │   │   │   │           └── fontmanager.py
  │   │   │   └── typing
  │   │   │       └── __init__.py
- │   │   ├── log
- │   │   │   ├── __init__.py
- │   │   │   ├── __init__.pyi
- │   │   │   ├── _data.py
- │   │   │   ├── _logfile.py
- │   │   │   ├── logs.py
- │   │   │   └── logtext.py
  │   │   ├── typing
  │   │   │   └── __init__.py
  │   │   └── widget
@@ -358,9 +358,6 @@ For_GUI_development
  │       │   └── style
  │       │       ├── test_linestyles.py
  │       │       └── test_marker.py
- │       ├── test_log
- │       │   ├── test_log.log
- │       │   └── test_log.py
  │       └── test_widget
  │           └── basic
  │               └── test_all.py

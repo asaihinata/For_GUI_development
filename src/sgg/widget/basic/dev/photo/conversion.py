@@ -1,4 +1,3 @@
-from pathlib import Path,WindowsPath
 from PIL import Image
 __all__=['Img_conversion']
 class Img_conversion:

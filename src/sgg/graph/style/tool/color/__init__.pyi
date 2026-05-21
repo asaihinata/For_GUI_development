@@ -1,5 +1,6 @@
 from collections.abc import Iterator
 from typing import Any,overload
+
 import numpy as np
 from matplotlib.typing import ColorType
 __all__=['Color']

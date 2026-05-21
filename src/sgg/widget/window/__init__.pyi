@@ -1,7 +1,7 @@
 from tkinter import Tk
-from ..basic import *
 from ...graph import *
 from ...typing import Any,NoReturn
+from ..basic import *
 __all__=['WindowController']
 class WindowController:
  __firstlineno__:int
