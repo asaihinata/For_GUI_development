@@ -1,6 +1,6 @@
 from os import getcwd
 from tkinter import Button
-from ...._dialog import askdirectory
+from ....._dialog import askdirectory
 from .btn import Btn
 __all__=['FolderLoad']
 class FolderLoad(Btn):

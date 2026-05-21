@@ -1,14 +1,12 @@
 from os import getcwd
 from tkinter import Canvas,Frame,Scrollbar,Tk
 from PIL import ImageGrab
-from ..._log import Logger
-from ..._save import autofile_save
+from ..._dialog import askopenfilename
 from ...dev import bols,listchose,num0s,range_num,typelist,wparsecolor
 from ...graph import *
 from ...typing import FunctionType
 from ..basic import *
 __all__=['WindowController']
-logger=Logger(name='window',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class WindowController:
  '''ウィンドウを生成する。'''
  count=0
@@ -125,8 +123,7 @@ class WindowController:
     frame=Frame(widget.widget,bg=widget.bg)
     widget._add_tab(frame,tab[0])
     if 1<len(tab) and isinstance(tab[1],list):
-     try:self._build_layout(tab[1],frame,kw.get('bg'))
-     except Exception as e:logger.error(f'Tabレイアウト構築エラー:{e}')
+     self._build_layout(tab[1],frame,kw.get('bg'))
   elif t=='Frames':
    widget=Frames(parent,kw)
    if kw.get('layout'):self._build_layout(kw.get('layout'),widget.widget,kw.get('bg'))
@@ -182,20 +179,11 @@ class WindowController:
    if key:self.widgets[key]=widget
    else:self.widgets[f'widget{self.count}']=widget
   self.count+=1
- def get(self,key):
-  try:return self.widgets.get(key)
-  except Exception as e:
-   logger.error(e)
- def get_title(self):
-  try:return self.title
-  except Exception as e:
-   logger.error(f'Title get error:{e}')
+ def get(self,key):return self.widgets.get(key)
+ def get_title(self):return self.title
  def set_title(self,title):
-  try:
-   self.title=title
-   self.root.title(title)
-  except Exception as e:
-   logger.error(f'Title change error:{e}')
+  self.title=title
+  self.root.title(title)
  def widgetcount(self):return self.count
  def widgetdict(self):return self.widgets
  def widgetlist(self):return list(self.widgets.keys())
@@ -204,9 +192,7 @@ class WindowController:
  def _on_window_close(self):
   self._close_result='winclose'
   self.closed=True
-  try:self.root.destroy()
-  except Exception as e:
-   logger.error(f'close error:{e}')
+  self.root.destroy()
  def close(self):self.root.quit()
  def maxwin(self):
   try:self.root.state('zoomed')
@@ -223,19 +209,15 @@ class WindowController:
   except:pass
  def win_exec_funcs(self,funcs=None):
   if isinstance(funcs,FunctionType):
-   try:funcs()
-   except Exception as e:
-    logger.error(f'function({funcs.__name__}) error.\n{e}')
+   funcs()
   elif isinstance(funcs,list):
    for f in funcs:
     if isinstance(f,FunctionType):
-     try:f()
-     except Exception as e:
-      logger.error(f'function({funcs}) error.\n{e}')
+     f()
     else:
-     logger.warning(f'{f} is not function type')
+     raise TypeError('関数ではありません')
   else:
-   logger.warning('funcs is not function type')
+   raise TypeError('関数ではありません')
  def foreground(self,bools=False):self.root.attributes('-topmost',bools)
  def fullscreen(self,bools=False):self.root.attributes('-fullscreen',bools)
  def alpha(self,val=1):self.root.attributes('-alpha',val)
@@ -244,7 +226,7 @@ class WindowController:
  def tookphoto(self,file='window',ex='.png'):
   root=self.root
   winx,winy=root.winfo_rootx(),root.winfo_rooty()
-  ImageGrab.grab(bbox=(winx,winy,winx+root.winfo_width(),winy+root.winfo_height())).save(autofile_save(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=file,initialdir=getcwd()).__fspath__())
+  ImageGrab.grab(bbox=(winx,winy,winx+root.winfo_width(),winy+root.winfo_height())).save(askopenfilename(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=file,initialdir=getcwd()))
  def winsize(self):
   root=self.root
   return root.winfo_width(),root.winfo_height()

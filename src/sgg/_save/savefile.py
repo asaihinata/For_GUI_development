@@ -1,6 +1,6 @@
 from os.path import splitext
 from pathlib import Path
-from ..widget._dialog import asksaveasfilename
+from .._dialog import asksaveasfilename
 __all__=['autofile_save']
 class autofile_save:
  def __init__(

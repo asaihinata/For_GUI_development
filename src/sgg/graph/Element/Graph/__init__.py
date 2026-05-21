@@ -1,4 +1,4 @@
-from os import fspath,getcwd
+from os import getcwd
 from re import findall
 import numpy as np
 from cycler import cycler
@@ -6,7 +6,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
 from ...._log import Logger
-from ...._save import autofile_save
+from ...._dialog import asksaveasfilename
 from ....dev import bols,listchose,num0s,num1s,nums,parsecolor,range_num
 from ...dev import *
 from ...style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid
@@ -105,9 +105,8 @@ class GElement:
   else:self.titlefont=fontfamily
   self.titlefont=self.titlefont.Properties
  def photo(self,filename='Graph',ex='.png',dpi=100):
-  try:self.fig.savefig(fspath(autofile_save(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=filename,initialdir=getcwd())),dpi=num1s(dpi,100))
-  except Exception as e:
-   logger.error(f'error:{e}')
+  path=asksaveasfilename(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=filename,initialdir=getcwd())
+  self.fig.savefig(path,dpi=num1s(dpi,100))
  def winsize(self):
   root=self.master
   return root.winfo_width(),root.winfo_height()

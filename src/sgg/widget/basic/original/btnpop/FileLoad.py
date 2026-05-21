@@ -1,6 +1,6 @@
 from os import getcwd
 from tkinter import Button
-from ...._dialog import askopenfilename
+from ....._dialog import askopenfilename
 from .btn import Btn
 __all__=['FileLoad']
 class FileLoad(Btn):
