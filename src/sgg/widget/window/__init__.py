@@ -1,7 +1,8 @@
 from os import getcwd
+from re import findall
 from tkinter import Canvas,Frame,Scrollbar,Tk
 from PIL import ImageGrab
-from ..._dialog import askopenfilename
+from ..._dialog import asksaveasfilename
 from ...dev import bols,listchose,num0s,range_num,typelist,wparsecolor
 from ...graph import *
 from ...typing import FunctionType
@@ -29,10 +30,10 @@ class WindowController:
   self.size=kw.get('size',(None,None))
   self.maxmine=bols(kw.get('maxmine'),False)
   if self.maxmine:self.maxwin()
-  self.alphas=range_num(num0s(kw.get('alpha'),1),0,1,1)
+  self.alpha=range_num(num0s(kw.get('alpha'),1),0,1,1)
   self.fullscreens=bols(kw.get('fullscreen'),False)
   self.topmost=bols(kw.get('topmost'),False)
-  self.alpha(self.alphas)
+  self.set_alpha(self.alpha)
   self.fullscreen(self.fullscreens)
   self.foreground(self.topmost)
   resizable=kw.get('resizable')
@@ -220,13 +221,19 @@ class WindowController:
    raise TypeError('関数ではありません')
  def foreground(self,bools=False):self.root.attributes('-topmost',bools)
  def fullscreen(self,bools=False):self.root.attributes('-fullscreen',bools)
- def alpha(self,val=1):self.root.attributes('-alpha',val)
+ def set_alpha(self,alpha=1.0):
+  self.alpha=alpha
+  self.root.attributes('-alpha',self.alpha)
+ def get_alpha(self):return self.alpha
  def deiconify(self):self.root.deiconify()
  def withdraw(self):self.root.withdraw()
+ def geometry(self):return[float(i) for i in findall(r'\d+',self.root.winfo_geometry())]
  def tookphoto(self,file='window',ex='.png'):
   root=self.root
   winx,winy=root.winfo_rootx(),root.winfo_rooty()
-  ImageGrab.grab(bbox=(winx,winy,winx+root.winfo_width(),winy+root.winfo_height())).save(askopenfilename(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=file,initialdir=getcwd()))
+  bbox=(winx,winy,winx+root.winfo_width(),winy+root.winfo_height())
+  paths=asksaveasfilename(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=file,initialdir=getcwd())
+  ImageGrab.grab(bbox=bbox).save(paths)
  def winsize(self):
   root=self.root
   return root.winfo_width(),root.winfo_height()
