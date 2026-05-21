@@ -1,11 +1,9 @@
 from re import findall
 from tkinter import Misc
-from ..._log import Logger
 from ...dev import bols,listchose,num0,wparsecolor
 from ...typing import FunctionType
 from .._font import fonts
 __all__=['Element']
-logger=Logger(name='base',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class Element:
  def __init__(self,master:Misc,kw):
   self.widget,self.master,self.graph=None,master,False
@@ -36,16 +34,16 @@ class Element:
  def _exec_funcs(self,funcs=None):
   if isinstance(funcs,FunctionType):
    try:funcs()
-   except Exception as e:
-    logger.error(f'function({funcs.__name__}) error.\n{e}')
+   except NameError as e:
+    raise NameError(f'{e}という関数は見つかりません')
   elif isinstance(funcs,list|tuple):
    for f in funcs:
     if isinstance(f,FunctionType):
      try:f()
-     except Exception as e:
-      logger.error(f'function({funcs.__name__}) error.\n{e}')
+     except NameError as e:
+      raise NameError(f'{e}という関数は見つかりません')
     else:
-     logger.warning(f'{f} is not function type')
+     raise NameError(f'{f}という関数は見つかりません')
   else:return None
  def winsize(self):
   root=self.master

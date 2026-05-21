@@ -1,6 +1,5 @@
 from tkinter.ttk import Progressbar,Style
 from ...common import *
-logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class TProgressbar(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)
@@ -30,10 +29,7 @@ class TProgressbar(Element):
  def _stop(self):
   try:self.widget.stop()
   except:pass
- def delta(self):
-  try:self.widget.destroy()
-  except Exception as e:
-   logger.error(e)
+ def delta(self):self.widget.destroy()
  start=_start
  stop=_stop
  set=_set

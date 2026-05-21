@@ -62,13 +62,6 @@ For_GUI_development
  │   │   │       └── warning
  │   │   │           ├── __init__.py
  │   │   │           └── __init__.pyi
- │   │   ├── _log
- │   │   │   ├── __init__.py
- │   │   │   ├── __init__.pyi
- │   │   │   ├── _data.py
- │   │   │   ├── _logfile.py
- │   │   │   ├── logs.py
- │   │   │   └── logtext.py
  │   │   ├── _save
  │   │   │   ├── __init__.py
  │   │   │   ├── savefile.py

@@ -1,6 +1,5 @@
 from tkinter.ttk import Style,Treeview
 from ...common import *
-logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class Table(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)
@@ -45,7 +44,4 @@ class Table(Element):
   width=int(total_width/len(columns))
   if 0<len(columns):
    for col in columns:self.widget.column(col,width=width)
- def delta(self):
-  try:self.widget.destroy()
-  except Exception as e:
-   logger.error(e)
+ def delta(self):self.widget.destroy()

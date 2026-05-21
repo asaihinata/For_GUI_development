@@ -3,7 +3,6 @@ from PIL import ImageTk
 from ...common import *
 from ...dev import Img_byte
 from .getdata import get_link_img
-logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 __all__=['Imagelink']
 class Imagelink(Element):
  def __init__(self,master,kw):
@@ -14,7 +13,4 @@ class Imagelink(Element):
   self.imgs=ImageTk.PhotoImage(image=self.img.imgs.resize(self.img.get_size()))
   self.widget=Label(master,text=None,image=self.imgs,takefocus=self.takefocus)
   self.widget.image=self.imgs
- def delta(self):
-  try:self.widget.destroy()
-  except Exception as e:
-   logger.error(e)
+ def delta(self):self.widget.destroy()

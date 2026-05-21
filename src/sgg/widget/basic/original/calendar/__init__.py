@@ -1,7 +1,6 @@
 from datetime import date,datetime
 from ...common import *
 from ._calendar import Calendar
-logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 __all__=['Calendars']
 fotmat_list={'format0':'yyyy/mm/dd','format1':'yyyy-mm-dd','format2':'dd/mm/yyyy','format3':'dd-mm-yyyy'}
 class Calendars(Element):
@@ -45,7 +44,4 @@ class Calendars(Element):
  def get_date(self):return self.widget.get_date()
  def select_clear(self):return self.widget.selection_clear()
  def nowdate_show(self):return self.widget.get_displayed_month()
- def delta(self):
-  try:self.widget.destroy()
-  except Exception as e:
-   logger.error(e)
+ def delta(self):self.widget.destroy()

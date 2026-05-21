@@ -1,6 +1,5 @@
 from tkinter.ttk import Style,Treeview
 from ...common import *
-logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class Tree(Element):
  sums=1
  def __init__(self,master,kw):
@@ -110,7 +109,4 @@ class Tree(Element):
   self.widget.update_idletasks()
   if 0<len(columns):
    for col in columns:self.widget.column(col,width=int(self.widget.winfo_width()/len(columns)))
- def delta(self):
-  try:self.widget.destroy()
-  except Exception as e:
-   logger.error(e)
+ def delta(self):self.widget.destroy()

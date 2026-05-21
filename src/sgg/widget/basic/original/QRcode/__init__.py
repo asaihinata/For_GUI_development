@@ -3,7 +3,6 @@ from PIL import ImageTk
 from qrcode import make
 from ...common import *
 __all__=['QRcode']
-logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class QRcode(Element):
  def __init__(self,master,kw:dict):
   super().__init__(master,kw)
@@ -16,10 +15,6 @@ class QRcode(Element):
   try:
    self.widget=Label(master,image=self.image,takefocus=self.takefocus)
    self.widget.image=self.image
-  except Exception as e:
-   logger.error(f'error:{e}')
+  except:
    self.widget=Label(master,text=self.names,fg='#000000',takefocus=self.takefocus,bg=self.bg)
- def delta(self):
-  try:self.widget.destroy()
-  except Exception as e:
-   logger.error(e)
+ def delta(self):self.widget.destroy()

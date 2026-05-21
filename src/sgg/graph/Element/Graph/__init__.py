@@ -5,13 +5,11 @@ from cycler import cycler
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
-from ...._log import Logger
 from ...._dialog import asksaveasfilename
 from ....dev import bols,listchose,num0s,num1s,nums,parsecolor,range_num
 from ...dev import *
 from ...style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid
 __all__=['GElement','getLabel']
-logger=Logger(name='Graph',format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 graph_color=['#4477aa','#ee7733','#111211','#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']
 rcParams['font.family']='Meiryo'
 rcParams['axes.prop_cycle']=cycler(color=graph_color)

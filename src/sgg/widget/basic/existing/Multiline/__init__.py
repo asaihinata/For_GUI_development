@@ -1,6 +1,5 @@
 from tkinter import Text
 from ...common import *
-logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class Multiline(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)
@@ -25,24 +24,12 @@ class Multiline(Element):
  def inserts(self,text,place='end'):self.widget.insert(place,text)
  def get_text(self):return self.widget.get(1.0,'end-1c')
  def all_delta(self):self.widget.delete(1.0,'end')
- def delta(self):
-  try:self.widget.destroy()
-  except Exception as e:
-   logger.error(e)
- def get_fg(self):
-  try:return str(self.bg)
-  except Exception as e:logger.error(e)
+ def delta(self):self.widget.destroy()
+ def get_fg(self):return str(self.bg)
  def set_fg(self,fg):
-  try:
-   self.fg=fg
-   self.widget.config(fg=fg)
-  except Exception as e:logger.error(e)
- def get_bg(self):
-  try:return str(self.bg)
-  except Exception as e:logger.error(e)
+  self.fg=fg
+  self.widget.config(fg=fg)
+ def get_bg(self):return str(self.bg)
  def set_bg(self,bg):
-  try:
-   self.bg=bg
-   self.widget.config(bg=bg)
-  except Exception as e:
-   logger.error(e)
+  self.bg=bg
+  self.widget.config(bg=bg)

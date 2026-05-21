@@ -1,6 +1,5 @@
 from tkinter import Menu
 from ...common import *
-logger=Logger(format={'filename':None,'lineno':{'after':'行目'},'message':None}).get_logger()
 class Menus(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)
@@ -56,16 +55,8 @@ class Menus(Element):
  def addmenu(self,label,submenu_lists):
   self.menu_lists.append([label,submenu_lists])
   self._create_menu_lists()
- def delta(self):
-  try:self.widget.destroy()
-  except Exception as e:
-   logger.error(e)
- def get_bg(self):
-  try:return str(self.bg)
-  except Exception as e:logger.error(e)
+ def delta(self):self.widget.destroy()
+ def get_bg(self):return str(self.bg)
  def set_bg(self,bg):
-  try:
-   self.bg=bg
-   self.widget.config(bg=bg)
-  except Exception as e:
-   logger.error(e)
+  self.bg=bg
+  self.widget.config(bg=bg)
