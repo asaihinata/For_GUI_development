@@ -21,7 +21,7 @@ title:str|None=None,
 message:str|None=None,
 _icon:str|None=None,
 _type:str|None=None,
-**kw:dict
+**kw
 )->str:...
 def _iconset(
 icon:Literal['info','error','warning','question']|str,

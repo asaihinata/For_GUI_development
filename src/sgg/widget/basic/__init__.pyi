@@ -276,6 +276,7 @@ class Imagelink(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
 class QRcode(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
+ def show(self):'''QRコードを表示させる。'''
 class Barcode(_Element):
  def delta(self)->NoReturn:'''ウィジェットを削除する。'''
  def get_type(self)->str:'''使用されたバーコードの規格を取得する。'''
