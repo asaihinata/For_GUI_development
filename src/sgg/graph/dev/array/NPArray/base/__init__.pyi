@@ -1,7 +1,9 @@
 from collections.abc import Iterator
-from numpy import _ArrayT,_CopyMode
+from typing import TypeAlias
+from numpy import _ArrayT,_CopyMode,_ScalarT,dtype,ndarray
 from numpy._typing import DTypeLike
-from ....typing import _T,Any,Type_Numberlike,Type_NumberlikeN,ndarray
+from .....typing import Any,Type_Numberlike,Type_NumberlikeN,ndarray
+_Array1D:TypeAlias=ndarray[tuple[int],dtype[_ScalarT]]
 __all__=['NPArray']
 class NPArray:
  dtype:DTypeLike
@@ -9,7 +11,6 @@ class NPArray:
  def __init__(
 self,
 data:_ArrayT,
-*,
 dtype:DTypeLike|None=None
 )->None:...
  def __iter__(self)->Iterator[Any]:...
@@ -18,10 +19,10 @@ self,
 dtype:DTypeLike|None=None,
 copy:bool|_CopyMode|None=None
 )->ndarray:...
- def tolist(self)->_T:'''list型に変換する。
+ def tolist(self)->Any|list:'''list型に変換する。
 
  :return:
- :rtype: _T'''
+ :rtype: Any|list'''
  def sort(self)->NPArray:'''`data`にソートを実行する。
 
  :return:
@@ -38,9 +39,10 @@ copy:bool|_CopyMode|None=None
  def shape(self)->tuple[int,...]:...
  @property
  def size(self)->int:...
+ def _flatten(self)->tuple[_Array1D,tuple[int,...]]:...
+ def flatten(self)->NPArray:...
  def dimension(self)->bool:'''`data`の次元が1次元か判定する。'''
  def dimensions(self)->bool:'''`data`の次元が多次元か判定する。'''
- def cussum(self)->NPArray:...
  @classmethod
  def arange(
 cls,

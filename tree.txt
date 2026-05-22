@@ -153,7 +153,12 @@ For_GUI_development
  │   │   │   │   ├── array
  │   │   │   │   │   ├── NPArray
  │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   │   ├── base
+ │   │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   │   └── number
+ │   │   │   │   │   │       ├── __init__.py
+ │   │   │   │   │   │       └── __init__.pyi
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── graph_list
  │   │   │   │   │       ├── Datalist.py

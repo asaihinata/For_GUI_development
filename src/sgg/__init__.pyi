@@ -1,6 +1,6 @@
 from io import BytesIO
 from os import PathLike
-from pathlib import Path, WindowsPath
+from pathlib import Path,WindowsPath
 from tkinter import _Cursor
 from typing import Union
 from matplotlib.mlab import GaussianKDE
