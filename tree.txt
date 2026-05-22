@@ -101,35 +101,35 @@ For_GUI_development
  │   │   │   │       └── __init__.pyi
  │   │   │   ├── Graph
  │   │   │   │   ├── _2D
+ │   │   │   │   │   ├── Bargraph.py
+ │   │   │   │   │   ├── Barhgraph.py
+ │   │   │   │   │   ├── Boxplot.py
+ │   │   │   │   │   ├── Ecdf.py
+ │   │   │   │   │   ├── Errorbar.py
+ │   │   │   │   │   ├── Eventplot.py
+ │   │   │   │   │   ├── Funnelplot.py
+ │   │   │   │   │   ├── Hatplot.py
+ │   │   │   │   │   ├── Hexbin.py
+ │   │   │   │   │   ├── Hist.py
+ │   │   │   │   │   ├── Hist2d.py
+ │   │   │   │   │   ├── Linefill.py
+ │   │   │   │   │   ├── Linegraph.py
+ │   │   │   │   │   ├── Pie.py
+ │   │   │   │   │   ├── Scatter.py
+ │   │   │   │   │   ├── Stack.py
+ │   │   │   │   │   ├── Stacked.py
+ │   │   │   │   │   ├── Stackedh.py
+ │   │   │   │   │   ├── Stem.py
+ │   │   │   │   │   ├── Step.py
+ │   │   │   │   │   ├── Violinplot.py
+ │   │   │   │   │   ├── Waterfall.py
+ │   │   │   │   │   ├── Waterfallh.py
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── __init__.pyi
- │   │   │   │   │   ├── bargraph.py
- │   │   │   │   │   ├── barhgraph.py
- │   │   │   │   │   ├── boxplot.py
- │   │   │   │   │   ├── ecdf.py
- │   │   │   │   │   ├── errorbar.py
- │   │   │   │   │   ├── eventplot.py
- │   │   │   │   │   ├── funnelplot.py
- │   │   │   │   │   ├── hatplot.py
- │   │   │   │   │   ├── hexbin.py
- │   │   │   │   │   ├── hist.py
- │   │   │   │   │   ├── hist2d.py
- │   │   │   │   │   ├── linefill.py
- │   │   │   │   │   ├── linegraph.py
- │   │   │   │   │   ├── pie.py
- │   │   │   │   │   ├── scatter.py
- │   │   │   │   │   ├── stack.py
- │   │   │   │   │   ├── stacked.py
- │   │   │   │   │   ├── stackedh.py
- │   │   │   │   │   ├── stem.py
- │   │   │   │   │   ├── step.py
- │   │   │   │   │   ├── violinplot.py
- │   │   │   │   │   ├── waterfall.py
- │   │   │   │   │   └── waterfallh.py
+ │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── _3D
+ │   │   │   │   │   ├── Dscatter.py
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── __init__.pyi
- │   │   │   │   │   └── dscatter.py
+ │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── _polar
  │   │   │   │   │   ├── Barpolar.py

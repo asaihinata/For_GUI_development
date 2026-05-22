@@ -1,2 +1,2 @@
-from .dscatter import DScatter
+from .Dscatter import DScatter
 __all__=['DScatter']
