@@ -143,7 +143,6 @@ For_GUI_development
  │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── _special
  │   │   │   │   │   ├── Radar
- │   │   │   │   │   │   ├── Radarplot.py
  │   │   │   │   │   │   └── __init__.py
  │   │   │   │   │   └── __init__.py
  │   │   │   │   └── dev
