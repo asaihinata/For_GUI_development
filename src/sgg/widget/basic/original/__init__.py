@@ -1,5 +1,5 @@
 from .Barcode import Barcode
-from .btnpop import Colorbtn,FileLoad,FolderLoad,Savebtn
+from .btnpop import *
 from .calendar import Calendars
 from .Imagebyte import Imagebyte
 from .Imagelink import Imagelink

@@ -1,6 +1,4 @@
-from tkinter import Button
-from ....._dialog import asksaveasfilename
-from .btn import Btn
+from ..Btn import *
 __all__=['Savebtn']
 class Savebtn(Btn):
  def __init__(self,master,kw):

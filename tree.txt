@@ -231,7 +231,6 @@ For_GUI_development
  │   │       │   └── __init__.pyi
  │   │       ├── basic
  │   │       │   ├── __init__.py
- │   │       │   ├── __init__.pyi
  │   │       │   ├── common.py
  │   │       │   ├── dev
  │   │       │   │   ├── __init__.py
@@ -283,26 +282,42 @@ For_GUI_development
  │   │       │   └── original
  │   │       │       ├── Barcode
  │   │       │       │   ├── __init__.py
+ │   │       │       │   ├── __init__.pyi
  │   │       │       │   └── barcodes.py
  │   │       │       ├── Imagebyte
- │   │       │       │   └── __init__.py
+ │   │       │       │   ├── __init__.py
+ │   │       │       │   └── __init__.pyi
  │   │       │       ├── Imagelink
  │   │       │       │   ├── __init__.py
+ │   │       │       │   ├── __init__.pyi
  │   │       │       │   └── getdata.py
  │   │       │       ├── Link
- │   │       │       │   └── __init__.py
+ │   │       │       │   ├── __init__.py
+ │   │       │       │   └── __init__.pyi
  │   │       │       ├── QRcode
- │   │       │       │   └── __init__.py
+ │   │       │       │   ├── __init__.py
+ │   │       │       │   └── __init__.pyi
  │   │       │       ├── __init__.py
  │   │       │       ├── btnpop
- │   │       │       │   ├── Colorbtn.py
- │   │       │       │   ├── FileLoad.py
- │   │       │       │   ├── FolderLoad.py
- │   │       │       │   ├── Savebtn.py
- │   │       │       │   ├── __init__.py
- │   │       │       │   └── btn.py
+ │   │       │       │   ├── Btn
+ │   │       │       │   │   ├── __init__.py
+ │   │       │       │   │   └── __init__.pyi
+ │   │       │       │   ├── Colorbtn
+ │   │       │       │   │   ├── __init__.py
+ │   │       │       │   │   └── __init__.pyi
+ │   │       │       │   ├── FileLoad
+ │   │       │       │   │   ├── __init__.py
+ │   │       │       │   │   └── __init__.pyi
+ │   │       │       │   ├── FolderLoad
+ │   │       │       │   │   ├── __init__.py
+ │   │       │       │   │   └── __init__.pyi
+ │   │       │       │   ├── Savebtn
+ │   │       │       │   │   ├── __init__.py
+ │   │       │       │   │   └── __init__.pyi
+ │   │       │       │   └── __init__.py
  │   │       │       └── calendar
  │   │       │           ├── __init__.py
+ │   │       │           ├── __init__.pyi
  │   │       │           ├── _calendar.py
  │   │       │           └── tooltip.py
  │   │       └── window
