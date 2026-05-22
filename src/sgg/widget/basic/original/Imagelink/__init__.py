@@ -8,8 +8,7 @@ class Imagelink(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.link=kw.get('link')
-  link=get_link_img(self.link)
-  self.imgs=PhotoImage(Img_byte(get_link_img(link)).imgs)
+  self.imgs=PhotoImage(Img_byte(get_link_img(self.link)).asresize().imgs)
   self.widget=Label(master,text=None,image=self.imgs,takefocus=self.takefocus)
   self.widget.image=self.imgs
  def delta(self):self.widget.destroy()

@@ -16,6 +16,12 @@ class Img_conversion:
  format=get_format
  mode=get_mode
  def show(self,title=None):self.imgs.show(title)
+ def resize(self,w,h):
+  self.imgs.resize((w,h))
+  return self
+ def asresize(self):
+  self.imgs.resize(self.get_size())
+  return self
 class Img_path(Img_conversion):
  def __init__(self,path):
   if not isinstance(path,Path|PosixPath|WindowsPath):

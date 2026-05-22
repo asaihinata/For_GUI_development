@@ -19,6 +19,8 @@ https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes'''
  size=get_size
  format=get_format
  mode=get_mode
+ def resize(self,w:int|float,h:int|float)->Img_conversion:...
+ def asresize(self)->Img_conversion:...
  def show(self,title:str|None=None):'''画像を表示させる。
 
  :param title: 画像を表示する際のタイトル名を指定する。
