@@ -236,9 +236,7 @@ For_GUI_development
  │   │       │   │   ├── __init__.py
  │   │       │   │   └── photo
  │   │       │   │       ├── __init__.py
- │   │       │   │       ├── byte.py
- │   │       │   │       ├── conversion.py
- │   │       │   │       └── paths.py
+ │   │       │   │       └── __init__.pyi
  │   │       │   ├── existing
  │   │       │   │   ├── Buttons
  │   │       │   │   │   ├── __init__.py
@@ -317,28 +315,23 @@ For_GUI_development
  │   │       │       │   ├── __init__.py
  │   │       │       │   └── __init__.pyi
  │   │       │       ├── __init__.py
- │   │       │       ├── btnpop
- │   │       │       │   ├── Btn
- │   │       │       │   │   ├── __init__.py
- │   │       │       │   │   └── __init__.pyi
- │   │       │       │   ├── Colorbtn
- │   │       │       │   │   ├── __init__.py
- │   │       │       │   │   └── __init__.pyi
- │   │       │       │   ├── FileLoad
- │   │       │       │   │   ├── __init__.py
- │   │       │       │   │   └── __init__.pyi
- │   │       │       │   ├── FolderLoad
- │   │       │       │   │   ├── __init__.py
- │   │       │       │   │   └── __init__.pyi
- │   │       │       │   ├── Savebtn
- │   │       │       │   │   ├── __init__.py
- │   │       │       │   │   └── __init__.pyi
- │   │       │       │   └── __init__.py
- │   │       │       └── calendar
- │   │       │           ├── __init__.py
- │   │       │           ├── __init__.pyi
- │   │       │           ├── _calendar.py
- │   │       │           └── tooltip.py
+ │   │       │       └── btnpop
+ │   │       │           ├── Btn
+ │   │       │           │   ├── __init__.py
+ │   │       │           │   └── __init__.pyi
+ │   │       │           ├── Colorbtn
+ │   │       │           │   ├── __init__.py
+ │   │       │           │   └── __init__.pyi
+ │   │       │           ├── FileLoad
+ │   │       │           │   ├── __init__.py
+ │   │       │           │   └── __init__.pyi
+ │   │       │           ├── FolderLoad
+ │   │       │           │   ├── __init__.py
+ │   │       │           │   └── __init__.pyi
+ │   │       │           ├── Savebtn
+ │   │       │           │   ├── __init__.py
+ │   │       │           │   └── __init__.pyi
+ │   │       │           └── __init__.py
  │   │       └── window
  │   │           ├── __init__.py
  │   │           └── __init__.pyi
