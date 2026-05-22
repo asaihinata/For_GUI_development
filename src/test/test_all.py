@@ -107,7 +107,6 @@ if __name__=="__main__":
  ["tab2",[[sgg.Texts(text="tab2")]]]
  ],key="tabs1")],
  [sgg.Texts(text="カレンダー")],
- [sgg.Calendars(key="cal")],
  [sgg.Texts(text="スライダー")],
  [sgg.Slidebar(value=20)],
  [sgg.Texts(text="プログレスバー")],

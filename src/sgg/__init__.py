@@ -53,8 +53,6 @@ class sgg:
  @staticmethod
  def FolderLoad(**kw):return{'count':counts(),'type':'FolderLoad',**kw}
  @staticmethod
- def Calendars(**kw):return{'count':counts(),'type':'Calendars',**kw}
- @staticmethod
  def Colorbtn(**kw):return{'count':counts(),'type':'Colorbtn',**kw}
  @staticmethod
  def Savebtn(**kw):return{'count':counts(),'type':'Savebtn',**kw}

@@ -604,65 +604,6 @@ anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='center'
  :param title: 色を選択するダイアログのタイトルを指定する。
  :type title: str'''
  @staticmethod
- def Calendars(
-date:datetime=...,
-selectmode:Literal['none','day']='day',
-headersbg:ColorTypeN='gray70',
-headersfg:ColorTypeN='black',
-othermonthbg:ColorTypeN='gray93',
-othermonthfg:ColorTypeN='gray45',
-weekendbg:ColorTypeN='gray80',
-weekendfg:ColorTypeN='gray30',
-locale:str='ja_JP',
-firstweekday:Literal['monday','sunday']='sunday',
-format:str|Literal['format0','format1','format2','format3']='format0',
-showweek:bool=False,
-key:str=...,
-justify:Literal['left','center','right']='left',
-relief:Literal['raised','sunken','flat','ridge','solid','groove']='flat',
-anchor:Literal['nw','n','ne','w','center','e','sw','s','se']='w',
-bd:int|float=2,
-weekenddays:TupleInt2|ListInt2=None,
-state:Literal['normal','disabled']='normal',
-textvariable:StringVar|None=None,
-maxdate:datetime|None=None,
-mindate:datetime|None=None,
-showotherdays:bool=True
-)->dict[str,Any]:'''カレンダーを作成する。
-
- :param date: Calendarsウィジェットに表示する日付を指定する。
- :type date: datetime
- :param selectmode: ユーザーがマウスクリックで選択した日を変更できるかどうかを指定する。
- :type selectmode: Literal['none','day']
- :param headersbg: 曜日列の背景色を指定する。
- :type headersbg: ColorTypeN
- :param headersfg: 曜日列の文字色を指定する。
- :type headersfg: ColorTypeN
- :param othermonthbg: Calendarsウィジェットで表示しいる月の前月と翌月に属する通常の曜日の背景色を指定する。
- :type othermonthbg: ColorTypeN
- :param othermonthfg: Calendarsウィジェットで表示しいる月の前月と翌月に属する通常の曜日の文字色を指定する。
- :type othermonthfg: ColorTypeN
- :param weekendbg: 週末の背景色を指定する。
- :type weekendbg: ColorTypeN
- :param weekendfg: 週末の文字色を指定する。
- :type weekendfg: ColorTypeN
- :param locale: ロケールを指定する。
- :type locale: str
- :param firstweekday: 週の最初の曜日を指定する。
- :type firstweekday: Literal['monday','sunday']
- :param format: 日付フォーマットを指定する。
- :type format: str|Literal['format0','format1','format2','format3']
- :param showweek: 週番号を表示するか指定する。
- :type showweek: bool
- :param weekenddays: 週末として表示する曜日を指定する。
- :type weekenddays: TupleInt2|ListInt2
- :param maxdate: 最大許容日付を指定する。
- :type maxdate: datetime|None
- :param mindate: 最小許容日付を指定する。
- :type mindate: datetime|None
- :param showotherdays: 前月の日付と翌月以降の日付を表示するか指定する。
- :type showotherdays: bool'''
- @staticmethod
  def Tab(
 tabs:list[list[str,list[list]]]=[],
 key:str=...,
