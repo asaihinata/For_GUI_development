@@ -1,6 +1,8 @@
+from tkinter import Text
 from .....typing import ColorType,Literal
 from ....base import _Element
 class Multiline(_Element):
+ widget:Text
  def delta(self):'''ウィジェットを削除する。'''
  def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
  def set_fg(self,fg:ColorType):'''ウィジェットが表示している文字色を変更する。'''

@@ -1,6 +1,8 @@
+from tkinter import Menu
 from .....typing import ColorType
 from ....base import _Element
 class Menus(_Element):
+ widget:Menu
  def get(self)->list:'''Menusウィジェットで表示されている配列を取得する。
 
  :return: Menusウィジェットで表示されている配列を返す。

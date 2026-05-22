@@ -1,5 +1,5 @@
 from tkinter import Label
-from PIL import ImageTk
+from PIL.ImageTk import PhotoImage
 from ...common import *
 from ...dev import Img_byte
 from .barcodes import barcode_data
@@ -11,8 +11,7 @@ class Barcode(Element):
   self.data=kw.get('data','')
   self.format=kw.get('format','code39')
   self.barcode=barcode_data(self.data,self.format)
-  self.img=Img_byte(self.barcode.bytedata)
-  self.imgs=ImageTk.PhotoImage(image=self.img.imgs.resize(self.img.get_size()))
+  self.imgs=PhotoImage(image=Img_byte(self.barcode.bytedata).imgs)
   self.widget=Label(master,text=None,image=self.imgs,takefocus=self.takefocus)
   self.widget.image=self.imgs
  def delta(self):self.widget.destroy()

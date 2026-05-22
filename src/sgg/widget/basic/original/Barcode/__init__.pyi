@@ -1,4 +1,7 @@
+from tkinter import Label
+from PIL.ImageTk import PhotoImage
 from ....base import _Element
 class Barcode(_Element):
+ imgs:PhotoImage
+ widget:Label
  def delta(self):'''ウィジェットを削除する。'''
- def get_type(self)->str:'''使用されたバーコードの規格を取得する。'''

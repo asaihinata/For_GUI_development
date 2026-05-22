@@ -1,6 +1,8 @@
+from tkinter import Listbox
 from .....typing import Any,ColorType,Literal
 from ....base import _Element
 class Listboxs(_Element):
+ widget:Listbox
  def delta(self):'''ウィジェットを削除する。'''
  def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
  def set_fg(self,fg:ColorType):'''ウィジェットが表示している文字色を変更する。'''

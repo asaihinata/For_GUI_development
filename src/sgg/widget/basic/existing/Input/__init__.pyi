@@ -1,6 +1,8 @@
+from tkinter import Entry
 from .....typing import ColorType,Literal
 from ....base import _Element
 class Input(_Element):
+ widget:Entry
  def delta(self):'''ウィジェットを削除する。'''
  def get_text(self)->str:'''Inputウィジェットに記入されている文字を取得する。
 

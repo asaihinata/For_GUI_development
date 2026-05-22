@@ -1,11 +1,11 @@
 from io import BytesIO
 from pathlib import Path,PosixPath,WindowsPath
 from typing import IO
-from PIL import ImageFile
+from PIL.ImageFile import ImageFile
 from PIL._typing import StrOrBytesPath
 __all__=['Img_path','Img_byte']
 class Img_conversion:
- img:ImageFile
+ imgs:ImageFile
  def __init__(self,data:StrOrBytesPath|IO[bytes]):...
  def get_width(self)->int|float:'''画像データの幅を返す。'''
  def get_height(self)->int|float:'''画像データの高さを返す。'''

@@ -1,5 +1,7 @@
+from tkinter.ttk import Progressbar
 from ....base import _Element
 class TProgressbar(_Element):
+ widget:Progressbar
  def start(self):'''TProgressbarをプログレスバーのバーを変化させる。'''
  def stop(self):'''TProgressbarをプログレスバーのバーの変化を止める。'''
  def set(self,val:int|float):'''TProgressbarウィジェットの値を指定する。

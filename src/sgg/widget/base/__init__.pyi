@@ -86,4 +86,5 @@ class Element:
  def id(self)->int:'''ウィジェットのウィンドウ識別子を返す。'''
  def name(self):'''ウィジェットのインスタンス名を返す。'''
 class _Element(Element):
+ widget:None
  master:Misc

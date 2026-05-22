@@ -1,7 +1,7 @@
-from datetime import datetime
+from io import BytesIO
 from os import PathLike
-from pathlib import Path,WindowsPath
-from tkinter import StringVar,_Cursor
+from pathlib import Path, WindowsPath
+from tkinter import _Cursor
 from typing import Union
 from matplotlib.mlab import GaussianKDE
 from numpy import ndarray
@@ -115,13 +115,13 @@ key:str=...
  :param path: Imagesウィジェットに表示させる画像のパスを指定する。
  :type path: Path|WindowsPath'''
  def Imagebyte(
-byte:bytes=...,
+byte:bytes|BytesIO=...,
 takefocus:bool=True,
 key:str=...
 )->dict[str,Any]:'''画像を作成する。
 
  :param byte: Imagebytoに表示させるバイトデータを指定する。
- :type byte: bytes'''
+ :type byte: bytes|BytesIO'''
  def Imagelink(
 link:str=...,
 takefocus:bool=True,

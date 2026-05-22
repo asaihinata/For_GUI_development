@@ -1,6 +1,9 @@
+from tkinter import Menubutton,Menu
 from .....typing import ColorType
 from ....base import _Element
 class Menubuttons(_Element):
+ widget:Menubutton
+ mainmenu:Menu
  def get(self)->list:'''Menubuttonsウィジェットで表示されている配列を取得する。
 
  :return: Menusウィジェットで表示されている配列を返す。

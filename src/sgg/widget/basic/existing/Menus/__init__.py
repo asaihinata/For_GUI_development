@@ -6,7 +6,7 @@ class Menus(Element):
   self.menu_lists=kw.get('list',[])
   self.funcs=None
   self.tearoff=bols(kw.get('tearoff'),False)
-  self.widget:Menu=Menu(self.master,takefocus=self.takefocus,relief=self.relief,cursor=self.cursor,tearoff=self.tearoff,bg=self.bg,fg=self.fg,font=self.font,borderwidth=self.borderwidth)
+  self.widget=Menu(self.master,takefocus=self.takefocus,relief=self.relief,cursor=self.cursor,tearoff=self.tearoff,bg=self.bg,fg=self.fg,font=self.font,borderwidth=self.borderwidth)
   self._create_menu_lists()
  def _create_menu_lists(self):
   self.widget.delete(0,'end')

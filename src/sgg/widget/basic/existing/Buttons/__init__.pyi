@@ -1,6 +1,8 @@
+from tkinter import Button
 from .....typing import ColorType
 from ....base import _Element
 class Buttons(_Element):
+ widget:Button
  def delta(self):'''ウィジェットを削除する。'''
  def get_text(self)->str:'''ウィジェットが表示している文字を取得する。'''
  def set_text(self,txt:str):'''ウィジェットが表示している文字を変更する。'''
