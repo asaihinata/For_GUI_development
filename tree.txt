@@ -241,43 +241,62 @@ For_GUI_development
  │   │       │   │       └── paths.py
  │   │       │   ├── existing
  │   │       │   │   ├── Buttons
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Checkbox
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Column
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Frames
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Image
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Input
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── InputNumber
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Listboxs
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Menubuttons
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Menus
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Multiline
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Radio
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Slidebar
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── TCombobox
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── TProgressbar
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Tab
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Table
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Texts
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── Tree
- │   │       │   │   │   └── __init__.py
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   └── __init__.py
  │   │       │   └── original
  │   │       │       ├── Barcode

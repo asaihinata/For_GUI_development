@@ -1,0 +1,12 @@
+from ....base import _Element
+class TProgressbar(_Element):
+ def start(self):'''TProgressbarをプログレスバーのバーを変化させる。'''
+ def stop(self):'''TProgressbarをプログレスバーのバーの変化を止める。'''
+ def set(self,val:int|float):'''TProgressbarウィジェットの値を指定する。
+
+ :param val: TProgressbarウィジェットの値を指定する。
+ :type val: int|float'''
+ def get(self)->int|float:'''TProgressbarの値を取得する。
+
+ :return: TProgressbarの値を返す。
+ :rtype: int|float'''
