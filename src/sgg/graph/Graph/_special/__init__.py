@@ -1,1 +1,1 @@
-from .Radar import *
+from .radar import Radarplot

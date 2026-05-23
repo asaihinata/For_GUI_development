@@ -101,84 +101,84 @@ For_GUI_development
  │   │   │   │       └── __init__.pyi
  │   │   │   ├── Graph
  │   │   │   │   ├── _2D
- │   │   │   │   │   ├── Bargraph.py
- │   │   │   │   │   ├── Barhgraph.py
- │   │   │   │   │   ├── Boxplot.py
- │   │   │   │   │   ├── Ecdf.py
- │   │   │   │   │   ├── Errorbar.py
- │   │   │   │   │   ├── Eventplot.py
- │   │   │   │   │   ├── Funnelplot.py
- │   │   │   │   │   ├── Hatplot.py
- │   │   │   │   │   ├── Hexbin.py
- │   │   │   │   │   ├── Hist.py
- │   │   │   │   │   ├── Hist2d.py
- │   │   │   │   │   ├── Linefill.py
- │   │   │   │   │   ├── Linegraph.py
- │   │   │   │   │   ├── Pie.py
- │   │   │   │   │   ├── Scatter.py
- │   │   │   │   │   ├── Stack.py
- │   │   │   │   │   ├── Stacked.py
- │   │   │   │   │   ├── Stackedh.py
- │   │   │   │   │   ├── Stem.py
- │   │   │   │   │   ├── Step.py
- │   │   │   │   │   ├── Violinplot.py
- │   │   │   │   │   ├── Waterfall.py
- │   │   │   │   │   ├── Waterfallh.py
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   ├── bargraph.py
+ │   │   │   │   │   ├── barhgraph.py
+ │   │   │   │   │   ├── boxplot.py
+ │   │   │   │   │   ├── ecdf.py
+ │   │   │   │   │   ├── errorbar.py
+ │   │   │   │   │   ├── eventplot.py
+ │   │   │   │   │   ├── funnelplot.py
+ │   │   │   │   │   ├── hatplot.py
+ │   │   │   │   │   ├── hexbin.py
+ │   │   │   │   │   ├── hist.py
+ │   │   │   │   │   ├── hist2d.py
+ │   │   │   │   │   ├── linefill.py
+ │   │   │   │   │   ├── linegraph.py
+ │   │   │   │   │   ├── pie.py
+ │   │   │   │   │   ├── scatter.py
+ │   │   │   │   │   ├── stack.py
+ │   │   │   │   │   ├── stacked.py
+ │   │   │   │   │   ├── stackedh.py
+ │   │   │   │   │   ├── stem.py
+ │   │   │   │   │   ├── step.py
+ │   │   │   │   │   ├── violinplot.py
+ │   │   │   │   │   ├── waterfall.py
+ │   │   │   │   │   └── waterfallh.py
  │   │   │   │   ├── _3D
- │   │   │   │   │   ├── Dscatter.py
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   └── dscatter.py
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── _polar
- │   │   │   │   │   ├── Barpolar.py
- │   │   │   │   │   ├── Errorpolar.py
- │   │   │   │   │   ├── Eventpolar.py
- │   │   │   │   │   ├── Linepolar.py
- │   │   │   │   │   ├── Scatterpolar.py
- │   │   │   │   │   ├── Stempolar.py
- │   │   │   │   │   ├── Violinpolar.py
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   ├── barpolar.py
+ │   │   │   │   │   ├── errorpolar.py
+ │   │   │   │   │   ├── eventpolar.py
+ │   │   │   │   │   ├── linepolar.py
+ │   │   │   │   │   ├── scatterpolar.py
+ │   │   │   │   │   ├── stempolar.py
+ │   │   │   │   │   └── violinpolar.py
  │   │   │   │   ├── _special
- │   │   │   │   │   ├── Radar
- │   │   │   │   │   │   └── __init__.py
- │   │   │   │   │   └── __init__.py
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── radar
+ │   │   │   │   │       └── __init__.py
  │   │   │   │   └── dev
  │   │   │   │       └── __init__.py
  │   │   │   ├── __init__.py
  │   │   │   ├── dev
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── array
- │   │   │   │   │   ├── NPArray
- │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   ├── base
- │   │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   │   └── __init__.pyi
- │   │   │   │   │   │   ├── dtime
- │   │   │   │   │   │   │   ├── NPDate
- │   │   │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   │   │   └── __init__.pyi
- │   │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   │   ├── conversion
- │   │   │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   │   │   └── __init__.pyi
- │   │   │   │   │   │   │   ├── data
- │   │   │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   │   │   └── constants.py
- │   │   │   │   │   │   │   └── typing
- │   │   │   │   │   │   │       └── __init__.py
- │   │   │   │   │   │   └── number
- │   │   │   │   │   │       ├── __init__.py
- │   │   │   │   │   │       └── __init__.pyi
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── graph_list
- │   │   │   │   │       ├── Datalist.py
- │   │   │   │   │       ├── Manylist.py
- │   │   │   │   │       ├── Onelist.py
+ │   │   │   │   │   ├── graph_list
+ │   │   │   │   │   │   ├── Datalist.py
+ │   │   │   │   │   │   ├── Manylist.py
+ │   │   │   │   │   │   ├── Onelist.py
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   └── nparray
  │   │   │   │   │       ├── __init__.py
- │   │   │   │   │       └── __init__.pyi
+ │   │   │   │   │       ├── base
+ │   │   │   │   │       │   ├── __init__.py
+ │   │   │   │   │       │   └── __init__.pyi
+ │   │   │   │   │       ├── dtime
+ │   │   │   │   │       │   ├── __init__.py
+ │   │   │   │   │       │   ├── conversion
+ │   │   │   │   │       │   │   ├── __init__.py
+ │   │   │   │   │       │   │   └── __init__.pyi
+ │   │   │   │   │       │   ├── data
+ │   │   │   │   │       │   │   ├── __init__.py
+ │   │   │   │   │       │   │   └── constants.py
+ │   │   │   │   │       │   ├── npdate
+ │   │   │   │   │       │   │   ├── __init__.py
+ │   │   │   │   │       │   │   └── __init__.pyi
+ │   │   │   │   │       │   └── typing
+ │   │   │   │   │       │       └── __init__.py
+ │   │   │   │   │       └── number
+ │   │   │   │   │           ├── __init__.py
+ │   │   │   │   │           └── __init__.pyi
  │   │   │   │   └── maths
  │   │   │   │       ├── __init__.py
  │   │   │   │       ├── angle
@@ -255,100 +255,100 @@ For_GUI_development
  │   │       │   │       ├── __init__.py
  │   │       │   │       └── __init__.pyi
  │   │       │   ├── existing
- │   │       │   │   ├── Buttons
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   ├── buttons
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Checkbox
+ │   │       │   │   ├── checkbox
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Column
+ │   │       │   │   ├── column
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Frames
+ │   │       │   │   ├── frames
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Image
+ │   │       │   │   ├── image
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Input
+ │   │       │   │   ├── input
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── InputNumber
+ │   │       │   │   ├── inputnumber
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Listboxs
+ │   │       │   │   ├── listboxs
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Menubuttons
+ │   │       │   │   ├── menubuttons
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Menus
+ │   │       │   │   ├── menus
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Multiline
+ │   │       │   │   ├── multiline
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Radio
+ │   │       │   │   ├── radio
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Slidebar
+ │   │       │   │   ├── slidebar
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── TCombobox
+ │   │       │   │   ├── tab
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── TProgressbar
+ │   │       │   │   ├── table
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Tab
+ │   │       │   │   ├── tcombobox
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Table
+ │   │       │   │   ├── texts
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Texts
+ │   │       │   │   ├── tprogressbar
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── Tree
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   └── __init__.py
+ │   │       │   │   └── tree
+ │   │       │   │       ├── __init__.py
+ │   │       │   │       └── __init__.pyi
  │   │       │   └── original
- │   │       │       ├── Barcode
+ │   │       │       ├── __init__.py
+ │   │       │       ├── barcode
  │   │       │       │   ├── __init__.py
  │   │       │       │   ├── __init__.pyi
  │   │       │       │   └── barcodes.py
- │   │       │       ├── Imagebyte
+ │   │       │       ├── btnpop
+ │   │       │       │   ├── Btn
+ │   │       │       │   │   ├── __init__.py
+ │   │       │       │   │   └── __init__.pyi
+ │   │       │       │   ├── Colorbtn
+ │   │       │       │   │   ├── __init__.py
+ │   │       │       │   │   └── __init__.pyi
+ │   │       │       │   ├── FileLoad
+ │   │       │       │   │   ├── __init__.py
+ │   │       │       │   │   └── __init__.pyi
+ │   │       │       │   ├── FolderLoad
+ │   │       │       │   │   ├── __init__.py
+ │   │       │       │   │   └── __init__.pyi
+ │   │       │       │   ├── Savebtn
+ │   │       │       │   │   ├── __init__.py
+ │   │       │       │   │   └── __init__.pyi
+ │   │       │       │   └── __init__.py
+ │   │       │       ├── imagebyte
  │   │       │       │   ├── __init__.py
  │   │       │       │   └── __init__.pyi
- │   │       │       ├── Imagelink
+ │   │       │       ├── imagelink
  │   │       │       │   ├── __init__.py
  │   │       │       │   ├── __init__.pyi
  │   │       │       │   └── getdata.py
- │   │       │       ├── Link
+ │   │       │       ├── link
  │   │       │       │   ├── __init__.py
  │   │       │       │   └── __init__.pyi
- │   │       │       ├── QRcode
- │   │       │       │   ├── __init__.py
- │   │       │       │   └── __init__.pyi
- │   │       │       ├── __init__.py
- │   │       │       └── btnpop
- │   │       │           ├── Btn
- │   │       │           │   ├── __init__.py
- │   │       │           │   └── __init__.pyi
- │   │       │           ├── Colorbtn
- │   │       │           │   ├── __init__.py
- │   │       │           │   └── __init__.pyi
- │   │       │           ├── FileLoad
- │   │       │           │   ├── __init__.py
- │   │       │           │   └── __init__.pyi
- │   │       │           ├── FolderLoad
- │   │       │           │   ├── __init__.py
- │   │       │           │   └── __init__.pyi
- │   │       │           ├── Savebtn
- │   │       │           │   ├── __init__.py
- │   │       │           │   └── __init__.pyi
- │   │       │           └── __init__.py
+ │   │       │       └── qrcode
+ │   │       │           ├── __init__.py
+ │   │       │           └── __init__.pyi
  │   │       └── window
  │   │           ├── __init__.py
  │   │           └── __init__.pyi

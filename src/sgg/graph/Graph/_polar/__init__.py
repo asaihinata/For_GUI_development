@@ -1,10 +1,10 @@
-from .Barpolar import Barpolar
-from .Errorpolar import Errorpolar
-from .Eventpolar import Eventpolar
-from .Linepolar import Linepolar
-from .Scatterpolar import Scatterpolar
-from .Stempolar import Stempolar
-from .Violinpolar import Violinpolar
+from .barpolar import Barpolar
+from .errorpolar import Errorpolar
+from .eventpolar import Eventpolar
+from .linepolar import Linepolar
+from .scatterpolar import Scatterpolar
+from .stempolar import Stempolar
+from .violinpolar import Violinpolar
 __all__=[
 'Barpolar',
 'Errorpolar',

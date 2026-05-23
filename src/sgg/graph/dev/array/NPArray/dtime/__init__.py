@@ -1,2 +1,2 @@
 from .conversion import Formatconversion
-from .NPDate import NPDate
+from .npdate import NPDate
