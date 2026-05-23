@@ -1,2 +1,2 @@
-from .Manylist import Manylist
-from .Onelist import Onelist
+from .manylist import Manylist
+from .onelist import Onelist

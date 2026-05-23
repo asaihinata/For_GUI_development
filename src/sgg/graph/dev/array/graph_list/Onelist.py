@@ -1,5 +1,5 @@
 import numpy as np
-from .Datalist import Datalist
+from .datalist import Datalist
 class Onelist(Datalist):
  def __init__(self,data,dtype=None):
   if not isinstance(data,tuple|list|np.ndarray):

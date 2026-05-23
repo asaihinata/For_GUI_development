@@ -28,19 +28,19 @@ For_GUI_development
  │   │   ├── _dialog
  │   │   │   ├── __init__.py
  │   │   │   ├── dialog
- │   │   │   │   ├── Chooser.py
- │   │   │   │   ├── Directory.py
- │   │   │   │   ├── Open.py
- │   │   │   │   ├── SaveAs.py
  │   │   │   │   ├── __init__.py
- │   │   │   │   └── __init__.pyi
+ │   │   │   │   ├── __init__.pyi
+ │   │   │   │   ├── chooser.py
+ │   │   │   │   ├── directory.py
+ │   │   │   │   ├── open.py
+ │   │   │   │   └── saveas.py
  │   │   │   ├── maindialog
- │   │   │   │   ├── Dialog.py
- │   │   │   │   ├── Message.py
- │   │   │   │   ├── _Dialog.py
  │   │   │   │   ├── _Show.py
  │   │   │   │   ├── __init__.py
- │   │   │   │   └── __init__.pyi
+ │   │   │   │   ├── __init__.pyi
+ │   │   │   │   ├── _dialog.py
+ │   │   │   │   ├── dialog.py
+ │   │   │   │   └── message.py
  │   │   │   └── popup
  │   │   │       ├── __init__.py
  │   │   │       ├── error
@@ -83,7 +83,7 @@ For_GUI_development
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── __init__.py
- │   │   │   │   ├── polarElement
+ │   │   │   │   ├── polarelement
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── specialElement
@@ -93,10 +93,10 @@ For_GUI_development
  │   │   │   │   │   │   ├── custom.py
  │   │   │   │   │   │   └── custom.pyi
  │   │   │   │   │   └── __init__.py
- │   │   │   │   ├── threeElement
+ │   │   │   │   ├── threeelement
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
- │   │   │   │   └── twoElement
+ │   │   │   │   └── twoelement
  │   │   │   │       ├── __init__.py
  │   │   │   │       └── __init__.pyi
  │   │   │   ├── Graph
@@ -153,11 +153,11 @@ For_GUI_development
  │   │   │   │   ├── array
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   ├── graph_list
- │   │   │   │   │   │   ├── Datalist.py
- │   │   │   │   │   │   ├── Manylist.py
- │   │   │   │   │   │   ├── Onelist.py
  │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   │   ├── datalist.py
+ │   │   │   │   │   │   ├── manylist.py
+ │   │   │   │   │   │   └── onelist.py
  │   │   │   │   │   └── nparray
  │   │   │   │   │       ├── __init__.py
  │   │   │   │   │       ├── base
@@ -203,7 +203,7 @@ For_GUI_development
  │   │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   │   ├── _check.py
  │   │   │   │   │   │   ├── _data.py
- │   │   │   │   │   │   └── fmt.py
+ │   │   │   │   │   │   └── _fmt.py
  │   │   │   │   │   ├── hatch.py
  │   │   │   │   │   ├── marker
  │   │   │   │   │   │   ├── __init__.py
