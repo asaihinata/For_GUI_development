@@ -15,6 +15,8 @@ class NPArray:
   else:self.data=np.concatenate((self.data,[[i[0]]for i in self.data]),axis=1)
   return self
  @property
+ def dtype(self):return self.dtype
+ @property
  def ndim(self):return self.data.ndim
  @property
  def shape(self):return self.data.shape
