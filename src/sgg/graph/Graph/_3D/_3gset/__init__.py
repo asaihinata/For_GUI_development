@@ -1,10 +1,6 @@
-from matplotlib.collections import PathCollection
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from numpy import ndarray
-from ...typing import *
-__all__=[
-'DScatter'
-]
+from ....typing import *
+__all__=['_3Gset']
 class _3Gset:
  ax:Axes3D
  def winsize(self)->TupleInt2:'''ウィジェットの現在の幅と高さを返す。
@@ -91,27 +87,3 @@ Typetuple_float64
  def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返します。'''
  def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返します。'''
  def getzticks(self)->ndarray:'''z軸の目盛りの位置を座標で返します。'''
-class DScatter(_3Gset):
- def update(
-self,
-x:o_array,
-y:o_array,
-z:o_array,
-fg:ColorType,
-bg:ColorType,
-alpha:int|float,
-graph_grid:ColorType,
-title:str,
-marker:str,
-markersize:int|float,
-linewidth:int|float,
-elev:int|float,
-azim:int|float,
-xlabel:str,
-ylabel:str,
-zlabel:str
-)->NoReturn:'''3Dの散布図を再表示させる。'''
- def get(self)->list[PathCollection]:'''`PathCollection`の配列を返す。'''
- def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
- def gety(self)->Typeget_data:'''`y`のデータを取得する。'''
- def getz(self)->Typeget_data:'''`z`のデータを取得する。'''

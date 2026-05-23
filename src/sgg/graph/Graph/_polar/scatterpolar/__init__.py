@@ -1,4 +1,4 @@
-from ..dev import *
+from ...dev import *
 class Scatterpolar(polarElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
