@@ -1,8 +1,9 @@
-from numpy import _ArrayT
+from numpy import _ArrayT,ndarray
 from numpy._typing import DTypeLike
 from ..base import NPArray
 __all__=['NPNumber']
 class NPNumber(NPArray):
+ data:ndarray
  def __init__(
 self,
 data:_ArrayT,
