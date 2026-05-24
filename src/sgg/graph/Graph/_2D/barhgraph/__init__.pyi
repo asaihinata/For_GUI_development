@@ -1,6 +1,6 @@
+from matplotlib.container import BarContainer
 from ....typing import *
 from .._2gset import _2Gset
-from matplotlib.container import BarContainer
 __all__=['BarhGraph']
 class BarhGraph(_2Gset):
  def update(

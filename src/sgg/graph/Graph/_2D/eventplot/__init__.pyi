@@ -1,6 +1,6 @@
+from matplotlib.collections import EventCollection
 from ....typing import *
 from .._2gset import _2Gset
-from matplotlib.collections import EventCollection
 __all__=['Eventplot']
 class Eventplot(_2Gset):
  def update(
