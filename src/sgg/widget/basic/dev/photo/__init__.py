@@ -17,6 +17,14 @@ class Img_conversion:
  mode=get_mode
  def show(self,title=None):self.imgs.show(title)
  def resize(self,w,h):
+  if not isinstance(w,int):
+   raise TypeError('wには整数型を指定してください')
+  elif w<=1:
+   raise ValueError('wには1以上の整数を指定してください')
+  if not isinstance(h,int):
+   raise TypeError('hには整数型を指定してください')
+  elif h<=1:
+   raise ValueError('hには1以上の整数を指定してください')
   self.imgs.resize((w,h))
   return self
  def asresize(self):

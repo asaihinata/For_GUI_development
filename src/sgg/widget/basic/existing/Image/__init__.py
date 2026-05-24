@@ -1,6 +1,6 @@
 from pathlib import Path,PosixPath,WindowsPath
 from tkinter import Label
-from PIL import ImageTk
+from PIL.ImageTk import PhotoImage
 from ...common import *
 from ...dev import Img_path
 __all__=['Images']
@@ -14,9 +14,8 @@ class Images(Element):
    if not self.path.exists():
     raise FileNotFoundError('ファイルが存在しません')
   else:
-   raise TypeError('pathには以下の型を指定してください。\nstr,WindowsPath,PosixPath,Path')
-  self.img=Img_path(self.path)
-  self.imgs=ImageTk.PhotoImage(image=self.img.imgs.resize(self.img.get_size()))
+   raise TypeError('pathには以下の型を指定してください\nstr,WindowsPath,PosixPath,Path')
+  self.imgs=PhotoImage(image=Img_path(self.path).asresize().imgs)
   self.widget=Label(master,text=None,image=self.imgs,takefocus=self.takefocus)
   self.widget.image=self.imgs
  def delta(self):self.widget.destroy()

@@ -7,9 +7,9 @@ __all__=['Img_path','Img_byte']
 class Img_conversion:
  imgs:ImageFile
  def __init__(self,data:StrOrBytesPath|IO[bytes]):...
- def get_width(self)->int|float:'''画像データの幅を返す。'''
- def get_height(self)->int|float:'''画像データの高さを返す。'''
- def get_size(self)->tuple[int|float,int|float]:'''画像データのサイズを返す。'''
+ def get_width(self)->int:'''画像データの幅を返す。'''
+ def get_height(self)->int:'''画像データの高さを返す。'''
+ def get_size(self)->tuple[int,int]:'''画像データのサイズを返す。'''
  def get_format(self)->str|None:'''ソースファイルのファイル形式を返す。'''
  def get_mode(self)->str:'''画像のモードを返す。
  
@@ -19,7 +19,7 @@ https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes'''
  size=get_size
  format=get_format
  mode=get_mode
- def resize(self,w:int|float,h:int|float)->Img_conversion:...
+ def resize(self,w:int,h:int)->Img_conversion:...
  def asresize(self)->Img_conversion:...
  def show(self,title:str|None=None):'''画像を表示させる。
 
