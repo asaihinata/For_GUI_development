@@ -101,46 +101,111 @@ For_GUI_development
  │   │   │   │       └── __init__.pyi
  │   │   │   ├── Graph
  │   │   │   │   ├── _2D
+ │   │   │   │   │   ├── _2gset
+ │   │   │   │   │   │   └── __init__.py
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── __init__.pyi
- │   │   │   │   │   ├── bargraph.py
- │   │   │   │   │   ├── barhgraph.py
- │   │   │   │   │   ├── boxplot.py
- │   │   │   │   │   ├── ecdf.py
- │   │   │   │   │   ├── errorbar.py
- │   │   │   │   │   ├── eventplot.py
- │   │   │   │   │   ├── funnelplot.py
- │   │   │   │   │   ├── hatplot.py
- │   │   │   │   │   ├── hexbin.py
- │   │   │   │   │   ├── hist.py
- │   │   │   │   │   ├── hist2d.py
- │   │   │   │   │   ├── linefill.py
- │   │   │   │   │   ├── linegraph.py
- │   │   │   │   │   ├── pie.py
- │   │   │   │   │   ├── scatter.py
- │   │   │   │   │   ├── stack.py
- │   │   │   │   │   ├── stacked.py
- │   │   │   │   │   ├── stackedh.py
- │   │   │   │   │   ├── stem.py
- │   │   │   │   │   ├── step.py
- │   │   │   │   │   ├── violinplot.py
- │   │   │   │   │   ├── waterfall.py
- │   │   │   │   │   └── waterfallh.py
+ │   │   │   │   │   ├── bargraph
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── barhgraph
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── boxplot
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── ecdf
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── errorbar
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── eventplot
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── funnelplot
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── hatplot
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── hexbin
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── hist
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── hist2d
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── linefill
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── linegraph
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── pie
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── scatter
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── stack
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── stacked
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── stackedh
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── stem
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── step
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── violinplot
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── waterfall
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   └── waterfallh
+ │   │   │   │   │       ├── __init__.py
+ │   │   │   │   │       └── __init__.pyi
  │   │   │   │   ├── _3D
+ │   │   │   │   │   ├── _3gset
+ │   │   │   │   │   │   └── __init__.py
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── __init__.pyi
- │   │   │   │   │   └── dscatter.py
+ │   │   │   │   │   └── dscatter
+ │   │   │   │   │       ├── __init__.py
+ │   │   │   │   │       └── __init__.pyi
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── _polar
+ │   │   │   │   │   ├── _Polarset
+ │   │   │   │   │   │   └── __init__.py
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── __init__.pyi
- │   │   │   │   │   ├── barpolar.py
- │   │   │   │   │   ├── errorpolar.py
- │   │   │   │   │   ├── eventpolar.py
- │   │   │   │   │   ├── linepolar.py
- │   │   │   │   │   ├── scatterpolar.py
- │   │   │   │   │   ├── stempolar.py
- │   │   │   │   │   └── violinpolar.py
+ │   │   │   │   │   ├── barpolar
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── errorpolar
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── eventpolar
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── linepolar
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── scatterpolar
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── stempolar
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   └── violinpolar
+ │   │   │   │   │       ├── __init__.py
+ │   │   │   │   │       └── __init__.pyi
  │   │   │   │   ├── _special
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── radar
@@ -409,5 +474,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:296
-フォルダ数:114
+ファイル数:327
+フォルダ数:148
