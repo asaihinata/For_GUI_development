@@ -215,40 +215,30 @@ For_GUI_development
  │   │   │   ├── __init__.py
  │   │   │   ├── dev
  │   │   │   │   ├── __init__.py
- │   │   │   │   ├── array
+ │   │   │   │   ├── graph_list
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── graph_list
- │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   ├── __init__.pyi
- │   │   │   │   │   │   ├── datalist.py
- │   │   │   │   │   │   ├── manylist.py
- │   │   │   │   │   │   └── onelist.py
- │   │   │   │   │   └── nparray
- │   │   │   │   │       ├── __init__.py
- │   │   │   │   │       ├── base
- │   │   │   │   │       │   ├── __init__.py
- │   │   │   │   │       │   └── __init__.pyi
- │   │   │   │   │       ├── dtime
- │   │   │   │   │       │   ├── __init__.py
- │   │   │   │   │       │   ├── conversion
- │   │   │   │   │       │   │   ├── __init__.py
- │   │   │   │   │       │   │   └── __init__.pyi
- │   │   │   │   │       │   ├── data
- │   │   │   │   │       │   │   ├── __init__.py
- │   │   │   │   │       │   │   └── constants.py
- │   │   │   │   │       │   ├── npdate
- │   │   │   │   │       │   │   ├── __init__.py
- │   │   │   │   │       │   │   └── __init__.pyi
- │   │   │   │   │       │   └── typing
- │   │   │   │   │       │       └── __init__.py
- │   │   │   │   │       └── maths
- │   │   │   │   │           ├── __init__.py
- │   │   │   │   │           └── __init__.pyi
- │   │   │   │   └── maths
+ │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   ├── datalist.py
+ │   │   │   │   │   ├── manylist.py
+ │   │   │   │   │   └── onelist.py
+ │   │   │   │   └── nparray
  │   │   │   │       ├── __init__.py
- │   │   │   │       ├── angle
+ │   │   │   │       ├── base
  │   │   │   │       │   ├── __init__.py
  │   │   │   │       │   └── __init__.pyi
+ │   │   │   │       ├── dtime
+ │   │   │   │       │   ├── __init__.py
+ │   │   │   │       │   ├── conversion
+ │   │   │   │       │   │   ├── __init__.py
+ │   │   │   │       │   │   └── __init__.pyi
+ │   │   │   │       │   ├── data
+ │   │   │   │       │   │   ├── __init__.py
+ │   │   │   │       │   │   └── constants.py
+ │   │   │   │       │   ├── npdate
+ │   │   │   │       │   │   ├── __init__.py
+ │   │   │   │       │   │   └── __init__.pyi
+ │   │   │   │       │   └── typing
+ │   │   │   │       │       └── __init__.py
  │   │   │   │       └── maths
  │   │   │   │           ├── __init__.py
  │   │   │   │           └── __init__.pyi
@@ -480,5 +470,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:331
-フォルダ数:150
+ファイル数:325
+フォルダ数:146
