@@ -241,9 +241,11 @@ For_GUI_development
  │   │   │   │   │       │   │   └── __init__.pyi
  │   │   │   │   │       │   └── typing
  │   │   │   │   │       │       └── __init__.py
- │   │   │   │   │       └── number
- │   │   │   │   │           ├── __init__.py
- │   │   │   │   │           └── __init__.pyi
+ │   │   │   │   │       └── maths
+ │   │   │   │   │           ├── Number
+ │   │   │   │   │           │   ├── __init__.py
+ │   │   │   │   │           │   └── __init__.pyi
+ │   │   │   │   │           └── __init__.py
  │   │   │   │   └── maths
  │   │   │   │       ├── __init__.py
  │   │   │   │       ├── angle
@@ -480,5 +482,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:331
-フォルダ数:150
+ファイル数:332
+フォルダ数:151
