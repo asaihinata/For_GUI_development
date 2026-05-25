@@ -1,4 +1,4 @@
-'''src\widget\graphモジュール全体の型ヒント'''
+'''src/widget/graphモジュール全体の型ヒント'''
 from typing import Literal,TypeAlias
 from numpy import dtype,float64,ndarray
 from numpy._typing import _AnyShape

@@ -5,7 +5,8 @@ from ..conversion import Formatconversion,conversions
 __all__=['NPDate']
 class NPDate(NPArray):
  def __init__(self,data,dtype='datetime64[D]'):
-  if isinstance(data,Formatconversion):data=data.data
+  if not isinstance(data,list|tuple|np.ndarray|NPArray|NPDate|Formatconversion):data=[data]
+  elif isinstance(data,Formatconversion):data=data.data
   super().__init__(data,dtype=serch_dtype(dtype))
  def astype(self,dtype):
   self.data=self.data.astype(serch_dtype(dtype))
