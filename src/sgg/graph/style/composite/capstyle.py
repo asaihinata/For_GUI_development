@@ -14,9 +14,9 @@ class Capstyle:
  def __init__(self,cap:Literal['butt','round','projecting'])->None:
   '''閉じられていない線の両端点の描画の方法を指定する。
 
-  :param cap: 閉じられていない線の両端点の描画の方法を指定する。
-  :type cap: Literal['butt','round','projecting']
-  :raises TypeError: `cap`に文字列以外を指定した場合に発生させる'''
+ :param cap: 閉じられていない線の両端点の描画の方法を指定する。
+ :type cap: Literal['butt','round','projecting']
+ :raises TypeError: `cap`に文字列以外を指定した場合に発生させる'''
   if not isinstance(cap,str):
    raise TypeError('capにはstr型を指定してください')
   if cap in CAPSTYLE_LIST():self.cap=cap
