@@ -124,7 +124,6 @@ self,
 place:str|int=...,
 other:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right'
 )->str:'''凡例の位置の基準を決定する。'''
- def pielabel(self,data:ndarray|list|tuple,label:list|tuple)->list:...
  def labels(self,label:labeltype)->list:...
  def markers(self,serch:str)->str:'''`serch`で指定したマーカーが`MARKERS`に存在するかを調べる
 

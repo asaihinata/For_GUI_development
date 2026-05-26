@@ -157,14 +157,6 @@ class GElement:
   if isinstance(place,int) and 0<=place<=10:return labelplacelist[place]
   elif place in labelplacelist:return place
   return listchose(other,labelplacelist)
- def pielabel(self,data,label=None):
-  lls=label
-  if isinstance(lls,list|tuple):
-   ldt,lla=len(data),len(lls)
-   if lla<ldt:
-    for i in range(ldt-lla):lls.append(lla+i+1)
-   elif ldt<lla:lls=lls[:ldt]
-  return(lls,label,type(label))
  def labels(self,label,nums=None):
   if label==None or label is None:
    return(None,label)

@@ -21,3 +21,4 @@ title:str
 ):'''円グラフを再表示させる。'''
  def get(self)->tuple[tuple[Wedge,Text],...]:'''`matplotlib.axes.Axes.pie`の戻り値を配列で返す。'''
  def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''
+ def _pielabel(self,data:ndarray|list|tuple,label:list|tuple)->list:...

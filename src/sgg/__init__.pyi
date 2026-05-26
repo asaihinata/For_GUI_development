@@ -742,8 +742,7 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 legendncols:int=1,
 key:str=...
-)->dict[str,Any]:
-  '''折線グラフを作成する。
+)->dict[str,Any]:'''折線グラフを作成する。
 
  :param x: `x`のデータを指定する。
  :type x: n_array
@@ -760,7 +759,7 @@ key:str=...
  :param markersize: 折線グラフのマーカーの大きさを指定する。
  :type markersize: int|float
  :param marker: 折線グラフのマーカーを指定する。
- :type marker: LiteralLiteral[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
+ :type marker: Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
  :param linestyle: 折線グラフの線の種類を指定する。
  :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',': ','none',None,' ','']
  :param title: グラフのタイトルを指定する。
@@ -2275,6 +2274,8 @@ key:str=...
  def Scatter(
 x:n_array,
 y:n_array,
+marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
+markersize:int|float=10,
 xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
@@ -2305,8 +2306,6 @@ labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
-marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
-markersize:int|float=10,
 size:TupleNumbertype2=(500,400),
 fg:ColorTypeN='#000000',
 bg:ColorTypeN='#ffffff',
@@ -4025,7 +4024,7 @@ key:str=...
 
  :param data: `data`のデータを指定する。
  :type data: o_array
- :param linewidth: エラーバーの線の太さを指定する。
+ :param linewidth: イベントグラフの線の太さを指定する。
  :type linewidth: int|float
  :param linelength: 線の合計の高さを指定する。
  :type linelength: int|float
@@ -4996,34 +4995,14 @@ key:str=...
  :type y: o_array
  :param data: `data`のデータを指定する。
  :type data: o_array
- :param err: `x`と`y`のデータの誤差の配列を指定する。
- :type err: o_array
- :param xerr: `x`のデータの誤差の配列を指定する。
- :type xerr: o_array
- :param yerr: `y`のデータの誤差の配列を指定する。
- :type yerr: o_array
- :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type xuplims: bool
- :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type xlolims: bool
- :param yuplims: `y`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type yuplims: bool
- :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type ylolims: bool
- :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する。
- :type barsabove: bool
- :param linestyle: データ点とデータ点を結ぶ線の種類を指定する。
- :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
- :param marker: データ点のマーカーの種類を指定する。
- :type marker: Literal['.','s','o','p','v','*','^','D']
- :param linewidth: データ点を結ぶ線の太さを指定する。
+ :param linewidth: 折線グラフの線の幅を指定する。
  :type linewidth: int|float
- :param capthick: キャップの厚みを指定する。
- :type capthick: int|float
- :param capsize: エラーバーの先端にあるキャップの長さを指定する。
- :type capsize: int|float
- :param errorevery: エラーバーを表示する頻度を指定する。
- :type errorevery: int|list[int]|tuple[int]
+ :param markersize: 折線グラフのマーカーの大きさを指定する。
+ :type markersize: int|float
+ :param marker: 折線グラフのマーカーを指定する。
+ :type marker: Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
+ :param linestyle: 折線グラフの線の種類を指定する。
+ :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',': ','none',None,' ','']
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param titlealpha: グラフの透明度を指定する。
@@ -5087,10 +5066,10 @@ key:str=...
 x:o_array=...,
 y:o_array=...,
 data:o_array=...,
-linewidth:int|float=2,
-markersize:int|float=10,
-marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']=None,
-linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
+linewidth:int|float=1,
+linelength:int|float=1,
+linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':']='solid',
+orientation:Type_orientation='vertical',
 alpha:int|float=1,
 size:TupleNumbertype2=(500,400),
 fg:ColorTypeN='#000000',
@@ -5127,34 +5106,14 @@ key:str=...
  :type y: o_array
  :param data: `data`のデータを指定する。
  :type data: o_array
- :param err: `x`と`y`のデータの誤差の配列を指定する。
- :type err: o_array
- :param xerr: `x`のデータの誤差の配列を指定する。
- :type xerr: o_array
- :param yerr: `y`のデータの誤差の配列を指定する。
- :type yerr: o_array
- :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type xuplims: bool
- :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type xlolims: bool
- :param yuplims: `y`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type yuplims: bool
- :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type ylolims: bool
- :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する。
- :type barsabove: bool
- :param linestyle: データ点とデータ点を結ぶ線の種類を指定する。
- :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
- :param marker: データ点のマーカーの種類を指定する。
- :type marker: Literal['.','s','o','p','v','*','^','D']
- :param linewidth: データ点を結ぶ線の太さを指定する。
+ :param linewidth: イベントグラフの線の太さを指定する。
  :type linewidth: int|float
- :param capthick: キャップの厚みを指定する。
- :type capthick: int|float
- :param capsize: エラーバーの先端にあるキャップの長さを指定する。
- :type capsize: int|float
- :param errorevery: エラーバーを表示する頻度を指定する。
- :type errorevery: int|list[int]|tuple[int]
+ :param linelength: 線の合計の高さを指定する。
+ :type linelength: int|float
+ :param linestyle: 線の種類を指定する。
+ :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
+ :param orientation: 向きを指定する。
+ :type orientation: Type_orientation
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param titlealpha: グラフの透明度を指定する。
@@ -5218,10 +5177,8 @@ key:str=...
 x:o_array=...,
 y:o_array=...,
 data:o_array=...,
-linewidth:int|float=2,
+marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
 markersize:int|float=10,
-marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']=None,
-linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
 alpha:int|float=1,
 size:TupleNumbertype2=(500,400),
 fg:ColorTypeN='#000000',
@@ -5258,34 +5215,10 @@ key:str=...
  :type y: o_array
  :param data: `data`のデータを指定する。
  :type data: o_array
- :param err: `x`と`y`のデータの誤差の配列を指定する。
- :type err: o_array
- :param xerr: `x`のデータの誤差の配列を指定する。
- :type xerr: o_array
- :param yerr: `y`のデータの誤差の配列を指定する。
- :type yerr: o_array
- :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type xuplims: bool
- :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type xlolims: bool
- :param yuplims: `y`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type yuplims: bool
- :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type ylolims: bool
- :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する。
- :type barsabove: bool
- :param linestyle: データ点とデータ点を結ぶ線の種類を指定する。
- :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
- :param marker: データ点のマーカーの種類を指定する。
- :type marker: Literal['.','s','o','p','v','*','^','D']
- :param linewidth: データ点を結ぶ線の太さを指定する。
- :type linewidth: int|float
- :param capthick: キャップの厚みを指定する。
- :type capthick: int|float
- :param capsize: エラーバーの先端にあるキャップの長さを指定する。
- :type capsize: int|float
- :param errorevery: エラーバーを表示する頻度を指定する。
- :type errorevery: int|list[int]|tuple[int]
+ :param marker: 散布図のマーカーを指定する。
+ :type marker: LiteralLiteral[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
+ :param markersize: 散布図のマーカーの大きさを指定する。
+ :type markersize: int|float
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param titlealpha: グラフの透明度を指定する。
@@ -5346,13 +5279,17 @@ key:str=...
  :type yticksdirection: Type_ticksdirection'''
  @staticmethod
  def Violinpolar(
+data:o_array=...,
 x:o_array=...,
 y:o_array=...,
-data:o_array=...,
-linewidth:int|float=2,
-markersize:int|float=10,
-marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']=None,
-linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
+orientation:Type_orientation='vertical',
+width:int|float=1,
+showextrema:bool=True,
+showmeans:bool=False,
+showmedians:bool=False,
+points:int|float=100,
+bw_method:Literal['scott','silverman']|float|Callable[[GaussianKDE],float]='scott',
+side:Literal['both','low','high']='both',
 alpha:int|float=1,
 size:TupleNumbertype2=(500,400),
 fg:ColorTypeN='#000000',
@@ -5381,42 +5318,30 @@ ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
 key:str=...
-)->dict[str,Any]:'''極軸イベントグラフを作成する。
+)->dict[str,Any]:'''極軸バイオリングラフを作成する。
 
- :param x: `x`のデータを指定する。
- :type x: o_array
- :param y: `y`のデータを指定する。
- :type y: o_array
  :param data: `data`のデータを指定する。
  :type data: o_array
- :param err: `x`と`y`のデータの誤差の配列を指定する。
- :type err: o_array
- :param xerr: `x`のデータの誤差の配列を指定する。
- :type xerr: o_array
- :param yerr: `y`のデータの誤差の配列を指定する。
- :type yerr: o_array
- :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type xuplims: bool
- :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type xlolims: bool
- :param yuplims: `y`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type yuplims: bool
- :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する。
- :type ylolims: bool
- :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する。
- :type barsabove: bool
- :param linestyle: データ点とデータ点を結ぶ線の種類を指定する。
- :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
- :param marker: データ点のマーカーの種類を指定する。
- :type marker: Literal['.','s','o','p','v','*','^','D']
- :param linewidth: データ点を結ぶ線の太さを指定する。
- :type linewidth: int|float
- :param capthick: キャップの厚みを指定する。
- :type capthick: int|float
- :param capsize: エラーバーの先端にあるキャップの長さを指定する。
- :type capsize: int|float
- :param errorevery: エラーバーを表示する頻度を指定する。
- :type errorevery: int|list[int]|tuple[int]
+ :param x: `orientation`が`vertical`の時にx軸上にバイオリンが設置される配列を指定する。
+ :type x: o_array
+ :param y: `orientation`が`horizontal`の時にy軸上にバイオリンが設置される配列を指定する。
+ :type y: o_array
+ :param orientation: バイオリンが設置される軸の向きを指定する。
+ :type orientation: Type_orientation
+ :param width: バイオリンの幅を指定する。
+ :type width: int|float
+ :param showextrema: 極値を線で示すか指定する。
+ :type showextrema: bool
+ :param showmeans: 平均値を線で示すかどうか指定する。
+ :type showmeans: bool
+ :param showmedians: 中央値を線で示すかどうか指定する。
+ :type showmedians: bool
+ :param points: 各ガウスカーネル密度推定値を評価する点の数を指定する。
+ :type points: int|float
+ :param bw_method: 推定器の帯域幅を計算するために使用されるメソッドを指定する。
+ :type bw_method: Literal['scott','silverman']|float|Callable[[GaussianKDE],float]
+ :param side: バイオリンの左右対称もしくは左右(上下)のみを描画するか指定する。
+ :type side: Literal['both','low','high']
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param titlealpha: グラフの透明度を指定する。
