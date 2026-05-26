@@ -30,3 +30,4 @@ zorder:int|float=4
  :type pad: Type_NumberlikeN
  :param y: タイトルを表示する垂直軸の位置を指定する。
  :type y: Type_NumberlikeN'''
+ def set_title(self,title:str):...

@@ -1,7 +1,7 @@
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ....dev import allNones,bols,list2num,listchose,num0s,nums,parsecolor,range_num
-from ...style import FontFile,Fontmanager,Fontname,Title,Xlabel,Ylabel,Zlabel
+from ...style import FontFile,Fontmanager,Fontname,Xlabel,Ylabel,Zlabel
 from ..Graph import GElement
 __all__=['threeElement']
 class threeElement(GElement):
@@ -114,8 +114,7 @@ class threeElement(GElement):
  def _apply_theme_colors(self):
   self.ax.set_facecolor(self.graph_bg)
   self.ax.tick_params(colors=self.fg)
-  if self.title is not None:
-   Title(self.ax,self.title,color=self.titlefg,ha=self.titleha,va=self.titleva,rotation=self.titlerotation,rotation_mode=self.titlerotation_mode,font=self.titlefont,alpha=self.titlealpha,zorder=self.titlezorder)
+  self.set_title(self.title)
   self.ax.xaxis.label.set_color(self.fg)
   self.ax.yaxis.label.set_color(self.fg)
   self.ax.zaxis.label.set_color(self.fg)
