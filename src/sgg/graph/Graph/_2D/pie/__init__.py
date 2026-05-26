@@ -19,7 +19,7 @@ class Pie(twoElement):
   self.plot(self.data,startangle=self.startangle,shadow=self.shadow,counterclock=self.counterclock,label=self.label,labeldistance=self.labeldistance,explode=self.explode,startangletype=self.startangletype,alpha=self.alpha)
  def plot(self,data,startangle=0.0,shadow=False,counterclock=True,label=None,labeldistance=1.1,explode=None,startangletype=True,alpha=1):
   self.clear()
-  if startangletype==False:startangle=Rad(startangle).angle
+  if startangletype==False:startangle=np.rad2deg(startangle)
   pie=np.array(self.ax.pie(data,labels=label,startangle=90-startangle,shadow=shadow,counterclock=counterclock,labeldistance=labeldistance,explode=explode)).T.tolist()
   self.graphdata=[i[0].set_alpha(self.alpha) for i in pie]
   self.legend()
