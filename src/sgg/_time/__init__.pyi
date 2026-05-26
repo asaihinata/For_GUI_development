@@ -1,7 +1,7 @@
 from collections.abc import Iterator
 from datetime import _IsoCalendarDate,_Time,_TzInfo,date,datetime,timedelta
 from time import struct_time
-from typing import Any,NoReturn,overload
+from typing import Any,overload
 from ..typing import Listlike
 __all__=['times','timeslist']
 class times:

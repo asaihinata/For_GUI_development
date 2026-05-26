@@ -29,9 +29,7 @@ ylabel:labeltype=None
  :param xlabel: x軸のラベルを指定する。
  :type label: labeltype
  :param ylabel: y軸のラベルを指定する。
- :type ylabel: labeltype
- :return:
- :rtype: NoReturn'''
+ :type ylabel: labeltype'''
  def _adjustment(self):'''グラフの調整を行う'''
  def clear(self):'''グラフ内のグラフをクリアする。'''
  def invert(self):'''x軸,y軸を反転させる。'''

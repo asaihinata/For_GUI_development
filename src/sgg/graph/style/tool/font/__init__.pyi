@@ -2,9 +2,7 @@ from collections.abc import Iterator
 from os import PathLike
 from pathlib import Path
 from typing import Any,Literal
-
 from matplotlib.font_manager import FontEntry,FontProperties
-
 class FontFile:
  Properties:FontProperties
  def __init__(

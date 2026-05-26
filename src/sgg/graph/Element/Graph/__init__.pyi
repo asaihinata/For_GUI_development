@@ -55,9 +55,7 @@ dpi:int|float=100
  :param ex: 画像ファイルの拡張子を指定する。
  :type ex: Literal['.eps','.jpg','.jpeg','.pdf','.pgf','.png','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']
  :param dpi: グラフの解像度を指定する。
- :type dpi: int|float
- :return:
- :rtype: NoReturn'''
+ :type dpi: int|float'''
  def winsize(self)->tuple[int,int]:'''ウィジェットの現在の幅と高さを返す。
 
  :return: ウィジェットの現在の幅と高さをタプルで返す。

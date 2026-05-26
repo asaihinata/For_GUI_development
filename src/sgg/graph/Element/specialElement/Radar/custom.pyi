@@ -1,5 +1,5 @@
 from collections.abc import Sequence
-from typing import Any,Literal,NoReturn
+from typing import Any,Literal
 from matplotlib.lines import Line2D
 from matplotlib.patches import Circle,Polygon,RegularPolygon
 from matplotlib.path import Path

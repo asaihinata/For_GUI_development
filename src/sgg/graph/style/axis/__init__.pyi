@@ -1,5 +1,5 @@
 from collections.abc import Sequence
-from typing import Iterable,Literal,NoReturn
+from typing import Iterable,Literal
 from matplotlib.axes._axes import Axes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy.typing import ArrayLike
@@ -42,9 +42,7 @@ subs:Iterable[int]|None=None
  :param nonpositive: 非正の値に対する動作を指定する。
  :type nonpositive: Literal['clip','mask']
  :param subs: 各主目盛りの間にサブ目盛りを配置する場所を指定する。
- :type subs: Iterable[int]|None
- :return:
- :rtype: NoReturn'''
+ :type subs: Iterable[int]|None'''
 class Yaxis:
  ax:Axes|Axes3D
  def __init__(self,ax:Axes|Axes3D)->None:...
@@ -84,9 +82,7 @@ subs:Iterable[int]|None=None
  :param nonpositive: 非正の値に対する動作を指定する。
  :type nonpositive: Literal['clip','mask']
  :param subs: 各主目盛りの間にサブ目盛りを配置する場所を指定する。
- :type subs: Iterable[int]|None
- :return:
- :rtype: NoReturn'''
+ :type subs: Iterable[int]|None'''
 class Zaxis:
  ax:Axes3D
  def __init__(self,ax:Axes3D)->None:...
@@ -126,6 +122,4 @@ subs:Iterable[int]|None=None
  :param nonpositive: 非正の値に対する動作を指定する。
  :type nonpositive: Literal['clip','mask']
  :param subs: 各主目盛りの間にサブ目盛りを配置する場所を指定する。
- :type subs: Iterable[int]|None
- :return:
- :rtype: NoReturn'''
+ :type subs: Iterable[int]|None'''
