@@ -2,7 +2,7 @@
 from collections.abc import Iterator
 from typing import Any,Literal
 from ...typing import Type_Solid
-from .fmt import FMT
+from ..fmt import FMT
 __all__=['Solid']
 class Solid:
  solid_list:list[str]=['-','--','-.',':','None',' ','']

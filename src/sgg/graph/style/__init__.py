@@ -1,5 +1,6 @@
 from .axis import *
 from .composite import *
+from .fmt import *
 from .label import *
 from .legend import *
 from .title import *

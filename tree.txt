@@ -223,7 +223,9 @@ For_GUI_development
  │   │   │   │   │   ├── manylist.py
  │   │   │   │   │   └── onelist.py
  │   │   │   │   └── nparray
- │   │   │   │       ├── __init__.py
+ │   │   │   │       ├── array
+ │   │   │   │       │   ├── __init__.py
+ │   │   │   │       │   └── __init__.pyi
  │   │   │   │       ├── base
  │   │   │   │       │   ├── __init__.py
  │   │   │   │       │   └── __init__.pyi
@@ -255,11 +257,6 @@ For_GUI_development
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   ├── bbox.py
  │   │   │   │   │   ├── capstyle.py
- │   │   │   │   │   ├── fmt
- │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   ├── _check.py
- │   │   │   │   │   │   ├── _data.py
- │   │   │   │   │   │   └── _fmt.py
  │   │   │   │   │   ├── hatch.py
  │   │   │   │   │   ├── marker
  │   │   │   │   │   │   ├── __init__.py
@@ -270,6 +267,11 @@ For_GUI_development
  │   │   │   │   │   ├── __init__.pyi
  │   │   │   │   │   ├── _fun.py
  │   │   │   │   │   └── angle.py
+ │   │   │   │   ├── fmt
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   ├── _check.py
+ │   │   │   │   │   ├── _data.py
+ │   │   │   │   │   └── _fmt.py
  │   │   │   │   ├── label
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   ├── __init__.pyi
@@ -471,5 +473,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:326
-フォルダ数:146
+ファイル数:327
+フォルダ数:147
