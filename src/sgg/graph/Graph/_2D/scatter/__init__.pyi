@@ -7,7 +7,7 @@ class Scatter(_2Gset):
 self,
 x:n_array,
 y:n_array,
-marker:str,
+marker:Type_Marker,
 markersize:int|float,
 linewidth:int|float,
 fg:ColorType,

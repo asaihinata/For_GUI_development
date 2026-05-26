@@ -4,10 +4,15 @@ from pathlib import Path,WindowsPath
 from tkinter import _Cursor
 from typing import Union
 from matplotlib.mlab import GaussianKDE
-from numpy import ndarray
+from numpy import ndarray,dtype,float64
+from numpy._typing import _AnyShape
 from .graph import *
 from .typing import *
 from .widget import *
+Type_Solid:TypeAlias=Literal['-','--','-.',':','None',' ','']
+Type_Marker:TypeAlias=Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
+Typeget_data:TypeAlias=ndarray[_AnyShape,dtype[Any]]
+Typetuple_float64:TypeAlias=tuple[float64,float64]
 Type_legendplace:TypeAlias=Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
 Type_orientation:TypeAlias=Literal['horizontal','vertical']
 Type_ticksdirection:TypeAlias=Literal['out','in','inout']

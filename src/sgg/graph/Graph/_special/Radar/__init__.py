@@ -3,11 +3,11 @@ class Radarplot(RadarElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.markersize=num0(kw.get('markersize'),10)
-  self.marker=Marker(kw.get('marker','None')).marker
+  self.marker=Marker(kw.get('marker','none')).marker
   self.line=Solid(kw.get('linestyle','-')).solid
   self.linewidth=num0(kw.get('linewidth'),2)
   self.plot(self.data,marker=self.marker,linewidth=self.linewidth,linestyle=self.line,markersize=self.markersize,alpha=self.alpha)
- def plot(self,data,marker='None',linewidth=2,linestyle='-',markersize=10,alpha=1):
+ def plot(self,data,marker='none',linewidth=2,linestyle='-',markersize=10,alpha=1):
   self.clear()
   self.graphdata=[self.ax.plot(self.theta,d,label="aa",marker=marker,linewidth=linewidth,markersize=markersize,linestyle=linestyle,alpha=alpha)for d in data]
   self._adjustment()

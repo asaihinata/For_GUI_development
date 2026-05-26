@@ -6,12 +6,12 @@ class DScatter(threeElement):
   self.x=self._manyarr(kw.get('x'))
   self.y=self._manyarr(kw.get('y'))
   self.z=self._manyarr(kw.get('z'))
-  self.marker=self.markers(kw.get('marker','o'),self.max_depth)
+  self.marker=Marker(kw.get('marker','o')).marker
   self.s=num1s(kw.get('markersize'),10)
   self.plot(self.x,self.y,self.z,marker=self.marker,alpha=self.alpha,label=self.label)
  def plot(self,x,y,z,label=None,marker='o',alpha=1):
   self.clear()
-  self.graphdata=[self.ax.scatter(xs,ys,zs,label=label[i],marker=marker[i],alpha=alpha)for i,(xs,ys,zs) in enumerate(product(x,y,z))]
+  self.graphdata=[self.ax.scatter(xs,ys,zs,label=label[i],marker=marker,alpha=alpha)for i,(xs,ys,zs) in enumerate(product(x,y,z))]
   self._apply_labels(self.xlabel,self.ylabel,self.zlabel)
   self.legend()
   self._adjustment()
@@ -20,10 +20,7 @@ class DScatter(threeElement):
   if isinstance(x,nListlike):self.x=self._manyarr(x)
   if isinstance(y,nListlike):self.y=self._manyarr(y)
   if isinstance(z,nListlike):self.z=self._manyarr(z)
-  self.marker=self.markers(kw.get('marker','o'),self.max_depth)
-  self.s=num1s(kw.get('markersize'),10)
-  marker=kw.get('marker')
-  if marker is not None:self.marker=self.markers(marker,self.max_depth)
+  self.marker=Marker(kw.get('marker',self.marker)).marker
   self.s=num1s(kw.get('markersize'),self.s)
   self.plot(self.x,self.y,self.z,marker=self.marker,alpha=self.alpha,label=self.label)
   self._redraw()

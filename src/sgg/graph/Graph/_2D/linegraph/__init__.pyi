@@ -14,10 +14,10 @@ xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
 title:str,
-marker:str,
+marker:Type_Marker,
 markersize:int|float,
-linestyle:str,
-linewidth:int|float,
+linestyle:Type_Solid,
+linewidth:int|float
 ):'''折線グラフを再表示させる。'''
  def get(self)->list[Line2D]:'''`Line2D`の配列を返す。'''
  def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
