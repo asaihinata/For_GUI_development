@@ -1,6 +1,8 @@
 import numpy as np
+from matplotlib.cbook import normalize_kwargs
 from matplotlib.patches import Circle,RegularPolygon
 from matplotlib.path import Path
+from matplotlib.lines import Line2D
 from matplotlib.projections import register_projection
 from matplotlib.projections.polar import PolarAxes
 from matplotlib.spines import Spine
@@ -22,13 +24,13 @@ def radar_factory(num_vars,frame='circle'):
   def fill(self,*args,closed=True,**kwargs):
    return super().fill(closed=closed,*args,**kwargs)
   def plot(self,*args,**kwargs):
-   for line in super().plot(*args,**kwargs):self._close_line(line)
-  def _close_line(self,line):
-   x,y=line.get_data()
-   if x[0]!=x[-1]:
-    x=np.append(x,x[0])
-    y=np.append(y,y[0])
-    line.set_data(x,y)
+   for line in super().plot(*args,**kwargs):
+    x,y=line.get_data()
+    if x[0]!=x[-1]:
+     x=np.append(x,x[0])
+     y=np.append(y,y[0])
+     line.set_data(x,y)
+   return line
   def set_varlabels(self,labels=None):
    self.set_thetagrids(thetas,labels)
   def _gen_axes_patch(self):

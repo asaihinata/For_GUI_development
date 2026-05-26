@@ -15,9 +15,7 @@ self,
 fg:ColorType,
 bg:ColorType,
 graph_grid:ColorType,
-title:str,
-xlabel:labeltype,
-ylabel:labeltype
+title:str
 )->NoReturn:...
  def _adjustment(self)->NoReturn:'''グラフの調整を行う'''
  def clear(self)->NoReturn:'''グラフ内のグラフをクリアする。'''

@@ -209,7 +209,8 @@ For_GUI_development
  │   │   │   │   ├── _special
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── radar
- │   │   │   │   │       └── __init__.py
+ │   │   │   │   │       ├── __init__.py
+ │   │   │   │   │       └── __init__.pyi
  │   │   │   │   └── dev
  │   │   │   │       └── __init__.py
  │   │   │   ├── __init__.py
@@ -470,5 +471,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:325
+ファイル数:326
 フォルダ数:146

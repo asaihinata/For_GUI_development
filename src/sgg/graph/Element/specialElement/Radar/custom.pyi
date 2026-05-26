@@ -32,11 +32,7 @@ closed:bool=True,
 self,
 *args:tuple,
 **kwargs:dict
-)->NoReturn:...
- def _close_line(
-self,
-line:Line2D
-)->NoReturn:...
+)->Line2D:...
  def set_varlabels(
 self,
 labels:Sequence[str|Text]|None=None
