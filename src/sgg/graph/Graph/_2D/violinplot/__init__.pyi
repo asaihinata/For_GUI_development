@@ -19,7 +19,6 @@ side:Literal['both','low','high'],
 fg:ColorType,
 bg:ColorType,
 alpha:int|float,
-decimalpoint:int|float,
 graph_grid:ColorType,
 title:str
 ):'''バイオリングラフを再表示させる。'''
