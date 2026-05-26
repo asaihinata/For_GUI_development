@@ -9,7 +9,7 @@ class Radarplot(RadarElement):
   self.plot(self.data,marker=self.marker,linewidth=self.linewidth,linestyle=self.line,markersize=self.markersize,alpha=self.alpha)
  def plot(self,data,marker='none',linewidth=2,linestyle='-',markersize=10,alpha=1):
   self.clear()
-  self.graphdata=[self.ax.plot(self.theta,d,label="aa",marker=marker,linewidth=linewidth,markersize=markersize,linestyle=linestyle,alpha=alpha)for d in data]
+  self.graphdata=[self.ax.plot(self.theta,d,marker=marker,linewidth=linewidth,markersize=markersize,linestyle=linestyle,alpha=alpha)for d in data]
   self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
