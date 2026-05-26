@@ -16,6 +16,6 @@ bg:ColorType,
 alpha:int|float,
 graph_grid:ColorType,
 title:str
-)->NoReturn:'''階段グラフを再表示させる。'''
+):'''階段グラフを再表示させる。'''
  def get(self)->list[StepPatch]:'''`StepPatch`の配列を返す。'''
  def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''

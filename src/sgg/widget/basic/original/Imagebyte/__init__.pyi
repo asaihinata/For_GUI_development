@@ -7,4 +7,4 @@ class Imagebyte(_Element):
  byte:bytes|BytesIO
  imgs:PhotoImage
  widget:Label
- def delta(self)->NoReturn:'''ウィジェットを削除する。'''
+ def delta(self):'''ウィジェットを削除する。'''

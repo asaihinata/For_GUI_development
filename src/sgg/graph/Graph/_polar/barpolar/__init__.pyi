@@ -16,7 +16,7 @@ bg:ColorType,
 alpha:int|float,
 graph_grid:ColorType,
 title:str
-)->NoReturn:'''極軸棒グラフを再表示させる。'''
+):'''極軸棒グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
  def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
  def gety(self)->Typeget_data:'''`y`のデータを取得する。'''

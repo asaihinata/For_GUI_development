@@ -21,7 +21,7 @@ azim:int|float,
 xlabel:str,
 ylabel:str,
 zlabel:str
-)->NoReturn:'''3Dの散布図を再表示させる。'''
+):'''3Dの散布図を再表示させる。'''
  def get(self)->list[PathCollection]:'''`PathCollection`の配列を返す。'''
  def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
  def gety(self)->Typeget_data:'''`y`のデータを取得する。'''

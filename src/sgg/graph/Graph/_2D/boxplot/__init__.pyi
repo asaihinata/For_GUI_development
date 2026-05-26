@@ -20,6 +20,6 @@ xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
 title:str
-)->NoReturn:'''箱ひげ図を再表示させる。'''
+):'''箱ひげ図を再表示させる。'''
  def get(self)->list[dict[str,Any]]:'''`matplotlib.axes.Axes.boxplot`の戻り値の配列を返す。'''
  def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''

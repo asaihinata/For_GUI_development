@@ -60,9 +60,9 @@ class _polarset:
  def screen(self)->str:'''スクリーンの名前を返す。'''
  def id(self)->int:'''ウィジェットのウィンドウ識別子を返す。'''
  def name(self):'''ウィジェットのインスタンス名を返す。'''
- def invert(self)->NoReturn:'''x軸,y軸の軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸の軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸の軸を反転させる。'''
+ def invert(self):'''x軸,y軸の軸を反転させる。'''
+ def invert_x(self):'''x軸の軸を反転させる。'''
+ def invert_y(self):'''y軸の軸を反転させる。'''
  def getbound(self)->tuple[
 Typetuple_float64,
 Typetuple_float64

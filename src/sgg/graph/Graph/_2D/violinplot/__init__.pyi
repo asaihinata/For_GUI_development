@@ -22,6 +22,6 @@ alpha:int|float,
 decimalpoint:int|float,
 graph_grid:ColorType,
 title:str
-)->NoReturn:'''バイオリングラフを再表示させる。'''
+):'''バイオリングラフを再表示させる。'''
  def get(self)->list[dict[str,Collection]]:'''`matplotlib.axes.Axes.violinplot`のバイオリンプロットの各コンポーネントの辞書型が入った配列を返す。'''
  def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''

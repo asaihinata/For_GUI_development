@@ -17,7 +17,7 @@ graph_grid:ColorType,
 title:str,
 width:int|float,
 align:Literal['center','edge']
-)->NoReturn:'''縦軸棒グラフを再表示させる。'''
+):'''縦軸棒グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
  def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
  def gety(self)->Typeget_data:'''`y`のデータを取得する。'''

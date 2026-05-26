@@ -17,13 +17,13 @@ azim:int|float,
 xlabel:labeltype,
 ylabel:labeltype,
 zlabel:labeltype
-)->NoReturn:...
+):...
  def _apply_labels(
 self,
 xlabel:labeltype=None,
 ylabel:labeltype=None,
 zlabel:labeltype=None
-)->NoReturn:'''3Dのグラフのx軸,y軸,z軸のラベルを作成する。
+):'''3Dのグラフのx軸,y軸,z軸のラベルを作成する。
 
  :param xlabel: x軸のラベルを指定する。
  :type label: labeltype
@@ -31,13 +31,13 @@ zlabel:labeltype=None
  :type ylabel: labeltype
  :param zlabel: z軸のラベルを指定する。
  :type zlabel: labeltype'''
- def _apply_grid(self)->NoReturn:'''グリッド線を加えるメソッド。'''
- def _adjustment(self)->NoReturn:'''グラフの調整を行う'''
- def clear(self)->NoReturn:'''グラフ内のグラフをクリアする。'''
- def invert(self)->NoReturn:'''x軸,y軸,z軸を反転させる。'''
- def invert_x(self)->NoReturn:'''x軸を反転させる。'''
- def invert_y(self)->NoReturn:'''y軸を反転させる。'''
- def invert_z(self)->NoReturn:'''z軸を反転させる。'''
+ def _apply_grid(self):'''グリッド線を加えるメソッド。'''
+ def _adjustment(self):'''グラフの調整を行う'''
+ def clear(self):'''グラフ内のグラフをクリアする。'''
+ def invert(self):'''x軸,y軸,z軸を反転させる。'''
+ def invert_x(self):'''x軸を反転させる。'''
+ def invert_y(self):'''y軸を反転させる。'''
+ def invert_z(self):'''z軸を反転させる。'''
  def getbound(self)->tuple[
 tuple[float64,float64],
 tuple[float64,float64],

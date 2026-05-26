@@ -48,7 +48,7 @@ self,
 filename:str='Graph',
 ex:Literal['.eps','.jpg','.jpeg','.pdf','.pgf','.png','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']='.png',
 dpi:int|float=100
-)->NoReturn:'''グラフを画像にして画像を保存する。
+):'''グラフを画像にして画像を保存する。
 
  :param filename: 画像を保存するファイル名を指定する。
  :type filename: str
@@ -115,7 +115,7 @@ dpi:int|float=100
  def id(self)->int:'''ウィジェットのウィンドウ識別子を返す。'''
  def name(self):'''ウィジェットのインスタンス名を返す。'''
  def _color_check(self,color:list)->list:...
- def legend(self)->NoReturn:...
+ def legend(self):...
  def _anchor(
 self,
 val:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=None,
@@ -153,13 +153,13 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
  def _manyarr(self,val:ndarray|list|tuple,j:bool=True)->ndarray:...
  def _onearr(self,val:ndarray|list|tuple,j:bool=True)->ndarray:...
  def _dataarr(self,val:ndarray|list|tuple,j:bool=True)->ndarray:...
- def _pack(self)->NoReturn:'''ウィジェットを親ウィジェット内に配置します。'''
- def _redraw(self)->NoReturn:...
+ def _pack(self):'''ウィジェットを親ウィジェット内に配置します。'''
+ def _redraw(self):...
  def _size(self,sizes:TupleNumbertype2=(500,400))->TupleNumbertype2:'''グラフの大きさのサイズを定める。
 
  :param sizes: グラフの大きさを指定する。
  :type sizes: TupleNumbertype2
  :return: 決定したグラフの大きさをタプルで返す。
  :rtype: TupleNumbertype2'''
- def _apply_theme_colors(self)->NoReturn:'''目盛り,目盛りラベル,グリッド線,グラフのタイトル,軸ラベルの文字色を決定させる。'''
+ def _apply_theme_colors(self):'''目盛り,目盛りラベル,グリッド線,グラフのタイトル,軸ラベルの文字色を決定させる。'''
  def _list_loop(self,lin:ndarray|list|tuple,num:int)->list:...

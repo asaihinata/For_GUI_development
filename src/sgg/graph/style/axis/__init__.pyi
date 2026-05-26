@@ -35,7 +35,7 @@ self,
 base:float|int=10,
 nonpositive:Literal['clip','mask']='clip',
 subs:Iterable[int]|None=None
-)->NoReturn:'''対数スケールを作成する。
+):'''対数スケールを作成する。
 
  :param base: 対数の底を指定する。
  :type base: float|int
@@ -77,7 +77,7 @@ self,
 base:float|int=10,
 nonpositive:Literal['clip','mask']='clip',
 subs:Iterable[int]|None=None
-)->NoReturn:'''対数スケールを作成する。
+):'''対数スケールを作成する。
 
  :param base: 対数の底を指定する。
  :type base: float|int
@@ -119,7 +119,7 @@ self,
 base:float|int=10,
 nonpositive:Literal['clip','mask']='clip',
 subs:Iterable[int]|None=None
-)->NoReturn:'''対数スケールを作成する。
+):'''対数スケールを作成する。
 
  :param base: 対数の底を指定する。
  :type base: float|int

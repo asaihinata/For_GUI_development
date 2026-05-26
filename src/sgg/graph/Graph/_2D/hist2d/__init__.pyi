@@ -20,7 +20,7 @@ bg:ColorType,
 alpha:int|float,
 graph_grid:ColorType,
 title:str
-)->NoReturn:'''2次元ヒストグラムを再表示させる。
+):'''2次元ヒストグラムを再表示させる。
 
  :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる。
  :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる。'''

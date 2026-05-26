@@ -17,7 +17,7 @@ bg:ColorType,
 alpha:int|float,
 graph_grid:ColorType,
 title:str
-)->NoReturn:'''2つの水平曲線の間の領域を埋めるグラフを再表示させる。'''
+):'''2つの水平曲線の間の領域を埋めるグラフを再表示させる。'''
  def get(self)->list[FillBetweenPolyCollection,Line2D]:'''`PathCollection`と`Line2D`の配列を返す。'''
  def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
  def getymin(self)->Typeget_data:'''`ymin`のデータを取得する。'''

@@ -15,6 +15,6 @@ bg:ColorType,
 alpha:int|float,
 graph_grid:ColorType,
 title:str
-)->NoReturn:'''イベントグラフを再表示させる。'''
+):'''イベントグラフを再表示させる。'''
  def get(self)->list[EventCollection]:'''`EventCollection`の配列を返す。'''
  def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''

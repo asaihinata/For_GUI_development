@@ -156,11 +156,11 @@ fold:int=...
  :return: 現在のローカル日付を返す。
  :rtype: times'''
  @staticmethod
- def maxyear(maxs:int)->NoReturn:'''`year`の範囲の最大の年を変更する。
+ def maxyear(maxs:int):'''`year`の範囲の最大の年を変更する。
 
  :param maxs: 最大の年を指定する。1<=`maxs`<=9999の範囲を超えた値を指定した場合9999にする。
  :type maxs: int'''
- def minyear(mins:int)->NoReturn:'''`year`の範囲の最小の年を変更する。
+ def minyear(mins:int):'''`year`の範囲の最小の年を変更する。
 
  :param mins: 最小の年を指定する。1<=`mins`<=9999の範囲を超えた値を指定した場合1にする。
  :type mins: int'''

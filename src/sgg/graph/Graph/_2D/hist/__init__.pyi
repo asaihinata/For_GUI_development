@@ -19,7 +19,7 @@ max:int|float,
 bottom:int|float,
 orientation:Literal['horizontal','vertical'],
 width:int|float
-)->NoReturn:'''ヒストグラムを再表示させる。'''
+):'''ヒストグラムを再表示させる。'''
  def get(self)->list[ndarray|list[ndarray],ndarray,BarContainer|Polygon|list[BarContainer|Polygon]]:'''`matplotlib.axes.Axes.hist`の戻り値を配列で返す。'''
  def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''
 
