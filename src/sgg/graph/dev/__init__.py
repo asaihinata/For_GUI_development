@@ -3,4 +3,4 @@ from .graph_list.onelist import Onelist
 from .nparray.array import loop_array
 from .nparray.base import NPArray
 from .nparray.dtime import Formatconversion,NPDate
-from .nparray.maths import NPNumber
+from .nparray.maths import NPNumber,NPStatistics

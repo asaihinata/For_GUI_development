@@ -3,7 +3,7 @@ from types import NotImplementedType
 from typing import Any,Literal,overload
 import numpy as np
 from numpy._typing import DTypeLike
-from ..base import NPArray
+from ...base import NPArray
 __all__=['NPNumber']
 class NPNumber(NPArray):
  data:np.ndarray
