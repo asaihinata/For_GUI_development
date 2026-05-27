@@ -229,6 +229,11 @@ For_GUI_development
  │   │   │   │       ├── base
  │   │   │   │       │   ├── __init__.py
  │   │   │   │       │   └── __init__.pyi
+ │   │   │   │       ├── dev
+ │   │   │   │       │   ├── __init__.py
+ │   │   │   │       │   └── dtype
+ │   │   │   │       │       ├── __init__.py
+ │   │   │   │       │       └── __init__.pyi
  │   │   │   │       ├── dtime
  │   │   │   │       │   ├── __init__.py
  │   │   │   │       │   ├── conversion
@@ -478,5 +483,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:330
-フォルダ数:149
+ファイル数:333
+フォルダ数:151
