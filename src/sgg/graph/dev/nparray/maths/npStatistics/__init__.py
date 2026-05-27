@@ -1,6 +1,5 @@
 '''基本的な計算をするモジュール'''
 import numpy as np
-from numpy.polynomial import Polynomial
 from ..npNumber import NPNumber
 __all__=['NPStatistics']
 class NPStatistics:

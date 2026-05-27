@@ -1,6 +1,5 @@
 import numpy as np
 from typing import overload
-from numpy.polynomial import Polynomial
 from ..npNumber import NPNumber
 __all__=['NPStatistics']
 class NPStatistics:

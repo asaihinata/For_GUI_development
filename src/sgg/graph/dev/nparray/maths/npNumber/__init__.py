@@ -180,4 +180,4 @@ class NPNumber(NPArray):
     pows=self.__digits(digit)
     return np.round(sturges*pows)/pows
   return sturges
- def ratio(self,axis=None):return(self.data/np.sum(self.data,axis=axis,keepdims=True))*100
+ def ratio(self,axis=None):return(self.data/np.sum(self.data,dtype=self.dtype,axis=axis,keepdims=True))*100

@@ -176,5 +176,5 @@ digit:int|None=...
  :rtype: np.float64'''
  def ratio(
 self,
-axis:None|int=None
+axis:int|None=None
 )->np.ndarray:'''行や列ごとの合計に対する比率を求める。'''
