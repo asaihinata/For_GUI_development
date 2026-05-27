@@ -245,8 +245,7 @@ For_GUI_development
  │   │   │   │       │   ├── npdate
  │   │   │   │       │   │   ├── __init__.py
  │   │   │   │       │   │   └── __init__.pyi
- │   │   │   │       │   └── typing
- │   │   │   │       │       └── __init__.py
+ │   │   │   │       │   └── typing.py
  │   │   │   │       └── maths
  │   │   │   │           ├── __init__.py
  │   │   │   │           ├── npNumber
@@ -304,10 +303,8 @@ For_GUI_development
  │   │   │   │           ├── __init__.pyi
  │   │   │   │           ├── fontfile.py
  │   │   │   │           └── fontmanager.py
- │   │   │   └── typing
- │   │   │       └── __init__.py
- │   │   ├── typing
- │   │   │   └── __init__.py
+ │   │   │   └── typing.py
+ │   │   ├── typing.py
  │   │   └── widget
  │   │       ├── __init__.py
  │   │       ├── _font.py
@@ -484,4 +481,4 @@ For_GUI_development
  └── .vscode
      └── extensions.json
 ファイル数:333
-フォルダ数:151
+フォルダ数:148
