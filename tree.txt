@@ -244,7 +244,12 @@ For_GUI_development
  │   │   │   │       │       └── __init__.py
  │   │   │   │       └── maths
  │   │   │   │           ├── __init__.py
- │   │   │   │           └── __init__.pyi
+ │   │   │   │           ├── npNumber
+ │   │   │   │           │   ├── __init__.py
+ │   │   │   │           │   └── __init__.pyi
+ │   │   │   │           └── npStatistics
+ │   │   │   │               ├── __init__.py
+ │   │   │   │               └── __init__.pyi
  │   │   │   ├── style
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── axis
@@ -473,5 +478,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:327
-フォルダ数:147
+ファイル数:330
+フォルダ数:149

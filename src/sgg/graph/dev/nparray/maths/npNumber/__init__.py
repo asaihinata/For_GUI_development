@@ -16,7 +16,7 @@ method_list=[
 class NPNumber(NPArray):
  def get_axis(self):return self.axis
  def set_axis(self,axis):self.axis=axis
- def __init__(self,data,dtype=None,axis=None):
+ def __init__(self,data,dtype=np.float32,axis=None):
   if not isinstance(data,list|tuple|np.ndarray|NPArray|NPNumber):data=[data]
   super().__init__(data,dtype)
   self.axis=axis
@@ -180,3 +180,4 @@ class NPNumber(NPArray):
     pows=self.__digits(digit)
     return np.round(sturges*pows)/pows
   return sturges
+ def ratio(self,axis=None):return(self.data/np.sum(self.data,axis=axis,keepdims=True))*100

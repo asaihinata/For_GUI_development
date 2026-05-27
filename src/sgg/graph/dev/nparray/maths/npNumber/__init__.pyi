@@ -10,7 +10,7 @@ class NPNumber(NPArray):
  def __init__(
 self,
 data:np._ArrayT,
-dtype:DTypeLike|None=None,
+dtype:DTypeLike=np.float32,
 axis:int|None=None
 )->None:...
  def __abs__(self)->NPNumber:...
@@ -174,3 +174,7 @@ digit:int|None=...
  :type digit: int|None
  :return: スタージェスの公式で求めた値を`numpy.round()`で返す。
  :rtype: np.float64'''
+ def ratio(
+self,
+axis:None|int=None
+)->np.ndarray:'''行や列ごとの合計に対する比率を求める。'''
