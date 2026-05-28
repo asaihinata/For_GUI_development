@@ -19,9 +19,7 @@ class Arry:
   self.arr=arr
   self.dt=arr.dtype
   self._set_dtype=dtype
- @property
- def bool(self):return np.issubdtype(self.dt,self._set_dtype)
- def __bool__(self):return self.bool
+ def __bool__(self):return np.issubdtype(self.dt,self._set_dtype)
 class integerDtype(Arry):
  def __init__(self,arr):super().__init__(arr,np.integer)
 class intDtype(Arry):
