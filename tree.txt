@@ -291,7 +291,50 @@ For_GUI_development
  │   │   │   │   └── typing.py
  │   │   │   ├── dtype
  │   │   │   │   ├── __init__.py
- │   │   │   │   └── __init__.pyi
+ │   │   │   │   ├── _arry
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   ├── bools
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── booldtype.py
+ │   │   │   │   ├── dates
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   ├── datetimes
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── datetimedtype.py
+ │   │   │   │   │   └── timedelta
+ │   │   │   │   │       ├── __init__.py
+ │   │   │   │   │       └── timedeltadtype.py
+ │   │   │   │   ├── numbers
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   ├── complexs
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── complexdtype.py
+ │   │   │   │   │   ├── floats
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── floatdtype.py
+ │   │   │   │   │   └── integers
+ │   │   │   │   │       ├── Int
+ │   │   │   │   │       │   ├── __init__.py
+ │   │   │   │   │       │   └── intdtype.py
+ │   │   │   │   │       ├── Intenger
+ │   │   │   │   │       │   ├── __init__.py
+ │   │   │   │   │       │   └── integerdtype.py
+ │   │   │   │   │       ├── Uint
+ │   │   │   │   │       │   ├── __init__.py
+ │   │   │   │   │       │   └── uintdtype.py
+ │   │   │   │   │       └── __init__.py
+ │   │   │   │   └── strs
+ │   │   │   │       ├── Bytes
+ │   │   │   │       │   ├── __init__.py
+ │   │   │   │       │   └── bytesdtype.py
+ │   │   │   │       ├── Str
+ │   │   │   │       │   ├── __init__.py
+ │   │   │   │       │   └── strdtype.py
+ │   │   │   │       ├── String
+ │   │   │   │       │   ├── __init__.py
+ │   │   │   │       │   └── stringdtype.py
+ │   │   │   │       └── __init__.py
  │   │   │   └── maths
  │   │   │       ├── __init__.py
  │   │   │       ├── npNumber
@@ -476,5 +519,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:331
-フォルダ数:146
+ファイル数:358
+フォルダ数:162
