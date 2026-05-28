@@ -3,14 +3,14 @@ from types import NotImplementedType
 from typing import Any,Literal,overload
 import numpy as np
 from numpy._typing import DTypeLike
-from ...base import NPArray
+from ..base import NPArray
 __all__=['NPNumber']
 class NPNumber(NPArray):
  data:np.ndarray
  def __init__(
 self,
 data:np._ArrayT,
-dtype:DTypeLike=np.float32,
+dtype:DTypeLike=np.float64,
 axis:int|None=None
 )->None:...
  def __abs__(self)->NPNumber:...

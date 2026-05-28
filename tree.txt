@@ -338,14 +338,12 @@ For_GUI_development
  │   │   │   │       │   ├── __init__.py
  │   │   │   │       │   └── stringdtype.py
  │   │   │   │       └── __init__.py
- │   │   │   └── maths
+ │   │   │   ├── npNumber
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
+ │   │   │   └── npStatistics
  │   │   │       ├── __init__.py
- │   │   │       ├── npNumber
- │   │   │       │   ├── __init__.py
- │   │   │       │   └── __init__.pyi
- │   │   │       └── npStatistics
- │   │   │           ├── __init__.py
- │   │   │           └── __init__.pyi
+ │   │   │       └── __init__.pyi
  │   │   ├── typing.py
  │   │   └── widget
  │   │       ├── __init__.py
@@ -522,5 +520,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:360
-フォルダ数:163
+ファイル数:359
+フォルダ数:162

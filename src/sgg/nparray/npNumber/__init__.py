@@ -1,6 +1,7 @@
 '''基本的な計算をするモジュール'''
 import numpy as np
-from ...base import NPArray
+from ..base import NPArray
+from ..dtype import numberDtype
 __all__=['NPNumber']
 method_list=[
 'inverted_cdf',
@@ -16,7 +17,9 @@ method_list=[
 class NPNumber(NPArray):
  def get_axis(self):return self.axis
  def set_axis(self,axis):self.axis=axis
- def __init__(self,data,dtype=np.float32,axis=None):
+ def __init__(self,data,dtype=np.float64,axis=None):
+  if not numberDtype(dtype):
+   raise TypeError('dtypeには数値の型を指定してください')
   if not isinstance(data,list|tuple|np.ndarray|NPArray|NPNumber):data=[data]
   super().__init__(data,dtype)
   self.axis=axis
