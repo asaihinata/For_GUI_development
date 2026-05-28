@@ -83,6 +83,12 @@ For_GUI_development
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── dev
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   ├── datalist.py
+ │   │   │   │   │   ├── manylist.py
+ │   │   │   │   │   └── onelist.py
  │   │   │   │   ├── polarelement
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
@@ -214,46 +220,6 @@ For_GUI_development
  │   │   │   │   └── dev
  │   │   │   │       └── __init__.py
  │   │   │   ├── __init__.py
- │   │   │   ├── dev
- │   │   │   │   ├── __init__.py
- │   │   │   │   ├── graph_list
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── __init__.pyi
- │   │   │   │   │   ├── datalist.py
- │   │   │   │   │   ├── manylist.py
- │   │   │   │   │   └── onelist.py
- │   │   │   │   └── nparray
- │   │   │   │       ├── array
- │   │   │   │       │   ├── __init__.py
- │   │   │   │       │   └── __init__.pyi
- │   │   │   │       ├── base
- │   │   │   │       │   ├── __init__.py
- │   │   │   │       │   └── __init__.pyi
- │   │   │   │       ├── dev
- │   │   │   │       │   ├── __init__.py
- │   │   │   │       │   └── dtype
- │   │   │   │       │       ├── __init__.py
- │   │   │   │       │       └── __init__.pyi
- │   │   │   │       ├── dtime
- │   │   │   │       │   ├── __init__.py
- │   │   │   │       │   ├── conversion
- │   │   │   │       │   │   ├── __init__.py
- │   │   │   │       │   │   └── __init__.pyi
- │   │   │   │       │   ├── data
- │   │   │   │       │   │   ├── __init__.py
- │   │   │   │       │   │   └── constants.py
- │   │   │   │       │   ├── npdate
- │   │   │   │       │   │   ├── __init__.py
- │   │   │   │       │   │   └── __init__.pyi
- │   │   │   │       │   └── typing.py
- │   │   │   │       └── maths
- │   │   │   │           ├── __init__.py
- │   │   │   │           ├── npNumber
- │   │   │   │           │   ├── __init__.py
- │   │   │   │           │   └── __init__.pyi
- │   │   │   │           └── npStatistics
- │   │   │   │               ├── __init__.py
- │   │   │   │               └── __init__.pyi
  │   │   │   ├── style
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── axis
@@ -304,6 +270,36 @@ For_GUI_development
  │   │   │   │           ├── fontfile.py
  │   │   │   │           └── fontmanager.py
  │   │   │   └── typing.py
+ │   │   ├── nparray
+ │   │   │   ├── array
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
+ │   │   │   ├── base
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
+ │   │   │   ├── dtime
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── conversion
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   ├── data
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── constants.py
+ │   │   │   │   ├── npdate
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   └── typing.py
+ │   │   │   ├── dtype
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
+ │   │   │   └── maths
+ │   │   │       ├── __init__.py
+ │   │   │       ├── npNumber
+ │   │   │       │   ├── __init__.py
+ │   │   │       │   └── __init__.pyi
+ │   │   │       └── npStatistics
+ │   │   │           ├── __init__.py
+ │   │   │           └── __init__.pyi
  │   │   ├── typing.py
  │   │   └── widget
  │   │       ├── __init__.py
@@ -480,5 +476,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:333
-フォルダ数:148
+ファイル数:331
+フォルダ数:146

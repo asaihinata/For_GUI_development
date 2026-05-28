@@ -2,7 +2,7 @@ from collections.abc import Iterator
 from typing import TypeAlias
 from numpy import _ArrayT,_CopyMode,_ScalarT,dtype,ndarray
 from numpy._typing import DTypeLike
-from .....typing import Any,Type_Numberlike,Type_NumberlikeN,ndarray
+from ...typing import Any,Type_Numberlike,Type_NumberlikeN,ndarray
 _Array1D:TypeAlias=ndarray[tuple[int],dtype[_ScalarT]]
 __all__=['NPArray']
 class NPArray:
