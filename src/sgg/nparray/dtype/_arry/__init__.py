@@ -7,5 +7,8 @@ class Arry:
    raise TypeError('np.ndarray型で指定してください')
   self.arr=arr
   self.dt=arr.dtype
-  self._set_dtype=dtype
- def __bool__(self):return np.issubdtype(self.dt,self._set_dtype)
+  if isinstance(dtype,list):self.bols=any(np.issubdtype(self.dt,i)for i in dtype)
+  else:self.bols=np.issubdtype(self.dt,dtype)
+ def __bool__(self):return self.bols
+ def __repr__(self):return self.arr
+ def __str__(self):return self.arr

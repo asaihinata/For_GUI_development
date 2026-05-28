@@ -313,17 +313,20 @@ For_GUI_development
  │   │   │   │   │   ├── floats
  │   │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   │   └── floatdtype.py
- │   │   │   │   │   └── integers
- │   │   │   │   │       ├── Int
- │   │   │   │   │       │   ├── __init__.py
- │   │   │   │   │       │   └── intdtype.py
- │   │   │   │   │       ├── Intenger
- │   │   │   │   │       │   ├── __init__.py
- │   │   │   │   │       │   └── integerdtype.py
- │   │   │   │   │       ├── Uint
- │   │   │   │   │       │   ├── __init__.py
- │   │   │   │   │       │   └── uintdtype.py
- │   │   │   │   │       └── __init__.py
+ │   │   │   │   │   ├── integers
+ │   │   │   │   │   │   ├── Int
+ │   │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   │   └── intdtype.py
+ │   │   │   │   │   │   ├── Intenger
+ │   │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   │   └── integerdtype.py
+ │   │   │   │   │   │   ├── Uint
+ │   │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   │   └── uintdtype.py
+ │   │   │   │   │   │   └── __init__.py
+ │   │   │   │   │   └── nums
+ │   │   │   │   │       ├── __init__.py
+ │   │   │   │   │       └── numberdtype.py
  │   │   │   │   └── strs
  │   │   │   │       ├── Bytes
  │   │   │   │       │   ├── __init__.py
@@ -519,5 +522,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:358
-フォルダ数:162
+ファイル数:360
+フォルダ数:163
