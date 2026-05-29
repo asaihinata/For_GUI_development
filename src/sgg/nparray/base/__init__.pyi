@@ -12,7 +12,7 @@ class NPArray:
  name:str
  def __init__(
 self,
-data:_ArrayT,
+data:list|tuple|ndarray|NPArray,
 dtype:DTypeLike|None=None
 )->None:...
  def __repr__(self)->str:...

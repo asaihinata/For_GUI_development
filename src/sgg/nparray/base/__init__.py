@@ -2,6 +2,11 @@ import numpy as np
 __all__=['NPArray']
 class NPArray:
  def __init__(self,data,dtype=None,name=None):
+  if(
+     'NPArray' not in [i.__name__ for i in self.__class__.__mro__] and
+     not isinstance(data,list|tuple|np.ndarray|NPArray)
+    ):
+   raise TypeError('dataには配列の型を指定してください')
   if not isinstance(name,str):self.name='NPArray'
   else:self.name=name
   self.dtype=dtype

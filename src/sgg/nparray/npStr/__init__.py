@@ -8,7 +8,6 @@ class NPString(NPArray):
  def __init__(self,data,dtype=np.str_):
   if not stringDtype(dtype):
    raise TypeError('dtypeには文字列の型を指定してください')
-  if not isinstance(data,list|tuple|np.ndarray|NPArray|stringDtype):data=[data]
   super().__init__(data,dtype,self.name)
  def __repr__(self):return super().__repr__()
  def __add__(self,other):
@@ -16,7 +15,7 @@ class NPString(NPArray):
   return self
  def __mul__(self,other):
   if not isinstance(other,int):
-   raise TypeError('整数型を指定してください')
+   raise TypeError('int型で指定してください')
   self.data=nps.multiply(self.data,other)
   return self
  __radd__=__add__
@@ -35,9 +34,9 @@ class NPString(NPArray):
  def append(self,val):
   self.data=np.append(self.data,self.___datas(val))
   return self
- def low(self,val):
-  self.data=nps.lower(self.data,self.___datas(val))
+ def low(self):
+  self.data=nps.lower(self.data)
   return self
- def upper(self,val):
-  self.data=nps.upper(self.data,self.___datas(val))
+ def upper(self):
+  self.data=nps.upper(self.data)
   return self
