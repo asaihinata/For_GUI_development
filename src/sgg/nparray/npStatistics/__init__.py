@@ -2,7 +2,16 @@
 import numpy as np
 from ..npNumber import NPNumber
 __all__=['NPStatistics']
+method_list=[
+'inverted_cdf','averaged_inverted_cdf',
+'closest_observation',
+'interpolated_inverted_cdf',
+'hazen','weibull','linear',
+'median_unbiased',
+'normal_unbiased']
 class NPStatistics:
+ PI=np.pi
+ PI2=np.pi*2
  def __init__(self,data=None,x=None,y=None):
   if data is None and x is None and y is None:
    raise TypeError('dataもしくはx,yにNPNumberもしくはnp.ndarrayを指定してください')
@@ -30,7 +39,9 @@ class NPStatistics:
    self.y=np.array(y) if isinstance(y,NPNumber) else y
    self.data=np.vstack((self.x,self.y))
  def __repr__(self):return f'{self.data}'
- # x property
+ ########
+ #  x  #
+ ########
  @property
  def xsum(self):return np.sum(self.x)
  @property
@@ -61,7 +72,23 @@ class NPStatistics:
  def xdevsq(self):
   xmean=self.xmean
   return np.sum((self.x-xmean)**2)/self.n1
- # y property
+ @property
+ def xrange(self):return np.array([self.xmin,self.xmax])
+ # 四分位範囲
+ def xpercentile(self,q,axis=None,method='linear'):
+  if method not in method_list:method='linear'
+  return np.percentile(self.x,q,axis=axis,method=method)
+ def xquantile(self,q,axis=None,method='linear'):
+  if method not in method_list:method='linear'
+  return np.quantile(self.x,q,axis=axis,method=method)
+ # 外れ値
+ def xoutlier(self):
+  q1,q3=np.percentile(self.x,[25,75])
+  iqr=(q3-q1)*1.5
+  return self.x[(self.x<(q1-iqr))|(self.x>(q3+iqr))]
+ ########
+ #  y  #
+ ########
  @property
  def ysum(self):return np.sum(self.y)
  @property
@@ -69,7 +96,7 @@ class NPStatistics:
  @property
  def ymin(self):return np.min(self.y)
  @property
- def ymay(self):return np.max(self.y)
+ def ymax(self):return np.max(self.y)
  @property
  def ymean(self):return np.mean(self.y)
  @property
@@ -92,7 +119,21 @@ class NPStatistics:
  def ydevsq(self):
   ymean=self.ymean
   return np.sum((self.y-ymean)**2)/self.n1
- # data
+ @property
+ def yrange(self):return np.array([self.ymin,self.ymax])
+ def ypercentile(self,q,axis=None,method='linear'):
+  if method not in method_list:method='linear'
+  return np.percentile(self.y,q,axis=axis,method=method)
+ def yquantile(self,q,axis=None,method='linear'):
+  if method not in method_list:method='linear'
+  return np.quantile(self.y,q,axis=axis,method=method)
+ def youtlier(self):
+  q1,q3=np.percentile(self.y,[25,75])
+  iqr=(q3-q1)*1.5
+  return self.y[(self.y<(q1-iqr))|(self.y>(q3+iqr))]
+ ##########
+ #  data  #
+ ##########
  @property
  def sum(self):return np.sum(self.data)
  @property
@@ -100,7 +141,7 @@ class NPStatistics:
  @property
  def min(self):return np.min(self.data)
  @property
- def may(self):return np.max(self.data)
+ def max(self):return np.max(self.data)
  @property
  def mean(self):return np.mean(self.data)
  @property
@@ -124,6 +165,18 @@ class NPStatistics:
   mean=self.mean
   return np.sum((self.data-mean)**2)
  @property
+ def range(self):return np.array([[self.xmin,self.xmax],[self.ymin,self.ymax]])
+ def percentile(self,q,axis=None,method='linear'):
+  if method not in method_list:method='linear'
+  return np.percentile(self.data,q,axis=axis,method=method)
+ def quantile(self,q,axis=None,method='linear'):
+  if method not in method_list:method='linear'
+  return np.quantile(self.data,q,axis=axis,method=method)
+ def outlier(self):
+  q1,q3=np.percentile(self.data,[25,75])
+  iqr=(q3-q1)*1.5
+  return self.data[(self.data<(q1-iqr))|(self.data>(q3+iqr))]
+ @property
  def n(self):return self.data.shape[1]
  @property
  def n1(self):return self.n-1
@@ -132,13 +185,14 @@ class NPStatistics:
  def covariance(self):return np.cov(self.x,self.y)[0,1]
  def correlation(self):return np.corrcoef(self.x,self.y)[0,1]
  def correlation_coefficient(self):return self.Sxy/self.Sxxyyroot
- #x,y
+ # x,y
  @property
  def Sxy(self):return np.cov(self.x,self.y)[0,1]
  @property
  def Sxxyy(self):return self.xdevsq*self.ydevsq
  @property
  def Sxxyyroot(self):return np.power(self.Sxxyy,0.5)
+ # 回帰直線
  def regression(self,n=1,x=None):
   S=np.polyfit(self.x,self.y,n)
   if isinstance(x,int|float):return np.polyval(S,x)
