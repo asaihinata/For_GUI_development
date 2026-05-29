@@ -4,11 +4,13 @@ from ..typing import Dtype
 __all__=['NPDate']
 class NPDate(NPArray):
  data:ndarray
+ name:str
  def __init__(
 self,
 data:_ArrayT,
 dtype:Dtype|None='datetime64[D]'
 )->None:...
+ def __repr__(self)->str:...
  def astype(self,dtype:Dtype)->NPDate:...
  @property
  def max(self)->timedelta64:'''NPDate内の最大の日付を取得する。'''

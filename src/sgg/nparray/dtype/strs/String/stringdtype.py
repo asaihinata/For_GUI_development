@@ -1,5 +1,5 @@
 import numpy as np
-from ..._arry import Arry
+from ...base import baseDtype
 __all__=['stringDtype']
-class stringDtype(Arry):
+class stringDtype(baseDtype):
  def __init__(self,arr):super().__init__(arr,[np.str_,np.bytes_])

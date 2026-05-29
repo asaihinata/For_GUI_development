@@ -1,33 +1,47 @@
 '''基本的な計算をするモジュール'''
 from types import NotImplementedType
+from _typeshed import Incomplete
 from typing import Any,Literal,overload
-import numpy as np
+from numpy import _ArrayT,float64,int64,ndarray,ufunc
 from numpy._typing import DTypeLike
 from ..base import NPArray
 __all__=['NPNumber']
 class NPNumber(NPArray):
- data:np.ndarray
+ data:ndarray
+ name:str
  def __init__(
 self,
-data:np._ArrayT,
-dtype:DTypeLike=np.float64,
+data:_ArrayT,
+dtype:DTypeLike=float64,
 axis:int|None=None
 )->None:...
  def __abs__(self)->NPNumber:...
  def __repr__(self)->str:...
- def __add__(self,other:int|float|np.ndarray|NPNumber)->NPNumber:...
- def __sub__(self,other:int|float|np.ndarray|NPNumber)->NPNumber:...
- def __mul__(self,other:int|float|np.ndarray|NPNumber)->NPNumber:...
- def __truediv__(self,other:int|float|np.ndarray|NPNumber)->NPNumber:...
+ def __add__(self,other:int|float|ndarray|NPNumber)->NPNumber:...
+ def __sub__(self,other:int|float|ndarray|NPNumber)->NPNumber:...
+ def __mul__(self,other:int|float|ndarray|NPNumber)->NPNumber:...
+ def __truediv__(self,other:int|float|ndarray|NPNumber)->NPNumber:...
  __radd__=__add__
  __rsub__=__sub__
  __rmul__=__mul__
  __rtruediv__=__truediv__
- def __mod__(self,other:int|float|np.ndarray|NPNumber)->NPNumber:...
- def __floordiv__(self,other:int|float|np.ndarray|NPNumber)->NPNumber:...
- def __pow__(self,other:int|float|np.ndarray|NPNumber)->NPNumber:...
- def __array_ufunc__(self,ufunc,method,*args,**kwargs)->NPNumber|Any|NotImplementedType:...
- def __digits(self,digit:int)->np.int64:...
+ def __eq__(self,value:ndarray|NPNumber)->ndarray[Incomplete]:...
+ def __ne__(self,value:ndarray|NPNumber)->ndarray[Incomplete]:...
+ def __lt__(self,other:ndarray|NPNumber)->ndarray[Incomplete]:...
+ def __le__(self,other:ndarray|NPNumber)->ndarray[Incomplete]:...
+ def __gt__(self,other:ndarray|NPNumber)->ndarray[Incomplete]:...
+ def __ge__(self,other:ndarray|NPNumber)->ndarray[Incomplete]:...
+ def __mod__(self,other:int|float|ndarray|NPNumber)->NPNumber:...
+ def __floordiv__(self,other:int|float|ndarray|NPNumber)->NPNumber:...
+ def __pow__(self,other:int|float|ndarray|NPNumber)->NPNumber:...
+ def __array_ufunc__(
+self,
+ufunc:ufunc,
+method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
+*args:Any,
+**kwargs:Any
+)->NPNumber|Any|NotImplementedType:...
+ def __digits(self,digit:int)->int64:...
  @property
  def sum(self):...
  @property
@@ -84,7 +98,7 @@ method:Literal[
 'median_unbiased',
 'normal_unbiased'
 ]='linear'
-)->np.ndarray:...
+)->ndarray:...
  def quantile(
 self,
 q:tuple[int,...],
@@ -100,81 +114,81 @@ method:Literal[
 'median_unbiased',
 'normal_unbiased'
 ]='linear'
-)->np.ndarray:...
+)->ndarray:...
  @overload
  def sturgesval(
 self,
 decimal:Literal['floor','trunc','ceil','round','none']|None=...,
 digit:int|None=...
-)->np.float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
+)->float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
 
  :param decimal: 小数点以下の処理について指定する。
  :type decimal: Literal['floor','trunc','ceil','round','none']|None
  :param digit: 返す小数点の桁数を指定する。
  :type digit: int|None
  :return: スタージェスの公式で求めた値を返す。
- :rtype: np.float64'''
+ :rtype: float64'''
  @overload
  def sturgesval(
 self,
 decimal:Literal['none']|None=None
-)->np.float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
+)->float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
 
  :return: スタージェスの公式で求めた値を返す。
- :rtype: np.float64'''
+ :rtype: float64'''
  @overload
  def sturgesval(
 self,
 decimal:Literal['floor','trunc','ceil','round','none']='floor',
 digit:int|None=...
-)->np.float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
+)->float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
 
  :param decimal: 小数点以下の処理について指定する。
  :type decimal: Literal['floor','trunc','ceil','round','none']
  :param digit: 返す小数点の桁数を指定する。
  :type digit: int|None
  :return: スタージェスの公式で求めた値を`numpy.floor()`で返す。
- :rtype: np.float64'''
+ :rtype: float64'''
  @overload
  def sturgesval(
 self,
 decimal:Literal['floor','trunc','ceil','round','none']='trunc',
 digit:int|None=...
-)->np.float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
+)->float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
 
  :param decimal: 小数点以下の処理について指定する。
  :type decimal: Literal['floor','trunc','ceil','round','none']
  :param digit: 返す小数点の桁数を指定する。
  :type digit: int|None
  :return: スタージェスの公式で求めた値を`numpy.trunc()`で返す。
- :rtype: np.float64'''
+ :rtype: float64'''
  @overload
  def sturgesval(
 self,
 decimal:Literal['floor','trunc','ceil','round','none']='ceil',
 digit:int|None=...
-)->np.float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
+)->float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
 
  :param decimal: 小数点以下の処理について指定する。
  :type decimal: Literal['floor','trunc','ceil','round','none']
  :param digit: 返す小数点の桁数を指定する。
  :type digit: int|None
  :return: スタージェスの公式で求めた値を`numpy.ceil()`で返す。
- :rtype: np.float64'''
+ :rtype: float64'''
  @overload
  def sturgesval(
 self,
 decimal:Literal['floor','trunc','ceil','round','none']='round',
 digit:int|None=...
-)->np.float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
+)->float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
 
  :param decimal: 小数点以下の処理について指定する。
  :type decimal: Literal['floor','trunc','ceil','round','none']
  :param digit: 返す小数点の桁数を指定する。
  :type digit: int|None
  :return: スタージェスの公式で求めた値を`numpy.round()`で返す。
- :rtype: np.float64'''
+ :rtype: float64'''
  def ratio(
 self,
 axis:int|None=None
-)->np.ndarray:'''行や列ごとの合計に対する比率を求める。'''
+)->ndarray:'''行や列ごとの合計に対する比率を求める。'''

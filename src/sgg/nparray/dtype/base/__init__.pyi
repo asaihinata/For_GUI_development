@@ -1,6 +1,7 @@
 import numpy as np
 from numpy._typing import DTypeLike
-class Arry:
+__all__=['baseDtype']
+class baseDtype:
  dt:DTypeLike
  bols:bool
  def __init__(

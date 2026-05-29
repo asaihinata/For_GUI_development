@@ -1,11 +1,14 @@
 import numpy as np
 __all__=['NPArray']
 class NPArray:
- def __init__(self,data,dtype=None):
+ def __init__(self,data,dtype=None,name=None):
+  if not isinstance(name,str):self.name='NPArray'
+  else:self.name=name
   self.dtype=dtype
   self.data=np.array(data,dtype=self.dtype)
  def __iter__(self):return iter(self.data)
  def __array__(self,dtype=None,copy=None):return np.array(self.data,dtype=dtype,copy=copy)
+ def __repr__(self):return f'{self.name}({self.data})'
  def astype(self,dtype):
   self.data=self.data.astype(dtype)
   return self
@@ -43,12 +46,3 @@ class NPArray:
  def flatten(self):
   self.data=np.ravel(self.data)
   return self
- @classmethod
- def arange(cls,start,stop=None,step=None,dtype=None):
-  if stop is None:start,stop=0,start
-  cls.data=np.arange(start,stop,step,dtype)
-  return cls
- @classmethod
- def linspace(cls,start,stop,num=50,endpoint=True,dtype=None):
-  cls.data=np.linspace(start,stop,num=num,endpoint=endpoint,dtype=dtype)
-  return cls

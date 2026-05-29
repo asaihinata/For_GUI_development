@@ -1,5 +1,5 @@
 import numpy as np
-from ..._arry import Arry
+from ...base import baseDtype
 __all__=['floatDtype']
-class floatDtype(Arry):
+class floatDtype(baseDtype):
  def __init__(self,arr):super().__init__(arr,np.floating)

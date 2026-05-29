@@ -1,24 +1,34 @@
 from collections.abc import Iterator
-from typing import TypeAlias
-from numpy import _ArrayT,_CopyMode,_ScalarT,dtype,ndarray
+from types import NotImplementedType
+from typing import Literal,TypeAlias
+from numpy import _ArrayT,_CopyMode,_ScalarT,dtype,ndarray,ufunc
 from numpy._typing import DTypeLike
-from ...typing import Any,Type_Numberlike,Type_NumberlikeN,ndarray
+from ...typing import Any,ndarray
 _Array1D:TypeAlias=ndarray[tuple[int],dtype[_ScalarT]]
 __all__=['NPArray']
 class NPArray:
  dtype:DTypeLike
  data:ndarray
+ name:str
  def __init__(
 self,
 data:_ArrayT,
 dtype:DTypeLike|None=None
 )->None:...
+ def __repr__(self)->str:...
  def __iter__(self)->Iterator[Any]:...
  def __array__(
 self,
 dtype:DTypeLike|None=None,
 copy:bool|_CopyMode|None=None
 )->ndarray:...
+ def __array_ufunc__(
+self,
+ufunc:ufunc,
+method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
+*args:Any,
+**kwargs:Any
+)->NPArray|Any|NotImplementedType:...
  def tolist(self)->Any|list:'''list型に変換する。
 
  :return:
@@ -52,20 +62,3 @@ dtype:DTypeLike|None=None
  def flatten(self)->NPArray:...
  def dimension(self)->bool:'''`data`の次元が1次元か判定する。'''
  def dimensions(self)->bool:'''`data`の次元が多次元か判定する。'''
- @classmethod
- def arange(
-cls,
-start:Type_Numberlike,
-stop:Type_NumberlikeN=None,
-step:Type_NumberlikeN=None,
-dtype:DTypeLike|None=None
-)->NPArray:...
- @classmethod
- def linspace(
-cls,
-start:Type_Numberlike,
-stop:Type_Numberlike,
-num:Type_Numberlike=50,
-endpoint:bool=True,
-dtype:DTypeLike|None=None
-):...

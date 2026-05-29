@@ -4,10 +4,12 @@ from ..data import serch_dtype
 from ..conversion import Formatconversion,conversions
 __all__=['NPDate']
 class NPDate(NPArray):
+ name='NPDate'
  def __init__(self,data,dtype='datetime64[D]'):
   if not isinstance(data,list|tuple|np.ndarray|NPArray|NPDate|Formatconversion):data=[data]
   elif isinstance(data,Formatconversion):data=data.data
-  super().__init__(data,dtype=serch_dtype(dtype))
+  super().__init__(data,serch_dtype(dtype),self.name)
+ def __repr__(self):return super().__repr__()
  def astype(self,dtype):
   self.data=self.data.astype(serch_dtype(dtype))
   return self

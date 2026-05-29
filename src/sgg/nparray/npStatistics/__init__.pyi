@@ -1,21 +1,21 @@
-import numpy as np
 from typing import overload
+from numpy import dtype,float64,ndarray
 from ..npNumber import NPNumber
 __all__=['NPStatistics']
 class NPStatistics:
- x:np.ndarray
- y:np.ndarray
- data:np.ndarray
+ x:ndarray
+ y:ndarray
+ data:ndarray
  @overload
  def __init__(
 self,
-data:NPNumber|np.ndarray=...
+data:NPNumber|ndarray=...
 ):...
  @overload
  def __init__(
 self,
-x:NPNumber|np.ndarray=...,
-y:NPNumber|np.ndarray=...
+x:NPNumber|ndarray=...,
+y:NPNumber|ndarray=...
 ):...
  def __repr__(self):...
  ########
@@ -137,15 +137,15 @@ y:NPNumber|np.ndarray=...
 self,
 n:int=1,
 x:int|float|None=...
-)->np.ndarray[np.float64,np.dtype[np.float64]]|np.float64:''''''
+)->ndarray[float64,dtype[float64]]|float64:''''''
  @overload
  def regression(
 self,
 n:int=1
-)->np.ndarray[np.float64,np.dtype[np.float64]]:'''点(x,y)に次数`n`の多項式を当てはめる。'''
+)->ndarray[float64,dtype[float64]]:'''点(x,y)に次数`n`の多項式を当てはめる。'''
  @overload
  def regression(
 self,
 n:int=1,
 x:int|float=...
-)->np.float64:'''点(x,y)に次数`n`の多項式の`x`の値を求める。'''
+)->float64:'''点(x,y)に次数`n`の多項式の`x`の値を求める。'''

@@ -1,4 +1,4 @@
-'''基本的な計算をするモジュール'''
+'''基本的な統計の計算をするモジュール'''
 import numpy as np
 from ..npNumber import NPNumber
 __all__=['NPStatistics']
@@ -10,8 +10,6 @@ method_list=[
 'median_unbiased',
 'normal_unbiased']
 class NPStatistics:
- PI=np.pi
- PI2=np.pi*2
  def __init__(self,data=None,x=None,y=None):
   if data is None and x is None and y is None:
    raise TypeError('dataもしくはx,yにNPNumberもしくはnp.ndarrayを指定してください')
@@ -58,6 +56,7 @@ class NPStatistics:
  def xstd(self):return np.std(self.x)
  @property
  def xpow2(self):return np.power(self.x,2)
+ # 偏差値
  @property
  def xdeviation(self):return ((10/self.xstd)*(self.x-self.xmean))+50
  @property
@@ -86,6 +85,7 @@ class NPStatistics:
   q1,q3=np.percentile(self.x,[25,75])
   iqr=(q3-q1)*1.5
   return self.x[(self.x<(q1-iqr))|(self.x>(q3+iqr))]
+ # 母分散
  ########
  #  y  #
  ########
@@ -105,6 +105,7 @@ class NPStatistics:
  def ystd(self):return np.std(self.y)
  @property
  def ypow2(self):return np.power(self.y,2)
+ # 偏差値
  @property
  def ydeviation(self):return ((10/self.ystd)*(self.y-self.ymean))+50
  @property
@@ -150,6 +151,7 @@ class NPStatistics:
  def std(self):return np.std(self.data)
  @property
  def pow2(self):return np.power(self.data,2)
+ # 偏差値
  @property
  def deviation(self):return ((10/self.std)*(self.data-self.mean))+50
  @property

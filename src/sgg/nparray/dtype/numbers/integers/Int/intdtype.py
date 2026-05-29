@@ -1,5 +1,5 @@
 import numpy as np
-from ...._arry import Arry
+from ....base import baseDtype
 __all__=['intDtype']
-class intDtype(Arry):
+class intDtype(baseDtype):
  def __init__(self,arr):super().__init__(arr,[np.int_,np.int8,np.int16])

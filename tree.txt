@@ -271,6 +271,7 @@ For_GUI_development
  │   │   │   │           └── fontmanager.py
  │   │   │   └── typing.py
  │   │   ├── nparray
+ │   │   │   ├── __init__.py
  │   │   │   ├── array
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
@@ -291,7 +292,7 @@ For_GUI_development
  │   │   │   │   └── typing.py
  │   │   │   ├── dtype
  │   │   │   │   ├── __init__.py
- │   │   │   │   ├── _arry
+ │   │   │   │   ├── base
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── bools
@@ -341,7 +342,10 @@ For_GUI_development
  │   │   │   ├── npNumber
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
- │   │   │   └── npStatistics
+ │   │   │   ├── npStatistics
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
+ │   │   │   └── npStr
  │   │   │       ├── __init__.py
  │   │   │       └── __init__.pyi
  │   │   ├── typing.py
@@ -520,5 +524,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:359
-フォルダ数:162
+ファイル数:362
+フォルダ数:163

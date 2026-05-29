@@ -15,49 +15,49 @@ method_list=[
 'normal_unbiased'
 ]
 class NPNumber(NPArray):
+ name='NPNumber'
  def get_axis(self):return self.axis
  def set_axis(self,axis):self.axis=axis
  def __init__(self,data,dtype=np.float64,axis=None):
   if not numberDtype(dtype):
    raise TypeError('dtypeには数値の型を指定してください')
   if not isinstance(data,list|tuple|np.ndarray|NPArray|NPNumber):data=[data]
-  super().__init__(data,dtype)
+  super().__init__(data,dtype,self.name)
   self.axis=axis
- def __repr__(self):return f'{self.data}'
+ def __repr__(self):return super().__repr__()
  def __abs__(self):
   self.data=np.abs(self.data,dtype=self.dtype)
   return self
  def __add__(self,other):
-  if isinstance(other,NPNumber):self.data=self.data+other.data
-  else:self.data=self.data+other
+  self.data=self.data+self.__datas(other)
   return self
  def __sub__(self,other):
-  if isinstance(other,NPNumber):self.data=self.data-other.data
-  else:self.data=self.data-other
+  self.data=self.data-self.__datas(other)
   return self
  def __mul__(self,other):
-  if isinstance(other,NPNumber):self.data=self.data*other.data
-  else:self.data=self.data*other
+  self.data=self.data*self.__datas(other)
   return self
  def __truediv__(self,other):
-  if isinstance(other,NPNumber):self.data=self.data/other.data
-  else:self.data=self.data/other
+  self.data=self.data/self.__datas(other)
   return self
  __radd__=__add__
  __rsub__=__sub__
  __rmul__=__mul__
  __rtruediv__=__truediv__
+ def __eq__(self,value):return np.equal(self.data,self.__datas(value))
+ def __ne__(self,value):return np.not_equal(self.data,self.__datas(value))
+ def __lt__(self,other):return np.less(self.data,self.__datas(other))
+ def __le__(self,other):return np.less_equal(self.data,self.__datas(other))
+ def __gt__(self,other):return np.greater(self.data,self.__datas(other))
+ def __ge__(self,other):return np.greater_equal(self.data,self.__datas(other))
  def __mod__(self,other):
-  if isinstance(other,NPNumber):self.data=self.data%other.data
-  else:self.data=self.data%other
+  self.data=self.data%self.__datas(other)
   return self
  def __floordiv__(self,other):
-  if isinstance(other,NPNumber):self.data=self.data//other.data
-  else:self.data=self.data//other
+  self.data=self.data//self.__datas(other)
   return self
  def __pow__(self,other):
-  if isinstance(other,NPNumber):self.data=np.power(self.data,other.data)
-  else:self.data=np.power(self.data,other)
+  self.data=np.power(self.data,self.__datas(other))
   return self
  def __array_ufunc__(self,ufunc,method,*args,**kwargs):
   if method=='__call__':
@@ -72,6 +72,7 @@ class NPNumber(NPArray):
   elif digit<1:
    raise ValueError('digitには1以上の整数を指定してください')
   return np.pow(10,digit)
+ def __datas(self,data):return data.data if isinstance(data,NPNumber) else data
  @property
  def sum(self):return np.sum(self.data,axis=self.axis,dtype=self.dtype)
  @property
