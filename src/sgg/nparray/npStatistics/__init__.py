@@ -36,7 +36,7 @@ class NPStatistics:
    self.x=np.array(x) if isinstance(x,NPNumber) else x
    self.y=np.array(y) if isinstance(y,NPNumber) else y
    self.data=np.vstack((self.x,self.y))
- def __repr__(self):return f'{self.data}'
+ def __repr__(self):return f'NPStatistics({self.data})'
  ########
  #  x  #
  ########

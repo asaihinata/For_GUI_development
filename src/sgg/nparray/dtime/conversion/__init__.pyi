@@ -1,6 +1,6 @@
 from datetime import datetime
-from numpy import _ArrayT
 from typing import IO,Any,overload
+from numpy import _ArrayT
 from ...base import NPArray
 from ..typing import Dtype
 __all__=['Formatconversion','strconversions','conversions']

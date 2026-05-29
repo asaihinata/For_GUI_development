@@ -1,7 +1,7 @@
 from collections.abc import Iterator
 from types import NotImplementedType
 from typing import Literal,TypeAlias
-from numpy import _ArrayT,_CopyMode,_ScalarT,dtype,ndarray,ufunc
+from numpy import _CopyMode,_ScalarT,dtype,ndarray,ufunc
 from numpy._typing import DTypeLike
 from ...typing import Any,ndarray
 _Array1D:TypeAlias=ndarray[tuple[int],dtype[_ScalarT]]
@@ -12,7 +12,7 @@ class NPArray:
  name:str
  def __init__(
 self,
-data:list|tuple|ndarray|NPArray,
+data:list|tuple|ndarray,
 dtype:DTypeLike|None=None
 )->None:...
  def __repr__(self)->str:...
@@ -28,11 +28,11 @@ ufunc:ufunc,
 method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
 *args:Any,
 **kwargs:Any
-)->NPArray|Any|NotImplementedType:...
- def tolist(self)->Any|list:'''list型に変換する。
+)->Any|NotImplementedType|NPArray:...
+ def tolist(self)->list:'''list型を作成する。
 
  :return:
- :rtype: Any|list'''
+ :rtype: list'''
  def sort(self)->NPArray:'''`data`にソートを実行する。
 
  :return:

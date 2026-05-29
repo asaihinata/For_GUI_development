@@ -14,6 +14,14 @@ class NPArray:
  def __iter__(self):return iter(self.data)
  def __array__(self,dtype=None,copy=None):return np.array(self.data,dtype=dtype,copy=copy)
  def __repr__(self):return f'{self.name}({self.data})'
+ def __array_ufunc__(self,ufunc,method,*args,**kwargs):
+  if method=='__call__':
+   args=[x.data if isinstance(x,NPArray) else x for x in args]
+   result=ufunc(*args,**kwargs)
+   if isinstance(result,np.ndarray):return NPArray(result)
+   return result
+  return NotImplemented
+ def _flatten(self):return np.ravel(self.data),self.shape
  def astype(self,dtype):
   self.data=self.data.astype(dtype)
   return self
@@ -47,7 +55,6 @@ class NPArray:
   else:
    size=start+shapes[lens-1]
    return np.tile(aranges(start,size,dtype),np.prod(shapes[:-1])).reshape(shapes)
- def _flatten(self):return np.ravel(self.data),self.shape
  def flatten(self):
   self.data=np.ravel(self.data)
   return self

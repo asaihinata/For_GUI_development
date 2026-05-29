@@ -1,4 +1,7 @@
-from numpy import _ArrayT,ndarray,timedelta64
+from collections.abc import Iterator
+from types import NotImplementedType
+from typing import Any,Literal
+from numpy import ndarray,timedelta64,ufunc
 from ...base import NPArray
 from ..typing import Dtype
 __all__=['NPDate']
@@ -7,10 +10,20 @@ class NPDate(NPArray):
  name:str
  def __init__(
 self,
-data:_ArrayT,
+data:list|tuple|ndarray,
 dtype:Dtype|None='datetime64[D]'
 )->None:...
  def __repr__(self)->str:...
+ def __iter__(self)->Iterator[Any]:...
+ def __array_ufunc__(
+self,
+ufunc:ufunc,
+method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
+*args:Any,
+**kwargs:Any
+)->Any|NotImplementedType|NPDate:...
+ @property
+ def T(self)->NPDate:...
  def astype(self,dtype:Dtype)->NPDate:...
  @property
  def max(self)->timedelta64:'''NPDate内の最大の日付を取得する。'''

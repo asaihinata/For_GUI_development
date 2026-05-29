@@ -10,6 +10,7 @@ class NPString(NPArray):
    raise TypeError('dtypeには文字列の型を指定してください')
   super().__init__(data,dtype,self.name)
  def __repr__(self):return super().__repr__()
+ def __iter__(self):return super().__iter__()
  def __add__(self,other):
   self.data=nps.add(self.data,self.___datas(other))
   return self
@@ -31,6 +32,10 @@ class NPString(NPArray):
    return result
   return NotImplemented
  def ___datas(self,data):return data.data if isinstance(data,NPString) else data
+ @property
+ def T(self):
+  self.data=self.data.T
+  return self
  def append(self,val):
   self.data=np.append(self.data,self.___datas(val))
   return self

@@ -21,10 +21,10 @@ class NPNumber(NPArray):
  def __init__(self,data,dtype=np.float64,axis=None):
   if not numberDtype(dtype):
    raise TypeError('dtypeには数値の型を指定してください')
-  if not isinstance(data,list|tuple|np.ndarray|NPArray|NPNumber):data=[data]
   super().__init__(data,dtype,self.name)
   self.axis=axis
  def __repr__(self):return super().__repr__()
+ def __iter__(self):return super().__iter__()
  def __abs__(self):
   self.data=np.abs(self.data,dtype=self.dtype)
   return self
@@ -59,6 +59,12 @@ class NPNumber(NPArray):
  def __pow__(self,other):
   self.data=np.power(self.data,self.__datas(other))
   return self
+ def __neg__(self):
+  self.data=-self.data
+  return self
+ def __pos__(self):
+  self.data=+self.data
+  return self
  def __array_ufunc__(self,ufunc,method,*args,**kwargs):
   if method=='__call__':
    args=[x.data if isinstance(x,NPNumber) else x for x in args]
@@ -73,6 +79,10 @@ class NPNumber(NPArray):
    raise ValueError('digitには1以上の整数を指定してください')
   return np.pow(10,digit)
  def __datas(self,data):return data.data if isinstance(data,NPNumber) else data
+ @property
+ def T(self):
+  self.data=self.data.T
+  return self
  @property
  def sum(self):return np.sum(self.data,axis=self.axis,dtype=self.dtype)
  @property
