@@ -8,6 +8,7 @@ PyAutoGUI==0.9.54
 python-barcode==0.16.1
 python-dateutil==2.9.0.post0
 qrcode==8.2
+scipy==1.17.1
 requests==2.34.2
 setuptools==82.0.1
 urllib3==2.7.0

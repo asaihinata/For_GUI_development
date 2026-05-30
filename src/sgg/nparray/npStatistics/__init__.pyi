@@ -1,7 +1,18 @@
-from typing import overload
+from collections.abc import Iterator
+from typing import Any,overload,Literal
 from numpy import dtype,float64,ndarray
 from ..npNumber import NPNumber
+from ._math import Population
 __all__=['NPStatistics']
+METHOD_LIST=Literal[
+'inverted_cdf',
+'averaged_inverted_cdf',
+'closest_observation',
+'interpolated_inverted_cdf',
+'hazen','weibull','linear',
+'median_unbiased',
+'normal_unbiased'
+]
 class NPStatistics:
  x:ndarray
  y:ndarray
@@ -17,7 +28,8 @@ self,
 x:NPNumber|ndarray=...,
 y:NPNumber|ndarray=...
 ):...
- def __repr__(self):...
+ def __repr__(self)->str:...
+ def __iter__(self)->Iterator[Any]:'''iter(self.data)を返す。'''
  ########
  #  x  #
  ########
@@ -51,6 +63,20 @@ y:NPNumber|ndarray=...
  def xdevsq(self):'''`x`の偏差平方和を求める。'''
  @property
  def xrange(self):...
+ def xpercentile(
+self,
+q:tuple[float,...],
+axis=None,
+method:METHOD_LIST='linear'
+):...
+ def xquantile(
+self,
+q:tuple[int|float,...],
+axis=None,
+method:METHOD_LIST='linear'
+):...
+ def xoutlier(self):...
+ def xpopulation(self)->Population:...
  ########
  #  y  #
  ########
@@ -84,6 +110,20 @@ y:NPNumber|ndarray=...
  def ydevsq(self):'''`y`の偏差平方和を求める。'''
  @property
  def yrange(self):...
+ def ypercentile(
+self,
+q:tuple[float,...],
+axis=None,
+method:METHOD_LIST='linear'
+):...
+ def yquantile(
+self,
+q:tuple[int|float,...],
+axis=None,
+method:METHOD_LIST='linear'
+):...
+ def youtlier(self):...
+ def ypopulation(self)->Population:...
  ##########
  #  data  #
  ##########
@@ -117,6 +157,20 @@ y:NPNumber|ndarray=...
  def devsq(self):'''`data`の偏差平方和を求める。'''
  @property
  def range(self):...
+ def percentile(
+self,
+q:tuple[int|float,...],
+axis=None,
+method:METHOD_LIST='linear'
+):...
+ def quantile(
+self,
+q:tuple[int|float,...],
+axis=None,
+method:METHOD_LIST='linear'
+):...
+ def outlier(self):...
+ def population(self)->Population:...
  @property
  def CV(self):'''変動係数を求める。'''
  @property
@@ -132,20 +186,8 @@ y:NPNumber|ndarray=...
  @property
  def Sxxyyroot(self):'''`x`の偏差平方和と`y`の偏差平方和の積の平方和を求める。'''
  # 回帰直線
- @overload
- def regression(
-self,
-n:int=1,
-x:int|float|None=...
-)->ndarray[float64,dtype[float64]]|float64:''''''
- @overload
  def regression(
 self,
 n:int=1
-)->ndarray[float64,dtype[float64]]:'''点(x,y)に次数`n`の多項式を当てはめる。'''
- @overload
- def regression(
-self,
-n:int=1,
-x:int|float=...
-)->float64:'''点(x,y)に次数`n`の多項式の`x`の値を求める。'''
+)->ndarray[float64,dtype[float64]]:
+  '''点(x,y)に次数`n`の多項式を当てはめる。'''

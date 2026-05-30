@@ -1,14 +1,17 @@
 '''基本的な統計の計算をするモジュール'''
 import numpy as np
 from ..npNumber import NPNumber
+from ._math import *
 __all__=['NPStatistics']
 method_list=[
-'inverted_cdf','averaged_inverted_cdf',
+'inverted_cdf',
+'averaged_inverted_cdf',
 'closest_observation',
 'interpolated_inverted_cdf',
 'hazen','weibull','linear',
 'median_unbiased',
-'normal_unbiased']
+'normal_unbiased'
+]
 class NPStatistics:
  def __init__(self,data=None,x=None,y=None):
   if data is None and x is None and y is None:
@@ -37,6 +40,7 @@ class NPStatistics:
    self.y=np.array(y) if isinstance(y,NPNumber) else y
    self.data=np.vstack((self.x,self.y))
  def __repr__(self):return f'NPStatistics({self.data})'
+ def __iter__(self):return iter(self.data)
  ########
  #  x  #
  ########
@@ -56,9 +60,8 @@ class NPStatistics:
  def xstd(self):return np.std(self.x)
  @property
  def xpow2(self):return np.power(self.x,2)
- # 偏差値
  @property
- def xdeviation(self):return ((10/self.xstd)*(self.x-self.xmean))+50
+ def xdeviation(self):return mdeviation(self.x)
  @property
  def xlog(self):return np.log(self.x)
  @property
@@ -68,9 +71,7 @@ class NPStatistics:
  @property
  def xlog1p(self):return np.log1p(self.x)
  @property
- def xdevsq(self):
-  xmean=self.xmean
-  return np.sum((self.x-xmean)**2)/self.n1
+ def xdevsq(self):return mdevsq(self.x)
  @property
  def xrange(self):return np.array([self.xmin,self.xmax])
  # 四分位範囲
@@ -81,11 +82,8 @@ class NPStatistics:
   if method not in method_list:method='linear'
   return np.quantile(self.x,q,axis=axis,method=method)
  # 外れ値
- def xoutlier(self):
-  q1,q3=np.percentile(self.x,[25,75])
-  iqr=(q3-q1)*1.5
-  return self.x[(self.x<(q1-iqr))|(self.x>(q3+iqr))]
- # 母分散
+ def xoutlier(self):return moutlier(self.x)
+ def xpopulation(self):return Population(self.x)
  ########
  #  y  #
  ########
@@ -105,9 +103,8 @@ class NPStatistics:
  def ystd(self):return np.std(self.y)
  @property
  def ypow2(self):return np.power(self.y,2)
- # 偏差値
  @property
- def ydeviation(self):return ((10/self.ystd)*(self.y-self.ymean))+50
+ def ydeviation(self):return mdeviation(self.y)
  @property
  def ylog(self):return np.log(self.y)
  @property
@@ -117,9 +114,7 @@ class NPStatistics:
  @property
  def ylog1p(self):return np.log1p(self.y)
  @property
- def ydevsq(self):
-  ymean=self.ymean
-  return np.sum((self.y-ymean)**2)/self.n1
+ def ydevsq(self):return mdevsq(self.y)
  @property
  def yrange(self):return np.array([self.ymin,self.ymax])
  def ypercentile(self,q,axis=None,method='linear'):
@@ -128,10 +123,8 @@ class NPStatistics:
  def yquantile(self,q,axis=None,method='linear'):
   if method not in method_list:method='linear'
   return np.quantile(self.y,q,axis=axis,method=method)
- def youtlier(self):
-  q1,q3=np.percentile(self.y,[25,75])
-  iqr=(q3-q1)*1.5
-  return self.y[(self.y<(q1-iqr))|(self.y>(q3+iqr))]
+ def youtlier(self):return moutlier(self.y)
+ def ypopulation(self):return Population(self.y)
  ##########
  #  data  #
  ##########
@@ -151,9 +144,8 @@ class NPStatistics:
  def std(self):return np.std(self.data)
  @property
  def pow2(self):return np.power(self.data,2)
- # 偏差値
  @property
- def deviation(self):return ((10/self.std)*(self.data-self.mean))+50
+ def deviation(self):return mdeviation(self.data)
  @property
  def log(self):return np.log(self.data)
  @property
@@ -163,9 +155,7 @@ class NPStatistics:
  @property
  def log1p(self):return np.log1p(self.data)
  @property
- def devsq(self):
-  mean=self.mean
-  return np.sum((self.data-mean)**2)
+ def devsq(self):return mdevsq(self.data)
  @property
  def range(self):return np.array([[self.xmin,self.xmax],[self.ymin,self.ymax]])
  def percentile(self,q,axis=None,method='linear'):
@@ -174,10 +164,8 @@ class NPStatistics:
  def quantile(self,q,axis=None,method='linear'):
   if method not in method_list:method='linear'
   return np.quantile(self.data,q,axis=axis,method=method)
- def outlier(self):
-  q1,q3=np.percentile(self.data,[25,75])
-  iqr=(q3-q1)*1.5
-  return self.data[(self.data<(q1-iqr))|(self.data>(q3+iqr))]
+ def outlier(self):return moutlier(self.data)
+ def population(self):return Population(self.data)
  @property
  def n(self):return self.data.shape[1]
  @property
@@ -195,7 +183,4 @@ class NPStatistics:
  @property
  def Sxxyyroot(self):return np.power(self.Sxxyy,0.5)
  # 回帰直線
- def regression(self,n=1,x=None):
-  S=np.polyfit(self.x,self.y,n)
-  if isinstance(x,int|float):return np.polyval(S,x)
-  return S
+ def regression(self,n=1):return mregression(self.x,self.y,n)
