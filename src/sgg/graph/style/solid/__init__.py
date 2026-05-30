@@ -1,6 +1,6 @@
 '''グラフの線を設定するモジュール'''
-from ..fmt import FMT
 from ....nparray import NPString
+from ..fmt import FMT
 __all__=['Solid','Solidlist','fmtSolid']
 class Solid:
  stlye=['-','--','-.',':','None',' ','']

@@ -1,10 +1,10 @@
 from .axis import *
+from .bbox import BBox
 from .composite import *
 from .fmt import *
 from .label import *
 from .legend import *
+from .marker import Marker, MarkerList
+from .solid import Solid,Solidlist,fmtSolid
 from .title import *
 from .tool import *
-from .marker import Marker,MarkerList
-from .solid import Solid
-from .bbox import BBox

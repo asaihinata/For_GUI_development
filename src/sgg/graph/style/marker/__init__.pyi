@@ -1,8 +1,8 @@
 '''マーカーを設定するモジュール'''
 from typing import Any,Literal
 from matplotlib.markers import MarkerStyle
-from ...typing import Type_Marker,Type_NumberlikeN
 from ....nparray import NPString
+from ...typing import Type_Marker,Type_NumberlikeN
 __all__=['Marker','MarkerList']
 class Marker:
  marker_list:list[int|str]
