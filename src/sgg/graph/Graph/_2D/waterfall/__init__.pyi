@@ -9,16 +9,17 @@ x:o_array,
 y:o_array,
 colorline:ColorType,
 linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ',''],
+ucolor:ColorType,
+dcolor:ColorType,
+width:int|float,
+align:Literal['center','edge'],
 fg:ColorType,
 bg:ColorType,
 alpha:int|float,
 xlabel:str,
 ylabel:str,
 graph_grid:ColorType,
-ucolor:ColorType,
-dcolor:ColorType,
-width:int|float,
-align:Literal['center','edge'],
+title:str
 ):'''滝グラフを再表示させる。'''
  def get(self)->list[BarContainer]:'''`BarContainer`の配列を返す。'''
  def getx(self)->Typeget_data:'''`x`のデータを取得する。'''
