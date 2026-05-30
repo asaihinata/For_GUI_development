@@ -17,3 +17,5 @@ class MarkerList(NPString):
   marker=[marker] if isinstance(marker,str|int) else marker
   super().__init__([Marker(i,fill,cap,transform,join).marker for i in marker],depth_limit=1)
  def __iter__(self):return iter(self.data)
+ def __str__(self):return str(self.data[0])
+ def __getitem__(self,key):return self.get(key)
