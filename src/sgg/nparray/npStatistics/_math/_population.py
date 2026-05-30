@@ -1,4 +1,4 @@
-'''母集団についての計算をする。'''
+'''母集団についての計算をするモジュール'''
 import numpy as np
 from numpy import sqrt
 from scipy.stats import norm

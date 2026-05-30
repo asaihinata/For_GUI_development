@@ -1,13 +1,7 @@
 import numpy as np
 __all__=['NPArray']
 class NPArray:
- def __init__(
-self,
-data,
-dtype=None,
-depth_limit=None,
-name=None
-):
+ def __init__(self,data,dtype=None,depth_limit=None,name=None):
   if(
      'NPArray' not in [i.__name__ for i in self.__class__.__mro__] and
      not isinstance(data,list|tuple|np.ndarray|NPArray)
@@ -23,6 +17,8 @@ name=None
  def __iter__(self):return iter(self.data)
  def __repr__(self):return f'{self.name}({self.data})'
  def __len__(self):return len(self.data)
+ def __getitem__(self,key):return self.data[key]
+ def __contains__(self,item):return item in self.data
  def __array__(self,dtype=None,copy=None):return np.array(self.data,dtype=dtype,copy=copy)
  def __array_ufunc__(self,ufunc,method,*args,**kwargs):
   if method=='__call__':
@@ -68,3 +64,10 @@ name=None
  def flatten(self):
   self.data=np.ravel(self.data)
   return self
+ def get(self,val):
+  if not isinstance(val,int):
+   raise TypeError('valにはint型を指定してください')
+  data,size=self.data.flatten(),self.size
+  if val<=size:return data[val]
+  elif size<val:return data[val%size]
+  raise Exception('予期せぬ例外が発生しました')
