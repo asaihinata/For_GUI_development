@@ -68,6 +68,7 @@ class NPArray:
   if not isinstance(val,int):
    raise TypeError('valにはint型を指定してください')
   data,size=self.data.flatten(),self.size
-  if val<=size:return data[val]
+  if val==size:return data[val-1]
+  elif val<size:return data[val]
   elif size<val:return data[val%size]
   raise Exception('予期せぬ例外が発生しました')

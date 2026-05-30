@@ -6,13 +6,13 @@ class Scatter(twoElement):
   super().__init__(master,kw)
   self.x=self._manyarr(kw.get('x'))
   self.y=self._manyarr(kw.get('y'))
-  self.marker=Marker(kw.get('marker','o')).marker
+  self.marker=MarkerList(kw.get('marker','o'))
   self.s=num1s(kw.get('markersize'),10)
   self.linewidth=num0(kw.get('linewidth'),2)
   self.plot(self.x,self.y,marker=self.marker,linewidth=self.linewidth,alpha=self.alpha,label=self.label,s=self.s)
- def plot(self,x,y,marker='o',linewidth=2,alpha=1,label=None,s=10):
+ def plot(self,x,y,marker,linewidth=2,alpha=1,label=None,s=10):
   self.clear()
-  self.graphdata=[self.ax.scatter(xs,ys,marker=marker,s=s,alpha=alpha,linewidth=linewidth,label=label[i])for i,(xs,ys) in enumerate(product(x,y))]
+  self.graphdata=[self.ax.scatter(xs,ys,marker=marker[i],s=s,alpha=alpha,linewidth=linewidth,label=label[i])for i,(xs,ys) in enumerate(product(x,y))]
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
   self._adjustment()
@@ -20,7 +20,8 @@ class Scatter(twoElement):
   self._updates(**kw)
   if isinstance(x,nListlike):self.x=self._manyarr(x)
   if isinstance(y,nListlike):self.y=self._manyarr(y)
-  self.marker=Marker(kw.get('marker',self.marker)).marker
+  markers=kw.get('marker',None)
+  self.marker=parameters(markers,self.marker,MarkerList(markers))
   self.s=num1s(kw.get('markersize'),self.s)
   self.alpha=range_num(num0s(kw.get('alpha'),self.alpha),0,1,self.alpha)
   self.linewidth=num0(kw.get('linewidth'),self.linewidth)

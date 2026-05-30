@@ -1,7 +1,7 @@
 '''マーカーを設定するモジュール'''
 from typing import Any,Literal
 from matplotlib.markers import MarkerStyle
-from ....nparray import NPString
+from ....nparray import NPArray
 from ...typing import Type_Marker,Type_NumberlikeN
 __all__=['Marker','MarkerList']
 class Marker:
@@ -16,8 +16,8 @@ transform:Type_NumberlikeN=None,
 join:Literal['miter','round','bevel']|None=None
 )->None:...
  def __contains__(self,item:Any)->bool:...
-class MarkerList(NPString):
- data:NPString
+class MarkerList(NPArray):
+ data:NPArray
  def __init__(
 self,
 marker:str|int|Type_Marker,
@@ -29,3 +29,4 @@ join:Literal['miter','round','bevel']|None=None
  def __iter__(self):...
  def __str__(self)->str:...
  def __getitem__(self,key):...
+ def __repr__(self)->str:...

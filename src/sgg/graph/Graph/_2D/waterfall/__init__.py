@@ -12,7 +12,7 @@ class Waterfall(twoElement):
   self.sums=bols(kw.get('sums'),False)
   self.sumstext=kw.get('sumstext','sum')
   self.colorline=parsecolor(kw.get('colorline'),'#4477aa')
-  self.linestyle=Solid(kw.get('linestyle','-')).solid
+  self.linestyle=str(Solidlist(kw.get('linestyle','-')))
   self.plot(self.x,self.y,alpha=self.alpha,width=self.width,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
  def plot(self,x,y,alpha=1,width=1,sums=False,sumstext='sum',bottom=None,color=None,linestyle='-'):
   self.clear()
@@ -35,7 +35,7 @@ class Waterfall(twoElement):
   self.dcolor=parsecolor(kw.get('dcolor'),self.dcolor)
   self.width=range_num(num0s(kw.get('width'),self.width),0,1,self.width)
   self.colorline=parsecolor(kw.get('colorline'),self.colorline)
-  self.linestyle=Solid(kw.get('linestyle',self.linestyle)).solid
+  self.linestyle=str(Solidlist(kw.get('linestyle',self.linestyle)))
   self.plot(self.x,self.y,alpha=self.alpha,width=self.width,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
   self._redraw()
  def get(self):return self.graphdata
