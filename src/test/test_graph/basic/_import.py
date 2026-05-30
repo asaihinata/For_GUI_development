@@ -7,10 +7,10 @@ path.append(str(Path(__file__).parent.resolve().parent.parent.parent))
 from sgg import *
 rng=np.random.default_rng(seed=42)
 def randrange(min=0,max=1,size=None):return rng.random(size)*(max-min)+min
-def randsint(loc=1,scale=None,lenght=1,hierarchy=None):
+def randsint(low=1,high=None,lenght=1,hierarchy=None):
  if isinstance(hierarchy,int) and 2<=hierarchy:
-  return rng.integers(loc=loc,scale=scale,size=(hierarchy,lenght))
- else:return rng.integers(loc=loc,scale=scale,size=lenght)
+  return rng.integers(low=low,high=high,size=(hierarchy,lenght))
+ else:return rng.integers(low=low,high=high,size=lenght)
 xlabel="x軸のラベル"
 ylabel="y軸のラベル"
 zlabel="z軸のラベル"

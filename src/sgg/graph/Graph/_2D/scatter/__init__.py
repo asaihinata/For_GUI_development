@@ -6,11 +6,11 @@ class Scatter(twoElement):
   super().__init__(master,kw)
   self.x=self._manyarr(kw.get('x'))
   self.y=self._manyarr(kw.get('y'))
-  self.marker=Marker(kw.get('marker','none')).marker
+  self.marker=Marker(kw.get('marker','o')).marker
   self.s=num1s(kw.get('markersize'),10)
   self.linewidth=num0(kw.get('linewidth'),2)
   self.plot(self.x,self.y,marker=self.marker,linewidth=self.linewidth,alpha=self.alpha,label=self.label,s=self.s)
- def plot(self,x,y,marker=None,linewidth=2,alpha=1,label=None,s=10):
+ def plot(self,x,y,marker='o',linewidth=2,alpha=1,label=None,s=10):
   self.clear()
   self.graphdata=[self.ax.scatter(xs,ys,marker=marker,s=s,alpha=alpha,linewidth=linewidth,label=label[i])for i,(xs,ys) in enumerate(product(x,y))]
   self._apply_labels(self.xlabel,self.ylabel)

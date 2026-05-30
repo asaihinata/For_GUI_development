@@ -28,6 +28,7 @@ class getLabel:
   if self.label.size<val:val=np.mod(self.label.size,val)
   return self.label[self.label.size-1-val]
  def __bool__(self):return self.label is not None
+ def __repr__(self):return f'getLabel({self.label})'
 class GElement:
  def __init__(self,master:Misc,kw):
   self.master=master

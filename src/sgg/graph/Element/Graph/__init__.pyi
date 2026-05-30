@@ -16,6 +16,7 @@ class getLabel:
  def __iter__(self)->Iterator[Any|None]:...
  def __getitem__(self,val:int)->Any:...
  def __bool__(self)->bool:...
+ def __repr__(self)->str:...
 class GElement:
  labelfont:FontProperties
  tight_layout:bool
@@ -56,6 +57,8 @@ dpi:int|float=100
  :type ex: Literal['.eps','.jpg','.jpeg','.pdf','.pgf','.png','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']
  :param dpi: グラフの解像度を指定する。
  :type dpi: int|float'''
+ def set_title(self,title:str)->None:
+  '''グラフにタイトルを設置する'''
  def winsize(self)->tuple[int,int]:'''ウィジェットの現在の幅と高さを返す。
 
  :return: ウィジェットの現在の幅と高さをタプルで返す。
