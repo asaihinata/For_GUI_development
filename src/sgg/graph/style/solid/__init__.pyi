@@ -1,6 +1,7 @@
 '''グラフの線を設定するモジュール'''
 from typing import Literal
 from ...typing import Type_Solid
+from ....nparray import NPString
 __all__=['Solid','Solidlist','fmtSolid']
 class Solid:
  stlye=['-','--','-.',':','None',' ','']
@@ -9,13 +10,14 @@ class Solid:
 self,
 solid:Type_Solid='-',
 )->None:...
-class Solidlist:
- solid:list
+class Solidlist(NPString):
+ data:NPString
  def __init__(
 self,
 solid:Type_Solid='-',
 )->None:...
  def __iter__(self):...
+ def __getitem__(self,key:int):...
 class fmtSolid:
  solid:str
  def __init__(

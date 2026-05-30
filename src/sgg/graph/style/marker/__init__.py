@@ -12,7 +12,8 @@ class Marker:
   if not isinstance(transform,int|float):transform=0
   self.marker=MarkerStyle(marker,fillstyle=fill,transform=Affine2D().rotate_deg(transform),joinstyle=join,capstyle=cap)
  def __contains__(self,item):return item in self.marker_list
-class MarkerList:
+class MarkerList(NPString):
  def __init__(self,marker,fill=None,cap=None,transform=None,join=None):
-  self.marker=[Marker(i,fill,cap,transform,join).marker for i in NPString([marker] if isinstance(marker,str|int) else marker)]
- def __iter__(self):return iter(self.marker)
+  marker=[marker] if isinstance(marker,str|int) else marker
+  super().__init__([Marker(i,fill,cap,transform,join).marker for i in marker],depth_limit=1)
+ def __iter__(self):return iter(self.data)
