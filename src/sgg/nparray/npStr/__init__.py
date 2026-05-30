@@ -5,10 +5,10 @@ from ..dtype import stringDtype
 __all__=['NPString']
 class NPString(NPArray):
  name='NPString'
- def __init__(self,data,dtype=np.str_):
+ def __init__(self,data,dtype=np.str_,depth_limit=None):
   if not stringDtype(dtype):
    raise TypeError('dtypeには文字列の型を指定してください')
-  super().__init__(data,dtype,self.name)
+  super().__init__(data,dtype,depth_limit,self.name)
  def __repr__(self):return super().__repr__()
  def __iter__(self):return super().__iter__()
  def __add__(self,other):

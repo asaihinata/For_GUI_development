@@ -16,12 +16,10 @@ method_list=[
 ]
 class NPNumber(NPArray):
  name='NPNumber'
- def get_axis(self):return self.axis
- def set_axis(self,axis):self.axis=axis
- def __init__(self,data,dtype=np.float64,axis=None):
+ def __init__(self,data,dtype=np.float64,depth_limit=None,axis=None):
   if not numberDtype(dtype):
    raise TypeError('dtypeには数値の型を指定してください')
-  super().__init__(data,dtype,self.name)
+  super().__init__(data,dtype,depth_limit,self.name)
   self.axis=axis
  def __repr__(self):return super().__repr__()
  def __iter__(self):return super().__iter__()
@@ -196,3 +194,5 @@ class NPNumber(NPArray):
   return sturges
  def ratio(self,axis=None):return(self.data/np.sum(self.data,dtype=self.dtype,axis=axis,keepdims=True))*100
  def zero_check(self):return self.data==0
+ def get_axis(self):return self.axis
+ def set_axis(self,axis):self.axis=axis

@@ -14,8 +14,17 @@ class NPNumber(NPArray):
 self,
 data:list|tuple|ndarray,
 dtype:DTypeLike=float64,
+depth_limit:int|None=None,
 axis:int|None=None
-)->None:...
+)->None:'''
+ :param data: データの配列を指定する。
+ :type data: list|tuple|ndarray
+ :param dtype: numpyの配列で指定する型を指定する。
+ :type dtype: DTypeLike|None
+ :param depth_limit: 配列の最大の深さを指定する。
+ :type depth_limit: int|None
+ :param axis: 計算処理を行う方向を指定する。
+ :type axis: int|None'''
  def __repr__(self)->str:...
  def __iter__(self)->Iterator[Any]:...
  def __abs__(self)->NPNumber:...

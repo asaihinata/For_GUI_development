@@ -1,17 +1,11 @@
 from ...dev import *
 __all__=['Waterfallh']
-def _bar_x_lists(lists,ylen):
- if ylen==None or not isinstance(lists,nListlike):return None
- else:
-  lists=lists[0]
-  xlen=len(lists)
-  return np.array([str(i) for i in lists] if xlen==ylen or xlen<ylen else [lists[i] for i in range(xlen)])
 class Waterfallh(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.y=self._dataarr(kw.get('y'),False)
-  self.x=_bar_x_lists(self._onearr(kw.get('x')),len(self.y))
-  self.bottom=np.cumsum(np.append(0,self.y)[0:np.array(self.y).size])
+  self.x=NPArray(kw.get('x'),depth_limit=1)
+  self.y=NPNumber(kw.get('y'),depth_limit=1)
+  self.bottom=np.cumsum(np.append(0,self.y)[0:self.y.size])
   self.ucolor=parsecolor(kw.get('ucolor'),'#156082')
   self.dcolor=parsecolor(kw.get('dcolor'),'#e97132')
   self.height=range_num(num0s(kw.get('height'),1),0,1,1)
@@ -22,7 +16,7 @@ class Waterfallh(twoElement):
   self.plot(self.x,self.y,alpha=self.alpha,height=self.height,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
  def plot(self,x,y,alpha=1,height=1,sums=False,sumstext='sum',bottom=None,color=None,linestyle='-'):
   self.clear()
-  if sums:x,y,bottom=np.append(x,sumstext),np.append(y,y.sum()),np.append(bottom,0)
+  if sums:x,y,bottom=np.append(x,sumstext),np.append(y,y.sum),np.append(bottom,0)
   self.color=np.where(y<=0,self.dcolor,self.ucolor)
   self.graphdata=[self.ax.barh(x,y,color=self.color,alpha=alpha,height=height,align='center',left=bottom)]
   if height!=1:self._vlines(np.cumsum(y),height,color,linestyle)
@@ -33,9 +27,9 @@ class Waterfallh(twoElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(y,nListlike):self.y=self._dataarr(y,False)
-  if isinstance(x,nListlike):self.x=_bar_x_lists(self._onearr(x),len(self.y))
-  self.bottom=np.cumsum(np.append(0,self.y)[0:np.array(self.y).size])
+  if isinstance(x,nListlike):self.x=NPArray(x,depth_limit=1)
+  if isinstance(y,nListlike):self.y=NPNumber(y,depth_limit=1)
+  self.bottom=np.cumsum(np.append(0,self.y)[0:self.y.size])
   self.sums=bols(kw.get('sums'),self.sums)
   self.sumstext=kw.get('sumstext',self.sumstext)
   self.ucolor=parsecolor(kw.get('ucolor'),self.ucolor)

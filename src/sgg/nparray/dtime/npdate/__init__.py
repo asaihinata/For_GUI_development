@@ -5,9 +5,9 @@ from ..data import serch_dtype
 __all__=['NPDate']
 class NPDate(NPArray):
  name='NPDate'
- def __init__(self,data,dtype='datetime64[D]'):
+ def __init__(self,data,dtype='datetime64[D]',depth_limit=None):
   if isinstance(data,Formatconversion):data=data.data
-  super().__init__(data,serch_dtype(dtype),self.name)
+  super().__init__(data,serch_dtype(dtype),depth_limit,self.name)
  def __repr__(self):return super().__repr__()
  def __iter__(self):return super().__iter__()
  def __array_ufunc__(self,ufunc,method,*args,**kwargs):

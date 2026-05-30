@@ -1,7 +1,13 @@
 import numpy as np
 __all__=['NPArray']
 class NPArray:
- def __init__(self,data,dtype=None,name=None):
+ def __init__(
+self,
+data,
+dtype=None,
+depth_limit=None,
+name=None
+):
   if(
      'NPArray' not in [i.__name__ for i in self.__class__.__mro__] and
      not isinstance(data,list|tuple|np.ndarray|NPArray)
@@ -11,9 +17,13 @@ class NPArray:
   else:self.name=name
   self.dtype=dtype
   self.data=np.array(data,dtype=self.dtype)
+  if depth_limit!=None and isinstance(depth_limit,int):
+   if self.data.ndim<depth_limit:
+    raise TypeError('配列の深さが制限の深さに達しました')
  def __iter__(self):return iter(self.data)
- def __array__(self,dtype=None,copy=None):return np.array(self.data,dtype=dtype,copy=copy)
  def __repr__(self):return f'{self.name}({self.data})'
+ def __len__(self):return len(self.data)
+ def __array__(self,dtype=None,copy=None):return np.array(self.data,dtype=dtype,copy=copy)
  def __array_ufunc__(self,ufunc,method,*args,**kwargs):
   if method=='__call__':
    args=[x.data if isinstance(x,NPArray) else x for x in args]
