@@ -7,7 +7,7 @@ class Ecdf(twoElement):
   self.complementary=bols(kw.get('complementary'),False)
   self.compress=bols(kw.get('compress'),False)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
-  self.line=self.lines(kw.get('linestyle','-'),self.max_depth)
+  self.line=Solidlist(kw.get('linestyle','-'))
   self.linewidth=num0(kw.get('linewidth'),1.5)
   self.plot(self.data,complementary=self.complementary,compress=self.compress,orientation=self.orientation,linewidth=self.linewidth,line=self.line,alpha=self.alpha)
  def plot(self,data,complementary=False,compress=False,orientation='vertical',linewidth=1.5,line='-',alpha=1):
@@ -21,7 +21,8 @@ class Ecdf(twoElement):
   self.complementary=bols(kw.get('complementary'),self.complementary)
   self.compress=bols(kw.get('compress'),self.compress)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)
-  self.line=self.lines(kw.get('linestyle',self.line),self.max_depth)
+  lines=kw.get('linestyle',None)
+  self.line=parameters(lines,self.line,Solidlist('-'))
   self.linewidth=num0(kw.get('linewidth'),self.linewidth)
   self.plot(self.data,complementary=self.complementary,compress=self.compress,orientation=self.orientation,linewidth=self.linewidth,line=self.line)
   self._redraw()

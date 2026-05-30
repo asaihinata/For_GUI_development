@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=4+rng.normal(0,1.5,lenght=100)
+  radomdata=4+rng.normal(0,1.5,size=100)
   print(f"{radomdata=}")
   ecdf:Ecdf=win.get("ecdf")
   ecdf.update(radomdata)

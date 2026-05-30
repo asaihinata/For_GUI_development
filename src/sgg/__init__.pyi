@@ -19,6 +19,7 @@ Type_ticksdirection:TypeAlias=Literal['out','in','inout']
 Type_labelha:TypeAlias=Literal['left','center','right']|None
 Type_labelva:TypeAlias=Literal['bottom','baseline','center','center_baseline','top']|None
 Type_ticksrange:TypeAlias=int|float|tuple[Type_Numberlike,...]
+Type_icon:TypeAlias=Literal['info','warning','error','question']
 class sgg:
  @classmethod
  def window(
@@ -673,8 +674,8 @@ y:n_array,
 linewidth:int|float=2,
 alpha:int|float=1,
 markersize:int|float=10,
-marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']=None,
-linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
+marker:Type_Marker=None,
+linestyle:Type_Solid='-',
 label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
@@ -759,7 +760,7 @@ key:str=...
  :param markersize: 折線グラフのマーカーの大きさを指定する。
  :type markersize: int|float
  :param marker: 折線グラフのマーカーを指定する。
- :type marker: Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
+ :type marker: Type_Marker
  :param linestyle: 折線グラフの線の種類を指定する。
  :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',': ','none',None,' ','']
  :param title: グラフのタイトルを指定する。
@@ -1950,7 +1951,7 @@ y:o_array,
 sums:bool=False,
 sumstext:str='sum',
 colorline:ColorTypeN='#4477aa',
-linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
+linestyle:Type_Solid='-',
 xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
@@ -2024,7 +2025,7 @@ key:str=...
  :param colorline: バーとバーを繋げる線の色を指定する。
  :type colorline: ColorTypeN
  :param linestyle: バーとバーを繋げる線の種類を指定する。
- :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']
+ :type linestyle: Type_Solid
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -2113,7 +2114,7 @@ y:o_array,
 sums:bool=False,
 sumstext:str='sum',
 colorline:ColorTypeN='#4477aa',
-linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
+linestyle:Type_Solid='-',
 xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
@@ -2188,7 +2189,7 @@ key:str=...
  :param colorline: バーとバーを繋げる線の色を指定する。
  :type colorline: ColorTypeN
  :param linestyle: バーとバーを繋げる線の種類を指定する。
- :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']
+ :type linestyle: Type_Solid
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -2274,7 +2275,7 @@ key:str=...
  def Scatter(
 x:n_array,
 y:n_array,
-marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
+marker:Type_Marker='o',
 markersize:int|float=10,
 xlabel:str=...,
 xlabelalpha:int|float=1.0,
@@ -2357,7 +2358,7 @@ key:str=...
  :param label: ラベルを指定する。
  :type label: labeltype
  :param marker: 散布図のマーカーを指定する。
- :type marker: LiteralLiteral[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
+ :type marker: Type_Marker
  :param markersize: 散布図のマーカーの大きさを指定する。
  :type markersize: int|float
  :param title: グラフのタイトルを指定する。
@@ -2469,7 +2470,7 @@ zlabelrotation:float|Type_orientation|None='vertical',
 zlabelrotation_mode:bool=True,
 zlabelfontname:str|Type_Iterablestr|None=None,
 zlabelfontpath:str|PathLike|Path|None=None,
-marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
+marker:Type_Marker='o',
 markersize:int|float=10,
 size:TupleNumbertype2=(500,400),
 fg:ColorTypeN='#000000',
@@ -2531,7 +2532,7 @@ key:str=...
  :param zlabel: z軸のラベルを指定する。
  :type zlabel: str
  :param marker: 散布図のマーカーを指定する。
- :type marker: LiteralLiteral[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
+ :type marker: Type_Marker
  :param markersize: 散布図のマーカーの大きさを指定する。
  :type markersize: int|float
  :param title: グラフのタイトルを指定する。
@@ -2658,7 +2659,7 @@ ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
 orientation:Type_orientation='vertical',
 bottom:int|float=0,
-marker:Literal['o','+','*','.','x','_','|','square','diamond','^','v','<','>','pentagram','hexagram']=...,
+marker:Type_Solid=...,
 line:Literal['-','--','-.','-.']=...,
 color:Literal['r','g','b','c','m','y','k','w']|list[Literal['r','g','b','c','m','y','k','w']]|tuple[Literal['r','g','b','c','m','y','k','w']]=...,
 size:TupleNumbertype2=(500,400),
@@ -2715,7 +2716,7 @@ key:str=...
  :param bottom: ベースラインの位置を指定する。
  :type bottom: int|float
  :param marker: 幹のマーカーの種類を指定する。
- :type marker: Literal['o','+','*','.','x','_','|','square','diamond','^','v','<','>','pentagram','hexagram']
+ :type marker: Type_Solid
  :param line: 幹の線の種類を指定する。
  :type line: Literal['-','--','-.','-.']
  :param color: 色を指定する。
@@ -3611,7 +3612,7 @@ data:n_array,
 complementary:bool=False,
 compress:bool=False,
 orientation:Type_orientation='vertical',
-linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
+linestyle:Type_Solid='-',
 linewidth:int|float=1.5,
 size:TupleNumbertype2=(500,400),
 fg:ColorTypeN='#000000',
@@ -3662,7 +3663,7 @@ key:str=...
  :param orientation: プロットの向きを指定する。
  :type orientation: Type_orientation
  :param linestyle: 線の種類を指定する。
- :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']
+ :type linestyle: Type_Solid
  :param linewidth: 線の太さを指定する。
  :type linewidth: int|float
  :param xlabel: x軸のラベルを指定する。
@@ -3757,7 +3758,7 @@ xlolims:bool=False,
 yuplims:bool=False,
 ylolims:bool=False,
 barsabove:bool=False,
-linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':']='solid',
+linestyle:Type_Solid='solid',
 marker:Literal['.','s','o','p','v','*','^','D']=None,
 linewidth:int|float=1.5,
 capthick:int|float=10,
@@ -3854,7 +3855,7 @@ key:str=...
  :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する。
  :type barsabove: bool
  :param linestyle: データ点とデータ点を結ぶ線の種類を指定する。
- :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
+ :type linestyle: Type_Solid
  :param marker: データ点のマーカーの種類を指定する。
  :type marker: Literal['.','s','o','p','v','*','^','D']
  :param linewidth: データ点を結ぶ線の太さを指定する。
@@ -3950,7 +3951,7 @@ key:str=...
 data:o_array,
 linewidth:int|float=1,
 linelength:int|float=1,
-linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':']='solid',
+linestyle:Type_Solid='solid',
 orientation:Type_orientation='vertical',
 xlabel:str=...,
 xlabelalpha:int|float=1.0,
@@ -4029,7 +4030,7 @@ key:str=...
  :param linelength: 線の合計の高さを指定する。
  :type linelength: int|float
  :param linestyle: 線の種類を指定する。
- :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
+ :type linestyle: Type_Solid
  :param orientation: 向きを指定する。
  :type orientation: Type_orientation
  :param label: ラベルを指定する。
@@ -4822,7 +4823,7 @@ xlolims:bool=False,
 yuplims:bool=False,
 ylolims:bool=False,
 barsabove:bool=False,
-linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':']='solid',
+linestyle:Type_Solid='solid',
 marker:Literal['.','s','o','p','v','*','^','D']=None,
 linewidth:int|float=1.5,
 capthick:int|float=10,
@@ -4881,7 +4882,7 @@ key:str=...
  :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する。
  :type barsabove: bool
  :param linestyle: データ点とデータ点を結ぶ線の種類を指定する。
- :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
+ :type linestyle: Type_Solid
  :param marker: データ点のマーカーの種類を指定する。
  :type marker: Literal['.','s','o','p','v','*','^','D']
  :param linewidth: データ点を結ぶ線の太さを指定する。
@@ -4957,8 +4958,8 @@ y:o_array=...,
 data:o_array=...,
 linewidth:int|float=2,
 markersize:int|float=10,
-marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']=None,
-linestyle:Literal['solid','-','dashed','--','dash-dot','-.','dotted',':','none',None,' ','']='-',
+marker:Type_Marker=None,
+linestyle:Type_Solid='-',
 alpha:int|float=1,
 size:TupleNumbertype2=(500,400),
 fg:ColorTypeN='#000000',
@@ -5000,7 +5001,7 @@ key:str=...
  :param markersize: 折線グラフのマーカーの大きさを指定する。
  :type markersize: int|float
  :param marker: 折線グラフのマーカーを指定する。
- :type marker: Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
+ :type marker: Type_Marker
  :param linestyle: 折線グラフの線の種類を指定する。
  :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',': ','none',None,' ','']
  :param title: グラフのタイトルを指定する。
@@ -5068,7 +5069,7 @@ y:o_array=...,
 data:o_array=...,
 linewidth:int|float=1,
 linelength:int|float=1,
-linestyle:Literal['dashdot','dashed','dotted','solid','-','--','-.',':']='solid',
+linestyle:Type_Solid='solid',
 orientation:Type_orientation='vertical',
 alpha:int|float=1,
 size:TupleNumbertype2=(500,400),
@@ -5111,7 +5112,7 @@ key:str=...
  :param linelength: 線の合計の高さを指定する。
  :type linelength: int|float
  :param linestyle: 線の種類を指定する。
- :type linestyle: Literal['dashdot','dashed','dotted','solid','-','--','-.',':']
+ :type linestyle: Type_Solid
  :param orientation: 向きを指定する。
  :type orientation: Type_orientation
  :param title: グラフのタイトルを指定する。
@@ -5177,7 +5178,7 @@ key:str=...
 x:o_array=...,
 y:o_array=...,
 data:o_array=...,
-marker:Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']='o',
+marker:Type_Marker='o',
 markersize:int|float=10,
 alpha:int|float=1,
 size:TupleNumbertype2=(500,400),
@@ -5216,7 +5217,7 @@ key:str=...
  :param data: `data`のデータを指定する。
  :type data: o_array
  :param marker: 散布図のマーカーを指定する。
- :type marker: LiteralLiteral[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
+ :type marker: Type_Marker
  :param markersize: 散布図のマーカーの大きさを指定する。
  :type markersize: int|float
  :param title: グラフのタイトルを指定する。
@@ -5444,7 +5445,7 @@ key:str=...
  :param markersize: 折線グラフのマーカーの大きさを指定する。
  :type markersize: int|float
  :param marker: 折線グラフのマーカーを指定する。
- :type marker: Literal[0,1,2,3,4,5,6,7,8,9,10,11,'1','2','3','4','8','d','D','h','H','none','None','o','p','P','s','v','x','X','',' ','*','+',',','.','<','>','^','_','|']
+ :type marker: Type_Marker
  :param linestyle: 折線グラフの線の種類を指定する。
  :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',': ','none',None,' ','']
  :param title: グラフのタイトルを指定する。
@@ -5510,13 +5511,13 @@ key:str=...
 cls,
 title:str='Information',
 message:str='Information message',
-icon:Literal['info','warning','error','question']='info'
+icon:Type_icon='info'
 )->str:'''指定されたタイトルとメッセージを持つ情報メッセージボックスを作成して表示させる。
 
  :param title: 情報メッセージボックスに表示させるタイトル名を指定する。
  :type title: str
  :param icon: 情報メッセージボックスに表示させるアイコンを指定する。
- :type icon: Literal['info','warning','error','question']
+ :type icon: Type_icon
  :param message: 情報メッセージボックスに表示させるメッセージを指定する。
  :type message: str'''
  @classmethod
@@ -5524,7 +5525,7 @@ icon:Literal['info','warning','error','question']='info'
 cls,
 title:str='Warning',
 message:str='Warning message',
-icon:Literal['info','warning','error','question']='warning'
+icon:Type_icon='warning'
 )->str:'''指定されたタイトルとメッセージを含む警告メッセージボックスを作成して表示させる。
 
  :param title: 警告メッセージボックスに表示させるタイトル名を指定する。
@@ -5532,7 +5533,7 @@ icon:Literal['info','warning','error','question']='warning'
  :param message: 警告メッセージボックスに表示させるメッセージを指定する。
  :type message: str
  :param icon: 警告メッセージボックスに表示させるアイコンを指定する。
- :type icon: Literal['info','warning','error','question']
+ :type icon: Type_icon
  :return: ダイアログで選択された値を返す。
  :rtype: str'''
  @classmethod
@@ -5540,7 +5541,7 @@ icon:Literal['info','warning','error','question']='warning'
 cls,
 title:str='Warning',
 message:str='Warning message',
-icon:Literal['info','warning','error','question']='warning'
+icon:Type_icon='warning'
 )->Union[str]:'''指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つ警告メッセージボックスを作成して表示させる。
 
  :param title: 警告メッセージボックスに表示させるタイトル名を指定する。
@@ -5548,7 +5549,7 @@ icon:Literal['info','warning','error','question']='warning'
  :param message: 警告メッセージボックスに表示させるメッセージを指定する。
  :type message: str
  :param icon: 警告メッセージボックスに表示させるアイコンを指定する。
- :type icon: Literal['info','warning','error','question']
+ :type icon: Type_icon
  :return: ダイアログで選択された値を返す。
  :rtype: Union[str] ('yes','no')'''
  @classmethod
@@ -5556,7 +5557,7 @@ icon:Literal['info','warning','error','question']='warning'
 cls,
 title:str='Error',
 message:str='Error message',
-icon:Literal['info','warning','error','question']='error'
+icon:Type_icon='error'
 )->str:'''指定されたタイトルとメッセージを持つエラーメッセージボックスを作成して表示させる。
 
  :param title: エラーメッセージボックスに表示させるタイトル名を指定する。
@@ -5564,7 +5565,7 @@ icon:Literal['info','warning','error','question']='error'
  :param message: エラーメッセージボックスに表示させるメッセージを指定する。
  :type message: str
  :param icon: エラーメッセージボックスに表示させるアイコンを指定する。
- :type icon: Literal['info','warning','error','question']
+ :type icon: Type_icon
  :return: ダイアログで選択された値を返す。
  :rtype: str'''
  @classmethod
@@ -5572,7 +5573,7 @@ icon:Literal['info','warning','error','question']='error'
 cls,
 title:str='Error',
 message:str='Error message',
-icon:Literal['info','warning','error','question']='error'
+icon:Type_icon='error'
 )->Union[str]:'''指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つエラーメッセージボックスを作成して表示させる。
 
  :param title: エラーメッセージボックスに表示させるタイトル名を指定する。
@@ -5580,7 +5581,7 @@ icon:Literal['info','warning','error','question']='error'
  :param message: エラーメッセージボックスに表示させるメッセージを指定する。
  :type message: str
  :param icon: エラーメッセージボックスに表示させるアイコンを指定する。
- :type icon: Literal['info','warning','error','question']
+ :type icon: Type_icon
  :return: ダイアログで選択された値を返す。
  :rtype: Union[str] ('yes','no')'''
  @classmethod
@@ -5588,7 +5589,7 @@ icon:Literal['info','warning','error','question']='error'
 cls,
 title:str='Question',
 message:str='Question message',
-icon:Literal['info','warning','error','question']='question'
+icon:Type_icon='question'
 )->Union[str]:'''「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる。
 
  :param title: ダイアログに表示させるタイトル名を指定する。
@@ -5596,7 +5597,7 @@ icon:Literal['info','warning','error','question']='question'
  :param message: ダイアログに表示させるメッセージを指定する。
  :type message: str
  :param icon: ダイアログに表示させるアイコンを指定する。
- :type icon: Literal['info','warning','error','question']
+ :type icon: Type_icon
  :return: ダイアログで選択された値を返す。
  :rtype: Union[str] ('yes','no')'''
  @classmethod
@@ -5604,7 +5605,7 @@ icon:Literal['info','warning','error','question']='question'
 cls,
 title:str='Question',
 message:str='Question message',
-icon:Literal['info','warning','error','question']='question'
+icon:Type_icon='question'
 )->bool:'''「OK」か「キャンセル」を選択させるダイアログを表示させる。
 
  :param title: ダイアログに表示させるタイトル名を指定する。
@@ -5612,7 +5613,7 @@ icon:Literal['info','warning','error','question']='question'
  :param message: ダイアログに表示させるメッセージを指定する。
  :type message: str
  :param icon: ダイアログに表示させるアイコンを指定する。
- :type icon: Literal['info','warning','error','question']
+ :type icon: Type_icon
  :return: ダイアログで選択された値を返す。
  :rtype: bool'''
  @classmethod
@@ -5620,7 +5621,7 @@ icon:Literal['info','warning','error','question']='question'
 cls,
 title:str='Question',
 message:str='Question message',
-icon:Literal['info','warning','error','question']='question'
+icon:Type_icon='question'
 )->bool:'''「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる。
 
 「はい」の場合はTrueを,「いいえ」の場合はFalseを返す。
@@ -5629,7 +5630,7 @@ icon:Literal['info','warning','error','question']='question'
  :param message: ダイアログに表示させるメッセージを指定する。
  :type message: str
  :param icon: ダイアログに表示させるアイコンを指定する。
- :type icon: Literal['info','warning','error','question']
+ :type icon: Type_icon
  :return: ダイアログで選択された値を返す。
  :rtype: bool'''
  @classmethod
@@ -5637,7 +5638,7 @@ icon:Literal['info','warning','error','question']='question'
 cls,
 title:str='Question',
 message:str='Question message',
-icon:Literal['info','warning','error','question']='question'
+icon:Type_icon='question'
 )->Union[bool,None]:'''「はい(Yes)」「いいえ(No)」「キャンセル(Cancel)」を選択させるダイアログを表示させる。
 
 「はい」の場合はTrueを,「いいえ」の場合はFalseを返す,「キャンセル(Cancel)」もしくはダイアログを閉じた場合Noneを返す。
@@ -5646,7 +5647,7 @@ icon:Literal['info','warning','error','question']='question'
  :param message: ダイアログに表示させるメッセージを指定する。
  :type message: str
  :param icon: ダイアログに表示させるアイコンを指定する。
- :type icon: Literal['info','warning','error','question']
+ :type icon: Type_icon
  :return: ダイアログで選択された値を返す。
  :rtype: Union[bool,None]'''
  @classmethod
@@ -5654,7 +5655,7 @@ icon:Literal['info','warning','error','question']='question'
 cls,
 title:str='Question',
 message:str='Question message',
-icon:Literal['info','warning','error','question']='question'
+icon:Type_icon='question'
 )->bool:'''操作を再試行するかどうかを尋ねる「再試行」ボタンと「キャンセル」ボタンが設置されたダイアログを表示させる。
 
 回答が「再試行」の場合はTrueを,「キャンセル」の場合はFalseを返します。
@@ -5663,6 +5664,6 @@ icon:Literal['info','warning','error','question']='question'
  :param message: ダイアログに表示させるメッセージを指定する。
  :type message: str
  :param icon: ダイアログに表示させるアイコンを指定する。
- :type icon: Literal['info','warning','error','question']
+ :type icon: Type_icon
  :return: ダイアログで選択された値を返す。
  :rtype: bool'''
