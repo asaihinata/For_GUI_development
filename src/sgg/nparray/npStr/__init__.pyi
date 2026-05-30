@@ -3,7 +3,7 @@ from collections.abc import Iterator
 from types import NotImplementedType
 from typing import Any,Literal
 from _typeshed import Incomplete
-from numpy import _CopyMode,float64,ndarray,ufunc
+from numpy import _CopyMode,str_,ndarray,ufunc
 from numpy._typing import DTypeLike
 from ..base import NPArray
 __all__=['NPString']
@@ -13,7 +13,7 @@ class NPString(NPArray):
  def __init__(
 self,
 data:list|tuple|ndarray,
-dtype:DTypeLike=float64,
+dtype:DTypeLike=str_,
 depth_limit:int|None=None
 )->None:'''
  :param data: データの配列を指定する。

@@ -4,7 +4,7 @@ from matplotlib._enums import CapStyle,JoinStyle
 from ...typing import Any,ColorType,ColorTypeN,Literal,Type_Numberlike,Type_Solid
 from ..dev import bols,range_zero_one
 from ..tool import Color
-from .solid import Solid
+from ..solid import Solid
 __all__=['BBox']
 class BBox:
  alpha:float

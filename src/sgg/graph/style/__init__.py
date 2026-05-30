@@ -5,3 +5,6 @@ from .label import *
 from .legend import *
 from .title import *
 from .tool import *
+from .marker import Marker,MarkerList
+from .solid import Solid
+from .bbox import BBox
