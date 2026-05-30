@@ -239,9 +239,7 @@ For_GUI_development
  │   │   │   │   │   └── solid.py
  │   │   │   │   ├── dev
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── __init__.pyi
- │   │   │   │   │   ├── _fun.py
- │   │   │   │   │   └── angle.py
+ │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── fmt
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   ├── _check.py
@@ -529,5 +527,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:366
+ファイル数:364
 フォルダ数:164

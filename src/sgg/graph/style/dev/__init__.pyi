@@ -20,8 +20,7 @@ dtype:bool=...
  :param angle: 変換したい角度を指定する。
  :type angle: Type_Numberlike
  :param dtype: 弧度法から度数法に変換するか,度数法から弧度法に変換するか指定する。
- :type dtype: bool
- :raises TypeError: `angle`に数値の型を指定しなかった場合に発生させる'''
+ :type dtype: bool'''
  @overload
  def __init__(
 self,
