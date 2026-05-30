@@ -195,3 +195,4 @@ class NPNumber(NPArray):
     return np.round(sturges*pows)/pows
   return sturges
  def ratio(self,axis=None):return(self.data/np.sum(self.data,dtype=self.dtype,axis=axis,keepdims=True))*100
+ def zero_check(self):return self.data==0

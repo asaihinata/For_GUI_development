@@ -196,3 +196,4 @@ digit:int|None=...
 self,
 axis:int|None=None
 )->ndarray:'''行や列ごとの合計に対する比率を求める。'''
+ def zero_check(self)->ndarray:'''要素の数値が0の位置を探す'''

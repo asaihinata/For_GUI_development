@@ -8,3 +8,4 @@ class baseDtype:
   if isinstance(dtype,list):self.bols=any(np.issubdtype(self.dt,i)for i in dtype)
   else:self.bols=np.issubdtype(self.dt,dtype)
  def __bool__(self):return self.bols
+ def __iter__(self):return []
