@@ -1,5 +1,5 @@
 import numpy as np
-from ...base import baseDtype
+from ..base import baseDtype
 __all__=['stringDtype']
 class stringDtype(baseDtype):
  @property

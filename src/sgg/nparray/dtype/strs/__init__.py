@@ -1,3 +1,3 @@
-from .Bytes import bytesDtype
-from .Str import strDtype
-from .String import stringDtype
+from .bytesdtype import bytesDtype
+from .strdtype import strDtype
+from .stringdtype import stringDtype

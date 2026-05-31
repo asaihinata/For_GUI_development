@@ -306,45 +306,21 @@ For_GUI_development
  │   │   │   │   │   └── booldtype.py
  │   │   │   │   ├── dates
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── datetimes
- │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   └── datetimedtype.py
- │   │   │   │   │   └── timedelta
- │   │   │   │   │       ├── __init__.py
- │   │   │   │   │       └── timedeltadtype.py
+ │   │   │   │   │   ├── datetimedtype.py
+ │   │   │   │   │   └── timedeltadtype.py
  │   │   │   │   ├── numbers
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── complexs
- │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   └── complexdtype.py
- │   │   │   │   │   ├── floats
- │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   └── floatdtype.py
- │   │   │   │   │   ├── integers
- │   │   │   │   │   │   ├── Int
- │   │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   │   └── intdtype.py
- │   │   │   │   │   │   ├── Intenger
- │   │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   │   └── integerdtype.py
- │   │   │   │   │   │   ├── Uint
- │   │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   │   └── uintdtype.py
- │   │   │   │   │   │   └── __init__.py
- │   │   │   │   │   └── nums
- │   │   │   │   │       ├── __init__.py
- │   │   │   │   │       └── numberdtype.py
+ │   │   │   │   │   ├── complexdtype.py
+ │   │   │   │   │   ├── floatdtype.py
+ │   │   │   │   │   ├── intdtype.py
+ │   │   │   │   │   ├── integerdtype.py
+ │   │   │   │   │   ├── numberdtype.py
+ │   │   │   │   │   └── uintdtype.py
  │   │   │   │   └── strs
- │   │   │   │       ├── Bytes
- │   │   │   │       │   ├── __init__.py
- │   │   │   │       │   └── bytesdtype.py
- │   │   │   │       ├── Str
- │   │   │   │       │   ├── __init__.py
- │   │   │   │       │   └── strdtype.py
- │   │   │   │       ├── String
- │   │   │   │       │   ├── __init__.py
- │   │   │   │       │   └── stringdtype.py
- │   │   │   │       └── __init__.py
+ │   │   │   │       ├── __init__.py
+ │   │   │   │       ├── bytesdtype.py
+ │   │   │   │       ├── strdtype.py
+ │   │   │   │       └── stringdtype.py
  │   │   │   ├── npNumber
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
@@ -535,5 +511,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:368
-フォルダ数:168
+ファイル数:356
+フォルダ数:156

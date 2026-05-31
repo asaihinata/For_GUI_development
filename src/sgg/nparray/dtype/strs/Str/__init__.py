@@ -1,1 +1,0 @@
-from .strdtype import strDtype

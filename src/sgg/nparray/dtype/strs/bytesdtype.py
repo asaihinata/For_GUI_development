@@ -1,5 +1,5 @@
 import numpy as np
-from ...base import baseDtype
+from ..base import baseDtype
 __all__=['bytesDtype']
 class bytesDtype(baseDtype):
  @property

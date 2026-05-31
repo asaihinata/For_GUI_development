@@ -4,7 +4,6 @@ from ....dev import bols,list2num,num0s,parsecolor,range_num
 from ...typing import Type_Numberlike
 from ..Graph import GElement
 __all__=['polarElement']
-pi2=2*pi
 class polarElement(GElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
@@ -96,5 +95,5 @@ class polarElement(GElement):
    s,e=r(360,min,max)
    return self.ax.set_thetalim(thetamin=s,thetamax=e),type
   else:
-   s,e=r(pi2,min,max)
+   s,e=r(2*pi,min,max)
    return self.ax.set_thetalim(minval=s,maxval=e),type
