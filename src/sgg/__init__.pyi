@@ -1178,6 +1178,346 @@ key:str=...
  :param legendncols: 凡例の列数を指定する。
  :type legendncols: int'''
  @staticmethod
+ def SSBarGraph(
+data:n_array,
+dataname:o_array,
+logs:bool=False,
+label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorTypeN=...,
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Type_Iterablestr|None=None,
+labelfontpath:str|PathLike|Path|None=None,
+xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorTypeN=...,
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Type_Iterablestr|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
+ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorTypeN=...,
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Type_Iterablestr|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
+linewidth:int|float=2,
+width:int|float=1,
+align:Literal['center','edge']='center',
+size:TupleNumbertype2=(500,400),
+fg:ColorTypeN='#000000',
+bg:ColorTypeN='#ffffff',
+color:ColorTypeN|tuple[ColorTypeN,...]=...,
+title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorTypeN=...,
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Type_Iterablestr|None=None,
+titlefontpath:str|PathLike|Path|None=None,
+dpi:int|float=100,
+alpha:int|float=1,
+graph_grid:ColorTypeN='#b7b7b7',
+grid_xy:bool=True,
+grid_x:bool=False,
+grid_y:bool=False,
+tight_layout:bool=True,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
+xmajorint:bool=True,
+ymajorint:bool=True,
+ticksshow:bool=False,
+xticksshow:bool=False,
+yticksshow:bool=False,
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Type_legendplace='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
+legendncols:int=1,
+key:str=...
+)->dict[str,Any]:'''横並び棒グラフを作成する。
+
+ :param data: `data`のデータを指定する。
+ :type data: n_array
+ :param dataname: `dataname`のデータを指定する。
+ :type data: o_array
+ :param logs: y軸を対数スケールにするかを指定する。
+ :type logs: bool
+ :param label: ラベルを指定する。
+ :type label: labeltype
+ :param xlabel: x軸のラベルを指定する。
+ :type xlabel: str
+ :param ylabel: y軸のラベルを指定する。
+ :type ylabel: str
+ :param linewidth: 折線グラフの線の幅を指定する。
+ :type linewidth: int|float
+ :param width: 縦軸棒グラフのバー幅を指定する。
+ :type width: int|float
+ :param align: x軸の縦軸棒グラフバーの配置を指定する。
+ :type align: Literal['center','edge']
+ :param title: グラフのタイトルを指定する。
+ :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorTypeN
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Type_labelha
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Type_labelva
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Type_orientation|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Type_Iterablestr|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
+ :param color: 色を指定する。
+ :type color: ColorTypeN|tuple[ColorTypeN,...]
+ :param size: 表示させるグラフの大きさを指定する。
+ :type size: TupleNumbertype2
+ :param fg: グラフ内の文字色を指定する。
+ :type fg: ColorTypeN
+ :param bg: グラフ内の背景色を指定する。
+ :type bg: ColorTypeN
+ :param dpi: 1インチあたりのドット数を指定する。
+ :type dpi: int|float
+ :param alpha: グラフの透明度を指定する。
+ :type alpha: int|float
+ :param graph_grid: グラフのグリッド線の色を指定する。
+ :type graph_grid: ColorTypeN
+ :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
+ :type grid_xy: bool
+ :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
+ :type grid_x: bool
+ :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
+ :type grid_y: bool
+ :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
+ :type tight_layout: bool
+ :param xticksrange: x軸の目盛の範囲を変更する。
+ :type xticksrange: Type_ticksrange
+ :param yticksrange: y軸の目盛の範囲を変更する。
+ :type yticksrange: Type_ticksrange
+ :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
+ :type xmajorint: bool
+ :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
+ :type ymajorint: bool
+ :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
+ :type ticksshow: bool
+ :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
+ :type xticksshow: bool
+ :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
+ :type yticksshow: bool
+ :param xticksdirection: x軸の目盛りの向きを指定する。
+ :type xticksdirection: Type_ticksdirection
+ :param yticksdirection: y軸の目盛りの向きを指定する。
+ :type yticksdirection: Type_ticksdirection
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Type_legendplace
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
+ @staticmethod
+ def SSBarhGraph(
+data:n_array,
+dataname:o_array,
+logs:bool=False,
+label:labeltype=...,
+labelalpha:int|float=1.0,
+labelzorder:int|float=4,
+labelfg:ColorTypeN=...,
+labelha:Type_labelha=None,
+labelva:Type_labelva=None,
+labelrotation:float|Type_orientation|None='horizontal',
+labelrotation_mode:bool=True,
+labelfontname:str|Type_Iterablestr|None=None,
+labelfontpath:str|PathLike|Path|None=None,
+xlabel:str=...,
+xlabelalpha:int|float=1.0,
+xlabelzorder:int|float=4,
+xlabelfg:ColorTypeN=...,
+xlabelha:Type_labelha=None,
+xlabelva:Type_labelva=None,
+xlabelrotation:float|Type_orientation|None='horizontal',
+xlabelrotation_mode:bool=True,
+xlabelfontname:str|Type_Iterablestr|None=None,
+xlabelfontpath:str|PathLike|Path|None=None,
+ylabel:str=...,
+ylabelalpha:int|float=1.0,
+ylabelzorder:int|float=4,
+ylabelfg:ColorTypeN=...,
+ylabelha:Type_labelha=None,
+ylabelva:Type_labelva=None,
+ylabelrotation:float|Type_orientation|None='vertical',
+ylabelrotation_mode:bool=True,
+ylabelfontname:str|Type_Iterablestr|None=None,
+ylabelfontpath:str|PathLike|Path|None=None,
+linewidth:int|float=2,
+size:TupleNumbertype2=(500,400),
+fg:ColorTypeN='#000000',
+bg:ColorTypeN='#ffffff',
+color:ColorTypeN|tuple[ColorTypeN,...]=...,
+title:str=...,
+titlealpha:int|float=1.0,
+titlezorder:int|float=4,
+titlefg:ColorTypeN=...,
+titleha:Type_labelha=None,
+titleva:Type_labelva=None,
+titlerotation:float|Type_orientation|None='horizontal',
+titlerotation_mode:bool=True,
+titlefontname:str|Type_Iterablestr|None=None,
+titlefontpath:str|PathLike|Path|None=None,
+dpi:int|float=100,
+graph_grid:ColorTypeN='#b7b7b7',
+grid_xy:bool=True,
+grid_x:bool=False,
+grid_y:bool=False,
+tight_layout:bool=True,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
+xmajorint:bool=True,
+ymajorint:bool=True,
+ticksshow:bool=False,
+xticksshow:bool=False,
+yticksshow:bool=False,
+xticksdirection:Type_ticksdirection='out',
+yticksdirection:Type_ticksdirection='out',
+legendanchor:ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None=...,
+legendplace:Type_legendplace='upper right',
+legendtitle:str=...,
+legendframe:bool=True,
+legendshadow:bool=False,
+legendalpha:int|float=1,
+legendncols:int=1,
+alpha:int|float=1,
+height:int|float=1,
+align:Literal['center','edge']='center',
+key:str=...
+)->dict[str,Any]:'''横向き横並び棒グラフを作成する。
+
+ :param data: `data`のデータを指定する。
+ :type data: n_array
+ :param dataname: `dataname`のデータを指定する。
+ :type data: o_array
+ :param logs: x軸を対数スケールにするかを指定する。
+ :type logs: bool
+ :param label: ラベルを指定する。
+ :type label: labeltype
+ :param xlabel: x軸のラベルを指定する。
+ :type xlabel: str
+ :param ylabel: y軸のラベルを指定する。
+ :type ylabel: str
+ :param linewidth: 折線グラフの線の幅を指定する。
+ :type linewidth: int|float
+ :param height: 横軸棒グラフのバーの幅を指定する。
+ :type height: int|float
+ :param align: x軸の横軸棒グラフバーの配置を指定する。
+ :type align: Literal['center','edge']
+ :param title: グラフのタイトルを指定する。
+ :type title: str
+ :param titlealpha: グラフの透明度を指定する。
+ :type titlealpha: int|float
+ :param titlezorder: グラフのタイトルの重なりの順を指定する。
+ :type titlezorder: int|float
+ :param titlefg: グラフのタイトルの文字色を指定する。
+ :type titlefg: ColorTypeN
+ :param titleha: グラフのタイトルの水平方向の配置を指定する。
+ :type titleha: Type_labelha
+ :param titleva: グラフのタイトルの垂直方向を指定する。
+ :type titleva: Type_labelva
+ :param titlerotation: グラフのタイトルの回転角度を指定する。
+ :type titlerotation: float|Type_orientation|None
+ :param titlerotation_mode: グラフのタイトルの回転方法を指定する。
+ :type titlerotation_mode: bool
+ :param titlefontname: グラフのタイトルのフォント名を指定する。
+ :type titlefontname: str|Type_Iterablestr|None
+ :param titlefontpath: グラフのタイトルのフォントファイルを指定する。
+ :type titlefontpath: str|PathLike|Path|None
+ :param color: 色を指定する。
+ :type color: ColorTypeN|tuple[ColorTypeN,...]
+ :param size: 表示させるグラフの大きさを指定する。
+ :type size: TupleNumbertype2
+ :param fg: グラフ内の文字色を指定する。
+ :type fg: ColorTypeN
+ :param bg: グラフ内の背景色を指定する。
+ :type bg: ColorTypeN
+ :param dpi: 1インチあたりのドット数を指定する。
+ :type dpi: int|float
+ :param alpha: グラフの透明度を指定する。
+ :type alpha: int|float
+ :param graph_grid: グラフのグリッド線の色を指定する。
+ :type graph_grid: ColorTypeN
+ :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
+ :type grid_xy: bool
+ :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
+ :type grid_x: bool
+ :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
+ :type grid_y: bool
+ :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
+ :type tight_layout: bool
+ :param xticksrange: x軸の目盛の範囲を変更する。
+ :type xticksrange: Type_ticksrange
+ :param yticksrange: y軸の目盛の範囲を変更する。
+ :type yticksrange: Type_ticksrange
+ :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
+ :type xmajorint: bool
+ :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
+ :type ymajorint: bool
+ :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
+ :type ticksshow: bool
+ :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
+ :type xticksshow: bool
+ :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
+ :type yticksshow: bool
+ :param xticksdirection: x軸の目盛りの向きを指定する。
+ :type xticksdirection: Type_ticksdirection
+ :param yticksdirection: y軸の目盛りの向きを指定する。
+ :type yticksdirection: Type_ticksdirection
+ :param legendanchor: 凡例の位置を指定する。
+ :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
+ :param legendplace: 凡例の位置の基準点を指定する。
+ :type legendplace: Type_legendplace
+ :param legendtitle: 凡例のタイトルを指定する。
+ :type legendtitle: bool
+ :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
+ :type legendframe: bool
+ :param legendshadow: 凡例に影を付与するか指定する。
+ :type legendshadow: bool
+ :param legendalpha: 凡例の背景の透明度を指定する。
+ :type legendalpha: int|float
+ :param legendncols: 凡例の列数を指定する。
+ :type legendncols: int'''
+ @staticmethod
  def Funne(
 data:o_array,
 xmajormaxbins:int=11,

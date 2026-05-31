@@ -155,6 +155,12 @@ For_GUI_development
  │   │   │   │   │   ├── scatter
  │   │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── ssbargraph
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── ssbarhgraph
+ │   │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   │   └── __init__.pyi
  │   │   │   │   │   ├── stack
  │   │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   │   └── __init__.pyi
@@ -529,5 +535,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:364
-フォルダ数:166
+ファイル数:368
+フォルダ数:168

@@ -39,6 +39,7 @@ class NPArray:
   if self.data.ndim==1:self.data=np.concatenate((self.data,self.data[0]),axis=0)
   else:self.data=np.concatenate((self.data,[[i[0]]for i in self.data]),axis=1)
   return self
+ def first_element(self):return self.data[0]
  @property
  def ndim(self):return self.data.ndim
  @property

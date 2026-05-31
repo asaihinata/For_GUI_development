@@ -127,3 +127,7 @@ class twoElement(GElement):
  def getticks(self):return(self.ax.get_xticks(),self.ax.get_yticks())
  def getxticks(self):return self.ax.get_xticks()
  def getyticks(self):return self.ax.get_yticks()
+ def set_xticks(self,ticks,labels=None,minor=False):
+  return self.ax.set_xticks(ticks,labels=labels,minor=minor)
+ def set_yticks(self,ticks,labels=None,minor=False):
+  return self.ax.set_yticks(ticks,labels=labels,minor=minor)

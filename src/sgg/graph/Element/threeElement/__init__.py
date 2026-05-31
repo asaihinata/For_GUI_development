@@ -172,3 +172,9 @@ class threeElement(GElement):
  def getxticks(self):return self.ax.get_xticks()
  def getyticks(self):return self.ax.get_yticks()
  def getzticks(self):return self.ax.get_zticks()
+ def set_xticks(self,ticks,labels=None,minor=False):
+  return self.ax.set_xticks(ticks,labels=labels,minor=minor)
+ def set_yticks(self,ticks,labels=None,minor=False):
+  return self.ax.set_yticks(ticks,labels=labels,minor=minor)
+ def set_zticks(self,ticks,labels=None,minor=False):
+  return self.ax.set_zticks(ticks,labels=labels,minor=minor)

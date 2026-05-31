@@ -1,4 +1,6 @@
+from collections.abc import Iterable
 from matplotlib.axes._axes import Axes
+from matplotlib.axis import Tick
 from numpy import ndarray
 from ...typing import *
 from ..Graph import GElement,getLabel
@@ -39,3 +41,57 @@ tuple[float64,float64]
  def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を座標で返します。'''
  def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返します。'''
  def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返します。'''
+ @overload
+ def set_xticks(self,ticks:ArrayLike,labels:Iterable[str]|None=None,minor:bool=...)->list[Tick]:'''x軸の目盛りの位置と目盛りのラベルを設定する。
+
+ :param ticks: x軸の目盛りの位置を指定する。
+ :type ticks: ArrayLike
+ :param labels: x軸の目盛りのラベルを指定する。
+ :type labels: Iterable[str]|None
+ :param minor: x軸の主目盛りを設定するか補助目盛りのみ設定するか指定する。(False)
+ :type minor: bool'''
+ @overload
+ def set_xticks(self,ticks:ArrayLike,labels:Iterable[str]|None=None,minor:bool=True)->list[Tick]:'''x軸の目盛りの位置と目盛りのラベルを設定する。
+
+ :param ticks: x軸の目盛りの位置を指定する。
+ :type ticks: ArrayLike
+ :param labels: x軸の目盛りのラベルを指定する。
+ :type labels: Iterable[str]|None
+ :param minor: x軸の補助目盛りのみに適用する。
+ :type minor: bool'''
+ @overload
+ def set_xticks(self,ticks:ArrayLike,labels:Iterable[str]|None=None,minor:bool=False)->list[Tick]:'''x軸の目盛りの位置と目盛りのラベルを設定する。
+
+ :param ticks: x軸の目盛りの位置を指定する。
+ :type ticks: ArrayLike
+ :param labels: x軸の目盛りのラベルを指定する。
+ :type labels: Iterable[str]|None
+ :param minor: x軸の主目盛りのみに適用する。
+ :type minor: bool'''
+ @overload
+ def set_yticks(self,ticks:ArrayLike,labels:Iterable[str]|None=None,minor:bool=...)->list[Tick]:'''y軸の目盛りの位置と目盛りのラベルを設定する。
+
+ :param ticks: y軸の目盛りの位置を指定する。
+ :type ticks: ArrayLike
+ :param labels: y軸の目盛りのラベルを指定する。
+ :type labels: Iterable[str]|None
+ :param minor: y軸の主目盛りを設定するか補助目盛りのみ設定するか指定する。(False)
+ :type minor: bool'''
+ @overload
+ def set_yticks(self,ticks:ArrayLike,labels:Iterable[str]|None=None,minor:bool=True)->list[Tick]:'''y軸の目盛りの位置と目盛りのラベルを設定する。
+
+ :param ticks: y軸の目盛りの位置を指定する。
+ :type ticks: ArrayLike
+ :param labels: y軸の目盛りのラベルを指定する。
+ :type labels: Iterable[str]|None
+ :param minor: y軸の補助目盛りのみに適用する。
+ :type minor: bool'''
+ @overload
+ def set_yticks(self,ticks:ArrayLike,labels:Iterable[str]|None=None,minor:bool=False)->list[Tick]:'''y軸の目盛りの位置と目盛りのラベルを設定する。
+
+ :param ticks: y軸の目盛りの位置を指定する。
+ :type ticks: ArrayLike
+ :param labels: y軸の目盛りのラベルを指定する。
+ :type labels: Iterable[str]|None
+ :param minor: y軸の主目盛りのみに適用する。
+ :type minor: bool'''

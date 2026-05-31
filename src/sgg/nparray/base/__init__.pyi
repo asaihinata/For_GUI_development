@@ -40,6 +40,7 @@ method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
  def tolist(self)->list:'''list型にして返す。'''
  def sort(self)->NPArray:'''`data`にソートを実行する。'''
  def first_pop(self)->NPArray:'''配列の最初の要素のコピーをその配列の末尾に追加する。'''
+ def first_element(self):'''`data`の最初の要素を取得する。'''
  @property
  def T(self)->NPArray:...
  @property

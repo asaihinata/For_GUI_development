@@ -1,5 +1,7 @@
 from .bargraph import BarGraph
 from .barhgraph import BarhGraph
+from .ssbargraph import SSBarGraph
+from .ssbarhgraph import SSBarhGraph
 from .boxplot import Boxplot
 from .ecdf import Ecdf
 from .errorbar import Errorbar
@@ -24,6 +26,8 @@ from .waterfallh import Waterfallh
 __all__=[
 'BarGraph',
 'BarhGraph',
+'SSBarGraph',
+'SSBarhGraph',
 'Boxplot',
 'Ecdf',
 'Errorbar',
