@@ -1181,7 +1181,7 @@ key:str=...
  def SSBarGraph(
 data:n_array,
 dataname:o_array,
-logs:bool=False,
+width:int|float=0.8,
 label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
@@ -1212,9 +1212,6 @@ ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
-linewidth:int|float=2,
-width:int|float=1,
-align:Literal['center','edge']='center',
 size:TupleNumbertype2=(500,400),
 fg:ColorTypeN='#000000',
 bg:ColorTypeN='#ffffff',
@@ -1259,20 +1256,14 @@ key:str=...
  :type data: n_array
  :param dataname: `dataname`のデータを指定する。
  :type data: o_array
- :param logs: y軸を対数スケールにするかを指定する。
- :type logs: bool
+ :param width: 横並び棒グラフのバー幅を指定する。
+ :type width: int|float
  :param label: ラベルを指定する。
  :type label: labeltype
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
  :type ylabel: str
- :param linewidth: 折線グラフの線の幅を指定する。
- :type linewidth: int|float
- :param width: 縦軸棒グラフのバー幅を指定する。
- :type width: int|float
- :param align: x軸の縦軸棒グラフバーの配置を指定する。
- :type align: Literal['center','edge']
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param titlealpha: グラフの透明度を指定する。
@@ -1351,7 +1342,7 @@ key:str=...
  def SSBarhGraph(
 data:n_array,
 dataname:o_array,
-logs:bool=False,
+height:int|float=0.8,
 label:labeltype=...,
 labelalpha:int|float=1.0,
 labelzorder:int|float=4,
@@ -1382,7 +1373,6 @@ ylabelrotation:float|Type_orientation|None='vertical',
 ylabelrotation_mode:bool=True,
 ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
-linewidth:int|float=2,
 size:TupleNumbertype2=(500,400),
 fg:ColorTypeN='#000000',
 bg:ColorTypeN='#ffffff',
@@ -1420,8 +1410,6 @@ legendshadow:bool=False,
 legendalpha:int|float=1,
 legendncols:int=1,
 alpha:int|float=1,
-height:int|float=1,
-align:Literal['center','edge']='center',
 key:str=...
 )->dict[str,Any]:'''横向き横並び棒グラフを作成する。
 
@@ -1429,20 +1417,14 @@ key:str=...
  :type data: n_array
  :param dataname: `dataname`のデータを指定する。
  :type data: o_array
- :param logs: x軸を対数スケールにするかを指定する。
- :type logs: bool
+ :param height: 横向き横並び棒グラフのバーの幅を指定する。
+ :type height: int|float
  :param label: ラベルを指定する。
  :type label: labeltype
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
  :type ylabel: str
- :param linewidth: 折線グラフの線の幅を指定する。
- :type linewidth: int|float
- :param height: 横軸棒グラフのバーの幅を指定する。
- :type height: int|float
- :param align: x軸の横軸棒グラフバーの配置を指定する。
- :type align: Literal['center','edge']
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param titlealpha: グラフの透明度を指定する。
