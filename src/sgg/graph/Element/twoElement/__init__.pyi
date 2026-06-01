@@ -3,7 +3,8 @@ from matplotlib.axes._axes import Axes
 from matplotlib.axis import Tick
 from numpy import ndarray
 from ...typing import *
-from ..Graph import GElement,getLabel
+from ..Graph import GElement
+from ...style import getLabel
 __all__=['twoElement']
 class twoElement(GElement):
  label:getLabel

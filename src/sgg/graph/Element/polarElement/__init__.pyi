@@ -1,7 +1,8 @@
 import numpy as np
 from matplotlib.projections.polar import PolarAxes
 from ...typing import *
-from ..Graph import GElement,getLabel
+from ..Graph import GElement
+from ...style import getLabel
 __all__=['polarElement']
 class polarElement(GElement):
  label:getLabel

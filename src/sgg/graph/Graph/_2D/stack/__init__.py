@@ -12,7 +12,7 @@ class Stack(twoElement):
   self.plot(self.x,self.y,label=self.label,hatch=self.hatch,baseline=self.baseline,alpha=self.alpha)
  def plot(self,x,y,label=(),hatch=None,baseline='zero',alpha=1):
   self.clear()
-  self.graphdata=[self.ax.stackplot(xs,ys,labels=label[i],hatch=hatch[i],baseline=baseline,alpha=alpha)for i,(xs,ys) in enumerate(product(x,y))]
+  self.graphdata=[self.ax.stackplot(xs,ys,labels=label,hatch=str(hatch[i]),baseline=baseline,alpha=alpha)for i,(xs,ys) in enumerate(product(x,y))]
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
   self._adjustment()
