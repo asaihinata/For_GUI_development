@@ -11,6 +11,7 @@ class NPString(NPArray):
   super().__init__(data,dtype,depth_limit,self.name)
  def __repr__(self):return super().__repr__()
  def __iter__(self):return super().__iter__()
+ def __len__(self):return super().__len__()
  def __add__(self,other):
   self.data=nps.add(self.data,self.___datas(other))
   return self

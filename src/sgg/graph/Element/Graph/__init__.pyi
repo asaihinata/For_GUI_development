@@ -8,9 +8,10 @@ from matplotlib.font_manager import FontProperties
 from matplotlib.projections.polar import PolarAxes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
+from ....nparray import NPArray
 from ...typing import *
 __all__=['GElement','getLabel']
-class getLabel:
+class getLabel(NPArray):
  label:ndarray
  def __init__(self,label:list|tuple|ndarray|None=None)->None:...
  def __iter__(self)->Iterator[Any|None]:...

@@ -3,10 +3,8 @@ __all__=['Boxplot']
 class Boxplot(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.data=self._manyarr(kw.get('data'))
-  label=getLabel(kw.get('label')).label
-  if label==None:self.label=[f'box{i}'for i in range(self.max_depth)]
-  else:self.label=label
+  self.data:NPNumber=NPNumber(kw.get('data'))
+  self.label=getLabel(kw.get('label',None))
   self.legends=bols(kw.get('legend'))
   self.width=range_num(num0s(kw.get('width'),0.15),0,1,0.15)
   self.whis=self._boxplot_whis(kw.get('whis'))
@@ -15,21 +13,22 @@ class Boxplot(twoElement):
   self.showfliers=bols(kw.get('showfliers'))
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
   self.plot(self.data,label=self.label,width=self.width,legend=self.legends,whis=self.whis,fill=self.fill,showfliers=self.showfliers,notch=self.notch,orientation=self.orientation,alpha=self.alpha)
- def plot(self,data,label=None,width=0.15,whis=1.5,fill=False,legend=True,showfliers=True,notch=False,orientation='vertical',alpha=1):
+ def plot(self,data:NPNumber,label=None,width=0.15,whis=1.5,fill=False,legend=True,showfliers=True,notch=False,orientation='vertical',alpha=1):
   self.clear()
-  boxplot=self.ax.boxplot(data.T,showfliers=showfliers,label=label,widths=width,whis=whis,patch_artist=fill,notch=notch,orientation=orientation)
-  for i in range(data.shape[0]):boxplot['boxes'][i].set_alpha(alpha)
+  boxplot=self.ax.boxplot(data,showfliers=showfliers,label=label,widths=width,whis=whis,patch_artist=fill,notch=notch,orientation=orientation)
+  for i in range(data.ndim):boxplot['boxes'][i].set_alpha(alpha)
   self.graphdata=[boxplot]
-  if orientation=='vertical':self.ax.set_xticklabels(label)
-  else:self.ax.set_yticklabels(label)
+  if label:
+   if orientation=='vertical':self.ax.set_xticklabels(label)
+   else:self.ax.set_yticklabels(label)
   self._apply_labels(self.xlabel,self.ylabel)
   if legend:self.legend()
   self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,nListlike):self.data=self._manyarr(data)
-  label=kw.get('label',self.label)
-  if label==None:label=[f'box{i}'for i in range(self.max_depth)]
+  if isinstance(data,nListlike):self.data=NPNumber(data)
+  label=kw.get('label')
+  self.label=parameters(label,self.label,getLabel(label))
   self.legends=bols(kw.get('legend'),self.legends)
   self.fill=bols(kw.get('fill'),self.fill)
   self.notch=bols(kw.get('notch'),self.notch)
@@ -43,8 +42,8 @@ class Boxplot(twoElement):
  def getdata(self):return self.data
  def _boxplot_whis(self,data):
   if isinstance(data,list|tuple):
-   x,y=data[0],data[1]
-   if isinstance(x,int|float)and isinstance(y,int|float):
+   if all(isinstance(i,int|float)for i in data):
+    x,y=data[0],data[1]
     if y<x:x,y=y,x
     if not 0<=x<=100:x=0
     if not 0<=y<=100:y=100

@@ -22,7 +22,7 @@ class Ecdf(twoElement):
   self.compress=bols(kw.get('compress'),self.compress)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)
   lines=kw.get('linestyle',None)
-  self.line=parameters(lines,self.line,Solidlist('-'))
+  self.line=parameters(lines,self.line,Solidlist(lines))
   self.linewidth=num0(kw.get('linewidth'),self.linewidth)
   self.plot(self.data,complementary=self.complementary,compress=self.compress,orientation=self.orientation,linewidth=self.linewidth,line=self.line)
   self._redraw()

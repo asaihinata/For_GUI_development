@@ -6,6 +6,12 @@ from ...Element import RadarElement,polarElement,radar_factory,threeElement,twoE
 from ...Element.Graph import getLabel
 from ...style import *
 from ...typing import *
-def parameters(vals,do1,do2):
- if vals==None:return do1
- return do2
+def parameters(vals:Any,do1:Any,do2:Any)->Any:
+ '''
+ :param vals: Noneかを調べる値を指定する。
+ :type vals: Any
+ :param do1: `vals`がNoneの時に返す値を指定する。
+ :type do1: Any
+ :param do2: `vals`がNoneではない時に返す値を指定する。
+ :type do2: Any'''
+ return do1 if vals==None else do2
