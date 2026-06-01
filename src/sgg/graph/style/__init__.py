@@ -2,6 +2,7 @@ from .axis import *
 from .bbox import BBox
 from .composite import *
 from .fmt import *
+from .getlabel import getLabel
 from .label import *
 from .legend import *
 from .marker import Marker, MarkerList

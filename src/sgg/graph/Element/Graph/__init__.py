@@ -6,24 +6,14 @@ from cycler import cycler
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
-from ....nparray import NPArray
 from ...._dialog import asksaveasfilename
 from ....dev import bols,listchose,num0s,num1s,nums,parsecolor,range_num
 from ..dev import Onelist,Manylist
-from ...style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid,Title
-__all__=['GElement','getLabel']
+from ...style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid,Title,getLabel
+__all__=['GElement']
 graph_color=['#4477aa','#ee7733','#111211','#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']
 rcParams['font.family']='Meiryo'
 rcParams['axes.prop_cycle']=cycler(color=graph_color)
-class getLabel(NPArray):
- def __init__(self,label=None):
-  if label==None or isinstance(label,str):label=[label]
-  print(label)
-  super().__init__(label,depth_limit=2)
- def __iter__(self):return super().__iter__()
- def __getitem__(self,val):return super().__getitem__(val)
- def __bool__(self):return self.data is not [None]
- def __repr__(self):return f'getLabel({self.data})'
 class GElement:
  def __init__(self,master:Misc,kw):
   self.master=master

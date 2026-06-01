@@ -11,15 +11,15 @@ class Boxplot(twoElement):
   self.notch=bols(kw.get('notch'),False)
   self.showfliers=bols(kw.get('showfliers'))
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
+  self.label=getLabel([f'box{i}' for i in range(self.data.ndim)]) if self.label else self.label.loop(self.data.ndim)
   self.plot(self.data,label=self.label,width=self.width,legend=self.legends,whis=self.whis,fill=self.fill,showfliers=self.showfliers,notch=self.notch,orientation=self.orientation,alpha=self.alpha)
  def plot(self,data:NPNumber,label=None,width=0.15,whis=1.5,fill=False,legend=True,showfliers=True,notch=False,orientation='vertical',alpha=1):
   self.clear()
-  boxplot=self.ax.boxplot(data,showfliers=showfliers,label=label,widths=width,whis=whis,patch_artist=fill,notch=notch,orientation=orientation)
+  boxplot=self.ax.boxplot(data,showfliers=showfliers,labels=label,label=label,widths=width,whis=whis,patch_artist=fill,notch=notch,orientation=orientation)
   for i in range(data.ndim):boxplot['boxes'][i].set_alpha(alpha)
+  if orientation=='vertical':self.ax.set_xticklabels(label)
+  else:self.ax.set_yticklabels(label)
   self.graphdata=[boxplot]
-  if label:
-   if orientation=='vertical':self.ax.set_xticklabels(label)
-   else:self.ax.set_yticklabels(label)
   self._apply_labels(self.xlabel,self.ylabel)
   if legend:self.legend()
   self._adjustment()
