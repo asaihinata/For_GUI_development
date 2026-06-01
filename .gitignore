@@ -1,5 +1,6 @@
 # docs
 docs/*
+!docs/dev
 !docs/requirements.txt
 !docs/data/
 !docs/for_development/
