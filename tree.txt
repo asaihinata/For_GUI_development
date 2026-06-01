@@ -76,7 +76,8 @@ For_GUI_development
  │   │   │   ├── _darray.py
  │   │   │   ├── _dbool.py
  │   │   │   ├── _dcolor.py
- │   │   │   └── _dnumber.py
+ │   │   │   ├── _dnumber.py
+ │   │   │   └── _dvoid.py
  │   │   ├── graph
  │   │   │   ├── Element
  │   │   │   │   ├── Graph
@@ -511,5 +512,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:356
+ファイル数:357
 フォルダ数:156

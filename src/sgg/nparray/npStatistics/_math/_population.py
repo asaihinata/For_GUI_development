@@ -10,16 +10,13 @@ def cCoefficient(p=0.95):
   raise ValueError('0.0<=p<=1.0で指定してください')
  return norm.ppf(p)
 class Population:
- def __init__(self,data):
-  self.data=data
+ def __init__(self,data):self.data=data
  @property
  def n(self):return self.data.size
  @property
- def ave(self):
-  return np.sum(self.data)/self.n
+ def ave(self):return np.sum(self.data)/self.n
  @property
- def var(self):
-  return np.sum((self.data-self.ave)**2)/self.n
+ def var(self):return np.sum((self.data-self.ave)**2)/self.n
  @property
  def SD(self):return sqrt(self.var)
  # 母比率の推定
