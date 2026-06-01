@@ -27,5 +27,6 @@ __pycache__
 .exe
 .ini
 .gitignore
+skip.py
 # test
 !src/test/test_log/*.log

@@ -8,6 +8,8 @@ __all__=['twoElement']
 class twoElement(GElement):
  label:getLabel
  ax:Axes
+ xlabel:str
+ ylabel:str
  def _updates(
 self,
 fg:ColorType,

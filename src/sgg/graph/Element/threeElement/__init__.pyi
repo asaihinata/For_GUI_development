@@ -8,6 +8,9 @@ __all__=['threeElement']
 class threeElement(GElement):
  label:getLabel
  ax:Axes3D
+ xlabel:str
+ ylabel:str
+ zlabel:str
  def _updates(
 self,
 fg:ColorType,
