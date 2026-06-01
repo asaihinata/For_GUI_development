@@ -42,6 +42,8 @@ method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
  def first_pop(self)->NPArray:'''配列の最初の要素のコピーをその配列の末尾に追加する。'''
  def first_element(self):'''`data`の最初の要素を取得する。'''
  @property
+ def nbytes(self)->int:...
+ @property
  def T(self)->NPArray:...
  @property
  def ndim(self)->int:...
@@ -63,3 +65,4 @@ dtype:DTypeLike|None=None
  def dimension(self)->bool:'''`data`の次元が1次元か判定する。'''
  def dimensions(self)->bool:'''`data`の次元が多次元か判定する。'''
  def get(self,val:int)->Any:'''配列の`val`番目の要素を取得する。'''
+ def reshape(self,size:tuple[int,...])->NPArray:...

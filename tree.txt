@@ -6,6 +6,10 @@ For_GUI_development
  │   │   ├── color1.csv
  │   │   ├── color2.csv
  │   │   └── jp_name.csv
+ │   ├── dev
+ │   │   ├── commonly_used_words.md
+ │   │   ├── naming_conventions.md
+ │   │   └── short_word.md
  │   ├── for_development
  │   │   ├── explanation_graph1.png
  │   │   └── explanation_graph2.png
@@ -280,8 +284,6 @@ For_GUI_development
  │   │   │   └── typing.py
  │   │   ├── nparray
  │   │   │   ├── __init__.py
- │   │   │   ├── array
- │   │   │   │   └── __init__.py
  │   │   │   ├── base
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
@@ -512,5 +514,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:357
+ファイル数:359
 フォルダ数:156

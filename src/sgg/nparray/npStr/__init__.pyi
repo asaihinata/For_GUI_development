@@ -3,21 +3,21 @@ from collections.abc import Iterator
 from types import NotImplementedType
 from typing import Any,Literal
 from _typeshed import Incomplete
-from numpy import _CopyMode,str_,ndarray,ufunc
-from numpy._typing import DTypeLike
+import numpy as np
+from numpy._typing import DTypeLike,NDArray
 from ..base import NPArray
 __all__=['NPString']
 class NPString(NPArray):
- data:ndarray
+ data:np.ndarray
  name:str
  def __init__(
 self,
-data:list|tuple|ndarray,
-dtype:DTypeLike=str_,
+data:list|tuple|np.ndarray,
+dtype:DTypeLike=np.str_,
 depth_limit:int|None=None
 )->None:'''
  :param data: データの配列を指定する。
- :type data: list|tuple|ndarray
+ :type data: list|tuple|np.ndarray
  :param dtype: numpyの配列で指定する型を指定する。
  :type dtype: DTypeLike|None
  :param depth_limit: 配列の最大の深さを指定する。
@@ -27,23 +27,25 @@ depth_limit:int|None=None
  def __array__(
 self,
 dtype:DTypeLike|None=None,
-copy:bool|_CopyMode|None=None
-)->ndarray:...
+copy:bool|np._CopyMode|None=None
+)->np.ndarray:...
  def __array_ufunc__(
 self,
-ufunc:ufunc,
+ufunc:np.ufunc,
 method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
 *args:Any,
 **kwargs:Any
 )->Any|NotImplementedType|NPString:...
- def __add__(self,other:ndarray|NPString)->NPString:...
+ def __add__(self,other:np.ndarray|NPString)->NPString:...
  def __mul__(self,other:int)->NPString:''':raises TypeError: `other`に`int`型以外で指定した場合に発生させる'''
  __radd__=__add__
  __rmul__=__mul__
- def __eq__(self,value:ndarray|NPString)->ndarray[Incomplete]:...
- def __ne__(self,value:ndarray|NPString)->ndarray[Incomplete]:...
+ def __eq__(self,value:np.ndarray|NPString)->np.ndarray[Incomplete]:...
+ def __ne__(self,value:np.ndarray|NPString)->np.ndarray[Incomplete]:...
  @property
  def T(self)->NPString:...
- def append(self,val:ndarray|NPString)->NPString:...
+ def append(self,val:np.ndarray|NPString)->NPString:...
  def low(self)->NPString:'''アルファベットを小文字にする。'''
  def upper(self)->NPString:'''アルファベットを大文字にする。'''
+ def stringlen(self)->NDArray[np.int_]:...
+ def str_len(self)->NDArray[np.int_]:...

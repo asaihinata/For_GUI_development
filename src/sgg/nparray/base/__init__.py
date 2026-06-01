@@ -1,20 +1,18 @@
 import numpy as np
 __all__=['NPArray']
 class NPArray:
- def __init__(self,data,dtype=None,depth_limit=None,name=None):
+ def __init__(self,data,dtype=None,depth_limit=None):
   if(
      'NPArray' not in [i.__name__ for i in self.__class__.__mro__] and
      not isinstance(data,list|tuple|np.ndarray|NPArray)
     ):
    raise TypeError('dataには配列の型を指定してください')
-  if not isinstance(name,str):self.name='NPArray'
-  else:self.name=name
   self.dtype=dtype
   self.data=np.array(data,dtype=self.dtype)
   if isinstance(depth_limit,int) and depth_limit<self.data.ndim:
    raise TypeError('配列の深さが制限の深さに達しました')
  def __iter__(self):return iter(self.data)
- def __repr__(self):return f'{self.name}({self.data})'
+ def __repr__(self):return f'NPArray({self.data})'
  def __len__(self):return len(self.data)
  def __getitem__(self,key):return self.get(key)
  def __contains__(self,item):return item in self.data
@@ -39,6 +37,8 @@ class NPArray:
   else:self.data=np.concatenate((self.data,[[i[0]]for i in self.data]),axis=1)
   return self
  def first_element(self):return self.data[0]
+ @property
+ def nbytes(self):return self.data.nbytes
  @property
  def ndim(self):return self.data.ndim
  @property
@@ -72,3 +72,6 @@ class NPArray:
   elif val<size:return data[val]
   elif size<val:return data[val%size]
   raise Exception('予期せぬ例外が発生しました')
+ def reshape(self,size):
+  self.data=self.data.reshape(size)
+  return self

@@ -4,12 +4,11 @@ from ..base import NPArray
 from ..dtype import stringDtype
 __all__=['NPString']
 class NPString(NPArray):
- name='NPString'
  def __init__(self,data,dtype=np.str_,depth_limit=None):
   if not stringDtype(dtype):
    raise TypeError('dtypeには文字列の型を指定してください')
-  super().__init__(data,dtype,depth_limit,self.name)
- def __repr__(self):return super().__repr__()
+  super().__init__(data,dtype,depth_limit)
+ def __repr__(self):return f'NPString({self.data})'
  def __iter__(self):return super().__iter__()
  def __len__(self):return super().__len__()
  def __add__(self,other):
@@ -46,3 +45,5 @@ class NPString(NPArray):
  def upper(self):
   self.data=nps.upper(self.data)
   return self
+ def stringlen(self):return np.vectorize(len)(self.data)
+ def str_len(self):return np.strings.str_len(self.data)
