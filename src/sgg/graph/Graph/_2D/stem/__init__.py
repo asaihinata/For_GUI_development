@@ -42,30 +42,23 @@ class Stem(twoElement):
  def _linefmt(self,line):
   set_arr=[]
   if isinstance(line,str):set_arr=[listchose(line,stem_line_list)]
-  elif isinstance(line,list|tuple):
-   for i in line:
-    if i in stem_line_list:set_arr.append(i)
+  elif isinstance(line,list|tuple):set_arr=[i for i in line if i in stem_line_list]
   if len(set_arr)==0:return stem_line_list
   return set_arr
  def _markerfmt(self,marker):
   set_arr=[]
   if isinstance(marker,str):set_arr=[listchose(marker,stem_mark_list)]
-  elif isinstance(marker,list|tuple):
-   for i in marker:
-    if i in stem_mark_list:set_arr.append(i)
+  elif isinstance(marker,list|tuple):set_arr=[i for i in marker if i in stem_mark_list]
   if len(set_arr)==0:set_arr=stem_mark_list
   return set_arr
  def _stem_color_check(self,color):
   set_arr,set_color_arr=[],[]
   if isinstance(color,list|tuple):
-   for i in color:
-    if i in stem_color_list:set_color_arr.append(i)
+   set_color_arr=[i for i in color if i in stem_color_list]
    if len(set_color_arr)==0:color=stem_color_list
   elif isinstance(color,str):color=color
   else:color=stem_color_list
   for k,v in {'r':['r','red'],'g':['g','green'],'b':['b','blue'],'c':['c','cyan'],'m':['m','magenta'],'y':['y','yellow'],'k':['k','black'],'w':['w','white']}.items():
-   if isinstance(color,str) and color in v:set_arr=[k]
-   elif isinstance(color,list|tuple):
-    for i in color:
-     if i in v:set_arr.append(k)
+   if isinstance(color,str) and color in v:return[k]
+   elif isinstance(color,list|tuple):return [k for i in color if i in v]
   return set_arr

@@ -17,12 +17,12 @@ rcParams['font.family']='Meiryo'
 rcParams['axes.prop_cycle']=cycler(color=graph_color)
 class getLabel(NPArray):
  def __init__(self,label=None):
-  if label==None:label=[None]
-  super().__init__(label)
-  self.label=self.data
- def __iter__(self):return iter(self.label)
- def __getitem__(self,val):return self.data.__getitem__(val)
- def __bool__(self):return self.data is [None]
+  if label==None or isinstance(label,str):label=[label]
+  print(label)
+  super().__init__(label,depth_limit=2)
+ def __iter__(self):return super().__iter__()
+ def __getitem__(self,val):return super().__getitem__(val)
+ def __bool__(self):return self.data is not [None]
  def __repr__(self):return f'getLabel({self.data})'
 class GElement:
  def __init__(self,master:Misc,kw):
@@ -52,7 +52,7 @@ class GElement:
   self.legendalpha=range_num(num0s(kw.get('legendalpha'),1),0,1,1)
   self.legendncols=num1s(kw.get('legendncols',1))
   # ラベル
-  self.label=getLabel(kw.get('label'))
+  self.label=getLabel(kw.get('label',None))
   # 軸ラベル
   self.labelalpha=range_num(num0s(kw.get('labelalpha'),1),0,1,1)
   labelfg=kw.get('labelfg')
@@ -147,7 +147,7 @@ class GElement:
   return self._list_loop(Marker(serch).marker,num)
  def lines(self,serch=None,num=None):return self._list_loop(Solid(serch).solid,num)
  def legend(self):
-  if bool(self.label):self.legend_=Legends(self.ax,ncols=self.legendncols,bbox_to_anchor=self.anchor,loc=self.legendplace,title=self.legendtitle,frameon=self.legendframe,shadow=self.legendshadow,framealpha=self.legendalpha)
+  if self.label:self.legend_=Legends(self.ax,ncols=self.legendncols,bbox_to_anchor=self.anchor,loc=self.legendplace,title=self.legendtitle,frameon=self.legendframe,shadow=self.legendshadow,framealpha=self.legendalpha)
  def _anchor(self,val,other=None):
   if(isinstance(val,list|tuple) and (len(val)==2 or len(val)==4) and all(isinstance(i,int|float)for i in val)):return val
   return other

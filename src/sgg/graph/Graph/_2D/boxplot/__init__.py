@@ -4,7 +4,6 @@ class Boxplot(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.data:NPNumber=NPNumber(kw.get('data'))
-  self.label=getLabel(kw.get('label',None))
   self.legends=bols(kw.get('legend'))
   self.width=range_num(num0s(kw.get('width'),0.15),0,1,0.15)
   self.whis=self._boxplot_whis(kw.get('whis'))
@@ -27,7 +26,7 @@ class Boxplot(twoElement):
  def update(self,data=None,**kw):
   self._updates(**kw)
   if isinstance(data,nListlike):self.data=NPNumber(data)
-  label=kw.get('label')
+  label=kw.get('label',None)
   self.label=parameters(label,self.label,getLabel(label))
   self.legends=bols(kw.get('legend'),self.legends)
   self.fill=bols(kw.get('fill'),self.fill)

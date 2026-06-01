@@ -1,6 +1,6 @@
 from glob import glob
 from pathlib import Path,PosixPath,WindowsPath
-from .skip import skiplist
+from skip import skiplist
 TypePath=Path|WindowsPath|PosixPath
 class Treetxt:
  def __init__(self,path,save,skip=None):
