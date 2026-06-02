@@ -46,4 +46,7 @@ class NPString(NPArray):
   self.data=nps.upper(self.data)
   return self
  def stringlen(self):return np.vectorize(len)(self.data)
- def str_len(self):return np.strings.str_len(self.data)
+ def str_len(self):return nps.str_len(self.data)
+ def replace(self,old,new):
+  self.data=nps.replace(self.data,old,new)
+  return self

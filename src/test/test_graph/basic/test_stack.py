@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=randsint(50,80,lenght=2,hierarchy=3)
+  radomdata=randsint(50,80,lenght=3,hierarchy=2)
   print(f"{radomdata=}")
   stack:Stack=win.get("stack")
   stack.update(y=radomdata)

@@ -1,5 +1,6 @@
 import numpy as np
 from ...typing import Type_Numberlike
+from ....nparray import *
 __all__=['bol','bols','listchose','list2float','list2number','num0','num0s','num1s','range_zero_one','Angle','Deg','Rad']
 class Angle:
  def __init__(self,angle,dtype=True):
