@@ -1,2 +1,2 @@
-from .Radar import RadarElement
-from .Radar.custom import radar_factory
+from .radar import RadarElement
+from .radar.custom import radar_factory

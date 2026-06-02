@@ -3,7 +3,7 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 from matplotlib.axis import Tick
 from numpy import ndarray
 from ...typing import *
-from ..Graph import GElement
+from ..graph import GElement
 from ...style import getLabel
 __all__=['threeElement']
 class threeElement(GElement):

@@ -1,7 +1,7 @@
 from matplotlib.projections.polar import PolarAxes
 from numpy import int64,ndarray
 from ....typing import *
-from ...Graph import GElement
+from ...graph import GElement
 from ....style import getLabel
 __all__=['RadarElement']
 class RadarElement(GElement):

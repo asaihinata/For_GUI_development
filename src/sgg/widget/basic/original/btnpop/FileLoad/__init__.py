@@ -1,5 +1,5 @@
 from os import getcwd
-from ..Btn import *
+from ..btn import *
 __all__=['FileLoad']
 class FileLoad(Btn):
  def __init__(self,master,kw):

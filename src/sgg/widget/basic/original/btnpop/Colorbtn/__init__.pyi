@@ -1,4 +1,4 @@
-from ..Btn import *
+from ..btn import *
 __all__=['Colorbtn']
 class Colorbtn(Btn):
  selectcolor:tuple[None,None]|tuple[tuple[int,int,int],str]

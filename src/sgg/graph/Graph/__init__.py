@@ -1,4 +1,4 @@
-from ._2D import *
-from ._3D import *
+from ._2d import *
+from ._3d import *
 from ._polar import *
 from ._special import *

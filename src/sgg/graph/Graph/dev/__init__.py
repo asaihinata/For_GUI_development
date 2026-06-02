@@ -2,7 +2,7 @@ import japanize_matplotlib
 import numpy as np
 from ....dev import *
 from ....nparray import *
-from ...Element import RadarElement,polarElement,radar_factory,threeElement,twoElement
+from ...element import RadarElement,polarElement,radar_factory,threeElement,twoElement
 from ...style import *
 from ...typing import *
 def parameters(vals:Any,do1:Any,do2:Any)->Any:

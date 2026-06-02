@@ -1,7 +1,7 @@
 import numpy as np
 from .....dev import bols,list2num,num0s,parsecolor,range_num
 from ....style import Xlabel,Ylabel
-from ...Graph import GElement
+from ...graph import GElement
 from .custom import radar_factory
 __all__=['RadarElement']
 class RadarElement(GElement):

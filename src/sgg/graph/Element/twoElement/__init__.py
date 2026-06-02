@@ -3,7 +3,7 @@ from matplotlib.pyplot import rcParams
 from numpy import ndarray
 from ....dev import allNones,bols,list2num,listchose,num0s,parsecolor,range_num
 from ...style import FontFile,Fontmanager,Fontname,Xlabel,Ylabel
-from ..Graph import GElement
+from ..graph import GElement
 __all__=['twoElement']
 class twoElement(GElement):
  def __init__(self,master,kw):

@@ -1,4 +1,4 @@
-from ..Btn import *
+from ..btn import *
 __all__=['FileLoad']
 class FileLoad(Btn):
  filesaves:str|None
