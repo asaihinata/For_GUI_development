@@ -2,7 +2,7 @@ from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
 from numpy import ndarray
 from ....dev import allNones,bols,list2num,listchose,num0s,parsecolor,range_num
-from ...style import FontFile,Fontmanager,Fontname,Xlabel,Ylabel
+from ...style import FontFile,Fontmanager,Fontname,Xlabel,Ylabel,getLabel
 from ..graph import GElement
 __all__=['twoElement']
 class twoElement(GElement):
@@ -87,6 +87,8 @@ class twoElement(GElement):
   if xlabel is not None:Xlabel(self.ax,xlabel,color=self.xlabelfg,ha=self.xlabelha,va=self.xlabelva,font=self.xlabelfont,rotation=self.xlabelrotation,rotation_mode=self.xlabelrotation_mode,alpha=self.xlabelalpha,zorder=self.xlabelzorder)
   if ylabel is not None:Ylabel(self.ax,ylabel,color=self.ylabelfg,ha=self.ylabelha,va=self.ylabelva,font=self.ylabelfont,rotation=self.ylabelrotation,rotation_mode=self.ylabelrotation_mode,alpha=self.ylabelalpha,zorder=self.ylabelzorder)
  def _updates(self,**kw):
+  label=kw.get('label',None)
+  self.label=parameters(label,self.label,getLabel(label))
   self.fg=parsecolor(kw.get('fg'),self.fg)
   self.graph_bg=parsecolor(kw.get('bg'),self.graph_bg)
   self.graph_grid=parsecolor(kw.get('graph_grid'),self.graph_grid)
@@ -131,3 +133,4 @@ class twoElement(GElement):
   return self.ax.set_xticks(ticks,labels=labels,minor=minor)
  def set_yticks(self,ticks,labels=None,minor=False):
   return self.ax.set_yticks(ticks,labels=labels,minor=minor)
+def parameters(vals,do1,do2):return do1 if vals==None else do2

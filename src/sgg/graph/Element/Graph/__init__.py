@@ -137,7 +137,7 @@ class GElement:
   return self._list_loop(Marker(serch).marker,num)
  def lines(self,serch=None,num=None):return self._list_loop(Solid(serch).solid,num)
  def legend(self):
-  if self.label:self.legend_=Legends(self.ax,ncols=self.legendncols,bbox_to_anchor=self.anchor,loc=self.legendplace,title=self.legendtitle,frameon=self.legendframe,shadow=self.legendshadow,framealpha=self.legendalpha)
+  if not self.label:self.legend_=Legends(self.ax,ncols=self.legendncols,bbox_to_anchor=self.anchor,loc=self.legendplace,title=self.legendtitle,frameon=self.legendframe,shadow=self.legendshadow,framealpha=self.legendalpha)
  def _anchor(self,val,other=None):
   if(isinstance(val,list|tuple) and (len(val)==2 or len(val)==4) and all(isinstance(i,int|float)for i in val)):return val
   return other

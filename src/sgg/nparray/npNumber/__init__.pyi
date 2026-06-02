@@ -9,7 +9,6 @@ from ..base import NPArray
 __all__=['NPNumber']
 class NPNumber(NPArray):
  data:ndarray
- name:str
  def __init__(
 self,
 data:list|tuple|ndarray,

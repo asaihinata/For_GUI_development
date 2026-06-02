@@ -7,7 +7,6 @@ from ..typing import Dtype
 __all__=['NPDate']
 class NPDate(NPArray):
  data:ndarray
- name:str
  def __init__(
 self,
 data:list|tuple|ndarray,

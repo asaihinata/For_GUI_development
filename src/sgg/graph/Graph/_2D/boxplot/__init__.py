@@ -26,8 +26,6 @@ class Boxplot(twoElement):
  def update(self,data=None,**kw):
   self._updates(**kw)
   if isinstance(data,nListlike):self.data=NPNumber(data)
-  label=kw.get('label',None)
-  self.label=parameters(label,self.label,getLabel(label))
   self.legends=bols(kw.get('legend'),self.legends)
   self.fill=bols(kw.get('fill'),self.fill)
   self.notch=bols(kw.get('notch'),self.notch)

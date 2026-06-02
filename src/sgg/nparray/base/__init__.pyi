@@ -8,7 +8,6 @@ __all__=['NPArray']
 class NPArray:
  dtype:DTypeLike
  data:ndarray
- name:str
  def __init__(
 self,
 data:list|tuple|ndarray,
@@ -21,11 +20,12 @@ depth_limit:int|None=None
  :type dtype: DTypeLike|None
  :param depth_limit: 配列の最大の深さを指定する。
  :type depth_limit: int|None'''
- def __getitem__(self,key:Any)->Any:...
+ def __getitem__(self,key:int)->Any:...
  def __contains__(self,item:Any)->bool:...
  def __repr__(self)->str:...
  def __iter__(self)->Iterator[Any]:...
  def __len__(self)->int:...
+ def __reversed__(self)->NPArray:'''`numpy.fliplr`を実行する'''
  def __array__(
 self,
 dtype:DTypeLike|None=None,

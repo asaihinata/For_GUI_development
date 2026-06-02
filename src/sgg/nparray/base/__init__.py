@@ -16,6 +16,9 @@ class NPArray:
  def __len__(self):return len(self.data)
  def __getitem__(self,key):return self.get(key)
  def __contains__(self,item):return item in self.data
+ def __reversed__(self):
+  self.data=np.fliplr(self.data)
+  return self
  def __array__(self,dtype=None,copy=None):return np.array(self.data,dtype=dtype,copy=copy)
  def __array_ufunc__(self,ufunc,method,*args,**kwargs):
   if method=='__call__':
