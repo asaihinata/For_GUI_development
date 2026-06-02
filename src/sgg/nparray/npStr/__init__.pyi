@@ -40,6 +40,8 @@ method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
  def __mul__(self,other:int)->NPString:''':raises TypeError: `other`に`int`型以外で指定した場合に発生させる'''
  __radd__=__add__
  __rmul__=__mul__
+ __iadd__=__add__
+ __imul__=__mul__
  def __eq__(self,value:np.ndarray|NPString)->np.ndarray[Incomplete]:...
  def __ne__(self,value:np.ndarray|NPString)->np.ndarray[Incomplete]:...
  @property

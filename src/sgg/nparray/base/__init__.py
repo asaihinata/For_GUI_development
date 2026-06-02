@@ -56,11 +56,9 @@ class NPArray:
   shapes=self.shape
   lens=len(shapes)
   if lens==1:
-   size=start+self.size
-   return aranges(start,size,dtype)
+   return aranges(start,start+self.size,dtype)
   else:
-   size=start+shapes[lens-1]
-   return np.tile(aranges(start,size,dtype),np.prod(shapes[:-1])).reshape(shapes)
+   return np.tile(aranges(start,start+shapes[lens-1],dtype),np.prod(shapes[:-1])).reshape(shapes)
  def flatten(self):
   self.data=np.ravel(self.data)
   return self
@@ -71,7 +69,11 @@ class NPArray:
   if val==size:return data[val-1]
   elif val<size:return data[val]
   elif size<val:return data[val%size]
-  raise Exception('予期せぬ例外が発生しました')
  def reshape(self,size):
   self.data=self.data.reshape(size)
   return self
+ def clear(self):
+  self.data=np.array([],dtype=self.dtype)
+  return self
+ def all_None(self):return np.all(self.data==None)
+ def any_None(self):return np.any(self.data==None)

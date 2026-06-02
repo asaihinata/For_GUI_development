@@ -37,10 +37,20 @@ class NPNumber(NPArray):
  def __truediv__(self,other):
   self.data=self.data/self.__datas(other)
   return self
+ def __floordiv__(self,other):
+  self.data=self.data//self.__datas(other)
+  return self
+ def __pow__(self,other):
+  self.data=np.power(self.data,self.__datas(other))
+  return self
  __radd__=__add__
  __rsub__=__sub__
  __rmul__=__mul__
  __rtruediv__=__truediv__
+ __iadd__=__add__
+ __isub__=__sub__
+ __imul__=__mul__
+ __itruediv__=__truediv__
  def __eq__(self,value):return np.equal(self.data,self.__datas(value))
  def __ne__(self,value):return np.not_equal(self.data,self.__datas(value))
  def __lt__(self,other):return np.less(self.data,self.__datas(other))
@@ -49,12 +59,6 @@ class NPNumber(NPArray):
  def __ge__(self,other):return np.greater_equal(self.data,self.__datas(other))
  def __mod__(self,other):
   self.data=self.data%self.__datas(other)
-  return self
- def __floordiv__(self,other):
-  self.data=self.data//self.__datas(other)
-  return self
- def __pow__(self,other):
-  self.data=np.power(self.data,self.__datas(other))
   return self
  def __neg__(self):
   self.data=-self.data
@@ -75,7 +79,13 @@ class NPNumber(NPArray):
   elif digit<1:
    raise ValueError('digitには1以上の整数を指定してください')
   return np.pow(10,digit)
- def __datas(self,data):return data.data if isinstance(data,NPNumber) else data
+ def __datas(self,data):
+  if isinstance(data,np.ndarray):
+   if not numberDtype(data):
+    raise TypeError('numpy.ndarrayの型を数値の型にしてください')
+  elif not isinstance(data,np.ndarray|NPNumber|int|float|complex):
+   raise TypeError('NPNumber型か数値の型を指定してください')
+  return data.data if isinstance(data,NPNumber) else data
  @property
  def T(self):
   self.data=self.data.T

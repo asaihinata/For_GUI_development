@@ -21,6 +21,8 @@ class NPString(NPArray):
   return self
  __radd__=__add__
  __rmul__=__mul__
+ __iadd__=__add__
+ __imul__=__mul__
  def __eq__(self,value):return np.equal(self.data,self.___datas(value))
  def __ne__(self,value):return np.not_equal(self.data,self.___datas(value))
  def __array__(self,dtype=None,copy=None):return np.array(self.data,dtype=dtype,copy=copy)

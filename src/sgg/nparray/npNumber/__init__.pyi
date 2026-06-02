@@ -36,6 +36,10 @@ axis:int|None=None
  __rsub__=__sub__
  __rmul__=__mul__
  __rtruediv__=__truediv__
+ __iadd__=__add__
+ __isub__=__sub__
+ __imul__=__mul__
+ __itruediv__=__truediv__
  def __eq__(self,value:ndarray|NPNumber)->ndarray[Incomplete]:...
  def __ne__(self,value:ndarray|NPNumber)->ndarray[Incomplete]:...
  def __lt__(self,other:ndarray|NPNumber)->ndarray[Incomplete]:...

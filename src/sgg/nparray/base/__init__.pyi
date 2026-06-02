@@ -1,6 +1,7 @@
 from collections.abc import Iterator
 from types import NotImplementedType
 from typing import Any,Literal
+import numpy as np
 from numpy import _CopyMode,_ScalarT,dtype,ndarray,ufunc
 from numpy._typing import DTypeLike
 __all__=['NPArray']
@@ -66,3 +67,6 @@ dtype:DTypeLike|None=None
  def dimensions(self)->bool:'''`data`の次元が多次元か判定する。'''
  def get(self,val:int)->Any:'''配列の`val`番目の要素を取得する。'''
  def reshape(self,size:tuple[int,...])->NPArray:...
+ def all_None(self)->np.bool:'''全ての要素がNoneかを調べる。'''
+ def all_None(self)->np.bool:'''要素内にNoneが存在するかを調べる。'''
+ def clear(self):'''配列をクリアする'''
