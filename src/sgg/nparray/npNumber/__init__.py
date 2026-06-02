@@ -20,8 +20,20 @@ class NPNumber(NPArray):
    raise TypeError('dtypeには数値の型を指定してください')
   super().__init__(data,dtype,depth_limit)
   self.axis=axis
- def __repr__(self):return f'NPNumber({self.data})'
  def __iter__(self):return super().__iter__()
+ def __len__(self):return super().__len__()
+ def __getitem__(self,key):return super().__getitem__(key)
+ def __contains__(self,item):return super().__contains__(item)
+ def __reversed__(self):return super().__reversed__()
+ def __array__(self,dtype=None,copy=None):return super().__array__(dtype,copy)
+ def __repr__(self):return f'NPNumber({self.data})'
+ def __array_ufunc__(self,ufunc,method,*args,**kwargs):
+  if method=='__call__':
+   args=[x.data if isinstance(x,NPNumber) else x for x in args]
+   result=ufunc(*args,**kwargs)
+   if isinstance(result,np.ndarray):return NPNumber(result)
+   return result
+  return NotImplemented
  def __abs__(self):
   self.data=np.abs(self.data,dtype=self.dtype)
   return self
@@ -66,13 +78,6 @@ class NPNumber(NPArray):
  def __pos__(self):
   self.data=+self.data
   return self
- def __array_ufunc__(self,ufunc,method,*args,**kwargs):
-  if method=='__call__':
-   args=[x.data if isinstance(x,NPNumber) else x for x in args]
-   result=ufunc(*args,**kwargs)
-   if isinstance(result,np.ndarray):return NPNumber(result)
-   return result
-  return NotImplemented
  def __digits(self,digit):
   if not isinstance(digit,int):
    raise TypeError('digitには整数型を指定してください')
@@ -120,6 +125,8 @@ class NPNumber(NPArray):
  def degree(self):return np.degrees(self.data,dtype=self.dtype)
  @property
  def radian(self):return np.radians(self.data,dtype=self.dtype)
+ @property
+ def sturgesval(self):return 1+np.log2(self.size)
  def logx(self,x):
   if not isinstance(x,int|float):
    raise TypeError('xには数値の型を指定してください')
@@ -177,30 +184,6 @@ class NPNumber(NPArray):
  def quantile(self,q,axis=None,method='linear'):
   if method not in method_list:method='linear'
   return np.quantile(self.data,q,axis=axis,method=method)
- def sturgesval(self,decimal=None,digit=None):
-  if decimal not in ['floor','trunc','ceil','round','none']:decimal='none'
-  sturges=1+np.log2(self.size)
-  if decimal=='floor':
-   if digit==None:return np.floor(sturges)
-   else:
-    pows=self.__digits(digit)
-    return np.floor(sturges*pows)/pows
-  elif decimal=='trunc':
-   if digit==None:return np.trunc(sturges)
-   else:
-    pows=self.__digits(digit)
-    return np.trunc(sturges*pows)/pows
-  elif decimal=='ceil':
-   if digit==None:return np.ceil(sturges)
-   else:
-    pows=self.__digits(digit)
-    return np.ceil(sturges*pows)/pows
-  elif decimal=='round':
-   if digit==None:return np.round(sturges)
-   else:
-    pows=self.__digits(digit)
-    return np.round(sturges*pows)/pows
-  return sturges
  def ratio(self,axis=None):return(self.data/np.sum(self.data,dtype=self.dtype,axis=axis,keepdims=True))*100
  def zero_check(self):return self.data==0
  def get_axis(self):return self.axis

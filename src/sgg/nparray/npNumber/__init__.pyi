@@ -3,7 +3,7 @@ from collections.abc import Iterator
 from types import NotImplementedType
 from typing import Any,Literal,overload
 from _typeshed import Incomplete
-from numpy import float64,int64,ndarray,ufunc
+from numpy import float64,int64,ndarray,ufunc,_CopyMode
 from numpy._typing import DTypeLike
 from ..base import NPArray
 __all__=['NPNumber']
@@ -24,8 +24,23 @@ axis:int|None=None
  :type depth_limit: int|None
  :param axis: 計算処理を行う方向を指定する。
  :type axis: int|None'''
- def __repr__(self)->str:...
+ def __getitem__(self,key:int)->Any:...
+ def __contains__(self,item:Any)->bool:...
  def __iter__(self)->Iterator[Any]:...
+ def __len__(self)->int:...
+ def __reversed__(self)->NPNumber:'''`numpy.fliplr`を実行する'''
+ def __array__(
+self,
+dtype:DTypeLike|None=None,
+copy:bool|_CopyMode|None=None
+)->ndarray:...
+ def __array_ufunc__(
+self,
+ufunc:ufunc,
+method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
+*args:Any,
+**kwargs:Any
+)->Any|NotImplementedType|NPNumber:...
  def __abs__(self)->NPNumber:...
  def __add__(self,other:int|float|ndarray|NPNumber)->NPNumber:...
  def __sub__(self,other:int|float|ndarray|NPNumber)->NPNumber:...
@@ -48,13 +63,6 @@ axis:int|None=None
  def __mod__(self,other:int|float|ndarray|NPNumber)->NPNumber:...
  def __floordiv__(self,other:int|float|ndarray|NPNumber)->NPNumber:...
  def __pow__(self,other:int|float|ndarray|NPNumber)->NPNumber:...
- def __array_ufunc__(
-self,
-ufunc:ufunc,
-method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
-*args:Any,
-**kwargs:Any
-)->Any|NotImplementedType|NPNumber:...
  def __digits(self,digit:int)->int64:...
  @property
  def T(self)->NPNumber:...
@@ -88,6 +96,12 @@ method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
  def degree(self):...
  @property
  def radian(self):...
+ @property
+ def sturgesval(self)->float64:
+  '''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
+
+ :return: スタージェスの公式で求めた値を返す。
+ :rtype: float64'''
  def logx(self,x:int|float):...
  def mod(self,x):...
  def divmod(self,x):...
@@ -131,79 +145,6 @@ method:Literal[
 'normal_unbiased'
 ]='linear'
 )->ndarray:...
- @overload
- def sturgesval(
-self,
-decimal:Literal['floor','trunc','ceil','round','none']|None=...,
-digit:int|None=...
-)->float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
-
- :param decimal: 小数点以下の処理について指定する。
- :type decimal: Literal['floor','trunc','ceil','round','none']|None
- :param digit: 返す小数点の桁数を指定する。
- :type digit: int|None
- :return: スタージェスの公式で求めた値を返す。
- :rtype: float64'''
- @overload
- def sturgesval(
-self,
-decimal:Literal['none']|None=None
-)->float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
-
- :return: スタージェスの公式で求めた値を返す。
- :rtype: float64'''
- @overload
- def sturgesval(
-self,
-decimal:Literal['floor','trunc','ceil','round','none']='floor',
-digit:int|None=...
-)->float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
-
- :param decimal: 小数点以下の処理について指定する。
- :type decimal: Literal['floor','trunc','ceil','round','none']
- :param digit: 返す小数点の桁数を指定する。
- :type digit: int|None
- :return: スタージェスの公式で求めた値を`numpy.floor()`で返す。
- :rtype: float64'''
- @overload
- def sturgesval(
-self,
-decimal:Literal['floor','trunc','ceil','round','none']='trunc',
-digit:int|None=...
-)->float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
-
- :param decimal: 小数点以下の処理について指定する。
- :type decimal: Literal['floor','trunc','ceil','round','none']
- :param digit: 返す小数点の桁数を指定する。
- :type digit: int|None
- :return: スタージェスの公式で求めた値を`numpy.trunc()`で返す。
- :rtype: float64'''
- @overload
- def sturgesval(
-self,
-decimal:Literal['floor','trunc','ceil','round','none']='ceil',
-digit:int|None=...
-)->float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
-
- :param decimal: 小数点以下の処理について指定する。
- :type decimal: Literal['floor','trunc','ceil','round','none']
- :param digit: 返す小数点の桁数を指定する。
- :type digit: int|None
- :return: スタージェスの公式で求めた値を`numpy.ceil()`で返す。
- :rtype: float64'''
- @overload
- def sturgesval(
-self,
-decimal:Literal['floor','trunc','ceil','round','none']='round',
-digit:int|None=...
-)->float64:'''データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
-
- :param decimal: 小数点以下の処理について指定する。
- :type decimal: Literal['floor','trunc','ceil','round','none']
- :param digit: 返す小数点の桁数を指定する。
- :type digit: int|None
- :return: スタージェスの公式で求めた値を`numpy.round()`で返す。
- :rtype: float64'''
  def ratio(
 self,
 axis:int|None=None

@@ -1,7 +1,8 @@
 from collections.abc import Iterator
 from types import NotImplementedType
 from typing import Any,Literal
-from numpy import ndarray,timedelta64,ufunc
+from numpy import ndarray,timedelta64,ufunc,_CopyMode
+from numpy._typing import DTypeLike
 from ...base import NPArray
 from ..typing import Dtype
 __all__=['NPDate']
@@ -19,8 +20,18 @@ depth_limit:int|None=None
  :type dtype: DTypeLike|None
  :param depth_limit: 配列の最大の深さを指定する。
  :type depth_limit: int|None'''
- def __repr__(self)->str:...
  def __iter__(self)->Iterator[Any]:...
+ def __getitem__(self,key:int)->Any:...
+ def __contains__(self,item:Any)->bool:...
+ def __iter__(self)->Iterator[Any]:...
+ def __len__(self)->int:...
+ def __reversed__(self)->NPDate:'''`numpy.fliplr`を実行する'''
+ def __array__(
+self,
+dtype:DTypeLike|None=None,
+copy:bool|_CopyMode|None=None
+)->ndarray:...
+ def __repr__(self)->str:...
  def __array_ufunc__(
 self,
 ufunc:ufunc,

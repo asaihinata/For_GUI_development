@@ -8,9 +8,20 @@ class NPString(NPArray):
   if not stringDtype(dtype):
    raise TypeError('dtypeには文字列の型を指定してください')
   super().__init__(data,dtype,depth_limit)
- def __repr__(self):return f'NPString({self.data})'
  def __iter__(self):return super().__iter__()
  def __len__(self):return super().__len__()
+ def __getitem__(self,key):return super().__getitem__(key)
+ def __contains__(self,item):return super().__contains__(item)
+ def __reversed__(self):return super().__reversed__()
+ def __array__(self,dtype=None,copy=None):return super().__array__(dtype,copy)
+ def __repr__(self):return f'NPString({self.data})'
+ def __array_ufunc__(self,ufunc,method,*args,**kwargs):
+  if method=='__call__':
+   args=[x.data if isinstance(x,NPString) else x for x in args]
+   result=ufunc(*args,**kwargs)
+   if isinstance(result,np.ndarray):return NPString(result)
+   return result
+  return NotImplemented
  def __add__(self,other):
   self.data=nps.add(self.data,self.___datas(other))
   return self
@@ -25,14 +36,6 @@ class NPString(NPArray):
  __imul__=__mul__
  def __eq__(self,value):return np.equal(self.data,self.___datas(value))
  def __ne__(self,value):return np.not_equal(self.data,self.___datas(value))
- def __array__(self,dtype=None,copy=None):return np.array(self.data,dtype=dtype,copy=copy)
- def __array_ufunc__(self,ufunc,method,*args,**kwargs):
-  if method=='__call__':
-   args=[x.data if isinstance(x,NPString) else x for x in args]
-   result=ufunc(*args,**kwargs)
-   if isinstance(result,np.ndarray):return NPString(result)
-   return result
-  return NotImplemented
  def ___datas(self,data):return data.data if isinstance(data,NPString) else data
  @property
  def T(self):

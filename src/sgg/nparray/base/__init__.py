@@ -11,15 +11,17 @@ class NPArray:
   self.data=np.array(data,dtype=self.dtype)
   if isinstance(depth_limit,int) and depth_limit<self.data.ndim:
    raise TypeError('配列の深さが制限の深さに達しました')
+ # 親クラス,子クラス共通の特殊メソッド
  def __iter__(self):return iter(self.data)
- def __repr__(self):return f'NPArray({self.data})'
  def __len__(self):return len(self.data)
  def __getitem__(self,key):return self.get(key)
  def __contains__(self,item):return item in self.data
  def __reversed__(self):
-  self.data=np.fliplr(self.data)
+  self.data=np.flip(self.data)
   return self
  def __array__(self,dtype=None,copy=None):return np.array(self.data,dtype=dtype,copy=copy)
+ # 以下の特殊メソッドはそれぞれの子クラス毎に処理を変更する必要がある
+ def __repr__(self):return f'NPArray({self.data})'
  def __array_ufunc__(self,ufunc,method,*args,**kwargs):
   if method=='__call__':
    args=[x.data if isinstance(x,NPArray) else x for x in args]

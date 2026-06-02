@@ -7,8 +7,13 @@ class NPDate(NPArray):
  def __init__(self,data,dtype='datetime64[D]',depth_limit=None):
   if isinstance(data,Formatconversion):data=data.data
   super().__init__(data,serch_dtype(dtype),depth_limit)
- def __repr__(self):return f'NPDate({self.data})'
  def __iter__(self):return super().__iter__()
+ def __len__(self):return super().__len__()
+ def __getitem__(self,key):return super().__getitem__(key)
+ def __contains__(self,item):return super().__contains__(item)
+ def __reversed__(self):return super().__reversed__()
+ def __array__(self,dtype=None,copy=None):return super().__array__(dtype,copy)
+ def __repr__(self):return f'NPDate({self.data})'
  def __array_ufunc__(self,ufunc,method,*args,**kwargs):
   if method=='__call__':
    args=[x.data if isinstance(x,NPDate) else x for x in args]
