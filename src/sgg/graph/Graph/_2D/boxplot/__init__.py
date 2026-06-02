@@ -3,7 +3,7 @@ __all__=['Boxplot']
 class Boxplot(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.data:NPNumber=NPNumber(kw.get('data'))
+  self.data=NPNumber(kw.get('data'))
   self.legends=bols(kw.get('legend'))
   self.width=range_num(num0s(kw.get('width'),0.15),0,1,0.15)
   self.whis=self._boxplot_whis(kw.get('whis'))
@@ -13,7 +13,7 @@ class Boxplot(twoElement):
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
   self.label=getLabel([f'box{i}' for i in range(self.data.ndim)]) if self.label else self.label.loop(self.data.ndim)
   self.plot(self.data,label=self.label,width=self.width,legend=self.legends,whis=self.whis,fill=self.fill,showfliers=self.showfliers,notch=self.notch,orientation=self.orientation,alpha=self.alpha)
- def plot(self,data:NPNumber,label=None,width=0.15,whis=1.5,fill=False,legend=True,showfliers=True,notch=False,orientation='vertical',alpha=1):
+ def plot(self,data,label=None,width=0.15,whis=1.5,fill=False,legend=True,showfliers=True,notch=False,orientation='vertical',alpha=1):
   self.clear()
   boxplot=self.ax.boxplot(data,showfliers=showfliers,labels=label,label=label,widths=width,whis=whis,patch_artist=fill,notch=notch,orientation=orientation)
   for i in range(data.ndim):boxplot['boxes'][i].set_alpha(alpha)
