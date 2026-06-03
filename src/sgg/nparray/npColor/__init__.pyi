@@ -18,3 +18,8 @@ class NPColor:
  :raises TypeError: `color`で配列を指定した際,その配列内の要素に文字列以外の型が含まれているときに発生させる
  :raises TypeError: `color`の型が配列の型もしくはstr型ではない時に発生させる'''
  def __repr__(self)->str:...
+ def get_hex_list(self)->ndarray:'''NPColor内の16進数の色コードを取得する。'''
+ def get_rgb_list(self)->ndarray:'''NPColor内のRGBを取得する。'''
+ def get_r_list(self)->ndarray:'''NPColor内のRGBのRを取得する。'''
+ def get_g_list(self)->ndarray:'''NPColor内のRGBのGを取得する。'''
+ def get_b_list(self)->ndarray:'''NPColor内のRGBのBを取得する。'''
