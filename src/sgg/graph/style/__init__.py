@@ -5,7 +5,7 @@ from .fmt import *
 from .getlabel import getLabel
 from .label import *
 from .legend import *
-from .marker import Marker, MarkerList
+from .marker import Marker,MarkerList
 from .solid import Solid,Solidlist,fmtSolid
 from .title import *
 from .tool import *
