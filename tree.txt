@@ -344,6 +344,7 @@ For_GUI_development
  │   │   │   │   └── _math
  │   │   │   │       ├── __init__.py
  │   │   │   │       ├── _maths.py
+ │   │   │   │       ├── _maths.pyi
  │   │   │   │       ├── _population.py
  │   │   │   │       └── _population.pyi
  │   │   │   └── npStr
@@ -525,5 +526,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:367
+ファイル数:368
 フォルダ数:159

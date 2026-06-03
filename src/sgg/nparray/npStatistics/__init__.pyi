@@ -1,5 +1,7 @@
-from typing import overload,Literal
-from numpy import dtype,float64,ndarray
+from typing import Any,Literal,overload
+from numpy import floating,ndarray
+from numpy._typing import _ArrayLikeFloat_co
+from numpy.typing import NDArray
 from ..npNumber import NPNumber
 from ._math import Population
 __all__=['NPStatistics']
@@ -199,4 +201,20 @@ method:METHOD_LIST='linear'
  def regression(
 self,
 n:int=1
-)->ndarray[float64,dtype[float64]]:'''点(x,y)に次数`n`の多項式を当てはめる。'''
+)->NDArray[floating]:'''点(x,y)に次数`n`の多項式を当てはめる。'''
+ def oneregression(self)->NDArray[floating]:
+  '''点(x,y)に一次方程式の回帰直線を返す。
+
+ :return: [傾き,切片]として返す。
+ :rtype: NDArray[floating]'''
+ def chebysheveve(
+self,
+Fx:_ArrayLikeFloat_co,
+n:int=1
+)->NDArray[floating[Any]]:
+  '''点`Fx`において点(x,y)に次数`n`の多項式を評価する。
+
+ :param Fx: 評価したい点を指定する。
+ :type Fx: _ArrayLikeFloat_co
+ :param n: 次数を指定する。
+ :type n: int'''

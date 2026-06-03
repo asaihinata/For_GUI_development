@@ -1,5 +1,6 @@
 '''基本的な統計の計算をするモジュール'''
 import numpy as np
+from ..dtype import numberDtype
 from ..npNumber import NPNumber
 from ._math import *
 __all__=['NPStatistics']
@@ -13,19 +14,28 @@ method_list=[
 'normal_unbiased'
 ]
 class NPStatistics:
+ def __dataset(self,arr):
+  classname=[i.__name__ for i in arr.__class__.__mro__]
+  if 'NPArray' in classname:
+   if 'NPNumber' in classname:return arr
+   else:return arr.lengtharange()
+  elif isinstance(arr,np.ndarray) and numberDtype(arr):return arr
  def __init__(self,data=None,x=None,y=None):
   if data is None and x is None and y is None:
    raise TypeError('dataもしくはx,yにNPNumberもしくはnp.ndarrayを指定してください')
   elif x is None or y is None:
+   data=self.__dataset(data)
    if isinstance(data,NPNumber|np.ndarray):
     if data.ndim!=2:
      raise ValueError('dataには2次元配列で指定してください')
     else:
-     self.data=np.array(data) if isinstance(data,NPNumber) else data
+     self.data=data.data if isinstance(data,NPNumber) else data
      self.x,self.y=self.data
    else:
     raise TypeError('dataにはNPNumberもしくはnp.ndarrayを指定してください')
   elif x is not None or y is not None:
+   x=self.__dataset(x)
+   y=self.__dataset(y)
    if isinstance(x,NPNumber|np.ndarray):
     if x.ndim!=1:
      raise ValueError('xには1次元配列で指定してください')
@@ -36,8 +46,8 @@ class NPStatistics:
      raise ValueError('yには1次元配列で指定してください')
    else:
     raise TypeError('yにはNPNumberもしくはnp.ndarrayを指定してください')
-   self.x=np.array(x) if isinstance(x,NPNumber) else x
-   self.y=np.array(y) if isinstance(y,NPNumber) else y
+   self.x=x.data if isinstance(x,NPNumber) else x
+   self.y=y.data if isinstance(y,NPNumber) else y
    self.data=np.vstack((self.x,self.y))
  def __repr__(self):return f'NPStatistics({self.data})'
  ########
@@ -199,3 +209,5 @@ class NPStatistics:
  def Sxxyyroot(self):return np.power(self.Sxxyy,0.5)
  # 回帰直線
  def regression(self,n=1):return mregression(self.x,self.y,n)
+ def oneregression(self):return mregression(self.x,self.y,1)
+ def chebysheveve(self,Fx,n=1):return mFregression(self.x,self.y,Fx,n)

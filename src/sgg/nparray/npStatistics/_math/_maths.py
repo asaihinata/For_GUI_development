@@ -1,19 +1,18 @@
 import numpy as np
-from numpy.polynomial.chebyshev import chebfit
-__all__=['mdeviation','mdevsq','moutlier','mregression']
+from numpy.polynomial.chebyshev import chebfit,chebval
+__all__=['mdeviation','mdevsq','moutlier','mregression','mone_regression','mFregression']
 def mdeviation(data):
- '''偏差値を求める'''
  std,mean=10/np.std(data),np.mean(data)
  return(std*(data-mean))+50
 def mdevsq(data):
- '''偏差平方和を求める'''
  mean=np.mean(data)
  return np.sum((data-mean)**2)
 def moutlier(data):
- '''外れ値を求める'''
  q1,q3=np.percentile(data,[25,75])
  iqr=(q3-q1)*1.5
  return data[(data<(q1-iqr))|(data>(q3+iqr))]
-def mregression(x:np.ndarray,y:np.ndarray,n:int=1):
- '''点(x,y)の回帰直線を求める。'''
+def mFregression(x,y,Fx,n=1):return chebval(Fx,chebfit(x,y,n))
+def mregression(x,y,n=1):
  return chebfit(x,y,n)
+def mone_regression(x,y):
+ return chebfit(x,y,1)
