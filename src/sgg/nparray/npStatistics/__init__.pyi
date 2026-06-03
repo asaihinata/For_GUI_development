@@ -1,5 +1,4 @@
-from collections.abc import Iterator
-from typing import Any,overload,Literal
+from typing import overload,Literal
 from numpy import dtype,float64,ndarray
 from ..npNumber import NPNumber
 from ._math import Population
@@ -29,7 +28,6 @@ x:NPNumber|ndarray=...,
 y:NPNumber|ndarray=...
 ):...
  def __repr__(self)->str:...
- def __iter__(self)->Iterator[Any]:'''iter(self.data)を返す。'''
  ########
  #  x  #
  ########
@@ -63,6 +61,10 @@ y:NPNumber|ndarray=...
  def xdevsq(self):'''`x`の偏差平方和を求める。'''
  @property
  def xrange(self):...
+ @property
+ def xskew(self):'''`x`の歪度を求める。'''
+ @property
+ def xkurtosis(self):'''`x`の尖度を求める。'''
  def xpercentile(
 self,
 q:tuple[float,...],
@@ -110,6 +112,10 @@ method:METHOD_LIST='linear'
  def ydevsq(self):'''`y`の偏差平方和を求める。'''
  @property
  def yrange(self):...
+ @property
+ def yskew(self):'''`y`の歪度を求める。'''
+ @property
+ def ykurtosis(self):'''`y`の尖度を求める。'''
  def ypercentile(
 self,
 q:tuple[float,...],
@@ -157,6 +163,10 @@ method:METHOD_LIST='linear'
  def devsq(self):'''`data`の偏差平方和を求める。'''
  @property
  def range(self):...
+ @property
+ def skew(self):'''`data`の歪度を求める。'''
+ @property
+ def kurtosis(self):'''`data`の尖度を求める。'''
  def percentile(
 self,
 q:tuple[int|float,...],
@@ -189,5 +199,4 @@ method:METHOD_LIST='linear'
  def regression(
 self,
 n:int=1
-)->ndarray[float64,dtype[float64]]:
-  '''点(x,y)に次数`n`の多項式を当てはめる。'''
+)->ndarray[float64,dtype[float64]]:'''点(x,y)に次数`n`の多項式を当てはめる。'''

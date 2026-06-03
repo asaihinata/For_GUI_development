@@ -40,10 +40,11 @@ class NPStatistics:
    self.y=np.array(y) if isinstance(y,NPNumber) else y
    self.data=np.vstack((self.x,self.y))
  def __repr__(self):return f'NPStatistics({self.data})'
- def __iter__(self):return iter(self.data)
  ########
  #  x  #
  ########
+ @property
+ def xn(self):return self.x.size
  @property
  def xsum(self):return np.sum(self.x)
  @property
@@ -74,6 +75,10 @@ class NPStatistics:
  def xdevsq(self):return mdevsq(self.x)
  @property
  def xrange(self):return np.array([self.xmin,self.xmax])
+ @property
+ def xskew(self):return np.sum((self.x-self.xave)**3)/(self.xn*np.pow(self.xstd,3))
+ @property
+ def xkurtosis(self):return np.sum((self.x-self.xave)**4)/(self.xn*np.pow(self.xvar,2))
  # 四分位範囲
  def xpercentile(self,q,axis=None,method='linear'):
   if method not in method_list:method='linear'
@@ -87,6 +92,8 @@ class NPStatistics:
  ########
  #  y  #
  ########
+ @property
+ def yn(self):return self.y.size
  @property
  def ysum(self):return np.sum(self.y)
  @property
@@ -117,6 +124,10 @@ class NPStatistics:
  def ydevsq(self):return mdevsq(self.y)
  @property
  def yrange(self):return np.array([self.ymin,self.ymax])
+ @property
+ def yskew(self):return np.sum((self.y-self.yave)**3)/(self.yn*np.pow(self.ystd,3))
+ @property
+ def ykurtosis(self):return np.sum((self.y-self.yave)**4)/(self.yn*np.pow(self.yvar,2))
  def ypercentile(self,q,axis=None,method='linear'):
   if method not in method_list:method='linear'
   return np.percentile(self.y,q,axis=axis,method=method)
@@ -158,6 +169,10 @@ class NPStatistics:
  def devsq(self):return mdevsq(self.data)
  @property
  def range(self):return np.array([[self.xmin,self.xmax],[self.ymin,self.ymax]])
+ @property
+ def skew(self):return np.sum((self.data-self.ave)**3)/(self.n*np.pow(self.std,3))
+ @property
+ def kurtosis(self):return np.sum((self.data-self.ave)**4)/(self.n*np.pow(self.var,2))
  def percentile(self,q,axis=None,method='linear'):
   if method not in method_list:method='linear'
   return np.percentile(self.data,q,axis=axis,method=method)

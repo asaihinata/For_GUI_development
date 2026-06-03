@@ -23,30 +23,3 @@ from .step import Step
 from .violinplot import Violinplot
 from .waterfall import Waterfall
 from .waterfallh import Waterfallh
-__all__=[
-'BarGraph',
-'BarhGraph',
-'SSBarGraph',
-'SSBarhGraph',
-'Boxplot',
-'Ecdf',
-'Errorbar',
-'Eventplot',
-'Funne',
-'Hatplot',
-'Hexbin',
-'Hist',
-'Linefill',
-'LineGraph',
-'Pie',
-'Scatter',
-'Stack',
-'Stacked',
-'Stackedh',
-'Stem',
-'Step',
-'Violinplot',
-'Waterfall',
-'Waterfallh',
-'Hist2d'
-]

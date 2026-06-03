@@ -5,12 +5,3 @@ from .linepolar import Linepolar
 from .scatterpolar import Scatterpolar
 from .stempolar import Stempolar
 from .violinpolar import Violinpolar
-__all__=[
-'Barpolar',
-'Errorpolar',
-'Eventpolar',
-'Linepolar',
-'Scatterpolar',
-'Stempolar',
-'Violinpolar'
-]
