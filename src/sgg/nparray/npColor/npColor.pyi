@@ -1,0 +1,1 @@
+class NPColor:pass

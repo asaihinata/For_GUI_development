@@ -327,6 +327,17 @@ For_GUI_development
  │   │   │   │       ├── bytesdtype.py
  │   │   │   │       ├── strdtype.py
  │   │   │   │       └── stringdtype.py
+ │   │   │   ├── npColor
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── color_check.py
+ │   │   │   │   ├── data
+ │   │   │   │   │   ├── color.csv
+ │   │   │   │   │   ├── css_color.csv
+ │   │   │   │   │   └── xkcd_color.csv
+ │   │   │   │   ├── get_data.py
+ │   │   │   │   ├── get_data.pyi
+ │   │   │   │   ├── npColor.py
+ │   │   │   │   └── npColor.pyi
  │   │   │   ├── npNumber
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
@@ -517,5 +528,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:361
-フォルダ数:157
+ファイル数:370
+フォルダ数:159
