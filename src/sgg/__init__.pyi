@@ -2981,9 +2981,9 @@ ylabelfontname:str|Type_Iterablestr|None=None,
 ylabelfontpath:str|PathLike|Path|None=None,
 orientation:Type_orientation='vertical',
 bottom:int|float=0,
-marker:Type_Solid=...,
-line:Literal['-','--','-.','-.']=...,
-color:Literal['r','g','b','c','m','y','k','w']|list[Literal['r','g','b','c','m','y','k','w']]|tuple[Literal['r','g','b','c','m','y','k','w']]=...,
+fmarker:Type_Solid=...,
+fline:Literal['-','--','-.','-.']=...,
+fcolor:Literal['r','g','b','c','m','y','k','w']|list[Literal['r','g','b','c','m','y','k','w']]|tuple[Literal['r','g','b','c','m','y','k','w']]=...,
 size:TupleNumbertype2=(500,400),
 fg:ColorTypeN='#000000',
 bg:ColorTypeN='#ffffff',
@@ -3037,12 +3037,12 @@ key:str=...
  :type orientation: Type_orientation
  :param bottom: ベースラインの位置を指定する。
  :type bottom: int|float
- :param marker: 幹のマーカーの種類を指定する。
- :type marker: Type_Solid
- :param line: 幹の線の種類を指定する。
- :type line: Literal['-','--','-.','-.']
- :param color: 色を指定する。
- :type color: Literal['r','g','b','c','m','y','k','w']|list[Literal['r','g','b','c','m','y','k','w']]|tuple[Literal['r','g','b','c','m','y','k','w']]
+ :param fmarker: 幹のマーカーの種類を指定する。
+ :type fmarker: Type_Solid
+ :param fline: 幹の線の種類を指定する。
+ :type fline: Literal['-','--','-.','-.']
+ :param fcolor: 色を指定する。
+ :type fcolor: Literal['r','g','b','c','m','y','k','w']|list[Literal['r','g','b','c','m','y','k','w']]|tuple[Literal['r','g','b','c','m','y','k','w']]
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param titlealpha: グラフの透明度を指定する。

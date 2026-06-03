@@ -14,7 +14,7 @@ if __name__=="__main__":
    sgg.Stem(x=stemx2,y=stemy,title="幹図の基本2",xlabel=xlabel,ylabel=ylabel)
   ],
   [
-   sgg.Stem(x=stemx1,y=stemy,title="マーカーを変更する",marker="^"),
+   sgg.Stem(x=stemx1,y=stemy,title="マーカーを変更する",fmarker="^"),
    sgg.Stem(x=stemx1,y=stemy,title="幹図の向きを指定する",orientation="horizontal")
   ],
   [
@@ -22,8 +22,8 @@ if __name__=="__main__":
    sgg.Stem(x=stemx1,y=stemy,title="ベースラインを変更する",bottom=30,orientation="horizontal")
   ],
   [
-   sgg.Stem(x=stemx1,y=stemy,title="幹図の色を変更する",color="b"),
-   sgg.Stem(x=stemx1,y=stemy,title="幹図の線を変更する",line="--")
+   sgg.Stem(x=stemx1,y=stemy,title="幹図の色を変更する",fcolor="b"),
+   sgg.Stem(x=stemx1,y=stemy,title="幹図の線を変更する",fline="--")
   ],
   [
    sgg.Stem(x=stemx2,y=stemy,title="グラフを更新する",key="stem"),

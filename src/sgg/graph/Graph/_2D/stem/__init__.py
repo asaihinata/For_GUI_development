@@ -9,9 +9,9 @@ class Stem(twoElement):
   super().__init__(master,kw)
   self.x=self._manyarr(kw.get('x'))
   self.y=self._manyarr(kw.get('y'))
-  self.colorlist=self._list_loop(self._stem_color_check(kw.get('color')),self.max_depth)
-  self.line=self._list_loop(self._linefmt(kw.get('line')),self.max_depth)
-  self.marker=self._list_loop(self._markerfmt(kw.get('marker')),self.max_depth)
+  self.colorlist=self._list_loop(self._stem_color_check(kw.get('fcolor')),self.max_depth)
+  self.line=self._list_loop(self._linefmt(kw.get('fline')),self.max_depth)
+  self.marker=self._list_loop(self._markerfmt(kw.get('fmarker')),self.max_depth)
   self.bottom=num0s(kw.get('bottom'))
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
   self.plot(self.x,self.y,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker,alpha=self.alpha)
@@ -29,9 +29,9 @@ class Stem(twoElement):
   self._updates(**kw)
   if isinstance(x,nListlike):self.x=self._manyarr(x)
   if isinstance(y,nListlike):self.y=self._manyarr(y)
-  self.colorlist=self._list_loop(self._stem_color_check(self.colorlist),self.max_depth)
-  self.line=self._list_loop(self._linefmt(kw.get('line',self.line)),self.max_depth)
-  self.marker=self._list_loop(self._markerfmt(kw.get('marker',self.marker)),self.max_depth)
+  self.colorlist=self._list_loop(self._stem_color_check(kw.get('fcolor',self.colorlist)),self.max_depth)
+  self.line=self._list_loop(self._linefmt(kw.get('fline',self.line)),self.max_depth)
+  self.marker=self._list_loop(self._markerfmt(kw.get('fmarker',self.marker)),self.max_depth)
   self.bottom=num0s(kw.get('bottom'),self.bottom)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)
   self.plot(self.x,self.y,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker)
@@ -62,4 +62,3 @@ class Stem(twoElement):
    if isinstance(color,str) and color in v:return[k]
    elif isinstance(color,list|tuple):return [k for i in color if i in v]
   return set_arr
-# ! 優先的にやる
