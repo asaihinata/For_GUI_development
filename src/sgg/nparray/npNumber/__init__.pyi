@@ -1,7 +1,7 @@
 '''基本的な計算をするモジュール'''
 from collections.abc import Iterator
 from types import NotImplementedType
-from typing import Any,Literal,overload
+from typing import Any,Literal
 from _typeshed import Incomplete
 from numpy import float64,int64,ndarray,ufunc,_CopyMode
 from numpy._typing import DTypeLike
