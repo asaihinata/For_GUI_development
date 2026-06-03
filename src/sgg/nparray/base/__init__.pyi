@@ -41,6 +41,7 @@ method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
 **kwargs:Any
 )->Any|NotImplementedType|NPArray:...
  def tolist(self)->list:'''list型にして返す。'''
+ def tonp(self)->list:'''配列をnp.arrayとして返す。'''
  def sort(self)->NPArray:'''`data`にソートを実行する。'''
  def first_pop(self)->NPArray:'''配列の最初の要素のコピーをその配列の末尾に追加する。'''
  def first_element(self):'''`data`の最初の要素を取得する。'''
@@ -63,6 +64,8 @@ self,
 start:int=0,
 dtype:DTypeLike|None=None
 )->ndarray:...
+ def deep_add(self,val):'''配列の深さを`val`分だけ追加する。'''
+ def min_deep(self,val):'''配列の深さが`val`より低い場合,深さを`val`にする。'''
  def _flatten(self)->tuple[ndarray[tuple[int],dtype[_ScalarT]],tuple[int,...]]:...
  def flatten(self)->NPArray:...
  def dimension(self)->bool:'''`data`の次元が1次元か判定する。'''

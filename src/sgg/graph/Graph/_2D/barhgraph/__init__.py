@@ -11,7 +11,10 @@ class BarhGraph(twoElement):
   self.plot(self.x,self.y,label=self.label,alpha=self.alpha,height=self.height,align=self.align,logs=self.logs)
  def plot(self,x,y,label=None,alpha=1,height=1,align='center',logs=False):
   self.clear()
-  self.graphdata=[self.ax.barh(x,ys,label=label[i],alpha=alpha,height=height,align=align,log=logs)for i,ys in enumerate(y)]
+  if y.ndim==1:
+   self.graphdata=[self.ax.barh(x,y,label=label[0],alpha=alpha,height=height,align=align,log=logs)]
+  else:
+   self.graphdata=[self.ax.barh(x,ys,label=label[i],alpha=alpha,height=height,align=align,log=logs)for i,ys in enumerate(y)]
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
   self._adjustment()

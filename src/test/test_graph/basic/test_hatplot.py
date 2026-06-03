@@ -13,6 +13,9 @@ if __name__=="__main__":
    sgg.Hatplot(x=hatplotx,data=hatplotdata,title="ハットの色を変える",color="red",yticksrange=5)
   ],
   [
+   sgg.Hatplot(x=hatplotx,data=hatplotdata,title="ハットグラフの基本",yticksrange=5),
+  ],
+  [
    sgg.Hatplot(x=hatplotx,data=hatplotdata,title="グラフを更新する",yticksrange=5,key="hat"),
    sgg.Buttons(text="更新ボタン",function=updates)
   ]

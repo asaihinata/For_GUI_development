@@ -1,7 +1,7 @@
 from _import import *
 if __name__=="__main__":
  def updates():
-  radomdata=rng.normal((3,5,4),(0.75,1,0.75),lenght=3,hierarchy=200)
+  radomdata=rng.normal((3,5,4),(0.75,1.00,0.75),(200,3))
   print(f"{radomdata=}")
   violin:Violinplot=win.get("violin")
   violin.update(radomdata)

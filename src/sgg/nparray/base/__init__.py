@@ -34,6 +34,7 @@ class NPArray:
   self.data=self.data.astype(dtype)
   return self
  def tolist(self):return self.data.tolist()
+ def tonp(self):return self.data
  def sort(self):
   self.data=np.sort(self.data)
   return self
@@ -67,6 +68,24 @@ class NPArray:
  def flatten(self):
   self.data=np.ravel(self.data)
   return self
+ def reshape(self,size):
+  self.data=self.data.reshape(size)
+  return self
+ def deep_add(self,val):
+  if not isinstance(val,int):
+   raise TypeError('valにはint型を指定してください')
+  elif val<=0:
+   raise ValueError('valには1以上の整数を指定してください')
+  for _ in range(val):self.data=np.expand_dims(self.data,axis=0)
+  return self
+ def min_deep(self,val):
+  if not isinstance(val,int):
+   raise TypeError('valにはint型を指定してください')
+  elif val<=0:
+   raise ValueError('valには1以上の整数を指定してください')
+  if self.ndim<val:
+   for _ in range(val-self.ndim):self.data=np.expand_dims(self.data,axis=0)
+  return self
  def get(self,val):
   if not isinstance(val,int):
    raise TypeError('valにはint型を指定してください')
@@ -74,9 +93,6 @@ class NPArray:
   if val==size:return data[val-1]
   elif val<size:return data[val]
   elif size<val:return data[val%size]
- def reshape(self,size):
-  self.data=self.data.reshape(size)
-  return self
  def clear(self):
   self.data=np.array([],dtype=self.dtype)
   return self

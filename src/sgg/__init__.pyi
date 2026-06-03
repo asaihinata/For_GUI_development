@@ -2108,7 +2108,7 @@ labelrotation:float|Type_orientation|None='horizontal',
 labelrotation_mode:bool=True,
 labelfontname:str|Type_Iterablestr|None=None,
 labelfontpath:str|PathLike|Path|None=None,
-legend:bool=True,
+legend:bool=False,
 fill:bool=False,
 notch:bool=False,
 showfliers:bool=True,
@@ -3271,16 +3271,6 @@ key:str=...
 x:o_array,
 data:o_array,
 color:ColorTypeN='#4477aa',
-label:labeltype=...,
-labelalpha:int|float=1.0,
-labelzorder:int|float=4,
-labelfg:ColorTypeN=...,
-labelha:Type_labelha=None,
-labelva:Type_labelva=None,
-labelrotation:float|Type_orientation|None='horizontal',
-labelrotation_mode:bool=True,
-labelfontname:str|Type_Iterablestr|None=None,
-labelfontpath:str|PathLike|Path|None=None,
 xlabel:str=...,
 xlabelalpha:int|float=1.0,
 xlabelzorder:int|float=4,
@@ -3344,8 +3334,6 @@ key:str=...
  :type x: o_array
  :param data: `data`のデータを指定する。
  :type data: o_array
- :param label: ラベルを指定する。
- :type label: labeltype
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -3409,21 +3397,7 @@ key:str=...
  :param xticksdirection: x軸の目盛りの向きを指定する。
  :type xticksdirection: Type_ticksdirection
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection
- :param legendanchor: 凡例の位置を指定する。
- :type legendanchor: ListNumbertype2|ListNumbertype4|TupleNumbertype2|TupleFloat4|None
- :param legendplace: 凡例の位置の基準点を指定する。
- :type legendplace: Type_legendplace
- :param legendtitle: 凡例のタイトルを指定する。
- :type legendtitle: bool
- :param legendframe: 凡例の背景を含む外枠を表示するか指定する。
- :type legendframe: bool
- :param legendshadow: 凡例に影を付与するか指定する。
- :type legendshadow: bool
- :param legendalpha: 凡例の背景の透明度を指定する。
- :type legendalpha: int|float
- :param legendncols: 凡例の列数を指定する。
- :type legendncols: int'''
+ :type yticksdirection: Type_ticksdirection'''
  @staticmethod
  def Hist(
 data:o_array,

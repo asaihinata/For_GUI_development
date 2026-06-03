@@ -18,7 +18,7 @@ class Hexbin(twoElement):
   self.plot(self.x,self.y,self.c,gridsize=self.gridsize,xscale=self.xscale,yscale=self.yscale,mincnt=self.mincnt,extent=self.extent,bins=self.bins)
  def plot(self,x,y,c,gridsize=100,xscale='linear',yscale='linear',mincnt=None,extent=None,bins=None):
   self.clear()
-  self.graphdata=self.ax.hexbin(x,y,c,bins=bins,gridsize=gridsize,xscale=xscale,yscale=yscale,mincnt=mincnt,extent=extent)
+  self.graphdata=[self.ax.hexbin(x,y,c,bins=bins,gridsize=gridsize,xscale=xscale,yscale=yscale,mincnt=mincnt,extent=extent)]
   self._apply_labels(self.xlabel,self.ylabel)
   self._adjustment()
  def update(self,x=None,y=None,c=None,**kw):
@@ -36,6 +36,6 @@ class Hexbin(twoElement):
   self.bins=bins if(bins=='log' or isinstance(bins,int|float) or (isinstance(bins,list|tuple) and (isinstance(i,int|float)for i in bins)))else None
   self.plot(self.x,self.y,self.c,gridsize=self.gridsize,xscale=self.xscale,yscale=self.yscale,mincnt=self.mincnt,extent=self.extent,bins=self.bins)
   self._redraw()
- def get(self):return [self.graphdata]
+ def get(self):return self.graphdata
  def getx(self):return self.x
  def gety(self):return self.y

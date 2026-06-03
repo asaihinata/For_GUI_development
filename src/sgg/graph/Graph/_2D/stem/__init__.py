@@ -62,3 +62,4 @@ class Stem(twoElement):
    if isinstance(color,str) and color in v:return[k]
    elif isinstance(color,list|tuple):return [k for i in color if i in v]
   return set_arr
+# ! 優先的にやる

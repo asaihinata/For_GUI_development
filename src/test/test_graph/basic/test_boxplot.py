@@ -29,6 +29,9 @@ if __name__=="__main__":
    sgg.Boxplot(data=boxdata1,title="ラベル名を変更する",label=["ラベル1"])
   ],
   [
+   sgg.Boxplot(data=boxdata1,title="凡例を表示する",legend=True)
+  ],
+  [
    sgg.Boxplot(data=boxdata1,title="グラフを更新する",key="boxplot"),
    sgg.Buttons(text="更新ボタン",function=updates)
   ]

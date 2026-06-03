@@ -5,6 +5,8 @@ if __name__=="__main__":
   radomdata2=1.2*radomdata1+rng.standard_normal((1,5000))/3
   print(f"{radomdata1=}")
   print(f"{radomdata2=}")
+  print(radomdata1)
+  print(radomdata2)
   hexbin:Hexbin=win.get("hexbin")
   hexbin.update(x=radomdata1,y=radomdata2)
  print(f"{hexbinx1=}")

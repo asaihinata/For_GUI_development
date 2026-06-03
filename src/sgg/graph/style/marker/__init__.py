@@ -15,7 +15,7 @@ class Marker:
 class MarkerList(NPArray):
  def __init__(self,marker,fill=None,cap=None,transform=None,join=None):
   marker=[marker] if isinstance(marker,str|int) else marker
-  super().__init__([Marker(i,fill,cap,transform,join).marker for i in marker],depth_limit=1)
+  super().__init__(data=[Marker(i,fill,cap,transform,join).marker for i in marker],depth_limit=1)
  def __iter__(self):return iter(self.data)
  def __str__(self):return str(self.data[0])
  def __repr__(self):return super().__repr__()
