@@ -4,7 +4,6 @@ __all__=['check']
 HEX6_RE=compile(r'^#[0-9a-f]{6}$')
 HEX3_RE=compile(r'^#[0-9a-f]{3}$')
 RGB_RE=compile(r'^rgb\((\d+),(\d+),(\d+)\)$')
-RGBA_RE=compile(r'^rgba\((\d+),(\d+),(\d+),([0-9.]+)\)$')
 HSV_RE=compile(r'^hsv\((\d+),(\d+),(\d+)\)$')
 def chagehex6(val):
  val=val[0][1:]
@@ -18,5 +17,4 @@ def check(name):
    val=findall(HEX3_RE,name)[0][1:]
    return np.fromiter((int(sets(val[i:i+1]),16)for i in range(0,len(val))),dtype=np.int16)
  if RGB_RE.match(name):return chage(findall(RGB_RE,name))
- if RGBA_RE.match(name):return chage(findall(RGBA_RE,name))
  if HSV_RE.match(name):return chage(findall(HSV_RE,name))

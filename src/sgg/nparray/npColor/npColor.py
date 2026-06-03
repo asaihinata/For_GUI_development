@@ -1,15 +1,16 @@
 import numpy as np
 from matplotlib.colors import to_hex
 from ..npStr import NPString
-from .color_check import check
-from .get_data import Get_color
-class NPColor(NPString):
+from ._color_check import check
+from .data import Get_color
+__all__=['NPColor']
+class NPColor:
  def __init__(self,color):
-  if isinstance(color,str):data=[self.colormake(color)]
-  super().__init__(data=data)
+  if isinstance(color,str):data=self._colormake(color)
+  self.data=NPString(data).data
  def __repr__(self):return f'NPColor({self.data})'
- def colormake(self,color):
-  colorname=Get_color().gets(color)
+ def _colormake(self,color):
+  colorname=Get_color.gets(color)
   if colorname is None:
    check_Color=check(color)
    if check_Color is None:
