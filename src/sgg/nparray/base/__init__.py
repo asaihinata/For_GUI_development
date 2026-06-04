@@ -2,12 +2,12 @@ import numpy as np
 __all__=['NPArray']
 class NPArray:
  def __init__(self,data,dtype=None,depth_limit=None):
+  self.__dtype=dtype
   if(
      'NPArray' not in [i.__name__ for i in self.__class__.__mro__] and
      not isinstance(data,list|tuple|np.ndarray|NPArray)
     ):
    raise TypeError('dataには配列の型を指定してください')
-  self.__dtype=dtype
   self.__data=np.array(data,dtype=self.__dtype)
   if isinstance(depth_limit,int) and depth_limit<self.__data.ndim:
    raise TypeError('配列の深さが制限の深さに達しました')
@@ -59,6 +59,15 @@ class NPArray:
  def dtype(self):return self.__dtype
  @property
  def data(self):return self.__data
+ @data.setter
+ def data(self,data):
+  if(
+     'NPArray' not in [i.__name__ for i in self.__class__.__mro__] and
+     not isinstance(data,list|tuple|np.ndarray|NPArray)
+    ):
+   raise TypeError('dataには配列の型を指定してください')
+  self.__data=np.array(data,dtype=self.__dtype)
+  return self.__data
  def dimension(self):return True if self.ndim==1 else False
  def dimensions(self):return True if 2<=self.ndim else False
  def lengtharange(self,start=0,dtype=None):

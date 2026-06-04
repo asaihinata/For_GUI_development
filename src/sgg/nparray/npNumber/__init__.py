@@ -88,6 +88,7 @@ class NPNumber(NPArray):
   if isinstance(data,np.ndarray):
    if not numberDtype(data):
     raise TypeError('numpy.ndarrayの型を数値の型にしてください')
+   return data
   elif not isinstance(data,np.ndarray|NPNumber|int|float|complex):
    raise TypeError('NPNumber型か数値の型を指定してください')
   return data.data if isinstance(data,NPNumber) else data
