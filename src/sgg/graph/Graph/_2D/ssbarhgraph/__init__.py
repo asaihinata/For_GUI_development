@@ -24,5 +24,5 @@ class SSBarhGraph(twoElement):
   self.plot(self.data,self.dataname,label=self.label,alpha=self.alpha,height=self.height)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.data
- def gety(self):return self.dataname
+ def getx(self):return self.data.tonp()
+ def gety(self):return self.dataname.tonp()

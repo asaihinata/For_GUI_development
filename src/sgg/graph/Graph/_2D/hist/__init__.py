@@ -50,4 +50,4 @@ bins in ['auto','fd','doane','scott','stone','rice','sturges','sqrt']
  def getrange(self,num=True):return self.range if num else (self.range[0].item(),self.range[1].item())
  def getmin(self,num=True):return self.min if num else self.min.item()
  def getmax(self,num=True):return self.max if num else self.max.item()
- def getdata(self):return self.data
+ def getdata(self):return self.data.tonp()

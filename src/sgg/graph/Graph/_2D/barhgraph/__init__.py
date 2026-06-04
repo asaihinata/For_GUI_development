@@ -28,5 +28,5 @@ class BarhGraph(twoElement):
   self.plot(self.x,self.y,label=self.label,alpha=self.alpha,height=self.height,align=self.align,logs=self.logs)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.x
- def gety(self):return self.y
+ def getx(self):return self.x.tonp()
+ def gety(self):return self.y.tonp()

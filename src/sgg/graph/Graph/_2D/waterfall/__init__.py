@@ -39,8 +39,8 @@ class Waterfall(twoElement):
   self.plot(self.x,self.y,alpha=self.alpha,width=self.width,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.x
- def gety(self):return self.y
+ def getx(self):return self.x.tonp()
+ def gety(self):return self.y.tonp()
  def _horiline(self,lin,width=1,color=None,linestyle='-'):
   lens,width,xmaxs,xmins=len(lin)-1,width/2,[],[]
   for i in range(lens):

@@ -40,8 +40,8 @@ class Waterfallh(twoElement):
   self.plot(self.x,self.y,alpha=self.alpha,height=self.height,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.x
- def gety(self):return self.y
+ def getx(self):return self.x.tonp()
+ def gety(self):return self.y.tonp()
  def _vlines(self,lin,height=1,color=None,linestyle='-'):
   lens,height,xmaxs,xmins=len(lin)-1,height/2,[],[]
   for i in range(lens):

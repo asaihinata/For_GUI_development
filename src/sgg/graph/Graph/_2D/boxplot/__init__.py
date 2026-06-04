@@ -37,7 +37,7 @@ class Boxplot(twoElement):
   self.plot(self.data,label=self.label,width=self.width,legend=self.legends,whis=self.whis,fill=self.fill,showfliers=self.showfliers,notch=self.notch,orientation=self.orientation,alpha=self.alpha)
   self._redraw()
  def get(self):return self.graphdata
- def getdata(self):return self.data
+ def getdata(self):return self.data.tonp()
  def _boxplot_whis(self,data):
   if isinstance(data,list|tuple):
    if all(isinstance(i,int|float)for i in data):

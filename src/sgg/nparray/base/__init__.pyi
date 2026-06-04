@@ -39,7 +39,7 @@ method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
 **kwargs:Any
 )->Any|NotImplementedType|NPArray:...
  def tolist(self)->list:'''list型にして返す。'''
- def tonp(self)->list:'''配列をnp.arrayとして返す。'''
+ def tonp(self)->ndarray:'''配列をnp.arrayとして返す。'''
  def sort(self)->NPArray:'''`data`にソートを実行する。'''
  def first_pop(self)->NPArray:'''配列の最初の要素のコピーをその配列の末尾に追加する。'''
  def first_element(self):'''`data`の最初の要素を取得する。'''

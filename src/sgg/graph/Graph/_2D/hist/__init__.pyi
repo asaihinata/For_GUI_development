@@ -22,7 +22,6 @@ title:str
 ):'''ヒストグラムを再表示させる。'''
  def get(self)->list[ndarray|list[ndarray],ndarray,BarContainer|Polygon|list[BarContainer|Polygon]]:'''`matplotlib.axes.Axes.hist`の戻り値を配列で返す。'''
  def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''
-
  @overload
  def getrange(self,num:bool)->Typetuple_float64|tuple[float,float]:'''ヒストグラムの`bins`の上限値と下限値をtuple型で返す。
 
