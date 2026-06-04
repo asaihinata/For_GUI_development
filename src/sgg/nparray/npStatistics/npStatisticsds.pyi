@@ -1,10 +1,11 @@
+'''基本的な統計の計算をするモジュール'''
 from typing import Any,Literal,overload
 from numpy import floating,ndarray
 from numpy._typing import _ArrayLikeFloat_co
 from numpy.typing import NDArray
 from ..npNumber import NPNumber
 from ._math import Population
-__all__=['NPStatistics']
+__all__=['NPStatisticsds']
 METHOD_LIST=Literal[
 'inverted_cdf',
 'averaged_inverted_cdf',
@@ -14,7 +15,7 @@ METHOD_LIST=Literal[
 'median_unbiased',
 'normal_unbiased'
 ]
-class NPStatistics:
+class NPStatisticsds:
  x:ndarray
  y:ndarray
  data:ndarray
