@@ -15,7 +15,10 @@ class Images(Element):
     raise FileNotFoundError('ファイルが存在しません')
   else:
    raise TypeError('pathには以下の型を指定してください\nstr,WindowsPath,PosixPath,Path')
-  self.imgs=PhotoImage(image=Img_path(self.path).asresize().imgs)
+  self.__img=Img_path(self.path)
+  self.__img=self.__img.asresize().imgs
+  self.imgs=PhotoImage(image=self.__img)
   self.widget=Label(master,text=None,image=self.imgs,takefocus=self.takefocus)
   self.widget.image=self.imgs
  def delta(self):self.widget.destroy()
+ def show(self):self.__img.show()

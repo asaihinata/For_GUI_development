@@ -10,7 +10,9 @@ class Imagebyte(Element):
   self.byte=kw.get('byte')
   if not isinstance(self.byte,bytes|BytesIO):
    raise TypeError('byteにはbytesもしくはBytesIOを指定してください')
-  self.imgs=PhotoImage(image=Img_byte(self.byte).imgs)
+  self.__img=Img_byte(self.byte).imgs
+  self.imgs=PhotoImage(image=self.__img)
   self.widget=Label(master,text=None,image=self.imgs,takefocus=self.takefocus)
   self.widget.image=self.imgs
  def delta(self):self.widget.destroy()
+ def show(self):self.__img.show()

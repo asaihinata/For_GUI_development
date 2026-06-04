@@ -11,7 +11,9 @@ class Barcode(Element):
   self.data=kw.get('data','')
   self.format=kw.get('format','code39')
   self.barcode=barcode_data(self.data,self.format)
-  self.imgs=PhotoImage(image=Img_byte(self.barcode.bytedata).imgs)
+  self.__img=Img_byte(self.barcode.bytedata).imgs
+  self.imgs=PhotoImage(image=self.__img)
   self.widget=Label(master,text=None,image=self.imgs,takefocus=self.takefocus)
   self.widget.image=self.imgs
  def delta(self):self.widget.destroy()
+ def show(self):self.__img.show()
