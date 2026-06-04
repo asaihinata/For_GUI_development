@@ -18,8 +18,8 @@ class Stacked(twoElement):
   self._apply_labels(self.xlabel,self.ylabel)
   self._adjustment()
  def _survey(self,data:np.ndarray,dataname,label=None,width=0.8):
-  data,lens,lisarr=data.T,len(dataname),[]
-  data_percent,bottom=data/data.sum(axis=0)*100,np.zeros(lens)
+  data,lisarr=data.T,[]
+  data_percent,bottom=data/data.sum(axis=0)*100,np.zeros(len(dataname))
   for i,ds in enumerate(data_percent):
    lisarr=self.ax.bar(dataname,ds,bottom=bottom,label=label[i],width=width)
    bottom+=ds
