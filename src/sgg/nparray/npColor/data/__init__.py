@@ -13,7 +13,7 @@ class Get_color(NPArray):
  def __init__(self):
   colordata=read_csv(Path(__file__).parent/'color.csv',encoding='utf-8-sig',has_header=True).to_numpy()
   super().__init__(colordata,dtype=str_)
- def __repr__(self):return f'Get_color({self.data})'
+ def __repr__(self):return f'Get_color({self.__data})'
  def __array_ufunc__(self,ufunc,method,*args,**kwargs):
   if method=='__call__':
    args=[x.data if isinstance(x,Get_color) else x for x in args]

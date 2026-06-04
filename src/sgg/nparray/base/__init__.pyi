@@ -6,8 +6,6 @@ from numpy import _CopyMode,_ScalarT,dtype,ndarray,ufunc
 from numpy._typing import DTypeLike
 __all__=['NPArray']
 class NPArray:
- dtype:DTypeLike
- data:ndarray
  def __init__(
 self,
 data:list|tuple|ndarray,
@@ -55,6 +53,10 @@ method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
  def shape(self)->tuple[int,...]:...
  @property
  def size(self)->int:...
+ @property
+ def dtype(self)->DTypeLike:...
+ @property
+ def data(self)->ndarray:...
  def astype(
 self,
 dtype:DTypeLike|None

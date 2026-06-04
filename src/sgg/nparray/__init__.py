@@ -5,4 +5,3 @@ from .npColor import NPColor
 from .npNumber import NPNumber
 from .npStatistics import NPStatistics
 from .npStr import NPString
-from .npgraph import NPGraph

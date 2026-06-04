@@ -19,7 +19,7 @@ class NPNumber(NPArray):
   if not numberDtype(dtype):
    raise TypeError('dtypeには数値の型を指定してください')
   super().__init__(data,dtype,depth_limit)
-  self.axis=axis
+  self.__axis=axis
  def __iter__(self):return super().__iter__()
  def __len__(self):return super().__len__()
  def __getitem__(self,key):return super().__getitem__(key)
@@ -96,23 +96,23 @@ class NPNumber(NPArray):
   self.data=self.data.T
   return self
  @property
- def sum(self):return np.sum(self.data,axis=self.axis,dtype=self.dtype)
+ def sum(self):return np.sum(self.data,axis=self.__axis,dtype=self.dtype)
  @property
- def median(self):return np.median(self.data,axis=self.axis)
+ def median(self):return np.median(self.data,axis=self.__axis)
  @property
- def var(self):return np.var(self.data,axis=self.axis,dtype=self.dtype)
+ def var(self):return np.var(self.data,axis=self.__axis,dtype=self.dtype)
  @property
- def max(self):return np.max(self.data,axis=self.axis)
+ def max(self):return np.max(self.data,axis=self.__axis)
  @property
- def min(self):return np.min(self.data,axis=self.axis)
+ def min(self):return np.min(self.data,axis=self.__axis)
  @property
- def mean(self):return np.mean(self.data,axis=self.axis,dtype=self.dtype)
+ def mean(self):return np.mean(self.data,axis=self.__axis,dtype=self.dtype)
  @property
- def std(self):return np.std(self.data,axis=self.axis,dtype=self.dtype)
+ def std(self):return np.std(self.data,axis=self.__axis,dtype=self.dtype)
  @property
  def pow2(self):return np.power(self.data,2,dtype=self.dtype)
  @property
- def deviation(self):return ((10/self.std)*(self.data-self.mean))+50
+ def deviation(self):return((10/self.std)*(self.data-self.mean))+50
  @property
  def log(self):return np.log(self.data,dtype=self.dtype)
  @property
@@ -186,5 +186,19 @@ class NPNumber(NPArray):
   return np.quantile(self.data,q,axis=axis,method=method)
  def ratio(self,axis=None):return(self.data/np.sum(self.data,dtype=self.dtype,axis=axis,keepdims=True))*100
  def zero_check(self):return self.data==0
- def get_axis(self):return self.axis
- def set_axis(self,axis):self.axis=axis
+ def ints(self):
+  self.data=self.data.astype(int)
+  return self
+ def floats(self):
+  self.data=self.data.astype(float)
+  return self
+ def get_axis(self):return self.__axis
+ def set_axis(self,axis):
+  self.__axis=axis
+  return self.__axis
+ @property
+ def axis(self):return self.__axis
+ @axis.setter
+ def axis(self,axis):
+  self.__axis=axis
+  return self.__axis

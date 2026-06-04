@@ -13,7 +13,7 @@ class NPDate(NPArray):
  def __contains__(self,item):return super().__contains__(item)
  def __reversed__(self):return super().__reversed__()
  def __array__(self,dtype=None,copy=None):return super().__array__(dtype,copy)
- def __repr__(self):return f'NPDate({self.data})'
+ def __repr__(self):return f'NPDate({self.__data})'
  def __array_ufunc__(self,ufunc,method,*args,**kwargs):
   if method=='__call__':
    args=[x.data if isinstance(x,NPDate) else x for x in args]
@@ -23,15 +23,15 @@ class NPDate(NPArray):
   return NotImplemented
  @property
  def T(self):
-  self.data=self.data.T
+  self.__data=self.__data.T
   return self
  def astype(self,dtype):
-  self.data=self.data.astype(serch_dtype(dtype))
+  self.__data=self.__data.astype(serch_dtype(dtype))
   return self
  @property
- def max(self):return np.max(self.data)
+ def max(self):return np.max(self.__data)
  @property
- def min(self):return np.min(self.data)
+ def min(self):return np.min(self.__data)
  @classmethod
  def arange(cls,start,stop,dtype=None):
   dtype=serch_dtype(dtype)
@@ -42,12 +42,12 @@ class NPDate(NPArray):
  def __add__(self,other):
   if not isinstance(other,np.timedelta64|int):
    raise TypeError('np.timedelta64もしくはint型で指定してください')
-  self.data=self.data+other
+  self.__data=self.__data+other
   return self
  def __sub__(self,other):
   if not isinstance(other,np.timedelta64|int):
    raise TypeError('np.timedelta64もしくはint型で指定してください')
-  self.data=self.data-other
+  self.__data=self.__data-other
   return self
  __radd__=__add__
  __rsub__=__sub__

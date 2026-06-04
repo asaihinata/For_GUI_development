@@ -21,8 +21,8 @@ class NPColor:
    data=[self._colormake(i)for i in nditer(color)]
   else:
    raise TypeError('指定された型が正しくありせん')
-  self.data=NPString(data).data
- def __repr__(self):return f'NPColor({self.data})'
+  self.__data=NPString(data).data
+ def __repr__(self):return f'NPColor({self.__data})'
  def _colormake(self,color):
   if not isinstance(color,str):
    raise TypeError('colorにはstr型で指定してください')
@@ -35,8 +35,8 @@ class NPColor:
    return concatenate((array(['-',to_hex(check_Color/255)],dtype=str_),check_Color.astype(str_)))
   else:
    return colorname
- def get_hex_list(self):return self.data[...,1]
- def get_rgb_list(self):return self.data[...,[2,3,4]]
- def get_r_list(self):return self.data[...,2]
- def get_g_list(self):return self.data[...,3]
- def get_b_list(self):return self.data[...,4]
+ def get_hex_list(self):return self.__data[...,1]
+ def get_rgb_list(self):return self.__data[...,[2,3,4]]
+ def get_r_list(self):return self.__data[...,2]
+ def get_g_list(self):return self.__data[...,3]
+ def get_b_list(self):return self.__data[...,4]
