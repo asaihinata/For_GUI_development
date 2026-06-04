@@ -3,6 +3,7 @@ import numpy as np
 from ..dtype import numberDtype
 from ..npNumber import NPNumber
 from ._math import *
+from .npStatisticsd import NPStatisticsd
 __all__=['NPStatisticsds']
 method_list=[
 'inverted_cdf',
@@ -29,8 +30,8 @@ class NPStatisticsds:
     if data.ndim!=2:
      raise ValueError('dataには2次元配列で指定してください')
     else:
-     self.data=data.data if isinstance(data,NPNumber) else data
-     self.x,self.y=self.data
+     self.__data=data.data if isinstance(data,NPNumber) else data
+     self.__x,self.__y=self.__data
    else:
     raise TypeError('dataにはNPNumberもしくはnp.ndarrayを指定してください')
   elif x is not None or y is not None:
@@ -46,168 +47,177 @@ class NPStatisticsds:
      raise ValueError('yには1次元配列で指定してください')
    else:
     raise TypeError('yにはNPNumberもしくはnp.ndarrayを指定してください')
-   self.x=x.data if isinstance(x,NPNumber) else x
-   self.y=y.data if isinstance(y,NPNumber) else y
-   self.data=np.vstack((self.x,self.y))
- def __repr__(self):return f'NPStatisticsds(\ndata={self.data},\nx={self.x},\ny={self.y})'
+   self.__x=x.data if isinstance(x,NPNumber) else x
+   self.__y=y.data if isinstance(y,NPNumber) else y
+   self.__data=np.vstack((self.__x,self.__y))
+  self.__xs=NPStatisticsd(self.__x)
+  self.__ys=NPStatisticsd(self.__y)
+  self.__datas=NPStatisticsd(self.__data)
+ def __repr__(self):return f'NPStatisticsds(\ndata={self.__data},\nx={self.__x},\ny={self.__y})'
  ########
  #  x  #
  ########
  @property
- def xn(self):return self.x.size
+ def x(self):return self.__x
  @property
- def xsum(self):return np.sum(self.x)
+ def xn(self):return self.__x.size
  @property
- def xave(self):return np.average(self.x)
+ def xsum(self):return self.__xs.sum
  @property
- def xmin(self):return np.min(self.x)
+ def xave(self):return self.__xs.ave
  @property
- def xmax(self):return np.max(self.x)
+ def xmin(self):return self.__xs.min
  @property
- def xmean(self):return np.mean(self.x)
+ def xmax(self):return self.__xs.max
  @property
- def xvar(self):return np.var(self.x)
+ def xmean(self):return self.__xs.mean
  @property
- def xstd(self):return np.std(self.x)
+ def xvar(self):return self.__xs.var
  @property
- def xpow2(self):return np.power(self.x,2)
+ def xstd(self):return self.__xs.std
  @property
- def xdeviation(self):return mdeviation(self.x)
+ def xpow2(self):return self.__xs.pow2
  @property
- def xlog(self):return np.log(self.x)
+ def xdeviation(self):return self.__xs.deviation
  @property
- def xlog10(self):return np.log10(self.x)
+ def xlog(self):return self.__xs.log
  @property
- def xlog2(self):return np.log2(self.x)
+ def xlog10(self):return self.__xs.log10
  @property
- def xlog1p(self):return np.log1p(self.x)
+ def xlog2(self):return self.__xs.log2
  @property
- def xdevsq(self):return mdevsq(self.x)
+ def xlog1p(self):return self.__xs.log1p
  @property
- def xrange(self):return np.array([self.xmin,self.xmax])
+ def xdevsq(self):return self.__xs.devsq
  @property
- def xskew(self):return np.sum((self.x-self.xave)**3)/(self.xn*np.pow(self.xstd,3))
+ def xrange(self):return self.__xs.range
  @property
- def xkurtosis(self):return np.sum((self.x-self.xave)**4)/(self.xn*np.pow(self.xvar,2))
+ def xskew(self):return self.__xs.skew
+ @property
+ def xkurtosis(self):return self.__xs.kurtosis
  # 四分位範囲
- def xpercentile(self,q,axis=None,method='linear'):
-  if method not in method_list:method='linear'
-  return np.percentile(self.x,q,axis=axis,method=method)
- def xquantile(self,q,axis=None,method='linear'):
-  if method not in method_list:method='linear'
-  return np.quantile(self.x,q,axis=axis,method=method)
+ def xpercentile(self,q,axis=None,method='linear'):return self.__xs.percentile(q,axis=axis,method=method)
+ def xquantile(self,q,axis=None,method='linear'):return self.__xs.quantile(q,axis=axis,method=method)
  # 外れ値
- def xoutlier(self):return moutlier(self.x)
- def xpopulation(self):return Population(self.x)
+ def xoutlier(self):return self.__xs.outlier()
+ def xpopulation(self):return self.__xs.population()
+ def xhist_bin_edges(self,bins=10,range=None,weights=None):
+  return self.__xs.hist_bin_edges(bins=bins,range=range,weights=weights)
  ########
  #  y  #
  ########
  @property
- def yn(self):return self.y.size
+ def y(self):return self.__y
  @property
- def ysum(self):return np.sum(self.y)
+ def yn(self):return self.__y.size
  @property
- def yave(self):return np.average(self.y)
+ def ysum(self):return self.__ys.sum
  @property
- def ymin(self):return np.min(self.y)
+ def yave(self):return self.__ys.ave
  @property
- def ymax(self):return np.max(self.y)
+ def ymin(self):return self.__ys.min
  @property
- def ymean(self):return np.mean(self.y)
+ def ymax(self):return self.__ys.max
  @property
- def yvar(self):return np.var(self.y)
+ def ymean(self):return self.__ys.mean
  @property
- def ystd(self):return np.std(self.y)
+ def yvar(self):return self.__ys.var
  @property
- def ypow2(self):return np.power(self.y,2)
+ def ystd(self):return self.__ys.std
  @property
- def ydeviation(self):return mdeviation(self.y)
+ def ypow2(self):return self.__ys.pow2
  @property
- def ylog(self):return np.log(self.y)
+ def ydeviation(self):return self.__ys.deviation
  @property
- def ylog10(self):return np.log10(self.y)
+ def ylog(self):return self.__ys.log
  @property
- def ylog2(self):return np.log2(self.y)
+ def ylog10(self):return self.__ys.log10
  @property
- def ylog1p(self):return np.log1p(self.y)
+ def ylog2(self):return self.__ys.log2
  @property
- def ydevsq(self):return mdevsq(self.y)
+ def ylog1p(self):return self.__ys.log1p
  @property
- def yrange(self):return np.array([self.ymin,self.ymax])
+ def ydevsq(self):return self.__ys.devsq
  @property
- def yskew(self):return np.sum((self.y-self.yave)**3)/(self.yn*np.pow(self.ystd,3))
+ def yrange(self):return self.__ys.range
  @property
- def ykurtosis(self):return np.sum((self.y-self.yave)**4)/(self.yn*np.pow(self.yvar,2))
- def ypercentile(self,q,axis=None,method='linear'):
-  if method not in method_list:method='linear'
-  return np.percentile(self.y,q,axis=axis,method=method)
- def yquantile(self,q,axis=None,method='linear'):
-  if method not in method_list:method='linear'
-  return np.quantile(self.y,q,axis=axis,method=method)
- def youtlier(self):return moutlier(self.y)
- def ypopulation(self):return Population(self.y)
+ def yskew(self):return self.__ys.skew
+ @property
+ def ykurtosis(self):return self.__ys.kurtosis
+ # 四分位範囲
+ def ypercentile(self,q,axis=None,method='linear'):return self.__ys.percentile(q,axis=axis,method=method)
+ def yquantile(self,q,axis=None,method='linear'):return self.__ys.quantile(q,axis=axis,method=method)
+ # 外れ値
+ def youtlier(self):return self.__ys.outlier()
+ def ypopulation(self):return self.__ys.population()
+ def yhist_bin_edges(self,bins=10,range=None,weights=None):
+  return self.__ys.hist_bin_edges(bins=bins,range=range,weights=weights)
  ##########
  #  data  #
  ##########
  @property
- def sum(self):return np.sum(self.data)
+ def data(self):return self.__data
  @property
- def ave(self):return np.average(self.data)
+ def n(self):return self.__data.size
  @property
- def min(self):return np.min(self.data)
+ def sum(self):return self.__datas.sum
  @property
- def max(self):return np.max(self.data)
+ def ave(self):return self.__datas.ave
  @property
- def mean(self):return np.mean(self.data)
+ def min(self):return self.__datas.min
  @property
- def var(self):return np.var(self.data)
+ def max(self):return self.__datas.max
  @property
- def std(self):return np.std(self.data)
+ def mean(self):return self.__datas.mean
  @property
- def pow2(self):return np.power(self.data,2)
+ def var(self):return self.__datas.var
  @property
- def deviation(self):return mdeviation(self.data)
+ def std(self):return self.__datas.std
  @property
- def log(self):return np.log(self.data)
+ def pow2(self):return self.__datas.pow2
  @property
- def log10(self):return np.log10(self.data)
+ def deviation(self):return self.__datas.deviation
  @property
- def log2(self):return np.log2(self.data)
+ def log(self):return self.__datas.log
  @property
- def log1p(self):return np.log1p(self.data)
+ def log10(self):return self.__datas.log10
  @property
- def devsq(self):return mdevsq(self.data)
+ def log2(self):return self.__datas.log2
  @property
- def range(self):return np.array([[self.xmin,self.xmax],[self.ymin,self.ymax]])
+ def log1p(self):return self.__datas.log1p
  @property
- def skew(self):return np.sum((self.data-self.ave)**3)/(self.n*np.pow(self.std,3))
+ def devsq(self):return self.__datas.devsq
  @property
- def kurtosis(self):return np.sum((self.data-self.ave)**4)/(self.n*np.pow(self.var,2))
- def percentile(self,q,axis=None,method='linear'):
-  if method not in method_list:method='linear'
-  return np.percentile(self.data,q,axis=axis,method=method)
- def quantile(self,q,axis=None,method='linear'):
-  if method not in method_list:method='linear'
-  return np.quantile(self.data,q,axis=axis,method=method)
- def outlier(self):return moutlier(self.data)
- def population(self):return Population(self.data)
+ def range(self):return self.__datas.range
  @property
- def n(self):return self.data.shape[1]
+ def skew(self):return self.__datas.skew
+ @property
+ def kurtosis(self):return self.__datas.kurtosis
+ # 四分位範囲
+ def percentile(self,q,axis=None,method='linear'):return self.__datas.percentile(q,axis=axis,method=method)
+ def quantile(self,q,axis=None,method='linear'):return self.__datas.quantile(q,axis=axis,method=method)
+ # 外れ値
+ def outlier(self):return self.__datas.outlier()
+ def population(self):return self.__datas.population()
+ def hist_bin_edges(self,bins=10,range=None,weights=None):
+  return self.__datas.hist_bin_edges(bins=bins,range=range,weights=weights)
+ @property
+ def n(self):return self.__data.shape[1]
  @property
  def n1(self):return self.n-1
  @property
  def CV(self):return self.std/self.ave
- def covariance(self):return np.cov(self.x,self.y)[0,1]
- def correlation(self):return np.corrcoef(self.x,self.y)[0,1]
+ def covariance(self):return np.cov(self.__x,self.__y)[0,1]
+ def correlation(self):return np.corrcoef(self.__x,self.__y)[0,1]
  def correlation_coefficient(self):return self.Sxy/self.Sxxyyroot
  # x,y
  @property
- def Sxy(self):return np.cov(self.x,self.y)[0,1]
+ def Sxy(self):return np.cov(self.__x,self.__y)[0,1]
  @property
  def Sxxyy(self):return self.xdevsq*self.ydevsq
  @property
  def Sxxyyroot(self):return np.power(self.Sxxyy,0.5)
  # 回帰直線
- def regression(self,n=1):return mregression(self.x,self.y,n)
- def oneregression(self):return mregression(self.x,self.y,1)
- def chebysheveve(self,Fx,n=1):return mFregression(self.x,self.y,Fx,n)
+ def regression(self,n=1):return mregression(self.__x,self.__y,n)
+ def oneregression(self):return mregression(self.__x,self.__y,1)
+ def chebysheveve(self,Fx,n=1):return mFregression(self.__x,self.__y,Fx,n)

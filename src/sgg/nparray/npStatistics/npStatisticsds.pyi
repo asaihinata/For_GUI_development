@@ -1,12 +1,13 @@
 '''基本的な統計の計算をするモジュール'''
-from typing import Any,Literal,overload
+from typing import Any,TypeAlias,Literal,overload
 from numpy import floating,ndarray
 from numpy._typing import _ArrayLikeFloat_co
-from numpy.typing import NDArray
+from numpy.typing import NDArray,ArrayLike
 from ..npNumber import NPNumber
 from ._math import Population
 __all__=['NPStatisticsds']
-METHOD_LIST=Literal[
+BINS_LIST:TypeAlias=Literal['stone','auto','scott','doane','fd','rice','sqrt','sturges']
+METHOD_LIST:TypeAlias=Literal[
 'inverted_cdf',
 'averaged_inverted_cdf',
 'closest_observation',
@@ -34,6 +35,8 @@ y:NPNumber|ndarray=...
  ########
  #  x  #
  ########
+ @property
+ def x(self):...
  @property
  def xsum(self):...
  @property
@@ -82,9 +85,26 @@ method:METHOD_LIST='linear'
 ):...
  def xoutlier(self):...
  def xpopulation(self)->Population:...
+ def xhist_bin_edges(
+self,
+bins:int|BINS_LIST|ArrayLike=10,
+range:tuple[float,float]|None=None,
+weights:ArrayLike|None=None
+)->NDArray[Any]:'''`bins`で指定された計算方法で計算されたビンの境界を求める。
+
+ :param bins: ビンの数や計算方法を指定する。
+ :type bins: int|BINS_LIST|ArrayLike
+ :param range: ビンの下限と上限を指定する。
+ :type range: tuple[float,float]|None
+ :param weights: 重みを指定する。
+ :type weights: ArrayLike|None
+ :return: `bins`で指定された計算方法で計算した結果を返す。
+ :rtype: NDArray[Any]'''
  ########
  #  y  #
  ########
+ @property
+ def y(self):...
  @property
  def ysum(self):...
  @property
@@ -133,9 +153,26 @@ method:METHOD_LIST='linear'
 ):...
  def youtlier(self):...
  def ypopulation(self)->Population:...
+ def yhist_bin_edges(
+self,
+bins:int|BINS_LIST|ArrayLike=10,
+range:tuple[float,float]|None=None,
+weights:ArrayLike|None=None
+)->NDArray[Any]:'''`bins`で指定された計算方法で計算されたビンの境界を求める。
+
+ :param bins: ビンの数や計算方法を指定する。
+ :type bins: int|BINS_LIST|ArrayLike
+ :param range: ビンの下限と上限を指定する。
+ :type range: tuple[float,float]|None
+ :param weights: 重みを指定する。
+ :type weights: ArrayLike|None
+ :return: `bins`で指定された計算方法で計算した結果を返す。
+ :rtype: NDArray[Any]'''
  ##########
  #  data  #
  ##########
+ @property
+ def data(self)->ndarray:...
  @property
  def sum(self):...
  @property
@@ -184,6 +221,21 @@ method:METHOD_LIST='linear'
 ):...
  def outlier(self):...
  def population(self)->Population:...
+ def hist_bin_edges(
+self,
+bins:int|BINS_LIST|ArrayLike=10,
+range:tuple[float,float]|None=None,
+weights:ArrayLike|None=None
+)->NDArray[Any]:'''`bins`で指定された計算方法で計算されたビンの境界を求める。
+
+ :param bins: ビンの数や計算方法を指定する。
+ :type bins: int|BINS_LIST|ArrayLike
+ :param range: ビンの下限と上限を指定する。
+ :type range: tuple[float,float]|None
+ :param weights: 重みを指定する。
+ :type weights: ArrayLike|None
+ :return: `bins`で指定された計算方法で計算した結果を返す。
+ :rtype: NDArray[Any]'''
  @property
  def CV(self):'''変動係数を求める。'''
  @property
