@@ -1,4 +1,4 @@
 from .colorbtn import Colorbtn
-from .fileload import FileLoad
-from .folderload import FolderLoad
+from .fileLoad import FileLoad
+from .folderLoad import FolderLoad
 from .savebtn import Savebtn
