@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import IO,Any,overload
 from numpy import _ArrayT
 from ..base import NPArray
-from .data import Dtype
+from .data import Dtype_ALL
 __all__=['Formatconversion','strconversions','conversions']
 @overload
 def strconversions(
@@ -98,7 +98,7 @@ class Formatconversion(NPArray):
  def __init__(
 self,
 data:_ArrayT,
-dtype:Dtype|None='datetime64[D]',
+dtype:Dtype_ALL|None='datetime64[D]',
 yearfirst:bool=...,
 dayfirst:bool=...
-)->None:...
+)->None:'''様々な日付のフォーマットを特定の日付フォーマットに変換する。'''

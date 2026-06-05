@@ -1,10 +1,46 @@
-'''dtimeモジュールで使用する定数を保存しているモジュール'''
-# Datetime units
-# 参考
-# https://numpy.org/doc/stable/reference/arrays.datetime.html#datetime-units
+'''
+dtimeモジュールで使用する定数を保存しているモジュール
+
+日付日時の単位は以下のサイトを参考
+https://numpy.org/doc/stable/reference/arrays.datetime.html#datetime-units
+'''
 from typing import Literal,TypeAlias
-__all__=['serch_dtype','DTYPE_LIST','DTYPE_SHORT_LIST','DTYPE_DICT','Dtype']
-Dtype:TypeAlias=Literal['datetime64[Y]','datetime64[M]','datetime64[W]','datetime64[D]','datetime64[h]','datetime64[m]','datetime64[s]','datetime64[ms]','Y','M','W','D','h','m','s','ms']
+__all__=[
+'serch_dtype',
+'DTYPE_LIST',
+'DTYPE_SHORT_LIST',
+'DTYPE_DICT',
+'Dtype_ALL',
+'Dtype_LONG'
+]
+Dtype_ALL:TypeAlias=Literal[
+'datetime64[Y]',
+'datetime64[M]',
+'datetime64[W]',
+'datetime64[D]',
+'datetime64[h]',
+'datetime64[m]',
+'datetime64[s]',
+'datetime64[ms]',
+'Y','M','W',
+'D','h','m',
+'s','ms'
+]
+Dtype_LONG:TypeAlias=Literal[
+'datetime64[Y]',
+'datetime64[M]',
+'datetime64[W]',
+'datetime64[D]',
+'datetime64[h]',
+'datetime64[m]',
+'datetime64[s]',
+'datetime64[ms]'
+]
+Dtype_SHORT:TypeAlias=Literal[
+'Y','M','W',
+'D','h','m',
+'s','ms'
+]
 DTYPE_LIST:list[str]=[
 'datetime64[Y]',
 'datetime64[M]',
@@ -40,7 +76,7 @@ DTYPE_DICT:dict[str,str]={
 'fs':'datetime64[fs]',
 'as':'datetime64[as]'
 }
-def serch_dtype(dtype:Dtype='datetime64[D]')->Dtype:
+def serch_dtype(dtype:Dtype_ALL='datetime64[D]')->Dtype_ALL:
  if dtype in DTYPE_LIST:return dtype
  elif dtype in DTYPE_SHORT_LIST:return DTYPE_DICT.get(dtype)
  return 'datetime64[D]'
