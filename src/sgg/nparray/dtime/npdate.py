@@ -59,7 +59,7 @@ class NPDate(NPArray):
  def todatetime(self):return self.data.astype('M8[D]').astype(datetime)
  def weekday(self):
   dt=self.todatetime()
-  return np.array([i.weekday()for i in dt],dtype=int)
+  return np.array([i.weekday()for i in dt],dtype=np.uint8)
  def diff_today(self,days=False):
   if not isinstance(days,bool):days=False
   return np.busday_count(self.data,self.today())+int(days)
