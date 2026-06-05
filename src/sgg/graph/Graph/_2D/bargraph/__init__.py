@@ -9,13 +9,10 @@ class BarGraph(twoElement):
   self.width=range_num(num0s(kw.get('width'),1),0,1,1)
   self.align=listchose(kw.get('align'),['center','edge'])
   self.plot(self.x,self.y,label=self.label,alpha=self.alpha,width=self.width,align=self.align,logs=self.logs)
- def plot(self,x,y,label=None,alpha=1,width=0.8,align='center',logs=False):
+ def plot(self,x,y,label,alpha=1,width=0.8,align='center',logs=False):
   self.clear()
-  if y.ndim==1:
-   self.graphdata=[self.ax.bar(x,y,log=logs,label=label[0],alpha=alpha,width=width,align=align)]
-  else:
-   self.graphdata=[self.ax.bar(x,ys,log=logs,label=label[i],alpha=alpha,width=width,align=align)for i,ys in enumerate(y)]
-  self.set_xticks(x.lengtharange(),x)
+  self.graphdata=[self.ax.bar(x,ys,log=logs,label=label[i],alpha=alpha,width=width,align=align)for i,ys in enumerate(y)]
+  self.set_xticks(x.lengtharange(),y.tonp(str))
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
   self._adjustment()

@@ -12,10 +12,7 @@ class Ecdf(twoElement):
   self.plot(self.data,complementary=self.complementary,compress=self.compress,orientation=self.orientation,linewidth=self.linewidth,line=self.line,alpha=self.alpha)
  def plot(self,data,complementary=False,compress=False,orientation='vertical',linewidth=1.5,line='-',alpha=1):
   self.clear()
-  if data.ndim==1:
-   self.graphdata=[self.ax.ecdf(data,compress=compress,complementary=complementary,orientation=orientation,linewidth=linewidth,linestyle=line[0],alpha=alpha)]
-  else:
-   self.graphdata=[self.ax.ecdf(ds,compress=compress,complementary=complementary,orientation=orientation,linewidth=linewidth,linestyle=line[i],alpha=alpha)for i,ds in enumerate(data)]
+  self.graphdata=[self.ax.ecdf(ds,compress=compress,complementary=complementary,orientation=orientation,linewidth=linewidth,linestyle=line[i],alpha=alpha)for i,ds in enumerate(data)]
   self._apply_labels(self.xlabel,self.ylabel)
   self._adjustment()
  def update(self,data=None,**kw):

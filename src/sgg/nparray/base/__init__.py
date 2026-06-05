@@ -12,7 +12,9 @@ class NPArray:
   if isinstance(depth_limit,int) and depth_limit<self.__data.ndim:
    raise TypeError('配列の深さが制限の深さに達しました')
  # 親クラス,子クラス共通の特殊メソッド
- def __iter__(self):return iter(self.__data)
+ def __iter__(self):
+  if self.ndim==1:return iter([self.__data])
+  return iter(self.__data)
  def __len__(self):return len(self.__data)
  def __getitem__(self,key):return self.get(key)
  def __contains__(self,item):return item in self.__data
@@ -34,7 +36,9 @@ class NPArray:
   self.__data=self.__data.astype(dtype)
   return self
  def tolist(self):return self.__data.tolist()
- def tonp(self):return self.__data
+ def tonp(self,dtype='none'):
+  if dtype=='none':return self.__data
+  return self.__data.astype(dtype)
  def sort(self):
   self.__data=np.sort(self.__data)
   return self
