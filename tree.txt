@@ -292,16 +292,11 @@ For_GUI_development
  │   │   │   │   └── __init__.pyi
  │   │   │   ├── dtime
  │   │   │   │   ├── __init__.py
- │   │   │   │   ├── conversion
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
- │   │   │   │   ├── data
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── constants.py
- │   │   │   │   ├── npdate
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
- │   │   │   │   └── typing.py
+ │   │   │   │   ├── conversion.py
+ │   │   │   │   ├── conversion.pyi
+ │   │   │   │   ├── data.py
+ │   │   │   │   ├── npdate.py
+ │   │   │   │   └── npdate.pyi
  │   │   │   ├── dtype
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── base
@@ -529,5 +524,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:371
-フォルダ数:159
+ファイル数:369
+フォルダ数:156

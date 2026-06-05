@@ -3,8 +3,8 @@ from types import NotImplementedType
 from typing import Any,Literal
 from numpy import ndarray,timedelta64,ufunc,_CopyMode
 from numpy._typing import DTypeLike
-from ...base import NPArray
-from ..typing import Dtype
+from ..base import NPArray
+from .data import Dtype
 __all__=['NPDate']
 class NPDate(NPArray):
  data:ndarray

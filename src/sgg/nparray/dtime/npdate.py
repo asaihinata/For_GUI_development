@@ -1,7 +1,7 @@
 import numpy as np
-from ...base import NPArray
-from ..conversion import Formatconversion,conversions
-from ..data import serch_dtype
+from ..base import NPArray
+from .conversion import Formatconversion,conversions
+from .data import serch_dtype
 __all__=['NPDate']
 class NPDate(NPArray):
  def __init__(self,data,dtype='datetime64[D]',depth_limit=None):

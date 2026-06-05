@@ -1,8 +1,8 @@
 from datetime import datetime
 from typing import IO,Any,overload
 from numpy import _ArrayT
-from ...base import NPArray
-from ..typing import Dtype
+from ..base import NPArray
+from .data import Dtype
 __all__=['Formatconversion','strconversions','conversions']
 @overload
 def strconversions(
