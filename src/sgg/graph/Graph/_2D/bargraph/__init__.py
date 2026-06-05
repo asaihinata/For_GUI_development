@@ -12,7 +12,7 @@ class BarGraph(twoElement):
  def plot(self,x,y,label,alpha=1,width=0.8,align='center',logs=False):
   self.clear()
   self.graphdata=[self.ax.bar(x,ys,log=logs,label=label[i],alpha=alpha,width=width,align=align)for i,ys in enumerate(y)]
-  self.set_xticks(x.lengtharange(),y.tonp(str))
+  self.set_xticks(x.lengtharange(),x.tonp())
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
   self._adjustment()
