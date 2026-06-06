@@ -81,7 +81,35 @@ For_GUI_development
  │   │   │   ├── _dnumber.py
  │   │   │   └── _dvoid.py
  │   │   ├── graph
- │   │   │   ├── Graph
+ │   │   │   ├── __init__.py
+ │   │   │   ├── element
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── dev
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   ├── datalist.py
+ │   │   │   │   │   ├── manylist.py
+ │   │   │   │   │   └── onelist.py
+ │   │   │   │   ├── graph
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   ├── polarelement
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   ├── specialelement
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── radar
+ │   │   │   │   │       ├── __init__.py
+ │   │   │   │   │       ├── __init__.pyi
+ │   │   │   │   │       ├── custom.py
+ │   │   │   │   │       └── custom.pyi
+ │   │   │   │   ├── threeelement
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   └── twoelement
+ │   │   │   │       ├── __init__.py
+ │   │   │   │       └── __init__.pyi
+ │   │   │   ├── graph
  │   │   │   │   ├── _2d
  │   │   │   │   │   ├── _2gset
  │   │   │   │   │   │   └── __init__.py
@@ -201,34 +229,6 @@ For_GUI_development
  │   │   │   │   │       └── __init__.pyi
  │   │   │   │   └── dev
  │   │   │   │       └── __init__.py
- │   │   │   ├── __init__.py
- │   │   │   ├── element
- │   │   │   │   ├── __init__.py
- │   │   │   │   ├── dev
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── __init__.pyi
- │   │   │   │   │   ├── datalist.py
- │   │   │   │   │   ├── manylist.py
- │   │   │   │   │   └── onelist.py
- │   │   │   │   ├── graph
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
- │   │   │   │   ├── polarelement
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
- │   │   │   │   ├── specialelement
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── radar
- │   │   │   │   │       ├── __init__.py
- │   │   │   │   │       ├── __init__.pyi
- │   │   │   │   │       ├── custom.py
- │   │   │   │   │       └── custom.pyi
- │   │   │   │   ├── threeelement
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
- │   │   │   │   └── twoelement
- │   │   │   │       ├── __init__.py
- │   │   │   │       └── __init__.pyi
  │   │   │   ├── style
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── axis
@@ -434,10 +434,10 @@ For_GUI_development
  │   │       │       │   ├── colorbtn
  │   │       │       │   │   ├── __init__.py
  │   │       │       │   │   └── __init__.pyi
- │   │       │       │   ├── fileload
+ │   │       │       │   ├── fileLoad
  │   │       │       │   │   ├── __init__.py
  │   │       │       │   │   └── __init__.pyi
- │   │       │       │   ├── folderload
+ │   │       │       │   ├── folderLoad
  │   │       │       │   │   ├── __init__.py
  │   │       │       │   │   └── __init__.pyi
  │   │       │       │   └── savebtn

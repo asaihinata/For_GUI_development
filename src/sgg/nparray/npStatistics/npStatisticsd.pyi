@@ -24,35 +24,35 @@ data:NPNumber|ndarray=...
  @property
  def data(self)->ndarray:...
  @property
- def sum(self):...
+ def sum(self):'''`data`の合計を求める'''
  @property
- def ave(self):...
+ def mean(self):'''`data`の算術平均を求める'''
  @property
- def min(self):...
+ def ave(self):'''`data`の加重平均を求める'''
  @property
- def max(self):...
+ def min(self):'''`data`の最低値を求める'''
  @property
- def mean(self):...
+ def max(self):'''`data`の最大値を求める'''
  @property
- def var(self):...
+ def var(self):'''`data`の分散を求める'''
  @property
- def std(self):...
+ def std(self):'''`data`の標準偏差を求める'''
  @property
- def pow2(self):...
+ def pow2(self):'''`data`を2乗した値を求める'''
  @property
  def deviation(self):'''偏差値を求める。'''
  @property
- def log(self):...
+ def log(self):'''`data`の底が`e`の対数を求める'''
  @property
- def log10(self):...
+ def log10(self):'''`data`の底が`10`の対数を求める'''
  @property
- def log2(self):...
+ def log2(self):'''`data`の底が`2`の対数を求める'''
  @property
- def log1p(self):...
+ def log1p(self):'''np.log1p(data)を返す'''
  @property
  def devsq(self):'''偏差平方和を求める。'''
  @property
- def range(self):...
+ def range(self):'''`data`の範囲を求める'''
  @property
  def skew(self):'''歪度を求める。'''
  @property
@@ -60,17 +60,43 @@ data:NPNumber|ndarray=...
  def percentile(
 self,
 q:tuple[int|float,...],
-axis=None,
+axis:int|None=None,
 method:METHOD_LIST='linear'
-):...
+):'''指定したパーセンタイルを計算する。
+
+ :param q: 求めたいパーセンタイル値を指定する。
+ :type q: tuple[int|float,...]
+ :param axis: 計算する軸を指定する。
+ :type axis: int|None
+ :param method: パーセンタイルを推定するために使用する方法を指定する。
+ :type method: METHOD_LIST'''
  def quantile(
 self,
-q:tuple[int|float,...],
-axis=None,
+q:tuple[float,...],
+axis:int|None=None,
 method:METHOD_LIST='linear'
-):...
- def outlier(self):...
- def population(self)->Population:...
+):'''指定した分位点を計算する。
+
+ :param q: 求めたい分位点を指定する。
+ :type q: tuple[float,...]
+ :param axis: 計算する軸を指定する。
+ :type axis: int|None
+ :param method: 分位点を推定するために使用する方法を指定する。
+ :type method: METHOD_LIST'''
+ def IQR(
+axis:int|None=None,
+method:METHOD_LIST='linear'
+):'''`data`の四分位範囲を求める。
+
+ :param axis: 計算する軸を指定する。
+ :type axis: int|None
+ :param method: 分位点を推定するために使用する方法を指定する。
+ :type method: METHOD_LIST'''
+ def outlier(self):'''四分位範囲の外れ値を求める。'''
+ def population(self)->Population:'''data`の母集団を求める。
+
+ :return: `Population`を返す。
+ :rtype: Population'''
  @property
  def CV(self):'''変動係数を求める。'''
  @property

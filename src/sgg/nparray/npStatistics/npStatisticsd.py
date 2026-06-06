@@ -27,11 +27,11 @@ class NPStatisticsd:
  @property
  def ave(self):return np.average(self.__data)
  @property
+ def mean(self):return np.mean(self.__data)
+ @property
  def min(self):return np.min(self.__data)
  @property
  def max(self):return np.max(self.__data)
- @property
- def mean(self):return np.mean(self.__data)
  @property
  def var(self):return np.var(self.__data)
  @property
@@ -62,6 +62,9 @@ class NPStatisticsd:
  def quantile(self,q,axis=None,method='linear'):
   if method not in method_list:method='linear'
   return np.quantile(self.__data,q,axis=axis,method=method)
+ def IQR(self,axis=None,method='linear'):
+  if method not in method_list:method='linear'
+  return np.percentile(self.__data,[25,50,75],axis=axis,method=method)
  def outlier(self):return moutlier(self.__data)
  def population(self):return Population(self.__data)
  @property
