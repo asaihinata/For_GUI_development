@@ -291,25 +291,13 @@ For_GUI_development
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── bools
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── booldtype.py
+ │   │   │   │   │   └── __init__.py
  │   │   │   │   ├── dates
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── datetimedtype.py
- │   │   │   │   │   └── timedeltadtype.py
+ │   │   │   │   │   └── __init__.py
  │   │   │   │   ├── numbers
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── complexdtype.py
- │   │   │   │   │   ├── floatdtype.py
- │   │   │   │   │   ├── intdtype.py
- │   │   │   │   │   ├── integerdtype.py
- │   │   │   │   │   ├── numberdtype.py
- │   │   │   │   │   └── uintdtype.py
+ │   │   │   │   │   └── __init__.py
  │   │   │   │   └── strs
- │   │   │   │       ├── __init__.py
- │   │   │   │       ├── bytesdtype.py
- │   │   │   │       ├── strdtype.py
- │   │   │   │       └── stringdtype.py
+ │   │   │   │       └── __init__.py
  │   │   │   ├── npArray
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
@@ -522,5 +510,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:367
+ファイル数:355
 フォルダ数:156
