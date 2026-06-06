@@ -24,9 +24,9 @@ For_GUI_development
  │   │   ├── _color
  │   │   │   ├── __init__.py
  │   │   │   ├── color.py
- │   │   │   └── data
- │   │   │       ├── __init__.py
- │   │   │       └── color.csv
+ │   │   │   ├── data
+ │   │   │   │   └── color.csv
+ │   │   │   └── data.py
  │   │   ├── _dialog
  │   │   │   ├── __init__.py
  │   │   │   ├── dialog
@@ -64,10 +64,6 @@ For_GUI_development
  │   │   │       └── warning
  │   │   │           ├── __init__.py
  │   │   │           └── __init__.pyi
- │   │   ├── _save
- │   │   │   ├── __init__.py
- │   │   │   ├── savefile.py
- │   │   │   └── saveimg.py
  │   │   ├── dev
  │   │   │   ├── __init__.py
  │   │   │   ├── _darray.py
@@ -300,10 +296,9 @@ For_GUI_development
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── __init__.pyi
  │   │   │   │   ├── _color_check.py
- │   │   │   │   └── data
- │   │   │   │       ├── __init__.py
- │   │   │   │       ├── __init__.pyi
- │   │   │   │       └── color.csv
+ │   │   │   │   ├── data
+ │   │   │   │   │   └── color.csv
+ │   │   │   │   └── data.py
  │   │   │   ├── npDate
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── conversion.py
@@ -329,6 +324,14 @@ For_GUI_development
  │   │   │   └── npStr
  │   │   │       ├── __init__.py
  │   │   │       └── __init__.pyi
+ │   │   ├── readfile
+ │   │   │   ├── Csv
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
+ │   │   │   ├── Json
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
+ │   │   │   └── __init__.py
  │   │   ├── typing.py
  │   │   └── widget
  │   │       ├── __init__.py
@@ -446,12 +449,6 @@ For_GUI_development
  │       ├── data
  │       │   └── img
  │       │       └── Lenna.png
- │       ├── dev
- │       │   ├── __init__.py
- │       │   ├── clear.py
- │       │   └── times
- │       │       ├── __init__.py
- │       │       └── measurement.py
  │       ├── test_all.py
  │       ├── test_graph
  │       │   ├── application
@@ -505,5 +502,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:351
+ファイル数:348
 フォルダ数:155

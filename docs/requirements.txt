@@ -11,4 +11,5 @@ qrcode==8.2
 scipy==1.17.1
 requests==2.34.2
 setuptools==82.0.1
+ujson==5.12.1
 urllib3==2.7.0

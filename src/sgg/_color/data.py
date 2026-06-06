@@ -1,11 +1,11 @@
-'''color.csvのデータを取得する。'''
+'''`data/color.csv`のデータを取得する。'''
 from pathlib import Path
 from typing import TypeAlias
 import numpy as np
-from polars import read_csv
+from ..readfile import Getcsv
 List_like:TypeAlias=np.ndarray[str,str]
 __all__=['COLOR_DATA','ColorData']
-COLOR_DATA:List_like=read_csv(Path(__file__).parent/'color.csv',encoding='utf-8-sig',has_header=False).to_numpy(use_pyarrow=True)
+COLOR_DATA:List_like=Getcsv(Path(__file__).parent/'data/color.csv',has_header=False).get_numpy()
 class ColorData:
  colorlist:List_like
  def __init__(self):self.colorlist:List_like=COLOR_DATA
