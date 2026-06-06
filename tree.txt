@@ -68,11 +68,6 @@ For_GUI_development
  │   │   │   ├── __init__.py
  │   │   │   ├── savefile.py
  │   │   │   └── saveimg.py
- │   │   ├── _time
- │   │   │   ├── __init__.py
- │   │   │   ├── __init__.pyi
- │   │   │   ├── _time.py
- │   │   │   └── _timelist.py
  │   │   ├── dev
  │   │   │   ├── __init__.py
  │   │   │   ├── _darray.py
@@ -510,5 +505,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:355
-フォルダ数:156
+ファイル数:351
+フォルダ数:155
