@@ -219,7 +219,10 @@ For_GUI_development
  │   │   │   │   │       ├── __init__.py
  │   │   │   │   │       └── __init__.pyi
  │   │   │   │   └── dev
- │   │   │   │       └── __init__.py
+ │   │   │   │       ├── __init__.py
+ │   │   │   │       └── twoArray
+ │   │   │   │           ├── __init__.py
+ │   │   │   │           └── __init__.pyi
  │   │   │   ├── style
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── axis
@@ -273,9 +276,6 @@ For_GUI_development
  │   │   │   │           ├── __init__.pyi
  │   │   │   │           ├── fontfile.py
  │   │   │   │           └── fontmanager.py
- │   │   │   ├── twoArray
- │   │   │   │   ├── __init__.py
- │   │   │   │   └── __init__.pyi
  │   │   │   └── typing.py
  │   │   ├── nparray
  │   │   │   ├── __init__.py
