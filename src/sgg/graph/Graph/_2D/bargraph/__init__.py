@@ -11,7 +11,7 @@ class BarGraph(twoElement):
   self.plot(self.x,self.y,label=self.label,alpha=self.alpha,width=self.width,align=self.align,logs=self.logs)
  def plot(self,x,y,label,alpha=1,width=0.8,align='center',logs=False):
   self.clear()
-  self.graphdata=[self.ax.bar(x,ys,log=logs,label=label[i],alpha=alpha,width=width,align=align)for i,ys in enumerate(y)]
+  self.graphdata=[self.ax.bar(xs,ys,log=logs,label=label[i],alpha=alpha,width=width,align=align)for i,(xs,ys) in enumerate(TwoArray(x,y,ydtype=np.float64))]
   self.set_xticks(x.lengtharange(),x.tonp())
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()

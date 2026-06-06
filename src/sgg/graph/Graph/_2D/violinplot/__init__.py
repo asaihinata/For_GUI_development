@@ -22,7 +22,7 @@ class Violinplot(twoElement):
   if orientation=='vertical' and x.size!=0:positions=x
   elif orientation=='horizontal' and y.size!=0:positions=y
   else:positions=np.arange(1,data.shape[1]+1)
-  self.graphdata=self.ax.violinplot(data,positions=positions,widths=width,points=points,showextrema=showextrema,showmedians=showmedians,showmeans=showmeans,side=side,orientation=orientation,bw_method=bwmethod)
+  self.graphdata=[self.ax.violinplot(data,positions=positions,widths=width,points=points,showextrema=showextrema,showmedians=showmedians,showmeans=showmeans,side=side,orientation=orientation,bw_method=bwmethod)]
   for i in self.graphdata['bodies']:i.set_alpha(alpha)
   self._adjustment()
  def update(self,data=None,x=None,y=None,**kw):
@@ -41,5 +41,5 @@ class Violinplot(twoElement):
   self.side=listchose(kw.get('side'),['both','low','high'],self.side)
   self.plot(self.data,self.x,self.y,alpha=self.alpha,width=self.width,points=self.points,showextrema=self.showextrema,showmeans=self.showmeans,showmedians=self.showmedians,side=self.side,orientation=self.orientation,bwmethod=self.bwmethod)
   self._redraw()
- def get(self):return [self.graphdata]
+ def get(self):return self.graphdata
  def getdata(self):return self.data

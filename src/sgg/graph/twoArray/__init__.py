@@ -3,11 +3,11 @@ from itertools import product
 from numpy import append,array,concatenate
 __all__=['TwoArray']
 class TwoArray:
- def __init__(self,x,y):
-  self.__x=array(x)
-  self.__y=array(y)
-  if self.__x.ndim==1:self.__x=array([x])
-  if self.__y.ndim==1:self.__y=array([y])
+ def __init__(self,x,y,xdtype=object,ydtype=object):
+  self.__x=array(x,dtype=xdtype)
+  self.__y=array(y,dtype=ydtype)
+  if self.__x.ndim==1:self.__x=array([x],dtype=xdtype)
+  if self.__y.ndim==1:self.__y=array([y],dtype=ydtype)
   data=[]
   self.__data=[[concatenate([[x],[y]])]if len(data)==0 else append(data,[concatenate([[x],[y]])],axis=0) for x,y in product(self.__x,self.__y)]
  def __repr__(self):return f'TwoArray({self.__data})'
