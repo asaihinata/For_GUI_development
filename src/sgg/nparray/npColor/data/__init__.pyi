@@ -6,7 +6,7 @@ color.csvはhttps://drafts.csswg.org/css-color-4/#named-colorsを元に作成
 from types import NotImplementedType
 from typing import Any,Literal
 from numpy import dtype,ndarray,str_,ufunc
-from ...base import NPArray
+from ...npArray import NPArray
 __all__=['Get_color']
 class Get_color(NPArray):
  '''色データのcsvファイルのデータを取得する。'''

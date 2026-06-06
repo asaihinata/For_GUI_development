@@ -285,16 +285,6 @@ For_GUI_development
  │   │   │   └── typing.py
  │   │   ├── nparray
  │   │   │   ├── __init__.py
- │   │   │   ├── base
- │   │   │   │   ├── __init__.py
- │   │   │   │   └── __init__.pyi
- │   │   │   ├── dtime
- │   │   │   │   ├── __init__.py
- │   │   │   │   ├── conversion.py
- │   │   │   │   ├── conversion.pyi
- │   │   │   │   ├── data.py
- │   │   │   │   ├── npdate.py
- │   │   │   │   └── npdate.pyi
  │   │   │   ├── dtype
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── base
@@ -320,6 +310,9 @@ For_GUI_development
  │   │   │   │       ├── bytesdtype.py
  │   │   │   │       ├── strdtype.py
  │   │   │   │       └── stringdtype.py
+ │   │   │   ├── npArray
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
  │   │   │   ├── npColor
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── __init__.pyi
@@ -328,6 +321,13 @@ For_GUI_development
  │   │   │   │       ├── __init__.py
  │   │   │   │       ├── __init__.pyi
  │   │   │   │       └── color.csv
+ │   │   │   ├── npDate
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── conversion.py
+ │   │   │   │   ├── conversion.pyi
+ │   │   │   │   ├── data.py
+ │   │   │   │   ├── npdate.py
+ │   │   │   │   └── npdate.pyi
  │   │   │   ├── npNumber
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi

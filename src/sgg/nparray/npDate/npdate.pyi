@@ -4,7 +4,7 @@ from types import NotImplementedType
 from typing import Any,Literal,overload
 import numpy as np
 from numpy._typing import DTypeLike
-from ..base import NPArray
+from ..npArray import NPArray
 from .data import Dtype_ALL
 __all__=['NPDate']
 class NPDate(NPArray):

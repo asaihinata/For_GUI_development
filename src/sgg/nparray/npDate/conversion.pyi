@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import IO,Any,overload
 from numpy import _ArrayT
-from ..base import NPArray
+from ..npArray import NPArray
 from .data import Dtype_ALL
 __all__=['Formatconversion','strconversions','conversions']
 @overload

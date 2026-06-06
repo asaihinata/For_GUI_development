@@ -6,7 +6,7 @@ color.csvはhttps://drafts.csswg.org/css-color-4/#named-colorsを元に作成
 from pathlib import Path
 from numpy import ndarray,str_,where
 from polars import read_csv
-from ...base import NPArray
+from ...npArray import NPArray
 __all__=['Get_color']
 class Get_color(NPArray):
  '''色データのcsvファイルのデータを取得する。'''

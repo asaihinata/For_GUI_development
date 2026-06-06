@@ -1,7 +1,7 @@
 from datetime import datetime
 from datetime import timezone as tz
 import numpy as np
-from ..base import NPArray
+from ..npArray import NPArray
 from .conversion import Formatconversion
 from .data import Dtype_SHORT,serch_dtype
 __all__=['NPDate']

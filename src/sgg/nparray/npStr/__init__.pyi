@@ -2,10 +2,10 @@
 from collections.abc import Iterator
 from types import NotImplementedType
 from typing import Any,Literal
-from _typeshed import Incomplete
 import numpy as np
+from _typeshed import Incomplete
 from numpy._typing import DTypeLike,NDArray
-from ..base import NPArray
+from ..npArray import NPArray
 __all__=['NPString']
 class NPString(NPArray):
  data:np.ndarray

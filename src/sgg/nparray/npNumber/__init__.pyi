@@ -3,9 +3,9 @@ from collections.abc import Iterator
 from types import NotImplementedType
 from typing import Any,Literal
 from _typeshed import Incomplete
-from numpy import float64,int64,ndarray,ufunc,_CopyMode
+from numpy import _CopyMode,float64,int64,ndarray,ufunc
 from numpy._typing import DTypeLike
-from ..base import NPArray
+from ..npArray import NPArray
 __all__=['NPNumber']
 class NPNumber(NPArray):
  data:ndarray

@@ -1,6 +1,6 @@
 from dateutil.parser import parse
 from numpy import array,ndarray,nditer,vectorize
-from ..base import NPArray
+from ..npArray import NPArray
 from .data import serch_dtype
 __all__=['Formatconversion','strconversions','conversions']
 def strconversions(formatstr,year=False,day=False):
