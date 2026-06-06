@@ -16,11 +16,12 @@ class Waterfallh(twoElement):
   self.plot(self.x,self.y,alpha=self.alpha,height=self.height,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
  def plot(self,x,y,alpha=1,height=1,sums=False,sumstext='sum',bottom=None,color=None,linestyle='-'):
   self.clear()
+  x,y=x.tonp(),y.tonp()
   if sums:x,y,bottom=np.append(x,sumstext),np.append(y,y.sum),np.append(bottom,0)
   self.color=np.where(y<=0,self.dcolor,self.ucolor)
   self.graphdata=[self.ax.barh(x,y,color=self.color,alpha=alpha,height=height,align='center',left=bottom)]
   if height!=1:self._vlines(np.cumsum(y),height,color,linestyle)
-  self.ax.set_yticks(np.arange(len(x)),labels=x)
+  self.ax.set_yticks(np.arange(len(x)),labels=x.tolist())
   xticks=self.ax.get_xticks()
   self.ax.set_xlim(xticks.min(),xticks.max())
   self._apply_labels(self.xlabel,self.ylabel)

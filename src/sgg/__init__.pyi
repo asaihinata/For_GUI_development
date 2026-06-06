@@ -3414,7 +3414,6 @@ labelfontpath:str|PathLike|Path|None=None,
 width:int|float=1,
 min:int|float=...,
 max:int|float=...,
-decimalpoint:int|float=0,
 orientation:Type_orientation='vertical',
 bottom:int|float=0,
 bins:int|list|range|tuple|ndarray|Literal['auto','fd','doane','scott','stone','rice','sturges','sqrt']=...,
@@ -3496,8 +3495,6 @@ key:str=...
  :type min: int|float
  :param max: ヒストグラムで表示される最大値を指定する。
  :type max: int|float
- :param decimalpoint: ヒストグラムのbinの小数点を指定する。
- :type decimalpoint: int|float
  :param bins: `bins`を指定する。
  :type bins: int|list|range|tuple|np.ndarray|Literal['auto','fd','doane','scott','stone','rice','sturges','sqrt']
  :param title: グラフのタイトルを指定する。

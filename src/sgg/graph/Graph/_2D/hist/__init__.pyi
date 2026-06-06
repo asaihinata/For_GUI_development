@@ -16,7 +16,6 @@ width:int|float,
 fg:ColorType,
 bg:ColorType,
 alpha:int|float,
-decimalpoint:int|float,
 graph_grid:ColorType,
 title:str
 ):'''ヒストグラムを再表示させる。'''

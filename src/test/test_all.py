@@ -131,7 +131,7 @@ if __name__=="__main__":
  [sgg.LineGraph(x=x1,y=y1,title="折り線グラフ",xlabel="xlabel",ylabel="ylabel")],
  [sgg.Pie(data=y3,title="円グラフ",label=x3)],
  [sgg.BarGraph(x=x2,y=y2,title="棒グラフ(縦)",xlabel="xlabel",ylabel="ylabel",width=0.5)],
- [sgg.BarhGraph(x=x2,y=y2,title="棒グラフ(横)",xlabel="xlabel",ylabel="ylabel",height=0.5)],
+ [sgg.BarhGraph(x=y2,y=x2,title="棒グラフ(横)",xlabel="xlabel",ylabel="ylabel",height=0.5)],
  [sgg.Scatter(x=x3,y=y3,title="散布図",xlabel="xlabel",ylabel="ylabel")],
  [sgg.Scatter(x=x4,y=y4,title="散布図")],
  [sgg.DScatter(x=x3D,y=y3D,z=z3D,title="3D 散布図",xlabel="x",ylabel="y",zlabel="z")],

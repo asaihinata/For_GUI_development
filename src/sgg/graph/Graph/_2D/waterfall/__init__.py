@@ -17,9 +17,10 @@ class Waterfall(twoElement):
  def plot(self,x,y,alpha=1,width=1,sums=False,sumstext='sum',bottom=None,color=None,linestyle='-'):
   self.clear()
   if sums:x,y,bottom=np.append(x,sumstext),np.append(y,y.sum),np.append(bottom,0)
+  x,y=x.tonp(),y.tonp()
   self.color=np.where(y<=0,self.dcolor,self.ucolor)
   self.graphdata=[self.ax.bar(x,y,color=self.color,alpha=alpha,width=width,align='center',bottom=bottom)]
-  self.ax.set_xticks(np.arange(len(x)),labels=x)
+  self.ax.set_xticks(np.arange(len(x)),labels=x.tolist())
   yticks=self.ax.get_yticks()
   self.ax.set_ylim(yticks.min(),yticks.max())
   if width!=1:self._horiline(np.cumsum(y),width,color,linestyle)
