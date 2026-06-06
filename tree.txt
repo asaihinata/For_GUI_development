@@ -273,6 +273,9 @@ For_GUI_development
  │   │   │   │           ├── __init__.pyi
  │   │   │   │           ├── fontfile.py
  │   │   │   │           └── fontmanager.py
+ │   │   │   ├── twoArray
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
  │   │   │   └── typing.py
  │   │   ├── nparray
  │   │   │   ├── __init__.py
@@ -502,5 +505,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:348
-フォルダ数:155
+ファイル数:350
+フォルダ数:156
