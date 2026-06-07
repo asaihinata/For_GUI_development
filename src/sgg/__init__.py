@@ -63,7 +63,7 @@ class sgg:
  @staticmethod
  def Barcode(**kw):return{'count':counts(),'type':'Barcode',**kw}
  @staticmethod
- def QRcode(**kw):return{'count':counts(),'type':'QRcode',**kw}
+ def QRImage(**kw):return{'count':counts(),'type':'QRImage',**kw}
  @staticmethod
  def LineGraph(**kw):return{'count':counts(),'type':'LineGraph',**kw}
  @staticmethod

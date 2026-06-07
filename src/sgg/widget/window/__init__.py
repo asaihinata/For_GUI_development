@@ -135,7 +135,7 @@ class WindowController:
   elif t=='Tree':widget=Tree(parent,kw)
   elif t=='Slidebar':widget=Slidebar(parent,kw)
   elif t=='Barcode':widget=Barcode(parent,kw)
-  elif t=='QRcode':widget=QRcode(parent,kw)
+  elif t=='QRImage':widget=QRImage(parent,kw)
   elif t=='LineGraph':widget=LineGraph(parent,kw)
   elif t=='BarGraph':widget=BarGraph(parent,kw)
   elif t=='BarhGraph':widget=BarhGraph(parent,kw)

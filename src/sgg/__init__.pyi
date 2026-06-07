@@ -657,7 +657,7 @@ key:str=...
  :param format: バーコードの形式を指定する。
  :type format: Literal['codabar','code128','code39','ean','ean13','ean13-guard','ean14','ean8','ean8-guard','gs1','gs1_128','gtin','isbn','isbn10','isbn13','issn','itf','jan','nw-7','pzn','upc','upca']'''
  @staticmethod
- def QRcode(
+ def QRImage(
 text:str=...,
 name:str='No Qrcode image',
 key:str=...

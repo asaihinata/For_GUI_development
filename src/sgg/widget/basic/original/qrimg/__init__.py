@@ -2,8 +2,8 @@ from tkinter import Label
 from PIL.ImageTk import PhotoImage
 from qrcode import make
 from ...common import *
-__all__=['QRcode']
-class QRcode(Element):
+__all__=['QRImage']
+class QRImage(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.text=kw.get('text')
