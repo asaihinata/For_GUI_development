@@ -231,8 +231,6 @@ For_GUI_development
  │   │   │   │   │   ├── xaxis.py
  │   │   │   │   │   ├── yaxis.py
  │   │   │   │   │   └── zaxis.py
- │   │   │   │   ├── bbox
- │   │   │   │   │   └── __init__.py
  │   │   │   │   ├── composite
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   ├── capstyle.py
@@ -242,18 +240,14 @@ For_GUI_development
  │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── fmt
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── _check.py
- │   │   │   │   │   ├── _data.py
- │   │   │   │   │   └── _fmt.py
+ │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   └── constants.py
  │   │   │   │   ├── getlabel
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── label
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── __init__.pyi
- │   │   │   │   │   ├── xlabel.py
- │   │   │   │   │   ├── ylabel.py
- │   │   │   │   │   └── zlabel.py
+ │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── legend
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
@@ -505,5 +499,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:350
-フォルダ数:156
+ファイル数:345
+フォルダ数:155

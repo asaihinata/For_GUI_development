@@ -1,28 +1,6 @@
-import numpy as np
 from ...typing import Type_Numberlike
 from ....nparray import *
-__all__=['bol','bols','listchose','list2float','list2number','num0','num0s','num1s','range_zero_one','Angle','Deg','Rad']
-class Angle:
- def __init__(self,angle,dtype=True):
-  if isinstance(dtype,bool) and dtype:self.angle=np.rad2deg(angle) # rad to deg
-  else:self.angle=np.deg2rad(angle) # deg to rad
- def __str__(self):return str(self.angle)
- def __int__(self):return int(self.angle)
- def __float__(self):return float(self.angle)
- def __eq__(self,val):return self.angle==val
- def __ne__(self,val):return self.angle!=val
- def __lt__(self,val):return self.angle<val
- def __le__(self,val):return self.angle<=val
- def __gt__(self,val):return self.angle>val
- def __ge__(self,val):return self.angle>=val
-class Rad(Angle):
- def __init__(self,angle):
-  if isinstance(angle,Rad|Deg):angle=angle.angle
-  super().__init__(angle)
-class Deg(Angle):
- def __init__(self,angle):
-  if isinstance(angle,Rad|Deg):angle=angle.angle
-  super().__init__(angle,False)
+__all__=['bol','bols','listchose','list2float','list2number','num0','num0s','num1s','range_zero_one']
 def range_zero_one(val,out=1.0,endpoint=True):
  if not isinstance(val,Type_Numberlike):return out
  if not isinstance(endpoint,bool):endpoint=True
