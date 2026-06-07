@@ -13,8 +13,6 @@ demo*.py
 *deom*.py
 # vscode
 my-project.code-workspace
-.vscode/settings.json
-.vscode/tasks.json
 # 隠しファイル
 .gitmessage
 .DS_Store
@@ -28,6 +26,6 @@ __pycache__
 .exe
 .ini
 .gitignore
-skip.py
+.vscode
 # test
 !src/test/test_log/*.log
