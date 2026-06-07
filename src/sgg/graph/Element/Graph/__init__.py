@@ -1,20 +1,23 @@
 from os import getcwd
 from re import findall
-import numpy as np
 from tkinter import Misc
+import numpy as np
 from cycler import cycler
+from matplotlib.axes._axes import Axes
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
+from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ...._dialog import asksaveasfilename
-from ....dev import bols,listchose,num0s,num1s,nums,parsecolor,range_num
-from ..dev import Onelist,Manylist
-from ...style import FontFile,Fontmanager,Fontname,Legends,Marker,Solid,Title,getLabel
+from ....dev import bols,listchose,num0s,num1s,parsecolor,range_num
+from ...style import Marker,Solid,getLabel
+from ..dev import Manylist,Onelist
 __all__=['GElement']
 graph_color=['#4477aa','#ee7733','#111211','#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']
 rcParams['font.family']='Meiryo'
 rcParams['axes.prop_cycle']=cycler(color=graph_color)
 class GElement:
+ ax:Axes3D|Axes
  def __init__(self,master:Misc,kw):
   self.master=master
   self.widget=None
@@ -33,67 +36,15 @@ class GElement:
   self.width,self.height=self._size(kw.get('size'))
   # グラフの表示
   self.fig=Figure(figsize=(self.width/self.dpi,self.height/self.dpi),dpi=self.dpi,facecolor=self.graph_bg)
-  # 凡例
-  self.anchor=self._anchor(kw.get('legendanchor'))
-  self.legendplace=self._getlegendplace(self.anchor,kw.get('legendplace'))
-  self.legendtitle=kw.get('legendtitle')
-  self.legendframe=bols(kw.get('legendframe'))
-  self.legendshadow=bols(kw.get('legendshadow'),False)
-  self.legendalpha=range_num(num0s(kw.get('legendalpha'),1),0,1,1)
-  self.legendncols=num1s(kw.get('legendncols',1))
-  # ラベル
   self.label=getLabel(kw.get('label',None))
-  # 軸ラベル
-  self.labelalpha=range_num(num0s(kw.get('labelalpha'),1),0,1,1)
-  labelfg=kw.get('labelfg')
-  if labelfg is None:self.labelfg=self.fg
-  else:self.labelfg=labelfg
-  self.labelzorder=nums(kw.get('labelzorder'),4)
-  self.labelha=kw.get('labelha')
-  self.labelva=kw.get('labelva')
-  self.labelrotation=kw.get('labelrotation')
-  self.labelrotation_mode=kw.get('labelrotation_mode')
-  self.labelfontname=kw.get('labelfontname',None)
-  self.labelfontpath=kw.get('labelfontpath',None)
-  fontfamily=Fontname(rcParams['font.family'][0])
-  if self.labelfontname is None and self.labelfontpath is None:self.labelfont=fontfamily
-  elif self.labelfontname is None and self.labelfontpath is not None:self.labelfont=FontFile(self.labelfontpath)
-  elif self.labelfontname is not None and self.labelfontpath is None:
-   if self.labelfontname in Fontmanager.name():self.labelfont=Fontname(self.labelfontname)
-   else:self.labelfont=fontfamily
-  elif self.labelfontname is not None and self.labelfontpath is not None:self.labelfont=FontFile(self.labelfontpath)
-  else:self.labelfont=fontfamily
-  self.labelfont=self.labelfont.Properties
+  self.titles=kw.get('title')
   # 目盛り
   self.ticksshow=bols(kw.get('ticksshow'),False)
   self.tight_layout=bols(kw.get('tight_layout'))
-  # タイトル
-  self.title=kw.get('title')
-  self.titlealpha=range_num(num0s(kw.get('titlealpha'),1),0,1,1)
-  self.titlezorder=nums(kw.get('titlezorder'),4)
-  titlefg=kw.get('titlefg')
-  if titlefg is None:self.titlefg=self.fg
-  else:self.titlefg=titlefg
-  self.titleha=kw.get('titleha')
-  self.titleva=kw.get('titleva')
-  self.titlerotation=kw.get('titlerotation')
-  self.titlerotation_mode=kw.get('titlerotation_mode')
-  self.titlefontname=kw.get('titlefontname',None)
-  self.titlefontpath=kw.get('titlefontpath',None)
-  fontfamily=Fontname(rcParams['font.family'][0])
-  if self.titlefontname is None and self.titlefontpath is None:self.titlefont=fontfamily
-  elif self.titlefontname is None and self.titlefontpath is not None:self.titlefont=FontFile(self.titlefontpath)
-  elif self.titlefontname is not None and self.titlefontpath is None:
-   if self.titlefontname in Fontmanager.name():self.titlefont=Fontname(self.titlefontname)
-   else:self.titlefont=fontfamily
-  elif self.titlefontname is not None and self.titlefontpath is not None:self.titlefont=FontFile(self.titlefontpath)
-  else:self.titlefont=fontfamily
-  self.titlefont=self.titlefont.Properties
  def photo(self,filename='Graph',ex='.png',dpi=100):
   path=asksaveasfilename(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=filename,initialdir=getcwd())
   self.fig.savefig(path,dpi=num1s(dpi,100))
- def set_title(self,title):
-  Title(self.ax,title=title,color=self.titlefg,ha=self.titleha,va=self.titleva,rotation=self.titlerotation,rotation_mode=self.titlerotation_mode,font=self.titlefont,alpha=self.titlealpha,zorder=self.titlezorder)
+ def set_title(self,title):return self.ax.set_title(title)
  def winsize(self):
   root=self.master
   return root.winfo_width(),root.winfo_height()
@@ -137,7 +88,7 @@ class GElement:
   return self._list_loop(Marker(serch).marker,num)
  def lines(self,serch=None,num=None):return self._list_loop(Solid(serch).solid,num)
  def legend(self):
-  if not self.label:self.legend_=Legends(self.ax,ncols=self.legendncols,bbox_to_anchor=self.anchor,loc=self.legendplace,title=self.legendtitle,frameon=self.legendframe,shadow=self.legendshadow,framealpha=self.legendalpha)
+  if not self.label:self.ax.legend()
  def _anchor(self,val,other=None):
   if(isinstance(val,list|tuple) and (len(val)==2 or len(val)==4) and all(isinstance(i,int|float)for i in val)):return val
   return other
@@ -146,11 +97,6 @@ class GElement:
   if isinstance(place,int) and 0<=place<=10:return labelplacelist[place]
   elif place in labelplacelist:return place
   return listchose(other,labelplacelist)
- def labels(self,label,nums=None):
-  if label==None or label is None:
-   return(None,label)
-  if not isinstance(nums,int|float):nums=self.max_depth
-  return(self._list_loop(label,nums),label)
  def _arr(self,val,j=True):
   if not isinstance(val,list|tuple|np.ndarray):
    raise TypeError('配列の型を指定してください')

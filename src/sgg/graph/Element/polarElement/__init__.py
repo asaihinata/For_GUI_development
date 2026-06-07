@@ -13,6 +13,7 @@ class polarElement(GElement):
   self.grid_y=bols(kw.get('grid_y'),False)
   # グラフの基盤
   self.ax:PolarAxes=self.fig.add_subplot(111,projection='polar')
+  self.title=self.set_title(self.titles)
   # 目盛り
   self.xticksshow=bols(kw.get('xticksshow'),False)
   self.yticksshow=bols(kw.get('yticksshow'),False)
@@ -37,7 +38,7 @@ class polarElement(GElement):
  def _apply_theme_colors(self):
   self.ax.set_facecolor(self.graph_bg)
   self.ax.tick_params(colors=self.fg)
-  self.set_title(self.title)
+  self.set_title(self.titles)
   self.ax.xaxis.label.set_color(self.fg)
   self.ax.yaxis.label.set_color(self.fg)
   if self.grid_xy:self.ax.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6,which='both')
@@ -49,7 +50,7 @@ class polarElement(GElement):
   self.fg=parsecolor(kw.get('fg'),self.fg)
   self.graph_bg=parsecolor(kw.get('bg'),self.graph_bg)
   self.graph_grid=parsecolor(kw.get('graph_grid'),self.graph_grid)
-  self.title=kw.get('title',self.title)
+  self.title=kw.get('title',self.titles)
   self.alpha=range_num(num0s(kw.get('alpha'),self.alpha),0,1,self.alpha)
  def _ticks(self):
   if self.ticksshow:

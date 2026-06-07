@@ -1,5 +1,3 @@
-from os import PathLike
-from pathlib import Path
 from tkinter import Misc
 from matplotlib.axes._axes import Axes
 from matplotlib.figure import Figure
@@ -7,8 +5,8 @@ from matplotlib.font_manager import FontProperties
 from matplotlib.projections.polar import PolarAxes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
-from ...typing import *
 from ...style import getLabel
+from ...typing import *
 __all__=['GElement']
 class GElement:
  labelfont:FontProperties
@@ -22,21 +20,12 @@ class GElement:
  fg:ColorType
  graph_bg:ColorType
  graph_grid:ColorType
- title:str
+ titles:str
  dpi:int|float
  alpha:int|float
  ax:Axes|Axes3D|PolarAxes
  color:list[str]
  max_depth:int
- titlealpha:int|float
- titlezorder:int|float
- titlefg:ColorTypeN
- titleha:Literal['left','center','right']|None
- titleva:Literal['bottom','baseline','center','center_baseline','top']|None
- titlerotation:float|Literal['horizontal','vertical']|None
- titlerotation_mode:bool
- titlefontname:str|Type_Iterablestr|None
- titlefontpath:str|PathLike|Path|None
  def photo(
 self,
 filename:str='Graph',
@@ -120,7 +109,6 @@ self,
 place:str|int=...,
 other:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right'
 )->str:'''凡例の位置の基準を決定する。'''
- def labels(self,label:labeltype)->list:...
  def markers(self,serch:str)->str:'''`serch`で指定したマーカーが`MARKERS`に存在するかを調べる
 
  :param serch: `MARKERS`に調べたいマーカーを指定する。

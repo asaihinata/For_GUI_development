@@ -3,8 +3,6 @@ __all__=['Pie']
 class Pie(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.labelplace=self._getlegendplace(kw.get('labelplace'),'upper left')
-  self.anchor=self._anchor(kw.get('anchor'),(1.2,1.05))
   self.data=NPNumber(kw.get('data'))
   self.startangle=nums(kw.get('startangle'),0)
   self.startangletype=bols(kw.get('startangletype'))
@@ -22,7 +20,8 @@ class Pie(twoElement):
   pie=self.ax.pie(data,labels=None if label else list(label),startangle=90-startangle,shadow=shadow,counterclock=counterclock,labeldistance=labeldistance,explode=explode)
   for i in np.array(pie).T:i[0].set_alpha(alpha)
   self.graphdata=[pie]
-  self.legend()
+  if not self.label:
+   self.ax.legend()
  def update(self,data=None,**kw):
   self._updates(**kw)
   if isinstance(data,nListlike):self.data=NPNumber(data)

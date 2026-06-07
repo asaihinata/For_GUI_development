@@ -1,8 +1,7 @@
 from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
-from numpy import ndarray
-from ....dev import allNones,bols,list2num,listchose,num0s,parsecolor,range_num
-from ...style import FontFile,Fontmanager,Fontname,Xlabel,Ylabel,getLabel
+from ....dev import bols,list2num,listchose,num0s,parsecolor,range_num
+from ...style import getLabel
 from ..graph import GElement
 __all__=['twoElement']
 class twoElement(GElement):
@@ -10,45 +9,14 @@ class twoElement(GElement):
   super().__init__(master,kw)
   # ラベル
   self.xlabel=kw.get('xlabel')
-  self.xlabelfg=allNones(kw.get('xlabelfg'),self.labelfg,self.fg)
-  self.xlabelha=allNones(kw.get('xlabelha'),self.labelha)
-  self.xlabelva=allNones(kw.get('xlabelva'),self.labelva)
-  self.xlabelalpha=allNones(kw.get('xlabelalpha'),self.labelalpha,1)
-  self.xlabelzorder=allNones(kw.get('xlabelzorder'),self.labelzorder,4)
-  self.xlabelrotation=allNones(kw.get('xlabelrotation'),self.labelrotation,'horizontal')
-  self.xlabelrotation_mode=allNones(kw.get('xlabelrotation_mode'),self.labelrotation_mode,True)
-  self.xlabelfontname=allNones(kw.get('xlabelfontname'),self.labelfontname)
-  self.xlabelfontpath=allNones(kw.get('xlabelfontpath'),self.labelfontpath)
-  if self.xlabelfontname is None and self.xlabelfontpath is None:self.xlabelfont=self.labelfont
-  elif self.xlabelfontname is None and self.xlabelfontpath is not None:self.xlabelfont=FontFile(self.xlabelfontpath).Properties
-  elif self.xlabelfontname is not None and self.xlabelfontpath is None:
-   if self.xlabelfontname in Fontmanager.name():self.xlabelfont=Fontname(self.xlabelfontname).Properties
-   else:self.xlabelfont=self.labelfont
-  elif self.xlabelfontname is not None and self.xlabelfontpath is not None:self.xlabelfont=FontFile(self.xlabelfontpath)
-  else:self.xlabelfont=self.labelfont
   self.ylabel=kw.get('ylabel')
-  self.ylabelfg=allNones(kw.get('ylabelfg'),self.labelfg,self.fg)
-  self.ylabelha=allNones(kw.get('ylabelha'),self.labelha)
-  self.ylabelva=allNones(kw.get('ylabelva'),self.labelva)
-  self.ylabelalpha=allNones(kw.get('ylabelalpha'),self.labelalpha,1)
-  self.ylabelzorder=allNones(kw.get('ylabelzorder'),self.labelzorder,4)
-  self.ylabelrotation=allNones(kw.get('ylabelrotation'),self.labelrotation,'vertical')
-  self.ylabelrotation_mode=allNones(kw.get('ylabelrotation_mode'),self.labelrotation_mode,True)
-  self.ylabelfontname=allNones(kw.get('ylabelfontname'),self.labelfontname)
-  self.ylabelfontpath=allNones(kw.get('ylabelfontpath'),self.labelfontpath)
-  if self.ylabelfontname is None and self.ylabelfontpath is None:self.ylabelfont=self.labelfont
-  elif self.ylabelfontname is None and self.ylabelfontpath is not None:self.ylabelfont=FontFile(self.ylabelfontpath)
-  elif self.ylabelfontname is not None and self.ylabelfontpath is None:
-   if self.ylabelfontname in Fontmanager.name():self.ylabelfont=Fontname(self.ylabelfontname)
-   else:self.ylabelfont=self.labelfont
-  elif self.ylabelfontname is not None and self.ylabelfontpath is not None:self.ylabelfont=FontFile(self.ylabelfontpath)
-  else:self.ylabelfont=self.labelfont
   # グリッド線
   self.grid_xy=bols(kw.get('grid_xy'))
   self.grid_x=bols(kw.get('grid_x'),False)
   self.grid_y=bols(kw.get('grid_y'),False)
   # グラフの基盤
   self.ax:Axes=self.fig.add_subplot(111)
+  self.title=self.set_title(self.titles)
   # 目盛り
   self.xmajorint=bols(kw.get('xmajorint'))
   self.ymajorint=bols(kw.get('ymajorint'))
@@ -69,13 +37,10 @@ class twoElement(GElement):
   elif list2num(yticksrange):self.yticksrange=yticksrange
   else:self.yticksrange=(0,0)
   # その他
-  self.x:ndarray
-  self.y:ndarray
-  self.data:ndarray
  def _apply_theme_colors(self):
   self.ax.set_facecolor(self.graph_bg)
   self.ax.tick_params(colors=self.fg)
-  self.set_title(self.title)
+  self.set_title(self.titles)
   self.ax.xaxis.label.set_color(self.fg)
   self.ax.yaxis.label.set_color(self.fg)
   if self.grid_xy:self.ax.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6,which='both')
@@ -83,16 +48,16 @@ class twoElement(GElement):
    self.ax.grid(False)
    if self.grid_x:self.ax.xaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
    if self.grid_y:self.ax.yaxis.grid(True,color=self.graph_grid,linestyle='--',alpha=0.6)
- def _apply_labels(self,xlabel,ylabel):
-  if xlabel is not None:Xlabel(self.ax,xlabel,color=self.xlabelfg,ha=self.xlabelha,va=self.xlabelva,font=self.xlabelfont,rotation=self.xlabelrotation,rotation_mode=self.xlabelrotation_mode,alpha=self.xlabelalpha,zorder=self.xlabelzorder)
-  if ylabel is not None:Ylabel(self.ax,ylabel,color=self.ylabelfg,ha=self.ylabelha,va=self.ylabelva,font=self.ylabelfont,rotation=self.ylabelrotation,rotation_mode=self.ylabelrotation_mode,alpha=self.ylabelalpha,zorder=self.ylabelzorder)
+ def _apply_labels(self,xlabel=None,ylabel=None):
+  if xlabel is not None:self.ax.set_xlabel(xlabel)
+  if ylabel is not None:self.ax.set_ylabel(ylabel)
  def _updates(self,**kw):
   label=kw.get('label',None)
   self.label=self.label if label==None else getLabel(label)
   self.fg=parsecolor(kw.get('fg'),self.fg)
   self.graph_bg=parsecolor(kw.get('bg'),self.graph_bg)
   self.graph_grid=parsecolor(kw.get('graph_grid'),self.graph_grid)
-  self.title=kw.get('title',self.title)
+  self.title=kw.get('title',self.titles)
   self.xlabel=kw.get('xlabel',self.xlabel)
   self.ylabel=kw.get('ylabel',self.ylabel)
   self.alpha=range_num(num0s(kw.get('alpha'),self.alpha),0,1,self.alpha)
