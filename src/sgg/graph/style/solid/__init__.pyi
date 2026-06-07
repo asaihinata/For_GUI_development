@@ -1,5 +1,4 @@
 '''グラフの線を設定するモジュール'''
-from typing import Literal
 from ....nparray import NPArray
 from ...typing import Type_Solid
 __all__=['Solid','Solidlist']

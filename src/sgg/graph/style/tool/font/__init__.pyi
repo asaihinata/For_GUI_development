@@ -3,6 +3,7 @@ from os import PathLike
 from pathlib import Path
 from typing import Any,Literal
 from matplotlib.font_manager import FontEntry,FontProperties
+__all__=['FontFile','Fontname','Fontmanager','Fontentry']
 class FontFile:
  Properties:FontProperties
  def __init__(
