@@ -1,23 +1,16 @@
 from io import BytesIO
-from os import PathLike
 from pathlib import Path,WindowsPath
 from tkinter import _Cursor
 from typing import Union
 from matplotlib.mlab import GaussianKDE
-from numpy import ndarray,dtype,float64
-from numpy._typing import _AnyShape
+from numpy import ndarray
 from .graph import *
 from .typing import *
 from .widget import *
 Type_Solid:TypeAlias=Literal['-','--','-.',':','None',' ','']
 Type_Marker:TypeAlias=Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
-Typeget_data:TypeAlias=ndarray[_AnyShape,dtype[Any]]
-Typetuple_float64:TypeAlias=tuple[float64,float64]
-Type_legendplace:TypeAlias=Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']
 Type_orientation:TypeAlias=Literal['horizontal','vertical']
 Type_ticksdirection:TypeAlias=Literal['out','in','inout']
-Type_labelha:TypeAlias=Literal['left','center','right']|None
-Type_labelva:TypeAlias=Literal['bottom','baseline','center','center_baseline','top']|None
 Type_ticksrange:TypeAlias=int|float|tuple[Type_Numberlike,...]
 Type_icon:TypeAlias=Literal['info','warning','error','question']
 class sgg:
@@ -494,7 +487,7 @@ bd:int|float=1
  :param length: Slidebarウィジェットの長さを指定する。
  :type length: int|float
  :param orientation: Slidebarウィジェットの向きを指定する。
- :type orientation: Type_orientation
+ :type orientation: Literal['horizontal','vertical']
  :param min: Slidebarウィジェットの数値の最小値を指定する。
  :type min: int|float
  :param max: Slidebarウィジェットの数値の最大値を指定する。
@@ -638,7 +631,7 @@ key:str=...
  :param length: TProgressbarウィジェットの長さを指定する。
  :type length: int|float
  :param orient: TProgressbarウィジェットの向きを指定する。
- :type orient: Type_orientation
+ :type orient: Literal['horizontal','vertical']
  :param mode: 決定的モード(determinate)か非決定的モード(indeterminate)かを指定する。
  :type mode: Literal['determinate','indeterminate']
  :param max: TProgressbarウィジェットの数値の最大値を指定する。
@@ -716,9 +709,9 @@ key:str=...
  :param markersize: 折線グラフのマーカーの大きさを指定する。
  :type markersize: int|float
  :param marker: 折線グラフのマーカーを指定する。
- :type marker: Type_Marker
+ :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
  :param linestyle: 折線グラフの線の種類を指定する。
- :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',': ','none',None,' ','']
+ :type linestyle: Literal['-','--','-.',':','None',' ','']
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param color: 色を指定する。
@@ -744,9 +737,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -758,9 +751,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def BarGraph(
 x:o_array,
@@ -839,9 +832,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -853,9 +846,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def BarhGraph(
 x:o_array,
@@ -934,9 +927,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -948,9 +941,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def SSBarGraph(
 data:n_array,
@@ -1020,9 +1013,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1034,9 +1027,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def SSBarhGraph(
 data:n_array,
@@ -1106,9 +1099,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1120,9 +1113,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Funne(
 data:o_array,
@@ -1198,9 +1191,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1212,9 +1205,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Stacked(
 data:n_array,
@@ -1284,9 +1277,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1298,9 +1291,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Stackedh(
 data:n_array,
@@ -1370,9 +1363,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1384,9 +1377,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Pie(
 data:o_array,
@@ -1486,7 +1479,7 @@ key:str=...
  :param showfliers: 外れ値を表示させるか指定する。
  :type showfliers: bool
  :param orientation: 箱ひげ図の向きを指定する。
- :type orientation: Type_orientation
+ :type orientation: Literal['horizontal','vertical']
  :param whis: ヒゲの位置を指定する。
  :type whis: float|TupleFloat2
  :param title: グラフのタイトルを指定する。
@@ -1516,9 +1509,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1530,9 +1523,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Waterfall(
 x:o_array,
@@ -1580,7 +1573,7 @@ key:str=...
  :param colorline: バーとバーを繋げる線の色を指定する。
  :type colorline: ColorTypeN
  :param linestyle: バーとバーを繋げる線の種類を指定する。
- :type linestyle: Type_Solid
+ :type linestyle: Literal['-','--','-.',':','None',' ','']
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -1608,9 +1601,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1622,16 +1615,15 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection
+ :type yticksdirection: Literal['out','in','inout']
  :param ucolor: 上昇バーの色を指定する。
  :type ucolor: ColorTypeN
  :param dcolor: 下降バーの色を指定する。
  :type dcolor: ColorTypeN
  :param width: バーの幅を指定する。
- :type width: int|float
-'''
+ :type width: int|float'''
  @staticmethod
  def Waterfallh(
 x:o_array,
@@ -1680,7 +1672,7 @@ key:str=...
  :param colorline: バーとバーを繋げる線の色を指定する。
  :type colorline: ColorTypeN
  :param linestyle: バーとバーを繋げる線の種類を指定する。
- :type linestyle: Type_Solid
+ :type linestyle: Literal['-','--','-.',':','None',' ','']
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
@@ -1708,9 +1700,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1722,16 +1714,15 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection
+ :type yticksdirection: Literal['out','in','inout']
  :param ucolor: 上昇バーの色を指定する。
  :type ucolor: ColorTypeN
  :param dcolor: 下降バーの色を指定する。
  :type dcolor: ColorTypeN
  :param height: バーの幅を指定する。
- :type height: int|float
-'''
+ :type height: int|float'''
  @staticmethod
  def Scatter(
 x:n_array,
@@ -1776,7 +1767,7 @@ key:str=...
  :param label: ラベルを指定する。
  :type label: labeltype
  :param marker: 散布図のマーカーを指定する。
- :type marker: Type_Marker
+ :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
  :param markersize: 散布図のマーカーの大きさを指定する。
  :type markersize: int|float
  :param title: グラフのタイトルを指定する。
@@ -1804,9 +1795,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1818,9 +1809,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def DScatter(
 x:o_array,
@@ -1875,7 +1866,7 @@ key:str=...
  :param zlabel: z軸のラベルを指定する。
  :type zlabel: str
  :param marker: 散布図のマーカーを指定する。
- :type marker: Type_Marker
+ :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
  :param markersize: 散布図のマーカーの大きさを指定する。
  :type markersize: int|float
  :param title: グラフのタイトルを指定する。
@@ -1905,11 +1896,11 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param zticksrange: z軸の目盛の範囲を変更する。
- :type zticksrange: Type_ticksrange
+ :type zticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1925,9 +1916,9 @@ key:str=...
  :param zticksshow: z軸のグリッド線と目盛り値について表示するかを指定する。
  :type zticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection
+ :type yticksdirection: Literal['out','in','inout']
  :param znumticks: z軸の目盛りの数を指定する。
  :type znumticks: int|float|None
  :param mouse_rotation: 表示されているグラフをマウスで操作できるか指定する。
@@ -1982,11 +1973,11 @@ key:str=...
  :param ylabel: y軸のラベルを指定する。
  :type ylabel: str
  :param orientation: 茎の向きを指定する。
- :type orientation: Type_orientation
+ :type orientation: Literal['horizontal','vertical']
  :param bottom: ベースラインの位置を指定する。
  :type bottom: int|float
  :param fmarker: 幹のマーカーの種類を指定する。
- :type fmarker: Type_Solid
+ :type fmarker: Literal['-','--','-.',':','None',' ','']
  :param fline: 幹の線の種類を指定する。
  :type fline: Literal['-','--','-.','-.']
  :param fcolor: 色を指定する。
@@ -2018,9 +2009,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2032,9 +2023,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Step(
 data:n_array,
@@ -2082,7 +2073,7 @@ key:str=...
  :param fill: 階段の下部から`baseline`の間を塗りつぶすかを指定する。
  :type fill: bool
  :param orientation: グラフの向きを指定する。
- :type orientation: Type_orientation
+ :type orientation: Literal['horizontal','vertical']
  :param label: ラベルを指定する。
  :type label: labeltype
  :param color: 色を指定する。
@@ -2108,9 +2099,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2122,11 +2113,11 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection
+ :type yticksdirection: Literal['out','in','inout']
  :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Type_orientation'''
+ :type y_verwrit: Literal['horizontal','vertical']'''
  @staticmethod
  def Hatplot(
 x:o_array,
@@ -2190,9 +2181,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2204,9 +2195,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Hist(
 data:o_array,
@@ -2254,7 +2245,7 @@ key:str=...
  :param width: ヒストグラムのバーのサイズを指定する。
  :type width: int|float
  :param orientation: ヒストグラムの向きを指定する。
- :type orientation: Type_orientation
+ :type orientation: Literal['horizontal','vertical']
  :param bottom: ヒストグラムのバーの位置を指定する。
  :type bottom: int|float
  :param min: ヒストグラムで表示される最小値を指定する。
@@ -2288,9 +2279,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2302,11 +2293,11 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection
+ :type yticksdirection: Literal['out','in','inout']
  :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
- :type y_verwrit: Type_orientation'''
+ :type y_verwrit: Literal['horizontal','vertical']'''
  @staticmethod
  def Stack(
 x:n_array,
@@ -2379,9 +2370,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2393,9 +2384,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Linefill(
 x:o_array,
@@ -2468,9 +2459,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2482,9 +2473,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Ecdf(
 data:n_array,
@@ -2524,9 +2515,9 @@ key:str=...
  :param compress: 同一値のデータをまとめて最適化するかどうか指定する。
  :type compress: bool
  :param orientation: プロットの向きを指定する。
- :type orientation: Type_orientation
+ :type orientation: Literal['horizontal','vertical']
  :param linestyle: 線の種類を指定する。
- :type linestyle: Type_Solid
+ :type linestyle: Literal['-','--','-.',':','None',' ','']
  :param linewidth: 線の太さを指定する。
  :type linewidth: int|float
  :param xlabel: x軸のラベルを指定する。
@@ -2560,9 +2551,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2574,9 +2565,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Errorbar(
 x:n_array,
@@ -2589,7 +2580,7 @@ xlolims:bool=False,
 yuplims:bool=False,
 ylolims:bool=False,
 barsabove:bool=False,
-linestyle:Type_Solid='solid',
+linestyle:Type_Solid='-',
 marker:Literal['.','s','o','p','v','*','^','D']=None,
 linewidth:int|float=1.5,
 capthick:int|float=10,
@@ -2643,7 +2634,7 @@ key:str=...
  :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する。
  :type barsabove: bool
  :param linestyle: データ点とデータ点を結ぶ線の種類を指定する。
- :type linestyle: Type_Solid
+ :type linestyle: Literal['-','--','-.',':','None',' ','']
  :param marker: データ点のマーカーの種類を指定する。
  :type marker: Literal['.','s','o','p','v','*','^','D']
  :param linewidth: データ点を結ぶ線の太さを指定する。
@@ -2685,9 +2676,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2699,15 +2690,15 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Eventplot(
 data:o_array,
 linewidth:int|float=1,
 linelength:int|float=1,
-linestyle:Type_Solid='solid',
+linestyle:Type_Solid='-',
 orientation:Type_orientation='vertical',
 xlabel:str=...,
 ylabel:str=...,
@@ -2743,9 +2734,9 @@ key:str=...
  :param linelength: 線の合計の高さを指定する。
  :type linelength: int|float
  :param linestyle: 線の種類を指定する。
- :type linestyle: Type_Solid
+ :type linestyle: Literal['-','--','-.',':','None',' ','']
  :param orientation: 向きを指定する。
- :type orientation: Type_orientation
+ :type orientation: Literal['horizontal','vertical']
  :param label: ラベルを指定する。
  :type label: labeltype
  :param xlabel: x軸のラベルを指定する。
@@ -2777,9 +2768,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2791,9 +2782,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Hist2d(
 x:o_array,
@@ -2875,9 +2866,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2889,9 +2880,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection
+ :type yticksdirection: Literal['out','in','inout']
  :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる。
  :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる。'''
  @classmethod
@@ -2939,7 +2930,7 @@ key:str=...
  :param y: `orientation`が`horizontal`の時にy軸上にバイオリンが設置される配列を指定する。
  :type y: n_array
  :param orientation: バイオリンが設置される軸の向きを指定する。
- :type orientation: Type_orientation
+ :type orientation: Literal['horizontal','vertical']
  :param width: バイオリンの幅を指定する。
  :type width: int|float
  :param showextrema: 極値を線で示すか指定する。
@@ -2985,9 +2976,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2999,9 +2990,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @classmethod
  def Hexbin(
 self,
@@ -3085,9 +3076,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3099,9 +3090,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @classmethod
  def Barpolar(
 x:o_array=...,
@@ -3166,9 +3157,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3180,9 +3171,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Stempolar(
 x:o_array=...,
@@ -3250,9 +3241,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3264,9 +3255,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Errorpolar(
 x:o_array=...,
@@ -3280,7 +3271,7 @@ xlolims:bool=False,
 yuplims:bool=False,
 ylolims:bool=False,
 barsabove:bool=False,
-linestyle:Type_Solid='solid',
+linestyle:Type_Solid='-',
 marker:Literal['.','s','o','p','v','*','^','D']=None,
 linewidth:int|float=1.5,
 capthick:int|float=10,
@@ -3330,7 +3321,7 @@ key:str=...
  :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する。
  :type barsabove: bool
  :param linestyle: データ点とデータ点を結ぶ線の種類を指定する。
- :type linestyle: Type_Solid
+ :type linestyle: Literal['-','--','-.',':','None',' ','']
  :param marker: データ点のマーカーの種類を指定する。
  :type marker: Literal['.','s','o','p','v','*','^','D']
  :param linewidth: データ点を結ぶ線の太さを指定する。
@@ -3364,9 +3355,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3378,9 +3369,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Linepolar(
 x:o_array=...,
@@ -3422,7 +3413,7 @@ key:str=...
  :param markersize: 折線グラフのマーカーの大きさを指定する。
  :type markersize: int|float
  :param marker: 折線グラフのマーカーを指定する。
- :type marker: Type_Marker
+ :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
  :param linestyle: 折線グラフの線の種類を指定する。
  :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',': ','none',None,' ','']
  :param title: グラフのタイトルを指定する。
@@ -3448,9 +3439,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3462,9 +3453,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Eventpolar(
 x:o_array=...,
@@ -3472,7 +3463,7 @@ y:o_array=...,
 data:o_array=...,
 linewidth:int|float=1,
 linelength:int|float=1,
-linestyle:Type_Solid='solid',
+linestyle:Type_Solid='-',
 orientation:Type_orientation='vertical',
 alpha:int|float=1,
 size:TupleNumbertype2=(500,400),
@@ -3506,9 +3497,9 @@ key:str=...
  :param linelength: 線の合計の高さを指定する。
  :type linelength: int|float
  :param linestyle: 線の種類を指定する。
- :type linestyle: Type_Solid
+ :type linestyle: Literal['-','--','-.',':','None',' ','']
  :param orientation: 向きを指定する。
- :type orientation: Type_orientation
+ :type orientation: Literal['horizontal','vertical']
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param size: 表示させるグラフの大きさを指定する。
@@ -3532,9 +3523,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3546,9 +3537,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Scatterpolar(
 x:o_array=...,
@@ -3584,7 +3575,7 @@ key:str=...
  :param data: `data`のデータを指定する。
  :type data: o_array
  :param marker: 散布図のマーカーを指定する。
- :type marker: Type_Marker
+ :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
  :param markersize: 散布図のマーカーの大きさを指定する。
  :type markersize: int|float
  :param title: グラフのタイトルを指定する。
@@ -3610,9 +3601,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3624,9 +3615,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Violinpolar(
 data:o_array=...,
@@ -3668,7 +3659,7 @@ key:str=...
  :param y: `orientation`が`horizontal`の時にy軸上にバイオリンが設置される配列を指定する。
  :type y: o_array
  :param orientation: バイオリンが設置される軸の向きを指定する。
- :type orientation: Type_orientation
+ :type orientation: Literal['horizontal','vertical']
  :param width: バイオリンの幅を指定する。
  :type width: int|float
  :param showextrema: 極値を線で示すか指定する。
@@ -3706,9 +3697,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3720,9 +3711,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
  def Radarplot(
 data:n_array=...,
@@ -3758,7 +3749,7 @@ key:str=...
  :param markersize: 折線グラフのマーカーの大きさを指定する。
  :type markersize: int|float
  :param marker: 折線グラフのマーカーを指定する。
- :type marker: Type_Marker
+ :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
  :param linestyle: 折線グラフの線の種類を指定する。
  :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',': ','none',None,' ','']
  :param title: グラフのタイトルを指定する。
@@ -3784,9 +3775,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: Type_ticksrange
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: Type_ticksrange
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3798,9 +3789,9 @@ key:str=...
  :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
  :type yticksshow: bool
  :param xticksdirection: x軸の目盛りの向きを指定する。
- :type xticksdirection: Type_ticksdirection
+ :type xticksdirection: Literal['out','in','inout']
  :param yticksdirection: y軸の目盛りの向きを指定する。
- :type yticksdirection: Type_ticksdirection'''
+ :type yticksdirection: Literal['out','in','inout']'''
  @classmethod
  def Popup(
 cls,
@@ -3812,7 +3803,7 @@ icon:Type_icon='info'
  :param title: 情報メッセージボックスに表示させるタイトル名を指定する。
  :type title: str
  :param icon: 情報メッセージボックスに表示させるアイコンを指定する。
- :type icon: Type_icon
+ :type icon: Literal['info','warning','error','question']
  :param message: 情報メッセージボックスに表示させるメッセージを指定する。
  :type message: str'''
  @classmethod
@@ -3828,7 +3819,7 @@ icon:Type_icon='warning'
  :param message: 警告メッセージボックスに表示させるメッセージを指定する。
  :type message: str
  :param icon: 警告メッセージボックスに表示させるアイコンを指定する。
- :type icon: Type_icon
+ :type icon: Literal['info','warning','error','question']
  :return: ダイアログで選択された値を返す。
  :rtype: str'''
  @classmethod
@@ -3844,7 +3835,7 @@ icon:Type_icon='warning'
  :param message: 警告メッセージボックスに表示させるメッセージを指定する。
  :type message: str
  :param icon: 警告メッセージボックスに表示させるアイコンを指定する。
- :type icon: Type_icon
+ :type icon: Literal['info','warning','error','question']
  :return: ダイアログで選択された値を返す。
  :rtype: Union[str] ('yes','no')'''
  @classmethod
@@ -3860,7 +3851,7 @@ icon:Type_icon='error'
  :param message: エラーメッセージボックスに表示させるメッセージを指定する。
  :type message: str
  :param icon: エラーメッセージボックスに表示させるアイコンを指定する。
- :type icon: Type_icon
+ :type icon: Literal['info','warning','error','question']
  :return: ダイアログで選択された値を返す。
  :rtype: str'''
  @classmethod
@@ -3876,7 +3867,7 @@ icon:Type_icon='error'
  :param message: エラーメッセージボックスに表示させるメッセージを指定する。
  :type message: str
  :param icon: エラーメッセージボックスに表示させるアイコンを指定する。
- :type icon: Type_icon
+ :type icon: Literal['info','warning','error','question']
  :return: ダイアログで選択された値を返す。
  :rtype: Union[str] ('yes','no')'''
  @classmethod
@@ -3892,7 +3883,7 @@ icon:Type_icon='question'
  :param message: ダイアログに表示させるメッセージを指定する。
  :type message: str
  :param icon: ダイアログに表示させるアイコンを指定する。
- :type icon: Type_icon
+ :type icon: Literal['info','warning','error','question']
  :return: ダイアログで選択された値を返す。
  :rtype: Union[str] ('yes','no')'''
  @classmethod
@@ -3908,7 +3899,7 @@ icon:Type_icon='question'
  :param message: ダイアログに表示させるメッセージを指定する。
  :type message: str
  :param icon: ダイアログに表示させるアイコンを指定する。
- :type icon: Type_icon
+ :type icon: Literal['info','warning','error','question']
  :return: ダイアログで選択された値を返す。
  :rtype: bool'''
  @classmethod
@@ -3925,7 +3916,7 @@ icon:Type_icon='question'
  :param message: ダイアログに表示させるメッセージを指定する。
  :type message: str
  :param icon: ダイアログに表示させるアイコンを指定する。
- :type icon: Type_icon
+ :type icon: Literal['info','warning','error','question']
  :return: ダイアログで選択された値を返す。
  :rtype: bool'''
  @classmethod
@@ -3942,7 +3933,7 @@ icon:Type_icon='question'
  :param message: ダイアログに表示させるメッセージを指定する。
  :type message: str
  :param icon: ダイアログに表示させるアイコンを指定する。
- :type icon: Type_icon
+ :type icon: Literal['info','warning','error','question']
  :return: ダイアログで選択された値を返す。
  :rtype: Union[bool,None]'''
  @classmethod
@@ -3959,6 +3950,6 @@ icon:Type_icon='question'
  :param message: ダイアログに表示させるメッセージを指定する。
  :type message: str
  :param icon: ダイアログに表示させるアイコンを指定する。
- :type icon: Type_icon
+ :type icon: Literal['info','warning','error','question']
  :return: ダイアログで選択された値を返す。
  :rtype: bool'''
