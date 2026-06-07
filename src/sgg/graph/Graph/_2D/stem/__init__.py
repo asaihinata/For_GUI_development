@@ -18,7 +18,7 @@ class Stem(twoElement):
  def plot(self,x,y,bottom=0,orientation='vertical',label=None,marker=stem_mark_list,alpha=1):
   self.clear()
   for i,(xs,ys) in enumerate(product(x,y)):
-   fmt=FMT(self.marker[i],self.line[i],self.colorlist[i]).fmt_txt
+   fmt=FMT(self.marker[i],self.line[i],self.colorlist[i]).txt
    stem=self.ax.stem(xs,ys,linefmt=fmt,markerfmt=self._markerfmt(marker)[i],basefmt=fmt,bottom=bottom,orientation=orientation,label=label[i])
    for j in stem.get_children():j.set_alpha(alpha)
    self.graphdata.append(stem)

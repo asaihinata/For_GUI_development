@@ -18,7 +18,7 @@ class Errorbar(twoElement):
   self.barsabove=bols(kw.get('barsabove'),False)
   self.line=kw.get('linestyle')
   self.marker=kw.get('marker','o')
-  self.fmt=str(FMT(self.marker,self.line))
+  self.fmt=FMT(self.marker,self.line).txt
   self.linewidth=num0(kw.get('linewidth'),1.5)
   self.capthick=nums(kw.get('capthick'),10)
   self.capsize=nums(kw.get('capsize'),0)
@@ -47,7 +47,7 @@ class Errorbar(twoElement):
   self.barsabove=bols(kw.get('barsabove'),self.barsabove)
   self.line=kw.get('linestyle',self.line)
   self.marker=kw.get('marker',self.marker)
-  self.fmt=str(FMT(self.marker,self.line))
+  self.fmt=FMT(self.marker,self.line).txt
   self.linewidth=num0(kw.get('linewidth'),self.linewidth)
   self.capthick=nums(kw.get('capthick'),self.capthick)
   self.capsize=nums(kw.get('capsize'),self.capsize)

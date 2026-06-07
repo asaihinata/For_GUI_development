@@ -1,19 +1,17 @@
 '''グラフの線を設定するモジュール'''
 from ....nparray import NPArray
 from ..fmt import FMT
-__all__=['Solid','Solidlist','fmtSolid']
+__all__=['Solid','Solidlist']
 class Solid:
- stlye=['-','--','-.',':','None',' ','']
  def __init__(self,solid):
-  self.solid=solid if solid in self.stlye else '-'
+  self.__solid=solid if solid in ['-','--','-.',':','None',' ',''] else '-'
+ @property
+ def solid(self):return self.__solid
 class Solidlist(NPArray):
  def __init__(self,solid):
   if isinstance(solid,str):solid=[solid]
   super().__init__(solid,depth_limit=1)
  def __iter__(self):return iter(self.data)
  def __str__(self):return str(self.data[0])
- def __repr__(self):return super().__repr__()
+ def __repr__(self):return f'Solidlist({self.data})'
  def __getitem__(self,key):return self.get(key)
-class fmtSolid:
- def __init__(self,fmtmarker=None,fmtsolid=None,fmtcolor=None):
-  self.solid=FMT(fmtmarker,fmtsolid,fmtcolor).fmt_txt
