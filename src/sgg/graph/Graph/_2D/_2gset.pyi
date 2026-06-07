@@ -1,8 +1,8 @@
-from mpl_toolkits.mplot3d.axes3d import Axes3D
-from ....typing import *
-__all__=['_3Gset']
-class _3Gset:
- ax:Axes3D
+from matplotlib.axes._axes import Axes
+from ...typing import *
+__all__=['_2Gset']
+class _2Gset:
+ ax:Axes
  def winsize(self)->TupleInt2:'''ウィジェットの現在の幅と高さを返す。
 
  :return: ウィジェットの現在の幅と高さをタプルで返す。
@@ -59,18 +59,16 @@ class _3Gset:
  def screen(self)->str:'''スクリーンの名前を返す。'''
  def id(self)->int:'''ウィジェットのウィンドウ識別子を返す。'''
  def name(self):'''ウィジェットのインスタンス名を返す。'''
- def invert(self):'''x軸,y軸,z軸の軸を反転させる。'''
+ def invert(self):'''x軸,y軸の軸を反転させる。'''
  def invert_x(self):'''x軸の軸を反転させる。'''
  def invert_y(self):'''y軸の軸を反転させる。'''
- def invert_z(self):'''z軸の軸を反転させる。'''
  def getbound(self)->tuple[
 Typetuple_float64,
-Typetuple_float64,
 Typetuple_float64
-]:'''x軸,y軸,z軸の順で表示されている範囲の下限値と上限値を返す。
+]:'''表示されているx軸,y軸の範囲の下限値と上限値を昇順で返す。
 
- :return: x軸,y軸,z軸の順で表示されている範囲の下限値と上限値のtupleを返す。
- :rtype: tuple[Typetuple_float64,Typetuple_float64,Typetuple_float64]'''
+ :return: x軸,y軸の順で表示されている範囲の下限値と上限値のtupleを返す。
+ :rtype: tuple[Typetuple_float64,Typetuple_float64]'''
  def getxbound(self)->Typetuple_float64:'''表示されているx軸の範囲の下限値と上限値を昇順で返す。
 
  :return: 表示されているx軸の範囲の下限値と上限値のtupleを返す。
@@ -79,11 +77,15 @@ Typetuple_float64
 
  :return: 表示されているy軸の範囲の下限値と上限値のtupleを返す。
  :rtype: Typetuple_float64'''
- def getzbound(self)->Typetuple_float64:'''表示されているz軸の範囲の下限値と上限値を昇順で返す。
+ def getticks(self)->tuple[ndarray,ndarray]:'''x軸,y軸の目盛りの位置を返す。
 
- :return: 表示されているz軸の範囲の下限値と上限値のtupleを返す。
- :rtype: Typetuple_float64'''
- def getticks(self)->tuple[ndarray,ndarray,ndarray]:'''x軸,y軸,z軸の目盛りの位置を座標で返します。'''
- def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返します。'''
- def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返します。'''
- def getzticks(self)->ndarray:'''z軸の目盛りの位置を座標で返します。'''
+ :return: x軸,y軸の目盛りの位置を返す。
+ :rtype: tuple[ndarray,ndarray]'''
+ def getxticks(self)->ndarray:'''x軸の目盛りの位置を座標で返す。
+
+ :return: x軸の目盛りの位置を返す。
+ :rtype: ndarray'''
+ def getyticks(self)->ndarray:'''y軸の目盛りの位置を座標で返す。
+
+ :return: y軸の目盛りの位置を返す。
+ :rtype: ndarray'''

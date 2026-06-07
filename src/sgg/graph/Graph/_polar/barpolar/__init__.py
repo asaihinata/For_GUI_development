@@ -9,7 +9,7 @@ class Barpolar(polarElement):
   self.plot(self.x,self.y,alpha=self.alpha,width=self.width,align=self.align,logs=self.logs,color=self.color)
  def plot(self,x,y,alpha=1,width=1,align='center',logs=False,color=None):
   self.clear()
-  self.graphdata=self.ax.bar(x,y,log=logs,bottom=0,color=color,alpha=alpha,width=width,align=align)
+  self.graphdata=[self.ax.bar(x,y,log=logs,bottom=0,color=color,alpha=alpha,width=width,align=align)]
   self._adjustment()
  def update(self,x=None,y=None,data=None,**kw):
   self._updates(**kw)
@@ -21,6 +21,6 @@ class Barpolar(polarElement):
   self.logs=bols(kw.get('logs'),self.logs)
   self.plot(self.x,self.y,alpha=self.alpha,width=self.width,align=self.align,logs=self.logs,color=self.color)
   self._redraw()
- def get(self):return [self.graphdata]
+ def get(self):return self.graphdata
  def getx(self):return self.x
  def gety(self):return self.y

@@ -23,6 +23,6 @@ class Linepolar(polarElement):
   self.linewidth=num0(kw.get('linewidth'),2)
   self.plot(self.x,self.y,marker=self.marker,linewidth=self.linewidth,linestyle=self.line,markersize=self.markersize,alpha=self.alpha)
   self._redraw()
- def get(self):return [self.graphdata]
+ def get(self):return self.graphdata
  def getx(self):return self.x
  def gety(self):return self.y

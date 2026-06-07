@@ -8,12 +8,9 @@ method_list=[
 'averaged_inverted_cdf',
 'closest_observation',
 'interpolated_inverted_cdf',
-'hazen',
-'weibull',
-'linear',
+'hazen','weibull','linear',
 'median_unbiased',
-'normal_unbiased'
-]
+'normal_unbiased']
 class NPNumber(NPArray):
  def __init__(self,data,dtype=np.float64,depth_limit=None,axis=None):
   if not numberDtype(dtype):

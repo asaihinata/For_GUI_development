@@ -11,7 +11,7 @@ class Stempolar(polarElement):
  def _func(self,alpha=1):[i.set_alpha(alpha)for i in self.graphdata.get_children()]
  def plot(self,x,y,bottom=0,linefmt=None,markerfmt=None,basefmt=None,alpha=1):
   self.clear()
-  self.graphdata=self.ax.stem(x,y,bottom=bottom,linefmt=linefmt,markerfmt=markerfmt,basefmt=basefmt)
+  self.graphdata=[self.ax.stem(x,y,bottom=bottom,linefmt=linefmt,markerfmt=markerfmt,basefmt=basefmt)]
   np.vectorize(self._func)(alpha)
   self._adjustment()
  def update(self,x=None,y=None,data=None,**kw):
@@ -25,6 +25,6 @@ class Stempolar(polarElement):
   self.bottom=nums(kw.get('bottom'),self.bottom)
   self.plot(self.x,self.y,bottom=self.bottom,linefmt=self.linefmt,markerfmt=self.markerfmt,basefmt=self.basefmt,alpha=self.alpha)
   self._redraw()
- def get(self):return [self.graphdata]
+ def get(self):return self.graphdata
  def getx(self):return self.x
  def gety(self):return self.y

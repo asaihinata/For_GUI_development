@@ -1,7 +1,6 @@
 '''基本的な統計の計算をするモジュール'''
 import numpy as np
 from ..npNumber import NPNumber
-from ..dtype import integerDtype
 from ._math import *
 __all__=['NPStatisticsd']
 method_list=[
@@ -10,13 +9,11 @@ method_list=[
 'closest_observation',
 'interpolated_inverted_cdf',
 'hazen','weibull','linear',
-'median_unbiased',
-'normal_unbiased'
-]
+'median_unbiased','normal_unbiased']
 class NPStatisticsd:
  def __init__(self,data):
-  if isinstance(data,NPNumber|np.ndarray):
-   self.__data=data.data if isinstance(data,NPNumber) else data
+  if isinstance(data,np.ndarray):self.__data=data
+  elif isinstance(data,NPNumber):self.__data=data.data
   else:
    raise TypeError('dataにはNPNumberもしくはnp.ndarrayを指定してください')
  def __repr__(self):return f'NPStatisticsd({self.__data})'

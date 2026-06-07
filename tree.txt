@@ -102,8 +102,7 @@ For_GUI_development
  │   │   │   │       └── __init__.pyi
  │   │   │   ├── graph
  │   │   │   │   ├── _2d
- │   │   │   │   │   ├── _2gset
- │   │   │   │   │   │   └── __init__.py
+ │   │   │   │   │   ├── _2gset.pyi
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   ├── bargraph
  │   │   │   │   │   │   ├── __init__.py
@@ -181,16 +180,14 @@ For_GUI_development
  │   │   │   │   │       ├── __init__.py
  │   │   │   │   │       └── __init__.pyi
  │   │   │   │   ├── _3d
- │   │   │   │   │   ├── _3gset
- │   │   │   │   │   │   └── __init__.py
+ │   │   │   │   │   ├── _3gset.pyi
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── dscatter
  │   │   │   │   │       ├── __init__.py
  │   │   │   │   │       └── __init__.pyi
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── _polar
- │   │   │   │   │   ├── _Polarset
- │   │   │   │   │   │   └── __init__.py
+ │   │   │   │   │   ├── _Polarset.pyi
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   ├── barpolar
  │   │   │   │   │   │   ├── __init__.py
@@ -483,6 +480,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-     └── extensions.json
-ファイル数:334
-フォルダ数:151
+ファイル数:333
+フォルダ数:148

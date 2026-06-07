@@ -21,6 +21,6 @@ class Scatterpolar(polarElement):
   self.linewidth=num0(kw.get('linewidth'),self.linewidth)
   self.plot(self.x,self.y,marker=self.marker,linewidth=self.linewidth,alpha=self.alpha,s=self.s)
   self._redraw()
- def get(self):return [self.graphdata]
+ def get(self):return self.graphdata
  def getx(self):return self.x
  def gety(self):return self.y

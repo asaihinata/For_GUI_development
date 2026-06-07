@@ -22,5 +22,5 @@ class Eventpolar(polarElement):
   self.linestyle=Solid(kw.get('linestyle',self.linestyle)).solid
   self.plot(self.data,orientation=self.orientation,linewidth=self.linewidth,linelength=self.linelength,alpha=self.alpha,linestyle=self.linestyle)
   self._redraw()
- def get(self):return [self.graphdata]
+ def get(self):return self.graphdata
  def getdata(self):return self.data

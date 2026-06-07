@@ -1,8 +1,9 @@
-from matplotlib.axes._axes import Axes
-from ....typing import *
-__all__=['_2Gset']
-class _2Gset:
- ax:Axes
+from matplotlib.projections.polar import PolarAxes
+from numpy import ndarray
+from ...typing import *
+__all__=['_polarset']
+class _polarset:
+ ax:PolarAxes
  def winsize(self)->TupleInt2:'''ウィジェットの現在の幅と高さを返す。
 
  :return: ウィジェットの現在の幅と高さをタプルで返す。

@@ -21,9 +21,8 @@ class Violinpolar(polarElement):
   self.plot(self.data,positions=self.positions,alpha=self.alpha,width=self.width,points=self.points,showextrema=self.showextrema,showmeans=self.showmeans,showmedians=self.showmedians,side=self.side,orientation=self.orientation,bwmethod=self.bwmethod)
  def plot(self,data,positions=None,alpha=1,width=1,points=100,showextrema=True,showmeans=False,showmedians=False,side='both',orientation='vertical',bwmethod='scott'):
   self.clear()
-  self.graphdata=self.ax.violinplot(data,positions=positions,widths=width,points=points,showextrema=showextrema,showmedians=showmedians,showmeans=showmeans,side=side,orientation=orientation,bw_method=bwmethod)
-  for i in self.graphdata['bodies']:
-   i.set_alpha(alpha)
+  self.graphdata=[self.ax.violinplot(data,positions=positions,widths=width,points=points,showextrema=showextrema,showmedians=showmedians,showmeans=showmeans,side=side,orientation=orientation,bw_method=bwmethod)]
+  for i in self.graphdata['bodies']:i.set_alpha(alpha)
   self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
@@ -43,7 +42,7 @@ class Violinpolar(polarElement):
   self.side=listchose(kw.get('side'),['both','low','high'],self.side)
   self.plot(self.data,positions=self.positions,alpha=self.alpha,width=self.width,points=self.points,showextrema=self.showextrema,showmeans=self.showmeans,showmedians=self.showmedians,side=self.side,orientation=self.orientation,bwmethod=self.bwmethod)
   self._redraw()
- def get(self):return [self.graphdata]
+ def get(self):return self.graphdata
  def getx(self):return self.x
  def gety(self):return self.y
  def getdata(self):return self.data
