@@ -1,9 +1,8 @@
 '''基本的な統計の計算をするモジュール'''
-from typing import Any,TypeAlias,Literal
-from numpy import ndarray
+from typing import Any,Literal,TypeAlias
+from numpy import float64,ndarray
 from numpy.typing import ArrayLike,NDArray
 from ..npNumber import NPNumber
-from ._math import Population
 __all__=['NPStatisticsd']
 BINS_LIST:TypeAlias=Literal['stone','auto','scott','doane','fd','rice','sqrt','sturges']
 METHOD_LIST:TypeAlias=Literal[
@@ -13,46 +12,46 @@ METHOD_LIST:TypeAlias=Literal[
 'interpolated_inverted_cdf',
 'hazen','weibull','linear',
 'median_unbiased',
-'normal_unbiased'
-]
+'normal_unbiased']
 class NPStatisticsd:
  def __init__(
 self,
 data:NPNumber|ndarray=...
-):...
+)->None:'''基本的な統計の計算をする
+
+ :param data: 配列を指定する。
+ :type data: NPNumber|ndarray'''
  def __repr__(self)->str:...
  @property
- def data(self)->ndarray:...
+ def sum(self):'''配列の合計を求める'''
  @property
- def sum(self):'''`data`の合計を求める'''
+ def mean(self):'''配列の算術平均を求める'''
  @property
- def mean(self):'''`data`の算術平均を求める'''
+ def ave(self):'''配列の加重平均を求める'''
  @property
- def ave(self):'''`data`の加重平均を求める'''
+ def max(self):'''配列の最大値を求める'''
  @property
- def min(self):'''`data`の最低値を求める'''
+ def min(self):'''配列の最低値を求める'''
  @property
- def max(self):'''`data`の最大値を求める'''
+ def var(self):'''配列の分散を求める'''
  @property
- def var(self):'''`data`の分散を求める'''
+ def std(self):'''配列の標準偏差を求める'''
  @property
- def std(self):'''`data`の標準偏差を求める'''
+ def pow2(self):'''配列を2乗した値を求める'''
  @property
- def pow2(self):'''`data`を2乗した値を求める'''
+ def deviation(self):'''配列内の偏差値を求める。'''
  @property
- def deviation(self):'''偏差値を求める。'''
+ def log(self):'''配列の底が`e`の対数を求める'''
  @property
- def log(self):'''`data`の底が`e`の対数を求める'''
+ def log10(self):'''配列の底が`10`の対数を求める'''
  @property
- def log10(self):'''`data`の底が`10`の対数を求める'''
- @property
- def log2(self):'''`data`の底が`2`の対数を求める'''
+ def log2(self):'''配列の底が`2`の対数を求める'''
  @property
  def log1p(self):'''np.log1p(data)を返す'''
  @property
  def devsq(self):'''偏差平方和を求める。'''
  @property
- def range(self):'''`data`の範囲を求める'''
+ def range(self):'''配列の範囲を求める'''
  @property
  def skew(self):'''歪度を求める。'''
  @property
@@ -86,23 +85,21 @@ method:METHOD_LIST='linear'
  def IQR(
 axis:int|None=None,
 method:METHOD_LIST='linear'
-):'''`data`の四分位範囲を求める。
+):'''配列の四分位範囲を求める。
 
  :param axis: 計算する軸を指定する。
  :type axis: int|None
  :param method: 分位点を推定するために使用する方法を指定する。
  :type method: METHOD_LIST'''
+ @property
  def outlier(self):'''四分位範囲の外れ値を求める。'''
- def population(self)->Population:'''data`の母集団を求める。
-
- :return: `Population`を返す。
- :rtype: Population'''
  @property
  def CV(self):'''変動係数を求める。'''
  @property
- def n(self):'''長さの数値を返す。'''
+ def n(self)->int:'''配列の長さの数を返す。'''
  @property
- def n1(self):'''長さの数値-1の値を返す。'''
+ def n1(self)->int:'''配列の長さの数-1の値を返す。'''
+ # ヒストグラム
  def hist_bin_edges(
 self,
 bins:int|BINS_LIST|ArrayLike=10,
@@ -118,3 +115,63 @@ weights:ArrayLike|None=None
  :type weights: ArrayLike|None
  :return: `bins`で指定された計算方法で計算した結果を返す。
  :rtype: NDArray[Any]'''
+ def histogram(
+self,
+bins:int|BINS_LIST|ArrayLike=10,
+range:tuple[float,float]|None=None,
+weights:ArrayLike|None=None
+)->tuple[NDArray,NDArray]:'''配列のヒストグラムを求める。
+
+ :param bins: ビンの数や計算方法を指定する。
+ :type bins: int|BINS_LIST|ArrayLike
+ :param range: ビンの下限と上限を指定する。
+ :type range: tuple[float,float]|None
+ :param weights: 重みを指定する。
+ :type weights: ArrayLike|None
+ :return: 区間内のデータの個数と区間を区切る境界の値を返す。
+ :rtype: tuple[NDArray,NDArray]'''
+ # 母集団
+ def ratio_E_samplingerror(
+self,
+parcent:int|float,
+cc:int|float
+)->float64:'''母比率の標本誤差を求める
+
+ :param parcent: 割合を指定する。
+ :type parcent: int|float
+ :param cc: 信頼係数を指定する。
+ :type cc: int|float
+ :raises TypeError: `parcent`をint型もしくはfloat型で指定しなかった場合に発生させる
+ :raises ValueError: 0.0<=`parcent`<=1.0の範囲で指定しなかった場合に発生させる
+ :raises TypeError: 信頼係数`cc`にint型もしくはfloat型で指定しなかった場合に発生させる
+ :raises ValueError: 信頼係数`cc`に0.0から1.0の範囲で指定しなかった場合に発生させる'''
+ def ratio_E(self,p:int|float)->tuple[float64,float64]:'''母比率の上限値と下限値を求める
+
+ :param parcent: 割合を指定する。
+ :type parcent: int|float
+ :param cc: 信頼係数を指定する。
+ :type cc: int|float
+ :raises TypeError: `parcent`をint型もしくはfloat型で指定しなかった場合に発生させる
+ :raises ValueError: 0.0<=`parcent`<=1.0の範囲で指定しなかった場合に発生させる
+ :raises TypeError: 信頼係数`cc`にint型もしくはfloat型で指定しなかった場合に発生させる
+ :raises ValueError: 信頼係数`cc`に0.0から1.0の範囲で指定しなかった場合に発生させる'''
+ def ave_E_samplingerror(
+self,
+cc:int|float=0.95
+)->float64:'''母平均の推定をする。
+
+ :param cc: 信頼係数を指定する。
+ :type cc: int|float'''
+ def ave_E(
+self,
+cc:float=0.95
+)->tuple[float64,float64]:'''母平均の上限値と下限値を求める
+
+ :param cc: 信頼係数を指定する。
+ :type cc: int|float'''
+def cCoefficient(p:int|float=0.95)->float64:'''信頼係数を求める
+
+ :param p: 信頼係数を指定する。
+ :type p: int|float
+ :raises TypeError: `p`がfloat型を指定しなかった場合に発生させる
+ :raises ValueError: `p`が0.0から1.0の範囲外を指定した場合に発生させる'''

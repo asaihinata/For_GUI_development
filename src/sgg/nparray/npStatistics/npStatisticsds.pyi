@@ -1,10 +1,10 @@
 '''基本的な統計の計算をするモジュール'''
-from typing import Any,TypeAlias,Literal,overload
+from typing import Any,Literal,TypeAlias,overload
 from numpy import floating,ndarray
 from numpy._typing import _ArrayLikeFloat_co
-from numpy.typing import NDArray,ArrayLike
+from numpy.typing import NDArray
 from ..npNumber import NPNumber
-from ._math import Population
+from .npStatisticsd import NPStatisticsd
 __all__=['NPStatisticsds']
 BINS_LIST:TypeAlias=Literal['stone','auto','scott','doane','fd','rice','sqrt','sturges']
 METHOD_LIST:TypeAlias=Literal[
@@ -14,12 +14,8 @@ METHOD_LIST:TypeAlias=Literal[
 'interpolated_inverted_cdf',
 'hazen','weibull','linear',
 'median_unbiased',
-'normal_unbiased'
-]
+'normal_unbiased']
 class NPStatisticsds:
- x:ndarray
- y:ndarray
- data:ndarray
  @overload
  def __init__(
 self,
@@ -32,216 +28,18 @@ x:NPNumber|ndarray=...,
 y:NPNumber|ndarray=...
 ):...
  def __repr__(self)->str:...
- ########
- #  x  #
- ########
  @property
- def x(self):...
+ def x(self):'''`x`の配列を返す。'''
  @property
- def xsum(self):...
+ def y(self):'''`y`の配列を返す。'''
  @property
- def xave(self):...
+ def data(self):'''`data`の配列を返す。'''
  @property
- def xmin(self):...
+ def xmath(self)->NPStatisticsd:...
  @property
- def xmax(self):...
+ def ymath(self)->NPStatisticsd:...
  @property
- def xmean(self):...
- @property
- def xvar(self):...
- @property
- def xstd(self):...
- @property
- def xpow2(self):...
- @property
- def xdeviation(self):'''`x`の偏差値を求める。'''
- @property
- def xlog(self):...
- @property
- def xlog10(self):...
- @property
- def xlog2(self):...
- @property
- def xlog1p(self):...
- @property
- def xdevsq(self):'''`x`の偏差平方和を求める。'''
- @property
- def xrange(self):...
- @property
- def xskew(self):'''`x`の歪度を求める。'''
- @property
- def xkurtosis(self):'''`x`の尖度を求める。'''
- def xpercentile(
-self,
-q:tuple[float,...],
-axis=None,
-method:METHOD_LIST='linear'
-):...
- def xquantile(
-self,
-q:tuple[int|float,...],
-axis=None,
-method:METHOD_LIST='linear'
-):...
- def xoutlier(self):...
- def xpopulation(self)->Population:...
- def xhist_bin_edges(
-self,
-bins:int|BINS_LIST|ArrayLike=10,
-range:tuple[float,float]|None=None,
-weights:ArrayLike|None=None
-)->NDArray[Any]:'''`bins`で指定された計算方法で計算されたビンの境界を求める。
-
- :param bins: ビンの数や計算方法を指定する。
- :type bins: int|BINS_LIST|ArrayLike
- :param range: ビンの下限と上限を指定する。
- :type range: tuple[float,float]|None
- :param weights: 重みを指定する。
- :type weights: ArrayLike|None
- :return: `bins`で指定された計算方法で計算した結果を返す。
- :rtype: NDArray[Any]'''
- ########
- #  y  #
- ########
- @property
- def y(self):...
- @property
- def ysum(self):...
- @property
- def yave(self):...
- @property
- def ymin(self):...
- @property
- def ymax(self):...
- @property
- def ymean(self):...
- @property
- def yvar(self):...
- @property
- def ystd(self):...
- @property
- def ypow2(self):...
- @property
- def ydeviation(self):'''`y`の偏差値を求める。'''
- @property
- def ylog(self):...
- @property
- def ylog10(self):...
- @property
- def ylog2(self):...
- @property
- def ylog1p(self):...
- @property
- def ydevsq(self):'''`y`の偏差平方和を求める。'''
- @property
- def yrange(self):...
- @property
- def yskew(self):'''`y`の歪度を求める。'''
- @property
- def ykurtosis(self):'''`y`の尖度を求める。'''
- def ypercentile(
-self,
-q:tuple[float,...],
-axis=None,
-method:METHOD_LIST='linear'
-):...
- def yquantile(
-self,
-q:tuple[int|float,...],
-axis=None,
-method:METHOD_LIST='linear'
-):...
- def youtlier(self):...
- def ypopulation(self)->Population:...
- def yhist_bin_edges(
-self,
-bins:int|BINS_LIST|ArrayLike=10,
-range:tuple[float,float]|None=None,
-weights:ArrayLike|None=None
-)->NDArray[Any]:'''`bins`で指定された計算方法で計算されたビンの境界を求める。
-
- :param bins: ビンの数や計算方法を指定する。
- :type bins: int|BINS_LIST|ArrayLike
- :param range: ビンの下限と上限を指定する。
- :type range: tuple[float,float]|None
- :param weights: 重みを指定する。
- :type weights: ArrayLike|None
- :return: `bins`で指定された計算方法で計算した結果を返す。
- :rtype: NDArray[Any]'''
- ##########
- #  data  #
- ##########
- @property
- def data(self)->ndarray:...
- @property
- def sum(self):...
- @property
- def ave(self):...
- @property
- def min(self):...
- @property
- def max(self):...
- @property
- def mean(self):...
- @property
- def var(self):...
- @property
- def std(self):...
- @property
- def pow2(self):...
- @property
- def deviation(self):'''`data`の偏差値を求める。'''
- @property
- def log(self):...
- @property
- def log10(self):...
- @property
- def log2(self):...
- @property
- def log1p(self):...
- @property
- def devsq(self):'''`data`の偏差平方和を求める。'''
- @property
- def range(self):...
- @property
- def skew(self):'''`data`の歪度を求める。'''
- @property
- def kurtosis(self):'''`data`の尖度を求める。'''
- def percentile(
-self,
-q:tuple[int|float,...],
-axis=None,
-method:METHOD_LIST='linear'
-):...
- def quantile(
-self,
-q:tuple[int|float,...],
-axis=None,
-method:METHOD_LIST='linear'
-):...
- def outlier(self):...
- def population(self)->Population:...
- def hist_bin_edges(
-self,
-bins:int|BINS_LIST|ArrayLike=10,
-range:tuple[float,float]|None=None,
-weights:ArrayLike|None=None
-)->NDArray[Any]:'''`bins`で指定された計算方法で計算されたビンの境界を求める。
-
- :param bins: ビンの数や計算方法を指定する。
- :type bins: int|BINS_LIST|ArrayLike
- :param range: ビンの下限と上限を指定する。
- :type range: tuple[float,float]|None
- :param weights: 重みを指定する。
- :type weights: ArrayLike|None
- :return: `bins`で指定された計算方法で計算した結果を返す。
- :rtype: NDArray[Any]'''
- @property
- def CV(self):'''変動係数を求める。'''
- @property
- def n(self):'''`data`の長さの数値を返す。'''
- @property
- def n1(self):'''`data`の長さの数値-1の値を返す。'''
+ def mathes(self)->NPStatisticsd:...
  def covariance(self):'''共分散を求める。'''
  def correlation(self):'''相関係数を求める。'''
  def correlation_coefficient(self):'''単相関係数を求める。'''
