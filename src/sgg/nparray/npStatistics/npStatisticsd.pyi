@@ -1,6 +1,6 @@
 '''基本的な統計の計算をするモジュール'''
-from typing import Any,Literal,TypeAlias
-from numpy import float64,ndarray
+from typing import Any,Literal,SupportsIndex,TypeAlias
+from numpy import float64,intp,ndarray
 from numpy.typing import ArrayLike,NDArray
 from ..npNumber import NPNumber
 __all__=['NPStatisticsd']
@@ -130,6 +130,18 @@ weights:ArrayLike|None=None
  :type weights: ArrayLike|None
  :return: 区間内のデータの個数と区間を区切る境界の値を返す。
  :rtype: tuple[NDArray,NDArray]'''
+ def bincount(
+self,
+weights:ArrayLike|None=None,
+min:SupportsIndex=0
+)->NDArray[intp]:'''非負整数の配列に含まれる各値の出現回数を数える。
+
+ :param weights: 重みを指定する。
+ :type weights: ArrayLike|None
+ :param min: 出力配列の最小ビン数を指定する。
+ :type min: SupportsIndex
+ :return: 入力配列をビン分割した結果を返す。
+ :rtype: NDArray[intp]'''
  # 母集団
  def ratio_E_samplingerror(
 self,

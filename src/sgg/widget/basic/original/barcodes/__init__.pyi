@@ -1,6 +1,6 @@
 from tkinter import Label
-from PIL.ImageTk import PhotoImage
 from typing import Any,Literal
+from PIL.ImageTk import PhotoImage
 from ....base import _Element
 class Barcode(_Element):
  imgs:PhotoImage

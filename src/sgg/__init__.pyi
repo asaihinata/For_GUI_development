@@ -647,26 +647,25 @@ key:str=...
  :type value: int|float'''
  @staticmethod
  def Barcode(
-data:Any=...,
+data:str|int=...,
+takefocus:bool=True,
 fotmat:Literal['codabar','code128','code39','ean','ean13','ean13-guard','ean14','ean8','ean8-guard','gs1','gs1_128','gtin','isbn','isbn10','isbn13','issn','itf','jan','nw-7','pzn','upc','upca']='code39',
 key:str=...
 )->dict[str,Any]:'''バーコードを作成する。
 
  :param data: バーコードで表示させる値を指定する。
- :type data: str
+ :type data: str|int
  :param format: バーコードの形式を指定する。
  :type format: Literal['codabar','code128','code39','ean','ean13','ean13-guard','ean14','ean8','ean8-guard','gs1','gs1_128','gtin','isbn','isbn10','isbn13','issn','itf','jan','nw-7','pzn','upc','upca']'''
  @staticmethod
  def QRImage(
 text:str=...,
-name:str='No Qrcode image',
+takefocus:bool=True,
 key:str=...
 )->dict[str,Any]:'''QRコードを作成する。
 
- :param text: QRコードを読みっとった際に表示させる値を指定する。
- :type text: str
- :param name: QRコードを生成する際,何らかの例外が起こった場合に表示する文字を指定する。
- :type name: str'''
+ :param text: QRコードを読み取った際に表示させる値を指定する。
+ :type text: str'''
  @staticmethod
  def LineGraph(
 x:n_array,

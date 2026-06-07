@@ -1,8 +1,8 @@
-from tkinter import Label
-from PIL.ImageTk import PhotoImage
 from io import BytesIO
+from tkinter import Label
 from barcode import get_class
 from barcode.writer import ImageWriter
+from PIL.ImageTk import PhotoImage
 from ...common import *
 from ...dev import Img_byte
 __all__=['Barcode']
