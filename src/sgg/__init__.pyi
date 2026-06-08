@@ -2029,7 +2029,6 @@ key:str=...
  @staticmethod
  def Step(
 data:n_array,
-range:int|float|TupleNumbertype2=...,
 fill:bool=False,
 baseline:int|float=0,
 orientation:Type_orientation='vertical',
@@ -2060,14 +2059,12 @@ ylabel:str=...,
 key:str=...
 )->dict[str,Any]:'''階段グラフを作成する。
 
+ :param data: `data`のデータを指定する。
+ :type data: n_array
  :param xlabel: x軸のラベルを指定する。
  :type xlabel: str
  :param ylabel: y軸のラベルを指定する。
  :type ylabel: str
- :param data: `data`のデータを指定する。
- :type data: n_array
- :param range: 階段の端の座標を配列もしくは数値で指定する。
- :type range: int|float|ListNumbertype2|TupleNumbertype2
  :param baseline: 階段の下端の開始位置を指定する。
  :type baseline: int|float
  :param fill: 階段の下部から`baseline`の間を塗りつぶすかを指定する。

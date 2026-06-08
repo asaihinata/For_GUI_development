@@ -4,8 +4,8 @@ __all__=['Errorbar']
 class Errorbar(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.x=self._manyarr(kw.get('x'))
-  self.y=self._manyarr(kw.get('y'))
+  self.x=NPNumber(kw.get('x'))
+  self.y=NPNumber(kw.get('y'))
   err,xerr,yerr=kw.get('err'),kw.get('xerr'),kw.get('yerr')
   self.xerr,self.yerr=None,None
   if err is not None:self.yerr=self.xerr=self.err=NPNumber(err)
@@ -34,8 +34,8 @@ class Errorbar(twoElement):
   self._adjustment()
  def update(self,x=None,y=None,err=None,xerr=None,yerr=None,**kw):
   self._updates(**kw)
-  if isinstance(x,nListlike):self.x=self._manyarr(x)
-  if isinstance(y,nListlike):self.y=self._manyarr(y)
+  if isinstance(x,nListlike):self.x=NPNumber(x)
+  if isinstance(y,nListlike):self.y=NPNumber(y)
   if isinstance(err,nListlike):
    self.yerr=self.xerr=self.err=NPNumber(err)
   if isinstance(xerr,nListlike):self.xerr=NPNumber(xerr)

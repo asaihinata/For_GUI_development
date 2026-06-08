@@ -4,7 +4,7 @@ __all__=['Stackedh']
 class Stackedh(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.data=self._manyarr(kw.get('data'))
+  self.data=NPNumber(kw.get('data'),axis=0)
   self.dataname=self._dataarr(kw.get('dataname'),False)
   if self.data.shape[0]!=self.dataname.shape[0]:
    raise ValueError('配列のエラー')
@@ -15,22 +15,24 @@ class Stackedh(twoElement):
  def plot(self,data,dataname,label=None,height=0.8):
   self.clear()
   self.ax.invert_yaxis()
-  self.ax.set_xlim(0,100)
   self.graphdata=[self._survey(data,dataname,label,height=height)]
+  self.legend()
+  self.ax.set_xlim(0,100)
   self.ax.xaxis.set_major_formatter(PercentFormatter(xmax=100))
   self._apply_labels(self.xlabel,self.ylabel)
   self._adjustment()
- def _survey(self,data:np.ndarray,dataname,label=None,height=0.8):
-  data,lens,lisarr=data.T,len(dataname),[]
-  data_percent,left=data/data.sum(axis=0)*100,np.zeros(lens)
+ def _survey(self,data:NPNumber,dataname,label=None,height=0.8):
+  data=data.T
+  lisarr=[]
+  data_percent=data/data.sum*100
+  left=np.zeros(len(dataname))
   for i,ds in enumerate(data_percent):
    lisarr=self.ax.barh(dataname,ds,left=left,label=label[i],height=height)
    left+=ds
-  self.legend()
   return lisarr
  def update(self,data=None,dataname=None,**kw):
   self._updates(**kw)
-  if isinstance(data,nListlike):self.data=self._manyarr(data)
+  if isinstance(data,nListlike):self.data=NPNumber(data,axis=0)
   if isinstance(dataname,nListlike):self.dataname=self._dataarr(dataname,False)
   if self.data.shape[0]!=self.dataname.shape[0]:
    raise ValueError('配列のエラー')

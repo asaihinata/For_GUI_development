@@ -1,11 +1,10 @@
-from itertools import product
 from ...dev import *
 __all__=['LineGraph']
 class LineGraph(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.x=self._manyarr(kw.get('x'))
-  self.y=self._manyarr(kw.get('y'))
+  self.x=NPArray(kw.get('x'))
+  self.y=NPArray(kw.get('y'))
   self.marker=MarkerList(kw.get('marker','none'))
   self.markersize=num0(kw.get('markersize'),10)
   self.line=Solidlist(kw.get('linestyle','-'))
@@ -13,14 +12,14 @@ class LineGraph(twoElement):
   self.plot(self.x,self.y,marker=self.marker,linewidth=self.linewidth,linestyle=self.line,markersize=self.markersize,alpha=self.alpha,label=self.label)
  def plot(self,x,y,marker,linewidth=2,linestyle='-',markersize=10,alpha=1,label=None):
   self.clear()
-  self.graphdata=[self.ax.plot(xs,ys,linestyle=linestyle[i],linewidth=linewidth,marker=marker[i],markersize=markersize,alpha=alpha,label=label[i])for i,(xs,ys) in enumerate(product(x,y))]
+  self.graphdata=[self.ax.plot(xs,ys,linestyle=linestyle[i],linewidth=linewidth,marker=marker[i],markersize=markersize,alpha=alpha,label=label[i])for i,(xs,ys) in enumerate(TwoArray(x,y))]
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,nListlike):self.x=self._manyarr(x)
-  if isinstance(y,nListlike):self.y=self._manyarr(y)
+  if isinstance(x,nListlike):self.x=NPArray(x)
+  if isinstance(y,nListlike):self.y=NPArray(y)
   markers=kw.get('marker',None)
   if markers!=None:self.marker=MarkerList(markers)
   self.markersize=num0(kw.get('markersize'),self.markersize)

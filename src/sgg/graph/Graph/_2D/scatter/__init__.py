@@ -1,25 +1,24 @@
-from itertools import product
 from ...dev import *
 __all__=['Scatter']
 class Scatter(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.x=self._manyarr(kw.get('x'))
-  self.y=self._manyarr(kw.get('y'))
+  self.x=NPArray(kw.get('x'))
+  self.y=NPArray(kw.get('y'))
   self.marker=MarkerList(kw.get('marker','o'))
   self.s=num1s(kw.get('markersize'),10)
   self.linewidth=num0(kw.get('linewidth'),2)
   self.plot(self.x,self.y,marker=self.marker,linewidth=self.linewidth,alpha=self.alpha,label=self.label,s=self.s)
  def plot(self,x,y,marker,linewidth=2,alpha=1,label=None,s=10):
   self.clear()
-  self.graphdata=[self.ax.scatter(xs,ys,marker=marker[i],s=s,alpha=alpha,linewidth=linewidth,label=label[i])for i,(xs,ys) in enumerate(product(x,y))]
+  self.graphdata=[self.ax.scatter(xs,ys,marker=marker[i],s=s,alpha=alpha,linewidth=linewidth,label=label[i])for i,(xs,ys) in enumerate(TwoArray(x,y))]
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,nListlike):self.x=self._manyarr(x)
-  if isinstance(y,nListlike):self.y=self._manyarr(y)
+  if isinstance(x,nListlike):self.x=NPArray(x)
+  if isinstance(y,nListlike):self.y=NPArray(y)
   markers=kw.get('marker','none')
   if markers!='none':self.marker=MarkerList(markers)
   self.s=num1s(kw.get('markersize'),self.s)

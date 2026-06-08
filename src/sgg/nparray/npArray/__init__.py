@@ -104,12 +104,12 @@ class NPArray:
    for _ in range(val-self.ndim):self.__data=np.expand_dims(self.__data,axis=0)
   return self
  def get(self,val):
-  if not isinstance(val,int):
-   raise TypeError('valにはint型を指定してください')
-  data,size=self.__data.flatten(),self.size
-  if val==size:return data[val-1]
-  elif val<size:return data[val]
-  elif size<val:return data[val%size]
+  if isinstance(val,int):
+   data,size=self.__data.flatten(),self.size
+   if val==size:return data[val-1]
+   elif val<size:return data[val]
+   elif size<val:return data[val%size]
+  else:return self.__data[val]
  def clear(self):
   self.__data=np.array([],dtype=self.__dtype)
   return self

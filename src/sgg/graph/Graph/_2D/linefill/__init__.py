@@ -3,27 +3,25 @@ __all__=['Linefill']
 class Linefill(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.x=self._dataarr(kw.get('x'),False)
-  self.ymax=self._manyarr(kw.get('ymax'))
-  self.ymin=self._manyarr(kw.get('ymin'))
+  self.x=NPNumber(kw.get('x'),depth_limit=1)
+  self.ymax=NPNumber(kw.get('ymax'),depth_limit=1)
+  self.ymin=NPNumber(kw.get('ymin'),depth_limit=1)
   self.centerlinewidth=num0(kw.get('centerlinewidth'),2)
   self.alpha=range_num(num0s(kw.get('alpha'),0.5),0,1,0.5)
   self.plot(self.x,self.ymax,self.ymin,alpha=self.alpha,centerlinewidth=self.centerlinewidth)
  def plot(self,x,ymax,ymin,alpha=0.5,centerlinewidth=2):
   self.clear()
-  for i in range(self.max_depth):
-   ya,yi=ymax[i],ymin[i]
-   fill=self.ax.fill_between(x,ya,yi,alpha=alpha,label=self.label[i])
-   plot=self.ax.plot(x,(yi+ya)/2,linewidth=centerlinewidth,solid_capstyle='butt')
-   self.graphdata.append([fill,plot[0]])
+  fill=self.ax.fill_between(x,ymax,ymin,alpha=alpha,label=list(self.label))
+  plot=self.ax.plot(x,(ymax+ymin)/2,linewidth=centerlinewidth,solid_capstyle='butt')
+  self.graphdata.append([fill,plot[0]])
   self._apply_labels(self.xlabel,self.ylabel)
   self.legend()
   self._adjustment()
  def update(self,x=None,ymax=None,ymin=None,**kw):
   self._updates(**kw)
-  if isinstance(x,nListlike):self.x=self._dataarr(x,False)
-  if isinstance(ymax,nListlike):self.ymax=self._manyarr(ymax)
-  if isinstance(ymin,nListlike):self.ymin=self._manyarr(ymin)
+  if isinstance(x,nListlike):self.x=NPNumber(x,depth_limit=1)
+  if isinstance(ymax,nListlike):self.ymax=NPNumber(ymax,depth_limit=1)
+  if isinstance(ymin,nListlike):self.ymin=NPNumber(ymin,depth_limit=1)
   self.centerlinewidth=num0(kw.get('centerlinewidth'),self.centerlinewidth)
   self.plot(self.x,self.ymax,self.ymin,alpha=self.alpha,centerlinewidth=self.centerlinewidth)
   self._redraw()

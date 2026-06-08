@@ -3,41 +3,46 @@ __all__=['Violinplot']
 class Violinplot(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.data=self._dataarr(kw.get('data'),False)
-  self.x=self._dataarr(kw.get('x',[]),False)
-  self.y=self._dataarr(kw.get('y',[]),False)
+  self.data=NPNumber(kw.get('data'))
+  self.x=NPNumber(kw.get('x',[]),depth_limit=1)
+  self.y=NPNumber(kw.get('y',[]),depth_limit=1)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
   self.width=range_num(num0s(kw.get('width'),1),0,1,1)
   self.showextrema=bols(kw.get('showextrema'))
   self.showmeans=bols(kw.get('showmeans'),False)
   self.showmedians=bols(kw.get('showmedians'),False)
   self.points=num1s(kw.get('points'),100)
-  bwmethod=kw.get('bw_method')
-  if bwmethod in ['scott','silverman'] or isinstance(bwmethod,int|float|FunctionType):self.bwmethod=bwmethod
-  else:self.bwmethod='scott'
+  bwmethod=kw.get('bw_method','scott')
+  if bwmethod in ['scott','silverman']:
+   self.bwmethod=bwmethod
+  elif isinstance(bwmethod,int|float|FunctionType):
+   self.bwmethod=bwmethod
+  else:
+   self.bwmethod='scott'
   self.side=listchose(kw.get('side'),['both','low','high'])
   self.plot(self.data,self.x,self.y,alpha=self.alpha,width=self.width,points=self.points,showextrema=self.showextrema,showmeans=self.showmeans,showmedians=self.showmedians,side=self.side,orientation=self.orientation,bwmethod=self.bwmethod)
  def plot(self,data,x,y,alpha=1,width=1,points=100,showextrema=True,showmeans=False,showmedians=False,side='both',orientation='vertical',bwmethod='scott'):
   self.clear()
-  if orientation=='vertical' and x.size!=0:positions=x
-  elif orientation=='horizontal' and y.size!=0:positions=y
+  if orientation=='vertical' and x.size!=0:positions=x.tonp()
+  elif orientation=='horizontal' and y.size!=0:positions=y.tonp()
   else:positions=np.arange(1,data.shape[1]+1)
-  self.graphdata=[self.ax.violinplot(data,positions=positions,widths=width,points=points,showextrema=showextrema,showmedians=showmedians,showmeans=showmeans,side=side,orientation=orientation,bw_method=bwmethod)]
-  for i in self.graphdata['bodies']:i.set_alpha(alpha)
+  self.graphdata=[self.ax.violinplot(data.tonp(),positions=positions,widths=width,points=points,showextrema=showextrema,showmedians=showmedians,showmeans=showmeans,side=side,orientation=orientation,bw_method=bwmethod)]
+  for i in self.graphdata[0]['bodies']:i.set_alpha(alpha)
   self._adjustment()
  def update(self,data=None,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(data,nListlike):self.data=self._dataarr(data)
-  if isinstance(x,nListlike):self.data=self._dataarr(x)
-  if isinstance(y,nListlike):self.data=self._dataarr(y)
+  if isinstance(data,nListlike):self.data=NPNumber(data)
+  if isinstance(x,nListlike):self.data=NPNumber(x,depth_limit=1)
+  if isinstance(y,nListlike):self.data=NPNumber(y,depth_limit=1)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)
   self.width=range_num(num0s(kw.get('width'),self.width),0,1,self.width)
   self.showextrema=bols(kw.get('showextrema'),self.showextrema)
   self.showmeans=bols(kw.get('showmeans'),self.showmeans)
   self.showmedians=bols(kw.get('showmedians'),self.showmedians)
   self.points=num1s(kw.get('points'),self.points)
-  bwmethod=kw.get('bw_method',self.bwmethod)
-  if bwmethod in ['scott','silverman'] or isinstance(bwmethod,int|float|FunctionType):self.bwmethod=bwmethod
+  bwmethod=kw.get('bw_method')
+  if bwmethod in ['scott','silverman'] or isinstance(bwmethod,int|float|FunctionType):
+   self.bwmethod=bwmethod
   self.side=listchose(kw.get('side'),['both','low','high'],self.side)
   self.plot(self.data,self.x,self.y,alpha=self.alpha,width=self.width,points=self.points,showextrema=self.showextrema,showmeans=self.showmeans,showmedians=self.showmedians,side=self.side,orientation=self.orientation,bwmethod=self.bwmethod)
   self._redraw()

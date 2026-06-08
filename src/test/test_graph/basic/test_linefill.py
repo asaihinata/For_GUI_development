@@ -6,7 +6,7 @@ if __name__=="__main__":
   print(f"{radomdata1=}")
   print(f"{radomdata2=}")
   linefill:Linefill=win.get("linefill")
-  linefill.update(x=linefillx,ymax=radomdata1,ymin=radomdata2)
+  linefill.update(ymax=radomdata1,ymin=radomdata2)
  print(f"{linefillx=}")
  print(f"{linefillymax=}")
  print(f"{linefillymin=}")

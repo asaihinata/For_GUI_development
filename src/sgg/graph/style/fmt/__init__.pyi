@@ -2,6 +2,7 @@
 from collections.abc import Iterator
 from typing import Literal,TypeAlias
 import numpy as np
+from ....nparray import NPString
 __all__=['FMT','fmtstyle']
 MarkerType:TypeAlias=Literal[
 '.',',','o',
@@ -31,3 +32,9 @@ style:Literal['color','marker','solid']='color'
  def __iter__(self)->Iterator[str]:...
  @property
  def arr(self)->np.ndarray:...
+class FMTLineList(NPString):
+ def __init__(self,data)->None:...
+class FMTColorList(NPString):
+ def __init__(self,data)->None:...
+class FMTMarkList(NPString):
+ def __init__(self,data)->None:...

@@ -1,4 +1,3 @@
-from itertools import product
 from ...dev import *
 __all__=['Stem']
 stem_line_list=['-','--','-.','-.']
@@ -7,17 +6,18 @@ stem_color_list=['r','g','b','c','m','y','k','w']
 class Stem(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.x=self._manyarr(kw.get('x'))
-  self.y=self._manyarr(kw.get('y'))
-  self.colorlist=self._list_loop(self._stem_color_check(kw.get('fcolor')),self.max_depth)
-  self.line=self._list_loop(self._linefmt(kw.get('fline')),self.max_depth)
-  self.marker=self._list_loop(self._markerfmt(kw.get('fmarker')),self.max_depth)
+  self.x=NPNumber(kw.get('x'))
+  self.y=NPNumber(kw.get('y'))
+  self.colorlist=FMTColorList(kw.get('fcolor'))
+  self.line=FMTLineList(kw.get('fline'))
+  self.marker=FMTMarkList(kw.get('fmarker'))
   self.bottom=num0s(kw.get('bottom'))
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
   self.plot(self.x,self.y,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker,alpha=self.alpha)
  def plot(self,x,y,bottom=0,orientation='vertical',label=None,marker=stem_mark_list,alpha=1):
   self.clear()
-  for i,(xs,ys) in enumerate(product(x,y)):
+  for i,(xs,ys) in enumerate(TwoArray(x,y)):
+   print(i)
    fmt=FMT(self.marker[i],self.line[i],self.colorlist[i]).txt
    stem=self.ax.stem(xs,ys,linefmt=fmt,markerfmt=self._markerfmt(marker)[i],basefmt=fmt,bottom=bottom,orientation=orientation,label=label[i])
    for j in stem.get_children():j.set_alpha(alpha)
@@ -27,8 +27,8 @@ class Stem(twoElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,nListlike):self.x=self._manyarr(x)
-  if isinstance(y,nListlike):self.y=self._manyarr(y)
+  if isinstance(x,nListlike):self.x=NPNumber(x)
+  if isinstance(y,nListlike):self.y=NPNumber(y)
   self.colorlist=self._list_loop(self._stem_color_check(kw.get('fcolor',self.colorlist)),self.max_depth)
   self.line=self._list_loop(self._linefmt(kw.get('fline',self.line)),self.max_depth)
   self.marker=self._list_loop(self._markerfmt(kw.get('fmarker',self.marker)),self.max_depth)

@@ -4,7 +4,7 @@ __all__=['Funne']
 class Funne(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.data=self._dataarr(kw.get('data'))
+  self.data=NPNumber(kw.get('data'),depth_limit=1)
   self.height=range_num(num0s(kw.get('height'),1),0,1,1)
   xmajormaxbins=intsmin(kw.get('xmajormaxbins'),3,11)
   if not isinstance(xmajormaxbins,int):
@@ -30,7 +30,7 @@ class Funne(twoElement):
   return bars
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,nListlike):self.data=self._dataarr(data)
+  if isinstance(data,nListlike):self.data=NPNumber(data,depth_limit=1)
   self.height=range_num(num0s(kw.get('height'),self.height),0,1,self.height)
   xmajormaxbins=intsmin(kw.get('xmajormaxbins'),3,self.xmajormaxbins)
   if not isinstance(xmajormaxbins,int):

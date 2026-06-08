@@ -3,7 +3,7 @@ __all__=['Eventplot']
 class Eventplot(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.data=self._manyarr(kw.get('data'))
+  self.data=NPNumber(kw.get('data'))
   self.x=np.arange(self.data.shape[0])
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
   self.linewidth=num0(kw.get('linewidth'),1)
@@ -21,7 +21,7 @@ class Eventplot(twoElement):
   self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,nListlike):self.data=self._dataarr(data)
+  if isinstance(data,nListlike):self.data=NPNumber(data)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)
   self.linewidth=num0(kw.get('linewidth'),self.linewidth)
   self.linelength=num0(kw.get('linelength'),self.linelength)
