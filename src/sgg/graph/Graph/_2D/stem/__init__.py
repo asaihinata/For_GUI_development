@@ -13,12 +13,11 @@ class Stem(twoElement):
   self.marker=FMTMarkList(kw.get('fmarker'))
   self.bottom=num0s(kw.get('bottom'))
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
-  self.plot(self.x,self.y,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker,alpha=self.alpha)
- def plot(self,x,y,bottom=0,orientation='vertical',label=None,marker=stem_mark_list,alpha=1):
+  self.plot(self.x,self.y,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker,line=self.line,color=self.color,alpha=self.alpha)
+ def plot(self,x,y,bottom=0,orientation='vertical',label=None,marker=None,line=None,color=None,alpha=1):
   self.clear()
   for i,(xs,ys) in enumerate(TwoArray(x,y)):
-   print(i)
-   fmt=FMT(self.marker[i],self.line[i],self.colorlist[i]).txt
+   fmt=FMT(marker[i],line[i],color[i]).txt
    stem=self.ax.stem(xs,ys,linefmt=fmt,markerfmt=self._markerfmt(marker)[i],basefmt=fmt,bottom=bottom,orientation=orientation,label=label[i])
    for j in stem.get_children():j.set_alpha(alpha)
    self.graphdata.append(stem)
@@ -29,12 +28,15 @@ class Stem(twoElement):
   self._updates(**kw)
   if isinstance(x,nListlike):self.x=NPNumber(x)
   if isinstance(y,nListlike):self.y=NPNumber(y)
-  self.colorlist=self._list_loop(self._stem_color_check(kw.get('fcolor',self.colorlist)),self.max_depth)
-  self.line=self._list_loop(self._linefmt(kw.get('fline',self.line)),self.max_depth)
-  self.marker=self._list_loop(self._markerfmt(kw.get('fmarker',self.marker)),self.max_depth)
+  color=kw.get('fcolor')
+  self.colorlist=parameters(color,self.colorlist,FMTColorList(color))
+  line=kw.get('fline')
+  self.colorlist=parameters(line,self.line,FMTLineList(line))
+  marker=kw.get('fmarker')
+  self.marker=parameters(marker,self.marker,FMTMarkList(marker))
   self.bottom=num0s(kw.get('bottom'),self.bottom)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)
-  self.plot(self.x,self.y,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker)
+  self.plot(self.x,self.y,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker,line=self.line,color=self.colorlist)
   self._redraw()
  def get(self):return self.graphdata
  def getx(self):return self.x

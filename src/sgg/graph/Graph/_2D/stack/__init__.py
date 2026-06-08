@@ -4,7 +4,7 @@ __all__=['Stack']
 class Stack(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.x=NPArray(kw.get('x'))
+  self.x=NPArray(kw.get('x'),depth_limit=1)
   self.y=NPNumber(kw.get('y'))
   self.baseline=listchose(kw.get('baseline'),['zero','sym','wiggle','weighted_wiggle'])
   self.hatch=Hatch(kw.get('hatch'))
@@ -17,7 +17,7 @@ class Stack(twoElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,nListlike):self.x=NPArray(x)
+  if isinstance(x,nListlike):self.x=NPArray(x,depth_limit=1)
   if isinstance(y,nListlike):self.y=NPNumber(y)
   self.baseline=listchose(kw.get('baseline'),['zero','sym','wiggle','weighted_wiggle'],self.baseline)
   hatch=kw.get('hatch',None)

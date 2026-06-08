@@ -5,7 +5,7 @@ class Stackedh(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.data=NPNumber(kw.get('data'),axis=0)
-  self.dataname=self._dataarr(kw.get('dataname'),False)
+  self.dataname=NPArray(kw.get('dataname'),depth_limit=1)
   if self.data.shape[0]!=self.dataname.shape[0]:
    raise ValueError('配列のエラー')
   self.anchor=self._anchor(kw.get('labelanchor'),(1,0.85))
@@ -33,7 +33,7 @@ class Stackedh(twoElement):
  def update(self,data=None,dataname=None,**kw):
   self._updates(**kw)
   if isinstance(data,nListlike):self.data=NPNumber(data,axis=0)
-  if isinstance(dataname,nListlike):self.dataname=self._dataarr(dataname,False)
+  if isinstance(dataname,nListlike):self.dataname=NPArray(dataname,depth_limit=1)
   if self.data.shape[0]!=self.dataname.shape[0]:
    raise ValueError('配列のエラー')
   self.height=range_num(num0s(kw.get('height'),self.height),0,1,self.height)

@@ -9,7 +9,7 @@ class TwoArray:
   if self.__x.ndim==1:self.__x=array([x],dtype=xdtype)
   if self.__y.ndim==1:self.__y=array([y],dtype=ydtype)
   data=[]
-  self.__data=[[concatenate([[x],[y]])]if len(data)==0 else append(data,[concatenate([[x],[y]])],axis=0) for x,y in product(self.__x,self.__y)]
+  self.__data=[[concatenate([[xs],[ys]])]if len(data)==0 else append(data,[concatenate([[xs],[ys]])],axis=0)for xs,ys in product(self.__x,self.__y)]
  def __repr__(self):return f'TwoArray({self.__data})'
  def __iter__(self):
   for i in self.__data:yield i[0]

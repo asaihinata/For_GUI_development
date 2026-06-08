@@ -3,9 +3,9 @@ from ...dev import *
 class DScatter(threeElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.x=self._manyarr(kw.get('x'))
-  self.y=self._manyarr(kw.get('y'))
-  self.z=self._manyarr(kw.get('z'))
+  self.x=NPArray(kw.get('x'))
+  self.y=NPArray(kw.get('y'))
+  self.z=NPArray(kw.get('z'))
   self.marker=MarkerList(kw.get('marker','o'))
   self.s=num1s(kw.get('markersize'),10)
   self.plot(self.x,self.y,self.z,marker=self.marker,alpha=self.alpha,label=self.label)
@@ -17,11 +17,11 @@ class DScatter(threeElement):
   self._adjustment()
  def update(self,x=None,y=None,z=None,**kw):
   self._updates(**kw)
-  if isinstance(x,nListlike):self.x=self._manyarr(x)
-  if isinstance(y,nListlike):self.y=self._manyarr(y)
-  if isinstance(z,nListlike):self.z=self._manyarr(z)
+  if isinstance(x,nListlike):self.x=NPArray(x)
+  if isinstance(y,nListlike):self.y=NPArray(y)
+  if isinstance(z,nListlike):self.z=NPArray(z)
   markers=kw.get('marker',None)
-  self.marker=parameters(markers,self.marker,MarkerList(markers))
+  if markers!=None:self.marker=MarkerList(markers)
   self.s=num1s(kw.get('markersize'),self.s)
   self.plot(self.x,self.y,self.z,marker=self.marker,alpha=self.alpha,label=self.label)
   self._redraw()
