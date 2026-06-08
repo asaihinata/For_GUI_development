@@ -2,9 +2,9 @@ from ...dev import *
 class Violinpolar(polarElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.data=self._dataarr(kw.get('data'),False).T
-  self.x=self._dataarr(kw.get('x',[]),False)
-  self.y=self._dataarr(kw.get('y',[]),False)
+  self.data=NPNumber(kw.get('data'),depth_limit=1).T
+  self.x=NPNumber(kw.get('x',[]),depth_limit=1)
+  self.y=NPNumber(kw.get('y',[]),depth_limit=1)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
   self.width=range_num(num0s(kw.get('width'),1),0,1,1)
   self.showextrema=bols(kw.get('showextrema'))
@@ -24,11 +24,11 @@ class Violinpolar(polarElement):
   self.graphdata=[self.ax.violinplot(data,positions=positions,widths=width,points=points,showextrema=showextrema,showmedians=showmedians,showmeans=showmeans,side=side,orientation=orientation,bw_method=bwmethod)]
   for i in self.graphdata['bodies']:i.set_alpha(alpha)
   self._adjustment()
- def update(self,data=None,**kw):
+ def update(self,data=None,x=None,y=None,**kw):
   self._updates(**kw)
-  if not isinstance(data,nListlike):self.data=self._dataarr(data,False).T
-  self.x=self._dataarr(kw.get('x',self.x),False)
-  self.y=self._dataarr(kw.get('y',self.y),False)
+  if isinstance(data,nListlike):self.data=NPNumber(data,depth_limit=1).T
+  if isinstance(x,nListlike):self.x=NPNumber(x,depth_limit=1)
+  if isinstance(y,nListlike):self.y=NPNumber(y,depth_limit=1)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)
   self.width=range_num(num0s(kw.get('width'),self.width),0,1,self.width)
   self.showextrema=bols(kw.get('showextrema'),self.showextrema)

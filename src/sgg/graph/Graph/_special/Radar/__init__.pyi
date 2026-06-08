@@ -13,5 +13,5 @@ bg:ColorType,
 graph_grid:ColorType,
 title:str
 ):...
- def get(self)->list[Line2D]:'''`Line2D`の配列を返す。'''
  def getdata(self)->Typeget_data:'''`data`のデータを取得する。'''
+ def get(self)->list[Line2D]:'''`Line2D`の配列を返す。'''

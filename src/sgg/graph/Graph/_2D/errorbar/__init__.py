@@ -36,8 +36,7 @@ class Errorbar(twoElement):
   self._updates(**kw)
   if isinstance(x,nListlike):self.x=NPNumber(x)
   if isinstance(y,nListlike):self.y=NPNumber(y)
-  if isinstance(err,nListlike):
-   self.yerr=self.xerr=self.err=NPNumber(err)
+  if isinstance(err,nListlike):self.yerr=self.xerr=self.err=NPNumber(err)
   if isinstance(xerr,nListlike):self.xerr=NPNumber(xerr)
   if isinstance(yerr,nListlike):self.yerr=NPNumber(yerr)
   self.xuplims=bols(kw.get('xuplims'),self.xuplims)

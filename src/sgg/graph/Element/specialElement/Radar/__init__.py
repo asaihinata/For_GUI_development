@@ -2,13 +2,14 @@ import numpy as np
 from .....nparray.npNumber import NPNumber
 from .....dev import bols,list2num,num0s,parsecolor,range_num
 from ...graph import GElement
+from ....typing import nListlike
 from .custom import radar_factory
 __all__=['RadarElement']
 class RadarElement(GElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.data=NPNumber(kw.get('data'))
-  self.theta=radar_factory(self.data.shape[1],frame='circle')
+  self.theta=radar_factory(self.data.shape[-1],frame='circle')
   self.thetas=np.degrees(self.theta)
   # グリッド線
   self.grid_xy=bols(kw.get('grid_xy'))
@@ -49,6 +50,11 @@ class RadarElement(GElement):
   if xlabel is not None:self.ax.set_xlabel(xlabel)
   if ylabel is not None:self.ax.set_ylabel(ylabel)
  def _updates(self,**kw):
+  data=kw.get('data')
+  if isinstance(data,nListlike):
+   self.data=NPNumber(kw.get('data'))
+   self.theta=radar_factory(self.data.shape[-1],frame='circle')
+   self.thetas=np.degrees(self.theta)
   self.fg=parsecolor(kw.get('fg'),self.fg)
   self.graph_bg=parsecolor(kw.get('bg'),self.graph_bg)
   self.graph_grid=parsecolor(kw.get('graph_grid'),self.graph_grid)

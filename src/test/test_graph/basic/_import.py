@@ -63,3 +63,7 @@ linefillymin=1+2*linefillx/8+rng.uniform(0.0,0.5,len(linefillx))
 funnedata=rng.integers(10,50,size=3)
 hatplotx=rng.integers(20,30,size=5,endpoint=True)
 hatplotdata=hatplotx+3
+radarplotdata=rng.integers(10,15,size=5)
+barpolarx=np.linspace(0,np.pi*2,5)
+barpolary=rng.integers(30,60,size=5)
+barpolardata=rng.integers(30,60,size=5)

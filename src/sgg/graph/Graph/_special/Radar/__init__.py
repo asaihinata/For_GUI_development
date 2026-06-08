@@ -11,14 +11,13 @@ class Radarplot(RadarElement):
   self.clear()
   self.graphdata=[self.ax.plot(self.theta,d,marker=marker,linewidth=linewidth,markersize=markersize,linestyle=linestyle,alpha=alpha)for d in data]
   self._adjustment()
- def update(self,data=None,**kw):
+ def update(self,**kw):
   self._updates(**kw)
-  if not isinstance(data,nListlike):self.data=self._dataarr(data,False).T
   self.markersize=num0(kw.get('markersize'),self.markersize)
   self.marker=Marker(kw.get('marker',self.marker)).marker
   self.line=Solid(kw.get('linestyle',self.line)).solid
   self.linewidth=num0(kw.get('linewidth',self.linewidth),self.linewidth)
   self.plot(self.data,marker=self.marker,linewidth=self.linewidth,linestyle=self.line,markersize=self.markersize,alpha=self.alpha)
   self._redraw()
- def getdata(self):return self.data
+ def getdata(self):return self.data.tonp()
  def get(self):return self.graphdata
