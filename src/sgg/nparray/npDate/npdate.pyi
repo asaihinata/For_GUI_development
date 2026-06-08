@@ -3,7 +3,7 @@ from datetime import tzinfo
 from types import NotImplementedType
 from typing import Any,Literal,overload
 import numpy as np
-from numpy._typing import DTypeLike
+from numpy._typing import ArrayLike,DTypeLike,_DT64Codes
 from ..npArray import NPArray
 from .data import Dtype_ALL
 __all__=['NPDate']
@@ -11,14 +11,14 @@ class NPDate(NPArray):
  data:np.ndarray
  def __init__(
 self,
-data:list|tuple|np.ndarray,
-dtype:Dtype_ALL|None='datetime64[D]',
+data:ArrayLike,
+dtype:_DT64Codes|np.datetime64|None='datetime64[D]',
 depth_limit:int|None=None
 )->None:'''
  :param data: データの配列を指定する。
- :type data: list|tuple|np.ndarray
+ :type data: ArrayLike
  :param dtype: numpyの配列で指定する型を指定する。
- :type dtype: DTypeLike|None
+ :type dtype: _DT64Codes|np.datetime64|None
  :param depth_limit: 配列の最大の深さを指定する。
  :type depth_limit: int|None'''
  def __iter__(self)->Iterator[Any]:...

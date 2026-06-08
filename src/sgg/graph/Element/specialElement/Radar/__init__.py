@@ -1,4 +1,5 @@
 import numpy as np
+from .....nparray.npNumber import NPNumber
 from .....dev import bols,list2num,num0s,parsecolor,range_num
 from ...graph import GElement
 from .custom import radar_factory
@@ -6,7 +7,7 @@ __all__=['RadarElement']
 class RadarElement(GElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.data=self._manyarr(kw.get('data'))
+  self.data=NPNumber(kw.get('data'))
   self.theta=radar_factory(self.data.shape[1],frame='circle')
   self.thetas=np.degrees(self.theta)
   # グリッド線
