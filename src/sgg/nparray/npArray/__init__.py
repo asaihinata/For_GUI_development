@@ -1,12 +1,12 @@
 import numpy as np
 __all__=['NPArray']
-def __is_array_like(obj)->bool:
+def is_array_like(obj)->bool:
  if isinstance(obj,np.ndarray|list|tuple|range) or np.isscalar(obj) or hasattr(obj,'__array__'):return True
  return False
 class NPArray:
  def __init__(self,data,dtype=None,depth_limit=None):
   self.__dtype=dtype
-  if not __is_array_like(data):
+  if not is_array_like(data):
    raise TypeError('dataには配列の型を指定してください')
   self.__data=np.array(data,dtype=self.__dtype)
   if isinstance(depth_limit,int) and depth_limit<self.__data.ndim:
@@ -64,10 +64,10 @@ class NPArray:
  @property
  def data(self):return self.__data
  @data.setter
- def data(self,data):
-  if not __is_array_like(data):
+ def data(self,datas):
+  if not is_array_like(datas):
    raise TypeError('dataには配列の型を指定してください')
-  self.__data=np.array(data,dtype=self.__dtype)
+  self.__data=np.array(datas,dtype=self.__dtype)
   return self
  def dimension(self):return True if self.ndim==1 else False
  def dimensions(self):return True if 2<=self.ndim else False
