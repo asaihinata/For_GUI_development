@@ -175,7 +175,7 @@ class WindowController:
    elif widget.graph==True:widget._pack()
    else:
     try:widget.widget.pack(side='left',padx=5,pady=5)
-    except Exception as e:
+    except Exception:
      widget=Texts(parent,{'text':f'widget error:{t}'}).widget.pack(side='left',padx=5,pady=5)
    if key:self.widgets[key]=widget
    else:self.widgets[f'widget{self.count}']=widget

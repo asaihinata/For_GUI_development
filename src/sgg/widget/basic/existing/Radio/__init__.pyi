@@ -1,6 +1,7 @@
 from tkinter import Radiobutton
 from .....typing import ColorType
 from ....base import _Element
+__all__=['Radio']
 class Radio(_Element):
  widget:Radiobutton
  def delta(self):'''ウィジェットを削除する。'''

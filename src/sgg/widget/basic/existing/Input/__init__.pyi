@@ -1,6 +1,7 @@
 from tkinter import Entry
 from .....typing import ColorType,Literal
 from ....base import _Element
+__all__=['Input']
 class Input(_Element):
  widget:Entry
  def delta(self):'''ウィジェットを削除する。'''

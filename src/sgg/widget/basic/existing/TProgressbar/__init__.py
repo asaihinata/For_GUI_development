@@ -1,5 +1,6 @@
 from tkinter.ttk import Progressbar,Style
 from ...common import *
+__all__=['TProgressbar']
 class TProgressbar(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)

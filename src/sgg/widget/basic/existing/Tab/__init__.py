@@ -1,5 +1,6 @@
 from tkinter.ttk import Notebook,Style
 from ...common import *
+__all__=['Tab']
 class Tab(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)

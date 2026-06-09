@@ -1,5 +1,6 @@
 from tkinter.ttk import Combobox,Style
 from ...common import *
+__all__=['TCombobox']
 class TCombobox(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)

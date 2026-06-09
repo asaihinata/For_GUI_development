@@ -11,7 +11,6 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 from ...._dialog import asksaveasfilename
 from ....dev import bols,listchose,num0s,num1s,parsecolor,range_num
 from ...style import Marker,Solid,getLabel
-from ..dev import Manylist,Onelist
 __all__=['GElement']
 graph_color=['#4477aa','#ee7733','#111211','#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']
 rcParams['font.family']='Meiryo'
@@ -97,19 +96,6 @@ class GElement:
   if isinstance(place,int) and 0<=place<=10:return labelplacelist[place]
   elif place in labelplacelist:return place
   return listchose(other,labelplacelist)
- def _arr(self,val,j=True):
-  if not isinstance(val,list|tuple|np.ndarray):
-   raise TypeError('配列の型を指定してください')
-  if isinstance(val,np.ndarray):reval=val
-  else:reval=np.array(val)
-  if len(reval.shape)==1:reval=np.array([reval])
-  if j==True:self.max_depth=max(self.max_depth,reval.shape[0])
-  return reval
- def _manyarr(self,val,j=True):
-  val=self._arr(Manylist(val).data,j)
-  if len(val.shape)==2:return self._arr(val)
-  return self._arr([val])
- def _onearr(self,val,j=True):return self._arr(Onelist(val).data,j)
  def _dataarr(self,val,j=True):
   if not isinstance(val,list|tuple|np.ndarray):
    raise TypeError('配列の型を指定してください')

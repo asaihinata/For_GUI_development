@@ -67,20 +67,12 @@ For_GUI_development
  │   │   ├── dev
  │   │   │   ├── __init__.py
  │   │   │   ├── _darray.py
- │   │   │   ├── _dbool.py
  │   │   │   ├── _dcolor.py
- │   │   │   ├── _dnumber.py
- │   │   │   └── _dvoid.py
+ │   │   │   └── _dnumber.py
  │   │   ├── graph
  │   │   │   ├── __init__.py
  │   │   │   ├── element
  │   │   │   │   ├── __init__.py
- │   │   │   │   ├── dev
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── __init__.pyi
- │   │   │   │   │   ├── datalist.py
- │   │   │   │   │   ├── manylist.py
- │   │   │   │   │   └── onelist.py
  │   │   │   │   ├── graph
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
@@ -477,5 +469,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:332
-フォルダ数:146
+ファイル数:325
+フォルダ数:145

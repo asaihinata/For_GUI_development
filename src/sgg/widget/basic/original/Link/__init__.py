@@ -4,6 +4,7 @@ from tkinter import Label
 from webbrowser import open
 from ...._font import fonts
 from ...common import *
+__all__=['Link']
 class Link(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)

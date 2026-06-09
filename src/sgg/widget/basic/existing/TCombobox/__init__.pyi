@@ -1,5 +1,6 @@
 from tkinter.ttk import Combobox
 from ....base import _Element
+__all__=['TCombobox']
 class TCombobox(_Element):
  widget:Combobox
  def get_text(self)->str:'''TComboboxウィジェットに記載されている文字を取得する。

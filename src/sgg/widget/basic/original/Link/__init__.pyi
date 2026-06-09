@@ -1,6 +1,7 @@
 from tkinter import Label
 from ....base import _Element
 from .....typing import ColorType
+__all__=['Link']
 class Link(_Element):
  widget:Label
  def delta(self):'''ウィジェットを削除する。'''
