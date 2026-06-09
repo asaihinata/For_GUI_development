@@ -1,4 +1,3 @@
-import os
 import pathlib
 from _import import *
 if __name__=="__main__":
@@ -6,23 +5,9 @@ if __name__=="__main__":
  def files():sgg.Popup(message=win.get("file_load").get_path())
  def folders():sgg.Popup(message=win.get("folder_load").get_path())
  def colors():sgg.Popup(message=win.get("color_select").get_color())
- def progress_start():
-  win.get("prigress").start()
- Lennapath=os.path.normpath(os.path.join(pathlib.Path(__file__).parent,"data/img/Lenna.png"))
- x1,y1=[[10,20,30],[100,200,300]],[1,2,3]
- x2,y2=["1月","2月","3月"],[[100,200,300],[10,20,30]]
- x3,y3=["1月","2月","3月","4月","5月"],[5,6,7,8,9]
- x4,y4=[1,2,3],[200,400,500]
- x5,y5=["1月","2月","3月","4月","5月","6月"],[30,-2,10,4,10,-300]
- x6,y6=[1,2,3],[[20,50,60],[10,20,30]]
- x7,y7=[2,4,6],[3.6,5,4.2]
- x3D,y3D,z3D=[1,2,3,4],[3,4,9,10],[10,20,30,40]
- err,xerr,yerr=[0.9,1.2,0.5],[1,2,1],[2,1,2]
- stepdata=[1,3,5,6]
- histdata=np.random.normal(low=50,high=10,lenght=1000)
- boxdata=np.random.normal(low=100,high=10,lenght=100)
- eventdata=np.random.gamma(4,size=(3,50))
- ecdfdata=4+np.random.normal(low=0,high=1.5,lenght=100)
+ def progress_start():win.get("prigress").start()
+ Lennapath=pathlib.Path(__file__).parent.parent.parent/"data/img/Lenna.png"
+ print(Lennapath)
  menus=[
  ["ファイル",
  [
@@ -51,7 +36,7 @@ if __name__=="__main__":
  [sgg.Link(link="https://www.google.com/",text="googleのサイトを開く")],
  [sgg.Images(path=Lennapath)],
  [sgg.Texts(text="↑画像表示(PGM,PPM,GIF,PNG,XBMでしか表示されない)")],
- [sgg.Images(path="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg48GxlSXF_4b4XZmtOALPhe3mD5iREyN-Ks6Q2hdviWeDHOcG_AUOS3nn2i-E9g5jD1_7-2o9PZF5MUQEanceM7b07viAr9M6h4C7jDqGhKdF0LzHzn2IBS_A2Fvpv605wIRf9ohIPiv-HStNDjk8JdN2hU-0GTI-OsjRraMo1HnGkTALf6v7qBbHufj04/s400/pose_galpeace_schoolgirl.png")],
+ [sgg.Imagelink(link="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg48GxlSXF_4b4XZmtOALPhe3mD5iREyN-Ks6Q2hdviWeDHOcG_AUOS3nn2i-E9g5jD1_7-2o9PZF5MUQEanceM7b07viAr9M6h4C7jDqGhKdF0LzHzn2IBS_A2Fvpv605wIRf9ohIPiv-HStNDjk8JdN2hU-0GTI-OsjRraMo1HnGkTALf6v7qBbHufj04/s400/pose_galpeace_schoolgirl.png")],
  [sgg.Texts(text="↑URL画像も読み取れる")],
  [sgg.Texts(text="入力欄->"),sgg.Input(text="入力欄")],
  [sgg.Texts(text="パスワード入力->"),sgg.Input(show="※")],
@@ -129,27 +114,7 @@ if __name__=="__main__":
  [sgg.Buttons(text="Popupyesno(bool型を返す)",function=lambda:print(sgg.Popupyesno(message="メッセージ")))],
  [sgg.Buttons(text="Popupokcancel(bool型を返す)",function=lambda:print(sgg.Popupokcancel(message="メッセージ")))],
  [sgg.Buttons(text="Popupquestion(YesかNoを返す)",function=lambda:print(sgg.Popupquestion(message="メッセージ")))],
- [sgg.Buttons(text="Popupyesnocancel(bool型とNoneを返す)",function=lambda:print(sgg.Popupyesnocancel(message="メッセージ")))],
- [sgg.LineGraph(x=x1,y=y1,title="折り線グラフ",xlabel="xlabel",ylabel="ylabel")],
- [sgg.Pie(data=y3,title="円グラフ",label=x3)],
- [sgg.BarGraph(x=x2,y=y2,title="棒グラフ(縦)",xlabel="xlabel",ylabel="ylabel",width=0.5)],
- [sgg.BarhGraph(x=x2,y=y2,title="棒グラフ(横)",xlabel="xlabel",ylabel="ylabel",height=0.5)],
- [sgg.Scatter(x=x3,y=y3,title="散布図",xlabel="xlabel",ylabel="ylabel")],
- [sgg.Scatter(x=x4,y=y4,title="散布図")],
- [sgg.DScatter(x=x3D,y=y3D,z=z3D,title="3D 散布図",xlabel="x",ylabel="y",zlabel="z")],
- [sgg.Hist(data=histdata,title="ヒストグラフ")],
- [sgg.Stem(x=x1,y=y1,title="ステムグラフ")],
- [sgg.Boxplot(data=boxdata,title="箱ひげ図",whis=1.5)],
- [sgg.Waterfall(x=x5,y=y5,width=0.5,title="ウォーターフォール",linestyle="dotted")],
- [sgg.Waterfallh(x=x5,y=y5,height=0.5,title="ウォーターフォール")],
- [sgg.Step(data=stepdata,title="階段グラフ")],
- [sgg.Stack(x=x6,y=y6,title="積み上げグラフ")],
- [sgg.Eventplot(data=eventdata,linestyle="dashed",label=["a","b","c"],title="イベントグラフ")],
- [sgg.Errorbar(x=x7,y=y7,err=err,title="エラーバー")],
- [sgg.Errorbar(x=x7,y=y7,xerr=xerr,yerr=yerr,title="エラーバー")],
- [sgg.Errorbar(x=x7,y=y7,xerr=xerr,title="エラーバー")],
- [sgg.Errorbar(x=x7,y=y7,yerr=yerr,title="エラーバー")],
- [sgg.Ecdf(data=ecdfdata,title="経験的累積分布関数のグラフ")]
+ [sgg.Buttons(text="Popupyesnocancel(bool型とNoneを返す)",function=lambda:print(sgg.Popupyesnocancel(message="メッセージ")))]
  ]
  win=sgg.window(title="デモ",layout=layout,load=[progress_start],scroll=True,maxmine=True)
  win.run()
