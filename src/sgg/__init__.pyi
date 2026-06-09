@@ -4101,7 +4101,7 @@ key:str=...
  :param yticksdirection: y軸の目盛りの向きを指定する。
  :type yticksdirection: Literal['out','in','inout']'''
  @staticmethod
- def Radarplot(
+ def RadarLine(
 data:n_array=...,
 markersize:int|float=10,
 marker:Type_Marker='none',
@@ -4126,7 +4126,7 @@ ticksshow:bool=False,
 xticksshow:bool=False,
 yticksshow:bool=False,
 key:str=...
-):'''レーダーチャートを作成する。
+)->dict[str,Any]:'''折れ線レーダーチャートを作成する。
  
  :param data: `data`のデータを指定する。
  :type data: n_array
@@ -4138,6 +4138,72 @@ key:str=...
  :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
  :param linestyle: 折線グラフの線の種類を指定する。
  :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',': ','none',None,' ','']
+ :param title: グラフのタイトルを指定する。
+ :type title: str
+ :param size: 表示させるグラフの大きさを指定する。
+ :type size: TupleNumbertype2
+ :param fg: グラフ内の文字色を指定する。
+ :type fg: ColorTypeN
+ :param bg: グラフ内の背景色を指定する。
+ :type bg: ColorTypeN
+ :param dpi: 1インチあたりのドット数を指定する。
+ :type dpi: int|float
+ :param alpha: グラフの透明度を指定する。
+ :type alpha: int|float
+ :param graph_grid: グラフのグリッド線の色を指定する。
+ :type graph_grid: ColorTypeN
+ :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する。`grid_x`,`grid_y`より優先度が高い。
+ :type grid_xy: bool
+ :param grid_x: x軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
+ :type grid_x: bool
+ :param grid_y: y軸にグリッド線を表示させるか指定する。grid_xyより優先度が低い。
+ :type grid_y: bool
+ :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
+ :type tight_layout: bool
+ :param xticksrange: x軸の目盛の範囲を変更する。
+ :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :param yticksrange: y軸の目盛の範囲を変更する。
+ :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
+ :type xmajorint: bool
+ :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
+ :type ymajorint: bool
+ :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する。
+ :type ticksshow: bool
+ :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する。
+ :type xticksshow: bool
+ :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する。
+ :type yticksshow: bool
+ :param xticksdirection: x軸の目盛りの向きを指定する。
+ :type xticksdirection: Literal['out','in','inout']
+ :param yticksdirection: y軸の目盛りの向きを指定する。
+ :type yticksdirection: Literal['out','in','inout']'''
+ @staticmethod
+ def RadarFill(
+data:n_array=...,
+alpha:int|float=1,
+size:TupleNumbertype2=(500,400),
+fg:ColorTypeN='#000000',
+bg:ColorTypeN='#ffffff',
+title:str=...,
+dpi:int|float=100,
+graph_grid:ColorTypeN='#b7b7b7',
+grid_xy:bool=True,
+grid_x:bool=False,
+grid_y:bool=False,
+tight_layout:bool=True,
+xticksrange:Type_ticksrange=0,
+yticksrange:Type_ticksrange=0,
+xmajorint:bool=True,
+ymajorint:bool=True,
+ticksshow:bool=False,
+xticksshow:bool=False,
+yticksshow:bool=False,
+key:str=...
+)->dict[str,Any]:'''塗りつぶしレーダーチャートを作成する。
+ 
+ :param data: `data`のデータを指定する。
+ :type data: n_array
  :param title: グラフのタイトルを指定する。
  :type title: str
  :param size: 表示させるグラフの大きさを指定する。

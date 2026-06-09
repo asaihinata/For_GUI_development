@@ -27,7 +27,7 @@ self,
 *args:tuple,
 closed:bool=True,
 **kwargs:dict
-)->Polygon:...
+)->list[Polygon]:...
  def plot(
 self,
 *args:tuple,

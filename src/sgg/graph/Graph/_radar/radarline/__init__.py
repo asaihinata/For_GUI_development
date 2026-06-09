@@ -1,5 +1,6 @@
 from ...dev import *
-class Radarplot(RadarElement):
+__all__=['RadarLine']
+class RadarLine(RadarElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
   self.markersize=num0(kw.get('markersize'),10)

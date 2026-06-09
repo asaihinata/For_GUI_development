@@ -1,6 +1,7 @@
 from matplotlib.lines import Line2D
 from ...dev import *
-class Radarplot(RadarElement):
+__all__=['RadarLine']
+class RadarLine(RadarElement):
  def update(
 self,
 data:o_array,
@@ -8,6 +9,7 @@ markersize:int|float,
 marker:Type_Marker,
 line:Type_Solid,
 linewidth:int|float,
+alpha:int|float,
 fg:ColorType,
 bg:ColorType,
 graph_grid:ColorType,
