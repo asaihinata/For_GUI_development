@@ -1,20 +1,19 @@
-from datetime import datetime
-from datetime import timezone as tz
+from datetime import datetime,timezone
 import numpy as np
 from ..npArray import NPArray
-from .conversion import Formatconversion
-from .data import Dtype_SHORT,serch_dtype
+from .formatconversion import Formatconversion
+from .typing import serchDay,serchDtype,serchnativetime
 __all__=['NPDate']
 class NPDate(NPArray):
  def __init__(self,data,dtype='datetime64[D]',depth_limit=None):
   if isinstance(data,Formatconversion):data=data.data
-  super().__init__(data,serch_dtype(dtype),depth_limit)
+  super().__init__(data,serchDtype(dtype),depth_limit)
  def __iter__(self):return super().__iter__()
  def __len__(self):return super().__len__()
  def __getitem__(self,key):return super().__getitem__(key)
  def __contains__(self,item):return super().__contains__(item)
  def __reversed__(self):return super().__reversed__()
- def __array__(self,dtype=None,copy=None):return super().__array__(serch_dtype(dtype),copy)
+ def __array__(self,dtype=None,copy=None):return super().__array__(serchDtype(dtype),copy)
  def __repr__(self):return f'NPDate({self.data})'
  def __array_ufunc__(self,ufunc,method,*args,**kwargs):
   if method=='__call__':
@@ -24,15 +23,19 @@ class NPDate(NPArray):
    return result
   return NotImplemented
  @classmethod
- def today(cls,unit=None):
-  if unit not in Dtype_SHORT:unit='D'
-  return cls([np.datetime64('today',unit)])
+ def today(cls,unit='D'):
+  unit=serchDay(unit)
+  return NPDate([np.datetime64('today',unit)],data=unit)
+ @classmethod
+ def now(cls,unit='h'):
+  unit=serchnativetime(unit)
+  return NPDate([np.datetime64('now',unit)],data=unit)
  @property
  def T(self):
   self.data=self.data.T
   return self
  def astype(self,dtype):
-  self.data=self.data.astype(serch_dtype(dtype))
+  self.data=self.data.astype(serchDtype(dtype))
   return self
  @property
  def max(self):return np.max(self.data)
@@ -50,12 +53,10 @@ class NPDate(NPArray):
   return self
  __radd__=__add__
  __rsub__=__sub__
- def tostr(self,unit=None,timezone='naive',casting='same_kind'):
-  unit=unit if unit in Dtype_SHORT or unit=='auto' else None
-  timezone=timezone if timezone in ['naive','UTC','local'] or isinstance(timezone,tz) else 'naive'
-  if casting not in ['no','equiv','safe','same_kind','same_value','unsafe']:
-   casting='same_kind'
-  return np.datetime_as_string(self.data,unit=unit,timezone=timezone,casting=casting)
+ def tostr(self,unit=None,tz='naive',casting='same_kind'):
+  tz=tz if tz in ['naive','UTC','local'] or isinstance(tz,timezone) else 'naive'
+  if casting not in ['no','equiv','safe','same_kind','same_value','unsafe']:casting='same_kind'
+  return np.datetime_as_string(self.data,unit=unit,timezone=tz,casting=casting)
  def todatetime(self):return self.data.astype('M8[D]').astype(datetime)
  def weekday(self):
   dt=self.todatetime()

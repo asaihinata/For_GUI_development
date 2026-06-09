@@ -272,11 +272,11 @@ For_GUI_development
  │   │   │   │   └── data.py
  │   │   │   ├── npDate
  │   │   │   │   ├── __init__.py
- │   │   │   │   ├── conversion.py
- │   │   │   │   ├── conversion.pyi
- │   │   │   │   ├── data.py
+ │   │   │   │   ├── formatconversion.py
+ │   │   │   │   ├── formatconversion.pyi
  │   │   │   │   ├── npdate.py
- │   │   │   │   └── npdate.pyi
+ │   │   │   │   ├── npdate.pyi
+ │   │   │   │   └── typing.py
  │   │   │   ├── npNumber
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi

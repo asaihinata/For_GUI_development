@@ -1,13 +1,19 @@
 import numpy as np
-__all__=['NPArray']
-def is_array_like(obj)->bool:
- if isinstance(obj,np.ndarray|list|tuple|range) or np.isscalar(obj) or hasattr(obj,'__array__'):return True
+__all__=['NPArray','is_array_like','change_array_like']
+def is_array_like(obj):
+ if isinstance(obj,np.ndarray|list|tuple|range):return True
+ elif hasattr(obj,'__array__'):return True
+ return False
+def change_array_like(obj):
+ if isinstance(obj,np.ndarray|list|tuple|range):return True
+ elif np.isscalar(obj):return True
+ elif hasattr(obj,'__array__'):return True
  return False
 class NPArray:
  def __init__(self,data,dtype=None,depth_limit=None):
   self.__dtype=dtype
   if not is_array_like(data):
-   raise TypeError('dataには配列の型を指定してください')
+   raise TypeError('dataには配列もしくは__array__を持っているオブジェクトを指定してください')
   self.__data=np.array(data,dtype=self.__dtype)
   if isinstance(depth_limit,int) and depth_limit<self.__data.ndim:
    raise TypeError('配列の深さが制限の深さに達しました')
