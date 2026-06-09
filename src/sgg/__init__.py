@@ -127,8 +127,6 @@ class sgg:
  @staticmethod
  def Scatterpolar(**kw):return{'count':counts(),'type':'Scatterpolar',**kw}
  @staticmethod
- def Violinpolar(**kw):return{'count':counts(),'type':'Violinpolar',**kw}
- @staticmethod
  def Radarplot(**kw):return{'count':counts(),'type':'Radarplot',**kw}
  @classmethod
  def Popup(cls,**kw):return popup(**kw)

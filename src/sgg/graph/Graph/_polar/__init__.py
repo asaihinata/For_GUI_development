@@ -4,4 +4,3 @@ from .eventpolar import Eventpolar
 from .linepolar import Linepolar
 from .scatterpolar import Scatterpolar
 from .stempolar import Stempolar
-from .violinpolar import Violinpolar

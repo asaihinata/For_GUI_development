@@ -5,6 +5,9 @@ if __name__=="__main__":
   print(f"{radomdata=}")
   barpolar:Barpolar=win.get("Barpolar")
   barpolar.update(y=radomdata)
+ print(f"{barpolarx=}")
+ print(f"{barpolary=}")
+ print(f"{barpolardata=}")
  layout=[
   [
    sgg.Barpolar(x=barpolarx,y=barpolary,title="極軸棒グラフの基本1"),

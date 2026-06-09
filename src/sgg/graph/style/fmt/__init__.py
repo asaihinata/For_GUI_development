@@ -32,7 +32,7 @@ class FMTLineList(NPString):
   elif isinstance(data,list|tuple):
    data=[i if isinstance(i,str) and i in lists else '' for i in data]
   super().__init__(data,depth_limit=1)
- def __getitem__(self, key):return super().__getitem__(key)
+ def __getitem__(self,key):return super().__getitem__(key)
 class FMTColorList(NPString):
  def __init__(self,data):
   lists=['r','g','b','c','m','y','k','w']
@@ -43,7 +43,7 @@ class FMTColorList(NPString):
   elif isinstance(data,list|tuple):
    data=[i if isinstance(i,str) and i in lists else '' for i in data]
   super().__init__(data,depth_limit=1)
- def __getitem__(self, key):return super().__getitem__(key)
+ def __getitem__(self,key):return super().__getitem__(key)
 class FMTMarkList(NPString):
  def __init__(self,data):
   lists=['o','+','*','.','x','_','|','square','diamond','^','v','<','>','pentagram','hexagram']
@@ -54,4 +54,4 @@ class FMTMarkList(NPString):
   elif isinstance(data,list|tuple):
    data=[i if isinstance(i,str) and i in lists else '' for i in data]
   super().__init__(data,depth_limit=1)
- def __getitem__(self, key):return super().__getitem__(key)
+ def __getitem__(self,key):return super().__getitem__(key)

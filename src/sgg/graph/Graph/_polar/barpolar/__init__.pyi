@@ -3,10 +3,23 @@ from .._Polarset import _polarset
 from ....typing import *
 __all__=['Barpolar']
 class Barpolar(_polarset):
+ @overload
  def update(
 self,
 x:o_array,
 y:o_array,
+logs:bool,
+align:Literal['center','edge'],
+width:int|float,
+fg:ColorType,
+bg:ColorType,
+alpha:int|float,
+graph_grid:ColorType,
+title:str
+):'''極軸棒グラフを再表示させる。'''
+ @overload
+ def update(
+self,
 data:o_array,
 logs:bool,
 align:Literal['center','edge'],

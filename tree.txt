@@ -204,10 +204,7 @@ For_GUI_development
  │   │   │   │   │   ├── scatterpolar
  │   │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   │   └── __init__.pyi
- │   │   │   │   │   ├── stempolar
- │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   └── __init__.pyi
- │   │   │   │   │   └── violinpolar
+ │   │   │   │   │   └── stempolar
  │   │   │   │   │       ├── __init__.py
  │   │   │   │   │       └── __init__.pyi
  │   │   │   │   ├── _special
@@ -429,11 +426,14 @@ For_GUI_development
  │       │   ├── basic
  │       │   │   ├── test_bargraph.py
  │       │   │   ├── test_barhgraph.py
+ │       │   │   ├── test_barpolar.py
  │       │   │   ├── test_boxplot.py
  │       │   │   ├── test_dscatter.py
  │       │   │   ├── test_ecdf.py
  │       │   │   ├── test_errorbar.py
+ │       │   │   ├── test_errorpolar.py
  │       │   │   ├── test_eventplot.py
+ │       │   │   ├── test_eventpolar.py
  │       │   │   ├── test_funne.py
  │       │   │   ├── test_graph.py
  │       │   │   ├── test_hatplot.py
@@ -442,12 +442,16 @@ For_GUI_development
  │       │   │   ├── test_hist2d.py
  │       │   │   ├── test_linefill.py
  │       │   │   ├── test_linegraph.py
+ │       │   │   ├── test_linepolar.py
  │       │   │   ├── test_pie.py
+ │       │   │   ├── test_radarplot.py
  │       │   │   ├── test_scatter.py
+ │       │   │   ├── test_scatterpolar.py
  │       │   │   ├── test_stack.py
  │       │   │   ├── test_stacked.py
  │       │   │   ├── test_stackedh.py
  │       │   │   ├── test_stem.py
+ │       │   │   ├── test_stempolar.py
  │       │   │   ├── test_step.py
  │       │   │   ├── test_violinplot.py
  │       │   │   ├── test_waterfall.py
@@ -473,5 +477,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:327
-フォルダ数:147
+ファイル数:332
+フォルダ数:146
