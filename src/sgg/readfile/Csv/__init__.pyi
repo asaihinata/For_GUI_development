@@ -22,7 +22,8 @@ encoding:CsvEncoding|str='utf-8-sig'
  :type separator: str
  :param encoding: 文字コードを指定する。
  :type encoding: CsvEncoding|str
- :raises ValueError: `path`で指定されたパスがcsvファイルではない時に発生させる'''
+ :raises FileNotFoundError: ファイルが存在しない場合に発生させる
+ :raises ValueError: `path`で指定されたパスの拡張子がcsvファイルではない時に発生させる'''
  @property
  def csv(self)->DataFrame:''':class:`polars.polars`で読み取ったcsvファイルのデータを取得する'''
  def get_csv(self)->DataFrame:''':class:`polars.polars`で読み取ったcsvファイルのデータを取得する'''
