@@ -8,7 +8,6 @@ from numpy._typing import DTypeLike
 from ..npArray import NPArray
 __all__=['NPNumber']
 class NPNumber(NPArray):
- data:ndarray
  def __init__(
 self,
 data:list|tuple|ndarray,
@@ -158,3 +157,11 @@ axis:int|None=None
  def axis(self)->int|None:...
  @axis.setter
  def axis(self,axis:int|None)->int|None:...
+ def astype(self,dtype:DTypeLike|None)->NPNumber:'''`dtype`で指定された型に変更します。'''
+ def sort(self)->NPNumber:'''`data`にソートを実行する。'''
+ def first_pop(self)->NPNumber:'''配列の最初の要素のコピーをその配列の末尾に追加する。'''
+ def clear(self)->NPNumber:'''配列をクリアする'''
+ def deep_add(self,val)->NPNumber:'''配列の深さを`val`分だけ追加する。'''
+ def min_deep(self,val)->NPNumber:'''配列の深さが`val`より低い場合,深さを`val`にする。'''
+ def reshape(self,size:tuple[int,...])->NPNumber:...
+ def flatten(self)->NPNumber:...

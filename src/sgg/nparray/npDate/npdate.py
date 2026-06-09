@@ -22,25 +22,6 @@ class NPDate(NPArray):
    if isinstance(result,np.ndarray):return NPDate(result)
    return result
   return NotImplemented
- @classmethod
- def today(cls,unit='D'):
-  unit=serchDay(unit)
-  return NPDate([np.datetime64('today',unit)],data=unit)
- @classmethod
- def now(cls,unit='h'):
-  unit=serchnativetime(unit)
-  return NPDate([np.datetime64('now',unit)],data=unit)
- @property
- def T(self):
-  self.data=self.data.T
-  return self
- def astype(self,dtype):
-  self.data=self.data.astype(serchDtype(dtype))
-  return self
- @property
- def max(self):return np.max(self.data)
- @property
- def min(self):return np.min(self.data)
  def __add__(self,other):
   if not isinstance(other,np.timedelta64|int):
    raise TypeError('np.timedelta64もしくはint型で指定してください')
@@ -53,6 +34,21 @@ class NPDate(NPArray):
   return self
  __radd__=__add__
  __rsub__=__sub__
+ @classmethod
+ def today(cls,unit='D'):return NPDate([np.datetime64('today',serchDay(unit))])
+ @classmethod
+ def now(cls,unit='h'):return NPDate([np.datetime64('now',serchnativetime(unit))])
+ @property
+ def T(self):
+  self.data=self.data.T
+  return self
+ def astype(self,dtype):
+  self.data=self.data.astype(serchDtype(dtype))
+  return self
+ @property
+ def max(self):return np.max(self.data)
+ @property
+ def min(self):return np.min(self.data)
  def tostr(self,unit=None,tz='naive',casting='same_kind'):
   tz=tz if tz in ['naive','UTC','local'] or isinstance(tz,timezone) else 'naive'
   if casting not in ['no','equiv','safe','same_kind','same_value','unsafe']:casting='same_kind'

@@ -38,21 +38,6 @@ class NPArray:
    return result
   return NotImplemented
  def _flatten(self):return np.ravel(self.__data),self.shape
- def astype(self,dtype):
-  self.__data=self.__data.astype(dtype)
-  return self
- def tolist(self):return self.__data.tolist()
- def tonp(self,dtype='none'):
-  if dtype=='none':return self.__data
-  return self.__data.astype(dtype)
- def sort(self):
-  self.__data=np.sort(self.__data)
-  return self
- def first_pop(self):
-  if self.__data.ndim==1:self.__data=np.concatenate((self.__data,self.__data[0]),axis=0)
-  else:self.__data=np.concatenate((self.__data,[[i[0]]for i in self.__data]),axis=1)
-  return self
- def first_element(self):return self.__data[0]
  @property
  def nbytes(self):return self.__data.nbytes
  @property
@@ -75,6 +60,21 @@ class NPArray:
    raise TypeError('dataには配列の型を指定してください')
   self.__data=np.array(datas,dtype=self.__dtype)
   return self
+ def astype(self,dtype):
+  self.__data=self.__data.astype(dtype)
+  return self
+ def tolist(self):return self.__data.tolist()
+ def tonp(self,dtype='none'):
+  if dtype=='none':return self.__data
+  return self.__data.astype(dtype)
+ def sort(self):
+  self.__data=np.sort(self.__data)
+  return self
+ def first_pop(self):
+  if self.__data.ndim==1:self.__data=np.concatenate((self.__data,self.__data[0]),axis=0)
+  else:self.__data=np.concatenate((self.__data,[[i[0]]for i in self.__data]),axis=1)
+  return self
+ def first_element(self):return self.__data[0]
  def dimension(self):return True if self.ndim==1 else False
  def dimensions(self):return True if 2<=self.ndim else False
  def lengtharange(self,start=0,dtype=None):

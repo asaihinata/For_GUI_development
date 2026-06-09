@@ -90,3 +90,11 @@ days:bool=False
 
  :param days: 今日を含めるか指定する。
  :type days: bool'''
+ def astype(self,dtype:DTypeLike|None)->NPDate:'''`dtype`で指定された型に変更します。'''
+ def sort(self)->NPDate:'''`data`にソートを実行する。'''
+ def first_pop(self)->NPDate:'''配列の最初の要素のコピーをその配列の末尾に追加する。'''
+ def clear(self)->NPDate:'''配列をクリアする'''
+ def deep_add(self,val)->NPDate:'''配列の深さを`val`分だけ追加する。'''
+ def min_deep(self,val)->NPDate:'''配列の深さが`val`より低い場合,深さを`val`にする。'''
+ def reshape(self,size:tuple[int,...])->NPDate:...
+ def flatten(self)->NPDate:...

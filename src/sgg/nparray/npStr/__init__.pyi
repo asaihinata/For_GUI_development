@@ -8,7 +8,6 @@ from numpy._typing import DTypeLike,NDArray
 from ..npArray import NPArray
 __all__=['NPString']
 class NPString(NPArray):
- data:np.ndarray
  def __init__(
 self,
 data:list|tuple|np.ndarray,
@@ -55,3 +54,11 @@ method:Literal['__call__','reduce','reduceat','accumulate','outer','at'],
  def stringlen(self)->NDArray[np.int_]:...
  def str_len(self)->NDArray[np.int_]:...
  def replace(self,old:str,new:str)->NPString:'''NPString内の`old`を`new`に置き換える。'''
+ def astype(self,dtype:DTypeLike|None)->NPString:'''`dtype`で指定された型に変更します。'''
+ def sort(self)->NPString:'''`data`にソートを実行する。'''
+ def first_pop(self)->NPString:'''配列の最初の要素のコピーをその配列の末尾に追加する。'''
+ def clear(self)->NPString:'''配列をクリアする'''
+ def deep_add(self,val)->NPString:'''配列の深さを`val`分だけ追加する。'''
+ def min_deep(self,val)->NPString:'''配列の深さが`val`より低い場合,深さを`val`にする。'''
+ def reshape(self,size:tuple[int,...])->NPString:...
+ def flatten(self)->NPString:...
