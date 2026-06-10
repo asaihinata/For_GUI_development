@@ -272,11 +272,12 @@ For_GUI_development
  │   │   │   │   └── data.py
  │   │   │   ├── npDate
  │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── _typing.py
+ │   │   │   │   ├── datetime_format.py
  │   │   │   │   ├── formatconversion.py
  │   │   │   │   ├── formatconversion.pyi
  │   │   │   │   ├── npdate.py
- │   │   │   │   ├── npdate.pyi
- │   │   │   │   └── typing.py
+ │   │   │   │   └── npdate.pyi
  │   │   │   ├── npNumber
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
@@ -473,5 +474,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:328
+ファイル数:329
 フォルダ数:146

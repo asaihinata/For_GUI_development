@@ -2,7 +2,7 @@ from datetime import datetime,timezone
 import numpy as np
 from ..npArray import NPArray
 from .formatconversion import Formatconversion
-from .typing import serchDay,serchDtype,serchnativetime
+from ._typing import serchDay,serchDtype,serchnativetime
 __all__=['NPDate']
 class NPDate(NPArray):
  def __init__(self,data,dtype='datetime64[D]',depth_limit=None):
@@ -34,10 +34,6 @@ class NPDate(NPArray):
   return self
  __radd__=__add__
  __rsub__=__sub__
- @classmethod
- def today(cls,unit='D'):return NPDate([np.datetime64('today',serchDay(unit))])
- @classmethod
- def now(cls,unit='h'):return NPDate([np.datetime64('now',serchnativetime(unit))])
  @property
  def T(self):
   self.data=self.data.T
@@ -60,3 +56,7 @@ class NPDate(NPArray):
  def diff_today(self,days=False):
   if not isinstance(days,bool):days=False
   return np.busday_count(self.data,self.today())+int(days)
+ @classmethod
+ def today(cls,unit='D'):return NPDate([np.datetime64('today',serchDay(unit))])
+ @classmethod
+ def now(cls,unit='h'):return NPDate([np.datetime64('now',serchnativetime(unit))])
