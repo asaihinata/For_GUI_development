@@ -3,7 +3,7 @@ __all__=['Ecdf']
 class Ecdf(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.data=NPNumber(kw.get('data'))
+  self.data=NPNumber(kw.get('data'),depth_limit=1)
   self.complementary=bols(kw.get('complementary'),False)
   self.compress=bols(kw.get('compress'),False)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
@@ -17,7 +17,7 @@ class Ecdf(twoElement):
   self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,nListlike):self.data=NPNumber(data)
+  if isinstance(data,nListlike):self.data=NPNumber(data,depth_limit=1)
   self.complementary=bols(kw.get('complementary'),self.complementary)
   self.compress=bols(kw.get('compress'),self.compress)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)

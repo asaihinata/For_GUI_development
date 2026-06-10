@@ -1,5 +1,6 @@
 from itertools import product
 from ...dev import *
+__all__=['DScatter']
 class DScatter(threeElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)

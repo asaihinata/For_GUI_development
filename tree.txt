@@ -223,8 +223,7 @@ For_GUI_development
  │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── fmt
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── __init__.pyi
- │   │   │   │   │   └── constants.py
+ │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── getlabel
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
@@ -474,5 +473,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:329
+ファイル数:328
 フォルダ数:146

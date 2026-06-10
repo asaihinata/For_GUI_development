@@ -17,7 +17,8 @@ class Waterfallh(twoElement):
  def plot(self,x,y,alpha=1,height=1,sums=False,sumstext='sum',bottom=None,color=None,linestyle='-'):
   self.clear()
   x,y=x.tonp(),y.tonp()
-  if sums:x,y,bottom=np.append(x,sumstext),np.append(y,y.sum),np.append(bottom,0)
+  if sums:x,y,bottom=np.append(x,sumstext),np.append(y,np.sum(y)),np.append(bottom,0)
+  print(y)
   self.color=np.where(y<=0,self.dcolor,self.ucolor)
   self.graphdata=[self.ax.barh(x,y,color=self.color,alpha=alpha,height=height,align='center',left=bottom)]
   if height!=1:self._vlines(np.cumsum(y),height,color,linestyle)

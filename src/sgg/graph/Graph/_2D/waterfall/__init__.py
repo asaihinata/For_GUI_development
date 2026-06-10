@@ -16,8 +16,8 @@ class Waterfall(twoElement):
   self.plot(self.x,self.y,alpha=self.alpha,width=self.width,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
  def plot(self,x,y,alpha=1,width=1,sums=False,sumstext='sum',bottom=None,color=None,linestyle='-'):
   self.clear()
-  if sums:x,y,bottom=np.append(x,sumstext),np.append(y,y.sum),np.append(bottom,0)
   x,y=x.tonp(),y.tonp()
+  if sums:x,y,bottom=np.append(x,sumstext),np.append(y,np.sum(y)),np.append(bottom,0)
   self.color=np.where(y<=0,self.dcolor,self.ucolor)
   self.graphdata=[self.ax.bar(x,y,color=self.color,alpha=alpha,width=width,align='center',bottom=bottom)]
   self.ax.set_xticks(np.arange(len(x)),labels=x.tolist())

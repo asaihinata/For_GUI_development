@@ -1,8 +1,10 @@
 '''マーカー,線種,色を一度に設定するモジュール'''
 import numpy as np
 from ....nparray import NPString
-from .constants import FMT_COLOR,FMT_MARKER,FMT_SOLID
-__all__=['FMT','fmtstyle','FMTMarkList','FMTColorList','FMTLineList']
+__all__=['FMT','fmtstyle']
+FMT_COLOR=['b','g','r','c','m','y','k','w']
+FMT_MARKER=['.',',','o','v','^','<','>','1','2','3','4','8','s','p','P','*','h','H','+','x','X','D','d','|','_']
+FMT_SOLID=['-','--','-.',':']
 class FMT:
  def __init__(self,marker=None,solid=None,color=None):
   self.__txt=f'{marker if marker in FMT_MARKER else ''}{solid if solid in FMT_SOLID else ''}{color if color in FMT_COLOR else ''}'
