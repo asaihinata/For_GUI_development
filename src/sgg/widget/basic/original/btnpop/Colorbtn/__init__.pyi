@@ -1,7 +1,6 @@
 from ..btn import *
 __all__=['Colorbtn']
 class Colorbtn(Btn):
- selectcolor:tuple[None,None]|tuple[tuple[int,int,int],str]
  def get_color(self)->tuple[tuple[int,int,int],str]|tuple[None,None]:
   '''選択した色を取得する。
 

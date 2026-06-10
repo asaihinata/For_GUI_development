@@ -30,4 +30,3 @@ class barcode_data:
   self.byte_buffer.seek(0)
   self.bytedata=self.byte_buffer.read()
  def get_type(self):return self.classbarcode.name
- def support(self):return support_barcode
