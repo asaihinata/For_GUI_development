@@ -15,9 +15,13 @@ class RadarLine(RadarElement):
  def update(self,**kw):
   self._updates(**kw)
   self.markersize=num0(kw.get('markersize'),self.markersize)
-  self.marker=Marker(kw.get('marker',self.marker)).marker
-  self.line=Solid(kw.get('linestyle',self.line)).solid
-  self.linewidth=num0(kw.get('linewidth',self.linewidth),self.linewidth)
+  marker=kw.get('marker')
+  if marker is not None:
+   self.marker=Marker(marker).marker
+  line=kw.get('linestyle')
+  if line is not None:
+   self.line=Solid(line).solid
+  self.linewidth=num0(kw.get('linewidth'),self.linewidth)
   self.plot(self.data,marker=self.marker,linewidth=self.linewidth,linestyle=self.line,markersize=self.markersize,alpha=self.alpha)
   self._redraw()
  def getdata(self):return self.data.tonp()
