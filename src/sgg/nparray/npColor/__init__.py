@@ -29,9 +29,8 @@ class NPColor(NPArray):
  def tohex(self):
   self.data=array([to_hex(i) for i in self.data])
   return self
- def torgba(self,alpha=1):
-  if not isinstance(alpha,int|float) or not 0<=alpha<=1:alpha=1
-  self.data=array([to_rgba(i,alpha=alpha) for i in self.data])
+ def torgba(self):
+  self.data=array([to_rgba(i,alpha=1) for i in self.data])
   return self
  def torgb(self):
   self.data=array([to_rgb(i) for i in self.data])
