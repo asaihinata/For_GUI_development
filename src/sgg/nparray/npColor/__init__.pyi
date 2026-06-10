@@ -5,8 +5,9 @@
 
 指定できるカラー名はCSSで指定できる色名  https://drafts.csswg.org/css-color-4/#named-colors
 '''
-from numpy import ndarray,str_
+from numpy import ndarray, str_
 from numpy.typing import NDArray
+
 __all__=['NPColor']
 class NPColor:
  data:ndarray

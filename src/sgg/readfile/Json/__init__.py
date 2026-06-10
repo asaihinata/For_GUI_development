@@ -1,6 +1,8 @@
 '''jsonファイルのデータを取得するモジュール'''
 from pathlib import Path
+
 from ujson import load
+
 __all__=['Getjosn']
 class Getjosn:
  def __init__(self,path):

@@ -1,8 +1,11 @@
 '''`data/color.csv`のデータを取得する。'''
 from pathlib import Path
 from typing import TypeAlias
+
 import numpy as np
+
 from ..readfile import Getcsv
+
 List_like:TypeAlias=np.ndarray[str,str]
 __all__=['COLOR_DATA','ColorData']
 COLOR_DATA:List_like=Getcsv(Path(__file__).parent/'data/color.csv',has_header=False).get_numpy()

@@ -1,5 +1,7 @@
 from itertools import product
+
 from ...dev import *
+
 __all__=['Errorbar']
 class Errorbar(twoElement):
  def __init__(self,master,kw):

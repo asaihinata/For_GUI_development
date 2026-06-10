@@ -1,6 +1,8 @@
 from tkinter import Menu
+
 from .....typing import ColorType
 from ....base import _Element
+
 __all__=['Menus']
 class Menus(_Element):
  widget:Menu

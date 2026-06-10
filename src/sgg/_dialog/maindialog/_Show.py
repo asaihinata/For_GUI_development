@@ -1,4 +1,5 @@
 from .message import Message
+
 __all__=['_show','_iconset']
 def _show(title=None,message=None,_icon=None,_type=None,**kw):
  if _icon and 'icon' not in kw:kw['icon']=_icon

@@ -1,9 +1,11 @@
 '''csvファイルのデータを取得するモジュール'''
 from pathlib import Path
 from typing import Any
+
 from numpy import ndarray
 from polars import DataFrame
 from polars._typing import CsvEncoding
+
 __all__=['Getcsv']
 class Getcsv:
  def __init__(

@@ -1,6 +1,8 @@
 from tkinter import Label
-from ....base import _Element
+
 from .....typing import ColorType
+from ....base import _Element
+
 __all__=['Link']
 class Link(_Element):
  widget:Label

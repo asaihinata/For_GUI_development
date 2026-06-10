@@ -1,5 +1,6 @@
 '''グラフの線を設定するモジュール'''
 from ....nparray import NPArray
+
 __all__=['Solid','Solidlist']
 class Solid:
  def __init__(self,solid):

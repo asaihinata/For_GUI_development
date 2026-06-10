@@ -6,10 +6,12 @@
 指定できるカラー名はCSSで指定できる色名  https://drafts.csswg.org/css-color-4/#named-colors
 '''
 from matplotlib.colors import to_hex
-from numpy import array,concatenate,issubdtype,ndarray,nditer,str_
+from numpy import array, concatenate, issubdtype, ndarray, nditer, str_
+
 from ..npStr import NPString
 from ._color_check import check
 from .data import Get_color
+
 __all__=['NPColor']
 class NPColor:
  def __init__(self,color):

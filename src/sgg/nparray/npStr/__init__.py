@@ -1,7 +1,9 @@
 import numpy as np
 import numpy.strings as nps
+
 from ..dtype import stringDtype
 from ..npArray import NPArray
+
 __all__=['NPString']
 class NPString(NPArray):
  def __init__(self,data,dtype=np.str_,depth_limit=None):

@@ -1,6 +1,8 @@
 from matplotlib.container import BarContainer
+
 from ....typing import *
 from .._2gset import _2Gset
+
 __all__=['Stacked']
 class Stacked(_2Gset):
  def update(

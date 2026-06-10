@@ -1,4 +1,5 @@
-from ...maindialog import _iconset,_show
+from ...maindialog import _iconset, _show
+
 __all__=['popupyesnocansel']
 def askyesnocancel(title=None,message=None,**kw):
  s=str(_show(title,message,'question','yesnocancel',**kw))

@@ -1,6 +1,8 @@
 from tkinter import Text
-from .....typing import ColorType,Literal
+
+from .....typing import ColorType, Literal
 from ....base import _Element
+
 __all__=['Multiline']
 class Multiline(_Element):
  widget:Text

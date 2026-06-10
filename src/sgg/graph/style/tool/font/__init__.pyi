@@ -1,8 +1,10 @@
 from collections.abc import Iterator
 from os import PathLike
 from pathlib import Path
-from typing import Any,Literal
-from matplotlib.font_manager import FontEntry,FontProperties
+from typing import Any, Literal
+
+from matplotlib.font_manager import FontEntry, FontProperties
+
 __all__=['FontFile','Fontname','Fontmanager','Fontentry']
 class FontFile:
  Properties:FontProperties

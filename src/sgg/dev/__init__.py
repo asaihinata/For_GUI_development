@@ -1,6 +1,8 @@
 from ._darray import *
 from ._dcolor import *
 from ._dnumber import *
+
+
 def args(*args,data=None,x=None,y=None):
  lens=len(args)
  if lens==1:data=args[0]

@@ -1,5 +1,7 @@
-from re import compile,findall
-from numpy import array,fromiter,int8,int16
+from re import compile, findall
+
+from numpy import array, fromiter, int8, int16
+
 __all__=['check']
 HEX6_RE=compile(r'^#[0-9a-f]{6}$')
 HEX3_RE=compile(r'^#[0-9a-f]{3}$')

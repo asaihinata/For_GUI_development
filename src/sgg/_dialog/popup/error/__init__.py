@@ -1,4 +1,5 @@
-from ...maindialog import _iconset,_show
+from ...maindialog import _iconset, _show
+
 __all__=['popuperror','popuperroryesno']
 def showerror(title=None,message=None,**kw):return _show(title,message,'error','ok',**kw)
 class popupe:

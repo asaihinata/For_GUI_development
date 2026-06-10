@@ -1,4 +1,5 @@
-from ...maindialog import _iconset,_show
+from ...maindialog import _iconset, _show
+
 __all__=['popupquestion']
 def askquestion(title=None,message=None,**kw):return _show(title,message,'question','yesno',**kw)
 class popupq:

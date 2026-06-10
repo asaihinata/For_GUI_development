@@ -1,4 +1,5 @@
-from .error import popuperror,popuperroryesno
+from .error import popuperror, popuperroryesno
 from .info import popup
-from .question import popupokcansel,popupquestion,popuptrys,popupyesno,popupyesnocansel
-from .warning import popupwarning,popupwarningyesno
+from .question import (popupokcansel, popupquestion, popuptrys, popupyesno,
+                       popupyesnocansel)
+from .warning import popupwarning, popupwarningyesno

@@ -1,5 +1,7 @@
 from matplotlib.axes._axes import Axes
+
 from ...typing import *
+
 __all__=['_2Gset']
 class _2Gset:
  ax:Axes

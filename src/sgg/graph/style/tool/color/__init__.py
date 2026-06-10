@@ -1,5 +1,6 @@
 import numpy as np
-from matplotlib.colors import to_hex,to_rgb,to_rgba
+from matplotlib.colors import to_hex, to_rgb, to_rgba
+
 __all__=['Color']
 class Color:
  def __init__(self,color,*,default_color='#000000',keep_alpha=False):

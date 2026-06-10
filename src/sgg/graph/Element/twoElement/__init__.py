@@ -1,8 +1,10 @@
 from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
-from ....dev import bols,list2num,listchose,num0s,parsecolor,range_num
+
+from ....dev import bols, list2num, listchose, num0s, parsecolor, range_num
 from ...style import getLabel
 from ..graph import GElement
+
 __all__=['twoElement']
 class twoElement(GElement):
  def __init__(self,master,kw):

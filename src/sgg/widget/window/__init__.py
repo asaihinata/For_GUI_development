@@ -1,12 +1,15 @@
 from os import getcwd
 from re import findall
-from tkinter import Canvas,Frame,Scrollbar,Tk
+from tkinter import Canvas, Frame, Scrollbar, Tk
+
 from PIL import ImageGrab
+
 from ..._dialog import asksaveasfilename
-from ...dev import bols,listchose,num0s,range_num,typelist,wparsecolor
+from ...dev import bols, listchose, num0s, range_num, typelist, wparsecolor
 from ...graph import *
 from ...typing import FunctionType
 from ..basic import *
+
 __all__=['WindowController']
 class WindowController:
  '''ウィンドウを生成する。'''

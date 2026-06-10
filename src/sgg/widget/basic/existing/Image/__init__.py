@@ -1,8 +1,11 @@
-from pathlib import Path,PosixPath,WindowsPath
+from pathlib import Path, PosixPath, WindowsPath
 from tkinter import Label
+
 from PIL.ImageTk import PhotoImage
+
 from ...common import *
 from ...dev import Img_path
+
 __all__=['Images']
 class Images(Element):
  def __init__(self,master,kw):

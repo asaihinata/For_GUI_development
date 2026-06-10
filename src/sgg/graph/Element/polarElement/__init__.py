@@ -1,9 +1,11 @@
 from matplotlib.projections.polar import PolarAxes
-from numpy import linspace,pi
-from ....dev import bols,list2num,num0s,parsecolor,range_num
-from ....nparray import NPArray,NPNumber
+from numpy import linspace, pi
+
+from ....dev import bols, list2num, num0s, parsecolor, range_num
+from ....nparray import NPArray, NPNumber
 from ...typing import Type_Numberlike
 from ..graph import GElement
+
 __all__=['polarElement']
 class polarElement(GElement):
  def __init__(self,master,kw):

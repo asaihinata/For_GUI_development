@@ -1,6 +1,7 @@
 from collections.abc import Mapping
 from tkinter import Misc
-from typing import Any,ClassVar,Literal
+from typing import Any, ClassVar, Literal
+
 class Dialog:
  command:ClassVar[str|None]
  master:Misc|None

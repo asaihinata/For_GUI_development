@@ -1,6 +1,8 @@
 from matplotlib.container import ErrorbarContainer
+
 from ....typing import *
 from .._2gset import _2Gset
+
 __all__=['Errorbar']
 class Errorbar(_2Gset):
  def update(

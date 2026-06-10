@@ -1,8 +1,11 @@
 '''マーカー,線種,色を一度に設定するモジュール'''
 from collections.abc import Iterator
-from typing import Literal,TypeAlias
+from typing import Literal, TypeAlias
+
 import numpy as np
+
 from ....nparray import NPString
+
 __all__=['FMT','fmtstyle']
 MarkerType:TypeAlias=Literal[
 '.',',','o',

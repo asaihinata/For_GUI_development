@@ -1,5 +1,7 @@
 from tkinter import Frame
+
 from ...common import *
+
 __all__=['Column']
 class Column(Element):
  def __init__(self,master,kw):

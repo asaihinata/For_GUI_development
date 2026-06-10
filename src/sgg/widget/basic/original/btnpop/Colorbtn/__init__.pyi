@@ -1,4 +1,5 @@
 from ..btn import *
+
 __all__=['Colorbtn']
 class Colorbtn(Btn):
  def get_color(self)->tuple[tuple[int,int,int],str]|tuple[None,None]:

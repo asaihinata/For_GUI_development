@@ -1,4 +1,5 @@
 from ...dev import *
+
 __all__=['LineGraph']
 class LineGraph(twoElement):
  def __init__(self,master,kw):

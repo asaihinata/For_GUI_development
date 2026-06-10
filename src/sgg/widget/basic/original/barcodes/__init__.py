@@ -1,10 +1,13 @@
 from io import BytesIO
 from tkinter import Label
+
 from barcode import get_class
 from barcode.writer import ImageWriter
 from PIL.ImageTk import PhotoImage
+
 from ...common import *
 from ...dev import Img_byte
+
 __all__=['Barcode']
 support_barcode=['codabar','code128','code39','ean','ean13','ean13-guard','ean14','ean8','ean8-guard','gs1','gs1_128','gtin','isbn','isbn10','isbn13','issn','itf','jan','nw-7','pzn','upc','upca']
 class Barcode(Element):

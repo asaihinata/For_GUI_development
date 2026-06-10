@@ -1,7 +1,9 @@
 '''基本的な計算をするモジュール'''
 import numpy as np
+
 from ..dtype import numberDtype
 from ..npArray import NPArray
+
 __all__=['NPNumber']
 method_list=[
 'inverted_cdf',

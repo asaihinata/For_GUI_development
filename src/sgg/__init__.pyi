@@ -1,12 +1,15 @@
 from io import BytesIO
-from pathlib import Path,WindowsPath
+from pathlib import Path, WindowsPath
 from tkinter import _Cursor
 from typing import Union
+
 from matplotlib.mlab import GaussianKDE
 from numpy import ndarray
+
 from .graph import *
 from .typing import *
 from .widget import *
+
 Type_Solid:TypeAlias=Literal['-','--','-.',':','None',' ','']
 Type_Marker:TypeAlias=Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
 Type_orientation:TypeAlias=Literal['horizontal','vertical']

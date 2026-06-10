@@ -2,8 +2,10 @@ from os.path import abspath
 from pathlib import Path
 from tkinter import Label
 from webbrowser import open
+
 from ...._font import fonts
 from ...common import *
+
 __all__=['Link']
 class Link(Element):
  def __init__(self,master,kw):

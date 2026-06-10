@@ -1,6 +1,7 @@
 from os import getcwd
 from re import findall
 from tkinter import Misc
+
 import numpy as np
 from cycler import cycler
 from matplotlib.axes._axes import Axes
@@ -8,9 +9,11 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
+
 from ...._dialog import asksaveasfilename
-from ....dev import bols,listchose,num0s,num1s,parsecolor,range_num
-from ...style import Marker,Solid,getLabel
+from ....dev import bols, listchose, num0s, num1s, parsecolor, range_num
+from ...style import Marker, Solid, getLabel
+
 __all__=['GElement']
 graph_color=['#4477aa','#ee7733','#111211','#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']
 rcParams['font.family']='Meiryo'

@@ -1,10 +1,13 @@
 '''基本的な統計の計算をするモジュール'''
-from typing import Any,Literal,TypeAlias,overload
-from numpy import floating,ndarray
+from typing import Any, Literal, TypeAlias, overload
+
+from numpy import floating, ndarray
 from numpy._typing import _ArrayLikeFloat_co
 from numpy.typing import NDArray
+
 from ..npNumber import NPNumber
 from .npStatisticsd import NPStatisticsd
+
 __all__=['NPStatisticsds']
 BINS_LIST:TypeAlias=Literal['stone','auto','scott','doane','fd','rice','sqrt','sturges']
 METHOD_LIST:TypeAlias=Literal[

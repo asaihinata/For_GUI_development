@@ -1,4 +1,5 @@
 import numpy as np
+
 __all__=['NPArray','is_array_like','change_array_like']
 def is_array_like(obj):
  if isinstance(obj,np.ndarray|list|tuple|range):return True

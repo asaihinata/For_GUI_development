@@ -1,4 +1,5 @@
-from tkinter import _destroy_temp_root,_get_temp_root
+from tkinter import _destroy_temp_root, _get_temp_root
+
 __all__=['Dialog']
 class Dialog:
  command=None

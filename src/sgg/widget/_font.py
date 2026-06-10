@@ -1,7 +1,9 @@
-from tkinter import Misc,Tk
-from tkinter.font import Font,families
-from ..dev import bols,listchose,nums
+from tkinter import Misc, Tk
+from tkinter.font import Font, families
+
+from ..dev import bols, listchose, nums
 from ..typing import Literal
+
 __all__=['fonts']
 class fonts(Font):
  def __init__(

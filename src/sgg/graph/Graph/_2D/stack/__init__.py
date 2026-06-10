@@ -1,5 +1,7 @@
 from itertools import product
+
 from ...dev import *
+
 __all__=['Stack']
 class Stack(twoElement):
  def __init__(self,master,kw):

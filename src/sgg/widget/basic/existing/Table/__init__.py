@@ -1,5 +1,7 @@
-from tkinter.ttk import Style,Treeview
+from tkinter.ttk import Style, Treeview
+
 from ...common import *
+
 __all__=['Table']
 class Table(Element):
  def __init__(self,master,kw):

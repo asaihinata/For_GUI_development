@@ -1,6 +1,8 @@
 from matplotlib.patches import StepPatch
+
 from ....typing import *
 from .._2gset import _2Gset
+
 __all__=['Step']
 class Step(_2Gset):
  def update(

@@ -1,11 +1,14 @@
 '''基本的な文字列操作をするモジュール'''
 from collections.abc import Iterator
 from types import NotImplementedType
-from typing import Any,Literal
+from typing import Any, Literal
+
 import numpy as np
 from _typeshed import Incomplete
-from numpy._typing import DTypeLike,NDArray
+from numpy._typing import DTypeLike, NDArray
+
 from ..npArray import NPArray
+
 __all__=['NPString']
 class NPString(NPArray):
  def __init__(

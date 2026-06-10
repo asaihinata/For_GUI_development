@@ -1,6 +1,8 @@
-from tkinter.ttk import Notebook
 from tkinter import Widget
+from tkinter.ttk import Notebook
+
 from ....base import _Element
+
 __all__=['Tab']
 class Tab(_Element):
  widget:Notebook

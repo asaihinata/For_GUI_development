@@ -1,5 +1,7 @@
 from typing import ClassVar
+
 from ..maindialog import Dialog
+
 __all__=['Chooser','askcolor']
 class Chooser(Dialog):
  command:ClassVar[str]='tk_chooseColor'

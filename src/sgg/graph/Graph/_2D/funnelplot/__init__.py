@@ -1,5 +1,7 @@
 from matplotlib.ticker import MaxNLocator
+
 from ...dev import *
+
 __all__=['Funne']
 class Funne(twoElement):
  def __init__(self,master,kw):

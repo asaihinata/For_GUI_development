@@ -1,6 +1,8 @@
 '''塗りつぶし領域の領域内のマーカーを設定するモジュール'''
 from re import compile
+
 from ....nparray import NPString
+
 __all__=['Hatch']
 HATCH_LIST=['/','\\','|','-','+','x','o','O','.','*']
 class Hatch(NPString):

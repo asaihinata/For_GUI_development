@@ -1,5 +1,7 @@
 from tkinter import Button
+
 from ...common import *
+
 __all__=['Buttons']
 class Buttons(Element):
  def __init__(self,master,kw):

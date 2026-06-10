@@ -1,6 +1,8 @@
 from matplotlib.collections import QuadMesh
+
 from ....typing import *
 from .._2gset import _2Gset
+
 __all__=[]
 class Hist2d(_2Gset):
  def update(

@@ -1,7 +1,9 @@
 '''マーカーを設定するモジュール'''
 from matplotlib.markers import MarkerStyle
 from matplotlib.transforms import Affine2D
+
 from ....nparray import NPArray
+
 __all__=['Marker','MarkerList']
 class Marker:
  marker_list=['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']

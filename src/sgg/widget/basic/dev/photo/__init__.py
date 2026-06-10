@@ -1,6 +1,8 @@
 from io import BytesIO
-from pathlib import Path,PosixPath,WindowsPath
+from pathlib import Path, PosixPath, WindowsPath
+
 from PIL import Image
+
 __all__=['Img_path','Img_byte']
 class Img_conversion:
  def __init__(self,data):

@@ -1,7 +1,10 @@
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from ....dev import bols,list2num,listchose,num0s,nums,parsecolor,range_num
+
+from ....dev import (bols, list2num, listchose, num0s, nums, parsecolor,
+                     range_num)
 from ..graph import GElement
+
 __all__=['threeElement']
 class threeElement(GElement):
  def __init__(self,master,kw):

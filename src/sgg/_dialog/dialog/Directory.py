@@ -1,5 +1,7 @@
 from typing import ClassVar
+
 from ..maindialog import Dialog
+
 __all__=['Directory','askdirectory']
 class Directory(Dialog):
  command:ClassVar[str]='tk_chooseDirectory'

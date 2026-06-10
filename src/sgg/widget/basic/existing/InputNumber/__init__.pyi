@@ -1,6 +1,8 @@
 from tkinter import Spinbox
+
 from .....typing import ColorType
 from ....base import _Element
+
 __all__=['InputNumber']
 class InputNumber(_Element):
  widget:Spinbox

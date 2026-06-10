@@ -1,6 +1,8 @@
 '''csvファイルのデータを取得するモジュール'''
 from pathlib import Path
+
 from polars import read_csv
+
 __all__=['Getcsv']
 class Getcsv:
  def __init__(self,path,has_header=True,separator=',',encoding='utf-8-sig'):

@@ -1,6 +1,8 @@
 '''グラフ用の配列作成モジュール'''
 from itertools import product
-from numpy import append,array,concatenate
+
+from numpy import append, array, concatenate
+
 __all__=['TwoArray']
 class TwoArray:
  def __init__(self,x,y,xdtype=object,ydtype=object):

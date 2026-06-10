@@ -1,4 +1,5 @@
 from .._color import Color
+
 __all__=['parsecolor','wparsecolor']
 def parsecolor(val,other=None):
  if val is None:return other

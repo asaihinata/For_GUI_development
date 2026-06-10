@@ -1,7 +1,10 @@
 from collections.abc import Iterator
 from typing import Any
+
 import numpy as np
+
 from ....nparray import NPArray
+
 __all__=['getLabel']
 class getLabel(NPArray):
  label:np.ndarray

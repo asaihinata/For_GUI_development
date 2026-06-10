@@ -1,6 +1,8 @@
 from matplotlib.container import BarContainer
-from .._Polarset import _polarset
+
 from ....typing import *
+from .._Polarset import _polarset
+
 __all__=['Barpolar']
 class Barpolar(_polarset):
  @overload

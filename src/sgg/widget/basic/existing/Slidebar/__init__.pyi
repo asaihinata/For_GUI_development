@@ -1,6 +1,8 @@
 from tkinter import Scale
+
 from .....typing import ColorType
 from ....base import _Element
+
 __all__=['Slidebar']
 class Slidebar(_Element):
  widget:Scale

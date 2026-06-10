@@ -1,11 +1,14 @@
 from collections.abc import Iterator
 from datetime import tzinfo
 from types import NotImplementedType
-from typing import Any,Literal,overload
+from typing import Any, Literal, overload
+
 import numpy as np
-from numpy._typing import ArrayLike,DTypeLike,_DT64Codes
+from numpy._typing import ArrayLike, DTypeLike, _DT64Codes
+
 from ..npArray import NPArray
-from ._typing import DateUnit,NativeTimeUnit
+from ._typing import DateUnit, NativeTimeUnit
+
 __all__=['NPDate']
 class NPDate(NPArray):
  data:np.ndarray

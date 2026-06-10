@@ -1,6 +1,8 @@
 from tkinter import Button
+
 from .....typing import ColorType
 from ....base import _Element
+
 __all__=['Buttons']
 class Buttons(_Element):
  widget:Button

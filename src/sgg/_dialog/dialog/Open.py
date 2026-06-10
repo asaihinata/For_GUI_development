@@ -1,6 +1,8 @@
 from os.path import split
 from typing import ClassVar
+
 from ..maindialog import _Dialog
+
 __all__=['Open','askopenfilename']
 class Open(_Dialog):
  command:ClassVar[str]='tk_getOpenFile'

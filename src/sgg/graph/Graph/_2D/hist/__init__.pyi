@@ -1,7 +1,9 @@
 from matplotlib.container import BarContainer
 from matplotlib.patches import Polygon
+
 from ....typing import *
 from .._2gset import _2Gset
+
 __all__=['Hist']
 class Hist(_2Gset):
  def update(

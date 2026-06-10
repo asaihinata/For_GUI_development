@@ -1,6 +1,8 @@
+from ._dialog import *
 from .graph import *
 from .widget import *
-from ._dialog import *
+
+
 def counts():
  sgg.count+=1
  return sgg.count
