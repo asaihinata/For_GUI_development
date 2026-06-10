@@ -5,38 +5,34 @@
 
 指定できるカラー名はCSSで指定できる色名  https://drafts.csswg.org/css-color-4/#named-colors
 '''
-from matplotlib.colors import to_hex
-from numpy import array,concatenate,issubdtype,ndarray,nditer,str_
-from ..npStr import NPString
+from matplotlib.colors import to_hex,to_rgb,to_rgba
+from numpy import array,nditer
+from ..npArray import NPArray,is_array_like
 from ._color_check import check
 from .data import Get_color
 __all__=['NPColor']
-class NPColor:
+class NPColor(NPArray):
  def __init__(self,color):
-  if isinstance(color,str):data=self._colormake(color)
-  elif isinstance(color,list|tuple):data=[self._colormake(i)for i in color]
-  elif isinstance(color,ndarray):
-   if not issubdtype(color.dtype,str_|str):
-    raise TypeError('ndarrayのdtypeにはstr_型もしくはstr型を指定してください')
-   data=[self._colormake(i)for i in nditer(color)]
+  if isinstance(color,str):super().__init__([self.__get_val(color)],depth_limit=1)
+  elif is_array_like(color):super().__init__([self.__get_val(str(i)) for i in nditer(array(color))],depth_limit=1)
   else:
-   raise TypeError('指定された型が正しくありせん')
-  self.__data=NPString(data).data
- def __repr__(self):return f'NPColor({self.__data})'
- def _colormake(self,color):
-  if not isinstance(color,str):
-   raise TypeError('colorにはstr型で指定してください')
-  color=color.lower()
+   raise TypeError('colorの値が不正です')
+ def __repr__(self):return f'NPColor({self.data})'
+ def __iter__(self):return iter(self.data)
+ def __getitem__(self,key):return self.get(key)
+ def __get_val(self,color):
   colorname=Get_color.gets(color)
-  if colorname is None:
-   check_Color=check(color)
-   if check_Color is None:
-    raise ValueError('指定された色が不正確です')
-   return concatenate((array(['-',to_hex(check_Color/255)],dtype=str_),check_Color.astype(str_)))
-  else:
-   return colorname
- def get_hex_list(self):return self.__data[...,1]
- def get_rgb_list(self):return self.__data[...,[2,3,4]]
- def get_r_list(self):return self.__data[...,2]
- def get_g_list(self):return self.__data[...,3]
- def get_b_list(self):return self.__data[...,4]
+  if colorname is not None:return colorname[1]
+  colors=check(color)
+  if colors is not None:return to_hex(colors/255)
+  raise ValueError('値が不正です')
+ def tohex(self):
+  self.data=array([to_hex(i) for i in self.data])
+  return self
+ def torgba(self,alpha=1):
+  if not isinstance(alpha,int|float) or not 0<=alpha<=1:alpha=1
+  self.data=array([to_rgba(i,alpha=alpha) for i in self.data])
+  return self
+ def torgb(self):
+  self.data=array([to_rgb(i) for i in self.data])
+  return self
