@@ -1,6 +1,4 @@
-
 from ...dev import *
-
 __all__=['Hexbin']
 class Hexbin(twoElement):
  def __init__(self,master,kw):

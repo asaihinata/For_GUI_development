@@ -1,11 +1,9 @@
 '''基本的な統計の計算をするモジュール'''
 import numpy as np
-from numpy.polynomial.chebyshev import chebfit, chebval
-
+from numpy.polynomial.chebyshev import chebfit,chebval
 from ..dtype import numberDtype
 from ..npNumber import NPNumber
 from .npStatisticsd import NPStatisticsd
-
 __all__=['NPStatisticsds']
 method_list=[
 'inverted_cdf',

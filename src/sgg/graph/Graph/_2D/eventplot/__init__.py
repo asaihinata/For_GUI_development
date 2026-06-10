@@ -1,5 +1,4 @@
 from ...dev import *
-
 __all__=['Eventplot']
 class Eventplot(twoElement):
  def __init__(self,master,kw):

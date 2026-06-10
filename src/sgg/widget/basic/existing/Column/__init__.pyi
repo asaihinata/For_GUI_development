@@ -1,8 +1,6 @@
 from tkinter import Frame
-
 from .....typing import ColorType
 from ....base import _Element
-
 __all__=['Column']
 class Column(_Element):
  widget:Frame

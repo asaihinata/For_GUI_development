@@ -1,10 +1,8 @@
 from io import BytesIO
-from pathlib import Path, PosixPath, WindowsPath
+from pathlib import Path,PosixPath,WindowsPath
 from typing import IO
-
 from PIL._typing import StrOrBytesPath
 from PIL.ImageFile import ImageFile
-
 __all__=['Img_path','Img_byte']
 class Img_conversion:
  imgs:ImageFile

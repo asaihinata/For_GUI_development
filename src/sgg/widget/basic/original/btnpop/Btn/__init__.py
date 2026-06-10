@@ -1,9 +1,6 @@
 from tkinter import Button
-
 from ......_dialog import *
 from ....common import *
-
-
 class Btn(Element):
  def __init__(self,master,kw):
   super().__init__(master,kw)

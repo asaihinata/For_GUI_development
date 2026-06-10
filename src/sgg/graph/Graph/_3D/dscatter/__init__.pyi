@@ -1,8 +1,6 @@
 from matplotlib.collections import PathCollection
-
 from ....typing import *
 from .._3gset import _3Gset
-
 __all__=['DScatter']
 class DScatter(_3Gset):
  def update(

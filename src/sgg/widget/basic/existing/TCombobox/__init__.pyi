@@ -1,7 +1,5 @@
 from tkinter.ttk import Combobox
-
 from ....base import _Element
-
 __all__=['TCombobox']
 class TCombobox(_Element):
  widget:Combobox

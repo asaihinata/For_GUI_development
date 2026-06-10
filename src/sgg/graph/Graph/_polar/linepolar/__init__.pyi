@@ -1,8 +1,6 @@
 from matplotlib.lines import Line2D
-
 from ....typing import *
 from .._Polarset import _polarset
-
 __all__=['Linepolar']
 class Linepolar(_polarset):
  @overload

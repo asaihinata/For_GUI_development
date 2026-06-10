@@ -1,11 +1,10 @@
 import numpy as np
-from matplotlib.patches import Circle, RegularPolygon
+from matplotlib.patches import Circle,RegularPolygon
 from matplotlib.path import Path
 from matplotlib.projections import register_projection
 from matplotlib.projections.polar import PolarAxes
 from matplotlib.spines import Spine
 from matplotlib.transforms import Affine2D
-
 __all__=['radar_factory']
 def radar_factory(num_vars,frame='circle'):
  theta=np.linspace(0,2*np.pi,num_vars,endpoint=False)

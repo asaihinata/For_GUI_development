@@ -1,5 +1,4 @@
 from ..typing import *
-
 __all__=['popup']
 def popup(
 title:str='Information',

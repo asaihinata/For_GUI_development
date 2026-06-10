@@ -1,10 +1,8 @@
 from tkinter import *
-
 from ......_dialog import *
 from ......typing import ColorType
 from .....base import _Element
 from ....common import *
-
 class Btn(_Element):
  widget:Button
  def delta(self):'''ウィジェットを削除する。'''

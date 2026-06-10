@@ -1,5 +1,4 @@
 from ..btn import *
-
 __all__=['Colorbtn']
 class Colorbtn(Btn):
  def __init__(self,master,kw):

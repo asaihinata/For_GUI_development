@@ -1,6 +1,5 @@
 from numpy import ndarray
 from numpy._typing import DTypeLike
-
 __all__=['baseDtype']
 class baseDtype:
  def __init__(

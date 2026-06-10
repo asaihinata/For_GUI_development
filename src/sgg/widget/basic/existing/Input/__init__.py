@@ -1,7 +1,5 @@
 from tkinter import Entry
-
 from ...common import *
-
 __all__=['Input']
 class Input(Element):
  def __init__(self,master,kw):

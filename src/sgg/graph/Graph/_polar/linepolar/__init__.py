@@ -1,5 +1,4 @@
 from ...dev import *
-
 __all__=['Linepolar']
 class Linepolar(polarElement):
  def __init__(self,master,kw):

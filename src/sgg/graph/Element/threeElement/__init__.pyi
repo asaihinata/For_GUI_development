@@ -1,13 +1,10 @@
 from collections.abc import Iterable
-
 from matplotlib.axis import Tick
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
-
 from ...style import getLabel
 from ...typing import *
 from ..graph import GElement
-
 __all__=['threeElement']
 class threeElement(GElement):
  label:getLabel

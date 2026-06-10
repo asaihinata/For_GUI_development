@@ -1,9 +1,7 @@
 from matplotlib.collections import FillBetweenPolyCollection
 from matplotlib.lines import Line2D
-
 from ....typing import *
 from .._2gset import _2Gset
-
 __all__=['Linefill']
 class Linefill(_2Gset):
  def update(

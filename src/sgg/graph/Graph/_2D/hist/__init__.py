@@ -1,5 +1,4 @@
 from ...dev import *
-
 __all__=['Hist']
 class Hist(twoElement):
  def __init__(self,master,kw):

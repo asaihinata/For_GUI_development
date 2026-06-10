@@ -1,7 +1,5 @@
 from typing import Any
-
 from ...typing import Type_Numberlike
-
 __all__=['bol','bols','listchose','list2float','list2number','num0','num0s','num1s','range_zero_one']
 def range_zero_one(val:float,out:float=1.0,endpoint:bool=True)->float:...
 def num1s(val:Type_Numberlike=0,mins:Type_Numberlike=1)->int|float:...

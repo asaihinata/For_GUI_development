@@ -1,8 +1,6 @@
 from matplotlib.container import ErrorbarContainer
-
 from ....typing import *
 from .._Polarset import _polarset
-
 __all__=['Errorpolar']
 class Errorpolar(_polarset):
  def update(

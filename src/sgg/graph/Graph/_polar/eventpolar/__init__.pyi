@@ -1,8 +1,6 @@
 from matplotlib.collections import EventCollection
-
 from ....typing import *
 from .._Polarset import _polarset
-
 __all__=['Eventpolar']
 class Eventpolar(_polarset):
  def update(

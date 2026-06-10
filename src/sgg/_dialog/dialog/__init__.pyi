@@ -1,8 +1,6 @@
 from collections.abc import Iterable
-from tkinter import Misc, StringVar
-
+from tkinter import Misc,StringVar
 from _typeshed import StrOrBytesPath
-
 __all__=['askcolor','asksaveasfilename','askopenfilename','askdirectory']
 def askcolor(
 color:str|bytes|None=None,

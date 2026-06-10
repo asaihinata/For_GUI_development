@@ -1,9 +1,7 @@
 '''基本的な統計の計算をするモジュール'''
 import numpy as np
 from scipy.stats import norm
-
 from ..npNumber import NPNumber
-
 __all__=['NPStatisticsd']
 method_list=[
 'inverted_cdf',

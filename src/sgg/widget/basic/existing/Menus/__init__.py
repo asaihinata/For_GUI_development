@@ -1,7 +1,5 @@
 from tkinter import Menu
-
 from ...common import *
-
 __all__=['Menus']
 class Menus(Element):
  def __init__(self,master,kw):

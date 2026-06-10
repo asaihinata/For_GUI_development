@@ -1,10 +1,7 @@
-from re import compile, findall
-
+from re import compile,findall
 import numpy as np
 from matplotlib.colors import to_hex
-
-from .data import COLOR_DATA, ColorData
-
+from .data import COLOR_DATA,ColorData
 __all__=['Color','COLOR_DATA','ColorData']
 HEX8_RE=compile(r'^#[0-9a-f]{8}$')
 HEX6_RE=compile(r'^#[0-9a-f]{6}$')

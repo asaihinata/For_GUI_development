@@ -1,5 +1,4 @@
-from ...maindialog import _iconset, _show
-
+from ...maindialog import _iconset,_show
 __all__=['popupwarning','popupwarningyesno']
 def showwarning(title=None,message=None,**kw):return _show(title,message,'warning','ok',**kw)
 class popupw:

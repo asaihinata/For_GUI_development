@@ -1,6 +1,6 @@
 from tkinter import Listbox
 
-from .....typing import Any, ColorType, Literal
+from .....typing import Any,ColorType,Literal
 from ....base import _Element
 
 __all__=['Listboxs']

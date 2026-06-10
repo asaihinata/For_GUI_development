@@ -1,7 +1,5 @@
 import numpy as np
-
 from ....nparray import NPArray
-
 __all__=['getLabel']
 class getLabel(NPArray):
  def __init__(self,label=None):

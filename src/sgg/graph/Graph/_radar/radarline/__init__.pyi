@@ -1,7 +1,5 @@
 from matplotlib.lines import Line2D
-
 from ...dev import *
-
 __all__=['RadarLine']
 class RadarLine(RadarElement):
  def update(

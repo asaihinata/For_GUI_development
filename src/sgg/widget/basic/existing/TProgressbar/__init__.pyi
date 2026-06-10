@@ -1,7 +1,5 @@
 from tkinter.ttk import Progressbar
-
 from ....base import _Element
-
 __all__=['TProgressbar']
 class TProgressbar(_Element):
  widget:Progressbar

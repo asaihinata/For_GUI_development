@@ -1,9 +1,7 @@
 from matplotlib.patches import Wedge
 from matplotlib.text import Text
-
 from ....typing import *
 from .._2gset import _2Gset
-
 __all__=['Pie']
 class Pie(_2Gset):
  def update(

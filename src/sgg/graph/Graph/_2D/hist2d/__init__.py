@@ -1,5 +1,4 @@
 from ...dev import *
-
 __all__=['Hist2d']
 class Hist2d(twoElement):
  def __init__(self,master,kw):

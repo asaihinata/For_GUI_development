@@ -1,7 +1,5 @@
 import numpy as np
-
 from ..base import baseDtype
-
 __all__=['complexDtype','floatDtype','intDtype','integerDtype','numberDtype','uintDtype']
 class complexDtype(baseDtype):
  def __init__(self,arr):super().__init__(arr,np.complexfloating,np.complex64,np.complex128)

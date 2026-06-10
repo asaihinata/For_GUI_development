@@ -1,8 +1,6 @@
 from tkinter import Checkbutton
-
 from .....typing import ColorType
 from ....base import _Element
-
 __all__=['Checkbox']
 class Checkbox(_Element):
  widget:Checkbutton

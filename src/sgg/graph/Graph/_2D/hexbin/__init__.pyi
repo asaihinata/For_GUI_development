@@ -1,8 +1,6 @@
 from matplotlib.collections import PolyCollection
-
 from ....typing import *
 from .._2gset import _2Gset
-
 __all__=['Hexbin']
 class Hexbin(_2Gset):
  def update(

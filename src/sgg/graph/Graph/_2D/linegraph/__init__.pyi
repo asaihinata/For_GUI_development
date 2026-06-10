@@ -1,8 +1,6 @@
 from matplotlib.lines import Line2D
-
 from ....typing import *
 from .._2gset import _2Gset
-
 __all__=['LineGraph']
 class LineGraph(_2Gset):
  def update(

@@ -1,5 +1,4 @@
 from ...dev import *
-
 __all__=['Linefill']
 class Linefill(twoElement):
  def __init__(self,master,kw):

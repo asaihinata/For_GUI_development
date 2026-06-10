@@ -1,11 +1,8 @@
 from io import BytesIO
 from tkinter import Label
-
 from PIL.ImageTk import PhotoImage
-
 from ...common import *
 from ...dev import Img_byte
-
 __all__=['Imagebyte']
 class Imagebyte(Element):
  def __init__(self,master,kw):

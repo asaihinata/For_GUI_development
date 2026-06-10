@@ -1,5 +1,4 @@
 from ...typing import Type_Numberlike
-
 __all__=['bol','bols','listchose','list2float','list2number','num0','num0s','num1s','range_zero_one']
 def range_zero_one(val,out=1.0,endpoint=True):
  if not isinstance(val,Type_Numberlike):return out

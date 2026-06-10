@@ -1,11 +1,8 @@
 '''基本的な統計の計算をするモジュール'''
-from typing import Any, Literal, SupportsIndex, TypeAlias
-
-from numpy import float64, intp, ndarray
-from numpy.typing import ArrayLike, NDArray
-
+from typing import Any,Literal,SupportsIndex,TypeAlias
+from numpy import float64,intp,ndarray
+from numpy.typing import ArrayLike,NDArray
 from ..npNumber import NPNumber
-
 __all__=['NPStatisticsd']
 BINS_LIST:TypeAlias=Literal['stone','auto','scott','doane','fd','rice','sqrt','sturges']
 METHOD_LIST:TypeAlias=Literal[

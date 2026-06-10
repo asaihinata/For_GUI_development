@@ -1,6 +1,5 @@
 from ....typing import *
 from .._2gset import _2Gset
-
 __all__=['Boxplot']
 class Boxplot(_2Gset):
  def update(

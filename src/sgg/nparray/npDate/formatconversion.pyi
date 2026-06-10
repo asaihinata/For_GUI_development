@@ -1,8 +1,6 @@
 from numpy import _ArrayT
-
 from ..npArray import NPArray
 from ._typing import _DATES_UNIT
-
 __all__=['Formatconversion']
 class Formatconversion(NPArray):
  def __init__(

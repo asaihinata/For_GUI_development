@@ -1,11 +1,9 @@
 import numpy as np
-
-from .....dev import bols, list2num, num0s, parsecolor, range_num
+from .....dev import bols,list2num,num0s,parsecolor,range_num
 from .....nparray.npNumber import NPNumber
 from ....typing import nListlike
 from ...graph import GElement
 from .custom import radar_factory
-
 __all__=['RadarElement']
 class RadarElement(GElement):
  def __init__(self,master,kw):

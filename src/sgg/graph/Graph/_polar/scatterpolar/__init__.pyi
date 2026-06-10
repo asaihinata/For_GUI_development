@@ -1,8 +1,6 @@
 from matplotlib.collections import PathCollection
-
 from ....typing import *
 from .._Polarset import _polarset
-
 __all__=['Scatterpolar']
 class Scatterpolar(_polarset):
  @overload

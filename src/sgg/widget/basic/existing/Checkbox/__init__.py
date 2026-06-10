@@ -1,7 +1,5 @@
-from tkinter import BooleanVar, Checkbutton
-
+from tkinter import BooleanVar,Checkbutton
 from ...common import *
-
 __all__=['Checkbox']
 class Checkbox(Element):
  def __init__(self,master,kw):

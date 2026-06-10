@@ -1,6 +1,5 @@
 '''numpyのdtypeに関するモジュール'''
-from numpy import issubdtype, ndarray
-
+from numpy import issubdtype,ndarray
 __all__=['baseDtype']
 class baseDtype:
  def __init__(self,arr,dtype):

@@ -1,8 +1,6 @@
 from tkinter import Label
-
 from .....typing import ColorType
 from ....base import _Element
-
 __all__=['Texts']
 class Texts(_Element):
  widget:Label

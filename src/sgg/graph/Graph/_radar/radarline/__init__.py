@@ -1,5 +1,4 @@
 from ...dev import *
-
 __all__=['RadarLine']
 class RadarLine(RadarElement):
  def __init__(self,master,kw):

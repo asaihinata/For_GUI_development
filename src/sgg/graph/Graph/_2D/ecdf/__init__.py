@@ -1,5 +1,4 @@
 from ...dev import *
-
 __all__=['Ecdf']
 class Ecdf(twoElement):
  def __init__(self,master,kw):

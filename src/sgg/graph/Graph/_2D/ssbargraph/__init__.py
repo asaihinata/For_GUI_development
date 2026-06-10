@@ -1,5 +1,4 @@
 from ...dev import *
-
 __all__=['SSBarGraph']
 class SSBarGraph(twoElement):
  def __init__(self,master,kw):

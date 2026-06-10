@@ -1,5 +1,4 @@
 from ...dev import *
-
 __all__=['Eventpolar']
 class Eventpolar(polarElement):
  def __init__(self,master,kw):

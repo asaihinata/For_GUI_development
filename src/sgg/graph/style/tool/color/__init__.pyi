@@ -1,9 +1,7 @@
 from collections.abc import Iterator
-from typing import Any, overload
-
+from typing import Any,overload
 import numpy as np
 from matplotlib.typing import ColorType
-
 __all__=['Color']
 class Color:
  __dict__:dict[str,Any]

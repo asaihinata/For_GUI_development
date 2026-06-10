@@ -1,7 +1,5 @@
 from tkinter import Text
-
 from ...common import *
-
 __all__=['Multiline']
 class Multiline(Element):
  def __init__(self,master,kw):

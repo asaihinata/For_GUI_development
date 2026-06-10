@@ -1,5 +1,4 @@
 from ...dev import *
-
 __all__=['BarGraph']
 class BarGraph(twoElement):
  def __init__(self,master,kw):

@@ -1,8 +1,6 @@
 from matplotlib.collections import FillBetweenPolyCollection
-
 from ....typing import *
 from .._2gset import _2Gset
-
 __all__=['Stack']
 class Stack(_2Gset):
  def update(

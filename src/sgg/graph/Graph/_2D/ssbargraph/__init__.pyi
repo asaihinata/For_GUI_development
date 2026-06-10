@@ -1,8 +1,6 @@
 from matplotlib.container import BarContainer
-
 from ....typing import *
 from .._2gset import _2Gset
-
 __all__=['SSBarGraph']
 class SSBarGraph(_2Gset):
  def update(

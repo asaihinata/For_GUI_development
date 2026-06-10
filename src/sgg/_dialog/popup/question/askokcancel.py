@@ -1,5 +1,4 @@
-from ...maindialog import _iconset, _show
-
+from ...maindialog import _iconset,_show
 __all__=['popupokcansel']
 def askokcancel(title=None,message=None,**kw):return _show(title,message,'question','okcancel',**kw)=='ok'
 class popupoc:

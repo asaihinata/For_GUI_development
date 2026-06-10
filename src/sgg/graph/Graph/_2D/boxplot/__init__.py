@@ -1,5 +1,4 @@
 from ...dev import *
-
 __all__=['Boxplot']
 class Boxplot(twoElement):
  def __init__(self,master,kw):

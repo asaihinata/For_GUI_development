@@ -1,8 +1,6 @@
 from matplotlib.container import BarContainer
-
 from ....typing import *
 from .._2gset import _2Gset
-
 __all__=['Hatplot']
 class Hatplot(_2Gset):
  def update(

@@ -1,13 +1,10 @@
 from collections.abc import Iterable
-
 from matplotlib.axes._axes import Axes
 from matplotlib.axis import Tick
 from numpy import ndarray
-
 from ...style import getLabel
 from ...typing import *
 from ..graph import GElement
-
 __all__=['twoElement']
 class twoElement(GElement):
  label:getLabel

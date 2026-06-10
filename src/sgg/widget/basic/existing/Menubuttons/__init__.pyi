@@ -1,8 +1,6 @@
-from tkinter import Menu, Menubutton
-
+from tkinter import Menu,Menubutton
 from .....typing import ColorType
 from ....base import _Element
-
 __all__=['Menubuttons']
 class Menubuttons(_Element):
  widget:Menubutton

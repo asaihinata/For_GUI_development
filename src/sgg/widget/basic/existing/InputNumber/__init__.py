@@ -1,7 +1,5 @@
-from tkinter import IntVar, Spinbox
-
+from tkinter import IntVar,Spinbox
 from ...common import *
-
 __all__=['InputNumber']
 class InputNumber(Element):
  def __init__(self,master,kw):

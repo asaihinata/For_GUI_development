@@ -1,5 +1,4 @@
-from ...maindialog import _iconset, _show
-
+from ...maindialog import _iconset,_show
 __all__=['popupyesno']
 def askyesno(title=None,message=None,**kw):return _show(title,message,'question','yesno',**kw)=='yes'
 class popupyn:

@@ -1,8 +1,6 @@
 from matplotlib.container import StemContainer
-
 from ....typing import *
 from .._Polarset import _polarset
-
 __all__=['Stempolar']
 class Stempolar(_polarset):
  @overload

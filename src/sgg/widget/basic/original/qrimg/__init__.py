@@ -1,10 +1,7 @@
 from tkinter import Label
-
 from PIL.ImageTk import PhotoImage
 from qrcode import make
-
 from ...common import *
-
 __all__=['QRImage']
 class QRImage(Element):
  def __init__(self,master,kw):

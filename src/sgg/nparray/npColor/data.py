@@ -5,13 +5,10 @@ color.csvはhttps://drafts.csswg.org/css-color-4/#named-colorsを元に作成
 '''
 from pathlib import Path
 from types import NotImplementedType
-from typing import Any, Literal
-
-from numpy import ndarray, str_, ufunc, where
-
+from typing import Any,Literal
+from numpy import ndarray,str_,ufunc,where
 from ...readfile import Getcsv
 from ..npArray import NPArray
-
 __all__=['Get_color']
 class Get_color(NPArray):
  '''色データを取得する。'''

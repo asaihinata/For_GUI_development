@@ -1,7 +1,5 @@
 from os.path import split
-
 from .dialog import Dialog
-
 __all__=['_Dialog']
 class _Dialog(Dialog):
  def _fixoptions(self):

@@ -1,7 +1,5 @@
-from tkinter import Listbox, StringVar
-
+from tkinter import Listbox,StringVar
 from ...common import *
-
 __all__=['Listboxs']
 class Listboxs(Element):
  def __init__(self,master,kw):

@@ -1,8 +1,6 @@
 from matplotlib.mlab import GaussianKDE
-
 from ....typing import *
 from .._2gset import _2Gset
-
 __all__=['Violinplot']
 class Violinplot(_2Gset):
  def update(

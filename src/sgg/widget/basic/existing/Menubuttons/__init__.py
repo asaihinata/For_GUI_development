@@ -1,7 +1,5 @@
-from tkinter import Menu, Menubutton
-
+from tkinter import Menu,Menubutton
 from ...common import *
-
 __all__=['Menubuttons']
 class Menubuttons(Element):
  def __init__(self,master,kw):

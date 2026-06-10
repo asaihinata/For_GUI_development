@@ -1,5 +1,4 @@
 from ...dev import *
-
 __all__=['Scatterpolar']
 class Scatterpolar(polarElement):
  def __init__(self,master,kw):

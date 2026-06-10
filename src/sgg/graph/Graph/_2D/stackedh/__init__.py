@@ -1,7 +1,5 @@
 from matplotlib.ticker import PercentFormatter
-
 from ...dev import *
-
 __all__=['Stackedh']
 class Stackedh(twoElement):
  def __init__(self,master,kw):

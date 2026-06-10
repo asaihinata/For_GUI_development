@@ -1,8 +1,6 @@
 from matplotlib.collections import PathCollection
-
 from ....typing import *
 from .._2gset import _2Gset
-
 __all__=['Scatter']
 class Scatter(_2Gset):
  def update(

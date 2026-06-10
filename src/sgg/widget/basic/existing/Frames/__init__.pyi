@@ -1,8 +1,6 @@
 from tkinter import LabelFrame
-
 from .....typing import ColorType
 from ....base import _Element
-
 __all__=['Frames']
 class Frames(_Element):
  widget:LabelFrame

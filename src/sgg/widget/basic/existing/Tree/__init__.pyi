@@ -1,7 +1,5 @@
 from tkinter.ttk import Treeview
-
 from ....base import _Element
-
 __all__=['Tree']
 class Tree(_Element):
  widget:Treeview

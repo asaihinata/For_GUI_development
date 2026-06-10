@@ -1,5 +1,4 @@
 from ..typing import *
-
 __all__=['popupokcansel','popupquestion','popuptrys','popupyesno','popupyesnocansel']
 def popupokcansel(
 title:str='Question',

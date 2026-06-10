@@ -1,7 +1,5 @@
 from tkinter import Scale
-
 from ...common import *
-
 __all__=['Slidebar']
 class Slidebar(Element):
  def __init__(self,master,kw):

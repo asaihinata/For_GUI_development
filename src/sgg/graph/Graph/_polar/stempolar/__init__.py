@@ -1,5 +1,4 @@
 from ...dev import *
-
 __all__=['Stempolar']
 class Stempolar(polarElement):
  def __init__(self,master,kw):

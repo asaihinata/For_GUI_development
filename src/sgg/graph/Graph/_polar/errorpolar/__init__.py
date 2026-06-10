@@ -1,5 +1,4 @@
 from ...dev import *
-
 __all__=['Errorpolar']
 class Errorpolar(polarElement):
  def __init__(self,master,kw):

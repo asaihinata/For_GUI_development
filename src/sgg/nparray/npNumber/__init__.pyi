@@ -1,14 +1,11 @@
 '''基本的な計算をするモジュール'''
 from collections.abc import Iterator
 from types import NotImplementedType
-from typing import Any, Literal
-
+from typing import Any,Literal
 from _typeshed import Incomplete
-from numpy import _CopyMode, float64, int64, ndarray, ufunc
+from numpy import _CopyMode,float64,int64,ndarray,ufunc
 from numpy._typing import DTypeLike
-
 from ..npArray import NPArray
-
 __all__=['NPNumber']
 class NPNumber(NPArray):
  def __init__(

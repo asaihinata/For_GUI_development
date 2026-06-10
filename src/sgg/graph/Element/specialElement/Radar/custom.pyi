@@ -1,15 +1,13 @@
 from collections.abc import Sequence
-from typing import Any, Literal
-
+from typing import Any,Literal
 from matplotlib.lines import Line2D
-from matplotlib.patches import Circle, Polygon, RegularPolygon
+from matplotlib.patches import Circle,Polygon,RegularPolygon
 from matplotlib.path import Path
 from matplotlib.projections.polar import PolarAxes
 from matplotlib.spines import Spine
 from matplotlib.text import Text
 from numpy import float64
 from numpy.typing import NDArray
-
 __all__=['radar_factory','RadarTransform','RadarAxes']
 def radar_factory(
 num_vars:int,
