@@ -8,10 +8,9 @@ class Stackedh(twoElement):
   self.dataname=NPArray(kw.get('dataname'),depth_limit=1)
   if self.__data.shape[0]!=self.dataname.shape[0]:
    raise ValueError('配列のエラー')
-  self.anchor=self._anchor(kw.get('labelanchor'),(1,0.85))
-  self.labelplace=self._getlegendplace(self.anchor,kw.get('labelplace','center left'))
   self.height=range_num(num0s(kw.get('height'),0.8),0,1,0.8)
   self.plot(self.__data,self.dataname,label=self.label,height=self.height)
+  self._getlegendplace((1,0.85),'center left')
  def plot(self,data,dataname,label=None,height=0.8):
   self.clear()
   self.ax.invert_yaxis()
@@ -40,4 +39,4 @@ class Stackedh(twoElement):
   self.plot(self.__data,self.dataname,label=self.label,height=self.height)
   self._redraw()
  def get(self):return self.graphdata
- def getdata(self):return self.__data
+ def getdata(self):return self.__data.tonp()

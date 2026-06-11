@@ -25,5 +25,5 @@ class Linepolar(polarElement):
   self.plot(self.__x,self.__y,marker=self.marker,linewidth=self.linewidth,linestyle=self.line,markersize=self.markersize,alpha=self.alpha)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.__x
- def gety(self):return self.__y
+ def getx(self):return self.__x.tonp()
+ def gety(self):return self.__y.tonp()

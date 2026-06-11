@@ -47,4 +47,4 @@ class Violinplot(twoElement):
   self.plot(self.__data,self.__x,self.__y,alpha=self.alpha,width=self.width,points=self.points,showextrema=self.showextrema,showmeans=self.showmeans,showmedians=self.showmedians,side=self.side,orientation=self.orientation,bwmethod=self.bwmethod)
   self._redraw()
  def get(self):return self.graphdata
- def getdata(self):return self.__data
+ def getdata(self):return self.__data.tonp()

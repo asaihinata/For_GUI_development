@@ -124,7 +124,6 @@ other:Literal['upper right','upper left','lower left','lower right','right','cen
  :type serch: str
  :return:
  :rtype: str'''
- def _dataarr(self,val:ndarray|list|tuple,j:bool=True)->ndarray:...
  def _pack(self):'''ウィジェットを親ウィジェット内に配置します。'''
  def _redraw(self):...
  def _size(self,sizes:TupleNumbertype2=(500,400))->TupleNumbertype2:'''グラフの大きさのサイズを定める。

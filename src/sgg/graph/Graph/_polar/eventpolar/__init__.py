@@ -23,4 +23,4 @@ class Eventpolar(polarElement):
   self.plot(self.__data,orientation=self.orientation,linewidth=self.linewidth,linelength=self.linelength,alpha=self.alpha,linestyle=self.linestyle)
   self._redraw()
  def get(self):return self.graphdata
- def getdata(self):return self.__data
+ def getdata(self):return self.__data.tonp()

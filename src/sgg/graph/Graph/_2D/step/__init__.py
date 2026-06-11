@@ -25,4 +25,4 @@ class Step(twoElement):
   self.plot(self.__data,linewidth=self.linewidth,fill=self.fill,baseline=self.baseline,orientation=self.orientation)
   self._redraw()
  def get(self):return self.graphdata
- def getdata(self):return self.__data
+ def getdata(self):return self.__data.tonp()

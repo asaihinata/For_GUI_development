@@ -27,5 +27,5 @@ class Scatter(twoElement):
   self.plot(self.__x,self.__y,marker=self.marker,linewidth=self.linewidth,alpha=self.alpha,label=self.label)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.__x
- def gety(self):return self.__y
+ def getx(self):return self.__x.tonp()
+ def gety(self):return self.__y.tonp()

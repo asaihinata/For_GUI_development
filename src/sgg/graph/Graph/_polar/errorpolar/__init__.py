@@ -7,10 +7,10 @@ class Errorpolar(polarElement):
   err,xerr,yerr=kw.get('err'),kw.get('xerr'),kw.get('yerr')
   self.xerr,self.yerr=None,None
   if err is not None:
-   self.err=self._dataarr(err,False)
+   self.err=NPNumber(err)
    self.xerr,self.yerr=self.err,self.err
-  if xerr is not None:self.xerr=self._dataarr(xerr,False)
-  if yerr is not None:self.yerr=self._dataarr(yerr,False)
+  if xerr is not None:self.xerr=NPNumber(xerr)
+  if yerr is not None:self.yerr=NPNumber(yerr)
   self.xuplims=bols(kw.get('xuplims'),False)
   self.xlolims=bols(kw.get('xlolims'),False)
   self.yuplims=bols(kw.get('yuplims'),False)
@@ -37,10 +37,10 @@ class Errorpolar(polarElement):
   self.__x,self.__y=self._xyd(x,y,data)
   err,xerr,yerr=kw.get('err',self.err),kw.get('xerr',self.xerr),kw.get('yerr',self.yerr)
   if err is not None:
-   self.err=self._dataarr(err,False)
+   self.err=NPNumber(err)
    self.xerr,self.yerr=self.err,self.err
-  if xerr is not None:self.xerr=self._dataarr(xerr,False)
-  if yerr is not None:self.yerr=self._dataarr(yerr,False)
+  if xerr is not None:self.xerr=NPNumber(xerr)
+  if yerr is not None:self.yerr=NPNumber(yerr)
   self.xuplims=bols(kw.get('xuplims'),self.xuplims)
   self.xlolims=bols(kw.get('xlolims'),self.xlolims)
   self.yuplims=bols(kw.get('yuplims'),self.yuplims)
@@ -57,5 +57,5 @@ class Errorpolar(polarElement):
   self.plot(self.__x,self.__y,xerr=self.xerr,yerr=self.yerr,fmt=self.fmt,linewidth=self.linewidth,capsize=self.capsize,barsabove=self.barsabove,capthick=self.capthick,xuplims=self.xuplims,xlolims=self.xlolims,yuplims=self.yuplims,ylolims=self.ylolims,errorevery=self.errorevery)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.__x
- def gety(self):return self.__y
+ def getx(self):return self.__x.tonp()
+ def gety(self):return self.__y.tonp()

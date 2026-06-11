@@ -36,5 +36,5 @@ class Hexbin(twoElement):
   self.plot(self.__x,self.__y,self.c,gridsize=self.gridsize,xscale=self.xscale,yscale=self.yscale,mincnt=self.mincnt,extent=self.extent,bins=self.bins)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.__x
- def gety(self):return self.__y
+ def getx(self):return self.__x.tonp()
+ def gety(self):return self.__y.tonp()

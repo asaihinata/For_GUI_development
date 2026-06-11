@@ -96,13 +96,6 @@ class GElement:
   if isinstance(place,int) and 0<=place<=10:return labelplacelist[place]
   elif place in labelplacelist:return place
   return listchose(other,labelplacelist)
- def _dataarr(self,val,j=True):
-  if not isinstance(val,list|tuple|np.ndarray):
-   raise TypeError('配列の型を指定してください')
-  if isinstance(val,np.ndarray):reval=val
-  elif isinstance(val,list|tuple):reval=np.array(val)
-  if j==True:self.max_depth=max(self.max_depth,reval.shape[0])
-  return reval
  def _color_check(self,color):
   relist=graph_color
   if isinstance(color,str):relist=[parsecolor(color,graph_color[0])]

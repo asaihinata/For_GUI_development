@@ -26,6 +26,6 @@ class Linefill(twoElement):
   self.plot(self.__x,self.ymax,self.ymin,alpha=self.alpha,centerlinewidth=self.centerlinewidth)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.__x
- def getymin(self):return self.ymin
- def getymax(self):return self.ymax
+ def getx(self):return self.__x.tonp()
+ def getymin(self):return self.ymin.tonp()
+ def getymax(self):return self.ymax.tonp()

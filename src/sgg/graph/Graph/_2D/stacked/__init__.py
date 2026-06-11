@@ -8,16 +8,15 @@ class Stacked(twoElement):
   self.dataname=NPArray(kw.get('dataname'),depth_limit=1)
   if self.__data.shape[0]!=self.dataname.shape[0]:
    raise ValueError('配列のエラー')
-  self.anchor=self._anchor(kw.get('labelanchor'),(1,0.85))
-  self.labelplace=self._getlegendplace(self.anchor,kw.get('labelplace','center left'))
   self.width=range_num(num0s(kw.get('width'),0.8),0,1,0.8)
   self.plot(self.__data,self.dataname,label=self.label,width=self.width)
+  self._getlegendplace((1.2,1.2),'center left')
  def plot(self,data,dataname,label=None,width=0.8):
   self.clear()
   self.graphdata=[self._survey(data,dataname,label=label,width=width)]
-  self.legend()
   self.ax.set_ylim(0,100)
   self.ax.yaxis.set_major_formatter(PercentFormatter(xmax=100))
+  self.legend()
   self._apply_labels(self.xlabel,self.ylabel)
   self._adjustment()
  def _survey(self,data:NPNumber,dataname,label=None,width=0.8):
@@ -39,4 +38,4 @@ class Stacked(twoElement):
   self.plot(self.__data,self.dataname,label=self.label,width=self.width)
   self._redraw()
  def get(self):return self.graphdata
- def getdata(self):return self.__data
+ def getdata(self):return self.__data.tonp()

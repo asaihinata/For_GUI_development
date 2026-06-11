@@ -39,8 +39,8 @@ class Stem(twoElement):
   self.plot(self.__x,self.__y,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker,line=self.line,color=self.colorlist)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.__x
- def gety(self):return self.__y
+ def getx(self):return self.__x.tonp()
+ def gety(self):return self.__y.tonp()
  def _linefmt(self,line):
   set_arr=[]
   if isinstance(line,str):set_arr=[listchose(line,stem_line_list)]

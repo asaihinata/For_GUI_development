@@ -1,5 +1,6 @@
 from matplotlib.projections.polar import PolarAxes
-from numpy import int64,ndarray
+from numpy import int64, ndarray
+from .....nparray.npNumber import NPNumber
 from ....style import getLabel
 from ....typing import *
 from ...graph import GElement
@@ -11,6 +12,8 @@ class RadarElement(GElement):
  theta:ndarray[float64,dtype[float64]]
  thetas:ndarray[int64,dtype[int64]]
  frametype:Literal['circle','polygon']='circle'
+ def __init__(self):
+  self._data:NPNumber
  def _updates(
 self,
 fg:ColorType,

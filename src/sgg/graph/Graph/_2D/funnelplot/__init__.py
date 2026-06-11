@@ -42,4 +42,4 @@ class Funne(twoElement):
   self.plot(self.__data,height=self.height)
   self._redraw()
  def get(self):return self.graphdata
- def getdata(self):return self.__data
+ def getdata(self):return self.__data.tonp()
