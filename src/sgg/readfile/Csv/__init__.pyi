@@ -28,5 +28,5 @@ encoding:CsvEncoding|str='utf-8-sig'
  def csv(self)->DataFrame:''':class:`polars.polars`で読み取ったcsvファイルのデータを取得する'''
  def get_csv(self)->DataFrame:''':class:`polars.polars`で読み取ったcsvファイルのデータを取得する'''
  @property
- def tonumpy(self)->ndarray[Any,Any]:''':class:`polars.polars`で読み取ったcsvファイルのデータをnp.ndarrayに変換したデータを取得する'''
- def get_numpy(self)->ndarray[Any,Any]:''':class:`polars.polars`で読み取ったcsvファイルのデータをnp.ndarrayに変換したデータを取得する'''
+ def tonp(self)->ndarray[Any,Any]:''':class:`polars.polars`で読み取ったcsvファイルのデータをNumPyの`ndarray`として取得する'''
+ def get_numpy(self)->ndarray[Any,Any]:''':class:`polars.polars`で読み取ったcsvファイルのデータをNumPyの`ndarray`として取得する'''

@@ -14,5 +14,5 @@ class Getcsv:
  def csv(self):return self.__csv_data
  def get_csv(self):return self.__csv_data
  @property
- def tonumpy(self):return self.__csv_data.to_numpy()
+ def tonp(self):return self.__csv_data.to_numpy()
  def get_numpy(self):return self.__csv_data.to_numpy()

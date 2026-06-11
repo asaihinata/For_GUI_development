@@ -8,7 +8,7 @@ __all__=['NPArray','is_array_like','change_array_like']
 def is_array_like(obj:np.ndarray|list|tuple|range)->bool:
  '''配列もしくは__array__を持つオブジェクトを判定する'''
 def change_array_like(obj:np.ndarray|list|tuple|range)->bool:
- '''np.arrayに変換できるかを判定する'''
+ '''NumPyの`array`に変換できるかを判定する'''
 class NPArray:
  def __init__(
 self,
@@ -69,7 +69,7 @@ dtype:DTypeLike|None
  def flatten(self)->NPArray:...
  def first_element(self)->Any:'''`data`の最初の要素を取得する。'''
  def tolist(self)->list:'''list型にして返す。'''
- def tonp(self)->ndarray:'''配列をnp.arrayとして返す。'''
+ def tonp(self)->ndarray:'''配列をNumPyの`ndarray`に変換する'''
  def lengtharange(
 self,
 start:int=0,
