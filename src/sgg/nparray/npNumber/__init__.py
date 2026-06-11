@@ -35,22 +35,22 @@ class NPNumber(NPArray):
   self.data=np.abs(self.data,dtype=self.dtype)
   return self
  def __add__(self,other):
-  self.data=self.data+self.__datas(other)
+  self.data=self.data+__datas(other)
   return self
  def __sub__(self,other):
-  self.data=self.data-self.__datas(other)
+  self.data=self.data-__datas(other)
   return self
  def __mul__(self,other):
-  self.data=self.data*self.__datas(other)
+  self.data=self.data*__datas(other)
   return self
  def __truediv__(self,other):
-  self.data=self.data/self.__datas(other)
+  self.data=self.data/__datas(other)
   return self
  def __floordiv__(self,other):
-  self.data=self.data//self.__datas(other)
+  self.data=self.data//__datas(other)
   return self
  def __pow__(self,other):
-  self.data=np.power(self.data,self.__datas(other))
+  self.data=np.power(self.data,__datas(other))
   return self
  __radd__=__add__
  __rsub__=__sub__
@@ -60,14 +60,14 @@ class NPNumber(NPArray):
  __isub__=__sub__
  __imul__=__mul__
  __itruediv__=__truediv__
- def __eq__(self,value):return np.equal(self.data,self.__datas(value))
- def __ne__(self,value):return np.not_equal(self.data,self.__datas(value))
- def __lt__(self,other):return np.less(self.data,self.__datas(other))
- def __le__(self,other):return np.less_equal(self.data,self.__datas(other))
- def __gt__(self,other):return np.greater(self.data,self.__datas(other))
- def __ge__(self,other):return np.greater_equal(self.data,self.__datas(other))
+ def __eq__(self,value):return np.equal(self.data,__datas(value))
+ def __ne__(self,value):return np.not_equal(self.data,__datas(value))
+ def __lt__(self,other):return np.less(self.data,__datas(other))
+ def __le__(self,other):return np.less_equal(self.data,__datas(other))
+ def __gt__(self,other):return np.greater(self.data,__datas(other))
+ def __ge__(self,other):return np.greater_equal(self.data,__datas(other))
  def __mod__(self,other):
-  self.data=self.data%self.__datas(other)
+  self.data=self.data%__datas(other)
   return self
  def __neg__(self):
   self.data=-self.data
@@ -75,20 +75,6 @@ class NPNumber(NPArray):
  def __pos__(self):
   self.data=+self.data
   return self
- def __digits(self,digit):
-  if not isinstance(digit,int):
-   raise TypeError('digitには整数型を指定してください')
-  elif digit<1:
-   raise ValueError('digitには1以上の整数を指定してください')
-  return np.pow(10,digit)
- def __datas(self,data):
-  if isinstance(data,np.ndarray):
-   if not numberDtype(data):
-    raise TypeError('numpy.ndarrayの型を数値の型にしてください')
-   return data
-  elif not isinstance(data,np.ndarray|NPNumber|int|float|complex):
-   raise TypeError('NPNumber型か数値の型を指定してください')
-  return data.data if isinstance(data,NPNumber) else data
  @property
  def T(self):
   self.data=self.data.T
@@ -145,25 +131,25 @@ class NPNumber(NPArray):
  def floor(self,digit=None):
   if digit==None:self.data=np.floor(self.data)
   else:
-   pows=self.__digits(digit)
+   pows=__digits(digit)
    self.data=np.floor(self.data*pows)/pows
   return self
  def trunc(self,digit=None):
   if digit==None:self.data=np.trunc(self.data)
   else:
-   pows=self.__digits(digit)
+   pows=__digits(digit)
    self.data=np.trunc(self.data*pows)/pows
   return self
  def ceil(self,digit=None):
   if digit==None:self.data=np.ceil(self.data)
   else:
-   pows=self.__digits(digit)
+   pows=__digits(digit)
    self.data=np.ceil(self.data*pows)/pows
   return self
  def round(self,digit=None):
   if digit==None:self.data=np.round(self.data)
   else:
-   pows=self.__digits(digit)
+   pows=__digits(digit)
    self.data=np.round(self.data*pows)/pows
   return self
  def cussum(self):
@@ -200,3 +186,17 @@ class NPNumber(NPArray):
  def axis(self,axis):
   self.__axis=axis
   return self.__axis
+def __digits(digit):
+ if not isinstance(digit,int):
+  raise TypeError('digitには整数型を指定してください')
+ elif digit<1:
+  raise ValueError('digitには1以上の整数を指定してください')
+ return np.pow(10,digit)
+def __datas(data):
+ if isinstance(data,np.ndarray):
+  if not numberDtype(data):
+   raise TypeError('numpy.ndarrayの型を数値の型にしてください')
+  return data
+ elif not isinstance(data,np.ndarray|NPNumber|int|float|complex):
+  raise TypeError('NPNumber型か数値の型を指定してください')
+ return data.data if isinstance(data,NPNumber) else data

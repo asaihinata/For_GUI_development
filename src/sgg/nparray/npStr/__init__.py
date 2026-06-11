@@ -14,7 +14,7 @@ class NPString(NPArray):
  def __contains__(self,item):return super().__contains__(item)
  def __reversed__(self):return super().__reversed__()
  def __array__(self,dtype=None,copy=None):return super().__array__(dtype,copy)
- def __repr__(self):return f'NPString({self.__data})'
+ def __repr__(self):return f'NPString({self.data})'
  def __array_ufunc__(self,ufunc,method,*args,**kwargs):
   if method=='__call__':
    args=[x.data if isinstance(x,NPString) else x for x in args]
@@ -23,35 +23,35 @@ class NPString(NPArray):
    return result
   return NotImplemented
  def __add__(self,other):
-  self.__data=nps.add(self.__data,self.___datas(other))
+  self.data=nps.add(self.data,self.___datas(other))
   return self
  def __mul__(self,other):
   if not isinstance(other,int):
    raise TypeError('int型で指定してください')
-  self.__data=nps.multiply(self.__data,other)
+  self.data=nps.multiply(self.data,other)
   return self
  __radd__=__add__
  __rmul__=__mul__
  __iadd__=__add__
  __imul__=__mul__
- def __eq__(self,value):return np.equal(self.__data,self.___datas(value))
- def __ne__(self,value):return np.not_equal(self.__data,self.___datas(value))
+ def __eq__(self,value):return np.equal(self.data,self.___datas(value))
+ def __ne__(self,value):return np.not_equal(self.data,self.___datas(value))
  def ___datas(self,data):return data.data if isinstance(data,NPString) else data
  @property
  def T(self):
-  self.__data=self.__data.T
+  self.data=self.data.T
   return self
  def append(self,val):
-  self.__data=np.append(self.__data,self.___datas(val))
+  self.data=np.append(self.data,self.___datas(val))
   return self
  def low(self):
-  self.__data=nps.lower(self.__data)
+  self.data=nps.lower(self.data)
   return self
  def upper(self):
-  self.__data=nps.upper(self.__data)
+  self.data=nps.upper(self.data)
   return self
- def stringlen(self):return np.vectorize(len)(self.__data)
- def str_len(self):return nps.str_len(self.__data)
+ def stringlen(self):return np.vectorize(len)(self.data)
+ def str_len(self):return nps.str_len(self.data)
  def replace(self,old,new):
-  self.__data=nps.replace(self.__data,old,new)
+  self.data=nps.replace(self.data,old,new)
   return self

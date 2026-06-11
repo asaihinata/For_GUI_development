@@ -139,12 +139,6 @@ For_GUI_development
  │   │   │   │   │   ├── scatter
  │   │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   │   └── __init__.pyi
- │   │   │   │   │   ├── ssbargraph
- │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   └── __init__.pyi
- │   │   │   │   │   ├── ssbarhgraph
- │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   └── __init__.pyi
  │   │   │   │   │   ├── stack
  │   │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   │   └── __init__.pyi
@@ -470,5 +464,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:327
-フォルダ数:144
+ファイル数:323
+フォルダ数:142

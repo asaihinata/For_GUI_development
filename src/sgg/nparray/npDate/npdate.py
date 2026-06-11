@@ -38,7 +38,7 @@ class NPDate(NPArray):
  def T(self):
   self.data=self.data.T
   return self
- def astype(self,dtype):
+ def astype(self,dtype='datetime64[D]'):
   self.data=self.data.astype(serchDtype(dtype))
   return self
  @property

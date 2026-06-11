@@ -3,7 +3,7 @@ from types import NotImplementedType
 from typing import Any,Literal
 import numpy as np
 from numpy import _CopyMode,_ScalarT,dtype,ndarray,ufunc
-from numpy._typing import DTypeLike
+from numpy._typing import ArrayLike,DTypeLike
 __all__=['NPArray','is_array_like','change_array_like']
 def is_array_like(obj:np.ndarray|list|tuple|range)->bool:
  '''配列もしくは__array__を持つオブジェクトを判定する'''
@@ -12,12 +12,12 @@ def change_array_like(obj:np.ndarray|list|tuple|range)->bool:
 class NPArray:
  def __init__(
 self,
-data:list|tuple|ndarray,
+data:ArrayLike,
 dtype:DTypeLike|None=None,
 depth_limit:int|None=None
 )->None:'''
  :param data: データの配列を指定する。
- :type data: list|tuple|ndarray
+ :type data: ArrayLike
  :param dtype: numpyの配列で指定する型を指定する。
  :type dtype: DTypeLike|None
  :param depth_limit: 配列の最大の深さを指定する。
@@ -63,10 +63,10 @@ dtype:DTypeLike|None
  def sort(self)->NPArray:'''`data`にソートを実行する。'''
  def first_pop(self)->NPArray:'''配列の最初の要素のコピーをその配列の末尾に追加する。'''
  def clear(self)->NPArray:'''配列をクリアする'''
- def deep_add(self,val)->NPArray:'''配列の深さを`val`分だけ追加する。'''
- def min_deep(self,val)->NPArray:'''配列の深さが`val`より低い場合,深さを`val`にする。'''
- def reshape(self,size:tuple[int,...])->NPArray:...
- def flatten(self)->NPArray:...
+ def deep_add(self,val:int)->NPArray:'''配列の深さを`val`分だけ追加する。'''
+ def deep_add(self,val:int)->NPArray:'''配列の深さが`val`より低い場合,深さを`val`にする。'''
+ def reshape(self,size:tuple[int,...])->NPArray:'''配列の形状を`size`で指定する'''
+ def flatten(self)->NPArray:'''配列を一次元に平坦にする'''
  def first_element(self)->Any:'''`data`の最初の要素を取得する。'''
  def tolist(self)->list:'''list型にして返す。'''
  def tonp(self)->ndarray:'''配列をNumPyの`ndarray`に変換する'''
