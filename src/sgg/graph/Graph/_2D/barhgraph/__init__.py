@@ -3,12 +3,12 @@ __all__=['BarhGraph']
 class BarhGraph(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.x=NPNumber(kw.get('x'))
-  self.y=NPArray(kw.get('y'),depth_limit=1)
+  self.__x=NPNumber(kw.get('x'))
+  self.__y=NPArray(kw.get('y'),depth_limit=1)
   self.logs=bols(kw.get('logs'),False)
   self.height=range_num(num0s(kw.get('height'),1),0,1,1)
   self.align=listchose(kw.get('align'),['center','edge'])
-  self.plot(self.x,self.y,label=self.label,alpha=self.alpha,height=self.height,align=self.align,logs=self.logs)
+  self.plot(self.__x,self.__y,label=self.label,alpha=self.alpha,height=self.height,align=self.align,logs=self.logs)
  def plot(self,x,y,label=None,alpha=1,height=1,align='center',logs=False):
   self.clear()
   self.graphdata=[self.ax.barh(ys,xs,label=label[i],alpha=alpha,height=height,align=align,log=logs)for i,(xs,ys) in enumerate(TwoArray(x,y,xdtype=np.float64))]
@@ -18,13 +18,13 @@ class BarhGraph(twoElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,nListlike):self.x=NPNumber(x)
-  if isinstance(y,nListlike):self.y=NPArray(y,depth_limit=1)
+  if isinstance(x,nListlike):self.__x=NPNumber(x)
+  if isinstance(y,nListlike):self.__y=NPArray(y,depth_limit=1)
   self.height=range_num(num0s(kw.get('height'),self.height),0,1,self.height)
   self.align=listchose(kw.get('align'),['center','edge'],self.align)
   self.logs=bols(kw.get('logs'),self.logs)
-  self.plot(self.x,self.y,label=self.label,alpha=self.alpha,height=self.height,align=self.align,logs=self.logs)
+  self.plot(self.__x,self.__y,label=self.label,alpha=self.alpha,height=self.height,align=self.align,logs=self.logs)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.x.tonp()
- def gety(self):return self.y.tonp()
+ def getx(self):return self.__x.tonp()
+ def gety(self):return self.__y.tonp()

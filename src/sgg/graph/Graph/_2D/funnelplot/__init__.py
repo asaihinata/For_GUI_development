@@ -4,7 +4,7 @@ __all__=['Funne']
 class Funne(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.data=NPNumber(kw.get('data'),depth_limit=1)
+  self.__data=NPNumber(kw.get('data'),depth_limit=1)
   self.height=range_num(num0s(kw.get('height'),1),0,1,1)
   xmajormaxbins=intsmin(kw.get('xmajormaxbins'),3,11)
   if not isinstance(xmajormaxbins,int):
@@ -13,7 +13,7 @@ class Funne(twoElement):
    raise ValueError('xmajormaxbinsは2n+1の整数で指定してください')
   else:self.xmajormaxbins=xmajormaxbins
   self.ax.xaxis.set_major_locator(MaxNLocator(nbins=self.xmajormaxbins,integer=self.xmajorint))
-  self.plot(self.data,height=self.height,alpha=self.alpha)
+  self.plot(self.__data,height=self.height,alpha=self.alpha)
  def plot(self,data,height=1,alpha=1):
   self.clear()
   self.graphdata=[self._funne(data,height,alpha)]
@@ -30,7 +30,7 @@ class Funne(twoElement):
   return bars
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,nListlike):self.data=NPNumber(data,depth_limit=1)
+  if isinstance(data,nListlike):self.__data=NPNumber(data,depth_limit=1)
   self.height=range_num(num0s(kw.get('height'),self.height),0,1,self.height)
   xmajormaxbins=intsmin(kw.get('xmajormaxbins'),3,self.xmajormaxbins)
   if not isinstance(xmajormaxbins,int):
@@ -39,7 +39,7 @@ class Funne(twoElement):
    raise ValueError('xmajormaxbinsは2n+1の整数で指定してください')
   else:self.xmajormaxbins=xmajormaxbins
   self.ax.xaxis.set_major_locator(MaxNLocator(nbins=self.xmajormaxbins,integer=self.xmajorint))
-  self.plot(self.data,height=self.height)
+  self.plot(self.__data,height=self.height)
   self._redraw()
  def get(self):return self.graphdata
- def getdata(self):return self.data
+ def getdata(self):return self.__data

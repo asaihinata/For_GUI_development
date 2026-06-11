@@ -3,9 +3,9 @@ __all__=['Waterfallh']
 class Waterfallh(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.x=NPArray(kw.get('x'),depth_limit=1)
-  self.y=NPNumber(kw.get('y'),depth_limit=1)
-  self.bottom=np.cumsum(np.append(0,self.y)[0:self.y.size])
+  self.__x=NPArray(kw.get('x'),depth_limit=1)
+  self.__y=NPNumber(kw.get('y'),depth_limit=1)
+  self.bottom=np.cumsum(np.append(0,self.__y)[0:self.__y.size])
   self.ucolor=parsecolor(kw.get('ucolor'),'#156082')
   self.dcolor=parsecolor(kw.get('dcolor'),'#e97132')
   self.height=range_num(num0s(kw.get('height'),1),0,1,1)
@@ -13,12 +13,11 @@ class Waterfallh(twoElement):
   self.sumstext=kw.get('sumstext','sum')
   self.colorline=parsecolor(kw.get('colorline'),'#4477aa')
   self.linestyle=Solid(kw.get('linestyle','-')).solid
-  self.plot(self.x,self.y,alpha=self.alpha,height=self.height,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
+  self.plot(self.__x,self.__y,alpha=self.alpha,height=self.height,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
  def plot(self,x,y,alpha=1,height=1,sums=False,sumstext='sum',bottom=None,color=None,linestyle='-'):
   self.clear()
   x,y=x.tonp(),y.tonp()
   if sums:x,y,bottom=np.append(x,sumstext),np.append(y,np.sum(y)),np.append(bottom,0)
-  print(y)
   self.color=np.where(y<=0,self.dcolor,self.ucolor)
   self.graphdata=[self.ax.barh(x,y,color=self.color,alpha=alpha,height=height,align='center',left=bottom)]
   if height!=1:self._vlines(np.cumsum(y),height,color,linestyle)
@@ -29,9 +28,9 @@ class Waterfallh(twoElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,nListlike):self.x=NPArray(x,depth_limit=1)
-  if isinstance(y,nListlike):self.y=NPNumber(y,depth_limit=1)
-  self.bottom=np.cumsum(np.append(0,self.y)[0:self.y.size])
+  if isinstance(x,nListlike):self.__x=NPArray(x,depth_limit=1)
+  if isinstance(y,nListlike):self.__y=NPNumber(y,depth_limit=1)
+  self.bottom=np.cumsum(np.append(0,self.__y)[0:self.__y.size])
   self.sums=bols(kw.get('sums'),self.sums)
   self.sumstext=kw.get('sumstext',self.sumstext)
   self.ucolor=parsecolor(kw.get('ucolor'),self.ucolor)
@@ -39,11 +38,11 @@ class Waterfallh(twoElement):
   self.height=range_num(num0s(kw.get('height'),self.height),0,1,self.height)
   self.colorline=parsecolor(kw.get('colorline'),self.colorline)
   self.linestyle=Solid(kw.get('linestyle',self.linestyle)).solid
-  self.plot(self.x,self.y,alpha=self.alpha,height=self.height,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
+  self.plot(self.__x,self.__y,alpha=self.alpha,height=self.height,sums=self.sums,sumstext=self.sumstext,bottom=self.bottom,color=self.colorline,linestyle=self.linestyle)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.x.tonp()
- def gety(self):return self.y.tonp()
+ def getx(self):return self.__x.tonp()
+ def gety(self):return self.__y.tonp()
  def _vlines(self,lin,height=1,color=None,linestyle='-'):
   lens,height,xmaxs,xmins=len(lin)-1,height/2,[],[]
   for i in range(lens):

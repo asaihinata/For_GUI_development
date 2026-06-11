@@ -3,7 +3,7 @@ __all__=['Errorpolar']
 class Errorpolar(polarElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.x,self.y=self._xyd(kw.get('x'),kw.get('y'),kw.get('data'))
+  self.__x,self.__y=self._xyd(kw.get('x'),kw.get('y'),kw.get('data'))
   err,xerr,yerr=kw.get('err'),kw.get('xerr'),kw.get('yerr')
   self.xerr,self.yerr=None,None
   if err is not None:
@@ -25,16 +25,16 @@ class Errorpolar(polarElement):
   errorevery=kw.get('errorevery')
   if((isinstance(errorevery,list|tuple)and len(errorevery)==2 and all(isinstance(i,int)for i in errorevery)) or isinstance(errorevery,int)):self.errorevery=errorevery
   else:self.errorevery=1
-  self.plot(self.x,self.y,xerr=self.xerr,yerr=self.yerr,fmt=self.fmt,linewidth=self.linewidth,capsize=self.capsize,barsabove=self.barsabove,capthick=self.capthick,xuplims=self.xuplims,xlolims=self.xlolims,yuplims=self.yuplims,ylolims=self.ylolims,errorevery=self.errorevery,alpha=self.alpha)
+  self.plot(self.__x,self.__y,xerr=self.xerr,yerr=self.yerr,fmt=self.fmt,linewidth=self.linewidth,capsize=self.capsize,barsabove=self.barsabove,capthick=self.capthick,xuplims=self.xuplims,xlolims=self.xlolims,yuplims=self.yuplims,ylolims=self.ylolims,errorevery=self.errorevery,alpha=self.alpha)
  def plot(self,x,y,xerr=None,yerr=None,fmt='',linewidth=1.5,capsize=0,barsabove=False,capthick=10,xuplims=False,xlolims=False,yuplims=False,ylolims=False,errorevery=1,alpha=1):
   self.clear()
   self.graphdata=self.ax.errorbar(x,y,fmt=fmt,xerr=xerr,yerr=yerr,elinewidth=linewidth,capthick=capthick,capsize=capsize,barsabove=barsabove,xuplims=xuplims,xlolims=xlolims,uplims=yuplims,lolims=ylolims,errorevery=errorevery,alpha=alpha)
   self._adjustment()
  def update(self,x=None,y=None,data=None,**kw):
   self._updates(**kw)
-  if not isinstance(x,nListlike):x=self.x
-  if not isinstance(y,nListlike):y=self.y
-  self.x,self.y=self._xyd(x,y,data)
+  if not isinstance(x,nListlike):x=self.__x
+  if not isinstance(y,nListlike):y=self.__y
+  self.__x,self.__y=self._xyd(x,y,data)
   err,xerr,yerr=kw.get('err',self.err),kw.get('xerr',self.xerr),kw.get('yerr',self.yerr)
   if err is not None:
    self.err=self._dataarr(err,False)
@@ -54,8 +54,8 @@ class Errorpolar(polarElement):
   self.capsize=nums(kw.get('capsize'),self.capsize)
   errorevery=kw.get('errorevery',self.errorevery)
   self.errorevery=errorevery if(isinstance(errorevery,list|tuple)and len(errorevery)==2 and all(isinstance(i,int)for i in errorevery))or isinstance(errorevery,int) else 1
-  self.plot(self.x,self.y,xerr=self.xerr,yerr=self.yerr,fmt=self.fmt,linewidth=self.linewidth,capsize=self.capsize,barsabove=self.barsabove,capthick=self.capthick,xuplims=self.xuplims,xlolims=self.xlolims,yuplims=self.yuplims,ylolims=self.ylolims,errorevery=self.errorevery)
+  self.plot(self.__x,self.__y,xerr=self.xerr,yerr=self.yerr,fmt=self.fmt,linewidth=self.linewidth,capsize=self.capsize,barsabove=self.barsabove,capthick=self.capthick,xuplims=self.xuplims,xlolims=self.xlolims,yuplims=self.yuplims,ylolims=self.ylolims,errorevery=self.errorevery)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.x
- def gety(self):return self.y
+ def getx(self):return self.__x
+ def gety(self):return self.__y

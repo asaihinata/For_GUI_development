@@ -3,10 +3,10 @@ __all__=['Hatplot']
 class Hatplot(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.x=self._dataarr(kw.get('x'))
-  self.data=self._dataarr(kw.get('data'))
+  self.__x=self._dataarr(kw.get('x'))
+  self.__data=self._dataarr(kw.get('data'))
   self.color=parsecolor(kw.get('color'),'#4477aa')
-  self.plot(self.x,self.data,color=self.color,alpha=self.alpha)
+  self.plot(self.__x,self.__data,color=self.color,alpha=self.alpha)
  def plot(self,x,data,color=None,alpha=1):
   self.clear()
   self.graphdata=self.hat_graph(x,data,color=color,alpha=alpha)
@@ -23,12 +23,12 @@ class Hatplot(twoElement):
   return[rects,annotate]
  def update(self,x=None,data=None,**kw):
   self._updates(**kw)
-  if isinstance(x,nListlike):self.x=self._dataarr(x)
-  if isinstance(data,nListlike):self.data=self._dataarr(data)
+  if isinstance(x,nListlike):self.__x=self._dataarr(x)
+  if isinstance(data,nListlike):self.__data=self._dataarr(data)
   self.color=parsecolor(kw.get('color'),self.color)
-  self.plot(self.x,self.data,color=self.color,alpha=self.alpha)
+  self.plot(self.__x,self.__data,color=self.color,alpha=self.alpha)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.x
- def getdata(self):return self.data
+ def getx(self):return self.__x
+ def getdata(self):return self.__data
 # todo labelの追加

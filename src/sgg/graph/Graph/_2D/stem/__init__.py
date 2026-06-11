@@ -6,14 +6,14 @@ stem_color_list=['r','g','b','c','m','y','k','w']
 class Stem(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.x=NPNumber(kw.get('x'))
-  self.y=NPNumber(kw.get('y'))
+  self.__x=NPNumber(kw.get('x'))
+  self.__y=NPNumber(kw.get('y'))
   self.colorlist=FMTColorList(kw.get('fcolor'))
   self.line=FMTLineList(kw.get('fline'))
   self.marker=FMTMarkList(kw.get('fmarker'))
   self.bottom=num0s(kw.get('bottom'))
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
-  self.plot(self.x,self.y,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker,line=self.line,color=self.color,alpha=self.alpha)
+  self.plot(self.__x,self.__y,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker,line=self.line,color=self.color,alpha=self.alpha)
  def plot(self,x,y,bottom=0,orientation='vertical',label=None,marker=None,line=None,color=None,alpha=1):
   self.clear()
   for i,(xs,ys) in enumerate(TwoArray(x,y)):
@@ -26,8 +26,8 @@ class Stem(twoElement):
   self._adjustment()
  def update(self,x=None,y=None,**kw):
   self._updates(**kw)
-  if isinstance(x,nListlike):self.x=NPNumber(x)
-  if isinstance(y,nListlike):self.y=NPNumber(y)
+  if isinstance(x,nListlike):self.__x=NPNumber(x)
+  if isinstance(y,nListlike):self.__y=NPNumber(y)
   color=kw.get('fcolor')
   self.colorlist=parameters(color,self.colorlist,FMTColorList(color))
   line=kw.get('fline')
@@ -36,11 +36,11 @@ class Stem(twoElement):
   self.marker=parameters(marker,self.marker,FMTMarkList(marker))
   self.bottom=num0s(kw.get('bottom'),self.bottom)
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)
-  self.plot(self.x,self.y,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker,line=self.line,color=self.colorlist)
+  self.plot(self.__x,self.__y,bottom=self.bottom,orientation=self.orientation,label=self.label,marker=self.marker,line=self.line,color=self.colorlist)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.x
- def gety(self):return self.y
+ def getx(self):return self.__x
+ def gety(self):return self.__y
  def _linefmt(self,line):
   set_arr=[]
   if isinstance(line,str):set_arr=[listchose(line,stem_line_list)]

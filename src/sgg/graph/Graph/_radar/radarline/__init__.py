@@ -7,7 +7,7 @@ class RadarLine(RadarElement):
   self.marker=Marker(kw.get('marker','none')).marker
   self.line=Solid(kw.get('linestyle','-')).solid
   self.linewidth=num0(kw.get('linewidth'),2)
-  self.plot(self.data,marker=self.marker,linewidth=self.linewidth,linestyle=self.line,markersize=self.markersize,alpha=self.alpha)
+  self.plot(self.__data,marker=self.marker,linewidth=self.linewidth,linestyle=self.line,markersize=self.markersize,alpha=self.alpha)
  def plot(self,data,marker='none',linewidth=2,linestyle='-',markersize=10,alpha=1):
   self.clear()
   self.graphdata=[self.ax.plot(self.theta,d,marker=marker,linewidth=linewidth,markersize=markersize,linestyle=linestyle,alpha=alpha)for d in data]
@@ -22,7 +22,7 @@ class RadarLine(RadarElement):
   if line is not None:
    self.line=Solid(line).solid
   self.linewidth=num0(kw.get('linewidth'),self.linewidth)
-  self.plot(self.data,marker=self.marker,linewidth=self.linewidth,linestyle=self.line,markersize=self.markersize,alpha=self.alpha)
+  self.plot(self.__data,marker=self.marker,linewidth=self.linewidth,linestyle=self.line,markersize=self.markersize,alpha=self.alpha)
   self._redraw()
- def getdata(self):return self.data.tonp()
+ def getdata(self):return self.__data.tonp()
  def get(self):return self.graphdata

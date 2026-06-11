@@ -3,10 +3,10 @@ __all__=['SSBarhGraph']
 class SSBarhGraph(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.data=NPNumber(kw.get('data'))
+  self.__data=NPNumber(kw.get('data'))
   self.dataname=NPArray(kw.get('dataname'),depth_limit=1)
   self.height=range_num(num0s(kw.get('height'),0.8),0,1,0.8)
-  self.plot(self.data,self.dataname,label=self.label,alpha=self.alpha,height=self.height)
+  self.plot(self.__data,self.dataname,label=self.label,alpha=self.alpha,height=self.height)
  def plot(self,data:NPNumber,dataname,label=None,alpha=1,height=0.8):
   self.clear()
   height=height/data.shape[0]
@@ -18,11 +18,11 @@ class SSBarhGraph(twoElement):
   self._adjustment()
  def update(self,data=None,dataname=None,**kw):
   self._updates(**kw)
-  if isinstance(data,nListlike):self.data=NPNumber(data)
+  if isinstance(data,nListlike):self.__data=NPNumber(data)
   if isinstance(dataname,nListlike):self.dataname=NPArray(dataname,depth_limit=1)
   self.height=range_num(num0s(kw.get('height'),self.height),0,1,self.height)
-  self.plot(self.data,self.dataname,label=self.label,alpha=self.alpha,height=self.height)
+  self.plot(self.__data,self.dataname,label=self.label,alpha=self.alpha,height=self.height)
   self._redraw()
  def get(self):return self.graphdata
- def getx(self):return self.data.tonp()
+ def getx(self):return self.__data.tonp()
  def gety(self):return self.dataname.tonp()

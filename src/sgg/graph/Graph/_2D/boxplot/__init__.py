@@ -3,16 +3,16 @@ __all__=['Boxplot']
 class Boxplot(twoElement):
  def __init__(self,master,kw):
   super().__init__(master,kw)
-  self.data=NPNumber(kw.get('data'))
+  self.__data=NPNumber(kw.get('data'))
   self.legends=bols(kw.get('legend'),False)
-  self.label=getLabel([f'box{i}' for i in range(self.data.ndim)]) if self.label else self.label.loop(self.data.ndim)
+  self.label=getLabel([f'box{i}' for i in range(self.__data.ndim)]) if self.label else self.label.loop(self.__data.ndim)
   self.width=range_num(num0s(kw.get('width'),0.15),0,1,0.15)
   self.whis=self._boxplot_whis(kw.get('whis'))
   self.fill=bols(kw.get('fill'),False)
   self.notch=bols(kw.get('notch'),False)
   self.showfliers=bols(kw.get('showfliers'))
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'])
-  self.plot(self.data,label=self.label,width=self.width,legend=self.legends,whis=self.whis,fill=self.fill,showfliers=self.showfliers,notch=self.notch,orientation=self.orientation,alpha=self.alpha)
+  self.plot(self.__data,label=self.label,width=self.width,legend=self.legends,whis=self.whis,fill=self.fill,showfliers=self.showfliers,notch=self.notch,orientation=self.orientation,alpha=self.alpha)
  def plot(self,data,label=None,width=0.15,whis=1.5,fill=False,legend=True,showfliers=True,notch=False,orientation='vertical',alpha=1):
   self.clear()
   label=list(self.label)
@@ -26,7 +26,7 @@ class Boxplot(twoElement):
   self._adjustment()
  def update(self,data=None,**kw):
   self._updates(**kw)
-  if isinstance(data,nListlike):self.data=NPNumber(data)
+  if isinstance(data,nListlike):self.__data=NPNumber(data)
   self.legends=bols(kw.get('legend'),self.legends)
   self.fill=bols(kw.get('fill'),self.fill)
   self.notch=bols(kw.get('notch'),self.notch)
@@ -34,10 +34,10 @@ class Boxplot(twoElement):
   self.orientation=listchose(kw.get('orientation'),['vertical','horizontal'],self.orientation)
   self.width=range_num(num0s(kw.get('width'),self.width),0,1,self.width)
   self.whis=self._boxplot_whis(kw.get('whis',self.whis))
-  self.plot(self.data,label=self.label,width=self.width,legend=self.legends,whis=self.whis,fill=self.fill,showfliers=self.showfliers,notch=self.notch,orientation=self.orientation,alpha=self.alpha)
+  self.plot(self.__data,label=self.label,width=self.width,legend=self.legends,whis=self.whis,fill=self.fill,showfliers=self.showfliers,notch=self.notch,orientation=self.orientation,alpha=self.alpha)
   self._redraw()
  def get(self):return self.graphdata
- def getdata(self):return self.data.tonp()
+ def getdata(self):return self.__data.tonp()
  def _boxplot_whis(self,data):
   if isinstance(data,list|tuple):
    if all(isinstance(i,int|float)for i in data):
