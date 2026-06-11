@@ -13,8 +13,6 @@ from .linefill import Linefill
 from .linegraph import LineGraph
 from .pie import Pie
 from .scatter import Scatter
-from .ssbargraph import SSBarGraph
-from .ssbarhgraph import SSBarhGraph
 from .stack import Stack
 from .stacked import Stacked
 from .stackedh import Stackedh
