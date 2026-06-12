@@ -1,7 +1,10 @@
 from tkinter import Misc,_Cursor
 from ...typing import Callable,TupleNumbertype2
-from .._font import fonts
+from ..font import fonts
 __all__=['_Element','Element']
+class _Element(Element):
+ widget:None
+ master:Misc
 class Element:
  master:Misc=master
  graph:bool=False
@@ -85,6 +88,3 @@ class Element:
  def screen(self)->str:'''スクリーンの名前を返す。'''
  def id(self)->int:'''ウィジェットのウィンドウ識別子を返す。'''
  def name(self):'''ウィジェットのインスタンス名を返す。'''
-class _Element(Element):
- widget:None
- master:Misc

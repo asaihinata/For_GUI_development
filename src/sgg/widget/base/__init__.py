@@ -2,7 +2,7 @@ from re import findall
 from tkinter import Misc
 from ...dev import bols,listchose,num0,parsecolor
 from ...typing import FunctionType
-from .._font import fonts
+from ..font import fonts
 __all__=['Element']
 class Element:
  def __init__(self,master:Misc,kw):

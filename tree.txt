@@ -289,7 +289,6 @@ For_GUI_development
  │   │   ├── typing.py
  │   │   └── widget
  │   │       ├── __init__.py
- │   │       ├── _font.py
  │   │       ├── base
  │   │       │   ├── __init__.py
  │   │       │   └── __init__.pyi
@@ -395,6 +394,9 @@ For_GUI_development
  │   │       │       └── qrimg
  │   │       │           ├── __init__.py
  │   │       │           └── __init__.pyi
+ │   │       ├── font
+ │   │       │   ├── __init__.py
+ │   │       │   └── __init__.pyi
  │   │       └── window
  │   │           ├── __init__.py
  │   │           └── __init__.pyi
@@ -461,5 +463,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:321
-フォルダ数:141
+ファイル数:322
+フォルダ数:142

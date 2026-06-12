@@ -57,7 +57,7 @@ class Menus(Element):
   self.menu_lists.append([label,submenu_lists])
   self._create_menu_lists()
  def delta(self):self.widget.destroy()
- def get_bg(self):return str(self.bg)
  def set_bg(self,bg):
-  self.bg=bg
-  self.widget.config(bg=bg)
+  self.bg=parsecolor(bg,self.bg)
+  self.widget.config(bg=self.bg)
+ def get_bg(self):return self.bg

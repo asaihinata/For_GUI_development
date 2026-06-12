@@ -2,7 +2,7 @@ from os.path import abspath
 from pathlib import Path
 from tkinter import Label
 from webbrowser import open
-from ...._font import fonts
+from ....font import fonts
 from ...common import *
 __all__=['Link']
 class Link(Element):
@@ -33,11 +33,11 @@ class Link(Element):
   self.widget.config(text=txt)
  def get_link(self):return self.link_url
  def set_link(self,link):self.link_url=link
- def get_fg(self):return str(self.bg)
  def set_fg(self,fg):
-  self.fg=fg
-  self.widget.config(fg=fg)
- def get_bg(self):return str(self.bg)
+  self.fg=parsecolor(fg,self.fg)
+  self.widget.config(fg=self.fg)
  def set_bg(self,bg):
-  self.bg=bg
-  self.widget.config(bg=bg)
+  self.bg=parsecolor(bg,self.bg)
+  self.widget.config(bg=self.bg)
+ def get_fg(self):return self.fg
+ def get_bg(self):return self.bg

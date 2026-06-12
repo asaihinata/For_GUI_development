@@ -14,4 +14,4 @@ class Imagelink(Element):
   self.widget=Label(master,text=None,image=self.imgs,takefocus=self.takefocus)
   self.widget.image=self.imgs
  def delta(self):self.widget.destroy()
- def show(self):self.__img.show()
+ def show(self,title=None):self.__img.show(title)

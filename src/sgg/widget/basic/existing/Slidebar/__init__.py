@@ -18,11 +18,11 @@ class Slidebar(Element):
   if nums(val):self.widget.set(val)
  def _get(self):return self.widget.get()
  def delta(self):self.widget.destroy()
- def get_fg(self):return str(self.bg)
  def set_fg(self,fg):
-  self.fg=fg
-  self.widget.config(fg=fg)
- def get_bg(self):return str(self.bg)
+  self.fg=parsecolor(fg,self.fg)
+  self.widget.config(fg=self.fg)
  def set_bg(self,bg):
-  self.bg=bg
-  self.widget.config(bg=bg)
+  self.bg=parsecolor(bg,self.bg)
+  self.widget.config(bg=self.bg)
+ def get_fg(self):return self.fg
+ def get_bg(self):return self.bg

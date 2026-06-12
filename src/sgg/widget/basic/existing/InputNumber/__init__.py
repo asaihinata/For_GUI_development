@@ -17,11 +17,11 @@ class InputNumber(Element):
   self.widget=Spinbox(self.master,textvariable=self.intval,takefocus=self.takefocus,insertbackground=self.insertbackground,insertwidth=self.insertwidth,relief=self.relief,cursor=self.cursor,from_=self.min,to=self.max,increment=self.increment,bg=self.bg,fg=self.fg,font=self.font,justify=self.justify,wrap=self.wrap,width=self.width,borderwidth=self.borderwidth)
  def get_number(self):return self.widget.get()
  def delta(self):self.widget.destroy()
- def get_fg(self):return str(self.bg)
  def set_fg(self,fg):
-  self.fg=fg
-  self.widget.config(fg=fg)
- def get_bg(self):return str(self.bg)
+  self.fg=parsecolor(fg,self.fg)
+  self.widget.config(fg=self.fg)
  def set_bg(self,bg):
-  self.bg=bg
-  self.widget.config(bg=bg)
+  self.bg=parsecolor(bg,self.bg)
+  self.widget.config(bg=self.bg)
+ def get_fg(self):return self.fg
+ def get_bg(self):return self.bg

@@ -9,3 +9,7 @@ class Imagebyte(_Element):
  imgs:PhotoImage
  widget:Label
  def delta(self):'''ウィジェットを削除する。'''
+ def show(self,title:str|None=None):'''画像を表示させる
+
+ :param title: タイトルを指定する。
+ :type title: str|None'''
