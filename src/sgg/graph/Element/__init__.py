@@ -1,4 +1,5 @@
 from .polarelement import polarElement
-from .specialelement import RadarElement,radar_factory
+from .radar import RadarElement
+from .radar.custom import radar_factory
 from .threeelement import threeElement
 from .twoelement import twoElement

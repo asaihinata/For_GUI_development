@@ -1,4 +1,3 @@
-from os import getcwd
 from re import findall
 from tkinter import Misc
 import numpy as np
@@ -8,9 +7,8 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from ...._dialog import asksaveasfilename
 from ....dev import bols,listchose,num0s,num1s,parsecolor,range_num
-from ...style import Marker,Solid,getLabel
+from ...style import getLabel
 __all__=['GElement']
 graph_color=['#4477aa','#ee7733','#111211','#aa66cc','#77aadd','#ffa94d','#55aa55','#cc3311','#cc99ff','#ff8888','#444444','#888888','#332288','#88ccee','#44aa99','#117733','#999933','#ddcc77','#cc6677','#882255','#aa4499','#dddddd']
 rcParams['font.family']='Meiryo'
@@ -22,7 +20,7 @@ class GElement:
   self.widget=None
   self.graph=True
   self.graphdata=[]
-  self._canvas_widget=None
+  self.widget=None
   self.max_depth=1
   # グラフの基盤
   self.fg=parsecolor(kw.get('fg'),'#000000')
@@ -40,9 +38,6 @@ class GElement:
   # 目盛り
   self.ticksshow=bols(kw.get('ticksshow'),False)
   self.tight_layout=bols(kw.get('tight_layout'))
- def photo(self,filename='Graph',ex='.png',dpi=100):
-  path=asksaveasfilename(title='画像を保存する',defaultextension=listchose(ex,['.png','.eps','.jpg','.jpeg','.pdf','.pgf','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']),initialfile=filename,initialdir=getcwd())
-  self.fig.savefig(path,dpi=num1s(dpi,100))
  def set_title(self,title):return self.ax.set_title(title)
  def winsize(self):
   root=self.master
@@ -70,10 +65,10 @@ class GElement:
  def id(self):return self.master.winfo_id()
  def name(self):return self.master.winfo_name()
  def _pack(self):
-  self._canvas_widget=FigureCanvasTkAgg(self.fig,master=self.master)
-  self._canvas_widget.get_tk_widget().pack(side='left',padx=5,pady=5)
+  self.widget=FigureCanvasTkAgg(self.fig,master=self.master)
+  self.widget.get_tk_widget().pack(side='left',padx=5,pady=5)
  def _redraw(self):
-  if self._canvas_widget is not None:self._canvas_widget.draw()
+  if self.widget is not None:self.widget.draw()
  def _size(self,sizes=(500,400)):
   if isinstance(sizes,list|tuple)and len(list(sizes))==2:
    if(isinstance(i,int|float)for i in sizes):return tuple(sizes)
@@ -82,10 +77,6 @@ class GElement:
     if not isinstance(sizes[1],int|float):sizes[1]=400
     return sizes
   else:return(500,400)
- def markers(self,serch=None,num=None):
-  if serch is None:serch='None'
-  return self._list_loop(Marker(serch).marker,num)
- def lines(self,serch=None,num=None):return self._list_loop(Solid(serch).solid,num)
  def legend(self):
   if not self.label:self.ax.legend()
  def _anchor(self,val,other=None):

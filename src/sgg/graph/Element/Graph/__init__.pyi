@@ -1,5 +1,6 @@
 from tkinter import Misc
 from matplotlib.axes._axes import Axes
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.font_manager import FontProperties
 from matplotlib.projections.polar import PolarAxes
@@ -25,20 +26,7 @@ class GElement:
  alpha:int|float
  ax:Axes|Axes3D|PolarAxes
  color:list[str]
- max_depth:int
- def photo(
-self,
-filename:str='Graph',
-ex:Literal['.eps','.jpg','.jpeg','.pdf','.pgf','.png','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']='.png',
-dpi:int|float=100
-):'''グラフを画像にして画像を保存する。
-
- :param filename: 画像を保存するファイル名を指定する。
- :type filename: str
- :param ex: 画像ファイルの拡張子を指定する。
- :type ex: Literal['.eps','.jpg','.jpeg','.pdf','.pgf','.png','.ps','.raw','.rgba','.svg','.svgz','.tif','.tiff','.webp']
- :param dpi: グラフの解像度を指定する。
- :type dpi: int|float'''
+ widget:FigureCanvasTkAgg
  def set_title(self,title:str)->None:
   '''グラフにタイトルを設置する'''
  def winsize(self)->tuple[int,int]:'''ウィジェットの現在の幅と高さを返す。
@@ -109,21 +97,6 @@ self,
 place:str|int=...,
 other:Literal['upper right','upper left','lower left','lower right','right','center left','center right','lower center','upper center','center','best']='upper right'
 )->str:'''凡例の位置の基準を決定する。'''
- def markers(self,serch:str)->str:'''`serch`で指定したマーカーが`MARKERS`に存在するかを調べる
-
- :param serch: `MARKERS`に調べたいマーカーを指定する。
- :type serch: str
- :return:
- :rtype: str
-参考
-----
-* https://matplotlib.org/stable/api/markers_api.html#module-matplotlib.markers'''
- def lines(self,serch:str)->str:'''serch`で指定した枠線が`FMTSOLID`に存在するかを調べる
-
- :param serch: `FMTSOLID`に調べたいを指定する。
- :type serch: str
- :return:
- :rtype: str'''
  def _pack(self):'''ウィジェットを親ウィジェット内に配置します。'''
  def _redraw(self):...
  def _size(self,sizes:TupleNumbertype2=(500,400))->TupleNumbertype2:'''グラフの大きさのサイズを定める。
