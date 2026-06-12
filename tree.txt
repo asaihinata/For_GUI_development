@@ -421,7 +421,6 @@ For_GUI_development
  │       │   │   ├── test_eventplot.py
  │       │   │   ├── test_eventpolar.py
  │       │   │   ├── test_funne.py
- │       │   │   ├── test_graph.py
  │       │   │   ├── test_hatplot.py
  │       │   │   ├── test_hexbin.py
  │       │   │   ├── test_hist.py
@@ -464,5 +463,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:323
+ファイル数:322
 フォルダ数:142
