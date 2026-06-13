@@ -12,8 +12,7 @@ class Frames(Element):
         self.title = kw.get("title")
         self.relief = listchose(
             kw.get("relief"),
-            ["flat", "raised", "sunken", "ridge", "solid", "groove"],
-            "solid",
+            ["solid", "flat", "raised", "sunken", "ridge", "groove"],
         )
         self.labelanchor = listchose(
             kw.get("labelanchor"),

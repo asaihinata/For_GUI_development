@@ -6,7 +6,3 @@ charset=utf-8
 trim_trailing_whitespace=false
 insert_final_newline=false
 indent_size=4
-[*.py]
-indent_size=1
-[*.pyi]
-indent_size=1

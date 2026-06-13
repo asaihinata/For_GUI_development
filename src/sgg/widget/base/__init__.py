@@ -10,7 +10,9 @@ __all__ = ["Element"]
 
 class Element:
     def __init__(self, master: Misc, kw):
-        self.widget, self.master, self.graph = None, master, False
+        self.widget = None
+        self.master=master
+        self.graph=False
         self.cursor = kw.get("cursor")
         self.back_bg = kw.get("back_bg")
         self.justify = listchose(kw.get("justify"), ["left", "right", "center"])

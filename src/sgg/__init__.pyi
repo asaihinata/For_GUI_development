@@ -134,7 +134,8 @@ class sgg:
         :param maxmine: ウィンドウ表示時最大化するかを指定する。
         :type maxmine: bool
         :param location: ウィンドウの表示位置を指定する。
-        :type location: TupleNumbertype2"""
+        :type location: TupleNumbertype2
+        """
 
     @staticmethod
     def Texts(
@@ -164,7 +165,8 @@ class sgg:
         """テキストを作成する。
 
         :param text: Textsウィジェットに表記させる文字を指定する。
-        :type text: str"""
+        :type text: str
+        """
 
     @staticmethod
     def Link(
@@ -197,7 +199,8 @@ class sgg:
         :param text: Linkウィジェットに表記させる文字を指定する。
         :type text: str
         :param link: Linkウィジェットが押されたときにブラウザで開くURLのリンクを指定する。
-        :type link: str|None"""
+        :type link: str|None
+        """
 
     @staticmethod
     def Images(
@@ -206,7 +209,8 @@ class sgg:
         """画像を作成する。
 
         :param path: Imagesウィジェットに表示させる画像のパスを指定する。
-        :type path: Path|WindowsPath"""
+        :type path: Path|WindowsPath
+        """
 
     @staticmethod
     def Imagebyte(
@@ -215,7 +219,8 @@ class sgg:
         """画像を作成する。
 
         :param byte: Imagebytoに表示させるバイトデータを指定する。
-        :type byte: bytes|BytesIO"""
+        :type byte: bytes|BytesIO
+        """
 
     @staticmethod
     def Imagelink(
@@ -224,7 +229,8 @@ class sgg:
         """画像を作成する。
 
         :param link: 画像リンクを指定する。
-        :type link: str"""
+        :type link: str
+        """
 
     @staticmethod
     def Buttons(
@@ -256,7 +262,8 @@ class sgg:
         :param text: Buttonsウィジェットに表記させる文字を指定する。
         :type text: str
         :param function: Buttonsウィジェットが押された時実行される関数を指定する。
-        :type function: function|tuple[function,...]|None"""
+        :type function: function|tuple[function,...]|None
+        """
 
     @staticmethod
     def Input(
@@ -293,7 +300,8 @@ class sgg:
         :param insertbg: Inputウィジェットの入力時の挿入ポイントの色を指定する。
         :type insertbg: ColorTypeN
         :param show: 実際の入力内容の各文字の代わりに表示させる文字を指定する。
-        :type show: str"""
+        :type show: str
+        """
 
     @staticmethod
     def Multiline(
@@ -332,7 +340,8 @@ class sgg:
         :param insertbg: Multilineウィジェットの入力時の挿入ポイントの色を指定する。
         :type insertbg: ColorTypeN
         :param state: 選択操作の有無を指定する。normalは操作可能にする。disabledは操作不可能にする。
-        :type state: Literal['normal','disabled']"""
+        :type state: Literal['normal','disabled']
+        """
 
     @staticmethod
     def Table(
@@ -364,7 +373,8 @@ class sgg:
         :param rowheight: Tableウィジェットのセルの高さを指定する。
         :type rowheight: int|float
         :param height: Tableウィジェットに表示できる行を指定する。
-        :type height: int|float"""
+        :type height: int|float
+        """
 
     @staticmethod
     def Tree(
@@ -395,7 +405,8 @@ class sgg:
         :param colwidth: Treeウィジェットの幅を指定する。
         :type colwidth: int|float
         :param rowheight: Treeウィジェットのセルの高さを指定する。
-        :type rowheight: int|float"""
+        :type rowheight: int|float
+        """
 
     @staticmethod
     def Listboxs(
@@ -434,7 +445,8 @@ class sgg:
         :param state: 選択操作の有無を指定する。normalは操作可能にする。disabledは操作不可能にする。
         :type state: Literal['normal','disabled']
         :param selectmode: 選択可能な項目数と操作方法を指定する。
-        :type selectmode: Literal['browse','single','multiple','extended']"""
+        :type selectmode: Literal['browse','single','multiple','extended']
+        """
 
     @staticmethod
     def TCombobox(
@@ -453,7 +465,8 @@ class sgg:
         :param default: 入力項目の初期テキストを指定する。
         :type default: str
         :param state: 値の入力制限やTComboboxウィジェットの有効化や無効化について指定する。
-        :type state: Literal['normal','readonly','disabled']"""
+        :type state: Literal['normal','readonly','disabled']
+        """
 
     @staticmethod
     def Radio(
@@ -469,7 +482,8 @@ class sgg:
          :param text: Radioウィジェットに表記させる文字を指定する。
          :type text: str
          :param group: Radioウィジェットのグループを指定する。同じ名前にすることで,そのグループ内で排他的な選択を実施する。
-         :type group: str"""
+         :type group: str
+        """
 
     @staticmethod
     def Checkbox(
@@ -484,7 +498,8 @@ class sgg:
         :param text: Checkboxウィジェットに表記させる文字を指定する。
         :type text: str
         :param default: 読み込み時,Checkboxウィジェットがチェックするかを指定する。
-        :type default: bool"""
+        :type default: bool
+        """
 
     @staticmethod
     def Frames(
@@ -518,7 +533,8 @@ class sgg:
         :param legendanchor: タイトルを表記する場所を指定する。
         :type legendanchor: Literal['nw','n','ne','w','center','e','sw','s','se']
         :param title: Framesウィジェットのタイトルを指定する。
-        :type title: str"""
+        :type title: str
+        """
 
     @staticmethod
     def Menus(
@@ -545,7 +561,8 @@ class sgg:
         :param list: Menusウィジェットに表示させるメニューを指定する。
         :type list: list
         :param tearoff: メニューウィジェットを独立したウィンドウにするかを指定する。
-        :type tearoff: bool"""
+        :type tearoff: bool
+        """
 
     @staticmethod
     def Menubuttons(
@@ -578,7 +595,8 @@ class sgg:
         :param list: MenuButtonsウィジェットに表示させるメニューを指定する。
         :type list: list
         :param tearoff: メニューウィジェットを独立したウィンドウにするかを指定する。
-        :type tearoff: bool"""
+        :type tearoff: bool
+        """
 
     @staticmethod
     def Column(
@@ -604,7 +622,8 @@ class sgg:
         """フレームを作成する。
 
         :param layout: Columnウィジェットに表示させるウィジェットを指定する。各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます。
-        :type layout: list[list]"""
+        :type layout: list[list]
+        """
 
     @staticmethod
     def Slidebar(
@@ -633,7 +652,8 @@ class sgg:
         :param max: Slidebarウィジェットの数値の最大値を指定する。
         :type max: int|float
         :param value: Slidebarウィジェットの読み込み時の初期値を指定する。
-        :type value: int|float"""
+        :type value: int|float
+        """
 
     @staticmethod
     def InputNumber(
@@ -665,7 +685,8 @@ class sgg:
         :param max: Slidebarウィジェットの数値の最大値を指定する。
         :type max: int|float
         :param value: Slidebarウィジェットの読み込み時の初期値を指定する。
-        :type value: int|float"""
+        :type value: int|float
+        """
 
     @staticmethod
     def FileLoad(
@@ -685,7 +706,8 @@ class sgg:
         :param text: FileLoadウィジェットのボタンに表示させる文字を指定する。
         :type text: str
         :param title: ファイルを選択するダイアログのタイトルを指定する。
-        :type title: str"""
+        :type title: str
+        """
 
     @staticmethod
     def FolderLoad(
@@ -704,7 +726,8 @@ class sgg:
         :param text: FolderLoadウィジェットのボタンに表示させる文字を指定する。
         :type text: str
         :param title: フォルダを選択するダイアログのタイトルを指定する。
-        :type title: str"""
+        :type title: str
+        """
 
     @staticmethod
     def Savebtn(
@@ -736,7 +759,8 @@ class sgg:
         :param initialfile: ファイル名フィールドの初期値を指定する。
         :type initialfile: str
         :param defaultextension: 拡張子が設定されていない時のデフォルトを指定する。
-        :type defaultextension: str"""
+        :type defaultextension: str
+        """
 
     @staticmethod
     def Colorbtn(
@@ -759,7 +783,8 @@ class sgg:
         :param text: Colorbtnウィジェットのボタンに表示させる文字を指定する。
         :type text: str
         :param title: 色を選択するダイアログのタイトルを指定する。
-        :type title: str"""
+        :type title: str
+        """
 
     @staticmethod
     def Tab(
@@ -777,7 +802,8 @@ class sgg:
         """タブを作成する。
 
         :param tabs: Tabウィジェットに表示させるウィジェットを指定する。配列の最初の要素にタブ名を,次の要素にTabウィジェットに表示させる`layout`を指定する。
-        :type tabs: list[list[str,list[list]]]"""
+        :type tabs: list[list[str,list[list]]]
+        """
 
     @staticmethod
     def TProgressbar(
@@ -799,7 +825,9 @@ class sgg:
         :param max: TProgressbarウィジェットの数値の最大値を指定する。
         :type max: int|float
         :param value: TProgressbarウィジェットの読み込み時の初期値を指定する。
-        :type value: int|float"""
+        :type value: int|float
+
+        """
 
     @staticmethod
     def Barcode(
@@ -837,6 +865,7 @@ class sgg:
         :type data: str|int
         :param format: バーコードの形式を指定する。
         :type format: Literal['codabar','code128','code39','ean','ean13','ean13-guard','ean14','ean8','ean8-guard','gs1','gs1_128','gtin','isbn','isbn10','isbn13','issn','itf','jan','nw-7','pzn','upc','upca']
+
         """
 
     @staticmethod
@@ -846,7 +875,8 @@ class sgg:
         """QRコードを作成する。
 
         :param text: QRコードを読み取った際に表示させる値を指定する。
-        :type text: str"""
+        :type text: str
+        """
 
     @staticmethod
     def LineGraph(
@@ -985,7 +1015,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def BarGraph(
@@ -1082,7 +1113,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def BarhGraph(
@@ -1179,7 +1211,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def Funne(
@@ -1273,7 +1306,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def Stacked(
@@ -1361,7 +1395,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def Stackedh(
@@ -1449,7 +1484,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def Pie(
@@ -1501,7 +1537,8 @@ class sgg:
         :param dpi: 1インチあたりのドット数を指定する。
         :type dpi: int|float
         :param alpha: グラフの透明度を指定する。
-        :type alpha: int|float"""
+        :type alpha: int|float
+        """
 
     @staticmethod
     def Boxplot(
@@ -1599,7 +1636,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def Waterfall(
@@ -1699,7 +1737,8 @@ class sgg:
         :param dcolor: 下降バーの色を指定する。
         :type dcolor: ColorTypeN
         :param width: バーの幅を指定する。
-        :type width: int|float"""
+        :type width: int|float
+        """
 
     @staticmethod
     def Waterfallh(
@@ -1800,7 +1839,8 @@ class sgg:
         :param dcolor: 下降バーの色を指定する。
         :type dcolor: ColorTypeN
         :param height: バーの幅を指定する。
-        :type height: int|float"""
+        :type height: int|float
+        """
 
     @staticmethod
     def Scatter(
@@ -1933,7 +1973,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def DScatter(
@@ -2092,7 +2133,8 @@ class sgg:
         :param elev: 仰角を度数表記で指定する。
         :type elev: int|float
         :param azim: 方位角を度数表記で指定する。
-        :type azim: int|float"""
+        :type azim: int|float
+        """
 
     @staticmethod
     def Stem(
@@ -2197,7 +2239,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def Step(
@@ -2288,7 +2331,8 @@ class sgg:
         :param yticksdirection: y軸の目盛りの向きを指定する。
         :type yticksdirection: Literal['out','in','inout']
         :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
-        :type y_verwrit: Literal['horizontal','vertical']"""
+        :type y_verwrit: Literal['horizontal','vertical']
+        """
 
     @staticmethod
     def Hatplot(
@@ -2370,7 +2414,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def Hist(
@@ -2481,7 +2526,8 @@ class sgg:
         :param yticksdirection: y軸の目盛りの向きを指定する。
         :type yticksdirection: Literal['out','in','inout']
         :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する。
-        :type y_verwrit: Literal['horizontal','vertical']"""
+        :type y_verwrit: Literal['horizontal','vertical']
+        """
 
     @staticmethod
     def Stack(
@@ -2604,7 +2650,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def Linefill(
@@ -2695,7 +2742,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def Ecdf(
@@ -2789,7 +2837,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def Errorbar(
@@ -2916,7 +2965,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def Eventplot(
@@ -3010,7 +3060,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def Hist2d(
@@ -3112,7 +3163,8 @@ class sgg:
         :param yticksdirection: y軸の目盛りの向きを指定する。
         :type yticksdirection: Literal['out','in','inout']
         :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる。
-        :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる。"""
+        :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる。
+        """
 
     @staticmethod
     def Violinplot(
@@ -3224,7 +3276,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def Hexbin(
@@ -3326,7 +3379,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @overload
     @staticmethod
@@ -3407,7 +3461,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @overload
     @staticmethod
@@ -3485,7 +3540,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @overload
     @staticmethod
@@ -3569,7 +3625,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @overload
     @staticmethod
@@ -3650,7 +3707,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @overload
     @staticmethod
@@ -3764,7 +3822,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @overload
     @staticmethod
@@ -3875,7 +3934,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @overload
     @staticmethod
@@ -4001,7 +4061,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @overload
     @staticmethod
@@ -4124,7 +4185,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @overload
     @staticmethod
@@ -4208,7 +4270,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @overload
     @staticmethod
@@ -4289,7 +4352,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @overload
     @staticmethod
@@ -4409,7 +4473,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @overload
     @staticmethod
@@ -4526,7 +4591,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def RadarLine(
@@ -4648,7 +4714,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @staticmethod
     def RadarFill(
@@ -4716,7 +4783,8 @@ class sgg:
         :param xticksdirection: x軸の目盛りの向きを指定する。
         :type xticksdirection: Literal['out','in','inout']
         :param yticksdirection: y軸の目盛りの向きを指定する。
-        :type yticksdirection: Literal['out','in','inout']"""
+        :type yticksdirection: Literal['out','in','inout']
+        """
 
     @classmethod
     def Popup(
@@ -4732,7 +4800,8 @@ class sgg:
         :param icon: 情報メッセージボックスに表示させるアイコンを指定する。
         :type icon: Literal['info','warning','error','question']
         :param message: 情報メッセージボックスに表示させるメッセージを指定する。
-        :type message: str"""
+        :type message: str
+        """
 
     @classmethod
     def Popupwarning(
@@ -4750,7 +4819,8 @@ class sgg:
         :param icon: 警告メッセージボックスに表示させるアイコンを指定する。
         :type icon: Literal['info','warning','error','question']
         :return: ダイアログで選択された値を返す。
-        :rtype: str"""
+        :rtype: str
+        """
 
     @classmethod
     def Popupwarningyesno(
@@ -4768,7 +4838,8 @@ class sgg:
         :param icon: 警告メッセージボックスに表示させるアイコンを指定する。
         :type icon: Literal['info','warning','error','question']
         :return: ダイアログで選択された値を返す。
-        :rtype: Union[str] ('yes','no')"""
+        :rtype: Union[str] ('yes','no')
+        """
 
     @classmethod
     def Popuperror(
@@ -4786,7 +4857,8 @@ class sgg:
         :param icon: エラーメッセージボックスに表示させるアイコンを指定する。
         :type icon: Literal['info','warning','error','question']
         :return: ダイアログで選択された値を返す。
-        :rtype: str"""
+        :rtype: str
+        """
 
     @classmethod
     def Popuperroryesno(
@@ -4804,7 +4876,8 @@ class sgg:
         :param icon: エラーメッセージボックスに表示させるアイコンを指定する。
         :type icon: Literal['info','warning','error','question']
         :return: ダイアログで選択された値を返す。
-        :rtype: Union[str] ('yes','no')"""
+        :rtype: Union[str] ('yes','no')
+        """
 
     @classmethod
     def Popupquestion(
@@ -4822,7 +4895,8 @@ class sgg:
         :param icon: ダイアログに表示させるアイコンを指定する。
         :type icon: Literal['info','warning','error','question']
         :return: ダイアログで選択された値を返す。
-        :rtype: Union[str] ('yes','no')"""
+        :rtype: Union[str] ('yes','no')
+        """
 
     @classmethod
     def Popupokcancel(
@@ -4840,7 +4914,8 @@ class sgg:
         :param icon: ダイアログに表示させるアイコンを指定する。
         :type icon: Literal['info','warning','error','question']
         :return: ダイアログで選択された値を返す。
-        :rtype: bool"""
+        :rtype: bool
+        """
 
     @classmethod
     def Popupyesno(
@@ -4859,7 +4934,8 @@ class sgg:
          :param icon: ダイアログに表示させるアイコンを指定する。
          :type icon: Literal['info','warning','error','question']
          :return: ダイアログで選択された値を返す。
-         :rtype: bool"""
+         :rtype: bool
+        """
 
     @classmethod
     def Popupyesnocancel(
@@ -4878,7 +4954,8 @@ class sgg:
          :param icon: ダイアログに表示させるアイコンを指定する。
          :type icon: Literal['info','warning','error','question']
          :return: ダイアログで選択された値を返す。
-         :rtype: Union[bool,None]"""
+         :rtype: Union[bool,None]
+        """
 
     @classmethod
     def Popuptry(
@@ -4897,4 +4974,5 @@ class sgg:
          :param icon: ダイアログに表示させるアイコンを指定する。
          :type icon: Literal['info','warning','error','question']
          :return: ダイアログで選択された値を返す。
-         :rtype: bool"""
+         :rtype: bool
+        """
