@@ -5,8 +5,9 @@ from PIL._typing import StrOrBytesPath
 from PIL.ImageFile import ImageFile
 __all__=['Img_path','Img_byte']
 class Img_conversion:
- imgs:ImageFile
  def __init__(self,data:StrOrBytesPath|IO[bytes]):...
+ @property
+ def imgs(self)->ImageFile:...
  def get_width(self)->int:'''画像データの幅を返す。'''
  def get_height(self)->int:'''画像データの高さを返す。'''
  def get_size(self)->tuple[int,int]:'''画像データのサイズを返す。'''

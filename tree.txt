@@ -21,10 +21,6 @@ For_GUI_development
  │   ├── sgg
  │   │   ├── __init__.py
  │   │   ├── __init__.pyi
- │   │   ├── _color
- │   │   │   ├── __init__.py
- │   │   │   ├── color.csv
- │   │   │   └── data.py
  │   │   ├── _dialog
  │   │   │   ├── __init__.py
  │   │   │   ├── dialog
@@ -41,7 +37,7 @@ For_GUI_development
  │   │   │   │   ├── _show.py
  │   │   │   │   ├── dialog.py
  │   │   │   │   └── message.py
- │   │   │   └── popup
+ │   │   │   └── popups
  │   │   │       ├── __init__.py
  │   │   │       ├── error
  │   │   │       │   ├── __init__.py
@@ -65,8 +61,10 @@ For_GUI_development
  │   │   ├── dev
  │   │   │   ├── __init__.py
  │   │   │   ├── _darray.py
- │   │   │   ├── _dcolor.py
- │   │   │   └── _dnumber.py
+ │   │   │   ├── _dnumber.py
+ │   │   │   └── color
+ │   │   │       ├── __init__.py
+ │   │   │       └── color.csv
  │   │   ├── graph
  │   │   │   ├── __init__.py
  │   │   │   ├── element
@@ -297,9 +295,7 @@ For_GUI_development
  │   │       │   ├── common.py
  │   │       │   ├── dev
  │   │       │   │   ├── __init__.py
- │   │       │   │   └── photo
- │   │       │   │       ├── __init__.py
- │   │       │   │       └── __init__.pyi
+ │   │       │   │   └── __init__.pyi
  │   │       │   ├── existing
  │   │       │   │   ├── __init__.py
  │   │       │   │   ├── buttons
@@ -365,7 +361,6 @@ For_GUI_development
  │   │       │       │   ├── __init__.py
  │   │       │       │   └── __init__.pyi
  │   │       │       ├── btnpop
- │   │       │       │   ├── __init__.py
  │   │       │       │   ├── btn
  │   │       │       │   │   ├── __init__.py
  │   │       │       │   │   └── __init__.pyi
@@ -463,5 +458,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:322
-フォルダ数:142
+ファイル数:318
+フォルダ数:141

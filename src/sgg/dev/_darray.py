@@ -1,3 +1,4 @@
+__all__=['allNone','allNones','list2num','list2int','list2float','list4num','list4int','list4float','typelist','listchose']
 def allNone(a,b=None):return True if a is None and b is None else False
 def allNones(a,b=None,other=None):
  if (a is not None and b is not None) or (a is not None and b is None):return a

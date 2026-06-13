@@ -1,3 +1,4 @@
+__all__=['numsmin','nums','num1s','num0s','num0','intsmin','ints','int1s','int0s','int0','range_num']
 def numsmin(val,mins=0,other=None):
  if not isinstance(val,int|float) or not isinstance(mins,int|float):
   return other

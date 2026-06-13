@@ -1,6 +1,7 @@
 from ._darray import *
-from ._dcolor import *
 from ._dnumber import *
+from .color import Color,parsecolor
+__all__=['Color','allNone','allNones','args','bols','int0','int0s','int1s','ints','intsmin','list2float','list2int','list2num','list4float','list4int','list4num','listchose','num0','num0s','num1s','nums','numsmin','parsecolor','range_num','typelist']
 def args(*args,data=None,x=None,y=None):
  lens=len(args)
  if lens==1:data=args[0]
