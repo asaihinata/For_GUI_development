@@ -8,6 +8,8 @@ description='作成用'
 authors=[{name='asaihinata'}]
 readme='README.md'
 requires-python='>=3.14.3'
+[project.optional-dependencies]
+dev=['pytest>=7.0','black>=26.5.1','flake8>=4.0',]
 [tool.isort]
 line_length=88
 skip=['tests','demo']
@@ -17,19 +19,3 @@ include_trailing_comma=false
 force_single_line=false
 combine_as_imports=true
 force_sort_within_sections=true
-[tool.black]
-line-length=88
-target-version=['py314']
-include = '\.pyi?$'
-exclude = '''
-(
-  /(
-      \.git
-    | \.docs
-    | \.vscode
-    | \.docs
-    | \pycachekill.py
-    | \tree.py
-  )/
-)
-'''

@@ -1,23 +1,216 @@
-'''
+"""
 dtimeモジュールで使用する定数を保存しているモジュール
 
 日付日時の単位は以下のサイトを参考
 https://numpy.org/doc/stable/reference/arrays.datetime.html#datetime-units
-'''
-from typing import Literal,TypeAlias
-__all__=['DATESUNIT','DateUnit','NativeTimeUnit','serchDay','serchDtype','serchnativetime']
-_DATES_UNIT=Literal['<M','<M8','<M8[D]','<M8[M]','<M8[W]','<M8[Y]','<M8[as]','<M8[fs]','<M8[h]','<M8[m]','<M8[ms]','<M8[ns]','<M8[ps]','<M8[s]','<M8[us]','<datetime64','<datetime64[D]','<datetime64[M]','<datetime64[W]','<datetime64[Y]','<datetime64[as]','<datetime64[fs]','<datetime64[h]','<datetime64[m]','<datetime64[ms]','<datetime64[ns]','<datetime64[ps]','<datetime64[s]','<datetime64[us]','=M','=M8','=M8[D]','=M8[M]','=M8[W]','=M8[Y]','=M8[as]','=M8[fs]','=M8[h]','=M8[m]','=M8[ms]','=M8[ns]','=M8[ps]','=M8[s]','=M8[us]','=datetime64','=datetime64[D]','=datetime64[M]','=datetime64[W]','=datetime64[Y]','=datetime64[as]','=datetime64[fs]','=datetime64[h]','=datetime64[m]','=datetime64[ms]','=datetime64[ns]','=datetime64[ps]','=datetime64[s]','=datetime64[us]','>M','>M8','>M8[D]','>M8[M]','>M8[W]','>M8[Y]','>M8[as]','>M8[fs]','>M8[h]','>M8[m]','>M8[ms]','>M8[ns]','>M8[ps]','>M8[s]','>M8[us]','>datetime64','>datetime64[D]','>datetime64[M]','>datetime64[W]','>datetime64[Y]','>datetime64[as]','>datetime64[fs]','>datetime64[h]','>datetime64[m]','>datetime64[ms]','>datetime64[ns]','>datetime64[ps]','>datetime64[s]','>datetime64[us]','D','M','M','M8','M8[D]','M8[M]','M8[W]','M8[Y]','M8[as]','M8[fs]','M8[h]','M8[m]','M8[ms]','M8[ns]','M8[ps]','M8[s]','M8[us]','W','Y','as','datetime64','datetime64[D]','datetime64[M]','datetime64[W]','datetime64[Y]','datetime64[as]','datetime64[fs]','datetime64[h]','datetime64[m]','datetime64[ms]','datetime64[ns]','datetime64[ps]','datetime64[s]','datetime64[us]','fs','h','m','ms','ns','ps','s','us','|M','|M8','|M8[D]','|M8[M]','|M8[W]','|M8[Y]','|M8[as]','|M8[fs]','|M8[h]','|M8[m]','|M8[ms]','|M8[ns]','|M8[ps]','|M8[s]','|M8[us]','|datetime64','|datetime64[D]','|datetime64[M]','|datetime64[W]','|datetime64[Y]','|datetime64[as]','|datetime64[fs]','|datetime64[h]','|datetime64[m]','|datetime64[ms]','|datetime64[ns]','|datetime64[ps]','|datetime64[s]','|datetime64[us]','μs',b'Y',b'M',b'W',b'D',b'h',b'm',b's',b'ms',b'us',b'ns',b'ps',b'fs',b'as']
-_DATE_UNIT=Literal['Y','M','W','D',b'Y',b'M',b'W',b'D']
-_NATIVETIME_UNIT=Literal['h','m','s','ms','us','μs',b'h',b'm',b's',b'ms',b'us']
-DATESUNIT:TypeAlias=_DATES_UNIT
-DateUnit:TypeAlias=_DATE_UNIT
-NativeTimeUnit:TypeAlias=_NATIVETIME_UNIT
-def serchDtype(dtype:DATESUNIT='datetime64[D]')->str|bytes:
- if dtype in _DATES_UNIT.__args__:return dtype
- return 'datetime64[D]'
-def serchDay(dtype:DateUnit='D')->str|bytes:
- if dtype in _DATE_UNIT.__args__:return dtype
- return 'D'
-def serchnativetime(dtype:NativeTimeUnit='h')->str|bytes:
- if dtype in _NATIVETIME_UNIT.__args__:return dtype
- return 'h'
+"""
+
+from typing import Literal, TypeAlias
+
+__all__ = [
+    "DATESUNIT",
+    "DateUnit",
+    "NativeTimeUnit",
+    "serchDay",
+    "serchDtype",
+    "serchnativetime",
+]
+_DATES_UNIT = Literal[
+    "<M",
+    "<M8",
+    "<M8[D]",
+    "<M8[M]",
+    "<M8[W]",
+    "<M8[Y]",
+    "<M8[as]",
+    "<M8[fs]",
+    "<M8[h]",
+    "<M8[m]",
+    "<M8[ms]",
+    "<M8[ns]",
+    "<M8[ps]",
+    "<M8[s]",
+    "<M8[us]",
+    "<datetime64",
+    "<datetime64[D]",
+    "<datetime64[M]",
+    "<datetime64[W]",
+    "<datetime64[Y]",
+    "<datetime64[as]",
+    "<datetime64[fs]",
+    "<datetime64[h]",
+    "<datetime64[m]",
+    "<datetime64[ms]",
+    "<datetime64[ns]",
+    "<datetime64[ps]",
+    "<datetime64[s]",
+    "<datetime64[us]",
+    "=M",
+    "=M8",
+    "=M8[D]",
+    "=M8[M]",
+    "=M8[W]",
+    "=M8[Y]",
+    "=M8[as]",
+    "=M8[fs]",
+    "=M8[h]",
+    "=M8[m]",
+    "=M8[ms]",
+    "=M8[ns]",
+    "=M8[ps]",
+    "=M8[s]",
+    "=M8[us]",
+    "=datetime64",
+    "=datetime64[D]",
+    "=datetime64[M]",
+    "=datetime64[W]",
+    "=datetime64[Y]",
+    "=datetime64[as]",
+    "=datetime64[fs]",
+    "=datetime64[h]",
+    "=datetime64[m]",
+    "=datetime64[ms]",
+    "=datetime64[ns]",
+    "=datetime64[ps]",
+    "=datetime64[s]",
+    "=datetime64[us]",
+    ">M",
+    ">M8",
+    ">M8[D]",
+    ">M8[M]",
+    ">M8[W]",
+    ">M8[Y]",
+    ">M8[as]",
+    ">M8[fs]",
+    ">M8[h]",
+    ">M8[m]",
+    ">M8[ms]",
+    ">M8[ns]",
+    ">M8[ps]",
+    ">M8[s]",
+    ">M8[us]",
+    ">datetime64",
+    ">datetime64[D]",
+    ">datetime64[M]",
+    ">datetime64[W]",
+    ">datetime64[Y]",
+    ">datetime64[as]",
+    ">datetime64[fs]",
+    ">datetime64[h]",
+    ">datetime64[m]",
+    ">datetime64[ms]",
+    ">datetime64[ns]",
+    ">datetime64[ps]",
+    ">datetime64[s]",
+    ">datetime64[us]",
+    "D",
+    "M",
+    "M",
+    "M8",
+    "M8[D]",
+    "M8[M]",
+    "M8[W]",
+    "M8[Y]",
+    "M8[as]",
+    "M8[fs]",
+    "M8[h]",
+    "M8[m]",
+    "M8[ms]",
+    "M8[ns]",
+    "M8[ps]",
+    "M8[s]",
+    "M8[us]",
+    "W",
+    "Y",
+    "as",
+    "datetime64",
+    "datetime64[D]",
+    "datetime64[M]",
+    "datetime64[W]",
+    "datetime64[Y]",
+    "datetime64[as]",
+    "datetime64[fs]",
+    "datetime64[h]",
+    "datetime64[m]",
+    "datetime64[ms]",
+    "datetime64[ns]",
+    "datetime64[ps]",
+    "datetime64[s]",
+    "datetime64[us]",
+    "fs",
+    "h",
+    "m",
+    "ms",
+    "ns",
+    "ps",
+    "s",
+    "us",
+    "|M",
+    "|M8",
+    "|M8[D]",
+    "|M8[M]",
+    "|M8[W]",
+    "|M8[Y]",
+    "|M8[as]",
+    "|M8[fs]",
+    "|M8[h]",
+    "|M8[m]",
+    "|M8[ms]",
+    "|M8[ns]",
+    "|M8[ps]",
+    "|M8[s]",
+    "|M8[us]",
+    "|datetime64",
+    "|datetime64[D]",
+    "|datetime64[M]",
+    "|datetime64[W]",
+    "|datetime64[Y]",
+    "|datetime64[as]",
+    "|datetime64[fs]",
+    "|datetime64[h]",
+    "|datetime64[m]",
+    "|datetime64[ms]",
+    "|datetime64[ns]",
+    "|datetime64[ps]",
+    "|datetime64[s]",
+    "|datetime64[us]",
+    "μs",
+    b"Y",
+    b"M",
+    b"W",
+    b"D",
+    b"h",
+    b"m",
+    b"s",
+    b"ms",
+    b"us",
+    b"ns",
+    b"ps",
+    b"fs",
+    b"as",
+]
+_DATE_UNIT = Literal["Y", "M", "W", "D", b"Y", b"M", b"W", b"D"]
+_NATIVETIME_UNIT = Literal[
+    "h", "m", "s", "ms", "us", "μs", b"h", b"m", b"s", b"ms", b"us"
+]
+DATESUNIT: TypeAlias = _DATES_UNIT
+DateUnit: TypeAlias = _DATE_UNIT
+NativeTimeUnit: TypeAlias = _NATIVETIME_UNIT
+
+
+def serchDtype(dtype: DATESUNIT = "datetime64[D]") -> str | bytes:
+    if dtype in _DATES_UNIT.__args__:
+        return dtype
+    return "datetime64[D]"
+
+
+def serchDay(dtype: DateUnit = "D") -> str | bytes:
+    if dtype in _DATE_UNIT.__args__:
+        return dtype
+    return "D"
+
+
+def serchnativetime(dtype: NativeTimeUnit = "h") -> str | bytes:
+    if dtype in _NATIVETIME_UNIT.__args__:
+        return dtype
+    return "h"

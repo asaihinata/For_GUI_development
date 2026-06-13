@@ -7,8 +7,8 @@ from .eventplot import Eventplot
 from .funnelplot import Funne
 from .hatplot import Hatplot
 from .hexbin import Hexbin
-from .hist import Hist
 from .hist2d import Hist2d
+from .hist import Hist
 from .linefill import Linefill
 from .linegraph import LineGraph
 from .pie import Pie

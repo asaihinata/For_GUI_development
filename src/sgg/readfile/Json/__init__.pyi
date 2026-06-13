@@ -1,23 +1,28 @@
-'''jsonファイルのデータを取得するモジュール'''
+"""jsonファイルのデータを取得するモジュール"""
+
 from pathlib import Path
 from typing import Any
-__all__=['Getjosn']
+
+__all__ = ["Getjosn"]
+
 class Getjosn:
- def __init__(
-self,
-path:Path|str
-)->None:'''jsonファイルのデータを取得する。
+    def __init__(self, path: Path | str) -> None:
+        """jsonファイルのデータを取得する。
 
- :param path: jsonファイルのパスを指定する。
- :type path: Path|str
- :raises FileNotFoundError: ファイルが存在しない場合に発生させる
- :raises ValueError: `path`で指定されたパスの拡張子がjsonファイルではない時に発生させる'''
- @property
- def json(self)->Any:'''jsonファイルのデータを取得する。
+        :param path: jsonファイルのパスを指定する。
+        :type path: Path|str
+        :raises FileNotFoundError: ファイルが存在しない場合に発生させる
+        :raises ValueError: `path`で指定されたパスの拡張子がjsonファイルではない時に発生させる"""
 
- :return: jsonファイルのデータを返す。
- :rtype: Any'''
- def get_json(self)->Any:'''jsonファイルのデータを取得する。
+    @property
+    def json(self) -> Any:
+        """jsonファイルのデータを取得する。
 
- :return: jsonファイルのデータを返す。
- :rtype: Any'''
+        :return: jsonファイルのデータを返す。
+        :rtype: Any"""
+
+    def get_json(self) -> Any:
+        """jsonファイルのデータを取得する。
+
+        :return: jsonファイルのデータを返す。
+        :rtype: Any"""

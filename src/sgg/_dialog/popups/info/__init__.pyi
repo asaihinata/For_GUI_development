@@ -1,7 +1,9 @@
 from ..typing import *
-__all__=['popup']
+
+__all__ = ["popup"]
+
 def popup(
-title:str='Information',
-message:str='Information message',
-icon:Type_icon='info'
-):...
+    title: str = "Information",
+    message: str = "Information message",
+    icon: Type_icon = "info",
+): ...

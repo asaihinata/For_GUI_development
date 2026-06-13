@@ -1,28 +1,52 @@
 from tkinter import Entry
-from .....typing import ColorType,Literal
+
+from .....typing import ColorType, Literal
 from ....base import _Element
-__all__=['Input']
+
+__all__ = ["Input"]
+
 class Input(_Element):
- widget:Entry
- def delta(self):'''ウィジェットを削除する。'''
- def get_text(self)->str:'''Inputウィジェットに記入されている文字を取得する。
+    widget: Entry
+    def delta(self):
+        """ウィジェットを削除する。"""
 
- :return: Inputウィジェットに記入されている文字を返す。
- :rtype: str'''
- def set_text(self,txt:str):'''ウィジェットが表示している文字を変更する。'''
- def get_fg(self)->ColorType:'''ウィジェットが表示している文字色を取得する。'''
- def set_fg(self,fg:ColorType):'''ウィジェットが表示している文字色を変更する。'''
- def get_bg(self)->ColorType:'''ウィジェットが表示している背景色を取得する。'''
- def set_bg(self,bg:ColorType):'''ウィジェットが表示している背景色を変更する。'''
- def inserts(self,text:str='',place:int|Literal['end']='end'):'''挿入する位置を指定し,Inputウィジェットにその指定した場所のテキストを挿入する。
+    def get_text(self) -> str:
+        """Inputウィジェットに記入されている文字を取得する。
 
- :param text: 挿入する文字を指定する。
- :type text: str
- :param place: 文字を挿入する場所を指定する。
- :type place: int|Literal['end']'''
- def select_judge(self)->bool:'''Inputウィジェット内の文字が現在選択状態かを返す。
+        :return: Inputウィジェットに記入されている文字を返す。
+        :rtype: str"""
 
- :return: Inputウィジェット内の文字が現在選択状態かを返す。
- :rtype: bool'''
- def select_cansel(self):'''Inputウィジェット内の選択状態を解除する。'''
- def all_delta(self):'''Inputウィジェット内の文字を全て削除する。'''
+    def set_text(self, txt: str):
+        """ウィジェットが表示している文字を変更する。"""
+
+    def get_fg(self) -> ColorType:
+        """ウィジェットが表示している文字色を取得する。"""
+
+    def set_fg(self, fg: ColorType):
+        """ウィジェットが表示している文字色を変更する。"""
+
+    def get_bg(self) -> ColorType:
+        """ウィジェットが表示している背景色を取得する。"""
+
+    def set_bg(self, bg: ColorType):
+        """ウィジェットが表示している背景色を変更する。"""
+
+    def inserts(self, text: str = "", place: int | Literal["end"] = "end"):
+        """挿入する位置を指定し,Inputウィジェットにその指定した場所のテキストを挿入する。
+
+        :param text: 挿入する文字を指定する。
+        :type text: str
+        :param place: 文字を挿入する場所を指定する。
+        :type place: int|Literal['end']"""
+
+    def select_judge(self) -> bool:
+        """Inputウィジェット内の文字が現在選択状態かを返す。
+
+        :return: Inputウィジェット内の文字が現在選択状態かを返す。
+        :rtype: bool"""
+
+    def select_cansel(self):
+        """Inputウィジェット内の選択状態を解除する。"""
+
+    def all_delta(self):
+        """Inputウィジェット内の文字を全て削除する。"""
