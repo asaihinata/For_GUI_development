@@ -1,6 +1,7 @@
 '''マーカーを設定するモジュール'''
 from matplotlib.markers import MarkerStyle
 from matplotlib.transforms import Affine2D
+import numpy as np
 from ....nparray import NPArray
 __all__=['Marker','MarkerList']
 class Marker:
@@ -9,7 +10,8 @@ class Marker:
   if fill not in ['full','left','right','bottom','top','none']:fill='none'
   if cap not in ['butt','round','projecting']:cap=None
   if join not in ['miter','round','bevel']:join=None
-  if not isinstance(transform,int|float):transform=0
+  if isinstance(transform,np.number):transform=float(transform)
+  else:transform=0
   self.marker=MarkerStyle(marker,fillstyle=fill,transform=Affine2D().rotate_deg(transform),joinstyle=join,capstyle=cap)
  def __contains__(self,item):return item in self.marker_list
 class MarkerList(NPArray):

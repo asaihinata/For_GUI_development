@@ -819,9 +819,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -914,9 +914,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1009,9 +1009,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1101,9 +1101,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1187,9 +1187,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1273,9 +1273,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1419,9 +1419,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1511,9 +1511,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1610,9 +1610,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1705,9 +1705,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1806,11 +1806,11 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param zticksrange: z軸の目盛の範囲を変更する。
- :type zticksrange: int|float|tuple[Type_Numberlike,...]
+ :type zticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -1919,9 +1919,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2006,9 +2006,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2088,9 +2088,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2186,9 +2186,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2277,9 +2277,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2366,9 +2366,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2458,9 +2458,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2583,9 +2583,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2675,9 +2675,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2773,9 +2773,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2883,9 +2883,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -2983,9 +2983,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3062,9 +3062,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3138,9 +3138,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3220,9 +3220,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3299,9 +3299,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3411,9 +3411,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3520,9 +3520,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3602,9 +3602,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3681,9 +3681,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3763,9 +3763,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3842,9 +3842,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3918,9 +3918,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -3991,9 +3991,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -4069,9 +4069,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。
@@ -4135,9 +4135,9 @@ key:str=...
  :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する。
  :type tight_layout: bool
  :param xticksrange: x軸の目盛の範囲を変更する。
- :type xticksrange: int|float|tuple[Type_Numberlike,...]
+ :type xticksrange: int|float|tuple[np.number,...]
  :param yticksrange: y軸の目盛の範囲を変更する。
- :type yticksrange: int|float|tuple[Type_Numberlike,...]
+ :type yticksrange: int|float|tuple[np.number,...]
  :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する。
  :type xmajorint: bool
  :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する。

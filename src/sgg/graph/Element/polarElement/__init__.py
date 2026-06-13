@@ -1,8 +1,7 @@
 from matplotlib.projections.polar import PolarAxes
-from numpy import linspace,pi
+from numpy import linspace,pi,number
 from ....dev import bols,list2num,num0s,parsecolor,range_num
 from ....nparray import NPArray,NPNumber
-from ...typing import Type_Numberlike
 from ..graph import GElement
 __all__=['polarElement']
 class polarElement(GElement):
@@ -87,8 +86,8 @@ class polarElement(GElement):
  def set_thetalim(self,min,max,type=True):
   if not isinstance(type,bool):type=True
   def r(maxs,min,max):
-   if not isinstance(min,Type_Numberlike):min=0
-   if not isinstance(max,Type_Numberlike):max=maxs
+   if not isinstance(min,number):min=0
+   if not isinstance(max,number):max=maxs
    if max<min:min,max=max,min
    if not 0<=min<=maxs:min=0
    if not 0<=max<=maxs:max=maxs

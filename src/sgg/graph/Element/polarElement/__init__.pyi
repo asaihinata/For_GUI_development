@@ -48,15 +48,15 @@ tuple[float64,float64]
  @overload
  def set_thetalim(
 self,
-min:Type_Numberlike,
-max:Type_Numberlike,
+min:np.number,
+max:np.number,
 type:bool
 )->TupleFloat2:'''特定の角度範囲だけを表示させる。
 
  :param min: 表示される角度の最小を指定する。
- :type min: Type_Numberlike
+ :type min: np.number
  :param max: 表示される角度の最大を指定する。
- :type max: Type_Numberlike
+ :type max: np.number
  :param type: 制限値を指定する。
  :type type: bool
  :return: 表示されている角度の範囲と角度の種類を返す。
@@ -64,15 +64,15 @@ type:bool
  @overload
  def set_thetalim(
 self,
-min:Type_Numberlike,
-max:Type_Numberlike,
+min:np.number,
+max:np.number,
 type:bool=True
 )->TupleFloat2:'''特定の角度範囲だけを表示させる。
 
  :param min: 表示される角度の最小を指定する。
- :type min: Type_Numberlike
+ :type min: np.number
  :param max: 表示される角度の最大を指定する。
- :type max: Type_Numberlike
+ :type max: np.number
  :param type: 制限値を度数法で指定する。
  :type type: bool
  :return: 表示されている角度の範囲と角度の種類を返す。
@@ -80,15 +80,15 @@ type:bool=True
  @overload
  def set_thetalim(
 self,
-min:Type_Numberlike,
-max:Type_Numberlike,
+min:np.number,
+max:np.number,
 type:bool=False
 )->tuple[TupleFloat2,bool]:'''特定の角度範囲だけを表示させる。
 
  :param min: 表示される角度の最小を指定する。
- :type min: Type_Numberlike
+ :type min: np.number
  :param max: 表示される角度の最大を指定する。
- :type max: Type_Numberlike
+ :type max: np.number
  :param type: 制限値を弧度法で指定する。
  :type type: bool
  :return: 表示されている角度の範囲と角度の種類を返す。
