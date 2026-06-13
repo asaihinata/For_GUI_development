@@ -3,7 +3,7 @@ from collections.abc import Iterator
 from typing import Literal,TypeAlias
 import numpy as np
 from ....nparray import NPString
-__all__=['FMT','fmtstyle']
+__all__=['FMT','fmtstyle','FMTLineList','FMTColorList','FMTMarkList']
 MarkerType:TypeAlias=Literal[
 '.',',','o',
 'v','^','<',

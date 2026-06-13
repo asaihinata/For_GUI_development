@@ -1,2 +1,2 @@
-from .capstyle import CAPSTYLE_LIST,Capstyle
+from .capstyle import Capstyle
 from .hatch import Hatch
