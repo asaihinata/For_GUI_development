@@ -1,3 +1,4 @@
+import numpy as np
 __all__ = [
     "allNone",
     "allNones",
@@ -7,9 +8,27 @@ __all__ = [
     "list4num",
     "list4int",
     "list4float",
-    "typelist",
     "listchose",
+    "is_array_like",
+    "change_array_like"
 ]
+
+def is_array_like(obj):
+    if isinstance(obj, np.ndarray | list | tuple | range):
+        return True
+    elif hasattr(obj, "__array__"):
+        return True
+    return False
+
+
+def change_array_like(obj):
+    if isinstance(obj, np.ndarray | list | tuple | range):
+        return True
+    elif np.isscalar(obj):
+        return True
+    elif hasattr(obj, "__array__"):
+        return True
+    return False
 
 
 def allNone(a, b=None):
@@ -25,68 +44,44 @@ def allNones(a, b=None, other=None):
 
 
 def list2num(lin=None):
-    return (
-        True
-        if isinstance(lin, list | tuple)
-        and len(lin) == 2
-        and all(isinstance(i, int | float) for i in lin)
-        else False
-    )
+    if change_array_like(lin):
+        arr=np.array(lin)
+        if np.issubdtype(arr,np.number) and arr.shape==(2,):return True
+    return False
 
 
 def list2int(lin=None):
-    return (
-        True
-        if isinstance(lin, list | tuple)
-        and len(lin) == 2
-        and all(isinstance(i, int) for i in lin)
-        else False
-    )
+    if change_array_like(lin):
+        arr=np.array(lin)
+        if np.issubdtype(arr,np.integer) and arr.shape==(2,):return True
+    return False
 
 
 def list2float(lin=None):
-    return (
-        True
-        if isinstance(lin, list | tuple)
-        and len(lin) == 2
-        and all(isinstance(i, float) for i in lin)
-        else False
-    )
+    if change_array_like(lin):
+        arr=np.array(lin)
+        if np.issubdtype(arr,np.floating) and arr.shape==(2,):return True
+    return False
 
 
 def list4num(lin=None):
-    return (
-        True
-        if isinstance(lin, list | tuple)
-        and len(lin) == 4
-        and all(isinstance(i, int | float) for i in lin)
-        else False
-    )
+    if change_array_like(lin):
+        arr=np.array(lin)
+        if np.issubdtype(arr,np.number) and arr.shape==(4,):return True
+    return False
 
 
 def list4int(lin=None):
-    return (
-        True
-        if isinstance(lin, list | tuple)
-        and len(lin) == 4
-        and all(isinstance(i, int) for i in lin)
-        else False
-    )
+    if change_array_like(lin):
+        arr=np.array(lin)
+        if np.issubdtype(arr,np.integer) and arr.shape==(4,):return True
+    return False
 
 
 def list4float(lin=None):
-    return (
-        True
-        if isinstance(lin, list | tuple)
-        and len(lin) == 4
-        and all(isinstance(i, float) for i in lin)
-        else False
-    )
-
-
-def typelist(val):
-    if isinstance(val, tuple | list):
-        return True
+    if change_array_like(lin):
+        arr=np.array(lin)
+        if np.issubdtype(arr,np.floating) and arr.shape==(4,):return True
     return False
 
 

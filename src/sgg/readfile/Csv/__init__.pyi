@@ -13,6 +13,7 @@ class Getcsv:
     def __init__(
         self,
         path: Path | str,
+        *,
         has_header: bool = True,
         separator: str = ",",
         encoding: CsvEncoding | str = "utf-8-sig",

@@ -5,7 +5,7 @@ from tkinter import Canvas, Frame, Scrollbar, Tk
 from PIL import ImageGrab
 
 from ..._dialog import asksaveasfilename
-from ...dev import bols, listchose, num0s, parsecolor, range_num, typelist
+from ...dev import bols, listchose, num0s, parsecolor, range_num,is_array_like
 from ...graph import *
 from ...typing import FunctionType
 from ..basic import *
@@ -48,7 +48,7 @@ class WindowController:
         self.foreground(self.topmost)
         resizable = kw.get("resizable")
         if (
-            typelist(resizable)
+            is_array_like(resizable)
             and len(resizable) == 2
             and all(isinstance(i, bool) for i in resizable)
         ):
@@ -432,7 +432,7 @@ class WindowController:
     def resizable(self, width=None, height=None):
         if (
             height == None
-            and typelist(width)
+            and is_array_like(width)
             and len(width) == 2
             and all(isinstance(i, bool) for i in width)
         ):

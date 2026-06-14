@@ -1,6 +1,6 @@
 """基本的な統計の計算をするモジュール"""
 
-from typing import Any, Literal, TypeAlias, overload
+from typing import Any, Literal, TypeAlias
 
 from numpy import floating, ndarray
 from numpy._typing import _ArrayLikeFloat_co
@@ -26,29 +26,20 @@ METHOD_LIST: TypeAlias = Literal[
 ]
 
 class NPStatisticsds:
-    @overload
-    def __init__(self, data: NPNumber | ndarray = ...): ...
-    @overload
-    def __init__(self, x: NPNumber | ndarray = ..., y: NPNumber | ndarray = ...): ...
+    def __init__(self, x: NPNumber | ndarray, y: NPNumber | ndarray)->None: ...
     def __repr__(self) -> str: ...
     @property
-    def x(self):
+    def x(self)->ndarray:
         """`x`の配列を返す。"""
 
     @property
-    def y(self):
+    def y(self)->ndarray:
         """`y`の配列を返す。"""
-
-    @property
-    def data(self):
-        """`data`の配列を返す。"""
 
     @property
     def xmath(self) -> NPStatisticsd: ...
     @property
     def ymath(self) -> NPStatisticsd: ...
-    @property
-    def mathes(self) -> NPStatisticsd: ...
     def covariance(self):
         """共分散を求める。"""
 

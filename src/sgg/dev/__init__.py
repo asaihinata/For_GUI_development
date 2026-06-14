@@ -27,7 +27,8 @@ __all__ = [
     "numsmin",
     "parsecolor",
     "range_num",
-    "typelist",
+    "is_array_like",
+    "change_array_like"
 ]
 
 
