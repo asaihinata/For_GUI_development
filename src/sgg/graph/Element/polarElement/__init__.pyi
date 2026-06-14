@@ -1,6 +1,7 @@
 from matplotlib.projections.polar import PolarAxes
 import numpy as np
 
+from ....nparray import NPArray,NPNumber
 from ...style import getLabel
 from ...typing import *
 from ..graph import GElement
@@ -22,10 +23,11 @@ class polarElement(GElement):
         :return: `np.linspace(0,2*np.pi,num,endpoint=False)`と同じ結果同じ結果を求める
         :rtype: ndarray
         """
-
+    @overload
     def _xyd(
-        self, x: nListlike, y: nListlike, d: nListlike | None = None
-    ) -> tuple[np.ndarray, np.ndarray]: ...
+        self, x: nListlike, y: nListlike, d: nListlike
+    ) -> tuple[NPNumber,NPArray]: ...
+
     def _apply_labels(self, xlabel: labeltype = None, ylabel: labeltype = None):
         """
         2Dのグラフのx軸,y軸のラベルを作成する

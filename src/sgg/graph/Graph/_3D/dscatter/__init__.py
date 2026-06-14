@@ -65,3 +65,11 @@ class DScatter(threeElement):
 
     def getz(self):
         return self.__z.tonp()
+
+    def getcoordinate(self):
+        coords=[]
+        for i in self.graphdata:
+            offsets=np.array(i._offsets3d).T
+            if len(coords)==0:coords=offsets
+            else:coords=np.vstack([coords,offsets])
+        return coords

@@ -35,6 +35,7 @@ class Scatter(twoElement):
             )
             for i, (xs, ys) in enumerate(TwoArray(x, y))
         ]
+
         self._apply_labels(self.xlabel, self.ylabel)
         self.legend()
         self._adjustment()
@@ -69,3 +70,11 @@ class Scatter(twoElement):
 
     def gety(self):
         return self.__y.tonp()
+
+    def getcoordinate(self):
+        coords=[]
+        for i in self.graphdata:
+            offsets=np.array(i.get_offsets())
+            if len(coords)==0:coords=offsets
+            else:coords=np.vstack([coords,offsets])
+        return coords

@@ -31,3 +31,6 @@ class Scatter(_2Gset):
 
     def gety(self) -> Typeget_data:
         """`y`のデータを取得する"""
+
+    def getcoordinate(self)->ndarray[NDArray[float64],NDArray[float64]]:
+        """散布図の点の座標を取得する"""

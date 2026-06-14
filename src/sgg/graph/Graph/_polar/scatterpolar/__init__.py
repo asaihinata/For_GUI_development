@@ -54,3 +54,11 @@ class Scatterpolar(polarElement):
 
     def gety(self):
         return self.__y.tonp()
+
+    def getcoordinate(self):
+        coords=[]
+        for i in self.graphdata:
+            offsets=np.array(i.get_offsets())
+            if len(coords)==0:coords=offsets
+            else:coords=np.vstack([coords,offsets])
+        return coords
