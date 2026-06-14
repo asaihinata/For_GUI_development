@@ -21,13 +21,13 @@ class Scatter(_2Gset):
         graph_grid: ColorType,
         title: str,
     ):
-        """散布図を再表示させる。"""
+        """散布図を再表示させる"""
 
     def get(self) -> list[PathCollection]:
-        """`PathCollection`の配列を返す。"""
+        """`PathCollection`の配列を返す"""
 
     def getx(self) -> Typeget_data:
-        """`x`のデータを取得する。"""
+        """`x`のデータを取得する"""
 
     def gety(self) -> Typeget_data:
-        """`y`のデータを取得する。"""
+        """`y`のデータを取得する"""

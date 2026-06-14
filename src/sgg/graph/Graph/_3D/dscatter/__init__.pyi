@@ -25,16 +25,16 @@ class DScatter(_3Gset):
         ylabel: str,
         zlabel: str,
     ):
-        """3Dの散布図を再表示させる。"""
+        """3Dの散布図を再表示させる"""
 
     def get(self) -> list[PathCollection]:
-        """`PathCollection`の配列を返す。"""
+        """`PathCollection`の配列を返す"""
 
     def getx(self) -> Typeget_data:
-        """`x`のデータを取得する。"""
+        """`x`のデータを取得する"""
 
     def gety(self) -> Typeget_data:
-        """`y`のデータを取得する。"""
+        """`y`のデータを取得する"""
 
     def getz(self) -> Typeget_data:
-        """`z`のデータを取得する。"""
+        """`z`のデータを取得する"""

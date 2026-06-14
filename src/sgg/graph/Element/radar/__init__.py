@@ -14,7 +14,6 @@ class RadarElement(GElement):
         super().__init__(master, kw)
         self._data = NPNumber(kw.get("data"))
         self.theta = radar_factory(self._data.shape[-1], frame="circle")
-        self.thetas = np.degrees(self.theta)
         # グリッド線
         self.grid_xy = bols(kw.get("grid_xy"))
         self.grid_x = bols(kw.get("grid_x"), False)
@@ -43,7 +42,6 @@ class RadarElement(GElement):
             self.yticksrange = yticksrange
         else:
             self.yticksrange = (0, 0)
-
     def _apply_theme_colors(self):
         self.ax.set_facecolor(self.graph_bg)
         self.ax.tick_params(colors=self.fg)
@@ -76,7 +74,6 @@ class RadarElement(GElement):
         if isinstance(data, nListlike):
             self._data = NPNumber(kw.get("data"))
             self.theta = radar_factory(self._data.shape[-1], frame="circle")
-            self.thetas = np.degrees(self.theta)
         self.fg = parsecolor(kw.get("fg"), self.fg)
         self.graph_bg = parsecolor(kw.get("bg"), self.graph_bg)
         self.graph_grid = parsecolor(kw.get("graph_grid"), self.graph_grid)
@@ -100,7 +97,7 @@ class RadarElement(GElement):
         ylimmin, ylimmax = self.ax.get_ylim()
         self.ax.set_xlim(xlimmin + xlimmins, xlimmax + xlimmaxs)
         self.ax.set_ylim(ylimmin + ylimmins, ylimmax + ylimmaxs)
-        self.ax.set_thetagrids(self.thetas)
+        self.ax.set_thetagrids(np.degrees(self.theta))
         if self.tight_layout:
             self.fig.tight_layout()
 

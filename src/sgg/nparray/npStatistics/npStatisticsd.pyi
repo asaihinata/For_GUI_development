@@ -27,7 +27,7 @@ class NPStatisticsd:
     def __init__(self, data: NPNumber | ndarray = ...) -> None:
         """基本的な統計の計算をする
 
-        :param data: 配列を指定する。
+        :param data: 配列を指定する
         :type data: NPNumber|ndarray"""
 
     def __repr__(self) -> str: ...
@@ -65,7 +65,7 @@ class NPStatisticsd:
 
     @property
     def deviation(self):
-        """配列内の偏差値を求める。"""
+        """配列内の偏差値を求める"""
 
     @property
     def log(self):
@@ -85,7 +85,7 @@ class NPStatisticsd:
 
     @property
     def devsq(self):
-        """偏差平方和を求める。"""
+        """偏差平方和を求める"""
 
     @property
     def range(self):
@@ -93,11 +93,11 @@ class NPStatisticsd:
 
     @property
     def skew(self):
-        """歪度を求める。"""
+        """歪度を求める"""
 
     @property
     def kurtosis(self):
-        """尖度を求める。"""
+        """尖度を求める"""
 
     def percentile(
         self,
@@ -105,13 +105,13 @@ class NPStatisticsd:
         axis: int | None = None,
         method: METHOD_LIST = "linear",
     ):
-        """指定したパーセンタイルを計算する。
+        """指定したパーセンタイルを計算する
 
-        :param q: 求めたいパーセンタイル値を指定する。
+        :param q: 求めたいパーセンタイル値を指定する
         :type q: tuple[int|float,...]
-        :param axis: 計算する軸を指定する。
+        :param axis: 計算する軸を指定する
         :type axis: int|None
-        :param method: パーセンタイルを推定するために使用する方法を指定する。
+        :param method: パーセンタイルを推定するために使用する方法を指定する
         :type method: METHOD_LIST"""
 
     def quantile(
@@ -120,38 +120,38 @@ class NPStatisticsd:
         axis: int | None = None,
         method: METHOD_LIST = "linear",
     ):
-        """指定した分位点を計算する。
+        """指定した分位点を計算する
 
-        :param q: 求めたい分位点を指定する。
+        :param q: 求めたい分位点を指定する
         :type q: tuple[float,...]
-        :param axis: 計算する軸を指定する。
+        :param axis: 計算する軸を指定する
         :type axis: int|None
-        :param method: 分位点を推定するために使用する方法を指定する。
+        :param method: 分位点を推定するために使用する方法を指定する
         :type method: METHOD_LIST"""
 
     def IQR(axis: int | None = None, method: METHOD_LIST = "linear"):
-        """配列の四分位範囲を求める。
+        """配列の四分位範囲を求める
 
-        :param axis: 計算する軸を指定する。
+        :param axis: 計算する軸を指定する
         :type axis: int|None
-        :param method: 分位点を推定するために使用する方法を指定する。
+        :param method: 分位点を推定するために使用する方法を指定する
         :type method: METHOD_LIST"""
 
     @property
     def outlier(self):
-        """四分位範囲の外れ値を求める。"""
+        """四分位範囲の外れ値を求める"""
 
     @property
     def CV(self):
-        """変動係数を求める。"""
+        """変動係数を求める"""
 
     @property
     def n(self) -> int:
-        """配列の長さの数を返す。"""
+        """配列の長さの数を返す"""
 
     @property
     def n1(self) -> int:
-        """配列の長さの数-1の値を返す。"""
+        """配列の長さの数-1の値を返す"""
     # ヒストグラム
     def hist_bin_edges(
         self,
@@ -159,15 +159,15 @@ class NPStatisticsd:
         range: tuple[float, float] | None = None,
         weights: ArrayLike | None = None,
     ) -> NDArray[Any]:
-        """`bins`で指定された計算方法で計算されたビンの境界を求める。
+        """`bins`で指定された計算方法で計算されたビンの境界を求める
 
-        :param bins: ビンの数や計算方法を指定する。
+        :param bins: ビンの数や計算方法を指定する
         :type bins: int|BINS_LIST|ArrayLike
-        :param range: ビンの下限と上限を指定する。
+        :param range: ビンの下限と上限を指定する
         :type range: tuple[float,float]|None
-        :param weights: 重みを指定する。
+        :param weights: 重みを指定する
         :type weights: ArrayLike|None
-        :return: `bins`で指定された計算方法で計算した結果を返す。
+        :return: `bins`で指定された計算方法で計算した結果を返す
         :rtype: NDArray[Any]"""
 
     def histogram(
@@ -176,35 +176,35 @@ class NPStatisticsd:
         range: tuple[float, float] | None = None,
         weights: ArrayLike | None = None,
     ) -> tuple[NDArray, NDArray]:
-        """配列のヒストグラムを求める。
+        """配列のヒストグラムを求める
 
-        :param bins: ビンの数や計算方法を指定する。
+        :param bins: ビンの数や計算方法を指定する
         :type bins: int|BINS_LIST|ArrayLike
-        :param range: ビンの下限と上限を指定する。
+        :param range: ビンの下限と上限を指定する
         :type range: tuple[float,float]|None
-        :param weights: 重みを指定する。
+        :param weights: 重みを指定する
         :type weights: ArrayLike|None
-        :return: 区間内のデータの個数と区間を区切る境界の値を返す。
+        :return: 区間内のデータの個数と区間を区切る境界の値を返す
         :rtype: tuple[NDArray,NDArray]"""
 
     def bincount(
         self, weights: ArrayLike | None = None, min: SupportsIndex = 0
     ) -> NDArray[intp]:
-        """非負整数の配列に含まれる各値の出現回数を数える。
+        """非負整数の配列に含まれる各値の出現回数を数える
 
-        :param weights: 重みを指定する。
+        :param weights: 重みを指定する
         :type weights: ArrayLike|None
-        :param min: 出力配列の最小ビン数を指定する。
+        :param min: 出力配列の最小ビン数を指定する
         :type min: SupportsIndex
-        :return: 入力配列をビン分割した結果を返す。
+        :return: 入力配列をビン分割した結果を返す
         :rtype: NDArray[intp]"""
     # 母集団
     def ratio_E_samplingerror(self, parcent: int | float, cc: int | float) -> float64:
         """母比率の標本誤差を求める
 
-        :param parcent: 割合を指定する。
+        :param parcent: 割合を指定する
         :type parcent: int|float
-        :param cc: 信頼係数を指定する。
+        :param cc: 信頼係数を指定する
         :type cc: int|float
         :raises TypeError: `parcent`をint型もしくはfloat型で指定しなかった場合に発生させる
         :raises ValueError: 0.0<=`parcent`<=1.0の範囲で指定しなかった場合に発生させる
@@ -214,9 +214,9 @@ class NPStatisticsd:
     def ratio_E(self, p: int | float) -> tuple[float64, float64]:
         """母比率の上限値と下限値を求める
 
-        :param parcent: 割合を指定する。
+        :param parcent: 割合を指定する
         :type parcent: int|float
-        :param cc: 信頼係数を指定する。
+        :param cc: 信頼係数を指定する
         :type cc: int|float
         :raises TypeError: `parcent`をint型もしくはfloat型で指定しなかった場合に発生させる
         :raises ValueError: 0.0<=`parcent`<=1.0の範囲で指定しなかった場合に発生させる
@@ -224,21 +224,21 @@ class NPStatisticsd:
         :raises ValueError: 信頼係数`cc`に0.0から1.0の範囲で指定しなかった場合に発生させる"""
 
     def ave_E_samplingerror(self, cc: int | float = 0.95) -> float64:
-        """母平均の推定をする。
+        """母平均の推定をする
 
-        :param cc: 信頼係数を指定する。
+        :param cc: 信頼係数を指定する
         :type cc: int|float"""
 
     def ave_E(self, cc: float = 0.95) -> tuple[float64, float64]:
         """母平均の上限値と下限値を求める
 
-        :param cc: 信頼係数を指定する。
+        :param cc: 信頼係数を指定する
         :type cc: int|float"""
 
 def cCoefficient(p: int | float = 0.95) -> float64:
     """信頼係数を求める
 
-    :param p: 信頼係数を指定する。
+    :param p: 信頼係数を指定する
     :type p: int|float
     :raises TypeError: `p`がfloat型を指定しなかった場合に発生させる
     :raises ValueError: `p`が0.0から1.0の範囲外を指定した場合に発生させる"""

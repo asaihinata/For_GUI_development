@@ -20,11 +20,11 @@ class NPDate(NPArray):
         depth_limit: int | None = None,
     ) -> None:
         """
-        :param data: データの配列を指定する。
+        :param data: データの配列を指定する
         :type data: ArrayLike
-        :param dtype: numpyの配列で指定する型を指定する。
+        :param dtype: numpyの配列で指定する型を指定する
         :type dtype: _DT64Codes|np.datetime64
-        :param depth_limit: 配列の最大の深さを指定する。
+        :param depth_limit: 配列の最大の深さを指定する
         :type depth_limit: int|None"""
 
     def __iter__(self) -> Iterator[Any]: ...
@@ -51,11 +51,11 @@ class NPDate(NPArray):
     def astype(self, dtype: _DT64Codes) -> NPDate: ...
     @property
     def max(self) -> np.timedelta64:
-        """NPDate内の最大の日付を取得する。"""
+        """NPDate内の最大の日付を取得する"""
 
     @property
     def min(self) -> np.timedelta64:
-        """NPDate内の最小の日付を取得する。"""
+        """NPDate内の最小の日付を取得する"""
 
     def __add__(self, other: np.timedelta64 | int) -> NPDate: ...
     def __sub__(self, other: np.timedelta64 | int) -> NPDate: ...
@@ -95,7 +95,7 @@ class NPDate(NPArray):
             "no", "equiv", "safe", "same_kind", "same_value", "unsafe"
         ] = "same_kind",
     ):
-        """配列内の日付を`str`型に変換する。"""
+        """配列内の日付を`str`型に変換する"""
 
     def todatetime(self):
         """配列内の日付を`datetime.datetime`に変換する"""
@@ -105,42 +105,42 @@ class NPDate(NPArray):
 
     @overload
     def diff_today(self, days: bool = ...):
-        """今日の日付の差を求める。
+        """今日の日付の差を求める
 
-        :param days: 今日を含めるか指定する。
+        :param days: 今日を含めるか指定する
         :type days: bool"""
 
     @overload
     def diff_today(self, days: bool = True):
-        """今日の日付の差(今日を含む)を求める。
+        """今日の日付の差(今日を含む)を求める
 
-        :param days: 今日を含めるか指定する。
+        :param days: 今日を含めるか指定する
         :type days: bool"""
 
     @overload
     def diff_today(self, days: bool = False):
-        """今日の日付の差(今日を含めない)を求める。
+        """今日の日付の差(今日を含めない)を求める
 
-        :param days: 今日を含めるか指定する。
+        :param days: 今日を含めるか指定する
         :type days: bool"""
 
     def astype(self, dtype: DTypeLike = "datetime64[D]") -> NPDate:
-        """`dtype`で指定された型に変更します。"""
+        """`dtype`で指定された型に変更します"""
 
     def sort(self) -> NPDate:
-        """`data`にソートを実行する。"""
+        """`data`にソートを実行する"""
 
     def first_pop(self) -> NPDate:
-        """配列の最初の要素のコピーをその配列の末尾に追加する。"""
+        """配列の最初の要素のコピーをその配列の末尾に追加する"""
 
     def clear(self) -> NPDate:
         """配列をクリアする"""
 
     def deep_add(self, val: int) -> NPDate:
-        """配列の深さを`val`分だけ追加する。"""
+        """配列の深さを`val`分だけ追加する"""
 
     def deep_add(self, val: int) -> NPDate:
-        """配列の深さが`val`より低い場合,深さを`val`にする。"""
+        """配列の深さが`val`より低い場合,深さを`val`にする"""
 
     def reshape(self, size: tuple[int, ...]) -> NPDate:
         """配列の形状を`size`で指定する"""

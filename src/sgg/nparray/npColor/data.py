@@ -15,12 +15,12 @@ __all__ = ["Get_color"]
 
 
 class Get_color(NPArray):
-    """色データを取得する。"""
+    """色データを取得する"""
 
     colordata = Getcsv(Path(__file__).parent / "color.csv").get_numpy()
 
     def __init__(self):
-        """色データを取得する。"""
+        """色データを取得する"""
         super().__init__(self.colordata, dtype=str_)
 
     def __repr__(self):

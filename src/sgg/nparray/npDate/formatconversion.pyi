@@ -13,6 +13,6 @@ class Formatconversion(NPArray):
         yearfirst: bool = ...,
         dayfirst: bool = ...,
     ) -> None:
-        """様々な日付のフォーマットを特定の日付フォーマットに変換する。"""
+        """様々な日付のフォーマットを特定の日付フォーマットに変換する"""
 
     def __repr__(self) -> str: ...

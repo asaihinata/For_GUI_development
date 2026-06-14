@@ -7,9 +7,9 @@ __all__ = ["Capstyle"]
 
 class Capstyle:
     def __init__(self, cap: Literal["butt", "round", "projecting"]) -> None:
-        """閉じられていない線の両端点の描画の方法を指定する。
+        """閉じられていない線の両端点の描画の方法を指定する
 
-        :param cap: 閉じられていない線の両端点の描画の方法を指定する。
+        :param cap: 閉じられていない線の両端点の描画の方法を指定する
         :type cap: Literal['butt','round','projecting']
         :raises TypeError: `cap`に`str`型以外の型を指定した場合に発生させる"""
         if not isinstance(cap, str):

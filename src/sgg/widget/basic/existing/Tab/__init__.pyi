@@ -8,12 +8,12 @@ __all__ = ["Tab"]
 class Tab(_Element):
     widget: Notebook
     def delta(self):
-        """ウィジェットを削除する。"""
+        """ウィジェットを削除する"""
 
     def _add_tab(self, frame: Widget, title: str = ...):
-        """Tabウィジェットに新しいタブを追加する。
+        """Tabウィジェットに新しいタブを追加する
 
-        :param frame: 親ウィジェットを指定する。
+        :param frame: 親ウィジェットを指定する
         :type frame: Widget
-        :param title: タイトルを指定する。
+        :param title: タイトルを指定する
         :type title: str"""

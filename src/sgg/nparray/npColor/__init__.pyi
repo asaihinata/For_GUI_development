@@ -19,7 +19,7 @@ class NPColor(NPArray):
     def __init__(self, color: str | np.ndarray[str]):
         """色についての配列を作成する
 
-        :param color: 色を指定する。
+        :param color: 色を指定する
         :type color: str|np.ndarray[str]"""
 
     def __repr__(self) -> str: ...

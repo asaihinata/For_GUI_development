@@ -15,7 +15,7 @@ class RadarFill(RadarElement):
         title: str,
     ): ...
     def getdata(self) -> Typeget_data:
-        """`data`のデータを取得する。"""
+        """`data`のデータを取得する"""
 
     def get(self) -> list[Line2D]:
-        """`Line2D`の配列を返す。"""
+        """`Line2D`の配列を返す"""

@@ -19,13 +19,13 @@ class Hatplot(_2Gset):
         graph_grid: ColorType,
         title: str,
     ):
-        """ハットグラフを再表示させる。"""
+        """ハットグラフを再表示させる"""
 
     def get(self) -> list[BarContainer]:
-        """`BarContainer`の配列を返す。"""
+        """`BarContainer`の配列を返す"""
 
     def getx(self) -> Typeget_data:
-        """`x`のデータを取得する。"""
+        """`x`のデータを取得する"""
 
     def getdata(self) -> Typeget_data:
-        """`data`のデータを取得する。"""
+        """`data`のデータを取得する"""

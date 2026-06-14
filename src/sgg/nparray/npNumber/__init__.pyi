@@ -21,13 +21,13 @@ class NPNumber(NPArray):
         axis: int | None = None,
     ) -> None:
         """
-        :param data: データの配列を指定する。
+        :param data: データの配列を指定する
         :type data: ArrayLike
-        :param dtype: numpyの配列で指定する型を指定する。
+        :param dtype: numpyの配列で指定する型を指定する
         :type dtype: DTypeLike|None
-        :param depth_limit: 配列の最大の深さを指定する。
+        :param depth_limit: 配列の最大の深さを指定する
         :type depth_limit: int|None
-        :param axis: 計算処理を行う方向を指定する。
+        :param axis: 計算処理を行う方向を指定する
         :type axis: int|None"""
 
     def __getitem__(self, key: int) -> Any: ...
@@ -91,7 +91,7 @@ class NPNumber(NPArray):
     def pow2(self): ...
     @property
     def deviation(self):
-        """標準偏差を求める。"""
+        """標準偏差を求める"""
 
     @property
     def log(self): ...
@@ -107,9 +107,9 @@ class NPNumber(NPArray):
     def radian(self): ...
     @property
     def sturgesval(self) -> float64:
-        """データ数からヒストグラムの階級数を求める。(スタージェスの公式を使用)
+        """データ数からヒストグラムの階級数を求める(スタージェスの公式を使用)
 
-        :return: スタージェスの公式で求めた値を返す。
+        :return: スタージェスの公式で求めた値を返す
         :rtype: float64"""
 
     def logx(self, x: int | float): ...
@@ -122,10 +122,10 @@ class NPNumber(NPArray):
     def ceil(self, digit: int | None = ...) -> NPNumber: ...
     def round(self, digit: int | None = ...) -> NPNumber: ...
     def cussum(self) -> NPNumber:
-        """一つ前の元の値との和を求める。"""
+        """一つ前の元の値との和を求める"""
 
     def cumprod(self) -> NPNumber:
-        """一つ前の元の値との積を求める。"""
+        """一つ前の元の値との積を求める"""
 
     def percentile(
         self,
@@ -160,16 +160,16 @@ class NPNumber(NPArray):
         ] = "linear",
     ) -> ndarray: ...
     def ratio(self, axis: int | None = None) -> ndarray:
-        """行や列ごとの合計に対する比率を求める。"""
+        """行や列ごとの合計に対する比率を求める"""
 
     def zero_check(self) -> ndarray:
         """要素の数値が0の位置を探す"""
 
     def ints(self) -> NPNumber:
-        """配列の型を`int`型にする。"""
+        """配列の型を`int`型にする"""
 
     def floats(self) -> NPNumber:
-        """配列の型を`float`型にする。"""
+        """配列の型を`float`型にする"""
 
     def get_axis(self) -> int | None: ...
     def set_axis(self, axis: int | None) -> int | None: ...
@@ -178,22 +178,22 @@ class NPNumber(NPArray):
     @axis.setter
     def axis(self, axis: int | None) -> int | None: ...
     def astype(self, dtype: DTypeLike | None) -> NPNumber:
-        """`dtype`で指定された型に変更します。"""
+        """`dtype`で指定された型に変更します"""
 
     def sort(self) -> NPNumber:
-        """`data`にソートを実行する。"""
+        """`data`にソートを実行する"""
 
     def first_pop(self) -> NPNumber:
-        """配列の最初の要素のコピーをその配列の末尾に追加する。"""
+        """配列の最初の要素のコピーをその配列の末尾に追加する"""
 
     def clear(self) -> NPNumber:
         """配列をクリアする"""
 
     def deep_add(self, val: int) -> NPNumber:
-        """配列の深さを`val`分だけ追加する。"""
+        """配列の深さを`val`分だけ追加する"""
 
     def deep_add(self, val: int) -> NPNumber:
-        """配列の深さが`val`より低い場合,深さを`val`にする。"""
+        """配列の深さが`val`より低い場合,深さを`val`にする"""
 
     def reshape(self, size: tuple[int, ...]) -> NPNumber:
         """配列の形状を`size`で指定する"""

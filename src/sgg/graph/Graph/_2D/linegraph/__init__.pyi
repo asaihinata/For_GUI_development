@@ -22,13 +22,13 @@ class LineGraph(_2Gset):
         linestyle: Type_Solid,
         linewidth: int | float,
     ):
-        """折線グラフを再表示させる。"""
+        """折線グラフを再表示させる"""
 
     def get(self) -> list[Line2D]:
-        """`Line2D`の配列を返す。"""
+        """`Line2D`の配列を返す"""
 
     def getx(self) -> Typeget_data:
-        """`x`のデータを取得する。"""
+        """`x`のデータを取得する"""
 
     def gety(self) -> Typeget_data:
-        """`y`のデータを取得する。"""
+        """`y`のデータを取得する"""

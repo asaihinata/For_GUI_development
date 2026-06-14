@@ -10,7 +10,7 @@ class QRImage(_Element):
     imgs: PhotoImage
     widget: Label
     def delta(self):
-        """ウィジェットを削除する。"""
+        """ウィジェットを削除する"""
 
     def show(self):
-        """QRコードを表示させる。"""
+        """QRコードを表示させる"""

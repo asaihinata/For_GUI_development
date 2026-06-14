@@ -37,13 +37,13 @@ class Waterfallh(_2Gset):
         graph_grid: ColorType,
         title: str,
     ):
-        """横向きの滝グラフを再表示させる。"""
+        """横向きの滝グラフを再表示させる"""
 
     def get(self) -> list[BarContainer]:
-        """`BarContainer`の配列を返す。"""
+        """`BarContainer`の配列を返す"""
 
     def getx(self) -> Typeget_data:
-        """`x`のデータを取得する。"""
+        """`x`のデータを取得する"""
 
     def gety(self) -> Typeget_data:
-        """`y`のデータを取得する。"""
+        """`y`のデータを取得する"""

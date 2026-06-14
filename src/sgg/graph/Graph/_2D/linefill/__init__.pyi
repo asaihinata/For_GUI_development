@@ -21,16 +21,16 @@ class Linefill(_2Gset):
         graph_grid: ColorType,
         title: str,
     ):
-        """2つの水平曲線の間の領域を埋めるグラフを再表示させる。"""
+        """2つの水平曲線の間の領域を埋めるグラフを再表示させる"""
 
     def get(self) -> list[FillBetweenPolyCollection, Line2D]:
-        """`PathCollection`と`Line2D`の配列を返す。"""
+        """`PathCollection`と`Line2D`の配列を返す"""
 
     def getx(self) -> Typeget_data:
-        """`x`のデータを取得する。"""
+        """`x`のデータを取得する"""
 
     def getymin(self) -> Typeget_data:
-        """`ymin`のデータを取得する。"""
+        """`ymin`のデータを取得する"""
 
     def getymax(self) -> Typeget_data:
-        """`ymax`のデータを取得する。"""
+        """`ymax`のデータを取得する"""

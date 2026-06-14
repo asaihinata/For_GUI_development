@@ -20,11 +20,11 @@ class NPString(NPArray):
         depth_limit: int | None = None,
     ) -> None:
         """
-        :param data: データの配列を指定する。
+        :param data: データの配列を指定する
         :type data: ArrayLike
-        :param dtype: numpyの配列で指定する型を指定する。
+        :param dtype: numpyの配列で指定する型を指定する
         :type dtype: DTypeLike|None
-        :param depth_limit: 配列の最大の深さを指定する。
+        :param depth_limit: 配列の最大の深さを指定する
         :type depth_limit: int|None"""
 
     def __getitem__(self, key: int) -> Any: ...
@@ -60,33 +60,33 @@ class NPString(NPArray):
     def T(self) -> NPString: ...
     def append(self, val: np.ndarray | NPString) -> NPString: ...
     def low(self) -> NPString:
-        """アルファベットを小文字にする。"""
+        """アルファベットを小文字にする"""
 
     def upper(self) -> NPString:
-        """アルファベットを大文字にする。"""
+        """アルファベットを大文字にする"""
 
     def stringlen(self) -> NDArray[np.int_]: ...
     def str_len(self) -> NDArray[np.int_]: ...
     def replace(self, old: str, new: str) -> NPString:
-        """NPString内の`old`を`new`に置き換える。"""
+        """NPString内の`old`を`new`に置き換える"""
 
     def astype(self, dtype: DTypeLike | None) -> NPString:
-        """`dtype`で指定された型に変更します。"""
+        """`dtype`で指定された型に変更します"""
 
     def sort(self) -> NPString:
-        """`data`にソートを実行する。"""
+        """`data`にソートを実行する"""
 
     def first_pop(self) -> NPString:
-        """配列の最初の要素のコピーをその配列の末尾に追加する。"""
+        """配列の最初の要素のコピーをその配列の末尾に追加する"""
 
     def clear(self) -> NPString:
         """配列をクリアする"""
 
     def deep_add(self, val: int) -> NPString:
-        """配列の深さを`val`分だけ追加する。"""
+        """配列の深さを`val`分だけ追加する"""
 
     def deep_add(self, val: int) -> NPString:
-        """配列の深さが`val`より低い場合,深さを`val`にする。"""
+        """配列の深さが`val`より低い場合,深さを`val`にする"""
 
     def reshape(self, size: tuple[int, ...]) -> NPString:
         """配列の形状を`size`で指定する"""

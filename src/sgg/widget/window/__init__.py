@@ -14,7 +14,7 @@ __all__ = ["WindowController"]
 
 
 class WindowController:
-    """ウィンドウを生成する。"""
+    """ウィンドウを生成する"""
 
     count = 0
 

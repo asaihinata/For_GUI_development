@@ -18,15 +18,15 @@ class Getcsv:
         separator: str = ",",
         encoding: CsvEncoding | str = "utf-8-sig",
     ) -> None:
-        """csvファイルのデータを取得する。
+        """csvファイルのデータを取得する
 
-        :param path: csvファイルのパスを指定する。
+        :param path: csvファイルのパスを指定する
         :type path: Path|str
-        :param has_header: 先頭行をヘッターとして扱うか指定する。
+        :param has_header: 先頭行をヘッターとして扱うか指定する
         :type has_header: bool
-        :param separator: 区切り文字を指定する。
+        :param separator: 区切り文字を指定する
         :type separator: str
-        :param encoding: 文字コードを指定する。
+        :param encoding: 文字コードを指定する
         :type encoding: CsvEncoding|str
         :raises FileNotFoundError: ファイルが存在しない場合に発生させる
         :raises ValueError: `path`で指定されたパスの拡張子がcsvファイルではない時に発生させる"""

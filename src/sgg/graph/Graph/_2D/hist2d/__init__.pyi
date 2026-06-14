@@ -24,16 +24,16 @@ class Hist2d(_2Gset):
         graph_grid: ColorType,
         title: str,
     ):
-        """2次元ヒストグラムを再表示させる。
+        """2次元ヒストグラムを再表示させる
 
-        :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる。
-        :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる。"""
+        :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる
+        :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる"""
 
     def get(self) -> list[ndarray, ndarray, ndarray, QuadMesh]:
-        """`matplotlib.axes.Axes.hist2d`の戻り値を配列で返す。"""
+        """`matplotlib.axes.Axes.hist2d`の戻り値を配列で返す"""
 
     def getx(self) -> Typeget_data:
-        """`x`のデータを取得する。"""
+        """`x`のデータを取得する"""
 
     def gety(self) -> Typeget_data:
-        """`y`のデータを取得する。"""
+        """`y`のデータを取得する"""

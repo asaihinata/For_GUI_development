@@ -20,7 +20,7 @@ class Scatterpolar(_polarset):
         graph_grid: ColorType,
         title: str,
     ):
-        """極軸散布図を再表示させる。"""
+        """極軸散布図を再表示させる"""
 
     @overload
     def update(
@@ -35,13 +35,13 @@ class Scatterpolar(_polarset):
         graph_grid: ColorType,
         title: str,
     ):
-        """極軸散布図を再表示させる。"""
+        """極軸散布図を再表示させる"""
 
     def get(self) -> list[PathCollection]:
-        """`PathCollection`の配列を返す。"""
+        """`PathCollection`の配列を返す"""
 
     def getx(self) -> Typeget_data:
-        """`x`のデータを取得する。"""
+        """`x`のデータを取得する"""
 
     def gety(self) -> Typeget_data:
-        """`y`のデータを取得する。"""
+        """`y`のデータを取得する"""

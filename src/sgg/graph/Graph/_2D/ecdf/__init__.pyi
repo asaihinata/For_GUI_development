@@ -20,10 +20,10 @@ class Ecdf(_2Gset):
         graph_grid: ColorType,
         title: str,
     ):
-        """経験的累積分布関数を再描画させる。"""
+        """経験的累積分布関数を再描画させる"""
 
     def get(self) -> list[Line2D]:
-        """`Line2D`の配列を返す。"""
+        """`Line2D`の配列を返す"""
 
     def getdata(self) -> Typeget_data:
-        """`data`のデータを取得する。"""
+        """`data`のデータを取得する"""

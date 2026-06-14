@@ -21,10 +21,10 @@ class Eventplot(_2Gset):
         graph_grid: ColorType,
         title: str,
     ):
-        """イベントグラフを再表示させる。"""
+        """イベントグラフを再表示させる"""
 
     def get(self) -> list[EventCollection]:
-        """`EventCollection`の配列を返す。"""
+        """`EventCollection`の配列を返す"""
 
     def getdata(self) -> Typeget_data:
-        """`data`のデータを取得する。"""
+        """`data`のデータを取得する"""

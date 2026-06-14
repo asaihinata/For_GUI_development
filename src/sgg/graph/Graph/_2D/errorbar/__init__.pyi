@@ -33,13 +33,13 @@ class Errorbar(_2Gset):
         graph_grid: ColorType,
         title: str,
     ):
-        """エラーグラフを再表示させる。"""
+        """エラーグラフを再表示させる"""
 
     def get(self) -> list[ErrorbarContainer]:
-        """`ErrorbarContainer`の配列を返す。"""
+        """`ErrorbarContainer`の配列を返す"""
 
     def getx(self) -> Typeget_data:
-        """`x`のデータを取得する。"""
+        """`x`のデータを取得する"""
 
     def gety(self) -> Typeget_data:
-        """`y`のデータを取得する。"""
+        """`y`のデータを取得する"""

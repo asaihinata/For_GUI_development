@@ -12,19 +12,19 @@ class Img_conversion:
     @property
     def imgs(self) -> ImageFile: ...
     def get_width(self) -> int:
-        """画像データの幅を返す。"""
+        """画像データの幅を返す"""
 
     def get_height(self) -> int:
-        """画像データの高さを返す。"""
+        """画像データの高さを返す"""
 
     def get_size(self) -> tuple[int, int]:
-        """画像データのサイズを返す。"""
+        """画像データのサイズを返す"""
 
     def get_format(self) -> str | None:
-        """ソースファイルのファイル形式を返す。"""
+        """ソースファイルのファイル形式を返す"""
 
     def get_mode(self) -> str:
-        """画像のモードを返す。
+        """画像のモードを返す
 
         https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes"""
     width = get_width
@@ -35,9 +35,9 @@ class Img_conversion:
     def resize(self, w: int, h: int) -> Img_conversion: ...
     def asresize(self) -> Img_conversion: ...
     def show(self, title: str | None = None):
-        """画像を表示させる。
+        """画像を表示させる
 
-        :param title: 画像を表示する際のタイトル名を指定する。
+        :param title: 画像を表示する際のタイトル名を指定する
         :type title: str|None"""
 
 class Img_path(Img_conversion):

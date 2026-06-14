@@ -30,8 +30,8 @@ class Color:
     def __getitem__(self, val: int | slice) -> Any: ...
     @classmethod
     def colorname(cls) -> list[str]:
-        """CSS4で指定できる色名の配列を返す。"""
+        """CSS4で指定できる色名の配列を返す"""
 
     @classmethod
     def colorhex(cls) -> list[str]:
-        """CSS4で指定できる色名の16進数の配列を返す。"""
+        """CSS4で指定できる色名の16進数の配列を返す"""

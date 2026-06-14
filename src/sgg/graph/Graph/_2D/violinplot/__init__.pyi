@@ -27,10 +27,10 @@ class Violinplot(_2Gset):
         graph_grid: ColorType,
         title: str,
     ):
-        """バイオリングラフを再表示させる。"""
+        """バイオリングラフを再表示させる"""
 
     def get(self) -> list[dict[str, Collection]]:
-        """`matplotlib.axes.Axes.violinplot`のバイオリンプロットの各コンポーネントの辞書型が入った配列を返す。"""
+        """`matplotlib.axes.Axes.violinplot`のバイオリンプロットの各コンポーネントの辞書型が入った配列を返す"""
 
     def getdata(self) -> Typeget_data:
-        """`data`のデータを取得する。"""
+        """`data`のデータを取得する"""

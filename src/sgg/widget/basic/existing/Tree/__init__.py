@@ -16,11 +16,11 @@ class Tree(Element):
         self.header_bg = parsecolor(kw.get("header_bg"), "#cccccc")
         self.rowheight = kw.get("rowheight", 50)
         if not isinstance(kw.get("values", []), list):
-            raise TypeError("valuesにlist型を指定してください。")
+            raise TypeError("valuesにlist型を指定してください")
         else:
             self.values = kw.get("values", [])
         if not isinstance(kw.get("header", []), list):
-            raise TypeError("headerにlist型を指定してください。")
+            raise TypeError("headerにlist型を指定してください")
         else:
             self.header = kw.get("header", [])
         self.side_header = kw.get("side_header")

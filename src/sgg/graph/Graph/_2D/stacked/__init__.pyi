@@ -19,10 +19,10 @@ class Stacked(_2Gset):
         graph_grid: ColorType,
         title: str,
     ):
-        """積み上げ縦棒グラフを再表示させる。"""
+        """積み上げ縦棒グラフを再表示させる"""
 
     def get(self) -> list[BarContainer]:
-        """`BarContainer`の配列を返す。"""
+        """`BarContainer`の配列を返す"""
 
     def getdata(self) -> Typeget_data:
-        """`data`のデータを取得する。"""
+        """`data`のデータを取得する"""

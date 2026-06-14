@@ -38,13 +38,13 @@ class Stem(_2Gset):
         ] = ...,
         line: Literal["-", "--", "-.", "-."] = ...,
     ):
-        """幹図を再表示させる。"""
+        """幹図を再表示させる"""
 
     def get(self) -> list[StemContainer]:
-        """`StemContainer`の配列を返す。"""
+        """`StemContainer`の配列を返す"""
 
     def getx(self) -> Typeget_data:
-        """`x`のデータを取得する。"""
+        """`x`のデータを取得する"""
 
     def gety(self) -> Typeget_data:
-        """`y`のデータを取得する。"""
+        """`y`のデータを取得する"""
