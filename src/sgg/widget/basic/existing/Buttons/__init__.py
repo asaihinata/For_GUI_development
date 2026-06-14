@@ -14,7 +14,17 @@ class Buttons(Element):
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.anchor = listchose(
             kw.get("anchor"),
-            ["center","w", "n", "s", "e", "nw", "ne", "se", "sw",],
+            [
+                "center",
+                "w",
+                "n",
+                "s",
+                "e",
+                "nw",
+                "ne",
+                "se",
+                "sw",
+            ],
         )
         self.widget = Button(
             self.master,

@@ -21,9 +21,9 @@ method_list = [
 
 
 class NPStatisticsds:
-    def __init__(self,x,y):
-        self.__x = NPNumber(x,depth_limit=1).tonp()
-        self.__y = NPNumber(y,depth_limit=1).tonp()
+    def __init__(self, x, y):
+        self.__x = NPNumber(x, depth_limit=1).tonp()
+        self.__y = NPNumber(y, depth_limit=1).tonp()
         self.__xs = NPStatisticsd(self.__x)
         self.__ys = NPStatisticsd(self.__y)
 

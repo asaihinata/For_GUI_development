@@ -26,14 +26,14 @@ METHOD_LIST: TypeAlias = Literal[
 ]
 
 class NPStatisticsds:
-    def __init__(self, x: NPNumber | ndarray, y: NPNumber | ndarray)->None: ...
+    def __init__(self, x: NPNumber | ndarray, y: NPNumber | ndarray) -> None: ...
     def __repr__(self) -> str: ...
     @property
-    def x(self)->ndarray:
+    def x(self) -> ndarray:
         """`x`の配列を返す。"""
 
     @property
-    def y(self)->ndarray:
+    def y(self) -> ndarray:
         """`y`の配列を返す。"""
 
     @property

@@ -28,7 +28,7 @@ __all__ = [
     "parsecolor",
     "range_num",
     "is_array_like",
-    "change_array_like"
+    "change_array_like",
 ]
 
 

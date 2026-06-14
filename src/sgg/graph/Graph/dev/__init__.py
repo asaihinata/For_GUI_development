@@ -3,8 +3,13 @@ import numpy as np
 
 from ....dev import *
 from ....nparray import *
-from ...element import (RadarElement, polarElement, radar_factory, threeElement,
-                        twoElement)
+from ...element import (
+    RadarElement,
+    polarElement,
+    radar_factory,
+    threeElement,
+    twoElement,
+)
 from ...style import *
 from ...typing import *
 from .twoArray import TwoArray

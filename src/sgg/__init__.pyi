@@ -2536,7 +2536,7 @@ class sgg:
         xlabel: str = ...,
         ylabel: str = ...,
         label: labeltype = ...,
-        hatch: str|None = None,
+        hatch: str | None = None,
         baseline: Literal["zero", "sym", "wiggle", "weighted_wiggle"] = "zero",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
         size: TupleNumbertype2 = (500, 400),

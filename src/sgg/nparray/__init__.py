@@ -1,6 +1,17 @@
-from .dtype import (boolDtype, bytesDtype, complexDtype, datetimeDtype, floatDtype,
-                    intDtype, integerDtype, numberDtype, strDtype, stringDtype,
-                    timedeltaDtype, uintDtype)
+from .dtype import (
+    boolDtype,
+    bytesDtype,
+    complexDtype,
+    datetimeDtype,
+    floatDtype,
+    intDtype,
+    integerDtype,
+    numberDtype,
+    strDtype,
+    stringDtype,
+    timedeltaDtype,
+    uintDtype,
+)
 from .npArray import NPArray
 from .npColor import NPColor
 from .npDate import Formatconversion, NPDate
