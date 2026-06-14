@@ -27,7 +27,7 @@ class NPStatisticsd:
             self.__data = data.data
         else:
             raise TypeError("dataにはNPNumberもしくはnp.ndarrayを指定してください")
-        if self.__data.ndim == 1:
+        if self.__data.ndim != 1:
             raise ValueError("dataには1次元の配列を指定してください")
 
     def __repr__(self):

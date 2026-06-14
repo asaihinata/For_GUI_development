@@ -1929,6 +1929,9 @@ class sgg:
             "",
         ] = "o",
         markersize: int | float = 10,
+        regression_bool:bool=False,
+        linestyle:Literal["-", "--", "-.", ":", "None", " ", ""]="-",
+        linewidth:int|float=2,
         xlabel: str = ...,
         ylabel: str = ...,
         label: labeltype = ...,
@@ -1972,6 +1975,12 @@ class sgg:
         :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
         :param markersize: 散布図のマーカーの大きさを指定する
         :type markersize: int|float
+        :param regression_bool: 散布図に回帰直線を描画させるか指定する
+        :type regression_bool: bool
+        :param linestyle: 散布図に回帰直線の線の種類を指定する
+        :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""]
+        :param linewidth: 散布図に回帰直線の線の太さを指定する
+        :type linewidth: int|float
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
