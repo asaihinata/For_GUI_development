@@ -27,7 +27,8 @@ class NPArray:
         :param dtype: numpyの配列で指定する型を指定する
         :type dtype: DTypeLike|None
         :param depth_limit: 配列の最大の深さを指定する
-        :type depth_limit: int|None"""
+        :type depth_limit: int|None
+        """
     # 親クラス,子クラス共通の特殊メソッド
     def __getitem__(self, key: int) -> Any: ...
     def __contains__(self, item: Any) -> bool: ...

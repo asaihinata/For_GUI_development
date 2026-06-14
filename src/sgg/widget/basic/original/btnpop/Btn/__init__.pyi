@@ -29,10 +29,12 @@ class Btn(_Element):
         """ウィジェットが表示している背景色を変更する"""
 
     def dgettitle(self) -> str:
-        """ダイアログに表示されるタイトルを取得する
+        """
+        ダイアログに表示されるタイトルを取得する
 
         :return: ダイアログのタイトルを返す
-        :rtype: str"""
+        :rtype: str
+        """
 
     def dsettitle(self, titles: str):
         """ダイアログに表示されるタイトルを変更する"""

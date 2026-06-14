@@ -8,10 +8,12 @@ __all__ = ["Slidebar"]
 class Slidebar(_Element):
     widget: Scale
     def get(self) -> int | float:
-        """Slidebarウィジェットの現在の値を取得する
+        """
+        Slidebarウィジェットの現在の値を取得する
 
         :return: Slidebarウィジェットの現在の値を返す
-        :rtype: int|float"""
+        :rtype: int|float
+        """
 
     def delta(self):
         """ウィジェットを削除する"""
@@ -29,7 +31,9 @@ class Slidebar(_Element):
         """ウィジェットが表示している背景色を変更する"""
 
     def set(self, val: int | float):
-        """Slidebarウィジェットの変更後の数値を設定する
+        """
+        Slidebarウィジェットの変更後の数値を設定する
 
         :param val: 変更後の数値を指定する
-        :type val: int|float"""
+        :type val: int|float
+        """

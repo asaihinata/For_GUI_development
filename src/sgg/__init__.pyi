@@ -113,7 +113,8 @@ class sgg:
         maxmine: bool = False,
         location: TupleNumbertype2 = (0, 0),
     ) -> WindowController:
-        """ウィンドウを作成する
+        """
+        ウィンドウを作成する
 
         :param layout: ウィンドウで表示されるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
         :type layout: Listlike
@@ -162,7 +163,8 @@ class sgg:
         ] = "flat",
         key: str = ...,
     ) -> dict[str, Any]:
-        """テキストを作成する
+        """
+        テキストを作成する
 
         :param text: Textsウィジェットに表記させる文字を指定する
         :type text: str
@@ -194,7 +196,8 @@ class sgg:
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
     ) -> dict[str, Any]:
-        """リンクテキストを作成する
+        """
+        リンクテキストを作成する
 
         :param text: Linkウィジェットに表記させる文字を指定する
         :type text: str
@@ -206,7 +209,8 @@ class sgg:
     def Images(
         path: Path | WindowsPath = ..., takefocus: bool = True, key: str = ...
     ) -> dict[str, Any]:
-        """画像を作成する
+        """
+        画像を作成する
 
         :param path: Imagesウィジェットに表示させる画像のパスを指定する
         :type path: Path|WindowsPath
@@ -216,7 +220,8 @@ class sgg:
     def Imagebyte(
         byte: bytes | BytesIO = ..., takefocus: bool = True, key: str = ...
     ) -> dict[str, Any]:
-        """画像を作成する
+        """
+        画像を作成する
 
         :param byte: Imagebytoに表示させるバイトデータを指定する
         :type byte: bytes|BytesIO
@@ -226,7 +231,8 @@ class sgg:
     def Imagelink(
         link: str = ..., takefocus: bool = True, key: str = ...
     ) -> dict[str, Any]:
-        """画像を作成する
+        """
+        画像を作成する
 
         :param link: 画像リンクを指定する
         :type link: str
@@ -257,7 +263,8 @@ class sgg:
         ] = "flat",
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
     ) -> dict[str, Any]:
-        """ボタンを作成する
+        """
+        ボタンを作成する
 
         :param text: Buttonsウィジェットに表記させる文字を指定する
         :type text: str
@@ -289,7 +296,8 @@ class sgg:
         ] = "flat",
         justify: Literal["left", "center", "right"] = "left",
     ) -> dict[str, Any]:
-        """入力欄を作成する
+        """
+        入力欄を作成する
 
         :param text: Inputウィジェットに表記させる文字を指定する
         :type text: str
@@ -331,7 +339,8 @@ class sgg:
         ] = "flat",
         justify: Literal["left", "center", "right"] = "left",
     ) -> dict[str, Any]:
-        """テキストエリアを作成する
+        """
+        テキストエリアを作成する
 
         :param text: Multilineウィジェットに表記させる文字を指定する
         :type text: str
@@ -356,7 +365,8 @@ class sgg:
         bg: ColorTypeN = "#e0e0e0",
         key: str = ...,
     ) -> dict[str, Any]:
-        """表を作成する
+        """
+        表を作成する
 
         :param header_fg: Tableウィジェットの見出しの文字色を指定する
         :type header_fg: ColorTypeN
@@ -388,7 +398,8 @@ class sgg:
         rowheight: int | float = 50,
         side_header: str = ...,
     ) -> dict[str, Any]:
-        """ツリーを作成する
+        """
+        ツリーを作成する
 
         :param header_fg: Treeウィジェットの見出しの文字色を指定する
         :type header_fg: ColorTypeN
@@ -430,7 +441,8 @@ class sgg:
         selectmode: Literal["browse", "single", "multiple", "extended"] = "browse",
         key: str = ...,
     ) -> dict[str, Any]:
-        """リストボックスを作成する
+        """
+        リストボックスを作成する
 
         :param values: Listboxウィジェットに表記させるリストを指定する
         :type values: list|tuple
@@ -458,7 +470,8 @@ class sgg:
         padx: int | float = ...,
         pady: int | float = ...,
     ) -> dict[str, Any]:
-        """コンボボックスを作成する
+        """
+        コンボボックスを作成する
 
         :param values: 選択項目を指定する
         :type values: list
@@ -476,7 +489,8 @@ class sgg:
         wraplength: int | float = 0,
         bd: int | float = 0,
     ) -> dict[str, Any]:
-        """ラジオボタンを作成する
+        """
+        ラジオボタンを作成する
 
         読み込み時,グループの最初のRadioウィジェットが選択される
          :param text: Radioウィジェットに表記させる文字を指定する
@@ -493,7 +507,8 @@ class sgg:
         bd: int | float = 0,
         key: str = ...,
     ) -> dict[str, Any]:
-        """チェックボタンを作成する
+        """
+        チェックボタンを作成する
 
         :param text: Checkboxウィジェットに表記させる文字を指定する
         :type text: str
@@ -526,7 +541,8 @@ class sgg:
         ] = "solid",
         bd: int | float = 1,
     ) -> dict[str, Any]:
-        """枠線付きのフレームを作成する
+        """
+        枠線付きのフレームを作成する
 
         :param layout: Framesウィジェットに表示させるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
         :type layout: list[list]
@@ -556,7 +572,8 @@ class sgg:
         ] = "flat",
         key: str = ...,
     ) -> dict[str, Any]:
-        """メニューバーを作成する
+        """
+        メニューバーを作成する
 
         :param list: Menusウィジェットに表示させるメニューを指定する
         :type list: list
@@ -588,7 +605,8 @@ class sgg:
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
     ) -> dict[str, Any]:
-        """メニューボタンを作成する
+        """
+        メニューボタンを作成する
 
         :param text: MenuButtonsウィジェットのボタンに表記させる文字を指定する
         :type text: str
@@ -619,7 +637,8 @@ class sgg:
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
     ) -> dict[str, Any]:
-        """フレームを作成する
+        """
+        フレームを作成する
 
         :param layout: Columnウィジェットに表示させるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
         :type layout: list[list]
@@ -637,7 +656,8 @@ class sgg:
         key: str = ...,
         bd: int | float = 1,
     ) -> dict[str, Any]:
-        """スライダーを作成する
+        """
+        スライダーを作成する
 
         :param digits: スケールの値を文字列として取得した際の数値の最大桁数を指定する
         :type digits: int
@@ -670,7 +690,8 @@ class sgg:
         bd: int | float = 0,
         justify: Literal["left", "center", "right"] = "left",
     ) -> dict[str, Any]:
-        """数値専用の入力欄を作成する
+        """
+        数値専用の入力欄を作成する
 
         :param wrap: 数値が`max`もしくは`min`で指定した範囲外を選択しようとした場合,`max`より大きい数値の場合は`min`へ`min`より小さい数値の場合は`max`へ移動するかを指定する
         :type wrap: bool
@@ -701,7 +722,8 @@ class sgg:
             "nw", "n", "ne", "w", "center", "e", "sw", "s", "se"
         ] = "center",
     ) -> dict[str, Any]:
-        """ファイルパスを取得するダイアログを発生させるボタンを作成する
+        """
+        ファイルパスを取得するダイアログを発生させるボタンを作成する
 
         :param text: FileLoadウィジェットのボタンに表示させる文字を指定する
         :type text: str
@@ -721,7 +743,8 @@ class sgg:
             "nw", "n", "ne", "w", "center", "e", "sw", "s", "se"
         ] = "center",
     ) -> dict[str, Any]:
-        """ファイルパスを取得するダイアログを発生させるボタンを作成する
+        """
+        ファイルパスを取得するダイアログを発生させるボタンを作成する
 
         :param text: FolderLoadウィジェットのボタンに表示させる文字を指定する
         :type text: str
@@ -746,7 +769,8 @@ class sgg:
             "nw", "n", "ne", "w", "center", "e", "sw", "s", "se"
         ] = "center",
     ) -> dict[str, Any]:
-        """ファイルもしくはフォルダを選択し,選択されたパスを取得するダイアログを発生させるボタンを作成する
+        """
+        ファイルもしくはフォルダを選択し,選択されたパスを取得するダイアログを発生させるボタンを作成する
 
         :param text: Savebtnウィジェットのボタンに表示させる文字を指定する
         :type text: str
@@ -776,7 +800,8 @@ class sgg:
             "nw", "n", "ne", "w", "center", "e", "sw", "s", "se"
         ] = "center",
     ) -> dict[str, Any]:
-        """色を選択し,選択された色を取得するダイアログを発生させるボタンを作成する
+        """
+        色を選択し,選択された色を取得するダイアログを発生させるボタンを作成する
 
         :param color: ダイアログで選択される色の初期値を選択する
         :type color: ColorTypeN
@@ -799,7 +824,8 @@ class sgg:
         underline: bool = False,
         overstrike: bool = False,
     ) -> dict[str, Any]:
-        """タブを作成する
+        """
+        タブを作成する
 
         :param tabs: Tabウィジェットに表示させるウィジェットを指定する配列の最初の要素にタブ名を,次の要素にTabウィジェットに表示させる`layout`を指定する
         :type tabs: list[list[str,list[list]]]
@@ -814,7 +840,8 @@ class sgg:
         orient: Literal["horizontal", "vertical"] = "horizontal",
         key: str = ...,
     ) -> dict[str, Any]:
-        """プログレスバーを作成する
+        """
+        プログレスバーを作成する
 
         :param length: TProgressbarウィジェットの長さを指定する
         :type length: int|float
@@ -859,7 +886,8 @@ class sgg:
         ] = "code39",
         key: str = ...,
     ) -> dict[str, Any]:
-        """バーコードを作成する
+        """
+        バーコードを作成する
 
         :param data: バーコードで表示させる値を指定する
         :type data: str|int
@@ -872,7 +900,8 @@ class sgg:
     def QRImage(
         text: str = ..., takefocus: bool = True, key: str = ...
     ) -> dict[str, Any]:
-        """QRコードを作成する
+        """
+        QRコードを作成する
 
         :param text: QRコードを読み取った際に表示させる値を指定する
         :type text: str
@@ -954,7 +983,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """折線グラフを作成する
+        """
+        折線グラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: n_array
@@ -1052,7 +1082,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """縦軸棒グラフを作成する
+        """
+        縦軸棒グラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -1150,7 +1181,8 @@ class sgg:
         align: Literal["center", "edge"] = "center",
         key: str = ...,
     ) -> dict[str, Any]:
-        """横軸棒グラフを作成する
+        """
+        横軸棒グラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -1247,7 +1279,8 @@ class sgg:
         align: Literal["center", "edge"] = "center",
         key: str = ...,
     ) -> dict[str, Any]:
-        """じょうごグラフを作成する
+        """
+        じょうごグラフを作成する
 
         :param data: `data`のデータを指定する
         :type data: o_array
@@ -1340,7 +1373,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """積み上げ縦棒グラフを作成する
+        """
+        積み上げ縦棒グラフを作成する
 
         :param data: `data`を指定する
         :type data: n_array
@@ -1429,7 +1463,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """積み上げ横棒グラフを作成する
+        """
+        積み上げ横棒グラフを作成する
 
         :param data: `data`を指定する
         :type data: n_array
@@ -1506,7 +1541,8 @@ class sgg:
         alpha: int | float = 1,
         key: str = ...,
     ) -> dict[str, Any]:
-        """円グラフを作成する
+        """
+        円グラフを作成する
 
         :param data: `data`のデータを指定する
         :type data: o_array
@@ -1575,7 +1611,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """箱ひげ図を作成する
+        """
+        箱ひげ図を作成する
 
         :param data: `data`のデータを指定する
         :type data: n_array
@@ -1674,7 +1711,8 @@ class sgg:
         width: int | float = 1,
         key: str = ...,
     ) -> dict[str, Any]:
-        """x軸向きにバーを設置された滝グラフを作成する
+        """
+        x軸向きにバーを設置された滝グラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -1776,7 +1814,8 @@ class sgg:
         height: int | float = 1,
         key: str = ...,
     ) -> dict[str, Any]:
-        """y軸向きにバーを設置された滝グラフを作成する
+        """
+        y軸向きにバーを設置された滝グラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -1916,7 +1955,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """散布図を作成する
+        """
+        散布図を作成する
 
         :param x: `x`のデータを指定する
         :type x: n_array
@@ -2058,7 +2098,8 @@ class sgg:
         azim: int | float = 45,
         key: str = ...,
     ) -> dict[str, Any]:
-        """3Dの散布図を作成する
+        """
+        3Dの散布図を作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -2174,7 +2215,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """幹図を作成する
+        """
+        幹図を作成する
 
         :param x: `x`のデータを指定する
         :type x: ndarray|list|tuple
@@ -2274,7 +2316,8 @@ class sgg:
         ylabel: str = ...,
         key: str = ...,
     ) -> dict[str, Any]:
-        """階段グラフを作成する
+        """
+        階段グラフを作成する
 
         :param data: `data`のデータを指定する
         :type data: n_array
@@ -2363,7 +2406,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """ハットグラフを作成する
+        """
+        ハットグラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -2461,7 +2505,8 @@ class sgg:
         ylabel: str = ...,
         key: str = ...,
     ) -> dict[str, Any]:
-        """ヒストグラムを作成する
+        """
+        ヒストグラムを作成する
 
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
@@ -2561,7 +2606,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """積み上げエリアチャートを作成する
+        """
+        積み上げエリアチャートを作成する
 
         :param x: `x`のデータを指定する
         :type x: n_array
@@ -2653,7 +2699,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """積上げ面グラフを作成する
+        """
+        積上げ面グラフを作成する
 
         :param x: 曲線を定義する節点のx座標を指定する
         :type x: o_array
@@ -2744,7 +2791,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """経験的累積分布関数を作成する
+        """
+        経験的累積分布関数を作成する
 
         :param data: 入力データを指定する
         :type data: n_array
@@ -2852,7 +2900,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """誤差範囲付きの線グラフもしくはマーカーグラフ,あるいはその両方のエラーグラフを作成する
+        """
+        誤差範囲付きの線グラフもしくはマーカーグラフ,あるいはその両方のエラーグラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: n_array
@@ -2969,7 +3018,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """イベントグラフを作成する
+        """
+        イベントグラフを作成する
 
         :param data: `data`のデータを指定する
         :type data: o_array
@@ -3068,7 +3118,8 @@ class sgg:
         ylabel: str = ...,
         key: str = ...,
     ) -> dict[str, Any]:
-        """2次元ヒストグラムを作成する
+        """
+        2次元ヒストグラムを作成する
 
         :param x: `x`のデータを一次元配列で指定する
         :type x: o_array
@@ -3173,7 +3224,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """バイオリングラフを作成する
+        """
+        バイオリングラフを作成する
 
         :param data: 入力データを指定する
         :type data: n_array
@@ -3282,7 +3334,8 @@ class sgg:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         key: str = ...,
     ) -> dict[str, Any]:
-        """2次元六角形グラフを作成する
+        """
+        2次元六角形グラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -3378,7 +3431,8 @@ class sgg:
         yticksshow: bool = False,
         key: str = ...,
     ) -> dict[str, Any]:
-        """極軸棒グラフを作成する
+        """
+        極軸棒グラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -3459,7 +3513,8 @@ class sgg:
         yticksshow: bool = False,
         key: str = ...,
     ) -> dict[str, Any]:
-        """極軸棒グラフを作成する
+        """
+        極軸棒グラフを作成する
 
         :param data: `data`のデータを指定する
         :type data: n_array
@@ -3540,7 +3595,8 @@ class sgg:
         yticksshow: bool = False,
         key: str = ...,
     ) -> dict[str, Any]:
-        """極軸幹図を作成する
+        """
+        極軸幹図を作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -3624,7 +3680,8 @@ class sgg:
         yticksshow: bool = False,
         key: str = ...,
     ) -> dict[str, Any]:
-        """極軸幹図を作成する
+        """
+        極軸幹図を作成する
 
         :param data: `data`のデータを指定する
         :type data: o_array
@@ -3717,7 +3774,8 @@ class sgg:
         yticksshow: bool = False,
         key: str = ...,
     ) -> dict[str, Any]:
-        """極軸エラーグラフを作成する
+        """
+        極軸エラーグラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -3831,7 +3889,8 @@ class sgg:
         yticksshow: bool = False,
         key: str = ...,
     ) -> dict[str, Any]:
-        """極軸エラーグラフを作成する
+        """
+        極軸エラーグラフを作成する
 
         :param data: `data`のデータを指定する
         :type data: o_array
@@ -3976,7 +4035,8 @@ class sgg:
         yticksshow: bool = False,
         key: str = ...,
     ) -> dict[str, Any]:
-        """極軸折線グラフを作成する
+        """
+        極軸折線グラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -4102,7 +4162,8 @@ class sgg:
         yticksshow: bool = False,
         key: str = ...,
     ) -> dict[str, Any]:
-        """極軸折線グラフを作成する
+        """
+        極軸折線グラフを作成する
 
         :param data: `data`のデータを指定する
         :type data: o_array
@@ -4185,7 +4246,8 @@ class sgg:
         yticksshow: bool = False,
         key: str = ...,
     ) -> dict[str, Any]:
-        """極軸イベントグラフを作成する
+        """
+        極軸イベントグラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -4269,7 +4331,8 @@ class sgg:
         yticksshow: bool = False,
         key: str = ...,
     ) -> dict[str, Any]:
-        """極軸イベントグラフを作成する
+        """
+        極軸イベントグラフを作成する
 
         :param data: `data`のデータを指定する
         :type data: o_array
@@ -4392,7 +4455,8 @@ class sgg:
         yticksshow: bool = False,
         key: str = ...,
     ) -> dict[str, Any]:
-        """極軸散布図を作成する
+        """
+        極軸散布図を作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -4512,7 +4576,8 @@ class sgg:
         yticksshow: bool = False,
         key: str = ...,
     ) -> dict[str, Any]:
-        """極軸散布図を作成する
+        """
+        極軸散布図を作成する
 
         :param data: `data`のデータを指定する
         :type data: o_array
@@ -4631,7 +4696,8 @@ class sgg:
         yticksshow: bool = False,
         key: str = ...,
     ) -> dict[str, Any]:
-        """折れ線レーダーチャートを作成する
+        """
+        折れ線レーダーチャートを作成する
 
         :param data: `data`のデータを指定する
         :type data: n_array
@@ -4708,7 +4774,8 @@ class sgg:
         yticksshow: bool = False,
         key: str = ...,
     ) -> dict[str, Any]:
-        """塗りつぶしレーダーチャートを作成する
+        """
+        塗りつぶしレーダーチャートを作成する
 
         :param data: `data`のデータを指定する
         :type data: n_array
@@ -4761,7 +4828,8 @@ class sgg:
         message: str = "Information message",
         icon: Literal["info", "warning", "error", "question"] = "info",
     ) -> str:
-        """指定されたタイトルとメッセージを持つ情報メッセージボックスを作成して表示させる
+        """
+        指定されたタイトルとメッセージを持つ情報メッセージボックスを作成して表示させる
 
         :param title: 情報メッセージボックスに表示させるタイトル名を指定する
         :type title: str
@@ -4778,7 +4846,8 @@ class sgg:
         message: str = "Warning message",
         icon: Literal["info", "warning", "error", "question"] = "warning",
     ) -> str:
-        """指定されたタイトルとメッセージを含む警告メッセージボックスを作成して表示させる
+        """
+        指定されたタイトルとメッセージを含む警告メッセージボックスを作成して表示させる
 
         :param title: 警告メッセージボックスに表示させるタイトル名を指定する
         :type title: str
@@ -4797,7 +4866,8 @@ class sgg:
         message: str = "Warning message",
         icon: Literal["info", "warning", "error", "question"] = "warning",
     ) -> Union[str]:
-        """指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つ警告メッセージボックスを作成して表示させる
+        """
+        指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つ警告メッセージボックスを作成して表示させる
 
         :param title: 警告メッセージボックスに表示させるタイトル名を指定する
         :type title: str
@@ -4816,7 +4886,8 @@ class sgg:
         message: str = "Error message",
         icon: Literal["info", "warning", "error", "question"] = "error",
     ) -> str:
-        """指定されたタイトルとメッセージを持つエラーメッセージボックスを作成して表示させる
+        """
+        指定されたタイトルとメッセージを持つエラーメッセージボックスを作成して表示させる
 
         :param title: エラーメッセージボックスに表示させるタイトル名を指定する
         :type title: str
@@ -4835,7 +4906,8 @@ class sgg:
         message: str = "Error message",
         icon: Literal["info", "warning", "error", "question"] = "error",
     ) -> Union[str]:
-        """指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つエラーメッセージボックスを作成して表示させる
+        """
+        指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つエラーメッセージボックスを作成して表示させる
 
         :param title: エラーメッセージボックスに表示させるタイトル名を指定する
         :type title: str
@@ -4854,7 +4926,8 @@ class sgg:
         message: str = "Question message",
         icon: Literal["info", "warning", "error", "question"] = "question",
     ) -> Union[str]:
-        """「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる
+        """
+        「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる
 
         :param title: ダイアログに表示させるタイトル名を指定する
         :type title: str
@@ -4873,7 +4946,8 @@ class sgg:
         message: str = "Question message",
         icon: Literal["info", "warning", "error", "question"] = "question",
     ) -> bool:
-        """「OK」か「キャンセル」を選択させるダイアログを表示させる
+        """
+        「OK」か「キャンセル」を選択させるダイアログを表示させる
 
         :param title: ダイアログに表示させるタイトル名を指定する
         :type title: str
@@ -4892,7 +4966,8 @@ class sgg:
         message: str = "Question message",
         icon: Literal["info", "warning", "error", "question"] = "question",
     ) -> bool:
-        """「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる
+        """
+        「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる
 
         「はい」の場合はTrueを,「いいえ」の場合はFalseを返す
          :param title: ダイアログに表示させるタイトル名を指定する
@@ -4912,7 +4987,8 @@ class sgg:
         message: str = "Question message",
         icon: Literal["info", "warning", "error", "question"] = "question",
     ) -> Union[bool, None]:
-        """「はい(Yes)」「いいえ(No)」「キャンセル(Cancel)」を選択させるダイアログを表示させる
+        """
+        「はい(Yes)」「いいえ(No)」「キャンセル(Cancel)」を選択させるダイアログを表示させる
 
         「はい」の場合はTrueを,「いいえ」の場合はFalseを返す,「キャンセル(Cancel)」もしくはダイアログを閉じた場合Noneを返す
          :param title: ダイアログに表示させるタイトル名を指定する
@@ -4932,7 +5008,8 @@ class sgg:
         message: str = "Question message",
         icon: Literal["info", "warning", "error", "question"] = "question",
     ) -> bool:
-        """操作を再試行するかどうかを尋ねる「再試行」ボタンと「キャンセル」ボタンが設置されたダイアログを表示させる
+        """
+        操作を再試行するかどうかを尋ねる「再試行」ボタンと「キャンセル」ボタンが設置されたダイアログを表示させる
 
         回答が「再試行」の場合はTrueを,「キャンセル」の場合はFalseを返します
          :param title: ダイアログに表示させるタイトル名を指定する

@@ -14,7 +14,8 @@ class polarElement(GElement):
         self, fg: ColorType, bg: ColorType, graph_grid: ColorType, title: str,alpha:int|float,
     ): ...
     def _places(self, num: int) -> ndarray:
-        """`np.linspace(0,2*np.pi,num,endpoint=False)`と同じ結果同じ結果を求める
+        """
+        `np.linspace(0,2*np.pi,num,endpoint=False)`と同じ結果同じ結果を求める
 
         :param num: 要素数を指定する
         :type num: int
@@ -80,7 +81,8 @@ class polarElement(GElement):
         :param type: 制限値を指定する
         :type type: bool
         :return: 表示されている角度の範囲と角度の種類を返す
-        :rtype: TupleFloat2"""
+        :rtype: TupleFloat2
+        """
 
     @overload
     def set_thetalim(
@@ -96,7 +98,8 @@ class polarElement(GElement):
         :param type: 制限値を度数法で指定する
         :type type: bool
         :return: 表示されている角度の範囲と角度の種類を返す
-        :rtype: TupleFloat2"""
+        :rtype: TupleFloat2
+        """
 
     @overload
     def set_thetalim(

@@ -28,7 +28,8 @@ class NPNumber(NPArray):
         :param depth_limit: 配列の最大の深さを指定する
         :type depth_limit: int|None
         :param axis: 計算処理を行う方向を指定する
-        :type axis: int|None"""
+        :type axis: int|None
+        """
 
     def __getitem__(self, key: int) -> Any: ...
     def __contains__(self, item: Any) -> bool: ...
@@ -107,10 +108,12 @@ class NPNumber(NPArray):
     def radian(self): ...
     @property
     def sturgesval(self) -> float64:
-        """データ数からヒストグラムの階級数を求める(スタージェスの公式を使用)
+        """
+        データ数からヒストグラムの階級数を求める(スタージェスの公式を使用)
 
         :return: スタージェスの公式で求めた値を返す
-        :rtype: float64"""
+        :rtype: float64
+        """
 
     def logx(self, x: int | float): ...
     def mod(self, x): ...

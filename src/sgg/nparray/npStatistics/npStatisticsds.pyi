@@ -61,17 +61,21 @@ class NPStatisticsds:
         """点(x,y)に次数`n`の多項式を当てはめる"""
 
     def oneregression(self) -> NDArray[floating]:
-        """点(x,y)に一次方程式の回帰直線を返す
+        """
+        点(x,y)に一次方程式の回帰直線を返す
 
         :return: [傾き,切片]として返す
-        :rtype: NDArray[floating]"""
+        :rtype: NDArray[floating]
+        """
 
     def chebysheveve(
         self, Fx: _ArrayLikeFloat_co, n: int = 1
     ) -> NDArray[floating[Any]]:
-        """点`Fx`において点(x,y)に次数`n`の多項式を評価する
+        """
+        点`Fx`において点(x,y)に次数`n`の多項式を評価する
 
         :param Fx: 評価したい点を指定する
         :type Fx: _ArrayLikeFloat_co
         :param n: 次数を指定する
-        :type n: int"""
+        :type n: int
+        """

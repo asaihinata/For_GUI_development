@@ -50,67 +50,86 @@ class GElement:
         """ウィジェットの現在の高さを返す
 
         :return: ウィジェットの現在の高さを返す
-        :rtype: int"""
+        :rtype: int
+        """
 
     def winxy(self) -> tuple[int, int]:
         """親ウィジェット内での座標を返す
 
         :return: 親ウィジェット内での座標を返す
-        :rtype: tuple[int,int]"""
+        :rtype: tuple[int,int]
+        """
 
     def winx(self) -> int:
         """親ウィジェット内での左端のx座標を返す
 
         :return: 親ウィジェット内での左端のx座標を返す
-        :rtype: int"""
+        :rtype: int
+        """
 
     def winy(self) -> int:
-        """親ウィジェット内での上端のy座標を返す
+        """
+        親ウィジェット内での上端のy座標を返す
 
         :return: 親ウィジェット内での上端のy座標を返す
-        :rtype: int"""
+        :rtype: int
+        """
 
     def geometry(self) -> tuple[float, float, float, float]:
-        """ウィジェットのサイズと位置を返す
+        """
+        ウィジェットのサイズと位置を返す
 
         :return: ウィジェットのサイズと位置を返す
-        :rtype: tuple[float,float,float,float]"""
+        :rtype: tuple[float,float,float,float]
+        """
 
     def rootxy(self) -> tuple[int, int]:
-        """画面全体に対するウィジェットの座標を返す
+        """
+        画面全体に対するウィジェットの座標を返す
 
         :return: 画面全体に対するウィジェットの座標を返す
-        :rtype: tuple[int,int]"""
+        :rtype: tuple[int,int]
+        """
 
     def rootx(self) -> int:
-        """画面全体に対するウィジェットの左端のx座標を返す
+        """
+        画面全体に対するウィジェットの左端のx座標を返す
 
         :return: 画面全体に対するウィジェットの左端のx座標を返す
-        :rtype: int"""
+        :rtype: int
+        """
 
     def rooty(self) -> int:
-        """画面全体に対するウィジェットの上端のy座標を返す
+        """
+        画面全体に対するウィジェットの上端のy座標を返す
 
         :return: 画面全体に対するウィジェットの上端のy座標を返す
-        :rtype: int"""
+        :rtype: int
+        """
 
     def reqsize(self) -> tuple[int, int]:
-        """ウィジェットが必要とする幅の長さと高さを返す
+        """
+        ウィジェットが必要とする幅の長さと高さを返す
 
         :return: ウィジェットが必要とする幅の長さと高さを返す
-        :rtype: tuple[int,int]"""
+        :rtype: tuple[int,int]
+        """
 
     def reqwidth(self) -> int:
-        """ウィジェットが必要とする幅の長さを返す
+        """
+        ウィジェットが必要とする幅の長さを返す
 
         :return: ウィジェットが必要とする幅の長さを返す
-        :rtype: int"""
+        :rtype: int
+        """
 
     def reqheight(self) -> int:
-        """ウィジェットが必要とする高さを返す
+        """
+        ウィジェットが必要とする高さを返す
 
         :return: ウィジェットが必要とする高さを返す
-        :rtype: int"""
+        :rtype: int
+        """
 
     def visual(self) -> str:
         """色の表現形式を返す"""
@@ -161,12 +180,14 @@ class GElement:
 
     def _redraw(self): ...
     def _size(self, sizes: TupleNumbertype2 = (500, 400)) -> TupleNumbertype2:
-        """グラフの大きさのサイズを定める
+        """
+        グラフの大きさのサイズを定める
 
         :param sizes: グラフの大きさを指定する
         :type sizes: TupleNumbertype2
         :return: 決定したグラフの大きさをタプルで返す
-        :rtype: TupleNumbertype2"""
+        :rtype: TupleNumbertype2
+        """
 
     def _apply_theme_colors(self):
         """目盛り,目盛りラベル,グリッド線,グラフのタイトル,軸ラベルの文字色を決定させる"""

@@ -9,10 +9,12 @@ class Menubuttons(_Element):
     widget: Menubutton
     mainmenu: Menu
     def get(self) -> list:
-        """Menubuttonsウィジェットで表示されている配列を取得する
+        """
+        Menubuttonsウィジェットで表示されている配列を取得する
 
         :return: Menusウィジェットで表示されている配列を返す
-        :rtype: list"""
+        :rtype: list
+        """
 
     def delta(self):
         """ウィジェットを削除する"""
@@ -39,9 +41,11 @@ class Menubuttons(_Element):
         """Menubuttonsウィジェットのlistを空にしMenusウィジェットを非表示にする"""
 
     def addmenu(self, label: str, submenu_lists: list):
-        """Menubuttonsウィジェットに新しくメニューを追加する
+        """
+        Menubuttonsウィジェットに新しくメニューを追加する
 
         :param label: メニューの表示文字を指定する
         :type label: str
         :param submenu_lists: メニューに追加させるドロップダウンを指定する
-        :type submenu_lists: list"""
+        :type submenu_lists: list
+        """

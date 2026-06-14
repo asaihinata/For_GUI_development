@@ -24,9 +24,11 @@ class Img_conversion:
         """ソースファイルのファイル形式を返す"""
 
     def get_mode(self) -> str:
-        """画像のモードを返す
+        """
+        画像のモードを返す
 
-        https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes"""
+        参考:https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes
+        """
     width = get_width
     height = get_height
     size = get_size
@@ -35,10 +37,12 @@ class Img_conversion:
     def resize(self, w: int, h: int) -> Img_conversion: ...
     def asresize(self) -> Img_conversion: ...
     def show(self, title: str | None = None):
-        """画像を表示させる
+        """
+        画像を表示させる
 
         :param title: 画像を表示する際のタイトル名を指定する
-        :type title: str|None"""
+        :type title: str|None
+        """
 
 class Img_path(Img_conversion):
     path: Path | PosixPath | WindowsPath

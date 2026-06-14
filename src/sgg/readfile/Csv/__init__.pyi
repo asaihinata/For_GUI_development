@@ -18,7 +18,8 @@ class Getcsv:
         separator: str = ",",
         encoding: CsvEncoding | str = "utf-8-sig",
     ) -> None:
-        """csvファイルのデータを取得する
+        """
+        csvファイルのデータを取得する
 
         :param path: csvファイルのパスを指定する
         :type path: Path|str
@@ -29,7 +30,8 @@ class Getcsv:
         :param encoding: 文字コードを指定する
         :type encoding: CsvEncoding|str
         :raises FileNotFoundError: ファイルが存在しない場合に発生させる
-        :raises ValueError: `path`で指定されたパスの拡張子がcsvファイルではない時に発生させる"""
+        :raises ValueError: `path`で指定されたパスの拡張子がcsvファイルではない時に発生させる
+        """
 
     @property
     def csv(self) -> DataFrame:

@@ -17,10 +17,12 @@ __all__ = ["NPColor"]
 
 class NPColor(NPArray):
     def __init__(self, color: str | np.ndarray[str]):
-        """色についての配列を作成する
+        """
+        色についての配列を作成する
 
         :param color: 色を指定する
-        :type color: str|np.ndarray[str]"""
+        :type color: str|np.ndarray[str]
+        """
 
     def __repr__(self) -> str: ...
     def __iter__(self) -> Iterator[Any]: ...

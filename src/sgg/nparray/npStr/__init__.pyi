@@ -25,7 +25,8 @@ class NPString(NPArray):
         :param dtype: numpyの配列で指定する型を指定する
         :type dtype: DTypeLike|None
         :param depth_limit: 配列の最大の深さを指定する
-        :type depth_limit: int|None"""
+        :type depth_limit: int|None
+        """
 
     def __getitem__(self, key: int) -> Any: ...
     def __contains__(self, item: Any) -> bool: ...
@@ -47,9 +48,11 @@ class NPString(NPArray):
     ) -> Any | NotImplementedType | NPString: ...
     def __add__(self, other: np.ndarray | NPString) -> NPString: ...
     def __mul__(self, other: int) -> NPString:
-        """配列内の要素を`other`回付け加える
+        """
+        配列内の要素を`other`回付け加える
 
-        :raises TypeError: `other`に`int`型以外で指定した場合に発生させる"""
+        :raises TypeError: `other`に`int`型以外で指定した場合に発生させる
+        """
     __radd__ = __add__
     __rmul__ = __mul__
     __iadd__ = __add__
@@ -60,10 +63,10 @@ class NPString(NPArray):
     def T(self) -> NPString: ...
     def append(self, val: np.ndarray | NPString) -> NPString: ...
     def low(self) -> NPString:
-        """アルファベットを小文字にする"""
+        """アルファベットを小文字に変換する"""
 
     def upper(self) -> NPString:
-        """アルファベットを大文字にする"""
+        """アルファベットを大文字に変換する"""
 
     def stringlen(self) -> NDArray[np.int_]: ...
     def str_len(self) -> NDArray[np.int_]: ...

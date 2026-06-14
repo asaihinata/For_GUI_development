@@ -35,14 +35,16 @@ class threeElement(GElement):
         ylabel: labeltype = None,
         zlabel: labeltype = None,
     ):
-        """3Dのグラフのx軸,y軸,z軸のラベルを作成する
+        """
+        3Dのグラフのx軸,y軸,z軸のラベルを作成する
 
         :param xlabel: x軸のラベルを指定する
         :type label: labeltype
         :param ylabel: y軸のラベルを指定する
         :type ylabel: labeltype
         :param zlabel: z軸のラベルを指定する
-        :type zlabel: labeltype"""
+        :type zlabel: labeltype
+        """
 
     def _apply_grid(self):
         """グリッド線を加えるメソッド"""
@@ -97,115 +99,133 @@ class threeElement(GElement):
     def set_xticks(
         self, ticks: ArrayLike, labels: Iterable[str] | None = None, minor: bool = ...
     ) -> list[Tick]:
-        """x軸の目盛りの位置と目盛りのラベルを設定する
+        """
+        x軸の目盛りの位置と目盛りのラベルを設定する
 
         :param ticks: x軸の目盛りの位置を指定する
         :type ticks: ArrayLike
         :param labels: x軸の目盛りのラベルを指定する
         :type labels: Iterable[str]|None
         :param minor: x軸の主目盛りを設定するか補助目盛りのみ設定するか指定する(False)
-        :type minor: bool"""
+        :type minor: bool
+        """
 
     @overload
     def set_xticks(
         self, ticks: ArrayLike, labels: Iterable[str] | None = None, minor: bool = True
     ) -> list[Tick]:
-        """x軸の目盛りの位置と目盛りのラベルを設定する
+        """
+        x軸の目盛りの位置と目盛りのラベルを設定する
 
         :param ticks: x軸の目盛りの位置を指定する
         :type ticks: ArrayLike
         :param labels: x軸の目盛りのラベルを指定する
         :type labels: Iterable[str]|None
         :param minor: x軸の補助目盛りのみに適用する
-        :type minor: bool"""
+        :type minor: bool
+        """
 
     @overload
     def set_xticks(
         self, ticks: ArrayLike, labels: Iterable[str] | None = None, minor: bool = False
     ) -> list[Tick]:
-        """x軸の目盛りの位置と目盛りのラベルを設定する
+        """
+        x軸の目盛りの位置と目盛りのラベルを設定する
 
         :param ticks: x軸の目盛りの位置を指定する
         :type ticks: ArrayLike
         :param labels: x軸の目盛りのラベルを指定する
         :type labels: Iterable[str]|None
         :param minor: x軸の主目盛りのみに適用する
-        :type minor: bool"""
+        :type minor: bool
+        """
 
     @overload
     def set_yticks(
         self, ticks: ArrayLike, labels: Iterable[str] | None = None, minor: bool = ...
     ) -> list[Tick]:
-        """y軸の目盛りの位置と目盛りのラベルを設定する
+        """
+        y軸の目盛りの位置と目盛りのラベルを設定する
 
         :param ticks: y軸の目盛りの位置を指定する
         :type ticks: ArrayLike
         :param labels: y軸の目盛りのラベルを指定する
         :type labels: Iterable[str]|None
         :param minor: y軸の主目盛りを設定するか補助目盛りのみ設定するか指定する(False)
-        :type minor: bool"""
+        :type minor: bool
+        """
 
     @overload
     def set_yticks(
         self, ticks: ArrayLike, labels: Iterable[str] | None = None, minor: bool = True
     ) -> list[Tick]:
-        """y軸の目盛りの位置と目盛りのラベルを設定する
+        """
+        y軸の目盛りの位置と目盛りのラベルを設定する
 
         :param ticks: y軸の目盛りの位置を指定する
         :type ticks: ArrayLike
         :param labels: y軸の目盛りのラベルを指定する
         :type labels: Iterable[str]|None
         :param minor: y軸の補助目盛りのみに適用する
-        :type minor: bool"""
+        :type minor: bool
+        """
 
     @overload
     def set_yticks(
         self, ticks: ArrayLike, labels: Iterable[str] | None = None, minor: bool = False
     ) -> list[Tick]:
-        """y軸の目盛りの位置と目盛りのラベルを設定する
+        """
+        y軸の目盛りの位置と目盛りのラベルを設定する
 
         :param ticks: y軸の目盛りの位置を指定する
         :type ticks: ArrayLike
         :param labels: y軸の目盛りのラベルを指定する
         :type labels: Iterable[str]|None
         :param minor: y軸の主目盛りのみに適用する
-        :type minor: bool"""
+        :type minor: bool
+        """
 
     @overload
     def set_zticks(
         self, ticks: ArrayLike, labels: Iterable[str] | None = None, minor: bool = ...
     ) -> list[Tick]:
-        """z軸の目盛りの位置と目盛りのラベルを設定する
+        """
+        z軸の目盛りの位置と目盛りのラベルを設定する
 
         :param ticks: z軸の目盛りの位置を指定する
         :type ticks: ArrayLike
         :param labels: z軸の目盛りのラベルを指定する
         :type labels: Iterable[str]|None
         :param minor: z軸の主目盛りを設定するか補助目盛りのみ設定するか指定する(False)
-        :type minor: bool"""
+        :type minor: bool
+        """
 
     @overload
     def set_zticks(
         self, ticks: ArrayLike, labels: Iterable[str] | None = None, minor: bool = True
     ) -> list[Tick]:
-        """z軸の目盛りの位置と目盛りのラベルを設定する
+        """
+        z軸の目盛りの位置と目盛りのラベルを設定する
 
         :param ticks: z軸の目盛りの位置を指定する
         :type ticks: ArrayLike
         :param labels: z軸の目盛りのラベルを指定する
         :type labels: Iterable[str]|None
         :param minor: z軸の補助目盛りのみに適用する
-        :type minor: bool"""
+        :type minor: bool
+        """
 
     @overload
     def set_zticks(
         self, ticks: ArrayLike, labels: Iterable[str] | None = None, minor: bool = False
     ) -> list[Tick]:
-        """z軸の目盛りの位置と目盛りのラベルを設定する
+        """
+        z軸の目盛りの位置と目盛りのラベルを設定する
 
         :param ticks: z軸の目盛りの位置を指定する
         :type ticks: ArrayLike
         :param labels: z軸の目盛りのラベルを指定する
         :type labels: Iterable[str]|None
         :param minor: z軸の主目盛りのみに適用する
-        :type minor: bool"""
+        :type minor: bool
+        """

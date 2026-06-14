@@ -27,7 +27,7 @@ class RadarElement(GElement):
         graph_grid: ColorType,
         title: str,
         alpha:int|float
-    ): ...
+    ): """グラフの値を更新する"""
     def _adjustment(self):
         """グラフの調整を行う"""
 

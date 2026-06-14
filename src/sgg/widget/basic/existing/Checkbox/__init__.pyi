@@ -29,13 +29,17 @@ class Checkbox(_Element):
         """ウィジェットが表示している背景色を変更する"""
 
     def get_value(self) -> bool:
-        """Checkboxウィジェットにチェックされているか判定する未チェックの場合Falseを返す
+        """
+        Checkboxウィジェットにチェックされているか判定する未チェックの場合Falseを返す
 
         :return: Checkboxウィジェットにチェックされているか判定する
-        :rtype: bool"""
+        :rtype: bool
+        """
 
     def set_value(self, value: bool):
-        """Checkboxウィジェットのチェック状態を変更するvalueにbool型以外を指定した場合,Checkboxウィジェットのチェック状態の逆の状態を設置させる
+        """
+        Checkboxウィジェットのチェック状態を変更するvalueにbool型以外を指定した場合,Checkboxウィジェットのチェック状態の逆の状態を設置させる
 
         :param value: チェック状態を指定するチェック状態にする場合Trueを,未チェック状態にする場合Falseを指定する
-        :type value: bool"""
+        :type value: bool
+        """

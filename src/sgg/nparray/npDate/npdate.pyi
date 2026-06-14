@@ -12,7 +12,6 @@ from ._typing import DateUnit, NativeTimeUnit
 __all__ = ["NPDate"]
 
 class NPDate(NPArray):
-    data: np.ndarray
     def __init__(
         self,
         data: ArrayLike,
@@ -25,7 +24,8 @@ class NPDate(NPArray):
         :param dtype: numpyの配列で指定する型を指定する
         :type dtype: _DT64Codes|np.datetime64
         :param depth_limit: 配列の最大の深さを指定する
-        :type depth_limit: int|None"""
+        :type depth_limit: int|None
+        """
 
     def __iter__(self) -> Iterator[Any]: ...
     def __getitem__(self, key: int) -> Any: ...
@@ -105,24 +105,29 @@ class NPDate(NPArray):
 
     @overload
     def diff_today(self, days: bool = ...):
-        """今日の日付の差を求める
+        """
+        今日の日付の差を求める
 
         :param days: 今日を含めるか指定する
-        :type days: bool"""
+        :type days: bool
+        """
 
     @overload
     def diff_today(self, days: bool = True):
-        """今日の日付の差(今日を含む)を求める
+        """
+        今日の日付の差(今日を含む)を求める
 
         :param days: 今日を含めるか指定する
-        :type days: bool"""
+        :type days: bool
+        """
 
     @overload
     def diff_today(self, days: bool = False):
         """今日の日付の差(今日を含めない)を求める
 
         :param days: 今日を含めるか指定する
-        :type days: bool"""
+        :type days: bool
+        """
 
     def astype(self, dtype: DTypeLike = "datetime64[D]") -> NPDate:
         """`dtype`で指定された型に変更します"""

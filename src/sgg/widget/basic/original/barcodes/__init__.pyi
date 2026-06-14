@@ -14,10 +14,12 @@ class Barcode(_Element):
         """ウィジェットを削除する"""
 
     def show(self, title: str | None = None):
-        """画像を表示させる
+        """
+        画像を表示させる
 
         :param title: タイトルを指定する
-        :type title: str|None"""
+        :type title: str|None
+        """
 
 class barcode_data:
     def __init__(

@@ -16,7 +16,8 @@ class fonts(Font):
         overstrike: bool = False,
         root: Misc = None,
     ) -> None:
-        """フォントに関するオブジェクト
+        """
+        フォントに関するオブジェクト
 
         :param family: フォント名を指定する
         :type family: str
@@ -29,4 +30,5 @@ class fonts(Font):
         :param underline: フォントに下線を付けるか指定する
         :type underline: bool
         :param overstrike: フォントに取り消し線を付けるか指定する
-        :type overstrike: bool"""
+        :type overstrike: bool
+        """

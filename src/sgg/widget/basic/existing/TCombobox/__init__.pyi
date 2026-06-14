@@ -7,16 +7,20 @@ __all__ = ["TCombobox"]
 class TCombobox(_Element):
     widget: Combobox
     def get_text(self) -> str:
-        """TComboboxウィジェットに記載されている文字を取得する
+        """
+        TComboboxウィジェットに記載されている文字を取得する
 
         :return: TComboboxウィジェットに記載されている文字を返す
-        :rtype: str"""
+        :rtype: str
+        """
 
     def set_text(self, text: str):
-        """TComboboxウィジェットの文字を変更する
+        """
+        TComboboxウィジェットの文字を変更する
 
         :param text: 文字を指定する
-        :type text: str"""
+        :type text: str
+        """
 
     def clear(self):
         """TComboboxウィジェットの文字を削除する"""

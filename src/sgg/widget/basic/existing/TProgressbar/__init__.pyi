@@ -13,13 +13,17 @@ class TProgressbar(_Element):
         """TProgressbarをプログレスバーのバーの変化を止める"""
 
     def set(self, val: int | float):
-        """TProgressbarウィジェットの値を指定する
+        """
+        TProgressbarウィジェットの値を指定する
 
         :param val: TProgressbarウィジェットの値を指定する
-        :type val: int|float"""
+        :type val: int|float
+        """
 
     def get(self) -> int | float:
-        """TProgressbarの値を取得する
+        """
+        TProgressbarの値を取得する
 
         :return: TProgressbarの値を返す
-        :rtype: int|float"""
+        :rtype: int|float
+        """

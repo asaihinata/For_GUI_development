@@ -17,11 +17,13 @@ class WindowController:
     @classmethod
     def __instancecheck__(cls, ins: Any) -> bool: ...
     def get(self, key: str) -> Any:
-        """ウィジェットの情報を取得する
+        """
+        ウィジェットの情報を取得する
 
         :param key: ウィジェットの情報を取得したい,そのウィジェットの指定されたkeyを指定する
         :type key: str
-        :rtype: Any"""
+        :rtype: Any
+        """
 
     def get_title(self) -> str:
         """ウィジェットのタイトルを取得する"""
@@ -42,42 +44,54 @@ class WindowController:
         """windowのメインループを実行しウィンドウを表示させる"""
 
     def scroll_to(self, key: str):
-        """keyで指定したウィジェットのところに移動する
+        """
+        keyで指定したウィジェットのところに移動する
 
         :param key: 移動先のウィジェットのkeyを指定する
-        :type key: str"""
+        :type key: str
+        """
 
     def widgetcount(self) -> int:
-        """ウィンドウに表示されているウィジェットの数を返す
+        """
+        ウィンドウに表示されているウィジェットの数を返す
 
         :return: ウィンドウに表示されているウィジェットの数を返す
-        :rtype: int"""
+        :rtype: int
+        """
 
     def widgetdict(self) -> dict[str, Any]:
-        """ウィジェットの'key'とウィジェットの辞書を返す
+        """
+        ウィジェットの'key'とウィジェットの辞書を返す
 
         :return: ウィジェットのキー名とウィジェットの辞書を返す
-        :rtype: dict[str,Any]"""
+        :rtype: dict[str,Any]
+        """
 
     def widgetlist(self) -> list[str]:
-        """表示されている全てのウィジェットの'key'名の配列を返す
+        """
+        表示されている全てのウィジェットの'key'名の配列を返す
 
         :return: ウィジェットのキー名とウィジェットの辞書を返す
-        :rtype: list[str]"""
+        :rtype: list[str]
+        """
 
     def widgetall(self) -> list[Any]:
-        """表示されている全てのウィジェットの配列を返す
+        """
+        表示されている全てのウィジェットの配列を返す
 
         :return: ウィジェットを返す
-        :rtype: list[Any]"""
+        :rtype: list[Any]
+        """
 
     def tookphoto(self, file: str = "window", ex: str = ".png"):
-        """ウィンドウの画面をスクリーンショットをする
+        """
+        ウィンドウの画面をスクリーンショットをする
 
         :param file: ファイル名を指定する
         :type file: str
         :param ex: 画像の拡張名を指定する
-        :type ex: str"""
+        :type ex: str
+        """
 
     def foreground(self, bools: bool = True):
         """ウィンドウを常に最前面にするか指定する"""

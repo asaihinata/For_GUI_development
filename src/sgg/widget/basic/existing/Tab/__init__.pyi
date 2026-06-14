@@ -11,9 +11,11 @@ class Tab(_Element):
         """ウィジェットを削除する"""
 
     def _add_tab(self, frame: Widget, title: str = ...):
-        """Tabウィジェットに新しいタブを追加する
+        """
+        Tabウィジェットに新しいタブを追加する
 
         :param frame: 親ウィジェットを指定する
         :type frame: Widget
         :param title: タイトルを指定する
-        :type title: str"""
+        :type title: str
+        """

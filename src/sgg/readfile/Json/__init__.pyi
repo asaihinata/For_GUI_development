@@ -7,12 +7,14 @@ __all__ = ["Getjosn"]
 
 class Getjosn:
     def __init__(self, path: Path | str) -> None:
-        """jsonファイルのデータを取得する
+        """
+        jsonファイルのデータを取得する
 
         :param path: jsonファイルのパスを指定する
         :type path: Path|str
         :raises FileNotFoundError: ファイルが存在しない場合に発生させる
-        :raises ValueError: `path`で指定されたパスの拡張子がjsonファイルではない時に発生させる"""
+        :raises ValueError: `path`で指定されたパスの拡張子がjsonファイルではない時に発生させる
+        """
 
     @property
     def json(self) -> Any:
