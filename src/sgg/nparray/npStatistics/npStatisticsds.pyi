@@ -26,8 +26,9 @@ METHOD_LIST: TypeAlias = Literal[
 ]
 
 class NPStatisticsds:
-    def __init_subclass__(cls,**kwargs:Any)->None:
+    def __init_subclass__(cls, **kwargs: Any) -> None:
         """raises TypeError: `NPStatisticsds`オブジェクトを継承するときに発生させる"""
+
     def __init__(self, x: NPNumber | ndarray, y: NPNumber | ndarray) -> None: ...
     def __repr__(self) -> str: ...
     @property

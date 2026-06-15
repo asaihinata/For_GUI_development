@@ -20,9 +20,10 @@ method_list = [
 
 
 class NPStatisticsd:
-    def __init_subclass__(cls,**kwargs):
+    def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)
         raise TypeError(f"{cls.__name__}を継承をすることはできません")
+
     def __init__(self, data):
         if isinstance(data, np.ndarray):
             self.__data = data

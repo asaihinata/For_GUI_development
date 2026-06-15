@@ -56,7 +56,7 @@ class Pie(twoElement):
             counterclock=counterclock,
             labeldistance=labeldistance,
             explode=explode,
-            wedgeprops={"alpha":alpha}
+            wedgeprops={"alpha": alpha},
         )
         self.graphdata = [pie]
         if not self.label:

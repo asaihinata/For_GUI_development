@@ -55,8 +55,8 @@ class GElement:
         self.fg = parsecolor(kw.get("fg"), "#000000")
         self.graph_bg = parsecolor(kw.get("bg"), "#ffffff")
         self.graph_grid = parsecolor(kw.get("graph_grid"), "#b7b7b7")
-        color=kw.get("color", graph_color)
-        relist=graph_color
+        color = kw.get("color", graph_color)
+        relist = graph_color
         if isinstance(color, str):
             relist = [parsecolor(color, graph_color[0])]
         elif isinstance(color, list | tuple):
@@ -68,7 +68,7 @@ class GElement:
                     set_arr.append(c)
                 if judge:
                     relist = set_arr
-        self.color=relist
+        self.color = relist
         rcParams["axes.prop_cycle"] = cycler(color=self.color)
         self.alpha = range_num(num0s(kw.get("alpha"), 1), 0, 1, 1)
         self.dpi = num1s(kw.get("dpi"), 100)

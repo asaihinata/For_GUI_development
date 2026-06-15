@@ -2,7 +2,6 @@ from collections.abc import Iterator
 from types import NotImplementedType
 from typing import Any, Literal
 
-from numpy import ndarray
 from numpy import _CopyMode, _ScalarT, dtype, ndarray, ufunc
 from numpy._typing import ArrayLike, DTypeLike
 
