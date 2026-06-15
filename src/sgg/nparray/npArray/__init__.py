@@ -88,7 +88,7 @@ class NPArray:
 
     @property
     def T(self):
-        self.data = self.data.T
+        self.__data = self.__data.T
         return self
 
     @property
@@ -108,6 +108,7 @@ class NPArray:
 
     def astype(self, dtype):
         self.__data = self.__data.astype(dtype)
+        self.__dtype = dtype
         return self
 
     def tolist(self):
@@ -193,11 +194,11 @@ class NPArray:
             return self.__data[val]
 
     def clear(self):
-        self.data = []
+        self.__data = np.array([])
         return self
 
     def all_None(self):
-        return np.all(self.__data == None)
+        return bool(np.any(self.__data == None))
 
     def any_None(self):
-        return np.any(self.__data == None)
+        return bool(np.any(self.__data == None))

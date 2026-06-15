@@ -21,6 +21,9 @@ method_list = [
 
 
 class NPStatisticsds:
+    def __init_subclass__(cls,**kwargs):
+        super().__init_subclass__(**kwargs)
+        raise TypeError(f"{cls.__name__}を継承をすることはできません")
     def __init__(self, x, y):
         self.__x = NPNumber(x, depth_limit=1).tonp()
         self.__y = NPNumber(y, depth_limit=1).tonp()

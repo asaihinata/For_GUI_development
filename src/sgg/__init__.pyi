@@ -2611,11 +2611,11 @@ class sgg:
     def Stack(
         x: n_array,
         y: n_array,
+        hatch: str | None = None,
+        baseline: Literal["zero", "sym", "wiggle", "weighted_wiggle"] = "zero",
         xlabel: str = ...,
         ylabel: str = ...,
         label: labeltype = ...,
-        hatch: str | None = None,
-        baseline: Literal["zero", "sym", "wiggle", "weighted_wiggle"] = "zero",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
         size: TupleNumbertype2 = (500, 400),
         fg: ColorTypeN = "#000000",
@@ -2646,16 +2646,16 @@ class sgg:
         :type x: n_array
         :param y: `y`のデータを指定する
         :type y: n_array
+        :param hatch: 塗りつぶし領域内の模様を指定する
+        :type hatch: str|None
+        :param baseline: 基準値の算出方法を指定する
+        :type baseline: Literal['zero','sym','wiggle','weighted_wiggle']
         :param label: ラベルを指定する
         :type label: labeltype
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
-        :param hatch: 塗りつぶし領域内の模様を指定する
-        :type hatch: str|None
-        :param baseline: 基準値の算出方法を指定する
-        :type baseline: Literal['zero','sym','wiggle','weighted_wiggle']
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
@@ -4075,9 +4075,9 @@ class sgg:
         :type x: o_array
         :param y: `y`のデータを指定する
         :type y: o_array
-        :param linewidth: 折線グラフの線の幅を指定する
+        :param linewidth: 極軸折線グラフの線の幅を指定する
         :type linewidth: int|float
-        :param markersize: 折線グラフのマーカーの大きさを指定する
+        :param markersize: 極軸折線グラフのマーカーの大きさを指定する
         :type markersize: int|float
         :param marker: 折線グラフのマーカーを指定する
         :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
@@ -4200,9 +4200,9 @@ class sgg:
 
         :param data: `data`のデータを指定する
         :type data: o_array
-        :param linewidth: 折線グラフの線の幅を指定する
+        :param linewidth: 極軸折線グラフの線の幅を指定する
         :type linewidth: int|float
-        :param markersize: 折線グラフのマーカーの大きさを指定する
+        :param markersize: 極軸折線グラフのマーカーの大きさを指定する
         :type markersize: int|float
         :param marker: 折線グラフのマーカーを指定する
         :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']

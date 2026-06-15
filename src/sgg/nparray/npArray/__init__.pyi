@@ -2,16 +2,16 @@ from collections.abc import Iterator
 from types import NotImplementedType
 from typing import Any, Literal
 
-import numpy as np
+from numpy import ndarray
 from numpy import _CopyMode, _ScalarT, dtype, ndarray, ufunc
 from numpy._typing import ArrayLike, DTypeLike
 
 __all__ = ["NPArray", "is_array_like", "change_array_like"]
 
-def is_array_like(obj: np.ndarray | list | tuple | range) -> bool:
+def is_array_like(obj: ndarray | list | tuple | range) -> bool:
     """配列もしくは__array__を持つオブジェクトを判定する"""
 
-def change_array_like(obj: np.ndarray | list | tuple | range) -> bool:
+def change_array_like(obj: ndarray | list | tuple | range) -> bool:
     """NumPyの`array`に変換できるかを判定する"""
 
 class NPArray:
@@ -110,8 +110,8 @@ class NPArray:
     def get(self, val: int) -> Any:
         """配列の`val`番目の要素を取得する"""
 
-    def all_None(self) -> np.bool:
+    def all_None(self) -> bool:
         """全ての要素がNoneかを調べる"""
 
-    def all_None(self) -> np.bool:
+    def all_None(self) -> bool:
         """要素内にNoneが存在するかを調べる"""

@@ -24,6 +24,8 @@ METHOD_LIST: TypeAlias = Literal[
 ]
 
 class NPStatisticsd:
+    def __init_subclass__(cls,**kwargs:Any)->None:
+        """raises TypeError: `NPStatisticsd`オブジェクトを継承するときに発生させる"""
     def __init__(self, data: NPNumber | ndarray = ...) -> None:
         """
         基本的な統計の計算をする
