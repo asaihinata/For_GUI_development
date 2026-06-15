@@ -56,9 +56,8 @@ class Pie(twoElement):
             counterclock=counterclock,
             labeldistance=labeldistance,
             explode=explode,
+            wedgeprops={"alpha":alpha}
         )
-        for i in np.array(pie).T:
-            i[0].set_alpha(alpha)
         self.graphdata = [pie]
         if not self.label:
             self.ax.legend()

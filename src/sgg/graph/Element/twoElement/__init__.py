@@ -48,7 +48,6 @@ class twoElement(GElement):
             self.yticksrange = yticksrange
         else:
             self.yticksrange = (0, 0)
-        # その他
 
     def _apply_theme_colors(self):
         self.ax.set_facecolor(self.graph_bg)

@@ -55,7 +55,20 @@ class GElement:
         self.fg = parsecolor(kw.get("fg"), "#000000")
         self.graph_bg = parsecolor(kw.get("bg"), "#ffffff")
         self.graph_grid = parsecolor(kw.get("graph_grid"), "#b7b7b7")
-        self.color = self._color_check(kw.get("color", graph_color))
+        color=kw.get("color", graph_color)
+        relist=graph_color
+        if isinstance(color, str):
+            relist = [parsecolor(color, graph_color[0])]
+        elif isinstance(color, list | tuple):
+            set_arr, judge = [], False
+            for i in color:
+                c = parsecolor(i)
+                if c is not None:
+                    judge = True
+                    set_arr.append(c)
+                if judge:
+                    relist = set_arr
+        self.color=relist
         rcParams["axes.prop_cycle"] = cycler(color=self.color)
         self.alpha = range_num(num0s(kw.get("alpha"), 1), 0, 1, 1)
         self.dpi = num1s(kw.get("dpi"), 100)
@@ -183,21 +196,6 @@ class GElement:
         elif place in labelplacelist:
             return place
         return listchose(other, labelplacelist)
-
-    def _color_check(self, color):
-        relist = graph_color
-        if isinstance(color, str):
-            relist = [parsecolor(color, graph_color[0])]
-        elif isinstance(color, list | tuple):
-            set_arr, judge = [], False
-            for i in color:
-                c = parsecolor(i)
-                if c is not None:
-                    judge = True
-                    set_arr.append(c)
-                if judge:
-                    relist = set_arr
-        return relist
 
     def _list_loop(self, lin, num):
         if not isinstance(lin, np.ndarray | list | tuple):

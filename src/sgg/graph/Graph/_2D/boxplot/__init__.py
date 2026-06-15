@@ -8,11 +8,10 @@ class Boxplot(twoElement):
         super().__init__(master, kw)
         self.__data = NPNumber(kw.get("data"))
         self.legends = bols(kw.get("legend"), False)
-        self.label = (
-            getLabel([f"box{i}" for i in range(self.__data.ndim)])
-            if self.label
-            else self.label.loop(self.__data.ndim)
-        )
+        if self.label:
+            self.label = getLabel([f"box{i}" for i in range(self.__data.ndim)])
+        else:
+            self.label = self.label.loop(self.__data.ndim)
         self.width = range_num(num0s(kw.get("width"), 0.15), 0, 1, 0.15)
         self.whis = self._boxplot_whis(kw.get("whis"))
         self.fill = bols(kw.get("fill"), False)
@@ -46,12 +45,10 @@ class Boxplot(twoElement):
         alpha=1,
     ):
         self.clear()
-        label = list(self.label)
         boxplot = self.ax.boxplot(
             data,
             showfliers=showfliers,
-            labels=label,
-            label=label,
+            label=list(label),
             widths=width,
             whis=whis,
             patch_artist=fill,
