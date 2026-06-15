@@ -20,7 +20,7 @@ class threeElement(GElement):
         self,
         fg: ColorType,
         bg: ColorType,
-        alpha:int|float,
+        alpha: int | float,
         graph_grid: ColorType,
         title: str,
         elev: int | float,

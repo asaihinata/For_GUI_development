@@ -88,7 +88,7 @@ class NPArray:
 
     @property
     def T(self):
-        self.__data = self.__data.T
+        self.data = self.data.T
         return self
 
     @property

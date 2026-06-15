@@ -10,7 +10,7 @@ class Scatter(twoElement):
         self.__y = NPArray(kw.get("y"))
         self.marker = MarkerList(kw.get("marker", "o"))
         self.s = num1s(kw.get("markersize"), 10)
-        self.regression_bool = bols(kw.get('regression_bool'),False)
+        self.regression_bool = bols(kw.get("regression_bool"), False)
         self.line = Solid(kw.get("linestyle", "-")).solid
         self.linewidth = num0(kw.get("linewidth"), 2)
         self.plot(
@@ -22,13 +22,24 @@ class Scatter(twoElement):
             s=self.s,
             regression_bool=self.regression_bool,
             line=self.line,
-            linewidth=self.linewidth
+            linewidth=self.linewidth,
         )
 
-    def plot(self, x, y, marker, alpha=1, label=None, s=10,regression_bool=False,line="-",linewidth=2):
+    def plot(
+        self,
+        x,
+        y,
+        marker,
+        alpha=1,
+        label=None,
+        s=10,
+        regression_bool=False,
+        line="-",
+        linewidth=2,
+    ):
         self.clear()
         for i, (xs, ys) in enumerate(TwoArray(x, y)):
-            scatter=self.ax.scatter(
+            scatter = self.ax.scatter(
                 xs,
                 ys,
                 marker=marker[i],
@@ -37,11 +48,13 @@ class Scatter(twoElement):
                 label=label[i],
             )
             if regression_bool:
-                offsets=np.array(scatter.get_offsets())
-                xs,ys=offsets[:,0],offsets[:,1]
-                xssort=np.sort(np.unique(xs))
-                regressionline=NPStatisticsds(xs,ys).chebysheveve(xssort)
-                self.ax.plot(xssort,regressionline,linestyle=line,linewidth=linewidth)
+                offsets = np.array(scatter.get_offsets())
+                xs, ys = offsets[:, 0], offsets[:, 1]
+                xssort = np.sort(np.unique(xs))
+                regressionline = NPStatisticsds(xs, ys).chebysheveve(xssort)
+                self.ax.plot(
+                    xssort, regressionline, linestyle=line, linewidth=linewidth
+                )
             self.graphdata.append(scatter)
 
         self._apply_labels(self.xlabel, self.ylabel)
@@ -59,9 +72,9 @@ class Scatter(twoElement):
             self.marker = MarkerList(markers)
         self.s = num1s(kw.get("markersize"), self.s)
         self.alpha = range_num(num0s(kw.get("alpha"), self.alpha), 0, 1, self.alpha)
-        self.regression_bool=bols(kw.get('regression_bool'),self.regression_bool)
-        self.line = Solid(kw.get("linestyle",self.line)).solid
-        self.linewidth = num0(kw.get("linewidth"),self.linewidth)
+        self.regression_bool = bols(kw.get("regression_bool"), self.regression_bool)
+        self.line = Solid(kw.get("linestyle", self.line)).solid
+        self.linewidth = num0(kw.get("linewidth"), self.linewidth)
         self.plot(
             self.__x,
             self.__y,
@@ -70,7 +83,7 @@ class Scatter(twoElement):
             label=self.label,
             regression_bool=self.regression_bool,
             line=self.line,
-            linewidth=self.linewidth
+            linewidth=self.linewidth,
         )
         self._redraw()
 
@@ -84,9 +97,11 @@ class Scatter(twoElement):
         return self.__y.tonp()
 
     def getcoordinate(self):
-        coords=[]
+        coords = []
         for i in self.graphdata:
-            offsets=np.array(i.get_offsets())
-            if len(coords)==0:coords=offsets
-            else:coords=np.vstack([coords,offsets])
+            offsets = np.array(i.get_offsets())
+            if len(coords) == 0:
+                coords = offsets
+            else:
+                coords = np.vstack([coords, offsets])
         return coords

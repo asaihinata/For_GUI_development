@@ -3,7 +3,7 @@
 from typing import Literal, TypeAlias
 
 from numpy import dtype, float64, ndarray
-from numpy._typing import _AnyShape,NDArray
+from numpy._typing import NDArray, _AnyShape
 
 from ..typing import *
 

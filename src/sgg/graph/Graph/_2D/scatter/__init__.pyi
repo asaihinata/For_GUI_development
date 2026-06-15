@@ -12,9 +12,9 @@ class Scatter(_2Gset):
         y: n_array,
         marker: Type_Marker,
         markersize: int | float,
-        regression_bool:bool,
-        linestyle:Type_Solid,
-        linewidth:int|float,
+        regression_bool: bool,
+        linestyle: Type_Solid,
+        linewidth: int | float,
         fg: ColorType,
         bg: ColorType,
         alpha: int | float,
@@ -34,5 +34,5 @@ class Scatter(_2Gset):
     def gety(self) -> Typeget_data:
         """`y`のデータを取得する"""
 
-    def getcoordinate(self)->ndarray[NDArray[float64],NDArray[float64]]:
+    def getcoordinate(self) -> ndarray[NDArray[float64], NDArray[float64]]:
         """散布図の点の座標を取得する"""

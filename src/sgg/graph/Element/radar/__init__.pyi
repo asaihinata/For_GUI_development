@@ -21,13 +21,15 @@ class RadarElement(GElement):
 
     def _updates(
         self,
-        data:o_array,
+        data: o_array,
         fg: ColorType,
         bg: ColorType,
         graph_grid: ColorType,
         title: str,
-        alpha:int|float
-    ): """グラフの値を更新する"""
+        alpha: int | float,
+    ):
+        """グラフの値を更新する"""
+
     def _adjustment(self):
         """グラフの調整を行う"""
 

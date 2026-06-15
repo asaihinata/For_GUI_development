@@ -21,7 +21,7 @@ class twoElement(GElement):
         bg: ColorType,
         graph_grid: ColorType,
         title: str,
-        alpha:int|float,
+        alpha: int | float,
         xlabel: labeltype,
         ylabel: labeltype,
     ): ...

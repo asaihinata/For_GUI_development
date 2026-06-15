@@ -7,6 +7,8 @@ from matplotlib.mlab import GaussianKDE
 from numpy import ndarray
 
 from .graph import *
+from .nparray import *
+from .readfile import Getcsv, Getjosn
 from .typing import *
 from .version import __version__, version
 from .widget import *
@@ -31,8 +33,11 @@ __all__: list[str] = [
     "Eventpolar",
     "FileLoad",
     "FolderLoad",
+    "Formatconversion",
     "Frames",
     "Funne",
+    "Getcsv",
+    "Getjosn",
     "Hatplot",
     "Hexbin",
     "Hist",
@@ -50,6 +55,13 @@ __all__: list[str] = [
     "Menubuttons",
     "Menus",
     "Multiline",
+    "NPArray",
+    "NPColor",
+    "NPDate",
+    "NPNumber",
+    "NPStatisticsd",
+    "NPStatisticsds",
+    "NPString",
     "Open",
     "Pie",
     "QRImage",
@@ -77,10 +89,19 @@ __all__: list[str] = [
     "Waterfall",
     "Waterfallh",
     "WindowController",
+    "__version__",
     "askcolor",
     "askdirectory",
     "askopenfilename",
     "asksaveasfilename",
+    "boolDtype",
+    "bytesDtype",
+    "complexDtype",
+    "datetimeDtype",
+    "floatDtype",
+    "intDtype",
+    "integerDtype",
+    "numberDtype",
     "popup",
     "popuperror",
     "popuperroryesno",
@@ -92,8 +113,11 @@ __all__: list[str] = [
     "popupyesno",
     "popupyesnocansel",
     "sgg",
+    "strDtype",
+    "stringDtype",
+    "timedeltaDtype",
+    "uintDtype",
     "version",
-    "__version__",
 ]
 
 def __dir__() -> list[str]: ...
@@ -1929,9 +1953,9 @@ class sgg:
             "",
         ] = "o",
         markersize: int | float = 10,
-        regression_bool:bool=False,
-        linestyle:Literal["-", "--", "-.", ":", "None", " ", ""]="-",
-        linewidth:int|float=2,
+        regression_bool: bool = False,
+        linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
+        linewidth: int | float = 2,
         xlabel: str = ...,
         ylabel: str = ...,
         label: labeltype = ...,

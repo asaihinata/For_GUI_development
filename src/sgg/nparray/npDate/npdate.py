@@ -60,11 +60,6 @@ class NPDate(NPArray):
     __radd__ = __add__
     __rsub__ = __sub__
 
-    @property
-    def T(self):
-        self.data = self.data.T
-        return self
-
     def astype(self, dtype="datetime64[D]"):
         self.data = self.data.astype(serchDtype(dtype))
         return self
@@ -88,7 +83,7 @@ class NPDate(NPArray):
         return np.datetime_as_string(self.data, unit=unit, timezone=tz, casting=casting)
 
     def todatetime(self):
-        return self.data.astype("M8[D]").astype(datetime)
+        return self.data.astype(datetime)
 
     def weekday(self):
         dt = self.todatetime()

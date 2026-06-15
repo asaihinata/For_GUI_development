@@ -17,7 +17,9 @@ class RadarLine(RadarElement):
         bg: ColorType,
         graph_grid: ColorType,
         title: str,
-    ): """折れ線レーダーチャートを再表示させる"""
+    ):
+        """折れ線レーダーチャートを再表示させる"""
+
     def getdata(self) -> Typeget_data:
         """`data`のデータを取得する"""
 

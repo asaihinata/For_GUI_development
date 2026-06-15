@@ -42,6 +42,7 @@ class RadarElement(GElement):
             self.yticksrange = yticksrange
         else:
             self.yticksrange = (0, 0)
+
     def _apply_theme_colors(self):
         self.ax.set_facecolor(self.graph_bg)
         self.ax.tick_params(colors=self.fg)

@@ -1,5 +1,7 @@
 from ._dialog import *
 from .graph import *
+from .nparray import *
+from .readfile import Getcsv, Getjosn
 from .version import __version__, version
 from .widget import *
 
@@ -23,8 +25,11 @@ __all__ = [
     "Eventpolar",
     "FileLoad",
     "FolderLoad",
+    "Formatconversion",
     "Frames",
     "Funne",
+    "Getcsv",
+    "Getjosn",
     "Hatplot",
     "Hexbin",
     "Hist",
@@ -42,6 +47,13 @@ __all__ = [
     "Menubuttons",
     "Menus",
     "Multiline",
+    "NPArray",
+    "NPColor",
+    "NPDate",
+    "NPNumber",
+    "NPStatisticsd",
+    "NPStatisticsds",
+    "NPString",
     "Open",
     "Pie",
     "QRImage",
@@ -69,10 +81,19 @@ __all__ = [
     "Waterfall",
     "Waterfallh",
     "WindowController",
+    "__version__",
     "askcolor",
     "askdirectory",
     "askopenfilename",
     "asksaveasfilename",
+    "boolDtype",
+    "bytesDtype",
+    "complexDtype",
+    "datetimeDtype",
+    "floatDtype",
+    "intDtype",
+    "integerDtype",
+    "numberDtype",
     "popup",
     "popuperror",
     "popuperroryesno",
@@ -84,8 +105,11 @@ __all__ = [
     "popupyesno",
     "popupyesnocansel",
     "sgg",
+    "strDtype",
+    "stringDtype",
+    "timedeltaDtype",
+    "uintDtype",
     "version",
-    "__version__",
 ]
 
 

@@ -171,7 +171,7 @@ class NPStatisticsd:
         `bins`で指定された計算方法で計算されたビンの境界を求める
 
         :param bins: ビンの数や計算方法を指定する
-        :type bins: int|BINS_LIST|ArrayLike
+        :type bins: int|Literal["stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"]|ArrayLike
         :param range: ビンの下限と上限を指定する
         :type range: tuple[float,float]|None
         :param weights: 重みを指定する
@@ -190,7 +190,7 @@ class NPStatisticsd:
         配列のヒストグラムを求める
 
         :param bins: ビンの数や計算方法を指定する
-        :type bins: int|BINS_LIST|ArrayLike
+        :type bins: int|Literal["stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"]|ArrayLike
         :param range: ビンの下限と上限を指定する
         :type range: tuple[float,float]|None
         :param weights: 重みを指定する
