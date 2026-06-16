@@ -6,7 +6,7 @@ from .version import __version__, version
 from .widget import *
 
 __all__ = (
-    ["__version__", "version", "Getjosn", "Getcsv"]
+    ["__version__", "version", "Getjosn", "Getcsv","Guis"]
     + getattr(_dialog, "__all__", [])
     + getattr(graph, "__all__", [])
     + getattr(nparray, "__all__", [])

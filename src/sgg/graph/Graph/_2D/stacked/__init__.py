@@ -13,10 +13,10 @@ class Stacked(twoElement):
         if self.__data.shape[0] != self.dataname.shape[0]:
             raise ValueError("配列のエラー")
         self.width = range_num(num0s(kw.get("width"), 0.8), 0, 1, 0.8)
-        self.plot(self.__data, self.dataname, label=self.label, width=self.width)
+        self.__plot(self.__data, self.dataname, label=self.label, width=self.width)
         self._getlegendplace((1.2, 1.2), "center left")
 
-    def plot(self, data, dataname, label=None, width=0.8):
+    def __plot(self, data, dataname, label, width):
         self.clear()
         self.graphdata = [self._survey(data, dataname, label=label, width=width)]
         self.ax.set_ylim(0, 100)
@@ -46,7 +46,7 @@ class Stacked(twoElement):
         if self.__data.shape[0] != self.dataname.shape[0]:
             raise ValueError("配列のエラー")
         self.width = range_num(num0s(kw.get("width"), self.width), 0, 1, self.width)
-        self.plot(self.__data, self.dataname, label=self.label, width=self.width)
+        self.__plot(self.__data, self.dataname, label=self.label, width=self.width)
         self._redraw()
 
     def get(self):

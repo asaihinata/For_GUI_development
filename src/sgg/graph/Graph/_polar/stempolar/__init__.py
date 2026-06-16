@@ -11,7 +11,7 @@ class Stempolar(polarElement):
         self.markerfmt = kw.get("markerfmt")
         self.basefmt = kw.get("basefmt")
         self.bottom = nums(kw.get("bottom"), 0)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             bottom=self.bottom,
@@ -24,7 +24,7 @@ class Stempolar(polarElement):
     def _func(self, stem, alpha=1):
         [i.set_alpha(alpha) for i in stem.get_children()]
 
-    def plot(self, x, y, bottom=0, linefmt=None, markerfmt=None, basefmt=None, alpha=1):
+    def __plot(self, x, y, bottom, linefmt, markerfmt, basefmt, alpha):
         self.clear()
         self.graphdata = [
             self.ax.stem(
@@ -50,7 +50,7 @@ class Stempolar(polarElement):
         self.markerfmt = kw.get("markerfmt", self.markerfmt)
         self.basefmt = kw.get("basefmt", self.basefmt)
         self.bottom = nums(kw.get("bottom"), self.bottom)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             bottom=self.bottom,

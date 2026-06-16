@@ -30,7 +30,7 @@ def radar_factory(num_vars, frame="circle"):
         def fill(self, *args, closed=True, **kwargs):
             return super().fill(closed=closed, *args, **kwargs)
 
-        def plot(self, *args, **kwargs):
+        def __plot(self, *args, **kwargs):
             for line in super().plot(*args, **kwargs):
                 x, y = line.get_data()
                 if x[0] != x[-1]:

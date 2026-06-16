@@ -28,7 +28,7 @@ class Hist(twoElement):
         self.bottom = num0s(kw.get("bottom"))
         self.orientation = listchose(kw.get("orientation"), ["vertical", "horizontal"])
         self.width = range_num(num0s(kw.get("width"), 1), 0, 1, 1)
-        self.plot(
+        self.__plot(
             self.__data,
             label=self.label,
             bins=self.bins,
@@ -39,16 +39,16 @@ class Hist(twoElement):
             alpha=self.alpha,
         )
 
-    def plot(
+    def __plot(
         self,
         data,
-        label=None,
-        bins=10,
-        ranges=None,
-        bottom=0,
-        orientation="vertical",
-        width=None,
-        alpha=1,
+        label,
+        bins,
+        ranges,
+        bottom,
+        orientation,
+        width,
+        alpha,
     ):
         self.clear()
         hist = self.ax.hist(
@@ -97,7 +97,7 @@ class Hist(twoElement):
             kw.get("orientation"), ["vertical", "horizontal"], self.orientation
         )
         self.width = range_num(num0s(kw.get("width"), self.width), 0, 1, self.width)
-        self.plot(
+        self.__plot(
             self.__data,
             label=self.label,
             bins=self.bins,

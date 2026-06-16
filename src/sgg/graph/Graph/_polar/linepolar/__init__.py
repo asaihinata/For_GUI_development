@@ -11,7 +11,7 @@ class Linepolar(polarElement):
         self.marker = Marker(kw.get("marker", ""))
         self.line = Solid(kw.get("linestyle", "-"))
         self.linewidth = num0(kw.get("linewidth"), 2)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             marker=self.marker,
@@ -21,7 +21,7 @@ class Linepolar(polarElement):
             alpha=self.alpha,
         )
 
-    def plot(self, x, y, marker, linewidth, linestyle, markersize, alpha):
+    def __plot(self, x, y, marker, linewidth, linestyle, markersize, alpha):
         self.clear()
         self.graphdata = [
             self.ax.plot(
@@ -47,7 +47,7 @@ class Linepolar(polarElement):
         self.marker = Marker(kw.get("marker", self.marker))
         self.line = Solid(kw.get("linestyle", self.line))
         self.linewidth = num0(kw.get("linewidth"), 2)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             marker=self.marker,

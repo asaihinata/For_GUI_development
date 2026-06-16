@@ -16,7 +16,7 @@ class Waterfall(twoElement):
         self.sumstext = kw.get("sumstext", "sum")
         self.colorline = parsecolor(kw.get("colorline"), "#4477aa")
         self.linestyle = Solid(kw.get("linestyle", "-")).solid
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             alpha=self.alpha,
@@ -30,19 +30,19 @@ class Waterfall(twoElement):
             dcolor=self.dcolor,
         )
 
-    def plot(
+    def __plot(
         self,
         x,
         y,
-        alpha=1,
-        width=1,
-        sums=False,
-        sumstext="sum",
-        bottom=None,
-        color=None,
-        linestyle="-",
-        ucolor="#156082",
-        dcolor="#e97132",
+        alpha,
+        width,
+        sums,
+        sumstext,
+        bottom,
+        color,
+        linestyle,
+        ucolor,
+        dcolor,
     ):
         self.clear()
         x, y = x.tonp(), y.tonp()
@@ -83,7 +83,7 @@ class Waterfall(twoElement):
         self.width = range_num(num0s(kw.get("width"), self.width), 0, 1, self.width)
         self.colorline = parsecolor(kw.get("colorline"), self.colorline)
         self.linestyle = Solid(kw.get("linestyle", self.linestyle)).solid
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             alpha=self.alpha,

@@ -12,7 +12,7 @@ class Ecdf(twoElement):
         self.orientation = listchose(kw.get("orientation"), ["vertical", "horizontal"])
         self.line = Solidlist(kw.get("linestyle", "-"))
         self.linewidth = num0(kw.get("linewidth"), 1.5)
-        self.plot(
+        self.__plot(
             self.__data,
             complementary=self.complementary,
             compress=self.compress,
@@ -22,15 +22,15 @@ class Ecdf(twoElement):
             alpha=self.alpha,
         )
 
-    def plot(
+    def __plot(
         self,
         data,
-        complementary=False,
-        compress=False,
-        orientation="vertical",
-        linewidth=1.5,
-        line="-",
-        alpha=1,
+        complementary,
+        compress,
+        orientation,
+        linewidth,
+        line,
+        alpha,
     ):
         self.clear()
         self.graphdata = [
@@ -60,7 +60,7 @@ class Ecdf(twoElement):
         lines = kw.get("linestyle", None)
         self.line = parameters(lines, self.line, Solidlist(lines))
         self.linewidth = num0(kw.get("linewidth"), self.linewidth)
-        self.plot(
+        self.__plot(
             self.__data,
             complementary=self.complementary,
             compress=self.compress,

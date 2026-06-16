@@ -14,7 +14,7 @@ class Stack(twoElement):
             kw.get("baseline"), ["zero", "sym", "wiggle", "weighted_wiggle"]
         )
         self.hatch = Hatch(kw.get("hatch"))
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             label=self.label,
@@ -23,7 +23,7 @@ class Stack(twoElement):
             alpha=self.alpha,
         )
 
-    def plot(self, x, y, label=(), hatch=None, baseline="zero", alpha=1):
+    def __plot(self, x, y, label, hatch, baseline, alpha):
         self.clear()
         self.graphdata = [
             self.ax.stackplot(
@@ -48,7 +48,7 @@ class Stack(twoElement):
         )
         hatch = kw.get("hatch", None)
         self.hatch = parameters(hatch, self.hatch, Hatch(hatch))
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             label=self.label,

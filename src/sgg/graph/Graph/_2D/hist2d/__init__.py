@@ -26,7 +26,7 @@ class Hist2d(twoElement):
         self.range = ((self.xmin, self.xmax), (self.ymin, self.ymax))
         self.bins = self._bins(kw.get("bins", 10))
         self.density = bols(kw.get("density"), False)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             bins=self.bins,
@@ -37,8 +37,8 @@ class Hist2d(twoElement):
             min=self.min,
         )
 
-    def plot(
-        self, x, y, bins=10, alpha=1, density=False, range=None, min=None, max=None
+    def __plot(
+        self, x, y, bins, alpha, density, range, min, max
     ):
         self.clear()
         self.graphdata = [
@@ -82,7 +82,7 @@ class Hist2d(twoElement):
         self.bins = self._bins(kw.get("bins", self.bins))
         self.density = bols(kw.get("density"), self.density)
         self.alpha = range_num(num0s(kw.get("alpha"), self.alpha), 0, 1, self.alpha)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             bins=self.bins,

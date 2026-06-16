@@ -20,9 +20,9 @@ class Funne(twoElement):
         self.ax.xaxis.set_major_locator(
             MaxNLocator(nbins=self.xmajormaxbins, integer=self.xmajorint)
         )
-        self.plot(self.__data, height=self.height, alpha=self.alpha)
+        self.__plot(self.__data, height=self.height, alpha=self.alpha)
 
-    def plot(self, data, height=1, alpha=1):
+    def __plot(self, data, height, alpha):
         self.clear()
         self.graphdata = [self._funne(data, height, alpha)]
         self._apply_labels(self.xlabel, self.ylabel)
@@ -60,7 +60,7 @@ class Funne(twoElement):
         self.ax.xaxis.set_major_locator(
             MaxNLocator(nbins=self.xmajormaxbins, integer=self.xmajorint)
         )
-        self.plot(self.__data, height=self.height)
+        self.__plot(self.__data, height=self.height)
         self._redraw()
 
     def get(self):

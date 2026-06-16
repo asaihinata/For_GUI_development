@@ -11,7 +11,7 @@ class Eventpolar(polarElement):
         self.linewidth = num0(kw.get("linewidth"), 1)
         self.linelength = num0(kw.get("linelength"), 1)
         self.linestyle = Solid(kw.get("linestyle", "-"))
-        self.plot(
+        self.__plot(
             self.__data,
             orientation=self.orientation,
             linewidth=self.linewidth,
@@ -20,14 +20,14 @@ class Eventpolar(polarElement):
             linestyle=self.linestyle,
         )
 
-    def plot(
+    def __plot(
         self,
         data,
-        orientation="vertical",
-        linewidth=1,
-        linelength=1,
-        alpha=1,
-        linestyle=None,
+        orientation,
+        linewidth,
+        linelength,
+        alpha,
+        linestyle,
     ):
         self.clear()
         self.graphdata = [
@@ -54,7 +54,7 @@ class Eventpolar(polarElement):
         self.linewidth = num0(kw.get("linewidth"), self.linewidth)
         self.linelength = num0(kw.get("linelength"), self.linelength)
         self.linestyle = Solid(kw.get("linestyle", self.linestyle))
-        self.plot(
+        self.__plot(
             self.__data,
             orientation=self.orientation,
             linewidth=self.linewidth,

@@ -13,10 +13,10 @@ class Stackedh(twoElement):
         if self.__data.shape[0] != self.dataname.shape[0]:
             raise ValueError("配列のエラー")
         self.height = range_num(num0s(kw.get("height"), 0.8), 0, 1, 0.8)
-        self.plot(self.__data, self.dataname, label=self.label, height=self.height)
+        self.__plot(self.__data, self.dataname, label=self.label, height=self.height)
         self._getlegendplace((1, 0.85), "center left")
 
-    def plot(self, data, dataname, label=None, height=0.8):
+    def __plot(self, data, dataname, label, height):
         self.clear()
         self.ax.invert_yaxis()
         self.graphdata = [self._survey(data, dataname, label, height=height)]
@@ -47,7 +47,7 @@ class Stackedh(twoElement):
         if self.__data.shape[0] != self.dataname.shape[0]:
             raise ValueError("配列のエラー")
         self.height = range_num(num0s(kw.get("height"), self.height), 0, 1, self.height)
-        self.plot(self.__data, self.dataname, label=self.label, height=self.height)
+        self.__plot(self.__data, self.dataname, label=self.label, height=self.height)
         self._redraw()
 
     def get(self):

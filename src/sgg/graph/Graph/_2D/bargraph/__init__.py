@@ -11,7 +11,7 @@ class BarGraph(twoElement):
         self.logs = bols(kw.get("logs"), False)
         self.width = range_num(num0s(kw.get("width"), 1), 0, 1, 1)
         self.align = listchose(kw.get("align"), ["center", "edge"])
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             label=self.label,
@@ -21,7 +21,7 @@ class BarGraph(twoElement):
             logs=self.logs,
         )
 
-    def plot(self, x, y, label, alpha=1, width=0.8, align="center", logs=False):
+    def __plot(self, x, y, label, alpha, width, align, logs):
         self.clear()
         self.graphdata = [
             self.ax.bar(
@@ -43,7 +43,7 @@ class BarGraph(twoElement):
         self.width = range_num(num0s(kw.get("width"), self.width), 0, 1, self.width)
         self.align = listchose(kw.get("align"), ["center", "edge"], self.align)
         self.logs = bols(kw.get("logs"), self.logs)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             label=self.label,

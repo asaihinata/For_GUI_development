@@ -12,7 +12,7 @@ class LineGraph(twoElement):
         self.markersize = num0(kw.get("markersize"), 10)
         self.line = Solidlist(kw.get("linestyle", "-"))
         self.linewidth = num0(kw.get("linewidth"), 2)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             marker=self.marker,
@@ -23,16 +23,16 @@ class LineGraph(twoElement):
             label=self.label,
         )
 
-    def plot(
+    def __plot(
         self,
         x,
         y,
         marker,
-        linewidth=2,
-        linestyle="-",
-        markersize=10,
-        alpha=1,
-        label=None,
+        linewidth,
+        linestyle,
+        markersize,
+        alpha,
+        label,
     ):
         self.clear()
         self.graphdata = [
@@ -65,7 +65,7 @@ class LineGraph(twoElement):
         lines = kw.get("linestyle", None)
         self.line = parameters(lines, self.line, Solidlist(lines))
         self.linewidth = num0(kw.get("linewidth"), self.linewidth)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             marker=self.marker,

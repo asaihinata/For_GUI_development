@@ -11,7 +11,7 @@ class BarhGraph(twoElement):
         self.logs = bols(kw.get("logs"), False)
         self.height = range_num(num0s(kw.get("height"), 1), 0, 1, 1)
         self.align = listchose(kw.get("align"), ["center", "edge"])
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             label=self.label,
@@ -21,7 +21,7 @@ class BarhGraph(twoElement):
             logs=self.logs,
         )
 
-    def plot(self, x, y, label=None, alpha=1, height=1, align="center", logs=False):
+    def __plot(self, x, y, label, alpha, height, align, logs):
         self.clear()
         self.graphdata = [
             self.ax.barh(
@@ -49,7 +49,7 @@ class BarhGraph(twoElement):
         self.height = range_num(num0s(kw.get("height"), self.height), 0, 1, self.height)
         self.align = listchose(kw.get("align"), ["center", "edge"], self.align)
         self.logs = bols(kw.get("logs"), self.logs)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             label=self.label,

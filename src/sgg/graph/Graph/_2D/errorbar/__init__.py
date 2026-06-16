@@ -41,7 +41,7 @@ class Errorbar(twoElement):
             self.errorevery = errorevery
         else:
             self.errorevery = 1
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             label=self.label,
@@ -60,24 +60,24 @@ class Errorbar(twoElement):
             alpha=self.alpha,
         )
 
-    def plot(
+    def __plot(
         self,
         x,
         y,
-        label=None,
-        xerr=None,
-        yerr=None,
-        fmt="",
-        linewidth=1.5,
-        capsize=0,
-        barsabove=False,
-        capthick=10,
-        xuplims=False,
-        xlolims=False,
-        yuplims=False,
-        ylolims=False,
-        errorevery=1,
-        alpha=1,
+        label,
+        xerr,
+        yerr,
+        fmt,
+        linewidth,
+        capsize,
+        barsabove,
+        capthick,
+        xuplims,
+        xlolims,
+        yuplims,
+        ylolims,
+        errorevery,
+        alpha,
     ):
         self.clear()
         self.graphdata = [
@@ -139,7 +139,7 @@ class Errorbar(twoElement):
             or isinstance(errorevery, int)
             else 1
         )
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             label=self.label,

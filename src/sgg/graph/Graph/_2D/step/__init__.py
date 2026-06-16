@@ -11,16 +11,17 @@ class Step(twoElement):
         self.baseline = num0s(kw.get("baseline"))
         self.orientation = listchose(kw.get("orientation"), ["vertical", "horizontal"])
         self.linewidth = num0(kw.get("linewidth"), 2)
-        self.plot(
+        self.__plot(
             self.__data,
+            linewidth=self.linewidth,
             fill=self.fill,
             baseline=self.baseline,
             orientation=self.orientation,
             alpha=self.alpha,
         )
 
-    def plot(
-        self, data, linewidth=2, fill=False, baseline=0, orientation="vertical", alpha=1
+    def __plot(
+        self, data, linewidth, fill, baseline, orientation, alpha
     ):
         self.clear()
         self.graphdata = [
@@ -49,7 +50,7 @@ class Step(twoElement):
         self.orientation = listchose(
             kw.get("orientation"), ["vertical", "horizontal"], self.orientation
         )
-        self.plot(
+        self.__plot(
             self.__data,
             linewidth=self.linewidth,
             fill=self.fill,

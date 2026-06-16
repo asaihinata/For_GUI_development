@@ -32,7 +32,7 @@ class Stem(twoElement):
         self.marker = FMTMarkList(kw.get("fmarker"))
         self.bottom = num0s(kw.get("bottom"))
         self.orientation = listchose(kw.get("orientation"), ["vertical", "horizontal"])
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             bottom=self.bottom,
@@ -44,17 +44,17 @@ class Stem(twoElement):
             alpha=self.alpha,
         )
 
-    def plot(
+    def __plot(
         self,
         x,
         y,
-        bottom=0,
-        orientation="vertical",
-        label=None,
-        marker=None,
-        line=None,
-        color=None,
-        alpha=1,
+        bottom,
+        orientation,
+        label,
+        marker,
+        line,
+        color,
+        alpha,
     ):
         self.clear()
         for i, (xs, ys) in enumerate(TwoArray(x, y)):
@@ -92,7 +92,7 @@ class Stem(twoElement):
         self.orientation = listchose(
             kw.get("orientation"), ["vertical", "horizontal"], self.orientation
         )
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             bottom=self.bottom,

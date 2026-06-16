@@ -9,7 +9,7 @@ class Barpolar(polarElement):
         self.__x, self.__y = self._xyd(kw.get("x"), kw.get("y"), kw.get("data"))
         self.width = range_num(num0s(kw.get("width"), 1), 0, 1, 1)
         self.align = listchose(kw.get("align"), ["center", "edge"])
-        self.plot(
+        self.__plot(
             self.__x.tonp(),
             self.__y.tonp(),
             alpha=self.alpha,
@@ -18,7 +18,7 @@ class Barpolar(polarElement):
             color=self.color,
         )
 
-    def plot(self, x, y, alpha=1, width=1, align="center", color=None):
+    def __plot(self, x, y, alpha, width, align, color):
         self.clear()
         self.graphdata = [
             self.ax.bar(
@@ -38,7 +38,7 @@ class Barpolar(polarElement):
         self.__x, self.__y = self._xyd(x, y, data)
         self.width = range_num(num0s(kw.get("width"), self.width), 0, 1, self.width)
         self.align = listchose(kw.get("align"), ["center", "edge"], self.align)
-        self.plot(
+        self.__plot(
             self.__x.tonp(),
             self.__y.tonp(),
             alpha=self.alpha,

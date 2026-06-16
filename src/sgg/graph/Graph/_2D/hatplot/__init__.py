@@ -9,9 +9,9 @@ class Hatplot(twoElement):
         self.__x = NPNumber(kw.get("x"), depth_limit=1)
         self.__data = NPNumber(kw.get("data"), depth_limit=1)
         self.color = parsecolor(kw.get("color"), "#4477aa")
-        self.plot(self.__x, self.__data, color=self.color, alpha=self.alpha)
+        self.__plot(self.__x, self.__data, color=self.color, alpha=self.alpha)
 
-    def plot(self, x, data, color=None, alpha=1):
+    def __plot(self, x, data, color, alpha):
         self.clear()
         self.graphdata = self.hat_graph(x, data, color=color, alpha=alpha)
         self._apply_labels(self.xlabel, self.ylabel)
@@ -53,7 +53,7 @@ class Hatplot(twoElement):
         if isinstance(data, nListlike):
             self.__data = NPNumber(data, depth_limit=1)
         self.color = parsecolor(kw.get("color"), self.color)
-        self.plot(self.__x, self.__data, color=self.color, alpha=self.alpha)
+        self.__plot(self.__x, self.__data, color=self.color, alpha=self.alpha)
         self._redraw()
 
     def get(self):

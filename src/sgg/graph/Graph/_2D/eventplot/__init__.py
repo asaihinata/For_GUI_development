@@ -12,7 +12,7 @@ class Eventplot(twoElement):
         self.linewidth = num0(kw.get("linewidth"), 1)
         self.linelength = num0(kw.get("linelength"), 1)
         self.linestyle = Solidlist(kw.get("linestyle", "-"))
-        self.plot(
+        self.__plot(
             self.__data,
             label=self.label,
             orientation=self.orientation,
@@ -22,15 +22,15 @@ class Eventplot(twoElement):
             linestyle=self.linestyle,
         )
 
-    def plot(
+    def __plot(
         self,
         data,
         label,
-        orientation="vertical",
-        linewidth=1,
-        linelength=1,
-        alpha=1,
-        linestyle=None,
+        orientation,
+        linewidth,
+        linelength,
+        alpha,
+        linestyle,
     ):
         self.clear()
         self.graphdata = [
@@ -67,7 +67,7 @@ class Eventplot(twoElement):
         self.alpha = range_num(num0s(kw.get("alpha"), self.alpha), 0, 1, self.alpha)
         lines = kw.get("linestyle", None)
         self.linestyle = parameters(lines, self.linestyle, Solidlist("-"))
-        self.plot(
+        self.__plot(
             self.__data,
             label=self.label,
             orientation=self.orientation,

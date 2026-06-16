@@ -15,7 +15,7 @@ from .version import __version__, version
 from .widget import *
 
 __all__ = (
-    ["__version__", "version", "Getjosn", "Getcsv"]
+    ["__version__", "version", "Getjosn", "Getcsv","Guis"]
     + getattr(_dialog, "__all__", [])
     + getattr(graph, "__all__", [])
     + getattr(nparray, "__all__", [])
@@ -35,9 +35,9 @@ class Guis:
         scroll: bool = ...,
         scroll_x: bool = ...,
         scroll_y: bool = ...,
-        size: TupleNumbertype2 = (None, None),
+        size: tuple[int|float|None,int|float|None] = (None, None),
         maxmine: bool = False,
-        location: TupleNumbertype2 = (0, 0),
+        location: tuple[int|float,int|float] = (0, 0),
     ) -> WindowController:
         """
         ウィンドウを作成する
@@ -57,17 +57,17 @@ class Guis:
         :param scroll_y: ウィンドウのy軸方向にスクロールできるか指定する
         :type scroll_y: bool
         :param size: ウィンドウの幅と高さを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float|None,int|float|None]
         :param maxmine: ウィンドウ表示時最大化するかを指定する
         :type maxmine: bool
         :param location: ウィンドウの表示位置を指定する
-        :type location: TupleNumbertype2
+        :type location: tuple[int|float,int|float]
         """
 
     @staticmethod
     def Texts(
         text: str = ...,
-        size: TupleNumbertype2 = (None, None),
+        size: tuple[int|float|None,int|float|None] = (None, None),
         bg: ColorTypeN = ...,
         fg: ColorTypeN = ...,
         family: str = ...,
@@ -115,7 +115,7 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = True,
         overstrike: bool = False,
-        size: TupleNumbertype2 = (None, None),
+        size: tuple[int|float|None,int|float|None] = (None, None),
         justify: Literal["left", "center", "right"] = "left",
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
         relief: Literal[
@@ -183,7 +183,7 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        size: TupleNumbertype2 = (None, None),
+        size: tuple[int|float|None,int|float|None] = (None, None),
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
@@ -887,7 +887,7 @@ class Guis:
         label: labeltype = ...,
         xlabel: str = ...,
         ylabel: str = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -935,7 +935,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -985,7 +985,7 @@ class Guis:
         linewidth: int | float = 2,
         width: int | float = 1,
         align: Literal["center", "edge"] = "center",
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -1034,7 +1034,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -1082,7 +1082,7 @@ class Guis:
         xlabel: str = ...,
         ylabel: str = ...,
         linewidth: int | float = 2,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -1133,7 +1133,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -1180,7 +1180,7 @@ class Guis:
         xlabel: str = ...,
         ylabel: str = ...,
         linewidth: int | float = 2,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -1229,7 +1229,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -1276,7 +1276,7 @@ class Guis:
         label: labeltype = ...,
         xlabel: str = ...,
         ylabel: str = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -1319,7 +1319,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -1366,7 +1366,7 @@ class Guis:
         label: labeltype = ...,
         xlabel: str = ...,
         ylabel: str = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -1409,7 +1409,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -1458,7 +1458,7 @@ class Guis:
         counterclock: bool = False,
         labeldistance: int | float = 1.1,
         explode: list[int, float] | tuple[int, float] | int | float = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -1491,7 +1491,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -1515,7 +1515,7 @@ class Guis:
         whis: float | TupleFloat2 = 1.5,
         xlabel: str = ...,
         ylabel: str = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -1559,7 +1559,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -1612,7 +1612,7 @@ class Guis:
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
         xlabel: str = ...,
         ylabel: str = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -1659,7 +1659,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -1714,7 +1714,7 @@ class Guis:
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
         xlabel: str = ...,
         ylabel: str = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -1762,7 +1762,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -1861,7 +1861,7 @@ class Guis:
         xlabel: str = ...,
         ylabel: str = ...,
         label: labeltype = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -1912,7 +1912,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -2003,7 +2003,7 @@ class Guis:
             "",
         ] = "o",
         markersize: int | float = 10,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -2057,7 +2057,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -2128,7 +2128,7 @@ class Guis:
             | list[Literal["r", "g", "b", "c", "m", "y", "k", "w"]]
             | tuple[Literal["r", "g", "b", "c", "m", "y", "k", "w"]]
         ) = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -2176,7 +2176,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -2225,7 +2225,7 @@ class Guis:
         fill: bool = False,
         baseline: int | float = 0,
         orientation: Literal["horizontal", "vertical"] = "vertical",
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -2271,7 +2271,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -2319,7 +2319,7 @@ class Guis:
         color: ColorTypeN = "#4477aa",
         xlabel: str = ...,
         ylabel: str = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -2357,7 +2357,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -2415,7 +2415,7 @@ class Guis:
                 "auto", "fd", "doane", "scott", "stone", "rice", "sturges", "sqrt"
             ]
         ) = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -2468,7 +2468,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -2519,7 +2519,7 @@ class Guis:
         ylabel: str = ...,
         label: labeltype = ...,
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -2563,7 +2563,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -2612,7 +2612,7 @@ class Guis:
         xlabel: str = ...,
         ylabel: str = ...,
         label: labeltype = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -2656,7 +2656,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -2703,7 +2703,7 @@ class Guis:
         orientation: Literal["horizontal", "vertical"] = "vertical",
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
         linewidth: int | float = 1.5,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -2752,7 +2752,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -2813,7 +2813,7 @@ class Guis:
         xlabel: str = ...,
         ylabel: str = ...,
         label: labeltype = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -2881,7 +2881,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -2931,7 +2931,7 @@ class Guis:
         ylabel: str = ...,
         label: labeltype = ...,
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -2977,7 +2977,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -3028,7 +3028,7 @@ class Guis:
         ymin: int | float = ...,
         bins: int | TupleInt2 | ArrayLike | tuple[ArrayLike, ArrayLike] = 10,
         density: bool = False,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -3079,7 +3079,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -3137,7 +3137,7 @@ class Guis:
             Literal["scott", "silverman"] | float | Callable[[GaussianKDE], float]
         ) = "scott",
         side: Literal["both", "low", "high"] = "both",
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -3195,7 +3195,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -3246,7 +3246,7 @@ class Guis:
         yscale: Literal["linear", "log"] = "linear",
         mincnt: int = 1,
         bins: Literal["log"] | int | tuple[float, ...] | None = None,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
@@ -3299,7 +3299,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -3347,7 +3347,7 @@ class Guis:
         width: int | float = 1,
         alpha: int | float = 1,
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -3382,7 +3382,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -3429,7 +3429,7 @@ class Guis:
         width: int | float = 1,
         alpha: int | float = 1,
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -3462,7 +3462,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN|tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -3511,7 +3511,7 @@ class Guis:
         basefmt: str | None = None,
         bottom: int | float = 0,
         alpha: int | float = 1,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -3548,7 +3548,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -3596,7 +3596,7 @@ class Guis:
         basefmt: str | None = None,
         bottom: int | float = 0,
         alpha: int | float = 1,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -3631,7 +3631,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -3690,7 +3690,7 @@ class Guis:
         capsize: int | float = 0,
         errorevery: int | list[int] | tuple[int] = 1,
         alpha: int | float = 1,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -3747,7 +3747,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -3805,7 +3805,7 @@ class Guis:
         capsize: int | float = 0,
         errorevery: int | list[int] | tuple[int] = 1,
         alpha: int | float = 1,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -3860,7 +3860,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -3951,7 +3951,7 @@ class Guis:
         ] = "",
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
         alpha: int | float = 1,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -3988,7 +3988,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -4078,7 +4078,7 @@ class Guis:
         ] = None,
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
         alpha: int | float = 1,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -4113,7 +4113,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -4162,7 +4162,7 @@ class Guis:
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
         orientation: Literal["horizontal", "vertical"] = "vertical",
         alpha: int | float = 1,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -4199,7 +4199,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -4247,7 +4247,7 @@ class Guis:
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
         orientation: Literal["horizontal", "vertical"] = "vertical",
         alpha: int | float = 1,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -4282,7 +4282,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -4371,7 +4371,7 @@ class Guis:
         ] = "o",
         markersize: int | float = 10,
         alpha: int | float = 1,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -4404,7 +4404,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -4492,7 +4492,7 @@ class Guis:
         ] = "o",
         markersize: int | float = 10,
         alpha: int | float = 1,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -4523,7 +4523,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -4612,7 +4612,7 @@ class Guis:
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
         linewidth: int | float = 2,
         alpha: int | float = 1,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -4647,7 +4647,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
@@ -4690,7 +4690,7 @@ class Guis:
     def RadarFill(
         data: n_array = ...,
         alpha: int | float = 1,
-        size: TupleNumbertype2 = (500, 400),
+        size: tuple[int|float,int|float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
         title: str = ...,
@@ -4717,7 +4717,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: TupleNumbertype2
+        :type size: tuple[int|float,int|float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する

@@ -23,7 +23,7 @@ class Violinplot(twoElement):
         else:
             self.bwmethod = "scott"
         self.side = listchose(kw.get("side"), ["both", "low", "high"])
-        self.plot(
+        self.__plot(
             self.__data,
             self.__x,
             self.__y,
@@ -38,20 +38,20 @@ class Violinplot(twoElement):
             bwmethod=self.bwmethod,
         )
 
-    def plot(
+    def __plot(
         self,
         data,
         x,
         y,
-        alpha=1,
-        width=1,
-        points=100,
-        showextrema=True,
-        showmeans=False,
-        showmedians=False,
-        side="both",
-        orientation="vertical",
-        bwmethod="scott",
+        alpha,
+        width,
+        points,
+        showextrema,
+        showmeans,
+        showmedians,
+        side,
+        orientation,
+        bwmethod,
     ):
         self.clear()
         if orientation == "vertical" and x.size != 0:
@@ -100,7 +100,7 @@ class Violinplot(twoElement):
         ):
             self.bwmethod = bwmethod
         self.side = listchose(kw.get("side"), ["both", "low", "high"], self.side)
-        self.plot(
+        self.__plot(
             self.__data,
             self.__x,
             self.__y,

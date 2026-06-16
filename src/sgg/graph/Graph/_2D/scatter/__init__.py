@@ -13,7 +13,7 @@ class Scatter(twoElement):
         self.regression_bool = bols(kw.get("regression_bool"), False)
         self.line = Solid(kw.get("linestyle", "-")).solid
         self.linewidth = num0(kw.get("linewidth"), 2)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             marker=self.marker,
@@ -25,17 +25,17 @@ class Scatter(twoElement):
             linewidth=self.linewidth,
         )
 
-    def plot(
+    def __plot(
         self,
         x,
         y,
         marker,
-        alpha=1,
-        label=None,
-        s=10,
-        regression_bool=False,
-        line="-",
-        linewidth=2,
+        alpha,
+        label,
+        s,
+        regression_bool,
+        line,
+        linewidth,
     ):
         self.clear()
         for i, (xs, ys) in enumerate(TwoArray(x, y)):
@@ -75,7 +75,7 @@ class Scatter(twoElement):
         self.regression_bool = bols(kw.get("regression_bool"), self.regression_bool)
         self.line = Solid(kw.get("linestyle", self.line)).solid
         self.linewidth = num0(kw.get("linewidth"), self.linewidth)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             marker=self.marker,

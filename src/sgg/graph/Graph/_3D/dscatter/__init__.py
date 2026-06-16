@@ -13,7 +13,7 @@ class DScatter(threeElement):
         self.__z = NPArray(kw.get("z"))
         self.marker = MarkerList(kw.get("marker", "o"))
         self.s = num1s(kw.get("markersize"), 10)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             self.__z,
@@ -22,7 +22,7 @@ class DScatter(threeElement):
             label=self.label,
         )
 
-    def plot(self, x, y, z, label=None, marker="o", alpha=1):
+    def __plot(self, x, y, z, label, marker, alpha):
         self.clear()
         self.graphdata = [
             self.ax.scatter(xs, ys, zs, label=label[i], marker=marker[i], alpha=alpha)
@@ -44,7 +44,7 @@ class DScatter(threeElement):
         if markers != None:
             self.marker = MarkerList(markers)
         self.s = num1s(kw.get("markersize"), self.s)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             self.__z,

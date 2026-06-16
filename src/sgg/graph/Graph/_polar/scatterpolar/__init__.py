@@ -10,7 +10,7 @@ class Scatterpolar(polarElement):
         self.marker = Marker(kw.get("marker", "o"))
         self.s = num1s(kw.get("markersize"), 10)
         self.linewidth = num0(kw.get("linewidth"), 2)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             marker=self.marker,
@@ -19,7 +19,7 @@ class Scatterpolar(polarElement):
             s=self.s,
         )
 
-    def plot(self, x, y, marker, linewidth, alpha, s):
+    def __plot(self, x, y, marker, linewidth, alpha, s):
         self.clear()
         self.graphdata = [
             self.ax.scatter(
@@ -38,7 +38,7 @@ class Scatterpolar(polarElement):
         self.marker = Marker(kw.get("marker", self.marker))
         self.s = num1s(kw.get("markersize"), self.s)
         self.linewidth = num0(kw.get("linewidth"), self.linewidth)
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             marker=self.marker,

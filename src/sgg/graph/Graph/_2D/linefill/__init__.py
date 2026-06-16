@@ -11,7 +11,7 @@ class Linefill(twoElement):
         self.ymin = NPNumber(kw.get("ymin"), depth_limit=1)
         self.centerlinewidth = num0(kw.get("centerlinewidth"), 2)
         self.alpha = range_num(num0s(kw.get("alpha"), 0.5), 0, 1, 0.5)
-        self.plot(
+        self.__plot(
             self.__x,
             self.ymax,
             self.ymin,
@@ -19,7 +19,7 @@ class Linefill(twoElement):
             centerlinewidth=self.centerlinewidth,
         )
 
-    def plot(self, x, ymax, ymin, alpha=0.5, centerlinewidth=2):
+    def __plot(self, x, ymax, ymin, alpha, centerlinewidth):
         self.clear()
         fill = self.ax.fill_between(x, ymax, ymin, alpha=alpha, label=list(self.label))
         plot = self.ax.plot(
@@ -39,7 +39,7 @@ class Linefill(twoElement):
         if isinstance(ymin, nListlike):
             self.ymin = NPNumber(ymin, depth_limit=1)
         self.centerlinewidth = num0(kw.get("centerlinewidth"), self.centerlinewidth)
-        self.plot(
+        self.__plot(
             self.__x,
             self.ymax,
             self.ymin,

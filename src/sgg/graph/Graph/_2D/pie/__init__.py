@@ -21,7 +21,7 @@ class Pie(twoElement):
             self.explode = [float(explode) for _ in range(self.__data.size)]
         else:
             self.explode = None
-        self.plot(
+        self.__plot(
             self.__data,
             startangle=self.startangle,
             shadow=self.shadow,
@@ -33,17 +33,17 @@ class Pie(twoElement):
             alpha=self.alpha,
         )
 
-    def plot(
+    def __plot(
         self,
         data,
-        startangle=0.0,
-        shadow=False,
-        counterclock=True,
-        label=None,
-        labeldistance=1.1,
-        explode=None,
-        startangletype=True,
-        alpha=1,
+        startangle,
+        shadow,
+        counterclock,
+        label,
+        labeldistance,
+        explode,
+        startangletype,
+        alpha,
     ):
         self.clear()
         if startangletype == False:
@@ -80,7 +80,7 @@ class Pie(twoElement):
         self.shadow = bols(kw.get("shadow"), self.shadow)
         self.counterclock = bols(kw.get("counterclock"), self.counterclock)
         self.labeldistance = num0(kw.get("labeldistance"), self.labeldistance)
-        self.plot(
+        self.__plot(
             self.__data,
             startangle=self.startangle,
             shadow=self.shadow,

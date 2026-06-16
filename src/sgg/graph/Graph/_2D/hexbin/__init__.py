@@ -30,7 +30,7 @@ class Hexbin(twoElement):
             )
             else None
         )
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             self.c,
@@ -42,17 +42,17 @@ class Hexbin(twoElement):
             bins=self.bins,
         )
 
-    def plot(
+    def __plot(
         self,
         x,
         y,
         c,
-        gridsize=100,
-        xscale="linear",
-        yscale="linear",
-        mincnt=None,
-        extent=None,
-        bins=None,
+        gridsize,
+        xscale,
+        yscale,
+        mincnt,
+        extent,
+        bins,
     ):
         self.clear()
         self.graphdata = [
@@ -102,7 +102,7 @@ class Hexbin(twoElement):
             )
             else None
         )
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             self.c,

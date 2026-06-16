@@ -39,7 +39,7 @@ class Errorpolar(polarElement):
             self.errorevery = errorevery
         else:
             self.errorevery = 1
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             xerr=self.xerr,
@@ -57,23 +57,23 @@ class Errorpolar(polarElement):
             alpha=self.alpha,
         )
 
-    def plot(
+    def __plot(
         self,
         x,
         y,
-        xerr=None,
-        yerr=None,
-        fmt="",
-        linewidth=1.5,
-        capsize=0,
-        barsabove=False,
-        capthick=10,
-        xuplims=False,
-        xlolims=False,
-        yuplims=False,
-        ylolims=False,
-        errorevery=1,
-        alpha=1,
+        xerr,
+        yerr,
+        fmt,
+        linewidth,
+        capsize,
+        barsabove,
+        capthick,
+        xuplims,
+        xlolims,
+        yuplims,
+        ylolims,
+        errorevery,
+        alpha,
     ):
         self.clear()
         self.graphdata = self.ax.errorbar(
@@ -136,7 +136,7 @@ class Errorpolar(polarElement):
             or isinstance(errorevery, int)
             else 1
         )
-        self.plot(
+        self.__plot(
             self.__x,
             self.__y,
             xerr=self.xerr,

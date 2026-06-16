@@ -80,13 +80,13 @@ class NPArray:
         """配列の深さが`val`より低い場合,深さを`val`にする"""
 
     def reshape(self, size: tuple[int, ...]) -> NPArray:
-        """配列の形状を`size`で指定する"""
+        """配列の形状を`size`に変換する"""
 
     def flatten(self) -> NPArray:
         """配列を一次元に平坦にする"""
 
     def first_element(self) -> Any:
-        """`data`の最初の要素を取得する"""
+        """`NPArray`の最初の要素を取得する"""
 
     def tolist(self) -> list:
         """list型にして返す"""
@@ -101,10 +101,10 @@ class NPArray:
         self,
     ) -> tuple[ndarray[tuple[int], dtype[_ScalarT]], tuple[int, ...]]: ...
     def dimension(self) -> bool:
-        """`data`の次元が1次元か判定する"""
+        """`NPArray`の次元が1次元か判定する"""
 
     def dimensions(self) -> bool:
-        """`data`の次元が多次元か判定する"""
+        """`NPArray`の次元が多次元か判定する"""
 
     def get(self, val: int) -> Any:
         """配列の`val`番目の要素を取得する"""
