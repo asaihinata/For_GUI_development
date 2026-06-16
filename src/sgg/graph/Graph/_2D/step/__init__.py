@@ -20,9 +20,7 @@ class Step(twoElement):
             alpha=self.alpha,
         )
 
-    def __plot(
-        self, data, linewidth, fill, baseline, orientation, alpha
-    ):
+    def __plot(self, data, linewidth, fill, baseline, orientation, alpha):
         self.clear()
         self.graphdata = [
             self.ax.stairs(

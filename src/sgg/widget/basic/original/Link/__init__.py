@@ -28,8 +28,6 @@ class Link(Element):
         self.text = kw.get("text")
         if self.text == None and self.link_url != None:
             self.text = self.link_url
-        elif self.text != None and self.link_url == None:
-            pass
         self.widget = Label(
             master,
             takefocus=self.takefocus,

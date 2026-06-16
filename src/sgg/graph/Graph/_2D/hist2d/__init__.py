@@ -37,9 +37,7 @@ class Hist2d(twoElement):
             min=self.min,
         )
 
-    def __plot(
-        self, x, y, bins, alpha, density, range, min, max
-    ):
+    def __plot(self, x, y, bins, alpha, density, range, min, max):
         self.clear()
         self.graphdata = [
             self.ax.hist2d(

@@ -16,6 +16,25 @@ class WindowController:
     alpha: float
     @classmethod
     def __instancecheck__(cls, ins: Any) -> bool: ...
+    def __init__(
+        self,
+        layout: list = ...,
+        alpha: int | float = 1,
+        fullscreen: bool = False,
+        topmost: bool = False,
+        title: str = "window",
+        load: function | tuple[function, ...] | None = None,
+        bg: str = "#64778d",
+        scroll: bool = ...,
+        scroll_x: bool = ...,
+        scroll_y: bool = ...,
+        size: tuple[int | float | None, int | float | None] = (None, None),
+        maxmine: bool = False,
+        location: tuple[int | float, int | float] = (0, 0),
+        resizable: tuple[bool, bool] = ...,
+        resizableswidth: bool | None = None,
+        resizablesheight: bool | None = None,
+    ) -> None: ...
     def get(self, key: str) -> Any:
         """
         ウィジェットの情報を取得する

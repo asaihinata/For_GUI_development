@@ -7,6 +7,7 @@ from ....common import *
 
 class Btn(_Element):
     widget: Button
+    wraplength: float | int
     def delta(self):
         """ウィジェットを削除する"""
 

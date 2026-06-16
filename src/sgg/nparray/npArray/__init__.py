@@ -1,7 +1,8 @@
-from numpy import (arange, array, concatenate, expand_dims,
+from numpy import (all as alls, any as anys, arange, array, concatenate, expand_dims,
                    flip, isscalar, ndarray, prod, ravel, sort, tile)
-from numpy import all as alls, any as anys
+
 __all__ = ["NPArray", "is_array_like", "change_array_like"]
+
 
 def is_array_like(obj):
     if isinstance(obj, ndarray | list | tuple | range):
