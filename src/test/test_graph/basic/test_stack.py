@@ -12,19 +12,19 @@ if __name__ == "__main__":
     print(f"{stacky=}")
     layout = [
         [
-            sgg.Stack(
+            Guis.Stack(
                 x=stackx,
                 y=stacky,
                 title="積み上げグラフの基本",
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
-            sgg.Stack(
+            Guis.Stack(
                 x=stackx, y=stacky, title="塗りつぶす領域内の模様を指定する", hatch="-"
             ),
         ],
         [
-            sgg.Stack(
+            Guis.Stack(
                 x=stackx,
                 y=stacky,
                 title="積み上げグラフの積み上げる基準を指定する",
@@ -32,11 +32,11 @@ if __name__ == "__main__":
             )
         ],
         [
-            sgg.Stack(x=stackx, y=stacky, title="グラフを更新する", key="stack"),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Stack(x=stackx, y=stacky, title="グラフを更新する", key="stack"),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(
+    win = Guis.window(
         title="積み上げエリアチャート(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

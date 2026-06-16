@@ -8,15 +8,15 @@ def txtchange():
 
 
 def files():
-    sgg.Popup(message=win.get("file_load").get_path())
+    Guis.Popup(message=win.get("file_load").get_path())
 
 
 def folders():
-    sgg.Popup(message=win.get("folder_load").get_path())
+    Guis.Popup(message=win.get("folder_load").get_path())
 
 
 def colors():
-    sgg.Popup(message=win.get("color_select").get_color())
+    Guis.Popup(message=win.get("color_select").get_color())
 
 
 def progress_start():
@@ -68,11 +68,11 @@ if __name__ == "__main__":
         ["が", "ぎ", "ぐ", "げ", "ご"],
     ]
     layout = [
-        [sgg.Menus(list=menus, key="menus")],
-        [sgg.Texts(text="Textウィジェット")],
+        [Guis.Menus(list=menus, key="menus")],
+        [Guis.Texts(text="Textウィジェット")],
         [
-            sgg.Texts(text="keyがtxt1のTextウィジェット", key="txt1"),
-            sgg.Texts(
+            Guis.Texts(text="keyがtxt1のTextウィジェット", key="txt1"),
+            Guis.Texts(
                 key="txt2",
                 text="文字色が水色,背景色が赤色,\nサイズが50文字の幅で高さが3文字分の\nTextウィジェット",
                 bg="red",
@@ -80,178 +80,178 @@ if __name__ == "__main__":
                 size=(50, 3),
             ),
         ],
-        [sgg.Buttons(text="ボタンウィジェット", key="btn1")],
+        [Guis.Buttons(text="ボタンウィジェット", key="btn1")],
         [
-            sgg.Texts(text="keyがtxt1のTextのテキストを変えるボタン->"),
-            sgg.Buttons(text="!!変える!!", function=[txtchange], key="btn2"),
+            Guis.Texts(text="keyがtxt1のTextのテキストを変えるボタン->"),
+            Guis.Buttons(text="!!変える!!", function=[txtchange], key="btn2"),
         ],
-        [sgg.Link(link="https://www.google.com/", text="googleのサイトを開く")],
-        [sgg.Images(path=Lennapath)],
-        [sgg.Texts(text="↑画像表示(PGM,PPM,GIF,PNG,XBMでしか表示されない)")],
+        [Guis.Link(link="https://www.google.com/", text="googleのサイトを開く")],
+        [Guis.Images(path=Lennapath)],
+        [Guis.Texts(text="↑画像表示(PGM,PPM,GIF,PNG,XBMでしか表示されない)")],
         [
-            sgg.Imagelink(
+            Guis.Imagelink(
                 link="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg48GxlSXF_4b4XZmtOALPhe3mD5iREyN-Ks6Q2hdviWeDHOcG_AUOS3nn2i-E9g5jD1_7-2o9PZF5MUQEanceM7b07viAr9M6h4C7jDqGhKdF0LzHzn2IBS_A2Fvpv605wIRf9ohIPiv-HStNDjk8JdN2hU-0GTI-OsjRraMo1HnGkTALf6v7qBbHufj04/s400/pose_galpeace_schoolgirl.png"
             )
         ],
-        [sgg.Texts(text="↑URL画像も読み取れる")],
-        [sgg.Texts(text="入力欄->"), sgg.Input(text="入力欄")],
-        [sgg.Texts(text="パスワード入力->"), sgg.Input(show="※")],
-        [sgg.Texts(text="複数行表示できる入力欄")],
+        [Guis.Texts(text="↑URL画像も読み取れる")],
+        [Guis.Texts(text="入力欄->"), Guis.Input(text="入力欄")],
+        [Guis.Texts(text="パスワード入力->"), Guis.Input(show="※")],
+        [Guis.Texts(text="複数行表示できる入力欄")],
         [
-            sgg.Multiline(text="複数行表示可能の入力欄", key="multiline1"),
-            sgg.Multiline(text=["配列でも", "表示可能"], key="multiline2"),
+            Guis.Multiline(text="複数行表示可能の入力欄", key="multiline1"),
+            Guis.Multiline(text=["配列でも", "表示可能"], key="multiline2"),
         ],
-        [sgg.Texts(text="赤に選択されたリストボックス")],
-        [sgg.Listboxs(values=list_val, select=0)],
-        [sgg.TCombobox(values=list_val, default="好きな色を選ぼう!")],
-        [sgg.Texts(text="数値入力")],
-        [sgg.InputNumber(key="number")],
-        [sgg.Texts(text="この中で一番好きな色を一つ選ぶ")],
+        [Guis.Texts(text="赤に選択されたリストボックス")],
+        [Guis.Listboxs(values=list_val, select=0)],
+        [Guis.TCombobox(values=list_val, default="好きな色を選ぼう!")],
+        [Guis.Texts(text="数値入力")],
+        [Guis.InputNumber(key="number")],
+        [Guis.Texts(text="この中で一番好きな色を一つ選ぶ")],
         [
-            sgg.Radio(text="赤色", group="color_name"),
-            sgg.Radio(text="黄色", group="color_name"),
-            sgg.Radio(text="緑色", group="color_name"),
-            sgg.Radio(text="黒色", group="color_name"),
-            sgg.Radio(text="その他", group="color_name"),
+            Guis.Radio(text="赤色", group="color_name"),
+            Guis.Radio(text="黄色", group="color_name"),
+            Guis.Radio(text="緑色", group="color_name"),
+            Guis.Radio(text="黒色", group="color_name"),
+            Guis.Radio(text="その他", group="color_name"),
         ],
-        [sgg.Texts(text="この中で一番好きな色を複数選ぶ")],
+        [Guis.Texts(text="この中で一番好きな色を複数選ぶ")],
         [
-            sgg.Checkbox(text="赤色", group="color_name"),
-            sgg.Checkbox(text="黄色", group="color_name"),
-            sgg.Checkbox(text="緑色", group="color_name"),
-            sgg.Checkbox(text="黒色", group="color_name"),
-            sgg.Checkbox(text="その他", group="color_name"),
+            Guis.Checkbox(text="赤色", group="color_name"),
+            Guis.Checkbox(text="黄色", group="color_name"),
+            Guis.Checkbox(text="緑色", group="color_name"),
+            Guis.Checkbox(text="黒色", group="color_name"),
+            Guis.Checkbox(text="その他", group="color_name"),
         ],
-        [sgg.Texts(text="この中で一番好きな食べ物を一つ選ぶ")],
+        [Guis.Texts(text="この中で一番好きな食べ物を一つ選ぶ")],
         [
-            sgg.Radio(text="からあげ", group="food_name"),
-            sgg.Radio(text="蕎麦", default=True, group="food_name"),
-            sgg.Radio(text="おすし", group="food_name"),
-            sgg.Radio(text="おにぎり", group="food_name"),
-            sgg.Radio(text="その他", group="food_name"),
+            Guis.Radio(text="からあげ", group="food_name"),
+            Guis.Radio(text="蕎麦", default=True, group="food_name"),
+            Guis.Radio(text="おすし", group="food_name"),
+            Guis.Radio(text="おにぎり", group="food_name"),
+            Guis.Radio(text="その他", group="food_name"),
         ],
-        [sgg.Texts(text="この中で一番好きな食べ物を複数選ぶ")],
+        [Guis.Texts(text="この中で一番好きな食べ物を複数選ぶ")],
         [
-            sgg.Checkbox(text="からあげ", group="food_name"),
-            sgg.Checkbox(text="蕎麦", default=True, group="food_name"),
-            sgg.Checkbox(text="おすし", group="food_name"),
-            sgg.Checkbox(text="おにぎり", group="food_name"),
-            sgg.Checkbox(text="その他", group="food_name"),
+            Guis.Checkbox(text="からあげ", group="food_name"),
+            Guis.Checkbox(text="蕎麦", default=True, group="food_name"),
+            Guis.Checkbox(text="おすし", group="food_name"),
+            Guis.Checkbox(text="おにぎり", group="food_name"),
+            Guis.Checkbox(text="その他", group="food_name"),
         ],
-        [sgg.Texts(text="ファイルを選ぶ")],
-        [sgg.FileLoad(key="file_load")],
-        [sgg.Buttons(function=[files], text="選択したファイル")],
-        [sgg.Texts(text="フォルダを選ぶ")],
-        [sgg.FolderLoad(key="folder_load")],
-        [sgg.Buttons(text="選択したフォルダ", function=[folders])],
-        [sgg.Texts(text="色を選ぶ")],
-        [sgg.Colorbtn(key="color_select")],
-        [sgg.Buttons(text="選択した色", function=[colors])],
-        [sgg.Texts(text="タブ")],
+        [Guis.Texts(text="ファイルを選ぶ")],
+        [Guis.FileLoad(key="file_load")],
+        [Guis.Buttons(function=[files], text="選択したファイル")],
+        [Guis.Texts(text="フォルダを選ぶ")],
+        [Guis.FolderLoad(key="folder_load")],
+        [Guis.Buttons(text="選択したフォルダ", function=[folders])],
+        [Guis.Texts(text="色を選ぶ")],
+        [Guis.Colorbtn(key="color_select")],
+        [Guis.Buttons(text="選択した色", function=[colors])],
+        [Guis.Texts(text="タブ")],
         [
-            sgg.Tab(
+            Guis.Tab(
                 tabs=[
-                    ["tab1", [[sgg.Texts(text="tab1")]]],
-                    ["tab2", [[sgg.Texts(text="tab2")]]],
+                    ["tab1", [[Guis.Texts(text="tab1")]]],
+                    ["tab2", [[Guis.Texts(text="tab2")]]],
                 ],
                 key="tabs1",
             )
         ],
-        [sgg.Texts(text="カレンダー")],
-        [sgg.Texts(text="スライダー")],
-        [sgg.Slidebar(value=20)],
-        [sgg.Texts(text="プログレスバー")],
-        [sgg.TProgressbar(key="prigress")],
-        [sgg.Texts(text="表(縦見出しあり)")],
+        [Guis.Texts(text="カレンダー")],
+        [Guis.Texts(text="スライダー")],
+        [Guis.Slidebar(value=20)],
+        [Guis.Texts(text="プログレスバー")],
+        [Guis.TProgressbar(key="prigress")],
+        [Guis.Texts(text="表(縦見出しあり)")],
         [
-            sgg.Table(
+            Guis.Table(
                 header=["列A", "列B"],
                 values=[["r1c1", "r1c2"], ["r2c1", "r2c2"]],
                 rowheader=["aa", "bb"],
                 key="table1",
             )
         ],
-        [sgg.Texts(text="表(縦見出しなし)")],
+        [Guis.Texts(text="表(縦見出しなし)")],
         [
-            sgg.Table(
+            Guis.Table(
                 header=["列A", "列B"],
                 values=[["r1c1", "r1c2"], ["r2c1", "r2c2"]],
                 key="table2",
             )
         ],
-        [sgg.Texts(text="ツリー")],
+        [Guis.Texts(text="ツリー")],
         [
-            sgg.Tree(
+            Guis.Tree(
                 values=tree_values,
                 side_header="行",
                 header=["あ", "い", "う", "え", "お"],
                 key="tree1",
             )
         ],
-        [sgg.Texts(text="メニューボタン")],
-        [sgg.Menubuttons(list=menus, text="メニューボタン")],
+        [Guis.Texts(text="メニューボタン")],
+        [Guis.Menubuttons(list=menus, text="メニューボタン")],
         [
-            sgg.Buttons(
+            Guis.Buttons(
                 text="Popup(情報)",
-                function=lambda: print(sgg.Popup(message="メッセージ")),
+                function=lambda: print(Guis.Popup(message="メッセージ")),
             )
         ],
         [
-            sgg.Buttons(
+            Guis.Buttons(
                 text="Popupwarning(注意)",
-                function=lambda: print(sgg.Popupwarning(message="メッセージ")),
+                function=lambda: print(Guis.Popupwarning(message="メッセージ")),
             )
         ],
         [
-            sgg.Buttons(
+            Guis.Buttons(
                 text="Popupwarningyesno(注意)",
-                function=lambda: print(sgg.Popupwarningyesno(message="メッセージ")),
+                function=lambda: print(Guis.Popupwarningyesno(message="メッセージ")),
             )
         ],
         [
-            sgg.Buttons(
+            Guis.Buttons(
                 text="Popuperror(エラー)",
-                function=lambda: print(sgg.Popuperror(message="メッセージ")),
+                function=lambda: print(Guis.Popuperror(message="メッセージ")),
             )
         ],
         [
-            sgg.Buttons(
+            Guis.Buttons(
                 text="Popuperror(エラー)",
-                function=lambda: print(sgg.Popuperroryesno(message="メッセージ")),
+                function=lambda: print(Guis.Popuperroryesno(message="メッセージ")),
             )
         ],
         [
-            sgg.Buttons(
+            Guis.Buttons(
                 text="Popupyesno(bool型を返す)",
-                function=lambda: print(sgg.Popupyesno(message="メッセージ")),
+                function=lambda: print(Guis.Popupyesno(message="メッセージ")),
             )
         ],
         [
-            sgg.Buttons(
+            Guis.Buttons(
                 text="Popupokcancel(bool型を返す)",
-                function=lambda: print(sgg.Popupokcancel(message="メッセージ")),
+                function=lambda: print(Guis.Popupokcancel(message="メッセージ")),
             )
         ],
         [
-            sgg.Buttons(
+            Guis.Buttons(
                 text="Popupquestion(YesかNoを返す)",
-                function=lambda: print(sgg.Popupquestion(message="メッセージ")),
+                function=lambda: print(Guis.Popupquestion(message="メッセージ")),
             )
         ],
         [
-            sgg.Buttons(
+            Guis.Buttons(
                 text="Popupyesnocancel(bool型とNoneを返す)",
-                function=lambda: print(sgg.Popupyesnocancel(message="メッセージ")),
+                function=lambda: print(Guis.Popupyesnocancel(message="メッセージ")),
             )
         ],
         [
-            sgg.LineGraph(
+            Guis.LineGraph(
                 x=x1, y=y1, title="折り線グラフ", xlabel="xlabel", ylabel="ylabel"
             )
         ],
-        [sgg.Pie(data=y3, title="円グラフ", label=x3)],
+        [Guis.Pie(data=y3, title="円グラフ", label=x3)],
         [
-            sgg.BarGraph(
+            Guis.BarGraph(
                 x=x2,
                 y=y2,
                 title="棒グラフ(縦)",
@@ -261,7 +261,7 @@ if __name__ == "__main__":
             )
         ],
         [
-            sgg.BarhGraph(
+            Guis.BarhGraph(
                 x=y2,
                 y=x2,
                 title="棒グラフ(横)",
@@ -270,10 +270,10 @@ if __name__ == "__main__":
                 height=0.5,
             )
         ],
-        [sgg.Scatter(x=x3, y=y3, title="散布図", xlabel="xlabel", ylabel="ylabel")],
-        [sgg.Scatter(x=x4, y=y4, title="散布図")],
+        [Guis.Scatter(x=x3, y=y3, title="散布図", xlabel="xlabel", ylabel="ylabel")],
+        [Guis.Scatter(x=x4, y=y4, title="散布図")],
         [
-            sgg.DScatter(
+            Guis.DScatter(
                 x=x3D,
                 y=y3D,
                 z=z3D,
@@ -283,32 +283,32 @@ if __name__ == "__main__":
                 zlabel="z",
             )
         ],
-        [sgg.Hist(data=histdata, title="ヒストグラフ")],
-        [sgg.Stem(x=x1, y=y1, title="ステムグラフ")],
-        [sgg.Boxplot(data=boxdata, title="箱ひげ図", whis=1.5)],
+        [Guis.Hist(data=histdata, title="ヒストグラフ")],
+        [Guis.Stem(x=x1, y=y1, title="ステムグラフ")],
+        [Guis.Boxplot(data=boxdata, title="箱ひげ図", whis=1.5)],
         [
-            sgg.Waterfall(
+            Guis.Waterfall(
                 x=x5, y=y5, width=0.5, title="ウォーターフォール", linestyle="dotted"
             )
         ],
-        [sgg.Waterfallh(x=x5, y=y5, height=0.5, title="ウォーターフォール")],
-        [sgg.Step(data=stepdata, title="階段グラフ")],
-        [sgg.Stack(x=x6, y=y6, title="積み上げグラフ")],
+        [Guis.Waterfallh(x=x5, y=y5, height=0.5, title="ウォーターフォール")],
+        [Guis.Step(data=stepdata, title="階段グラフ")],
+        [Guis.Stack(x=x6, y=y6, title="積み上げグラフ")],
         [
-            sgg.Eventplot(
+            Guis.Eventplot(
                 data=eventdata,
                 linestyle="dashed",
                 label=["a", "b", "c"],
                 title="イベントグラフ",
             )
         ],
-        [sgg.Errorbar(x=x7, y=y7, err=err, title="エラーバー")],
-        [sgg.Errorbar(x=x7, y=y7, xerr=xerr, yerr=yerr, title="エラーバー")],
-        [sgg.Errorbar(x=x7, y=y7, xerr=xerr, title="エラーバー")],
-        [sgg.Errorbar(x=x7, y=y7, yerr=yerr, title="エラーバー")],
-        [sgg.Ecdf(data=ecdfdata, title="経験的累積分布関数のグラフ")],
+        [Guis.Errorbar(x=x7, y=y7, err=err, title="エラーバー")],
+        [Guis.Errorbar(x=x7, y=y7, xerr=xerr, yerr=yerr, title="エラーバー")],
+        [Guis.Errorbar(x=x7, y=y7, xerr=xerr, title="エラーバー")],
+        [Guis.Errorbar(x=x7, y=y7, yerr=yerr, title="エラーバー")],
+        [Guis.Ecdf(data=ecdfdata, title="経験的累積分布関数のグラフ")],
     ]
-    win = sgg.window(
+    win = Guis.window(
         title="デモ", layout=layout, load=[progress_start], scroll=True, maxmine=True
     )
     win.run()

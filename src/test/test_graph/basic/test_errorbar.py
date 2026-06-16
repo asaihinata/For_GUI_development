@@ -15,7 +15,7 @@ if __name__ == "__main__":
     print(f"{yerr=}")
     layout = [
         [
-            sgg.Errorbar(
+            Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
@@ -23,7 +23,7 @@ if __name__ == "__main__":
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
-            sgg.Errorbar(
+            Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 xerr=xerr,
@@ -34,14 +34,14 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Errorbar(
+            Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
                 title="xの上向きの誤差に矢印を付ける",
                 xuplims=True,
             ),
-            sgg.Errorbar(
+            Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
@@ -50,14 +50,14 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Errorbar(
+            Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
                 title="yの上向きの誤差に矢印を付ける",
                 yuplims=True,
             ),
-            sgg.Errorbar(
+            Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
@@ -66,14 +66,14 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Errorbar(
+            Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
                 title="データ点とデータ点を結ぶ線を指定する",
                 linestyle="dashdot",
             ),
-            sgg.Errorbar(
+            Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
@@ -82,14 +82,14 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Errorbar(
+            Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
                 title="キャップの長さを指定する",
                 capsize=3,
             ),
-            sgg.Errorbar(
+            Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
@@ -99,14 +99,14 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Errorbar(
+            Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
                 title="エラーバーを表示する頻度を変える",
                 errorevery=3,
             ),
-            sgg.Errorbar(
+            Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
@@ -115,7 +115,7 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Errorbar(
+            Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
@@ -124,15 +124,15 @@ if __name__ == "__main__":
             )
         ],
         [
-            sgg.Errorbar(
+            Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
                 title="グラフを更新する",
                 key="errorbar",
             ),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(title="エラーバー(test)", layout=layout, scroll=True, maxmine=True)
+    win = Guis.window(title="エラーバー(test)", layout=layout, scroll=True, maxmine=True)
     win.run()

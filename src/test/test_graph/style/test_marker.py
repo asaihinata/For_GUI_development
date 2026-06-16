@@ -8,7 +8,7 @@ if __name__ == "__main__":
     y2 = [[count] for count, _ in enumerate(range(1, len(marker2) + 1))]
     layout = [
         [
-            sgg.Scatter(
+            Guis.Scatter(
                 x=x,
                 y=y1,
                 label=marker1,
@@ -17,7 +17,7 @@ if __name__ == "__main__":
                 grid_xy=False,
                 ticksshow=True,
             ),
-            sgg.Scatter(
+            Guis.Scatter(
                 x=x,
                 y=y2,
                 label=marker2,
@@ -28,7 +28,7 @@ if __name__ == "__main__":
             ),
         ]
     ]
-    win = sgg.window(
+    win = Guis.window(
         title="線のスタイルの種類", layout=layout, scroll=True, maxmine=True
     )
     win.run()

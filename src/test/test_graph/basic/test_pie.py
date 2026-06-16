@@ -11,16 +11,16 @@ if __name__ == "__main__":
     print(f"{piedata=}")
     layout = [
         [
-            sgg.Pie(data=piedata, title="円グラフの基本", label=pielabel),
-            sgg.Pie(
+            Guis.Pie(data=piedata, title="円グラフの基本", label=pielabel),
+            Guis.Pie(
                 data=piedata, title="円グラフに影を付ける", label=pielabel, shadow=True
             ),
         ],
         [
-            sgg.Pie(
+            Guis.Pie(
                 data=piedata, title="円グラフを90度回す", label=pielabel, startangle=90
             ),
-            sgg.Pie(
+            Guis.Pie(
                 data=piedata,
                 title="円グラフをpi/2rad回す",
                 label=pielabel,
@@ -29,13 +29,13 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Pie(
+            Guis.Pie(
                 data=piedata,
                 title="時計回りに表示させる",
                 label=pielabel,
                 counterclock=True,
             ),
-            sgg.Pie(
+            Guis.Pie(
                 data=piedata,
                 title="ラベルの表示位置を変更する",
                 label=pielabel,
@@ -43,10 +43,10 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Pie(
+            Guis.Pie(
                 data=piedata, title="全体のウェッジを離す", label=pielabel, explode=0.2
             ),
-            sgg.Pie(
+            Guis.Pie(
                 data=piedata,
                 title="一部のウェッジを離す",
                 label=pielabel,
@@ -54,9 +54,9 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Pie(data=piedata, title="グラフを更新する", label=pielabel, key="pie"),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Pie(data=piedata, title="グラフを更新する", label=pielabel, key="pie"),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(title="円グラフ(test)", layout=layout, scroll=True, maxmine=True)
+    win = Guis.window(title="円グラフ(test)", layout=layout, scroll=True, maxmine=True)
     win.run()

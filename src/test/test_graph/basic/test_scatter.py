@@ -14,14 +14,14 @@ if __name__ == "__main__":
     print(f"{scattery2=}")
     layout = [
         [
-            sgg.Scatter(
+            Guis.Scatter(
                 x=scatterx1,
                 y=scattery1,
                 title="散布図の基本1",
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
-            sgg.Scatter(
+            Guis.Scatter(
                 x=scatterx2,
                 y=scattery2,
                 title="散布図の基本2",
@@ -30,8 +30,8 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Scatter(x=scatterx1, y=scattery1, title="マーカーの指定", marker="d"),
-            sgg.Scatter(
+            Guis.Scatter(x=scatterx1, y=scattery1, title="マーカーの指定", marker="d"),
+            Guis.Scatter(
                 x=scatterx1,
                 y=scattery1,
                 title="マーカーサイズの変更",
@@ -40,19 +40,19 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Scatter(
+            Guis.Scatter(
                 x=scatterx1, y=scattery1, title="回帰直線1", regression_bool=True
             ),
-            sgg.Scatter(
+            Guis.Scatter(
                 x=scatterx2, y=scattery2, title="回帰直線2", regression_bool=True
             ),
         ],
         [
-            sgg.Scatter(
+            Guis.Scatter(
                 x=scatterx1, y=scattery1, title="グラフを更新する", key="scatter"
             ),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(title="散布図(test)", layout=layout, scroll=True, maxmine=True)
+    win = Guis.window(title="散布図(test)", layout=layout, scroll=True, maxmine=True)
     win.run()

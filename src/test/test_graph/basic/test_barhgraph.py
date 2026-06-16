@@ -14,7 +14,7 @@ if __name__ == "__main__":
     print(f"{bargraphy2=}")
     layout = [
         [
-            sgg.BarhGraph(
+            Guis.BarhGraph(
                 x=bargraphy1,
                 y=bargraphx1,
                 title="横軸棒グラフの基本1",
@@ -22,7 +22,7 @@ if __name__ == "__main__":
                 ylabel=ylabel,
                 label=["bar1"],
             ),
-            sgg.BarhGraph(
+            Guis.BarhGraph(
                 x=bargraphy2,
                 y=bargraphx2,
                 title="横軸棒グラフの基本2",
@@ -32,26 +32,26 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.BarhGraph(
+            Guis.BarhGraph(
                 x=bargraphy1, y=bargraphx1, title="x軸を対数スケールにする", logs=True
             ),
-            sgg.BarhGraph(
+            Guis.BarhGraph(
                 x=bargraphy1, y=bargraphx1, title="グラフの開始位置の変更", align="edge"
             ),
         ],
         [
-            sgg.BarhGraph(
+            Guis.BarhGraph(
                 x=bargraphy1, y=bargraphx1, title="グラフの幅の変更", height=0.4
             )
         ],
         [
-            sgg.BarhGraph(
+            Guis.BarhGraph(
                 x=bargraphy1, y=bargraphx1, title="グラフを更新する", key="BarhGraph"
             ),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(
+    win = Guis.window(
         title="横軸棒グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

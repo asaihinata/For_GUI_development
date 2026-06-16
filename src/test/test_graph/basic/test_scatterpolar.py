@@ -13,16 +13,16 @@ if __name__ == "__main__":
     print(f"{scatterpolordata=}")
     layout = [
         [
-            sgg.Scatterpolar(
+            Guis.Scatterpolar(
                 x=scatterpolorx, y=scatterpolory, title="極軸散布図の基本1"
             ),
-            sgg.Scatterpolar(data=scatterpolordata, title="極軸散布図の基本2"),
+            Guis.Scatterpolar(data=scatterpolordata, title="極軸散布図の基本2"),
         ],
         [
-            sgg.Scatterpolar(
+            Guis.Scatterpolar(
                 x=scatterpolorx, y=scatterpolory, title="マーカーの指定", marker="d"
             ),
-            sgg.Scatterpolar(
+            Guis.Scatterpolar(
                 x=scatterpolorx,
                 y=scatterpolory,
                 title="マーカーサイズの変更",
@@ -31,14 +31,14 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Scatterpolar(
+            Guis.Scatterpolar(
                 x=scatterpolorx,
                 y=scatterpolory,
                 title="グラフを更新する",
                 key="scatterpolor",
             ),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(title="極軸散布図(test)", layout=layout, scroll=True, maxmine=True)
+    win = Guis.window(title="極軸散布図(test)", layout=layout, scroll=True, maxmine=True)
     win.run()

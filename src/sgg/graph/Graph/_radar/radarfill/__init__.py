@@ -10,7 +10,7 @@ class RadarFill(RadarElement):
 
     def plot(self, data, alpha=1):
         self.clear()
-        self.graphdata = [self.ax.fill(self.theta, d, alpha=alpha) for d in data]
+        self.graphdata = [self.ax.fill(self.theta, d, alpha=alpha) for d in data][0]
         self._adjustment()
 
     def update(self, **kw):

@@ -12,26 +12,26 @@ if __name__ == "__main__":
     print(f"{waterfally=}")
     layout = [
         [
-            sgg.Waterfallh(
+            Guis.Waterfallh(
                 x=waterfallx,
                 y=waterfally,
                 title="横向きのウォーターフォールの基本",
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
-            sgg.Waterfallh(
+            Guis.Waterfallh(
                 x=waterfallx, y=waterfally, title="バーの幅を変更する", width=0.5
             ),
         ],
         [
-            sgg.Waterfallh(
+            Guis.Waterfallh(
                 x=waterfallx,
                 y=waterfally,
                 title="バーとバーを繋ぐ線の種類を変更する",
                 width=0.5,
                 linestyle="dotted",
             ),
-            sgg.Waterfallh(
+            Guis.Waterfallh(
                 x=waterfallx,
                 y=waterfally,
                 title="バーとバーを繋ぐ線の色を変更する",
@@ -40,13 +40,13 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Waterfallh(
+            Guis.Waterfallh(
                 x=waterfallx,
                 y=waterfally,
                 title="上昇バーの色を変更する",
                 ucolor="pink",
             ),
-            sgg.Waterfallh(
+            Guis.Waterfallh(
                 x=waterfallx,
                 y=waterfally,
                 title="減少バーの色を変更する",
@@ -54,10 +54,10 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Waterfallh(
+            Guis.Waterfallh(
                 x=waterfallx, y=waterfally, title="合計を表示させる", sums=True
             ),
-            sgg.Waterfallh(
+            Guis.Waterfallh(
                 x=waterfallx,
                 y=waterfally,
                 title="合計を表示させる",
@@ -66,13 +66,13 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Waterfallh(
+            Guis.Waterfallh(
                 x=waterfallx, y=waterfally, title="グラフを更新する", key="waterfallh"
             ),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(
+    win = Guis.window(
         title="横向きのウォーターフォール(test)",
         layout=layout,
         scroll=True,

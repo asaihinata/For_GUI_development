@@ -13,7 +13,7 @@ if __name__ == "__main__":
     print(f"{dscatterz=}")
     layout = [
         [
-            sgg.DScatter(
+            Guis.DScatter(
                 x=dscatterx,
                 y=dscattery,
                 z=dscatterz,
@@ -22,7 +22,7 @@ if __name__ == "__main__":
                 ylabel=ylabel,
                 zlabel=zlabel,
             ),
-            sgg.DScatter(
+            Guis.DScatter(
                 x=dscatterx,
                 y=dscattery,
                 z=dscatterz,
@@ -34,14 +34,14 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.DScatter(
+            Guis.DScatter(
                 x=dscatterx,
                 y=dscattery,
                 z=dscatterz,
                 title="マーカーを指定する",
                 marker="*",
             ),
-            sgg.DScatter(
+            Guis.DScatter(
                 x=dscatterx,
                 y=dscattery,
                 z=dscatterz,
@@ -51,15 +51,15 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.DScatter(
+            Guis.DScatter(
                 x=dscatterx,
                 y=dscattery,
                 z=dscatterz,
                 title="グラフを更新する",
                 key="dscatter",
             ),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(title="3D散布図(test)", layout=layout, scroll=True, maxmine=True)
+    win = Guis.window(title="3D散布図(test)", layout=layout, scroll=True, maxmine=True)
     win.run()

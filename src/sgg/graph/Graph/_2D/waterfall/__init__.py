@@ -26,6 +26,8 @@ class Waterfall(twoElement):
             bottom=self.bottom,
             color=self.colorline,
             linestyle=self.linestyle,
+            ucolor=self.ucolor,
+            dcolor=self.dcolor,
         )
 
     def plot(
@@ -39,16 +41,16 @@ class Waterfall(twoElement):
         bottom=None,
         color=None,
         linestyle="-",
+        ucolor="#156082",
+        dcolor="#e97132",
     ):
         self.clear()
         x, y = x.tonp(), y.tonp()
         if sums:
-            x, y, bottom = (
-                np.append(x, sumstext),
-                np.append(y, np.sum(y)),
-                np.append(bottom, 0),
-            )
-        self.color = np.where(y <= 0, self.dcolor, self.ucolor)
+            x = np.append(x, sumstext)
+            y = np.append(y, np.sum(y))
+            bottom = np.append(bottom, 0)
+        self.color = np.where(y <= 0, dcolor, ucolor)
         self.graphdata = [
             self.ax.bar(
                 x,
@@ -91,6 +93,8 @@ class Waterfall(twoElement):
             bottom=self.bottom,
             color=self.colorline,
             linestyle=self.linestyle,
+            ucolor=self.ucolor,
+            dcolor=self.dcolor,
         )
         self._redraw()
 

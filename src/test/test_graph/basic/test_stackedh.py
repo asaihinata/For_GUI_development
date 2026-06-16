@@ -12,14 +12,14 @@ if __name__ == "__main__":
     print(f"{stackeddataname=}")
     layout = [
         [
-            sgg.Stackedh(
+            Guis.Stackedh(
                 data=stackeddata,
                 dataname=stackeddataname,
                 title="積み上げ横棒グラフの基本",
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
-            sgg.Stackedh(
+            Guis.Stackedh(
                 data=stackeddata,
                 dataname=stackeddataname,
                 title="幅を変更する",
@@ -27,16 +27,16 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Stackedh(
+            Guis.Stackedh(
                 data=stackeddata,
                 dataname=stackeddataname,
                 title="グラフを更新する",
                 key="stackedh",
             ),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(
+    win = Guis.window(
         title="積み上げ横棒グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

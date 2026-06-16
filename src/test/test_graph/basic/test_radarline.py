@@ -11,12 +11,12 @@ if __name__ == "__main__":
     print(f"{radarplotdata=}")
     layout = [
         [
-            sgg.RadarLine(data=radarplotdata, title="折れ線レーダーチャートの基本"),
-            sgg.RadarLine(data=radarplotdata, linewidth=10, title="線の太さを変更する"),
+            Guis.RadarLine(data=radarplotdata, title="折れ線レーダーチャートの基本"),
+            Guis.RadarLine(data=radarplotdata, linewidth=10, title="線の太さを変更する"),
         ],
         [
-            sgg.RadarLine(data=radarplotdata, marker="+", title="マーカーを表示させる"),
-            sgg.RadarLine(
+            Guis.RadarLine(data=radarplotdata, marker="+", title="マーカーを表示させる"),
+            Guis.RadarLine(
                 data=radarplotdata,
                 marker="+",
                 markersize=20,
@@ -24,13 +24,13 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.RadarLine(
+            Guis.RadarLine(
                 data=radarplotdata, title="グラフを更新する", key="radarline"
             ),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(
+    win = Guis.window(
         title="折れ線レーダーチャート(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

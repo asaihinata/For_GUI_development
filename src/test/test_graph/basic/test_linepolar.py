@@ -13,14 +13,14 @@ if __name__ == "__main__":
     print(f"{linepolardata=}")
     layout = [
         [
-            sgg.Linepolar(x=linepolarx, y=linepolary, title="極軸折線グラフの基本1"),
-            sgg.Linepolar(data=linepolardata, title="極軸折線グラフの基本2"),
+            Guis.Linepolar(x=linepolarx, y=linepolary, title="極軸折線グラフの基本1"),
+            Guis.Linepolar(data=linepolardata, title="極軸折線グラフの基本2"),
         ],
         [
-            sgg.Linepolar(
+            Guis.Linepolar(
                 x=linepolarx, y=linepolary, title="マーカーを変更する", marker="d"
             ),
-            sgg.Linepolar(
+            Guis.Linepolar(
                 x=linepolarx,
                 y=linepolary,
                 title="マーカーの大きさを変更する",
@@ -29,21 +29,21 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Linepolar(
+            Guis.Linepolar(
                 x=linepolarx, y=linepolary, title="線の色の変更", color="red"
             ),
-            sgg.Linepolar(
+            Guis.Linepolar(
                 x=linepolarx, y=linepolary, title="線の種類を変更する", linestyle="--"
             ),
         ],
         [
-            sgg.Linepolar(
+            Guis.Linepolar(
                 x=linepolarx, y=linepolary, title="グラフを更新する", key="linepolar"
             ),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(
+    win = Guis.window(
         title="極軸折線グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

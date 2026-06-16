@@ -7,7 +7,7 @@ class RadarLine(RadarElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.markersize = num0(kw.get("markersize"), 10)
-        self.marker = Marker(kw.get("marker", "none"))
+        self.marker = Marker(kw.get("marker", ""))
         self.line = Solid(kw.get("linestyle", "-"))
         self.linewidth = num0(kw.get("linewidth"), 2)
         self.plot(
@@ -19,9 +19,7 @@ class RadarLine(RadarElement):
             alpha=self.alpha,
         )
 
-    def plot(
-        self, data, marker="none", linewidth=2, linestyle="-", markersize=10, alpha=1
-    ):
+    def plot(self, data, marker, linewidth, linestyle, markersize, alpha):
         self.clear()
         self.graphdata = [
             self.ax.plot(

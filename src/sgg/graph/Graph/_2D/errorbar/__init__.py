@@ -10,8 +10,11 @@ class Errorbar(twoElement):
         super().__init__(master, kw)
         self.__x = NPNumber(kw.get("x"))
         self.__y = NPNumber(kw.get("y"))
-        err, xerr, yerr = kw.get("err"), kw.get("xerr"), kw.get("yerr")
-        self.xerr, self.yerr = None, None
+        err = kw.get("err")
+        xerr = kw.get("xerr")
+        yerr = kw.get("yerr")
+        self.xerr = None
+        self.yerr = None
         if err is not None:
             self.yerr = self.xerr = self.err = NPNumber(err)
         if xerr is not None:

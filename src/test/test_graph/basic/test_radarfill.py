@@ -12,22 +12,22 @@ if __name__ == "__main__":
     print(f"{radarfilldata2=}")
     layout = [
         [
-            sgg.RadarFill(
+            Guis.RadarFill(
                 data=radarfilldata1, title="塗りつぶしレーダーチャートの基本1"
             ),
-            sgg.RadarFill(
+            Guis.RadarFill(
                 data=radarfilldata2, title="塗りつぶしレーダーチャートの基本2"
             ),
         ],
-        [sgg.RadarFill(data=radarfilldata1, alpha=0.5, title="透明度を変更する")],
+        [Guis.RadarFill(data=radarfilldata1, alpha=0.5, title="透明度を変更する")],
         [
-            sgg.RadarFill(
+            Guis.RadarFill(
                 data=radarfilldata1, title="グラフを更新する", key="radarfill"
             ),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(
+    win = Guis.window(
         title="塗りつぶしレーダーチャート(test)",
         layout=layout,
         scroll=True,

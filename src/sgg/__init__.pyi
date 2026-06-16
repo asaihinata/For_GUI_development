@@ -6,6 +6,7 @@ from typing import Union
 from matplotlib.mlab import GaussianKDE
 from numpy import ndarray
 
+from ._dialog import *
 from .graph import *
 from .nparray import *
 from .readfile import Getcsv, Getjosn
@@ -13,116 +14,17 @@ from .typing import *
 from .version import __version__, version
 from .widget import *
 
-__all__: list[str] = [
-    "BarGraph",
-    "Barcode",
-    "BarhGraph",
-    "Barpolar",
-    "Boxplot",
-    "Buttons",
-    "Checkbox",
-    "Chooser",
-    "Colorbtn",
-    "Column",
-    "DScatter",
-    "Directory",
-    "Ecdf",
-    "Errorbar",
-    "Errorpolar",
-    "Eventplot",
-    "Eventpolar",
-    "FileLoad",
-    "FolderLoad",
-    "Formatconversion",
-    "Frames",
-    "Funne",
-    "Getcsv",
-    "Getjosn",
-    "Hatplot",
-    "Hexbin",
-    "Hist",
-    "Hist2d",
-    "Imagebyte",
-    "Imagelink",
-    "Images",
-    "Input",
-    "InputNumber",
-    "LineGraph",
-    "Linefill",
-    "Linepolar",
-    "Link",
-    "Listboxs",
-    "Menubuttons",
-    "Menus",
-    "Multiline",
-    "NPArray",
-    "NPColor",
-    "NPDate",
-    "NPNumber",
-    "NPStatisticsd",
-    "NPStatisticsds",
-    "NPString",
-    "Open",
-    "Pie",
-    "QRImage",
-    "RadarFill",
-    "RadarLine",
-    "Radio",
-    "SaveAs",
-    "Savebtn",
-    "Scatter",
-    "Scatterpolar",
-    "Slidebar",
-    "Stack",
-    "Stacked",
-    "Stackedh",
-    "Stem",
-    "Stempolar",
-    "Step",
-    "TCombobox",
-    "TProgressbar",
-    "Tab",
-    "Table",
-    "Texts",
-    "Tree",
-    "Violinplot",
-    "Waterfall",
-    "Waterfallh",
-    "WindowController",
-    "__version__",
-    "askcolor",
-    "askdirectory",
-    "askopenfilename",
-    "asksaveasfilename",
-    "boolDtype",
-    "bytesDtype",
-    "complexDtype",
-    "datetimeDtype",
-    "floatDtype",
-    "intDtype",
-    "integerDtype",
-    "numberDtype",
-    "popup",
-    "popuperror",
-    "popuperroryesno",
-    "popupokcansel",
-    "popupquestion",
-    "popuptrys",
-    "popupwarning",
-    "popupwarningyesno",
-    "popupyesno",
-    "popupyesnocansel",
-    "sgg",
-    "strDtype",
-    "stringDtype",
-    "timedeltaDtype",
-    "uintDtype",
-    "version",
-]
+__all__ = (
+    ["__version__", "version", "Getjosn", "Getcsv"]
+    + getattr(_dialog, "__all__", [])
+    + getattr(graph, "__all__", [])
+    + getattr(nparray, "__all__", [])
+    + getattr(widget, "__all__", [])
+)
 
 def __dir__() -> list[str]: ...
 
-class sgg:
+class Guis:
     @classmethod
     def window(
         cls,
@@ -4046,7 +3948,7 @@ class sgg:
             "none",
             " ",
             "",
-        ] = None,
+        ] = "",
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
         alpha: int | float = 1,
         size: TupleNumbertype2 = (500, 400),

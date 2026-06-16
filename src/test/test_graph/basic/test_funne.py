@@ -11,20 +11,20 @@ if __name__ == "__main__":
     print(f"{funnedata=}")
     layout = [
         [
-            sgg.Funne(
+            Guis.Funne(
                 data=funnedata,
                 title="じょうごグラフの基本",
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
-            sgg.Funne(data=funnedata, title="高さを変更する", height=0.5),
+            Guis.Funne(data=funnedata, title="高さを変更する", height=0.5),
         ],
         [
-            sgg.Funne(data=funnedata, title="グラフを更新する", key="funne"),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Funne(data=funnedata, title="グラフを更新する", key="funne"),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(
+    win = Guis.window(
         title="じょうごグラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

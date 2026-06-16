@@ -15,13 +15,13 @@ if __name__ == "__main__":
     print(f"{polaryerr=}")
     layout = [
         [
-            sgg.Errorpolar(
+            Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
                 title="極軸エラーグラフの基本1",
             ),
-            sgg.Errorpolar(
+            Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 polarxerr=polarxerr,
@@ -30,14 +30,14 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Errorpolar(
+            Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
                 title="xの上向きの誤差に矢印を付ける",
                 xuplims=True,
             ),
-            sgg.Errorpolar(
+            Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
@@ -46,14 +46,14 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Errorpolar(
+            Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
                 title="yの上向きの誤差に矢印を付ける",
                 yuplims=True,
             ),
-            sgg.Errorpolar(
+            Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
@@ -62,14 +62,14 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Errorpolar(
+            Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
                 title="データ点とデータ点を結ぶ線を指定する",
                 linestyle="dashdot",
             ),
-            sgg.Errorpolar(
+            Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
@@ -78,14 +78,14 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Errorpolar(
+            Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
                 title="キャップの長さを指定する",
                 capsize=3,
             ),
-            sgg.Errorpolar(
+            Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
@@ -95,14 +95,14 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Errorpolar(
+            Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
                 title="極軸エラーグラフを表示する頻度を変える",
                 errorevery=3,
             ),
-            sgg.Errorpolar(
+            Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
@@ -111,7 +111,7 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Errorpolar(
+            Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
@@ -120,17 +120,17 @@ if __name__ == "__main__":
             )
         ],
         [
-            sgg.Errorpolar(
+            Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
                 title="グラフを更新する",
                 key="errorpolar",
             ),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(
+    win = Guis.window(
         title="極軸エラーグラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

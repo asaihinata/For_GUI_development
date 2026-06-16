@@ -7,8 +7,11 @@ class Errorpolar(polarElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.__x, self.__y = self._xyd(kw.get("x"), kw.get("y"), kw.get("data"))
-        err, xerr, yerr = kw.get("err"), kw.get("xerr"), kw.get("yerr")
-        self.xerr, self.yerr = None, None
+        err = kw.get("err")
+        xerr = kw.get("xerr")
+        yerr = kw.get("yerr")
+        self.xerr = None
+        self.yerr = None
         if err is not None:
             self.err = NPNumber(err)
             self.xerr, self.yerr = self.err, self.err

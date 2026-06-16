@@ -15,7 +15,7 @@ if __name__ == "__main__":
     print(f"{linefillymin=}")
     layout = [
         [
-            sgg.Linefill(
+            Guis.Linefill(
                 x=linefillx,
                 ymax=linefillymax,
                 ymin=linefillymin,
@@ -23,7 +23,7 @@ if __name__ == "__main__":
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
-            sgg.Linefill(
+            Guis.Linefill(
                 x=linefillx,
                 ymax=linefillymax,
                 ymin=linefillymin,
@@ -32,17 +32,17 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Linefill(
+            Guis.Linefill(
                 x=linefillx,
                 ymax=linefillymax,
                 ymin=linefillymin,
                 title="グラフを更新する",
                 key="linefill",
             ),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(
+    win = Guis.window(
         title="積上げ面グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

@@ -11,34 +11,34 @@ if __name__ == "__main__":
     print(f"{ecdfdata=}")
     layout = [
         [
-            sgg.Ecdf(
+            Guis.Ecdf(
                 data=ecdfdata,
                 title="経験的累積分布関数の基本",
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
-            sgg.Ecdf(
+            Guis.Ecdf(
                 data=ecdfdata, title="同一値のデータをまとめて最適化する", compress=True
             ),
         ],
         [
-            sgg.Ecdf(
+            Guis.Ecdf(
                 data=ecdfdata,
                 title="経験的累積分布関数の向きを変える",
                 orientation="horizontal",
             ),
-            sgg.Ecdf(data=ecdfdata, title="補累積分布を描画する", complementary=True),
+            Guis.Ecdf(data=ecdfdata, title="補累積分布を描画する", complementary=True),
         ],
         [
-            sgg.Ecdf(data=ecdfdata, title="線の幅を変える", linewidth=3),
-            sgg.Ecdf(data=ecdfdata, title="線の種類を変える", linestyle="dotted"),
+            Guis.Ecdf(data=ecdfdata, title="線の幅を変える", linewidth=3),
+            Guis.Ecdf(data=ecdfdata, title="線の種類を変える", linestyle="dotted"),
         ],
         [
-            sgg.Ecdf(data=ecdfdata, title="グラフを更新する", key="ecdf"),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Ecdf(data=ecdfdata, title="グラフを更新する", key="ecdf"),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(
+    win = Guis.window(
         title="経験的累積分布関数(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

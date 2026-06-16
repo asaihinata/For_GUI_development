@@ -12,7 +12,7 @@ if __name__ == "__main__":
     print(f"{hatplotdata=}")
     layout = [
         [
-            sgg.Hatplot(
+            Guis.Hatplot(
                 x=hatplotx,
                 data=hatplotdata,
                 title="ハットグラフの基本",
@@ -20,7 +20,7 @@ if __name__ == "__main__":
                 ylabel=ylabel,
                 yticksrange=5,
             ),
-            sgg.Hatplot(
+            Guis.Hatplot(
                 x=hatplotx,
                 data=hatplotdata,
                 title="ハットの色を変える",
@@ -29,22 +29,22 @@ if __name__ == "__main__":
             ),
         ],
         [
-            sgg.Hatplot(
+            Guis.Hatplot(
                 x=hatplotx, data=hatplotdata, title="ハットグラフの基本", yticksrange=5
             ),
         ],
         [
-            sgg.Hatplot(
+            Guis.Hatplot(
                 x=hatplotx,
                 data=hatplotdata,
                 title="グラフを更新する",
                 yticksrange=5,
                 key="hat",
             ),
-            sgg.Buttons(text="更新ボタン", function=updates),
+            Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = sgg.window(
+    win = Guis.window(
         title="ハットグラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

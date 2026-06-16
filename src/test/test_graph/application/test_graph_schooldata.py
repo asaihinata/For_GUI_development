@@ -12,7 +12,7 @@ if __name__ == "__main__":
                     datas[0],
                     [
                         [
-                            sgg.BarGraph(
+                            Guis.BarGraph(
                                 x=["国語", "社会", "数学", "理科"],
                                 y=datas[1::].astype(np.int64),
                                 title="教科別の点数",
@@ -23,8 +23,8 @@ if __name__ == "__main__":
                     ],
                 ]
             )
-        layout.append([sgg.Tab(tabs=tabs)])
-    win = sgg.window(
+        layout.append([Guis.Tab(tabs=tabs)])
+    win = Guis.window(
         title="テストの結果(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()
