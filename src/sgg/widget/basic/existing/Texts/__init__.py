@@ -8,8 +8,8 @@ __all__ = ["Texts"]
 class Texts(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.wraplength = num0(kw.get("wraplength"))
         self.text = kw.get("text")
+        self.wraplength = num0(kw.get("wraplength"))
         self.widget = Label(
             self.master,
             takefocus=self.takefocus,

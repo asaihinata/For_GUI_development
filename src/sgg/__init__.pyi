@@ -1,5 +1,5 @@
 from io import BytesIO
-from pathlib import Path, WindowsPath
+from pathlib import Path,PosixPath, WindowsPath
 from tkinter import _Cursor
 from typing import Union
 
@@ -139,13 +139,13 @@ class Guis:
 
     @staticmethod
     def Images(
-        path: Path | WindowsPath = ..., takefocus: bool = True, key: str = ...
+        path: WindowsPath | PosixPath | Path = ..., takefocus: bool = True, key: str = ...
     ) -> dict[str, Any]:
         """
         画像を作成する
 
         :param path: Imagesウィジェットに表示させる画像のパスを指定する
-        :type path: Path|WindowsPath
+        :type path: WindowsPath|PosixPath|Path
         """
 
     @staticmethod
@@ -785,13 +785,11 @@ class Guis:
         :type max: int|float
         :param value: TProgressbarウィジェットの読み込み時の初期値を指定する
         :type value: int|float
-
         """
 
     @staticmethod
     def Barcode(
         data: str | int = ...,
-        takefocus: bool = True,
         fotmat: Literal[
             "codabar",
             "code128",
@@ -816,6 +814,7 @@ class Guis:
             "upc",
             "upca",
         ] = "code39",
+        takefocus: bool = True,
         key: str = ...,
     ) -> dict[str, Any]:
         """
@@ -825,7 +824,6 @@ class Guis:
         :type data: str|int
         :param format: バーコードの形式を指定する
         :type format: Literal['codabar','code128','code39','ean','ean13','ean13-guard','ean14','ean8','ean8-guard','gs1','gs1_128','gtin','isbn','isbn10','isbn13','issn','itf','jan','nw-7','pzn','upc','upca']
-
         """
 
     @staticmethod
