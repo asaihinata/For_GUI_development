@@ -1,5 +1,4 @@
-from os import PathLike, getcwd
-from pathlib import Path
+from os import getcwd
 
 from ..btn import *
 

@@ -13,8 +13,7 @@ class Imagelink(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.link = kw.get("link")
-        self.__img = Img_byte(get_link_img(self.link))
-        self.__img = self.__img.asresize().imgs
+        self.__img = Img_byte(get_link_img(self.link)).asresize().imgs
         self.imgs = PhotoImage(self.__img)
         self.widget = Label(
             master, text=None, image=self.imgs, takefocus=self.takefocus

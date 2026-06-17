@@ -64,6 +64,3 @@ class Hatplot(twoElement):
 
     def getdata(self):
         return self.__data.tonp()
-
-
-# todo labelの追加
