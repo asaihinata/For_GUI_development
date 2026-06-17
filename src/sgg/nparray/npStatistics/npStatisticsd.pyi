@@ -11,17 +11,6 @@ __all__ = ["NPStatisticsd"]
 BINS_LIST: TypeAlias = Literal[
     "stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"
 ]
-METHOD_LIST: TypeAlias = Literal[
-    "inverted_cdf",
-    "averaged_inverted_cdf",
-    "closest_observation",
-    "interpolated_inverted_cdf",
-    "hazen",
-    "weibull",
-    "linear",
-    "median_unbiased",
-    "normal_unbiased",
-]
 
 class NPStatisticsd:
     def __init_subclass__(cls, **kwargs: Any) -> None:
@@ -108,7 +97,7 @@ class NPStatisticsd:
         self,
         q: tuple[int | float, ...],
         axis: int | None = None,
-        method: METHOD_LIST = "linear",
+        method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"] = "linear",
     ):
         """
         指定したパーセンタイルを計算する
@@ -118,14 +107,14 @@ class NPStatisticsd:
         :param axis: 計算する軸を指定する
         :type axis: int|None
         :param method: パーセンタイルを推定するために使用する方法を指定する
-        :type method: METHOD_LIST
+        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
         """
 
     def quantile(
         self,
         q: tuple[float, ...],
         axis: int | None = None,
-        method: METHOD_LIST = "linear",
+        method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"] = "linear",
     ):
         """
         指定した分位点を計算する
@@ -135,17 +124,17 @@ class NPStatisticsd:
         :param axis: 計算する軸を指定する
         :type axis: int|None
         :param method: 分位点を推定するために使用する方法を指定する
-        :type method: METHOD_LIST
+        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
         """
 
-    def IQR(axis: int | None = None, method: METHOD_LIST = "linear"):
+    def IQR(axis: int | None = None, method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"] = "linear"):
         """
         配列の四分位範囲を求める
 
         :param axis: 計算する軸を指定する
         :type axis: int|None
         :param method: 分位点を推定するために使用する方法を指定する
-        :type method: METHOD_LIST
+        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
         """
 
     @property

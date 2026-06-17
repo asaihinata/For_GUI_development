@@ -155,7 +155,7 @@ class NPStatisticsd:
     def ratio_E_samplingerror(self, parcent, cc=0.95):
         if not isinstance(parcent, float | int):
             raise TypeError("parcentにはint型もしくはfloat型を指定してください")
-        elif not 0.0 <= parcent <= 1.0:
+        elif not 0 <= parcent <= 1:
             raise ValueError("parcentには0.0から1.0の範囲で指定してください")
         return cCoefficient(cc) * np.sqrt(parcent * (1 - parcent) / self.n)
 
@@ -175,6 +175,6 @@ class NPStatisticsd:
 def cCoefficient(p=0.95):
     if not isinstance(p, int | float):
         raise TypeError("pには数値型で指定してください")
-    elif not 0.0 <= p <= 1.0:
+    elif not 0 <= p <= 1:
         raise ValueError("0.0<=p<=1.0の範囲の値を指定してください")
     return norm.ppf(p)

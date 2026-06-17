@@ -25,7 +25,7 @@ class Stacked(twoElement):
         self._apply_labels(self.xlabel, self.ylabel)
         self._adjustment()
 
-    def _survey(self, data: NPNumber, dataname, label=None, width=0.8):
+    def _survey(self, data, dataname, label=None, width=0.8):
         data = data.T
         lisarr = []
         data_percent = data / data.sum * 100

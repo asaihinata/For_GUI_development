@@ -11,7 +11,7 @@ class Scatter(twoElement):
         self.marker = MarkerList(kw.get("marker", "o"))
         self.s = num1s(kw.get("markersize"), 10)
         self.regression_bool = bols(kw.get("regression_bool"), False)
-        self.line = Solid(kw.get("linestyle", "-")).solid
+        self.line = Solid(kw.get("linestyle", "-"))
         self.linewidth = num0(kw.get("linewidth"), 2)
         self.__plot(
             self.__x,
@@ -53,7 +53,7 @@ class Scatter(twoElement):
                 xssort = np.sort(np.unique(xs))
                 regressionline = NPStatisticsds(xs, ys).chebysheveve(xssort)
                 self.ax.plot(
-                    xssort, regressionline, linestyle=line, linewidth=linewidth
+                    xssort, regressionline, linestyle=line.solid, linewidth=linewidth
                 )
             self.graphdata.append(scatter)
 
@@ -73,7 +73,7 @@ class Scatter(twoElement):
         self.s = num1s(kw.get("markersize"), self.s)
         self.alpha = range_num(num0s(kw.get("alpha"), self.alpha), 0, 1, self.alpha)
         self.regression_bool = bols(kw.get("regression_bool"), self.regression_bool)
-        self.line = Solid(kw.get("linestyle", self.line)).solid
+        self.line = Solid(kw.get("linestyle", self.line))
         self.linewidth = num0(kw.get("linewidth"), self.linewidth)
         self.__plot(
             self.__x,

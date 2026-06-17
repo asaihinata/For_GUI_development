@@ -22,7 +22,7 @@ method_list = [
 class NPNumber(NPArray):
     def __init__(self, data, dtype=np.float64, depth_limit=None, axis=None):
         if not numberDtype(dtype):
-            raise TypeError("dtypeには数値の型を指定してください")
+            raise TypeError("dtypeには数値型を指定してください")
         super().__init__(data, dtype, depth_limit)
         self.__axis = axis
 

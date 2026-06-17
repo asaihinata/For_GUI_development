@@ -7,7 +7,7 @@ class Colorbtn(Btn):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.__color = (None, None)
-        self.color = parsecolor(kw.get("color"), "#ffffff")
+        self.colors = parsecolor(kw.get("color"), "#ffffff")
         self.title = kw.get("title", "select color")
         self.text = kw.get("text", "select color")
         self.widget = Button(
@@ -30,7 +30,7 @@ class Colorbtn(Btn):
         )
 
     def __select_color(self):
-        self.__color = askcolor(color=self.color, title=self.title)
+        self.__color = askcolor(color=self.colors, title=self.title)
 
     def get_color(self):
         return self.__color
