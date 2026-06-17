@@ -39,7 +39,7 @@ class Buttons(Element):
             bg=self.bg,
             fg=self.fg,
             font=self.font,
-            command=lambda:self._exec_funcs(self.funcs),
+            command=lambda: self._exec_funcs(self.funcs),
             width=self.width,
             height=self.height,
             borderwidth=self.borderwidth,

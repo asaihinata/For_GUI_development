@@ -10,7 +10,7 @@ class Slidebar(Element):
         super().__init__(master, kw)
         self.value = num0(kw.get("value"))
         self.minval = num0(kw.get("min"))
-        maxval=kw.get("max", 100)
+        maxval = kw.get("max", 100)
         self.maxval = self.value if maxval < self.value else maxval
         self.orientation = listchose(kw.get("orientation"), ["horizontal", "vertical"])
         self.resolution = num0(kw.get("resolution"), 1)

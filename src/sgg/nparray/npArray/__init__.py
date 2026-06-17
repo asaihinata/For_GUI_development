@@ -106,9 +106,12 @@ class NPArray:
             raise TypeError("dataには配列の型を指定してください")
         self.__data = array(datas, dtype=self.__dtype)
         return self
-    def shapesize(self,shapes):
-        if self.shape==shapes:return True
+
+    def shapesize(self, shapes):
+        if self.shape == shapes:
+            return True
         return False
+
     def astype(self, dtype):
         self.__data = self.__data.astype(dtype)
         self.__dtype = dtype

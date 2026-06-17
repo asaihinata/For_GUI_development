@@ -42,6 +42,7 @@ class TProgressbar(Element):
             maximum=self.maximum,
         )
         self._set(self.value)
+
     def _set(self, val):
         try:
             self.widget["value"] = val

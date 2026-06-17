@@ -1,5 +1,5 @@
 from io import BytesIO
-from pathlib import Path,PosixPath, WindowsPath
+from pathlib import Path, PosixPath, WindowsPath
 from tkinter import _Cursor
 from typing import Union
 
@@ -140,7 +140,9 @@ class Guis:
 
     @staticmethod
     def Images(
-        path: WindowsPath | PosixPath | Path = ..., takefocus: bool = True, key: str = ...
+        path: WindowsPath | PosixPath | Path = ...,
+        takefocus: bool = True,
+        key: str = ...,
     ) -> dict[str, Any]:
         """
         画像を作成する
@@ -689,7 +691,7 @@ class Guis:
     def Savebtn(
         initialfile: str = ...,
         initialdir: str = ...,
-        filetypes: list[tuple[str,str]] = [("All files", "*.*")],
+        filetypes: list[tuple[str, str]] = [("All files", "*.*")],
         defaultextension: str = ".txt",
         text: str = "Save file",
         title: str = "Save file",
@@ -2410,7 +2412,13 @@ class Guis:
         max: int | float = ...,
         orientation: Literal["horizontal", "vertical"] = "vertical",
         bottom: int | float = 0,
-        bins:int|ArrayLike|Literal["auto", "fd", "doane", "scott", "stone", "rice", "sturges", "sqrt"]= ...,
+        bins: (
+            int
+            | ArrayLike
+            | Literal[
+                "auto", "fd", "doane", "scott", "stone", "rice", "sturges", "sqrt"
+            ]
+        ) = ...,
         size: tuple[int | float, int | float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
@@ -2800,7 +2808,33 @@ class Guis:
         ylolims: bool = False,
         barsabove: bool = False,
         linestyle: Literal["-", "--", "-.", ":"] = "-",
-        marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","P","*","h","H","+","x","X","D","d","|","_",] = None,
+        marker: Literal[
+            ".",
+            ",",
+            "o",
+            "v",
+            "^",
+            "<",
+            ">",
+            "1",
+            "2",
+            "3",
+            "4",
+            "8",
+            "s",
+            "p",
+            "P",
+            "*",
+            "h",
+            "H",
+            "+",
+            "x",
+            "X",
+            "D",
+            "d",
+            "|",
+            "_",
+        ] = None,
         linewidth: int | float = 1.5,
         capthick: int | float = 10,
         capsize: int | float = 0,
@@ -2921,7 +2955,10 @@ class Guis:
         data: o_array,
         linewidth: int | float = 1,
         linelength: int | float = 1,
-        linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] | tuple[Literal["-", "--", "-.", ":", "None", " ", ""],...] = "-",
+        linestyle: (
+            Literal["-", "--", "-.", ":", "None", " ", ""]
+            | tuple[Literal["-", "--", "-.", ":", "None", " ", ""], ...]
+        ) = "-",
         orientation: Literal["horizontal", "vertical"] = "vertical",
         xlabel: str = ...,
         ylabel: str = ...,

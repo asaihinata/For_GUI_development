@@ -62,14 +62,15 @@ class NPArray:
     @property
     def data(self) -> ndarray: ...
     @data.setter
-    def data(self,datas:ArrayLike)->NPArray:...
-    def shapesize(self,shapes:tuple[int,...])->bool:
+    def data(self, datas: ArrayLike) -> NPArray: ...
+    def shapesize(self, shapes: tuple[int, ...]) -> bool:
         """
         配列の形状が指定した`shapes`の形状と一致するか調べる
 
         :param shape: 形状を指定する
         :type shape: tuple[int,...]
         """
+
     def astype(self, dtype: DTypeLike | None) -> NPArray:
         """`dtype`で指定された型に変更します"""
 

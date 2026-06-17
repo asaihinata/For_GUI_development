@@ -20,11 +20,10 @@ method_list = [
 
 
 class NPNumber(NPArray):
-    def __init__(self, data, dtype=np.float64, depth_limit=None, axis=None):
+    def __init__(self, data, dtype=np.float64, depth_limit=None):
         if not numberDtype(dtype):
             raise TypeError("dtypeには数値型を指定してください")
         super().__init__(data, dtype, depth_limit)
-        self.__axis = axis
 
     def __iter__(self):
         return super().__iter__()
@@ -57,7 +56,7 @@ class NPNumber(NPArray):
         return NotImplemented
 
     def __abs__(self):
-        self.data = np.abs(self.data, dtype=self.dtype)
+        self.data = np.abs(self.data)
         return self
 
     def __add__(self, other):
@@ -128,67 +127,52 @@ class NPNumber(NPArray):
         self.data = self.data.T
         return self
 
-    @property
     def sum(self):
-        return np.sum(self.data, axis=self.__axis, dtype=self.dtype)
+        return np.sum(self.data)
 
-    @property
     def median(self):
-        return np.median(self.data, axis=self.__axis)
+        return np.median(self.data)
 
-    @property
     def var(self):
-        return np.var(self.data, axis=self.__axis, dtype=self.dtype)
+        return np.var(self.data)
 
-    @property
     def max(self):
-        return np.max(self.data, axis=self.__axis)
+        return np.max(self.data)
 
-    @property
     def min(self):
-        return np.min(self.data, axis=self.__axis)
+        return np.min(self.data)
 
-    @property
     def mean(self):
-        return np.mean(self.data, axis=self.__axis, dtype=self.dtype)
+        return np.mean(self.data)
 
-    @property
     def std(self):
-        return np.std(self.data, axis=self.__axis, dtype=self.dtype)
+        return np.std(self.data)
 
-    @property
     def pow2(self):
-        return np.power(self.data, 2, dtype=self.dtype)
+        return np.power(self.data, 2)
 
-    @property
     def deviation(self):
-        return ((10 / self.std) * (self.data - self.mean)) + 50
+        data = self.data
+        return ((10 / np.std(data)) * (self.data - np.mean(data))) + 50
 
-    @property
     def log(self):
-        return np.log(self.data, dtype=self.dtype)
+        return np.log(self.data)
 
-    @property
     def log10(self):
-        return np.log10(self.data, dtype=self.dtype)
+        return np.log10(self.data)
 
-    @property
     def log2(self):
-        return np.log2(self.data, dtype=self.dtype)
+        return np.log2(self.data)
 
-    @property
     def log1p(self):
-        return np.log1p(self.data, dtype=self.dtype)
+        return np.log1p(self.data)
 
-    @property
     def degree(self):
-        return np.degrees(self.data, dtype=self.dtype)
+        return np.degrees(self.data)
 
-    @property
     def radian(self):
-        return np.radians(self.data, dtype=self.dtype)
+        return np.radians(self.data)
 
-    @property
     def sturgesval(self):
         return 1 + np.log2(self.size)
 
@@ -200,20 +184,20 @@ class NPNumber(NPArray):
         return np.log(self.data, dtype=self.dtype) / np.log(x, dtype=self.dtype)
 
     def mod(self, x):
-        return np.mod(self.data, x, dtype=self.dtype)
+        return np.mod(self.data, x)
 
     def divmod(self, x):
-        return np.divmod(self.data, x, dtype=self.dtype)
+        return np.divmod(self.data, x)
 
     def pow(self, x):
-        self.data = np.power(self.data, x, dtype=self.dtype)
+        self.data = np.power(self.data, x)
         return self
 
     def sqrt(self, root=2):
         if root == 0:
             raise ZeroDivisionError("rootには0を指定できません")
         roots = 1 / root
-        self.data = np.power(self.data, roots, dtype=self.dtype)
+        self.data = np.power(self.data, roots)
         return self
 
     def floor(self, digit=None):
@@ -283,9 +267,7 @@ class NPNumber(NPArray):
         return np.quantile(self.data, q, axis=axis, method=method)
 
     def ratio(self, axis=None):
-        return (
-            self.data / np.sum(self.data, dtype=self.dtype, axis=axis, keepdims=True)
-        ) * 100
+        return (self.data / np.sum(self.data, axis=axis, keepdims=True)) * 100
 
     def zero_check(self):
         return self.data == 0
@@ -297,22 +279,6 @@ class NPNumber(NPArray):
     def floats(self):
         self.data = self.data.astype(float)
         return self
-
-    def get_axis(self):
-        return self.__axis
-
-    def set_axis(self, axis):
-        self.__axis = axis
-        return self.__axis
-
-    @property
-    def axis(self):
-        return self.__axis
-
-    @axis.setter
-    def axis(self, axis):
-        self.__axis = axis
-        return self.__axis
 
 
 def __digits(digit):

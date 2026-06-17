@@ -37,7 +37,11 @@ if __name__ == "__main__":
                 x=bargraphx1, y=bargraphy1, title="グラフの開始位置の変更", align="edge"
             ),
         ],
-        [Guis.BarGraph(x=bargraphx1, y=bargraphy1, title="グラフの幅の変更", width=0.4)],
+        [
+            Guis.BarGraph(
+                x=bargraphx1, y=bargraphy1, title="グラフの幅の変更", width=0.4
+            )
+        ],
         [
             Guis.BarGraph(
                 x=bargraphx1, y=bargraphy1, title="グラフを更新する", key="BarGraph"

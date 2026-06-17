@@ -17,9 +17,11 @@ class fonts(Font):
         overstrike=False,
         root=None,
     ):
-        self.rootj, self.root = False, root
+        self.rootj = False
+        self.root = root
         if not isinstance(self.root, Misc):
-            self.root, self.rootj = Tk(), True
+            self.root = (Tk(),)
+            self.rootj = True
         self.fontlist = families(self.root)
         self.family = family if family in self.fontlist else self.fontlist[0]
         if self.rootj:

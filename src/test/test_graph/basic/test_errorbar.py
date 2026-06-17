@@ -134,5 +134,7 @@ if __name__ == "__main__":
             Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(title="エラーバー(test)", layout=layout, scroll=True, maxmine=True)
+    win = Guis.window(
+        title="エラーバー(test)", layout=layout, scroll=True, maxmine=True
+    )
     win.run()

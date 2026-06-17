@@ -8,7 +8,7 @@ __all__ = ["Stacked"]
 class Stacked(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__data = NPNumber(kw.get("data"), axis=0)
+        self.__data = NPNumber(kw.get("data"))
         self.dataname = NPArray(kw.get("dataname"), depth_limit=1)
         if self.__data.shape[0] != self.dataname.shape[0]:
             raise ValueError("配列のエラー")
@@ -28,7 +28,7 @@ class Stacked(twoElement):
     def _survey(self, data, dataname, label=None, width=0.8):
         data = data.T
         lisarr = []
-        data_percent = data / data.sum * 100
+        data_percent = data / np.sum(data, axis=0) * 100
         bottom = np.zeros(len(dataname))
         for i, ds in enumerate(data_percent):
             lisarr = self.ax.bar(
@@ -40,7 +40,7 @@ class Stacked(twoElement):
     def update(self, data=None, dataname=None, **kw):
         self._updates(**kw)
         if isinstance(data, nListlike):
-            self.__data = NPNumber(data, axis=0)
+            self.__data = NPNumber(data)
         if isinstance(dataname, nListlike):
             self.dataname = NPArray(dataname, depth_limit=1)
         if self.__data.shape[0] != self.dataname.shape[0]:

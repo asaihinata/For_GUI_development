@@ -33,7 +33,9 @@ class Errorbar(twoElement):
         self.capthick = nums(kw.get("capthick"), 10)
         self.capsize = nums(kw.get("capsize"), 0)
         errorevery = kw.get("errorevery")
-        if isinstance(errorevery, int) or (change_array_like(errorevery) and NPNumber(errorevery).shapesize((1,2))):
+        if isinstance(errorevery, int) or (
+            change_array_like(errorevery) and NPNumber(errorevery).shapesize((1, 2))
+        ):
             self.errorevery = errorevery
         else:
             self.errorevery = 1

@@ -97,7 +97,17 @@ class NPStatisticsd:
         self,
         q: tuple[int | float, ...],
         axis: int | None = None,
-        method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"] = "linear",
+        method: Literal[
+            "inverted_cdf",
+            "averaged_inverted_cdf",
+            "closest_observation",
+            "interpolated_inverted_cdf",
+            "hazen",
+            "weibull",
+            "linear",
+            "median_unbiased",
+            "normal_unbiased",
+        ] = "linear",
     ):
         """
         指定したパーセンタイルを計算する
@@ -114,7 +124,17 @@ class NPStatisticsd:
         self,
         q: tuple[float, ...],
         axis: int | None = None,
-        method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"] = "linear",
+        method: Literal[
+            "inverted_cdf",
+            "averaged_inverted_cdf",
+            "closest_observation",
+            "interpolated_inverted_cdf",
+            "hazen",
+            "weibull",
+            "linear",
+            "median_unbiased",
+            "normal_unbiased",
+        ] = "linear",
     ):
         """
         指定した分位点を計算する
@@ -127,7 +147,20 @@ class NPStatisticsd:
         :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
         """
 
-    def IQR(axis: int | None = None, method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"] = "linear"):
+    def IQR(
+        axis: int | None = None,
+        method: Literal[
+            "inverted_cdf",
+            "averaged_inverted_cdf",
+            "closest_observation",
+            "interpolated_inverted_cdf",
+            "hazen",
+            "weibull",
+            "linear",
+            "median_unbiased",
+            "normal_unbiased",
+        ] = "linear",
+    ):
         """
         配列の四分位範囲を求める
 

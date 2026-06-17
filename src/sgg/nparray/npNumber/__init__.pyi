@@ -18,7 +18,6 @@ class NPNumber(NPArray):
         data: ArrayLike,
         dtype: DTypeLike = float64,
         depth_limit: int | None = None,
-        axis: int | None = None,
     ) -> None:
         """
         :param data: データの配列を指定する
@@ -27,8 +26,6 @@ class NPNumber(NPArray):
         :type dtype: DTypeLike|None
         :param depth_limit: 配列の最大の深さを指定する
         :type depth_limit: int|None
-        :param axis: 計算処理を行う方向を指定する
-        :type axis: int|None
         """
 
     def __getitem__(self, key: int) -> Any: ...
@@ -72,41 +69,25 @@ class NPNumber(NPArray):
     def __pow__(self, other: int | float | ndarray | NPNumber) -> NPNumber: ...
     @property
     def T(self) -> NPNumber: ...
-    @property
     def sum(self):
         """配列の合計を求める"""
 
-    @property
     def median(self): ...
-    @property
     def var(self): ...
-    @property
     def max(self): ...
-    @property
     def min(self): ...
-    @property
     def mean(self): ...
-    @property
     def std(self): ...
-    @property
     def pow2(self): ...
-    @property
     def deviation(self):
         """標準偏差を求める"""
 
-    @property
     def log(self): ...
-    @property
     def log10(self): ...
-    @property
     def log2(self): ...
-    @property
     def log1p(self): ...
-    @property
     def degree(self): ...
-    @property
     def radian(self): ...
-    @property
     def sturgesval(self) -> float64:
         """
         データ数からヒストグラムの階級数を求める(スタージェスの公式を使用)

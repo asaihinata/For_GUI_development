@@ -12,10 +12,14 @@ if __name__ == "__main__":
     layout = [
         [
             Guis.RadarLine(data=radarplotdata, title="折れ線レーダーチャートの基本"),
-            Guis.RadarLine(data=radarplotdata, linewidth=10, title="線の太さを変更する"),
+            Guis.RadarLine(
+                data=radarplotdata, linewidth=10, title="線の太さを変更する"
+            ),
         ],
         [
-            Guis.RadarLine(data=radarplotdata, marker="+", title="マーカーを表示させる"),
+            Guis.RadarLine(
+                data=radarplotdata, marker="+", title="マーカーを表示させる"
+            ),
             Guis.RadarLine(
                 data=radarplotdata,
                 marker="+",

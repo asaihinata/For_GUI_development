@@ -14,5 +14,7 @@ if __name__ == "__main__":
             )
         ]
     ]
-    win = Guis.window(title="人口の変化(test)", layout=layout, scroll=True, maxmine=True)
+    win = Guis.window(
+        title="人口の変化(test)", layout=layout, scroll=True, maxmine=True
+    )
     win.run()
