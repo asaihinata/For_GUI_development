@@ -1,5 +1,5 @@
-from os import getcwd
-
+from os import getcwd,PathLike
+from pathlib import Path
 from ..btn import *
 
 __all__ = ["FolderLoad"]
@@ -8,7 +8,7 @@ __all__ = ["FolderLoad"]
 class FolderLoad(Btn):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.foldersaves = None
+        self.__path = None
         self.title = kw.get("title", "select Folder")
         self.text = kw.get("text", "select Folder")
         self.widget = Button(
@@ -29,10 +29,14 @@ class FolderLoad(Btn):
             command=self._choosefolder,
             borderwidth=self.borderwidth,
         )
-
-    def _choosefolder(self):
-        self.foldersaves = askdirectory(title=self.title, initialdir=getcwd())
-        return self.foldersaves
-
+    def __fspath__(self):return self.path
+    @property
+    def path(self):
+        return self.__path
     def get_path(self):
-        return self.foldersaves
+        return self.__path
+    def _choosefolder(self):
+        self.__path = askdirectory(title=self.title, initialdir=getcwd())
+        if self.__path=="":
+            self.__path=None
+        return self.__path

@@ -8,7 +8,7 @@ __all__ = ["FileLoad"]
 class FileLoad(Btn):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.filesaves = None
+        self.__path = None
         self.text = kw.get("text", "select File")
         self.title = kw.get("title", "select File")
         self.widget = Button(
@@ -29,10 +29,12 @@ class FileLoad(Btn):
             command=self._choosefile,
             borderwidth=self.borderwidth,
         )
-
-    def _choosefile(self):
-        self.filesaves = askopenfilename(title=self.title, initialdir=getcwd())
-        return self.filesaves
-
+    def __fspath__(self):return self.path
+    @property
+    def path(self):
+        return self.__path
     def get_path(self):
-        return self.filesaves
+        return self.__path
+    def _choosefile(self):
+        self.__path = askopenfilename(title=self.title, initialdir=getcwd())
+        return self.__path

@@ -6,7 +6,7 @@ __all__ = ["Savebtn"]
 class Savebtn(Btn):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.select_file = None
+        self.__path = None
         self.text = kw.get("text", "Save file")
         self.title = kw.get("title", "Save file")
         self.defaultextension = kw.get("defaultextension", ".txt")
@@ -32,8 +32,14 @@ class Savebtn(Btn):
             borderwidth=self.borderwidth,
         )
 
+    def __fspath__(self):return self.path
+    @property
+    def path(self):
+        return self.__path
+    def get_path(self):
+        return self.__path
     def _savefile(self):
-        self.select_file = asksaveasfilename(
+        self.__path = asksaveasfilename(
             parent=self.master,
             initialfile=self.initialfile,
             initialdir=self.initialdir,
@@ -41,7 +47,4 @@ class Savebtn(Btn):
             filetypes=self.filetypes,
             title=self.title,
         )
-        return self.select_file
-
-    def get_path(self):
-        return self.select_file
+        return self.__path
