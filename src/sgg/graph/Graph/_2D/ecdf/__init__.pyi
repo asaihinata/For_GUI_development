@@ -19,7 +19,7 @@ class Ecdf(_2Gset):
         aylabel: str,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """経験的累積分布関数を再描画させる"""
 
     def get(self) -> list[Line2D]:

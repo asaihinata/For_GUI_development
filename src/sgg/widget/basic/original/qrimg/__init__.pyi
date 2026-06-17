@@ -9,8 +9,8 @@ __all__ = ["QRImage"]
 class QRImage(_Element):
     imgs: PhotoImage
     widget: Label
-    def delta(self):
+    def delta(self) -> None:
         """ウィジェットを削除する"""
 
-    def show(self):
+    def show(self) -> None:
         """QRコードを表示させる"""

@@ -17,7 +17,7 @@ class Btn(Element):
     def dgettitle(self):
         return self.title
 
-    def dsettitle(self, titles: str):
+    def dsettitle(self, titles):
         self.title = titles
 
     def delta(self):

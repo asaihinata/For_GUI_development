@@ -40,7 +40,7 @@ class Fontname:
         weight: int | str | None = ...,
         stretch: int | str | None = ...,
         size: float | str | None = ...,
-    ): ...
+    ) -> None: ...
 
 class Fontmanager:
     """認識されているフォントについて調べる"""

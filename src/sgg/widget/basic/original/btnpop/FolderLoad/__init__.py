@@ -1,5 +1,6 @@
-from os import getcwd,PathLike
+from os import PathLike, getcwd
 from pathlib import Path
+
 from ..btn import *
 
 __all__ = ["FolderLoad"]
@@ -29,14 +30,19 @@ class FolderLoad(Btn):
             command=self._choosefolder,
             borderwidth=self.borderwidth,
         )
-    def __fspath__(self):return self.path
+
+    def __fspath__(self):
+        return self.path
+
     @property
     def path(self):
         return self.__path
+
     def get_path(self):
         return self.__path
+
     def _choosefolder(self):
         self.__path = askdirectory(title=self.title, initialdir=getcwd())
-        if self.__path=="":
-            self.__path=None
+        if self.__path == "":
+            self.__path = None
         return self.__path

@@ -93,16 +93,16 @@ class _2Gset:
     def id(self) -> int:
         """ウィジェットのウィンドウ識別子を返す"""
 
-    def name(self):
+    def name(self) -> None:
         """ウィジェットのインスタンス名を返す"""
 
-    def invert(self):
+    def invert(self) -> None:
         """x軸,y軸の軸を反転させる"""
 
-    def invert_x(self):
+    def invert_x(self) -> None:
         """x軸の軸を反転させる"""
 
-    def invert_y(self):
+    def invert_y(self) -> None:
         """y軸の軸を反転させる"""
 
     def getbound(self) -> tuple[Typetuple_float64, Typetuple_float64]:

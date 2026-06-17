@@ -16,7 +16,7 @@ from ..npArray import NPArray
 __all__ = ["NPColor"]
 
 class NPColor(NPArray):
-    def __init__(self, color: str | np.ndarray[str]):
+    def __init__(self, color: str | np.ndarray[str]) -> None:
         """
         色についての配列を作成する
 

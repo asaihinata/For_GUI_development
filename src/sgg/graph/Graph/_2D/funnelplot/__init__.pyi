@@ -17,7 +17,7 @@ class Funne(_2Gset):
         aylabel: str,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """じょうごグラフを再表示させる"""
 
     def get(self) -> list[BarContainer]:

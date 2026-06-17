@@ -6,7 +6,7 @@ __all__ = ["Tree"]
 
 class Tree(_Element):
     widget: Treeview
-    def delta(self):
+    def delta(self) -> None:
         """ウィジェットを削除する"""
 
     def get_iid(self) -> list:
@@ -17,7 +17,7 @@ class Tree(_Element):
         :rtype: list
         """
 
-    def expand(self, iid: str):
+    def expand(self, iid: str) -> None:
         """
         指定した`iid`のツリーを開く
 
@@ -25,7 +25,7 @@ class Tree(_Element):
         :type iid: str
         """
 
-    def collapse(self, iid: str):
+    def collapse(self, iid: str) -> None:
         """
         指定した`iid`のツリーを閉める
 
@@ -57,7 +57,7 @@ class Tree(_Element):
         :rtype: str
         """
 
-    def delete_node(self, iid: str):
+    def delete_node(self, iid: str) -> None:
         """
         指定した`iid`を削除する
 
@@ -65,5 +65,5 @@ class Tree(_Element):
         :type iid: str
         """
 
-    def clear_width(self):
+    def clear_width(self) -> None:
         """Treeウィジェットのセルの幅を均等に戻す"""

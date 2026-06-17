@@ -18,7 +18,7 @@ class Eventpolar(_polarset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """極軸イベントグラフを再表示させる"""
 
     def get(self) -> list[EventCollection]:

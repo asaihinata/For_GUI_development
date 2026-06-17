@@ -31,7 +31,7 @@ class Errorpolar(_polarset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """極軸エラーグラフを再表示させる"""
 
     @overload
@@ -59,7 +59,7 @@ class Errorpolar(_polarset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """極軸エラーグラフを再表示させる"""
 
     def get(self) -> list[ErrorbarContainer]:

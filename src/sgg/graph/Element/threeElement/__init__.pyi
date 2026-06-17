@@ -28,13 +28,13 @@ class threeElement(GElement):
         xlabel: labeltype,
         ylabel: labeltype,
         zlabel: labeltype,
-    ): ...
+    ) -> None: ...
     def _apply_labels(
         self,
         xlabel: labeltype = None,
         ylabel: labeltype = None,
         zlabel: labeltype = None,
-    ):
+    ) -> None:
         """
         3Dのグラフのx軸,y軸,z軸のラベルを作成する
 
@@ -46,25 +46,25 @@ class threeElement(GElement):
         :type zlabel: labeltype
         """
 
-    def _apply_grid(self):
+    def _apply_grid(self) -> None:
         """グリッド線を加えるメソッド"""
 
-    def _adjustment(self):
+    def _adjustment(self) -> None:
         """グラフの調整を行う"""
 
-    def clear(self):
+    def clear(self) -> None:
         """グラフ内のグラフをクリアする"""
 
-    def invert(self):
+    def invert(self) -> None:
         """x軸,y軸,z軸を反転させる"""
 
-    def invert_x(self):
+    def invert_x(self) -> None:
         """x軸を反転させる"""
 
-    def invert_y(self):
+    def invert_y(self) -> None:
         """y軸を反転させる"""
 
-    def invert_z(self):
+    def invert_z(self) -> None:
         """z軸を反転させる"""
 
     def getbound(

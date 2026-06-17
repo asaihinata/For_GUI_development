@@ -1,7 +1,6 @@
-"""popup用の型ヒント"""
+"""popup用の型ヒントのモジュール"""
 
-from tkinter import Misc
-from typing import Literal, TypeAlias
+from typing import Literal as L, TypeAlias
 
-__all__ = ["Misc", "Type_icon"]
-Type_icon: TypeAlias = Literal["error", "info", "question", "warning"]
+__all__ = ["Type_icon", "L"]
+Type_icon: TypeAlias = L["error", "info", "question", "warning"]

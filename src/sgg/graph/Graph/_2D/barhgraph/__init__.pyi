@@ -20,7 +20,7 @@ class BarhGraph(_2Gset):
         ylabel: str,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """横軸棒グラフを再表示させる"""
 
     def get(self) -> list[BarContainer]:

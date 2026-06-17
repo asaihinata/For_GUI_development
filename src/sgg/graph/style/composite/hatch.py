@@ -1,5 +1,6 @@
 """塗りつぶし領域の領域内のマーカーを設定するモジュール"""
 
+from collections.abc import Iterator
 from re import compile
 
 from numpy import all as al, vectorize
@@ -20,11 +21,11 @@ class Hatch(NPString):
         if al(judge(self.data)):
             raise ValueError("指定できない値が含まれています")
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[str]:
         return iter(self.data)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Hatch({self.data})"
 
-    def __getitem__(self, key):
+    def __getitem__(self, key: int) -> str:
         return self.get(key)

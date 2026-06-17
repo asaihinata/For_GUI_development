@@ -36,7 +36,7 @@ class Waterfall(_2Gset):
         ylabel: str,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """滝グラフを再表示させる"""
 
     def get(self) -> list[BarContainer]:

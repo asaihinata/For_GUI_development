@@ -37,7 +37,7 @@ class Stem(_2Gset):
             "hexagram",
         ] = ...,
         line: Literal["-", "--", "-.", "-."] = ...,
-    ):
+    ) -> None:
         """幹図を再表示させる"""
 
     def get(self) -> list[StemContainer]:

@@ -7,7 +7,7 @@ __all__ = ["Input"]
 
 class Input(_Element):
     widget: Entry
-    def delta(self):
+    def delta(self) -> None:
         """ウィジェットを削除する"""
 
     def get_text(self) -> str:
@@ -18,22 +18,22 @@ class Input(_Element):
         :rtype: str
         """
 
-    def set_text(self, txt: str):
+    def set_text(self, txt: str) -> None:
         """ウィジェットが表示している文字を変更する"""
 
     def get_fg(self) -> ColorType:
         """ウィジェットが表示している文字色を取得する"""
 
-    def set_fg(self, fg: ColorType):
+    def set_fg(self, fg: ColorType) -> None:
         """ウィジェットが表示している文字色を変更する"""
 
     def get_bg(self) -> ColorType:
         """ウィジェットが表示している背景色を取得する"""
 
-    def set_bg(self, bg: ColorType):
+    def set_bg(self, bg: ColorType) -> None:
         """ウィジェットが表示している背景色を変更する"""
 
-    def inserts(self, text: str = "", place: int | Literal["end"] = "end"):
+    def inserts(self, text: str = "", place: int | Literal["end"] = "end") -> None:
         """
         挿入する位置を指定し,Inputウィジェットにその指定した場所のテキストを挿入する
 
@@ -51,8 +51,8 @@ class Input(_Element):
         :rtype: bool
         """
 
-    def select_cansel(self):
+    def select_cansel(self) -> None:
         """Inputウィジェット内の選択状態を解除する"""
 
-    def all_delta(self):
+    def all_delta(self) -> None:
         """Inputウィジェット内の文字を全て削除する"""

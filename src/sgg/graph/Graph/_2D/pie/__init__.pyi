@@ -21,7 +21,7 @@ class Pie(_2Gset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """円グラフを再表示させる"""
 
     def get(self) -> tuple[tuple[Wedge, Text], ...]:
@@ -29,5 +29,3 @@ class Pie(_2Gset):
 
     def getdata(self) -> Typeget_data:
         """`data`のデータを取得する"""
-
-    def _pielabel(self, data: ndarray | list | tuple, label: list | tuple) -> list: ...

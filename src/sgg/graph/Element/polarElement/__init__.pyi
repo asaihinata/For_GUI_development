@@ -18,7 +18,7 @@ class polarElement(GElement):
         graph_grid: ColorType,
         title: str,
         alpha: int | float,
-    ): ...
+    ) -> None: ...
     def _places(self, num: int) -> ndarray:
         """
         `np.linspace(0,2*np.pi,num,endpoint=False)`と同じ結果同じ結果を求める
@@ -43,19 +43,19 @@ class polarElement(GElement):
         :type ylabel: labeltype
         """
 
-    def _adjustment(self):
+    def _adjustment(self) -> None:
         """グラフの調整を行う"""
 
-    def clear(self):
+    def clear(self) -> None:
         """グラフ内のグラフをクリアする"""
 
-    def invert(self):
+    def invert(self) -> None:
         """x軸,y軸を反転させる"""
 
-    def invert_x(self):
+    def invert_x(self) -> None:
         """x軸を反転させる"""
 
-    def invert_y(self):
+    def invert_y(self) -> None:
         """y軸を反転させる"""
 
     def getbound(self) -> tuple[tuple[float64, float64], tuple[float64, float64]]:

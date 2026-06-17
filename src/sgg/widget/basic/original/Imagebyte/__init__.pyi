@@ -9,13 +9,12 @@ from ....base import _Element
 __all__ = ["Imagebyte"]
 
 class Imagebyte(_Element):
-    byte: bytes | BytesIO
     imgs: PhotoImage
     widget: Label
-    def delta(self):
+    def delta(self) -> None:
         """ウィジェットを削除する"""
 
-    def show(self, title: str | None = None):
+    def show(self, title: str | None = None) -> None:
         """
         画像を表示させる
 

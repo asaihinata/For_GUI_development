@@ -19,7 +19,7 @@ class Step(_2Gset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """階段グラフを再表示させる"""
 
     def get(self) -> list[StepPatch]:

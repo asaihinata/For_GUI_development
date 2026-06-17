@@ -24,7 +24,7 @@ class DScatter(_3Gset):
         xlabel: str,
         ylabel: str,
         zlabel: str,
-    ):
+    ) -> None:
         """3D散布図を再表示させる"""
 
     def get(self) -> list[PathCollection]:

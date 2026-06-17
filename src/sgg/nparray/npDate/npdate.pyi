@@ -97,14 +97,14 @@ class NPDate(NPArray):
     ):
         """配列内の日付を`str`型に変換する"""
 
-    def todatetime(self):
+    def todatetime(self) -> np.ndarray:
         """配列内の日付を`datetime.datetime`に変換する"""
 
-    def weekday(self):
+    def weekday(self) -> np.ndarray:
         """その日付日時の曜日を求める"""
 
     @overload
-    def diff_today(self, days: bool = ...):
+    def diff_today(self, days: bool = ...) -> np.ndarray:
         """
         今日の日付の差を求める
 
@@ -113,7 +113,7 @@ class NPDate(NPArray):
         """
 
     @overload
-    def diff_today(self, days: bool = True):
+    def diff_today(self, days: bool = True) -> np.ndarray:
         """
         今日の日付の差(今日を含む)を求める
 
@@ -122,7 +122,7 @@ class NPDate(NPArray):
         """
 
     @overload
-    def diff_today(self, days: bool = False):
+    def diff_today(self, days: bool = False) -> np.ndarray:
         """今日の日付の差(今日を含めない)を求める
 
         :param days: 今日を含めるか指定する

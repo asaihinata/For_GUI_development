@@ -13,7 +13,7 @@ class RadarFill(RadarElement):
         bg: ColorType,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """塗りつぶしレーダーチャートを再表示させる"""
 
     def getdata(self) -> Typeget_data:

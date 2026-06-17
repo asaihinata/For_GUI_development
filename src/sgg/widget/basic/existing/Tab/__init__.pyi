@@ -7,10 +7,10 @@ __all__ = ["Tab"]
 
 class Tab(_Element):
     widget: Notebook
-    def delta(self):
+    def delta(self) -> None:
         """ウィジェットを削除する"""
 
-    def _add_tab(self, frame: Widget, title: str = ...):
+    def _add_tab(self, frame: Widget, title: str = ...) -> None:
         """
         Tabウィジェットに新しいタブを追加する
 

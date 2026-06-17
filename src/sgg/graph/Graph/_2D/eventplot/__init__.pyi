@@ -20,7 +20,7 @@ class Eventplot(_2Gset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """イベントグラフを再表示させる"""
 
     def get(self) -> list[EventCollection]:

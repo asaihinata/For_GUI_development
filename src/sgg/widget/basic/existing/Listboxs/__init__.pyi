@@ -7,22 +7,22 @@ __all__ = ["Listboxs"]
 
 class Listboxs(_Element):
     widget: Listbox
-    def delta(self):
+    def delta(self) -> None:
         """ウィジェットを削除する"""
 
     def get_fg(self) -> ColorType:
         """ウィジェットが表示している文字色を取得する"""
 
-    def set_fg(self, fg: ColorType):
+    def set_fg(self, fg: ColorType) -> None:
         """ウィジェットが表示している文字色を変更する"""
 
     def get_bg(self) -> ColorType:
         """ウィジェットが表示している背景色を取得する"""
 
-    def set_bg(self, bg: ColorType):
+    def set_bg(self, bg: ColorType) -> None:
         """ウィジェットが表示している背景色を変更する"""
 
-    def select_set(self, val: int):
+    def select_set(self, val: int) -> None:
         """
         読み込み時にListboxsウィジェットで選択される項目を指定する
 
@@ -30,7 +30,7 @@ class Listboxs(_Element):
         :type val: int
         """
 
-    def apend(self, place: int | Literal["end"] = "end", lists: list = []):
+    def apend(self, place: int | Literal["end"] = "end", lists: list = []) -> None:
         """
         Listboxsウィジェットに項目を追加する
 
@@ -40,10 +40,10 @@ class Listboxs(_Element):
         :type place: int|Literal['end']
         """
 
-    def clear(self):
+    def clear(self) -> None:
         """Listboxsウィジェットの項目を全て削除する"""
 
-    def dele(self, *index: int):
+    def dele(self, *index: int) -> None:
         """
         Listboxsウィジェットの指定された箇所の項目を削除する
 
@@ -75,7 +75,7 @@ class Listboxs(_Element):
         :rtype: list[Any]|Any
         """
 
-    def set(self, lists: tuple[str, ...]):
+    def set(self, lists: tuple[str, ...]) -> None:
         """
         Listboxsウィジェットの項目をlitsに置き換える
 

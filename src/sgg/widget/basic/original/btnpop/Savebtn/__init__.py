@@ -32,12 +32,16 @@ class Savebtn(Btn):
             borderwidth=self.borderwidth,
         )
 
-    def __fspath__(self):return self.path
+    def __fspath__(self):
+        return self.path
+
     @property
     def path(self):
         return self.__path
+
     def get_path(self):
         return self.__path
+
     def _savefile(self):
         self.__path = asksaveasfilename(
             parent=self.master,

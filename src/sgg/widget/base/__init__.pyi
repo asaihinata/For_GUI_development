@@ -159,5 +159,5 @@ class Element:
     def id(self) -> int:
         """ウィジェットのウィンドウ識別子を返す"""
 
-    def name(self):
+    def name(self) -> str:
         """ウィジェットのインスタンス名を返す"""

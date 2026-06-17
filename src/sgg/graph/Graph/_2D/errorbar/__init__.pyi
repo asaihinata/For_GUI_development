@@ -32,7 +32,7 @@ class Errorbar(_2Gset):
         decimalpoint: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """エラーグラフを再表示させる"""
 
     def get(self) -> list[ErrorbarContainer]:

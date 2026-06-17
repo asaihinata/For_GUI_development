@@ -14,8 +14,6 @@ class WindowController:
     __sizeof__: int
     root: Tk
     alpha: float
-    @classmethod
-    def __instancecheck__(cls, ins: Any) -> bool: ...
     def __init__(
         self,
         layout: list = ...,
@@ -47,22 +45,22 @@ class WindowController:
     def get_title(self) -> str:
         """ウィジェットのタイトルを取得する"""
 
-    def set_title(self, title: str):
+    def set_title(self, title: str) -> None:
         """ウィジェットのタイトルを設置する"""
 
-    def close(self):
+    def close(self) -> None:
         """windowウィジェットを終了させる"""
 
-    def maxwin(self):
+    def maxwin(self) -> None:
         """ウィンドウを最大化させる"""
 
-    def minwin(self):
+    def minwin(self) -> None:
         """ウィンドウを最小化させる"""
 
-    def run(self):
+    def run(self) -> None:
         """windowのメインループを実行しウィンドウを表示させる"""
 
-    def scroll_to(self, key: str):
+    def scroll_to(self, key: str) -> None:
         """
         keyで指定したウィジェットのところに移動する
 
@@ -102,7 +100,7 @@ class WindowController:
         :rtype: list[Any]
         """
 
-    def tookphoto(self, file: str = "window", ex: str = ".png"):
+    def tookphoto(self, file: str = "window", ex: str = ".png") -> None:
         """
         ウィンドウの画面をスクリーンショットをする
 
@@ -112,22 +110,22 @@ class WindowController:
         :type ex: str
         """
 
-    def foreground(self, bools: bool = True):
+    def foreground(self, bools: bool = True) -> None:
         """ウィンドウを常に最前面にするか指定する"""
 
-    def fullscreen(self, bools: bool = True):
+    def fullscreen(self, bools: bool = True) -> None:
         """ウィンドウをフルスクリーンにする操作をする"""
 
-    def set_alpha(self, alpha: float = 1.0):
+    def set_alpha(self, alpha: float = 1.0) -> None:
         """ウィンドウの透明度を指定する"""
 
-    def get_alpha(self):
+    def get_alpha(self) -> None:
         """ウィンドウの透明度を取得する"""
 
-    def deiconify(self):
+    def deiconify(self) -> None:
         """ウィンドウを再び画面に表示させる"""
 
-    def withdraw(self):
+    def withdraw(self) -> None:
         """ウィンドウを非表示にする"""
 
     def geometry(self) -> list[float, float, float, float]:

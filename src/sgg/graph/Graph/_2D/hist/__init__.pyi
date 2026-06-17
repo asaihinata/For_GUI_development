@@ -30,7 +30,7 @@ class Hist(_2Gset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """ヒストグラムを再表示させる"""
 
     def get(

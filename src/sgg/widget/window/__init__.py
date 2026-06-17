@@ -18,10 +18,6 @@ class WindowController:
 
     count = 0
 
-    @classmethod
-    def __instancecheck__(cls, ins):
-        return isinstance(ins, WindowController)
-
     def __init__(self, kw):
         self.title = kw.get("title", "window")
         self.layout = kw.get("layout", [])
@@ -133,7 +129,10 @@ class WindowController:
                 self._create_element(kw, row_frame, bg)
 
     def _create_element(self, kw, parent, bgs=None):
-        t, key, widget, kw["back_bg"] = kw.get("type"), kw.get("key"), None, bgs
+        t = kw.get("type")
+        key = kw.get("key")
+        widget = None
+        kw["back_bg"] = bgs
         if key == None:
             kw["key"] = f"widget{self.count}"
         if t == "Menus":

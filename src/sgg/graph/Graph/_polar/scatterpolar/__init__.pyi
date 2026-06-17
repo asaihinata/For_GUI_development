@@ -19,7 +19,7 @@ class Scatterpolar(_polarset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """極軸散布図を再表示させる"""
 
     @overload
@@ -34,7 +34,7 @@ class Scatterpolar(_polarset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """極軸散布図を再表示させる"""
 
     def get(self) -> list[PathCollection]:

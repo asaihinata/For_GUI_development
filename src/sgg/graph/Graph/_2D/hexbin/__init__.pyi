@@ -22,7 +22,7 @@ class Hexbin(_2Gset):
         decimalpoint: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """2次元六角形グラフを再表示させる"""
 
     def get(self) -> list[PolyCollection]:

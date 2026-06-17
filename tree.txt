@@ -207,8 +207,7 @@ For_GUI_development
  │   │   │   │   │   ├── capstyle.py
  │   │   │   │   │   └── hatch.py
  │   │   │   │   ├── dev
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   └── __init__.py
  │   │   │   │   ├── fmt
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
@@ -459,5 +458,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:319
+ファイル数:318
 フォルダ数:141

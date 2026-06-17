@@ -23,7 +23,7 @@ class Hist2d(_2Gset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """2次元ヒストグラムを再表示させる
 
         :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる

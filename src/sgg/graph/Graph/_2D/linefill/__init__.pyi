@@ -20,7 +20,7 @@ class Linefill(_2Gset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """2つの水平曲線の間の領域を埋めるグラフを再表示させる"""
 
     def get(self) -> list[FillBetweenPolyCollection, Line2D]:

@@ -29,12 +29,17 @@ class FileLoad(Btn):
             command=self._choosefile,
             borderwidth=self.borderwidth,
         )
-    def __fspath__(self):return self.path
+
+    def __fspath__(self):
+        return self.path
+
     @property
     def path(self):
         return self.__path
+
     def get_path(self):
         return self.__path
+
     def _choosefile(self):
         self.__path = askopenfilename(title=self.title, initialdir=getcwd())
         return self.__path

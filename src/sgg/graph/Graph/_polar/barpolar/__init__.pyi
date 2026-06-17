@@ -19,7 +19,7 @@ class Barpolar(_polarset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """極軸棒グラフを再表示させる"""
 
     @overload
@@ -34,7 +34,7 @@ class Barpolar(_polarset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
-    ):
+    ) -> None:
         """極軸棒グラフを再表示させる"""
 
     def get(self) -> list[BarContainer]:

@@ -140,11 +140,11 @@ class GElement:
     def id(self) -> int:
         """ウィジェットのウィンドウ識別子を返す"""
 
-    def name(self):
+    def name(self) -> None:
         """ウィジェットのインスタンス名を返す"""
 
     def _color_check(self, color: list) -> list: ...
-    def legend(self): ...
+    def legend(self) -> None: ...
     def _anchor(
         self,
         val: (
@@ -175,10 +175,10 @@ class GElement:
     ) -> str:
         """凡例の位置の基準を決定する"""
 
-    def _pack(self):
+    def _pack(self) -> None:
         """ウィジェットを親ウィジェット内に配置します"""
 
-    def _redraw(self): ...
+    def _redraw(self) -> None: ...
     def _size(self, sizes: TupleNumbertype2 = (500, 400)) -> TupleNumbertype2:
         """
         グラフの大きさのサイズを定める
@@ -189,7 +189,7 @@ class GElement:
         :rtype: TupleNumbertype2
         """
 
-    def _apply_theme_colors(self):
+    def _apply_theme_colors(self) -> None:
         """目盛り,目盛りラベル,グリッド線,グラフのタイトル,軸ラベルの文字色を決定させる"""
 
     def _list_loop(self, lin: ndarray | list | tuple, num: int) -> list: ...

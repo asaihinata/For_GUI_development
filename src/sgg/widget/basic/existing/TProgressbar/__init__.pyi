@@ -6,13 +6,13 @@ __all__ = ["TProgressbar"]
 
 class TProgressbar(_Element):
     widget: Progressbar
-    def start(self):
+    def start(self) -> None:
         """TProgressbarをプログレスバーのバーを変化させる"""
 
-    def stop(self):
+    def stop(self) -> None:
         """TProgressbarをプログレスバーのバーの変化を止める"""
 
-    def set(self, val: int | float):
+    def set(self, val: int | float) -> None:
         """
         TProgressbarウィジェットの値を指定する
 

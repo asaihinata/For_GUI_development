@@ -24,8 +24,8 @@ class twoElement(GElement):
         alpha: int | float,
         xlabel: labeltype,
         ylabel: labeltype,
-    ): ...
-    def _apply_labels(self, xlabel: labeltype = None, ylabel: labeltype = None):
+    ) -> None: ...
+    def _apply_labels(self, xlabel: labeltype = None, ylabel: labeltype = None) -> None:
         """
         2Dのグラフのx軸,y軸のラベルを作成する
 
@@ -35,19 +35,19 @@ class twoElement(GElement):
         :type ylabel: labeltype
         """
 
-    def _adjustment(self):
+    def _adjustment(self) -> None:
         """グラフの調整を行う"""
 
-    def clear(self):
+    def clear(self) -> None:
         """グラフ内のグラフをクリアする"""
 
-    def invert(self):
+    def invert(self) -> None:
         """x軸,y軸を反転させる"""
 
-    def invert_x(self):
+    def invert_x(self) -> None:
         """x軸を反転させる"""
 
-    def invert_y(self):
+    def invert_y(self) -> None:
         """y軸を反転させる"""
 
     def getbound(self) -> tuple[tuple[float64, float64], tuple[float64, float64]]:

@@ -14,7 +14,7 @@ class TCombobox(_Element):
         :rtype: str
         """
 
-    def set_text(self, text: str):
+    def set_text(self, text: str) -> None:
         """
         TComboboxウィジェットの文字を変更する
 
@@ -22,5 +22,5 @@ class TCombobox(_Element):
         :type text: str
         """
 
-    def clear(self):
+    def clear(self) -> None:
         """TComboboxウィジェットの文字を削除する"""

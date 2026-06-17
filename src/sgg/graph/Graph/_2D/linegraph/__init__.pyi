@@ -21,7 +21,7 @@ class LineGraph(_2Gset):
         markersize: int | float,
         linestyle: Type_Solid,
         linewidth: int | float,
-    ):
+    ) -> None:
         """折線グラフを再表示させる"""
 
     def get(self) -> list[Line2D]:

@@ -34,6 +34,7 @@ class Colorbtn(Btn):
 
     def get_color(self):
         return self.__color
+
     @property
     def color(self):
         return self.__color
