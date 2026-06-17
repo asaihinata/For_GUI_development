@@ -24,9 +24,9 @@ class fonts(Font):
         :param size: フォントサイズを指定する
         :type size: int|float
         :param weight: フォントの太字を指定する
-        :type weight: Literal['normal','bold']
+        :type weight: Literal["normal","bold"]
         :param slant: フォントの斜体を指定する
-        :type slant: Literal['roman','italic']
+        :type slant: Literal["roman","italic"]
         :param underline: フォントに下線を付けるか指定する
         :type underline: bool
         :param overstrike: フォントに取り消し線を付けるか指定する

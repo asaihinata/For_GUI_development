@@ -13,7 +13,6 @@ class TProgressbar(Element):
         self.length = num0(kw.get("length"), 200)
         self.mode = listchose(kw.get("mode"), ["determinate", "indeterminate"])
         self.orient = listchose(kw.get("orient"), ["horizontal", "vertical"])
-        self.funcs = kw.get("function")
         style = Style()
         self.style_name = (
             f"Custom{kw.get('count')}.Horizontal.TProgressbar"
@@ -43,9 +42,6 @@ class TProgressbar(Element):
             maximum=self.maximum,
         )
         self._set(self.value)
-        if self.funcs:
-            self.widget.bind("<Button-1>", lambda e, f=self.funcs: self._exec_funcs(f))
-
     def _set(self, val):
         try:
             self.widget["value"] = val

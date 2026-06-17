@@ -78,7 +78,7 @@ class WindowController:
 
     def widgetdict(self) -> dict[str, Any]:
         """
-        ウィジェットの'key'とウィジェットの辞書を返す
+        ウィジェットの"key"とウィジェットの辞書を返す
 
         :return: ウィジェットのキー名とウィジェットの辞書を返す
         :rtype: dict[str,Any]
@@ -86,7 +86,7 @@ class WindowController:
 
     def widgetlist(self) -> list[str]:
         """
-        表示されている全てのウィジェットの'key'名の配列を返す
+        表示されている全てのウィジェットの"key"名の配列を返す
 
         :return: ウィジェットのキー名とウィジェットの辞書を返す
         :rtype: list[str]

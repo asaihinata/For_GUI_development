@@ -37,7 +37,7 @@ class Listboxs(_Element):
         :param lists: Listboxsウィジェットに追加する項目を指定する
         :type lists: list
         :param place: 追加する場所を指定する
-        :type place: int|Literal['end']
+        :type place: int|Literal["end"]
         """
 
     def clear(self) -> None:

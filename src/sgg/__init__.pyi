@@ -5,6 +5,7 @@ from typing import Union
 
 from matplotlib.mlab import GaussianKDE
 from numpy import ndarray
+from numpy.typing import ArrayLike
 
 from ._dialog import *
 from .graph import *
@@ -281,7 +282,7 @@ class Guis:
         :param insertbg: Multilineウィジェットの入力時の挿入ポイントの色を指定する
         :type insertbg: ColorTypeN
         :param state: 選択操作の有無を指定するnormalは操作可能にするdisabledは操作不可能にする
-        :type state: Literal['normal','disabled']
+        :type state: Literal["normal","disabled"]
         """
 
     @staticmethod
@@ -387,9 +388,9 @@ class Guis:
         :param exportselection: 選択中の項目のコピー操作を指定する
         :type exportselection: bool
         :param state: 選択操作の有無を指定するnormalは操作可能にするdisabledは操作不可能にする
-        :type state: Literal['normal','disabled']
+        :type state: Literal["normal","disabled"]
         :param selectmode: 選択可能な項目数と操作方法を指定する
-        :type selectmode: Literal['browse','single','multiple','extended']
+        :type selectmode: Literal["browse","single","multiple","extended"]
         """
 
     @staticmethod
@@ -410,7 +411,7 @@ class Guis:
         :param default: 入力項目の初期テキストを指定する
         :type default: str
         :param state: 値の入力制限やTComboboxウィジェットの有効化や無効化について指定する
-        :type state: Literal['normal','readonly','disabled']
+        :type state: Literal["normal","readonly","disabled"]
         """
 
     @staticmethod
@@ -479,7 +480,7 @@ class Guis:
         :param layout: Framesウィジェットに表示させるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
         :type layout: list[list]
         :param legendanchor: タイトルを表記する場所を指定する
-        :type legendanchor: Literal['nw','n','ne','w','center','e','sw','s','se']
+        :type legendanchor: Literal["nw","n","ne","w","center","e","sw","s","se"]
         :param title: Framesウィジェットのタイトルを指定する
         :type title: str
         """
@@ -598,7 +599,7 @@ class Guis:
         :param length: Slidebarウィジェットの長さを指定する
         :type length: int|float
         :param orientation: Slidebarウィジェットの向きを指定する
-        :type orientation: Literal['horizontal','vertical']
+        :type orientation: Literal["horizontal","vertical"]
         :param min: Slidebarウィジェットの数値の最小値を指定する
         :type min: int|float
         :param max: Slidebarウィジェットの数値の最大値を指定する
@@ -688,7 +689,7 @@ class Guis:
     def Savebtn(
         initialfile: str = ...,
         initialdir: str = ...,
-        filetypes: list[tuple[str]] = [("All files", "*.*")],
+        filetypes: list[tuple[str,str]] = [("All files", "*.*")],
         defaultextension: str = ".txt",
         text: str = "Save file",
         title: str = "Save file",
@@ -709,7 +710,7 @@ class Guis:
         :param title: フォルダを選択するダイアログのタイトルを指定する
         :type title: str
         :param filetypes: 保存できるファイル形式の選択肢を指定する
-        :type filetypes: list[tuple[str]]
+        :type filetypes: list[tuple[str,str]]
         :param initialdir: ダイアログを開く初期ディレクトリを指定する
         :type initialdir: str
         :param initialfile: ファイル名フィールドの初期値を指定する
@@ -746,7 +747,6 @@ class Guis:
     @staticmethod
     def Tab(
         tabs: list[list[str, list[list]]] = [],
-        key: str = ...,
         bg: ColorTypeN = ...,
         fg: ColorTypeN = ...,
         family: str = ...,
@@ -755,6 +755,7 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
+        key: str = ...,
     ) -> dict[str, Any]:
         """
         タブを作成する
@@ -778,9 +779,9 @@ class Guis:
         :param length: TProgressbarウィジェットの長さを指定する
         :type length: int|float
         :param orient: TProgressbarウィジェットの向きを指定する
-        :type orient: Literal['horizontal','vertical']
+        :type orient: Literal["horizontal","vertical"]
         :param mode: 決定的モード(determinate)か非決定的モード(indeterminate)かを指定する
-        :type mode: Literal['determinate','indeterminate']
+        :type mode: Literal["determinate","indeterminate"]
         :param max: TProgressbarウィジェットの数値の最大値を指定する
         :type max: int|float
         :param value: TProgressbarウィジェットの読み込み時の初期値を指定する
@@ -823,7 +824,7 @@ class Guis:
         :param data: バーコードで表示させる値を指定する
         :type data: str|int
         :param format: バーコードの形式を指定する
-        :type format: Literal['codabar','code128','code39','ean','ean13','ean13-guard','ean14','ean8','ean8-guard','gs1','gs1_128','gtin','isbn','isbn10','isbn13','issn','itf','jan','nw-7','pzn','upc','upca']
+        :type format: Literal["codabar","code128","code39","ean","ean13","ean13-guard","ean14","ean8","ean8-guard","gs1","gs1_128","gtin","isbn","isbn10","isbn13","issn","itf","jan","nw-7","pzn","upc","upca"]
         """
 
     @staticmethod
@@ -886,7 +887,7 @@ class Guis:
             "none",
             " ",
             "",
-        ] = None,
+        ] = "none",
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
         label: labeltype = ...,
         xlabel: str = ...,
@@ -931,9 +932,9 @@ class Guis:
         :param markersize: 折線グラフのマーカーの大きさを指定する
         :type markersize: int|float
         :param marker: 折線グラフのマーカーを指定する
-        :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param linestyle: 折線グラフの線の種類を指定する
-        :type linestyle: Literal['-','--','-.',':','None',' ','']
+        :type linestyle: Literal["-","--","-.",":","None"," ",""]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
@@ -973,9 +974,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -1032,7 +1033,7 @@ class Guis:
         :param width: 縦軸棒グラフのバー幅を指定する
         :type width: int|float
         :param align: x軸の縦軸棒グラフバーの配置を指定する
-        :type align: Literal['center','edge']
+        :type align: Literal["center","edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
@@ -1072,9 +1073,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -1131,7 +1132,7 @@ class Guis:
         :param height: 横軸棒グラフのバーの幅を指定する
         :type height: int|float
         :param align: x軸の横軸棒グラフバーの配置を指定する
-        :type align: Literal['center','edge']
+        :type align: Literal["center","edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
@@ -1171,9 +1172,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -1227,7 +1228,7 @@ class Guis:
         :param height: 棒グラフのバーの幅を指定する
         :type height: int|float
         :param align: x軸の棒グラフバーの配置を指定する
-        :type align: Literal['center','edge']
+        :type align: Literal["center","edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
@@ -1267,9 +1268,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -1357,9 +1358,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -1447,21 +1448,21 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
     def Pie(
         data: o_array,
-        label: labeltype = ...,
         startangle: int | float = 0,
         startangletype: bool = True,
         shadow: bool = False,
         counterclock: bool = False,
         labeldistance: int | float = 1.1,
         explode: list[int, float] | tuple[int, float] | int | float = ...,
+        label: labeltype = ...,
         size: tuple[int | float, int | float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
@@ -1557,7 +1558,7 @@ class Guis:
         :param showfliers: 外れ値を表示させるか指定する
         :type showfliers: bool
         :param orientation: 箱ひげ図の向きを指定する
-        :type orientation: Literal['horizontal','vertical']
+        :type orientation: Literal["horizontal","vertical"]
         :param whis: ヒゲの位置を指定する
         :type whis: float|TupleFloat2
         :param title: グラフのタイトルを指定する
@@ -1601,9 +1602,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -1614,6 +1615,9 @@ class Guis:
         sumstext: str = "sum",
         colorline: ColorTypeN = "#4477aa",
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
+        ucolor: ColorTypeN = "#156082",
+        dcolor: ColorTypeN = "#e97132",
+        width: int | float = 1,
         xlabel: str = ...,
         ylabel: str = ...,
         size: tuple[int | float, int | float] = (500, 400),
@@ -1636,9 +1640,6 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        ucolor: ColorTypeN = "#156082",
-        dcolor: ColorTypeN = "#e97132",
-        width: int | float = 1,
         key: str = ...,
     ) -> dict[str, Any]:
         """
@@ -1654,8 +1655,14 @@ class Guis:
         :type sumstext: str
         :param colorline: バーとバーを繋げる線の色を指定する
         :type colorline: ColorTypeN
+        :param ucolor: 上昇バーの色を指定する
+        :type ucolor: ColorTypeN
+        :param dcolor: 下降バーの色を指定する
+        :type dcolor: ColorTypeN
+        :param width: バーの幅を指定する
+        :type width: int|float
         :param linestyle: バーとバーを繋げる線の種類を指定する
-        :type linestyle: Literal['-','--','-.',':','None',' ','']
+        :type linestyle: Literal["-","--","-.",":","None"," ",""]
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -1697,15 +1704,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
-        :param ucolor: 上昇バーの色を指定する
-        :type ucolor: ColorTypeN
-        :param dcolor: 下降バーの色を指定する
-        :type dcolor: ColorTypeN
-        :param width: バーの幅を指定する
-        :type width: int|float
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -1716,6 +1717,9 @@ class Guis:
         sumstext: str = "sum",
         colorline: ColorTypeN = "#4477aa",
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
+        ucolor: ColorTypeN = "#156082",
+        dcolor: ColorTypeN = "#e97132",
+        height: int | float = 1,
         xlabel: str = ...,
         ylabel: str = ...,
         size: tuple[int | float, int | float] = (500, 400),
@@ -1739,9 +1743,6 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        ucolor: ColorTypeN = "#156082",
-        dcolor: ColorTypeN = "#e97132",
-        height: int | float = 1,
         key: str = ...,
     ) -> dict[str, Any]:
         """
@@ -1758,7 +1759,13 @@ class Guis:
         :param colorline: バーとバーを繋げる線の色を指定する
         :type colorline: ColorTypeN
         :param linestyle: バーとバーを繋げる線の種類を指定する
-        :type linestyle: Literal['-','--','-.',':','None',' ','']
+        :type linestyle: Literal["-","--","-.",":","None"," ",""]
+        :param ucolor: 上昇バーの色を指定する
+        :type ucolor: ColorTypeN
+        :param dcolor: 下降バーの色を指定する
+        :type dcolor: ColorTypeN
+        :param height: バーの幅を指定する
+        :type height: int|float
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -1800,15 +1807,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
-        :param ucolor: 上昇バーの色を指定する
-        :type ucolor: ColorTypeN
-        :param dcolor: 下降バーの色を指定する
-        :type dcolor: ColorTypeN
-        :param height: バーの幅を指定する
-        :type height: int|float
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -1902,7 +1903,7 @@ class Guis:
         :param label: ラベルを指定する
         :type label: labeltype
         :param marker: 散布図のマーカーを指定する
-        :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param markersize: 散布図のマーカーの大きさを指定する
         :type markersize: int|float
         :param regression_bool: 散布図に回帰直線を描画させるか指定する
@@ -1950,9 +1951,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -2053,7 +2054,7 @@ class Guis:
         :param zlabel: z軸のラベルを指定する
         :type zlabel: str
         :param marker: 散布図のマーカーを指定する
-        :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param markersize: 散布図のマーカーの大きさを指定する
         :type markersize: int|float
         :param title: グラフのタイトルを指定する
@@ -2103,9 +2104,9 @@ class Guis:
         :param zticksshow: z軸のグリッド線と目盛り値について表示するかを指定する
         :type zticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         :param znumticks: z軸の目盛りの数を指定する
         :type znumticks: int|float|None
         :param mouse_rotation: 表示されているグラフをマウスで操作できるか指定する
@@ -2168,15 +2169,15 @@ class Guis:
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
         :param orientation: 茎の向きを指定する
-        :type orientation: Literal['horizontal','vertical']
+        :type orientation: Literal["horizontal","vertical"]
         :param bottom: ベースラインの位置を指定する
         :type bottom: int|float
         :param fmarker: 幹のマーカーの種類を指定する
-        :type fmarker: Literal['-','--','-.',':','None',' ','']
+        :type fmarker: Literal["-","--","-.",":","None"," ",""]
         :param fline: 幹の線の種類を指定する
-        :type fline: Literal['-','--','-.','-.']
+        :type fline: Literal["-","--","-.","-."]
         :param fcolor: 色を指定する
-        :type fcolor: Literal['r','g','b','c','m','y','k','w']|list[Literal['r','g','b','c','m','y','k','w']]|tuple[Literal['r','g','b','c','m','y','k','w']]
+        :type fcolor: Literal["r","g","b","c","m","y","k","w"]|list[Literal["r","g","b","c","m","y","k","w"]]|tuple[Literal["r","g","b","c","m","y","k","w"]]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
@@ -2218,9 +2219,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -2269,7 +2270,7 @@ class Guis:
         :param fill: 階段の下部から`baseline`の間を塗りつぶすかを指定する
         :type fill: bool
         :param orientation: グラフの向きを指定する
-        :type orientation: Literal['horizontal','vertical']
+        :type orientation: Literal["horizontal","vertical"]
         :param label: ラベルを指定する
         :type label: labeltype
         :param color: 色を指定する
@@ -2309,11 +2310,11 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する
-        :type y_verwrit: Literal['horizontal','vertical']
+        :type y_verwrit: Literal["horizontal","vertical"]
         """
 
     @staticmethod
@@ -2395,9 +2396,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -2409,16 +2410,7 @@ class Guis:
         max: int | float = ...,
         orientation: Literal["horizontal", "vertical"] = "vertical",
         bottom: int | float = 0,
-        bins: (
-            int
-            | list
-            | range
-            | tuple
-            | ndarray
-            | Literal[
-                "auto", "fd", "doane", "scott", "stone", "rice", "sturges", "sqrt"
-            ]
-        ) = ...,
+        bins:int|ArrayLike|Literal["auto", "fd", "doane", "scott", "stone", "rice", "sturges", "sqrt"]= ...,
         size: tuple[int | float, int | float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
@@ -2458,7 +2450,7 @@ class Guis:
         :param width: ヒストグラムのバーのサイズを指定する
         :type width: int|float
         :param orientation: ヒストグラムの向きを指定する
-        :type orientation: Literal['horizontal','vertical']
+        :type orientation: Literal["horizontal","vertical"]
         :param bottom: ヒストグラムのバーの位置を指定する
         :type bottom: int|float
         :param min: ヒストグラムで表示される最小値を指定する
@@ -2466,7 +2458,7 @@ class Guis:
         :param max: ヒストグラムで表示される最大値を指定する
         :type max: int|float
         :param bins: `bins`を指定する
-        :type bins: int|list|range|tuple|np.ndarray|Literal['auto','fd','doane','scott','stone','rice','sturges','sqrt']
+        :type bins: int|ArrayLike|Literal["auto","fd","doane","scott","stone","rice","sturges","sqrt"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
@@ -2506,11 +2498,11 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する
-        :type y_verwrit: Literal['horizontal','vertical']
+        :type y_verwrit: Literal["horizontal","vertical"]
         """
 
     @staticmethod
@@ -2555,7 +2547,7 @@ class Guis:
         :param hatch: 塗りつぶし領域内の模様を指定する
         :type hatch: str|None
         :param baseline: 基準値の算出方法を指定する
-        :type baseline: Literal['zero','sym','wiggle','weighted_wiggle']
+        :type baseline: Literal["zero","sym","wiggle","weighted_wiggle"]
         :param label: ラベルを指定する
         :type label: labeltype
         :param xlabel: x軸のラベルを指定する
@@ -2601,9 +2593,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -2694,9 +2686,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -2740,9 +2732,9 @@ class Guis:
         :param compress: 同一値のデータをまとめて最適化するかどうか指定する
         :type compress: bool
         :param orientation: プロットの向きを指定する
-        :type orientation: Literal['horizontal','vertical']
+        :type orientation: Literal["horizontal","vertical"]
         :param linestyle: 線の種類を指定する
-        :type linestyle: Literal['-','--','-.',':','None',' ','']
+        :type linestyle: Literal["-","--","-.",":","None"," ",""]
         :param linewidth: 線の太さを指定する
         :type linewidth: int|float
         :param xlabel: x軸のラベルを指定する
@@ -2790,9 +2782,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -2807,8 +2799,8 @@ class Guis:
         yuplims: bool = False,
         ylolims: bool = False,
         barsabove: bool = False,
-        linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
-        marker: Literal[".", "s", "o", "p", "v", "*", "^", "D"] = None,
+        linestyle: Literal["-", "--", "-.", ":"] = "-",
+        marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","P","*","h","H","+","x","X","D","d","|","_",] = None,
         linewidth: int | float = 1.5,
         capthick: int | float = 10,
         capsize: int | float = 0,
@@ -2863,9 +2855,9 @@ class Guis:
         :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する
         :type barsabove: bool
         :param linestyle: データ点とデータ点を結ぶ線の種類を指定する
-        :type linestyle: Literal['-','--','-.',':','None',' ','']
+        :type linestyle: Literal["-", "--", "-.", ":"]
         :param marker: データ点のマーカーの種類を指定する
-        :type marker: Literal['.','s','o','p','v','*','^','D']
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","P","*","h","H","+","x","X","D","d","|","_"]
         :param linewidth: データ点を結ぶ線の太さを指定する
         :type linewidth: int|float
         :param capthick: キャップの厚みを指定する
@@ -2919,9 +2911,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -2929,7 +2921,7 @@ class Guis:
         data: o_array,
         linewidth: int | float = 1,
         linelength: int | float = 1,
-        linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
+        linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] | tuple[Literal["-", "--", "-.", ":", "None", " ", ""],...] = "-",
         orientation: Literal["horizontal", "vertical"] = "vertical",
         xlabel: str = ...,
         ylabel: str = ...,
@@ -2967,9 +2959,9 @@ class Guis:
         :param linelength: 線の合計の高さを指定する
         :type linelength: int|float
         :param linestyle: 線の種類を指定する
-        :type linestyle: Literal['-','--','-.',':','None',' ','']
+        :type linestyle: Literal["-","--","-.",":","None"," ",""]|tuple[Literal["-","--","-.",":","None"," ",""],...]
         :param orientation: 向きを指定する
-        :type orientation: Literal['horizontal','vertical']
+        :type orientation: Literal["horizontal","vertical"]
         :param label: ラベルを指定する
         :type label: labeltype
         :param xlabel: x軸のラベルを指定する
@@ -3015,9 +3007,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -3117,9 +3109,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる
         :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる
         """
@@ -3173,7 +3165,7 @@ class Guis:
         :param y: `orientation`が`horizontal`の時にy軸上にバイオリンが設置される配列を指定する
         :type y: n_array
         :param orientation: バイオリンが設置される軸の向きを指定する
-        :type orientation: Literal['horizontal','vertical']
+        :type orientation: Literal["horizontal","vertical"]
         :param width: バイオリンの幅を指定する
         :type width: int|float
         :param showextrema: 極値を線で示すか指定する
@@ -3185,9 +3177,9 @@ class Guis:
         :param points: 各ガウスカーネル密度推定値を評価する点の数を指定する
         :type points: int|float
         :param bw_method: 推定器の帯域幅を計算するために使用されるメソッドを指定する
-        :type bw_method: Literal['scott','silverman']|float|Callable[[GaussianKDE],float]
+        :type bw_method: Literal["scott","silverman"]|float|Callable[[GaussianKDE],float]
         :param side: バイオリンの左右対称もしくは左右(上下)のみを描画するか指定する
-        :type side: Literal['both','low','high']
+        :type side: Literal["both","low","high"]
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -3233,9 +3225,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -3287,11 +3279,11 @@ class Guis:
         :param extent: 各ポイントの値を指定する
         :type extent: TupleFloat4|None
         :param xscale,yscale: 軸のスケールを指定する
-        :type xscale,yscale: Literal['linear','log']
+        :type xscale,yscale: Literal["linear","log"]
         :param mincnt: 描画する`bins`の最小カウント数を指定する
         :type mincnt: int
         :param bins: ビンのカウント方法を指定する
-        :type bins: Literal['log']|int|tuple[float,...]|None
+        :type bins: Literal["log"]|int|tuple[float,...]|None
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -3337,9 +3329,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @overload
@@ -3380,7 +3372,7 @@ class Guis:
         :param width: 棒グラフのバー幅を指定する
         :type width: int|float
         :param align: x軸の棒グラフバーの配置を指定する
-        :type align: Literal['center','edge']
+        :type align: Literal["center","edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
@@ -3420,9 +3412,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @overload
@@ -3460,7 +3452,7 @@ class Guis:
         :param width: 棒グラフのバー幅を指定する
         :type width: int|float
         :param align: x軸の棒グラフバーの配置を指定する
-        :type align: Literal['center','edge']
+        :type align: Literal["center","edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
@@ -3500,9 +3492,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @overload
@@ -3586,9 +3578,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @overload
@@ -3669,9 +3661,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @overload
@@ -3737,9 +3729,9 @@ class Guis:
         :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する
         :type barsabove: bool
         :param linestyle: データ点とデータ点を結ぶ線の種類を指定する
-        :type linestyle: Literal['-','--','-.',':','None',' ','']
+        :type linestyle: Literal["-","--","-.",":","None"," ",""]
         :param marker: データ点のマーカーの種類を指定する
-        :type marker: Literal['.','s','o','p','v','*','^','D']
+        :type marker: Literal[".","s","o","p","v","*","^","D"]
         :param linewidth: データ点を結ぶ線の太さを指定する
         :type linewidth: int|float
         :param capthick: キャップの厚みを指定する
@@ -3785,9 +3777,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @overload
@@ -3850,9 +3842,9 @@ class Guis:
         :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する
         :type barsabove: bool
         :param linestyle: データ点とデータ点を結ぶ線の種類を指定する
-        :type linestyle: Literal['-','--','-.',':','None',' ','']
+        :type linestyle: Literal["-","--","-.",":","None"," ",""]
         :param marker: データ点のマーカーの種類を指定する
-        :type marker: Literal['.','s','o','p','v','*','^','D']
+        :type marker: Literal[".","s","o","p","v","*","^","D"]
         :param linewidth: データ点を結ぶ線の太さを指定する
         :type linewidth: int|float
         :param capthick: キャップの厚みを指定する
@@ -3898,9 +3890,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @overload
@@ -3986,9 +3978,9 @@ class Guis:
         :param markersize: 極軸折線グラフのマーカーの大きさを指定する
         :type markersize: int|float
         :param marker: 折線グラフのマーカーを指定する
-        :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param linestyle: 折線グラフの線の種類を指定する
-        :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',': ','none',None,' ','']
+        :type linestyle: Literal["solid","-","dashed","--","dash-dot","-.","dotted",": ","none",None," ",""]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
@@ -4026,9 +4018,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @overload
@@ -4111,9 +4103,9 @@ class Guis:
         :param markersize: 極軸折線グラフのマーカーの大きさを指定する
         :type markersize: int|float
         :param marker: 折線グラフのマーカーを指定する
-        :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param linestyle: 折線グラフの線の種類を指定する
-        :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',': ','none',None,' ','']
+        :type linestyle: Literal["solid","-","dashed","--","dash-dot","-.","dotted",": ","none",None," ",""]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
@@ -4151,9 +4143,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @overload
@@ -4197,9 +4189,9 @@ class Guis:
         :param linelength: 線の合計の高さを指定する
         :type linelength: int|float
         :param linestyle: 線の種類を指定する
-        :type linestyle: Literal['-','--','-.',':','None',' ','']
+        :type linestyle: Literal["-","--","-.",":","None"," ",""]
         :param orientation: 向きを指定する
-        :type orientation: Literal['horizontal','vertical']
+        :type orientation: Literal["horizontal","vertical"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
@@ -4237,9 +4229,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @overload
@@ -4280,9 +4272,9 @@ class Guis:
         :param linelength: 線の合計の高さを指定する
         :type linelength: int|float
         :param linestyle: 線の種類を指定する
-        :type linestyle: Literal['-','--','-.',':','None',' ','']
+        :type linestyle: Literal["-","--","-.",":","None"," ",""]
         :param orientation: 向きを指定する
-        :type orientation: Literal['horizontal','vertical']
+        :type orientation: Literal["horizontal","vertical"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
@@ -4320,9 +4312,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @overload
@@ -4402,7 +4394,7 @@ class Guis:
         :param y: `y`のデータを指定する
         :type y: o_array
         :param marker: 極軸散布図のマーカーを指定する
-        :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param markersize: 極軸散布図のマーカーの大きさを指定する
         :type markersize: int|float
         :param title: グラフのタイトルを指定する
@@ -4442,9 +4434,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @overload
@@ -4521,7 +4513,7 @@ class Guis:
         :param data: `data`のデータを指定する
         :type data: o_array
         :param marker: 極軸散布図のマーカーを指定する
-        :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param markersize: 極軸散布図のマーカーの大きさを指定する
         :type markersize: int|float
         :param title: グラフのタイトルを指定する
@@ -4561,9 +4553,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -4645,9 +4637,9 @@ class Guis:
         :param markersize: 折線グラフのマーカーの大きさを指定する
         :type markersize: int|float
         :param marker: 折線グラフのマーカーを指定する
-        :type marker: Literal['.',',','o','v','^','<','>','1','2','3','4','8','s','p','*','h','H','+','x','D','d','|','_','P','X',0,1,2,3,4,5,6,7,8,9,10,11,'None','none',' ','']
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param linestyle: 折線グラフの線の種類を指定する
-        :type linestyle: Literal['solid','-','dashed','--','dash-dot','-.','dotted',': ','none',None,' ','']
+        :type linestyle: Literal["solid","-","dashed","--","dash-dot","-.","dotted",": ","none",None," ",""]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
@@ -4685,9 +4677,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @staticmethod
@@ -4755,9 +4747,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal['out','in','inout']
+        :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal['out','in','inout']
+        :type yticksdirection: Literal["out","in","inout"]
         """
 
     @classmethod
@@ -4773,7 +4765,7 @@ class Guis:
         :param title: 情報メッセージボックスに表示させるタイトル名を指定する
         :type title: str
         :param icon: 情報メッセージボックスに表示させるアイコンを指定する
-        :type icon: Literal['info','warning','error','question']
+        :type icon: Literal["info","warning","error","question"]
         :param message: 情報メッセージボックスに表示させるメッセージを指定する
         :type message: str
         """
@@ -4793,7 +4785,7 @@ class Guis:
         :param message: 警告メッセージボックスに表示させるメッセージを指定する
         :type message: str
         :param icon: 警告メッセージボックスに表示させるアイコンを指定する
-        :type icon: Literal['info','warning','error','question']
+        :type icon: Literal["info","warning","error","question"]
         :return: ダイアログで選択された値を返す
         :rtype: str
         """
@@ -4813,9 +4805,9 @@ class Guis:
         :param message: 警告メッセージボックスに表示させるメッセージを指定する
         :type message: str
         :param icon: 警告メッセージボックスに表示させるアイコンを指定する
-        :type icon: Literal['info','warning','error','question']
+        :type icon: Literal["info","warning","error","question"]
         :return: ダイアログで選択された値を返す
-        :rtype: Union[str] ('yes','no')
+        :rtype: Union[str] ("yes","no")
         """
 
     @classmethod
@@ -4833,7 +4825,7 @@ class Guis:
         :param message: エラーメッセージボックスに表示させるメッセージを指定する
         :type message: str
         :param icon: エラーメッセージボックスに表示させるアイコンを指定する
-        :type icon: Literal['info','warning','error','question']
+        :type icon: Literal["info","warning","error","question"]
         :return: ダイアログで選択された値を返す
         :rtype: str
         """
@@ -4853,9 +4845,9 @@ class Guis:
         :param message: エラーメッセージボックスに表示させるメッセージを指定する
         :type message: str
         :param icon: エラーメッセージボックスに表示させるアイコンを指定する
-        :type icon: Literal['info','warning','error','question']
+        :type icon: Literal["info","warning","error","question"]
         :return: ダイアログで選択された値を返す
-        :rtype: Union[str] ('yes','no')
+        :rtype: Union[str] ("yes","no")
         """
 
     @classmethod
@@ -4873,9 +4865,9 @@ class Guis:
         :param message: ダイアログに表示させるメッセージを指定する
         :type message: str
         :param icon: ダイアログに表示させるアイコンを指定する
-        :type icon: Literal['info','warning','error','question']
+        :type icon: Literal["info","warning","error","question"]
         :return: ダイアログで選択された値を返す
-        :rtype: Union[str] ('yes','no')
+        :rtype: Union[str] ("yes","no")
         """
 
     @classmethod
@@ -4893,7 +4885,7 @@ class Guis:
         :param message: ダイアログに表示させるメッセージを指定する
         :type message: str
         :param icon: ダイアログに表示させるアイコンを指定する
-        :type icon: Literal['info','warning','error','question']
+        :type icon: Literal["info","warning","error","question"]
         :return: ダイアログで選択された値を返す
         :rtype: bool
         """
@@ -4914,7 +4906,7 @@ class Guis:
          :param message: ダイアログに表示させるメッセージを指定する
          :type message: str
          :param icon: ダイアログに表示させるアイコンを指定する
-         :type icon: Literal['info','warning','error','question']
+         :type icon: Literal["info","warning","error","question"]
          :return: ダイアログで選択された値を返す
          :rtype: bool
         """
@@ -4935,7 +4927,7 @@ class Guis:
          :param message: ダイアログに表示させるメッセージを指定する
          :type message: str
          :param icon: ダイアログに表示させるアイコンを指定する
-         :type icon: Literal['info','warning','error','question']
+         :type icon: Literal["info","warning","error","question"]
          :return: ダイアログで選択された値を返す
          :rtype: Union[bool,None]
         """
@@ -4956,7 +4948,7 @@ class Guis:
          :param message: ダイアログに表示させるメッセージを指定する
          :type message: str
          :param icon: ダイアログに表示させるアイコンを指定する
-         :type icon: Literal['info','warning','error','question']
+         :type icon: Literal["info","warning","error","question"]
          :return: ダイアログで選択された値を返す
          :rtype: bool
         """
