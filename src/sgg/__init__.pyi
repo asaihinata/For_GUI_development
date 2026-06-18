@@ -43,7 +43,7 @@ class Guis:
         size: tuple[int | float | None, int | float | None] = (None, None),
         maxmine: bool = False,
         location: tuple[int | float, int | float] = (0, 0),
-        resizable: bool|None = ...,
+        resizable: bool | None = ...,
         resizableswidth: bool = ...,
         resizablesheight: bool = ...,
     ) -> WindowController:
@@ -77,6 +77,7 @@ class Guis:
         :param resizablesheight: 高さのサイズ変更の許可を指定する
         :type resizablesheight: bool
         """
+
     @overload
     @classmethod
     def window(
@@ -122,6 +123,7 @@ class Guis:
         :param resizable: 幅と高さのサイズ変更の許可を指定する
         :type resizable: bool
         """
+
     @overload
     @classmethod
     def window(
@@ -256,9 +258,7 @@ class Guis:
 
     @staticmethod
     def Imagebyte(
-        byte: bytes | BytesIO = ...,
-        takefocus: bool = True,
-        key: str = ...
+        byte: bytes | BytesIO = ..., takefocus: bool = True, key: str = ...
     ) -> dict[str, Any]:
         """
         画像を作成する
@@ -269,9 +269,7 @@ class Guis:
 
     @staticmethod
     def Imagelink(
-        link: str = ...,
-        takefocus: bool = True,
-        key: str = ...
+        link: str = ..., takefocus: bool = True, key: str = ...
     ) -> dict[str, Any]:
         """
         画像を作成する
@@ -465,7 +463,7 @@ class Guis:
     def Listboxs(
         values: list | tuple = ...,
         width: int | float = 20,
-        height: int | float = 5,
+        height: int = 5,
         selectfg: ColorTypeN = ...,
         selectbg: ColorTypeN = ...,
         select: int = 0,
@@ -525,27 +523,27 @@ class Guis:
 
     @staticmethod
     def Radio(
-bg:ColorType,
-fg:ColorType,
-family: str = ...,
-font_size: int | float = 14,
-weight: Literal["normal", "bold"] = "normal",
-slant: Literal["roman", "italic"] = "roman",
-underline: bool = False,
-overstrike: bool = False,
-takefocus: bool = True,
-padx:int|float=...,
-pady:int|float=...,
-relief: Literal[
-"raised", "sunken", "flat", "ridge", "solid", "groove"
-] = "flat",
-cursor:_Cursor=...,
-anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
-text: str = ...,
-group: str = "default",
-key: str = ...,
-wraplength: int | float = 0,
-bd: int | float = 0,
+        bg: ColorType,
+        fg: ColorType,
+        family: str = ...,
+        font_size: int | float = 14,
+        weight: Literal["normal", "bold"] = "normal",
+        slant: Literal["roman", "italic"] = "roman",
+        underline: bool = False,
+        overstrike: bool = False,
+        takefocus: bool = True,
+        padx: int | float = ...,
+        pady: int | float = ...,
+        relief: Literal[
+            "raised", "sunken", "flat", "ridge", "solid", "groove"
+        ] = "flat",
+        cursor: _Cursor = ...,
+        anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
+        text: str = ...,
+        group: str = "default",
+        key: str = ...,
+        wraplength: int | float = 0,
+        bd: int | float = 0,
     ) -> dict[str, Any]:
         """
         ラジオボタンを作成する

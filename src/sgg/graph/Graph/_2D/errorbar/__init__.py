@@ -153,7 +153,7 @@ class Errorbar(twoElement):
             yuplims=self.yuplims,
             ylolims=self.ylolims,
             errorevery=self.errorevery,
-            alpha=self.alpha
+            alpha=self.alpha,
         )
         self._redraw()
 

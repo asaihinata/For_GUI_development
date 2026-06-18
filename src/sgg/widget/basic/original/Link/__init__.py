@@ -12,9 +12,9 @@ __all__ = ["Link"]
 class Link(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.link_url = kw.get("link",None)
-        if not isinstance(self.link_url,str):
-            raise ValueError('linkにはstr型を指定してください')
+        self.link_url = kw.get("link", None)
+        if not isinstance(self.link_url, str):
+            raise ValueError("linkにはstr型を指定してください")
         self.underline = kw.get("underline", True)
         self.font = fonts(
             self.family,

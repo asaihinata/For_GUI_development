@@ -82,3 +82,6 @@ class Listboxs(_Element):
         :param lists: 新しく表示させたいListboxsウィジェットの項目を指定する
         :type lists: tuple[str,...]
         """
+
+    def set_height(self, height: int) -> None:
+        """Listboxsウィジェットに表示される項目を変更する"""

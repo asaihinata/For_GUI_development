@@ -86,6 +86,10 @@ class Listboxs(Element):
             self.clear()
             self.apend(lists, "end")
 
+    def set_height(self, height):
+        if isinstance(height, int) and 1 <= height:
+            self.widget.config(height=height)
+
     def delta(self):
         self.widget.destroy()
 

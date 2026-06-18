@@ -46,7 +46,9 @@ class Radio(Element):
             group_data["has_default"] = True
 
     def _count(self, val):
-        self.text_list[val] = (1 if self.text_list.get(val) == None else self.text_list[val] + 1)
+        self.text_list[val] = (
+            1 if self.text_list.get(val) == None else self.text_list[val] + 1
+        )
 
     def delta(self):
         self.widget.destroy()

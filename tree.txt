@@ -446,6 +446,9 @@ For_GUI_development
  │       │       ├── test_linestyles.py
  │       │       └── test_marker.py
  │       └── test_widget
+ │           ├── application
+ │           │   ├── test_getaddress1.py
+ │           │   └── test_getaddress2.py
  │           └── basic
  │               └── test_all.py
  ├── tree.txt
@@ -458,5 +461,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:318
-フォルダ数:141
+ファイル数:320
+フォルダ数:142

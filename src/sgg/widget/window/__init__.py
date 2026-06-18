@@ -42,9 +42,9 @@ class WindowController:
         self.set_alpha(self.alpha)
         self.fullscreen(self.fullscreens)
         self.foreground(self.topmost)
-        resizable = bols(kw.get("resizable"),None)
+        resizable = bols(kw.get("resizable"), None)
         if resizable:
-            self.resizableswidth,self.resizablesheight=True,True
+            self.resizableswidth, self.resizablesheight = True, True
         else:
             self.resizableswidth = bols(kw.get("resizableswidth"), True)
             self.resizablesheight = bols(kw.get("resizablesheight"), True)
