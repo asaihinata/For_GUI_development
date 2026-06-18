@@ -179,7 +179,8 @@ class Guis:
     @staticmethod
     def Texts(
         text: str = ...,
-        size: tuple[int | float | None, int | float | None] = (None, None),
+        width:int|float|None=...,
+        height:int|float|None=...,
         bg: ColorTypeN = ...,
         fg: ColorTypeN = ...,
         family: str = ...,
@@ -226,7 +227,8 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = True,
         overstrike: bool = False,
-        size: tuple[int | float | None, int | float | None] = (None, None),
+        width:int|float|None=...,
+        height:int|float|None=...,
         justify: Literal["left", "center", "right"] = "left",
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
         relief: Literal[
@@ -297,7 +299,8 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        size: tuple[int | float | None, int | float | None] = (None, None),
+        width:int|float|None=...,
+        height:int|float|None=...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",

@@ -1,7 +1,7 @@
 from re import findall
 from tkinter import Misc
 
-from ...dev import bols, listchose, num0, parsecolor
+from ...dev import bols, listchose, num0,num0s, parsecolor
 from ...typing import FunctionType
 from ..font import fonts
 
@@ -16,8 +16,8 @@ class Element:
         self.cursor = kw.get("cursor")
         self.back_bg = kw.get("back_bg")
         self.justify = listchose(kw.get("justify"), ["left", "right", "center"])
-        self.padx = num0(kw.get("padx"), 1)
-        self.pady = num0(kw.get("pady"), 1)
+        self.padx = num0s(kw.get("padx"), 1)
+        self.pady = num0s(kw.get("pady"), 1)
         self.relief = listchose(
             kw.get("relief"), ["flat", "raised", "sunken", "ridge", "solid", "groove"]
         )
@@ -25,7 +25,7 @@ class Element:
         self.bg = parsecolor(
             kw.get("bg"), "#64778d" if self.back_bg == None else self.back_bg
         )
-        self.borderwidth = num0(kw.get("bd"))
+        self.borderwidth = num0s(kw.get("bd"))
         self.takefocus = bols(kw.get("takefocus"))
         self.family = kw.get("family")
         self.font_size = kw.get("font_size")
@@ -45,25 +45,12 @@ class Element:
         self.anchor = listchose(
             kw.get("anchor"), ["w", "n", "s", "e", "nw", "ne", "se", "sw", "center"]
         )
-        self.width, self.height = self._size(kw.get("size"))
+        self.width = self._dwh(kw.get("width"))
+        self.height = self._dwh(kw.get("height"))
 
-    def _size_width(self, val, other=None):
-        return val if isinstance(val, int | float) else other
-
-    def _size_height(self, val, other=None):
-        return val if isinstance(val, int | float) else other
-
-    def _size(self, size, other=(None, None)):
-        if (
-            isinstance(size, list | tuple)
-            and len(size) == 2
-            and (
-                all(isinstance(i, int | float) for i in size)
-                or (isinstance(size[0], int | float) and size[1] is None)
-                or (isinstance(size[1], int | float) and size[0] is None)
-            )
-        ):
-            return size
+    def _dwh(self, val,other=None):
+        if isinstance(val,int|float) and 0<val:
+            return val
         return other
 
     def _exec_funcs(self, funcs=None):

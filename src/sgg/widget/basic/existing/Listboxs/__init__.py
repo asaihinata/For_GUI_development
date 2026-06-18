@@ -18,8 +18,8 @@ class Listboxs(Element):
         self.selectmode = listchose(
             kw.get("selectmode"), ["browse", "single", "multiple", "extended"]
         )
-        self.width = self._size_width(kw.get("width"), 20)
-        self.height = self._size_height(
+        self.width = self._dwh(kw.get("width"), 20)
+        self.height = self._dwh(
             kw.get("height"), min(max(len(self.values), 1), 5)
         )
         self.state = listchose(kw.get("state"), ["normal", "disabled"])
@@ -87,8 +87,7 @@ class Listboxs(Element):
             self.apend(lists, "end")
 
     def set_height(self, height):
-        if isinstance(height, int) and 1 <= height:
-            self.widget.config(height=height)
+        self.widget.config(height=self._dwh(height,self.height))
 
     def delta(self):
         self.widget.destroy()

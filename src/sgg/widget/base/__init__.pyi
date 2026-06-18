@@ -32,17 +32,8 @@ class Element:
     anchor: str
     width: int
     height: int
-    def _size_width(
-        self, val: int | float, other: int | float = None
-    ) -> int | float: ...
-    def _size_height(
-        self, val: int | float, other: int | float = None
-    ) -> int | float: ...
-    def _size(
-        self,
-        size: list | tuple,
-        other: TupleNumbertype2 | list[int | float, int | float] = (None, None),
-    ) -> TupleNumbertype2: ...
+    def _dwh(self, val:int|float,other:int|float|None=None)->int|float|None:
+        """ウィジェットの幅もしくは高さを設定するメソッド"""
     def _exec_funcs(
         self, funcs: function | tuple[function, ...] | None = None
     ) -> Callable | None: ...

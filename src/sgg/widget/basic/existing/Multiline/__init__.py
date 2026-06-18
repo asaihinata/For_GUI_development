@@ -9,8 +9,8 @@ class Multiline(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
-        self.width = self._size_width(kw.get("width"), 20)
-        self.height = self._size_width(kw.get("height"), 5)
+        self.width = self._dwh(kw.get("width"), 20)
+        self.height = self._dwh(kw.get("height"), 5)
         self.text = kw.get("text")
         self.borderwidth = num0(kw.get("bd"), 1)
         self.state = listchose(kw.get("state"), ["normal", "disabled"])
