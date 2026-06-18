@@ -12,6 +12,9 @@ __all__ = ["Link"]
 class Link(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self.link_url = kw.get("link",None)
+        if not isinstance(self.link_url,str):
+            raise ValueError('linkにはstr型を指定してください')
         self.underline = kw.get("underline", True)
         self.font = fonts(
             self.family,
@@ -24,16 +27,15 @@ class Link(Element):
         )
         self.fg = parsecolor(kw.get("fg"), "#0000ee")
         self.wraplength = num0(kw.get("wraplength"))
-        self.link_url = kw.get("link")
         self.text = kw.get("text")
-        if self.text == None and self.link_url != None:
+        if self.text == None:
             self.text = self.link_url
         self.widget = Label(
             master,
             takefocus=self.takefocus,
             anchor=self.anchor,
-            pady=self.pady,
             padx=self.padx,
+            pady=self.pady,
             relief=self.relief,
             wraplength=self.wraplength,
             cursor=self.cursor,

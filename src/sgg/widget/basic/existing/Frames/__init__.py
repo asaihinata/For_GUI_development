@@ -21,8 +21,8 @@ class Frames(Element):
         self.widget = LabelFrame(
             self.master,
             takefocus=self.takefocus,
-            pady=self.pady,
             padx=self.padx,
+            pady=self.pady,
             relief=self.relief,
             cursor=self.cursor,
             labelanchor=self.labelanchor,

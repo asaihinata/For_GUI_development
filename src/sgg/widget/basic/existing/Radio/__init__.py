@@ -11,10 +11,10 @@ class Radio(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.count += 1
-        self.wraplength = num0(kw.get("wraplength"))
-        self.group = kw.get("group", "default")
         self.text = kw.get("text")
+        self.group = kw.get("group", "default")
         self._count(self.text)
+        self.wraplength = num0(kw.get("wraplength"))
         self.value = f"{self.text}{self.text_list.get(self.text)}"
         if self.groups.get(self.group) == None:
             self.groups[self.group] = {
@@ -32,8 +32,8 @@ class Radio(Element):
             font=self.font,
             takefocus=self.takefocus,
             anchor=self.anchor,
-            pady=self.pady,
             padx=self.padx,
+            pady=self.pady,
             relief=self.relief,
             wraplength=self.wraplength,
             cursor=self.cursor,
@@ -46,9 +46,7 @@ class Radio(Element):
             group_data["has_default"] = True
 
     def _count(self, val):
-        self.text_list[val] = (
-            1 if self.text_list.get(val) == None else self.text_list[val] + 1
-        )
+        self.text_list[val] = (1 if self.text_list.get(val) == None else self.text_list[val] + 1)
 
     def delta(self):
         self.widget.destroy()

@@ -11,8 +11,8 @@ class Column(Element):
         self.widget = Frame(
             self.master,
             takefocus=self.takefocus,
-            pady=self.pady,
             padx=self.padx,
+            pady=self.pady,
             relief=self.relief,
             cursor=self.cursor,
             bg=self.bg,

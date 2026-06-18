@@ -26,6 +26,7 @@ __all__ = (
 def __dir__() -> list[str]: ...
 
 class Guis:
+    @overload
     @classmethod
     def window(
         cls,
@@ -42,9 +43,9 @@ class Guis:
         size: tuple[int | float | None, int | float | None] = (None, None),
         maxmine: bool = False,
         location: tuple[int | float, int | float] = (0, 0),
-        resizable: tuple[bool, bool] = ...,
-        resizableswidth: bool | None = None,
-        resizablesheight: bool | None = None,
+        resizable: bool|None = ...,
+        resizableswidth: bool = ...,
+        resizablesheight: bool = ...,
     ) -> WindowController:
         """
         ウィンドウを作成する
@@ -69,6 +70,108 @@ class Guis:
         :type maxmine: bool
         :param location: ウィンドウの表示位置を指定する
         :type location: tuple[int|float,int|float]
+        :param resizable: 幅と高さのサイズ変更の許可を指定する
+        :type resizable: bool|None
+        :param resizableswidth: 幅のサイズ変更の許可を指定する
+        :type resizableswidth: bool
+        :param resizablesheight: 高さのサイズ変更の許可を指定する
+        :type resizablesheight: bool
+        """
+    @overload
+    @classmethod
+    def window(
+        cls,
+        layout: list = ...,
+        alpha: int | float = 1,
+        fullscreen: bool = False,
+        topmost: bool = False,
+        title: str = "window",
+        load: function | tuple[function, ...] | None = None,
+        bg: str = "#64778d",
+        scroll: bool = ...,
+        scroll_x: bool = ...,
+        scroll_y: bool = ...,
+        size: tuple[int | float | None, int | float | None] = (None, None),
+        maxmine: bool = False,
+        location: tuple[int | float, int | float] = (0, 0),
+        resizable: bool = ...,
+    ) -> WindowController:
+        """
+        ウィンドウを作成する
+
+        :param layout: ウィンドウで表示されるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
+        :type layout: Listlike
+        :param title: ウィンドウに表示されるタイトル名を指定する
+        :type title: str
+        :param load: ウィンドウ表示時に実行される関数を指定する
+        :type load: function|tuple[function,...]|None
+        :param bg: ウィンドウの背景を指定する
+        :type bg: ColorTypeN
+        :param scroll: ウィンドウのx軸,y軸方向にスクロールできるか指定する
+        :type scroll: bool
+        :param scroll_x: ウィンドウのx軸方向にスクロールできるか指定する
+        :type scroll_x: bool
+        :param scroll_y: ウィンドウのy軸方向にスクロールできるか指定する
+        :type scroll_y: bool
+        :param size: ウィンドウの幅と高さを指定する
+        :type size: tuple[int|float|None,int|float|None]
+        :param maxmine: ウィンドウ表示時最大化するかを指定する
+        :type maxmine: bool
+        :param location: ウィンドウの表示位置を指定する
+        :type location: tuple[int|float,int|float]
+        :param resizable: 幅と高さのサイズ変更の許可を指定する
+        :type resizable: bool
+        """
+    @overload
+    @classmethod
+    def window(
+        cls,
+        layout: list = ...,
+        alpha: int | float = 1,
+        fullscreen: bool = False,
+        topmost: bool = False,
+        title: str = "window",
+        load: function | tuple[function, ...] | None = None,
+        bg: str = "#64778d",
+        scroll: bool = ...,
+        scroll_x: bool = ...,
+        scroll_y: bool = ...,
+        size: tuple[int | float | None, int | float | None] = (None, None),
+        maxmine: bool = False,
+        location: tuple[int | float, int | float] = (0, 0),
+        resizable: None = None,
+        resizableswidth: bool = ...,
+        resizablesheight: bool = ...,
+    ) -> WindowController:
+        """
+        ウィンドウを作成する
+
+        :param layout: ウィンドウで表示されるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
+        :type layout: Listlike
+        :param title: ウィンドウに表示されるタイトル名を指定する
+        :type title: str
+        :param load: ウィンドウ表示時に実行される関数を指定する
+        :type load: function|tuple[function,...]|None
+        :param bg: ウィンドウの背景を指定する
+        :type bg: ColorTypeN
+        :param scroll: ウィンドウのx軸,y軸方向にスクロールできるか指定する
+        :type scroll: bool
+        :param scroll_x: ウィンドウのx軸方向にスクロールできるか指定する
+        :type scroll_x: bool
+        :param scroll_y: ウィンドウのy軸方向にスクロールできるか指定する
+        :type scroll_y: bool
+        :param size: ウィンドウの幅と高さを指定する
+        :type size: tuple[int|float|None,int|float|None]
+        :param maxmine: ウィンドウ表示時最大化するかを指定する
+        :type maxmine: bool
+        :param location: ウィンドウの表示位置を指定する
+        :type location: tuple[int|float,int|float]
+        :param resizable: 幅と高さのサイズ変更の許可を指定する
+        :type resizable: None
+        :param resizableswidth: 幅のサイズ変更の許可を指定する
+        :type resizableswidth: bool
+        :param resizablesheight: 高さのサイズ変更の許可を指定する
+        :type resizablesheight: bool
         """
 
     @staticmethod
@@ -85,8 +188,8 @@ class Guis:
         overstrike: bool = False,
         takefocus: bool = True,
         bd: int | float = 0,
-        pady: int | float = ...,
         padx: int | float = ...,
+        pady: int | float = ...,
         wraplength: int | float = 0,
         cursor: _Cursor = ...,
         justify: Literal["left", "center", "right"] = "left",
@@ -105,12 +208,11 @@ class Guis:
 
     @staticmethod
     def Link(
+        link: str,
         text: str = ...,
-        link: str | None = None,
-        key: str = ...,
         takefocus: bool = True,
-        pady: int | float = ...,
         padx: int | float = ...,
+        pady: int | float = ...,
         wraplength: int | float = 0,
         cursor: _Cursor = ...,
         bd: int | float = 0,
@@ -128,14 +230,15 @@ class Guis:
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
+        key: str = ...,
     ) -> dict[str, Any]:
         """
         リンクテキストを作成する
 
+        :param link: Linkウィジェットが押されたときにブラウザで開くURLのリンクを指定する
+        :type link: str
         :param text: Linkウィジェットに表記させる文字を指定する
         :type text: str
-        :param link: Linkウィジェットが押されたときにブラウザで開くURLのリンクを指定する
-        :type link: str|None
         """
 
     @staticmethod
@@ -153,7 +256,9 @@ class Guis:
 
     @staticmethod
     def Imagebyte(
-        byte: bytes | BytesIO = ..., takefocus: bool = True, key: str = ...
+        byte: bytes | BytesIO = ...,
+        takefocus: bool = True,
+        key: str = ...
     ) -> dict[str, Any]:
         """
         画像を作成する
@@ -164,7 +269,9 @@ class Guis:
 
     @staticmethod
     def Imagelink(
-        link: str = ..., takefocus: bool = True, key: str = ...
+        link: str = ...,
+        takefocus: bool = True,
+        key: str = ...
     ) -> dict[str, Any]:
         """
         画像を作成する
@@ -179,8 +286,8 @@ class Guis:
         function: function | tuple[function, ...] | None = ...,
         key: str = ...,
         takefocus: bool = True,
-        pady: int | float = ...,
         padx: int | float = ...,
+        pady: int | float = ...,
         wraplength: int | float = 0,
         cursor: _Cursor = ...,
         bg: ColorTypeN = ...,
@@ -214,7 +321,6 @@ class Guis:
         insertwidth: int | float = 2,
         insertbg: ColorTypeN = "#000000",
         width: int | float = 20,
-        key: str = ...,
         bd: int | float = 0,
         takefocus: bool = True,
         cursor: _Cursor = ...,
@@ -230,6 +336,7 @@ class Guis:
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
         justify: Literal["left", "center", "right"] = "left",
+        key: str = ...,
     ) -> dict[str, Any]:
         """
         入力欄を作成する
@@ -418,11 +525,27 @@ class Guis:
 
     @staticmethod
     def Radio(
-        text: str = ...,
-        group: str = "default",
-        key: str = ...,
-        wraplength: int | float = 0,
-        bd: int | float = 0,
+bg:ColorType,
+fg:ColorType,
+family: str = ...,
+font_size: int | float = 14,
+weight: Literal["normal", "bold"] = "normal",
+slant: Literal["roman", "italic"] = "roman",
+underline: bool = False,
+overstrike: bool = False,
+takefocus: bool = True,
+padx:int|float=...,
+pady:int|float=...,
+relief: Literal[
+"raised", "sunken", "flat", "ridge", "solid", "groove"
+] = "flat",
+cursor:_Cursor=...,
+anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
+text: str = ...,
+group: str = "default",
+key: str = ...,
+wraplength: int | float = 0,
+bd: int | float = 0,
     ) -> dict[str, Any]:
         """
         ラジオボタンを作成する
@@ -460,8 +583,8 @@ class Guis:
         ] = "nw",
         key: str = ...,
         takefocus: bool = True,
-        pady: int | float = ...,
         padx: int | float = ...,
+        pady: int | float = ...,
         cursor: _Cursor = ...,
         family: str = ...,
         font_size: int | float = 14,
@@ -523,8 +646,8 @@ class Guis:
         tearoff: bool = False,
         key: str = ...,
         takefocus: bool = True,
-        pady: int | float = ...,
         padx: int | float = ...,
+        pady: int | float = ...,
         cursor: _Cursor = ...,
         bg: ColorTypeN = ...,
         fg: ColorTypeN = ...,
@@ -557,8 +680,8 @@ class Guis:
         key: str = ...,
         bd: int | float = 0,
         takefocus: bool = True,
-        pady: int | float = ...,
         padx: int | float = ...,
+        pady: int | float = ...,
         cursor: _Cursor = ...,
         family: str = ...,
         font_size: int | float = 14,
@@ -2132,7 +2255,6 @@ class Guis:
         fline: Literal["-", "--", "-.", "-."] = ...,
         fcolor: (
             Literal["r", "g", "b", "c", "m", "y", "k", "w"]
-            | list[Literal["r", "g", "b", "c", "m", "y", "k", "w"]]
             | tuple[Literal["r", "g", "b", "c", "m", "y", "k", "w"]]
         ) = ...,
         size: tuple[int | float, int | float] = (500, 400),
@@ -2179,7 +2301,7 @@ class Guis:
         :param fline: 幹の線の種類を指定する
         :type fline: Literal["-","--","-.","-."]
         :param fcolor: 色を指定する
-        :type fcolor: Literal["r","g","b","c","m","y","k","w"]|list[Literal["r","g","b","c","m","y","k","w"]]|tuple[Literal["r","g","b","c","m","y","k","w"]]
+        :type fcolor: Literal["r","g","b","c","m","y","k","w"]|tuple[Literal["r","g","b","c","m","y","k","w"]]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
@@ -4801,10 +4923,10 @@ class Guis:
 
         :param title: 情報メッセージボックスに表示させるタイトル名を指定する
         :type title: str
-        :param icon: 情報メッセージボックスに表示させるアイコンを指定する
-        :type icon: Literal["info","warning","error","question"]
         :param message: 情報メッセージボックスに表示させるメッセージを指定する
         :type message: str
+        :param icon: 情報メッセージボックスに表示させるアイコンを指定する
+        :type icon: Literal["info","warning","error","question"]
         """
 
     @classmethod
@@ -4823,8 +4945,6 @@ class Guis:
         :type message: str
         :param icon: 警告メッセージボックスに表示させるアイコンを指定する
         :type icon: Literal["info","warning","error","question"]
-        :return: ダイアログで選択された値を返す
-        :rtype: str
         """
 
     @classmethod
@@ -4843,8 +4963,6 @@ class Guis:
         :type message: str
         :param icon: 警告メッセージボックスに表示させるアイコンを指定する
         :type icon: Literal["info","warning","error","question"]
-        :return: ダイアログで選択された値を返す
-        :rtype: Union[str] ("yes","no")
         """
 
     @classmethod
@@ -4863,8 +4981,6 @@ class Guis:
         :type message: str
         :param icon: エラーメッセージボックスに表示させるアイコンを指定する
         :type icon: Literal["info","warning","error","question"]
-        :return: ダイアログで選択された値を返す
-        :rtype: str
         """
 
     @classmethod
@@ -4883,8 +4999,6 @@ class Guis:
         :type message: str
         :param icon: エラーメッセージボックスに表示させるアイコンを指定する
         :type icon: Literal["info","warning","error","question"]
-        :return: ダイアログで選択された値を返す
-        :rtype: Union[str] ("yes","no")
         """
 
     @classmethod
@@ -4903,8 +5017,6 @@ class Guis:
         :type message: str
         :param icon: ダイアログに表示させるアイコンを指定する
         :type icon: Literal["info","warning","error","question"]
-        :return: ダイアログで選択された値を返す
-        :rtype: Union[str] ("yes","no")
         """
 
     @classmethod
@@ -4923,8 +5035,6 @@ class Guis:
         :type message: str
         :param icon: ダイアログに表示させるアイコンを指定する
         :type icon: Literal["info","warning","error","question"]
-        :return: ダイアログで選択された値を返す
-        :rtype: bool
         """
 
     @classmethod
@@ -4937,15 +5047,12 @@ class Guis:
         """
         「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる
 
-        「はい」の場合はTrueを,「いいえ」の場合はFalseを返す
          :param title: ダイアログに表示させるタイトル名を指定する
          :type title: str
          :param message: ダイアログに表示させるメッセージを指定する
          :type message: str
          :param icon: ダイアログに表示させるアイコンを指定する
          :type icon: Literal["info","warning","error","question"]
-         :return: ダイアログで選択された値を返す
-         :rtype: bool
         """
 
     @classmethod
@@ -4958,15 +5065,12 @@ class Guis:
         """
         「はい(Yes)」「いいえ(No)」「キャンセル(Cancel)」を選択させるダイアログを表示させる
 
-        「はい」の場合はTrueを,「いいえ」の場合はFalseを返す,「キャンセル(Cancel)」もしくはダイアログを閉じた場合Noneを返す
          :param title: ダイアログに表示させるタイトル名を指定する
          :type title: str
          :param message: ダイアログに表示させるメッセージを指定する
          :type message: str
          :param icon: ダイアログに表示させるアイコンを指定する
          :type icon: Literal["info","warning","error","question"]
-         :return: ダイアログで選択された値を返す
-         :rtype: Union[bool,None]
         """
 
     @classmethod
@@ -4979,13 +5083,10 @@ class Guis:
         """
         操作を再試行するかどうかを尋ねる「再試行」ボタンと「キャンセル」ボタンが設置されたダイアログを表示させる
 
-        回答が「再試行」の場合はTrueを,「キャンセル」の場合はFalseを返します
          :param title: ダイアログに表示させるタイトル名を指定する
          :type title: str
          :param message: ダイアログに表示させるメッセージを指定する
          :type message: str
          :param icon: ダイアログに表示させるアイコンを指定する
          :type icon: Literal["info","warning","error","question"]
-         :return: ダイアログで選択された値を返す
-         :rtype: bool
         """

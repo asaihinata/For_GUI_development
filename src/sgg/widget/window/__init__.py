@@ -42,23 +42,12 @@ class WindowController:
         self.set_alpha(self.alpha)
         self.fullscreen(self.fullscreens)
         self.foreground(self.topmost)
-        resizable = kw.get("resizable")
-        if (
-            is_array_like(resizable)
-            and len(resizable) == 2
-            and all(isinstance(i, bool) for i in resizable)
-        ):
-            self.resizableswidth, self.resizablesheight = resizable
-        elif isinstance(resizable, bool):
-            self.resizableswidth, self.resizablesheight = resizable, resizable
+        resizable = bols(kw.get("resizable"),None)
+        if resizable:
+            self.resizableswidth,self.resizablesheight=True,True
         else:
-            self.resizableswidth, self.resizablesheight = True, True
-        resizableswidth = bols(kw.get("resizableswidth"), None)
-        resizablesheight = bols(kw.get("resizablesheight"), None)
-        if resizableswidth != None:
-            self.resizableswidth = resizableswidth
-        if resizablesheight != None:
-            self.resizablesheight = resizablesheight
+            self.resizableswidth = bols(kw.get("resizableswidth"), True)
+            self.resizablesheight = bols(kw.get("resizablesheight"), True)
         self.resizable(self.resizableswidth, self.resizablesheight)
         self.location = kw.get("location", (0, 0))
         self.widgets = {}
