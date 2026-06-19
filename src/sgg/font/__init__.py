@@ -21,19 +21,17 @@ class TKFont(Font):
         font=None,
         root=None,
     ):
+        rootj=False
+        if not isinstance(root, Misc):
+            root = Tk()
+            rootj=True
         if isinstance(font,Getfont):
-            super().__init__(font=(font.family,font.size),root=root,)
+            super().__init__(root,font=(font.family[0],int(font.size)))
         elif isinstance(font,Font):
             super().__init__(font=font,root=root,)
         else:
-            rootj=False
-            if not isinstance(root, Misc):
-                root = Tk()
-                rootj=True
             fontlist = families(root)
             family = family if family in fontlist else fontlist[0]
-            if rootj:
-                root.destroy()
             if isinstance(size, int | float):
                 size = size
             else:
@@ -43,11 +41,12 @@ class TKFont(Font):
             underline = bols(underline, False)
             overstrike = bols(overstrike, False)
             super().__init__(
+                root,
                 family=family,
                 size=size,
                 weight=weight,
                 slant=slant,
                 underline=underline,
                 overstrike=overstrike,
-                root=root,
             )
+        if rootj:root.destroy()

@@ -1,7 +1,9 @@
 from re import findall
 from tkinter import Misc
+from tkinter.font import Font
 
-from ...dev import bols, listchose, num0,num0s, parsecolor
+from ...readfile import Getfont
+from ...dev import bols, listchose,num0s, parsecolor
 from ...typing import FunctionType
 from ...font import TKFont
 
@@ -27,21 +29,28 @@ class Element:
         )
         self.borderwidth = num0s(kw.get("bd"))
         self.takefocus = bols(kw.get("takefocus"))
+        font=kw.get("font",None)
         self.family = kw.get("family")
         self.font_size = kw.get("font_size")
         self.weight = kw.get("weight")
         self.slant = kw.get("slant")
         self.underline = kw.get("underline")
         self.overstrike = kw.get("overstrike")
-        self.font = TKFont(
-            self.family,
-            self.font_size,
-            self.weight,
-            self.slant,
-            self.underline,
-            self.overstrike,
-            root=self.master,
-        )
+        if isinstance(font,Getfont):
+            self.font = TKFont(
+                font=font,
+                root=self.master,
+            )
+        else:
+            self.font = TKFont(
+                self.family,
+                self.font_size,
+                self.weight,
+                self.slant,
+                self.underline,
+                self.overstrike,
+                root=self.master,
+            )
         self.anchor = listchose(
             kw.get("anchor"), ["w", "n", "s", "e", "nw", "ne", "se", "sw", "center"]
         )
