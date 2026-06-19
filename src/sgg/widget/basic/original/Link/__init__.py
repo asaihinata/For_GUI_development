@@ -23,7 +23,7 @@ class Link(Element):
             self.slant,
             self.underline,
             self.overstrike,
-            master,
+            root=master,
         )
         self.fg = parsecolor(kw.get("fg"), "#0000ee")
         self.wraplength = num0(kw.get("wraplength"))

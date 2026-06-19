@@ -40,7 +40,7 @@ class Element:
             self.slant,
             self.underline,
             self.overstrike,
-            self.master,
+            root=self.master,
         )
         self.anchor = listchose(
             kw.get("anchor"), ["w", "n", "s", "e", "nw", "ne", "se", "sw", "center"]
