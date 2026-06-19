@@ -1,7 +1,7 @@
 from tkinter import Misc, _Cursor
 
 from ...typing import Callable, TupleNumbertype2
-from ..font import fonts
+from ...font import TKFont
 
 __all__ = ["_Element", "Element"]
 
@@ -28,11 +28,11 @@ class Element:
     slant: str
     underline: bool
     overstrike: bool
-    font: fonts
+    font: TKFont
     anchor: str
     width: int
     height: int
-    def _dwh(self, val:int|float,other:int|float|None=None)->int|float|None:
+    def _dwh(self, val:int | float,other:int | float | None=None)->int | float | None:
         """ウィジェットの幅もしくは高さを設定するメソッド"""
     def _exec_funcs(
         self, funcs: function | tuple[function, ...] | None = None

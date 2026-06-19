@@ -10,13 +10,14 @@ from numpy.typing import ArrayLike
 from ._dialog import *
 from .graph import *
 from .nparray import *
-from .readfile import Getcsv, Getjosn
+from .font import TKFont
+from .readfile import Getcsv, Getjosn,Getfont
 from .typing import *
 from .version import __version__, version
 from .widget import *
 
 __all__ = (
-    ["__version__", "version", "Getjosn", "Getcsv", "Guis"]
+    ["__version__", "version", "Getjosn","Getfont", "Getcsv", "Guis","TKFont"]
     + getattr(_dialog, "__all__", [])
     + getattr(graph, "__all__", [])
     + getattr(nparray, "__all__", [])
@@ -55,7 +56,7 @@ class Guis:
         :param title: ウィンドウに表示されるタイトル名を指定する
         :type title: str
         :param load: ウィンドウ表示時に実行される関数を指定する
-        :type load: function|tuple[function,...]|None
+        :type load: function | tuple[function,...] | None
         :param bg: ウィンドウの背景を指定する
         :type bg: ColorTypeN
         :param scroll: ウィンドウのx軸,y軸方向にスクロールできるか指定する
@@ -65,13 +66,13 @@ class Guis:
         :param scroll_y: ウィンドウのy軸方向にスクロールできるか指定する
         :type scroll_y: bool
         :param size: ウィンドウの幅と高さを指定する
-        :type size: tuple[int|float|None,int|float|None]
+        :type size: tuple[int | float | None,int | float | None]
         :param maxmine: ウィンドウ表示時最大化するかを指定する
         :type maxmine: bool
         :param location: ウィンドウの表示位置を指定する
-        :type location: tuple[int|float,int|float]
+        :type location: tuple[int | float,int | float]
         :param resizable: 幅と高さのサイズ変更の許可を指定する
-        :type resizable: bool|None
+        :type resizable: bool | None
         :param resizableswidth: 幅のサイズ変更の許可を指定する
         :type resizableswidth: bool
         :param resizablesheight: 高さのサイズ変更の許可を指定する
@@ -105,7 +106,7 @@ class Guis:
         :param title: ウィンドウに表示されるタイトル名を指定する
         :type title: str
         :param load: ウィンドウ表示時に実行される関数を指定する
-        :type load: function|tuple[function,...]|None
+        :type load: function | tuple[function,...] | None
         :param bg: ウィンドウの背景を指定する
         :type bg: ColorTypeN
         :param scroll: ウィンドウのx軸,y軸方向にスクロールできるか指定する
@@ -115,11 +116,11 @@ class Guis:
         :param scroll_y: ウィンドウのy軸方向にスクロールできるか指定する
         :type scroll_y: bool
         :param size: ウィンドウの幅と高さを指定する
-        :type size: tuple[int|float|None,int|float|None]
+        :type size: tuple[int | float | None,int | float | None]
         :param maxmine: ウィンドウ表示時最大化するかを指定する
         :type maxmine: bool
         :param location: ウィンドウの表示位置を指定する
-        :type location: tuple[int|float,int|float]
+        :type location: tuple[int | float,int | float]
         :param resizable: 幅と高さのサイズ変更の許可を指定する
         :type resizable: bool
         """
@@ -153,7 +154,7 @@ class Guis:
         :param title: ウィンドウに表示されるタイトル名を指定する
         :type title: str
         :param load: ウィンドウ表示時に実行される関数を指定する
-        :type load: function|tuple[function,...]|None
+        :type load: function | tuple[function,...] | None
         :param bg: ウィンドウの背景を指定する
         :type bg: ColorTypeN
         :param scroll: ウィンドウのx軸,y軸方向にスクロールできるか指定する
@@ -163,11 +164,11 @@ class Guis:
         :param scroll_y: ウィンドウのy軸方向にスクロールできるか指定する
         :type scroll_y: bool
         :param size: ウィンドウの幅と高さを指定する
-        :type size: tuple[int|float|None,int|float|None]
+        :type size: tuple[int | float | None,int | float | None]
         :param maxmine: ウィンドウ表示時最大化するかを指定する
         :type maxmine: bool
         :param location: ウィンドウの表示位置を指定する
-        :type location: tuple[int|float,int|float]
+        :type location: tuple[int | float,int | float]
         :param resizable: 幅と高さのサイズ変更の許可を指定する
         :type resizable: None
         :param resizableswidth: 幅のサイズ変更の許可を指定する
@@ -179,8 +180,8 @@ class Guis:
     @staticmethod
     def Texts(
         text: str = ...,
-        width:int|float|None=...,
-        height:int|float|None=...,
+        width:int | float | None=...,
+        height:int | float | None=...,
         bg: ColorTypeN = ...,
         fg: ColorTypeN = ...,
         family: str = ...,
@@ -227,8 +228,8 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = True,
         overstrike: bool = False,
-        width:int|float|None=...,
-        height:int|float|None=...,
+        width:int | float | None=...,
+        height:int | float | None=...,
         justify: Literal["left", "center", "right"] = "left",
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
         relief: Literal[
@@ -255,7 +256,7 @@ class Guis:
         画像を作成する
 
         :param path: Imagesウィジェットに表示させる画像のパスを指定する
-        :type path: WindowsPath|PosixPath|Path
+        :type path: WindowsPath | PosixPath | Path
         """
 
     @staticmethod
@@ -266,7 +267,7 @@ class Guis:
         画像を作成する
 
         :param byte: Imagebytoに表示させるバイトデータを指定する
-        :type byte: bytes|BytesIO
+        :type byte: bytes | BytesIO
         """
 
     @staticmethod
@@ -299,8 +300,8 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        width:int|float|None=...,
-        height:int|float|None=...,
+        width:int | float | None=...,
+        height:int | float | None=...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
@@ -312,7 +313,7 @@ class Guis:
         :param text: Buttonsウィジェットに表記させる文字を指定する
         :type text: str
         :param function: Buttonsウィジェットが押された時実行される関数を指定する
-        :type function: function|tuple[function,...]|None
+        :type function: function | tuple[function,...] | None
         """
 
     @staticmethod
@@ -345,9 +346,9 @@ class Guis:
         :param text: Inputウィジェットに表記させる文字を指定する
         :type text: str
         :param width: Inputウィジェットの幅の長さを指定する
-        :type width: int|float
+        :type width: int | float
         :param insertwidth: Inputウィジェットの入力時の挿入ポイントの幅を指定する
-        :type insertwidth: int|float
+        :type insertwidth: int | float
         :param insertbg: Inputウィジェットの入力時の挿入ポイントの色を指定する
         :type insertbg: ColorTypeN
         :param show: 実際の入力内容の各文字の代わりに表示させる文字を指定する
@@ -388,7 +389,7 @@ class Guis:
         :param text: Multilineウィジェットに表記させる文字を指定する
         :type text: str
         :param insertwidth: Multilineウィジェットの入力時の挿入ポイントの幅を指定する
-        :type insertwidth: int|float
+        :type insertwidth: int | float
         :param insertbg: Multilineウィジェットの入力時の挿入ポイントの色を指定する
         :type insertbg: ColorTypeN
         :param state: 選択操作の有無を指定するnormalは操作可能にするdisabledは操作不可能にする
@@ -422,11 +423,11 @@ class Guis:
         :param rowheader: Tableウィジェットの縦列の見出しを配列で指定し,それを設置する
         :type rowheader: list
         :param colwidth: Tableウィジェットの幅を指定する
-        :type colwidth: int|float
+        :type colwidth: int | float
         :param rowheight: Tableウィジェットのセルの高さを指定する
-        :type rowheight: int|float
+        :type rowheight: int | float
         :param height: Tableウィジェットに表示できる行を指定する
-        :type height: int|float
+        :type height: int | float
         """
 
     @staticmethod
@@ -457,9 +458,9 @@ class Guis:
         :param rowheader: Treeウィジェットの縦列の見出しを配列で指定し,それを設置する
         :type rowheader: list
         :param colwidth: Treeウィジェットの幅を指定する
-        :type colwidth: int|float
+        :type colwidth: int | float
         :param rowheight: Treeウィジェットのセルの高さを指定する
-        :type rowheight: int|float
+        :type rowheight: int | float
         """
 
     @staticmethod
@@ -488,7 +489,7 @@ class Guis:
         リストボックスを作成する
 
         :param values: Listboxウィジェットに表記させるリストを指定する
-        :type values: list|tuple
+        :type values: list | tuple
         :param selectfg: Listboxウィジェットのリストに選択されているリストの文字色を指定する
         :type selectfg: ColorTypeN
         :param selectbg: Listboxウィジェットのリストに選択されているリストの背景色を指定する
@@ -721,17 +722,17 @@ class Guis:
         :param digits: スケールの値を文字列として取得した際の数値の最大桁数を指定する
         :type digits: int
         :param resolution: スライダーのステップ数を指定する
-        :type resolution: int|float
+        :type resolution: int | float
         :param length: Slidebarウィジェットの長さを指定する
-        :type length: int|float
+        :type length: int | float
         :param orientation: Slidebarウィジェットの向きを指定する
         :type orientation: Literal["horizontal","vertical"]
         :param min: Slidebarウィジェットの数値の最小値を指定する
-        :type min: int|float
+        :type min: int | float
         :param max: Slidebarウィジェットの数値の最大値を指定する
-        :type max: int|float
+        :type max: int | float
         :param value: Slidebarウィジェットの読み込み時の初期値を指定する
-        :type value: int|float
+        :type value: int | float
         """
 
     @staticmethod
@@ -755,17 +756,17 @@ class Guis:
         :param wrap: 数値が`max`もしくは`min`で指定した範囲外を選択しようとした場合,`max`より大きい数値の場合は`min`へ`min`より小さい数値の場合は`max`へ移動するかを指定する
         :type wrap: bool
         :param insertwidth: InputNumberウィジェットの入力時の挿入ポイントの幅を指定する
-        :type insertwidth: int|float
+        :type insertwidth: int | float
         :param insertbg: InputNumberウィジェットの入力時の挿入ポイントの色を指定する
         :type insertbg: ColorTypeN
         :param increment: スライダーのステップ数を指定する
-        :type increment: int|float
+        :type increment: int | float
         :param min: Slidebarウィジェットの数値の最小値を指定する
-        :type min: int|float
+        :type min: int | float
         :param max: Slidebarウィジェットの数値の最大値を指定する
-        :type max: int|float
+        :type max: int | float
         :param value: Slidebarウィジェットの読み込み時の初期値を指定する
-        :type value: int|float
+        :type value: int | float
         """
 
     @staticmethod
@@ -903,15 +904,15 @@ class Guis:
         プログレスバーを作成する
 
         :param length: TProgressbarウィジェットの長さを指定する
-        :type length: int|float
+        :type length: int | float
         :param orient: TProgressbarウィジェットの向きを指定する
         :type orient: Literal["horizontal","vertical"]
         :param mode: 決定的モード(determinate)か非決定的モード(indeterminate)かを指定する
         :type mode: Literal["determinate","indeterminate"]
         :param max: TProgressbarウィジェットの数値の最大値を指定する
-        :type max: int|float
+        :type max: int | float
         :param value: TProgressbarウィジェットの読み込み時の初期値を指定する
-        :type value: int|float
+        :type value: int | float
         """
 
     @staticmethod
@@ -948,7 +949,7 @@ class Guis:
         バーコードを作成する
 
         :param data: バーコードで表示させる値を指定する
-        :type data: str|int
+        :type data: str | int
         :param format: バーコードの形式を指定する
         :type format: Literal["codabar","code128","code39","ean","ean13","ean13-guard","ean14","ean8","ean8-guard","gs1","gs1_128","gtin","isbn","isbn10","isbn13","issn","itf","jan","nw-7","pzn","upc","upca"]
         """
@@ -993,7 +994,7 @@ class Guis:
             "x",
             "D",
             "d",
-            "|",
+            " | ",
             "_",
             "P",
             "X",
@@ -1054,27 +1055,27 @@ class Guis:
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
         :param linewidth: 折線グラフの線の幅を指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param markersize: 折線グラフのマーカーの大きさを指定する
-        :type markersize: int|float
+        :type markersize: int | float
         :param marker: 折線グラフのマーカーを指定する
-        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d"," | ","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param linestyle: 折線グラフの線の種類を指定する
         :type linestyle: Literal["-","--","-.",":","None"," ",""]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -1086,9 +1087,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -1155,25 +1156,25 @@ class Guis:
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
         :param linewidth: 折線グラフの線の幅を指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param width: 縦軸棒グラフのバー幅を指定する
-        :type width: int|float
+        :type width: int | float
         :param align: x軸の縦軸棒グラフバーの配置を指定する
         :type align: Literal["center","edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -1185,9 +1186,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -1254,25 +1255,25 @@ class Guis:
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
         :param linewidth: 折線グラフの線の幅を指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param height: 横軸棒グラフのバーの幅を指定する
-        :type height: int|float
+        :type height: int | float
         :param align: x軸の横軸棒グラフバーの配置を指定する
         :type align: Literal["center","edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -1284,9 +1285,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -1350,25 +1351,25 @@ class Guis:
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
         :param linewidth: 折線グラフの線の幅を指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param height: 棒グラフのバーの幅を指定する
-        :type height: int|float
+        :type height: int | float
         :param align: x軸の棒グラフバーの配置を指定する
         :type align: Literal["center","edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -1380,9 +1381,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -1438,7 +1439,7 @@ class Guis:
         :param dataname: カテゴリ名を指定する
         :type dataname: o_array
         :param width: 積み上げ縦棒グラフの幅のサイズを指定する
-        :type width: int|float
+        :type width: int | float
         :param label: ラベルを指定する
         :type label: labeltype
         :param xlabel: x軸のラベルを指定する
@@ -1448,17 +1449,17 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -1470,9 +1471,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -1528,7 +1529,7 @@ class Guis:
         :param dataname: カテゴリ名を指定する
         :type dataname: o_array
         :param height: 積み上げ横棒グラフの高さのサイズを指定する
-        :type height: int|float
+        :type height: int | float
         :param label: ラベルを指定する
         :type label: labeltype
         :param xlabel: x軸のラベルを指定する
@@ -1538,17 +1539,17 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -1560,9 +1561,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -1606,7 +1607,7 @@ class Guis:
         :param label: ラベルを指定する
         :type label: labeltype
         :param startangle: 各要素の出力を開始する角度を指定する
-        :type startangle: int|float
+        :type startangle: int | float
         :param startangletype: 各要素の出力を開始する角度を度数法(True)か弧度法(False)かを指定する
         :type startangletype: bool
         :param shadow: 円グラフに影を追加するか指定する
@@ -1614,23 +1615,23 @@ class Guis:
         :param counterclock: 時計回りで出力するか指定する
         :type counterclock: bool
         :param labeldistance: 中心からラベルの距離を指定する
-        :type labeldistance: int|float
+        :type labeldistance: int | float
         :param explode: 中心から各セグメントの離す距離を指定する
-        :type explode: list[int,float]|tuple[int,float]|int|float
+        :type explode: list[int,float] | tuple[int,float] | int | float
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         """
 
     @staticmethod
@@ -1686,19 +1687,19 @@ class Guis:
         :param orientation: 箱ひげ図の向きを指定する
         :type orientation: Literal["horizontal","vertical"]
         :param whis: ヒゲの位置を指定する
-        :type whis: float|TupleFloat2
+        :type whis: float | TupleFloat2
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -1714,9 +1715,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -1786,7 +1787,7 @@ class Guis:
         :param dcolor: 下降バーの色を指定する
         :type dcolor: ColorTypeN
         :param width: バーの幅を指定する
-        :type width: int|float
+        :type width: int | float
         :param linestyle: バーとバーを繋げる線の種類を指定する
         :type linestyle: Literal["-","--","-.",":","None"," ",""]
         :param xlabel: x軸のラベルを指定する
@@ -1796,15 +1797,15 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -1816,9 +1817,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -1891,7 +1892,7 @@ class Guis:
         :param dcolor: 下降バーの色を指定する
         :type dcolor: ColorTypeN
         :param height: バーの幅を指定する
-        :type height: int|float
+        :type height: int | float
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -1899,15 +1900,15 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -1919,9 +1920,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -1964,7 +1965,7 @@ class Guis:
             "x",
             "D",
             "d",
-            "|",
+            " | ",
             "_",
             "P",
             "X",
@@ -2029,29 +2030,29 @@ class Guis:
         :param label: ラベルを指定する
         :type label: labeltype
         :param marker: 散布図のマーカーを指定する
-        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d"," | ","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param markersize: 散布図のマーカーの大きさを指定する
-        :type markersize: int|float
+        :type markersize: int | float
         :param regression_bool: 散布図に回帰直線を描画させるか指定する
         :type regression_bool: bool
         :param linestyle: 散布図に回帰直線の線の種類を指定する
         :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""]
         :param linewidth: 散布図に回帰直線の線の太さを指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -2063,9 +2064,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2112,7 +2113,7 @@ class Guis:
             "x",
             "D",
             "d",
-            "|",
+            " | ",
             "_",
             "P",
             "X",
@@ -2180,23 +2181,23 @@ class Guis:
         :param zlabel: z軸のラベルを指定する
         :type zlabel: str
         :param marker: 散布図のマーカーを指定する
-        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d"," | ","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param markersize: 散布図のマーカーの大きさを指定する
-        :type markersize: int|float
+        :type markersize: int | float
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xyz: x軸,y軸,z軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`,`grid_z`より優先度が高い
@@ -2210,11 +2211,11 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param zticksrange: z軸の目盛の範囲を変更する
-        :type zticksrange: int|float|tuple[int|float,...]
+        :type zticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2234,13 +2235,13 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param znumticks: z軸の目盛りの数を指定する
-        :type znumticks: int|float|None
+        :type znumticks: int | float | None
         :param mouse_rotation: 表示されているグラフをマウスで操作できるか指定する
         :type mouse_rotation: bool
         :param elev: 仰角を度数表記で指定する
-        :type elev: int|float
+        :type elev: int | float
         :param azim: 方位角を度数表記で指定する
-        :type azim: int|float
+        :type azim: int | float
         """
 
     @staticmethod
@@ -2284,9 +2285,9 @@ class Guis:
         幹図を作成する
 
         :param x: `x`のデータを指定する
-        :type x: ndarray|list|tuple
+        :type x: ndarray | list | tuple
         :param y: `y`のデータを指定する
-        :type y: ndarray|list|tuple
+        :type y: ndarray | list | tuple
         :param label: ラベルを指定する
         :type label: labeltype
         :param xlabel: x軸のラベルを指定する
@@ -2296,25 +2297,25 @@ class Guis:
         :param orientation: 茎の向きを指定する
         :type orientation: Literal["horizontal","vertical"]
         :param bottom: ベースラインの位置を指定する
-        :type bottom: int|float
+        :type bottom: int | float
         :param fmarker: 幹のマーカーの種類を指定する
         :type fmarker: Literal["-","--","-.",":","None"," ",""]
         :param fline: 幹の線の種類を指定する
         :type fline: Literal["-","--","-.","-."]
         :param fcolor: 色を指定する
-        :type fcolor: Literal["r","g","b","c","m","y","k","w"]|tuple[Literal["r","g","b","c","m","y","k","w"]]
+        :type fcolor: Literal["r","g","b","c","m","y","k","w"] | tuple[Literal["r","g","b","c","m","y","k","w"]]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -2330,9 +2331,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2391,7 +2392,7 @@ class Guis:
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
         :param baseline: 階段の下端の開始位置を指定する
-        :type baseline: int|float
+        :type baseline: int | float
         :param fill: 階段の下部から`baseline`の間を塗りつぶすかを指定する
         :type fill: bool
         :param orientation: グラフの向きを指定する
@@ -2399,17 +2400,17 @@ class Guis:
         :param label: ラベルを指定する
         :type label: labeltype
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -2421,9 +2422,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2487,15 +2488,15 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorTypeN
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -2507,9 +2508,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2579,31 +2580,31 @@ class Guis:
         :param label: ラベルを指定する
         :type label: labeltype
         :param width: ヒストグラムのバーのサイズを指定する
-        :type width: int|float
+        :type width: int | float
         :param orientation: ヒストグラムの向きを指定する
         :type orientation: Literal["horizontal","vertical"]
         :param bottom: ヒストグラムのバーの位置を指定する
-        :type bottom: int|float
+        :type bottom: int | float
         :param min: ヒストグラムで表示される最小値を指定する
-        :type min: int|float
+        :type min: int | float
         :param max: ヒストグラムで表示される最大値を指定する
-        :type max: int|float
+        :type max: int | float
         :param bins: `bins`を指定する
-        :type bins: int|ArrayLike|Literal["auto","fd","doane","scott","stone","rice","sturges","sqrt"]
+        :type bins: int | ArrayLike | Literal["auto","fd","doane","scott","stone","rice","sturges","sqrt"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -2615,9 +2616,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2676,7 +2677,7 @@ class Guis:
         :param y: `y`のデータを指定する
         :type y: n_array
         :param hatch: 塗りつぶし領域内の模様を指定する
-        :type hatch: str|None
+        :type hatch: str | None
         :param baseline: 基準値の算出方法を指定する
         :type baseline: Literal["zero","sym","wiggle","weighted_wiggle"]
         :param label: ラベルを指定する
@@ -2688,17 +2689,17 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -2710,9 +2711,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2771,7 +2772,7 @@ class Guis:
         :param ymax: 2つ目の曲線を定義する節点のy座標を指定する
         :type ymax: n_array
         :param centerlinewidth: 線の太さを指定する
-        :type centerlinewidth: int|float
+        :type centerlinewidth: int | float
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -2781,17 +2782,17 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -2803,9 +2804,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2867,7 +2868,7 @@ class Guis:
         :param linestyle: 線の種類を指定する
         :type linestyle: Literal["-","--","-.",":","None"," ",""]
         :param linewidth: 線の太さを指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -2877,17 +2878,17 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -2899,9 +2900,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2955,7 +2956,7 @@ class Guis:
             "X",
             "D",
             "d",
-            "|",
+            " | ",
             "_",
         ] = None,
         linewidth: int | float = 1.5,
@@ -3014,15 +3015,15 @@ class Guis:
         :param linestyle: データ点とデータ点を結ぶ線の種類を指定する
         :type linestyle: Literal["-", "--", "-.", ":"]
         :param marker: データ点のマーカーの種類を指定する
-        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","P","*","h","H","+","x","X","D","d","|","_"]
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","P","*","h","H","+","x","X","D","d"," | ","_"]
         :param linewidth: データ点を結ぶ線の太さを指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param capthick: キャップの厚みを指定する
-        :type capthick: int|float
+        :type capthick: int | float
         :param capsize: エラーバーの先端にあるキャップの長さを指定する
-        :type capsize: int|float
+        :type capsize: int | float
         :param errorevery: エラーバーを表示する頻度を指定する
-        :type errorevery: int|tuple[int,...]
+        :type errorevery: int | tuple[int,...]
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -3032,17 +3033,17 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -3054,9 +3055,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3115,11 +3116,11 @@ class Guis:
         :param data: `data`のデータを指定する
         :type data: o_array
         :param linewidth: イベントグラフの線の太さを指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param linelength: 線の合計の高さを指定する
-        :type linelength: int|float
+        :type linelength: int | float
         :param linestyle: 線の種類を指定する
-        :type linestyle: Literal["-","--","-.",":","None"," ",""]|tuple[Literal["-","--","-.",":","None"," ",""],...]
+        :type linestyle: Literal["-","--","-.",":","None"," ",""] | tuple[Literal["-","--","-.",":","None"," ",""],...]
         :param orientation: 向きを指定する
         :type orientation: Literal["horizontal","vertical"]
         :param label: ラベルを指定する
@@ -3131,17 +3132,17 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -3153,9 +3154,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3217,13 +3218,13 @@ class Guis:
         :param y: `y`のデータを一次元配列で指定する
         :type y: o_array
         :param max,min: 表示させたいカウントの範囲を指定する
-        :type max,min: int|float
+        :type max,min: int | float
         :param xmax,xmin: x軸の`bins`の範囲を指定する
-        :type xmax,xmin: int|float
+        :type xmax,xmin: int | float
         :param ymax,ymin: y軸の`bins`の範囲を指定する
-        :type ymax,ymin: int|float
+        :type ymax,ymin: int | float
         :param bins: ビンの数を指定する
-        :type bins: int|tuple[int,int]|ArrayLike|tuple[ArrayLike,ArrayLike]
+        :type bins: int | tuple[int,int] | ArrayLike | tuple[ArrayLike,ArrayLike]
         :param density: ヒストグラムを正規化かするかを指定する
         :type density: bool
         :param xlabel: x軸のラベルを指定する
@@ -3233,17 +3234,17 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -3255,9 +3256,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3327,7 +3328,7 @@ class Guis:
         :param orientation: バイオリンが設置される軸の向きを指定する
         :type orientation: Literal["horizontal","vertical"]
         :param width: バイオリンの幅を指定する
-        :type width: int|float
+        :type width: int | float
         :param showextrema: 極値を線で示すか指定する
         :type showextrema: bool
         :param showmeans: 平均値を線で示すかどうか指定する
@@ -3335,9 +3336,9 @@ class Guis:
         :param showmedians: 中央値を線で示すかどうか指定する
         :type showmedians: bool
         :param points: 各ガウスカーネル密度推定値を評価する点の数を指定する
-        :type points: int|float
+        :type points: int | float
         :param bw_method: 推定器の帯域幅を計算するために使用されるメソッドを指定する
-        :type bw_method: Literal["scott","silverman"]|float|Callable[[GaussianKDE],float]
+        :type bw_method: Literal["scott","silverman"] | float | Callable[[GaussianKDE],float]
         :param side: バイオリンの左右対称もしくは左右(上下)のみを描画するか指定する
         :type side: Literal["both","low","high"]
         :param xlabel: x軸のラベルを指定する
@@ -3349,17 +3350,17 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -3371,9 +3372,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3435,15 +3436,15 @@ class Guis:
         :param c: 各ポイントの値を指定する
         :type c: o_array
         :param gridsize: `bins`の細かさを指定する
-        :type gridsize: int|tuple[int,int]
+        :type gridsize: int | tuple[int,int]
         :param extent: 各ポイントの値を指定する
-        :type extent: TupleFloat4|None
+        :type extent: TupleFloat4 | None
         :param xscale,yscale: 軸のスケールを指定する
         :type xscale,yscale: Literal["linear","log"]
         :param mincnt: 描画する`bins`の最小カウント数を指定する
         :type mincnt: int
         :param bins: ビンのカウント方法を指定する
-        :type bins: Literal["log"]|int|tuple[float,...]|None
+        :type bins: Literal["log"] | int | tuple[float,...] | None
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -3453,17 +3454,17 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -3475,9 +3476,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3530,23 +3531,23 @@ class Guis:
         :param y: `y`のデータを指定する
         :type y: n_array
         :param width: 棒グラフのバー幅を指定する
-        :type width: int|float
+        :type width: int | float
         :param align: x軸の棒グラフバーの配置を指定する
         :type align: Literal["center","edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -3558,9 +3559,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3610,23 +3611,23 @@ class Guis:
         :param data: `data`のデータを指定する
         :type data: n_array
         :param width: 棒グラフのバー幅を指定する
-        :type width: int|float
+        :type width: int | float
         :param align: x軸の棒グラフバーの配置を指定する
         :type align: Literal["center","edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN|tuple[ColorTypeN,...]
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -3638,9 +3639,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3694,25 +3695,25 @@ class Guis:
         :param y: `y`のデータを指定する
         :type y: o_array
         :param linefmt: 垂直線の色や線を指定する
-        :type linefmt: str|None
+        :type linefmt: str | None
         :param markerfmt: 茎の先端にあるマーカーの色や形状を指定する
-        :type markerfmt: str|None
+        :type markerfmt: str | None
         :param basefmt: ベースラインのプロパティを指定する
-        :type basefmt: str|None
+        :type basefmt: str | None
         :param bottom: ベースラインの座標を指定する
-        :type bottom: int|float
+        :type bottom: int | float
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -3724,9 +3725,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3777,25 +3778,25 @@ class Guis:
         :param data: `data`のデータを指定する
         :type data: o_array
         :param linefmt: 垂直線の色や線を指定する
-        :type linefmt: str|None
+        :type linefmt: str | None
         :param markerfmt: 茎の先端にあるマーカーの色や形状を指定する
-        :type markerfmt: str|None
+        :type markerfmt: str | None
         :param basefmt: ベースラインのプロパティを指定する
-        :type basefmt: str|None
+        :type basefmt: str | None
         :param bottom: ベースラインの座標を指定する
-        :type bottom: int|float
+        :type bottom: int | float
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -3807,9 +3808,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3893,25 +3894,25 @@ class Guis:
         :param marker: データ点のマーカーの種類を指定する
         :type marker: Literal[".","s","o","p","v","*","^","D"]
         :param linewidth: データ点を結ぶ線の太さを指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param capthick: キャップの厚みを指定する
-        :type capthick: int|float
+        :type capthick: int | float
         :param capsize: エラーバーの先端にあるキャップの長さを指定する
-        :type capsize: int|float
+        :type capsize: int | float
         :param errorevery: エラーバーを表示する頻度を指定する
-        :type errorevery: int|list[int]|tuple[int]
+        :type errorevery: int | list[int] | tuple[int]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -3923,9 +3924,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -4006,25 +4007,25 @@ class Guis:
         :param marker: データ点のマーカーの種類を指定する
         :type marker: Literal[".","s","o","p","v","*","^","D"]
         :param linewidth: データ点を結ぶ線の太さを指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param capthick: キャップの厚みを指定する
-        :type capthick: int|float
+        :type capthick: int | float
         :param capsize: エラーバーの先端にあるキャップの長さを指定する
-        :type capsize: int|float
+        :type capsize: int | float
         :param errorevery: エラーバーを表示する頻度を指定する
-        :type errorevery: int|list[int]|tuple[int]
+        :type errorevery: int | list[int] | tuple[int]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -4036,9 +4037,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -4084,7 +4085,7 @@ class Guis:
             "x",
             "D",
             "d",
-            "|",
+            " | ",
             "_",
             "P",
             "X",
@@ -4134,25 +4135,25 @@ class Guis:
         :param y: `y`のデータを指定する
         :type y: o_array
         :param linewidth: 極軸折線グラフの線の幅を指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param markersize: 極軸折線グラフのマーカーの大きさを指定する
-        :type markersize: int|float
+        :type markersize: int | float
         :param marker: 折線グラフのマーカーを指定する
-        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d"," | ","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param linestyle: 折線グラフの線の種類を指定する
         :type linestyle: Literal["solid","-","dashed","--","dash-dot","-.","dotted",": ","none",None," ",""]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -4164,9 +4165,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -4211,7 +4212,7 @@ class Guis:
             "x",
             "D",
             "d",
-            "|",
+            " | ",
             "_",
             "P",
             "X",
@@ -4259,25 +4260,25 @@ class Guis:
         :param data: `data`のデータを指定する
         :type data: o_array
         :param linewidth: 極軸折線グラフの線の幅を指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param markersize: 極軸折線グラフのマーカーの大きさを指定する
-        :type markersize: int|float
+        :type markersize: int | float
         :param marker: 折線グラフのマーカーを指定する
-        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d"," | ","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param linestyle: 折線グラフの線の種類を指定する
         :type linestyle: Literal["solid","-","dashed","--","dash-dot","-.","dotted",": ","none",None," ",""]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -4289,9 +4290,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -4345,9 +4346,9 @@ class Guis:
         :param y: `y`のデータを指定する
         :type y: o_array
         :param linewidth: イベントグラフの線の太さを指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param linelength: 線の合計の高さを指定する
-        :type linelength: int|float
+        :type linelength: int | float
         :param linestyle: 線の種類を指定する
         :type linestyle: Literal["-","--","-.",":","None"," ",""]
         :param orientation: 向きを指定する
@@ -4355,15 +4356,15 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -4375,9 +4376,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -4428,9 +4429,9 @@ class Guis:
         :param data: `data`のデータを指定する
         :type data: o_array
         :param linewidth: イベントグラフの線の太さを指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param linelength: 線の合計の高さを指定する
-        :type linelength: int|float
+        :type linelength: int | float
         :param linestyle: 線の種類を指定する
         :type linestyle: Literal["-","--","-.",":","None"," ",""]
         :param orientation: 向きを指定する
@@ -4438,15 +4439,15 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -4458,9 +4459,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -4504,7 +4505,7 @@ class Guis:
             "x",
             "D",
             "d",
-            "|",
+            " | ",
             "_",
             "P",
             "X",
@@ -4554,21 +4555,21 @@ class Guis:
         :param y: `y`のデータを指定する
         :type y: o_array
         :param marker: 極軸散布図のマーカーを指定する
-        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d"," | ","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param markersize: 極軸散布図のマーカーの大きさを指定する
-        :type markersize: int|float
+        :type markersize: int | float
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -4580,9 +4581,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -4625,7 +4626,7 @@ class Guis:
             "x",
             "D",
             "d",
-            "|",
+            " | ",
             "_",
             "P",
             "X",
@@ -4673,21 +4674,21 @@ class Guis:
         :param data: `data`のデータを指定する
         :type data: o_array
         :param marker: 極軸散布図のマーカーを指定する
-        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d"," | ","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param markersize: 極軸散布図のマーカーの大きさを指定する
-        :type markersize: int|float
+        :type markersize: int | float
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -4699,9 +4700,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -4744,7 +4745,7 @@ class Guis:
             "x",
             "D",
             "d",
-            "|",
+            " | ",
             "_",
             "P",
             "X",
@@ -4793,25 +4794,25 @@ class Guis:
         :param data: `data`のデータを指定する
         :type data: n_array
         :param linewidth: 折線グラフの線の幅を指定する
-        :type linewidth: int|float
+        :type linewidth: int | float
         :param markersize: 折線グラフのマーカーの大きさを指定する
-        :type markersize: int|float
+        :type markersize: int | float
         :param marker: 折線グラフのマーカーを指定する
-        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
+        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d"," | ","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param linestyle: 折線グラフの線の種類を指定する
         :type linestyle: Literal["solid","-","dashed","--","dash-dot","-.","dotted",": ","none",None," ",""]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -4823,9 +4824,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -4873,15 +4874,15 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int|float,int|float]
+        :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: ColorTypeN
         :param bg: グラフ内の背景色を指定する
         :type bg: ColorTypeN
         :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int|float
+        :type dpi: int | float
         :param alpha: グラフの透明度を指定する
-        :type alpha: int|float
+        :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
         :type graph_grid: ColorTypeN
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
@@ -4893,9 +4894,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int|float|tuple[int|float,...]
+        :type xticksrange: int | float | tuple[int | float,...]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int|float|tuple[int|float,...]
+        :type yticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する

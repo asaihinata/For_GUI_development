@@ -3,7 +3,7 @@ from pathlib import Path
 from tkinter import Label
 from webbrowser import open
 
-from ....font import fonts
+from .....font import TKFont
 from ...common import *
 
 __all__ = ["Link"]
@@ -16,7 +16,7 @@ class Link(Element):
         if not isinstance(self.link_url, str):
             raise ValueError("linkにはstr型を指定してください")
         self.underline = kw.get("underline", True)
-        self.font = fonts(
+        self.font = TKFont(
             self.family,
             self.font_size,
             self.weight,

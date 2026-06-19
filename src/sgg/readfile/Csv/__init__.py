@@ -9,15 +9,16 @@ __all__ = ["Getcsv"]
 
 class Getcsv:
     def __init__(self, path, *, has_header=True, separator=",", encoding="utf-8-sig"):
-        self.path = Path(path)
-        if not self.path.exists() or not self.path.is_file():
+        self.__path = Path(path)
+        if not self.__path.exists() or not self.__path.is_file():
             raise FileNotFoundError("ファイルが存在しません")
-        if self.path.suffix != ".csv":
+        if self.__path.suffix != ".csv":
             raise ValueError("csvファイルを指定してください")
         self.__csv_data = read_csv(
-            self.path, has_header=has_header, separator=separator, encoding=encoding
+            self.__path, has_header=has_header, separator=separator, encoding=encoding
         )
-
+    def __fspath__(self):
+        return str(self.__path)
     @property
     def csv(self):
         return self.__csv_data

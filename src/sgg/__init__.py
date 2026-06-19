@@ -1,12 +1,13 @@
 from ._dialog import *
 from .graph import *
 from .nparray import *
-from .readfile import Getcsv, Getjosn
+from .font import TKFont
+from .readfile import Getcsv, Getjosn,Getfont
 from .version import __version__, version
 from .widget import *
 
 __all__ = (
-    ["__version__", "version", "Getjosn", "Getcsv", "Guis"]
+    ["__version__", "version", "Getjosn", "Getcsv","Getfont", "Guis","TKFont"]
     + getattr(_dialog, "__all__", [])
     + getattr(graph, "__all__", [])
     + getattr(nparray, "__all__", [])

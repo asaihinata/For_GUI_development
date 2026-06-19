@@ -3,7 +3,7 @@ from tkinter import Misc
 
 from ...dev import bols, listchose, num0,num0s, parsecolor
 from ...typing import FunctionType
-from ..font import fonts
+from ...font import TKFont
 
 __all__ = ["Element"]
 
@@ -33,7 +33,7 @@ class Element:
         self.slant = kw.get("slant")
         self.underline = kw.get("underline")
         self.overstrike = kw.get("overstrike")
-        self.font = fonts(
+        self.font = TKFont(
             self.family,
             self.font_size,
             self.weight,
@@ -49,7 +49,7 @@ class Element:
         self.height = self._dwh(kw.get("height"))
 
     def _dwh(self, val,other=None):
-        if isinstance(val,int|float) and 0<val:
+        if isinstance(val,int | float) and 0<val:
             return val
         return other
 

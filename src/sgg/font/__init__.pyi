@@ -1,11 +1,13 @@
+"""フォントを設定するモジュール"""
 from tkinter import Misc
 from tkinter.font import Font
+from typing import Literal,overload
+from ..readfile import Getfont
+__all__ = ["TKFont"]
 
-from ...typing import Literal
-
-__all__ = ["fonts"]
-
-class fonts(Font):
+class TKFont(Font):
+    """フォントを設定するオブジェクト"""
+    @overload
     def __init__(
         self,
         family: str = "Meiryo",
@@ -14,15 +16,13 @@ class fonts(Font):
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        root: Misc = None,
+        root: Misc = ...,
     ) -> None:
         """
-        フォントに関するオブジェクト
-
         :param family: フォント名を指定する
         :type family: str
         :param size: フォントサイズを指定する
-        :type size: int|float
+        :type size: int | float
         :param weight: フォントの太字を指定する
         :type weight: Literal["normal","bold"]
         :param slant: フォントの斜体を指定する
@@ -32,3 +32,9 @@ class fonts(Font):
         :param overstrike: フォントに取り消し線を付けるか指定する
         :type overstrike: bool
         """
+    @overload
+    def __init__(
+        self,
+        font:Getfont | Font=...,
+        root: Misc = ...,
+    ) -> None:...

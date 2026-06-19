@@ -65,6 +65,9 @@ For_GUI_development
  │   │   │   └── color
  │   │   │       ├── __init__.py
  │   │   │       └── color.csv
+ │   │   ├── font
+ │   │   │   ├── __init__.py
+ │   │   │   └── __init__.pyi
  │   │   ├── graph
  │   │   │   ├── __init__.py
  │   │   │   ├── element
@@ -279,6 +282,9 @@ For_GUI_development
  │   │   │   ├── Csv
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
+ │   │   │   ├── Font
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
  │   │   │   ├── Json
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
@@ -389,9 +395,6 @@ For_GUI_development
  │   │       │       └── qrimg
  │   │       │           ├── __init__.py
  │   │       │           └── __init__.pyi
- │   │       ├── font
- │   │       │   ├── __init__.py
- │   │       │   └── __init__.pyi
  │   │       └── window
  │   │           ├── __init__.py
  │   │           └── __init__.pyi
@@ -461,5 +464,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:320
-フォルダ数:142
+ファイル数:322
+フォルダ数:143
