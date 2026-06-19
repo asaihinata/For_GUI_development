@@ -12,7 +12,7 @@ class Multiline(Element):
         self.width = self._dwh(kw.get("width"), 20)
         self.height = self._dwh(kw.get("height"), 5)
         self.text = kw.get("text")
-        self.borderwidth = num0(kw.get("bd"), 1)
+        self.borderwidth = num0(kw.get("borderwidth"), 1)
         self.state = listchose(kw.get("state"), ["normal", "disabled"])
         self.wrap = listchose(kw.get("wrap"), ["none", "word", "char"])
         self.insertbackground = parsecolor(kw.get("insertbg"), "#000000")

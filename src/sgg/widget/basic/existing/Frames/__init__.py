@@ -8,7 +8,7 @@ __all__ = ["Frames"]
 class Frames(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.borderwidth = num0s(kw.get("bd"), 1)
+        self.borderwidth = num0s(kw.get("borderwidth"), 1)
         self.title = kw.get("title")
         self.relief = listchose(
             kw.get("relief"),

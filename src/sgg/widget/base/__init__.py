@@ -27,7 +27,7 @@ class Element:
         self.bg = parsecolor(
             kw.get("bg"), "#64778d" if self.back_bg == None else self.back_bg
         )
-        self.borderwidth = num0s(kw.get("bd"))
+        self.borderwidth = num0s(kw.get("borderwidth"))
         self.takefocus = bols(kw.get("takefocus"))
         font=kw.get("font",None)
         self.family = kw.get("family")

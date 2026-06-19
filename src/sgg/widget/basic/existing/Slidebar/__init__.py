@@ -16,7 +16,7 @@ class Slidebar(Element):
         self.resolution = num0(kw.get("resolution"), 1)
         self.digits = num0(kw.get("digits"))
         self.length = num0(kw.get("length"), 200)
-        self.borderwidth = num0(kw.get("bd"), 1)
+        self.borderwidth = num0(kw.get("borderwidth"), 1)
         self.widget = Scale(
             self.master,
             takefocus=self.takefocus,
