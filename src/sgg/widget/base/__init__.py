@@ -1,11 +1,10 @@
 from re import findall
 from tkinter import Misc
-from tkinter.font import Font
 
-from ...readfile import Getfont
-from ...dev import bols, listchose,num0s, parsecolor
-from ...typing import FunctionType
+from ...dev import bols, listchose, num0s, parsecolor
 from ...font import TKFont
+from ...readfile import Getfont
+from ...typing import FunctionType
 
 __all__ = ["Element"]
 
@@ -29,14 +28,14 @@ class Element:
         )
         self.borderwidth = num0s(kw.get("borderwidth"))
         self.takefocus = bols(kw.get("takefocus"))
-        font=kw.get("font",None)
+        font = kw.get("font", None)
         self.family = kw.get("family")
         self.font_size = kw.get("font_size")
         self.weight = kw.get("weight")
         self.slant = kw.get("slant")
         self.underline = kw.get("underline")
         self.overstrike = kw.get("overstrike")
-        if isinstance(font,Getfont):
+        if isinstance(font, Getfont):
             self.font = TKFont(
                 font=font,
                 root=self.master,
@@ -57,8 +56,8 @@ class Element:
         self.width = self._dwh(kw.get("width"))
         self.height = self._dwh(kw.get("height"))
 
-    def _dwh(self, val,other=None):
-        if isinstance(val,int | float) and 0<val:
+    def _dwh(self, val, other=None):
+        if isinstance(val, int | float) and 0 < val:
             return val
         return other
 

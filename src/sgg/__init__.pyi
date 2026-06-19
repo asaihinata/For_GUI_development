@@ -8,16 +8,16 @@ from numpy import ndarray
 from numpy.typing import ArrayLike
 
 from ._dialog import *
+from .font import TKFont
 from .graph import *
 from .nparray import *
-from .font import TKFont
-from .readfile import Getcsv, Getjosn,Getfont
+from .readfile import Getcsv, Getfont, Getjosn
 from .typing import *
 from .version import __version__, version
 from .widget import *
 
 __all__ = (
-    ["__version__", "version", "Getjosn","Getfont", "Getcsv", "Guis","TKFont"]
+    ["__version__", "version", "Getjosn", "Getfont", "Getcsv", "Guis", "TKFont"]
     + getattr(_dialog, "__all__", [])
     + getattr(graph, "__all__", [])
     + getattr(nparray, "__all__", [])
@@ -180,8 +180,8 @@ class Guis:
     @staticmethod
     def Texts(
         text: str = ...,
-        width:int | float | None=...,
-        height:int | float | None=...,
+        width: int | float | None = ...,
+        height: int | float | None = ...,
         bg: ColorTypeN = ...,
         fg: ColorTypeN = ...,
         family: str = ...,
@@ -201,7 +201,7 @@ class Guis:
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         テキストを作成する
@@ -268,14 +268,14 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = True,
         overstrike: bool = False,
-        width:int | float | None=...,
-        height:int | float | None=...,
+        width: int | float | None = ...,
+        height: int | float | None = ...,
         justify: Literal["left", "center", "right"] = "left",
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         リンクテキストを作成する
@@ -330,7 +330,7 @@ class Guis:
     def Images(
         path: WindowsPath | PosixPath | Path = ...,
         takefocus: bool = True,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         画像を作成する
@@ -391,13 +391,13 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        width:int | float | None=...,
-        height:int | float | None=...,
+        width: int | float | None = ...,
+        height: int | float | None = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         ボタンを作成する
@@ -468,7 +468,7 @@ class Guis:
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
         justify: Literal["left", "center", "right"] = "left",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         入力欄を作成する
@@ -540,7 +540,7 @@ class Guis:
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
         justify: Literal["left", "center", "right"] = "left",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         テキストエリアを作成する
@@ -602,7 +602,7 @@ class Guis:
         colwidth: int | float = 120,
         rowheight: int | float = 50,
         bg: ColorTypeN = "#e0e0e0",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         表を作成する
@@ -643,7 +643,7 @@ class Guis:
         header_bg: ColorTypeN = "#cccccc",
         rowheight: int | float = 50,
         side_header: str = ...,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         ツリーを作成する
@@ -686,7 +686,7 @@ class Guis:
         state: Literal["normal", "disabled"] = "normal",
         exportselection: bool = False,
         selectmode: Literal["browse", "single", "multiple", "extended"] = "browse",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         リストボックスを作成する
@@ -739,7 +739,7 @@ class Guis:
         borderwidth: int | float = 0,
         padx: int | float = ...,
         pady: int | float = ...,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         コンボボックスを作成する
@@ -764,8 +764,8 @@ class Guis:
     def Radio(
         text: str = ...,
         group: str = "default",
-        bg: ColorType=...,
-        fg: ColorType=...,
+        bg: ColorType = ...,
+        fg: ColorType = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = "normal",
@@ -782,7 +782,7 @@ class Guis:
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
         wraplength: int | float = 0,
         borderwidth: int | float = 0,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         ラジオボタンを作成する
@@ -835,7 +835,9 @@ class Guis:
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
         padx: int | float = ...,
         pady: int | float = ...,
-        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = "flat",
+        relief: Literal[
+            "raised", "sunken", "flat", "ridge", "solid", "groove"
+        ] = "flat",
         wraplength: int | float = 0,
         borderwidth: int | float = 0,
         cursor: _Cursor = ...,
@@ -847,7 +849,7 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         チェックボタンを作成する
@@ -897,7 +899,7 @@ class Guis:
         legendanchor: Literal[
             "nw", "n", "ne", "w", "center", "e", "sw", "s", "se"
         ] = "nw",
-        key: str | None= ...,
+        key: str | None = ...,
         takefocus: bool = True,
         padx: int | float = ...,
         pady: int | float = ...,
@@ -974,7 +976,7 @@ class Guis:
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         メニューバーを作成する
@@ -1033,7 +1035,7 @@ class Guis:
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         メニューボタンを作成する
@@ -1097,7 +1099,7 @@ class Guis:
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         フレームを作成する
@@ -1146,7 +1148,7 @@ class Guis:
         min: int | float = 0,
         max: int | float = 100,
         borderwidth: int | float = 1,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         スライダーを作成する
@@ -1191,7 +1193,7 @@ class Guis:
         fg: ColorTypeN = ...,
         borderwidth: int | float = 0,
         justify: Literal["left", "center", "right"] = "left",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         数値専用の入力欄を作成する
@@ -1249,21 +1251,21 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        width:int | float | None=...,
-        height:int | float | None=...,
+        width: int | float | None = ...,
+        height: int | float | None = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
         bg: ColorTypeN = ...,
         fg: ColorTypeN = ...,
-        takefocus:bool=...,
+        takefocus: bool = ...,
         justify: Literal["left", "center", "right"] = "left",
         wraplength: int | float = 0,
         borderwidth: int | float = 0,
         anchor: Literal[
             "nw", "n", "ne", "w", "center", "e", "sw", "s", "se"
         ] = "center",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         ファイルパスを取得するダイアログを発生させるボタンを作成する
@@ -1333,13 +1335,13 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        width:int | float | None=...,
-        height:int | float | None=...,
+        width: int | float | None = ...,
+        height: int | float | None = ...,
         justify: Literal["left", "center", "right"] = "left",
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         ファイルパスを取得するダイアログを発生させるボタンを作成する
@@ -1415,12 +1417,12 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        width:int | float | None=...,
-        height:int | float | None=...,
+        width: int | float | None = ...,
+        height: int | float | None = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         ファイルもしくはフォルダを選択し,選択されたパスを取得するダイアログを発生させるボタンを作成する
@@ -1484,7 +1486,7 @@ class Guis:
         color: ColorTypeN = "#ffffff",
         text: str = "select color",
         title: str = "select color",
-        key: str | None= ...,
+        key: str | None = ...,
         bg: ColorTypeN = ...,
         fg: ColorTypeN = ...,
         justify: Literal["left", "center", "right"] = "left",
@@ -1502,8 +1504,8 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        width:int | float | None=...,
-        height:int | float | None=...,
+        width: int | float | None = ...,
+        height: int | float | None = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
@@ -1570,7 +1572,7 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         タブを作成する
@@ -1604,7 +1606,7 @@ class Guis:
         length: int | float = 200,
         mode: Literal["determinate", "indeterminate"] = "determinate",
         orient: Literal["horizontal", "vertical"] = "horizontal",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         プログレスバーを作成する
@@ -1649,7 +1651,7 @@ class Guis:
             "upca",
         ] = "code39",
         takefocus: bool = True,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         バーコードを作成する
@@ -1752,7 +1754,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         折線グラフを作成する
@@ -1853,7 +1855,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         縦軸棒グラフを作成する
@@ -1954,7 +1956,7 @@ class Guis:
         alpha: int | float = 1,
         height: int | float = 1,
         align: Literal["center", "edge"] = "center",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         横軸棒グラフを作成する
@@ -2054,7 +2056,7 @@ class Guis:
         alpha: int | float = 1,
         height: int | float = 1,
         align: Literal["center", "edge"] = "center",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         じょうごグラフを作成する
@@ -2150,7 +2152,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         積み上げ縦棒グラフを作成する
@@ -2242,7 +2244,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         積み上げ横棒グラフを作成する
@@ -2322,7 +2324,7 @@ class Guis:
         title: str = ...,
         dpi: int | float = 100,
         alpha: int | float = 1,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         円グラフを作成する
@@ -2394,7 +2396,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         箱ひげ図を作成する
@@ -2496,7 +2498,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         x軸向きにバーを設置された滝グラフを作成する
@@ -2601,7 +2603,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         y軸向きにバーを設置された滝グラフを作成する
@@ -2747,7 +2749,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         散布図を作成する
@@ -2898,7 +2900,7 @@ class Guis:
         mouse_rotation: bool = True,
         elev: int | float = 30,
         azim: int | float = 45,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         3D散布図を作成する
@@ -3016,7 +3018,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         幹図を作成する
@@ -3119,7 +3121,7 @@ class Guis:
         label: labeltype = ...,
         xlabel: str = ...,
         ylabel: str = ...,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         階段グラフを作成する
@@ -3211,7 +3213,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         ハットグラフを作成する
@@ -3309,7 +3311,7 @@ class Guis:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         xlabel: str = ...,
         ylabel: str = ...,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         ヒストグラムを作成する
@@ -3412,7 +3414,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         積み上げエリアチャートを作成する
@@ -3507,7 +3509,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         積上げ面グラフを作成する
@@ -3601,7 +3603,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         経験的累積分布関数を作成する
@@ -3738,7 +3740,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         誤差範囲付きの線グラフもしくはマーカーグラフ,あるいはその両方のエラーグラフを作成する
@@ -3861,7 +3863,7 @@ class Guis:
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksshow: bool = False,
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         イベントグラフを作成する
@@ -3963,7 +3965,7 @@ class Guis:
         yticksdirection: Literal["out", "in", "inout"] = "out",
         xlabel: str = ...,
         ylabel: str = ...,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         2次元ヒストグラムを作成する
@@ -4071,7 +4073,7 @@ class Guis:
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksshow: bool = False,
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         バイオリングラフを作成する
@@ -4183,7 +4185,7 @@ class Guis:
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksshow: bool = False,
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         2次元六角形グラフを作成する
@@ -4282,7 +4284,7 @@ class Guis:
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         極軸棒グラフを作成する
@@ -4366,7 +4368,7 @@ class Guis:
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         極軸棒グラフを作成する
@@ -4450,7 +4452,7 @@ class Guis:
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         極軸幹図を作成する
@@ -4537,7 +4539,7 @@ class Guis:
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         極軸幹図を作成する
@@ -4633,7 +4635,7 @@ class Guis:
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         極軸エラーグラフを作成する
@@ -4750,7 +4752,7 @@ class Guis:
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         極軸エラーグラフを作成する
@@ -4898,7 +4900,7 @@ class Guis:
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         極軸折線グラフを作成する
@@ -5027,7 +5029,7 @@ class Guis:
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         極軸折線グラフを作成する
@@ -5113,7 +5115,7 @@ class Guis:
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         極軸イベントグラフを作成する
@@ -5200,7 +5202,7 @@ class Guis:
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         極軸イベントグラフを作成する
@@ -5326,7 +5328,7 @@ class Guis:
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         極軸散布図を作成する
@@ -5449,7 +5451,7 @@ class Guis:
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         極軸散布図を作成する
@@ -5571,7 +5573,7 @@ class Guis:
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         折れ線レーダーチャートを作成する
@@ -5651,7 +5653,7 @@ class Guis:
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
-        key: str | None= ...,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         塗りつぶしレーダーチャートを作成する

@@ -1,12 +1,16 @@
 """フォントを設定するモジュール"""
+
 from tkinter import Misc
 from tkinter.font import Font
-from typing import Literal,overload
+from typing import Literal, overload
+
 from ..readfile import Getfont
+
 __all__ = ["TKFont"]
 
 class TKFont(Font):
     """フォントを設定するオブジェクト"""
+
     @overload
     def __init__(
         self,
@@ -32,9 +36,10 @@ class TKFont(Font):
         :param overstrike: フォントに取り消し線を付けるか指定する
         :type overstrike: bool
         """
+
     @overload
     def __init__(
         self,
-        font:Getfont | Font=...,
+        font: Getfont | Font = ...,
         root: Misc = ...,
-    ) -> None:...
+    ) -> None: ...

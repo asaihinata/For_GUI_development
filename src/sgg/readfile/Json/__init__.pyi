@@ -1,6 +1,6 @@
 """jsonファイルのデータを取得するモジュール"""
 
-from pathlib import Path,WindowsPath,PosixPath
+from pathlib import Path, PosixPath, WindowsPath
 from typing import Any
 
 __all__ = ["Getjosn"]
@@ -15,7 +15,8 @@ class Getjosn:
         :raises FileNotFoundError: ファイルが存在しない場合に発生させる
         :raises ValueError: `path`で指定されたパスの拡張子がjsonファイルではない時に発生させる
         """
-    def __fspath__(self)->str:...
+
+    def __fspath__(self) -> str: ...
     @property
     def json(self) -> Any:
         """jsonファイルのデータを取得する

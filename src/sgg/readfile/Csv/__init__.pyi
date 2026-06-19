@@ -1,6 +1,6 @@
 """csvファイルのデータを取得するモジュール"""
 
-from pathlib import Path,WindowsPath,PosixPath
+from pathlib import Path, PosixPath, WindowsPath
 from typing import Any
 
 from numpy import ndarray
@@ -32,7 +32,8 @@ class Getcsv:
         :raises FileNotFoundError: ファイルが存在しない場合に発生させる
         :raises ValueError: `path`で指定されたパスの拡張子がcsvファイルではない時に発生させる
         """
-    def __fspath__(self)->str:...
+
+    def __fspath__(self) -> str: ...
     @property
     def csv(self) -> DataFrame:
         """:class:`polars.polars`で読み取ったcsvファイルのデータを取得する"""

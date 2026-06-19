@@ -1,4 +1,5 @@
 """フォントを設定するモジュール"""
+
 from tkinter import Misc, Tk
 from tkinter.font import Font, families
 
@@ -10,6 +11,7 @@ __all__ = ["TKFont"]
 
 class TKFont(Font):
     """フォントを設定するオブジェクト"""
+
     def __init__(
         self,
         family="Meiryo",
@@ -21,14 +23,17 @@ class TKFont(Font):
         font=None,
         root=None,
     ):
-        rootj=False
+        rootj = False
         if not isinstance(root, Misc):
             root = Tk()
-            rootj=True
-        if isinstance(font,Getfont):
-            super().__init__(root,font=(font.family[0],int(font.size)))
-        elif isinstance(font,Font):
-            super().__init__(font=font,root=root,)
+            rootj = True
+        if isinstance(font, Getfont):
+            super().__init__(root, font=(font.family[0], int(font.size)))
+        elif isinstance(font, Font):
+            super().__init__(
+                font=font,
+                root=root,
+            )
         else:
             fontlist = families(root)
             family = family if family in fontlist else fontlist[0]
@@ -49,4 +54,5 @@ class TKFont(Font):
                 underline=underline,
                 overstrike=overstrike,
             )
-        if rootj:root.destroy()
+        if rootj:
+            root.destroy()

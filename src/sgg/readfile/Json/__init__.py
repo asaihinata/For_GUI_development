@@ -16,8 +16,10 @@ class Getjosn:
             raise ValueError("jsonファイルを指定してください")
         with open(self.__path, "r", encoding="utf-8") as f:
             self.__json_data = load(f)
+
     def __fspath__(self):
         return str(self.__path)
+
     @property
     def json(self):
         return self.__json_data

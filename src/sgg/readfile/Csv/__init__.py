@@ -17,8 +17,10 @@ class Getcsv:
         self.__csv_data = read_csv(
             self.__path, has_header=has_header, separator=separator, encoding=encoding
         )
+
     def __fspath__(self):
         return str(self.__path)
+
     @property
     def csv(self):
         return self.__csv_data
