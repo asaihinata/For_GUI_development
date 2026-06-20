@@ -49,28 +49,14 @@ class TProgressbar(Element):
         except:
             self.widget["value"] = 0
 
-    def _get(self):
-        try:
-            return self.widget["value"]
-        except:
-            return None
+    def get(self):
+        return self.widget["value"]
 
-    def _start(self):
-        try:
-            self.widget.start()
-        except:
-            pass
+    def start(self):
+        self.widget.start()
 
-    def _stop(self):
-        try:
-            self.widget.stop()
-        except:
-            pass
+    def stop(self):
+        self.widget.stop()
 
     def delta(self):
         self.widget.destroy()
-
-    start = _start
-    stop = _stop
-    set = _set
-    get = _get

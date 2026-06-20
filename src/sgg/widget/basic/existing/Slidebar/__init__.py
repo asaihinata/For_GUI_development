@@ -14,7 +14,9 @@ class Slidebar(Element):
         self.maxval = self.value if maxval < self.value else maxval
         self.orientation = listchose(kw.get("orientation"), ["horizontal", "vertical"])
         self.resolution = num0s(kw.get("resolution"), 1)
-        self.digits = num0s(kw.get("digits"))
+        self.digits = kw.get("digits", 0)
+        if not isinstance(self.digits, int):
+            self.digits = 0
         self.length = num0s(kw.get("length"), 200)
         self.borderwidth = num0s(kw.get("borderwidth"), 1)
         self.widget = Scale(

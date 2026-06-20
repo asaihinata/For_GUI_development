@@ -13,9 +13,9 @@ class Table(Element):
         self.header_bg = parsecolor(kw.get("header_bg"), "#cccccc")
         self.values = kw.get("values", [])
         self.header = kw.get("header", [])
-        self.colwidth = kw.get("colwidth", 120)
-        self.height = kw.get("height", max(len(self.values), 1))
-        self.rowheight = kw.get("rowheight", 50)
+        self.colwidth = num0s(kw.get("colwidth"), 120)
+        self.height = num0s(kw.get("height"), max(len(self.values), 1))
+        self.rowheight = num0s(kw.get("rowheight"), 50)
         self.rowheader = kw.get("rowheader", [])
         self.stylename = f"Table{kw.get('count')}.Treeview"
         self.widget = Treeview(

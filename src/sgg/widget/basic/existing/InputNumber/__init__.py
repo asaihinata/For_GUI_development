@@ -13,7 +13,7 @@ class InputNumber(Element):
         self.max = nums(kw.get("max"), 100)
         self.increment = num0(kw.get("step"), 1)
         self.wrap = bols(kw.get("wrap"), False)
-        self.width = num0(kw.get("width"), 20)
+        self.width = self._dwh(kw.get("width"), 20)
         self.insertbackground = parsecolor(kw.get("insertbg"), "#000000")
         self.insertwidth = num0(kw.get("insertwidth"), 2)
         self.values = nums(kw.get("values"), 0)

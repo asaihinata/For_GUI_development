@@ -396,7 +396,9 @@ class Guis:
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
-        anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "center",
+        anchor: Literal[
+            "nw", "n", "ne", "w", "center", "e", "sw", "s", "se"
+        ] = "center",
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -644,6 +646,12 @@ class Guis:
         header_bg: ColorTypeN = "#cccccc",
         rowheight: int | float = 50,
         side_header: str = ...,
+        family: str = ...,
+        font_size: int | float = 14,
+        weight: Literal["normal", "bold"] = "normal",
+        slant: Literal["roman", "italic"] = "roman",
+        underline: bool = False,
+        overstrike: bool = False,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -663,6 +671,18 @@ class Guis:
         :type colwidth: int | float
         :param rowheight: Treeウィジェットのセルの高さを指定する
         :type rowheight: int | float
+        :param family: ウィジェットに表示させる文字のフォント名を指定する
+        :type family: str
+        :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
+        :type font_size: int | float
+        :param weight: ウィジェットに表示させる文字のフォントの太さを指定する
+        :type weight: Literal["normal", "bold"]
+        :param slant: ウィジェットに表示させる文字のフォントの斜体にするか指定する
+        :type slant: Literal["roman", "italic"]
+        :param underline: ウィジェットに表示させる文字のフォントの下線を表示させるかを指定する
+        :type underline: bool
+        :param overstrike: ウィジェットに表示させる文字のフォントの取り消し線を加えるか指定する
+        :type overstrike: bool
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -740,7 +760,7 @@ class Guis:
         values: list = ...,
         default: str = ...,
         state: Literal["normal", "readonly", "disabled"] = "normal",
-        takefocus:bool=...,
+        takefocus: bool = ...,
         cursor: _Cursor = ...,
         family: str = ...,
         font_size: int | float = 14,
@@ -1177,7 +1197,7 @@ class Guis:
         values: int | float = 0,
         min: int | float = 0,
         max: int | float = 100,
-        takefocus:bool=...,
+        takefocus: bool = ...,
         cursor: _Cursor = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"

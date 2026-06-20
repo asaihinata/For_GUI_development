@@ -10,21 +10,19 @@ class Tree(Element):
 
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.colwidth = kw.get("colwidth", 120)
+        self.colwidth = num0s(kw.get("colwidth"), 120)
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.header_fg = parsecolor(kw.get("header_fg"), "#000000")
         self.header_bg = parsecolor(kw.get("header_bg"), "#cccccc")
-        self.rowheight = kw.get("rowheight", 50)
-        values=kw.get("values", [])
+        self.rowheight = num0s(kw.get("rowheight"), 50)
+        values = kw.get("values", [])
         if not isinstance(values, list):
             raise TypeError("valuesにlist型を指定してください")
-        else:
-            self.values = values
-        header=kw.get("header", [])
+        self.values = values
+        header = kw.get("header", [])
         if not isinstance(header, list):
             raise TypeError("headerにlist型を指定してください")
-        else:
-            self.header = header
+        self.header = header
         self.maxcols = (
             1
             if self._calc_max_columns(self.values) < 1
