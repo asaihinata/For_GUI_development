@@ -190,7 +190,7 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        takefocus: bool = True,
+        takefocus: bool = ...,
         borderwidth: int | float = 0,
         padx: int | float = ...,
         pady: int | float = ...,
@@ -247,14 +247,14 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
     def Link(
         link: str,
         text: str = ...,
-        takefocus: bool = True,
+        takefocus: bool = ...,
         padx: int | float = ...,
         pady: int | float = ...,
         wraplength: int | float = 0,
@@ -323,13 +323,13 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
     def Images(
         path: WindowsPath | PosixPath | Path = ...,
-        takefocus: bool = True,
+        takefocus: bool = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -340,12 +340,12 @@ class Guis:
         :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
         :type takefocus: bool
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
     def Imagebyte(
-        byte: bytes | BytesIO = ..., takefocus: bool = True, key: str = ...
+        byte: bytes | BytesIO = ..., takefocus: bool = ..., key: str | None = ...
     ) -> dict[str, Any]:
         """
         画像を作成する
@@ -355,12 +355,12 @@ class Guis:
         :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
         :type takefocus: bool
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
     def Imagelink(
-        link: str = ..., takefocus: bool = True, key: str = ...
+        link: str = ..., takefocus: bool = ..., key: str | None = ...
     ) -> dict[str, Any]:
         """
         画像を作成する
@@ -370,14 +370,14 @@ class Guis:
         :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
         :type takefocus: bool
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
     def Buttons(
         text: str = ...,
         function: function | tuple[function, ...] | None = ...,
-        takefocus: bool = True,
+        takefocus: bool = ...,
         padx: int | float = ...,
         pady: int | float = ...,
         wraplength: int | float = 0,
@@ -396,7 +396,7 @@ class Guis:
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
-        anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
+        anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "center",
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -443,7 +443,7 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -454,9 +454,9 @@ class Guis:
         insertbg: ColorTypeN = "#000000",
         width: int | float = 20,
         borderwidth: int | float = 0,
-        takefocus: bool = True,
+        takefocus: bool = ...,
         cursor: _Cursor = ...,
-        bg: ColorTypeN = ...,
+        bg: ColorTypeN = "#e0e0e0",
         fg: ColorTypeN = ...,
         family: str = ...,
         font_size: int | float = 14,
@@ -510,7 +510,7 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -521,10 +521,9 @@ class Guis:
         state: Literal["normal", "disabled"] = "normal",
         width: int | float = 20,
         height: int | float = 5,
-        # todo wrap
         wrap: Literal["none", "word", "char"] = "none",
         borderwidth: int | float = 1,
-        takefocus: bool = True,
+        takefocus: bool = ...,
         padx: int | float = ...,
         pady: int | float = ...,
         cursor: _Cursor = ...,
@@ -551,6 +550,8 @@ class Guis:
         :type insertbg: ColorTypeN
         :param insertwidth: Multilineウィジェットの入力時の挿入ポイントの幅を指定する
         :type insertwidth: int | float
+        :param wrap: Multilineウィジェットの折り返しについて指定する
+        :type wrap: Literal["none", "word", "char"]
         :param state: 選択操作の有無を指定するnormalは操作可能にするdisabledは操作不可能にする
         :type state: Literal["normal","disabled"]
         :param width: ウィジェットの幅を指定する
@@ -588,7 +589,7 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -597,7 +598,7 @@ class Guis:
         header_bg: ColorTypeN = "#cccccc",
         values: list = ...,
         header: list = ...,
-        height: int | float = 1,
+        height: int = 1,
         rowheader: list = ...,
         colwidth: int | float = 120,
         rowheight: int | float = 50,
@@ -622,7 +623,7 @@ class Guis:
         :param rowheight: Tableウィジェットのセルの高さを指定する
         :type rowheight: int | float
         :param height: Tableウィジェットに表示できる行を指定する
-        :type height: int | float
+        :type height: int
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
         :param height: ウィジェットの高さを指定する
@@ -630,7 +631,7 @@ class Guis:
         :param bg: ウィジェットの背景色を指定する
         :type bg: ColorTypeN
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -663,7 +664,7 @@ class Guis:
         :param rowheight: Treeウィジェットのセルの高さを指定する
         :type rowheight: int | float
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -671,9 +672,13 @@ class Guis:
         values: list | tuple = ...,
         width: int | float = 20,
         height: int = 5,
-        selectfg: ColorTypeN = ...,
-        selectbg: ColorTypeN = ...,
+        selectfg: ColorTypeN = "#000000",
+        selectbg: ColorTypeN = "#1967d2",
         select: int = 0,
+        exportselection: bool = False,
+        selectmode: Literal["browse", "single", "multiple", "extended"] = "browse",
+        state: Literal["normal", "disabled"] = "normal",
+        cursor: _Cursor = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = "normal",
@@ -683,9 +688,6 @@ class Guis:
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#e0e0e0",
         borderwidth: int | float = 0,
-        state: Literal["normal", "disabled"] = "normal",
-        exportselection: bool = False,
-        selectmode: Literal["browse", "single", "multiple", "extended"] = "browse",
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -713,6 +715,8 @@ class Guis:
         :type bg: ColorTypeN
         :param fg: ウィジェットの文字色を指定する
         :type fg: ColorTypeN
+        :param cursor: マウスカーソルを指定する
+        :type cursor: _Cursor
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -728,17 +732,22 @@ class Guis:
         :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する
         :type borderwidth: int | float
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
     def TCombobox(
-        values: list = [],
+        values: list = ...,
         default: str = ...,
         state: Literal["normal", "readonly", "disabled"] = "normal",
-        borderwidth: int | float = 0,
-        padx: int | float = ...,
-        pady: int | float = ...,
+        takefocus:bool=...,
+        cursor: _Cursor = ...,
+        family: str = ...,
+        font_size: int | float = 14,
+        weight: Literal["normal", "bold"] = "normal",
+        slant: Literal["roman", "italic"] = "roman",
+        underline: bool = False,
+        overstrike: bool = False,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -752,12 +761,22 @@ class Guis:
         :type state: Literal["normal","readonly","disabled"]
         :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する
         :type borderwidth: int | float
-        :param padx: ウィジェットの外側の左右に空白を入れるサイズを指定する
-        :type padx: int | float
-        :param pady: ウィジェットの外側の上下に空白を入れるサイズを指定する
-        :type pady: int | float
+        :param cursor: マウスカーソルを指定する
+        :type cursor: _Cursor
+        :param family: ウィジェットに表示させる文字のフォント名を指定する
+        :type family: str
+        :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
+        :type font_size: int | float
+        :param weight: ウィジェットに表示させる文字のフォントの太さを指定する
+        :type weight: Literal["normal", "bold"]
+        :param slant: ウィジェットに表示させる文字のフォントの斜体にするか指定する
+        :type slant: Literal["roman", "italic"]
+        :param underline: ウィジェットに表示させる文字のフォントの下線を表示させるかを指定する
+        :type underline: bool
+        :param overstrike: ウィジェットに表示させる文字のフォントの取り消し線を加えるか指定する
+        :type overstrike: bool
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -772,7 +791,7 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        takefocus: bool = True,
+        takefocus: bool = ...,
         padx: int | float = ...,
         pady: int | float = ...,
         relief: Literal[
@@ -825,7 +844,7 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -889,18 +908,17 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
     def Frames(
         layout: list = ...,
         title: str = ...,
-        legendanchor: Literal[
+        labelanchor: Literal[
             "nw", "n", "ne", "w", "center", "e", "sw", "s", "se"
         ] = "nw",
-        key: str | None = ...,
-        takefocus: bool = True,
+        takefocus: bool = ...,
         padx: int | float = ...,
         pady: int | float = ...,
         cursor: _Cursor = ...,
@@ -916,6 +934,7 @@ class Guis:
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "solid",
         borderwidth: int | float = 1,
+        key: str | None = ...,
     ) -> dict[str, Any]:
         """
         枠線付きのフレームを作成する
@@ -924,8 +943,8 @@ class Guis:
         :type layout: list[list]
         :param title: Framesウィジェットのタイトルを指定する
         :type title: str
-        :param legendanchor: タイトルを表記する場所を指定する
-        :type legendanchor: Literal["nw","n","ne","w","center","e","sw","s","se"]
+        :param labelanchor: タイトルを表記する場所を指定する
+        :type labelanchor: Literal["nw","n","ne","w","center","e","sw","s","se"]
         :param bg: ウィジェットの背景色を指定する
         :type bg: ColorTypeN
         :param fg: ウィジェットの文字色を指定する
@@ -955,14 +974,14 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
     def Menus(
         list: list = ...,
         tearoff: bool = False,
-        takefocus: bool = True,
+        takefocus: bool = ...,
         cursor: _Cursor = ...,
         bg: ColorTypeN = ...,
         fg: ColorTypeN = ...,
@@ -1010,7 +1029,7 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -1018,7 +1037,7 @@ class Guis:
         list: list = ...,
         text: str = ...,
         tearoff: bool = False,
-        takefocus: bool = True,
+        takefocus: bool = ...,
         padx: int | float = ...,
         pady: int | float = ...,
         cursor: _Cursor = ...,
@@ -1077,25 +1096,18 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
     def Column(
         layout: list[list] = [[]],
         borderwidth: int | float = 0,
-        takefocus: bool = True,
+        takefocus: bool = ...,
         padx: int | float = ...,
         pady: int | float = ...,
         cursor: _Cursor = ...,
-        family: str = ...,
-        font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
         bg: ColorTypeN = ...,
-        fg: ColorTypeN = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
@@ -1108,19 +1120,6 @@ class Guis:
         :type layout: list[list]
         :param bg: ウィジェットの背景色を指定する
         :type bg: ColorTypeN
-        :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
-        :param family: ウィジェットに表示させる文字のフォント名を指定する
-        :type family: str
-        :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
-        :type font_size: int | float
-        :param weight: ウィジェットに表示させる文字のフォントの太さを指定する
-        :type weight: Literal["normal", "bold"]
-        :param slant: ウィジェットに表示させる文字のフォントの斜体にするか指定する
-        :type slant: Literal["roman", "italic"]
-        :param underline: ウィジェットに表示させる文字のフォントの下線を表示させるかを指定する
-        :type underline: bool
-        :param overstrike: ウィジェットに表示させる文字のフォントの取り消し線を加えるか指定する
         :type overstrike: bool
         :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
         :type takefocus: bool
@@ -1135,7 +1134,7 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -1170,7 +1169,7 @@ class Guis:
         :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する
         :type borderwidth: int | float
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -1178,9 +1177,14 @@ class Guis:
         values: int | float = 0,
         min: int | float = 0,
         max: int | float = 100,
+        takefocus:bool=...,
+        cursor: _Cursor = ...,
+        relief: Literal[
+            "raised", "sunken", "flat", "ridge", "solid", "groove"
+        ] = "flat",
         insertwidth: int | float = 2,
         insertbg: ColorTypeN = "#000000",
-        increment: int | float = 1,
+        step: int | float = 1,
         width: int | float = 20,
         wrap: bool = False,
         family: str = ...,
@@ -1189,7 +1193,7 @@ class Guis:
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        bg: ColorTypeN = ...,
+        bg: ColorTypeN = "#e0e0e0",
         fg: ColorTypeN = ...,
         borderwidth: int | float = 0,
         justify: Literal["left", "center", "right"] = "left",
@@ -1204,14 +1208,18 @@ class Guis:
         :type insertwidth: int | float
         :param insertbg: InputNumberウィジェットの入力時の挿入ポイントの色を指定する
         :type insertbg: ColorTypeN
-        :param increment: スライダーのステップ数を指定する
-        :type increment: int | float
+        :param step: スライダーのステップ数を指定する
+        :type step: int | float
         :param min: Slidebarウィジェットの数値の最小値を指定する
         :type min: int | float
         :param max: Slidebarウィジェットの数値の最大値を指定する
         :type max: int | float
         :param values: Slidebarウィジェットの読み込み時の初期値を指定する
         :type values: int | float
+        :param relief: ウィジェットの周囲に枠線について指定する
+        :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
+        :param cursor: マウスカーソルを指定する
+        :type cursor: _Cursor
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
         :param bg: ウィジェットの背景色を指定する
@@ -1235,7 +1243,7 @@ class Guis:
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -1256,7 +1264,7 @@ class Guis:
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "flat",
-        bg: ColorTypeN = ...,
+        bg: ColorTypeN = "#e0e0e0",
         fg: ColorTypeN = ...,
         takefocus: bool = ...,
         justify: Literal["left", "center", "right"] = "left",
@@ -1313,19 +1321,20 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
     def FolderLoad(
         text: str = "select Folder",
         title: str = "select Folder",
-        bg: ColorTypeN = ...,
         wraplength: int | float = 0,
         borderwidth: int | float = 0,
         anchor: Literal[
             "nw", "n", "ne", "w", "center", "e", "sw", "s", "se"
         ] = "center",
+        bg: ColorTypeN = "#e0e0e0",
+        fg: ColorTypeN = ...,
         padx: int | float = ...,
         pady: int | float = ...,
         cursor: _Cursor = ...,
@@ -1389,7 +1398,7 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -1400,7 +1409,7 @@ class Guis:
         defaultextension: str = ".txt",
         text: str = "Save file",
         title: str = "Save file",
-        bg: ColorTypeN = ...,
+        bg: ColorTypeN = "#e0e0e0",
         fg: ColorTypeN = ...,
         justify: Literal["left", "center", "right"] = "left",
         wraplength: int | float = 0,
@@ -1478,7 +1487,7 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -1487,7 +1496,7 @@ class Guis:
         text: str = "select color",
         title: str = "select color",
         key: str | None = ...,
-        bg: ColorTypeN = ...,
+        bg: ColorTypeN = "#e0e0e0",
         fg: ColorTypeN = ...,
         justify: Literal["left", "center", "right"] = "left",
         wraplength: int | float = 0,
@@ -1558,12 +1567,12 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
     def Tab(
-        tabs: list[list[str, list[list]]] = [],
+        tabs: list[list[str, list[list]]] = ...,
         bg: ColorTypeN = ...,
         fg: ColorTypeN = ...,
         family: str = ...,
@@ -1596,7 +1605,7 @@ class Guis:
         :param overstrike: ウィジェットに表示させる文字のフォントの取り消し線を加えるか指定する
         :type overstrike: bool
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -1606,6 +1615,8 @@ class Guis:
         length: int | float = 200,
         mode: Literal["determinate", "indeterminate"] = "determinate",
         orient: Literal["horizontal", "vertical"] = "horizontal",
+        cursor: _Cursor = ...,
+        takefocus: bool = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -1621,6 +1632,12 @@ class Guis:
         :type max: int | float
         :param value: TProgressbarウィジェットの読み込み時の初期値を指定する
         :type value: int | float
+        :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
+        :type takefocus: bool
+        :param cursor: マウスカーソルを指定する
+        :type cursor: _Cursor
+        :param key: ウィジェット固有の番号を指定する
+        :type key: str | None
         """
 
     @staticmethod
@@ -1650,7 +1667,7 @@ class Guis:
             "upc",
             "upca",
         ] = "code39",
-        takefocus: bool = True,
+        takefocus: bool = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -1662,12 +1679,12 @@ class Guis:
         :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
         :type takefocus: bool
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
     def QRImage(
-        text: str = ..., takefocus: bool = True, key: str = ...
+        text: str = ..., takefocus: bool = ..., key: str | None = ...
     ) -> dict[str, Any]:
         """
         QRコードを作成する
@@ -1677,7 +1694,7 @@ class Guis:
         :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
         :type takefocus: bool
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -1820,7 +1837,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -1921,7 +1938,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -2022,7 +2039,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -2120,7 +2137,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -2212,7 +2229,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -2304,7 +2321,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -2360,7 +2377,7 @@ class Guis:
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -2462,7 +2479,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -2566,7 +2583,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -2671,7 +2688,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -2817,7 +2834,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -2980,7 +2997,7 @@ class Guis:
         :param azim: 方位角を度数表記で指定する
         :type azim: int | float
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -3088,7 +3105,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -3183,7 +3200,7 @@ class Guis:
         :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する
         :type y_verwrit: Literal["horizontal","vertical"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -3269,7 +3286,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -3381,7 +3398,7 @@ class Guis:
         :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する
         :type y_verwrit: Literal["horizontal","vertical"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -3476,7 +3493,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -3571,7 +3588,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -3669,7 +3686,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -3826,7 +3843,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -3927,7 +3944,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -4033,7 +4050,7 @@ class Guis:
         :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる
         :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -4149,7 +4166,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -4255,7 +4272,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @overload
@@ -4340,7 +4357,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @overload
@@ -4422,7 +4439,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @overload
@@ -4510,7 +4527,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @overload
@@ -4595,7 +4612,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @overload
@@ -4713,7 +4730,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @overload
@@ -4828,7 +4845,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @overload
@@ -4958,7 +4975,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @overload
@@ -5085,7 +5102,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @overload
@@ -5173,7 +5190,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @overload
@@ -5258,7 +5275,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @overload
@@ -5382,7 +5399,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @overload
@@ -5503,7 +5520,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -5629,7 +5646,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @staticmethod
@@ -5701,7 +5718,7 @@ class Guis:
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
-        :type key: str
+        :type key: str | None
         """
 
     @classmethod

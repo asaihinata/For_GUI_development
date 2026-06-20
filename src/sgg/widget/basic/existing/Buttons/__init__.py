@@ -8,8 +8,8 @@ __all__ = ["Buttons"]
 class Buttons(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.funcs = kw.get("function")
         self.text = kw.get("text")
+        self.funcs = kw.get("function")
         self.wraplength = num0(kw.get("wraplength"))
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.anchor = listchose(

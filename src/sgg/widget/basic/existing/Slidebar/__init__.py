@@ -8,15 +8,15 @@ __all__ = ["Slidebar"]
 class Slidebar(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.value = num0(kw.get("value"))
-        self.minval = num0(kw.get("min"))
+        self.value = num0s(kw.get("value"))
+        self.minval = num0s(kw.get("min"))
         maxval = kw.get("max", 100)
         self.maxval = self.value if maxval < self.value else maxval
         self.orientation = listchose(kw.get("orientation"), ["horizontal", "vertical"])
-        self.resolution = num0(kw.get("resolution"), 1)
-        self.digits = num0(kw.get("digits"))
-        self.length = num0(kw.get("length"), 200)
-        self.borderwidth = num0(kw.get("borderwidth"), 1)
+        self.resolution = num0s(kw.get("resolution"), 1)
+        self.digits = num0s(kw.get("digits"))
+        self.length = num0s(kw.get("length"), 200)
+        self.borderwidth = num0s(kw.get("borderwidth"), 1)
         self.widget = Scale(
             self.master,
             takefocus=self.takefocus,
