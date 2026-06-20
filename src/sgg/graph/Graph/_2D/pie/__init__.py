@@ -48,18 +48,20 @@ class Pie(twoElement):
         self.clear()
         if startangletype == False:
             startangle = np.rad2deg(startangle)
-        self.graphdata = [self.ax.pie(
-            data,
-            labels=None if label else list(label),
-            startangle=90 - startangle,
-            shadow=shadow,
-            counterclock=counterclock,
-            labeldistance=labeldistance,
-            explode=explode,
-            wedgeprops={"alpha": alpha},
-        )]
+        self.graphdata = [
+            self.ax.pie(
+                data,
+                labels=None if label else list(label),
+                startangle=90 - startangle,
+                shadow=shadow,
+                counterclock=counterclock,
+                labeldistance=labeldistance,
+                explode=explode,
+                wedgeprops={"alpha": alpha},
+            )
+        ]
         if not self.label:
-            self.ax.legend(loc='upper left',bbox_to_anchor=(1,1))
+            self.ax.legend(loc="upper left", bbox_to_anchor=(1, 1))
 
     def update(self, data=None, **kw):
         self._updates(**kw)

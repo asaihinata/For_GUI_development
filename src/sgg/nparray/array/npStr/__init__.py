@@ -1,7 +1,7 @@
 import numpy as np
 import numpy.strings as nps
 
-from ..dtype import stringDtype
+from ...dtype import stringDtype
 from ..npArray import NPArray
 
 __all__ = ["NPString"]

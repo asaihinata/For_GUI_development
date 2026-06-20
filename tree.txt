@@ -236,6 +236,37 @@ For_GUI_development
  │   │   │   └── typing.py
  │   │   ├── nparray
  │   │   │   ├── __init__.py
+ │   │   │   ├── array
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── npArray
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   ├── npColor
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   ├── __init__.pyi
+ │   │   │   │   │   ├── _color_check.py
+ │   │   │   │   │   ├── color.csv
+ │   │   │   │   │   └── data.py
+ │   │   │   │   ├── npDate
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   ├── _typing.py
+ │   │   │   │   │   ├── datetime_format.py
+ │   │   │   │   │   ├── formatconversion.py
+ │   │   │   │   │   ├── formatconversion.pyi
+ │   │   │   │   │   ├── npdate.py
+ │   │   │   │   │   └── npdate.pyi
+ │   │   │   │   ├── npNumber
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   ├── npStatistics
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   ├── npStatisticsd.py
+ │   │   │   │   │   ├── npStatisticsd.pyi
+ │   │   │   │   │   ├── npStatisticsds.py
+ │   │   │   │   │   └── npStatisticsds.pyi
+ │   │   │   │   └── npStr
+ │   │   │   │       ├── __init__.py
+ │   │   │   │       └── __init__.pyi
  │   │   │   ├── dtype
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── base
@@ -249,33 +280,7 @@ For_GUI_development
  │   │   │   │   │   └── __init__.py
  │   │   │   │   └── strs
  │   │   │   │       └── __init__.py
- │   │   │   ├── npArray
- │   │   │   │   ├── __init__.py
- │   │   │   │   └── __init__.pyi
- │   │   │   ├── npColor
- │   │   │   │   ├── __init__.py
- │   │   │   │   ├── __init__.pyi
- │   │   │   │   ├── _color_check.py
- │   │   │   │   ├── color.csv
- │   │   │   │   └── data.py
- │   │   │   ├── npDate
- │   │   │   │   ├── __init__.py
- │   │   │   │   ├── _typing.py
- │   │   │   │   ├── datetime_format.py
- │   │   │   │   ├── formatconversion.py
- │   │   │   │   ├── formatconversion.pyi
- │   │   │   │   ├── npdate.py
- │   │   │   │   └── npdate.pyi
- │   │   │   ├── npNumber
- │   │   │   │   ├── __init__.py
- │   │   │   │   └── __init__.pyi
- │   │   │   ├── npStatistics
- │   │   │   │   ├── __init__.py
- │   │   │   │   ├── npStatisticsd.py
- │   │   │   │   ├── npStatisticsd.pyi
- │   │   │   │   ├── npStatisticsds.py
- │   │   │   │   └── npStatisticsds.pyi
- │   │   │   └── npStr
+ │   │   │   └── scalar
  │   │   │       ├── __init__.py
  │   │   │       └── __init__.pyi
  │   │   ├── readfile
@@ -464,5 +469,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:322
-フォルダ数:143
+ファイル数:325
+フォルダ数:145

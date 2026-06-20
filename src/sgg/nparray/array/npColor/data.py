@@ -8,7 +8,7 @@ from pathlib import Path
 
 from numpy import ndarray, str_, where
 
-from ...readfile import Getcsv
+from ....readfile import Getcsv
 from ..npArray import NPArray
 
 __all__ = ["Get_color"]

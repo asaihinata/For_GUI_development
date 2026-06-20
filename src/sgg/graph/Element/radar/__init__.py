@@ -1,7 +1,7 @@
 import numpy as np
 
 from ....dev import bols, list2num, num0s, parsecolor, range_num
-from ....nparray.npNumber import NPNumber
+from ....nparray import NPNumber
 from ....typing import nListlike
 from ..graph import GElement
 from .custom import radar_factory

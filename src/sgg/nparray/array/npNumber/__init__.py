@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from ..dtype import numberDtype
+from ...dtype import numberDtype
 from ..npArray import NPArray
 
 __all__ = ["NPNumber"]

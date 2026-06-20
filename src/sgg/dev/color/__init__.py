@@ -2,7 +2,7 @@ from pathlib import Path
 
 from numpy import where
 
-from ...nparray.npColor import NPColor
+from ...nparray import NPColor
 from ...readfile import Getcsv
 
 __all__ = ["Color", "parsecolor"]

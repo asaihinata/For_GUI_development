@@ -3,7 +3,7 @@ from tkinter import Misc
 from matplotlib.projections.polar import PolarAxes
 from numpy import ndarray
 
-from ....nparray.npNumber import NPNumber
+from ....nparray import NPNumber
 from ...style import getLabel
 from ...typing import *
 from ..graph import GElement
