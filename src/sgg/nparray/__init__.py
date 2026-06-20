@@ -7,8 +7,12 @@ from .npDate import Formatconversion, NPDate
 from .npNumber import NPNumber
 from .npStatistics import NPStatisticsd, NPStatisticsds
 from .npStr import NPString
+from .scalar import ScalarNum,ScalarBool,ScalarStr
 
 __all__ = [
+    "ScalarNum",
+    "ScalarBool",
+    "ScalarStr",
     "boolDtype",
     "bytesDtype",
     "complexDtype",
