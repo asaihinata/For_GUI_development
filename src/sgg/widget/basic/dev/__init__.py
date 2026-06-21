@@ -17,26 +17,35 @@ class Img_conversion:
     @property
     def width(self):
         return self.__imgs.width
+
     def get_width(self):
         return self.__imgs.width
+
     @property
     def height(self):
         return self.__imgs.height
+
     def get_height(self):
         return self.__imgs.height
+
     @property
     def size(self):
         return self.__imgs.width, self.__imgs.height
+
     def get_size(self):
         return self.__imgs.width, self.__imgs.height
+
     @property
     def format(self):
         return self.__imgs.format
+
     def get_format(self):
         return self.__imgs.format
+
     @property
     def mode(self):
         return self.__imgs.mode
+
     def get_mode(self):
         return self.__imgs.mode
 

@@ -1,4 +1,4 @@
-from ..btn import *
+from ..btn import Btn
 
 __all__ = ["FolderLoad"]
 

@@ -1,4 +1,5 @@
-from ..nparray.isdtype import numberDtype,integerDtype
+from ..nparray.isdtype import integerDtype, numberDtype
+
 __all__ = [
     "numsmin",
     "nums",

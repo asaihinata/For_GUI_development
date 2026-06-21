@@ -12,32 +12,41 @@ class Img_conversion:
     @property
     def image(self) -> ImageFile: ...
     @property
-    def width(self)->int:
+    def width(self) -> int:
         """画像データの幅を返す"""
+
     def get_width(self) -> int:
         """画像データの幅を返す"""
+
     @property
-    def height(self)->int:
+    def height(self) -> int:
         """画像データの高さを返す"""
+
     def get_height(self) -> int:
         """画像データの高さを返す"""
+
     @property
-    def size(self)->tuple[int, int]:
+    def size(self) -> tuple[int, int]:
         """画像データのサイズを返す"""
+
     def get_size(self) -> tuple[int, int]:
         """画像データのサイズを返す"""
+
     @property
-    def format(self)->str | None:
+    def format(self) -> str | None:
         """ソースファイルのファイル形式を返す"""
+
     def get_format(self) -> str | None:
         """ソースファイルのファイル形式を返す"""
+
     @property
-    def mode(self)->str:
+    def mode(self) -> str:
         """
         画像のモードを返す
 
         参考:https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes
         """
+
     def get_mode(self) -> str:
         """
         画像のモードを返す

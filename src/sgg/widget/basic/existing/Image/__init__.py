@@ -24,7 +24,7 @@ class Images(Element):
                 "pathには以下の型を指定してください\nstr,WindowsPath,PosixPath,Path"
             )
         self.__img = Img_path(self.path)
-        self.__img = self.__img.asresize().imgs
+        self.__img = self.__img.asresize().image
         self.imgs = PhotoImage(image=self.__img)
         self.widget = Label(
             master, text=None, image=self.imgs, takefocus=self.takefocus
