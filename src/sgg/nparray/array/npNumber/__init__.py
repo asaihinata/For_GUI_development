@@ -21,7 +21,7 @@ method_list = [
 
 class NPNumber(NPArray):
     def __init__(self, data, dtype=np.float64, depth_limit=None):
-        if not numberDtype(dtype):
+        if numberDtype(dtype):
             raise TypeError("dtypeには数値型を指定してください")
         super().__init__(data, dtype, depth_limit)
 
@@ -291,7 +291,7 @@ def __digits(digit):
 
 def __datas(data):
     if isinstance(data, np.ndarray):
-        if not numberDtype(data):
+        if numberDtype(data):
             raise TypeError("numpy.ndarrayの型を数値の型にしてください")
         return data
     elif not isinstance(data, np.ndarray | NPNumber | int | float | complex):

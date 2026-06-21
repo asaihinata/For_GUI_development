@@ -1,6 +1,7 @@
 from ._darray import *
 from ._dnumber import *
 from .color import Color, parsecolor
+from ..nparray.isdtype import boolDtype
 
 __all__ = [
     "Color",
@@ -48,6 +49,6 @@ def args(*args, data=None, x=None, y=None):
 
 
 def bols(j, o=True):
-    if isinstance(j, bool):
-        return j
+    if boolDtype(j):
+        return bool(j)
     return o

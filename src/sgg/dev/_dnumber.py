@@ -1,3 +1,4 @@
+from ..nparray.isdtype import numberDtype,integerDtype
 __all__ = [
     "numsmin",
     "nums",
@@ -14,7 +15,7 @@ __all__ = [
 
 
 def numsmin(val, mins=0, other=None):
-    if not isinstance(val, int | float) or not isinstance(mins, int | float):
+    if not numberDtype(val) or not numberDtype(mins):
         return other
     if mins < val:
         return val
@@ -22,23 +23,23 @@ def numsmin(val, mins=0, other=None):
 
 
 def nums(val, other=None):
-    return val if isinstance(val, int | float) else other
+    return val if numberDtype(val) else other
 
 
 def num1s(val=0, mins=1):
-    return val if isinstance(val, int | float) and 1 <= val else mins
+    return val if numberDtype(val) and 1 <= val else mins
 
 
 def num0s(val=0, mins=0):
-    return val if isinstance(val, int | float) and 0 <= val else mins
+    return val if numberDtype(val) and 0 <= val else mins
 
 
 def num0(val=0, mins=0):
-    return val if isinstance(val, int | float) and 0 < val else mins
+    return val if numberDtype(val) and 0 < val else mins
 
 
 def intsmin(val, mins=0, other=None):
-    if not isinstance(val, int) or not isinstance(mins, int):
+    if not integerDtype(val) or not integerDtype(mins):
         return other
     if mins < val:
         return val
@@ -46,23 +47,23 @@ def intsmin(val, mins=0, other=None):
 
 
 def ints(val=0, other=None):
-    return val if isinstance(val, int) else other
+    return val if integerDtype(val) else other
 
 
 def int1s(val=0, mins=1):
-    return val if isinstance(val, int) and 1 <= val else mins
+    return val if integerDtype(val) and 1 <= val else mins
 
 
 def int0s(val=0, mins=0):
-    return val if isinstance(val, int) and 0 <= val else mins
+    return val if integerDtype(val) and 0 <= val else mins
 
 
 def int0(val=0, mins=0):
-    return val if isinstance(val, int) and 0 < val else mins
+    return val if integerDtype(val) and 0 < val else mins
 
 
 def range_num(val, mins=None, maxs=None, others=None):
-    if (not isinstance(mins, int | float)) or (not isinstance(maxs, int | float)):
+    if not numberDtype(mins) or not numberDtype(max):
         return others
     if maxs < mins:
         mins, maxs = maxs, mins
