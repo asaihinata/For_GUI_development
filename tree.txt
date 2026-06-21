@@ -217,19 +217,9 @@ For_GUI_development
  │   │   │   │   ├── marker
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
- │   │   │   │   ├── solid
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
- │   │   │   │   └── tool
+ │   │   │   │   └── solid
  │   │   │   │       ├── __init__.py
- │   │   │   │       ├── color
- │   │   │   │       │   ├── __init__.py
- │   │   │   │       │   └── __init__.pyi
- │   │   │   │       └── font
- │   │   │   │           ├── __init__.py
- │   │   │   │           ├── __init__.pyi
- │   │   │   │           ├── fontfile.py
- │   │   │   │           └── fontmanager.py
+ │   │   │   │       └── __init__.pyi
  │   │   │   └── typing.py
  │   │   ├── nparray
  │   │   │   ├── __init__.py
@@ -456,5 +446,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:318
-フォルダ数:139
+ファイル数:311
+フォルダ数:136
