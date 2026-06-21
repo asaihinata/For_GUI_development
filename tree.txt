@@ -264,19 +264,9 @@ For_GUI_development
  │   │   │   │   └── npStr
  │   │   │   │       ├── __init__.py
  │   │   │   │       └── __init__.pyi
- │   │   │   ├── dtype
+ │   │   │   ├── isdtype
  │   │   │   │   ├── __init__.py
- │   │   │   │   ├── base
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
- │   │   │   │   ├── bools
- │   │   │   │   │   └── __init__.py
- │   │   │   │   ├── dates
- │   │   │   │   │   └── __init__.py
- │   │   │   │   ├── numbers
- │   │   │   │   │   └── __init__.py
- │   │   │   │   └── strs
- │   │   │   │       └── __init__.py
+ │   │   │   │   └── __init__.pyi
  │   │   │   └── scalar
  │   │   │       ├── __init__.py
  │   │   │       └── __init__.pyi
@@ -466,5 +456,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:323
-フォルダ数:144
+ファイル数:318
+フォルダ数:139
