@@ -26,9 +26,6 @@ class Errorbar(twoElement):
         self.yuplims = bols(kw.get("yuplims"), False)
         self.ylolims = bols(kw.get("ylolims"), False)
         self.barsabove = bols(kw.get("barsabove"), False)
-        self.line = kw.get("linestyle")
-        self.marker = kw.get("marker", "o")
-        self.fmt = FMT(self.marker, self.line).txt
         self.linewidth = num0(kw.get("linewidth"), 1.5)
         self.capthick = nums(kw.get("capthick"), 10)
         self.capsize = nums(kw.get("capsize"), 0)
@@ -45,7 +42,6 @@ class Errorbar(twoElement):
             label=self.label,
             xerr=self.xerr,
             yerr=self.yerr,
-            fmt=self.fmt,
             linewidth=self.linewidth,
             capsize=self.capsize,
             barsabove=self.barsabove,
@@ -65,7 +61,6 @@ class Errorbar(twoElement):
         label,
         xerr,
         yerr,
-        fmt,
         linewidth,
         capsize,
         barsabove,
@@ -82,7 +77,6 @@ class Errorbar(twoElement):
             self.ax.errorbar(
                 xs,
                 ys,
-                fmt=fmt,
                 xerr=xerr,
                 yerr=yerr,
                 label=label[i],
@@ -120,9 +114,6 @@ class Errorbar(twoElement):
         self.yuplims = bols(kw.get("yuplims"), self.yuplims)
         self.ylolims = bols(kw.get("ylolims"), self.ylolims)
         self.barsabove = bols(kw.get("barsabove"), self.barsabove)
-        self.line = kw.get("linestyle", self.line)
-        self.marker = kw.get("marker", self.marker)
-        self.fmt = FMT(self.marker, self.line).txt
         self.linewidth = num0(kw.get("linewidth"), self.linewidth)
         self.capthick = nums(kw.get("capthick"), self.capthick)
         self.capsize = nums(kw.get("capsize"), self.capsize)
@@ -143,7 +134,6 @@ class Errorbar(twoElement):
             label=self.label,
             xerr=self.xerr,
             yerr=self.yerr,
-            fmt=self.fmt,
             linewidth=self.linewidth,
             capsize=self.capsize,
             barsabove=self.barsabove,

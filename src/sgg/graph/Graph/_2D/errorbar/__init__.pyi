@@ -18,10 +18,6 @@ class Errorbar(_2Gset):
         yuplims: bool,
         ylolims: bool,
         barsabove: bool,
-        linestyle: Literal[
-            "dashdot", "dashed", "dotted", "solid", "-", "--", "-.", ":"
-        ],
-        marker: Literal[".", "s", "o", "p", "v", "*", "^", "D"],
         linewidth: int | float,
         capthick: int | float,
         capsize: int | float,

@@ -3029,12 +3029,9 @@ class Guis:
         ylabel: str = ...,
         orientation: Literal["horizontal", "vertical"] = "vertical",
         bottom: int | float = 0,
-        fmarker: Literal["-", "--", "-.", ":", "None", " ", ""] = ...,
-        fline: Literal["-", "--", "-.", "-."] = ...,
-        fcolor: (
-            Literal["r", "g", "b", "c", "m", "y", "k", "w"]
-            | tuple[Literal["r", "g", "b", "c", "m", "y", "k", "w"]]
-        ) = ...,
+        linefmt:str|None=...,
+        markerfmt:str|None=...,
+        basefmt:str|None=...,
         size: tuple[int | float, int | float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
@@ -3074,12 +3071,12 @@ class Guis:
         :type orientation: Literal["horizontal","vertical"]
         :param bottom: ベースラインの位置を指定する
         :type bottom: int | float
-        :param fmarker: 幹のマーカーの種類を指定する
-        :type fmarker: Literal["-","--","-.",":","None"," ",""]
-        :param fline: 幹の線の種類を指定する
-        :type fline: Literal["-","--","-.","-."]
-        :param fcolor: 色を指定する
-        :type fcolor: Literal["r","g","b","c","m","y","k","w"] | tuple[Literal["r","g","b","c","m","y","k","w"]]
+        :param linefmt: 垂直線の色や線種を指定する
+        :type linefmt: str | None
+        :param markerfmt: 茎の先端にあるマーカーの色や形状を指定する
+        :type markerfmt: str | None
+        :param basefmt: ベースラインのプロパティを指定する
+        :type basefmt: str | None
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
@@ -3721,34 +3718,6 @@ class Guis:
         yuplims: bool = False,
         ylolims: bool = False,
         barsabove: bool = False,
-        linestyle: Literal["-", "--", "-.", ":"] = "-",
-        marker: Literal[
-            ".",
-            ",",
-            "o",
-            "v",
-            "^",
-            "<",
-            ">",
-            "1",
-            "2",
-            "3",
-            "4",
-            "8",
-            "s",
-            "p",
-            "P",
-            "*",
-            "h",
-            "H",
-            "+",
-            "x",
-            "X",
-            "D",
-            "d",
-            " | ",
-            "_",
-        ] = None,
         linewidth: int | float = 1.5,
         capthick: int | float = 10,
         capsize: int | float = 0,
@@ -3802,10 +3771,6 @@ class Guis:
         :type ylolims: bool
         :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する
         :type barsabove: bool
-        :param linestyle: データ点とデータ点を結ぶ線の種類を指定する
-        :type linestyle: Literal["-", "--", "-.", ":"]
-        :param marker: データ点のマーカーの種類を指定する
-        :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","P","*","h","H","+","x","X","D","d"," | ","_"]
         :param linewidth: データ点を結ぶ線の太さを指定する
         :type linewidth: int | float
         :param capthick: キャップの厚みを指定する
@@ -4648,8 +4613,6 @@ class Guis:
         yuplims: bool = False,
         ylolims: bool = False,
         barsabove: bool = False,
-        linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
-        marker: Literal[".", "s", "o", "p", "v", "*", "^", "D"] = None,
         linewidth: int | float = 1.5,
         capthick: int | float = 10,
         capsize: int | float = 0,
@@ -4697,10 +4660,6 @@ class Guis:
         :type ylolims: bool
         :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する
         :type barsabove: bool
-        :param linestyle: データ点とデータ点を結ぶ線の種類を指定する
-        :type linestyle: Literal["-","--","-.",":","None"," ",""]
-        :param marker: データ点のマーカーの種類を指定する
-        :type marker: Literal[".","s","o","p","v","*","^","D"]
         :param linewidth: データ点を結ぶ線の太さを指定する
         :type linewidth: int | float
         :param capthick: キャップの厚みを指定する
@@ -4765,8 +4724,6 @@ class Guis:
         yuplims: bool = False,
         ylolims: bool = False,
         barsabove: bool = False,
-        linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
-        marker: Literal[".", "s", "o", "p", "v", "*", "^", "D"] = None,
         linewidth: int | float = 1.5,
         capthick: int | float = 10,
         capsize: int | float = 0,
@@ -4812,10 +4769,6 @@ class Guis:
         :type ylolims: bool
         :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する
         :type barsabove: bool
-        :param linestyle: データ点とデータ点を結ぶ線の種類を指定する
-        :type linestyle: Literal["-","--","-.",":","None"," ",""]
-        :param marker: データ点のマーカーの種類を指定する
-        :type marker: Literal[".","s","o","p","v","*","^","D"]
         :param linewidth: データ点を結ぶ線の太さを指定する
         :type linewidth: int | float
         :param capthick: キャップの厚みを指定する

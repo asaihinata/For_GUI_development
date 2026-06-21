@@ -21,7 +21,7 @@ if __name__ == "__main__":
             ),
         ],
         [
-            Guis.Stem(x=stemx1, y=stemy, title="マーカーを変更する", fmarker="^"),
+            Guis.Stem(x=stemx1, y=stemy, title="マーカーを変更する",markerfmt="go"),
             Guis.Stem(
                 x=stemx1,
                 y=stemy,
@@ -40,8 +40,8 @@ if __name__ == "__main__":
             ),
         ],
         [
-            Guis.Stem(x=stemx1, y=stemy, title="幹図の色を変更する", fcolor="b"),
-            Guis.Stem(x=stemx1, y=stemy, title="幹図の線を変更する", fline="--"),
+            Guis.Stem(x=stemx1, y=stemy, title="幹図の色を変更する", linefmt="g"),
+            Guis.Stem(x=stemx1, y=stemy, title="幹図の線を変更する", basefmt="--"),
         ],
         [
             Guis.Stem(x=stemx2, y=stemy, title="グラフを更新する", key="stem"),
