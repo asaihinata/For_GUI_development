@@ -7,12 +7,14 @@ https://numpy.org/doc/stable/reference/arrays.scalars.html
 
 import numpy as np
 
+from ..isdtype import boolDtype, floatDtype, intDtype, numberDtype, strDtype
+
 __all__ = ["ScalarNum", "ScalarInt", "ScalarFloat", "ScalarStr", "ScalarBool"]
 
 
 class ScalarNum:
     def __init__(self, val):
-        if not np.isscalar(val) or not isinstance(val, int | float | np.number):
+        if not np.isscalar(val) or not numberDtype(val):
             raise TypeError
         self.__val = val
 
@@ -28,7 +30,7 @@ class ScalarNum:
 
 class ScalarInt:
     def __init__(self, val):
-        if not np.isscalar(val) or not isinstance(val, int | np.integer):
+        if not np.isscalar(val) or not intDtype(val):
             raise TypeError
         self.__val = val
 
@@ -44,7 +46,7 @@ class ScalarInt:
 
 class ScalarFloat:
     def __init__(self, val):
-        if not np.isscalar(val) or not isinstance(val, float | np.floating):
+        if not np.isscalar(val) or not floatDtype(val):
             raise TypeError
         self.__val = val
 
@@ -60,7 +62,7 @@ class ScalarFloat:
 
 class ScalarStr:
     def __init__(self, val):
-        if not np.isscalar(val) or not isinstance(val, str | np.character):
+        if not np.isscalar(val) or not strDtype(val):
             raise TypeError
         self.__val = val
 
@@ -73,7 +75,7 @@ class ScalarStr:
 
 class ScalarBool:
     def __init__(self, val):
-        if not np.isscalar(val) or not isinstance(val, bool | np.bool_):
+        if not np.isscalar(val) or not boolDtype(val):
             raise TypeError
         self.__val = val
 

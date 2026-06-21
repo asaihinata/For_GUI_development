@@ -81,9 +81,9 @@ barpolary = rng.integers(30, 60, size=5)
 barpolardata = rng.integers(30, 60, size=5)
 errorpolarx = np.arange(2, 12, 2)
 errorpolary = rng.integers(0, 3, 5)
-polarerr = rng.integers(2, size=5)+0.5
-polarxerr = rng.integers(2, size=5)+0.5
-polaryerr = rng.integers(2, size=5)+0.5
+polarerr = rng.integers(2, size=5) + 0.5
+polarxerr = rng.integers(2, size=5) + 0.5
+polaryerr = rng.integers(2, size=5) + 0.5
 linepolarx = np.arange(1, 4, 1)
 linepolary = rng.integers(50, 80, size=3)
 linepolardata = np.arange(1, 4, 1)

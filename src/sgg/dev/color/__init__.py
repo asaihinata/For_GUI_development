@@ -10,7 +10,7 @@ __all__ = ["Color", "parsecolor"]
 
 class Color:
     def __init__(self, color):
-        colors = __gets(color)
+        colors = _gets(color)
         if colors is None:
             self.__color = NPColor(color)[0]
         else:
@@ -27,7 +27,7 @@ class Color:
         return str(self.__color)
 
 
-def __gets(colorname):
+def _gets(colorname):
     cds = Getcsv(Path(__file__).parent / "color.csv").get_numpy()
     c, _ = where(colorname == cds)
     if c.size == 0:
