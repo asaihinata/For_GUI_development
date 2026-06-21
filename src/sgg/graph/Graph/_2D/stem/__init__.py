@@ -76,7 +76,7 @@ class Stem(twoElement):
             orientation=self.orientation,
             label=self.label,
             alpha=self.alpha,
-            markerfmt=self.basefmt,
+            basefmt=self.basefmt,
             markerfmt=self.markerfmt,
             linefmt=self.linefmt,
         )
