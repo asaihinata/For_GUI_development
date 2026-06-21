@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from ...isdtype import numberDtype
+from ...isdtype import numberdDtype,numberDtype
 from ..npArray import NPArray
 
 __all__ = ["NPNumber"]
@@ -291,7 +291,7 @@ def __digits(digit):
 
 def __datas(data):
     if isinstance(data, np.ndarray):
-        if numberDtype(data):
+        if numberdDtype(data):
             raise TypeError("numpy.ndarrayの型を数値の型にしてください")
         return data
     elif not isinstance(data, np.ndarray | NPNumber | int | float | complex):

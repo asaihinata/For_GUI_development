@@ -1,7 +1,7 @@
 import numpy as np
 import numpy.strings as nps
 
-from ...isdtype import strdDtype
+from ...isdtype import strDtype
 from ..npArray import NPArray
 
 __all__ = ["NPString"]
@@ -9,7 +9,7 @@ __all__ = ["NPString"]
 
 class NPString(NPArray):
     def __init__(self, data, dtype=np.str_, depth_limit=None):
-        if strdDtype(dtype):
+        if strDtype(dtype):
             raise TypeError("dtypeには文字列の型を指定してください")
         super().__init__(data, dtype, depth_limit)
 
