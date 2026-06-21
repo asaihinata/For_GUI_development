@@ -21,7 +21,7 @@ if __name__ == "__main__":
             ),
         ],
         [
-            Guis.Stem(x=stemx1, y=stemy, title="マーカーを変更する",markerfmt="go"),
+            Guis.Stem(x=stemx1, y=stemy, title="マーカーを変更する", markerfmt="go"),
             Guis.Stem(
                 x=stemx1,
                 y=stemy,

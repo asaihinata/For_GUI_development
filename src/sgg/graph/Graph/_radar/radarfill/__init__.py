@@ -15,7 +15,7 @@ class RadarFill(RadarElement):
 
     def update(self, **kw):
         self._updates(**kw)
-        self.__plot(self._data, alpha=self.alpha)
+        self.__plot(self._data, self.alpha)
         self._redraw()
 
     def getdata(self):

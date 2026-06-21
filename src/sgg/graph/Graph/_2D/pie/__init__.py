@@ -90,6 +90,7 @@ class Pie(twoElement):
             labeldistance=self.labeldistance,
             explode=self.explode,
             startangletype=self.startangletype,
+            alpha=self.alpha,
         )
         self._redraw()
 

@@ -8,9 +8,9 @@ class Stem(twoElement):
         super().__init__(master, kw)
         self.__x = NPNumber(kw.get("x"))
         self.__y = NPNumber(kw.get("y"))
-        self.linefmt=kw.get("linefmt",None)
-        self.markerfmt=kw.get("markerfmt",None)
-        self.basefmt=kw.get("basefmt",None)
+        self.linefmt = kw.get("linefmt", None)
+        self.markerfmt = kw.get("markerfmt", None)
+        self.basefmt = kw.get("basefmt", None)
         self.bottom = num0s(kw.get("bottom"))
         self.orientation = listchose(kw.get("orientation"), ["vertical", "horizontal"])
         self.__plot(
@@ -19,9 +19,9 @@ class Stem(twoElement):
             bottom=self.bottom,
             orientation=self.orientation,
             label=self.label,
-        linefmt=self.linefmt,
-        markerfmt=self.markerfmt,
-        basefmt=self.basefmt,
+            linefmt=self.linefmt,
+            markerfmt=self.markerfmt,
+            basefmt=self.basefmt,
             alpha=self.alpha,
         )
 
@@ -62,9 +62,9 @@ class Stem(twoElement):
             self.__x = NPNumber(x)
         if isinstance(y, nListlike):
             self.__y = NPNumber(y)
-        self.linefmt=kw.get("linefmt",self.linefmt)
-        self.markerfmt=kw.get("markerfmt",self.markerfmt)
-        self.basefmt=kw.get("basefmt",self.basefmt)
+        self.linefmt = kw.get("linefmt", self.linefmt)
+        self.markerfmt = kw.get("markerfmt", self.markerfmt)
+        self.basefmt = kw.get("basefmt", self.basefmt)
         self.bottom = num0s(kw.get("bottom"), self.bottom)
         self.orientation = listchose(
             kw.get("orientation"), ["vertical", "horizontal"], self.orientation
@@ -75,7 +75,10 @@ class Stem(twoElement):
             bottom=self.bottom,
             orientation=self.orientation,
             label=self.label,
-
+            alpha=self.alpha,
+            markerfmt=self.basefmt,
+            markerfmt=self.markerfmt,
+            linefmt=self.linefmt,
         )
         self._redraw()
 

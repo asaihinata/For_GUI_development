@@ -60,7 +60,7 @@ class Funne(twoElement):
         self.ax.xaxis.set_major_locator(
             MaxNLocator(nbins=self.xmajormaxbins, integer=self.xmajorint)
         )
-        self.__plot(self.__data, height=self.height)
+        self.__plot(self.__data, height=self.height, alpha=self.alpha)
         self._redraw()
 
     def get(self):

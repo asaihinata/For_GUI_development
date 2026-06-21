@@ -105,6 +105,7 @@ class Hist(twoElement):
             bottom=self.bottom,
             orientation=self.orientation,
             width=self.width,
+            alpha=self.alpha,
         )
         self._redraw()
 

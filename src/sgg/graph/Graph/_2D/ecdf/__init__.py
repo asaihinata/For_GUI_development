@@ -67,6 +67,7 @@ class Ecdf(twoElement):
             orientation=self.orientation,
             linewidth=self.linewidth,
             line=self.line,
+            alpha=self.alpha,
         )
         self._redraw()
 

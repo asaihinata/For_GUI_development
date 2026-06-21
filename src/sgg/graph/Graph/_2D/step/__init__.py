@@ -54,6 +54,7 @@ class Step(twoElement):
             fill=self.fill,
             baseline=self.baseline,
             orientation=self.orientation,
+            alpha=self.alpha,
         )
         self._redraw()
 

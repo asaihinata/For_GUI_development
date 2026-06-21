@@ -54,6 +54,7 @@ class Stack(twoElement):
             label=self.label,
             hatch=self.hatch,
             baseline=self.baseline,
+            alpha=self.alpha,
         )
         self._redraw()
 
