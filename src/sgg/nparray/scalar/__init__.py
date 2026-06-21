@@ -7,7 +7,7 @@ https://numpy.org/doc/stable/reference/arrays.scalars.html
 
 import numpy as np
 
-__all__ = ["ScalarStr", "ScalarStr", "ScalarBool"]
+__all__ = ["ScalarNum", "ScalarInt", "ScalarFloat", "ScalarStr", "ScalarBool"]
 
 
 class ScalarNum:
@@ -18,6 +18,38 @@ class ScalarNum:
 
     def __repr__(self):
         return f"ScalarNum({self.__val})"
+
+    def __int__(self):
+        return int(self.__val)
+
+    def __float__(self):
+        return float(self.__val)
+
+
+class ScalarInt:
+    def __init__(self, val):
+        if not np.isscalar(val) or not isinstance(val, int | np.integer):
+            raise TypeError
+        self.__val = val
+
+    def __repr__(self):
+        return f"ScalarInt({self.__val})"
+
+    def __int__(self):
+        return int(self.__val)
+
+    def __float__(self):
+        return float(self.__val)
+
+
+class ScalarFloat:
+    def __init__(self, val):
+        if not np.isscalar(val) or not isinstance(val, float | np.floating):
+            raise TypeError
+        self.__val = val
+
+    def __repr__(self):
+        return f"ScalarFloat({self.__val})"
 
     def __int__(self):
         return int(self.__val)

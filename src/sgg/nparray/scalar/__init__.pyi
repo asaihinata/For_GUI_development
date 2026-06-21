@@ -7,14 +7,38 @@ https://numpy.org/doc/stable/reference/arrays.scalars.html
 
 import numpy as np
 
-__all__ = ["ScalarStr", "ScalarStr", "ScalarBool"]
+__all__ = ["ScalarNum", "ScalarInt", "ScalarFloat", "ScalarStr", "ScalarBool"]
 
 class ScalarNum:
     def __init__(self, val: int | float | np.number) -> None:
-        """数値型に関するオブジェクト
+        """数値型全般に関するオブジェクト
 
         :param val: 値を指定する
         :type val: int | float | np.number
+        """
+
+    def __repr__(self) -> str: ...
+    def __int__(self) -> int: ...
+    def __float__(self) -> float: ...
+
+class ScalarInt:
+    def __init__(self, val: int | np.integer) -> None:
+        """整数の型に関するオブジェクト
+
+        :param val: 値を指定する
+        :type val: int | np.integer
+        """
+
+    def __repr__(self) -> str: ...
+    def __int__(self) -> int: ...
+    def __float__(self) -> float: ...
+
+class ScalarFloat:
+    def __init__(self, val: float | np.floating):
+        """浮動小数点数の型に関するオブジェクト
+
+        :param val: 値を指定する
+        :type val: float | np.floating
         """
 
     def __repr__(self) -> str: ...
