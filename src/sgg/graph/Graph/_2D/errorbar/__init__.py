@@ -81,6 +81,7 @@ class Errorbar(twoElement):
                 yerr=yerr,
                 label=label[i],
                 elinewidth=linewidth,
+                fmt="none",
                 capthick=capthick,
                 capsize=capsize,
                 barsabove=barsabove,

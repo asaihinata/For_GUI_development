@@ -76,6 +76,7 @@ class Errorpolar(polarElement):
             y,
             xerr=xerr,
             yerr=yerr,
+            fmt="none",
             elinewidth=linewidth,
             capthick=capthick,
             capsize=capsize,

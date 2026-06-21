@@ -24,8 +24,8 @@ if __name__ == "__main__":
             Guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
-                polarxerr=polarxerr,
-                polaryerr=polaryerr,
+                xerr=polarxerr,
+                yerr=polaryerr,
                 title="極軸エラーグラフの基本2",
             ),
         ],
