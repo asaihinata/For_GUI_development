@@ -11,29 +11,34 @@ class Img_conversion:
         self.__imgs = Image.open(data)
 
     @property
-    def imgs(self):
+    def image(self):
         return self.__imgs
 
+    @property
+    def width(self):
+        return self.__imgs.width
     def get_width(self):
         return self.__imgs.width
-
+    @property
+    def height(self):
+        return self.__imgs.height
     def get_height(self):
         return self.__imgs.height
-
+    @property
+    def size(self):
+        return self.__imgs.width, self.__imgs.height
     def get_size(self):
         return self.__imgs.width, self.__imgs.height
-
+    @property
+    def format(self):
+        return self.__imgs.format
     def get_format(self):
         return self.__imgs.format
-
+    @property
+    def mode(self):
+        return self.__imgs.mode
     def get_mode(self):
         return self.__imgs.mode
-
-    width = get_width
-    height = get_height
-    size = get_size
-    format = get_format
-    mode = get_mode
 
     def show(self, title=None):
         self.__imgs.show(title)
@@ -66,7 +71,7 @@ class Img_path(Img_conversion):
 class Img_byte(Img_conversion):
     def __init__(self, byte):
         if not isinstance(byte, bytes | BytesIO):
-            raise TypeError("byteにはbytesもしくはBytesIOの型で指定してください")
+            raise TypeError("byteにはbytes型もしくはBytesIO型で指定してください")
         if isinstance(byte, bytes):
             self.byte = BytesIO(byte)
         else:

@@ -14,8 +14,8 @@ class Imagebyte(Element):
         super().__init__(master, kw)
         self.byte = kw.get("byte")
         if not isinstance(self.byte, bytes | BytesIO):
-            raise TypeError("byteにはbytesもしくはBytesIOを指定してください")
-        self.__img = Img_byte(self.byte).imgs
+            raise TypeError("byteにはbytes型もしくはBytesIO型を指定してください")
+        self.__img = Img_byte(self.byte).image
         self.imgs = PhotoImage(image=self.__img)
         self.widget = Label(
             master, text=None, image=self.imgs, takefocus=self.takefocus

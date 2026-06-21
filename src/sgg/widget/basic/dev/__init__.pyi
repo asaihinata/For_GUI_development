@@ -10,30 +10,41 @@ __all__ = ["Img_path", "Img_byte"]
 class Img_conversion:
     def __init__(self, data: StrOrBytesPath | IO[bytes]): ...
     @property
-    def imgs(self) -> ImageFile: ...
+    def image(self) -> ImageFile: ...
+    @property
+    def width(self)->int:
+        """画像データの幅を返す"""
     def get_width(self) -> int:
         """画像データの幅を返す"""
-
+    @property
+    def height(self)->int:
+        """画像データの高さを返す"""
     def get_height(self) -> int:
         """画像データの高さを返す"""
-
+    @property
+    def size(self)->tuple[int, int]:
+        """画像データのサイズを返す"""
     def get_size(self) -> tuple[int, int]:
         """画像データのサイズを返す"""
-
+    @property
+    def format(self)->str | None:
+        """ソースファイルのファイル形式を返す"""
     def get_format(self) -> str | None:
         """ソースファイルのファイル形式を返す"""
+    @property
+    def mode(self)->str:
+        """
+        画像のモードを返す
 
+        参考:https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes
+        """
     def get_mode(self) -> str:
         """
         画像のモードを返す
 
         参考:https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes
         """
-    width = get_width
-    height = get_height
-    size = get_size
-    format = get_format
-    mode = get_mode
+
     def resize(self, w: int, h: int) -> Img_conversion: ...
     def asresize(self) -> Img_conversion: ...
     def show(self, title: str | None = None):
