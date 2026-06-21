@@ -12,9 +12,7 @@ __all__ = ["ScalarStr", "ScalarStr", "ScalarBool"]
 
 class ScalarNum:
     def __init__(self, val):
-        if isinstance(val, int | float):
-            pass
-        elif not np.isscalar(val) or not np.issubdtype(val, np.number):
+        if not np.isscalar(val) or not isinstance(val, int | float | np.number):
             raise TypeError
         self.__val = val
 
@@ -30,9 +28,7 @@ class ScalarNum:
 
 class ScalarStr:
     def __init__(self, val):
-        if isinstance(val, str):
-            pass
-        elif not np.isscalar(val) or not np.issubdtype(val, np.character):
+        if not np.isscalar(val) or not isinstance(val, str | np.character):
             raise TypeError
         self.__val = val
 
@@ -45,9 +41,7 @@ class ScalarStr:
 
 class ScalarBool:
     def __init__(self, val):
-        if isinstance(val, bool):
-            pass
-        elif not np.isscalar(val) or not np.issubdtype(val, np.bool_):
+        if not np.isscalar(val) or not isinstance(val, bool | np.bool_):
             raise TypeError
         self.__val = val
 
