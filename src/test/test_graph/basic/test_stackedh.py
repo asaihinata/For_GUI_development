@@ -15,7 +15,7 @@ if __name__ == "__main__":
             Guis.Stackedh(
                 data=stackeddata,
                 dataname=stackeddataname,
-                title="積み上げ横棒グラフの基本",
+                title="積み上げ横向き棒グラフの基本",
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
@@ -37,6 +37,6 @@ if __name__ == "__main__":
         ],
     ]
     win = Guis.window(
-        title="積み上げ横棒グラフ(test)", layout=layout, scroll=True, maxmine=True
+        title="積み上げ横向き棒グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

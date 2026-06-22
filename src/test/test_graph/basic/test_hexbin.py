@@ -21,7 +21,7 @@ if __name__ == "__main__":
             Guis.Hexbin(
                 x=hexbinx1,
                 y=hexbiny1,
-                title="2次元六角形グラフの基本",
+                title="2 次元六角形ビニンググラフの基本",
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
@@ -51,6 +51,6 @@ if __name__ == "__main__":
         ],
     ]
     win = Guis.window(
-        title="2次元六角形グラフ(test)", layout=layout, scroll=True, maxmine=True
+        title="2 次元六角形ビニンググラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

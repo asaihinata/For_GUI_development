@@ -21,7 +21,7 @@ class BarGraph(_2Gset):
         graph_grid: ColorType,
         title: str,
     ) -> None:
-        """縦軸棒グラフを再表示させる"""
+        """棒グラフを再表示させる"""
 
     def get(self) -> list[BarContainer]:
         """`BarContainer`の配列を返す"""

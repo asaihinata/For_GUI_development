@@ -17,14 +17,14 @@ if __name__ == "__main__":
             Guis.BarGraph(
                 x=bargraphx1,
                 y=bargraphy1,
-                title="縦軸棒グラフの基本1",
+                title="棒グラフの基本1",
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
             Guis.BarGraph(
                 x=bargraphx2,
                 y=bargraphy2,
-                title="縦軸棒グラフの基本2",
+                title="棒グラフの基本2",
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
@@ -50,6 +50,6 @@ if __name__ == "__main__":
         ],
     ]
     win = Guis.window(
-        title="縦軸棒グラフ(test)", layout=layout, scroll=True, maxmine=True
+        title="棒グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

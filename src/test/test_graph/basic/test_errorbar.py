@@ -19,7 +19,7 @@ if __name__ == "__main__":
                 x=errorbarx,
                 y=errorbary,
                 err=err,
-                title="エラーバーの基本1",
+                title="エラーグラフの基本1",
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
@@ -28,7 +28,7 @@ if __name__ == "__main__":
                 y=errorbary,
                 xerr=xerr,
                 yerr=yerr,
-                title="エラーバーの基本2",
+                title="エラーグラフの基本2",
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
@@ -103,14 +103,14 @@ if __name__ == "__main__":
                 x=errorbarx,
                 y=errorbary,
                 err=err,
-                title="エラーバーを表示する頻度を変える",
+                title="エラーグラフを表示する頻度を変える",
                 errorevery=3,
             ),
             Guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
-                title="エラーバーを表示する頻度を指定する。",
+                title="エラーグラフを表示する頻度を指定する。",
                 errorevery=[2, 4],
             ),
         ],
@@ -119,7 +119,7 @@ if __name__ == "__main__":
                 x=errorbarx,
                 y=errorbary,
                 err=err,
-                title="エラーバーの線の幅を変更する",
+                title="エラーグラフの線の幅を変更する",
                 linewidth=2,
             )
         ],
@@ -135,6 +135,6 @@ if __name__ == "__main__":
         ],
     ]
     win = Guis.window(
-        title="エラーバー(test)", layout=layout, scroll=True, maxmine=True
+        title="エラーグラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

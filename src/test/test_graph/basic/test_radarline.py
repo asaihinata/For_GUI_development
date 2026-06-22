@@ -11,7 +11,7 @@ if __name__ == "__main__":
     print(f"{radarplotdata=}")
     layout = [
         [
-            Guis.RadarLine(data=radarplotdata, title="折れ線レーダーチャートの基本"),
+            Guis.RadarLine(data=radarplotdata, title="折線レーダーチャートの基本"),
             Guis.RadarLine(
                 data=radarplotdata, linewidth=10, title="線の太さを変更する"
             ),
@@ -35,6 +35,6 @@ if __name__ == "__main__":
         ],
     ]
     win = Guis.window(
-        title="折れ線レーダーチャート(test)", layout=layout, scroll=True, maxmine=True
+        title="折線レーダーチャート(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

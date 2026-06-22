@@ -1895,7 +1895,7 @@ class Guis:
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
-        縦軸棒グラフを作成する
+        棒グラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -1911,9 +1911,9 @@ class Guis:
         :type ylabel: str
         :param linewidth: 折線グラフの線の幅を指定する
         :type linewidth: int | float
-        :param width: 縦軸棒グラフのバー幅を指定する
+        :param width: 棒グラフのバー幅を指定する
         :type width: int | float
-        :param align: x軸の縦軸棒グラフバーの配置を指定する
+        :param align: x軸の棒グラフバーの配置を指定する
         :type align: Literal["center","edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
@@ -1996,7 +1996,7 @@ class Guis:
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
-        横軸棒グラフを作成する
+        横向き棒グラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -2012,9 +2012,9 @@ class Guis:
         :type ylabel: str
         :param linewidth: 折線グラフの線の幅を指定する
         :type linewidth: int | float
-        :param height: 横軸棒グラフのバーの幅を指定する
+        :param height: 横向き棒グラフのバーの幅を指定する
         :type height: int | float
-        :param align: x軸の横軸棒グラフバーの配置を指定する
+        :param align: x軸の横向き棒グラフバーの配置を指定する
         :type align: Literal["center","edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
@@ -2192,13 +2192,13 @@ class Guis:
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
-        積み上げ縦棒グラフを作成する
+        積み上げ棒グラフを作成する
 
         :param data: `data`を指定する
         :type data: n_array
         :param dataname: カテゴリ名を指定する
         :type dataname: o_array
-        :param width: 積み上げ縦棒グラフの幅のサイズを指定する
+        :param width: 積み上げ棒グラフの幅のサイズを指定する
         :type width: int | float
         :param label: ラベルを指定する
         :type label: labeltype
@@ -2284,13 +2284,13 @@ class Guis:
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
-        積み上げ横棒グラフを作成する
+        積み上げ横向き棒グラフを作成する
 
         :param data: `data`を指定する
         :type data: n_array
         :param dataname: カテゴリ名を指定する
         :type dataname: o_array
-        :param height: 積み上げ横棒グラフの高さのサイズを指定する
+        :param height: 積み上げ横向き棒グラフの高さのサイズを指定する
         :type height: int | float
         :param label: ラベルを指定する
         :type label: labeltype
@@ -2538,7 +2538,7 @@ class Guis:
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
-        x軸向きにバーを設置された滝グラフを作成する
+        横向き滝グラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -2940,7 +2940,7 @@ class Guis:
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
-        3D散布図を作成する
+        立体散布図を作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -4190,7 +4190,7 @@ class Guis:
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
-        2次元六角形グラフを作成する
+        2 次元六角形ビニンググラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: o_array
@@ -5566,7 +5566,7 @@ class Guis:
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
-        折れ線レーダーチャートを作成する
+        折線レーダーチャートを作成する
 
         :param data: `data`のデータを指定する
         :type data: n_array

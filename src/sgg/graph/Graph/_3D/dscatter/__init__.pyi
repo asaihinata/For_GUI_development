@@ -25,7 +25,7 @@ class DScatter(_3Gset):
         ylabel: str,
         zlabel: str,
     ) -> None:
-        """3D散布図を再表示させる"""
+        """立体散布図を再表示させる"""
 
     def get(self) -> list[PathCollection]:
         """`PathCollection`の配列を返す"""
@@ -42,4 +42,4 @@ class DScatter(_3Gset):
     def getcoordinate(
         self,
     ) -> ndarray[NDArray[float64], NDArray[float64], NDArray[float64]]:
-        """3D散布図の点の座標を取得する"""
+        """立体散布図の点の座標を取得する"""

@@ -17,7 +17,7 @@ if __name__ == "__main__":
             Guis.BarhGraph(
                 x=bargraphy1,
                 y=bargraphx1,
-                title="横軸棒グラフの基本1",
+                title="横向き棒グラフの基本1",
                 xlabel=xlabel,
                 ylabel=ylabel,
                 label=["bar1"],
@@ -25,7 +25,7 @@ if __name__ == "__main__":
             Guis.BarhGraph(
                 x=bargraphy2,
                 y=bargraphx2,
-                title="横軸棒グラフの基本2",
+                title="横向き棒グラフの基本2",
                 xlabel=xlabel,
                 ylabel=ylabel,
                 label=["bar1", "bar2"],
@@ -52,6 +52,6 @@ if __name__ == "__main__":
         ],
     ]
     win = Guis.window(
-        title="横軸棒グラフ(test)", layout=layout, scroll=True, maxmine=True
+        title="横向き棒グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

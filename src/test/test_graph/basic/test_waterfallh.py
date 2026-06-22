@@ -15,7 +15,7 @@ if __name__ == "__main__":
             Guis.Waterfallh(
                 x=waterfallx,
                 y=waterfally,
-                title="横向きのウォーターフォールの基本",
+                title="横向き滝グラフの基本",
                 xlabel=xlabel,
                 ylabel=ylabel,
             ),
@@ -73,7 +73,7 @@ if __name__ == "__main__":
         ],
     ]
     win = Guis.window(
-        title="横向きのウォーターフォール(test)",
+        title="横向き滝グラフ(test)",
         layout=layout,
         scroll=True,
         maxmine=True,

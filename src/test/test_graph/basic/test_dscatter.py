@@ -17,7 +17,7 @@ if __name__ == "__main__":
                 x=dscatterx,
                 y=dscattery,
                 z=dscatterz,
-                title="3D散布図の基本",
+                title="立体散布図の基本",
                 xlabel=xlabel,
                 ylabel=ylabel,
                 zlabel=zlabel,
@@ -61,5 +61,5 @@ if __name__ == "__main__":
             Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(title="3D散布図(test)", layout=layout, scroll=True, maxmine=True)
+    win = Guis.window(title="立体散布図(test)", layout=layout, scroll=True, maxmine=True)
     win.run()

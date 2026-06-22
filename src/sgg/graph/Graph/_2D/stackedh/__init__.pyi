@@ -19,7 +19,7 @@ class Stackedh(_2Gset):
         graph_grid: ColorType,
         title: str,
     ) -> None:
-        """積み上げ横棒グラフを再表示させる"""
+        """積み上げ横向き棒グラフを再表示させる"""
 
     def get(self) -> list[BarContainer]:
         """`BarContainer`の配列を返す"""
