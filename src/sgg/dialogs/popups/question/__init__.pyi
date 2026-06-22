@@ -1,4 +1,4 @@
-from ..typing import L, Type_icon
+from ..typing import Literal, Type_icon
 
 __all__ = [
     "popupokcansel",
@@ -17,7 +17,7 @@ def popupquestion(
     title: str = "Question",
     message: str = "Question message",
     icon: Type_icon = "question",
-) -> L["yes", "no"]: ...
+) -> Literal["yes", "no"]: ...
 def popuptrys(
     title: str = "Question",
     message: str = "Question message",

@@ -5700,7 +5700,7 @@ class Guis:
         title: str = "Information",
         message: str = "Information message",
         icon: Literal["info", "warning", "error", "question"] = "info",
-    ) -> str:
+    ) -> Literal["ok"]:
         """
         指定されたタイトルとメッセージを持つ情報メッセージボックスを作成して表示させる
 
@@ -5710,6 +5710,8 @@ class Guis:
         :type message: str
         :param icon: 情報メッセージボックスに表示させるアイコンを指定する
         :type icon: Literal["info","warning","error","question"]
+        :return: ポップアップの返答を返す
+        :rtype: Literal["ok"]
         """
 
     @classmethod
@@ -5718,7 +5720,7 @@ class Guis:
         title: str = "Warning",
         message: str = "Warning message",
         icon: Literal["info", "warning", "error", "question"] = "warning",
-    ) -> str:
+    ) -> Literal["ok"]:
         """
         指定されたタイトルとメッセージを含む警告メッセージボックスを作成して表示させる
 
@@ -5728,6 +5730,8 @@ class Guis:
         :type message: str
         :param icon: 警告メッセージボックスに表示させるアイコンを指定する
         :type icon: Literal["info","warning","error","question"]
+        :return: ポップアップの返答を返す
+        :rtype: Literal["ok"]
         """
 
     @classmethod
@@ -5736,7 +5740,7 @@ class Guis:
         title: str = "Warning",
         message: str = "Warning message",
         icon: Literal["info", "warning", "error", "question"] = "warning",
-    ) -> Union[str]:
+    ) -> Literal["yes", "no"]:
         """
         指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つ警告メッセージボックスを作成して表示させる
 
@@ -5746,6 +5750,8 @@ class Guis:
         :type message: str
         :param icon: 警告メッセージボックスに表示させるアイコンを指定する
         :type icon: Literal["info","warning","error","question"]
+        :return: ポップアップの返答を返す
+        :rtype: Literal["yes", "no"]
         """
 
     @classmethod
@@ -5754,7 +5760,7 @@ class Guis:
         title: str = "Error",
         message: str = "Error message",
         icon: Literal["info", "warning", "error", "question"] = "error",
-    ) -> str:
+    ) -> Literal["ok"]:
         """
         指定されたタイトルとメッセージを持つエラーメッセージボックスを作成して表示させる
 
@@ -5764,6 +5770,8 @@ class Guis:
         :type message: str
         :param icon: エラーメッセージボックスに表示させるアイコンを指定する
         :type icon: Literal["info","warning","error","question"]
+        :return: ポップアップの返答を返す
+        :rtype: Literal["ok"]
         """
 
     @classmethod
@@ -5772,7 +5780,7 @@ class Guis:
         title: str = "Error",
         message: str = "Error message",
         icon: Literal["info", "warning", "error", "question"] = "error",
-    ) -> Union[str]:
+    ) -> Literal["yes", "no"]:
         """
         指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つエラーメッセージボックスを作成して表示させる
 
@@ -5782,6 +5790,8 @@ class Guis:
         :type message: str
         :param icon: エラーメッセージボックスに表示させるアイコンを指定する
         :type icon: Literal["info","warning","error","question"]
+        :return: ポップアップの返答を返す
+        :rtype: Literal["yes", "no"]
         """
 
     @classmethod
@@ -5790,7 +5800,7 @@ class Guis:
         title: str = "Question",
         message: str = "Question message",
         icon: Literal["info", "warning", "error", "question"] = "question",
-    ) -> Union[str]:
+    ) -> Literal["yes", "no"]:
         """
         「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる
 
@@ -5800,6 +5810,8 @@ class Guis:
         :type message: str
         :param icon: ダイアログに表示させるアイコンを指定する
         :type icon: Literal["info","warning","error","question"]
+        :return: ポップアップの返答を返す
+        :rtype: Literal["yes", "no"]
         """
 
     @classmethod
@@ -5818,6 +5830,8 @@ class Guis:
         :type message: str
         :param icon: ダイアログに表示させるアイコンを指定する
         :type icon: Literal["info","warning","error","question"]
+        :return: ポップアップの返答を返す
+        :rtype: bool
         """
 
     @classmethod
@@ -5830,12 +5844,14 @@ class Guis:
         """
         「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる
 
-         :param title: ダイアログに表示させるタイトル名を指定する
-         :type title: str
-         :param message: ダイアログに表示させるメッセージを指定する
-         :type message: str
-         :param icon: ダイアログに表示させるアイコンを指定する
-         :type icon: Literal["info","warning","error","question"]
+        :param title: ダイアログに表示させるタイトル名を指定する
+        :type title: str
+        :param message: ダイアログに表示させるメッセージを指定する
+        :type message: str
+        :param icon: ダイアログに表示させるアイコンを指定する
+        :type icon: Literal["info","warning","error","question"]
+        :return: ポップアップの返答を返す
+        :rtype: Literal["ok"]
         """
 
     @classmethod
@@ -5844,16 +5860,18 @@ class Guis:
         title: str = "Question",
         message: str = "Question message",
         icon: Literal["info", "warning", "error", "question"] = "question",
-    ) -> Union[bool, None]:
+    ) -> bool | None:
         """
         「はい(Yes)」「いいえ(No)」「キャンセル(Cancel)」を選択させるダイアログを表示させる
 
-         :param title: ダイアログに表示させるタイトル名を指定する
-         :type title: str
-         :param message: ダイアログに表示させるメッセージを指定する
-         :type message: str
-         :param icon: ダイアログに表示させるアイコンを指定する
-         :type icon: Literal["info","warning","error","question"]
+        :param title: ダイアログに表示させるタイトル名を指定する
+        :type title: str
+        :param message: ダイアログに表示させるメッセージを指定する
+        :type message: str
+        :param icon: ダイアログに表示させるアイコンを指定する
+        :type icon: Literal["info","warning","error","question"]
+        :return: ポップアップの返答を返す
+        :rtype: bool | None
         """
 
     @classmethod
@@ -5866,10 +5884,12 @@ class Guis:
         """
         操作を再試行するかどうかを尋ねる「再試行」ボタンと「キャンセル」ボタンが設置されたダイアログを表示させる
 
-         :param title: ダイアログに表示させるタイトル名を指定する
-         :type title: str
-         :param message: ダイアログに表示させるメッセージを指定する
-         :type message: str
-         :param icon: ダイアログに表示させるアイコンを指定する
-         :type icon: Literal["info","warning","error","question"]
+        :param title: ダイアログに表示させるタイトル名を指定する
+        :type title: str
+        :param message: ダイアログに表示させるメッセージを指定する
+        :type message: str
+        :param icon: ダイアログに表示させるアイコンを指定する
+        :type icon: Literal["info","warning","error","question"]
+        :return: ポップアップの返答を返す
+        :rtype: bool
         """

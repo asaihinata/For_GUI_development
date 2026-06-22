@@ -7,7 +7,7 @@ def showerror(title=None, message=None, **kw):
     return _show(title, message, "error", "ok", **kw)
 
 
-class popupe:
+class Popupe:
     def get_select(self):
         return self.retul
 
@@ -21,7 +21,7 @@ class popupe:
         self.retul = showerror(title=self.title, message=self.message, icon=self.icon)
 
 
-class popupeyn:
+class Popupeyn:
     def get_select(self):
         return self.retul
 
@@ -38,8 +38,8 @@ class popupeyn:
 
 
 def popuperror(title="Error", message="Error message", icon="error"):
-    return popupe(title=title, message=message, icon=icon).get_select()
+    return Popupe(title=title, message=message, icon=icon).get_select()
 
 
 def popuperroryesno(title="Error", message="Error message", icon="error"):
-    return popupeyn(title=title, message=message, icon=icon).get_select()
+    return Popupeyn(title=title, message=message, icon=icon).get_select()

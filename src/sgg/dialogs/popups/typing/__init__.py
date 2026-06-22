@@ -1,6 +1,6 @@
 """popup用の型ヒントのモジュール"""
 
-from typing import Literal as L, TypeAlias
+from typing import Literal, TypeAlias
 
-__all__ = ["Type_icon", "L"]
-Type_icon: TypeAlias = L["error", "info", "question", "warning"]
+__all__ = ["Type_icon", "Literal"]
+Type_icon: TypeAlias = Literal["error", "info", "question", "warning"]

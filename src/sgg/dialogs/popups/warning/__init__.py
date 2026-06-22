@@ -7,7 +7,7 @@ def showwarning(title=None, message=None, **kw):
     return _show(title, message, "warning", "ok", **kw)
 
 
-class popupw:
+class Popupw:
     def get_select(self):
         return self.retul
 
@@ -21,7 +21,7 @@ class popupw:
         self.retul = showwarning(title=self.title, message=self.message, icon=self.icon)
 
 
-class popupwyn:
+class Popupwyn:
     def get_select(self):
         return self.retul
 
@@ -38,8 +38,8 @@ class popupwyn:
 
 
 def popupwarning(title="Warning", message="Warning message", icon="warning"):
-    return popupw(title=title, message=message, icon=icon).get_select()
+    return Popupw(title=title, message=message, icon=icon).get_select()
 
 
 def popupwarningyesno(title="Warning", message="Warning message", icon="warning"):
-    return popupwyn(title=title, message=message, icon=icon).get_select()
+    return Popupwyn(title=title, message=message, icon=icon).get_select()

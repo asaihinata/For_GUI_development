@@ -8,7 +8,7 @@ def askyesnocancel(title=None, message=None, **kw):
     return None if s == "cancel" else s == "yes"
 
 
-class popupync:
+class Popupync:
     def get_select(self):
         return self.retul
 
@@ -25,4 +25,4 @@ class popupync:
 
 
 def popupyesnocansel(title="Question", message="Question message", icon="question"):
-    return popupync(title=title, message=message, icon=icon).get_select()
+    return Popupync(title=title, message=message, icon=icon).get_select()

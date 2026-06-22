@@ -7,7 +7,7 @@ def showinfo(title=None, message=None, **kw):
     return _show(title, message, "info", "ok", **kw)
 
 
-class popups:
+class Popups:
     def __init__(self, **kw):
         self.title = kw.get("title", "Information")
         self.message = kw.get("message", "Information message")
@@ -22,4 +22,4 @@ class popups:
 
 
 def popup(title="Information", message="Information message", icon="info"):
-    return popups(title=title, message=message, icon=icon).get_select()
+    return Popups(title=title, message=message, icon=icon).get_select()

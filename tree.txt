@@ -21,7 +21,14 @@ For_GUI_development
  │   ├── sgg
  │   │   ├── __init__.py
  │   │   ├── __init__.pyi
- │   │   ├── _dialog
+ │   │   ├── dev
+ │   │   │   ├── __init__.py
+ │   │   │   ├── _darray.py
+ │   │   │   ├── _dnumber.py
+ │   │   │   └── color
+ │   │   │       ├── __init__.py
+ │   │   │       └── color.csv
+ │   │   ├── dialogs
  │   │   │   ├── __init__.py
  │   │   │   ├── dialog
  │   │   │   │   ├── __init__.py
@@ -58,13 +65,6 @@ For_GUI_development
  │   │   │       └── warning
  │   │   │           ├── __init__.py
  │   │   │           └── __init__.pyi
- │   │   ├── dev
- │   │   │   ├── __init__.py
- │   │   │   ├── _darray.py
- │   │   │   ├── _dnumber.py
- │   │   │   └── color
- │   │   │       ├── __init__.py
- │   │   │       └── color.csv
  │   │   ├── font
  │   │   │   ├── __init__.py
  │   │   │   └── __init__.pyi

@@ -7,7 +7,7 @@ def askquestion(title=None, message=None, **kw):
     return _show(title, message, "question", "yesno", **kw)
 
 
-class popupq:
+class Popupq:
     def __str__(self):
         return str(self.retul)
 
@@ -22,4 +22,4 @@ class popupq:
 
 
 def popupquestion(title="Question", message="Question message", icon="question"):
-    return popupq(title=title, message=message, icon=icon).get_select()
+    return Popupq(title=title, message=message, icon=icon).get_select()

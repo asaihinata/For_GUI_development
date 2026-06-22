@@ -7,7 +7,7 @@ def askokcancel(title=None, message=None, **kw):
     return _show(title, message, "question", "okcancel", **kw) == "ok"
 
 
-class popupoc:
+class Popupoc:
     def get_select(self):
         return self.retul
 
@@ -22,4 +22,4 @@ class popupoc:
 
 
 def popupokcansel(title="Question", message="Question message", icon="question"):
-    return popupoc(title=title, message=message, icon=icon).get_select()
+    return Popupoc(title=title, message=message, icon=icon).get_select()

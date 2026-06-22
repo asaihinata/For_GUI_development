@@ -7,7 +7,7 @@ def askyesno(title=None, message=None, **kw):
     return _show(title, message, "question", "yesno", **kw) == "yes"
 
 
-class popupyn:
+class Popupyn:
     def get_select(self):
         return self.retul
 
@@ -22,4 +22,4 @@ class popupyn:
 
 
 def popupyesno(title="Question", message="Question message", icon="question"):
-    return popupyn(title=title, message=message, icon=icon).get_select()
+    return Popupyn(title=title, message=message, icon=icon).get_select()

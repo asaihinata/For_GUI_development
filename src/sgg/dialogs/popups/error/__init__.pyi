@@ -1,10 +1,10 @@
-from ..typing import L, Type_icon
+from ..typing import Literal, Type_icon
 
 __all__ = ["popuperror", "popuperroryesno"]
 
 def popuperror(
     title: str = "Error", message: str = "Error message", icon: Type_icon = "error"
-) -> L["ok"]: ...
+) -> Literal["ok"]: ...
 def popuperroryesno(
     title: str = "Error", message: str = "Error message", icon: Type_icon = "error"
-) -> L["yes", "no"]: ...
+) -> Literal["yes", "no"]: ...

@@ -7,7 +7,7 @@ def askretrycancel(title=None, message=None, **kw):
     return _show(title, message, "warning", "retrycancel", **kw) == "retry"
 
 
-class popuptry:
+class Popuptry:
     def get_select(self):
         return self.retul
 
@@ -24,4 +24,4 @@ class popuptry:
 
 
 def popuptrys(title="Question", message="Question message", icon="question"):
-    return popuptry(title=title, message=message, icon=icon).get_select()
+    return Popuptry(title=title, message=message, icon=icon).get_select()
