@@ -8,7 +8,7 @@ class FolderLoad(Btn):
         選択したフォルダのパスを取得する
 
         :return: 選択したフォルダのパスを返す
-        :rtype: str|None
+        :rtype: str | None
         """
 
     @property
@@ -17,7 +17,7 @@ class FolderLoad(Btn):
         選択したフォルダのパスを取得する
 
         :return: 選択したフォルダのパスを返す
-        :rtype: str|None
+        :rtype: str | None
         """
 
     def get_path(self) -> str | None:
@@ -25,5 +25,5 @@ class FolderLoad(Btn):
         選択したフォルダのパスを取得する
 
         :return: 選択したフォルダのパスを返す
-        :rtype: str|None
+        :rtype: str | None
         """

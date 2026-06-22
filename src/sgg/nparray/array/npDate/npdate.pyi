@@ -4,7 +4,7 @@ from types import NotImplementedType
 from typing import Any, Literal, overload
 
 import numpy as np
-from numpy._typing import ArrayLike, DTypeLike, _DT64Codes
+from numpy._typing import ArrayLike, DTypeLike, NDArray, _DT64Codes
 
 from ..nparray import NPArray
 from ._typing import DateUnit, NativeTimeUnit
@@ -22,9 +22,9 @@ class NPDate(NPArray):
         :param data: データの配列を指定する
         :type data: ArrayLike
         :param dtype: numpyの配列で指定する型を指定する
-        :type dtype: _DT64Codes|np.datetime64
+        :type dtype: _DT64Codes | np.datetime64
         :param depth_limit: 配列の最大の深さを指定する
-        :type depth_limit: int|None
+        :type depth_limit: int | None
         """
 
     def __iter__(self) -> Iterator[Any]: ...
@@ -94,8 +94,8 @@ class NPDate(NPArray):
         casting: Literal[
             "no", "equiv", "safe", "same_kind", "same_value", "unsafe"
         ] = "same_kind",
-    ):
-        """配列内の日付を`str`型に変換する"""
+    ) -> NDArray[np.str_]:
+        """配列内の日付を`np.str_`型に変換する"""
 
     def todatetime(self) -> np.ndarray:
         """配列内の日付を`datetime.datetime`に変換する"""

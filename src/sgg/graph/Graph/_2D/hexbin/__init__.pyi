@@ -23,7 +23,7 @@ class Hexbin(_2Gset):
         graph_grid: ColorType,
         title: str,
     ) -> None:
-        """2 次元六角形ビニンググラフを再表示させる"""
+        """2次元六角形ビニンググラフを再表示させる"""
 
     def get(self) -> list[PolyCollection]:
         """`PolyCollection`の配列を返す"""

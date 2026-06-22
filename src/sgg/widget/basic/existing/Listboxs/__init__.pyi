@@ -37,7 +37,7 @@ class Listboxs(_Element):
         :param lists: Listboxsウィジェットに追加する項目を指定する
         :type lists: list
         :param place: 追加する場所を指定する
-        :type place: int|Literal["end"]
+        :type place: int | Literal["end"]
         """
 
     def clear(self) -> None:
@@ -72,7 +72,7 @@ class Listboxs(_Element):
         Listboxsウィジェットで選択された項目の表記を返す
 
         :return: Listboxsウィジェットで選択された項目の表記を返す
-        :rtype: list[Any]|Any
+        :rtype: list[Any] | Any
         """
 
     def set(self, lists: tuple[str, ...]) -> None:
@@ -84,4 +84,4 @@ class Listboxs(_Element):
         """
 
     def set_height(self, height: int) -> None:
-        """Listboxsウィジェットに表示される項目を変更する"""
+        """Listboxsウィジェットに表示される項目数を変更する"""

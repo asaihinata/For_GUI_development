@@ -72,7 +72,5 @@ if __name__ == "__main__":
             Guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
-        title="滝グラフ(test)", layout=layout, scroll=True, maxmine=True
-    )
+    win = Guis.window(title="滝グラフ(test)", layout=layout, scroll=True, maxmine=True)
     win.run()

@@ -24,9 +24,9 @@ class NPArray:
         :param data: データの配列を指定する
         :type data: ArrayLike
         :param dtype: numpyの配列で指定する型を指定する
-        :type dtype: DTypeLike|None
+        :type dtype: DTypeLike | None
         :param depth_limit: 配列の最大の深さを指定する
-        :type depth_limit: int|None
+        :type depth_limit: int | None
         """
     # 親クラス,子クラス共通の特殊メソッド
     def __getitem__(self, key: int) -> Any: ...
@@ -120,7 +120,7 @@ class NPArray:
         """配列の`val`番目の要素を取得する"""
 
     def all_None(self) -> bool:
-        """全ての要素がNoneかを調べる"""
+        """全ての要素が`None`かを調べる"""
 
     def all_None(self) -> bool:
-        """要素内にNoneが存在するかを調べる"""
+        """要素内に`None`が存在するかを調べる"""

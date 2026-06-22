@@ -27,5 +27,5 @@ class InputNumber(_Element):
         InputNumberウィジェットに入力されている数値を取得する
 
         :return: InputNumberウィジェットに入力されている数値を返す
-        :rtype: int|float
+        :rtype: int | float
         """

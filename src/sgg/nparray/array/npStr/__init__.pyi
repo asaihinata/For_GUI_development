@@ -23,9 +23,9 @@ class NPString(NPArray):
         :param data: データの配列を指定する
         :type data: ArrayLike
         :param dtype: numpyの配列で指定する型を指定する
-        :type dtype: DTypeLike|None
+        :type dtype: DTypeLike | None
         :param depth_limit: 配列の最大の深さを指定する
-        :type depth_limit: int|None
+        :type depth_limit: int | None
         """
 
     def __getitem__(self, key: int) -> Any: ...

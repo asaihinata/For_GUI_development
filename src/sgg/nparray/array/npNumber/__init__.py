@@ -229,10 +229,8 @@ def _digits(digit):
 
 
 def _datas(data):
-    if (isinstance(data, np.ndarray) and numberdDtype(data)) or isinstance(
-        data, int | float | complex
-    ):
+    if numberdDtype(data):
         return data
     elif isinstance(data, NPNumber):
         return data.data
-    raise TypeError("指定された値が不正です")
+    raise TypeError("数値の型を指定してください")

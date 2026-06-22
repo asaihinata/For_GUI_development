@@ -21,7 +21,7 @@ class NPStatisticsd:
         基本的な統計の計算をする
 
         :param data: 配列を指定する
-        :type data: NPNumber|ndarray
+        :type data: NPNumber | ndarray
         """
 
     def __repr__(self) -> str: ...
@@ -113,9 +113,9 @@ class NPStatisticsd:
         指定したパーセンタイルを計算する
 
         :param q: 求めたいパーセンタイル値を指定する
-        :type q: tuple[int|float,...]
+        :type q: tuple[int | float,...]
         :param axis: 計算する軸を指定する
-        :type axis: int|None
+        :type axis: int | None
         :param method: パーセンタイルを推定するために使用する方法を指定する
         :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
         """
@@ -142,7 +142,7 @@ class NPStatisticsd:
         :param q: 求めたい分位点を指定する
         :type q: tuple[float,...]
         :param axis: 計算する軸を指定する
-        :type axis: int|None
+        :type axis: int | None
         :param method: 分位点を推定するために使用する方法を指定する
         :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
         """
@@ -165,7 +165,7 @@ class NPStatisticsd:
         配列の四分位範囲を求める
 
         :param axis: 計算する軸を指定する
-        :type axis: int|None
+        :type axis: int | None
         :param method: 分位点を推定するために使用する方法を指定する
         :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
         """
@@ -196,11 +196,11 @@ class NPStatisticsd:
         `bins`で指定された計算方法で計算されたビンの境界を求める
 
         :param bins: ビンの数や計算方法を指定する
-        :type bins: int|Literal["stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"]|ArrayLike
+        :type bins: int | Literal["stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"] | ArrayLike
         :param range: ビンの下限と上限を指定する
-        :type range: tuple[float,float]|None
+        :type range: tuple[float,float] | None
         :param weights: 重みを指定する
-        :type weights: ArrayLike|None
+        :type weights: ArrayLike | None
         :return: `bins`で指定された計算方法で計算した結果を返す
         :rtype: NDArray[Any]
         """
@@ -215,11 +215,11 @@ class NPStatisticsd:
         配列のヒストグラムを求める
 
         :param bins: ビンの数や計算方法を指定する
-        :type bins: int|Literal["stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"]|ArrayLike
+        :type bins: int | Literal["stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"] | ArrayLike
         :param range: ビンの下限と上限を指定する
-        :type range: tuple[float,float]|None
+        :type range: tuple[float,float] | None
         :param weights: 重みを指定する
-        :type weights: ArrayLike|None
+        :type weights: ArrayLike | None
         :return: 区間内のデータの個数と区間を区切る境界の値を返す
         :rtype: tuple[NDArray,NDArray]
         """
@@ -231,7 +231,7 @@ class NPStatisticsd:
         非負整数の配列に含まれる各値の出現回数を数える
 
         :param weights: 重みを指定する
-        :type weights: ArrayLike|None
+        :type weights: ArrayLike | None
         :param min: 出力配列の最小ビン数を指定する
         :type min: SupportsIndex
         :return: 入力配列をビン分割した結果を返す
@@ -243,9 +243,9 @@ class NPStatisticsd:
         母比率の標本誤差を求める
 
         :param parcent: 割合を指定する
-        :type parcent: int|float
+        :type parcent: int | float
         :param cc: 信頼係数を指定する
-        :type cc: int|float
+        :type cc: int | float
         :raises TypeError: `parcent`をint型もしくはfloat型で指定しなかった場合に発生させる
         :raises ValueError: 0.0<=`parcent`<=1.0の範囲で指定しなかった場合に発生させる
         :raises TypeError: 信頼係数`cc`にint型もしくはfloat型で指定しなかった場合に発生させる
@@ -257,9 +257,9 @@ class NPStatisticsd:
         母比率の上限値と下限値を求める
 
         :param parcent: 割合を指定する
-        :type parcent: int|float
+        :type parcent: int | float
         :param cc: 信頼係数を指定する
-        :type cc: int|float
+        :type cc: int | float
         :raises TypeError: `parcent`をint型もしくはfloat型で指定しなかった場合に発生させる
         :raises ValueError: 0.0<=`parcent`<=1.0の範囲で指定しなかった場合に発生させる
         :raises TypeError: 信頼係数`cc`にint型もしくはfloat型で指定しなかった場合に発生させる
@@ -270,14 +270,14 @@ class NPStatisticsd:
         """母平均の推定をする
 
         :param cc: 信頼係数を指定する
-        :type cc: int|float"""
+        :type cc: int | float"""
 
     def ave_E(self, cc: float = 0.95) -> tuple[float64, float64]:
         """
         母平均の上限値と下限値を求める
 
         :param cc: 信頼係数を指定する
-        :type cc: int|float
+        :type cc: int | float
         """
 
 def cCoefficient(p: int | float = 0.95) -> float64:
@@ -285,7 +285,7 @@ def cCoefficient(p: int | float = 0.95) -> float64:
     信頼係数を求める
 
     :param p: 信頼係数を指定する
-    :type p: int|float
+    :type p: int | float
     :raises TypeError: `p`がfloat型を指定しなかった場合に発生させる
     :raises ValueError: `p`が0.0から1.0の範囲外を指定した場合に発生させる
     """

@@ -61,7 +61,7 @@ class Img_conversion:
         画像を表示させる
 
         :param title: 画像を表示する際のタイトル名を指定する
-        :type title: str|None
+        :type title: str | None
         """
 
 class Img_path(Img_conversion):

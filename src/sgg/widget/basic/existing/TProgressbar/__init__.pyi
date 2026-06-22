@@ -17,7 +17,7 @@ class TProgressbar(_Element):
         TProgressbarウィジェットの値を指定する
 
         :param val: TProgressbarウィジェットの値を指定する
-        :type val: int|float
+        :type val: int | float
         """
 
     def get(self) -> int | float:
@@ -25,5 +25,5 @@ class TProgressbar(_Element):
         TProgressbarの値を取得する
 
         :return: TProgressbarの値を返す
-        :rtype: int|float
+        :rtype: int | float
         """

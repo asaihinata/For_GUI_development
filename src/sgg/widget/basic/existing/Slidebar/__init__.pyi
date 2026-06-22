@@ -12,7 +12,7 @@ class Slidebar(_Element):
         Slidebarウィジェットの現在の値を取得する
 
         :return: Slidebarウィジェットの現在の値を返す
-        :rtype: int|float
+        :rtype: int | float
         """
 
     def delta(self) -> None:
@@ -35,5 +35,5 @@ class Slidebar(_Element):
         Slidebarウィジェットの変更後の数値を設定する
 
         :param val: 変更後の数値を指定する
-        :type val: int|float
+        :type val: int | float
         """

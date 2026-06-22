@@ -29,7 +29,7 @@ class Multiline(_Element):
         :param text: 挿入する文字を指定する
         :type text: str
         :param place: 文字を挿入する場所を指定する
-        :type place: int|Literal["end"]
+        :type place: int | Literal["end"]
         """
 
     def get_text(self) -> str:

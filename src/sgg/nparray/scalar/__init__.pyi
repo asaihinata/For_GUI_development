@@ -34,7 +34,7 @@ class ScalarInt:
     def __float__(self) -> float: ...
 
 class ScalarFloat:
-    def __init__(self, val: float | np.floating):
+    def __init__(self, val: float | np.floating) -> None:
         """浮動小数点数の型に関するオブジェクト
 
         :param val: 値を指定する

@@ -19,5 +19,5 @@ class Imagebyte(_Element):
         画像を表示させる
 
         :param title: タイトルを指定する
-        :type title: str|None
+        :type title: str | None
         """
