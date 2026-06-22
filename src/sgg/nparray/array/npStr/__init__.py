@@ -2,7 +2,7 @@ import numpy as np
 import numpy.strings as nps
 
 from ...isdtype import strDtype
-from ..npArray import NPArray
+from ..nparray import NPArray
 
 __all__ = ["NPString"]
 

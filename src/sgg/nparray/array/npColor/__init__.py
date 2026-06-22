@@ -11,7 +11,7 @@ from re import compile, findall
 from matplotlib.colors import to_hex, to_rgb, to_rgba
 from numpy import array, fromiter, nditer, uint8
 
-from ..npArray import NPArray, is_array_like
+from ..nparray import NPArray, is_array_like
 from ._data import Get_color
 
 __all__ = ["NPColor"]

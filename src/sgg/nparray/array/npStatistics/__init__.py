@@ -1,2 +1,2 @@
-from .npStatisticsd import NPStatisticsd
-from .npStatisticsds import NPStatisticsds
+from .npstatisticsd import NPStatisticsd
+from .npstatisticsds import NPStatisticsds

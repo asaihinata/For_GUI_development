@@ -9,7 +9,7 @@ from pathlib import Path
 from numpy import ndarray, str_, where
 
 from ....readfile import Getcsv
-from ..npArray import NPArray
+from ..nparray import NPArray
 
 __all__ = ["Get_color"]
 

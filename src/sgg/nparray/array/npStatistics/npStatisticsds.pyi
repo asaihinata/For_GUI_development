@@ -6,8 +6,8 @@ from numpy import floating, ndarray
 from numpy._typing import _ArrayLikeFloat_co
 from numpy.typing import NDArray
 
-from ..npNumber import NPNumber
-from .npStatisticsd import NPStatisticsd
+from ..npnumber import NPNumber
+from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
 BINS_LIST: TypeAlias = Literal[

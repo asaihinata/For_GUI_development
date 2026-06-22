@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 
 import numpy as np
 
-from ..npArray import NPArray
+from ..nparray import NPArray
 from ._typing import serchDay, serchDtype, serchnativetime
 from .formatconversion import Formatconversion
 

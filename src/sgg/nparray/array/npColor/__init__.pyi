@@ -11,7 +11,7 @@ from typing import Any
 
 import numpy as np
 
-from ..npArray import NPArray
+from ..nparray import NPArray
 
 __all__ = ["NPColor"]
 

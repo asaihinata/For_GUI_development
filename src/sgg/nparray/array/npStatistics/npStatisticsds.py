@@ -3,8 +3,8 @@
 import numpy as np
 from numpy.polynomial.chebyshev import chebfit, chebval
 
-from ..npNumber import NPNumber
-from .npStatisticsd import NPStatisticsd
+from ..npnumber import NPNumber
+from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
 method_list = [

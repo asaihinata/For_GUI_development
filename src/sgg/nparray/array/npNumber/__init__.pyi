@@ -8,7 +8,7 @@ from _typeshed import Incomplete
 from numpy import _CopyMode, float64, ndarray, ufunc
 from numpy._typing import ArrayLike, DTypeLike
 
-from ..npArray import NPArray
+from ..nparray import NPArray
 
 __all__ = ["NPNumber"]
 

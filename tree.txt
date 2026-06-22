@@ -200,7 +200,7 @@ For_GUI_development
  │   │   │   │   │       └── __init__.pyi
  │   │   │   │   └── dev
  │   │   │   │       ├── __init__.py
- │   │   │   │       └── twoArray
+ │   │   │   │       └── twoarray
  │   │   │   │           ├── __init__.py
  │   │   │   │           └── __init__.pyi
  │   │   │   ├── style
@@ -225,15 +225,15 @@ For_GUI_development
  │   │   │   ├── __init__.py
  │   │   │   ├── array
  │   │   │   │   ├── __init__.py
- │   │   │   │   ├── npArray
+ │   │   │   │   ├── nparray
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
- │   │   │   │   ├── npColor
+ │   │   │   │   ├── npcolor
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   ├── __init__.pyi
  │   │   │   │   │   ├── _data.py
  │   │   │   │   │   └── color.csv
- │   │   │   │   ├── npDate
+ │   │   │   │   ├── npdate
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   ├── _typing.py
  │   │   │   │   │   ├── datetime_format.py
@@ -241,16 +241,16 @@ For_GUI_development
  │   │   │   │   │   ├── formatconversion.pyi
  │   │   │   │   │   ├── npdate.py
  │   │   │   │   │   └── npdate.pyi
- │   │   │   │   ├── npNumber
+ │   │   │   │   ├── npnumber
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
- │   │   │   │   ├── npStatistics
+ │   │   │   │   ├── npstatistics
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── npStatisticsd.py
- │   │   │   │   │   ├── npStatisticsd.pyi
- │   │   │   │   │   ├── npStatisticsds.py
- │   │   │   │   │   └── npStatisticsds.pyi
- │   │   │   │   └── npStr
+ │   │   │   │   │   ├── npstatisticsd.py
+ │   │   │   │   │   ├── npstatisticsd.pyi
+ │   │   │   │   │   ├── npstatisticsds.py
+ │   │   │   │   │   └── npstatisticsds.pyi
+ │   │   │   │   └── npstr
  │   │   │   │       ├── __init__.py
  │   │   │   │       └── __init__.pyi
  │   │   │   ├── isdtype
@@ -260,16 +260,16 @@ For_GUI_development
  │   │   │       ├── __init__.py
  │   │   │       └── __init__.pyi
  │   │   ├── readfile
- │   │   │   ├── Csv
+ │   │   │   ├── __init__.py
+ │   │   │   ├── rcsv
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
- │   │   │   ├── Font
+ │   │   │   ├── rfont
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
- │   │   │   ├── Json
- │   │   │   │   ├── __init__.py
- │   │   │   │   └── __init__.pyi
- │   │   │   └── __init__.py
+ │   │   │   └── rjson
+ │   │   │       ├── __init__.py
+ │   │   │       └── __init__.pyi
  │   │   ├── typing.py
  │   │   ├── version.py
  │   │   └── widget

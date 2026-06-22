@@ -3,7 +3,7 @@
 import numpy as np
 from scipy.stats import norm
 
-from ..npNumber import NPNumber
+from ..npnumber import NPNumber
 
 __all__ = ["NPStatisticsd"]
 method_list = [

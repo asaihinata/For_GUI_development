@@ -8,7 +8,7 @@ from _typeshed import Incomplete
 import numpy as np
 from numpy._typing import ArrayLike, DTypeLike, NDArray
 
-from ..npArray import NPArray
+from ..nparray import NPArray
 
 __all__ = ["NPString"]
 

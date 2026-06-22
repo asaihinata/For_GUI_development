@@ -1,7 +1,7 @@
 from dateutil.parser import parse
 from numpy import array, ndarray, nditer, vectorize
 
-from ..npArray import NPArray, is_array_like
+from ..nparray import NPArray, is_array_like
 from ._typing import serchDtype
 
 __all__ = ["Formatconversion"]

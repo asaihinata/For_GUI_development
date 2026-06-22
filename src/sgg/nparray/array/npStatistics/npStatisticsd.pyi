@@ -5,7 +5,7 @@ from typing import Any, Literal, SupportsIndex, TypeAlias
 from numpy import float64, intp, ndarray
 from numpy.typing import ArrayLike, NDArray
 
-from ..npNumber import NPNumber
+from ..npnumber import NPNumber
 
 __all__ = ["NPStatisticsd"]
 BINS_LIST: TypeAlias = Literal[

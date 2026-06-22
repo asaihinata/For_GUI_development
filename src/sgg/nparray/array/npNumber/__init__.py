@@ -3,7 +3,7 @@
 import numpy as np
 
 from ...isdtype import numberdDtype, numberDtype
-from ..npArray import NPArray
+from ..nparray import NPArray
 
 __all__ = ["NPNumber"]
 method_list = [
