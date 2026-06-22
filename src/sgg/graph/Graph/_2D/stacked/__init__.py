@@ -28,7 +28,7 @@ class Stacked(twoElement):
     def _survey(self, data, dataname, label=None, width=0.8):
         data = data.T
         lisarr = []
-        data_percent = data / np.sum(data, axis=0) * 100
+        data_percent = data / data.sum(0) * 100
         bottom = np.zeros(len(dataname))
         for i, ds in enumerate(data_percent):
             lisarr = self.ax.bar(

@@ -103,7 +103,8 @@ class Hist2d(twoElement):
 
     def _powsmax(self, val, range):
         if val == None:
-            maxs = range.max
+            maxs = range.max()
+            print()
             if maxs < 0:
                 return np.pow(10, np.ceil(np.log10(np.abs(maxs))) - 1) * -1
             return np.pow(10, np.ceil(np.log10(maxs)))
@@ -111,7 +112,7 @@ class Hist2d(twoElement):
 
     def _powsmin(self, val, range):
         if val == None:
-            mins = range.min
+            mins = range.min()
             if mins < 0:
                 return np.pow(10, np.ceil(np.log10(np.abs(mins)))) * -1
             return np.pow(10, np.ceil(np.log10(mins)) - 1)

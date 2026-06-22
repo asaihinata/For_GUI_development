@@ -60,27 +60,27 @@ class NPNumber(NPArray):
         return self
 
     def __add__(self, other):
-        self.data = self.data + __datas(other)
+        self.data = self.data + _datas(other)
         return self
 
     def __sub__(self, other):
-        self.data = self.data - __datas(other)
+        self.data = self.data - _datas(other)
         return self
 
     def __mul__(self, other):
-        self.data = self.data * __datas(other)
+        self.data = self.data * _datas(other)
         return self
 
     def __truediv__(self, other):
-        self.data = self.data / __datas(other)
+        self.data = self.data / _datas(other)
         return self
 
     def __floordiv__(self, other):
-        self.data = self.data // __datas(other)
+        self.data = self.data // _datas(other)
         return self
 
     def __pow__(self, other):
-        self.data = np.power(self.data, __datas(other))
+        self.data = np.power(self.data, _datas(other))
         return self
 
     __radd__ = __add__
@@ -93,25 +93,25 @@ class NPNumber(NPArray):
     __itruediv__ = __truediv__
 
     def __eq__(self, value):
-        return np.equal(self.data, __datas(value))
+        return np.equal(self.data, _datas(value))
 
     def __ne__(self, value):
-        return np.not_equal(self.data, __datas(value))
+        return np.not_equal(self.data, _datas(value))
 
     def __lt__(self, other):
-        return np.less(self.data, __datas(other))
+        return np.less(self.data, _datas(other))
 
     def __le__(self, other):
-        return np.less_equal(self.data, __datas(other))
+        return np.less_equal(self.data, _datas(other))
 
     def __gt__(self, other):
-        return np.greater(self.data, __datas(other))
+        return np.greater(self.data, _datas(other))
 
     def __ge__(self, other):
-        return np.greater_equal(self.data, __datas(other))
+        return np.greater_equal(self.data, _datas(other))
 
     def __mod__(self, other):
-        self.data = self.data % __datas(other)
+        self.data = self.data % _datas(other)
         return self
 
     def __neg__(self):
@@ -127,84 +127,19 @@ class NPNumber(NPArray):
         self.data = self.data.T
         return self
 
-    def sum(self):
-        return np.sum(self.data)
-
-    def median(self):
-        return np.median(self.data)
-
-    def var(self):
-        return np.var(self.data)
-
-    def max(self):
-        return np.max(self.data)
-
-    def min(self):
-        return np.min(self.data)
-
-    def mean(self):
-        return np.mean(self.data)
-
-    def std(self):
-        return np.std(self.data)
-
-    def pow2(self):
-        return np.power(self.data, 2)
-
-    def deviation(self):
-        data = self.data
-        return ((10 / np.std(data)) * (self.data - np.mean(data))) + 50
-
-    def log(self):
-        return np.log(self.data)
-
-    def log10(self):
-        return np.log10(self.data)
-
-    def log2(self):
-        return np.log2(self.data)
-
-    def log1p(self):
-        return np.log1p(self.data)
-
-    def degree(self):
-        return np.degrees(self.data)
-
-    def radian(self):
-        return np.radians(self.data)
-
     def sturgesval(self):
         return 1 + np.log2(self.size)
-
-    def logx(self, x):
-        if not isinstance(x, int | float):
-            raise TypeError("xには数値の型を指定してください")
-        elif x < 0:
-            raise ValueError("xには0より大きい値を指定してください")
-        return np.log(self.data, dtype=self.dtype) / np.log(x, dtype=self.dtype)
-
-    def mod(self, x):
-        return np.mod(self.data, x)
-
-    def divmod(self, x):
-        return np.divmod(self.data, x)
-
-    def pow(self, x):
-        self.data = np.power(self.data, x)
-        return self
-
-    def sqrt(self, root=2):
-        if root == 0:
-            raise ZeroDivisionError("rootには0を指定できません")
-        roots = 1 / root
-        self.data = np.power(self.data, roots)
-        return self
-
+    def min(self):
+        return np.min(self.data)
+    def max(self):
+        return np.max(self.data)
+    def sum(self,axis=None):
+        return np.sum(self.data,axis=axis)
     def floor(self, digit=None):
         if digit == None:
             self.data = np.floor(self.data)
         else:
-            pows = __digits(digit)
+            pows = _digits(digit)
             self.data = np.floor(self.data * pows) / pows
         return self
 
@@ -212,7 +147,7 @@ class NPNumber(NPArray):
         if digit == None:
             self.data = np.trunc(self.data)
         else:
-            pows = __digits(digit)
+            pows = _digits(digit)
             self.data = np.trunc(self.data * pows) / pows
         return self
 
@@ -220,7 +155,7 @@ class NPNumber(NPArray):
         if digit == None:
             self.data = np.ceil(self.data)
         else:
-            pows = __digits(digit)
+            pows = _digits(digit)
             self.data = np.ceil(self.data * pows) / pows
         return self
 
@@ -228,7 +163,7 @@ class NPNumber(NPArray):
         if digit == None:
             self.data = np.round(self.data)
         else:
-            pows = __digits(digit)
+            pows = _digits(digit)
             self.data = np.round(self.data * pows) / pows
         return self
 
@@ -281,7 +216,7 @@ class NPNumber(NPArray):
         return self
 
 
-def __digits(digit):
+def _digits(digit):
     if not isinstance(digit, int):
         raise TypeError("digitには整数型を指定してください")
     elif digit < 1:
@@ -289,11 +224,12 @@ def __digits(digit):
     return np.pow(10, digit)
 
 
-def __datas(data):
-    if isinstance(data, np.ndarray):
-        if numberdDtype(data):
-            raise TypeError("numpy.ndarrayの型を数値の型にしてください")
+def _datas(data):
+    if (
+(isinstance(data,np.ndarray) and numberdDtype(data)) or
+isinstance(data, int | float | complex)
+):
         return data
-    elif not isinstance(data, np.ndarray | NPNumber | int | float | complex):
-        raise TypeError("NPNumber型か数値の型を指定してください")
-    return data.data if isinstance(data, NPNumber) else data
+    elif isinstance(data,NPNumber):
+        return data.data
+    raise TypeError('指定された値が不正です')

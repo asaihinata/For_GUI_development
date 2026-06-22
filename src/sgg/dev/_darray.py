@@ -48,7 +48,7 @@ def allNones(a, b=None, other=None):
 def list2num(lin=None):
     if change_array_like(lin):
         arr = np.array(lin)
-        if np.issubdtype(arr, np.number) and arr.shape == (2,):
+        if np.issubdtype(arr.dtype, np.number) and arr.shape == (2,):
             return True
     return False
 
@@ -56,7 +56,7 @@ def list2num(lin=None):
 def list2int(lin=None):
     if change_array_like(lin):
         arr = np.array(lin)
-        if np.issubdtype(arr, np.integer) and arr.shape == (2,):
+        if np.issubdtype(arr.dtype, np.integer) and arr.shape == (2,):
             return True
     return False
 
@@ -64,7 +64,7 @@ def list2int(lin=None):
 def list2float(lin=None):
     if change_array_like(lin):
         arr = np.array(lin)
-        if np.issubdtype(arr, np.floating) and arr.shape == (2,):
+        if np.issubdtype(arr.dtype, np.floating) and arr.shape == (2,):
             return True
     return False
 
@@ -72,7 +72,7 @@ def list2float(lin=None):
 def list4num(lin=None):
     if change_array_like(lin):
         arr = np.array(lin)
-        if np.issubdtype(arr, np.number) and arr.shape == (4,):
+        if np.issubdtype(arr.dtype, np.number) and arr.shape == (4,):
             return True
     return False
 
@@ -80,7 +80,7 @@ def list4num(lin=None):
 def list4int(lin=None):
     if change_array_like(lin):
         arr = np.array(lin)
-        if np.issubdtype(arr, np.integer) and arr.shape == (4,):
+        if np.issubdtype(arr.dtype, np.integer) and arr.shape == (4,):
             return True
     return False
 
@@ -88,7 +88,7 @@ def list4int(lin=None):
 def list4float(lin=None):
     if change_array_like(lin):
         arr = np.array(lin)
-        if np.issubdtype(arr, np.floating) and arr.shape == (4,):
+        if np.issubdtype(arr.dtype, np.floating) and arr.shape == (4,):
             return True
     return False
 
