@@ -129,12 +129,16 @@ class NPNumber(NPArray):
 
     def sturgesval(self):
         return 1 + np.log2(self.size)
+
     def min(self):
         return np.min(self.data)
+
     def max(self):
         return np.max(self.data)
-    def sum(self,axis=None):
-        return np.sum(self.data,axis=axis)
+
+    def sum(self, axis=None):
+        return np.sum(self.data, axis=axis)
+
     def floor(self, digit=None):
         if digit == None:
             self.data = np.floor(self.data)
@@ -225,11 +229,10 @@ def _digits(digit):
 
 
 def _datas(data):
-    if (
-(isinstance(data,np.ndarray) and numberdDtype(data)) or
-isinstance(data, int | float | complex)
-):
+    if (isinstance(data, np.ndarray) and numberdDtype(data)) or isinstance(
+        data, int | float | complex
+    ):
         return data
-    elif isinstance(data,NPNumber):
+    elif isinstance(data, NPNumber):
         return data.data
-    raise TypeError('指定された値が不正です')
+    raise TypeError("指定された値が不正です")

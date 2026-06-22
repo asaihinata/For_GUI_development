@@ -104,7 +104,6 @@ class Hist2d(twoElement):
     def _powsmax(self, val, range):
         if val == None:
             maxs = range.max()
-            print()
             if maxs < 0:
                 return np.pow(10, np.ceil(np.log10(np.abs(maxs))) - 1) * -1
             return np.pow(10, np.ceil(np.log10(maxs)))

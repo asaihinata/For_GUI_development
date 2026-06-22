@@ -96,8 +96,6 @@ if __name__ == "__main__":
     violindata = rng.normal((3, 5, 4), (0.75, 1.00, 0.75), (200, 3))
     hexbinx1 = rng.standard_normal((1, 5000))
     hexbiny1 = 1.2 * hexbinx1 + rng.standard_normal((1, 5000)) / 3
-    hexbinx2 = 2 + rng.random((1, 5000))
-    hexbiny2 = 2 + 1.2 * hexbinx2 + rng.standard_normal((1, 5000)) / 3
     hist2dx = rng.standard_normal(5000)
     hist2dy = 1.2 * hist2dx + rng.standard_normal(5000) / 3
     linefillx = np.linspace(0, 8, 16)
@@ -106,9 +104,8 @@ if __name__ == "__main__":
     funnedata = rng.integers(10, 50, size=3)
     hatplotx = rng.integers(20, 30, size=5, endpoint=True)
     hatplotdata = hatplotx + 3
-    radarplotdata = rng.integers(10, 15, size=5)
+    radarlinedata = rng.integers(10, 15, size=5)
     radarfilldata1 = rng.integers(50, 100, size=5)
-    radarfilldata2 = rng.integers(50, 100, size=(3, 5))
     barpolarx = np.linspace(0, np.pi * 2, 5)
     barpolary = rng.integers(30, 60, size=5)
     barpolardata = rng.integers(30, 60, size=5)
@@ -305,7 +302,11 @@ if __name__ == "__main__":
         ],
         [
             Guis.LineGraph(
-                x=linex, y=liney1, title="折り線グラフ", xlabel="xlabel", ylabel="ylabel"
+                x=linex,
+                y=liney1,
+                title="折線グラフ",
+                xlabel="xlabel",
+                ylabel="ylabel",
             )
         ],
         [Guis.Pie(data=piedata, title="円グラフ", label=pielabel)],
@@ -329,7 +330,15 @@ if __name__ == "__main__":
                 height=0.5,
             )
         ],
-        [Guis.Scatter(x=scatterx1, y=scattery1, title="散布図", xlabel="xlabel", ylabel="ylabel")],
+        [
+            Guis.Scatter(
+                x=scatterx1,
+                y=scattery1,
+                title="散布図",
+                xlabel="xlabel",
+                ylabel="ylabel",
+            )
+        ],
         [Guis.Scatter(x=scatterx2, y=scattery2, title="散布図")],
         [
             Guis.DScatter(
@@ -347,10 +356,18 @@ if __name__ == "__main__":
         [Guis.Boxplot(data=boxdata1, title="箱ひげ図", whis=1.5)],
         [
             Guis.Waterfall(
-                x=waterfallx, y=waterfally, width=0.5, title="ウォーターフォール", linestyle="dotted"
+                x=waterfallx,
+                y=waterfally,
+                width=0.5,
+                title="ウォーターフォール",
+                linestyle="dotted",
             )
         ],
-        [Guis.Waterfallh(x=waterfallx, y=waterfally, height=0.5, title="ウォーターフォール")],
+        [
+            Guis.Waterfallh(
+                x=waterfallx, y=waterfally, height=0.5, title="ウォーターフォール"
+            )
+        ],
         [Guis.Step(data=stepdata, title="階段グラフ")],
         [Guis.Stack(x=stackx, y=stacky, title="積み上げグラフ")],
         [
@@ -361,27 +378,33 @@ if __name__ == "__main__":
                 title="イベントグラフ",
             )
         ],
-        [Guis.Errorbar(x=errorbarx, y=errorbary, err=err, title="エラーバー")],
-        [Guis.Errorbar(x=errorbarx, y=errorbary, xerr=xerr, yerr=yerr, title="エラーバー")],
-        [Guis.Errorbar(x=errorbarx, y=errorbary, xerr=xerr, title="エラーバー")],
-        [Guis.Errorbar(x=errorbarx, y=errorbary, yerr=yerr, title="エラーバー")],
+        [Guis.Errorbar(x=errorbarx, y=errorbary, err=err, title="エラーグラフ")],
+        [
+            Guis.Errorbar(
+                x=errorbarx, y=errorbary, xerr=xerr, yerr=yerr, title="エラーグラフ"
+            )
+        ],
+        [Guis.Errorbar(x=errorbarx, y=errorbary, xerr=xerr, title="エラーグラフ")],
+        [Guis.Errorbar(x=errorbarx, y=errorbary, yerr=yerr, title="エラーグラフ")],
         [Guis.Ecdf(data=ecdfdata, title="経験的累積分布関数のグラフ")],
         [
             Guis.Stacked(
                 data=stackeddata,
                 dataname=stackeddataname,
-                title="積み上げ縦棒グラフの基本")
+                title="積み上げ縦棒グラフ",
+            )
         ],
         [
             Guis.Stackedh(
                 data=stackeddata,
                 dataname=stackeddataname,
-                title="積み上げ横棒グラフの基本",)
+                title="積み上げ横棒グラフ",
+            )
         ],
         [
             Guis.Violinplot(
                 data=violindata,
-                title="バイオリングラフの基本",
+                title="バイオリングラフ",
                 xlabel=xlabel,
                 ylabel=ylabel,
             )
@@ -390,17 +413,17 @@ if __name__ == "__main__":
             Guis.Hatplot(
                 x=hatplotx,
                 data=hatplotdata,
-                title="ハットグラフの基本",
+                title="ハットグラフ",
                 xlabel=xlabel,
                 ylabel=ylabel,
                 yticksrange=5,
-            ),
+            )
         ],
         [
             Guis.Hexbin(
                 x=hexbinx1,
                 y=hexbiny1,
-                title="2次元六角形グラフの基本",
+                title="2次元六角形グラフ",
                 xlabel=xlabel,
                 ylabel=ylabel,
             )
@@ -409,7 +432,7 @@ if __name__ == "__main__":
             Guis.Hist2d(
                 x=hist2dx,
                 y=hist2dy,
-                title="2次元ヒストグラムの基本",
+                title="2次元ヒストグラム",
                 xlabel=xlabel,
                 ylabel=ylabel,
             )
@@ -419,13 +442,25 @@ if __name__ == "__main__":
                 x=linefillx,
                 ymax=linefillymax,
                 ymin=linefillymin,
-                title="積上げ面グラフの基本",
+                title="積上げ面グラフ",
                 xlabel=xlabel,
                 ylabel=ylabel,
-            ),
+            )
         ],
+        [Guis.Barpolar(x=barpolarx, y=barpolary, title="極軸棒グラフ")],
+        [
+            Guis.Errorpolar(
+                x=errorpolarx, y=errorpolary, err=err, title="極軸エラーグラフ"
+            )
+        ],
+        [Guis.Eventpolar(data=eventdata, title="極軸イベントグラフ")],
+        [Guis.Linepolar(x=linepolarx, y=linepolary, title="極軸折線グラフ")],
+        [Guis.Scatterpolar(x=scatterpolarx, y=scatterpolary, title="極軸散布図")],
+        [Guis.Stempolar(x=stempolarx, y=stempolary, title="極軸幹図")],
+        [Guis.RadarFill(data=radarfilldata1, title="塗りつぶしレーダーチャート")],
+        [Guis.RadarLine(data=radarlinedata, title="塗りつぶし折線チャート")],
     ]
-    win = Guis.window(
+    win: WindowController = Guis.window(
         title="デモ", layout=layout, load=[progress_start], scroll=True, maxmine=True
     )
     win.run()
