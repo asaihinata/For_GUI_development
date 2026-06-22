@@ -1,6 +1,6 @@
 from tkinter import Button
 
-from ......_dialog import *
+from ......dialogs import *
 from ....common import *
 
 

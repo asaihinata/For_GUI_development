@@ -7,7 +7,7 @@ from matplotlib.mlab import GaussianKDE
 from numpy import ndarray
 from numpy.typing import ArrayLike
 
-from ._dialog import *
+from .dialogs import *
 from .font import TKFont
 from .graph import *
 from .nparray import *
@@ -18,7 +18,7 @@ from .widget import *
 
 __all__ = (
     ["__version__", "version", "Getjosn", "Getfont", "Getcsv", "Guis", "TKFont"]
-    + getattr(_dialog, "__all__", [])
+    + getattr(dialogs, "__all__", [])
     + getattr(graph, "__all__", [])
     + getattr(nparray, "__all__", [])
     + getattr(widget, "__all__", [])

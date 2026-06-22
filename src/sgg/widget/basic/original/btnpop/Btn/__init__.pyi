@@ -1,6 +1,6 @@
 from tkinter import *
 
-from ......_dialog import *
+from ......dialogs import *
 from ......typing import ColorType
 from .....base import _Element
 from ....common import *
