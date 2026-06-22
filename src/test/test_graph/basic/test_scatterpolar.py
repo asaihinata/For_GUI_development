@@ -8,23 +8,23 @@ if __name__ == "__main__":
         scatterpolor: Scatterpolar = win.get("scatterpolor")
         scatterpolor.update(y=radomdata)
 
-    print(f"{scatterpolorx=}")
-    print(f"{scatterpolory=}")
-    print(f"{scatterpolordata=}")
+    print(f"{scatterpolarx=}")
+    print(f"{scatterpolary=}")
+    print(f"{scatterpolardata=}")
     layout = [
         [
             Guis.Scatterpolar(
-                x=scatterpolorx, y=scatterpolory, title="極軸散布図の基本1"
+                x=scatterpolarx, y=scatterpolary, title="極軸散布図の基本1"
             ),
-            Guis.Scatterpolar(data=scatterpolordata, title="極軸散布図の基本2"),
+            Guis.Scatterpolar(data=scatterpolardata, title="極軸散布図の基本2"),
         ],
         [
             Guis.Scatterpolar(
-                x=scatterpolorx, y=scatterpolory, title="マーカーの指定", marker="d"
+                x=scatterpolarx, y=scatterpolary, title="マーカーの指定", marker="d"
             ),
             Guis.Scatterpolar(
-                x=scatterpolorx,
-                y=scatterpolory,
+                x=scatterpolarx,
+                y=scatterpolary,
                 title="マーカーサイズの変更",
                 marker="d",
                 markersize=20,
@@ -32,8 +32,8 @@ if __name__ == "__main__":
         ],
         [
             Guis.Scatterpolar(
-                x=scatterpolorx,
-                y=scatterpolory,
+                x=scatterpolarx,
+                y=scatterpolary,
                 title="グラフを更新する",
                 key="scatterpolor",
             ),

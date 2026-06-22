@@ -25,20 +25,6 @@ def progress_start():
 
 if __name__ == "__main__":
     Lennapath = pathlib.Path(__file__).parent / "data/img/Lenna.png"
-    x1, y1 = [[10, 20, 30], [100, 200, 300]], [1, 2, 3]
-    x2, y2 = ["1月", "2月", "3月"], [[100, 200, 300], [10, 20, 30]]
-    x3, y3 = ["1月", "2月", "3月", "4月", "5月"], [5, 6, 7, 8, 9]
-    x4, y4 = [1, 2, 3], [200, 400, 500]
-    x5, y5 = ["1月", "2月", "3月", "4月", "5月", "6月"], [30, -2, 10, 4, 10, -300]
-    x6, y6 = [1, 2, 3], [[20, 50, 60], [10, 20, 30]]
-    x7, y7 = [2, 4, 6], [3.6, 5, 4.2]
-    x3D, y3D, z3D = [1, 2, 3, 4], [3, 4, 9, 10], [10, 20, 30, 40]
-    err, xerr, yerr = [0.9, 1.2, 0.5], [1, 2, 1], [2, 1, 2]
-    stepdata = [1, 3, 5, 6]
-    histdata = np.random.normal(50, 10, size=1000)
-    boxdata = np.random.normal(100, 10, size=100)
-    eventdata = np.random.gamma(4, size=(3, 50))
-    ecdfdata = 4 + np.random.normal(0, 1.5, size=100)
     menus = [
         [
             "ファイル",
@@ -67,6 +53,79 @@ if __name__ == "__main__":
         "が行",
         ["が", "ぎ", "ぐ", "げ", "ご"],
     ]
+    rng = np.random.default_rng(seed=42)
+    xlabel = "x軸のラベル"
+    ylabel = "y軸のラベル"
+    zlabel = "z軸のラベル"
+    linex = np.arange(1, 4, 1)
+    liney1 = rng.integers(50, 80, size=3)
+    liney2 = rng.integers(50, 80, size=(4, 3))
+    stemx1 = rng.integers(50, 80, size=3)
+    stemx2 = rng.integers(50, 80, size=(2, 3))
+    stemy = np.arange(1, 4, 1)
+    piedata = rng.integers(30, 50, size=5)
+    pielabel = ["1月", "2月", "3月", "4月", "5月"]
+    bargraphx1 = ["1月", "2月", "3月", "4月", "5月"]
+    bargraphy1 = rng.integers(30, 60, size=5)
+    bargraphx2 = ["1月", "2月", "3月"]
+    bargraphy2 = rng.integers(30, 60, size=(2, 3))
+    scatterx1 = ["1月", "2月", "3月", "4月", "5月"]
+    scattery1 = rng.integers(0, 10, size=5)
+    scatterx2 = np.arange(1, 4, 1)
+    scattery2 = rng.integers(100, 400, size=(2, 3))
+    waterfallx = ["1月", "2月", "3月", "4月", "5月", "6月"]
+    waterfally = [30, -10, 10, 5, 10, -80]
+    stackx = np.arange(1, 4, 1)
+    stacky = rng.integers(50, 80, size=(2, 3))
+    errorbarx = np.arange(2, 12, 2)
+    errorbary = rng.integers(0, 3, 5)
+    err = rng.integers(3, size=5)
+    xerr = rng.integers(3, size=5)
+    yerr = rng.integers(3, size=5)
+    dscatterx = np.arange(0, 4, 1)
+    dscattery = [3, 4, 9, 10]
+    dscatterz = [10, 20, 30, 40]
+    stepdata = rng.integers(1, 10, size=5)
+    histdata = rng.normal(10, 50, size=1000)
+    boxdata1 = rng.normal(10, 100, size=100)
+    boxdata2 = rng.normal(20, 90, size=(2, 150))
+    eventdata = rng.gamma(4, size=(3, 50))
+    ecdfdata = 4 + rng.normal(0, 1.5, size=100)
+    stackeddata = rng.integers(1, 10, (3, 3)) + 2
+    stackeddataname = ["dataname1", "dataname2", "dataname3"]
+    violindata = rng.normal((3, 5, 4), (0.75, 1.00, 0.75), (200, 3))
+    hexbinx1 = rng.standard_normal((1, 5000))
+    hexbiny1 = 1.2 * hexbinx1 + rng.standard_normal((1, 5000)) / 3
+    hexbinx2 = 2 + rng.random((1, 5000))
+    hexbiny2 = 2 + 1.2 * hexbinx2 + rng.standard_normal((1, 5000)) / 3
+    hist2dx = rng.standard_normal(5000)
+    hist2dy = 1.2 * hist2dx + rng.standard_normal(5000) / 3
+    linefillx = np.linspace(0, 8, 16)
+    linefillymax = 3 + 4 * linefillx / 8 + rng.uniform(0.0, 0.5, len(linefillx))
+    linefillymin = 1 + 2 * linefillx / 8 + rng.uniform(0.0, 0.5, len(linefillx))
+    funnedata = rng.integers(10, 50, size=3)
+    hatplotx = rng.integers(20, 30, size=5, endpoint=True)
+    hatplotdata = hatplotx + 3
+    radarplotdata = rng.integers(10, 15, size=5)
+    radarfilldata1 = rng.integers(50, 100, size=5)
+    radarfilldata2 = rng.integers(50, 100, size=(3, 5))
+    barpolarx = np.linspace(0, np.pi * 2, 5)
+    barpolary = rng.integers(30, 60, size=5)
+    barpolardata = rng.integers(30, 60, size=5)
+    errorpolarx = np.arange(2, 12, 2)
+    errorpolary = rng.integers(0, 3, 5)
+    polarerr = rng.integers(2, size=5) + 0.5
+    polarxerr = rng.integers(2, size=5) + 0.5
+    polaryerr = rng.integers(2, size=5) + 0.5
+    linepolarx = np.arange(1, 4, 1)
+    linepolary = rng.integers(50, 80, size=3)
+    linepolardata = np.arange(1, 4, 1)
+    scatterpolarx = rng.integers(0, 10, size=5)
+    scatterpolary = rng.integers(0, 10, size=5)
+    scatterpolardata = rng.integers(0, 10, size=5)
+    stempolarx = rng.integers(50, 80, size=3)
+    stempolary = np.arange(1, 4, 1)
+    stempolardata = rng.integers(50, 80, size=3)
     layout = [
         [Guis.Menus(list=menus, key="menus")],
         [Guis.Texts(text="Textウィジェット")],
@@ -246,14 +305,14 @@ if __name__ == "__main__":
         ],
         [
             Guis.LineGraph(
-                x=x1, y=y1, title="折り線グラフ", xlabel="xlabel", ylabel="ylabel"
+                x=linex, y=liney1, title="折り線グラフ", xlabel="xlabel", ylabel="ylabel"
             )
         ],
-        [Guis.Pie(data=y3, title="円グラフ", label=x3)],
+        [Guis.Pie(data=piedata, title="円グラフ", label=pielabel)],
         [
             Guis.BarGraph(
-                x=x2,
-                y=y2,
+                x=bargraphx2,
+                y=bargraphy2,
                 title="棒グラフ(縦)",
                 xlabel="xlabel",
                 ylabel="ylabel",
@@ -262,21 +321,21 @@ if __name__ == "__main__":
         ],
         [
             Guis.BarhGraph(
-                x=y2,
-                y=x2,
+                x=bargraphy1,
+                y=bargraphx1,
                 title="棒グラフ(横)",
                 xlabel="xlabel",
                 ylabel="ylabel",
                 height=0.5,
             )
         ],
-        [Guis.Scatter(x=x3, y=y3, title="散布図", xlabel="xlabel", ylabel="ylabel")],
-        [Guis.Scatter(x=x4, y=y4, title="散布図")],
+        [Guis.Scatter(x=scatterx1, y=scattery1, title="散布図", xlabel="xlabel", ylabel="ylabel")],
+        [Guis.Scatter(x=scatterx2, y=scattery2, title="散布図")],
         [
             Guis.DScatter(
-                x=x3D,
-                y=y3D,
-                z=z3D,
+                x=dscatterx,
+                y=dscattery,
+                z=dscatterz,
                 title="3D 散布図",
                 xlabel="x",
                 ylabel="y",
@@ -284,16 +343,16 @@ if __name__ == "__main__":
             )
         ],
         [Guis.Hist(data=histdata, title="ヒストグラフ")],
-        [Guis.Stem(x=x1, y=y1, title="ステムグラフ")],
-        [Guis.Boxplot(data=boxdata, title="箱ひげ図", whis=1.5)],
+        [Guis.Stem(x=stemx1, y=stemy, title="ステムグラフ")],
+        [Guis.Boxplot(data=boxdata1, title="箱ひげ図", whis=1.5)],
         [
             Guis.Waterfall(
-                x=x5, y=y5, width=0.5, title="ウォーターフォール", linestyle="dotted"
+                x=waterfallx, y=waterfally, width=0.5, title="ウォーターフォール", linestyle="dotted"
             )
         ],
-        [Guis.Waterfallh(x=x5, y=y5, height=0.5, title="ウォーターフォール")],
+        [Guis.Waterfallh(x=waterfallx, y=waterfally, height=0.5, title="ウォーターフォール")],
         [Guis.Step(data=stepdata, title="階段グラフ")],
-        [Guis.Stack(x=x6, y=y6, title="積み上げグラフ")],
+        [Guis.Stack(x=stackx, y=stacky, title="積み上げグラフ")],
         [
             Guis.Eventplot(
                 data=eventdata,
@@ -302,11 +361,69 @@ if __name__ == "__main__":
                 title="イベントグラフ",
             )
         ],
-        [Guis.Errorbar(x=x7, y=y7, err=err, title="エラーバー")],
-        [Guis.Errorbar(x=x7, y=y7, xerr=xerr, yerr=yerr, title="エラーバー")],
-        [Guis.Errorbar(x=x7, y=y7, xerr=xerr, title="エラーバー")],
-        [Guis.Errorbar(x=x7, y=y7, yerr=yerr, title="エラーバー")],
+        [Guis.Errorbar(x=errorbarx, y=errorbary, err=err, title="エラーバー")],
+        [Guis.Errorbar(x=errorbarx, y=errorbary, xerr=xerr, yerr=yerr, title="エラーバー")],
+        [Guis.Errorbar(x=errorbarx, y=errorbary, xerr=xerr, title="エラーバー")],
+        [Guis.Errorbar(x=errorbarx, y=errorbary, yerr=yerr, title="エラーバー")],
         [Guis.Ecdf(data=ecdfdata, title="経験的累積分布関数のグラフ")],
+        [
+            Guis.Stacked(
+                data=stackeddata,
+                dataname=stackeddataname,
+                title="積み上げ縦棒グラフの基本")
+        ],
+        [
+            Guis.Stackedh(
+                data=stackeddata,
+                dataname=stackeddataname,
+                title="積み上げ横棒グラフの基本",)
+        ],
+        [
+            Guis.Violinplot(
+                data=violindata,
+                title="バイオリングラフの基本",
+                xlabel=xlabel,
+                ylabel=ylabel,
+            )
+        ],
+        [
+            Guis.Hatplot(
+                x=hatplotx,
+                data=hatplotdata,
+                title="ハットグラフの基本",
+                xlabel=xlabel,
+                ylabel=ylabel,
+                yticksrange=5,
+            ),
+        ],
+        [
+            Guis.Hexbin(
+                x=hexbinx1,
+                y=hexbiny1,
+                title="2次元六角形グラフの基本",
+                xlabel=xlabel,
+                ylabel=ylabel,
+            )
+        ],
+        [
+            Guis.Hist2d(
+                x=hist2dx,
+                y=hist2dy,
+                title="2次元ヒストグラムの基本",
+                xlabel=xlabel,
+                ylabel=ylabel,
+            )
+        ],
+        [
+            Guis.Linefill(
+                x=linefillx,
+                ymax=linefillymax,
+                ymin=linefillymin,
+                title="積上げ面グラフの基本",
+                xlabel=xlabel,
+                ylabel=ylabel,
+            ),
+        ],
     ]
     win = Guis.window(
         title="デモ", layout=layout, load=[progress_start], scroll=True, maxmine=True
