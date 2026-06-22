@@ -231,9 +231,8 @@ For_GUI_development
  │   │   │   │   ├── npColor
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   ├── __init__.pyi
- │   │   │   │   │   ├── _color_check.py
- │   │   │   │   │   ├── color.csv
- │   │   │   │   │   └── data.py
+ │   │   │   │   │   ├── _data.py
+ │   │   │   │   │   └── color.csv
  │   │   │   │   ├── npDate
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   ├── _typing.py
@@ -446,5 +445,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:311
+ファイル数:310
 フォルダ数:136
