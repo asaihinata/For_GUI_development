@@ -48,9 +48,9 @@ class Hatplot(twoElement):
 
     def update(self, x=None, data=None, **kw):
         self._updates(**kw)
-        if isinstance(x, nListlike):
+        if change_array_like(x):
             self.__x = NPNumber(x, depth_limit=1)
-        if isinstance(data, nListlike):
+        if change_array_like(data):
             self.__data = NPNumber(data, depth_limit=1)
         self.color = parsecolor(kw.get("color"), self.color)
         self.__plot(self.__x, self.__data, color=self.color, alpha=self.alpha)

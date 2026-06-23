@@ -65,7 +65,7 @@ class Pie(twoElement):
 
     def update(self, data=None, **kw):
         self._updates(**kw)
-        if isinstance(data, nListlike):
+        if change_array_like(data):
             self.__data = NPNumber(data)
         explode = kw.get("explode", self.explode)
         if isinstance(explode, list | tuple) and all(

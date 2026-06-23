@@ -74,7 +74,7 @@ class Hist(twoElement):
 
     def update(self, data=None, **kw):
         self._updates(**kw)
-        if isinstance(data, nListlike):
+        if change_array_like(data):
             self.__data = NPNumber(data)
         bins = kw.get("bins")
         if isinstance(bins, list | range | tuple | np.ndarray) or bins in [

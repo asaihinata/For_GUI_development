@@ -100,15 +100,15 @@ class Errorbar(twoElement):
 
     def update(self, x=None, y=None, err=None, xerr=None, yerr=None, **kw):
         self._updates(**kw)
-        if isinstance(x, nListlike):
+        if change_array_like(x):
             self.__x = NPNumber(x)
-        if isinstance(y, nListlike):
+        if change_array_like(y):
             self.__y = NPNumber(y)
-        if isinstance(err, nListlike):
+        if change_array_like(err):
             self.yerr = self.xerr = self.err = NPNumber(err)
-        if isinstance(xerr, nListlike):
+        if change_array_like(xerr):
             self.xerr = NPNumber(xerr)
-        if isinstance(yerr, nListlike):
+        if change_array_like(yerr):
             self.yerr = NPNumber(yerr)
         self.xuplims = bols(kw.get("xuplims"), self.xuplims)
         self.xlolims = bols(kw.get("xlolims"), self.xlolims)

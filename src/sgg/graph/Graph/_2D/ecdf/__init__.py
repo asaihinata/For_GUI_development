@@ -50,7 +50,7 @@ class Ecdf(twoElement):
 
     def update(self, data=None, **kw):
         self._updates(**kw)
-        if isinstance(data, nListlike):
+        if change_array_like(data):
             self.__data = NPNumber(data, depth_limit=1)
         self.complementary = bols(kw.get("complementary"), self.complementary)
         self.compress = bols(kw.get("compress"), self.compress)

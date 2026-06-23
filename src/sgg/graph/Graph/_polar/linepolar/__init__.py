@@ -38,9 +38,9 @@ class Linepolar(polarElement):
 
     def update(self, x=None, y=None, data=None, **kw):
         self._updates(**kw)
-        if not isinstance(x, nListlike):
+        if not change_array_like(x):
             x = self.__x
-        if not isinstance(y, nListlike):
+        if not change_array_like(y):
             y = self.__y
         self.__x, self.__y = self._xyd(x, y, data)
         self.markersize = num0(kw.get("markersize"), 10)

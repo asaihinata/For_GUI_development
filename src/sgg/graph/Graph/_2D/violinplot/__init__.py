@@ -80,12 +80,12 @@ class Violinplot(twoElement):
 
     def update(self, data=None, x=None, y=None, **kw):
         self._updates(**kw)
-        if isinstance(data, nListlike):
+        if change_array_like(data):
             self.__data = NPNumber(data)
-        if isinstance(x, nListlike):
-            self.__data = NPNumber(x, depth_limit=1)
-        if isinstance(y, nListlike):
-            self.__data = NPNumber(y, depth_limit=1)
+        if change_array_like(x):
+            self.__x = NPNumber(x, depth_limit=1)
+        if change_array_like(y):
+            self.__y = NPNumber(y, depth_limit=1)
         self.orientation = listchose(
             kw.get("orientation"), ["vertical", "horizontal"], self.orientation
         )

@@ -69,7 +69,7 @@ class Boxplot(twoElement):
 
     def update(self, data=None, **kw):
         self._updates(**kw)
-        if isinstance(data, nListlike):
+        if change_array_like(data):
             self.__data = NPNumber(data)
         self.legends = bols(kw.get("legend"), self.legends)
         self.fill = bols(kw.get("fill"), self.fill)

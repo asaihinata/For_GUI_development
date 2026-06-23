@@ -46,7 +46,7 @@ class Eventpolar(polarElement):
 
     def update(self, data=None, **kw):
         self._updates(**kw)
-        if isinstance(data, nListlike):
+        if change_array_like(data):
             self.__data = NPNumber(data)
         self.orientation = listchose(
             kw.get("orientation"), ["vertical", "horizontal"], self.orientation

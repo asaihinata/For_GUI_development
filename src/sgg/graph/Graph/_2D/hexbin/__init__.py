@@ -73,11 +73,11 @@ class Hexbin(twoElement):
 
     def update(self, x=None, y=None, c=None, **kw):
         self._updates(**kw)
-        if isinstance(x, nListlike):
+        if change_array_like(x):
             self.__x = NPNumber(x)
-        if isinstance(y, nListlike):
+        if change_array_like(y):
             self.__y = NPNumber(y)
-        if isinstance(c, nListlike):
+        if change_array_like(c):
             self.c = NPNumber(c)
         extent, gridsize = kw.get("extent", self.extent), kw.get(
             "gridsize", self.gridsize

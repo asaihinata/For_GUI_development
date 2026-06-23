@@ -32,11 +32,11 @@ class Linefill(twoElement):
 
     def update(self, x=None, ymax=None, ymin=None, **kw):
         self._updates(**kw)
-        if isinstance(x, nListlike):
+        if change_array_like(x):
             self.__x = NPNumber(x, depth_limit=1)
-        if isinstance(ymax, nListlike):
+        if change_array_like(ymax):
             self.ymax = NPNumber(ymax, depth_limit=1)
-        if isinstance(ymin, nListlike):
+        if change_array_like(ymin):
             self.ymin = NPNumber(ymin, depth_limit=1)
         self.centerlinewidth = num0(kw.get("centerlinewidth"), self.centerlinewidth)
         self.__plot(

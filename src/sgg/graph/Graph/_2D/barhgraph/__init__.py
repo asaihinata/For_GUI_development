@@ -42,9 +42,9 @@ class BarhGraph(twoElement):
 
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
-        if isinstance(x, nListlike):
+        if change_array_like(x):
             self.__x = NPNumber(x)
-        if isinstance(y, nListlike):
+        if change_array_like(y):
             self.__y = NPArray(y, depth_limit=1)
         self.height = range_num(num0s(kw.get("height"), self.height), 0, 1, self.height)
         self.align = listchose(kw.get("align"), ["center", "edge"], self.align)

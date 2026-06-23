@@ -44,7 +44,7 @@ class Funne(twoElement):
 
     def update(self, data=None, **kw):
         self._updates(**kw)
-        if isinstance(data, nListlike):
+        if change_array_like(data):
             self.__data = NPNumber(data, depth_limit=1)
         self.height = range_num(num0s(kw.get("height"), self.height), 0, 1, self.height)
         xmajormaxbins = intsmin(kw.get("xmajormaxbins"), 3, self.xmajormaxbins)

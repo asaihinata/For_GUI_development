@@ -72,9 +72,9 @@ class Waterfallh(twoElement):
 
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
-        if isinstance(x, nListlike):
+        if change_array_like(x):
             self.__x = NPArray(x, depth_limit=1)
-        if isinstance(y, nListlike):
+        if change_array_like(y):
             self.__y = NPNumber(y, depth_limit=1)
         self.bottom = np.cumsum(np.append(0, self.__y)[0 : self.__y.size])
         self.sums = bols(kw.get("sums"), self.sums)

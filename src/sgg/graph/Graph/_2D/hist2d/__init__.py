@@ -56,9 +56,9 @@ class Hist2d(twoElement):
 
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
-        if isinstance(x, nListlike):
+        if change_array_like(x):
             self.__x = NPNumber(x, depth_limit=1)
-        if isinstance(y, nListlike):
+        if change_array_like(y):
             self.__y = NPNumber(y, depth_limit=1)
         self.max = nums(kw.get("max"), self.max)
         self.min = nums(kw.get("min"), self.min)

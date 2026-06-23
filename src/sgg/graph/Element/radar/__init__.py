@@ -2,6 +2,7 @@ import numpy as np
 
 from ....dev import bols, list2num, num0s, parsecolor, range_num
 from ....nparray import NPNumber
+from ....nparray.array.nparray import change_array_like
 from ....typing import nListlike
 from ..graph import GElement
 from .custom import radar_factory
@@ -72,8 +73,8 @@ class RadarElement(GElement):
 
     def _updates(self, **kw):
         data = kw.get("data")
-        if isinstance(data, nListlike):
-            self._data = NPNumber(kw.get("data"))
+        if change_array_like(data):
+            self._data = NPNumber(data)
             self.theta = radar_factory(self._data.shape[-1], frame="circle")
         self.fg = parsecolor(kw.get("fg"), self.fg)
         self.graph_bg = parsecolor(kw.get("bg"), self.graph_bg)

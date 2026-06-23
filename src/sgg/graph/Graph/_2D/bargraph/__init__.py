@@ -36,9 +36,9 @@ class BarGraph(twoElement):
 
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
-        if isinstance(x, nListlike):
+        if change_array_like(x):
             self.__x = NPArray(x, depth_limit=1)
-        if isinstance(y, nListlike):
+        if change_array_like(y):
             self.__y = NPNumber(y)
         self.width = range_num(num0s(kw.get("width"), self.width), 0, 1, self.width)
         self.align = listchose(kw.get("align"), ["center", "edge"], self.align)

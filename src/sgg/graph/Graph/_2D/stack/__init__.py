@@ -37,9 +37,9 @@ class Stack(twoElement):
 
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
-        if isinstance(x, nListlike):
+        if change_array_like(x):
             self.__x = NPArray(x, depth_limit=1)
-        if isinstance(y, nListlike):
+        if change_array_like(y):
             self.__y = NPNumber(y)
         self.baseline = listchose(
             kw.get("baseline"),
