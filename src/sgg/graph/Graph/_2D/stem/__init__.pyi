@@ -13,6 +13,8 @@ class Stem(_2Gset):
         linefmt: str | None,
         markerfmt: str | None,
         basefmt: str | None,
+        bottom: int | float,
+        orientation: Literal["horizontal", "vertical"],
         fg: ColorType,
         bg: ColorType,
         alpha: int | float,
@@ -20,8 +22,7 @@ class Stem(_2Gset):
         ylabel: str,
         graph_grid: ColorType,
         title: str,
-        bottom: int | float,
-        orientation: Literal["horizontal", "vertical"],
+        label: str | list[str] | None,
     ) -> None:
         """幹図を再表示させる"""
 

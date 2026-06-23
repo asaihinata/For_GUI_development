@@ -18,6 +18,7 @@ class Stackedh(_2Gset):
         ylabel: str,
         graph_grid: ColorType,
         title: str,
+        label: str | list[str] | None,
     ) -> None:
         """積み上げ横向き棒グラフを再表示させる"""
 

@@ -9,7 +9,6 @@ class Boxplot(_2Gset):
         data: n_array,
         width: int | float,
         whis: int | float,
-        label: labeltype,
         legend: bool,
         fill: bool,
         notch: bool,
@@ -22,6 +21,7 @@ class Boxplot(_2Gset):
         ylabel: str,
         graph_grid: ColorType,
         title: str,
+        label: str | list[str] | None,
     ) -> None:
         """箱ひげ図を再表示させる"""
 

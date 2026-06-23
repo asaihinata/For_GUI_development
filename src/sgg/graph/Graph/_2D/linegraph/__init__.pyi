@@ -10,6 +10,10 @@ class LineGraph(_2Gset):
         self,
         x: n_array,
         y: n_array,
+        marker: Type_Marker,
+        markersize: int | float,
+        linestyle: Type_Solid,
+        linewidth: int | float,
         fg: ColorType,
         bg: ColorType,
         alpha: int | float,
@@ -17,10 +21,7 @@ class LineGraph(_2Gset):
         ylabel: str,
         graph_grid: ColorType,
         title: str,
-        marker: Type_Marker,
-        markersize: int | float,
-        linestyle: Type_Solid,
-        linewidth: int | float,
+        label: str | list[str] | None,
     ) -> None:
         """折線グラフを再表示させる"""
 

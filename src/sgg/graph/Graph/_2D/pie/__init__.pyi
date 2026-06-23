@@ -20,6 +20,7 @@ class Pie(_2Gset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
+        label: str | list[str] | None,
     ) -> None:
         """円グラフを再表示させる"""
 

@@ -20,6 +20,7 @@ class BarhGraph(_2Gset):
         ylabel: str,
         graph_grid: ColorType,
         title: str,
+        label: str | list[str] | None,
     ) -> None:
         """横向き棒グラフを再表示させる"""
 

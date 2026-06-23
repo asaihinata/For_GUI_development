@@ -20,6 +20,7 @@ class Eventplot(_2Gset):
         alpha: int | float,
         graph_grid: ColorType,
         title: str,
+        label: str | list[str] | None,
     ) -> None:
         """イベントグラフを再表示させる"""
 

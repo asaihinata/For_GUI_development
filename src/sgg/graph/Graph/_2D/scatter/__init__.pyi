@@ -22,6 +22,7 @@ class Scatter(_2Gset):
         ylabel: str,
         graph_grid: ColorType,
         title: str,
+        label: str | list[str] | None,
     ) -> None:
         """散布図を再表示させる"""
 

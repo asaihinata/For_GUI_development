@@ -184,10 +184,10 @@ class Guis:
         fg: ColorTypeN = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         takefocus: bool = ...,
         borderwidth: int | float = 0,
         padx: int | float = ...,
@@ -195,10 +195,10 @@ class Guis:
         wraplength: int | float = 0,
         cursor: _Cursor = ...,
         justify: Literal["left", "center", "right"] = "left",
-        anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
+        anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -262,17 +262,17 @@ class Guis:
         fg: ColorTypeN = "#0000ee",
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
         underline: bool = True,
-        overstrike: bool = False,
+        overstrike: bool = ...,
         width: int | float | None = ...,
         height: int | float | None = ...,
         justify: Literal["left", "center", "right"] = "left",
-        anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
+        anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -385,15 +385,15 @@ class Guis:
         borderwidth: int | float = 0,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         width: int | float | None = ...,
         height: int | float | None = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
         anchor: Literal[
             "nw", "n", "ne", "w", "center", "e", "sw", "s", "se"
         ] = "center",
@@ -460,13 +460,13 @@ class Guis:
         fg: ColorTypeN = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
         justify: Literal["left", "center", "right"] = "left",
         key: str | None = ...,
     ) -> dict[str, Any]:
@@ -531,13 +531,13 @@ class Guis:
         fg: ColorTypeN = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
         justify: Literal["left", "center", "right"] = "left",
         key: str | None = ...,
     ) -> dict[str, Any]:
@@ -646,10 +646,10 @@ class Guis:
         side_header: str = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -699,10 +699,10 @@ class Guis:
         cursor: _Cursor = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#e0e0e0",
         borderwidth: int | float = 0,
@@ -762,10 +762,10 @@ class Guis:
         cursor: _Cursor = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -805,18 +805,18 @@ class Guis:
         fg: ColorType = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         takefocus: bool = ...,
         padx: int | float = ...,
         pady: int | float = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
         cursor: _Cursor = ...,
-        anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
+        anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = ...,
         wraplength: int | float = 0,
         borderwidth: int | float = 0,
         key: str | None = ...,
@@ -869,12 +869,12 @@ class Guis:
     def Checkbox(
         text: str = ...,
         default: bool = False,
-        anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
+        anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = ...,
         padx: int | float = ...,
         pady: int | float = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
         wraplength: int | float = 0,
         borderwidth: int | float = 0,
         cursor: _Cursor = ...,
@@ -882,10 +882,10 @@ class Guis:
         fg: ColorTypeN = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -942,10 +942,10 @@ class Guis:
         cursor: _Cursor = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         bg: ColorTypeN = ...,
         fg: ColorTypeN = ...,
         relief: Literal[
@@ -1006,13 +1006,13 @@ class Guis:
         borderwidth: int | float = 0,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -1063,15 +1063,15 @@ class Guis:
         fg: ColorTypeN = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         borderwidth: int | float = 0,
-        anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = "w",
+        anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -1128,7 +1128,7 @@ class Guis:
         bg: ColorTypeN = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -1199,7 +1199,7 @@ class Guis:
         cursor: _Cursor = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
         insertwidth: int | float = 2,
         insertbg: ColorTypeN = "#000000",
         step: int | float = 1,
@@ -1207,10 +1207,10 @@ class Guis:
         wrap: bool = False,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         bg: ColorTypeN = "#e0e0e0",
         fg: ColorTypeN = ...,
         borderwidth: int | float = 0,
@@ -1273,15 +1273,15 @@ class Guis:
         cursor: _Cursor = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         width: int | float | None = ...,
         height: int | float | None = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
         bg: ColorTypeN = "#e0e0e0",
         fg: ColorTypeN = ...,
         takefocus: bool = ...,
@@ -1358,16 +1358,16 @@ class Guis:
         cursor: _Cursor = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         width: int | float | None = ...,
         height: int | float | None = ...,
         justify: Literal["left", "center", "right"] = "left",
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -1440,15 +1440,15 @@ class Guis:
         cursor: _Cursor = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         width: int | float | None = ...,
         height: int | float | None = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -1527,15 +1527,15 @@ class Guis:
         cursor: _Cursor = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         width: int | float | None = ...,
         height: int | float | None = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = "flat",
+        ] = ...,
     ) -> dict[str, Any]:
         """
         色を選択し,選択された色を取得するダイアログを発生させるボタンを作成する
@@ -1595,10 +1595,10 @@ class Guis:
         fg: ColorTypeN = ...,
         family: str = ...,
         font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = "normal",
-        slant: Literal["roman", "italic"] = "roman",
-        underline: bool = False,
-        overstrike: bool = False,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -1767,7 +1767,7 @@ class Guis:
             "",
         ] = "none",
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         xlabel: str = ...,
         ylabel: str = ...,
         size: tuple[int | float, int | float] = (500, 400),
@@ -1800,7 +1800,7 @@ class Guis:
         :param y: `y`のデータを指定する
         :type y: n_array
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -1864,7 +1864,7 @@ class Guis:
         x: o_array,
         y: n_array,
         logs: bool = False,
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         xlabel: str = ...,
         ylabel: str = ...,
         linewidth: int | float = 2,
@@ -1903,7 +1903,7 @@ class Guis:
         :param logs: y軸を対数スケールにするかを指定する
         :type logs: bool
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -1965,7 +1965,7 @@ class Guis:
         x: o_array,
         y: n_array,
         logs: bool = False,
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         xlabel: str = ...,
         ylabel: str = ...,
         linewidth: int | float = 2,
@@ -2004,7 +2004,7 @@ class Guis:
         :param logs: x軸を対数スケールにするかを指定する
         :type logs: bool
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -2065,7 +2065,7 @@ class Guis:
     def Funne(
         data: o_array,
         xmajormaxbins: int = 11,
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         xlabel: str = ...,
         ylabel: str = ...,
         linewidth: int | float = 2,
@@ -2102,7 +2102,7 @@ class Guis:
         :param xmajormaxbins: x軸の目盛りの数の最大数を指定する2n+1(nは正の整数)の整数を指定する
         :type xmajormaxbins: int
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -2164,7 +2164,7 @@ class Guis:
         data: n_array,
         dataname: o_array,
         width: int | float = 0.8,
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         xlabel: str = ...,
         ylabel: str = ...,
         size: tuple[int | float, int | float] = (500, 400),
@@ -2200,7 +2200,7 @@ class Guis:
         :param width: 積み上げ棒グラフの幅のサイズを指定する
         :type width: int | float
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -2256,7 +2256,7 @@ class Guis:
         data: n_array,
         dataname: o_array,
         height: int | float = 0.8,
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         xlabel: str = ...,
         ylabel: str = ...,
         size: tuple[int | float, int | float] = (500, 400),
@@ -2292,7 +2292,7 @@ class Guis:
         :param height: 積み上げ横向き棒グラフの高さのサイズを指定する
         :type height: int | float
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -2352,7 +2352,7 @@ class Guis:
         counterclock: bool = False,
         labeldistance: int | float = 1.1,
         explode: list[int, float] | tuple[int, float] | int | float = ...,
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         size: tuple[int | float, int | float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
@@ -2368,7 +2368,7 @@ class Guis:
         :param data: `data`のデータを指定する
         :type data: o_array
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param startangle: 各要素の出力を開始する角度を指定する
         :type startangle: int | float
         :param startangletype: 各要素の出力を開始する角度を度数法(True)か弧度法(False)かを指定する
@@ -2402,7 +2402,7 @@ class Guis:
     @staticmethod
     def Boxplot(
         data: n_array,
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         legend: bool = False,
         fill: bool = False,
         notch: bool = False,
@@ -2440,7 +2440,7 @@ class Guis:
         :param data: `data`のデータを指定する
         :type data: n_array
         :param label: 箱ひげ図のデータ名を指定する指定しなかった場合`box`+データの数になる例)box0,box1
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param legend: 凡例を表示させるか指定する
         :type legend: bool
         :param fill: 箱内を塗りつぶすかを指定する
@@ -2763,7 +2763,7 @@ class Guis:
         linewidth: int | float = 2,
         xlabel: str = ...,
         ylabel: str = ...,
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         size: tuple[int | float, int | float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
@@ -2799,7 +2799,7 @@ class Guis:
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param marker: 散布図のマーカーを指定する
         :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param markersize: 散布図のマーカーの大きさを指定する
@@ -3023,7 +3023,7 @@ class Guis:
     def Stem(
         x: ndarray | list | tuple = ...,
         y: ndarray | list | tuple = ...,
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         xlabel: str = ...,
         ylabel: str = ...,
         orientation: Literal["horizontal", "vertical"] = "vertical",
@@ -3061,7 +3061,7 @@ class Guis:
         :param y: `y`のデータを指定する
         :type y: ndarray | list | tuple
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -3151,7 +3151,7 @@ class Guis:
         yticksshow: bool = False,
         xticksdirection: Literal["out", "in", "inout"] = "out",
         yticksdirection: Literal["out", "in", "inout"] = "out",
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         xlabel: str = ...,
         ylabel: str = ...,
         key: str | None = ...,
@@ -3172,7 +3172,7 @@ class Guis:
         :param orientation: グラフの向きを指定する
         :type orientation: Literal["horizontal","vertical"]
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param color: 色を指定する
         :type color: ColorTypeN | tuple[ColorTypeN,...]
         :param size: 表示させるグラフの大きさを指定する
@@ -3308,7 +3308,7 @@ class Guis:
     @staticmethod
     def Hist(
         data: o_array,
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         width: int | float = 1,
         min: int | float = ...,
         max: int | float = ...,
@@ -3356,7 +3356,7 @@ class Guis:
         :param data: `data`のデータを指定する
         :type data: o_array
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param width: ヒストグラムのバーのサイズを指定する
         :type width: int | float
         :param orientation: ヒストグラムの向きを指定する
@@ -3425,7 +3425,7 @@ class Guis:
         baseline: Literal["zero", "sym", "wiggle", "weighted_wiggle"] = "zero",
         xlabel: str = ...,
         ylabel: str = ...,
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
         size: tuple[int | float, int | float] = (500, 400),
         fg: ColorTypeN = "#000000",
@@ -3461,7 +3461,7 @@ class Guis:
         :param baseline: 基準値の算出方法を指定する
         :type baseline: Literal["zero","sym","wiggle","weighted_wiggle"]
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -3521,7 +3521,7 @@ class Guis:
         alpha: int | float = 0.5,
         xlabel: str = ...,
         ylabel: str = ...,
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         size: tuple[int | float, int | float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
@@ -3560,7 +3560,7 @@ class Guis:
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
@@ -3658,7 +3658,7 @@ class Guis:
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
@@ -3724,7 +3724,7 @@ class Guis:
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
         xlabel: str = ...,
         ylabel: str = ...,
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         size: tuple[int | float, int | float] = (500, 400),
         fg: ColorTypeN = "#000000",
         bg: ColorTypeN = "#ffffff",
@@ -3783,7 +3783,7 @@ class Guis:
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
@@ -3842,7 +3842,7 @@ class Guis:
         orientation: Literal["horizontal", "vertical"] = "vertical",
         xlabel: str = ...,
         ylabel: str = ...,
-        label: labeltype = ...,
+        label: str | list[str] | None = ...,
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
         size: tuple[int | float, int | float] = (500, 400),
         fg: ColorTypeN = "#000000",
@@ -3880,7 +3880,7 @@ class Guis:
         :param orientation: 向きを指定する
         :type orientation: Literal["horizontal","vertical"]
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -4106,7 +4106,7 @@ class Guis:
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
@@ -4212,7 +4212,7 @@ class Guis:
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
         :param label: ラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する

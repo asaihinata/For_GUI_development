@@ -28,6 +28,7 @@ class Errorbar(_2Gset):
         decimalpoint: int | float,
         graph_grid: ColorType,
         title: str,
+        label: str | list[str] | None,
     ) -> None:
         """エラーグラフを再表示させる"""
 

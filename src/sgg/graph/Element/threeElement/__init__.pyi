@@ -25,25 +25,25 @@ class threeElement(GElement):
         title: str,
         elev: int | float,
         azim: int | float,
-        xlabel: labeltype,
-        ylabel: labeltype,
-        zlabel: labeltype,
+        xlabel: str | list[str] | None,
+        ylabel: str | list[str] | None,
+        zlabel: str | list[str] | None,
     ) -> None: ...
     def _apply_labels(
         self,
-        xlabel: labeltype = None,
-        ylabel: labeltype = None,
-        zlabel: labeltype = None,
+        xlabel: str | list[str] | None = None,
+        ylabel: str | list[str] | None = None,
+        zlabel: str | list[str] | None = None,
     ) -> None:
         """
         3Dのグラフのx軸,y軸,z軸のラベルを作成する
 
         :param xlabel: x軸のラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param ylabel: y軸のラベルを指定する
-        :type ylabel: labeltype
+        :type ylabel: str | list[str] | None
         :param zlabel: z軸のラベルを指定する
-        :type zlabel: labeltype
+        :type zlabel: str | list[str] | None
         """
 
     def _apply_grid(self) -> None:

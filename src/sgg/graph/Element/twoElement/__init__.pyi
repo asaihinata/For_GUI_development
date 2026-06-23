@@ -22,17 +22,17 @@ class twoElement(GElement):
         graph_grid: ColorType,
         title: str,
         alpha: int | float,
-        xlabel: labeltype,
-        ylabel: labeltype,
+        xlabel: str | list[str] | None,
+        ylabel: str | list[str] | None,
     ) -> None: ...
-    def _apply_labels(self, xlabel: labeltype = None, ylabel: labeltype = None) -> None:
+    def _apply_labels(self, xlabel: str | list[str] | None = None, ylabel: str | list[str] | None = None) -> None:
         """
         2Dのグラフのx軸,y軸のラベルを作成する
 
         :param xlabel: x軸のラベルを指定する
-        :type label: labeltype
+        :type label: str | list[str] | None
         :param ylabel: y軸のラベルを指定する
-        :type ylabel: labeltype
+        :type ylabel: str | list[str] | None
         """
 
     def _adjustment(self) -> None:
