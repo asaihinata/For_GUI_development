@@ -209,7 +209,6 @@ if __name__ == "__main__":
                 key="tabs1",
             )
         ],
-        [Guis.Texts(text="カレンダー")],
         [Guis.Texts(text="スライダー")],
         [Guis.Slidebar(value=20)],
         [Guis.Texts(text="プログレスバー")],

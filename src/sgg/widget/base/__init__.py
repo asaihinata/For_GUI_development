@@ -1,5 +1,4 @@
 from re import findall
-from tkinter import Misc
 
 from ...dev import bols, listchose, num0s, parsecolor
 from ...font import TKFont
@@ -10,7 +9,7 @@ __all__ = ["Element"]
 
 
 class Element:
-    def __init__(self, master: Misc, kw):
+    def __init__(self, master, kw):
         self.widget = None
         self.master = master
         self.graph = False

@@ -16,7 +16,7 @@ from .typing import *
 from .version import __version__, version
 from .widget import *
 
-__all__ = (
+__all__:list[str] = (
     ["__version__", "version", "Getjosn", "Getfont", "Getcsv", "Guis", "TKFont"]
     + getattr(dialogs, "__all__", [])
     + getattr(graph, "__all__", [])

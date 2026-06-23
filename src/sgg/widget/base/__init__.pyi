@@ -10,7 +10,7 @@ class _Element(Element):
     master: Misc
 
 class Element:
-    master: Misc = master
+    master: Misc
     graph: bool = False
     cursor: _Cursor
     back_bg: str
