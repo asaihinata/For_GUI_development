@@ -14,7 +14,7 @@ from .typing import *
 from .version import __version__
 from .widget import *
 
-__all__:list[str] = (
+__all__: list[str] = (
     ["__version__", "Getjosn", "Getfont", "Getcsv", "Guis"]
     + getattr(dialogs, "__all__", [])
     + getattr(graph, "__all__", [])
@@ -250,7 +250,7 @@ class Guis:
 
     @staticmethod
     def Link(
-        link: str,
+        link: str | WindowsPath | PosixPath | Path,
         text: str = ...,
         takefocus: bool = ...,
         padx: int | float = ...,
@@ -278,8 +278,8 @@ class Guis:
         """
         リンクテキストを作成する
 
-        :param link: Linkウィジェットが押されたときにブラウザで開くURLのリンクを指定する
-        :type link: str
+        :param link: Linkウィジェットが押されたときにブラウザで開くURLのリンクもしくはhtmlファイルのパスを指定する
+        :type link: str | WindowsPath | PosixPath | Path
         :param text: Linkウィジェットに表記させる文字を指定する
         :type text: str
         :param width: ウィジェットの幅を指定する
@@ -322,7 +322,6 @@ class Guis:
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
-        :raises TypeError: `link`にstr型を指定しなかった場合に発生させる
         """
 
     @staticmethod

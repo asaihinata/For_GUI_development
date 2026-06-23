@@ -10,3 +10,4 @@ qrcode
 Requests
 scipy
 ujson
+validators

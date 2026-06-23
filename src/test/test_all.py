@@ -24,7 +24,9 @@ def progress_start():
 
 
 if __name__ == "__main__":
-    Lennapath = pathlib.Path(__file__).parent / "data/img/Lenna.png"
+    NOW_FILE = pathlib.Path(__file__).parent
+    LENNAPATH = NOW_FILE / "data/img/Lenna.png"
+    HTMLFILE = NOW_FILE / "data/index.html"
     menus = [
         [
             "ファイル",
@@ -138,7 +140,8 @@ if __name__ == "__main__":
             Guis.Buttons(text="!!変える!!", function=[txtchange], key="btn2"),
         ],
         [Guis.Link(link="https://www.google.com/", text="googleのサイトを開く")],
-        [Guis.Images(path=Lennapath)],
+        [Guis.Link(link=HTMLFILE, text="htmlファイルを開く")],
+        [Guis.Images(path=LENNAPATH)],
         [Guis.Texts(text="↑画像表示(PGM,PPM,GIF,PNG,XBMでしか表示されない)")],
         [
             Guis.Imagelink(
