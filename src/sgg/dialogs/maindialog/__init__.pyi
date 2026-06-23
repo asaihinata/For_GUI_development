@@ -2,6 +2,8 @@ from collections.abc import Mapping
 from tkinter import Misc
 from typing import Any, ClassVar, Literal
 
+__all__ = ["Dialog", "_Dialog", "Message", "_show", "_iconset"]
+
 class Dialog:
     command: ClassVar[str | None]
     master: Misc | None

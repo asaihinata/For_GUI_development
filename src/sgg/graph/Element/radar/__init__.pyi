@@ -13,7 +13,6 @@ __all__ = ["RadarElement"]
 class RadarElement(GElement):
     label: getLabel
     ax: PolarAxes
-    data: ndarray
     theta: ndarray[float64, dtype[float64]]
     frametype: Literal["circle", "polygon"] = "circle"
     def __init__(self, master: Misc, kw: dict) -> None:

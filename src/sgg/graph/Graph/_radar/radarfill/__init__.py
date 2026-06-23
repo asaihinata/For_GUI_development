@@ -1,4 +1,4 @@
-from ...dev import *
+from ...dev import RadarElement
 
 __all__ = ["RadarFill"]
 

@@ -6,7 +6,7 @@ from matplotlib.spines import Spine
 from matplotlib.transforms import Affine2D
 import numpy as np
 
-__all__ = ["radar_factory"]
+__all__ = ["radar_factory", "RadarTransform", "RadarAxes"]
 
 
 def radar_factory(num_vars, frame="circle"):
