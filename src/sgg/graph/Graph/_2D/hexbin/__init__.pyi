@@ -26,7 +26,7 @@ class Hexbin(_2Gset):
         """2次元六角形ビニンググラフを再表示させる"""
 
     def get(self) -> list[PolyCollection]:
-        """`PolyCollection`の配列を返す"""
+        """`matplotlib.collections.PolyCollection`の配列を返す"""
 
     def getx(self) -> Typeget_data:
         """`x`のデータを取得する"""

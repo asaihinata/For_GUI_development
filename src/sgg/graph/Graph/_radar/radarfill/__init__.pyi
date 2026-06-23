@@ -20,4 +20,4 @@ class RadarFill(RadarElement):
         """`data`のデータを取得する"""
 
     def get(self) -> list[Line2D]:
-        """`Line2D`の配列を返す"""
+        """`matplotlib.lines.Line2D`の配列を返す"""

@@ -25,7 +25,7 @@ class LineGraph(_2Gset):
         """折線グラフを再表示させる"""
 
     def get(self) -> list[Line2D]:
-        """`Line2D`の配列を返す"""
+        """`matplotlib.lines.Line2D`の配列を返す"""
 
     def getx(self) -> Typeget_data:
         """`x`のデータを取得する"""

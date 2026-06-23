@@ -22,7 +22,7 @@ class Stacked(_2Gset):
         """積み上げ棒グラフを再表示させる"""
 
     def get(self) -> list[BarContainer]:
-        """`BarContainer`の配列を返す"""
+        """`matplotlib.container.BarContainer`の配列を返す"""
 
     def getdata(self) -> Typeget_data:
         """`data`のデータを取得する"""

@@ -22,7 +22,7 @@ class Eventpolar(_polarset):
         """極軸イベントグラフを再表示させる"""
 
     def get(self) -> list[EventCollection]:
-        """`EventCollection`の配列を返す"""
+        """`matplotlib.collections.EventCollection`の配列を返す"""
 
     def getx(self) -> Typeget_data:
         """`x`のデータを取得する"""

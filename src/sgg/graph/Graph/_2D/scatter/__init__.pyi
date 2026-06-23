@@ -26,7 +26,7 @@ class Scatter(_2Gset):
         """散布図を再表示させる"""
 
     def get(self) -> list[PathCollection]:
-        """`PathCollection`の配列を返す"""
+        """`matplotlib.collections.PathCollection`の配列を返す"""
 
     def getx(self) -> Typeget_data:
         """`x`のデータを取得する"""

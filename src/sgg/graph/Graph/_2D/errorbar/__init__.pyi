@@ -32,7 +32,7 @@ class Errorbar(_2Gset):
         """エラーグラフを再表示させる"""
 
     def get(self) -> list[ErrorbarContainer]:
-        """`ErrorbarContainer`の配列を返す"""
+        """`matplotlib.container.ErrorbarContainer`の配列を返す"""
 
     def getx(self) -> Typeget_data:
         """`x`のデータを取得する"""

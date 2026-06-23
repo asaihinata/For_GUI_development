@@ -23,7 +23,7 @@ class Stack(_2Gset):
         """積み上げエリアチャートを再表示させる"""
 
     def get(self) -> list[FillBetweenPolyCollection]:
-        """`FillBetweenPolyCollection`の配列を返す"""
+        """`matplotlib.collections.FillBetweenPolyCollection`の配列を返す"""
 
     def getx(self) -> Typeget_data:
         """`x`のデータを取得する"""

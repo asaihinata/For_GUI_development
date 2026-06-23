@@ -40,7 +40,7 @@ class Stempolar(_polarset):
         """極軸幹図を再表示させる"""
 
     def get(self) -> list[StemContainer]:
-        """`StemContainer`の配列を返す"""
+        """`matplotlib.container.StemContainer`の配列を返す"""
 
     def getx(self) -> Typeget_data:
         """`x`のデータを取得する"""

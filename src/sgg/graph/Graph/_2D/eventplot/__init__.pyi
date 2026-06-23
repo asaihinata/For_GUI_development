@@ -24,7 +24,7 @@ class Eventplot(_2Gset):
         """イベントグラフを再表示させる"""
 
     def get(self) -> list[EventCollection]:
-        """`EventCollection`の配列を返す"""
+        """`matplotlib.collections.EventCollection`の配列を返す"""
 
     def getdata(self) -> Typeget_data:
         """`data`のデータを取得する"""

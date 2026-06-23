@@ -23,7 +23,7 @@ class Step(_2Gset):
         """階段グラフを再表示させる"""
 
     def get(self) -> list[StepPatch]:
-        """`StepPatch`の配列を返す"""
+        """`matplotlib.patches.StepPatch`の配列を返す"""
 
     def getdata(self) -> Typeget_data:
         """`data`のデータを取得する"""
