@@ -1,23 +1,21 @@
 from io import BytesIO
 from pathlib import Path, PosixPath, WindowsPath
 from tkinter import _Cursor
-from typing import Union
 
 from matplotlib.mlab import GaussianKDE
 from numpy import ndarray
 from numpy.typing import ArrayLike
 
 from .dialogs import *
-from .font import TKFont
 from .graph import *
 from .nparray import *
 from .readfile import Getcsv, Getfont, Getjosn
 from .typing import *
-from .version import __version__, version
+from .version import __version__
 from .widget import *
 
 __all__:list[str] = (
-    ["__version__", "version", "Getjosn", "Getfont", "Getcsv", "Guis", "TKFont"]
+    ["__version__", "Getjosn", "Getfont", "Getcsv", "Guis"]
     + getattr(dialogs, "__all__", [])
     + getattr(graph, "__all__", [])
     + getattr(nparray, "__all__", [])
@@ -324,6 +322,7 @@ class Guis:
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
+        :raises TypeError: `link`にstr型を指定しなかった場合に発生させる
         """
 
     @staticmethod
@@ -1662,7 +1661,7 @@ class Guis:
 
     @staticmethod
     def Barcode(
-        data: str | int = ...,
+        data: str | int,
         fotmat: Literal[
             "codabar",
             "code128",
@@ -1700,6 +1699,7 @@ class Guis:
         :type takefocus: bool
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
+        :raises TypeError: `data`にint型もしくはstr型を指定しなかった場合に発生させる
         """
 
     @staticmethod
@@ -5702,7 +5702,7 @@ class Guis:
         icon: Literal["info", "warning", "error", "question"] = "info",
     ) -> Literal["ok"]:
         """
-        指定されたタイトルとメッセージを持つ情報メッセージボックスを作成して表示させる
+        指定されたタイトルとメッセージを持つ情報メッセージボックスを表示させる
 
         :param title: 情報メッセージボックスに表示させるタイトル名を指定する
         :type title: str
@@ -5722,7 +5722,7 @@ class Guis:
         icon: Literal["info", "warning", "error", "question"] = "warning",
     ) -> Literal["ok"]:
         """
-        指定されたタイトルとメッセージを含む警告メッセージボックスを作成して表示させる
+        指定されたタイトルとメッセージを含む警告メッセージボックスを表示させる
 
         :param title: 警告メッセージボックスに表示させるタイトル名を指定する
         :type title: str
@@ -5742,7 +5742,7 @@ class Guis:
         icon: Literal["info", "warning", "error", "question"] = "warning",
     ) -> Literal["yes", "no"]:
         """
-        指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つ警告メッセージボックスを作成して表示させる
+        指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つ警告メッセージボックスを表示させる
 
         :param title: 警告メッセージボックスに表示させるタイトル名を指定する
         :type title: str
@@ -5762,7 +5762,7 @@ class Guis:
         icon: Literal["info", "warning", "error", "question"] = "error",
     ) -> Literal["ok"]:
         """
-        指定されたタイトルとメッセージを持つエラーメッセージボックスを作成して表示させる
+        指定されたタイトルとメッセージを持つエラーメッセージボックスを表示させる
 
         :param title: エラーメッセージボックスに表示させるタイトル名を指定する
         :type title: str
@@ -5782,7 +5782,7 @@ class Guis:
         icon: Literal["info", "warning", "error", "question"] = "error",
     ) -> Literal["yes", "no"]:
         """
-        指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つエラーメッセージボックスを作成して表示させる
+        指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つエラーメッセージボックスを表示させる
 
         :param title: エラーメッセージボックスに表示させるタイトル名を指定する
         :type title: str
@@ -5802,7 +5802,7 @@ class Guis:
         icon: Literal["info", "warning", "error", "question"] = "question",
     ) -> Literal["yes", "no"]:
         """
-        「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる
+        「はい(Yes)」と「いいえ(No)」を選択させるダイアログを表示させる
 
         :param title: ダイアログに表示させるタイトル名を指定する
         :type title: str
@@ -5822,7 +5822,7 @@ class Guis:
         icon: Literal["info", "warning", "error", "question"] = "question",
     ) -> bool:
         """
-        「OK」か「キャンセル」を選択させるダイアログを表示させる
+        「OK」と「キャンセル」を選択させるダイアログを表示させる
 
         :param title: ダイアログに表示させるタイトル名を指定する
         :type title: str
@@ -5842,7 +5842,7 @@ class Guis:
         icon: Literal["info", "warning", "error", "question"] = "question",
     ) -> bool:
         """
-        「はい(Yes)」か「いいえ(No)」を選択させるダイアログを表示させる
+        「はい(Yes)」と「いいえ(No)」を選択させるダイアログを表示させる
 
         :param title: ダイアログに表示させるタイトル名を指定する
         :type title: str
@@ -5862,7 +5862,7 @@ class Guis:
         icon: Literal["info", "warning", "error", "question"] = "question",
     ) -> bool | None:
         """
-        「はい(Yes)」「いいえ(No)」「キャンセル(Cancel)」を選択させるダイアログを表示させる
+        「はい(Yes)」、「いいえ(No)」、「キャンセル(Cancel)」を選択させるダイアログを表示させる
 
         :param title: ダイアログに表示させるタイトル名を指定する
         :type title: str
@@ -5882,7 +5882,7 @@ class Guis:
         icon: Literal["info", "warning", "error", "question"] = "question",
     ) -> bool:
         """
-        操作を再試行するかどうかを尋ねる「再試行」ボタンと「キャンセル」ボタンが設置されたダイアログを表示させる
+        操作を再試行するかどうかを尋ねる「再試行」と「キャンセル」が設置されたダイアログを表示させる
 
         :param title: ダイアログに表示させるタイトル名を指定する
         :type title: str
