@@ -24,26 +24,23 @@ class Funne(twoElement):
 
     def __plot(self, data, height, alpha):
         self.clear()
-        self.graphdata = [self._funne(data, height, alpha)]
+        self.graphdata = [self._funne(data.tonp(), height, alpha)]
         self._apply_labels(self.xlabel, self.ylabel)
         self._adjustment()
 
-    def _funne(self, data: np.ndarray, height=1, alpha=1):
-        data_max = data.max()
+    def _funne(self, data, height=1, alpha=1):
+        data_max = np.max(data)
         self.ax.set_xlim([0, data_max])
         lists1 = np.delete(np.linspace(0, data_max, 6, dtype=np.int_), 0)
         self.ax.set_xticks(np.linspace(0, data_max, 11, dtype=np.float64))
         self.ax.set_xticklabels(np.append(np.append(lists1[::-1], [0]), lists1))
-        bars = self.ax.barh(
+        return self.ax.barh(
             np.arange(len(data)),
             data,
             left=(data_max - data) / 2,
             height=height,
             alpha=alpha,
         )
-        for i in bars:
-            i.set_alpha(alpha)
-        return bars
 
     def update(self, data=None, **kw):
         self._updates(**kw)

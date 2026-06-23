@@ -104,11 +104,10 @@ if __name__ == "__main__":
     funnedata = rng.integers(10, 50, size=3)
     hatplotx = rng.integers(20, 30, size=5, endpoint=True)
     hatplotdata = hatplotx + 3
+    radarfilldata = rng.integers(50, 100, size=5)
     radarlinedata = rng.integers(10, 15, size=5)
-    radarfilldata1 = rng.integers(50, 100, size=5)
     barpolarx = np.linspace(0, np.pi * 2, 5)
     barpolary = rng.integers(30, 60, size=5)
-    barpolardata = rng.integers(30, 60, size=5)
     errorpolarx = np.arange(2, 12, 2)
     errorpolary = rng.integers(0, 3, 5)
     polarerr = rng.integers(2, size=5) + 0.5
@@ -116,13 +115,10 @@ if __name__ == "__main__":
     polaryerr = rng.integers(2, size=5) + 0.5
     linepolarx = np.arange(1, 4, 1)
     linepolary = rng.integers(50, 80, size=3)
-    linepolardata = np.arange(1, 4, 1)
     scatterpolarx = rng.integers(0, 10, size=5)
     scatterpolary = rng.integers(0, 10, size=5)
-    scatterpolardata = rng.integers(0, 10, size=5)
     stempolarx = rng.integers(50, 80, size=3)
     stempolary = np.arange(1, 4, 1)
-    stempolardata = rng.integers(50, 80, size=3)
     layout = [
         [Guis.Menus(list=menus, key="menus")],
         [Guis.Texts(text="Textウィジェット")],
@@ -447,17 +443,27 @@ if __name__ == "__main__":
                 ylabel=ylabel,
             )
         ],
+        [Guis.Funne(data=funnedata, title="じょうごグラフ")],
         [Guis.Barpolar(x=barpolarx, y=barpolary, title="極軸棒グラフ")],
         [
             Guis.Errorpolar(
-                x=errorpolarx, y=errorpolary, err=err, title="極軸エラーグラフ"
+                x=errorpolarx, y=errorpolary, err=polarerr, title="極軸エラーグラフ"
+            )
+        ],
+        [
+            Guis.Errorpolar(
+                x=errorpolarx,
+                y=errorpolary,
+                xerr=polarxerr,
+                yerr=polaryerr,
+                title="極軸エラーグラフ",
             )
         ],
         [Guis.Eventpolar(data=eventdata, title="極軸イベントグラフ")],
         [Guis.Linepolar(x=linepolarx, y=linepolary, title="極軸折線グラフ")],
         [Guis.Scatterpolar(x=scatterpolarx, y=scatterpolary, title="極軸散布図")],
         [Guis.Stempolar(x=stempolarx, y=stempolary, title="極軸幹図")],
-        [Guis.RadarFill(data=radarfilldata1, title="塗りつぶしレーダーチャート")],
+        [Guis.RadarFill(data=radarfilldata, title="塗りつぶしレーダーチャート")],
         [Guis.RadarLine(data=radarlinedata, title="塗りつぶし折線チャート")],
     ]
     win: WindowController = Guis.window(

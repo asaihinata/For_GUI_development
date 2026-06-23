@@ -1,5 +1,6 @@
-from matplotlib.mlab import GaussianKDE
 from matplotlib.collections import Collection
+from matplotlib.mlab import GaussianKDE
+
 from ....typing import *
 from .._2gset import _2Gset
 
@@ -29,7 +30,7 @@ class Violinplot(_2Gset):
     ) -> None:
         """バイオリングラフを再表示させる"""
 
-    def get(self) -> list[dict[str,Collection]]:
+    def get(self) -> list[dict[str, Collection]]:
         """辞書型が入った配列を返す"""
 
     def getdata(self) -> Typeget_data:
