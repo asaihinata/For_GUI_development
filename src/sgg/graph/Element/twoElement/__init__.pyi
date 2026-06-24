@@ -25,7 +25,11 @@ class twoElement(GElement):
         xlabel: str | list[str] | None,
         ylabel: str | list[str] | None,
     ) -> None: ...
-    def _apply_labels(self, xlabel: str | list[str] | None = None, ylabel: str | list[str] | None = None) -> None:
+    def _apply_labels(
+        self,
+        xlabel: str | list[str] | None = None,
+        ylabel: str | list[str] | None = None,
+    ) -> None:
         """
         2Dのグラフのx軸,y軸のラベルを作成する
 

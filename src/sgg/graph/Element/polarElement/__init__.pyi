@@ -33,7 +33,11 @@ class polarElement(GElement):
     def _xyd(
         self, x: nListlike, y: nListlike, d: nListlike
     ) -> tuple[NPNumber, NPArray]: ...
-    def _apply_labels(self, xlabel: str | list[str] | None = None, ylabel: str | list[str] | None = None) -> None:
+    def _apply_labels(
+        self,
+        xlabel: str | list[str] | None = None,
+        ylabel: str | list[str] | None = None,
+    ) -> None:
         """
         2Dのグラフのx軸,y軸のラベルを作成する
 

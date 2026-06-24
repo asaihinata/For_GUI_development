@@ -1,4 +1,5 @@
 from matplotlib.collections import PathCollection
+from numpy.typing import NDArray
 
 from ....typing import *
 from .._Polarset import _polarset

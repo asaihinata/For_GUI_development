@@ -1,4 +1,5 @@
 from matplotlib.collections import PathCollection
+from numpy.typing import NDArray
 
 from ....typing import *
 from .._3gset import _3Gset

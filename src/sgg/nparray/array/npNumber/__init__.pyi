@@ -6,8 +6,9 @@ from typing import Any, Literal
 
 from _typeshed import Incomplete
 from numpy import _CopyMode, float64, ndarray, ufunc
-from numpy._typing import ArrayLike, DTypeLike
+from numpy._typing import DTypeLike
 
+from ....typing import ArrayLikeNumber, TypeArraysLikeNumber
 from ..nparray import NPArray
 
 __all__ = ["NPNumber"]
@@ -15,13 +16,13 @@ __all__ = ["NPNumber"]
 class NPNumber(NPArray):
     def __init__(
         self,
-        data: ArrayLike,
+        data: TypeArraysLikeNumber,
         dtype: DTypeLike = float64,
         depth_limit: int | None = None,
     ) -> None:
         """
         :param data: データの配列を指定する
-        :type data: ArrayLike
+        :type data: TypeArraysLikeNumber
         :param dtype: numpyの配列で指定する型を指定する
         :type dtype: DTypeLike | None
         :param depth_limit: 配列の最大の深さを指定する
@@ -69,9 +70,9 @@ class NPNumber(NPArray):
     def __pow__(self, other: int | float | ndarray | NPNumber) -> NPNumber: ...
     @property
     def T(self) -> NPNumber: ...
-    def min(self) -> Any: ...
-    def max(self) -> Any: ...
-    def sum(self, axis: int | None = None) -> Any: ...
+    def min(self) -> TypeArraysLikeNumber[ArrayLikeNumber]: ...
+    def max(self) -> TypeArraysLikeNumber[ArrayLikeNumber]: ...
+    def sum(self, axis: int | None = None) -> TypeArraysLikeNumber[ArrayLikeNumber]: ...
     def floor(self, digit: int | None = ...) -> NPNumber: ...
     def trunc(self, digit: int | None = ...) -> NPNumber: ...
     def ceil(self, digit: int | None = ...) -> NPNumber: ...

@@ -196,9 +196,7 @@ class Guis:
         cursor: _Cursor = ...,
         justify: Literal["left", "center", "right"] = "left",
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = ...,
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -270,9 +268,7 @@ class Guis:
         height: int | float | None = ...,
         justify: Literal["left", "center", "right"] = "left",
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = ...,
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -391,9 +387,7 @@ class Guis:
         overstrike: bool = ...,
         width: int | float | None = ...,
         height: int | float | None = ...,
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         anchor: Literal[
             "nw", "n", "ne", "w", "center", "e", "sw", "s", "se"
         ] = "center",
@@ -464,9 +458,7 @@ class Guis:
         slant: Literal["roman", "italic"] = ...,
         underline: bool = ...,
         overstrike: bool = ...,
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         justify: Literal["left", "center", "right"] = "left",
         key: str | None = ...,
     ) -> dict[str, Any]:
@@ -535,9 +527,7 @@ class Guis:
         slant: Literal["roman", "italic"] = ...,
         underline: bool = ...,
         overstrike: bool = ...,
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         justify: Literal["left", "center", "right"] = "left",
         key: str | None = ...,
     ) -> dict[str, Any]:
@@ -812,9 +802,7 @@ class Guis:
         takefocus: bool = ...,
         padx: int | float = ...,
         pady: int | float = ...,
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         cursor: _Cursor = ...,
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = ...,
         wraplength: int | float = 0,
@@ -872,9 +860,7 @@ class Guis:
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = ...,
         padx: int | float = ...,
         pady: int | float = ...,
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         wraplength: int | float = 0,
         borderwidth: int | float = 0,
         cursor: _Cursor = ...,
@@ -1010,9 +996,7 @@ class Guis:
         slant: Literal["roman", "italic"] = ...,
         underline: bool = ...,
         overstrike: bool = ...,
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -1069,9 +1053,7 @@ class Guis:
         overstrike: bool = ...,
         borderwidth: int | float = 0,
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = ...,
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -1126,9 +1108,7 @@ class Guis:
         pady: int | float = ...,
         cursor: _Cursor = ...,
         bg: ColorTypeN = ...,
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -1197,9 +1177,7 @@ class Guis:
         max: int | float = 100,
         takefocus: bool = ...,
         cursor: _Cursor = ...,
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         insertwidth: int | float = 2,
         insertbg: ColorTypeN = "#000000",
         step: int | float = 1,
@@ -1279,9 +1257,7 @@ class Guis:
         overstrike: bool = ...,
         width: int | float | None = ...,
         height: int | float | None = ...,
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         bg: ColorTypeN = "#e0e0e0",
         fg: ColorTypeN = ...,
         takefocus: bool = ...,
@@ -1365,9 +1341,7 @@ class Guis:
         width: int | float | None = ...,
         height: int | float | None = ...,
         justify: Literal["left", "center", "right"] = "left",
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -1446,9 +1420,7 @@ class Guis:
         overstrike: bool = ...,
         width: int | float | None = ...,
         height: int | float | None = ...,
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
@@ -1533,9 +1505,7 @@ class Guis:
         overstrike: bool = ...,
         width: int | float | None = ...,
         height: int | float | None = ...,
-        relief: Literal[
-            "raised", "sunken", "flat", "ridge", "solid", "groove"
-        ] = ...,
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
     ) -> dict[str, Any]:
         """
         色を選択し,選択された色を取得するダイアログを発生させるボタンを作成する
