@@ -25,14 +25,18 @@ class NPStatisticsd:
         raise TypeError(f"{cls.__name__}を継承をすることはできません")
 
     def __init__(self, data):
-        if isinstance(data, np.ndarray | list | tuple | range) or np.isscalar(data) or hasattr(data, "__array__"):
-            data=np.array(data)
+        if (
+            isinstance(data, np.ndarray | list | tuple | range)
+            or np.isscalar(data)
+            or hasattr(data, "__array__")
+        ):
+            data = np.array(data)
         elif isinstance(data, NPNumber):
             data = data.data
         else:
             raise TypeError("dataには配列を指定してください")
-        if np.issubdtype(data.dtype,np.number):
-            self.__data=data
+        if np.issubdtype(data.dtype, np.number):
+            self.__data = data
         else:
             raise TypeError
         if self.__data.ndim != 1:
@@ -40,9 +44,11 @@ class NPStatisticsd:
 
     def __repr__(self):
         return f"NPStatisticsd({self.__data})"
+
     @property
     def data(self):
         return self.__data
+
     @property
     def sum(self):
         return np.sum(self.__data)

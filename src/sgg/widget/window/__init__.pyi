@@ -1,7 +1,7 @@
 from tkinter import Tk
+from typing import Any
 
 from ...graph import *
-from ...typing import Any
 from ..basic import *
 
 __all__ = ["WindowController"]

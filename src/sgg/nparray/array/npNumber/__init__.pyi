@@ -5,10 +5,10 @@ from types import NotImplementedType
 from typing import Any, Literal
 
 from _typeshed import Incomplete
-from numpy import _CopyMode, float64, ndarray, ufunc,generic
+from numpy import _CopyMode, float64, generic, ndarray, ufunc
 from numpy._typing import DTypeLike
 
-from ....typing import ArrayLikeNumber, TypeArraysLikeNumber
+from ....typing import TypeArraysLikeNumber
 from ..nparray import NPArray
 
 __all__ = ["NPNumber"]
@@ -73,6 +73,7 @@ class NPNumber(NPArray):
     @property
     def sturgesval(self) -> float64:
         """スタージェスの公式を求める"""
+
     def min(self) -> generic: ...
     def max(self) -> generic: ...
     def sum(self, axis: int | None = None) -> generic: ...

@@ -8,13 +8,24 @@ from numpy.typing import ArrayLike, NDArray
 from ....typing import TypeArrayLikeNumber
 
 __all__ = ["NPStatisticsd"]
+
+Type_Method:TypeAlias=Literal[
+            "inverted_cdf",
+            "averaged_inverted_cdf",
+            "closest_observation",
+            "interpolated_inverted_cdf",
+            "hazen",
+            "weibull",
+            "linear",
+"median_unbiased",
+"normal_unbiased",
+]
 BINS_LIST: TypeAlias = Literal[
     "stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"
 ]
 
 class NPStatisticsd:
-    def __init_subclass__(cls, **kwargs: Any) -> None:...
-
+    def __init_subclass__(cls, **kwargs: Any) -> None: ...
     def __init__(self, data: TypeArrayLikeNumber) -> None:
         """
         基本的な統計の計算をする
@@ -25,7 +36,7 @@ class NPStatisticsd:
 
     def __repr__(self) -> str: ...
     @property
-    def data(self):...
+    def data(self): ...
     @property
     def sum(self):
         """配列の合計を求める"""
@@ -98,17 +109,7 @@ class NPStatisticsd:
         self,
         q: tuple[int | float, ...],
         axis: int | None = None,
-        method: Literal[
-            "inverted_cdf",
-            "averaged_inverted_cdf",
-            "closest_observation",
-            "interpolated_inverted_cdf",
-            "hazen",
-            "weibull",
-            "linear",
-            "median_unbiased",
-            "normal_unbiased",
-        ] = "linear",
+        method: Type_Method = "linear",
     ):
         """
         指定したパーセンタイルを計算する
@@ -118,24 +119,14 @@ class NPStatisticsd:
         :param axis: 計算する軸を指定する
         :type axis: int | None
         :param method: パーセンタイルを推定するために使用する方法を指定する
-        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
+        :type method: Type_Method
         """
 
     def quantile(
         self,
         q: tuple[float, ...],
         axis: int | None = None,
-        method: Literal[
-            "inverted_cdf",
-            "averaged_inverted_cdf",
-            "closest_observation",
-            "interpolated_inverted_cdf",
-            "hazen",
-            "weibull",
-            "linear",
-            "median_unbiased",
-            "normal_unbiased",
-        ] = "linear",
+        method: Type_Method = "linear",
     ):
         """
         指定した分位点を計算する
@@ -145,22 +136,12 @@ class NPStatisticsd:
         :param axis: 計算する軸を指定する
         :type axis: int | None
         :param method: 分位点を推定するために使用する方法を指定する
-        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
+        :type method: Type_Method
         """
 
     def IQR(
         axis: int | None = None,
-        method: Literal[
-            "inverted_cdf",
-            "averaged_inverted_cdf",
-            "closest_observation",
-            "interpolated_inverted_cdf",
-            "hazen",
-            "weibull",
-            "linear",
-            "median_unbiased",
-            "normal_unbiased",
-        ] = "linear",
+        method: Type_Method = "linear",
     ):
         """
         配列の四分位範囲を求める
@@ -168,7 +149,7 @@ class NPStatisticsd:
         :param axis: 計算する軸を指定する
         :type axis: int | None
         :param method: 分位点を推定するために使用する方法を指定する
-        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
+        :type method: Type_Method
         """
 
     @property
@@ -197,7 +178,7 @@ class NPStatisticsd:
         `bins`で指定された計算方法で計算されたビンの境界を求める
 
         :param bins: ビンの数や計算方法を指定する
-        :type bins: int | Literal["stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"] | ArrayLike
+        :type bins: int | BINS_LIST | ArrayLike
         :param range: ビンの下限と上限を指定する
         :type range: tuple[float,float] | None
         :param weights: 重みを指定する
@@ -216,7 +197,7 @@ class NPStatisticsd:
         配列のヒストグラムを求める
 
         :param bins: ビンの数や計算方法を指定する
-        :type bins: int | Literal["stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"] | ArrayLike
+        :type bins: int | BINS_LIST | ArrayLike
         :param range: ビンの下限と上限を指定する
         :type range: tuple[float,float] | None
         :param weights: 重みを指定する

@@ -6,8 +6,8 @@ from numpy import floating, ndarray
 from numpy._typing import _ArrayLikeFloat_co
 from numpy.typing import NDArray
 
-from .npstatisticsd import NPStatisticsd
 from ....typing import ArrayLikeNumber
+from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
 BINS_LIST: TypeAlias = Literal[
@@ -26,9 +26,8 @@ METHOD_LIST: TypeAlias = Literal[
 ]
 
 class NPStatisticsds:
-    def __init_subclass__(cls, **kwargs: Any) -> None:...
-
-    def __init__(self, x:ArrayLikeNumber , y: ArrayLikeNumber) -> None: ...
+    def __init_subclass__(cls, **kwargs: Any) -> None: ...
+    def __init__(self, x: ArrayLikeNumber, y: ArrayLikeNumber) -> None: ...
     def __repr__(self) -> str: ...
     @property
     def x(self) -> ndarray:

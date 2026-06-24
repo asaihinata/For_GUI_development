@@ -20,9 +20,9 @@ class Hist(twoElement):
         ]:
             self.bins = bins
         elif isinstance(bins, int):
-            self.bins = num1s(bins, round(self.__data.sturgesval()))
+            self.bins = num1s(bins, round(self.__data.sturgesval))
         else:
-            self.bins = round(self.__data.sturgesval())
+            self.bins = round(self.__data.sturgesval)
         self.min = nums(kw.get("min"), self.__data.min())
         self.max = nums(kw.get("max"), self.__data.max())
         self.bottom = num0s(kw.get("bottom"))
@@ -89,7 +89,7 @@ class Hist(twoElement):
         ]:
             self.bins = bins
         elif isinstance(bins, int):
-            self.bins = num1s(bins, round(self.__data.sturgesval()))
+            self.bins = num1s(bins, round(self.__data.sturgesval))
         self.min = nums(kw.get("min"), self.__data.min())
         self.max = nums(kw.get("max"), self.__data.max())
         self.bottom = num0s(kw.get("bottom"), self.bottom)
