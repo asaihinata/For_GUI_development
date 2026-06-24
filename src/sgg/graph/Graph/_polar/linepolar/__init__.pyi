@@ -9,8 +9,8 @@ class Linepolar(_polarset):
     @overload
     def update(
         self,
-        x: o_array,
-        y: o_array,
+        x: TypeArrayLikeNumber,
+        y: TypeArrayLikeNS,
         linestyle: Type_Solid,
         marker: Type_Marker,
         linewidth: int | float,
@@ -25,7 +25,7 @@ class Linepolar(_polarset):
     @overload
     def update(
         self,
-        data: o_array,
+        data: TypeArrayLikeNS,
         linestyle: Type_Solid,
         marker: Type_Marker,
         linewidth: int | float,

@@ -8,7 +8,7 @@ __all__ = ["Eventpolar"]
 class Eventpolar(_polarset):
     def update(
         self,
-        data: o_array,
+        data: TypeArrayLikeNumber,
         orientation: Literal["vertical", "horizontal"],
         linewidth: int | float,
         linelength: int | float,

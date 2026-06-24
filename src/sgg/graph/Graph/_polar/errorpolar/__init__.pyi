@@ -9,8 +9,8 @@ class Errorpolar(_polarset):
     @overload
     def update(
         self,
-        x: o_array,
-        y: o_array,
+        x: TypeArrayLikeNumber,
+        y: TypeArrayLikeNS,
         err: o_array,
         xerr: o_array,
         yerr: o_array,
@@ -34,7 +34,7 @@ class Errorpolar(_polarset):
     @overload
     def update(
         self,
-        data: o_array,
+        data: TypeArrayLikeNS,
         err: o_array,
         xerr: o_array,
         yerr: o_array,

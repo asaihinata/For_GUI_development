@@ -1688,8 +1688,8 @@ class Guis:
 
     @staticmethod
     def LineGraph(
-        x: n_array,
-        y: n_array,
+        x: TypeArrayLikeNS,
+        y: TypeArrayLikeNS,
         linewidth: int | float = 2,
         alpha: int | float = 1,
         markersize: int | float = 10,
@@ -1766,9 +1766,9 @@ class Guis:
         折線グラフを作成する
 
         :param x: `x`のデータを指定する
-        :type x: n_array
+        :type x: TypeArrayLikeNS
         :param y: `y`のデータを指定する
-        :type y: n_array
+        :type y: TypeArrayLikeNS
         :param label: ラベルを指定する
         :type label: str | list[str] | None
         :param xlabel: x軸のラベルを指定する
@@ -1831,8 +1831,8 @@ class Guis:
 
     @staticmethod
     def BarGraph(
-        x: o_array,
-        y: n_array,
+        x: TypeArrayLikeNS,
+        y: TypeArraysLikeNumber,
         logs: bool = False,
         label: str | list[str] | None = ...,
         xlabel: str = ...,
@@ -1867,9 +1867,9 @@ class Guis:
         棒グラフを作成する
 
         :param x: `x`のデータを指定する
-        :type x: o_array
+        :type x: TypeArrayLikeNS
         :param y: `y`のデータを指定する
-        :type y: n_array
+        :type y: TypeArraysLikeNumber
         :param logs: y軸を対数スケールにするかを指定する
         :type logs: bool
         :param label: ラベルを指定する
@@ -1932,8 +1932,8 @@ class Guis:
 
     @staticmethod
     def BarhGraph(
-        x: o_array,
-        y: n_array,
+        x: TypeArraysLikeNumber,
+        y: TypeArrayLikeNS,
         logs: bool = False,
         label: str | list[str] | None = ...,
         xlabel: str = ...,
@@ -1968,9 +1968,9 @@ class Guis:
         横向き棒グラフを作成する
 
         :param x: `x`のデータを指定する
-        :type x: o_array
+        :type x: TypeArraysLikeNumber
         :param y: `y`のデータを指定する
-        :type y: n_array
+        :type y: TypeArrayLikeNS
         :param logs: x軸を対数スケールにするかを指定する
         :type logs: bool
         :param label: ラベルを指定する
@@ -2033,7 +2033,7 @@ class Guis:
 
     @staticmethod
     def Funne(
-        data: o_array,
+        data: TypeArraysLikeNumber,
         xmajormaxbins: int = 11,
         label: str | list[str] | None = ...,
         xlabel: str = ...,
@@ -2068,7 +2068,7 @@ class Guis:
         じょうごグラフを作成する
 
         :param data: `data`のデータを指定する
-        :type data: o_array
+        :type data: TypeArraysLikeNumber
         :param xmajormaxbins: x軸の目盛りの数の最大数を指定する2n+1(nは正の整数)の整数を指定する
         :type xmajormaxbins: int
         :param label: ラベルを指定する
@@ -2131,8 +2131,8 @@ class Guis:
 
     @staticmethod
     def Stacked(
-        data: n_array,
-        dataname: o_array,
+        data: TypeArraysLikeNumber,
+        dataname: TypeArraysLikeNS,
         width: int | float = 0.8,
         label: str | list[str] | None = ...,
         xlabel: str = ...,
@@ -2164,9 +2164,9 @@ class Guis:
         積み上げ棒グラフを作成する
 
         :param data: `data`を指定する
-        :type data: n_array
+        :type data: TypeArraysLikeNumber
         :param dataname: カテゴリ名を指定する
-        :type dataname: o_array
+        :type dataname: TypeArraysLikeNS
         :param width: 積み上げ棒グラフの幅のサイズを指定する
         :type width: int | float
         :param label: ラベルを指定する
@@ -2223,8 +2223,8 @@ class Guis:
 
     @staticmethod
     def Stackedh(
-        data: n_array,
-        dataname: o_array,
+        data: TypeArraysLikeNumber,
+        dataname: TypeArrayLikeNS,
         height: int | float = 0.8,
         label: str | list[str] | None = ...,
         xlabel: str = ...,
@@ -2256,9 +2256,9 @@ class Guis:
         積み上げ横向き棒グラフを作成する
 
         :param data: `data`を指定する
-        :type data: n_array
+        :type data: TypeArraysLikeNumber
         :param dataname: カテゴリ名を指定する
-        :type dataname: o_array
+        :type dataname: TypeArrayLikeNS
         :param height: 積み上げ横向き棒グラフの高さのサイズを指定する
         :type height: int | float
         :param label: ラベルを指定する
@@ -2315,7 +2315,7 @@ class Guis:
 
     @staticmethod
     def Pie(
-        data: o_array,
+        data: TypeArrayLikeNumber,
         startangle: int | float = 0,
         startangletype: bool = True,
         shadow: bool = False,
@@ -2336,7 +2336,7 @@ class Guis:
         円グラフを作成する
 
         :param data: `data`のデータを指定する
-        :type data: o_array
+        :type data: TypeArrayLikeNumber
         :param label: ラベルを指定する
         :type label: str | list[str] | None
         :param startangle: 各要素の出力を開始する角度を指定する
@@ -2371,7 +2371,7 @@ class Guis:
 
     @staticmethod
     def Boxplot(
-        data: n_array,
+        data: TypeArraysLikeNumber,
         label: str | list[str] | None = ...,
         legend: bool = False,
         fill: bool = False,
@@ -2408,7 +2408,7 @@ class Guis:
         箱ひげ図を作成する
 
         :param data: `data`のデータを指定する
-        :type data: n_array
+        :type data: TypeArraysLikeNumber
         :param label: 箱ひげ図のデータ名を指定する指定しなかった場合`box`+データの数になる例)box0,box1
         :type label: str | list[str] | None
         :param legend: 凡例を表示させるか指定する
@@ -2473,8 +2473,8 @@ class Guis:
 
     @staticmethod
     def Waterfall(
-        x: o_array,
-        y: o_array,
+        x: TypeArraysLikeNS,
+        y: TypeArrayLikeNumber,
         sums: bool = False,
         sumstext: str = "sum",
         colorline: ColorTypeN = "#4477aa",
@@ -2510,9 +2510,9 @@ class Guis:
         横向き滝グラフを作成する
 
         :param x: `x`のデータを指定する
-        :type x: o_array
+        :type x: TypeArraysLikeNS
         :param y: `y`のデータを指定する
-        :type y: o_array
+        :type y: TypeArrayLikeNumber
         :param sums: 合計値を表示するかを指定する
         :type sums: bool
         :param sumstext: 合計のラベルを指定する
@@ -2577,8 +2577,8 @@ class Guis:
 
     @staticmethod
     def Waterfallh(
-        x: o_array,
-        y: o_array,
+        x: TypeArraysLikeNS,
+        y: TypeArrayLikeNumber,
         sums: bool = False,
         sumstext: str = "sum",
         colorline: ColorTypeN = "#4477aa",
@@ -2615,9 +2615,9 @@ class Guis:
         y軸向きにバーを設置された滝グラフを作成する
 
         :param x: `x`のデータを指定する
-        :type x: o_array
+        :type x: TypeArraysLikeNS
         :param y: `y`のデータを指定する
-        :type y: o_array
+        :type y: TypeArrayLikeNumber
         :param sums: 合計値を表示するかを指定する
         :type sums: bool
         :param sumstext: 合計のラベルを指定する
@@ -2682,8 +2682,8 @@ class Guis:
 
     @staticmethod
     def Scatter(
-        x: n_array,
-        y: n_array,
+        x: TypeArraysLikeNS,
+        y: TypeArraysLikeNS,
         marker: Literal[
             ".",
             ",",
@@ -2761,9 +2761,9 @@ class Guis:
         散布図を作成する
 
         :param x: `x`のデータを指定する
-        :type x: n_array
+        :type x: TypeArraysLikeNS
         :param y: `y`のデータを指定する
-        :type y: n_array
+        :type y: TypeArraysLikeNS
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -2828,9 +2828,9 @@ class Guis:
 
     @staticmethod
     def DScatter(
-        x: o_array,
-        y: o_array,
-        z: o_array,
+        x: TypeArraysLikeNS,
+        y: TypeArraysLikeNS,
+        z: TypeArraysLikeNS,
         xlabel: str = ...,
         ylabel: str = ...,
         zlabel: str = ...,
@@ -2912,11 +2912,11 @@ class Guis:
         立体散布図を作成する
 
         :param x: `x`のデータを指定する
-        :type x: o_array
+        :type x: TypeArraysLikeNS
         :param y: `y`のデータを指定する
-        :type y: o_array
+        :type y: TypeArraysLikeNS
         :param z: `z`のデータを指定する
-        :type z: o_array
+        :type z: TypeArraysLikeNS
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -2991,8 +2991,8 @@ class Guis:
 
     @staticmethod
     def Stem(
-        x: ndarray | list | tuple = ...,
-        y: ndarray | list | tuple = ...,
+        x: TypeArrayLikeNumber = ...,
+        y: TypeArrayLikeNumber = ...,
         label: str | list[str] | None = ...,
         xlabel: str = ...,
         ylabel: str = ...,
@@ -3027,9 +3027,9 @@ class Guis:
         幹図を作成する
 
         :param x: `x`のデータを指定する
-        :type x: ndarray | list | tuple
+        :type x: TypeArrayLikeNumber
         :param y: `y`のデータを指定する
-        :type y: ndarray | list | tuple
+        :type y: TypeArrayLikeNumber
         :param label: ラベルを指定する
         :type label: str | list[str] | None
         :param xlabel: x軸のラベルを指定する
@@ -3096,7 +3096,7 @@ class Guis:
 
     @staticmethod
     def Step(
-        data: n_array,
+        data: TypeArraysLikeNumber,
         fill: bool = False,
         baseline: int | float = 0,
         orientation: Literal["horizontal", "vertical"] = "vertical",
@@ -3130,7 +3130,7 @@ class Guis:
         階段グラフを作成する
 
         :param data: `data`のデータを指定する
-        :type data: n_array
+        :type data: TypeArraysLikeNumber
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -3191,8 +3191,8 @@ class Guis:
 
     @staticmethod
     def Hatplot(
-        x: o_array,
-        data: o_array,
+        x: TypeArrayLikeNumber,
+        data: TypeArrayLikeNumber,
         color: ColorTypeN = "#4477aa",
         xlabel: str = ...,
         ylabel: str = ...,
@@ -3222,9 +3222,9 @@ class Guis:
         ハットグラフを作成する
 
         :param x: `x`のデータを指定する
-        :type x: o_array
+        :type x: TypeArrayLikeNumber
         :param data: `data`のデータを指定する
-        :type data: o_array
+        :type data: TypeArrayLikeNumber
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -3277,7 +3277,7 @@ class Guis:
 
     @staticmethod
     def Hist(
-        data: o_array,
+        data: TypeArrayLikeNumber,
         label: str | list[str] | None = ...,
         width: int | float = 1,
         min: int | float = ...,
@@ -3319,12 +3319,12 @@ class Guis:
         """
         ヒストグラムを作成する
 
+        :param data: `data`のデータを指定する
+        :type data: TypeArrayLikeNumber
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
-        :param data: `data`のデータを指定する
-        :type data: o_array
         :param label: ラベルを指定する
         :type label: str | list[str] | None
         :param width: ヒストグラムのバーのサイズを指定する
@@ -3389,8 +3389,8 @@ class Guis:
 
     @staticmethod
     def Stack(
-        x: n_array,
-        y: n_array,
+        x: TypeArrayLikeNS,
+        y: TypeArraysLikeNumber,
         hatch: str | None = None,
         baseline: Literal["zero", "sym", "wiggle", "weighted_wiggle"] = "zero",
         xlabel: str = ...,
@@ -3423,9 +3423,9 @@ class Guis:
         積み上げエリアチャートを作成する
 
         :param x: `x`のデータを指定する
-        :type x: n_array
+        :type x: TypeArrayLikeNS
         :param y: `y`のデータを指定する
-        :type y: n_array
+        :type y: TypeArraysLikeNumber
         :param hatch: 塗りつぶし領域内の模様を指定する
         :type hatch: str | None
         :param baseline: 基準値の算出方法を指定する
@@ -3484,9 +3484,9 @@ class Guis:
 
     @staticmethod
     def Linefill(
-        x: o_array,
-        ymin: n_array = ...,
-        ymax: n_array = ...,
+        x: TypeArrayLikeNumber,
+        ymin: TypeArraysLikeNumber = ...,
+        ymax: TypeArraysLikeNumber = ...,
         centerlinewidth: int | float = 2,
         alpha: int | float = 0.5,
         xlabel: str = ...,
@@ -3518,11 +3518,11 @@ class Guis:
         積上げ面グラフを作成する
 
         :param x: 曲線を定義する節点のx座標を指定する
-        :type x: o_array
+        :type x: TypeArrayLikeNumber
         :param ymin: 最初の曲線を定義する節点のy座標を指定する
-        :type ymin: n_array
+        :type ymin: TypeArraysLikeNumber
         :param ymax: 2つ目の曲線を定義する節点のy座標を指定する
-        :type ymax: n_array
+        :type ymax: TypeArraysLikeNumber
         :param centerlinewidth: 線の太さを指定する
         :type centerlinewidth: int | float
         :param xlabel: x軸のラベルを指定する
@@ -3579,7 +3579,7 @@ class Guis:
 
     @staticmethod
     def Ecdf(
-        data: n_array,
+        data: TypeArraysLikeNumber,
         complementary: bool = False,
         compress: bool = False,
         orientation: Literal["horizontal", "vertical"] = "vertical",
@@ -3612,7 +3612,7 @@ class Guis:
         経験的累積分布関数を作成する
 
         :param data: 入力データを指定する
-        :type data: n_array
+        :type data: TypeArraysLikeNumber
         :param complementary: 補累積分布を描画するか指定する
         :type complementary: bool
         :param compress: 同一値のデータをまとめて最適化するかどうか指定する
@@ -3677,11 +3677,11 @@ class Guis:
 
     @staticmethod
     def Errorbar(
-        x: n_array,
-        y: n_array,
-        err: o_array = ...,
-        xerr: o_array = ...,
-        yerr: o_array = ...,
+        x: TypeArraysLikeNumber,
+        y: TypeArraysLikeNumber,
+        err: TypeArrayLikeNumber = ...,
+        xerr: TypeArrayLikeNumber = ...,
+        yerr: TypeArrayLikeNumber = ...,
         xuplims: bool = False,
         xlolims: bool = False,
         yuplims: bool = False,
@@ -3721,15 +3721,15 @@ class Guis:
         誤差範囲付きの線グラフもしくはマーカーグラフ,あるいはその両方のエラーグラフを作成する
 
         :param x: `x`のデータを指定する
-        :type x: n_array
+        :type x: TypeArraysLikeNumber
         :param y: `y`のデータを指定する
-        :type y: n_array
+        :type y: TypeArraysLikeNumber
         :param err: `x`と`y`のデータの誤差の配列を指定する
-        :type err: o_array
+        :type err: TypeArrayLikeNumber
         :param xerr: `x`のデータの誤差の配列を指定する
-        :type xerr: o_array
+        :type xerr: TypeArrayLikeNumber
         :param yerr: `y`のデータの誤差の配列を指定する
-        :type yerr: o_array
+        :type yerr: TypeArrayLikeNumber
         :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
         :type xuplims: bool
         :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
@@ -3802,7 +3802,7 @@ class Guis:
 
     @staticmethod
     def Eventplot(
-        data: o_array,
+        data: TypeArrayLikeNumber,
         linewidth: int | float = 1,
         linelength: int | float = 1,
         linestyle: (
@@ -3840,7 +3840,7 @@ class Guis:
         イベントグラフを作成する
 
         :param data: `data`のデータを指定する
-        :type data: o_array
+        :type data: TypeArrayLikeNumber
         :param linewidth: イベントグラフの線の太さを指定する
         :type linewidth: int | float
         :param linelength: 線の合計の高さを指定する
@@ -3903,8 +3903,8 @@ class Guis:
 
     @staticmethod
     def Hist2d(
-        x: o_array,
-        y: o_array,
+        x: TypeArrayLikeNumber,
+        y: TypeArrayLikeNumber,
         max: int | float = ...,
         min: int | float = ...,
         xmax: int | float = ...,
@@ -3942,9 +3942,9 @@ class Guis:
         2次元ヒストグラムを作成する
 
         :param x: `x`のデータを一次元配列で指定する
-        :type x: o_array
+        :type x: TypeArrayLikeNumber
         :param y: `y`のデータを一次元配列で指定する
-        :type y: o_array
+        :type y: TypeArrayLikeNumber
         :param max,min: 表示させたいカウントの範囲を指定する
         :type max,min: int | float
         :param xmax,xmin: x軸の`bins`の範囲を指定する
@@ -4010,9 +4010,9 @@ class Guis:
     @staticmethod
     def Violinplot(
         self,
-        data: n_array,
-        x: o_array,
-        y: o_array,
+        data: TypeArraysLikeNumber,
+        x: TypeArrayLikeNumber,
+        y: TypeArrayLikeNumber,
         orientation: Literal["horizontal", "vertical"] = "vertical",
         width: int | float = 1,
         alpha: int | float = 1,
@@ -4050,11 +4050,11 @@ class Guis:
         バイオリングラフを作成する
 
         :param data: 入力データを指定する
-        :type data: n_array
+        :type data: TypeArraysLikeNumber
         :param x: `orientation`が`vertical`の時にx軸上にバイオリンが設置される配列を指定する
-        :type x: n_array
+        :type x: TypeArraysLikeNumber
         :param y: `orientation`が`horizontal`の時にy軸上にバイオリンが設置される配列を指定する
-        :type y: n_array
+        :type y: TypeArraysLikeNumber
         :param orientation: バイオリンが設置される軸の向きを指定する
         :type orientation: Literal["horizontal","vertical"]
         :param width: バイオリンの幅を指定する
@@ -4126,9 +4126,9 @@ class Guis:
     @staticmethod
     def Hexbin(
         self,
-        x: o_array,
-        y: o_array,
-        c: o_array | None = None,
+        x: TypeArrayLikeNumber,
+        y: TypeArrayLikeNumber,
+        c: TypeArrayLikeNumber | None = None,
         gridsize: int | tuple[int, int] = 100,
         extent: TupleFloat4 | None = None,
         xscale: Literal["linear", "log"] = "linear",
@@ -4162,11 +4162,11 @@ class Guis:
         2次元六角形ビニンググラフを作成する
 
         :param x: `x`のデータを指定する
-        :type x: o_array
+        :type x: TypeArrayLikeNumber
         :param y: `y`のデータを指定する
-        :type y: o_array
+        :type y: TypeArrayLikeNumber
         :param c: 各ポイントの値を指定する
-        :type c: o_array
+        :type c: TypeArrayLikeNumber
         :param gridsize: `bins`の細かさを指定する
         :type gridsize: int | tuple[int,int]
         :param extent: 各ポイントの値を指定する
@@ -4232,8 +4232,8 @@ class Guis:
     @overload
     @staticmethod
     def Barpolar(
-        x: o_array = ...,
-        y: o_array = ...,
+        x: TypeArrayLikeNumber = ...,
+        y: TypeArrayLikeNumber = ...,
         align: Literal["center", "edge"] = "center",
         width: int | float = 1,
         alpha: int | float = 1,
@@ -4261,9 +4261,9 @@ class Guis:
         極軸棒グラフを作成する
 
         :param x: `x`のデータを指定する
-        :type x: o_array
+        :type x: TypeArrayLikeNumber
         :param y: `y`のデータを指定する
-        :type y: n_array
+        :type y: TypeArraysLikeNumber
         :param width: 棒グラフのバー幅を指定する
         :type width: int | float
         :param align: x軸の棒グラフバーの配置を指定する
@@ -4317,7 +4317,7 @@ class Guis:
     @overload
     @staticmethod
     def Barpolar(
-        data: o_array = ...,
+        data: TypeArrayLikeNumber = ...,
         align: Literal["center", "edge"] = "center",
         width: int | float = 1,
         alpha: int | float = 1,
@@ -4345,7 +4345,7 @@ class Guis:
         極軸棒グラフを作成する
 
         :param data: `data`のデータを指定する
-        :type data: n_array
+        :type data: TypeArraysLikeNumber
         :param width: 棒グラフのバー幅を指定する
         :type width: int | float
         :param align: x軸の棒グラフバーの配置を指定する
@@ -4399,8 +4399,8 @@ class Guis:
     @overload
     @staticmethod
     def Stempolar(
-        x: o_array = ...,
-        y: o_array = ...,
+        x: TypeArrayLikeNumber = ...,
+        y: TypeArrayLikeNumber = ...,
         linefmt: str | None = None,
         markerfmt: str | None = None,
         basefmt: str | None = None,
@@ -4429,9 +4429,9 @@ class Guis:
         極軸幹図を作成する
 
         :param x: `x`のデータを指定する
-        :type x: o_array
+        :type x: TypeArrayLikeNumber
         :param y: `y`のデータを指定する
-        :type y: o_array
+        :type y: TypeArrayLikeNumber
         :param linefmt: 垂直線の色や線を指定する
         :type linefmt: str | None
         :param markerfmt: 茎の先端にあるマーカーの色や形状を指定する
@@ -4487,7 +4487,7 @@ class Guis:
     @overload
     @staticmethod
     def Stempolar(
-        data: o_array = ...,
+        data: TypeArrayLikeNumber = ...,
         linefmt: str | None = None,
         markerfmt: str | None = None,
         basefmt: str | None = None,
@@ -4516,7 +4516,7 @@ class Guis:
         極軸幹図を作成する
 
         :param data: `data`のデータを指定する
-        :type data: o_array
+        :type data: TypeArrayLikeNumber
         :param linefmt: 垂直線の色や線を指定する
         :type linefmt: str | None
         :param markerfmt: 茎の先端にあるマーカーの色や形状を指定する
@@ -4572,11 +4572,11 @@ class Guis:
     @overload
     @staticmethod
     def Errorpolar(
-        x: o_array = ...,
-        y: o_array = ...,
-        err: o_array = ...,
-        xerr: o_array = ...,
-        yerr: o_array = ...,
+        x: TypeArrayLikeNumber = ...,
+        y: TypeArrayLikeNumber = ...,
+        err: TypeArrayLikeNumber = ...,
+        xerr: TypeArrayLikeNumber = ...,
+        yerr: TypeArrayLikeNumber = ...,
         xuplims: bool = False,
         xlolims: bool = False,
         yuplims: bool = False,
@@ -4610,15 +4610,15 @@ class Guis:
         極軸エラーグラフを作成する
 
         :param x: `x`のデータを指定する
-        :type x: o_array
+        :type x: TypeArrayLikeNumber
         :param y: `y`のデータを指定する
-        :type y: o_array
+        :type y: TypeArrayLikeNumber
         :param err: `x`と`y`のデータの誤差の配列を指定する
-        :type err: o_array
+        :type err: TypeArrayLikeNumber
         :param xerr: `x`のデータの誤差の配列を指定する
-        :type xerr: o_array
+        :type xerr: TypeArrayLikeNumber
         :param yerr: `y`のデータの誤差の配列を指定する
-        :type yerr: o_array
+        :type yerr: TypeArrayLikeNumber
         :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
         :type xuplims: bool
         :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
@@ -4684,10 +4684,10 @@ class Guis:
     @overload
     @staticmethod
     def Errorpolar(
-        data: o_array = ...,
-        err: o_array = ...,
-        xerr: o_array = ...,
-        yerr: o_array = ...,
+        data: TypeArrayLikeNumber = ...,
+        err: TypeArrayLikeNumber = ...,
+        xerr: TypeArrayLikeNumber = ...,
+        yerr: TypeArrayLikeNumber = ...,
         xuplims: bool = False,
         xlolims: bool = False,
         yuplims: bool = False,
@@ -4721,13 +4721,13 @@ class Guis:
         極軸エラーグラフを作成する
 
         :param data: `data`のデータを指定する
-        :type data: o_array
+        :type data: TypeArrayLikeNumber
         :param err: `x`と`y`のデータの誤差の配列を指定する
-        :type err: o_array
+        :type err: TypeArrayLikeNumber
         :param xerr: `x`のデータの誤差の配列を指定する
-        :type xerr: o_array
+        :type xerr: TypeArrayLikeNumber
         :param yerr: `y`のデータの誤差の配列を指定する
-        :type yerr: o_array
+        :type yerr: TypeArrayLikeNumber
         :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
         :type xuplims: bool
         :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
@@ -4793,8 +4793,8 @@ class Guis:
     @overload
     @staticmethod
     def Linepolar(
-        x: o_array = ...,
-        y: o_array = ...,
+        x: TypeArrayLikeNumber = ...,
+        y: TypeArrayLikeNumber = ...,
         linewidth: int | float = 2,
         markersize: int | float = 10,
         marker: Literal[
@@ -4865,9 +4865,9 @@ class Guis:
         極軸折線グラフを作成する
 
         :param x: `x`のデータを指定する
-        :type x: o_array
+        :type x: TypeArrayLikeNumber
         :param y: `y`のデータを指定する
-        :type y: o_array
+        :type y: TypeArrayLikeNumber
         :param linewidth: 極軸折線グラフの線の幅を指定する
         :type linewidth: int | float
         :param markersize: 極軸折線グラフのマーカーの大きさを指定する
@@ -4923,7 +4923,7 @@ class Guis:
     @overload
     @staticmethod
     def Linepolar(
-        data: o_array = ...,
+        data: TypeArrayLikeNumber = ...,
         linewidth: int | float = 2,
         markersize: int | float = 10,
         marker: Literal[
@@ -4994,7 +4994,7 @@ class Guis:
         極軸折線グラフを作成する
 
         :param data: `data`のデータを指定する
-        :type data: o_array
+        :type data: TypeArrayLikeNumber
         :param linewidth: 極軸折線グラフの線の幅を指定する
         :type linewidth: int | float
         :param markersize: 極軸折線グラフのマーカーの大きさを指定する
@@ -5050,8 +5050,8 @@ class Guis:
     @overload
     @staticmethod
     def Eventpolar(
-        x: o_array = ...,
-        y: o_array = ...,
+        x: TypeArrayLikeNumber = ...,
+        y: TypeArrayLikeNumber = ...,
         linewidth: int | float = 1,
         linelength: int | float = 1,
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
@@ -5080,9 +5080,9 @@ class Guis:
         極軸イベントグラフを作成する
 
         :param x: `x`のデータを指定する
-        :type x: o_array
+        :type x: TypeArrayLikeNumber
         :param y: `y`のデータを指定する
-        :type y: o_array
+        :type y: TypeArrayLikeNumber
         :param linewidth: イベントグラフの線の太さを指定する
         :type linewidth: int | float
         :param linelength: 線の合計の高さを指定する
@@ -5138,7 +5138,7 @@ class Guis:
     @overload
     @staticmethod
     def Eventpolar(
-        data: o_array = ...,
+        data: TypeArrayLikeNumber = ...,
         linewidth: int | float = 1,
         linelength: int | float = 1,
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] = "-",
@@ -5167,7 +5167,7 @@ class Guis:
         極軸イベントグラフを作成する
 
         :param data: `data`のデータを指定する
-        :type data: o_array
+        :type data: TypeArrayLikeNumber
         :param linewidth: イベントグラフの線の太さを指定する
         :type linewidth: int | float
         :param linelength: 線の合計の高さを指定する
@@ -5223,8 +5223,8 @@ class Guis:
     @overload
     @staticmethod
     def Scatterpolar(
-        x: o_array = ...,
-        y: o_array = ...,
+        x: TypeArrayLikeNumber = ...,
+        y: TypeArrayLikeNumber = ...,
         marker: Literal[
             ".",
             ",",
@@ -5293,9 +5293,9 @@ class Guis:
         極軸散布図を作成する
 
         :param x: `x`のデータを指定する
-        :type x: o_array
+        :type x: TypeArrayLikeNumber
         :param y: `y`のデータを指定する
-        :type y: o_array
+        :type y: TypeArrayLikeNumber
         :param marker: 極軸散布図のマーカーを指定する
         :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param markersize: 極軸散布図のマーカーの大きさを指定する
@@ -5347,7 +5347,7 @@ class Guis:
     @overload
     @staticmethod
     def Scatterpolar(
-        data: o_array = ...,
+        data: TypeArrayLikeNumber = ...,
         marker: Literal[
             ".",
             ",",
@@ -5416,7 +5416,7 @@ class Guis:
         極軸散布図を作成する
 
         :param data: `data`のデータを指定する
-        :type data: o_array
+        :type data: TypeArrayLikeNumber
         :param marker: 極軸散布図のマーカーを指定する
         :type marker: Literal[".",",","o","v","^","<",">","1","2","3","4","8","s","p","*","h","H","+","x","D","d","|","_","P","X",0,1,2,3,4,5,6,7,8,9,10,11,"None","none"," ",""]
         :param markersize: 極軸散布図のマーカーの大きさを指定する
@@ -5467,7 +5467,7 @@ class Guis:
 
     @staticmethod
     def RadarLine(
-        data: n_array = ...,
+        data: TypeArrayLikeNumber = ...,
         markersize: int | float = 10,
         marker: Literal[
             ".",
@@ -5538,7 +5538,7 @@ class Guis:
         折線レーダーチャートを作成する
 
         :param data: `data`のデータを指定する
-        :type data: n_array
+        :type data: TypeArrayLikeNumber
         :param linewidth: 折線グラフの線の幅を指定する
         :type linewidth: int | float
         :param markersize: 折線グラフのマーカーの大きさを指定する
@@ -5593,7 +5593,7 @@ class Guis:
 
     @staticmethod
     def RadarFill(
-        data: n_array = ...,
+        data: TypeArrayLikeNumber = ...,
         alpha: int | float = 1,
         size: tuple[int | float, int | float] = (500, 400),
         fg: ColorTypeN = "#000000",
@@ -5618,7 +5618,7 @@ class Guis:
         塗りつぶしレーダーチャートを作成する
 
         :param data: `data`のデータを指定する
-        :type data: n_array
+        :type data: TypeArrayLikeNumber
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する

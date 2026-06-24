@@ -7,7 +7,7 @@ __all__ = ["RadarLine"]
 class RadarLine(RadarElement):
     def update(
         self,
-        data: o_array,
+        data: TypeArrayLikeNumber,
         markersize: int | float,
         marker: Type_Marker,
         line: Type_Solid,

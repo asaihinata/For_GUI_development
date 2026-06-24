@@ -9,8 +9,8 @@ class Stempolar(_polarset):
     @overload
     def update(
         self,
-        x: o_array,
-        y: o_array,
+        x: TypeArrayLikeNumber,
+        y: TypeArrayLikeNS,
         linefmt: str | None,
         markerfmt: str | None,
         basefmt: str | None,
@@ -26,7 +26,7 @@ class Stempolar(_polarset):
     @overload
     def update(
         self,
-        data: o_array,
+        data: TypeArrayLikeNS,
         linefmt: str | None,
         markerfmt: str | None,
         basefmt: str | None,

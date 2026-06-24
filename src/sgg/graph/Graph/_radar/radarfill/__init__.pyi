@@ -7,7 +7,7 @@ __all__ = ["RadarFill"]
 class RadarFill(RadarElement):
     def update(
         self,
-        data: o_array,
+        data: TypeArrayLikeNumber,
         alpha: int | float,
         fg: ColorType,
         bg: ColorType,

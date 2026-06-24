@@ -10,8 +10,8 @@ class Scatterpolar(_polarset):
     @overload
     def update(
         self,
-        x: o_array,
-        y: o_array,
+        x: TypeArrayLikeNumber,
+        y: TypeArrayLikeNS,
         marker: Type_Marker,
         markersize: int | float,
         linewidth: int | float,
@@ -26,7 +26,7 @@ class Scatterpolar(_polarset):
     @overload
     def update(
         self,
-        data: o_array,
+        data: TypeArrayLikeNS,
         marker: Type_Marker,
         markersize: int | float,
         linewidth: int | float,

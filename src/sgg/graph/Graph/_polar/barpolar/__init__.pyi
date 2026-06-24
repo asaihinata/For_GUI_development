@@ -9,8 +9,8 @@ class Barpolar(_polarset):
     @overload
     def update(
         self,
-        x: o_array,
-        y: o_array,
+        x: TypeArrayLikeNumber,
+        y: TypeArrayLikeNS,
         logs: bool,
         align: Literal["center", "edge"],
         width: int | float,
@@ -25,7 +25,7 @@ class Barpolar(_polarset):
     @overload
     def update(
         self,
-        data: o_array,
+        data: TypeArrayLikeNS,
         logs: bool,
         align: Literal["center", "edge"],
         width: int | float,
