@@ -17,14 +17,14 @@ class NPArray:
     def __init__(
         self,
         data: ArrayLike,
-        dtype: DTypeLike | None = None,
+        dtype: DTypeLike | Literal["auto"] | None = None,
         depth_limit: int | None = None,
     ) -> None:
         """
         :param data: データの配列を指定する
         :type data: ArrayLike
-        :param dtype: numpyの配列で指定する型を指定する
-        :type dtype: DTypeLike | None
+        :param dtype: 配列のデータ型を指定する
+        :type dtype: DTypeLike | Literal["auto"] | None
         :param depth_limit: 配列の最大の深さを指定する
         :type depth_limit: int | None
         """
@@ -106,7 +106,17 @@ class NPArray:
 
     def lengtharange(
         self, start: int = 0, dtype: DTypeLike | None = None
-    ) -> ndarray: ...
+    ) -> ndarray:
+        """
+        配列の形状に合わせたインデックス配列を生成する。
+
+        :param start: 連番の開始値を指定する
+        :type start: int
+        :param dtype: 出力配列のデータ型を指定する
+        :type dtype: DTypeLike | None
+        :return: `data`と同じ形状を持つインデックス配列を返す
+        :rtype: ndarray
+        """
     def _flatten(
         self,
     ) -> tuple[ndarray[tuple[int], dtype[_ScalarT]], tuple[int, ...]]: ...
@@ -120,7 +130,7 @@ class NPArray:
         """配列の`val`番目の要素を取得する"""
 
     def all_None(self) -> bool:
-        """全ての要素が`None`かを調べる"""
+        """配列の全ての要素が`None`かを調べる"""
 
     def all_None(self) -> bool:
         """要素内に`None`が存在するかを調べる"""

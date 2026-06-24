@@ -8,8 +8,8 @@ __all__ = ["Hatplot"]
 class Hatplot(_2Gset):
     def update(
         self,
-        x: TypeArraysLikeNumber,
-        data: TypeArraysLikeNumber,
+        x: TypeArrayLikeNumber,
+        data: TypeArrayLikeNumber,
         color: ColorType,
         fg: ColorType,
         bg: ColorType,

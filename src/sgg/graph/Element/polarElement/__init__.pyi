@@ -29,7 +29,6 @@ class polarElement(GElement):
         :rtype: ndarray
         """
 
-    @overload
     def _xyd(
         self,
         x: list | tuple | np.ndarray,

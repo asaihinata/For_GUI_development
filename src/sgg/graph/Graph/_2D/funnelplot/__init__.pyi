@@ -8,7 +8,7 @@ __all__ = ["Funne"]
 class Funne(_2Gset):
     def update(
         self,
-        x: TypeArraysLikeNumber,
+        x: TypeArrayLikeNumber,
         height: int | float,
         fg: ColorType,
         bg: ColorType,

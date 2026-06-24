@@ -21,7 +21,7 @@ class Linefill(_2Gset):
         graph_grid: ColorType,
         title: str,
     ) -> None:
-        """2つの水平曲線の間の領域を埋めるグラフを再表示させる"""
+        """積上げ面グラフを再表示させる"""
 
     def get(self) -> list[FillBetweenPolyCollection, Line2D]:
         """`matplotlib.collections.PathCollection`と`matplotlib.lines.Line2D`の配列を返す"""

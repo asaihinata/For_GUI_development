@@ -23,13 +23,17 @@ def change_array_like(obj):
 
 
 class NPArray:
-    def __init__(self, data, dtype=None, depth_limit=None):
-        self.__dtype = dtype
+    def __init__(self, data, dtype="auto", depth_limit=None):
         if not is_array_like(data):
             raise TypeError(
                 "dataには配列もしくは__array__を持っているオブジェクトを指定してください"
             )
-        self.__data = array(data, dtype=self.__dtype)
+        if dtype=="auto":
+            self.__data = array(data)
+            self.__dtype = self.__data.dtype
+        else:
+            self.__dtype = dtype
+            self.__data = array(data, dtype=self.__dtype)
         if isinstance(depth_limit, int) and depth_limit < self.__data.ndim:
             raise TypeError("配列の深さが制限の深さに達しました")
 
@@ -148,16 +152,13 @@ class NPArray:
         return True if 2 <= self.ndim else False
 
     def lengtharange(self, start=0, dtype=None):
-        def aranges(start, size, dtype):
-            return arange(start, size, 1, dtype=dtype)
-
         shapes = self.shape
         lens = len(shapes)
         if lens == 1:
-            return aranges(start, start + self.size, dtype)
+            return arange(start, start + self.size, 1, dtype=dtype)
         else:
             return tile(
-                aranges(start, start + shapes[lens - 1], dtype), prod(shapes[:-1])
+                arange(start, start + shapes[lens - 1], dtype=dtype), prod(shapes[:-1])
             ).reshape(shapes)
 
     def flatten(self):

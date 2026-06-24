@@ -27,6 +27,10 @@ __all__ = [
     "TypeArrayLikeNS",
     "TypeArray2LikeNS",
     "TypeArraysLikeNS",
+    "ArrayLikeAny",
+    "TypeArrayLikeAny",
+    "TypeArray2LikeAny",
+    "TypeArraysLikeAny"
     "ColorType",
     "ColorTypeN",
 ]
@@ -48,3 +52,8 @@ ArrayLikeNS = TypeVar("ArrayLikeNS", bound=Union[np.generic, int, float, np.str_
 TypeArrayLikeNS: TypeAlias = np.ndarray[tuple[int], np.dtype[ArrayLikeNS]]
 TypeArray2LikeNS: TypeAlias = np.ndarray[tuple[int, int], np.dtype[ArrayLikeNS]]
 TypeArraysLikeNS: TypeAlias = np.ndarray[tuple[int, ...], np.dtype[ArrayLikeNS]]
+# Any
+ArrayLikeAny = TypeVar("ArrayLikeNS", bound=Union[Any])
+TypeArrayLikeAny: TypeAlias = np.ndarray[tuple[int], np.dtype[ArrayLikeAny]]
+TypeArray2LikeAny: TypeAlias = np.ndarray[tuple[int, int], np.dtype[ArrayLikeAny]]
+TypeArraysLikeAny: TypeAlias = np.ndarray[tuple[int, ...], np.dtype[ArrayLikeAny]]
