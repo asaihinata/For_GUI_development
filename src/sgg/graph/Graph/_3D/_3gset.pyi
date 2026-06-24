@@ -1,6 +1,7 @@
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 
-from ...typing import *
+from numpy import ndarray
+from ...typing import Typetuple_float64
 
 __all__ = ["_3Gset"]
 

@@ -3,7 +3,6 @@ from pathlib import Path, PosixPath, WindowsPath
 from tkinter import _Cursor
 
 from matplotlib.mlab import GaussianKDE
-from numpy import ndarray
 from numpy.typing import ArrayLike
 
 from .dialogs import *

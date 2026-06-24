@@ -7,9 +7,10 @@ from matplotlib.font_manager import FontProperties
 from matplotlib.projections.polar import PolarAxes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
+from typing import Literal
 
 from ...style import getLabel
-from ...typing import *
+from ...typing import ColorType
 
 __all__ = ["GElement"]
 

@@ -1,6 +1,6 @@
 from matplotlib.axes._axes import Axes
-
-from ...typing import *
+from numpy import ndarray
+from ...typing import Typetuple_float64
 
 __all__ = ["_2Gset"]
 

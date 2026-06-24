@@ -1,4 +1,3 @@
-from io import BytesIO
 from tkinter import Label
 
 from PIL.ImageTk import PhotoImage
