@@ -8,7 +8,7 @@ __all__ = ["Pie"]
 class Pie(_2Gset):
     def update(
         self,
-        data: o_array,
+        data: TypeArrayLikeNumber,
         labeldistance: int | float,
         startangletype: bool,
         explode: tuple[int, float] | int | float,

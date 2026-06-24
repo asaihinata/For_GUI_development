@@ -8,9 +8,9 @@ __all__ = ["Hexbin"]
 class Hexbin(_2Gset):
     def update(
         self,
-        x: o_array,
-        y: o_array,
-        c: o_array | None,
+        x: TypeArraysLikeNumber,
+        y: TypeArraysLikeNumber,
+        c: TypeArraysLikeNumber | None,
         gridsize: int | TupleInt2,
         extent: TupleFloat4 | None,
         xscale: Literal["linear", "log"],

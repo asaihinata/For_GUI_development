@@ -9,8 +9,8 @@ __all__ = ["Scatter"]
 class Scatter(_2Gset):
     def update(
         self,
-        x: n_array,
-        y: n_array,
+        x: TypeArraysLikeNS,
+        y: TypeArraysLikeNS,
         marker: Type_Marker,
         markersize: int | float,
         regression_bool: bool,

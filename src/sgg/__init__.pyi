@@ -3485,8 +3485,8 @@ class Guis:
     @staticmethod
     def Linefill(
         x: TypeArrayLikeNumber,
-        ymin: TypeArraysLikeNumber = ...,
-        ymax: TypeArraysLikeNumber = ...,
+        ymin: TypeArrayLikeNumber = ...,
+        ymax: TypeArrayLikeNumber = ...,
         centerlinewidth: int | float = 2,
         alpha: int | float = 0.5,
         xlabel: str = ...,
@@ -3520,9 +3520,9 @@ class Guis:
         :param x: 曲線を定義する節点のx座標を指定する
         :type x: TypeArrayLikeNumber
         :param ymin: 最初の曲線を定義する節点のy座標を指定する
-        :type ymin: TypeArraysLikeNumber
+        :type ymin: TypeArrayLikeNumber
         :param ymax: 2つ目の曲線を定義する節点のy座標を指定する
-        :type ymax: TypeArraysLikeNumber
+        :type ymax: TypeArrayLikeNumber
         :param centerlinewidth: 線の太さを指定する
         :type centerlinewidth: int | float
         :param xlabel: x軸のラベルを指定する

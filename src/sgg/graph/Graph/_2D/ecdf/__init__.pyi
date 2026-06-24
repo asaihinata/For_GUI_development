@@ -7,6 +7,7 @@ __all__ = ["Ecdf"]
 
 class Ecdf(_2Gset):
     def update(
+        data:TypeArrayLikeNumber,
         complementary: bool,
         compress: bool,
         orientation: Literal["horizontal", "vertical"],

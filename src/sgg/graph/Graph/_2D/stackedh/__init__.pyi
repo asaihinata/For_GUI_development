@@ -8,8 +8,8 @@ __all__ = ["Stackedh"]
 class Stackedh(_2Gset):
     def update(
         self,
-        data: n_array,
-        dataname: o_array,
+        data: TypeArraysLikeNumber,
+        dataname: TypeArrayLikeNS,
         height: int | float,
         fg: ColorType,
         bg: ColorType,

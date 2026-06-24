@@ -18,10 +18,8 @@ __all__ = [
     "Listlike",
     "ListNumbertype2",
     "ListNumbertype4",
-    "n_array",
     "nListlike",
     "NPstr2",
-    "o_array",
     "RGBAColorType",
     "RGBColorType",
     "TupleFloat2",
@@ -80,15 +78,6 @@ FunctionType = type(_f)
 # bool
 Type_bool: TypeAlias = bool | np.bool
 # Graph
-o_array: TypeAlias = (
-    list[int, float, str]
-    | tuple[int, float, str]
-    | NDArray[np.str_]
-    | NDArray[np.int_]
-    | NDArray[np.floating]
-)
-n_array: TypeAlias = list | tuple | NDArray
-
 # グラフのデータの型ヒント
 
 # 数値

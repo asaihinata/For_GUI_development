@@ -8,7 +8,7 @@ __all__ = ["Step"]
 class Step(_2Gset):
     def update(
         self,
-        data: n_array,
+        data: TypeArraysLikeNumber,
         linewidth: int | float,
         range: int | float | ListNumbertype2 | TupleNumbertype2,
         fill: bool,

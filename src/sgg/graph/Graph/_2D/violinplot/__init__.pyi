@@ -9,9 +9,9 @@ __all__ = ["Violinplot"]
 class Violinplot(_2Gset):
     def update(
         self,
-        data: n_array,
-        x: o_array,
-        y: o_array,
+        data: TypeArraysLikeNumber,
+        x: TypeArrayLikeNumber,
+        y: TypeArrayLikeNumber,
         orientation: Literal["vertical", "horizontal"],
         width: int | float,
         showextrema: bool,

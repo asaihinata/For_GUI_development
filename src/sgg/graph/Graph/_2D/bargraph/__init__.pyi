@@ -8,8 +8,8 @@ __all__ = ["BarGraph"]
 class BarGraph(_2Gset):
     def update(
         self,
-        x: o_array,
-        y: n_array,
+        x: TypeArrayLikeNS,
+        y: TypeArraysLikeNumber,
         logs: bool,
         width: int | float,
         align: Literal["center", "edge"],

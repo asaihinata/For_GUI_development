@@ -9,7 +9,7 @@ __all__ = ["Hist"]
 class Hist(_2Gset):
     def update(
         self,
-        data: o_array,
+        data: TypeArrayLikeNumber,
         bins: (
             int
             | list

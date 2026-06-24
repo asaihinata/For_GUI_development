@@ -8,8 +8,8 @@ __all__ = ["Waterfall"]
 class Waterfall(_2Gset):
     def update(
         self,
-        x: o_array,
-        y: o_array,
+        x: TypeArrayLikeNS,
+        y: TypeArrayLikeNumber,
         colorline: ColorType,
         linestyle: Literal["-", "--", "-.", ":", "None", " ", ""],
         ucolor: ColorType,

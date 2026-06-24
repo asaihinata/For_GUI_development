@@ -8,11 +8,11 @@ __all__ = ["Errorbar"]
 class Errorbar(_2Gset):
     def update(
         self,
-        x: n_array,
-        y: n_array,
-        err: o_array,
-        xerr: o_array,
-        yerr: o_array,
+        x: TypeArraysLikeNumber,
+        y: TypeArraysLikeNumber,
+        err: TypeArrayLikeNumber,
+        xerr: TypeArrayLikeNumber,
+        yerr: TypeArrayLikeNumber,
         xuplims: bool,
         xlolims: bool,
         yuplims: bool,

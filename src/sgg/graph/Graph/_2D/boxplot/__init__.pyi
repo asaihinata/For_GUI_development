@@ -6,7 +6,7 @@ __all__ = ["Boxplot"]
 class Boxplot(_2Gset):
     def update(
         self,
-        data: n_array,
+        data: TypeArraysLikeNumber,
         width: int | float,
         whis: int | float,
         legend: bool,

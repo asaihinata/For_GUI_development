@@ -20,7 +20,7 @@ class RadarElement(GElement):
 
     def _updates(
         self,
-        data: o_array,
+        data: TypeArrayLikeNumber,
         fg: ColorType,
         bg: ColorType,
         graph_grid: ColorType,

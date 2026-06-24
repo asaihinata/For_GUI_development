@@ -9,9 +9,9 @@ __all__ = ["Linefill"]
 class Linefill(_2Gset):
     def update(
         self,
-        x: o_array,
-        ymin: n_array,
-        ymax: n_array,
+        x: TypeArrayLikeNumber,
+        ymin: TypeArrayLikeNumber,
+        ymax: TypeArrayLikeNumber,
         centerlinewidth: int | float,
         xlabel: str,
         ylabel: str,

@@ -8,8 +8,8 @@ __all__ = ["Stacked"]
 class Stacked(_2Gset):
     def update(
         self,
-        data: n_array,
-        dataname: o_array,
+        data: TypeArraysLikeNumber,
+        dataname: TypeArrayLikeNS,
         width: int | float,
         fg: ColorType,
         bg: ColorType,

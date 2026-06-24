@@ -8,7 +8,7 @@ __all__ = ["Eventplot"]
 class Eventplot(_2Gset):
     def update(
         self,
-        data: o_array,
+        data: TypeArraysLikeNumber,
         linewidth: int | float,
         linelength: int | float,
         orientation: Literal["vertical", "horizontal"],

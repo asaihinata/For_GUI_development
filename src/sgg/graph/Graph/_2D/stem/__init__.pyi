@@ -8,8 +8,8 @@ __all__ = ["Stem"]
 class Stem(_2Gset):
     def update(
         self,
-        x: n_array,
-        y: n_array,
+        x: TypeArraysLikeNumber,
+        y: TypeArraysLikeNumber,
         linefmt: str | None,
         markerfmt: str | None,
         basefmt: str | None,

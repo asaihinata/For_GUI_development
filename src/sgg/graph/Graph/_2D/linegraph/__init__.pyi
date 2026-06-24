@@ -8,8 +8,8 @@ __all__ = ["LineGraph"]
 class LineGraph(_2Gset):
     def update(
         self,
-        x: n_array,
-        y: n_array,
+        x: TypeArraysLikeNS,
+        y: TypeArraysLikeNS,
         marker: Type_Marker,
         markersize: int | float,
         linestyle: Type_Solid,
