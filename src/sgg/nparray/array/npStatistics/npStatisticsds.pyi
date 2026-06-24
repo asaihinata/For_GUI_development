@@ -6,8 +6,8 @@ from numpy import floating, ndarray
 from numpy._typing import _ArrayLikeFloat_co
 from numpy.typing import NDArray
 
-from ..npnumber import NPNumber
 from .npstatisticsd import NPStatisticsd
+from ....typing import ArrayLikeNumber
 
 __all__ = ["NPStatisticsds"]
 BINS_LIST: TypeAlias = Literal[
@@ -26,10 +26,9 @@ METHOD_LIST: TypeAlias = Literal[
 ]
 
 class NPStatisticsds:
-    def __init_subclass__(cls, **kwargs: Any) -> None:
-        """raises TypeError: `NPStatisticsds`オブジェクトを継承するときに発生させる"""
+    def __init_subclass__(cls, **kwargs: Any) -> None:...
 
-    def __init__(self, x: NPNumber | ndarray, y: NPNumber | ndarray) -> None: ...
+    def __init__(self, x:ArrayLikeNumber , y: ArrayLikeNumber) -> None: ...
     def __repr__(self) -> str: ...
     @property
     def x(self) -> ndarray:

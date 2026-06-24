@@ -26,10 +26,10 @@ class NPStatisticsds:
         raise TypeError(f"{cls.__name__}を継承をすることはできません")
 
     def __init__(self, x, y):
-        self.__x = NPNumber(x, depth_limit=1).tonp()
-        self.__y = NPNumber(y, depth_limit=1).tonp()
-        self.__xs = NPStatisticsd(self.__x)
-        self.__ys = NPStatisticsd(self.__y)
+        self.__xs = NPStatisticsd(x)
+        self.__ys = NPStatisticsd(y)
+        self.__x = self.__xs.data
+        self.__y = self.__ys.data
 
     def __repr__(self):
         return f"NPStatisticsds(\nx={self.__x},\ny={self.__y})"

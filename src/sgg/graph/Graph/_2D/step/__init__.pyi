@@ -10,7 +10,12 @@ class Step(_2Gset):
         self,
         data: TypeArraysLikeNumber,
         linewidth: int | float,
-        range: int | float | list[int|float,int|float] | tuple[int|float,int|float],
+        range: (
+            int
+            | float
+            | list[int | float, int | float]
+            | tuple[int | float, int | float]
+        ),
         fill: bool,
         baseline: int | float,
         orientation: Literal["horizontal", "vertical"],

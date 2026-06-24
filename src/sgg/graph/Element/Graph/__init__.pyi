@@ -1,4 +1,5 @@
 from tkinter import Misc
+from typing import Literal
 
 from matplotlib.axes._axes import Axes
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -7,7 +8,6 @@ from matplotlib.font_manager import FontProperties
 from matplotlib.projections.polar import PolarAxes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
-from typing import Literal
 
 from ...style import getLabel
 from ...typing import ColorType
@@ -22,7 +22,7 @@ class GElement:
     master: Misc
     fig: Figure
     graphdata: list
-    size: tuple[int|float,int|float]
+    size: tuple[int | float, int | float]
     fg: ColorType
     graph_bg: ColorType
     graph_grid: ColorType
@@ -149,10 +149,18 @@ class GElement:
     def _anchor(
         self,
         val: (
-            list[int|float,int|float] | list[int|float,int|float,int|float,int|float] | tuple[int|float,int|float] | tuple[int|float,int|float,int|float,int|float] | None
+            list[int | float, int | float]
+            | list[int | float, int | float, int | float, int | float]
+            | tuple[int | float, int | float]
+            | tuple[int | float, int | float, int | float, int | float]
+            | None
         ) = None,
         other: (
-            list[int|float,int|float] | list[int|float,int|float,int|float,int|float] | tuple[int|float,int|float] | tuple[int|float,int|float,int|float,int|float] | None
+            list[int | float, int | float]
+            | list[int | float, int | float, int | float, int | float]
+            | tuple[int | float, int | float]
+            | tuple[int | float, int | float, int | float, int | float]
+            | None
         ) = None,
     ) -> None:
         """凡例の位置を決定する"""
@@ -180,7 +188,9 @@ class GElement:
         """ウィジェットを親ウィジェット内に配置します"""
 
     def _redraw(self) -> None: ...
-    def _size(self, sizes: tuple[int|float,int|float] = (500, 400)) -> tuple[int|float,int|float]:
+    def _size(
+        self, sizes: tuple[int | float, int | float] = (500, 400)
+    ) -> tuple[int | float, int | float]:
         """
         グラフの大きさのサイズを定める
 

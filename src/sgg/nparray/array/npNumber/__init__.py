@@ -126,13 +126,11 @@ class NPNumber(NPArray):
     def T(self):
         self.data = self.data.T
         return self
-
+    @property
     def sturgesval(self):
         return 1 + np.log2(self.size)
-
     def min(self):
         return np.min(self.data)
-
     def max(self):
         return np.max(self.data)
 

@@ -1,6 +1,7 @@
 """フレームワーク全体で使用する型を設定しているモジュール"""
 
-from typing import (Any, Callable, Collection, Literal, TypeAlias, TypeVar, Union,overload)
+from typing import (Any, Callable, Collection, Literal, TypeAlias, TypeVar, Union,
+                    overload)
 
 import numpy as np
 from numpy.typing import ArrayLike
@@ -27,11 +28,11 @@ __all__ = [
     "TypeArray2LikeNS",
     "TypeArraysLikeNS",
     "ColorType",
-    "ColorTypeN"
+    "ColorTypeN",
 ]
 # 色
-ColorType:TypeAlias=str
-ColorTypeN:TypeAlias=str
+ColorType: TypeAlias = str
+ColorTypeN: TypeAlias = str | None
 # 数値
 ArrayLikeNumber = TypeVar("ArrayLikeNumber", bound=Union[np.generic, int, float])
 TypeArrayLikeNumber: TypeAlias = np.ndarray[tuple[int], np.dtype[ArrayLikeNumber]]

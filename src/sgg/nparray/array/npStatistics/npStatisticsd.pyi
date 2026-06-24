@@ -2,10 +2,10 @@
 
 from typing import Any, Literal, SupportsIndex, TypeAlias
 
-from numpy import float64, intp, ndarray
+from numpy import float64, intp
 from numpy.typing import ArrayLike, NDArray
 
-from ..npnumber import NPNumber
+from ....typing import TypeArrayLikeNumber
 
 __all__ = ["NPStatisticsd"]
 BINS_LIST: TypeAlias = Literal[
@@ -13,18 +13,19 @@ BINS_LIST: TypeAlias = Literal[
 ]
 
 class NPStatisticsd:
-    def __init_subclass__(cls, **kwargs: Any) -> None:
-        """raises TypeError: `NPStatisticsd`オブジェクトを継承するときに発生させる"""
+    def __init_subclass__(cls, **kwargs: Any) -> None:...
 
-    def __init__(self, data: NPNumber | ndarray = ...) -> None:
+    def __init__(self, data: TypeArrayLikeNumber) -> None:
         """
         基本的な統計の計算をする
 
         :param data: 配列を指定する
-        :type data: NPNumber | ndarray
+        :type data: TypeArrayLikeNumber
         """
 
     def __repr__(self) -> str: ...
+    @property
+    def data(self):...
     @property
     def sum(self):
         """配列の合計を求める"""

@@ -31,7 +31,10 @@ class polarElement(GElement):
 
     @overload
     def _xyd(
-        self, x: list|tuple|np.ndarray, y: list|tuple|np.ndarray, d: list|tuple|np.ndarray
+        self,
+        x: list | tuple | np.ndarray,
+        y: list | tuple | np.ndarray,
+        d: list | tuple | np.ndarray,
     ) -> tuple[NPNumber, NPArray]: ...
     def _apply_labels(
         self,
@@ -81,7 +84,9 @@ class polarElement(GElement):
         """y軸の目盛りの位置を座標で返す"""
 
     @overload
-    def set_thetalim(self, min: np.number, max: np.number, type: bool) -> tuple[float,float]:
+    def set_thetalim(
+        self, min: np.number, max: np.number, type: bool
+    ) -> tuple[float, float]:
         """
         特定の角度範囲だけを表示させる
 
@@ -98,7 +103,7 @@ class polarElement(GElement):
     @overload
     def set_thetalim(
         self, min: np.number, max: np.number, type: bool = True
-    ) -> tuple[float,float]:
+    ) -> tuple[float, float]:
         """
         特定の角度範囲だけを表示させる
 
@@ -115,7 +120,7 @@ class polarElement(GElement):
     @overload
     def set_thetalim(
         self, min: np.number, max: np.number, type: bool = False
-    ) -> tuple[tuple[float,float], bool]:
+    ) -> tuple[tuple[float, float], bool]:
         """
         特定の角度範囲だけを表示させる
 
