@@ -1,9 +1,9 @@
 from re import findall
+from types import FunctionType
 
 from ...dev import bols, listchose, num0s, parsecolor
 from ...font import TKFont
 from ...readfile import Getfont
-from ...typing import FunctionType
 
 __all__ = ["Element"]
 

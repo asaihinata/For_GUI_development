@@ -21,7 +21,7 @@ class GElement:
     master: Misc
     fig: Figure
     graphdata: list
-    size: TupleNumbertype2
+    size: tuple[int|float,int|float]
     fg: ColorType
     graph_bg: ColorType
     graph_grid: ColorType
@@ -148,10 +148,10 @@ class GElement:
     def _anchor(
         self,
         val: (
-            ListNumbertype2 | ListNumbertype4 | TupleNumbertype2 | TupleFloat4 | None
+            list[int|float,int|float] | list[int|float,int|float,int|float,int|float] | tuple[int|float,int|float] | tuple[int|float,int|float,int|float,int|float] | None
         ) = None,
         other: (
-            ListNumbertype2 | ListNumbertype4 | TupleNumbertype2 | TupleFloat4 | None
+            list[int|float,int|float] | list[int|float,int|float,int|float,int|float] | tuple[int|float,int|float] | tuple[int|float,int|float,int|float,int|float] | None
         ) = None,
     ) -> None:
         """凡例の位置を決定する"""
@@ -179,14 +179,14 @@ class GElement:
         """ウィジェットを親ウィジェット内に配置します"""
 
     def _redraw(self) -> None: ...
-    def _size(self, sizes: TupleNumbertype2 = (500, 400)) -> TupleNumbertype2:
+    def _size(self, sizes: tuple[int|float,int|float] = (500, 400)) -> tuple[int|float,int|float]:
         """
         グラフの大きさのサイズを定める
 
         :param sizes: グラフの大きさを指定する
-        :type sizes: TupleNumbertype2
+        :type sizes: tuple[int|float,int|float]
         :return: 決定したグラフの大きさをタプルで返す
-        :rtype: TupleNumbertype2
+        :rtype: tuple[int|float,int|float]
         """
 
     def _apply_theme_colors(self) -> None:

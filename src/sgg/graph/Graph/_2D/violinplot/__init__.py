@@ -1,3 +1,5 @@
+from types import FunctionType
+
 from ...dev import *
 
 __all__ = ["Violinplot"]

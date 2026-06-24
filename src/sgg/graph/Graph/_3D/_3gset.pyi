@@ -6,11 +6,11 @@ __all__ = ["_3Gset"]
 
 class _3Gset:
     ax: Axes3D
-    def winsize(self) -> TupleInt2:
+    def winsize(self) -> tuple[int,int]:
         """ウィジェットの現在の幅と高さを返す
 
         :return: ウィジェットの現在の幅と高さをタプルで返す
-        :rtype: TupleInt2"""
+        :rtype: tuple[int,int]"""
 
     def winwidth(self) -> int:
         """ウィジェットの現在の幅を返す
@@ -24,11 +24,11 @@ class _3Gset:
         :return: ウィジェットの現在の高さを返す
         :rtype: int"""
 
-    def winxy(self) -> TupleInt2:
+    def winxy(self) -> tuple[int,int]:
         """親ウィジェット内での座標を返す
 
         :return: 親ウィジェット内での座標を返す
-        :rtype: TupleInt2"""
+        :rtype: tuple[int,int]"""
 
     def winx(self) -> int:
         """親ウィジェット内での左端のx座標を返す
@@ -42,17 +42,17 @@ class _3Gset:
         :return: 親ウィジェット内での上端のy座標を返す
         :rtype: int"""
 
-    def geometry(self) -> TupleFloat4:
+    def geometry(self) -> tuple[int|float,int|float,int|float,int|float]:
         """ウィジェットのサイズと位置を返す
 
         :return: ウィジェットのサイズと位置を返す
-        :rtype: TupleFloat4"""
+        :rtype: tuple[int|float,int|float,int|float,int|float]"""
 
-    def rootxy(self) -> TupleInt2:
+    def rootxy(self) -> tuple[int,int]:
         """画面全体に対するウィジェットの座標を返す
 
         :return: 画面全体に対するウィジェットの座標を返す
-        :rtype: TupleInt2"""
+        :rtype: tuple[int,int]"""
 
     def rootx(self) -> int:
         """画面全体に対するウィジェットの左端のx座標を返す
@@ -66,11 +66,11 @@ class _3Gset:
         :return: 画面全体に対するウィジェットの上端のy座標を返す
         :rtype: int"""
 
-    def reqsize(self) -> TupleInt2:
+    def reqsize(self) -> tuple[int,int]:
         """ウィジェットが必要とする幅の長さと高さを返す
 
         :return: ウィジェットが必要とする幅の長さと高さを返す
-        :rtype: TupleInt2"""
+        :rtype: tuple[int,int]"""
 
     def reqwidth(self) -> int:
         """ウィジェットが必要とする幅の長さを返す

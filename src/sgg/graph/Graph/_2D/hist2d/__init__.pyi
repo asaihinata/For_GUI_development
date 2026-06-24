@@ -16,7 +16,7 @@ class Hist2d(_2Gset):
         xmin: int | float,
         ymax: int | float,
         ymin: int | float,
-        bins: int | TupleInt2 | ArrayLike | tuple[ArrayLike, ArrayLike],
+        bins: int | tuple[int,int] | ArrayLike | tuple[ArrayLike, ArrayLike],
         density: bool,
         fg: ColorType,
         bg: ColorType,

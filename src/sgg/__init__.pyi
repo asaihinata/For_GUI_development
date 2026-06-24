@@ -2379,7 +2379,7 @@ class Guis:
         showfliers: bool = True,
         orientation: Literal["horizontal", "vertical"] = "vertical",
         width: int | float = 0.15,
-        whis: float | TupleFloat2 = 1.5,
+        whis: float | tuple[float,float] = 1.5,
         xlabel: str = ...,
         ylabel: str = ...,
         size: tuple[int | float, int | float] = (500, 400),
@@ -2422,7 +2422,7 @@ class Guis:
         :param orientation: 箱ひげ図の向きを指定する
         :type orientation: Literal["horizontal","vertical"]
         :param whis: ヒゲの位置を指定する
-        :type whis: float | TupleFloat2
+        :type whis: float | tuple[float,float]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
@@ -3911,7 +3911,7 @@ class Guis:
         xmin: int | float = ...,
         ymax: int | float = ...,
         ymin: int | float = ...,
-        bins: int | TupleInt2 | ArrayLike | tuple[ArrayLike, ArrayLike] = 10,
+        bins: int | tuple[int,int] | ArrayLike | tuple[ArrayLike, ArrayLike] = 10,
         density: bool = False,
         size: tuple[int | float, int | float] = (500, 400),
         fg: ColorTypeN = "#000000",
@@ -4130,7 +4130,7 @@ class Guis:
         y: TypeArrayLikeNumber,
         c: TypeArrayLikeNumber | None = None,
         gridsize: int | tuple[int, int] = 100,
-        extent: TupleFloat4 | None = None,
+        extent: tuple[int|float,int|float,int|float,int|float] | None = None,
         xscale: Literal["linear", "log"] = "linear",
         yscale: Literal["linear", "log"] = "linear",
         mincnt: int = 1,
@@ -4170,7 +4170,7 @@ class Guis:
         :param gridsize: `bins`の細かさを指定する
         :type gridsize: int | tuple[int,int]
         :param extent: 各ポイントの値を指定する
-        :type extent: TupleFloat4 | None
+        :type extent: tuple[int|float,int|float,int|float,int|float] | None
         :param xscale,yscale: 軸のスケールを指定する
         :type xscale,yscale: Literal["linear","log"]
         :param mincnt: 描画する`bins`の最小カウント数を指定する

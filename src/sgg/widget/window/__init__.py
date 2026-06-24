@@ -1,13 +1,13 @@
 from os import getcwd
 from re import findall
 from tkinter import Canvas, Frame, Scrollbar, Tk
+from types import FunctionType
 
 from PIL import ImageGrab
 
 from ...dev import bols, is_array_like, listchose, num0s, parsecolor, range_num
 from ...dialogs import asksaveasfilename
 from ...graph import *
-from ...typing import FunctionType
 from ..basic import *
 
 __all__ = ["WindowController"]

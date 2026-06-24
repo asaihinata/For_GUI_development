@@ -31,7 +31,7 @@ class polarElement(GElement):
 
     @overload
     def _xyd(
-        self, x: nListlike, y: nListlike, d: nListlike
+        self, x: list|tuple|np.ndarray, y: list|tuple|np.ndarray, d: list|tuple|np.ndarray
     ) -> tuple[NPNumber, NPArray]: ...
     def _apply_labels(
         self,
@@ -81,7 +81,7 @@ class polarElement(GElement):
         """y軸の目盛りの位置を座標で返す"""
 
     @overload
-    def set_thetalim(self, min: np.number, max: np.number, type: bool) -> TupleFloat2:
+    def set_thetalim(self, min: np.number, max: np.number, type: bool) -> tuple[float,float]:
         """
         特定の角度範囲だけを表示させる
 
@@ -92,13 +92,13 @@ class polarElement(GElement):
         :param type: 制限値を指定する
         :type type: bool
         :return: 表示されている角度の範囲と角度の種類を返す
-        :rtype: TupleFloat2
+        :rtype: tuple[float,float]
         """
 
     @overload
     def set_thetalim(
         self, min: np.number, max: np.number, type: bool = True
-    ) -> TupleFloat2:
+    ) -> tuple[float,float]:
         """
         特定の角度範囲だけを表示させる
 
@@ -109,13 +109,13 @@ class polarElement(GElement):
         :param type: 制限値を度数法で指定する
         :type type: bool
         :return: 表示されている角度の範囲と角度の種類を返す
-        :rtype: TupleFloat2
+        :rtype: tuple[float,float]
         """
 
     @overload
     def set_thetalim(
         self, min: np.number, max: np.number, type: bool = False
-    ) -> tuple[TupleFloat2, bool]:
+    ) -> tuple[tuple[float,float], bool]:
         """
         特定の角度範囲だけを表示させる
 
@@ -126,5 +126,5 @@ class polarElement(GElement):
         :param type: 制限値を弧度法で指定する
         :type type: bool
         :return: 表示されている角度の範囲と角度の種類を返す
-        :rtype: tuple[TupleFloat2,bool]
+        :rtype: tuple[tuple[float,float],bool]
         """

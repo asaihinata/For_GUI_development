@@ -6,7 +6,7 @@ __all__ = ["Pie"]
 class Pie(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__data = NPNumber(kw.get("data"),depth_limit=1)
+        self.__data = NPNumber(kw.get("data"), depth_limit=1)
         self.startangle = nums(kw.get("startangle"), 0)
         self.startangletype = bols(kw.get("startangletype"))
         self.shadow = bols(kw.get("shadow"), False)
@@ -66,7 +66,7 @@ class Pie(twoElement):
     def update(self, data=None, **kw):
         self._updates(**kw)
         if change_array_like(data):
-            self.__data = NPNumber(data,depth_limit=1)
+            self.__data = NPNumber(data, depth_limit=1)
         explode = kw.get("explode", self.explode)
         if isinstance(explode, list | tuple) and all(
             isinstance(i, int | float) for i in explode
