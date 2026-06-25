@@ -17,7 +17,7 @@ class NPArray:
     def __init__(
         self,
         data: ArrayLike,
-        dtype: DTypeLike | Literal["auto"] | None = None,
+        dtype: DTypeLike | Literal["auto"] | None = "auto",
         depth_limit: int | None = None,
     ) -> None:
         """

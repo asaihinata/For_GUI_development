@@ -8,7 +8,7 @@ class Hist(twoElement):
         super().__init__(master, kw)
         self.__data = NPNumber(kw.get("data"), depth_limit=1)
         bins = kw.get("bins")
-        if isinstance(bins, list | range | tuple | np.ndarray) or bins in [
+        if change_array_like(bins) or bins in [
             "auto",
             "fd",
             "doane",
@@ -77,7 +77,7 @@ class Hist(twoElement):
         if change_array_like(data):
             self.__data = NPNumber(data, depth_limit=1)
         bins = kw.get("bins")
-        if isinstance(bins, list | range | tuple | np.ndarray) or bins in [
+        if change_array_like(bins) or bins in [
             "auto",
             "fd",
             "doane",

@@ -13,12 +13,10 @@ class Pie(twoElement):
         self.counterclock = bols(kw.get("counterclock"), False)
         self.labeldistance = num0(kw.get("labeldistance"), 1.1)
         explode = kw.get("explode")
-        if isinstance(explode, list | tuple) and all(
-            isinstance(i, int | float) for i in explode
-        ):
-            self.explode = list(map(float, explode))
-        elif isinstance(explode, int | float):
-            self.explode = [float(explode) for _ in range(self.__data.size)]
+        if isinstance(explode,int|float):
+            self.explode=np.tile(explode,self.__data.size).astype(float)
+        elif change_array_like(explode):
+            self.explode = np.array(explode,dtype=np.float64).astype(float)
         else:
             self.explode = None
         self.__plot(
@@ -68,12 +66,10 @@ class Pie(twoElement):
         if change_array_like(data):
             self.__data = NPNumber(data, depth_limit=1)
         explode = kw.get("explode", self.explode)
-        if isinstance(explode, list | tuple) and all(
-            isinstance(i, int | float) for i in explode
-        ):
-            self.explode = list(map(float, explode))
-        elif isinstance(explode, int | float):
-            self.explode = [float(explode) for _ in range(self.__data.size)]
+        if isinstance(explode,int|float):
+            self.explode=np.tile(explode,self.__data.size).astype(float)
+        elif change_array_like(explode):
+            self.explode = np.array(explode,dtype=np.float64).astype(float)
         else:
             self.explode = None
         self.startangle = nums(kw.get("startangle"), self.startangle)

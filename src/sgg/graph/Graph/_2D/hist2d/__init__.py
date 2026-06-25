@@ -118,23 +118,11 @@ class Hist2d(twoElement):
         return val
 
     def _bins(self, val):
-        if (
-            isinstance(val, int)
-            or (
-                isinstance(val, np.ndarray)
-                and len(val.shape) == 1
-                and 2 <= val.shape[0]
-            )
-            or (
-                isinstance(val, list | tuple)
-                and (
-                    (
-                        len(val) == 2
-                        and all(isinstance(val[i], list | tuple) for i in range(2))
-                    )
-                    or (1 <= len(val) and all(isinstance(i, int) for i in val))
-                )
-            )
-        ):
+        if change_array_like(val):
+            val=np.array(val)
+            if val.ndim==1 and 2<=val.size:
+                return val
+        elif isinstance(val, int):
             return val
-        return 10
+        else:
+            return 10
