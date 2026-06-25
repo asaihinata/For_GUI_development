@@ -30,7 +30,7 @@ __all__ = [
     "ArrayLikeAny",
     "TypeArrayLikeAny",
     "TypeArray2LikeAny",
-    "TypeArraysLikeAny"
+    "TypeArraysLikeAny",
     "ColorType",
     "ColorTypeN",
 ]

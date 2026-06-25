@@ -1,3 +1,4 @@
+from itertools import product
 from ...dev import *
 
 __all__ = ["LineGraph"]
@@ -35,8 +36,7 @@ class LineGraph(twoElement):
         label,
     ):
         self.clear()
-        self.graphdata = [
-            self.ax.plot(
+        self.graphdata = [self.ax.plot(
                 xs,
                 ys,
                 linestyle=linestyle[i],
@@ -45,9 +45,7 @@ class LineGraph(twoElement):
                 markersize=markersize,
                 alpha=alpha,
                 label=label[i],
-            )
-            for i, (xs, ys) in enumerate(TwoArray(x, y))
-        ]
+            )for i, (xs, ys) in enumerate(product(x, y))][0]
         self._apply_labels(self.xlabel, self.ylabel)
         self.legend()
         self._adjustment()
@@ -58,12 +56,13 @@ class LineGraph(twoElement):
             self.__x = NPArray(x)
         if change_array_like(y):
             self.__y = NPArray(y)
-        markers = kw.get("marker", None)
-        if markers != None:
+        markers = kw.get("marker")
+        if markers is not None:
             self.marker = MarkerList(markers)
         self.markersize = num0(kw.get("markersize"), self.markersize)
-        lines = kw.get("linestyle", None)
-        self.line = parameters(lines, self.line, Solidlist(lines))
+        lines = kw.get("linestyle")
+        if lines is not None:
+            self.line = Solidlist(lines)
         self.linewidth = num0(kw.get("linewidth"), self.linewidth)
         self.__plot(
             self.__x,

@@ -64,7 +64,7 @@ def int0(val=0, mins=0):
 
 
 def range_num(val, mins=None, maxs=None, others=None):
-    if not numberDtype(mins) or not numberDtype(max):
+    if not numberDtype(mins) or not numberDtype(maxs):
         return others
     if maxs < mins:
         mins, maxs = maxs, mins

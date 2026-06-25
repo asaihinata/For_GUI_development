@@ -67,8 +67,8 @@ class Scatter(twoElement):
             self.__x = NPArray(x)
         if change_array_like(y):
             self.__y = NPArray(y)
-        markers = kw.get("marker", "none")
-        if markers != "none":
+        markers = kw.get("marker", None)
+        if markers is not None:
             self.marker = MarkerList(markers)
         self.s = num1s(kw.get("markersize"), self.s)
         self.alpha = range_num(num0s(kw.get("alpha"), self.alpha), 0, 1, self.alpha)

@@ -11,11 +11,11 @@ class Waterfallh(twoElement):
         self.bottom = np.cumsum(np.append(0, self.__y)[0 : self.__y.size])
         self.ucolor = parsecolor(kw.get("ucolor"), "#156082")
         self.dcolor = parsecolor(kw.get("dcolor"), "#e97132")
-        self.height = range_num(num0s(kw.get("height"), 1), 0, 1, 1)
+        self.height = range_num(num0(kw.get("height"), 1), 0, 1, 1)
         self.sums = bols(kw.get("sums"), False)
         self.sumstext = kw.get("sumstext", "sum")
         self.colorline = parsecolor(kw.get("colorline"), "#4477aa")
-        self.linestyle = Solid(kw.get("linestyle", "-")).solid
+        self.linestyle = Solid(kw.get("linestyle", "-"))
         self.__plot(
             self.__x,
             self.__y,
@@ -63,7 +63,7 @@ class Waterfallh(twoElement):
             )
         ]
         if height != 1:
-            self._vlines(np.cumsum(y), height, color, linestyle)
+            self._vlines(np.cumsum(y), height, color, linestyle.solid)
         self.ax.set_yticks(np.arange(len(x)), labels=x.tolist())
         xticks = self.ax.get_xticks()
         self.ax.set_xlim(xticks.min(), xticks.max())
@@ -83,7 +83,9 @@ class Waterfallh(twoElement):
         self.dcolor = parsecolor(kw.get("dcolor"), self.dcolor)
         self.height = range_num(num0s(kw.get("height"), self.height), 0, 1, self.height)
         self.colorline = parsecolor(kw.get("colorline"), self.colorline)
-        self.linestyle = Solid(kw.get("linestyle", self.linestyle)).solid
+        solid=kw.get("linestyle")
+        if solid is not None:
+            self.linestyle = Solid(solid)
         self.__plot(
             self.__x,
             self.__y,

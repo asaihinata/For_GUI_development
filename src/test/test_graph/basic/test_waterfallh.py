@@ -20,7 +20,7 @@ if __name__ == "__main__":
                 ylabel=ylabel,
             ),
             Guis.Waterfallh(
-                x=waterfallx, y=waterfally, title="バーの幅を変更する", width=0.5
+                x=waterfallx, y=waterfally, title="バーの幅を変更する", height=0.5
             ),
         ],
         [
@@ -28,15 +28,15 @@ if __name__ == "__main__":
                 x=waterfallx,
                 y=waterfally,
                 title="バーとバーを繋ぐ線の種類を変更する",
-                width=0.5,
+                height=0.5,
                 linestyle="dotted",
             ),
             Guis.Waterfallh(
                 x=waterfallx,
                 y=waterfally,
                 title="バーとバーを繋ぐ線の色を変更する",
-                width=0.5,
-                colorline="green",
+                height=0.5,
+                colorline="red",
             ),
         ],
         [

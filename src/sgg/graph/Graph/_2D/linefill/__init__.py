@@ -25,7 +25,7 @@ class Linefill(twoElement):
         plot = self.ax.plot(
             x, (ymax + ymin) / 2, linewidth=centerlinewidth, solid_capstyle="butt"
         )
-        self.graphdata.append([fill, plot[0]])
+        self.graphdata=[fill, plot[0]]
         self._apply_labels(self.xlabel, self.ylabel)
         self.legend()
         self._adjustment()

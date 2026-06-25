@@ -1,6 +1,6 @@
 import numpy as np
 
-from ....dev import bols, list2num, num0s, parsecolor, range_num
+from ....dev import bols, num0s, parsecolor, range_num
 from ....nparray import NPNumber
 from ....nparray.array.nparray import change_array_like
 from ..graph import GElement
@@ -22,26 +22,8 @@ class RadarElement(GElement):
         self.ax = self.fig.add_subplot(111, projection="radar")
         self.title = self.set_title(self.titles)
         # 目盛り
-        self.xmajorint = bols(kw.get("xmajorint"))
-        self.ymajorint = bols(kw.get("ymajorint"))
         self.xticksshow = bols(kw.get("xticksshow"), False)
         self.yticksshow = bols(kw.get("yticksshow"), False)
-        xticksrange = kw.get("xticksrange", 0)
-        yticksrange = kw.get("yticksrange", 0)
-        if isinstance(xticksrange, int | float):
-            xticksrange = abs(xticksrange)
-            self.xticksrange = (xticksrange * -1, xticksrange)
-        elif list2num(xticksrange):
-            self.xticksrange = xticksrange
-        else:
-            self.xticksrange = (0, 0)
-        if isinstance(yticksrange, int | float):
-            yticksrange = abs(yticksrange)
-            self.yticksrange = (yticksrange * -1, yticksrange)
-        elif list2num(yticksrange):
-            self.yticksrange = yticksrange
-        else:
-            self.yticksrange = (0, 0)
 
     def _apply_theme_colors(self):
         self.ax.set_facecolor(self.graph_bg)
@@ -92,12 +74,6 @@ class RadarElement(GElement):
                 self.ax.set_yticks([])
 
     def _adjustment(self):
-        xlimmins, xlimmaxs = self.xticksrange
-        xlimmin, xlimmax = self.ax.get_xlim()
-        ylimmins, ylimmaxs = self.yticksrange
-        ylimmin, ylimmax = self.ax.get_ylim()
-        self.ax.set_xlim(xlimmin + xlimmins, xlimmax + xlimmaxs)
-        self.ax.set_ylim(ylimmin + ylimmins, ylimmax + ylimmaxs)
         self.ax.set_thetagrids(np.degrees(self.theta))
         if self.tight_layout:
             self.fig.tight_layout()

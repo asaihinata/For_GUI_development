@@ -46,8 +46,9 @@ class Stack(twoElement):
             ["zero", "sym", "wiggle", "weighted_wiggle"],
             self.baseline,
         )
-        hatch = kw.get("hatch", None)
-        self.hatch = parameters(hatch, self.hatch, Hatch(hatch))
+        hatch = kw.get("hatch")
+        if hatch is not None:
+            self.hatch = Hatch(hatch)
         self.__plot(
             self.__x,
             self.__y,

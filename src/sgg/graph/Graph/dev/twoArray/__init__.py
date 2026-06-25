@@ -30,7 +30,7 @@ class TwoArray:
 
     def __iter__(self):
         for i in self.__data:
-            yield i[0]
+            yield i[0][0],i[0][1]
 
     @property
     def x(self):

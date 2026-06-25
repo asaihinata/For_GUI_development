@@ -36,7 +36,7 @@ if __name__ == "__main__":
                 y=waterfally,
                 title="バーとバーを繋ぐ線の色を変更する",
                 width=0.5,
-                colorline="green",
+                colorline="red",
             ),
         ],
         [

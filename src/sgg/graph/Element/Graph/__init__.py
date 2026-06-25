@@ -72,10 +72,10 @@ class GElement:
         rcParams["axes.prop_cycle"] = cycler(color=self.color)
         self.alpha = range_num(num0s(kw.get("alpha"), 1), 0, 1, 1)
         self.dpi = num1s(kw.get("dpi"), 100)
-        self.width, self.height = self._size(kw.get("size"))
+        self.widths, self.heights = self._size(kw.get("size"))
         # グラフの表示
         self.fig = Figure(
-            figsize=(self.width / self.dpi, self.height / self.dpi),
+            figsize=(self.widths / self.dpi, self.heights / self.dpi),
             dpi=self.dpi,
             facecolor=self.graph_bg,
         )

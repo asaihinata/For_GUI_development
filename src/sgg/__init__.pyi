@@ -1752,8 +1752,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -1809,9 +1809,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -1853,8 +1853,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -1910,9 +1910,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -1951,8 +1951,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -2011,9 +2011,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2051,8 +2051,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -2109,9 +2109,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2150,8 +2150,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -2201,9 +2201,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2242,8 +2242,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -2293,9 +2293,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2394,8 +2394,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -2451,9 +2451,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2496,8 +2496,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -2555,9 +2555,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2601,8 +2601,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -2660,9 +2660,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2705,8 +2705,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -2764,9 +2764,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2808,8 +2808,8 @@ class Guis:
         grid_y: bool = False,
         grid_z: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         zmajorint: bool = True,
@@ -2871,9 +2871,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param zticksrange: z軸の目盛の範囲を変更する
         :type zticksrange: int | float | tuple[int | float,...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
@@ -2929,8 +2929,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -2990,9 +2990,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3029,8 +3029,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -3083,9 +3083,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3124,8 +3124,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -3171,9 +3171,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3220,8 +3220,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -3281,9 +3281,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3325,8 +3325,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -3378,9 +3378,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3420,8 +3420,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -3473,9 +3473,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3514,8 +3514,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -3571,9 +3571,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3623,8 +3623,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -3647,13 +3647,13 @@ class Guis:
         :type xerr: TypeArrayLikeNumber
         :param yerr: `y`のデータの誤差の配列を指定する
         :type yerr: TypeArrayLikeNumber
-        :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
+        :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態について指定する
         :type xuplims: bool
-        :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
+        :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態について指定する
         :type xlolims: bool
-        :param yuplims: `y`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
+        :param yuplims: `y`の上向きの誤差が「限界値」であることを示す矢印の状態について指定する
         :type yuplims: bool
-        :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
+        :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態について指定する
         :type ylolims: bool
         :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する
         :type barsabove: bool
@@ -3696,9 +3696,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3739,8 +3739,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -3794,9 +3794,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3839,8 +3839,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -3898,9 +3898,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3949,8 +3949,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -4016,9 +4016,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -4061,8 +4061,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         xmajorint: bool = True,
         ymajorint: bool = True,
         ticksshow: bool = False,
@@ -4122,9 +4122,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -4162,10 +4162,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
-        xmajorint: bool = True,
-        ymajorint: bool = True,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
@@ -4207,13 +4205,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
-        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
-        :type xmajorint: bool
-        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
-        :type ymajorint: bool
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4246,10 +4240,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
-        xmajorint: bool = True,
-        ymajorint: bool = True,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
@@ -4289,13 +4281,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
-        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
-        :type xmajorint: bool
-        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
-        :type ymajorint: bool
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4330,10 +4318,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
-        xmajorint: bool = True,
-        ymajorint: bool = True,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
@@ -4377,13 +4363,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
-        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
-        :type xmajorint: bool
-        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
-        :type ymajorint: bool
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4417,10 +4399,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
-        xmajorint: bool = True,
-        ymajorint: bool = True,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
@@ -4462,13 +4442,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
-        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
-        :type xmajorint: bool
-        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
-        :type ymajorint: bool
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4511,10 +4487,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
-        xmajorint: bool = True,
-        ymajorint: bool = True,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
@@ -4533,13 +4507,13 @@ class Guis:
         :type xerr: TypeArrayLikeNumber
         :param yerr: `y`のデータの誤差の配列を指定する
         :type yerr: TypeArrayLikeNumber
-        :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
+        :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態について指定する
         :type xuplims: bool
-        :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
+        :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態について指定する
         :type xlolims: bool
-        :param yuplims: `y`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
+        :param yuplims: `y`の上向きの誤差が「限界値」であることを示す矢印の状態について指定する
         :type yuplims: bool
-        :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
+        :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態について指定する
         :type ylolims: bool
         :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する
         :type barsabove: bool
@@ -4574,13 +4548,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
-        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
-        :type xmajorint: bool
-        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
-        :type ymajorint: bool
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4622,10 +4592,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
-        xmajorint: bool = True,
-        ymajorint: bool = True,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
@@ -4642,13 +4610,13 @@ class Guis:
         :type xerr: TypeArrayLikeNumber
         :param yerr: `y`のデータの誤差の配列を指定する
         :type yerr: TypeArrayLikeNumber
-        :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
+        :param xuplims: `x`の上向きの誤差が「限界値」であることを示す矢印の状態について指定する
         :type xuplims: bool
-        :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
+        :param xlolims: `x`の下向きの誤差が「限界値」であることを示す矢印の状態について指定する
         :type xlolims: bool
-        :param yuplims: `y`の上向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
+        :param yuplims: `y`の上向きの誤差が「限界値」であることを示す矢印の状態について指定する
         :type yuplims: bool
-        :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態にするか指定する
+        :param ylolims: `y`の下向きの誤差が「限界値」であることを示す矢印の状態について指定する
         :type ylolims: bool
         :param barsabove: 誤差範囲をグラフ記号の上に表示させるか指定する
         :type barsabove: bool
@@ -4683,13 +4651,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
-        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
-        :type xmajorint: bool
-        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
-        :type ymajorint: bool
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4724,10 +4688,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
-        xmajorint: bool = True,
-        ymajorint: bool = True,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
@@ -4771,13 +4733,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
-        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
-        :type xmajorint: bool
-        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
-        :type ymajorint: bool
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4811,10 +4769,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
-        xmajorint: bool = True,
-        ymajorint: bool = True,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
@@ -4856,13 +4812,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
-        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
-        :type xmajorint: bool
-        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
-        :type ymajorint: bool
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4894,10 +4846,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
-        xmajorint: bool = True,
-        ymajorint: bool = True,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
@@ -4939,13 +4889,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
-        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
-        :type xmajorint: bool
-        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
-        :type ymajorint: bool
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4978,10 +4924,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
-        xmajorint: bool = True,
-        ymajorint: bool = True,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
@@ -5021,13 +4965,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
-        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
-        :type xmajorint: bool
-        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
-        :type ymajorint: bool
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -5059,10 +4999,8 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
-        xmajorint: bool = True,
-        ymajorint: bool = True,
+        xticksrange: int | float | tuple[int | float,int | float] = 0,
+        yticksrange: int | float | tuple[int | float,int | float] = 0,
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
@@ -5100,13 +5038,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
-        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
-        :type xmajorint: bool
-        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
-        :type ymajorint: bool
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -5125,7 +5059,7 @@ class Guis:
     def RadarLine(
         data: TypeArrayLikeNumber = ...,
         markersize: int | float = 10,
-        marker: Type_Marker = "none",
+        marker: Type_Marker = "",
         linestyle: Type_Solid = "-",
         linewidth: int | float = 2,
         alpha: int | float = 1,
@@ -5139,10 +5073,6 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
-        xmajorint: bool = True,
-        ymajorint: bool = True,
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
@@ -5153,11 +5083,11 @@ class Guis:
 
         :param data: `data`のデータを指定する
         :type data: TypeArrayLikeNumber
-        :param linewidth: 折線グラフの線の幅を指定する
+        :param linewidth: 折線レーダーチャートの線の幅を指定する
         :type linewidth: int | float
-        :param markersize: 折線グラフのマーカーの大きさを指定する
+        :param markersize: 折線レーダーチャートのマーカーの大きさを指定する
         :type markersize: int | float
-        :param marker: 折線グラフのマーカーを指定する
+        :param marker: 折線レーダーチャートのマーカーを指定する
         :type marker: Type_Marker
         :param linestyle: 折線グラフの線の種類を指定する
         :type linestyle: Literal["solid","-","dashed","--","dash-dot","-.","dotted",": ","none",None," ",""]
@@ -5183,24 +5113,12 @@ class Guis:
         :type grid_y: bool
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
-        :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
-        :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
-        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
-        :type xmajorint: bool
-        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
-        :type ymajorint: bool
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
         :type xticksshow: bool
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
-        :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
-        :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -5219,10 +5137,6 @@ class Guis:
         grid_x: bool = False,
         grid_y: bool = False,
         tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, ...] = 0,
-        yticksrange: int | float | tuple[int | float, ...] = 0,
-        xmajorint: bool = True,
-        ymajorint: bool = True,
         ticksshow: bool = False,
         xticksshow: bool = False,
         yticksshow: bool = False,
@@ -5256,23 +5170,15 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,...]
+        :type xticksrange: int | float | tuple[int | float,int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,...]
-        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
-        :type xmajorint: bool
-        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
-        :type ymajorint: bool
+        :type yticksrange: int | float | tuple[int | float,int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
         :type xticksshow: bool
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
-        :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
-        :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """

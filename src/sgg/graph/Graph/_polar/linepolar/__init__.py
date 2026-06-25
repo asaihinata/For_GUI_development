@@ -23,8 +23,7 @@ class Linepolar(polarElement):
 
     def __plot(self, x, y, marker, linewidth, linestyle, markersize, alpha):
         self.clear()
-        self.graphdata = [
-            self.ax.plot(
+        self.graphdata = self.ax.plot(
                 x,
                 y,
                 marker=marker.marker,
@@ -33,7 +32,6 @@ class Linepolar(polarElement):
                 linestyle=linestyle.solid,
                 alpha=alpha,
             )
-        ]
         self._adjustment()
 
     def update(self, x=None, y=None, data=None, **kw):
@@ -44,8 +42,12 @@ class Linepolar(polarElement):
             y = self.__y
         self.__x, self.__y = self._xyd(x, y, data)
         self.markersize = num0(kw.get("markersize"), 10)
-        self.marker = Marker(kw.get("marker", self.marker))
-        self.line = Solid(kw.get("linestyle", self.line))
+        marker = kw.get("marker")
+        if marker is not None:
+            self.marker = Marker(marker)
+        line = kw.get("linestyle")
+        if line is not None:
+            self.line = Solid(line)
         self.linewidth = num0(kw.get("linewidth"), 2)
         self.__plot(
             self.__x,

@@ -11,11 +11,11 @@ class Waterfall(twoElement):
         self.bottom = np.cumsum(np.append(0, self.__y)[0 : self.__y.size])
         self.ucolor = parsecolor(kw.get("ucolor"), "#156082")
         self.dcolor = parsecolor(kw.get("dcolor"), "#e97132")
-        self.width = range_num(num0s(kw.get("width"), 1), 0, 1, 1)
+        self.width = range_num(num0(kw.get("width"), 1), 0, 1, 1)
         self.sums = bols(kw.get("sums"), False)
         self.sumstext = kw.get("sumstext", "sum")
         self.colorline = parsecolor(kw.get("colorline"), "#4477aa")
-        self.linestyle = Solid(kw.get("linestyle", "-")).solid
+        self.linestyle = Solid(kw.get("linestyle", "-"))
         self.__plot(
             self.__x,
             self.__y,
@@ -66,7 +66,7 @@ class Waterfall(twoElement):
         yticks = self.ax.get_yticks()
         self.ax.set_ylim(yticks.min(), yticks.max())
         if width != 1:
-            self._horiline(np.cumsum(y), width, color, linestyle)
+            self._horiline(np.cumsum(y), width, color, linestyle.solid)
         self._apply_labels(self.xlabel, self.ylabel)
 
     def update(self, x=None, y=None, **kw):
@@ -82,7 +82,9 @@ class Waterfall(twoElement):
         self.dcolor = parsecolor(kw.get("dcolor"), self.dcolor)
         self.width = range_num(num0s(kw.get("width"), self.width), 0, 1, self.width)
         self.colorline = parsecolor(kw.get("colorline"), self.colorline)
-        self.linestyle = Solid(kw.get("linestyle", self.linestyle)).solid
+        solid=kw.get("linestyle")
+        if solid is not None:
+            self.linestyle = Solid(solid)
         self.__plot(
             self.__x,
             self.__y,
