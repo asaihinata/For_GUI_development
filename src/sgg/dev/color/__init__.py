@@ -11,7 +11,7 @@ __all__ = ["Color", "parsecolor"]
 class Color:
     def __init__(self, color):
         colors = _gets(color)
-        self.__color = NPColor(color)[0] if colors is None else f"#{colors[1]}"
+        self.__color = NPColor(color)[0] if colors is None else f"{colors[1]}"
 
     def __repr__(self):
         return f"Color({self.__color})"
