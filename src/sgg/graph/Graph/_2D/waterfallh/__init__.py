@@ -83,7 +83,7 @@ class Waterfallh(twoElement):
         self.dcolor = parsecolor(kw.get("dcolor"), self.dcolor)
         self.height = range_num(num0s(kw.get("height"), self.height), 0, 1, self.height)
         self.colorline = parsecolor(kw.get("colorline"), self.colorline)
-        solid=kw.get("linestyle")
+        solid = kw.get("linestyle")
         if solid is not None:
             self.linestyle = Solid(solid)
         self.__plot(

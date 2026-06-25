@@ -24,14 +24,14 @@ class Linepolar(polarElement):
     def __plot(self, x, y, marker, linewidth, linestyle, markersize, alpha):
         self.clear()
         self.graphdata = self.ax.plot(
-                x,
-                y,
-                marker=marker.marker,
-                linewidth=linewidth,
-                markersize=markersize,
-                linestyle=linestyle.solid,
-                alpha=alpha,
-            )
+            x,
+            y,
+            marker=marker.marker,
+            linewidth=linewidth,
+            markersize=markersize,
+            linestyle=linestyle.solid,
+            alpha=alpha,
+        )
         self._adjustment()
 
     def update(self, x=None, y=None, data=None, **kw):

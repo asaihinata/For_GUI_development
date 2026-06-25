@@ -4,7 +4,7 @@ from .isdtype import (booldDtype, boolDtype, complexdDtype, complexDtype, floatd
                       floatDtype, intdDtype, intDtype, integerdDtype, integerDtype,
                       numberdDtype, numberDtype, strdDtype, strDtype, uintdDtype,
                       uintDtype)
-from .scalar import ScalarNum, ScalarInt, ScalarFloat, ScalarStr, ScalarBool
+from .scalar import ScalarBool, ScalarFloat, ScalarInt, ScalarNum, ScalarStr
 
 __all__ = [
     "ScalarNum",

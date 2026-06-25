@@ -104,9 +104,7 @@ class NPArray:
     def tonp(self, dtype: DTypeLike = "none") -> ndarray:
         """配列をNumPyの`ndarray`に変換する"""
 
-    def lengtharange(
-        self, start: int = 0, dtype: DTypeLike | None = None
-    ) -> ndarray:
+    def lengtharange(self, start: int = 0, dtype: DTypeLike | None = None) -> ndarray:
         """
         配列の形状に合わせたインデックス配列を生成する。
 
@@ -117,6 +115,7 @@ class NPArray:
         :return: `data`と同じ形状を持つインデックス配列を返す
         :rtype: ndarray
         """
+
     def _flatten(
         self,
     ) -> tuple[ndarray[tuple[int], dtype[_ScalarT]], tuple[int, ...]]: ...

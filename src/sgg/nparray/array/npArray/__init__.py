@@ -28,7 +28,7 @@ class NPArray:
             raise TypeError(
                 "dataには配列もしくは__array__を持っているオブジェクトを指定してください"
             )
-        if dtype=="auto":
+        if dtype == "auto":
             self.__data = array(data)
             self.__dtype = self.__data.dtype
         else:

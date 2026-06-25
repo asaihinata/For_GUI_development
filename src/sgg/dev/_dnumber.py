@@ -27,15 +27,15 @@ def nums(val, other=None):
     return val if numberDtype(val) else other
 
 
-def num1s(val=0, mins=1):
+def num1s(val, mins=1):
     return val if numberDtype(val) and 1 <= val else mins
 
 
-def num0s(val=0, mins=0):
+def num0s(val, mins=0):
     return val if numberDtype(val) and 0 <= val else mins
 
 
-def num0(val=0, mins=0):
+def num0(val, mins=0):
     return val if numberDtype(val) and 0 < val else mins
 
 

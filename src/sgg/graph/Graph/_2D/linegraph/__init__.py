@@ -1,4 +1,5 @@
 from itertools import product
+
 from ...dev import *
 
 __all__ = ["LineGraph"]
@@ -36,7 +37,8 @@ class LineGraph(twoElement):
         label,
     ):
         self.clear()
-        self.graphdata = [self.ax.plot(
+        self.graphdata = [
+            self.ax.plot(
                 xs,
                 ys,
                 linestyle=linestyle[i],
@@ -45,7 +47,9 @@ class LineGraph(twoElement):
                 markersize=markersize,
                 alpha=alpha,
                 label=label[i],
-            )for i, (xs, ys) in enumerate(product(x, y))][0]
+            )
+            for i, (xs, ys) in enumerate(product(x, y))
+        ][0]
         self._apply_labels(self.xlabel, self.ylabel)
         self.legend()
         self._adjustment()

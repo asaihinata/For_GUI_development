@@ -9,16 +9,16 @@ from ....typing import TypeArrayLikeNumber
 
 __all__ = ["NPStatisticsd"]
 
-Type_Method:TypeAlias=Literal[
-            "inverted_cdf",
-            "averaged_inverted_cdf",
-            "closest_observation",
-            "interpolated_inverted_cdf",
-            "hazen",
-            "weibull",
-            "linear",
-"median_unbiased",
-"normal_unbiased",
+Type_Method: TypeAlias = Literal[
+    "inverted_cdf",
+    "averaged_inverted_cdf",
+    "closest_observation",
+    "interpolated_inverted_cdf",
+    "hazen",
+    "weibull",
+    "linear",
+    "median_unbiased",
+    "normal_unbiased",
 ]
 BINS_LIST: TypeAlias = Literal[
     "stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"
