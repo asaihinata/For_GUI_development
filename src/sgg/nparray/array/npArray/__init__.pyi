@@ -1,135 +1,233 @@
-from collections.abc import Iterator
-from types import NotImplementedType
-from typing import Any, Literal
+from __future__ import annotations
 
-from numpy import _CopyMode, _ScalarT, dtype, ndarray, ufunc
-from numpy._typing import ArrayLike, DTypeLike
+from typing import Any, Iterator
 
-__all__ = ["NPArray", "is_array_like", "change_array_like"]
+import numpy as np
+from numpy.lib.mixins import NDArrayOperatorsMixin
+from numpy.typing import DTypeLike,ArrayLike
 
-def is_array_like(obj: ndarray | list | tuple | range) -> bool:
-    """配列もしくは__array__を持つオブジェクトを判定する"""
+__all__ = ["is_array_like", "change_array_like", "NPArray"]
 
-def change_array_like(obj: ndarray | list | tuple | range) -> bool:
+def is_array_like(obj: Any) -> bool:
+    """配列のようなオブジェクトかを判定する"""
+
+def change_array_like(obj: Any) -> bool:
     """NumPyの`array`に変換できるかを判定する"""
 
-class NPArray:
-    def __init__(
-        self,
-        data: ArrayLike,
-        dtype: DTypeLike | Literal["auto"] | None = "auto",
-        depth_limit: int | None = None,
+HANDLED_FUNCTIONS: dict = {}
+
+def implements(np_function) -> Any:
+    """numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
+
+    :param np_function: 登録対象のnumpy関数
+    :return: デコレータ関数を返す
+    """
+
+class NPArray(NDArrayOperatorsMixin, np.ndarray):
+    """`np.ndarray`を継承した型付き配列クラス
+
+    型チェックは :attr:`_element_type` によるPython型で行う
+    サブクラスでは :attr:`_element_type` と :attr:`_default_dtype` をオーバーライドして型制約を追加できる
+    """
+    _default_dtype: np.dtype | None = np.dtype("object")
+    _element_type: type | tuple[type, ...] | None = None
+    def __new__(
+        cls,
+        input_array: ArrayLike,
+        dtype: DTypeLike | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPArray:
+        """新しい`NPArray`インスタンスを生成する
+
+        :param input_array: NPArrayに変換する配列を指定する
+        :type input_array: ArrayLike
+        :param dtype: 配列のdtypeを指定する
+        :type dtype: DTypeLike | None
+        :param d_ndim: 固定される次元数を指定する
+        :type d_ndim: int | None
+        :param min_ndim: 許容する最小次元数を指定する
+        :type min_ndim: int | None
+        :param max_ndim: 許容する最大次元数を指定する
+        :type max_ndim: int | None
+        :return: 生成された`NPArray`インスタンスを返す
+        :rtype: NPArray
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 要素型が`_element_type`と一致しない場合
+        """
+
+    def __array_finalize__(self, obj: np.ndarray | None) -> None:
+        """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
+
+    @classmethod
+    def _validate_ndim(
+        cls,
+        obj: np.ndarray,
+        min_ndim: int | None,
+        max_ndim: int | None,
     ) -> None:
+        """配列の次元数がmin_ndim・max_ndimの範囲内か検証する
+
+        :param obj: 検証対象の配列
+        :param min_ndim: 許可する最小次元数Noneの場合は制約なし
+        :param max_ndim: 許可する最大次元数Noneの場合は制約なし
+        :raises ValueError: 次元数が範囲外の場合
         """
-        :param data: データの配列を指定する
-        :type data: ArrayLike
-        :param dtype: 配列のデータ型を指定する
-        :type dtype: DTypeLike | Literal["auto"] | None
-        :param depth_limit: 配列の最大の深さを指定する
-        :type depth_limit: int | None
+
+    def __array_finalize__(self, obj: np.ndarray | None) -> None:
+        """スライスやview後もdtype情報を引き継ぐ"""
+    @classmethod
+    def _resolve_dtype(
+        cls,
+        dtype: np.dtype | str | type | None,
+    ) -> np.dtype | None:
+        """引数dtypeを解決させる
+
+        :param dtype: ユーザーが指定するdtype
+        :return: 解決されたdtypeを返す
+        :rtype: numpy.dtype | None
         """
-    # 親クラス,子クラス共通の特殊メソッド
-    def __getitem__(self, key: int) -> Any: ...
-    def __contains__(self, item: Any) -> bool: ...
-    def __iter__(self) -> Iterator[Any]: ...
-    def __len__(self) -> int: ...
-    def __array__(
-        self, dtype: DTypeLike | None = None, copy: bool | _CopyMode | None = None
-    ) -> ndarray: ...
-    def __reversed__(self) -> NPArray:
-        """`numpy.fliplr`を実行する"""
-    # 以下の特殊メソッドはそれぞれの子クラス毎に処理を変更する必要がある
-    def __repr__(self) -> str: ...
+
+    @classmethod
+    def _validate_elements(cls, obj: np.ndarray) -> None:
+        """配列内の要素が`_element_type`と一致するか検証する
+
+        :param obj: 検証対象の配列
+        :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
+        """
+
+    @property
+    def dtypes(self) -> np.dtype | None:
+        """インスタンス生成時に確定したdtypeを取得する
+
+        :return:
+        :rtype: numpy.dtype | None
+        """
     def __array_ufunc__(
         self,
-        ufunc: ufunc,
-        method: Literal["__call__", "reduce", "reduceat", "accumulate", "outer", "at"],
-        *args: Any,
+        ufunc: np.ufunc,
+        method: str,
+        *inputs: Any,
         **kwargs: Any,
-    ) -> Any | NotImplementedType | NPArray: ...
-    @property
-    def nbytes(self) -> int: ...
-    @property
-    def T(self) -> NPArray: ...
-    @property
-    def ndim(self) -> int: ...
-    @property
-    def shape(self) -> tuple[int, ...]: ...
-    @property
-    def size(self) -> int: ...
-    @property
-    def dtype(self) -> DTypeLike: ...
-    @property
-    def data(self) -> ndarray: ...
-    @data.setter
-    def data(self, datas: ArrayLike) -> NPArray: ...
-    def shapesize(self, shapes: tuple[int, ...]) -> bool:
+    ) -> NPArray | Any:
+        """NumPyのufuncの動作をカスタマイズする
+
+        :param ufunc: 呼び出されたufunc
+        :type ufunc: np.ufunc
+        :param method: 呼び出しメソッド名
+        :type method: str
+        :param inputs: ufuncへの入力
+        :type inputs: Any
+        :param kwargs: ufuncへの追加引数
+        :type kwargs: Any
+        :return: 処理結果を返す
+        :rtype: NPArray | Any
         """
-        配列の形状が指定した`shapes`の形状と一致するか調べる
-
-        :param shape: 形状を指定する
-        :type shape: tuple[int,...]
-        """
-
-    def astype(self, dtype: DTypeLike | None) -> NPArray:
-        """`dtype`で指定された型に変更します"""
-
-    def sort(self) -> NPArray:
-        """`data`にソートを実行する"""
-
-    def first_pop(self) -> NPArray:
-        """配列の最初の要素のコピーをその配列の末尾に追加する"""
-
-    def clear(self) -> NPArray:
-        """配列をクリアする"""
-
-    def deep_add(self, val: int) -> NPArray:
-        """配列の深さを`val`分だけ追加する"""
-
-    def deep_add(self, val: int) -> NPArray:
-        """配列の深さが`val`より低い場合,深さを`val`にする"""
-
-    def reshape(self, size: tuple[int, ...]) -> NPArray:
-        """配列の形状を`size`に変換する"""
-
-    def flatten(self) -> NPArray:
-        """配列を一次元に平坦にする"""
-
-    def first_element(self) -> Any:
-        """`NPArray`の最初の要素を取得する"""
-
-    def tolist(self) -> list:
-        """list型にして返す"""
-
-    def tonp(self, dtype: DTypeLike | Literal["none"] = "none") -> ndarray:
-        """配列をNumPyの`ndarray`に変換する"""
-
-    def lengtharange(self, start: int = 0, dtype: DTypeLike | None = None) -> ndarray:
-        """
-        配列の形状に合わせたインデックス配列を生成する。
-
-        :param start: 連番の開始値を指定する
-        :type start: int
-        :param dtype: 出力配列のデータ型を指定する
-        :type dtype: DTypeLike | None
-        :return: `data`と同じ形状を持つインデックス配列を返す
-        :rtype: ndarray
-        """
-
-    def _flatten(
+    def __array_function__(
         self,
-    ) -> tuple[ndarray[tuple[int], dtype[_ScalarT]], tuple[int, ...]]: ...
-    def dimension(self) -> bool:
-        """`NPArray`の次元が1次元か判定する"""
+        func: Any,
+        types: Any,
+        args: tuple,
+        kwargs: dict,
+    ) -> Any:
+        """numpy関数の動作をカスタマイズする
 
-    def dimensions(self) -> bool:
-        """`NPArray`の次元が多次元か判定する"""
+        :param func: 呼び出されたnumpy関数
+        :type func: Any
+        :param types: 関連する型のコレクション
+        :type types: Any
+        :param args: 位置引数
+        :type args: tuple
+        :param kwargs: キーワード引数
+        :type kwargs: dict
+        :return: 演算結果を返す
+        :rtype: Any
+        """
 
-    def get(self, val: int) -> Any:
-        """配列の`val`番目の要素を取得する"""
+    def __repr__(self) -> str: ...
+    def __str__(self) -> str: ...
+    def to_1d(self) -> NPArray:
+        """配列を1次元にフラット化した新しい`NPArray`を返す
+
+        :return: フラット化した`NPArray`を返す
+        :rtype: NPArray
+        :raises ValueError: `min_ndim`が1以下の場合に発生させる
+        """
+
+    @property
+    def min_ndim(self) -> int | None:
+        """`NPArray`が許容する最小次元数を返す"""
+
+    @property
+    def max_ndim(self) -> int | None:
+        """`NPArray`が許容する最大次元数を返す"""
+
+    def lengtharange(self) -> NPArray:
+        """`NPArray`と同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
+
+        `dtype`は`np.uint64`に固定される
+
+        :return: インデックス配列を返す
+        :rtype: NPArray
+        """
+
+    def shapesize(self, shapes: tuple[int, ...]) -> bool:
+        """`NPArray`の`shape`が`shapes`と一致するかを確認する
+
+        :param shapes: 比較する`shape`を指定する
+        :type shapes: tuple[int, ...]
+        :return: `shape`が一致する場合は`True`を返し,一致しない場合は`False`を返す
+        :rtype: bool
+        """
+
+    @property
+    def data(self) -> np.ndarray:
+        """内部に保持している実際の`np.ndarray`を取得する
+
+        :return: 内部に保持している実際の`np.ndarray`を返す
+        :rtype: np.ndarray
+        """
+
+    def get(self, key: int) -> Any:
+        """:attr:`__getitem__` と同じ処理を実行する
+
+        :param key: 取得するインデックス
+        :type key: int
+        :return: インデックスに対応する要素を返す
+        :rtype: Any
+        """
+
+    def __iter__(self) -> Iterator[Any]: ...
+    def __getitem__(self, key: int) -> Any:
+        """インデックスアクセスをカスタマイズする
+
+        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
+
+        :param key: インデックスまたはスライスを指定する
+        :type key: int
+        :return: インデックスに対応する要素を返す
+        :rtype: Any
+        :raises IndexError: 配列が空の場合
+        """
 
     def all_None(self) -> bool:
-        """配列の全ての要素が`None`かを調べる"""
+        """配列内の全要素が`None`かどうかを返す
 
-    def all_None(self) -> bool:
-        """要素内に`None`が存在するかを調べる"""
+        :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
+        :rtype: bool
+        """
+
+    def any_None(self) -> bool:
+        """配列内のいずれかの要素が`None`かどうかを返す
+
+        :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
+        :rtype: bool
+        """
+
+    def __contains__(self, item: Any) -> bool: ...
+    def __reversed__(self) -> NPArray:
+        """逆順にした新しい`NPArray`を返す
+
+        :return: 全軸で反転した配列を返す
+        :rtype: NPArray
+        """
