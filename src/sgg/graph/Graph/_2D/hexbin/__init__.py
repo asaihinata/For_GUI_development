@@ -18,18 +18,17 @@ class Hexbin(twoElement):
         self.yscale = listchose(kw.get("yscale"), ["linear", "log"])
         self.mincnt = int1s(kw.get("mincnt"))
         bins = kw.get("bins")
-        self.bins = (
-            bins
-            if (
-                bins == "log"
-                or isinstance(bins, int | float)
-                or (
-                    isinstance(bins, list | tuple)
-                    and (isinstance(i, int | float) for i in bins)
-                )
+        if (
+            bins == "log"
+            or isinstance(bins, int | float)
+            or (
+                isinstance(bins, list | tuple)
+                and (isinstance(i, int | float) for i in bins)
             )
-            else None
-        )
+        ):
+            self.bins = bins
+        else:
+            self.bins = None
         self.__plot(
             self.__x,
             self.__y,
@@ -90,18 +89,17 @@ class Hexbin(twoElement):
         self.yscale = listchose(kw.get("yscale"), ["linear", "log"], self.yscale)
         self.mincnt = int1s(kw.get("mincnt", self.mincnt))
         bins = kw.get("bins", self.bins)
-        self.bins = (
-            bins
-            if (
-                bins == "log"
-                or isinstance(bins, int | float)
-                or (
-                    isinstance(bins, list | tuple)
-                    and (isinstance(i, int | float) for i in bins)
-                )
+        if (
+            bins == "log"
+            or isinstance(bins, int | float)
+            or (
+                isinstance(bins, list | tuple)
+                and (isinstance(i, int | float) for i in bins)
             )
-            else None
-        )
+        ):
+            self.bins = bins
+        else:
+            self.bins = None
         self.__plot(
             self.__x,
             self.__y,

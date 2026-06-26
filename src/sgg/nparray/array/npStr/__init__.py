@@ -47,10 +47,10 @@ class NPString(NPArray):
         self.data = nps.add(self.data, self.___datas(other))
         return self
 
-    def __mul__(self, other):
-        if not isinstance(other, int):
+    def __mul__(self, i):
+        if not isinstance(i, int):
             raise TypeError("int型で指定してください")
-        self.data = nps.multiply(self.data, other)
+        self.data = nps.multiply(self.data, i)
         return self
 
     __radd__ = __add__

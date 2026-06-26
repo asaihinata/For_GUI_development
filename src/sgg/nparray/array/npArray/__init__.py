@@ -29,12 +29,12 @@ class NPArray:
                 "dataには配列もしくは__array__を持っているオブジェクトを指定してください"
             )
         if dtype == "auto":
-            datas= array(data)
-            datasd=datas.dtype
-            self.__data = array(data,dtype=datasd)
+            datas = array(data)
+            datasd = datas.dtype
+            self.__data = array(data, dtype=datasd)
             self.__dtype = datasd
-            datasd=datas=None
-            del datas,datasd
+            datasd = datas = None
+            del datas, datasd
         else:
             self.__dtype = dtype
             self.__data = array(data, dtype=self.__dtype)

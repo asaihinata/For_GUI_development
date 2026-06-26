@@ -8,13 +8,15 @@ class Hist2d(twoElement):
         super().__init__(master, kw)
         self.__x = NPNumber(kw.get("x"), depth_limit=1)
         self.__y = NPNumber(kw.get("y"), depth_limit=1)
-        self.max, self.min = nums(kw.get("max")), nums(kw.get("min"))
-        if (
-            isinstance(self.max, int | float)
-            and isinstance(self.min, int | float)
-            and self.max < self.min
-        ):
-            self.max, self.min = self.min, self.max
+        self.max = nums(kw.get("max"))
+        self.min = nums(kw.get("min"))
+        if self.max is not None or self.min is not None:
+            if (
+                isinstance(self.max, int | float)
+                and isinstance(self.min, int | float)
+                and self.max < self.min
+            ):
+                self.max, self.min = self.min, self.max
         self.xmax = self._powsmax(nums(kw.get("xmax")), self.__x)
         self.xmin = self._powsmin(nums(kw.get("xmin")), self.__x)
         self.ymax = self._powsmax(nums(kw.get("ymax")), self.__y)
@@ -33,8 +35,8 @@ class Hist2d(twoElement):
             alpha=self.alpha,
             density=self.density,
             range=self.range,
-            max=self.max,
             min=self.min,
+            max=self.max,
         )
 
     def __plot(self, x, y, bins, alpha, density, range, min, max):
@@ -87,8 +89,8 @@ class Hist2d(twoElement):
             alpha=self.alpha,
             density=self.density,
             range=self.range,
-            max=self.max,
             min=self.min,
+            max=self.max,
         )
         self._redraw()
 
@@ -119,10 +121,9 @@ class Hist2d(twoElement):
 
     def _bins(self, val):
         if change_array_like(val):
-            val=np.array(val)
-            if val.ndim==1 and 2<=val.size:
+            vals = np.array(val)
+            if vals.ndim == 1 and 2 <= vals.size:
                 return val
-        elif isinstance(val, int):
-            return val
-        else:
-            return 10
+        elif isinstance(val, int | float):
+            return int(val)
+        return 10

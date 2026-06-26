@@ -47,11 +47,13 @@ class NPString(NPArray):
         **kwargs: Any,
     ) -> Any | NotImplementedType | NPString: ...
     def __add__(self, other: np.ndarray | NPString) -> NPString: ...
-    def __mul__(self, other: int) -> NPString:
+    def __mul__(self, i: int) -> NPString:
         """
-        配列内の要素を`other`回付け加える
+        配列内の要素を`i`回付け加える
 
-        :raises TypeError: `other`に`int`型以外で指定した場合に発生させる
+        :param i: 付け加える回数を指定する
+        :type i: int
+        :raises TypeError: `i`に`int`型以外を指定した場合に発生させる
         """
     __radd__ = __add__
     __rmul__ = __mul__
