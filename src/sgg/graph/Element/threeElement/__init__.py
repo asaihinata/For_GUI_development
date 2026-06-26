@@ -38,8 +38,6 @@ class threeElement(GElement):
             kw.get("yticksdirection"), ["out", "in", "inout"]
         )
         xticksrange = kw.get("xticksrange", 0)
-        yticksrange = kw.get("yticksrange", 0)
-        zticksrange = kw.get("zticksrange", 0)
         if isinstance(xticksrange, int | float):
             xticksrange = abs(xticksrange)
             self.xticksrange = (xticksrange * -1, xticksrange)
@@ -47,6 +45,7 @@ class threeElement(GElement):
             self.xticksrange = xticksrange
         else:
             self.xticksrange = (0, 0)
+        yticksrange = kw.get("yticksrange", 0)
         if isinstance(yticksrange, int | float):
             yticksrange = abs(yticksrange)
             self.yticksrange = (yticksrange * -1, yticksrange)
@@ -54,6 +53,7 @@ class threeElement(GElement):
             self.yticksrange = yticksrange
         else:
             self.yticksrange = (0, 0)
+        zticksrange = kw.get("zticksrange", 0)
         if isinstance(zticksrange, int | float):
             zticksrange = abs(zticksrange)
             negnum = zticksrange * -1

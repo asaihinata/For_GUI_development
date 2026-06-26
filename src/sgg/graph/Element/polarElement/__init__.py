@@ -22,7 +22,6 @@ class polarElement(GElement):
         self.xticksshow = bols(kw.get("xticksshow"), False)
         self.yticksshow = bols(kw.get("yticksshow"), False)
         xticksrange = kw.get("xticksrange", 0)
-        yticksrange = kw.get("yticksrange", 0)
         if isinstance(xticksrange, int | float):
             xticksrange = abs(xticksrange)
             self.xticksrange = (xticksrange * -1, xticksrange)
@@ -30,6 +29,7 @@ class polarElement(GElement):
             self.xticksrange = xticksrange
         else:
             self.xticksrange = (0, 0)
+        yticksrange = kw.get("yticksrange", 0)
         if isinstance(yticksrange, int | float):
             yticksrange = abs(yticksrange)
             self.yticksrange = (yticksrange * -1, yticksrange)

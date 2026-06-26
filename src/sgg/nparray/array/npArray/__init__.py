@@ -1,11 +1,10 @@
-from numpy import (all as alls, any as anys, arange, array, concatenate, expand_dims,
-                   flip, isscalar, ndarray, prod, ravel, sort, tile)
+import numpy as np
 
 __all__ = ["NPArray", "is_array_like", "change_array_like"]
 
 
 def is_array_like(obj):
-    if isinstance(obj, ndarray | list | tuple | range):
+    if isinstance(obj, np.ndarray | list | tuple | range):
         return True
     elif hasattr(obj, "__array__"):
         return True
@@ -13,9 +12,9 @@ def is_array_like(obj):
 
 
 def change_array_like(obj):
-    if isinstance(obj, ndarray | list | tuple | range):
+    if isinstance(obj, np.ndarray | list | tuple | range):
         return True
-    elif isscalar(obj):
+    elif np.isscalar(obj):
         return True
     elif hasattr(obj, "__array__"):
         return True
@@ -29,15 +28,11 @@ class NPArray:
                 "dataには配列もしくは__array__を持っているオブジェクトを指定してください"
             )
         if dtype == "auto":
-            datas = array(data)
-            datasd = datas.dtype
-            self.__data = array(data, dtype=datasd)
-            self.__dtype = datasd
-            datasd = datas = None
-            del datas, datasd
+            self.__data = np.array(data)
+            self.__dtype = self.__data.dtype
         else:
             self.__dtype = dtype
-            self.__data = array(data, dtype=self.__dtype)
+            self.__data = np.array(data, dtype=self.__dtype)
         if isinstance(depth_limit, int) and depth_limit < self.__data.ndim:
             raise TypeError("配列の深さが制限の深さに達しました")
 
@@ -57,11 +52,11 @@ class NPArray:
         return item in self.__data
 
     def __reversed__(self):
-        self.__data = flip(self.__data)
+        self.__data = np.flip(self.__data)
         return self
 
     def __array__(self, dtype=None, copy=None):
-        return array(self.__data, dtype=dtype, copy=copy)
+        return np.array(self.__data, dtype=dtype, copy=copy)
 
     # 以下の特殊メソッドはそれぞれの子クラス毎に処理を変更する必要がある
     def __repr__(self):
@@ -71,13 +66,13 @@ class NPArray:
         if method == "__call__":
             args = [x.data if isinstance(x, NPArray) else x for x in args]
             result = ufunc(*args, **kwargs)
-            if isinstance(result, ndarray):
+            if isinstance(result, np.ndarray):
                 return NPArray(result)
             return result
         return NotImplemented
 
     def _flatten(self):
-        return ravel(self.__data), self.shape
+        return np.ravel(self.__data), self.shape
 
     @property
     def nbytes(self):
@@ -112,7 +107,7 @@ class NPArray:
     def data(self, datas):
         if not is_array_like(datas):
             raise TypeError("dataには配列の型を指定してください")
-        self.__data = array(datas, dtype=self.__dtype)
+        self.__data = np.array(datas, dtype=self.__dtype)
         return self
 
     def shapesize(self, shapes):
@@ -134,14 +129,14 @@ class NPArray:
         return self.__data.astype(dtype)
 
     def sort(self):
-        self.__data = sort(self.__data)
+        self.__data = np.sort(self.__data)
         return self
 
     def first_pop(self):
         if self.__data.ndim == 1:
-            self.__data = concatenate((self.__data, self.__data[0]), axis=0)
+            self.__data = np.concatenate((self.__data, self.__data[0]), axis=0)
         else:
-            self.__data = concatenate(
+            self.__data = np.concatenate(
                 (self.__data, [[i[0]] for i in self.__data]), axis=1
             )
         return self
@@ -159,14 +154,15 @@ class NPArray:
         shapes = self.shape
         lens = len(shapes)
         if lens == 1:
-            return arange(start, start + self.size, 1, dtype=dtype)
+            return np.arange(start, start + self.size, 1, dtype=dtype)
         else:
-            return tile(
-                arange(start, start + shapes[lens - 1], dtype=dtype), prod(shapes[:-1])
+            return np.tile(
+                np.arange(start, start + shapes[lens - 1], dtype=dtype),
+                np.prod(shapes[:-1]),
             ).reshape(shapes)
 
     def flatten(self):
-        self.__data = ravel(self.__data)
+        self.__data = np.ravel(self.__data)
         return self
 
     def reshape(self, size):
@@ -179,7 +175,7 @@ class NPArray:
         elif val <= 0:
             raise ValueError("valには1以上の整数を指定してください")
         for _ in range(val):
-            self.__data = expand_dims(self.__data, axis=0)
+            self.__data = np.expand_dims(self.__data, axis=0)
         return self
 
     def min_deep(self, val):
@@ -189,7 +185,7 @@ class NPArray:
             raise ValueError("valには1以上の整数を指定してください")
         if self.ndim < val:
             for _ in range(val - self.ndim):
-                self.__data = expand_dims(self.__data, axis=0)
+                self.__data = np.expand_dims(self.__data, axis=0)
         return self
 
     def get(self, val):
@@ -205,11 +201,11 @@ class NPArray:
             return self.__data[val]
 
     def clear(self):
-        self.__data = array([])
+        self.__data = np.array([])
         return self
 
     def all_None(self):
-        return bool(alls(self.__data == None))
+        return bool(np.all(self.__data == None))
 
     def any_None(self):
-        return bool(anys(self.__data == None))
+        return bool(np.any(self.__data == None))

@@ -101,7 +101,7 @@ class NPArray:
     def tolist(self) -> list:
         """list型にして返す"""
 
-    def tonp(self, dtype: DTypeLike = "none") -> ndarray:
+    def tonp(self, dtype: DTypeLike | Literal["none"] = "none") -> ndarray:
         """配列をNumPyの`ndarray`に変換する"""
 
     def lengtharange(self, start: int = 0, dtype: DTypeLike | None = None) -> ndarray:
