@@ -68,4 +68,4 @@ class Eventpolar(polarElement):
         return self.graphdata
 
     def getdata(self):
-        return self.__data.tonp()
+        return self.__data

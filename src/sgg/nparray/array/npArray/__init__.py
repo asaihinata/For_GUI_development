@@ -109,12 +109,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
     def max_ndim(self):
         return getattr(self, "_max_ndim", None)
 
-    def __array_ufunc__(
-        self,
-        ufunc,
-        method,
-        *inputs,
-        **kwargs):
+    def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
             np.asarray(x) if isinstance(x, NPArray) else x
             for x in inputs
@@ -146,6 +141,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
 
     def __iter__(self):
         if self.ndim == 1:
+            print(f"{self.data=}")
             return iter([self.data])
         return iter(self.data)
 

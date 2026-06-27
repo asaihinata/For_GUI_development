@@ -6,8 +6,8 @@ __all__ = ["Hatplot"]
 class Hatplot(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = NPNumber(kw.get("x"), depth_limit=1)
-        self.__data = NPNumber(kw.get("data"), depth_limit=1)
+        self.__x = NPNumber(kw.get("x"), max_ndim=1)
+        self.__data = NPNumber(kw.get("data"), max_ndim=1)
         self.color = parsecolor(kw.get("color"), "#4477aa")
         self.__plot(self.__x, self.__data, color=self.color, alpha=self.alpha)
 
@@ -49,9 +49,9 @@ class Hatplot(twoElement):
     def update(self, x=None, data=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = NPNumber(x, depth_limit=1)
+            self.__x = NPNumber(x, max_ndim=1)
         if change_array_like(data):
-            self.__data = NPNumber(data, depth_limit=1)
+            self.__data = NPNumber(data, max_ndim=1)
         self.color = parsecolor(kw.get("color"), self.color)
         self.__plot(self.__x, self.__data, color=self.color, alpha=self.alpha)
         self._redraw()
@@ -60,7 +60,7 @@ class Hatplot(twoElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonp()
+        return self.__x
 
     def getdata(self):
-        return self.__data.tonp()
+        return self.__data

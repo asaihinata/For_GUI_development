@@ -9,9 +9,9 @@ __all__ = ["DScatter"]
 class DScatter(_3Gset):
     def update(
         self,
-        x: TypeArraysLikeNS,
-        y: TypeArraysLikeNS,
-        z: TypeArraysLikeNS,
+        x: TypeArraysLikeNumber,
+        y: TypeArraysLikeNumber,
+        z: TypeArraysLikeNumber,
         fg: ColorType,
         bg: ColorType,
         alpha: int | float,

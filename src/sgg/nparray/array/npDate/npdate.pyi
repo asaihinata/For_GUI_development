@@ -16,15 +16,15 @@ class NPDate(NPArray):
         self,
         data: ArrayLike,
         dtype: _DT64Codes | np.datetime64 = "datetime64[D]",
-        depth_limit: int | None = None,
+        max_ndim: int | None = None,
     ) -> None:
         """
         :param data: データの配列を指定する
         :type data: ArrayLike
         :param dtype: numpyの配列で指定する型を指定する
         :type dtype: _DT64Codes | np.datetime64
-        :param depth_limit: 配列の最大の深さを指定する
-        :type depth_limit: int | None
+        :param max_ndim: 配列の最大の深さを指定する
+        :type max_ndim: int | None
         """
 
     def __iter__(self) -> Iterator[Any]: ...

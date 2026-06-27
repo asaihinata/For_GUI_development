@@ -10,8 +10,8 @@ class Barpolar(polarElement):
         self.width = range_num(num0s(kw.get("width"), 1), 0, 1, 1)
         self.align = listchose(kw.get("align"), ["center", "edge"])
         self.__plot(
-            self.__x.tonp(),
-            self.__y.tonp(),
+            self.__x,
+            self.__y,
             alpha=self.alpha,
             width=self.width,
             align=self.align,
@@ -39,8 +39,8 @@ class Barpolar(polarElement):
         self.width = range_num(num0s(kw.get("width"), self.width), 0, 1, self.width)
         self.align = listchose(kw.get("align"), ["center", "edge"], self.align)
         self.__plot(
-            self.__x.tonp(),
-            self.__y.tonp(),
+            self.__x,
+            self.__y,
             alpha=self.alpha,
             width=self.width,
             align=self.align,
@@ -52,7 +52,7 @@ class Barpolar(polarElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonp()
+        return self.__x
 
     def gety(self):
-        return self.__y.tonp()
+        return self.__y

@@ -8,9 +8,9 @@ __all__ = ["DScatter"]
 class DScatter(threeElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = NPArray(kw.get("x"))
-        self.__y = NPArray(kw.get("y"))
-        self.__z = NPArray(kw.get("z"))
+        self.__x = NPNumber(kw.get("x"))
+        self.__y = NPNumber(kw.get("y"))
+        self.__z = NPNumber(kw.get("z"))
         self.marker = MarkerList(kw.get("marker", "o"))
         self.s = num1s(kw.get("markersize"), 10)
         self.__plot(
@@ -28,6 +28,9 @@ class DScatter(threeElement):
             self.ax.scatter(xs, ys, zs, label=label[i], marker=marker[i], alpha=alpha)
             for i, (xs, ys, zs) in enumerate(product(x, y, z))
         ]
+        for i,(a,b,c) in enumerate(product(x, y, z)):
+            print(i,a,b,c)
+            print(a,type(a))
         self._apply_labels(self.xlabel, self.ylabel, self.zlabel)
         self.legend()
         self._adjustment()
@@ -35,11 +38,11 @@ class DScatter(threeElement):
     def update(self, x=None, y=None, z=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = NPArray(x)
+            self.__x = NPNumber(x)
         if change_array_like(y):
-            self.__y = NPArray(y)
+            self.__y = NPNumber(y)
         if change_array_like(z):
-            self.__z = NPArray(z)
+            self.__z = NPNumber(z)
         markers = kw.get("marker", None)
         if markers != None:
             self.marker = MarkerList(markers)
@@ -58,13 +61,13 @@ class DScatter(threeElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonp()
+        return self.__x
 
     def gety(self):
-        return self.__y.tonp()
+        return self.__y
 
     def getz(self):
-        return self.__z.tonp()
+        return self.__z
 
     def getcoordinate(self):
         coords = []

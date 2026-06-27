@@ -2787,9 +2787,9 @@ class Guis:
 
     @staticmethod
     def DScatter(
-        x: TypeArraysLikeNS,
-        y: TypeArraysLikeNS,
-        z: TypeArraysLikeNS,
+        x: TypeArraysLikeNumber,
+        y: TypeArraysLikeNumber,
+        z: TypeArraysLikeNumber,
         xlabel: str = ...,
         ylabel: str = ...,
         zlabel: str = ...,
@@ -2829,11 +2829,11 @@ class Guis:
         立体散布図を作成する
 
         :param x: `x`のデータを指定する
-        :type x: TypeArraysLikeNS
+        :type x: TypeArraysLikeNumber
         :param y: `y`のデータを指定する
-        :type y: TypeArraysLikeNS
+        :type y: TypeArraysLikeNumber
         :param z: `z`のデータを指定する
-        :type z: TypeArraysLikeNS
+        :type z: TypeArraysLikeNumber
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する

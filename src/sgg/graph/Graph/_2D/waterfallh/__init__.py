@@ -6,8 +6,8 @@ __all__ = ["Waterfallh"]
 class Waterfallh(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = NPArray(kw.get("x"), depth_limit=1)
-        self.__y = NPNumber(kw.get("y"), depth_limit=1)
+        self.__x = NPArray(kw.get("x"), max_ndim=1)
+        self.__y = NPNumber(kw.get("y"), max_ndim=1)
         self.bottom = np.cumsum(np.append(0, self.__y)[0 : self.__y.size])
         self.ucolor = parsecolor(kw.get("ucolor"), "#156082")
         self.dcolor = parsecolor(kw.get("dcolor"), "#e97132")
@@ -45,16 +45,16 @@ class Waterfallh(twoElement):
         dcolor,
     ):
         self.clear()
-        x, y = x.tonp(), y.tonp()
+        x, y = x, y
         if sums:
             x = np.append(x, sumstext)
             y = np.append(y, np.sum(y))
             bottom = np.append(bottom, 0)
-        self.color = np.where(y <= 0, dcolor, ucolor)
+        self.color = np.where(y.lessequal(0), dcolor, ucolor)
         self.graphdata = [
             self.ax.barh(
-                x,
-                y,
+                x.data,
+                y.data,
                 color=self.color,
                 alpha=alpha,
                 height=height,
@@ -73,9 +73,9 @@ class Waterfallh(twoElement):
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = NPArray(x, depth_limit=1)
+            self.__x = NPArray(x, max_ndim=1)
         if change_array_like(y):
-            self.__y = NPNumber(y, depth_limit=1)
+            self.__y = NPNumber(y, max_ndim=1)
         self.bottom = np.cumsum(np.append(0, self.__y)[0 : self.__y.size])
         self.sums = bols(kw.get("sums"), self.sums)
         self.sumstext = kw.get("sumstext", self.sumstext)
@@ -105,10 +105,10 @@ class Waterfallh(twoElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonp()
+        return self.__x
 
     def gety(self):
-        return self.__y.tonp()
+        return self.__y
 
     def _vlines(self, lin, height=1, color=None, linestyle="-"):
         lens, height, xmaxs, xmins = len(lin) - 1, height / 2, [], []

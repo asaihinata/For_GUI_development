@@ -43,9 +43,9 @@ class polarElement(GElement):
 
     def _xyd(self, x, y, d=None):
         if d is None:
-            return NPNumber(x, depth_limit=1), NPArray(y, depth_limit=1)
+            return NPNumber(x, max_ndim=1).data, NPArray(y, max_ndim=1).data
         else:
-            data = NPArray(d, depth_limit=1)
+            data = NPArray(d, max_ndim=1).data
             return self._places(data.size), data
 
     def _apply_theme_colors(self):

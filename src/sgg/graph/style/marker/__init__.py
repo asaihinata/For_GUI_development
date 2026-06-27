@@ -78,18 +78,20 @@ class Marker:
 
 
 class MarkerList(NPArray):
-    def __init__(self, marker, fill=None, cap=None, transform=None, join=None):
+    def __new__(cls, marker, fill=None, cap=None, transform=None, join=None):
         marker = [marker] if isinstance(marker, str | int) else marker
-        super().__init__(
-            data=[Marker(i, fill, cap, transform, join).marker for i in marker],
-            depth_limit=1,
+        return super().__new__(
+            cls,
+            [Marker(i, fill, cap, transform, join).marker for i in marker],
+            dtype=MarkerStyle,
+            max_ndim=1,
         )
 
     def __iter__(self):
         return iter(self.data)
 
-    def __getitem__(self, key):
-        return self.get(key)
+    def __getitem__(self, val):
+        return super().__getitem__(val)
 
     def __str__(self):
         return str(self.data[0])

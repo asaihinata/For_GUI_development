@@ -9,7 +9,7 @@ class Stackedh(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.__data = NPNumber(kw.get("data"))
-        self.dataname = NPArray(kw.get("dataname"), depth_limit=1)
+        self.dataname = NPArray(kw.get("dataname"), max_ndim=1)
         if self.__data.shape[0] != self.dataname.shape[0]:
             raise ValueError("配列のエラー")
         self.height = range_num(num0s(kw.get("height"), 0.8), 0, 1, 0.8)
@@ -43,7 +43,7 @@ class Stackedh(twoElement):
         if change_array_like(data):
             self.__data = NPNumber(data)
         if change_array_like(dataname):
-            self.dataname = NPArray(dataname, depth_limit=1)
+            self.dataname = NPArray(dataname, max_ndim=1)
         if self.__data.shape[0] != self.dataname.shape[0]:
             raise ValueError("配列のエラー")
         self.height = range_num(num0s(kw.get("height"), self.height), 0, 1, self.height)
@@ -54,4 +54,4 @@ class Stackedh(twoElement):
         return self.graphdata
 
     def getdata(self):
-        return self.__data.tonp()
+        return self.__data

@@ -17,15 +17,15 @@ class NPString(NPArray):
         self,
         data: ArrayLike,
         dtype: DTypeLike = np.str_,
-        depth_limit: int | None = None,
+        max_ndim: int | None = None,
     ) -> None:
         """
         :param data: データの配列を指定する
         :type data: ArrayLike
         :param dtype: numpyの配列で指定する型を指定する
         :type dtype: DTypeLike | None
-        :param depth_limit: 配列の最大の深さを指定する
-        :type depth_limit: int | None
+        :param max_ndim: 配列の最大の深さを指定する
+        :type max_ndim: int | None
         """
 
     def __getitem__(self, key: int) -> Any: ...

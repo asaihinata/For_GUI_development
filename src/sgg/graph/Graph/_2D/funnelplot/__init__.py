@@ -8,7 +8,7 @@ __all__ = ["Funne"]
 class Funne(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__data = NPNumber(kw.get("data"), depth_limit=1)
+        self.__data = NPNumber(kw.get("data"), max_ndim=1)
         self.height = range_num(num0s(kw.get("height"), 1), 0, 1, 1)
         xmajormaxbins = intsmin(kw.get("xmajormaxbins"), 3, 11)
         if not isinstance(xmajormaxbins, int):
@@ -24,7 +24,7 @@ class Funne(twoElement):
 
     def __plot(self, data, height, alpha):
         self.clear()
-        self.graphdata = [self._funne(data.tonp(), height, alpha)]
+        self.graphdata = [self._funne(data.data, height, alpha)]
         self._apply_labels(self.xlabel, self.ylabel)
         self._adjustment()
 
@@ -45,7 +45,7 @@ class Funne(twoElement):
     def update(self, data=None, **kw):
         self._updates(**kw)
         if change_array_like(data):
-            self.__data = NPNumber(data, depth_limit=1)
+            self.__data = NPNumber(data, max_ndim=1)
         self.height = range_num(num0s(kw.get("height"), self.height), 0, 1, self.height)
         xmajormaxbins = intsmin(kw.get("xmajormaxbins"), 3, self.xmajormaxbins)
         if not isinstance(xmajormaxbins, int):
@@ -64,4 +64,4 @@ class Funne(twoElement):
         return self.graphdata
 
     def getdata(self):
-        return self.__data.tonp()
+        return self.__data

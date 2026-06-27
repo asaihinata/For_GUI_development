@@ -6,7 +6,7 @@ __all__ = ["BarGraph"]
 class BarGraph(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = NPArray(kw.get("x"), depth_limit=1)
+        self.__x = NPArray(kw.get("x"), max_ndim=1)
         self.__y = NPNumber(kw.get("y"))
         self.logs = bols(kw.get("logs"), False)
         self.width = range_num(num0s(kw.get("width"), 1), 0, 1, 1)
@@ -29,7 +29,7 @@ class BarGraph(twoElement):
             )
             for i, (xs, ys) in enumerate(TwoArray(x, y, ydtype=np.float64))
         ]
-        self.set_xticks(x.lengtharange(), x.tonp())
+        self.set_xticks(x.lengtharange(), x)
         self._apply_labels(self.xlabel, self.ylabel)
         self.legend()
         self._adjustment()
@@ -37,7 +37,7 @@ class BarGraph(twoElement):
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = NPArray(x, depth_limit=1)
+            self.__x = NPArray(x, max_ndim=1)
         if change_array_like(y):
             self.__y = NPNumber(y)
         self.width = range_num(num0s(kw.get("width"), self.width), 0, 1, self.width)
@@ -58,7 +58,7 @@ class BarGraph(twoElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonp()
+        return self.__x
 
     def gety(self):
-        return self.__y.tonp()
+        return self.__y

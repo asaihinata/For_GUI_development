@@ -1,6 +1,6 @@
 from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
-
+import numpy as np
 from ....dev import bols, list2num, listchose, num0s, parsecolor, range_num
 from ...style import getLabel
 from ..graph import GElement
@@ -144,7 +144,7 @@ class twoElement(GElement):
         return self.ax.get_yticks()
 
     def set_xticks(self, ticks, labels=None, minor=False):
-        return self.ax.set_xticks(ticks, labels=labels, minor=minor)
+        return self.ax.set_xticks(np.array(ticks), labels=np.array(labels), minor=minor)
 
     def set_yticks(self, ticks, labels=None, minor=False):
-        return self.ax.set_yticks(ticks, labels=labels, minor=minor)
+        return self.ax.set_yticks(np.array(ticks), labels=np.array(labels), minor=minor)

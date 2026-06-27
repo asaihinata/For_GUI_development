@@ -8,7 +8,7 @@ __all__ = ["NPString"]
 
 
 class NPString(NPArray):
-    _element_type = (int, float,np.number)
+    _element_type = (str)
     def __new__(cls, data, dtype=np.str_,d_ndim=None, min_ndim=None, max_ndim=None):
         if strDtype(dtype):
             raise TypeError("dtypeには文字列の型を指定してください")

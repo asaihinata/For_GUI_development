@@ -10,10 +10,10 @@ __all__ = ["NPDate"]
 
 
 class NPDate(NPArray):
-    def __init__(self, data, dtype="datetime64[D]", depth_limit=None):
+    def __init__(self, data, dtype="datetime64[D]", max_ndim=None):
         if isinstance(data, Formatconversion):
             data = data.data
-        super().__init__(data, serchDtype(dtype), depth_limit)
+        super().__init__(data, serchDtype(dtype), max_ndim)
 
     def __iter__(self):
         return super().__iter__()

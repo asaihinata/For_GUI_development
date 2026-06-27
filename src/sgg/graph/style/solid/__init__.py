@@ -1,6 +1,6 @@
 """グラフの線を設定するモジュール"""
 
-from ....nparray import NPString
+from ....nparray import NPArray
 
 __all__ = ["Solid", "Solidlist"]
 
@@ -22,11 +22,11 @@ class Solid:
         return self.__solid
 
 
-class Solidlist(NPString):
-    def __init__(self, solid):
+class Solidlist(NPArray):
+    def __new__(cls, solid):
         if isinstance(solid, str):
             solid = [solid]
-        super().__init__(solid, depth_limit=1)
+        return super().__new__(cls,solid,dtype=str,max_ndim=1)
 
     def __str__(self):
         return str(self.data[0])
@@ -34,8 +34,8 @@ class Solidlist(NPString):
     def __repr__(self):
         return f"Solidlist({self.data})"
 
-    def __getitem__(self, key):
-        return self.get(key)
+    def __getitem__(self, val):
+        return super().__getitem__(val)
 
     def __iter__(self):
         return iter(self.data)

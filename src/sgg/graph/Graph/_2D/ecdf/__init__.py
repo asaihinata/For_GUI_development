@@ -6,7 +6,7 @@ __all__ = ["Ecdf"]
 class Ecdf(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__data = NPNumber(kw.get("data"), depth_limit=1)
+        self.__data = NPNumber(kw.get("data"), max_ndim=1)
         self.complementary = bols(kw.get("complementary"), False)
         self.compress = bols(kw.get("compress"), False)
         self.orientation = listchose(kw.get("orientation"), ["vertical", "horizontal"])
@@ -51,7 +51,7 @@ class Ecdf(twoElement):
     def update(self, data=None, **kw):
         self._updates(**kw)
         if change_array_like(data):
-            self.__data = NPNumber(data, depth_limit=1)
+            self.__data = NPNumber(data, max_ndim=1)
         self.complementary = bols(kw.get("complementary"), self.complementary)
         self.compress = bols(kw.get("compress"), self.compress)
         self.orientation = listchose(
@@ -75,4 +75,4 @@ class Ecdf(twoElement):
         return self.graphdata
 
     def getdata(self):
-        return self.__data.tonp()
+        return self.__data

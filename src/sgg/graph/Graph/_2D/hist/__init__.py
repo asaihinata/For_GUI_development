@@ -6,7 +6,7 @@ __all__ = ["Hist"]
 class Hist(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__data = NPNumber(kw.get("data"), depth_limit=1)
+        self.__data = NPNumber(kw.get("data"), max_ndim=1)
         bins = kw.get("bins")
         if change_array_like(bins) or bins in [
             "auto",
@@ -75,7 +75,7 @@ class Hist(twoElement):
     def update(self, data=None, **kw):
         self._updates(**kw)
         if change_array_like(data):
-            self.__data = NPNumber(data, depth_limit=1)
+            self.__data = NPNumber(data, max_ndim=1)
         bins = kw.get("bins")
         if change_array_like(bins) or bins in [
             "auto",
@@ -113,4 +113,4 @@ class Hist(twoElement):
         return self.graphdata
 
     def getdata(self):
-        return self.__data.tonp()
+        return self.__data

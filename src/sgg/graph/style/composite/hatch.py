@@ -11,16 +11,16 @@ __all__ = ["Hatch"]
 
 
 class Hatch(NPString):
-    def __init__(self, hatch: str | tuple[str, ...]) -> None:
+    def __new__(cls, hatch: str | tuple[str, ...]) -> None:
         if hatch in ["", None]:
             hatch = [""]
         elif isinstance(hatch, str):
             hatch = [hatch]
-        super().__init__(hatch, depth_limit=1)
         judge = vectorize(lambda x: bool(compile(r"^[/\\|\-+xo*O.]+$").fullmatch(x)))
-        if al(judge(self.data)):
+        datas=super().__new__(cls,hatch, max_ndim=1)
+        if al(judge(datas.data)):
             raise ValueError("指定できない値が含まれています")
-
+        return datas
     def __iter__(self) -> Iterator[str]:
         return iter(self.data)
 
@@ -28,4 +28,4 @@ class Hatch(NPString):
         return f"Hatch({self.data})"
 
     def __getitem__(self, key: int) -> str:
-        return self.get(key)
+        return super().__getitem__(key)

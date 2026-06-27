@@ -28,8 +28,8 @@ class Stempolar(polarElement):
         self.clear()
         self.graphdata = [
             self.ax.stem(
-                x.tonp(),
-                y.tonp(),
+                x,
+                y,
                 bottom=bottom,
                 linefmt=linefmt,
                 markerfmt=markerfmt,
@@ -65,7 +65,7 @@ class Stempolar(polarElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonp()
+        return self.__x
 
     def gety(self):
-        return self.__y.tonp()
+        return self.__y

@@ -8,7 +8,7 @@ __all__ = ["Stack"]
 class Stack(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = NPArray(kw.get("x"), depth_limit=1)
+        self.__x = NPArray(kw.get("x"), max_ndim=1)
         self.__y = NPNumber(kw.get("y"))
         self.baseline = listchose(
             kw.get("baseline"), ["zero", "sym", "wiggle", "weighted_wiggle"]
@@ -29,7 +29,7 @@ class Stack(twoElement):
             self.ax.stackplot(
                 xs, ys, labels=label, hatch=hatch[i], baseline=baseline, alpha=alpha
             )
-            for i, (xs, ys) in enumerate(product(x, y))
+            for i, (xs, ys) in enumerate(product(x.data, y.data))
         ]
         self._apply_labels(self.xlabel, self.ylabel)
         self.legend()
@@ -38,7 +38,7 @@ class Stack(twoElement):
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = NPArray(x, depth_limit=1)
+            self.__x = NPArray(x, max_ndim=1)
         if change_array_like(y):
             self.__y = NPNumber(y)
         self.baseline = listchose(
@@ -63,7 +63,7 @@ class Stack(twoElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonp()
+        return self.__x
 
     def gety(self):
-        return self.__y.tonp()
+        return self.__y

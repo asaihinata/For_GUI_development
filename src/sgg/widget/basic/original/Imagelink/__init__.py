@@ -14,15 +14,22 @@ class Imagelink(Element):
         super().__init__(master, kw)
         self.link = kw.get("link")
         if not isinstance(self.link, str):
-            raise TypeError("linkにはstr型を指定してください")
-        if not linkcheck(self.link):
-            raise ValueError("サイトが存在しません")
-        self.__img = Img_byte(get_link_img(self.link)).asresize().image
-        self.imgs = PhotoImage(self.__img)
-        self.widget = Label(
-            master, text=None, image=self.imgs, takefocus=self.takefocus
-        )
-        self.widget.image = self.imgs
+            self.widget = Label(
+                master, text="image error", takefocus=self.takefocus
+            )
+            # raise TypeError("linkにはstr型を指定してください")
+        elif not linkcheck(self.link):
+            self.widget = Label(
+                master, text="image error", takefocus=self.takefocus
+            )
+            # raise ValueError("サイトが存在しません")
+        else:
+            self.__img = Img_byte(get_link_img(self.link)).asresize().image
+            self.imgs = PhotoImage(self.__img)
+            self.widget = Label(
+                master, text=None, image=self.imgs, takefocus=self.takefocus
+            )
+            self.widget.image = self.imgs
 
     def delta(self):
         self.widget.destroy()

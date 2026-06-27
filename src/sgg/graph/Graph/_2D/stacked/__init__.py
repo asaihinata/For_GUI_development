@@ -25,15 +25,13 @@ class Stacked(twoElement):
         self._apply_labels(self.xlabel, self.ylabel)
         self._adjustment()
 
-    def _survey(self, data, dataname, label=None, width=0.8):
+    def _survey(self, data:NPNumber, dataname, label=None, width=0.8):
         data = data.T
         lisarr = []
         data_percent = data / np.sum(data,axis=0) * 100
         bottom = np.zeros(len(dataname))
         for i, ds in enumerate(data_percent):
-            lisarr = self.ax.bar(
-                dataname, ds, bottom=bottom, label=label[i], width=width
-            )
+            lisarr = self.ax.bar(dataname, ds, bottom=bottom, label=label[i], width=width)
             bottom += ds
         return lisarr
 
@@ -42,7 +40,7 @@ class Stacked(twoElement):
         if change_array_like(data):
             self.__data = NPNumber(data)
         if change_array_like(dataname):
-            self.dataname = NPArray(dataname, depth_limit=1)
+            self.dataname = NPArray(dataname, max_ndim=1)
         if self.__data.shape[0] != self.dataname.shape[0]:
             raise ValueError("配列のエラー")
         self.width = range_num(num0s(kw.get("width"), self.width), 0, 1, self.width)
@@ -53,4 +51,4 @@ class Stacked(twoElement):
         return self.graphdata
 
     def getdata(self):
-        return self.__data.tonp()
+        return self.__data

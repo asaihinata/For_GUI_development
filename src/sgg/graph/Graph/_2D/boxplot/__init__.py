@@ -46,7 +46,7 @@ class Boxplot(twoElement):
     ):
         self.clear()
         boxplot = self.ax.boxplot(
-            data,
+            np.asarray(data),
             showfliers=showfliers,
             label=list(label),
             widths=width,
@@ -98,7 +98,7 @@ class Boxplot(twoElement):
         return self.graphdata
 
     def getdata(self):
-        return self.__data.tonp()
+        return self.__data
 
     def _boxplot_whis(self, data):
         if isinstance(data, list | tuple):

@@ -36,9 +36,13 @@ class NPNumber(NPArray):
         if func in HANDLED_FUNCTIONS:
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
-    def __array_ufunc__(self,ufunc,method,inputs,kwargs):
-        raw_inputs = tuple(np.asarray(x) if isinstance(x, NPNumber) else x for x in inputs)
-        result = getattr(ufunc, method)(*raw_inputs, **dict(kwargs))
+    def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
+        raw_inputs = tuple(
+            np.asarray(x) if isinstance(x, NPNumber) else x
+            for x in inputs
+        )
+        result = getattr(ufunc, method)(*raw_inputs, **kwargs)
+
         if result is NotImplemented:
             return NotImplemented
 

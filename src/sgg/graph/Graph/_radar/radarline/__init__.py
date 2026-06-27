@@ -56,7 +56,7 @@ class RadarLine(RadarElement):
         self._redraw()
 
     def getdata(self):
-        return self._data.tonp()
+        return self._data
 
     def get(self):
         return self.graphdata

@@ -91,10 +91,10 @@ class Scatter(twoElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonp()
+        return self.__x
 
     def gety(self):
-        return self.__y.tonp()
+        return self.__y
 
     def getcoordinate(self):
         coords = []

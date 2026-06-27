@@ -7,7 +7,7 @@ class BarhGraph(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.__x = NPNumber(kw.get("x"))
-        self.__y = NPArray(kw.get("y"), depth_limit=1)
+        self.__y = NPArray(kw.get("y"), max_ndim=1)
         self.logs = bols(kw.get("logs"), False)
         self.height = range_num(num0s(kw.get("height"), 1), 0, 1, 1)
         self.align = listchose(kw.get("align"), ["center", "edge"])
@@ -35,7 +35,7 @@ class BarhGraph(twoElement):
             )
             for i, (xs, ys) in enumerate(TwoArray(x, y, xdtype=np.float64))
         ]
-        self.set_yticks(y.lengtharange(), y.tonp())
+        self.set_yticks(y.lengtharange(), y)
         self._apply_labels(self.xlabel, self.ylabel)
         self.legend()
         self._adjustment()
@@ -45,7 +45,7 @@ class BarhGraph(twoElement):
         if change_array_like(x):
             self.__x = NPNumber(x)
         if change_array_like(y):
-            self.__y = NPArray(y, depth_limit=1)
+            self.__y = NPArray(y, max_ndim=1)
         self.height = range_num(num0s(kw.get("height"), self.height), 0, 1, self.height)
         self.align = listchose(kw.get("align"), ["center", "edge"], self.align)
         self.logs = bols(kw.get("logs"), self.logs)
@@ -64,7 +64,7 @@ class BarhGraph(twoElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonp()
+        return self.__x
 
     def gety(self):
-        return self.__y.tonp()
+        return self.__y

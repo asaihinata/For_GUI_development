@@ -9,8 +9,8 @@ class Violinplot(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.__data = NPNumber(kw.get("data"))
-        self.__x = NPNumber(kw.get("x", []), depth_limit=1)
-        self.__y = NPNumber(kw.get("y", []), depth_limit=1)
+        self.__x = NPNumber(kw.get("x", []), max_ndim=1)
+        self.__y = NPNumber(kw.get("y", []), max_ndim=1)
         self.orientation = listchose(kw.get("orientation"), ["vertical", "horizontal"])
         self.width = range_num(num0s(kw.get("width"), 1), 0, 1, 1)
         self.showextrema = bols(kw.get("showextrema"))
@@ -57,14 +57,14 @@ class Violinplot(twoElement):
     ):
         self.clear()
         if orientation == "vertical" and x.size != 0:
-            positions = x.tonp()
+            positions = x
         elif orientation == "horizontal" and y.size != 0:
-            positions = y.tonp()
+            positions = y
         else:
             positions = np.arange(1, data.shape[1] + 1)
         self.graphdata = [
             self.ax.violinplot(
-                data.tonp(),
+                data,
                 positions=positions,
                 widths=width,
                 points=points,
@@ -85,9 +85,9 @@ class Violinplot(twoElement):
         if change_array_like(data):
             self.__data = NPNumber(data)
         if change_array_like(x):
-            self.__x = NPNumber(x, depth_limit=1)
+            self.__x = NPNumber(x, max_ndim=1)
         if change_array_like(y):
-            self.__y = NPNumber(y, depth_limit=1)
+            self.__y = NPNumber(y, max_ndim=1)
         self.orientation = listchose(
             kw.get("orientation"), ["vertical", "horizontal"], self.orientation
         )
@@ -122,4 +122,4 @@ class Violinplot(twoElement):
         return self.graphdata
 
     def getdata(self):
-        return self.__data.tonp()
+        return self.__data

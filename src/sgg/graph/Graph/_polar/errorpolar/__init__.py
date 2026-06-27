@@ -13,12 +13,12 @@ class Errorpolar(polarElement):
         self.xerr = None
         self.yerr = None
         if err is not None:
-            self.err = NPNumber(err)
+            self.err = NPNumber(err).data
             self.xerr, self.yerr = self.err, self.err
         if xerr is not None:
-            self.xerr = NPNumber(xerr)
+            self.xerr = NPNumber(xerr).data
         if yerr is not None:
-            self.yerr = NPNumber(yerr)
+            self.yerr = NPNumber(yerr).data
         self.xuplims = bols(kw.get("xuplims"), False)
         self.xlolims = bols(kw.get("xlolims"), False)
         self.yuplims = bols(kw.get("yuplims"), False)
@@ -103,12 +103,12 @@ class Errorpolar(polarElement):
             kw.get("yerr", self.yerr),
         )
         if err is not None:
-            self.err = NPNumber(err)
+            self.err = NPNumber(err).data
             self.xerr, self.yerr = self.err, self.err
         if xerr is not None:
-            self.xerr = NPNumber(xerr)
+            self.xerr = NPNumber(xerr).data
         if yerr is not None:
-            self.yerr = NPNumber(yerr)
+            self.yerr = NPNumber(yerr).data
         self.xuplims = bols(kw.get("xuplims"), self.xuplims)
         self.xlolims = bols(kw.get("xlolims"), self.xlolims)
         self.yuplims = bols(kw.get("yuplims"), self.yuplims)
@@ -150,7 +150,7 @@ class Errorpolar(polarElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonp()
+        return self.__x
 
     def gety(self):
-        return self.__y.tonp()
+        return self.__y

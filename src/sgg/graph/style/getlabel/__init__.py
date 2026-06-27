@@ -6,10 +6,10 @@ __all__ = ["getLabel"]
 
 
 class getLabel(NPArray):
-    def __init__(self, label=None):
+    def __new__(cls, label=None):
         if label == None or isinstance(label, str):
             label = array([label])
-        super().__init__(label, depth_limit=1)
+        return super().__new__(cls,label, d_ndim=1)
 
     def __iter__(self):
         return iter(self.data)
