@@ -17,14 +17,39 @@ method_list = [
     "median_unbiased",
     "normal_unbiased",
 ]
+HANDLED_FUNCTIONS = {}
 
 
+def implements(np_function):
+    def decorator(func):
+        HANDLED_FUNCTIONS[np_function] = func
+        return func
+
+    return decorator
 class NPNumber(NPArray):
-    def __init__(self, data, dtype=np.float64, depth_limit=None):
+    _element_type = (int, float,np.number)
+    def __new__(cls, data, dtype=np.float64,d_ndim=None, min_ndim=None, max_ndim=None):
         if numberDtype(dtype):
             raise TypeError("dtypeには数値型を指定してください")
-        super().__init__(data, dtype, depth_limit)
+        return super().__new__(cls,data, dtype, d_ndim,min_ndim,max_ndim)
+    def __array_function__(self, func, types, args, kwargs):
+        if func in HANDLED_FUNCTIONS:
+            return HANDLED_FUNCTIONS[func](*args, **kwargs)
+        return super().__array_function__(func, types, args, kwargs)
+    def __array_ufunc__(self,ufunc,method,inputs,kwargs):
+        raw_inputs = tuple(np.asarray(x) if isinstance(x, NPNumber) else x for x in inputs)
+        result = getattr(ufunc, method)(*raw_inputs, **dict(kwargs))
+        if result is NotImplemented:
+            return NotImplemented
 
+        if isinstance(result, np.ndarray):
+            result = result.view(type(self))
+            result._dtype = getattr(inputs[0], "_dtype", None)
+
+        return result
+    @classmethod
+    def __instancecheck__(cls, instance):
+        return isinstance(instance,NPNumber)
     def __iter__(self):
         return super().__iter__()
 
@@ -40,48 +65,43 @@ class NPNumber(NPArray):
     def __reversed__(self):
         return super().__reversed__()
 
-    def __array__(self, dtype=None, copy=None):
-        return super().__array__(dtype, copy)
-
     def __repr__(self):
-        return f"NPNumber({self.data})"
-
-    def __array_ufunc__(self, ufunc, method, *args, **kwargs):
-        if method == "__call__":
-            args = [x.data if isinstance(x, NPNumber) else x for x in args]
-            result = ufunc(*args, **kwargs)
-            if isinstance(result, np.ndarray):
-                return NPNumber(result)
-            return result
-        return NotImplemented
+        return f"NPNumber({np.array2string(np.asarray(self),separator=',')},dtype={self.dtype})"
 
     def __abs__(self):
-        self.data = np.abs(self.data)
-        return self
+        result = np.abs(np.asarray(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __add__(self, other):
-        self.data = self.data + _datas(other)
-        return self
+        result = np.add(np.asarray(self),_datas(other)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __sub__(self, other):
-        self.data = self.data - _datas(other)
-        return self
+        result = np.subtract(np.asarray(self),_datas(other)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __mul__(self, other):
-        self.data = self.data * _datas(other)
-        return self
+        result = np.multiply(np.asarray(self),_datas(other)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __truediv__(self, other):
-        self.data = self.data / _datas(other)
-        return self
+        result = np.true_divide(np.asarray(self),_datas(other)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __floordiv__(self, other):
-        self.data = self.data // _datas(other)
-        return self
+        result = np.floor_divide(np.asarray(self),_datas(other)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __pow__(self, other):
-        self.data = np.power(self.data, _datas(other))
-        return self
+        result = np.power(np.asarray(self),_datas(other)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     __radd__ = __add__
     __rsub__ = __sub__
@@ -91,110 +111,67 @@ class NPNumber(NPArray):
     __isub__ = __sub__
     __imul__ = __mul__
     __itruediv__ = __truediv__
-
     def __eq__(self, value):
-        return np.equal(self.data, _datas(value))
-
+        return np.all(np.equal(np.asarray(self), value))
+    def equal(self, value):
+        return np.equal(np.asarray(self), value)
     def __ne__(self, value):
-        return np.not_equal(self.data, _datas(value))
-
+        return np.all(np.not_equal(np.asarray(self), value))
+    def notequal(self, value):
+        return np.not_equal(np.asarray(self), value)
     def __lt__(self, other):
-        return np.less(self.data, _datas(other))
-
+        return np.all(np.less(np.asarray(self),other))
+    def less(self,other):
+        return np.less(np.asarray(self),other)
     def __le__(self, other):
-        return np.less_equal(self.data, _datas(other))
-
+        return np.all(np.less_equal(np.asarray(self),other))
+    def lessequal(self,other):
+        return np.less_equal(np.asarray(self),other)
     def __gt__(self, other):
-        return np.greater(self.data, _datas(other))
-
+        return np.all(np.greater(np.asarray(self),other))
+    def greater(self,other):
+        return np.greater(np.asarray(self),other)
     def __ge__(self, other):
-        return np.greater_equal(self.data, _datas(other))
-
+        return np.all(np.greater_equal(np.asarray(self),other))
+    def greaterequal(self,other):
+        return np.greater_equal(np.asarray(self),other)
     def __mod__(self, other):
-        self.data = self.data % _datas(other)
-        return self
+        result = np.mod(np.asarray(self),_datas(other)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __neg__(self):
-        self.data = -self.data
-        return self
-
-    def __pos__(self):
-        self.data = +self.data
-        return self
-
-    @property
-    def T(self):
-        self.data = self.data.T
-        return self
+        result = -1*np.asarray(self).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     @property
     def sturgesval(self):
         return 1 + np.log2(self.size)
-
-    def min(self):
-        return np.min(self.data)
-
-    def max(self):
-        return np.max(self.data)
-
-    def sum(self, axis=None):
-        return np.sum(self.data, axis=axis)
-
-    def floor(self, digit=None):
-        if digit == None:
-            self.data = np.floor(self.data)
-        else:
-            pows = _digits(digit)
-            self.data = np.floor(self.data * pows) / pows
-        return self
-
-    def trunc(self, digit=None):
-        if digit == None:
-            self.data = np.trunc(self.data)
-        else:
-            pows = _digits(digit)
-            self.data = np.trunc(self.data * pows) / pows
-        return self
-
-    def ceil(self, digit=None):
-        if digit == None:
-            self.data = np.ceil(self.data)
-        else:
-            pows = _digits(digit)
-            self.data = np.ceil(self.data * pows) / pows
-        return self
-
-    def round(self, digit=None):
-        if digit == None:
-            self.data = np.round(self.data)
-        else:
-            pows = _digits(digit)
-            self.data = np.round(self.data * pows) / pows
-        return self
-
     def cussum(self):
-        datas, shapes = self._flatten()
-        splices = shapes[-1]
-        self.data = np.array(
+        datas=np.ravel(self)
+        splices = self.shape[-1]
+        result = np.array(
             [
                 j + np.insert(j, 0, 0)[:-1]
                 for i in range(0, len(datas), splices)
                 for j in [datas[i : i + splices]]
             ]
-        )
-        return self
-
+        ).view(type(self))
+        result._dtype = result.dtype
+        return result
     def cumprod(self):
-        datas, shapes = self._flatten()
-        splices = shapes[-1]
-        self.data = np.array(
+        datas=np.ravel(self)
+        splices = self.shape[-1]
+        result = np.array(
             [
-                j * np.insert(j, 0, 1)[:-1]
+                j * np.insert(j, 0, 0)[:-1]
                 for i in range(0, len(datas), splices)
                 for j in [datas[i : i + splices]]
             ]
-        )
-        return self
+        ).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def percentile(self, q, axis=None, method="linear"):
         if method not in method_list:
@@ -211,27 +188,6 @@ class NPNumber(NPArray):
 
     def zero_check(self):
         return self.data == 0
-
-    def ints(self):
-        self.data = self.data.astype(int)
-        return self
-
-    def floats(self):
-        self.data = self.data.astype(float)
-        return self
-
-
-def _digits(digit):
-    if not isinstance(digit, int):
-        raise TypeError("digitには整数型を指定してください")
-    elif digit < 1:
-        raise ValueError("digitには1以上の整数を指定してください")
-    return np.pow(10, digit)
-
-
 def _datas(data):
-    if numberdDtype(data):
-        return data
-    elif isinstance(data, NPNumber):
-        return data.data
+    if numberdDtype(data):return data
     raise TypeError("数値の型を指定してください")

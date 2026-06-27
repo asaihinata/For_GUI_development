@@ -35,6 +35,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         cls,
         input_array: ArrayLike,
         dtype: DTypeLike | None = None,
+        d_ndim:int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPArray:
@@ -100,6 +101,15 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
     def dtypes(self) -> np.dtype | None:
         """インスタンス生成時に確定したdtypeを取得する
 
+        :return:
+        :rtype: numpy.dtype | None
+        """
+    @dtypes.setter
+    def dtypes(self,dtype:DTypeLike | None)->np.dtype | None:
+        """配列のdtypeを設定する
+
+        :param dtype: 配列のdtypeを指定する
+        :type dtype: DTypeLike | None
         :return:
         :rtype: numpy.dtype | None
         """

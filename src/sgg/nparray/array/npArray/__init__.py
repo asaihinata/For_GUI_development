@@ -24,8 +24,7 @@ def change_array_like(obj):
     return False
 
 
-HANDLED_FUNCTIONS: dict = {}
-
+HANDLED_FUNCTIONS= {}
 
 def implements(np_function):
     def decorator(func):
@@ -44,7 +43,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         resolved = cls._resolve_dtype(dtype)
         obj = np.asarray(input_array, dtype=resolved).view(cls)
         cls._validate_elements(obj)
-        obj._dtype_locked = resolved
+        obj._dtype = resolved
         if isinstance(d_ndim, int):
             cls._validate_ndim(obj, d_ndim, d_ndim)
             obj._min_ndim = d_ndim
@@ -53,16 +52,14 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
             cls._validate_ndim(obj, min_ndim, max_ndim)
             obj._min_ndim = min_ndim
             obj._max_ndim = max_ndim
-        obj._data = np.array(input_array, dtype=resolved)
         return obj
 
     def __array_finalize__(self, obj):
         if obj is None:
             return
-        self._dtype_locked = getattr(obj, "_dtype_locked", None)
+        self._dtype = getattr(obj, "_dtype", None)
         self._min_ndim = getattr(obj, "_min_ndim", None)
         self._max_ndim = getattr(obj, "_max_ndim", None)
-        self._data = getattr(obj, "_data", None)
 
     @classmethod
     def _resolve_dtype(cls, dtype):
@@ -94,12 +91,16 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
 
     @property
     def data(self):
-        return self._data
+        return np.asarray(self)
 
     @property
     def dtypes(self):
-        return self._dtype_locked
-
+        return self._dtype
+    @dtypes.setter
+    def dtypes(self,dtype):
+        if dtype is not None:
+            self._dtype=np.dtype(dtype)
+        return self._dtype
     @property
     def min_ndim(self):
         return getattr(self, "_min_ndim", None)
@@ -108,16 +109,25 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
     def max_ndim(self):
         return getattr(self, "_max_ndim", None)
 
-    def __array_ufunc__(self, ufunc, method, inputs, kwargs):
+    def __array_ufunc__(
+        self,
+        ufunc,
+        method,
+        *inputs,
+        **kwargs):
         raw_inputs = tuple(
-            np.asarray(x) if isinstance(x, NPArray) else x for x in inputs
+            np.asarray(x) if isinstance(x, NPArray) else x
+            for x in inputs
         )
-        result = getattr(ufunc, method)(*raw_inputs, **kwargs)
+        result = getattr(ufunc, method)(*raw_inputs, **dict(kwargs))
+
         if result is NotImplemented:
             return NotImplemented
+
         if isinstance(result, np.ndarray):
             result = result.view(type(self))
-            result._dtype_locked = getattr(inputs[0], "_dtype_locked", None)
+            result._dtype = getattr(inputs[0], "_dtype", None)
+
         return result
 
     def __array_function__(self, func, types, args, kwargs):
@@ -132,30 +142,32 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         return self.__repr__()
 
     def __contains__(self, item):
-        return item in self._data
+        return item in self.data
 
     def __iter__(self):
         if self.ndim == 1:
-            return iter([self._data])
-        return iter(self._data)
+            return iter([self.data])
+        return iter(self.data)
 
     def __reversed__(self):
         result = np.flip(np.asarray(self)).view(type(self))
-        result._dtype_locked = self._dtype_locked
+        result._dtype = self._dtype
         return result
 
     def __getitem__(self, key):
+        size = self.size
+        if size == 0:
+            raise IndexError("空の配列にはアクセスできません")
+        data = self.data.flatten()
         if isinstance(key, int):
-            size = self.size
-            if size == 0:
-                raise IndexError("空の配列にはアクセスできません")
-            data = self._data.flatten()
             if key == size:
                 return data[size - 1]
             elif key < size:
                 return data[key]
             else:
                 return data[key % size]
+        elif isinstance(key,slice):
+            return self.data.flatten()[key]
 
     def get(self, key):
         return self[key]
@@ -164,7 +176,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         if self.min_ndim is not None and self.min_ndim > 1:
             raise ValueError(f"min_ndimが{self.min_ndim}のため1次元に変換できません")
         result = np.asarray(self).flatten().view(type(self))
-        result._dtype_locked = self._dtype_locked
+        result._dtype = self._dtype
         return result
 
     def lengtharange(self):
@@ -177,7 +189,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
                 np.arange(0, shapes[lens - 1], dtype=np.uint64), np.prod(shapes[:-1])
             ).reshape(shapes)
         result = raw.view(type(self))
-        result._dtype_locked = np.dtype("uint64")
+        result._dtype = np.dtype("uint64")
         return result
 
     def shapesize(self, shapes):
@@ -186,7 +198,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         return False
 
     def all_None(self):
-        return bool(np.all(self._data == None))
+        return bool(np.all(self.data == None))
 
     def any_None(self):
-        return bool(np.any(self._data == None))
+        return bool(np.any(self.data == None))

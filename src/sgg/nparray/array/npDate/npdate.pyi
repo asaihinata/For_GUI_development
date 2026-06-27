@@ -35,9 +35,6 @@ class NPDate(NPArray):
     def __reversed__(self) -> NPDate:
         """`numpy.fliplr`を実行する"""
 
-    def __array__(
-        self, dtype: DTypeLike | None = None, copy: bool | np._CopyMode | None = None
-    ) -> np.ndarray: ...
     def __repr__(self) -> str: ...
     def __array_ufunc__(
         self,

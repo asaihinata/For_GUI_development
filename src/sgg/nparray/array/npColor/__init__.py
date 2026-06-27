@@ -22,12 +22,12 @@ _HSV_RE = compile(r"^hsv\((\d+),(\d+),(\d+)\)$")
 
 
 class NPColor(NPArray):
-    def __init__(self, color):
+    def __new__(cls, color):
         if isinstance(color, str):
-            super().__init__([self.__get_val(color)], depth_limit=1)
+            return super().__new__(cls,[cls.__get_val(color)],dtype=str,max_ndim=1)
         elif is_array_like(color):
-            super().__init__(
-                [self.__get_val(str(i)) for i in nditer(array(color))], depth_limit=1
+            return super().__new__(cls,
+                [cls.__get_val(str(i)) for i in nditer(array(color))], max_ndim=1
             )
         else:
             raise TypeError("colorの値が不正です")
@@ -39,9 +39,9 @@ class NPColor(NPArray):
         return iter(self.data)
 
     def __getitem__(self, key):
-        return self.get(key)
-
-    def __get_val(self, color):
+        return super().__getitem__(key)
+    @classmethod
+    def __get_val(cls, color):
         colorname = Get_color.gets(color)
         if colorname is not None:
             return colorname[1]

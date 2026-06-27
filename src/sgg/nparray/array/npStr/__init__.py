@@ -8,10 +8,11 @@ __all__ = ["NPString"]
 
 
 class NPString(NPArray):
-    def __init__(self, data, dtype=np.str_, depth_limit=None):
+    _element_type = (int, float,np.number)
+    def __new__(cls, data, dtype=np.str_,d_ndim=None, min_ndim=None, max_ndim=None):
         if strDtype(dtype):
             raise TypeError("dtypeには文字列の型を指定してください")
-        super().__init__(data, dtype, depth_limit)
+        return super().__new__(cls,data, dtype, d_ndim,min_ndim,max_ndim)
 
     def __iter__(self):
         return super().__iter__()
@@ -27,9 +28,6 @@ class NPString(NPArray):
 
     def __reversed__(self):
         return super().__reversed__()
-
-    def __array__(self, dtype=None, copy=None):
-        return super().__array__(dtype, copy)
 
     def __repr__(self):
         return f"NPString({self.data})"
