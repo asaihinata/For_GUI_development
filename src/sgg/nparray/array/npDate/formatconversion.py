@@ -16,7 +16,10 @@ def implements(np_function):
     def decorator(func):
         HANDLED_FUNCTIONS[np_function] = func
         return func
+
     return decorator
+
+
 class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
     _element_type = (np.datetime64, datetime, date)
 
@@ -42,7 +45,7 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
                 parse(str(strs), yearfirst=yearfirst, dayfirst=dayfirst)
             )
         )
-        resolved = cls._resolve_dtype(serchDtype(dtype))
+        resolved = cls._resolve_dtype(dtype)
         obj = np.asarray(
             np.array(
                 [func(i, yearfirst, dayfirst) for i in np.nditer(data)], dtype=dtype

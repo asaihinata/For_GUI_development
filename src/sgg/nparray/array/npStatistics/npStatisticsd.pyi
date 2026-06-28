@@ -1,12 +1,12 @@
 """基本的な統計の計算をするモジュール"""
 
-from typing import Any, Literal, SupportsIndex, TypeAlias
+from typing import Any, Iterator, Literal, SupportsIndex, TypeAlias, overload
 
 import numpy as np
+from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.typing import ArrayLike, DTypeLike, NDArray
 
-from ....typing import TypeArrayLikeNumber
-from ..npnumber import NPNumber
+from sgg.typing import TypeArrayLikeNumber
 
 __all__ = ["NPStatisticsd"]
 
@@ -24,8 +24,16 @@ Type_Method: TypeAlias = Literal[
 BINS_LIST: TypeAlias = Literal[
     "stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"
 ]
+HANDLED_FUNCTIONS: dict
 
-class NPStatisticsd(NPNumber):
+def implements(np_function) -> Any:
+    """numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
+
+    :param np_function: 登録対象のnumpy関数
+    :return: デコレータ関数を返す
+    """
+
+class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
     def __new__(
         cls,
         data: TypeArrayLikeNumber,
@@ -42,12 +50,204 @@ class NPStatisticsd(NPNumber):
         :rtype: NPStatisticsd
         """
 
+    @classmethod
+    def __instancecheck__(cls, instance: Any) -> bool: ...
+    def __ne__(self, other: Any) -> Any: ...
+    def __eq__(self, other: Any) -> Any: ...
+    def __iter__(self) -> Iterator[bool]: ...
+    def __getitem__(self, key: int) -> bool:
+        """インデックスアクセスをカスタマイズする
+
+        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
+
+        :param key: インデックスまたはスライスを指定する
+        :type key: int
+        :return: インデックスに対応する要素を返す
+        :rtype: bool
+        :raises IndexError: 配列が空の場合に発生させる
+        """
+
+    def __class_getitem__(cls, item: Any) -> np.ndarray: ...
+    def __array_finalize__(self, obj: np.ndarray | None) -> None:
+        """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
+
+    @classmethod
+    def _resolve_dtype(
+        cls,
+        dtype: np.dtype | str | type | None,
+    ) -> np.dtype | None:
+        """引数dtypeを解決させる
+
+        :param dtype: ユーザーが指定するdtype
+        :return: 解決されたdtypeを返す
+        :rtype: numpy.dtype | None
+        """
+
+    @classmethod
+    def _validate_ndim(
+        cls,
+        obj: np.ndarray,
+        min_ndim: int | None,
+        max_ndim: int | None,
+    ) -> None:
+        """配列の次元数がmin_ndim・max_ndimの範囲内か検証する
+
+        :param obj: 検証対象の配列
+        :param min_ndim: 許可する最小次元数Noneの場合は制約なし
+        :param max_ndim: 許可する最大次元数Noneの場合は制約なし
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        """
+
+    @classmethod
+    def _validate_elements(cls, obj: np.ndarray) -> None:
+        """配列内の要素が`_element_type`と一致するか検証する
+
+        :param obj: 検証対象の配列
+        :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
+        """
+
     @property
     def data(self) -> np.ndarray:
-        """`NPStatisticsd`オブジェクトを`np.ndarray`オブジェクトに変換する"""
+        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
+
+    @property
+    def dtypes(self) -> np.dtype | None:
+        """インスタンス生成時に確定したdtypeを取得する
+
+        :return:
+        :rtype: numpy.dtype | None
+        """
+
+    @dtypes.setter
+    def dtypes(self, dtype: DTypeLike | None) -> np.dtype | None:
+        """配列のdtypeを設定する
+
+        :param dtype: 配列のdtypeを指定する
+        :type dtype: DTypeLike | None
+        :return:
+        :rtype: numpy.dtype | None
+        """
+
+    @property
+    def min_ndim(self) -> int | None:
+        """配列オブジェクトが許容する最小次元数を返す"""
+
+    @property
+    def max_ndim(self) -> int | None:
+        """配列オブジェクトが許容する最大次元数を返す"""
+
+    def __array_ufunc__(
+        self,
+        ufunc: np.ufunc,
+        method: str,
+        *inputs: Any,
+        **kwargs: Any,
+    ) -> NPStatisticsd | Any:
+        """NumPyのufuncの動作をカスタマイズする
+
+        :param ufunc: 呼び出されたufunc
+        :type ufunc: np.ufunc
+        :param method: 呼び出しメソッド名
+        :type method: str
+        :param inputs: ufuncへの入力
+        :type inputs: Any
+        :param kwargs: ufuncへの追加引数
+        :type kwargs: Any
+        :return: 処理結果を返す
+        """
+
+    def __array_function__(
+        self,
+        func: Any,
+        types: Any,
+        args: tuple,
+        kwargs: dict,
+    ) -> Any:
+        """numpy関数の動作をカスタマイズする
+
+        :param func: 呼び出されたnumpy関数
+        :type func: Any
+        :param types: 関連する型のコレクション
+        :type types: Any
+        :param args: 位置引数
+        :type args: tuple
+        :param kwargs: キーワード引数
+        :type kwargs: dict
+        :return: 演算結果を返す
+        :rtype: Any
+        """
+
+    @classmethod
+    def __instancecheck__(cls, instance: Any) -> bool: ...
+    def __ne__(self, other: Any) -> Any: ...
+    def __eq__(self, other: Any) -> Any: ...
+    def __repr__(self) -> str: ...
+    def __str__(self) -> str: ...
+    def __contains__(self, value: object) -> bool: ...
+    def __iter__(self) -> Iterator[Any]: ...
+    def __len__(self) -> int: ...
+    def __reversed__(self) -> NPStatisticsd:
+        """逆順にした新しい配列オブジェクトを返す
+
+        :return: 全軸で反転した配列を返す
+        """
+
+    @overload
+    def __getitem__(self, key: int) -> Any: ...
+    @overload
+    def __getitem__(self, key: slice) -> np.ndarray: ...
+    def __getitem__(self, key: int | slice) -> Any | np.ndarray:
+        """インデックスアクセスをカスタマイズする
+
+        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
+
+        :param key: インデックスまたはスライスを指定する
+        :type key: int | slice
+        :return: インデックスに対応する要素を返す
+        :rtype: Any | np.ndarray
+        :raises IndexError: 配列が空の場合に発生させる
+        """
+
+    def to_1d(self) -> NPStatisticsd:
+        """配列を1次元にフラット化した新しい配列オブジェクトを返す
+
+        :return: フラット化した配列オブジェクトを返す
+        :raises ValueError: `min_ndim`が1以下の場合に発生させる
+        """
+
+    def lengtharange(self) -> NPStatisticsd:
+        """配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
+
+        `dtype`は`np.uint64`に固定される
+
+        :return: インデックス配列を返す
+        """
+
+    def shapesize(self, shapes: tuple[int, ...]) -> bool:
+        """配列オブジェクトの`shape`が`shapes`と一致するかを確認する
+
+        :param shapes: 比較する`shape`を指定する
+        :type shapes: tuple[int, ...]
+        :return: `shape`が一致する場合は`True`を返し,一致しない場合は`False`を返す
+        :rtype: bool
+        """
 
     def tonumpy(self) -> np.ndarray:
-        """`NPStatisticsd`オブジェクトを`np.ndarray`オブジェクトに変換する"""
+        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
+
+    def all_None(self) -> bool:
+        """配列内の全要素が`None`かどうかを返す
+
+        :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
+        :rtype: bool
+        """
+
+    def any_None(self) -> bool:
+        """配列内のいずれかの要素が`None`かどうかを返す
+
+        :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
+        :rtype: bool
+        """
 
     @property
     def sum(self) -> np.floating:

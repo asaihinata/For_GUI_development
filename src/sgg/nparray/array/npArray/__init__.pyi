@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Iterator, Self, overload
+from typing import Any, Iterator, overload
 
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
@@ -25,6 +25,7 @@ def implements(np_function) -> Any:
 
 class NPArray(NDArrayOperatorsMixin, np.ndarray):
     """`np.ndarray`を継承した型付き配列クラス"""
+
     _element_type: type | tuple[type, ...] | None
     def __new__(
         cls,
@@ -33,8 +34,9 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> Self:
-        """新しい配列オブジェクトインスタンスを生成する
+    ) -> NPArray:
+        """
+        新しい配列オブジェクトインスタンスを生成する
 
         :param input_array: 変換する配列を指定する
         :type input_array: ArrayLike
