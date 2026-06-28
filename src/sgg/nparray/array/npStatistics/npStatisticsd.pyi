@@ -43,10 +43,10 @@ class NPStatisticsd(NPNumber):
         """
 
     @property
-    def data[T](self: T) -> np.ndarray[T]:
+    def data(self) -> np.ndarray:
         """`NPStatisticsd`オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
-    def tonumpy[T](self: T) -> np.ndarray[T]:
+    def tonumpy(self) -> np.ndarray:
         """`NPStatisticsd`オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @property

@@ -22,10 +22,10 @@ class NPColor(NPArray):
         """
 
     @property
-    def data[T](self: T) -> np.ndarray[T]:
+    def data(self) -> np.ndarray:
         """`NPColor`オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
-    def tonumpy[T](self: T) -> np.ndarray[T]:
+    def tonumpy(self) -> np.ndarray:
         """`NPColor`オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def tohex(self) -> NPColor:

@@ -29,7 +29,7 @@ def implements(np_function):
 
 
 class NPNumber(NPArray):
-    _element_type = (int, float, np.number)
+    _element_type = (int, float,complex, np.number)
 
     def __new__(cls, data, dtype=np.float64, d_ndim=None, min_ndim=None, max_ndim=None):
         if numberDtype(dtype):
@@ -46,16 +46,12 @@ class NPNumber(NPArray):
             np.asarray(x) if isinstance(x, NPNumber) else x for x in inputs
         )
         result = getattr(ufunc, method)(*raw_inputs, **kwargs)
-
         if result is NotImplemented:
             return NotImplemented
-
         if isinstance(result, np.ndarray):
             result = result.view(type(self))
             result._dtype = getattr(inputs[0], "_dtype", None)
-
         return result
-
     @classmethod
     def __instancecheck__(cls, instance):
         return isinstance(instance, NPNumber)
@@ -175,7 +171,7 @@ class NPNumber(NPArray):
     def percentile(self, q, axis=None, method="linear"):
         if method not in method_list:
             method = "linear"
-        result = np.asarray(np.percentile(self, q, axis=axis, method=method)).view(
+        result = np.percentile(self.data, q, axis=axis, method=method).view(
             type(self)
         )
         result._dtype = result.dtype

@@ -21,10 +21,10 @@ class NPString(NPArray):
         max_ndim: int | None = None,
     ) -> NPString: ...
     @property
-    def data[T](self: T) -> np.ndarray[T]:
+    def data(self) -> np.ndarray:
         """`NPString`オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
-    def tonumpy[T](self: T) -> np.ndarray[T]:
+    def tonumpy(self) -> np.ndarray:
         """`NPString`オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @classmethod

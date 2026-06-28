@@ -16,6 +16,7 @@ class NPDate(NPArray):
     def __new__(
         cls, data, dtype="datetime64[D]", d_ndim=None, min_ndim=None, max_ndim=None
     ):
+        print(np.dtype(serchDtype(dtype)))
         return super().__new__(cls, data, serchDtype(dtype), d_ndim, min_ndim, max_ndim)
 
     def __add__(self, other):

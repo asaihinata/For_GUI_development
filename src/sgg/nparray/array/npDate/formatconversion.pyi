@@ -1,7 +1,7 @@
 from numpy import _ArrayT
 
 from ..nparray import NPArray
-from ._typing import _DATES_UNIT
+from ._typing import _DATES_UNITL
 
 __all__ = ["Formatconversion"]
 
@@ -9,7 +9,7 @@ class Formatconversion(NPArray):
     def __new__(
         cls,
         data: _ArrayT,
-        dtype: _DATES_UNIT = "datetime64[D]",
+        dtype: _DATES_UNITL = "datetime64[D]",
         yearfirst: bool = ...,
         dayfirst: bool = ...,
         d_ndim: int | None = None,

@@ -35,10 +35,10 @@ class NPBool(NPArray):
         """
 
     @property
-    def data[T](self: T) -> np.ndarray[T]:
+    def data(self) -> np.ndarray:
         """`NPBool`オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
-    def tonumpy[T](self: T) -> np.ndarray[T]:
+    def tonumpy(self) -> np.ndarray:
         """`NPBool`オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def all(self) -> np.bool[bool]: ...

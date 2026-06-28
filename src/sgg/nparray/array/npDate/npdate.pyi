@@ -2,7 +2,7 @@ from datetime import date, datetime
 from typing import Any, overload
 
 import numpy as np
-from numpy._typing import ArrayLike, _DT64Codes
+from numpy._typing import ArrayLike,_DTypeLikeTD64
 
 from ..nparray import NPArray
 from ..npnumber import NPNumber
@@ -13,16 +13,16 @@ class NPDate(NPArray):
     def __new__(
         cls,
         data: ArrayLike,
-        dtype: _DT64Codes | np.datetime64 = "datetime64[D]",
+        dtype: _DTypeLikeTD64 = "datetime64[D]",
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPDate: ...
     @property
-    def data[T](self: T) -> np.ndarray[T]:
+    def data(self) -> np.ndarray:
         """`NPDate`オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
-    def tonumpy[T](self: T) -> np.ndarray[T]:
+    def tonumpy(self) -> np.ndarray:
         """`NPDate`オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @classmethod
