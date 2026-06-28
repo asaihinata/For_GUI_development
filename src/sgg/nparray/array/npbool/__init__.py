@@ -10,9 +10,11 @@ class NPBool(NPArray):
 
     def __new__(cls, data, dtype=np.bool_, d_ndim=None, min_ndim=None, max_ndim=None):
         return super().__new__(cls, data, dtype, d_ndim, min_ndim, max_ndim)
+
     @classmethod
     def __instancecheck__(cls, instance):
         return isinstance(instance, NPBool)
+
     def __ne__(self, other):
         return super().__ne__(other)
 

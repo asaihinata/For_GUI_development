@@ -1,6 +1,6 @@
 """基本的な数値の操作をするモジュール"""
 
-from typing import Any, Literal, TypeAlias, Iterator
+from typing import Any, Iterator, Literal, TypeAlias
 
 import numpy as np
 from numpy.typing import ArrayLike, DTypeLike
@@ -31,12 +31,14 @@ class NPNumber(NPArray):
         max_ndim: int | None = None,
     ) -> NPNumber: ...
     @property
-    def data[T](self:T) -> np.ndarray[T]:
+    def data[T](self: T) -> np.ndarray[T]:
         """`NPNumber`オブジェクトを`np.ndarray`オブジェクトに変換する"""
-    def tonumpy[T](self:T)->np.ndarray[T]:
+
+    def tonumpy[T](self: T) -> np.ndarray[T]:
         """`NPNumber`オブジェクトを`np.ndarray`オブジェクトに変換する"""
+
     @classmethod
-    def __instancecheck__(cls,instance:Any)->bool:...
+    def __instancecheck__(cls, instance: Any) -> bool: ...
     def __iter__(self) -> Iterator[np.number]: ...
     def __getitem__(self, key: int) -> np.number:
         """インデックスアクセスをカスタマイズする
@@ -49,6 +51,7 @@ class NPNumber(NPArray):
         :rtype: np.number
         :raises IndexError: 配列が空の場合に発生させる
         """
+
     def __abs__(self) -> NPNumber: ...
     def __add__(self, other: ArrayLike) -> NPNumber: ...
     def __sub__(self, other: ArrayLike) -> NPNumber: ...

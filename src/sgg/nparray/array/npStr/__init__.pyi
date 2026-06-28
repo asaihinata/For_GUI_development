@@ -21,12 +21,14 @@ class NPString(NPArray):
         max_ndim: int | None = None,
     ) -> NPString: ...
     @property
-    def data[T](self:T) -> np.ndarray[T]:
+    def data[T](self: T) -> np.ndarray[T]:
         """`NPString`オブジェクトを`np.ndarray`オブジェクトに変換する"""
-    def tonumpy[T](self:T)->np.ndarray[T]:
+
+    def tonumpy[T](self: T) -> np.ndarray[T]:
         """`NPString`オブジェクトを`np.ndarray`オブジェクトに変換する"""
+
     @classmethod
-    def __instancecheck__(cls,instance:Any)->bool:...
+    def __instancecheck__(cls, instance: Any) -> bool: ...
     def __iter__(self) -> Iterator[np.character]: ...
     def __getitem__(self, key: int) -> np.character:
         """インデックスアクセスをカスタマイズする
@@ -39,6 +41,7 @@ class NPString(NPArray):
         :rtype: np.character
         :raises IndexError: 配列が空の場合に発生させる
         """
+
     def __add__(self, other: ArrayLike) -> NPString: ...
     def __radd__(self, other: ArrayLike) -> NPString: ...
     def __iadd__(self, other: ArrayLike) -> NPString: ...

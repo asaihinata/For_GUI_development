@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Iterator,overload,Self
+from typing import Any, Iterator, Self, overload
 
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
@@ -22,6 +22,7 @@ def implements(np_function) -> Any:
     :param np_function: 登録対象のnumpy関数
     :return: デコレータ関数を返す
     """
+
 class NPArray(NDArrayOperatorsMixin, np.ndarray):
     """`np.ndarray`を継承した型付き配列クラス
 
@@ -56,7 +57,8 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合
         """
-    def __class_getitem__(cls,item:Any)->np.ndarray:...
+
+    def __class_getitem__(cls, item: Any) -> np.ndarray: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
 
@@ -96,7 +98,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         """
 
     @property
-    def data[T](self:T) -> np.ndarray[T]:
+    def data[T](self: T) -> np.ndarray[T]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @property
@@ -126,7 +128,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         """配列オブジェクトが許容する最大次元数を返す"""
 
     def __array_ufunc__[T](
-        self:T,
+        self: T,
         ufunc: np.ufunc,
         method: str,
         *inputs: Any,
@@ -165,8 +167,9 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :return: 演算結果を返す
         :rtype: Any
         """
+
     @classmethod
-    def __instancecheck__(cls,instance:Any)->bool:...
+    def __instancecheck__(cls, instance: Any) -> bool: ...
     def __ne__(self, other: Any) -> Any: ...
     def __eq__(self, other: Any) -> Any: ...
     def __repr__(self) -> str: ...
@@ -174,16 +177,17 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
     def __contains__(self, value: object) -> bool: ...
     def __iter__(self) -> Iterator[Any]: ...
     def __len__(self) -> int: ...
-    def __reversed__[T](self:T) -> T:
+    def __reversed__[T](self: T) -> T:
         """逆順にした新しい配列オブジェクトを返す
 
         :return: 全軸で反転した配列を返す
         """
+
     @overload
     def __getitem__(self, key: int) -> Any: ...
     @overload
     def __getitem__(self, key: slice) -> np.ndarray: ...
-    def __getitem__(self, key: int | slice) -> Any|np.ndarray:
+    def __getitem__(self, key: int | slice) -> Any | np.ndarray:
         """インデックスアクセスをカスタマイズする
 
         intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
@@ -195,14 +199,14 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :raises IndexError: 配列が空の場合に発生させる
         """
 
-    def to_1d[T](self:T) -> T:
+    def to_1d[T](self: T) -> T:
         """配列を1次元にフラット化した新しい配列オブジェクトを返す
 
         :return: フラット化した配列オブジェクトを返す
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 
-    def lengtharange[T](self:T) -> T:
+    def lengtharange[T](self: T) -> T:
         """配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
         `dtype`は`np.uint64`に固定される
@@ -218,8 +222,10 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :return: `shape`が一致する場合は`True`を返し,一致しない場合は`False`を返す
         :rtype: bool
         """
-    def tonumpy[T](self:T)->np.ndarray[T]:
+
+    def tonumpy[T](self: T) -> np.ndarray[T]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
+
     def all_None(self) -> bool:
         """配列内の全要素が`None`かどうかを返す
 

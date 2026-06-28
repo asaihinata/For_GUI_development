@@ -20,11 +20,14 @@ class NPColor(NPArray):
         :param color: 色を指定する
         :type color: str | np.ndarray[str]
         """
+
     @property
-    def data[T](self:T) -> np.ndarray[T]:
+    def data[T](self: T) -> np.ndarray[T]:
         """`NPColor`オブジェクトを`np.ndarray`オブジェクトに変換する"""
-    def tonumpy[T](self:T)->np.ndarray[T]:
+
+    def tonumpy[T](self: T) -> np.ndarray[T]:
         """`NPColor`オブジェクトを`np.ndarray`オブジェクトに変換する"""
+
     def tohex(self) -> NPColor:
         """16進数カラーに変換する"""
 

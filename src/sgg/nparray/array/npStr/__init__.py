@@ -17,9 +17,11 @@ class NPString(NPArray):
         if strDtype(dtype):
             raise TypeError("dtypeには文字列の型を指定してください")
         return super().__new__(cls, data, dtype, d_ndim, min_ndim, max_ndim)
+
     @classmethod
-    def __instancecheck__(cls,instance):
-        return isinstance(instance,NPNumber)
+    def __instancecheck__(cls, instance):
+        return isinstance(instance, NPNumber)
+
     def __add__(self, other):
         result = np.add(np.asarray(self), other).view(type(self))
         result._dtype = result.dtype

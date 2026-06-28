@@ -41,11 +41,14 @@ class NPStatisticsd(NPNumber):
         :return: `NPStatisticsd`オブジェクトを返す
         :rtype: NPStatisticsd
         """
+
     @property
-    def data[T](self:T) -> np.ndarray[T]:
+    def data[T](self: T) -> np.ndarray[T]:
         """`NPStatisticsd`オブジェクトを`np.ndarray`オブジェクトに変換する"""
-    def tonumpy[T](self:T)->np.ndarray[T]:
+
+    def tonumpy[T](self: T) -> np.ndarray[T]:
         """`NPStatisticsd`オブジェクトを`np.ndarray`オブジェクトに変換する"""
+
     @property
     def sum(self) -> np.floating:
         """配列の全要素の合計を求める"""

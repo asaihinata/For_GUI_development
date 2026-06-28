@@ -30,9 +30,11 @@ class NPDate(NPArray):
 
     __radd__ = __add__
     __rsub__ = __sub__
+
     @classmethod
-    def __instancecheck__(cls,instance):
-        return isinstance(instance,NPDate)
+    def __instancecheck__(cls, instance):
+        return isinstance(instance, NPDate)
+
     def todatetime(self):
         return self.data.astype(datetime)
 
