@@ -58,13 +58,13 @@ class DScatter(threeElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x
+        return self.__x.tonumpy()
 
     def gety(self):
-        return self.__y
+        return self.__y.tonumpy()
 
     def getz(self):
-        return self.__z
+        return self.__z.tonumpy()
 
     def getcoordinate(self):
         coords = []

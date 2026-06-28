@@ -53,10 +53,10 @@ class Linefill(twoElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x
+        return self.__x.tonumpy()
 
     def getymin(self):
-        return self.ymin
+        return self.ymin.tonumpy()
 
     def getymax(self):
-        return self.ymax
+        return self.ymax.tonumpy()

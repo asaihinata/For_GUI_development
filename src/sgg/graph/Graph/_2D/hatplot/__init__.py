@@ -60,7 +60,7 @@ class Hatplot(twoElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x
+        return self.__x.tonumpy()
 
     def getdata(self):
-        return self.__data
+        return self.__data.tonumpy()

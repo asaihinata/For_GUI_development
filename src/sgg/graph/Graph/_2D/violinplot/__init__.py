@@ -122,4 +122,4 @@ class Violinplot(twoElement):
         return self.graphdata
 
     def getdata(self):
-        return self.__data
+        return self.__data.tonumpy()
