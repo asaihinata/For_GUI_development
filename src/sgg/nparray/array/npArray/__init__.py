@@ -55,7 +55,8 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
             obj._min_ndim = min_ndim
             obj._max_ndim = max_ndim
         return obj
-
+    def __class_getitem__(cls,item):
+        return np.ndarray.__class_getitem__.__func__(cls,item)
     def __array_finalize__(self, obj):
         if obj is None:
             return
@@ -132,7 +133,9 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         if func in HANDLED_FUNCTIONS:
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
-
+    @classmethod
+    def __instancecheck__(cls,instance):
+        return isinstance(instance,NPArray)
     def __ne__(self, other):
         return super().__ne__(other)
 
@@ -200,9 +203,9 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         if self.shape == shapes:
             return True
         return False
-
+    def tonumpy(self):
+        return np.asarray(self)
     def all_None(self):
         return bool(np.all(self.data == None))
-
     def any_None(self):
         return bool(np.any(self.data == None))

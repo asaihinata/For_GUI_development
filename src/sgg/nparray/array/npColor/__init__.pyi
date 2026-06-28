@@ -6,9 +6,6 @@
 指定できるカラー名はCSSで指定できる色名  https://drafts.csswg.org/css-color-4/#named-colors
 """
 
-from collections.abc import Iterator
-from typing import Any
-
 import numpy as np
 
 from ..nparray import NPArray
@@ -23,7 +20,11 @@ class NPColor(NPArray):
         :param color: 色を指定する
         :type color: str | np.ndarray[str]
         """
-
+    @property
+    def data[T](self:T) -> np.ndarray[T]:
+        """`NPColor`オブジェクトを`np.ndarray`オブジェクトに変換する"""
+    def tonumpy[T](self:T)->np.ndarray[T]:
+        """`NPColor`オブジェクトを`np.ndarray`オブジェクトに変換する"""
     def tohex(self) -> NPColor:
         """16進数カラーに変換する"""
 

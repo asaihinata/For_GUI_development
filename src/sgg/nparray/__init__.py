@@ -1,5 +1,5 @@
-from .array import (Formatconversion, NPArray, NPColor, NPDate, NPNumber, NPStatisticsd,
-                    NPStatisticsds, NPString)
+from .array import (Formatconversion, NPArray, NPBool, NPColor, NPDate, NPNumber,
+                    NPStatisticsd, NPStatisticsds, NPString)
 from .isdtype import (booldDtype, boolDtype, complexdDtype, complexDtype, floatdDtype,
                       floatDtype, intdDtype, intDtype, integerdDtype, integerDtype,
                       numberdDtype, numberDtype, strdDtype, strDtype, uintdDtype,
@@ -12,6 +12,7 @@ __all__ = [
     "ScalarStr",
     "booldDtype",
     "ScalarFloat",
+    "NPBool",
     "ScalarInt",
     "complexdDtype",
     "floatdDtype",

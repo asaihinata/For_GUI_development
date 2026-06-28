@@ -35,6 +35,10 @@ __all__ = [
     "TypeArrayLikedatetime",
     "TypeArray2Likedatetime",
     "TypeArraysLikedatetime",
+    "ArrayLikeBool",
+    "TypeArrayLikeBool",
+    "TypeArray2LikeBool",
+    "TypeArraysLikeBool",
     "ColorType",
     "ColorTypeN",
 ]
@@ -56,13 +60,18 @@ ArrayLikeNS = TypeVar("ArrayLikeNS", bound=Union[np.generic, int, float, np.str_
 TypeArrayLikeNS: TypeAlias = np.ndarray[tuple[int], np.dtype[ArrayLikeNS]]
 TypeArray2LikeNS: TypeAlias = np.ndarray[tuple[int, int], np.dtype[ArrayLikeNS]]
 TypeArraysLikeNS: TypeAlias = np.ndarray[tuple[int, ...], np.dtype[ArrayLikeNS]]
-# Any
-ArrayLikeAny = TypeVar("ArrayLikeAny", bound=Union[Any])
-TypeArrayLikeAny: TypeAlias = np.ndarray[tuple[int], np.dtype[ArrayLikeAny]]
-TypeArray2LikeAny: TypeAlias = np.ndarray[tuple[int, int], np.dtype[ArrayLikeAny]]
-TypeArraysLikeAny: TypeAlias = np.ndarray[tuple[int, ...], np.dtype[ArrayLikeAny]]
 # 日付
 ArrayLikedatetime = TypeVar("ArrayLikedatetime", bound=np.datetime64)
 TypeArrayLikedatetime: TypeAlias = np.ndarray[tuple[int], np.dtype[np.datetime64]]
 TypeArray2Likedatetime: TypeAlias = np.ndarray[tuple[int, int], np.dtype[np.datetime64]]
 TypeArraysLikedatetime: TypeAlias = np.ndarray[tuple[int, ...], np.dtype[np.datetime64]]
+# bool
+ArrayLikeBool = TypeVar("ArrayLikedatetime", bound=Union[np.bool_, bool])
+TypeArrayLikeBool: TypeAlias = np.ndarray[tuple[int], np.dtype[ArrayLikeBool]]
+TypeArray2LikeBool: TypeAlias = np.ndarray[tuple[int, int], np.dtype[ArrayLikeBool]]
+TypeArraysLikeBool: TypeAlias = np.ndarray[tuple[int, ...], np.dtype[ArrayLikeBool]]
+# Any
+ArrayLikeAny = TypeVar("ArrayLikeAny", bound=Union[Any])
+TypeArrayLikeAny: TypeAlias = np.ndarray[tuple[int], np.dtype[ArrayLikeAny]]
+TypeArray2LikeAny: TypeAlias = np.ndarray[tuple[int, int], np.dtype[ArrayLikeAny]]
+TypeArraysLikeAny: TypeAlias = np.ndarray[tuple[int, ...], np.dtype[ArrayLikeAny]]

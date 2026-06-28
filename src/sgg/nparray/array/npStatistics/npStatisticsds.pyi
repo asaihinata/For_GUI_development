@@ -48,7 +48,11 @@ class NPStatisticsds(NPNumber):
         :rtype: NPStatisticsds
         """
 
-    def __repr__(self) -> str: ...
+    @property
+    def data[T](self:T) -> np.ndarray[T]:
+        """`NPStatisticsds`オブジェクトを`np.ndarray`オブジェクトに変換する"""
+    def tonumpy[T](self:T)->np.ndarray[T]:
+        """`NPStatisticsds`オブジェクトを`np.ndarray`オブジェクトに変換する"""
     @property
     def x(self) -> NPStatisticsd:
         """`x`データを`NPStatisticsd`オブジェクトで返す"""

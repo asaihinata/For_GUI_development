@@ -1,3 +1,5 @@
+"""基本的な文字列の操作をするモジュール"""
+
 import numpy as np
 import numpy.strings as nps
 
@@ -9,28 +11,15 @@ __all__ = ["NPString"]
 
 
 class NPString(NPArray):
-    _element_type = (str, np.str_)
+    _element_type = (str, np.character, np.str_, np.bytes_)
 
     def __new__(cls, data, dtype=np.str_, d_ndim=None, min_ndim=None, max_ndim=None):
         if strDtype(dtype):
             raise TypeError("dtypeには文字列の型を指定してください")
         return super().__new__(cls, data, dtype, d_ndim, min_ndim, max_ndim)
-
-    def __iter__(self):
-        return super().__iter__()
-
-    def __getitem__(self, key):
-        return super().__getitem__(key)
-
-    def __contains__(self, item):
-        return super().__contains__(item)
-
-    def __reversed__(self):
-        return super().__reversed__()
-
-    def __repr__(self):
-        return super().__repr__()
-
+    @classmethod
+    def __instancecheck__(cls,instance):
+        return isinstance(instance,NPNumber)
     def __add__(self, other):
         result = np.add(np.asarray(self), other).view(type(self))
         result._dtype = result.dtype

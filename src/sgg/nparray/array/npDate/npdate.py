@@ -1,4 +1,4 @@
-from datetime import date, datetime, timezone
+from datetime import date, datetime
 
 import numpy as np
 
@@ -30,7 +30,9 @@ class NPDate(NPArray):
 
     __radd__ = __add__
     __rsub__ = __sub__
-
+    @classmethod
+    def __instancecheck__(cls,instance):
+        return isinstance(instance,NPDate)
     def todatetime(self):
         return self.data.astype(datetime)
 

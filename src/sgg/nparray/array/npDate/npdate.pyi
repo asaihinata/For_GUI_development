@@ -18,6 +18,13 @@ class NPDate(NPArray):
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPDate: ...
+    @property
+    def data[T](self:T) -> np.ndarray[T]:
+        """`NPDate`オブジェクトを`np.ndarray`オブジェクトに変換する"""
+    def tonumpy[T](self:T)->np.ndarray[T]:
+        """`NPDate`オブジェクトを`np.ndarray`オブジェクトに変換する"""
+    @classmethod
+    def __instancecheck__(cls,instance:Any)->bool:...
     def __add__(self, other: Any) -> NPDate: ...
     def __sub__(self, other: Any) -> NPDate: ...
     __radd__ = __add__
