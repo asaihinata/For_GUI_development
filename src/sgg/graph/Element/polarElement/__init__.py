@@ -39,13 +39,13 @@ class polarElement(GElement):
             self.yticksrange = (0, 0)
 
     def _places(self, num):
-        return NPNumber(linspace(0, 2 * pi, num, endpoint=False))
+        return NPNumber(linspace(0, 2 * pi, num, endpoint=False)).data
 
     def _xyd(self, x, y, d=None):
         if d is None:
-            return NPNumber(x, max_ndim=1).data, NPArray(y, max_ndim=1).data
+            return NPNumber(x, d_ndim=1).data, NPNumber(y, d_ndim=1).data
         else:
-            data = NPArray(d, max_ndim=1).data
+            data = NPNumber(d, d_ndim=1).data
             return self._places(data.size), data
 
     def _apply_theme_colors(self):
