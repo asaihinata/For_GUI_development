@@ -2,10 +2,11 @@
 
 from typing import Any, Literal, SupportsIndex, TypeAlias
 
-from numpy import float64, intp
-from numpy.typing import ArrayLike, NDArray
+import numpy as np
+from numpy.typing import ArrayLike, DTypeLike, NDArray
 
 from ....typing import TypeArrayLikeNumber
+from ..npnumber import NPNumber
 
 __all__ = ["NPStatisticsd"]
 
@@ -24,100 +25,108 @@ BINS_LIST: TypeAlias = Literal[
     "stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"
 ]
 
-class NPStatisticsd:
-    def __init_subclass__(cls, **kwargs: Any) -> None: ...
-    def __init__(self, data: TypeArrayLikeNumber) -> None:
+class NPStatisticsd(NPNumber):
+    def __new__(
+        cls,
+        data: TypeArrayLikeNumber,
+        dtype: DTypeLike | None = np.float64,
+    ) -> NPStatisticsd:
         """
         基本的な統計の計算をする
 
-        :param data: 配列を指定する
+        :param data: 数値が入った一次元の配列を指定する
         :type data: TypeArrayLikeNumber
+        :param dtype: `NPStatisticsd`内の配列の型を指定する
+        :type dtype: DTypeLike | None
+        :return: `NPStatisticsd`オブジェクトを返す
+        :rtype: NPStatisticsd
         """
 
     def __repr__(self) -> str: ...
     @property
-    def data(self): ...
-    @property
-    def sum(self):
-        """配列の合計を求める"""
+    def sum(self) -> np.floating:
+        """配列の全要素の合計を求める"""
 
     @property
-    def mean(self):
+    def mean(self) -> np.floating:
         """配列の算術平均を求める"""
 
     @property
-    def ave(self):
+    def ave(self) -> np.floating:
         """配列の加重平均を求める"""
 
     @property
-    def max(self):
+    def max(self) -> np.floating:
         """配列の最大値を求める"""
 
     @property
-    def min(self):
-        """配列の最低値を求める"""
+    def min(self) -> np.floating:
+        """配列の最小値を求める"""
 
     @property
-    def var(self):
+    def var(self) -> np.floating:
         """配列の分散を求める"""
 
     @property
-    def std(self):
+    def std(self) -> np.floating:
         """配列の標準偏差を求める"""
 
     @property
-    def pow2(self):
-        """配列を2乗した値を求める"""
+    def pow2(self) -> TypeArrayLikeNumber:
+        """配列の各要素を2乗した値を求める"""
 
     @property
-    def deviation(self):
-        """配列内の偏差値を求める"""
+    def deviation(self) -> TypeArrayLikeNumber:
+        """配列内の各要素の偏差値を求める"""
 
     @property
-    def log(self):
-        """配列の底が`e`の対数を求める"""
+    def log(self) -> TypeArrayLikeNumber:
+        """配列の各要素の底が`e`の対数を求める"""
 
     @property
-    def log10(self):
-        """配列の底が`10`の対数を求める"""
+    def log10(self) -> TypeArrayLikeNumber:
+        """配列の各要素の底が`10`の対数を求める"""
 
     @property
-    def log2(self):
-        """配列の底が`2`の対数を求める"""
+    def log2(self) -> TypeArrayLikeNumber:
+        """配列の各要素の底が`2`の対数を求める
+
+        ``numpy.log2`` を使用して計算する"""
 
     @property
-    def log1p(self):
-        """np.log1p(data)を返す"""
+    def log1p(self) -> TypeArrayLikeNumber:
+        """配列の各要素について`log(1+x)`を求める"""
 
     @property
-    def devsq(self):
+    def devsq(self) -> np.floating:
         """偏差平方和を求める"""
 
     @property
-    def range(self):
-        """配列の範囲を求める"""
+    def range(self) -> NDArray[Any]:
+        """配列の最小値と最大値を求める
+
+        :return: `[最小値,最大値]`の形式の配列を返す
+        :rtype: NDArray[Any]
+        """
 
     @property
-    def skew(self):
+    def skew(self) -> np.floating:
         """歪度を求める"""
 
     @property
-    def kurtosis(self):
+    def kurtosis(self) -> np.floating:
         """尖度を求める"""
 
     def percentile(
         self,
         q: tuple[int | float, ...],
-        axis: int | None = None,
         method: Type_Method = "linear",
-    ):
+    ) -> np.floating | NDArray[np.floating]:
         """
         指定したパーセンタイルを計算する
 
         :param q: 求めたいパーセンタイル値を指定する
         :type q: tuple[int | float,...]
-        :param axis: 計算する軸を指定する
-        :type axis: int | None
         :param method: パーセンタイルを推定するために使用する方法を指定する
         :type method: Type_Method
         """
@@ -125,39 +134,33 @@ class NPStatisticsd:
     def quantile(
         self,
         q: tuple[float, ...],
-        axis: int | None = None,
         method: Type_Method = "linear",
-    ):
+    ) -> np.floating | NDArray[np.floating]:
         """
         指定した分位点を計算する
 
         :param q: 求めたい分位点を指定する
         :type q: tuple[float,...]
-        :param axis: 計算する軸を指定する
-        :type axis: int | None
         :param method: 分位点を推定するために使用する方法を指定する
         :type method: Type_Method
         """
 
     def IQR(
-        axis: int | None = None,
         method: Type_Method = "linear",
-    ):
+    ) -> NDArray[np.floating]:
         """
         配列の四分位範囲を求める
 
-        :param axis: 計算する軸を指定する
-        :type axis: int | None
         :param method: 分位点を推定するために使用する方法を指定する
         :type method: Type_Method
         """
 
     @property
-    def outlier(self):
+    def outlier(self) -> NDArray[np.floating]:
         """四分位範囲の外れ値を求める"""
 
     @property
-    def CV(self):
+    def CV(self) -> np.floating:
         """変動係数を求める"""
 
     @property
@@ -170,34 +173,34 @@ class NPStatisticsd:
     # ヒストグラム
     def hist_bin_edges(
         self,
-        bins: int | BINS_LIST | ArrayLike = 10,
+        bin: int | BINS_LIST | ArrayLike = 10,
         range: tuple[float, float] | None = None,
         weights: ArrayLike | None = None,
     ) -> NDArray[Any]:
         """
-        `bins`で指定された計算方法で計算されたビンの境界を求める
+        `bin`で指定された計算方法で計算されたビンの境界を求める
 
-        :param bins: ビンの数や計算方法を指定する
-        :type bins: int | BINS_LIST | ArrayLike
+        :param bin: ビンの数や計算方法を指定する
+        :type bin: int | BINS_LIST | ArrayLike
         :param range: ビンの下限と上限を指定する
         :type range: tuple[float,float] | None
         :param weights: 重みを指定する
         :type weights: ArrayLike | None
-        :return: `bins`で指定された計算方法で計算した結果を返す
+        :return: `bin`で指定された計算方法で計算した結果を返す
         :rtype: NDArray[Any]
         """
 
     def histogram(
         self,
-        bins: int | BINS_LIST | ArrayLike = 10,
+        bin: int | BINS_LIST | ArrayLike = 10,
         range: tuple[float, float] | None = None,
         weights: ArrayLike | None = None,
     ) -> tuple[NDArray, NDArray]:
         """
         配列のヒストグラムを求める
 
-        :param bins: ビンの数や計算方法を指定する
-        :type bins: int | BINS_LIST | ArrayLike
+        :param bin: ビンの数や計算方法を指定する
+        :type bin: int | BINS_LIST | ArrayLike
         :param range: ビンの下限と上限を指定する
         :type range: tuple[float,float] | None
         :param weights: 重みを指定する
@@ -208,7 +211,7 @@ class NPStatisticsd:
 
     def bincount(
         self, weights: ArrayLike | None = None, min: SupportsIndex = 0
-    ) -> NDArray[intp]:
+    ) -> NDArray[np.intp]:
         """
         非負整数の配列に含まれる各値の出現回数を数える
 
@@ -217,10 +220,12 @@ class NPStatisticsd:
         :param min: 出力配列の最小ビン数を指定する
         :type min: SupportsIndex
         :return: 入力配列をビン分割した結果を返す
-        :rtype: NDArray[intp]
+        :rtype: NDArray[np.intp]
         """
     # 母集団
-    def ratio_E_samplingerror(self, parcent: int | float, cc: int | float) -> float64:
+    def ratio_E_samplingerror(
+        self, parcent: int | float, cc: int | float
+    ) -> np.float64:
         """
         母比率の標本誤差を求める
 
@@ -234,7 +239,7 @@ class NPStatisticsd:
         :raises ValueError: 信頼係数`cc`に0.0から1.0の範囲で指定しなかった場合に発生させる
         """
 
-    def ratio_E(self, p: int | float) -> tuple[float64, float64]:
+    def ratio_E(self, p: int | float) -> tuple[np.float64, np.float64]:
         """
         母比率の上限値と下限値を求める
 
@@ -248,13 +253,13 @@ class NPStatisticsd:
         :raises ValueError: 信頼係数`cc`に0.0から1.0の範囲で指定しなかった場合に発生させる
         """
 
-    def ave_E_samplingerror(self, cc: int | float = 0.95) -> float64:
+    def ave_E_samplingerror(self, cc: int | float = 0.95) -> np.float64:
         """母平均の推定をする
 
         :param cc: 信頼係数を指定する
         :type cc: int | float"""
 
-    def ave_E(self, cc: float = 0.95) -> tuple[float64, float64]:
+    def ave_E(self, cc: float = 0.95) -> tuple[np.float64, np.float64]:
         """
         母平均の上限値と下限値を求める
 
@@ -262,7 +267,7 @@ class NPStatisticsd:
         :type cc: int | float
         """
 
-def cCoefficient(p: int | float = 0.95) -> float64:
+def cCoefficient(p: int | float = 0.95) -> np.float64:
     """
     信頼係数を求める
 

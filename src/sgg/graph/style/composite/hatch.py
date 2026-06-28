@@ -17,10 +17,11 @@ class Hatch(NPString):
         elif isinstance(hatch, str):
             hatch = [hatch]
         judge = vectorize(lambda x: bool(compile(r"^[/\\|\-+xo*O.]+$").fullmatch(x)))
-        datas=super().__new__(cls,hatch, max_ndim=1)
+        datas = super().__new__(cls, hatch, max_ndim=1)
         if al(judge(datas.data)):
             raise ValueError("指定できない値が含まれています")
         return datas
+
     def __iter__(self) -> Iterator[str]:
         return iter(self.data)
 

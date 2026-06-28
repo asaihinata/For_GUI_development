@@ -1,12 +1,13 @@
-"""基本的な統計の計算をするモジュール"""
+"""2つの変数データから様々な統計の計算を行うモジュール"""
 
-from typing import Any, Literal, TypeAlias
+from typing import Literal, TypeAlias
 
-from numpy import floating, ndarray
+import numpy as np
 from numpy._typing import _ArrayLikeFloat_co
-from numpy.typing import NDArray
+from numpy.typing import DTypeLike, NDArray
 
-from ....typing import ArrayLikeNumber
+from ....typing import TypeArrayLikeNumber
+from ..npnumber import NPNumber
 from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
@@ -25,53 +26,78 @@ METHOD_LIST: TypeAlias = Literal[
     "normal_unbiased",
 ]
 
-class NPStatisticsds:
-    def __init_subclass__(cls, **kwargs: Any) -> None: ...
-    def __init__(self, x: ArrayLikeNumber, y: ArrayLikeNumber) -> None: ...
+class NPStatisticsds(NPNumber):
+    """2つの変数データから様々な統計の計算を行うオブジェクト"""
+
+    def __new__(
+        cls,
+        x: TypeArrayLikeNumber,
+        y: TypeArrayLikeNumber,
+        dtype: DTypeLike | None = np.float64,
+    ) -> NPStatisticsds:
+        """
+        2つの変数データから様々な統計の計算を行うオブジェクト`NPStatisticsds`を返す
+
+        :param x: 数値が入った一次元の配列を指定する
+        :type x: TypeArrayLikeNumber
+        :param y: 数値が入った一次元の配列を指定する
+        :type y: TypeArrayLikeNumber
+        :param dtype: `NPStatisticsds`内の配列の型を指定する
+        :type dtype: DTypeLike | None
+        :return: `NPStatisticsds`オブジェクトを返す
+        :rtype: NPStatisticsds
+        """
+
     def __repr__(self) -> str: ...
     @property
-    def x(self) -> ndarray:
-        """`x`の配列を返す"""
+    def x(self) -> NPStatisticsd:
+        """`x`データを`NPStatisticsd`オブジェクトで返す"""
 
     @property
-    def y(self) -> ndarray:
-        """`y`の配列を返す"""
+    def xmath(self) -> np.ndarray:
+        """`x`データをnumpyの配列で返す"""
 
     @property
-    def xmath(self) -> NPStatisticsd: ...
+    def y(self) -> NPStatisticsd:
+        """`y`データを`NPStatisticsd`オブジェクトで返す"""
+
     @property
-    def ymath(self) -> NPStatisticsd: ...
-    def covariance(self):
+    def ymath(self) -> np.ndarray:
+        """`y`データをnumpyの配列で返す"""
+
+    def covariance(self) -> np.floating:
         """共分散を求める"""
 
-    def correlation(self):
+    def correlation(self) -> np.floating:
         """相関係数を求める"""
 
-    def correlation_coefficient(self):
+    def correlation_coefficient(self) -> np.floating:
         """単相関係数を求める"""
     # x,y
     @property
-    def Sxxyy(self):
+    def Sxy(self) -> np.floating:
+        """`x`と`y`の共分散を求める"""
+
+    @property
+    def Sxxyy(self) -> np.floating:
         """`x`の偏差平方和と`y`の偏差平方和の積を求める"""
 
     @property
-    def Sxxyyroot(self):
+    def Sxxyyroot(self) -> np.floating:
         """`x`の偏差平方和と`y`の偏差平方和の積の平方和を求める"""
     # 回帰直線
-    def regression(self, n: int = 1) -> NDArray[floating]:
+    def regression(self, n: int = 1) -> NDArray[np.floating]:
         """点(x,y)に次数`n`の多項式を当てはめる"""
 
-    def oneregression(self) -> NDArray[floating]:
+    def oneregression(self) -> NDArray[np.floating]:
         """
         点(x,y)に一次方程式の回帰直線を返す
 
         :return: [傾き,切片]として返す
-        :rtype: NDArray[floating]
+        :rtype: NDArray[np.floating]
         """
 
-    def chebysheveve(
-        self, Fx: _ArrayLikeFloat_co, n: int = 1
-    ) -> NDArray[floating[Any]]:
+    def chebysheveve(self, Fx: _ArrayLikeFloat_co, n: int = 1) -> NDArray[np.floating]:
         """
         点`Fx`において点(x,y)に次数`n`の多項式を評価する
 

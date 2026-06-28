@@ -14,15 +14,9 @@ class Imagelink(Element):
         super().__init__(master, kw)
         self.link = kw.get("link")
         if not isinstance(self.link, str):
-            self.widget = Label(
-                master, text="image error", takefocus=self.takefocus
-            )
-            # raise TypeError("linkにはstr型を指定してください")
+            self.widget = Label(master, text="image error", takefocus=self.takefocus)
         elif not linkcheck(self.link):
-            self.widget = Label(
-                master, text="image error", takefocus=self.takefocus
-            )
-            # raise ValueError("サイトが存在しません")
+            self.widget = Label(master, text="image error", takefocus=self.takefocus)
         else:
             self.__img = Img_byte(get_link_img(self.link)).asresize().image
             self.imgs = PhotoImage(self.__img)

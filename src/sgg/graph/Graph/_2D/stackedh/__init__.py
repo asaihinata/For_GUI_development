@@ -29,7 +29,7 @@ class Stackedh(twoElement):
     def _survey(self, data, dataname, label=None, height=0.8):
         data = data.T
         lisarr = []
-        data_percent = data / np.sum(data,axis=0) * 100
+        data_percent = data / np.sum(data, axis=0) * 100
         left = np.zeros(len(dataname))
         for i, ds in enumerate(data_percent):
             lisarr = self.ax.barh(

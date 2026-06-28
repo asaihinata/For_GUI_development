@@ -16,7 +16,7 @@ from ..nparray import NPArray
 __all__ = ["NPColor"]
 
 class NPColor(NPArray):
-    def __init__(self, color: str | np.ndarray[str]) -> None:
+    def __new__(cls, color: str | np.ndarray[str]) -> NPColor:
         """
         色についての配列を作成する
 
@@ -24,9 +24,6 @@ class NPColor(NPArray):
         :type color: str | np.ndarray[str]
         """
 
-    def __repr__(self) -> str: ...
-    def __iter__(self) -> Iterator[Any]: ...
-    def __getitem__(self, key: int) -> Any: ...
     def tohex(self) -> NPColor:
         """16進数カラーに変換する"""
 

@@ -1,42 +1,61 @@
 """基本的な計算をするモジュール"""
 
-from typing import Literal
+from typing import Any, Literal, TypeAlias
 
-from _typeshed import Incomplete
-from numpy import float64, ndarray
+import numpy as np
+from numpy.typing import ArrayLike, DTypeLike
 
 from ....typing import TypeArraysLikeNumber
 from ..nparray import NPArray
 
 __all__ = ["NPNumber"]
+TYPEMETHOD: TypeAlias = Literal[
+    "inverted_cdf",
+    "averaged_inverted_cdf",
+    "closest_observation",
+    "interpolated_inverted_cdf",
+    "hazen",
+    "weibull",
+    "linear",
+    "median_unbiased",
+    "normal_unbiased",
+]
 
 class NPNumber(NPArray):
-    def __new__(cls, data:TypeArraysLikeNumber, dtype=float64,d_ndim=None, min_ndim=None, max_ndim=None):...
+    def __new__(
+        cls,
+        data: TypeArraysLikeNumber,
+        dtype: DTypeLike | None = np.float64,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPNumber: ...
     def __abs__(self) -> NPNumber: ...
-    def __add__(self, other: int | float | ndarray | NPNumber) -> NPNumber: ...
-    def __sub__(self, other: int | float | ndarray | NPNumber) -> NPNumber: ...
-    def __mul__(self, other: int | float | ndarray | NPNumber) -> NPNumber: ...
-    def __truediv__(self, other: int | float | ndarray | NPNumber) -> NPNumber: ...
-    __radd__ = __add__
-    __rsub__ = __sub__
-    __rmul__ = __mul__
-    __rtruediv__ = __truediv__
-    __iadd__ = __add__
-    __isub__ = __sub__
-    __imul__ = __mul__
-    __itruediv__ = __truediv__
-    def __eq__(self, value: ndarray | NPNumber) -> ndarray[Incomplete]: ...
-    def __ne__(self, value: ndarray | NPNumber) -> ndarray[Incomplete]: ...
-    def __lt__(self, other: ndarray | NPNumber) -> ndarray[Incomplete]: ...
-    def __le__(self, other: ndarray | NPNumber) -> ndarray[Incomplete]: ...
-    def __gt__(self, other: ndarray | NPNumber) -> ndarray[Incomplete]: ...
-    def __ge__(self, other: ndarray | NPNumber) -> ndarray[Incomplete]: ...
-    def __mod__(self, other: int | float | ndarray | NPNumber) -> NPNumber: ...
-    def __floordiv__(self, other: int | float | ndarray | NPNumber) -> NPNumber: ...
-    def __pow__(self, other: int | float | ndarray | NPNumber) -> NPNumber: ...
+    def __add__(self, other: ArrayLike) -> NPNumber: ...
+    def __sub__(self, other: ArrayLike) -> NPNumber: ...
+    def __mul__(self, other: ArrayLike) -> NPNumber: ...
+    def __truediv__(self, other: ArrayLike) -> NPNumber: ...
+    def __iadd__(self, other: ArrayLike) -> NPNumber: ...
+    def __isub__(self, other: ArrayLike) -> NPNumber: ...
+    def __imul__(self, other: ArrayLike) -> NPNumber: ...
+    def __itruediv__(self, other: ArrayLike) -> NPNumber: ...
+    def __radd__(self, other: ArrayLike) -> NPNumber: ...
+    def __rsub__(self, other: ArrayLike) -> NPNumber: ...
+    def __rmul__(self, other: ArrayLike) -> NPNumber: ...
+    def __rtruediv__(self, other: ArrayLike) -> NPNumber: ...
+    def __mod__(self, other: ArrayLike) -> NPNumber: ...
+    def __floordiv__(self, other: ArrayLike) -> NPNumber: ...
+    def __pow__(self, other: ArrayLike) -> NPNumber: ...
+    def __eq__(self, value: Any) -> Any: ...
+    def __ne__(self, value: Any) -> Any: ...
+    def __lt__(self, other: Any) -> Any: ...
+    def __le__(self, other: Any) -> Any: ...
+    def __gt__(self, other: Any) -> Any: ...
+    def __ge__(self, other: Any) -> Any: ...
     @property
-    def sturgesval(self) -> float64:
+    def sturgesval(self) -> np.floating:
         """スタージェスの公式を求める"""
+
     def cussum(self) -> NPNumber:
         """一つ前の元の値との和を求める"""
 
@@ -45,38 +64,34 @@ class NPNumber(NPArray):
 
     def percentile(
         self,
-        q: tuple[int, ...],
-        axis: int | None = None,
-        method: Literal[
-            "inverted_cdf",
-            "averaged_inverted_cdf",
-            "closest_observation",
-            "interpolated_inverted_cdf",
-            "hazen",
-            "weibull",
-            "linear",
-            "median_unbiased",
-            "normal_unbiased",
-        ] = "linear",
-    ) -> ndarray: ...
+        q: tuple[int | float, ...],
+        method: TYPEMETHOD = "linear",
+    ) -> NPNumber:
+        """
+        指定したパーセンタイルを計算する
+
+        :param q: 求めたいパーセンタイル値を指定する
+        :type q: tuple[int | float,...]
+        :param method: パーセンタイルを推定するために使用する方法を指定する
+        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
+        """
+
     def quantile(
         self,
-        q: tuple[int, ...],
-        axis: int | None = None,
-        method: Literal[
-            "inverted_cdf",
-            "averaged_inverted_cdf",
-            "closest_observation",
-            "interpolated_inverted_cdf",
-            "hazen",
-            "weibull",
-            "linear",
-            "median_unbiased",
-            "normal_unbiased",
-        ] = "linear",
-    ) -> ndarray: ...
-    def ratio(self, axis: int | None = None) -> ndarray:
+        q: tuple[float, ...],
+        method: TYPEMETHOD = "linear",
+    ) -> NPNumber:
+        """
+        指定した分位点を計算する
+
+        :param q: 求めたい分位点を指定する
+        :type q: tuple[float,...]
+        :param method: 分位点を推定するために使用する方法を指定する
+        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
+        """
+
+    def ratio(self, axis: int | None = None) -> np.ndarray:
         """行や列ごとの合計に対する比率を求める"""
 
-    def zero_check(self) -> ndarray:
+    def zero_check(self) -> np.ndarray:
         """要素の数値が0の位置を探す"""

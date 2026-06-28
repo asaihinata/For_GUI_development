@@ -21,7 +21,7 @@ class Linefill(twoElement):
 
     def __plot(self, x, ymax, ymin, alpha, centerlinewidth):
         self.clear()
-        x,y1,y2=x.data,ymax.data,ymin.data
+        x, y1, y2 = x.data, ymax.data, ymin.data
         fill = self.ax.fill_between(x, y1, y2, alpha=alpha, label=list(self.label))
         plot = self.ax.plot(
             x, (y1 + y2) / 2, linewidth=centerlinewidth, solid_capstyle="butt"

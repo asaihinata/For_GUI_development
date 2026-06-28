@@ -25,13 +25,15 @@ class Stacked(twoElement):
         self._apply_labels(self.xlabel, self.ylabel)
         self._adjustment()
 
-    def _survey(self, data:NPNumber, dataname, label=None, width=0.8):
+    def _survey(self, data: NPNumber, dataname, label=None, width=0.8):
         data = data.T
         lisarr = []
-        data_percent = data / np.sum(data,axis=0) * 100
+        data_percent = data / np.sum(data, axis=0) * 100
         bottom = np.zeros(len(dataname))
         for i, ds in enumerate(data_percent):
-            lisarr = self.ax.bar(dataname, ds, bottom=bottom, label=label[i], width=width)
+            lisarr = self.ax.bar(
+                dataname, ds, bottom=bottom, label=label[i], width=width
+            )
             bottom += ds
         return lisarr
 

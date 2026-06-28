@@ -4,7 +4,7 @@ from typing import Any, Iterator
 
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
-from numpy.typing import DTypeLike,ArrayLike
+from numpy.typing import ArrayLike, DTypeLike
 
 __all__ = ["is_array_like", "change_array_like", "NPArray"]
 
@@ -29,13 +29,15 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
     型チェックは :attr:`_element_type` によるPython型で行う
     サブクラスでは :attr:`_element_type` と :attr:`_default_dtype` をオーバーライドして型制約を追加できる
     """
+
     _default_dtype: np.dtype | None = np.dtype("object")
     _element_type: type | tuple[type, ...] | None = None
+
     def __new__(
         cls,
         input_array: ArrayLike,
         dtype: DTypeLike | None = None,
-        d_ndim:int | None = None,
+        d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPArray:
@@ -61,6 +63,18 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
 
     @classmethod
+    def _resolve_dtype(
+        cls,
+        dtype: np.dtype | str | type | None,
+    ) -> np.dtype | None:
+        """引数dtypeを解決させる
+
+        :param dtype: ユーザーが指定するdtype
+        :return: 解決されたdtypeを返す
+        :rtype: numpy.dtype | None
+        """
+
+    @classmethod
     def _validate_ndim(
         cls,
         obj: np.ndarray,
@@ -75,20 +89,6 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :raises ValueError: 次元数が範囲外の場合
         """
 
-    def __array_finalize__(self, obj: np.ndarray | None) -> None:
-        """スライスやview後もdtype情報を引き継ぐ"""
-    @classmethod
-    def _resolve_dtype(
-        cls,
-        dtype: np.dtype | str | type | None,
-    ) -> np.dtype | None:
-        """引数dtypeを解決させる
-
-        :param dtype: ユーザーが指定するdtype
-        :return: 解決されたdtypeを返す
-        :rtype: numpy.dtype | None
-        """
-
     @classmethod
     def _validate_elements(cls, obj: np.ndarray) -> None:
         """配列内の要素が`_element_type`と一致するか検証する
@@ -98,14 +98,23 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         """
 
     @property
+    def data(self) -> np.ndarray:
+        """内部に保持している実際の`np.ndarray`を取得する
+
+        :return: 内部に保持している実際の`np.ndarray`を返す
+        :rtype: np.ndarray
+        """
+
+    @property
     def dtypes(self) -> np.dtype | None:
         """インスタンス生成時に確定したdtypeを取得する
 
         :return:
         :rtype: numpy.dtype | None
         """
+
     @dtypes.setter
-    def dtypes(self,dtype:DTypeLike | None)->np.dtype | None:
+    def dtypes(self, dtype: DTypeLike | None) -> np.dtype | None:
         """配列のdtypeを設定する
 
         :param dtype: 配列のdtypeを指定する
@@ -113,6 +122,15 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :return:
         :rtype: numpy.dtype | None
         """
+
+    @property
+    def min_ndim(self) -> int | None:
+        """`NPArray`が許容する最小次元数を返す"""
+
+    @property
+    def max_ndim(self) -> int | None:
+        """`NPArray`が許容する最大次元数を返す"""
+
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -133,6 +151,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :return: 処理結果を返す
         :rtype: NPArray | Any
         """
+
     def __array_function__(
         self,
         func: Any,
@@ -154,8 +173,32 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :rtype: Any
         """
 
+    def __ne__(self, other: Any) -> Any: ...
+    def __eq__(self, other: Any) -> Any: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
+    def __contains__(self, value: object) -> bool: ...
+    def __iter__(self) -> Iterator[Any]: ...
+    def __len__(self) -> int: ...
+    def __reversed__(self) -> NPArray:
+        """逆順にした新しい`NPArray`を返す
+
+        :return: 全軸で反転した配列を返す
+        :rtype: NPArray
+        """
+
+    def __getitem__(self, key: int) -> Any:
+        """インデックスアクセスをカスタマイズする
+
+        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
+
+        :param key: インデックスまたはスライスを指定する
+        :type key: int
+        :return: インデックスに対応する要素を返す
+        :rtype: Any
+        :raises IndexError: 配列が空の場合に発生させる
+        """
+
     def to_1d(self) -> NPArray:
         """配列を1次元にフラット化した新しい`NPArray`を返す
 
@@ -163,14 +206,6 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :rtype: NPArray
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
-
-    @property
-    def min_ndim(self) -> int | None:
-        """`NPArray`が許容する最小次元数を返す"""
-
-    @property
-    def max_ndim(self) -> int | None:
-        """`NPArray`が許容する最大次元数を返す"""
 
     def lengtharange(self) -> NPArray:
         """`NPArray`と同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
@@ -190,36 +225,6 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :rtype: bool
         """
 
-    @property
-    def data(self) -> np.ndarray:
-        """内部に保持している実際の`np.ndarray`を取得する
-
-        :return: 内部に保持している実際の`np.ndarray`を返す
-        :rtype: np.ndarray
-        """
-
-    def get(self, key: int) -> Any:
-        """:attr:`__getitem__` と同じ処理を実行する
-
-        :param key: 取得するインデックス
-        :type key: int
-        :return: インデックスに対応する要素を返す
-        :rtype: Any
-        """
-
-    def __iter__(self) -> Iterator[Any]: ...
-    def __getitem__(self, key: int) -> Any:
-        """インデックスアクセスをカスタマイズする
-
-        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
-
-        :param key: インデックスまたはスライスを指定する
-        :type key: int
-        :return: インデックスに対応する要素を返す
-        :rtype: Any
-        :raises IndexError: 配列が空の場合
-        """
-
     def all_None(self) -> bool:
         """配列内の全要素が`None`かどうかを返す
 
@@ -232,12 +237,4 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
 
         :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
         :rtype: bool
-        """
-
-    def __contains__(self, item: Any) -> bool: ...
-    def __reversed__(self) -> NPArray:
-        """逆順にした新しい`NPArray`を返す
-
-        :return: 全軸で反転した配列を返す
-        :rtype: NPArray
         """

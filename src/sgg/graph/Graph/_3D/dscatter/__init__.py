@@ -28,9 +28,6 @@ class DScatter(threeElement):
             self.ax.scatter(xs, ys, zs, label=label[i], marker=marker[i], alpha=alpha)
             for i, (xs, ys, zs) in enumerate(product(x, y, z))
         ]
-        for i,(a,b,c) in enumerate(product(x, y, z)):
-            print(i,a,b,c)
-            print(a,type(a))
         self._apply_labels(self.xlabel, self.ylabel, self.zlabel)
         self.legend()
         self._adjustment()

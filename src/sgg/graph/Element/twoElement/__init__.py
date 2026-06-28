@@ -1,6 +1,7 @@
 from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
 import numpy as np
+
 from ....dev import bols, list2num, listchose, num0s, parsecolor, range_num
 from ...style import getLabel
 from ..graph import GElement

@@ -26,7 +26,7 @@ class Solidlist(NPArray):
     def __new__(cls, solid):
         if isinstance(solid, str):
             solid = [solid]
-        return super().__new__(cls,solid,dtype=str,max_ndim=1)
+        return super().__new__(cls, solid, dtype=str, max_ndim=1)
 
     def __str__(self):
         return str(self.data[0])

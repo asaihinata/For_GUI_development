@@ -24,7 +24,8 @@ def change_array_like(obj):
     return False
 
 
-HANDLED_FUNCTIONS= {}
+HANDLED_FUNCTIONS = {}
+
 
 def implements(np_function):
     def decorator(func):
@@ -37,6 +38,7 @@ def implements(np_function):
 class NPArray(NDArrayOperatorsMixin, np.ndarray):
     _default_dtype = np.dtype("object")
     _element_type = None
+
     def __new__(
         cls, input_array, dtype=None, d_ndim=None, min_ndim=None, max_ndim=None
     ):
@@ -96,11 +98,13 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
     @property
     def dtypes(self):
         return self._dtype
+
     @dtypes.setter
-    def dtypes(self,dtype):
+    def dtypes(self, dtype):
         if dtype is not None:
-            self._dtype=np.dtype(dtype)
+            self._dtype = np.dtype(dtype)
         return self._dtype
+
     @property
     def min_ndim(self):
         return getattr(self, "_min_ndim", None)
@@ -111,8 +115,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
 
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
-            np.asarray(x) if isinstance(x, NPArray) else x
-            for x in inputs
+            np.asarray(x) if isinstance(x, NPArray) else x for x in inputs
         )
         result = getattr(ufunc, method)(*raw_inputs, **dict(kwargs))
 
@@ -130,18 +133,26 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
+    def __ne__(self, other):
+        return super().__ne__(other)
+
+    def __eq__(self, other):
+        return super().__eq__(other)
+
     def __repr__(self):
-        return f"NPArray({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
+        return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
 
     def __str__(self):
         return self.__repr__()
 
     def __contains__(self, item):
-        return item in self.data
+        return super().__contains__(item)
+
+    def __len__(self):
+        return super().__len__()
 
     def __iter__(self):
         if self.ndim == 1:
-            print(f"{self.data=}")
             return iter([self.data])
         return iter(self.data)
 
@@ -162,11 +173,8 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
                 return data[key]
             else:
                 return data[key % size]
-        elif isinstance(key,slice):
+        elif isinstance(key, slice):
             return self.data.flatten()[key]
-
-    def get(self, key):
-        return self[key]
 
     def to_1d(self):
         if self.min_ndim is not None and self.min_ndim > 1:

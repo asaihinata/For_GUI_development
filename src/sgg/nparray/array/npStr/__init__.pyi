@@ -1,49 +1,28 @@
 """基本的な文字列操作をするモジュール"""
 
-from collections.abc import Iterator
-from types import NotImplementedType
-from typing import Any, Literal
+from typing import Any
 
-from _typeshed import Incomplete
 import numpy as np
-from numpy._typing import ArrayLike, DTypeLike, NDArray
+from numpy._typing import ArrayLike, DTypeLike
 
+from ....typing import TypeArraysLikeString
 from ..nparray import NPArray
+from ..npnumber import NPNumber
 
 __all__ = ["NPString"]
 
 class NPString(NPArray):
-    def __init__(
-        self,
-        data: ArrayLike,
-        dtype: DTypeLike = np.str_,
+    def __new__(
+        cls,
+        data: TypeArraysLikeString,
+        dtype: DTypeLike | None = np.str_,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> None:
-        """
-        :param data: データの配列を指定する
-        :type data: ArrayLike
-        :param dtype: numpyの配列で指定する型を指定する
-        :type dtype: DTypeLike | None
-        :param max_ndim: 配列の最大の深さを指定する
-        :type max_ndim: int | None
-        """
-
-    def __getitem__(self, key: int) -> Any: ...
-    def __contains__(self, item: Any) -> bool: ...
-    def __len__(self) -> int: ...
-    def __iter__(self) -> Iterator[Any]: ...
-    def __reversed__(self) -> NPString:
-        """`numpy.fliplr`を実行する"""
-
-    def __repr__(self) -> str: ...
-    def __array_ufunc__(
-        self,
-        ufunc: np.ufunc,
-        method: Literal["__call__", "reduce", "reduceat", "accumulate", "outer", "at"],
-        *args: Any,
-        **kwargs: Any,
-    ) -> Any | NotImplementedType | NPString: ...
-    def __add__(self, other: np.ndarray | NPString) -> NPString: ...
+    ) -> NPString: ...
+    def __add__(self, other: ArrayLike) -> NPString: ...
+    def __radd__(self, other: ArrayLike) -> NPString: ...
+    def __iadd__(self, other: ArrayLike) -> NPString: ...
     def __mul__(self, i: int) -> NPString:
         """
         配列内の要素を`i`回付け加える
@@ -52,46 +31,35 @@ class NPString(NPArray):
         :type i: int
         :raises TypeError: `i`に`int`型以外を指定した場合に発生させる
         """
-    __radd__ = __add__
-    __rmul__ = __mul__
-    __iadd__ = __add__
-    __imul__ = __mul__
-    def __eq__(self, value: np.ndarray | NPString) -> np.ndarray[Incomplete]: ...
-    def __ne__(self, value: np.ndarray | NPString) -> np.ndarray[Incomplete]: ...
-    @property
-    def T(self) -> NPString: ...
-    def append(self, val: np.ndarray | NPString) -> NPString: ...
+
+    def __rmul__(self, other: int) -> NPString:
+        """
+        配列内の要素を`i`回付け加える
+
+        :param i: 付け加える回数を指定する
+        :type i: int
+        :raises TypeError: `i`に`int`型以外を指定した場合に発生させる
+        """
+
+    def __imul__(self, other: int) -> NPString:
+        """
+        配列内の要素を`i`回付け加える
+
+        :param i: 付け加える回数を指定する
+        :type i: int
+        :raises TypeError: `i`に`int`型以外を指定した場合に発生させる
+        """
+
+    def __eq__(self, value: Any) -> Any: ...
+    def __ne__(self, value: Any) -> Any: ...
+    def append(self, val: Any) -> NPString: ...
     def low(self) -> NPString:
-        """アルファベットを小文字に変換する"""
+        """`NPString`内の要素のアルファベットを小文字に変換する"""
 
     def upper(self) -> NPString:
-        """アルファベットを大文字に変換する"""
+        """`NPString`内の要素のアルファベットを大文字に変換する"""
 
-    def stringlen(self) -> NDArray[np.int_]: ...
-    def str_len(self) -> NDArray[np.int_]: ...
+    def stringlen(self) -> NPNumber: ...
+    def str_len(self) -> NPNumber: ...
     def replace(self, old: str, new: str) -> NPString:
-        """NPString内の`old`を`new`に置き換える"""
-
-    def astype(self, dtype: DTypeLike | None) -> NPString:
-        """`dtype`で指定された型に変更します"""
-
-    def sort(self) -> NPString:
-        """`data`にソートを実行する"""
-
-    def first_pop(self) -> NPString:
-        """配列の最初の要素のコピーをその配列の末尾に追加する"""
-
-    def clear(self) -> NPString:
-        """配列をクリアする"""
-
-    def deep_add(self, val: int) -> NPString:
-        """配列の深さを`val`分だけ追加する"""
-
-    def deep_add(self, val: int) -> NPString:
-        """配列の深さが`val`より低い場合,深さを`val`にする"""
-
-    def reshape(self, size: tuple[int, ...]) -> NPString:
-        """配列の形状を`size`で指定する"""
-
-    def flatten(self) -> NPString:
-        """配列を一次元に平坦にする"""
+        """`NPString`内の要素の文字列の`old`を`new`に置き換える"""

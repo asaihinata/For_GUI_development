@@ -3,22 +3,21 @@ import numpy.strings as nps
 
 from ...isdtype import strDtype
 from ..nparray import NPArray
+from ..npnumber import NPNumber
 
 __all__ = ["NPString"]
 
 
 class NPString(NPArray):
-    _element_type = (str)
-    def __new__(cls, data, dtype=np.str_,d_ndim=None, min_ndim=None, max_ndim=None):
+    _element_type = (str, np.str_)
+
+    def __new__(cls, data, dtype=np.str_, d_ndim=None, min_ndim=None, max_ndim=None):
         if strDtype(dtype):
             raise TypeError("dtypeには文字列の型を指定してください")
-        return super().__new__(cls,data, dtype, d_ndim,min_ndim,max_ndim)
+        return super().__new__(cls, data, dtype, d_ndim, min_ndim, max_ndim)
 
     def __iter__(self):
         return super().__iter__()
-
-    def __len__(self):
-        return super().__len__()
 
     def __getitem__(self, key):
         return super().__getitem__(key)
@@ -30,64 +29,53 @@ class NPString(NPArray):
         return super().__reversed__()
 
     def __repr__(self):
-        return f"NPString({self.data})"
-
-    def __array_ufunc__(self, ufunc, method, *args, **kwargs):
-        if method == "__call__":
-            args = [x.data if isinstance(x, NPString) else x for x in args]
-            result = ufunc(*args, **kwargs)
-            if isinstance(result, np.ndarray):
-                return NPString(result)
-            return result
-        return NotImplemented
+        return super().__repr__()
 
     def __add__(self, other):
-        self.data = nps.add(self.data, self.___datas(other))
-        return self
+        result = np.add(np.asarray(self), other).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __mul__(self, i):
         if not isinstance(i, int):
             raise TypeError("int型で指定してください")
-        self.data = nps.multiply(self.data, i)
-        return self
+        result = nps.multiply(np.asarray(self), i).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     __radd__ = __add__
-    __rmul__ = __mul__
     __iadd__ = __add__
+    __rmul__ = __mul__
     __imul__ = __mul__
 
     def __eq__(self, value):
-        return np.equal(self.data, self.___datas(value))
+        return super().__eq__(value)
 
     def __ne__(self, value):
-        return np.not_equal(self.data, self.___datas(value))
-
-    def ___datas(self, data):
-        return data.data if isinstance(data, NPString) else data
-
-    @property
-    def T(self):
-        self.data = self.data.T
-        return self
+        return super().__ne__(value)
 
     def append(self, val):
-        self.data = np.append(self.data, self.___datas(val))
-        return self
+        result = nps.add(np.asarray(self), val).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def low(self):
-        self.data = nps.lower(self.data)
-        return self
+        result = nps.lower(np.asarray(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def upper(self):
-        self.data = nps.upper(self.data)
-        return self
+        result = nps.upper(np.asarray(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def stringlen(self):
-        return np.vectorize(len)(self.data)
+        return NPNumber(np.vectorize(len)(self), dtype=np.uint64)
 
     def str_len(self):
-        return nps.str_len(self.data)
+        return NPNumber(nps.str_len(self), dtype=np.uint64)
 
     def replace(self, old, new):
-        self.data = nps.replace(self.data, old, new)
-        return self
+        result = nps.replace(self.data, old, new).view(type(self))
+        result._dtype = result.dtype
+        return result

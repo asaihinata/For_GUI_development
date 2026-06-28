@@ -9,7 +9,7 @@ class getLabel(NPArray):
     def __new__(cls, label=None):
         if label == None or isinstance(label, str):
             label = array([label])
-        return super().__new__(cls,label, d_ndim=1)
+        return super().__new__(cls, label, d_ndim=1)
 
     def __iter__(self):
         return iter(self.data)
