@@ -8,7 +8,7 @@ from ..nparray import NPArray
 
 __all__ = ["NPBool"]
 
-class NPBool(NPArray):
+class NPBool:
     def __new__(
         cls,
         data: TypeArraysLikeBool,

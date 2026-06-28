@@ -2,7 +2,7 @@ from datetime import date, datetime
 from typing import Any, overload
 
 import numpy as np
-from numpy._typing import ArrayLike,_DTypeLikeTD64
+from numpy._typing import ArrayLike, _DTypeLikeTD64
 
 from ..nparray import NPArray
 from ..npnumber import NPNumber

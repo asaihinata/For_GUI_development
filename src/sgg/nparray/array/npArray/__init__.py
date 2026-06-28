@@ -36,7 +36,6 @@ def implements(np_function):
 
 
 class NPArray(NDArrayOperatorsMixin, np.ndarray):
-    _default_dtype = np.dtype("object")
     _element_type = None
 
     def __new__(
@@ -70,7 +69,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
     def _resolve_dtype(cls, dtype):
         if dtype is not None:
             return np.dtype(dtype)
-        return cls._default_dtype
+        return np.dtype("object")
 
     @classmethod
     def _validate_ndim(cls, obj, min_ndim, max_ndim):

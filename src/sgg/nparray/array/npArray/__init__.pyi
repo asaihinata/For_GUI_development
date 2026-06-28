@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-from typing import Any, Iterator, overload,Self
+from typing import Any, Iterator, Self, overload
 
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
-from numpy.typing import ArrayLike, DTypeLike,NDArray
+from numpy.typing import ArrayLike, DTypeLike, NDArray
 
 __all__ = ["is_array_like", "change_array_like", "NPArray"]
 
@@ -25,8 +25,6 @@ def implements(np_function) -> Any:
 
 class NPArray(NDArrayOperatorsMixin, np.ndarray):
     """`np.ndarray`を継承した型付き配列クラス"""
-
-    _default_dtype: np.dtype | None
     _element_type: type | tuple[type, ...] | None
     def __new__(
         cls,

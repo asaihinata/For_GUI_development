@@ -15,7 +15,7 @@ __all__ = [
     "serchDtype",
     "serchnativetime",
 ]
-_DATES_UNIT=[
+_DATES_UNIT = [
     "<M",
     "<M8",
     "<M8[D]",
@@ -365,9 +365,7 @@ _DATES_UNITL = Literal[
 ]
 _DATE_UNIT = ["Y", "M", "W", "D", b"Y", b"M", b"W", b"D"]
 _DATE_UNITL = Literal["Y", "M", "W", "D", b"Y", b"M", b"W", b"D"]
-_NATIVETIME_UNIT = [
-    "h", "m", "s", "ms", "us", "μs", b"h", b"m", b"s", b"ms", b"us"
-]
+_NATIVETIME_UNIT = ["h", "m", "s", "ms", "us", "μs", b"h", b"m", b"s", b"ms", b"us"]
 _NATIVETIME_UNITL = Literal[
     "h", "m", "s", "ms", "us", "μs", b"h", b"m", b"s", b"ms", b"us"
 ]
