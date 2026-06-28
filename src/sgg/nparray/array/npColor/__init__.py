@@ -31,6 +31,7 @@ class NPColor(NPArray):
             )
         else:
             raise TypeError("colorの値が不正です")
+
     @classmethod
     def __get_val(cls, color):
         colorname = Get_color.gets(color)
