@@ -8,7 +8,7 @@ __all__ = ["Stack"]
 class Stack(_2Gset):
     def update(
         self,
-        x: TypeArrayLikeNS,
+        x: TypeArrayLikeNumber,
         y: TypeArraysLikeNumber,
         hatch: str,
         baseline: Literal["zero", "sym", "wiggle", "weighted_wiggle"],

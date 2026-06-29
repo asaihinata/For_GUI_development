@@ -3306,7 +3306,7 @@ class Guis:
 
     @staticmethod
     def Stack(
-        x: TypeArrayLikeNS,
+        x: TypeArrayLikeNumber,
         y: TypeArraysLikeNumber,
         hatch: str | None = None,
         baseline: Literal["zero", "sym", "wiggle", "weighted_wiggle"] = "zero",
@@ -3340,7 +3340,7 @@ class Guis:
         積み上げエリアチャートを作成する
 
         :param x: `x`のデータを指定する
-        :type x: TypeArrayLikeNS
+        :type x: TypeArrayLikeNumber
         :param y: `y`のデータを指定する
         :type y: TypeArraysLikeNumber
         :param hatch: 塗りつぶし領域内の模様を指定する
