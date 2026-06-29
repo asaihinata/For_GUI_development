@@ -5351,7 +5351,7 @@ class Guis:
         icon: Literal["info", "warning", "error", "question"] = "question",
     ) -> bool | None:
         """
-        「はい(Yes)」、「いいえ(No)」、「キャンセル(Cancel)」を選択させるダイアログを表示させる
+        「はい(Yes)」,「いいえ(No)」,「キャンセル(Cancel)」を選択させるダイアログを表示させる
 
         :param title: ダイアログに表示させるタイトル名を指定する
         :type title: str

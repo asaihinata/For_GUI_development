@@ -28,7 +28,8 @@ class NPBool(NDArrayOperatorsMixin, np.ndarray):
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPBool:
-        """新しい配列オブジェクトインスタンスを生成する
+        """
+        新しい配列オブジェクトインスタンスを生成する
 
         :param input_array: 変換する配列を指定する
         :type input_array: ArrayLike
