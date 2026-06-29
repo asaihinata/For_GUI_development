@@ -23,7 +23,8 @@ TYPEMETHOD: TypeAlias = Literal[
 HANDLED_FUNCTIONS: dict
 
 def implements(np_function) -> Any:
-    """numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
+    """
+    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
 
     :param np_function: 登録対象のnumpy関数
     :return: デコレータ関数を返す
@@ -59,22 +60,6 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    @classmethod
-    def __instancecheck__(cls, instance: Any) -> bool: ...
-    def __ne__(self, other: Any) -> Any: ...
-    def __eq__(self, other: Any) -> Any: ...
-    def __iter__(self) -> Iterator[bool]: ...
-    def __getitem__(self, key: int) -> bool:
-        """インデックスアクセスをカスタマイズする
-
-        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
-
-        :param key: インデックスまたはスライスを指定する
-        :type key: int
-        :return: インデックスに対応する要素を返す
-        :rtype: bool
-        :raises IndexError: 配列が空の場合に発生させる
-        """
 
     def __class_getitem__(cls, item: Any) -> np.ndarray: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
@@ -218,14 +203,16 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
         """
 
     def to_1d(self) -> NPNumber:
-        """配列を1次元にフラット化した新しい配列オブジェクトを返す
+        """
+        配列を1次元にフラット化した新しい配列オブジェクトを返す
 
         :return: フラット化した配列オブジェクトを返す
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 
     def lengtharange(self) -> NPNumber:
-        """配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
+        """
+        配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
         `dtype`は`np.uint64`に固定される
 
@@ -233,7 +220,8 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
         """
 
     def shapesize(self, shapes: tuple[int, ...]) -> bool:
-        """配列オブジェクトの`shape`が`shapes`と一致するかを確認する
+        """
+        配列オブジェクトの`shape`が`shapes`と一致するかを確認する
 
         :param shapes: 比較する`shape`を指定する
         :type shapes: tuple[int, ...]
@@ -245,21 +233,20 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def all_None(self) -> bool:
-        """配列内の全要素が`None`かどうかを返す
+        """
+        配列内の全要素が`None`かどうかを返す
 
         :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
         :rtype: bool
         """
 
     def any_None(self) -> bool:
-        """配列内のいずれかの要素が`None`かどうかを返す
+        """
+        配列内のいずれかの要素が`None`かどうかを返す
 
         :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
         :rtype: bool
         """
-
-    def tonumpy(self) -> np.ndarray:
-        """`NPNumber`オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def __abs__(self) -> NPNumber: ...
     def __add__(self, other: ArrayLike) -> NPNumber: ...

@@ -55,43 +55,6 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         if obj is None:
             return
         self._dtype = getattr(obj, "_dtype", None)
-
-    @classmethod
-    def _resolve_dtype(cls, dtype):
-        if dtype is not None:
-            return np.dtype(dtype)
-        return np.dtype(np.float64)
-
-    @classmethod
-    def _validate_ndim(cls, obj):
-        ndim = obj.ndim
-        if ndim != 2:
-            raise ValueError(f"{cls.__name__}の次元数は2次元のみです")
-
-    @classmethod
-    def _validate_elements(cls, obj):
-        if cls._element_type is None:
-            return
-        for elem in obj.flat:
-            if not isinstance(elem, cls._element_type):
-                raise TypeError(
-                    f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
-                )
-
-    @property
-    def data(self):
-        return np.asarray(self)
-
-    @property
-    def dtypes(self):
-        return self._dtype
-
-    @dtypes.setter
-    def dtypes(self, dtype):
-        if dtype is not None:
-            self._dtype = np.dtype(dtype)
-        return self._dtype
-
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
             np.asarray(x) if isinstance(x, NPStatisticsd) else x for x in inputs
@@ -111,10 +74,6 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         if func in HANDLED_FUNCTIONS:
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
-
-    @classmethod
-    def __instancecheck__(cls, instance):
-        return isinstance(instance, NPStatisticsd)
 
     @classmethod
     def __instancecheck__(cls, instance):
@@ -156,6 +115,41 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
                 return data[key % size]
         elif isinstance(key, slice):
             return self.data.flatten()[key]
+    @classmethod
+    def _resolve_dtype(cls, dtype):
+        if dtype is not None:
+            return np.dtype(dtype)
+        return np.dtype(np.float64)
+
+    @classmethod
+    def _validate_ndim(cls, obj):
+        ndim = obj.ndim
+        if ndim != 2:
+            raise ValueError(f"{cls.__name__}の次元数は2次元のみです")
+
+    @classmethod
+    def _validate_elements(cls, obj):
+        if cls._element_type is None:
+            return
+        for elem in obj.flat:
+            if not isinstance(elem, cls._element_type):
+                raise TypeError(
+                    f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
+                )
+
+    @property
+    def data(self):
+        return np.asarray(self)
+
+    @property
+    def dtypes(self):
+        return self._dtype
+
+    @dtypes.setter
+    def dtypes(self, dtype):
+        if dtype is not None:
+            self._dtype = np.dtype(dtype)
+        return self._dtype
 
     def lengtharange(self):
         shapes = self.shape

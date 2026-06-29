@@ -10,7 +10,8 @@ __all__ = ["Formatconversion"]
 HANDLED_FUNCTIONS: dict
 
 def implements(np_function) -> Any:
-    """numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
+    """
+    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
 
     :param np_function: 登録対象のnumpy関数
     :return: デコレータ関数を返す
@@ -20,19 +21,24 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
     def __new__(
         cls,
         data: np._ArrayT,
-        dtype: _DATES_UNITL = "datetime64[D]",
+        dtype: _DATES_UNITL | np.datetime64 = "datetime64[D]",
         yearfirst: bool = ...,
         dayfirst: bool = ...,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> Formatconversion:
-        """様々な日付のフォーマットを特定の日付フォーマットに変換する
+        """
+        様々な日付のフォーマットを特定の日付フォーマットに変換する配列オブジェクトインスタンスを生成する
 
         :param input_array: 変換する配列を指定する
         :type input_array: ArrayLike
         :param dtype: 配列のdtypeを指定する
-        :type dtype: DTypeLike | None
+        :type dtype: _DATES_UNITL | np.datetime64
+        :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
+        :type yearfirst: bool
+        :param dayfirst: 曖昧な3つの整数からなる日付の最初の値を日もしくは月として解釈するかどうか指定する
+        :type dayfirst: bool
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
@@ -44,28 +50,49 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
-
-    @classmethod
-    def __instancecheck__(cls, instance: Any) -> bool: ...
-    def __ne__(self, other: Any) -> Any: ...
-    def __eq__(self, other: Any) -> Any: ...
-    def __iter__(self) -> Iterator[bool]: ...
-    def __getitem__(self, key: int) -> bool:
-        """インデックスアクセスをカスタマイズする
-
-        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
-
-        :param key: インデックスまたはスライスを指定する
-        :type key: int
-        :return: インデックスに対応する要素を返す
-        :rtype: bool
-        :raises IndexError: 配列が空の場合に発生させる
-        """
-
     def __class_getitem__(cls, item: Any) -> np.ndarray: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
+    def __array_ufunc__(
+        self,
+        ufunc: np.ufunc,
+        method: str,
+        *inputs: Any,
+        **kwargs: Any,
+    ) -> Formatconversion | Any:
+        """NumPyのufuncの動作をカスタマイズする
 
+        :param ufunc: 呼び出されたufunc
+        :type ufunc: np.ufunc
+        :param method: 呼び出しメソッド名
+        :type method: str
+        :param inputs: ufuncへの入力
+        :type inputs: Any
+        :param kwargs: ufuncへの追加引数
+        :type kwargs: Any
+        :return: 処理結果を返す
+        """
+
+    def __array_function__(
+        self,
+        func: Any,
+        types: Any,
+        args: tuple,
+        kwargs: dict,
+    ) -> Any:
+        """numpy関数の動作をカスタマイズする
+
+        :param func: 呼び出されたnumpy関数
+        :type func: Any
+        :param types: 関連する型のコレクション
+        :type types: Any
+        :param args: 位置引数
+        :type args: tuple
+        :param kwargs: キーワード引数
+        :type kwargs: dict
+        :return: 演算結果を返す
+        :rtype: Any
+        """
     @classmethod
     def _resolve_dtype(
         cls,
@@ -130,48 +157,6 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
     @property
     def max_ndim(self) -> int | None:
         """配列オブジェクトが許容する最大次元数を返す"""
-
-    def __array_ufunc__(
-        self,
-        ufunc: np.ufunc,
-        method: str,
-        *inputs: Any,
-        **kwargs: Any,
-    ) -> Formatconversion | Any:
-        """NumPyのufuncの動作をカスタマイズする
-
-        :param ufunc: 呼び出されたufunc
-        :type ufunc: np.ufunc
-        :param method: 呼び出しメソッド名
-        :type method: str
-        :param inputs: ufuncへの入力
-        :type inputs: Any
-        :param kwargs: ufuncへの追加引数
-        :type kwargs: Any
-        :return: 処理結果を返す
-        """
-
-    def __array_function__(
-        self,
-        func: Any,
-        types: Any,
-        args: tuple,
-        kwargs: dict,
-    ) -> Any:
-        """numpy関数の動作をカスタマイズする
-
-        :param func: 呼び出されたnumpy関数
-        :type func: Any
-        :param types: 関連する型のコレクション
-        :type types: Any
-        :param args: 位置引数
-        :type args: tuple
-        :param kwargs: キーワード引数
-        :type kwargs: dict
-        :return: 演算結果を返す
-        :rtype: Any
-        """
-
     @classmethod
     def __instancecheck__(cls, instance: Any) -> bool: ...
     def __ne__(self, other: Any) -> Any: ...
@@ -204,14 +189,16 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
         """
 
     def to_1d(self) -> Formatconversion:
-        """配列を1次元にフラット化した新しい配列オブジェクトを返す
+        """
+        配列を1次元にフラット化した新しい配列オブジェクトを返す
 
         :return: フラット化した配列オブジェクトを返す
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 
     def lengtharange(self) -> Formatconversion:
-        """配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
+        """
+        配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
         `dtype`は`np.uint64`に固定される
 
@@ -219,7 +206,8 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
         """
 
     def shapesize(self, shapes: tuple[int, ...]) -> bool:
-        """配列オブジェクトの`shape`が`shapes`と一致するかを確認する
+        """
+        配列オブジェクトの`shape`が`shapes`と一致するかを確認する
 
         :param shapes: 比較する`shape`を指定する
         :type shapes: tuple[int, ...]
@@ -231,18 +219,17 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def all_None(self) -> bool:
-        """配列内の全要素が`None`かどうかを返す
+        """
+        配列内の全要素が`None`かどうかを返す
 
         :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
         :rtype: bool
         """
 
     def any_None(self) -> bool:
-        """配列内のいずれかの要素が`None`かどうかを返す
+        """
+        配列内のいずれかの要素が`None`かどうかを返す
 
         :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
         :rtype: bool
         """
-
-    def tonumpy(self) -> np.ndarray:
-        """`Formatconversion`オブジェクトを`np.ndarray`オブジェクトに変換する"""

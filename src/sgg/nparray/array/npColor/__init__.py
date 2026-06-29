@@ -15,7 +15,6 @@ import numpy as np
 from numpy import array, fromiter, nditer, uint8
 from numpy.lib.mixins import NDArrayOperatorsMixin
 
-from ..nparray import is_array_like
 from ._data import Get_color
 
 __all__ = ["NPColor"]
@@ -27,7 +26,6 @@ _HSV_RE = compile(r"^hsv\((\d+),(\d+),(\d+)\)$")
 
 HANDLED_FUNCTIONS = {}
 
-
 def implements(np_function):
     def decorator(func):
         HANDLED_FUNCTIONS[np_function] = func
@@ -35,6 +33,12 @@ def implements(np_function):
 
     return decorator
 
+def is_array_like(obj):
+    if isinstance(obj, np.ndarray | list | tuple | range):
+        return True
+    elif hasattr(obj, "__array__"):
+        return True
+    return False
 
 class NPColor(NDArrayOperatorsMixin, np.ndarray):
     _element_type = None

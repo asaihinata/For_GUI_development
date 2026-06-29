@@ -11,8 +11,7 @@ from ..npnumber import NPNumber
 __all__ = ["NPDate"]
 
 class NPDate(NDArrayOperatorsMixin, np.ndarray):
-    """`np.ndarray`を継承したbool型の配列クラス"""
-
+    """`np.ndarray`を継承した日付の配列クラス"""
     def __new__(
         cls,
         data: ArrayLike,
@@ -21,12 +20,13 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPDate:
-        """新しい配列オブジェクトインスタンスを生成する
+        """
+        新しい日付の配列オブジェクトインスタンスを生成する
 
-        :param input_array: 変換する配列を指定する
-        :type input_array: ArrayLike
+        :param data: 変換する配列を指定する
+        :type data: ArrayLike
         :param dtype: 配列のdtypeを指定する
-        :type dtype: DTypeLike | None
+        :type dtype: _DTypeLikeTD64
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
@@ -38,24 +38,78 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
-
     @classmethod
     def __instancecheck__(cls, instance: Any) -> bool: ...
     def __ne__(self, other: Any) -> Any: ...
     def __eq__(self, other: Any) -> Any: ...
-    def __iter__(self) -> Iterator[bool]: ...
-    def __getitem__(self, key: int) -> bool:
+    def __add__(self, other: Any) -> NPDate: ...
+    def __radd__(self, other: Any) -> NPDate: ...
+    def __sub__(self, other: Any) -> NPDate: ...
+    def __rsub__(self, other: Any) -> NPDate: ...
+    def __repr__(self) -> str: ...
+    def __str__(self) -> str: ...
+    def __contains__(self, value: object) -> bool: ...
+    def __iter__(self) -> Iterator[Any]: ...
+    def __len__(self) -> int: ...
+    def __reversed__(self) -> NPDate:
+        """逆順にした新しい配列オブジェクトを返す
+
+        :return: 全軸で反転した配列を返す
+        """
+    @overload
+    def __getitem__(self, key: int) -> Any: ...
+    @overload
+    def __getitem__(self, key: slice) -> np.ndarray: ...
+    def __getitem__(self, key: int | slice) -> Any | np.ndarray:
         """インデックスアクセスをカスタマイズする
 
         intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
 
         :param key: インデックスまたはスライスを指定する
-        :type key: int
+        :type key: int | slice
         :return: インデックスに対応する要素を返す
-        :rtype: bool
+        :rtype: Any | np.ndarray
         :raises IndexError: 配列が空の場合に発生させる
         """
+    def __array_ufunc__(
+        self,
+        ufunc: np.ufunc,
+        method: str,
+        *inputs: Any,
+        **kwargs: Any,
+    ) -> NPDate | Any:
+        """NumPyのufuncの動作をカスタマイズする
 
+        :param ufunc: 呼び出されたufunc
+        :type ufunc: np.ufunc
+        :param method: 呼び出しメソッド名
+        :type method: str
+        :param inputs: ufuncへの入力
+        :type inputs: Any
+        :param kwargs: ufuncへの追加引数
+        :type kwargs: Any
+        :return: 処理結果を返す
+        """
+    def __array_function__(
+        self,
+        func: Any,
+        types: Any,
+        args: tuple,
+        kwargs: dict,
+    ) -> Any:
+        """numpy関数の動作をカスタマイズする
+
+        :param func: 呼び出されたnumpy関数
+        :type func: Any
+        :param types: 関連する型のコレクション
+        :type types: Any
+        :param args: 位置引数
+        :type args: tuple
+        :param kwargs: キーワード引数
+        :type kwargs: dict
+        :return: 演算結果を返す
+        :rtype: Any
+        """
     def __class_getitem__(cls, item: Any) -> np.ndarray: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
@@ -124,88 +178,17 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
     @property
     def max_ndim(self) -> int | None:
         """配列オブジェクトが許容する最大次元数を返す"""
-
-    def __array_ufunc__(
-        self,
-        ufunc: np.ufunc,
-        method: str,
-        *inputs: Any,
-        **kwargs: Any,
-    ) -> NPDate | Any:
-        """NumPyのufuncの動作をカスタマイズする
-
-        :param ufunc: 呼び出されたufunc
-        :type ufunc: np.ufunc
-        :param method: 呼び出しメソッド名
-        :type method: str
-        :param inputs: ufuncへの入力
-        :type inputs: Any
-        :param kwargs: ufuncへの追加引数
-        :type kwargs: Any
-        :return: 処理結果を返す
-        """
-
-    def __array_function__(
-        self,
-        func: Any,
-        types: Any,
-        args: tuple,
-        kwargs: dict,
-    ) -> Any:
-        """numpy関数の動作をカスタマイズする
-
-        :param func: 呼び出されたnumpy関数
-        :type func: Any
-        :param types: 関連する型のコレクション
-        :type types: Any
-        :param args: 位置引数
-        :type args: tuple
-        :param kwargs: キーワード引数
-        :type kwargs: dict
-        :return: 演算結果を返す
-        :rtype: Any
-        """
-
-    @classmethod
-    def __instancecheck__(cls, instance: Any) -> bool: ...
-    def __ne__(self, other: Any) -> Any: ...
-    def __eq__(self, other: Any) -> Any: ...
-    def __repr__(self) -> str: ...
-    def __str__(self) -> str: ...
-    def __contains__(self, value: object) -> bool: ...
-    def __iter__(self) -> Iterator[Any]: ...
-    def __len__(self) -> int: ...
-    def __reversed__(self) -> NPDate:
-        """逆順にした新しい配列オブジェクトを返す
-
-        :return: 全軸で反転した配列を返す
-        """
-
-    @overload
-    def __getitem__(self, key: int) -> Any: ...
-    @overload
-    def __getitem__(self, key: slice) -> np.ndarray: ...
-    def __getitem__(self, key: int | slice) -> Any | np.ndarray:
-        """インデックスアクセスをカスタマイズする
-
-        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
-
-        :param key: インデックスまたはスライスを指定する
-        :type key: int | slice
-        :return: インデックスに対応する要素を返す
-        :rtype: Any | np.ndarray
-        :raises IndexError: 配列が空の場合に発生させる
-        """
-
     def to_1d(self) -> NPDate:
-        """配列を1次元にフラット化した新しい配列オブジェクトを返す
+        """
+        配列を1次元にフラット化した新しい配列オブジェクトを返す
 
         :return: フラット化した配列オブジェクトを返す
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 
     def lengtharange(self) -> NPDate:
-        """配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
+        """
+        配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
         `dtype`は`np.uint64`に固定される
 
@@ -213,7 +196,8 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         """
 
     def shapesize(self, shapes: tuple[int, ...]) -> bool:
-        """配列オブジェクトの`shape`が`shapes`と一致するかを確認する
+        """
+        配列オブジェクトの`shape`が`shapes`と一致するかを確認する
 
         :param shapes: 比較する`shape`を指定する
         :type shapes: tuple[int, ...]
@@ -225,28 +209,20 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def all_None(self) -> bool:
-        """配列内の全要素が`None`かどうかを返す
+        """
+        配列内の全要素が`None`かどうかを返す
 
         :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
         :rtype: bool
         """
 
     def any_None(self) -> bool:
-        """配列内のいずれかの要素が`None`かどうかを返す
+        """
+        配列内のいずれかの要素が`None`かどうかを返す
 
         :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
         :rtype: bool
         """
-
-    def tonumpy(self) -> np.ndarray:
-        """`NPDate`オブジェクトを`np.ndarray`オブジェクトに変換する"""
-
-    @classmethod
-    def __instancecheck__(cls, instance: Any) -> bool: ...
-    def __add__(self, other: Any) -> NPDate: ...
-    def __sub__(self, other: Any) -> NPDate: ...
-    __radd__ = __add__
-    __rsub__ = __sub__
     @classmethod
     def today(cls) -> NPDate:
         """現在日付(UTC時刻)を返す"""

@@ -39,22 +39,6 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    @classmethod
-    def __instancecheck__(cls, instance: Any) -> bool: ...
-    def __ne__(self, other: Any) -> Any: ...
-    def __eq__(self, other: Any) -> Any: ...
-    def __iter__(self) -> Iterator[bool]: ...
-    def __getitem__(self, key: int) -> bool:
-        """インデックスアクセスをカスタマイズする
-
-        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
-
-        :param key: インデックスまたはスライスを指定する
-        :type key: int
-        :return: インデックスに対応する要素を返す
-        :rtype: bool
-        :raises IndexError: 配列が空の場合に発生させる
-        """
 
     def __class_getitem__(cls, item: Any) -> np.ndarray: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
@@ -170,77 +154,6 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
     def __instancecheck__(cls, instance: Any) -> bool: ...
     def __ne__(self, other: Any) -> Any: ...
     def __eq__(self, other: Any) -> Any: ...
-    def __repr__(self) -> str: ...
-    def __str__(self) -> str: ...
-    def __contains__(self, value: object) -> bool: ...
-    def __iter__(self) -> Iterator[Any]: ...
-    def __len__(self) -> int: ...
-    def __reversed__(self) -> NPString:
-        """逆順にした新しい配列オブジェクトを返す
-
-        :return: 全軸で反転した配列を返す
-        """
-
-    @overload
-    def __getitem__(self, key: int) -> Any: ...
-    @overload
-    def __getitem__(self, key: slice) -> np.ndarray: ...
-    def __getitem__(self, key: int | slice) -> Any | np.ndarray:
-        """インデックスアクセスをカスタマイズする
-
-        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
-
-        :param key: インデックスまたはスライスを指定する
-        :type key: int | slice
-        :return: インデックスに対応する要素を返す
-        :rtype: Any | np.ndarray
-        :raises IndexError: 配列が空の場合に発生させる
-        """
-
-    def to_1d(self) -> NPString:
-        """配列を1次元にフラット化した新しい配列オブジェクトを返す
-
-        :return: フラット化した配列オブジェクトを返す
-        :raises ValueError: `min_ndim`が1以下の場合に発生させる
-        """
-
-    def lengtharange(self) -> NPString:
-        """配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
-
-        `dtype`は`np.uint64`に固定される
-
-        :return: インデックス配列を返す
-        """
-
-    def shapesize(self, shapes: tuple[int, ...]) -> bool:
-        """配列オブジェクトの`shape`が`shapes`と一致するかを確認する
-
-        :param shapes: 比較する`shape`を指定する
-        :type shapes: tuple[int, ...]
-        :return: `shape`が一致する場合は`True`を返し,一致しない場合は`False`を返す
-        :rtype: bool
-        """
-
-    def tonumpy(self) -> np.ndarray:
-        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
-
-    def all_None(self) -> bool:
-        """配列内の全要素が`None`かどうかを返す
-
-        :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
-
-    def any_None(self) -> bool:
-        """配列内のいずれかの要素が`None`かどうかを返す
-
-        :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
-
-    def tonumpy(self) -> np.ndarray:
-        """`NPString`オブジェクトを`np.ndarray`オブジェクトに変換する"""
-
     def __add__(self, other: ArrayLike) -> NPString: ...
     def __radd__(self, other: ArrayLike) -> NPString: ...
     def __iadd__(self, other: ArrayLike) -> NPString: ...
@@ -270,9 +183,79 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         :type i: int
         :raises TypeError: `i`に`int`型以外を指定した場合に発生させる
         """
-
     def __eq__(self, value: Any) -> Any: ...
     def __ne__(self, value: Any) -> Any: ...
+    def __repr__(self) -> str: ...
+    def __str__(self) -> str: ...
+    def __contains__(self, value: object) -> bool: ...
+    def __iter__(self) -> Iterator[Any]: ...
+    def __len__(self) -> int: ...
+    def __reversed__(self) -> NPString:
+        """逆順にした新しい配列オブジェクトを返す
+
+        :return: 全軸で反転した配列を返す
+        """
+    @overload
+    def __getitem__(self, key: int) -> Any: ...
+    @overload
+    def __getitem__(self, key: slice) -> np.ndarray: ...
+    def __getitem__(self, key: int | slice) -> Any | np.ndarray:
+        """インデックスアクセスをカスタマイズする
+
+        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
+
+        :param key: インデックスまたはスライスを指定する
+        :type key: int | slice
+        :return: インデックスに対応する要素を返す
+        :rtype: Any | np.ndarray
+        :raises IndexError: 配列が空の場合に発生させる
+        """
+
+    def to_1d(self) -> NPString:
+        """
+        配列を1次元にフラット化した新しい配列オブジェクトを返す
+
+        :return: フラット化した配列オブジェクトを返す
+        :raises ValueError: `min_ndim`が1以下の場合に発生させる
+        """
+
+    def lengtharange(self) -> NPString:
+        """
+        配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
+
+        `dtype`は`np.uint64`に固定される
+
+        :return: インデックス配列を返す
+        """
+
+    def shapesize(self, shapes: tuple[int, ...]) -> bool:
+        """
+        配列オブジェクトの`shape`が`shapes`と一致するかを確認する
+
+        :param shapes: 比較する`shape`を指定する
+        :type shapes: tuple[int, ...]
+        :return: `shape`が一致する場合は`True`を返し,一致しない場合は`False`を返す
+        :rtype: bool
+        """
+
+    def tonumpy(self) -> np.ndarray:
+        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
+
+    def all_None(self) -> bool:
+        """
+        配列内の全要素が`None`かどうかを返す
+
+        :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
+        :rtype: bool
+        """
+
+    def any_None(self) -> bool:
+        """
+        配列内のいずれかの要素が`None`かどうかを返す
+
+        :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
+        :rtype: bool
+        """
     def append(self, val: Any) -> NPString:
         """配列内の要素の文字に`val`を付け加える"""
 

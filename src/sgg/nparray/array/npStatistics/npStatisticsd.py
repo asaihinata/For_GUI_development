@@ -112,10 +112,6 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
     def __instancecheck__(cls, instance):
         return isinstance(instance, NPStatisticsd)
 
-    @classmethod
-    def __instancecheck__(cls, instance):
-        return isinstance(instance, NPStatisticsd)
-
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
 
