@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
 
@@ -41,8 +39,12 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
     def __new__(
         cls, input_array, dtype=None, d_ndim=None, min_ndim=None, max_ndim=None
     ):
-        resolved = cls._resolve_dtype(dtype)
-        obj = np.asarray(input_array, dtype=resolved).view(cls)
+        if dtype is None:
+            obj = np.asarray(input_array).view(cls)
+            resolved = obj.dtype
+        else:
+            resolved = cls._resolve_dtype(dtype)
+            obj = np.asarray(input_array, dtype=resolved).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         if isinstance(d_ndim, int):
@@ -56,9 +58,6 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
 
     def __array__(self, dtype=None, copy=None):
         return super().__array__(dtype, copy=copy)
-
-    def __class_getitem__(cls, item):
-        return np.ndarray.__class_getitem__.__func__(cls, item)
 
     def __array_finalize__(self, obj):
         if obj is None:
@@ -97,7 +96,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
 
     @property
     def data(self):
-        return np.asarray(self)
+        return np.asarray(self, dtype=self._dtype)
 
     @property
     def dtypes(self):

@@ -93,7 +93,6 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
     ) -> (
         np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
     ): ...
-    def __class_getitem__(cls, item: Any) -> np.ndarray: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
 

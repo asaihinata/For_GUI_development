@@ -2,7 +2,7 @@ from datetime import date, datetime
 from typing import Any, Iterator, overload
 
 import numpy as np
-from numpy._typing import ArrayLike, _DTypeLikeTD64
+from numpy._typing import _DTypeLikeTD64
 from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.typing import DTypeLike
 
@@ -21,7 +21,7 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate:
+    ) -> NPDate[Any, np.dtype[np.datetime64]]:
         """
         新しい日付の配列オブジェクトインスタンスを生成する
 
@@ -135,7 +135,9 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         :rtype: Any
         """
 
-    def __class_getitem__(cls, item: Any) -> np.ndarray: ...
+    def __class_getitem__(cls, item: Any) -> np.ndarray:
+        return np.ndarray.__class_getitem__.__func__(cls, item)
+
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
 
@@ -163,8 +165,8 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         配列の次元数がmin_ndim・max_ndimの範囲内か検証する
 
         :param obj: 検証対象の配列
-        :param min_ndim: 許可する最小次元数Noneの場合は制約なし
-        :param max_ndim: 許可する最大次元数Noneの場合は制約なし
+        :param min_ndim: 許可する最小次元数を指定する。Noneの場合は制約なし
+        :param max_ndim: 許可する最大次元数を指定する。Noneの場合は制約なし
         :raises ValueError: 次元数が範囲外の場合に発生させる
         """
 

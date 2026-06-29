@@ -5,9 +5,6 @@
 
 指定できるカラー名はCSSで指定できる色名  https://drafts.csswg.org/css-color-4/#named-colors
 """
-
-from __future__ import annotations
-
 from re import compile, findall
 
 from matplotlib.colors import to_hex, to_rgb, to_rgba
@@ -66,8 +63,6 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
             obj._max_ndim = max_ndim
         return obj
 
-    def __class_getitem__(cls, item):
-        return np.ndarray.__class_getitem__.__func__(cls, item)
 
     def __array__(self, dtype=None, copy=None):
         return super().__array__(dtype, copy=copy)
@@ -109,7 +104,7 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
 
     @property
     def data(self):
-        return np.asarray(self)
+        return np.asarray(self, dtype=self._dtype)
 
     @property
     def dtypes(self):

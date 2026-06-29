@@ -1,5 +1,4 @@
 """基本的な文字列の操作をするモジュール"""
-
 from typing import Any, Iterator, overload
 
 import numpy as np
@@ -161,7 +160,6 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         :rtype: Any
         """
 
-    def __class_getitem__(cls, item: Any) -> np.ndarray: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
 
@@ -189,8 +187,8 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         配列の次元数がmin_ndim・max_ndimの範囲内か検証する
 
         :param obj: 検証対象の配列
-        :param min_ndim: 許可する最小次元数Noneの場合は制約なし
-        :param max_ndim: 許可する最大次元数Noneの場合は制約なし
+        :param min_ndim: 許可する最小次元数を指定する。Noneの場合は制約なし
+        :param max_ndim: 許可する最大次元数を指定する。Noneの場合は制約なし
         :raises ValueError: 次元数が範囲外の場合に発生させる
         """
 
@@ -282,8 +280,7 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         """
 
     def append(self, val: Any) -> NPString:
-        """
-        配列内の要素の文字に`val`を付け加える"""
+        """配列内の要素の文字に`val`を付け加える"""
 
     def low(self) -> NPString:
         """`NPString`内の要素のアルファベットを小文字に変換する"""
@@ -292,12 +289,10 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         """`NPString`内の要素のアルファベットを大文字に変換する"""
 
     def stringlen(self) -> NPNumber:
-        """
-        配列内の要素の文字の長さを求める"""
+        """配列内の要素の文字の長さを求める"""
 
     def str_len(self) -> NPNumber:
-        """
-        配列内の要素の文字の長さを求める"""
+        """配列内の要素の文字の長さを求める"""
 
     def replace(self, old: str, new: str) -> NPString:
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""

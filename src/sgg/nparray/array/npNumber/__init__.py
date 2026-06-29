@@ -1,7 +1,4 @@
 """基本的な数値の操作をするモジュール"""
-
-from __future__ import annotations
-
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
 
@@ -51,8 +48,6 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
             obj._max_ndim = max_ndim
         return obj
 
-    def __class_getitem__(cls, item):
-        return np.ndarray.__class_getitem__.__func__(cls, item)
 
     def __array__(self, dtype=np.float64, copy=None):
         return super().__array__(dtype, copy=copy)
@@ -94,7 +89,7 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
 
     @property
     def data(self):
-        return np.asarray(self)
+        return np.asarray(self, dtype=self._dtype)
 
     @property
     def dtypes(self):

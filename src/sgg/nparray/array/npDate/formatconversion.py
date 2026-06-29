@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from datetime import date, datetime
 
 from dateutil.parser import parse
@@ -63,8 +61,6 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
             obj._max_ndim = max_ndim
         return obj
 
-    def __class_getitem__(cls, item):
-        return np.ndarray.__class_getitem__.__func__(cls, item)
 
     def __array__(self, dtype=np.dtype("datetime64[D]"), copy=None):
         return super().__array__(np.dtype(serchDtype(dtype)), copy=copy)
@@ -106,7 +102,7 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
 
     @property
     def data(self):
-        return np.asarray(self)
+        return np.asarray(self, dtype=self._dtype)
 
     @property
     def dtypes(self):

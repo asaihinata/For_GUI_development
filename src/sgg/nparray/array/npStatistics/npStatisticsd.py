@@ -1,7 +1,4 @@
 """基本的な統計の計算をするモジュール"""
-
-from __future__ import annotations
-
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
 from scipy.stats import norm
@@ -44,8 +41,6 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         cls._validate_ndim(obj)
         return obj
 
-    def __class_getitem__(cls, item):
-        return np.ndarray.__class_getitem__.__func__(cls, item)
 
     def __array_finalize__(self, obj):
         if obj is None:
@@ -76,7 +71,7 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
 
     @property
     def data(self):
-        return np.asarray(self)
+        return np.asarray(self, dtype=self._dtype)
 
     @property
     def dtypes(self):

@@ -1,4 +1,4 @@
-from __future__ import annotations
+
 
 from typing import Any, Iterator, overload
 
@@ -7,22 +7,6 @@ from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.typing import ArrayLike, DTypeLike, NDArray
 
 __all__ = ["is_array_like", "change_array_like", "NPArray"]
-
-def is_array_like(obj: Any) -> bool:
-    """配列のようなオブジェクトかを判定する"""
-
-def change_array_like(obj: Any) -> bool:
-    """NumPyの`array`に変換できるかを判定する"""
-
-HANDLED_FUNCTIONS: dict
-
-def implements(np_function) -> Any:
-    """
-    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
-
-    :param np_function: 登録対象のnumpy関数
-    :return: デコレータ関数を返す
-    """
 
 class NPArray(NDArrayOperatorsMixin, np.ndarray):
     """`np.ndarray`を継承した型付き配列クラス"""
@@ -50,7 +34,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
         :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: Self
+        :rtype: NPArray
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
@@ -88,7 +72,6 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :raises IndexError: 配列が空の場合に発生させる
         """
 
-    def __class_getitem__(cls, item: Any) -> np.ndarray: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
 
@@ -173,8 +156,8 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         配列の次元数がmin_ndim・max_ndimの範囲内か検証する
 
         :param obj: 検証対象の配列
-        :param min_ndim: 許可する最小次元数Noneの場合は制約なし
-        :param max_ndim: 許可する最大次元数Noneの場合は制約なし
+        :param min_ndim: 許可する最小次元数を指定する。Noneの場合は制約なし
+        :param max_ndim: 許可する最大次元数を指定する。Noneの場合は制約なし
         :raises ValueError: 次元数が範囲外の場合に発生させる
         """
 
@@ -264,3 +247,19 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
         :rtype: bool
         """
+
+def is_array_like(obj: Any) -> bool:
+    """配列のようなオブジェクトかを判定する"""
+
+def change_array_like(obj: Any) -> bool:
+    """NumPyの`array`に変換できるかを判定する"""
+
+HANDLED_FUNCTIONS: dict
+
+def implements(np_function) -> Any:
+    """
+    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
+
+    :param np_function: 登録対象のnumpy関数
+    :return: デコレータ関数を返す
+    """
