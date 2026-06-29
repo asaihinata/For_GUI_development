@@ -55,6 +55,7 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         if obj is None:
             return
         self._dtype = getattr(obj, "_dtype", None)
+
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
             np.asarray(x) if isinstance(x, NPStatisticsd) else x for x in inputs
@@ -115,6 +116,7 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
                 return data[key % size]
         elif isinstance(key, slice):
             return self.data.flatten()[key]
+
     @classmethod
     def _resolve_dtype(cls, dtype):
         if dtype is not None:

@@ -4,10 +4,10 @@ from typing import Any, Iterator, Literal, TypeAlias, overload
 
 import numpy as np
 from numpy._typing import _ArrayLikeFloat_co
+from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.typing import DTypeLike, NDArray
 
 from ....typing import TypeArrayLikeNumber
-from numpy.lib.mixins import NDArrayOperatorsMixin
 from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
@@ -54,9 +54,10 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
     def __len__(self) -> int: ...
-    def __iter__(self) -> Iterator[NDArray[Any]]|Iterator[Any]: ...
+    def __iter__(self) -> Iterator[NDArray[Any]] | Iterator[Any]: ...
     def __reversed__(self) -> NPStatisticsd:
-        """逆順にした新しい配列オブジェクトを返す
+        """
+        逆順にした新しい配列オブジェクトを返す
 
         :return: 全軸で反転した配列を返す
         """
@@ -66,7 +67,8 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
     @overload
     def __getitem__(self, key: slice) -> np.ndarray: ...
     def __getitem__(self, key: int | slice) -> Any | np.ndarray:
-        """インデックスアクセスをカスタマイズする
+        """
+        インデックスアクセスをカスタマイズする
 
         intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
 
@@ -76,9 +78,11 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         :rtype: Any | np.ndarray
         :raises IndexError: 配列が空の場合に発生させる
         """
+
     def __class_getitem__(cls, item: Any) -> np.ndarray: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
+
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -86,7 +90,8 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         *inputs: Any,
         **kwargs: Any,
     ) -> NPStatisticsd | Any:
-        """NumPyのufuncの動作をカスタマイズする
+        """
+        NumPyのufuncの動作をカスタマイズする
 
         :param ufunc: 呼び出されたufunc
         :type ufunc: np.ufunc
@@ -106,7 +111,8 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         args: tuple,
         kwargs: dict,
     ) -> Any:
-        """numpy関数の動作をカスタマイズする
+        """
+        numpy関数の動作をカスタマイズする
 
         :param func: 呼び出されたnumpy関数
         :type func: Any
@@ -125,7 +131,8 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         cls,
         dtype: np.dtype | str | type | None,
     ) -> np.dtype | None:
-        """引数dtypeを解決させる
+        """
+        引数dtypeを解決させる
 
         :param dtype: ユーザーが指定するdtype
         :return: 解決されたdtypeを返す
@@ -137,7 +144,8 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         cls,
         obj: np.ndarray,
     ) -> None:
-        """配列の次元数が2次元か検証する
+        """
+        配列の次元数が2次元か検証する
 
         :param obj: 検証対象の配列
         :raises ValueError: 次元数が範囲外の場合に発生させる
@@ -145,7 +153,8 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def _validate_elements(cls, obj: np.ndarray) -> None:
-        """配列内の要素が`_element_type`と一致するか検証する
+        """
+        配列内の要素が`_element_type`と一致するか検証する
 
         :param obj: 検証対象の配列
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
@@ -157,7 +166,8 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
 
     @property
     def dtypes(self) -> np.dtype | None:
-        """インスタンス生成時に確定したdtypeを取得する
+        """
+        インスタンス生成時に確定したdtypeを取得する
 
         :return:
         :rtype: numpy.dtype | None
@@ -165,7 +175,8 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
 
     @dtypes.setter
     def dtypes(self, dtype: DTypeLike | None) -> np.dtype | None:
-        """配列のdtypeを設定する
+        """
+        配列のdtypeを設定する
 
         :param dtype: 配列のdtypeを指定する
         :type dtype: DTypeLike | None

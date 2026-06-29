@@ -35,6 +35,8 @@ def implements(np_function) -> Any:
     """
 
 class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
+    """`np.ndarray`を継承した基本的な統計を計算する配列クラス"""
+
     def __new__(
         cls,
         data: TypeArrayLikeNumber,
@@ -50,6 +52,7 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         :return: `NPStatisticsd`オブジェクトを返す
         :rtype: NPStatisticsd
         """
+
     @classmethod
     def __instancecheck__(cls, instance: Any) -> bool: ...
     def __repr__(self) -> str: ...
@@ -58,16 +61,19 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
     def __iter__(self) -> Iterator[Any]: ...
     def __len__(self) -> int: ...
     def __reversed__(self) -> NPStatisticsd:
-        """逆順にした新しい配列オブジェクトを返す
+        """
+        逆順にした新しい配列オブジェクトを返す
 
         :return: 全軸で反転した配列を返す
         """
+
     @overload
     def __getitem__(self, key: int) -> Any: ...
     @overload
     def __getitem__(self, key: slice) -> np.ndarray: ...
     def __getitem__(self, key: int | slice) -> Any | np.ndarray:
-        """インデックスアクセスをカスタマイズする
+        """
+        インデックスアクセスをカスタマイズする
 
         intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
 
@@ -77,9 +83,11 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         :rtype: Any | np.ndarray
         :raises IndexError: 配列が空の場合に発生させる
         """
+
     def __class_getitem__(cls, item: Any) -> np.ndarray: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
+
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -87,7 +95,8 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         *inputs: Any,
         **kwargs: Any,
     ) -> NPStatisticsd | Any:
-        """NumPyのufuncの動作をカスタマイズする
+        """
+        NumPyのufuncの動作をカスタマイズする
 
         :param ufunc: 呼び出されたufunc
         :type ufunc: np.ufunc
@@ -107,7 +116,8 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         args: tuple,
         kwargs: dict,
     ) -> Any:
-        """numpy関数の動作をカスタマイズする
+        """
+        numpy関数の動作をカスタマイズする
 
         :param func: 呼び出されたnumpy関数
         :type func: Any
@@ -120,12 +130,14 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         :return: 演算結果を返す
         :rtype: Any
         """
+
     @classmethod
     def _resolve_dtype(
         cls,
         dtype: np.dtype | str | type | None,
     ) -> np.dtype | None:
-        """引数dtypeを解決させる
+        """
+        引数dtypeを解決させる
 
         :param dtype: ユーザーが指定するdtype
         :return: 解決されたdtypeを返す
@@ -137,7 +149,8 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         cls,
         obj: np.ndarray,
     ) -> None:
-        """配列の次元数が1次元か検証する
+        """
+        配列の次元数が1次元か検証する
 
         :param obj: 検証対象の配列
         :raises ValueError: 次元数が範囲外の場合に発生させる
@@ -145,7 +158,8 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def _validate_elements(cls, obj: np.ndarray) -> None:
-        """配列内の要素が`_element_type`と一致するか検証する
+        """
+        配列内の要素が`_element_type`と一致するか検証する
 
         :param obj: 検証対象の配列
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
@@ -157,7 +171,8 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
 
     @property
     def dtypes(self) -> np.dtype | None:
-        """インスタンス生成時に確定したdtypeを取得する
+        """
+        インスタンス生成時に確定したdtypeを取得する
 
         :return:
         :rtype: numpy.dtype | None
@@ -165,13 +180,15 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
 
     @dtypes.setter
     def dtypes(self, dtype: DTypeLike | None) -> np.dtype | None:
-        """配列のdtypeを設定する
+        """
+        配列のdtypeを設定する
 
         :param dtype: 配列のdtypeを指定する
         :type dtype: DTypeLike | None
         :return:
         :rtype: numpy.dtype | None
         """
+
     def lengtharange(self) -> NPStatisticsd:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
@@ -256,9 +273,11 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
 
     @property
     def log2(self) -> TypeArrayLikeNumber:
-        """配列の各要素の底が`2`の対数を求める
+        """
+        配列の各要素の底が`2`の対数を求める
 
-        ``numpy.log2`` を使用して計算する"""
+        ``numpy.log2`` を使用して計算する
+        """
 
     @property
     def log1p(self) -> TypeArrayLikeNumber:
@@ -270,7 +289,8 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
 
     @property
     def range(self) -> NDArray[Any]:
-        """配列の最小値と最大値を求める
+        """
+        配列の最小値と最大値を求める
 
         :return: `[最小値,最大値]`の形式の配列を返す
         :rtype: NDArray[Any]

@@ -54,6 +54,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
+
     @classmethod
     def __instancecheck__(cls, instance: Any) -> bool: ...
     def __ne__(self, other: Any) -> Any: ...
@@ -64,7 +65,8 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
     def __iter__(self) -> Iterator[Any]: ...
     def __len__(self) -> int: ...
     def __reversed__(self) -> NPArray:
-        """逆順にした新しい配列オブジェクトを返す
+        """
+        逆順にした新しい配列オブジェクトを返す
 
         :return: 全軸で反転した配列を返す
         """
@@ -74,7 +76,8 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
     @overload
     def __getitem__(self, key: slice) -> np.ndarray: ...
     def __getitem__(self, key: int | slice) -> Any | np.ndarray:
-        """インデックスアクセスをカスタマイズする
+        """
+        インデックスアクセスをカスタマイズする
 
         intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
 
@@ -84,9 +87,11 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :rtype: Any | np.ndarray
         :raises IndexError: 配列が空の場合に発生させる
         """
+
     def __class_getitem__(cls, item: Any) -> np.ndarray: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
+
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -94,7 +99,8 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         *inputs: Any,
         **kwargs: Any,
     ) -> NPArray | Any:
-        """NumPyのufuncの動作をカスタマイズする
+        """
+        NumPyのufuncの動作をカスタマイズする
 
         :param ufunc: 呼び出されたufunc
         :type ufunc: np.ufunc
@@ -114,7 +120,8 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         args: tuple,
         kwargs: dict,
     ) -> Any:
-        """numpy関数の動作をカスタマイズする
+        """
+        numpy関数の動作をカスタマイズする
 
         :param func: 呼び出されたnumpy関数
         :type func: Any
@@ -127,12 +134,14 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :return: 演算結果を返す
         :rtype: Any
         """
+
     @classmethod
     def _resolve_dtype(
         cls,
         dtype: np.dtype | str | type | None,
     ) -> np.dtype | None:
-        """引数dtypeを解決させる
+        """
+        引数dtypeを解決させる
 
         :param dtype: ユーザーが指定するdtype
         :return: 解決されたdtypeを返す
@@ -146,7 +155,8 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         min_ndim: int | None,
         max_ndim: int | None,
     ) -> None:
-        """配列の次元数がmin_ndim・max_ndimの範囲内か検証する
+        """
+        配列の次元数がmin_ndim・max_ndimの範囲内か検証する
 
         :param obj: 検証対象の配列
         :param min_ndim: 許可する最小次元数Noneの場合は制約なし
@@ -156,7 +166,8 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def _validate_elements(cls, obj: np.ndarray) -> None:
-        """配列内の要素が`_element_type`と一致するか検証する
+        """
+        配列内の要素が`_element_type`と一致するか検証する
 
         :param obj: 検証対象の配列
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
@@ -168,7 +179,8 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
 
     @property
     def dtypes(self) -> np.dtype | None:
-        """インスタンス生成時に確定したdtypeを取得する
+        """
+        インスタンス生成時に確定したdtypeを取得する
 
         :return:
         :rtype: numpy.dtype | None
@@ -176,7 +188,8 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
 
     @dtypes.setter
     def dtypes(self, dtype: DTypeLike | None) -> np.dtype | None:
-        """配列のdtypeを設定する
+        """
+        配列のdtypeを設定する
 
         :param dtype: 配列のdtypeを指定する
         :type dtype: DTypeLike | None
@@ -191,6 +204,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
     @property
     def max_ndim(self) -> int | None:
         """配列オブジェクトが許容する最大次元数を返す"""
+
     def to_1d(self) -> NPArray:
         """
         配列を1次元にフラット化した新しい配列オブジェクトを返す
