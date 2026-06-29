@@ -35,7 +35,7 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         obj._dtype = resolved
         if isinstance(d_ndim, int):
             cls._validate_ndim(obj, d_ndim, d_ndim)
-            obj._min_ndim=obj._max_ndim = d_ndim
+            obj._min_ndim = obj._max_ndim = d_ndim
         else:
             cls._validate_ndim(obj, min_ndim, max_ndim)
             obj._min_ndim = min_ndim
@@ -44,6 +44,9 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
 
     def __class_getitem__(cls, item):
         return np.ndarray.__class_getitem__.__func__(cls, item)
+
+    def __array__(self, dtype=np.str_, copy=None):
+        return super().__array__(dtype, copy=copy)
 
     def __array_finalize__(self, obj):
         if obj is None:

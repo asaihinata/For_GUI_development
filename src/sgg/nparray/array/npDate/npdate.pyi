@@ -78,6 +78,20 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         :raises IndexError: 配列が空の場合に発生させる
         """
 
+    @overload
+    def __array__(
+        self, dtype: None = None, copy: bool | None = None
+    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
+    @overload
+    def __array__(
+        self, dtype: np._DTypeT, copy: bool | None = None
+    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
+    @overload
+    def __array__(
+        self, dtype: np._DTypeT | None, copy: bool | None = None
+    ) -> (
+        np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
+    ): ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,

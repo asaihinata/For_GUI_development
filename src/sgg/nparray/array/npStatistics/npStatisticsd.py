@@ -88,6 +88,9 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
             self._dtype = np.dtype(dtype)
         return self._dtype
 
+    def __array__(self, dtype=np.float64, copy=None):
+        return super().__array__(dtype, copy=copy)
+
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
             np.asarray(x) if isinstance(x, NPStatisticsd) else x for x in inputs

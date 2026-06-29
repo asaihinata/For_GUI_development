@@ -38,7 +38,7 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         obj._dtype = resolved
         if isinstance(d_ndim, int):
             cls._validate_ndim(obj, d_ndim, d_ndim)
-            obj._min_ndim=obj._max_ndim = d_ndim
+            obj._min_ndim = obj._max_ndim = d_ndim
         else:
             cls._validate_ndim(obj, min_ndim, max_ndim)
             obj._min_ndim = min_ndim
@@ -104,6 +104,9 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
     @property
     def max_ndim(self):
         return getattr(self, "_max_ndim", None)
+
+    def __array__(self, dtype=np.dtype("datetime64[D]"), copy=None):
+        return super().__array__(np.dtype(serchDtype(dtype)), copy=copy)
 
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
