@@ -1,6 +1,8 @@
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
 
+from ..npbool import NPBool
+
 __all__ = ["is_array_like", "change_array_like", "NPArray"]
 
 
@@ -141,10 +143,10 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         return isinstance(instance, NPArray)
 
     def __ne__(self, other):
-        return super().__ne__(other)
+        return NPBool(super().__ne__(other))
 
     def __eq__(self, other):
-        return super().__eq__(other)
+        return NPBool(super().__eq__(other))
 
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
@@ -194,14 +196,12 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         shapes = self.shape
         lens = len(shapes)
         if lens == 1:
-            raw = np.arange(0, self.size, 1, dtype=np.uint64)
+            raw = np.arange(0, self.size, 1)
         else:
-            raw = np.tile(
-                np.arange(0, shapes[lens - 1], dtype=np.uint64), np.prod(shapes[:-1])
-            ).reshape(shapes)
-        result = raw.view(type(self))
-        result._dtype = np.dtype("uint64")
-        return result
+            raw = np.tile(np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])).reshape(
+                shapes
+            )
+        return np.array(raw, dtype=np.uint64)
 
     def shapesize(self, shapes):
         if self.shape == shapes:

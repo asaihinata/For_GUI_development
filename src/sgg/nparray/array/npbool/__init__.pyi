@@ -49,8 +49,8 @@ class NPBool(NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def __instancecheck__(cls, instance: Any) -> bool: ...
-    def __ne__(self, other: Any) -> Any: ...
-    def __eq__(self, other: Any) -> Any: ...
+    def __ne__(self, other: Any) -> NPBool: ...
+    def __eq__(self, other: Any) -> NPBool: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
@@ -179,7 +179,7 @@ class NPBool(NDArrayOperatorsMixin, np.ndarray):
         """
 
     @property
-    def data(self) -> np.ndarray:
+    def data(self) -> np.NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @property
@@ -218,7 +218,7 @@ class NPBool(NDArrayOperatorsMixin, np.ndarray):
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 
-    def lengtharange(self) -> NPBool:
+    def lengtharange(self) -> np.ndarray:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
@@ -237,7 +237,7 @@ class NPBool(NDArrayOperatorsMixin, np.ndarray):
         :rtype: bool
         """
 
-    def tonumpy(self) -> np.ndarray:
+    def tonumpy(self) -> np.NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def all_None(self) -> bool:
@@ -256,5 +256,5 @@ class NPBool(NDArrayOperatorsMixin, np.ndarray):
         :rtype: bool
         """
 
-    def all(self) -> np.bool[bool]: ...
-    def any(self) -> np.bool[bool]: ...
+    def all(self) -> bool: ...
+    def any(self) -> bool: ...

@@ -1,9 +1,11 @@
 """基本的な文字列の操作をするモジュール"""
+
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
 import numpy.strings as nps
 
 from ...isdtype import strDtype
+from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPString"]
@@ -38,7 +40,6 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
             obj._min_ndim = min_ndim
             obj._max_ndim = max_ndim
         return obj
-
 
     def __array__(self, dtype=np.str_, copy=None):
         return super().__array__(dtype, copy=copy)
@@ -141,11 +142,11 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
     __rmul__ = __mul__
     __imul__ = __mul__
 
-    def __eq__(self, value):
-        return super().__eq__(value)
+    def __ne__(self, other):
+        return NPBool(super().__ne__(other))
 
-    def __ne__(self, value):
-        return super().__ne__(value)
+    def __eq__(self, other):
+        return NPBool(super().__eq__(other))
 
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
@@ -195,14 +196,12 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         shapes = self.shape
         lens = len(shapes)
         if lens == 1:
-            raw = np.arange(0, self.size, 1, dtype=np.uint64)
+            raw = np.arange(0, self.size, 1)
         else:
-            raw = np.tile(
-                np.arange(0, shapes[lens - 1], dtype=np.uint64), np.prod(shapes[:-1])
-            ).reshape(shapes)
-        result = raw.view(type(self))
-        result._dtype = np.dtype("uint64")
-        return result
+            raw = np.tile(np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])).reshape(
+                shapes
+            )
+        return np.array(raw, dtype=np.uint64)
 
     def shapesize(self, shapes):
         if self.shape == shapes:

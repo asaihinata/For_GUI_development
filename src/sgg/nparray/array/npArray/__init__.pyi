@@ -1,10 +1,10 @@
-
-
 from typing import Any, Iterator, overload
 
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.typing import ArrayLike, DTypeLike, NDArray
+
+from ..npbool import NPBool
 
 __all__ = ["is_array_like", "change_array_like", "NPArray"]
 
@@ -41,8 +41,8 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def __instancecheck__(cls, instance: Any) -> bool: ...
-    def __ne__(self, other: Any) -> Any: ...
-    def __eq__(self, other: Any) -> Any: ...
+    def __ne__(self, other: Any) -> NPBool: ...
+    def __eq__(self, other: Any) -> NPBool: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
@@ -210,7 +210,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 
-    def lengtharange(self) -> NPArray:
+    def lengtharange(self) -> np.NDArray[np.unsignedinteger[np._64Bit]]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
@@ -229,7 +229,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :rtype: bool
         """
 
-    def tonumpy(self) -> np.ndarray:
+    def tonumpy(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def all_None(self) -> bool:

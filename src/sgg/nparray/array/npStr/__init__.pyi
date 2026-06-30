@@ -1,4 +1,5 @@
 """基本的な文字列の操作をするモジュール"""
+
 from typing import Any, Iterator, overload
 
 import numpy as np
@@ -6,6 +7,7 @@ from numpy._typing import ArrayLike, DTypeLike
 from numpy.lib.mixins import NDArrayOperatorsMixin
 
 from ....typing import TypeArraysLikeString
+from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPString"]
@@ -40,8 +42,8 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def __instancecheck__(cls, instance: Any) -> bool: ...
-    def __ne__(self, other: Any) -> Any: ...
-    def __eq__(self, other: Any) -> Any: ...
+    def __ne__(self, other: Any) -> NPBool: ...
+    def __eq__(self, other: Any) -> NPBool: ...
     def __add__(self, other: ArrayLike) -> NPString: ...
     def __radd__(self, other: ArrayLike) -> NPString: ...
     def __iadd__(self, other: ArrayLike) -> NPString: ...
@@ -202,7 +204,7 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         """
 
     @property
-    def data(self) -> np.ndarray:
+    def data(self) -> np.NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @property
@@ -241,7 +243,7 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 
-    def lengtharange(self) -> NPString:
+    def lengtharange(self) -> np.NDArray[np.unsignedinteger[np._64Bit]]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
@@ -260,7 +262,7 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         :rtype: bool
         """
 
-    def tonumpy(self) -> np.ndarray:
+    def tonumpy(self) -> np.NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def all_None(self) -> bool:

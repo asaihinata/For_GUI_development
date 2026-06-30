@@ -3,6 +3,7 @@ from datetime import date, datetime
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
 
+from ..npbool import NPBool
 from ..npnumber import NPNumber
 from ._typing import serchDtype
 from .formatconversion import Formatconversion
@@ -42,7 +43,6 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
             obj._min_ndim = min_ndim
             obj._max_ndim = max_ndim
         return obj
-
 
     def __array_finalize__(self, obj):
         if obj is None:
@@ -141,6 +141,12 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
     __radd__ = __add__
     __rsub__ = __sub__
 
+    def __ne__(self, other):
+        return NPBool(super().__ne__(other))
+
+    def __eq__(self, other):
+        return NPBool(super().__eq__(other))
+
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
 
@@ -189,14 +195,12 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         shapes = self.shape
         lens = len(shapes)
         if lens == 1:
-            raw = np.arange(0, self.size, 1, dtype=np.uint64)
+            raw = np.arange(0, self.size, 1)
         else:
-            raw = np.tile(
-                np.arange(0, shapes[lens - 1], dtype=np.uint64), np.prod(shapes[:-1])
-            ).reshape(shapes)
-        result = raw.view(type(self))
-        result._dtype = np.dtype("uint64")
-        return result
+            raw = np.tile(np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])).reshape(
+                shapes
+            )
+        return np.array(raw, dtype=np.uint64)
 
     def shapesize(self, shapes):
         if self.shape == shapes:

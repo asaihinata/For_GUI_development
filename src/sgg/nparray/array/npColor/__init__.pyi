@@ -6,11 +6,13 @@
 指定できるカラー名はCSSで指定できる色名  https://drafts.csswg.org/css-color-4/#named-colors
 """
 
-from typing import Any, Iterator, overload
+from typing import Any, overload
 
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.typing import ArrayLike, DTypeLike
+
+from ..npbool import NPBool
 
 __all__ = ["NPColor"]
 HANDLED_FUNCTIONS: dict
@@ -55,26 +57,8 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def __instancecheck__(cls, instance: Any) -> bool: ...
-    def __ne__(self, other: Any) -> Any: ...
-    def __eq__(self, other: Any) -> Any: ...
-    def __iter__(self) -> Iterator[Any]: ...
-    @overload
-    def __getitem__(self, key: int) -> Any: ...
-    @overload
-    def __getitem__(self, key: slice) -> np.ndarray: ...
-    def __getitem__(self, key: int | slice) -> Any | np.ndarray:
-        """
-        インデックスアクセスをカスタマイズする
-
-        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
-
-        :param key: インデックスまたはスライスを指定する
-        :type key: int | slice
-        :return: インデックスに対応する要素を返す
-        :rtype: Any | np.ndarray
-        :raises IndexError: 配列が空の場合に発生させる
-        """
-
+    def __ne__(self, other: Any) -> NPBool: ...
+    def __eq__(self, other: Any) -> NPBool: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
 
@@ -174,7 +158,7 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
         """
 
     @property
-    def data(self) -> np.ndarray:
+    def data(self) -> np.NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @property
@@ -213,15 +197,6 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 
-    def lengtharange(self) -> NPColor:
-        """
-        配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
-
-        `dtype`は`np.uint64`に固定される
-
-        :return: インデックス配列を返す
-        """
-
     def shapesize(self, shapes: tuple[int, ...]) -> bool:
         """
         配列オブジェクトの`shape`が`shapes`と一致するかを確認する
@@ -232,7 +207,7 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
         :rtype: bool
         """
 
-    def tonumpy(self) -> np.ndarray:
+    def tonumpy(self) -> np.NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def all_None(self) -> bool:

@@ -6,7 +6,7 @@ import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.typing import ArrayLike, DTypeLike, NDArray
 
-from sgg.typing import TypeArrayLikeNumber
+from ....typing import TypeArrayLikeNumber
 
 __all__ = ["NPStatisticsd"]
 
@@ -179,7 +179,7 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         """
 
     @property
-    def data(self) -> np.ndarray:
+    def data(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @property
@@ -202,7 +202,7 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         :rtype: numpy.dtype | None
         """
 
-    def lengtharange(self) -> NPStatisticsd:
+    def lengtharange(self) -> NDArray[np.unsignedinteger[np._64Bit]]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
@@ -221,7 +221,7 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         :rtype: bool
         """
 
-    def tonumpy(self) -> np.ndarray:
+    def tonumpy(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def all_None(self) -> bool:
@@ -454,7 +454,8 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         """
 
     def ave_E_samplingerror(self, cc: int | float = 0.95) -> np.float64:
-        """母平均の推定をする
+        """
+        母平均の推定をする
 
         :param cc: 信頼係数を指定する
         :type cc: int | float"""

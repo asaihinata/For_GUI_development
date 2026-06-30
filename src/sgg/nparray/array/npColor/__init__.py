@@ -5,6 +5,7 @@
 
 指定できるカラー名はCSSで指定できる色名  https://drafts.csswg.org/css-color-4/#named-colors
 """
+
 from re import compile, findall
 
 from matplotlib.colors import to_hex, to_rgb, to_rgba
@@ -12,6 +13,7 @@ import numpy as np
 from numpy import array, fromiter, nditer, uint8
 from numpy.lib.mixins import NDArrayOperatorsMixin
 
+from ..npbool import NPBool
 from ._data import Get_color
 
 __all__ = ["NPColor"]
@@ -19,8 +21,6 @@ _HEX6_RE = compile(r"^#[0-9a-f]{6}$")
 _HEX3_RE = compile(r"^#[0-9a-f]{3}$")
 _RGB_RE = compile(r"^rgb\((\d+),(\d+),(\d+)\)$")
 _HSV_RE = compile(r"^hsv\((\d+),(\d+),(\d+)\)$")
-
-
 HANDLED_FUNCTIONS = {}
 
 
@@ -63,6 +63,11 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
             obj._max_ndim = max_ndim
         return obj
 
+    def __ne__(self, other):
+        return NPBool(super().__ne__(other))
+
+    def __eq__(self, other):
+        return NPBool(super().__eq__(other))
 
     def __array__(self, dtype=None, copy=None):
         return super().__array__(dtype, copy=copy)
@@ -159,16 +164,19 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
         raise ValueError("値が不正です")
 
     def tohex(self):
-        self.data = array([to_hex(i) for i in self.data])
-        return self
+        result = np.asarray([to_hex(i) for i in self.data]).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def torgba(self):
-        self.data = array([to_rgba(i, alpha=1) for i in self.data])
-        return self
+        result = np.asarray([to_rgba(i, alpha=1) for i in self.data]).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def torgb(self):
-        self.data = array([to_rgb(i) for i in self.data])
-        return self
+        result = np.asarray([to_rgb(i) for i in self.data]).view(type(self))
+        result._dtype = result.dtype
+        return result
 
 
 def _check(name):

@@ -7,6 +7,7 @@ from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.typing import DTypeLike
 
 from ....typing import TypeArraysLikedatetime
+from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPDate"]
@@ -43,8 +44,8 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def __instancecheck__(cls, instance: Any) -> bool: ...
-    def __ne__(self, other: Any) -> Any: ...
-    def __eq__(self, other: Any) -> Any: ...
+    def __ne__(self, other: Any) -> NPBool: ...
+    def __eq__(self, other: Any) -> NPBool: ...
     def __add__(self, other: Any) -> NPDate: ...
     def __radd__(self, other: Any) -> NPDate: ...
     def __sub__(self, other: Any) -> NPDate: ...
@@ -135,9 +136,6 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         :rtype: Any
         """
 
-    def __class_getitem__(cls, item: Any) -> np.ndarray:
-        return np.ndarray.__class_getitem__.__func__(cls, item)
-
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
 
@@ -180,7 +178,7 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         """
 
     @property
-    def data(self) -> np.ndarray:
+    def data(self) -> np.NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @property
@@ -219,7 +217,7 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 
-    def lengtharange(self) -> NPDate:
+    def lengtharange(self) -> np.NDArray[np.unsignedinteger[np._64Bit]]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
@@ -238,7 +236,7 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         :rtype: bool
         """
 
-    def tonumpy(self) -> np.ndarray:
+    def tonumpy(self) -> np.NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def all_None(self) -> bool:
@@ -266,12 +264,10 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         """現在時刻(UTC時刻)を返す"""
 
     def todatetime(self) -> np.ndarray[datetime, np.dtype[datetime]]:
-        """
-        配列内の日付を`datetime.datetime`に変換する"""
+        """配列内の日付を`datetime.datetime`に変換する"""
 
     def todate(self) -> np.ndarray[date, np.dtype[date]]:
-        """
-        配列内の日付を`datetime.date`に変換する"""
+        """配列内の日付を`datetime.date`に変換する"""
 
     def weekday(self) -> NPNumber:
         """その日付日時の曜日を求める"""
@@ -296,7 +292,8 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
 
     @overload
     def diff_today(self, days: bool = False) -> NPNumber:
-        """今日の日付の差(今日を含めない)を求める
+        """
+        今日の日付の差(今日を含めない)を求める
 
         :param days: 今日を含めるか指定する
         :type days: bool

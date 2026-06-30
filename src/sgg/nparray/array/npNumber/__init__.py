@@ -1,8 +1,10 @@
 """基本的な数値の操作をするモジュール"""
+
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
 
 from ...isdtype import numberdDtype, numberDtype
+from ..npbool import NPBool
 
 __all__ = ["NPNumber"]
 method_list = [
@@ -47,7 +49,6 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
             obj._min_ndim = min_ndim
             obj._max_ndim = max_ndim
         return obj
-
 
     def __array__(self, dtype=np.float64, copy=None):
         return super().__array__(dtype, copy=copy)
@@ -219,11 +220,11 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
-    def __eq__(self, value):
-        return np.equal(np.asarray(self), value)
+    def __ne__(self, other):
+        return NPBool(super().__ne__(other))
 
-    def __ne__(self, value):
-        return np.not_equal(np.asarray(self), value)
+    def __eq__(self, other):
+        return NPBool(super().__eq__(other))
 
     def __lt__(self, other):
         return np.less(np.asarray(self), other)
@@ -248,14 +249,12 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
         shapes = self.shape
         lens = len(shapes)
         if lens == 1:
-            raw = np.arange(0, self.size, 1, dtype=np.uint64)
+            raw = np.arange(0, self.size, 1)
         else:
-            raw = np.tile(
-                np.arange(0, shapes[lens - 1], dtype=np.uint64), np.prod(shapes[:-1])
-            ).reshape(shapes)
-        result = raw.view(type(self))
-        result._dtype = np.dtype("uint64")
-        return result
+            raw = np.tile(np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])).reshape(
+                shapes
+            )
+        return np.array(raw, dtype=np.uint64)
 
     def shapesize(self, shapes):
         if self.shape == shapes:
@@ -318,10 +317,14 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
         return result
 
     def ratio(self, axis=None):
-        return (self.data / np.sum(self.data, axis=axis, keepdims=True)) * 100
+        result = np.asarray((self / np.sum(self, axis=axis, keepdims=True)) * 100).view(
+            type(self)
+        )
+        result._dtype = result.dtype
+        return result
 
     def zero_check(self):
-        return self.data == 0
+        return NPBool(self.data == 0)
 
 
 def _datas(data):
