@@ -1,6 +1,7 @@
 from _import import *
 
-if __name__ == "__main__":
+
+def test_main():
 
     def updates():
         radomdata = rng.integers(0, 3, 5)
@@ -138,3 +139,7 @@ if __name__ == "__main__":
         title="エラーグラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

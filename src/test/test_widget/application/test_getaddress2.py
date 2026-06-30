@@ -12,8 +12,8 @@ import json
 from _import import *
 import requests
 
-if __name__ == "__main__":
 
+def test_main():
     def ztoy():
         zyuusyo: Listboxs = win.get("zyuusyo")
         Yuubin: Input = win.get("yuubin")
@@ -48,3 +48,7 @@ if __name__ == "__main__":
     ]
     win = Guis.window(layout=layout, maxmine=True, scroll=True)
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

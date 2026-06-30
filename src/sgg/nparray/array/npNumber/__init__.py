@@ -19,14 +19,19 @@ method_list = [
     "normal_unbiased",
 ]
 HANDLED_FUNCTIONS = {}
+
+
 def implements(np_function):
     def decorator(func):
         HANDLED_FUNCTIONS[np_function] = func
         return func
 
     return decorator
-class NPNumber(NDArrayOperatorsMixin,np.ndarray):
+
+
+class NPNumber(NDArrayOperatorsMixin, np.ndarray):
     _element_type = (int, float, complex, np.number)
+
     def __new__(cls, data, dtype=np.float64, d_ndim=None, min_ndim=None, max_ndim=None):
         resolved = cls._resolve_dtype(dtype)
         if numberDtype(resolved):
@@ -122,6 +127,7 @@ class NPNumber(NDArrayOperatorsMixin,np.ndarray):
         if func in HANDLED_FUNCTIONS:
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
+
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
 

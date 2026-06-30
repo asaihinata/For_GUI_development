@@ -1,6 +1,7 @@
 from _import import *
 
-if __name__ == "__main__":
+
+def test_main():
 
     def updates():
         radomdata = rng.gamma(4, size=(3, 50))
@@ -40,3 +41,7 @@ if __name__ == "__main__":
         title="イベントグラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

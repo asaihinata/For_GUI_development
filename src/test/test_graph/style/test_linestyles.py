@@ -1,6 +1,7 @@
 from _import import *
 
-if __name__ == "__main__":
+
+def test_main():
     linestyle = ["solid", "dotted", "dashed", "dashdot", "None"]
     x = np.arange(1, 10)
     y = [
@@ -12,3 +13,7 @@ if __name__ == "__main__":
         title="線のスタイルの種類", layout=layout, scroll=True, maxmine=True
     )
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

@@ -2,8 +2,8 @@ import pathlib
 
 from _import import *
 
-if __name__ == "__main__":
 
+def test_main():
     def txtchange():
         win.get("txt1").set_text("!!!変わった!!!")
 
@@ -229,3 +229,7 @@ if __name__ == "__main__":
         title="デモ", layout=layout, load=[progress_start], scroll=True, maxmine=True
     )
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

@@ -1,6 +1,7 @@
 from _import import *
 
-if __name__ == "__main__":
+
+def test_main():
 
     def updates():
         radomdata = rng.integers(20, 30, size=5, endpoint=True)
@@ -48,3 +49,7 @@ if __name__ == "__main__":
         title="ハットグラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

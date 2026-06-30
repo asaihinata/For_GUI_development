@@ -1,6 +1,7 @@
 from _import import *
 
-if __name__ == "__main__":
+
+def test_main():
 
     def updates():
         radomdata1 = rng.standard_normal(5000)
@@ -54,3 +55,7 @@ if __name__ == "__main__":
         title="2次元ヒストグラム(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

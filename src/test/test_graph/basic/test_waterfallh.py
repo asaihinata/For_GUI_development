@@ -1,6 +1,7 @@
 from _import import *
 
-if __name__ == "__main__":
+
+def test_main():
 
     def updates():
         radomdata = rng.integers(-100, 100, 6)
@@ -79,3 +80,7 @@ if __name__ == "__main__":
         maxmine=True,
     )
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

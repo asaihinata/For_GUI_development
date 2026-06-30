@@ -1,6 +1,7 @@
 from _import import *
 
-if __name__ == "__main__":
+
+def test_main():
     data = np.array(getcsv("japan_population.csv"))[1:4, 2:8].astype(np.int64)
     layout = [
         [
@@ -18,3 +19,7 @@ if __name__ == "__main__":
         title="人口の変化(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

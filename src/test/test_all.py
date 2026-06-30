@@ -3,27 +3,22 @@ import pathlib
 from _import import *
 
 
-def txtchange():
-    win.get("txt1").set_text("!!!変わった!!!")
+def test_main():
+    def txtchange():
+        win.get("txt1").set_text("!!!変わった!!!")
 
+    def files():
+        Guis.Popup(message=win.get("file_load").get_path())
 
-def files():
-    Guis.Popup(message=win.get("file_load").get_path())
+    def folders():
+        Guis.Popup(message=win.get("folder_load").get_path())
 
+    def colors():
+        Guis.Popup(message=win.get("color_select").get_color())
 
-def folders():
-    Guis.Popup(message=win.get("folder_load").get_path())
+    def progress_start():
+        win.get("prigress").start()
 
-
-def colors():
-    Guis.Popup(message=win.get("color_select").get_color())
-
-
-def progress_start():
-    win.get("prigress").start()
-
-
-if __name__ == "__main__":
     NOW_FILE = pathlib.Path(__file__).parent
     LENNAPATH = NOW_FILE / "data/img/Lenna.png"
     HTMLFILE = NOW_FILE / "data/index.html"
@@ -472,3 +467,7 @@ if __name__ == "__main__":
         title="デモ", layout=layout, load=[progress_start], scroll=True, maxmine=True
     )
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

@@ -1,6 +1,7 @@
 from _import import *
 
-if __name__ == "__main__":
+
+def test_main():
 
     def updates():
         radomdata = rng.integers(1, 10, (3, 3)) + 2
@@ -40,3 +41,7 @@ if __name__ == "__main__":
         title="積み上げ棒グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

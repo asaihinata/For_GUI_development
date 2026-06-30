@@ -10,8 +10,8 @@ https://excelapi.org/docs/post/zipcode/
 from _import import *
 import requests
 
-if __name__ == "__main__":
 
+def test_main():
     def ytoz():
         zyuusyo: Input = win.get("zyuusyo")
         Zget = zyuusyo.get_text()
@@ -38,3 +38,7 @@ if __name__ == "__main__":
     ]
     win = Guis.window(layout=layout, maxmine=True, scroll=True)
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

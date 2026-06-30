@@ -1,6 +1,7 @@
 from _import import *
 
-if __name__ == "__main__":
+
+def test_main():
 
     def updates():
         radomdata = 4 + rng.normal(0, 1.5, size=100)
@@ -42,3 +43,7 @@ if __name__ == "__main__":
         title="経験的累積分布関数(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

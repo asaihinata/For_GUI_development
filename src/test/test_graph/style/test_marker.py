@@ -1,6 +1,7 @@
 from _import import *
 
-if __name__ == "__main__":
+
+def test_main():
     marker1 = [",", "1", "2", "3", "4", "+", "x", "|", "_"]
     marker2 = list(range(1, 12, 1))
     x = np.arange(1, 2)
@@ -32,3 +33,7 @@ if __name__ == "__main__":
         title="線のスタイルの種類", layout=layout, scroll=True, maxmine=True
     )
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

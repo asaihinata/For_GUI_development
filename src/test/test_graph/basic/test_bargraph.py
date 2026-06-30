@@ -1,6 +1,7 @@
 from _import import *
 
-if __name__ == "__main__":
+
+def test_main():
 
     def updates():
         radomdata = rng.integers(30, 60, size=5)
@@ -51,3 +52,7 @@ if __name__ == "__main__":
     ]
     win = Guis.window(title="棒グラフ(test)", layout=layout, scroll=True, maxmine=True)
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

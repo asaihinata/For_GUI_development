@@ -1,6 +1,7 @@
 from _import import *
 
-if __name__ == "__main__":
+
+def test_main():
 
     def updates():
         radomdata = randsint(-100, 100, 6)
@@ -74,3 +75,7 @@ if __name__ == "__main__":
     ]
     win = Guis.window(title="滝グラフ(test)", layout=layout, scroll=True, maxmine=True)
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

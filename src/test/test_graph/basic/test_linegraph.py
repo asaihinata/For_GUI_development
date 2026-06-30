@@ -1,6 +1,7 @@
 from _import import *
 
-if __name__ == "__main__":
+
+def test_main():
 
     def updates():
         radomdata = randrange(50, 80, size=(4, 3))
@@ -56,3 +57,7 @@ if __name__ == "__main__":
         title="折り線グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()

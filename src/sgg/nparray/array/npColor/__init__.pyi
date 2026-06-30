@@ -9,8 +9,8 @@
 from typing import Any, overload
 
 import numpy as np
-from numpy.typing import ArrayLike, DTypeLike
 from numpy.lib.mixins import NDArrayOperatorsMixin
+from numpy.typing import ArrayLike, DTypeLike
 
 from ..npbool import NPBool
 
@@ -25,7 +25,7 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPColor(NDArrayOperatorsMixin,np.ndarray):
+class NPColor(NDArrayOperatorsMixin, np.ndarray):
     """`np.ndarray`を継承した色に関する処理を行う配列クラス"""
 
     def __new__(

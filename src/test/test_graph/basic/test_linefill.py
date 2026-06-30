@@ -1,6 +1,7 @@
 from _import import *
 
-if __name__ == "__main__":
+
+def test_main():
 
     def updates():
         radomdata1 = 3 + 4 * linefillx / 8 + rng.uniform(0.0, 0.5, len(linefillx))
@@ -46,3 +47,7 @@ if __name__ == "__main__":
         title="積上げ面グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()
+
+
+if __name__ == "__main__":
+    test_main()
