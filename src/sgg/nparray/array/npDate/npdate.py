@@ -25,14 +25,14 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
 
     def __new__(
         cls,
-        input_array,
+        data,
         dtype="datetime64[D]",
         d_ndim=None,
         min_ndim=None,
         max_ndim=None,
     ):
         resolved = cls._resolve_dtype(serchDtype(dtype))
-        obj = np.asarray(input_array, dtype=resolved).view(cls)
+        obj = np.asarray(data, dtype=resolved).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         if isinstance(d_ndim, int):
@@ -123,10 +123,6 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         if func in HANDLED_FUNCTIONS:
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
-
-    @classmethod
-    def __instancecheck__(cls, instance):
-        return isinstance(instance, NPDate)
 
     def __add__(self, other):
         result = super().__add__(other)

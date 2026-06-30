@@ -148,10 +148,6 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
-    @classmethod
-    def __instancecheck__(cls, instance):
-        return isinstance(instance, Formatconversion)
-
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
 

@@ -40,7 +40,7 @@ def is_array_like(obj):
     return False
 
 
-class NPColor(NDArrayOperatorsMixin, np.ndarray):
+class NPColor(NDArrayOperatorsMixin,np.ndarray):
     _element_type = None
 
     def __new__(cls, color, dtype=object, d_ndim=None, min_ndim=None, max_ndim=None):
@@ -64,10 +64,10 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
         return obj
 
     def __ne__(self, other):
-        return NPBool(super().__ne__(other))
+        return NPBool(np.equal(np.asarray(self),other))
 
     def __eq__(self, other):
-        return NPBool(super().__eq__(other))
+        return NPBool(np.not_equal(np.asarray(self),other))
 
     def __array__(self, dtype=None, copy=None):
         return super().__array__(dtype, copy=copy)
@@ -148,10 +148,6 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
         if func in HANDLED_FUNCTIONS:
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
-
-    @classmethod
-    def __instancecheck__(cls, instance):
-        return isinstance(instance, NPColor)
 
     @classmethod
     def __get_val(cls, color):

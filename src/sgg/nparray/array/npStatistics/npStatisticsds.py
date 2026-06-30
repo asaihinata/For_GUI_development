@@ -5,7 +5,6 @@ from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.polynomial.chebyshev import chebfit, chebval
 
 from ...isdtype import numberDtype
-from ..npnumber import NPNumber
 from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
@@ -75,10 +74,6 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
-    @classmethod
-    def __instancecheck__(cls, instance):
-        return isinstance(instance, NPStatisticsd)
-
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
 
@@ -92,8 +87,6 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         return super().__len__()
 
     def __iter__(self):
-        if self.ndim == 1:
-            return iter([self.data])
         return iter(self.data)
 
     def __reversed__(self):
@@ -158,9 +151,7 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         if lens == 1:
             raw = np.arange(0, self.size, 1)
         else:
-            raw = np.tile(np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])).reshape(
-                shapes
-            )
+            raw = np.tile(np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])).reshape(shapes)
         return np.array(raw, dtype=np.uint64)
 
     def shapesize(self, shapes):

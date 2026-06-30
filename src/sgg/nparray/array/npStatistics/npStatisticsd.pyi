@@ -1,6 +1,6 @@
 """基本的な統計の計算をするモジュール"""
 
-from typing import Any, Iterator, Literal, SupportsIndex, TypeAlias, overload
+from typing import Any, Generator, Literal, SupportsIndex, TypeAlias, overload
 
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
@@ -53,12 +53,10 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         :rtype: NPStatisticsd
         """
 
-    @classmethod
-    def __instancecheck__(cls, instance: Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
-    def __iter__(self) -> Iterator[Any]: ...
+    def __iter__(self) -> Generator[tuple[NDArray[Any],...],Any,None]:...
     def __len__(self) -> int: ...
     def __reversed__(self) -> NPStatisticsd:
         """
@@ -241,7 +239,7 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         """
 
     @property
-    def sum(self) -> np.floating:
+    def sum(self) -> np.number:
         """配列の全要素の合計を求める"""
 
     @property
@@ -253,11 +251,11 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         """配列の加重平均を求める"""
 
     @property
-    def max(self) -> np.floating:
+    def max(self) -> np.number:
         """配列の最大値を求める"""
 
     @property
-    def min(self) -> np.floating:
+    def min(self) -> np.number:
         """配列の最小値を求める"""
 
     @property

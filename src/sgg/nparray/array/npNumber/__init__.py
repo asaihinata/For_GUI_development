@@ -3,7 +3,7 @@
 import numpy as np
 from numpy.lib.mixins import NDArrayOperatorsMixin
 
-from ...isdtype import numberdDtype, numberDtype
+from ...isdtype import numberDtype
 from ..npbool import NPBool
 
 __all__ = ["NPNumber"]
@@ -19,26 +19,19 @@ method_list = [
     "normal_unbiased",
 ]
 HANDLED_FUNCTIONS = {}
-
-
 def implements(np_function):
     def decorator(func):
         HANDLED_FUNCTIONS[np_function] = func
         return func
 
     return decorator
-
-
-class NPNumber(NDArrayOperatorsMixin, np.ndarray):
+class NPNumber(NDArrayOperatorsMixin,np.ndarray):
     _element_type = (int, float, complex, np.number)
-
-    def __new__(
-        cls, input_array, dtype=np.float64, d_ndim=None, min_ndim=None, max_ndim=None
-    ):
+    def __new__(cls, data, dtype=np.float64, d_ndim=None, min_ndim=None, max_ndim=None):
         resolved = cls._resolve_dtype(dtype)
         if numberDtype(resolved):
             raise TypeError("dtypeには数値型を指定してください")
-        obj = np.asarray(input_array, dtype=resolved).view(cls)
+        obj = np.asarray(data, dtype=resolved).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         if isinstance(d_ndim, int):
@@ -129,11 +122,6 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
         if func in HANDLED_FUNCTIONS:
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
-
-    @classmethod
-    def __instancecheck__(cls, instance):
-        return isinstance(instance, NPNumber)
-
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
 
@@ -171,55 +159,6 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
         elif isinstance(key, slice):
             return self.data.flatten()[key]
 
-    def __abs__(self):
-        result = np.abs(np.asarray(self)).view(type(self))
-        result._dtype = result.dtype
-        return result
-
-    def __add__(self, other):
-        result = np.add(np.asarray(self), _datas(other)).view(type(self))
-        result._dtype = result.dtype
-        return result
-
-    def __sub__(self, other):
-        result = np.subtract(np.asarray(self), _datas(other)).view(type(self))
-        result._dtype = result.dtype
-        return result
-
-    def __mul__(self, other):
-        result = np.multiply(np.asarray(self), _datas(other)).view(type(self))
-        result._dtype = result.dtype
-        return result
-
-    def __truediv__(self, other):
-        result = np.true_divide(np.asarray(self), _datas(other)).view(type(self))
-        result._dtype = result.dtype
-        return result
-
-    def __floordiv__(self, other):
-        result = np.floor_divide(np.asarray(self), _datas(other)).view(type(self))
-        result._dtype = result.dtype
-        return result
-
-    def __pow__(self, other):
-        result = np.power(np.asarray(self), _datas(other)).view(type(self))
-        result._dtype = result.dtype
-        return result
-
-    __radd__ = __add__
-    __iadd__ = __add__
-    __rsub__ = __sub__
-    __isub__ = __sub__
-    __rmul__ = __mul__
-    __imul__ = __mul__
-    __rtruediv__ = __truediv__
-    __itruediv__ = __truediv__
-
-    def __mod__(self, other):
-        result = np.mod(np.asarray(self), _datas(other)).view(type(self))
-        result._dtype = result.dtype
-        return result
-
     def __ne__(self, other):
         return NPBool(super().__ne__(other))
 
@@ -227,16 +166,16 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
         return NPBool(super().__eq__(other))
 
     def __lt__(self, other):
-        return np.less(np.asarray(self), other)
+        return NPBool(super().__lt__(other))
 
     def __le__(self, other):
-        return np.less_equal(np.asarray(self), other)
+        return NPBool(super().__le__(other))
 
     def __gt__(self, other):
-        return np.greater(np.asarray(self), other)
+        return NPBool(super().__gt__(other))
 
     def __ge__(self, other):
-        return np.greater_equal(np.asarray(self), other)
+        return NPBool(super().__ge__(other))
 
     def to_1d(self):
         if self.min_ndim is not None and self.min_ndim > 1:
@@ -277,26 +216,34 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
     def cussum(self):
         datas = np.ravel(self)
         splices = self.shape[-1]
-        result = np.array(
-            [
-                j + np.insert(j, 0, 0)[:-1]
-                for i in range(0, len(datas), splices)
-                for j in [datas[i : i + splices]]
-            ]
-        ).view(type(self))
+        result = (
+            np.array(
+                [
+                    j + np.insert(j, 0, 0)[:-1]
+                    for i in range(0, len(datas), splices)
+                    for j in [datas[i : i + splices]]
+                ]
+            )
+            .view(type(self))
+            .reshape(self.shape)
+        )
         result._dtype = result.dtype
         return result
 
     def cumprod(self):
         datas = np.ravel(self)
         splices = self.shape[-1]
-        result = np.array(
-            [
-                j * np.insert(j, 0, 0)[:-1]
-                for i in range(0, len(datas), splices)
-                for j in [datas[i : i + splices]]
-            ]
-        ).view(type(self))
+        result = (
+            np.array(
+                [
+                    j * np.insert(j, 0, 0)[:-1]
+                    for i in range(0, len(datas), splices)
+                    for j in [datas[i : i + splices]]
+                ]
+            )
+            .view(type(self))
+            .reshape(self.shape)
+        )
         result._dtype = result.dtype
         return result
 
@@ -325,9 +272,3 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
 
     def zero_check(self):
         return NPBool(self.data == 0)
-
-
-def _datas(data):
-    if numberdDtype(data):
-        return data
-    raise TypeError("数値の型を指定してください")

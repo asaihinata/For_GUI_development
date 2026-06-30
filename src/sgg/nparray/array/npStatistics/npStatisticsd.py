@@ -5,7 +5,6 @@ from numpy.lib.mixins import NDArrayOperatorsMixin
 from scipy.stats import norm
 
 from ...isdtype import numberDtype
-from ..npnumber import NPNumber
 
 __all__ = ["NPStatisticsd"]
 method_list = [
@@ -33,11 +32,11 @@ def implements(np_function):
 class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
     _element_type = (int, float, complex, np.number)
 
-    def __new__(cls, input_array, dtype=np.float64):
+    def __new__(cls, data, dtype=np.float64):
         resolved = cls._resolve_dtype(dtype)
         if numberDtype(resolved):
             raise TypeError("dtypeには数値型を指定してください")
-        obj = np.asarray(input_array, dtype=resolved).view(cls)
+        obj = np.asarray(data, dtype=resolved).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         cls._validate_ndim(obj)
@@ -107,10 +106,6 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
-    @classmethod
-    def __instancecheck__(cls, instance):
-        return isinstance(instance, NPStatisticsd)
-
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
 
@@ -124,9 +119,8 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         return super().__len__()
 
     def __iter__(self):
-        if self.ndim == 1:
-            return iter([self.data])
-        return iter(self.data)
+        for i in np.nditer(self.data):
+            yield i
 
     def __reversed__(self):
         result = np.flip(np.asarray(self)).view(type(self))

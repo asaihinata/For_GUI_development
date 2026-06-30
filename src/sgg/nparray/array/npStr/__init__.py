@@ -23,13 +23,11 @@ def implements(np_function):
 class NPString(NDArrayOperatorsMixin, np.ndarray):
     _element_type = (str, np.character, np.str_, np.bytes_)
 
-    def __new__(
-        cls, input_array, dtype=np.str_, d_ndim=None, min_ndim=None, max_ndim=None
-    ):
+    def __new__(cls, data, dtype=np.str_, d_ndim=None, min_ndim=None, max_ndim=None):
         resolved = cls._resolve_dtype(dtype)
         if strDtype(resolved):
             raise TypeError("dtypeには文字列の型を指定してください")
-        obj = np.asarray(input_array, dtype=resolved).view(cls)
+        obj = np.asarray(data, dtype=resolved).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         if isinstance(d_ndim, int):
@@ -120,10 +118,6 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         if func in HANDLED_FUNCTIONS:
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
-
-    @classmethod
-    def __instancecheck__(cls, instance):
-        return isinstance(instance, NPNumber)
 
     def __add__(self, other):
         result = np.add(np.asarray(self), other).view(type(self))
@@ -222,8 +216,20 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
+    @property
     def low(self):
         result = nps.lower(np.asarray(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def lower(self):
+        result = nps.lower(np.asarray(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    @property
+    def up(self):
+        result = nps.upper(np.asarray(self)).view(type(self))
         result._dtype = result.dtype
         return result
 

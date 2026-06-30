@@ -14,7 +14,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
     _element_type: type | tuple[type, ...] | None
     def __new__(
         cls,
-        input_array: ArrayLike,
+        data: ArrayLike,
         dtype: DTypeLike | None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -23,8 +23,8 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         """
         新しい配列オブジェクトインスタンスを生成する
 
-        :param input_array: 変換する配列を指定する
-        :type input_array: ArrayLike
+        :param data: 変換する配列を指定する
+        :type data: ArrayLike
         :param dtype: 配列のdtypeを指定する
         :type dtype: DTypeLike | None
         :param d_ndim: 固定される次元数を指定する
@@ -39,8 +39,6 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    @classmethod
-    def __instancecheck__(cls, instance: Any) -> bool: ...
     def __ne__(self, other: Any) -> NPBool: ...
     def __eq__(self, other: Any) -> NPBool: ...
     def __repr__(self) -> str: ...

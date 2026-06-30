@@ -24,8 +24,8 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         """
         新しい配列オブジェクトインスタンスを生成する
 
-        :param input_array: 変換する配列を指定する
-        :type input_array: ArrayLike
+        :param data: 変換する配列を指定する
+        :type data: ArrayLike
         :param dtype: 配列のdtypeを指定する
         :type dtype: DTypeLike | None
         :param d_ndim: 固定される次元数を指定する
@@ -40,8 +40,6 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    @classmethod
-    def __instancecheck__(cls, instance: Any) -> bool: ...
     def __ne__(self, other: Any) -> NPBool: ...
     def __eq__(self, other: Any) -> NPBool: ...
     def __add__(self, other: ArrayLike) -> NPString: ...
@@ -74,8 +72,6 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         :raises TypeError: `i`に`int`型以外を指定した場合に発生させる
         """
 
-    def __eq__(self, value: Any) -> Any: ...
-    def __ne__(self, value: Any) -> Any: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
@@ -284,7 +280,15 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
     def append(self, val: Any) -> NPString:
         """配列内の要素の文字に`val`を付け加える"""
 
+    @property
     def low(self) -> NPString:
+        """`NPString`内の要素のアルファベットを小文字に変換する"""
+
+    @property
+    def up(self) -> NPString:
+        """`NPString`内の要素のアルファベットを大文字に変換する"""
+
+    def lower(self) -> NPString:
         """`NPString`内の要素のアルファベットを小文字に変換する"""
 
     def upper(self) -> NPString:

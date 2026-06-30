@@ -34,8 +34,8 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
         """
         様々な日付のフォーマットを特定の日付フォーマットに変換する配列オブジェクトインスタンスを生成する
 
-        :param input_array: 変換する配列を指定する
-        :type input_array: ArrayLike
+        :param data: 変換する配列を指定する
+        :type data: ArrayLike
         :param dtype: 配列のdtypeを指定する
         :type dtype: _DATES_UNITL | np.datetime64
         :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
@@ -184,8 +184,6 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
     def max_ndim(self) -> int | None:
         """配列オブジェクトが許容する最大次元数を返す"""
 
-    @classmethod
-    def __instancecheck__(cls, instance: Any) -> bool: ...
     def __ne__(self, other: Any) -> NPBool: ...
     def __eq__(self, other: Any) -> NPBool: ...
     def __repr__(self) -> str: ...

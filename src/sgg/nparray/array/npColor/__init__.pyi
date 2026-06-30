@@ -9,8 +9,8 @@
 from typing import Any, overload
 
 import numpy as np
-from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.typing import ArrayLike, DTypeLike
+from numpy.lib.mixins import NDArrayOperatorsMixin
 
 from ..npbool import NPBool
 
@@ -25,7 +25,7 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPColor(NDArrayOperatorsMixin, np.ndarray):
+class NPColor(NDArrayOperatorsMixin,np.ndarray):
     """`np.ndarray`を継承した色に関する処理を行う配列クラス"""
 
     def __new__(
@@ -55,8 +55,6 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    @classmethod
-    def __instancecheck__(cls, instance: Any) -> bool: ...
     def __ne__(self, other: Any) -> NPBool: ...
     def __eq__(self, other: Any) -> NPBool: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
@@ -188,43 +186,6 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
     @property
     def max_ndim(self) -> int | None:
         """配列オブジェクトが許容する最大次元数を返す"""
-
-    def to_1d(self) -> NPColor:
-        """
-        配列を1次元にフラット化した新しい配列オブジェクトを返す
-
-        :return: フラット化した配列オブジェクトを返す
-        :raises ValueError: `min_ndim`が1以下の場合に発生させる
-        """
-
-    def shapesize(self, shapes: tuple[int, ...]) -> bool:
-        """
-        配列オブジェクトの`shape`が`shapes`と一致するかを確認する
-
-        :param shapes: 比較する`shape`を指定する
-        :type shapes: tuple[int, ...]
-        :return: `shape`が一致する場合は`True`を返し,一致しない場合は`False`を返す
-        :rtype: bool
-        """
-
-    def tonumpy(self) -> np.NDArray[Any]:
-        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
-
-    def all_None(self) -> bool:
-        """
-        配列内の全要素が`None`かどうかを返す
-
-        :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
-
-    def any_None(self) -> bool:
-        """
-        配列内のいずれかの要素が`None`かどうかを返す
-
-        :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
 
     def tohex(self) -> NPColor:
         """16進数カラーに変換する"""
