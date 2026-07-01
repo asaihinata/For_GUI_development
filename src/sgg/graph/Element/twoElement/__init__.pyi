@@ -2,8 +2,7 @@ from collections.abc import Iterable
 
 from matplotlib.axes._axes import Axes
 from matplotlib.axis import Tick
-from numpy import ndarray
-
+from numpy import ndarray,float64
 from ...style import getLabel
 from ...typing import *
 from ..graph import GElement

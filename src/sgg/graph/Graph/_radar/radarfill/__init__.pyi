@@ -16,8 +16,8 @@ class RadarFill(RadarElement):
     ) -> None:
         """塗りつぶしレーダーチャートを再表示させる"""
 
-    def getdata(self) -> Typeget_data:
-        """`data`のデータを取得する"""
-
     def get(self) -> list[Line2D]:
         """`matplotlib.lines.Line2D`の配列を返す"""
+
+    def getdata(self) -> Typeget_Array_Number:
+        """`data`のデータを取得する"""

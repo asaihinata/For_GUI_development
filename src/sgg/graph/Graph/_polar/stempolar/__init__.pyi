@@ -42,8 +42,8 @@ class Stempolar(_polarset):
     def get(self) -> list[StemContainer]:
         """`matplotlib.container.StemContainer`の配列を返す"""
 
-    def getx(self) -> Typeget_data:
+    def getx(self) -> Typeget_Array_Number:
         """`x`のデータを取得する"""
 
-    def gety(self) -> Typeget_data:
+    def gety(self) -> Typeget_Array_NumStr:
         """`y`のデータを取得する"""

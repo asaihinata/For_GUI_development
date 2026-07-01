@@ -15,7 +15,7 @@ class Hist(_2Gset):
             | list
             | range
             | tuple
-            | ndarray
+            | np.ndarray
             | Literal[
                 "auto", "fd", "doane", "scott", "stone", "rice", "sturges", "sqrt"
             ]
@@ -36,11 +36,11 @@ class Hist(_2Gset):
     def get(
         self,
     ) -> list[
-        ndarray | list[ndarray],
-        ndarray,
+        np.ndarray | list[np.ndarray],
+        np.ndarray,
         BarContainer | Polygon | list[BarContainer | Polygon],
     ]:
         """matplotlib.axes.Axes.hist`の戻り値を配列で返す"""
 
-    def getdata(self) -> Typeget_data:
+    def getdata(self) -> Typeget_Array_Number:
         """`data`のデータを取得する"""

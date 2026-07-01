@@ -1,7 +1,7 @@
 from tkinter import Misc
 
 from matplotlib.projections.polar import PolarAxes
-from numpy import ndarray
+from numpy import ndarray,float64,dtype
 
 from ....nparray import NPNumber
 from ...typing import *

@@ -30,11 +30,11 @@ class Scatter(_2Gset):
     def get(self) -> list[PathCollection]:
         """`matplotlib.collections.PathCollection`の配列を返す"""
 
-    def getx(self) -> Typeget_data:
+    def getx(self) -> Typeget_Arrays_NumStr:
         """`x`のデータを取得する"""
 
-    def gety(self) -> Typeget_data:
+    def gety(self) -> Typeget_Arrays_NumStr:
         """`y`のデータを取得する"""
 
-    def getcoordinate(self) -> ndarray[NDArray[float64], NDArray[float64]]:
+    def getcoordinate(self) -> np.ndarray[NDArray[np.float64], NDArray[np.float64]]:
         """散布図の点の座標を取得する"""

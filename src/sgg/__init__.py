@@ -5,23 +5,9 @@ from .readfile import Getcsv, Getfont, Getjosn
 from .version import __version__
 from .widget import *
 
-__all__ = (
-    ["__version__", "Getjosn", "Getcsv", "Getfont", "Guis"]
-    + getattr(dialogs, "__all__", [])
-    + getattr(graph, "__all__", [])
-    + getattr(nparray, "__all__", [])
-    + getattr(widget, "__all__", [])
-)
-
-
-def __dir__():
-    return __all__ + [k for k in globals() if k.startswith("__") and k.endswith("__")]
-
-
 def _counts():
     Guis._count += 1
     return Guis._count
-
 
 class Guis:
     _count = 0

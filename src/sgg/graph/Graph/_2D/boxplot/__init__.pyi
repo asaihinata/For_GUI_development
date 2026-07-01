@@ -28,5 +28,5 @@ class Boxplot(_2Gset):
     def get(self) -> list[dict[str, Any]]:
         """`matplotlib.axes.Axes.boxplot`の戻り値の配列を返す"""
 
-    def getdata(self) -> Typeget_data:
+    def getdata(self) -> Typeget_Arrays_Number:
         """`data`のデータを取得する"""

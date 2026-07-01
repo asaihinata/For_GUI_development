@@ -29,8 +29,8 @@ class Waterfall(_2Gset):
     def get(self) -> list[BarContainer]:
         """`matplotlib.container.BarContainer`の配列を返す"""
 
-    def getx(self) -> Typeget_data:
+    def getx(self) -> Typeget_Arrays_NumStr:
         """`x`のデータを取得する"""
 
-    def gety(self) -> Typeget_data:
+    def gety(self) -> Typeget_Arrays_Number:
         """`y`のデータを取得する"""

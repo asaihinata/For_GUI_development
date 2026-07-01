@@ -27,5 +27,5 @@ class Pie(_2Gset):
     def get(self) -> list[PieContainer]:
         """`matplotlib.container.PieContainer`の配列で返す"""
 
-    def getdata(self) -> Typeget_data:
+    def getdata(self) -> Typeget_Array_Number:
         """`data`のデータを取得する"""

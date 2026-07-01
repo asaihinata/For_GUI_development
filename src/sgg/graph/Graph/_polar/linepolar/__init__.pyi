@@ -40,8 +40,8 @@ class Linepolar(_polarset):
     def get(self) -> list[Line2D]:
         """`matplotlib.lines.Line2D`の配列を返す"""
 
-    def getx(self) -> Typeget_data:
+    def getx(self) -> Typeget_Array_Number:
         """`x`のデータを取得する"""
 
-    def gety(self) -> Typeget_data:
+    def gety(self) -> Typeget_Array_NumStr:
         """`y`のデータを取得する"""

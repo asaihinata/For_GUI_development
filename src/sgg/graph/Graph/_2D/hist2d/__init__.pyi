@@ -29,11 +29,11 @@ class Hist2d(_2Gset):
         :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる
         :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる"""
 
-    def get(self) -> list[ndarray, ndarray, ndarray, QuadMesh]:
+    def get(self) -> list[np.ndarray, np.ndarray, np.ndarray, QuadMesh]:
         """`matplotlib.axes.Axes.hist2d`の戻り値を配列で返す"""
 
-    def getx(self) -> Typeget_data:
+    def getx(self) -> Typeget_Array_Number:
         """`x`のデータを取得する"""
 
-    def gety(self) -> Typeget_data:
+    def gety(self) -> Typeget_Array_Number:
         """`y`のデータを取得する"""

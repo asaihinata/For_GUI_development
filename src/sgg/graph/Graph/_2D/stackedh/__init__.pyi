@@ -25,5 +25,5 @@ class Stackedh(_2Gset):
     def get(self) -> list[BarContainer]:
         """`matplotlib.container.BarContainer`の配列を返す"""
 
-    def getdata(self) -> Typeget_data:
+    def getdata(self) -> Typeget_Arrays_Number:
         """`data`のデータを取得する"""

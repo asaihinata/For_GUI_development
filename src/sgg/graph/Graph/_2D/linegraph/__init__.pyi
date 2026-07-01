@@ -28,8 +28,8 @@ class LineGraph(_2Gset):
     def get(self) -> list[Line2D]:
         """`matplotlib.lines.Line2D`の配列を返す"""
 
-    def getx(self) -> Typeget_data:
+    def getx(self) -> Typeget_Arrays_NumStr:
         """`x`のデータを取得する"""
 
-    def gety(self) -> Typeget_data:
+    def gety(self) -> Typeget_Arrays_NumStr:
         """`y`のデータを取得する"""

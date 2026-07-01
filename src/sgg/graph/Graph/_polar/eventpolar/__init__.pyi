@@ -8,7 +8,7 @@ __all__ = ["Eventpolar"]
 class Eventpolar(_polarset):
     def update(
         self,
-        data: TypeArrayLikeNumber,
+        data: TypeArraysLikeNumber,
         orientation: Literal["vertical", "horizontal"],
         linewidth: int | float,
         linelength: int | float,
@@ -24,8 +24,5 @@ class Eventpolar(_polarset):
     def get(self) -> list[EventCollection]:
         """`matplotlib.collections.EventCollection`の配列を返す"""
 
-    def getx(self) -> Typeget_data:
-        """`x`のデータを取得する"""
-
-    def gety(self) -> Typeget_data:
-        """`y`のデータを取得する"""
+    def getdata(self) -> Typeget_Array_NumStr:
+        """`data`のデータを取得する"""

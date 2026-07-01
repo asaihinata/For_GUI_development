@@ -8,9 +8,9 @@ __all__ = ["Violinplot"]
 class Violinplot(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__data = NPNumber(kw.get("data"))
-        self.__x = NPNumber(kw.get("x", []), max_ndim=1)
-        self.__y = NPNumber(kw.get("y", []), max_ndim=1)
+        self.__data = NPNumber(kw.get("data")).data
+        self.__x = NPNumber(kw.get("x", []), max_ndim=1).data
+        self.__y = NPNumber(kw.get("y", []), max_ndim=1).data
         self.orientation = listchose(kw.get("orientation"), ["vertical", "horizontal"])
         self.width = range_num(num0s(kw.get("width"), 1), 0, 1, 1)
         self.showextrema = bols(kw.get("showextrema"))
@@ -122,4 +122,4 @@ class Violinplot(twoElement):
         return self.graphdata
 
     def getdata(self):
-        return self.__data.tonumpy()
+        return self.__data

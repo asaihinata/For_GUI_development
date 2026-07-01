@@ -57,15 +57,6 @@ Type_Marker: TypeAlias = Literal[
     "",
 ]
 Type_Solid: TypeAlias = Literal["-", "--", "-.", ":", "None", " ", ""]
-__all__: list[str] = (
-    ["__version__", "Getjosn", "Getfont", "Getcsv", "Guis"]
-    + getattr(dialogs, "__all__", [])
-    + getattr(graph, "__all__", [])
-    + getattr(nparray, "__all__", [])
-    + getattr(widget, "__all__", [])
-)
-
-def __dir__() -> list[str]: ...
 
 class Guis:
     @overload

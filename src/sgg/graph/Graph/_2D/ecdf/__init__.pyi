@@ -26,5 +26,5 @@ class Ecdf(_2Gset):
     def get(self) -> list[Line2D]:
         """`matplotlib.lines.Line2D`の配列を返す"""
 
-    def getdata(self) -> Typeget_data:
+    def getdata(self) -> Typeget_Array_NumStr:
         """`data`のデータを取得する"""

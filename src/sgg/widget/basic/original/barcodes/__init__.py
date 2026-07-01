@@ -2,7 +2,7 @@ from io import BytesIO
 from tkinter import Label
 
 from PIL.ImageTk import PhotoImage
-from barcode import get_class
+import barcode
 from barcode.writer import ImageWriter
 
 from ...common import *
@@ -63,7 +63,7 @@ class barcode_data:
 
     def __init__(self, value, format="code39"):
         self.format = format if format in support_barcode else "code39"
-        self.classbarcode = get_class(self.format)
+        self.classbarcode = barcode.get_class(self.format)
         self.barcodes = self.classbarcode(value, writer=ImageWriter())
         self.barcodes.write(self.byte_buffer)
         self.byte_buffer.seek(0)

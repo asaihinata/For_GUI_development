@@ -26,8 +26,8 @@ class Stack(_2Gset):
     def get(self) -> list[FillBetweenPolyCollection]:
         """`matplotlib.collections.FillBetweenPolyCollection`の配列を返す"""
 
-    def getx(self) -> Typeget_data:
+    def getx(self) -> Typeget_Array_Number:
         """`x`のデータを取得する"""
 
-    def gety(self) -> Typeget_data:
+    def gety(self) -> Typeget_Arrays_Number:
         """`y`のデータを取得する"""

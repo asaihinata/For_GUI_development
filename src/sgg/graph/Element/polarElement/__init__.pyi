@@ -1,6 +1,5 @@
 from matplotlib.projections.polar import PolarAxes
-import numpy as np
-
+from numpy import float64,ndarray,number
 from ....nparray import NPArray, NPNumber
 from ...style import getLabel
 from ...typing import *
@@ -31,9 +30,9 @@ class polarElement(GElement):
 
     def _xyd(
         self,
-        x: list | tuple | np.ndarray,
-        y: list | tuple | np.ndarray,
-        d: list | tuple | np.ndarray,
+        x: list | tuple | ndarray,
+        y: list | tuple | ndarray,
+        d: list | tuple | ndarray,
     ) -> tuple[NPNumber, NPArray]: ...
     def _apply_labels(
         self,
@@ -73,18 +72,18 @@ class polarElement(GElement):
     def getybound(self) -> tuple[float64, float64]:
         """y軸の下限値と上限値を昇順で返す"""
 
-    def getticks(self) -> tuple[np.ndarray, np.ndarray]:
+    def getticks(self) -> tuple[ndarray, ndarray]:
         """x軸,y軸の目盛りの位置を座標で返す"""
 
-    def getxticks(self) -> np.ndarray:
+    def getxticks(self) -> ndarray:
         """x軸の目盛りの位置を座標で返す"""
 
-    def getyticks(self) -> np.ndarray:
+    def getyticks(self) -> ndarray:
         """y軸の目盛りの位置を座標で返す"""
 
     @overload
     def set_thetalim(
-        self, min: np.number, max: np.number, type: bool
+        self, min: number, max: number, type: bool
     ) -> tuple[float, float]:
         """
         特定の角度範囲だけを表示させる
@@ -101,7 +100,7 @@ class polarElement(GElement):
 
     @overload
     def set_thetalim(
-        self, min: np.number, max: np.number, type: bool = True
+        self, min: number, max: number, type: bool = True
     ) -> tuple[float, float]:
         """
         特定の角度範囲だけを表示させる
@@ -118,7 +117,7 @@ class polarElement(GElement):
 
     @overload
     def set_thetalim(
-        self, min: np.number, max: np.number, type: bool = False
+        self, min: number, max: number, type: bool = False
     ) -> tuple[tuple[float, float], bool]:
         """
         特定の角度範囲だけを表示させる

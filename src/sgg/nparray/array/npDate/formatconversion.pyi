@@ -199,10 +199,10 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
         """
 
     @overload
-    def __getitem__(self, key: int) -> Any: ...
+    def __getitem__(self, key: int) -> Any | None: ...
     @overload
-    def __getitem__(self, key: slice) -> np.ndarray: ...
-    def __getitem__(self, key: int | slice) -> Any | np.ndarray:
+    def __getitem__(self, key: slice) -> np.ndarray | None: ...
+    def __getitem__(self, key: int | slice) -> Any | np.ndarray | None:
         """
         インデックスアクセスをカスタマイズする
 
@@ -211,7 +211,7 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
         :param key: インデックスまたはスライスを指定する
         :type key: int | slice
         :return: インデックスに対応する要素を返す
-        :rtype: Any | np.ndarray
+        :rtype: Any | np.ndarray | None
         :raises IndexError: 配列が空の場合に発生させる
         """
 
