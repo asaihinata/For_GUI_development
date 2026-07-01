@@ -11,8 +11,8 @@ from re import compile, findall
 from matplotlib.colors import to_hex, to_rgb, to_rgba
 import numpy as np
 from numpy import array, fromiter, nditer, uint8
-from numpy.lib.mixins import NDArrayOperatorsMixin
 
+from ..dev import NDArrayOperatorsMixin
 from ..npbool import NPBool
 from ._data import Get_color
 

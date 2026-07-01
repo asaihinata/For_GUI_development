@@ -3,10 +3,10 @@ from typing import Any, Iterator, overload
 
 import numpy as np
 from numpy._typing import _DTypeLikeTD64
-from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.typing import DTypeLike
 
 from ....typing import TypeArraysLikedatetime
+from ..dev import NDArrayOperatorsMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -39,7 +39,7 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
         :return: 生成された配列オブジェクトインスタンスを返す
         :rtype: NPDate
         :raises ValueError: 次元数が範囲外の場合に発生させる
-        :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
+        :raises TypeError: 要素型が`__element_type`と一致しない場合に発生させる
         """
 
     def __ne__(self, other: Any) -> NPBool: ...
@@ -169,7 +169,7 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
     @classmethod
     def _validate_elements(cls, obj: np.ndarray) -> None:
         """
-        配列内の要素が`_element_type`と一致するか検証する
+        配列内の要素が`__element_type`と一致するか検証する
 
         :param obj: 検証対象の配列
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる

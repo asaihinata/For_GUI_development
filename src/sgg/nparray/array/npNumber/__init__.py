@@ -1,9 +1,9 @@
 """基本的な数値の操作をするモジュール"""
 
 import numpy as np
-from numpy.lib.mixins import NDArrayOperatorsMixin
 
 from ...isdtype import numberDtype
+from ..dev import NDArrayOperatorsMixin
 from ..npbool import NPBool
 
 __all__ = ["NPNumber"]
@@ -30,7 +30,7 @@ def implements(np_function):
 
 
 class NPNumber(NDArrayOperatorsMixin, np.ndarray):
-    _element_type = (int, float, complex, np.number)
+    __element_type = (int, float, complex, np.number)
 
     def __new__(cls, data, dtype=np.float64, d_ndim=None, min_ndim=None, max_ndim=None):
         resolved = cls._resolve_dtype(dtype)
@@ -78,12 +78,12 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def _validate_elements(cls, obj):
-        if cls._element_type is None:
+        if cls.__element_type is None:
             return
         for elem in obj.flat:
-            if not isinstance(elem, cls._element_type):
+            if not isinstance(elem, cls.__element_type):
                 raise TypeError(
-                    f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
+                    f"{cls.__name__}の要素は{cls.__element_type}のみ許可されています"
                 )
 
     @property

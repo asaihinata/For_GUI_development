@@ -1,7 +1,6 @@
 import numpy as np
-from numpy.lib.mixins import NDArrayOperatorsMixin
 
-from ..npbool import NPBool
+from ..dev import NDArrayOperatorsMixin
 
 __all__ = ["is_array_like", "change_array_like", "NPArray"]
 
@@ -36,7 +35,7 @@ def implements(np_function):
 
 
 class NPArray(NDArrayOperatorsMixin, np.ndarray):
-    _element_type = None
+    __element_type = None
 
     def __new__(cls, data, dtype=None, d_ndim=None, min_ndim=None, max_ndim=None):
         if dtype is None:
@@ -86,12 +85,12 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def _validate_elements(cls, obj):
-        if cls._element_type is None:
+        if cls.__element_type is None:
             return
         for elem in obj.flat:
-            if not isinstance(elem, cls._element_type):
+            if not isinstance(elem, cls.__element_type):
                 raise TypeError(
-                    f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
+                    f"{cls.__name__}の要素は{cls.__element_type}のみ許可されています"
                 )
 
     @property
@@ -137,10 +136,14 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         return super().__array_function__(func, types, args, kwargs)
 
     def __ne__(self, other):
-        return NPBool(super().__ne__(other))
+        result = np.asarray(super().__ne__(other)).view(type(self))
+        result._dtype = bool
+        return result
 
     def __eq__(self, other):
-        return NPBool(super().__eq__(other))
+        result = np.asarray(super().__eq__(other)).view(type(self))
+        result._dtype = bool
+        return result
 
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"

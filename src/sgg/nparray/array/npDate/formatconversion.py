@@ -2,8 +2,8 @@ from datetime import date, datetime
 
 from dateutil.parser import parse
 import numpy as np
-from numpy.lib.mixins import NDArrayOperatorsMixin
 
+from ..dev import NDArrayOperatorsMixin
 from ..npbool import NPBool
 from ._typing import serchDtype
 
@@ -20,7 +20,7 @@ def implements(np_function):
 
 
 class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
-    _element_type = (np.datetime64, datetime, date)
+    __element_type = (np.datetime64, datetime, date)
 
     def __new__(
         cls,
@@ -98,12 +98,12 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def _validate_elements(cls, obj):
-        if cls._element_type is None:
+        if cls.__element_type is None:
             return
         for elem in obj.flat:
-            if not isinstance(elem, cls._element_type):
+            if not isinstance(elem, cls.__element_type):
                 raise TypeError(
-                    f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
+                    f"{cls.__name__}の要素は{cls.__element_type}のみ許可されています"
                 )
 
     @property

@@ -9,9 +9,9 @@
 from typing import Any, overload
 
 import numpy as np
-from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.typing import ArrayLike, DTypeLike
 
+from ..dev import NDArrayOperatorsMixin
 from ..npbool import NPBool
 
 __all__ = ["NPColor"]

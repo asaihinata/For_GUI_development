@@ -81,6 +81,7 @@ class Scatter(twoElement):
             marker=self.marker,
             alpha=self.alpha,
             label=self.label,
+            s=self.s,
             regression_bool=self.regression_bool,
             line=self.line,
             linewidth=self.linewidth,

@@ -1,10 +1,10 @@
 """基本的な文字列の操作をするモジュール"""
 
 import numpy as np
-from numpy.lib.mixins import NDArrayOperatorsMixin
 import numpy.strings as nps
 
 from ...isdtype import strDtype
+from ..dev import NDArrayOperatorsMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -21,7 +21,7 @@ def implements(np_function):
 
 
 class NPString(NDArrayOperatorsMixin, np.ndarray):
-    _element_type = (str, np.character, np.str_, np.bytes_)
+    __element_type = (str, np.character, np.str_, np.bytes_)
 
     def __new__(cls, data, dtype=np.str_, d_ndim=None, min_ndim=None, max_ndim=None):
         resolved = cls._resolve_dtype(dtype)
@@ -69,12 +69,12 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def _validate_elements(cls, obj):
-        if cls._element_type is None:
+        if cls.__element_type is None:
             return
         for elem in obj.flat:
-            if not isinstance(elem, cls._element_type):
+            if not isinstance(elem, cls.__element_type):
                 raise TypeError(
-                    f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
+                    f"{cls.__name__}の要素は{cls.__element_type}のみ許可されています"
                 )
 
     @property

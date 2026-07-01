@@ -1,10 +1,10 @@
 """2つの変数データから様々な統計の計算を行うモジュール"""
 
 import numpy as np
-from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.polynomial.chebyshev import chebfit, chebval
 
 from ...isdtype import numberDtype
+from ..dev import NDArrayOperatorsMixin
 from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
@@ -32,7 +32,7 @@ def implements(np_function):
 
 class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
 
-    _element_type = (int, float, complex, np.number)
+    __element_type = (int, float, complex, np.number)
 
     def __new__(cls, x, y, dtype=np.float64):
         resolved = cls._resolve_dtype(dtype)
@@ -123,12 +123,12 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def _validate_elements(cls, obj):
-        if cls._element_type is None:
+        if cls.__element_type is None:
             return
         for elem in obj.flat:
-            if not isinstance(elem, cls._element_type):
+            if not isinstance(elem, cls.__element_type):
                 raise TypeError(
-                    f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
+                    f"{cls.__name__}の要素は{cls.__element_type}のみ許可されています"
                 )
 
     @property

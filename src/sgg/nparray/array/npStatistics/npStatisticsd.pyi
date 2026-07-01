@@ -3,10 +3,10 @@
 from typing import Any, Generator, Literal, SupportsIndex, TypeAlias, overload
 
 import numpy as np
-from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.typing import ArrayLike, DTypeLike, NDArray
 
 from ....typing import TypeArrayLikeNumber
+from ..dev import NDArrayOperatorsMixin
 
 __all__ = ["NPStatisticsd"]
 
@@ -170,7 +170,7 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
     @classmethod
     def _validate_elements(cls, obj: np.ndarray) -> None:
         """
-        配列内の要素が`_element_type`と一致するか検証する
+        配列内の要素が`__element_type`と一致するか検証する
 
         :param obj: 検証対象の配列
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる

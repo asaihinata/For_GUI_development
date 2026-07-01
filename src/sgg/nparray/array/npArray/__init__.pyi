@@ -1,17 +1,15 @@
 from typing import Any, Iterator, overload
 
 import numpy as np
-from numpy.lib.mixins import NDArrayOperatorsMixin
 from numpy.typing import ArrayLike, DTypeLike, NDArray
 
-from ..npbool import NPBool
+from ..dev import NDArrayOperatorsMixin
 
 __all__ = ["is_array_like", "change_array_like", "NPArray"]
 
 class NPArray(NDArrayOperatorsMixin, np.ndarray):
     """`np.ndarray`を継承した型付き配列クラス"""
 
-    _element_type: type | tuple[type, ...] | None
     def __new__(
         cls,
         data: ArrayLike,
@@ -36,11 +34,11 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :return: 生成された配列オブジェクトインスタンスを返す
         :rtype: NPArray
         :raises ValueError: 次元数が範囲外の場合に発生させる
-        :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
+        :raises TypeError: 要素型が`__element_type`と一致しない場合に発生させる
         """
 
-    def __ne__(self, other: Any) -> NPBool: ...
-    def __eq__(self, other: Any) -> NPBool: ...
+    def __ne__(self, other: Any) -> NPArray: ...
+    def __eq__(self, other: Any) -> NPArray: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
@@ -162,7 +160,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
     @classmethod
     def _validate_elements(cls, obj: np.ndarray) -> None:
         """
-        配列内の要素が`_element_type`と一致するか検証する
+        配列内の要素が`__element_type`と一致するか検証する
 
         :param obj: 検証対象の配列
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる

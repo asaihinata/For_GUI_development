@@ -10,7 +10,6 @@ __all__ = ["Hatch"]
 
 
 class Hatch(NPString):
-    _element_type = (str, np.character, np.str_, np.bytes_)
 
     def __new__(cls, hatch):
         if hatch in ["", None]:
@@ -18,16 +17,10 @@ class Hatch(NPString):
         elif isinstance(hatch, str):
             hatch = [hatch]
         datas = super().__new__(cls, hatch, max_ndim=1)
-        if not np.all(
-            NPBool(
-                [
-                    np.vectorize(
-                        lambda x=i: bool(compile(r"^[/\\|\-+xo*O.]+$").fullmatch(x))
-                    )
-                ]
-                for i in np.nditer(datas)
-            ).all()
-        ):
+        if not NPBool(
+            [np.vectorize(lambda x=i: bool(compile(r"^[/\\|\-+xo*O.]+$").fullmatch(x)))]
+            for i in np.nditer(datas)
+        ).all():
             raise ValueError("指定できない値が含まれています")
         return datas
 
