@@ -163,7 +163,7 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
             else:
                 return data[key % size]
         elif isinstance(key, slice):
-            return self.data.flatten()[key]
+            return data[key]
 
     def __ne__(self, other):
         return NPBool(super().__ne__(other))

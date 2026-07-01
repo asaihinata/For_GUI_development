@@ -183,7 +183,7 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
             else:
                 return data[key % size]
         elif isinstance(key, slice):
-            return self.data.flatten()[key]
+            return data[key]
 
     def to_1d(self):
         if self.min_ndim is not None and self.min_ndim > 1:

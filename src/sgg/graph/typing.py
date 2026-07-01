@@ -51,9 +51,13 @@ Type_Marker: TypeAlias = Literal[
     "",
 ]
 Typeget_Arrays_Number: TypeAlias = np.ndarray[tuple[int, ...], np.dtype[np.number]]
-Typeget_Arrays_NumStr: TypeAlias = np.ndarray[tuple[int, ...], np.dtype[np.number|np.character]]
+Typeget_Arrays_NumStr: TypeAlias = np.ndarray[
+    tuple[int, ...], np.dtype[np.number | np.character]
+]
 Typeget_Arrays: TypeAlias = np.ndarray[tuple[int, ...], np.dtype[Any]]
 Typeget_Array_Number: TypeAlias = np.ndarray[tuple[int], np.dtype[np.number]]
-Typeget_Array_NumStr: TypeAlias = np.ndarray[tuple[int], np.dtype[np.number|np.character]]
+Typeget_Array_NumStr: TypeAlias = np.ndarray[
+    tuple[int], np.dtype[np.number | np.character]
+]
 Typeget_Array: TypeAlias = np.ndarray[tuple[int], np.dtype[np.number]]
 Typetuple_float64: TypeAlias = tuple[np.float64, np.float64]

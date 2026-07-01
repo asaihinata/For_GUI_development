@@ -2,7 +2,7 @@ from collections.abc import Iterable
 
 from matplotlib.axis import Tick
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from numpy import ndarray,float64
+from numpy import float64, ndarray
 
 from ...style import getLabel
 from ...typing import *

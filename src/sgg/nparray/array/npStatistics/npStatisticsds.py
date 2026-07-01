@@ -107,7 +107,7 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
             else:
                 return data[key % size]
         elif isinstance(key, slice):
-            return self.data.flatten()[key]
+            return data[key]
 
     @classmethod
     def _resolve_dtype(cls, dtype):

@@ -41,8 +41,6 @@ def is_array_like(obj):
 
 
 class NPColor(NDArrayOperatorsMixin, np.ndarray):
-    _element_type = None
-
     def __new__(cls, color, dtype=object, d_ndim=None, min_ndim=None, max_ndim=None):
         if isinstance(color, str):
             color = [cls.__get_val(color)]
@@ -52,7 +50,6 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
             raise TypeError("colorの値が不正です")
         resolved = cls._resolve_dtype(dtype)
         obj = np.asarray(color, dtype=resolved).view(cls)
-        cls._validate_elements(obj)
         obj._dtype = resolved
         if isinstance(d_ndim, int):
             cls._validate_ndim(obj, d_ndim, d_ndim)
@@ -96,16 +93,6 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
             raise ValueError(
                 f"{cls.__name__}の次元数は{max_ndim}以下である必要があります"
             )
-
-    @classmethod
-    def _validate_elements(cls, obj):
-        if cls._element_type is None:
-            return
-        for elem in obj.flat:
-            if not isinstance(elem, cls._element_type):
-                raise TypeError(
-                    f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
-                )
 
     @property
     def data(self):

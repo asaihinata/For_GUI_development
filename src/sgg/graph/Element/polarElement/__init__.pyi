@@ -1,5 +1,6 @@
 from matplotlib.projections.polar import PolarAxes
-from numpy import float64,ndarray,number
+from numpy import float64, ndarray, number
+
 from ....nparray import NPArray, NPNumber
 from ...style import getLabel
 from ...typing import *
@@ -82,9 +83,7 @@ class polarElement(GElement):
         """y軸の目盛りの位置を座標で返す"""
 
     @overload
-    def set_thetalim(
-        self, min: number, max: number, type: bool
-    ) -> tuple[float, float]:
+    def set_thetalim(self, min: number, max: number, type: bool) -> tuple[float, float]:
         """
         特定の角度範囲だけを表示させる
 

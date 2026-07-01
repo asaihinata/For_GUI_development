@@ -5,9 +5,11 @@ from .readfile import Getcsv, Getfont, Getjosn
 from .version import __version__
 from .widget import *
 
+
 def _counts():
     Guis._count += 1
     return Guis._count
+
 
 class Guis:
     _count = 0
