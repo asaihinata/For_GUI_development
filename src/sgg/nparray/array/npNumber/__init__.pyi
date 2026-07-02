@@ -1,12 +1,11 @@
 """基本的な数値の操作をするモジュール"""
 
-from typing import Any, Iterator, Literal, TypeAlias, overload
+from typing import Any, Iterator, Literal, Self, TypeAlias, overload
 
 import numpy as np
-from numpy.typing import ArrayLike, DTypeLike
+from numpy.typing import DTypeLike
 
-from ....typing import TypeArraysLikeNumber
-from ..dev import NDArrayOperatorsMixin
+from .._typing import _DTypeT, _NumberT, _ShapeT
 from ..npbool import NPBool
 
 __all__ = ["NPNumber"]
@@ -31,17 +30,46 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPNumber(NDArrayOperatorsMixin, np.ndarray):
+class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
+    def __class_getitem__(cls, item: Any) -> type[NPNumber[Any, Any]]: ...
+    @overload
     def __new__(
         cls,
-        data: TypeArraysLikeNumber,
-        dtype: DTypeLike | None = np.float64,
+        data: _ShapeT,
+        dtype: None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPNumber:
+    ) -> NPNumber[_ShapeT, np.dtype[np.float64]]: ...
+    @overload
+    def __new__(
+        cls,
+        data: _ShapeT,
+        dtype: type[np.generic],
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPNumber[_ShapeT, np.dtype[np.generic]]: ...
+    @overload
+    def __new__(
+        cls,
+        data: _ShapeT,
+        dtype: type[_NumberT],
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPNumber[_ShapeT, np.dtype[_NumberT]]: ...
+    @overload
+    def __new__(
+        cls,
+        data: _ShapeT,
+        dtype: DTypeLike | _NumberT | None = ...,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
 
@@ -56,7 +84,7 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
         :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: NPNumber
+        :rtype: Self
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`__element_type`と一致しない場合に発生させる
         """

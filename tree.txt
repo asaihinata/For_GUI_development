@@ -225,6 +225,8 @@ For_GUI_development
  │   │   │   ├── __init__.py
  │   │   │   ├── array
  │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── _typing
+ │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── dev
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
@@ -457,5 +459,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:318
-フォルダ数:140
+ファイル数:319
+フォルダ数:141

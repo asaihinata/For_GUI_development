@@ -1,33 +1,51 @@
 """基本的な文字列の操作をするモジュール"""
 
-from typing import Any, Iterator, overload
+from typing import Any, Iterator, Self, overload
 
 import numpy as np
 from numpy._typing import ArrayLike, DTypeLike
 
-from ....typing import TypeArraysLikeString
-from ..dev import NDArrayOperatorsMixin
+from .._typing import _DTypeT, _ShapeT, _StrT
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPString"]
 
-class NPString(NDArrayOperatorsMixin, np.ndarray):
+class NPString(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+    def __class_getitem__(cls, item: Any) -> type[NPString[Any, Any]]: ...
+    @overload
     def __new__(
         cls,
-        data: TypeArraysLikeString,
-        dtype: DTypeLike = np.str_,
+        data: _ShapeT,
+        dtype: None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPString:
+    ) -> NPString[_ShapeT, np.dtype[np.str_]]: ...
+    @overload
+    def __new__(
+        cls,
+        data: _ShapeT,
+        dtype: type[_StrT],
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPString[_ShapeT, np.dtype[_StrT]]: ...
+    def __new__(
+        cls,
+        data: _ShapeT,
+        dtype: _StrT | None = np.str_,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: ArrayLike
+        :type data: _ShapeT
         :param dtype: 配列のdtypeを指定する
-        :type dtype: DTypeLike | None
+        :type dtype: _StrT | None
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
@@ -35,7 +53,7 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
         :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: NPString
+        :rtype: Self
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`__element_type`と一致しない場合に発生させる
         """

@@ -1,15 +1,43 @@
-from typing import Any, Iterator, overload
+from typing import Any, Iterator, Self, overload
 
 import numpy as np
 from numpy.typing import ArrayLike, DTypeLike, NDArray
 
-from ..dev import NDArrayOperatorsMixin
+from .._typing import _DTypeT, _ShapeT
 
 __all__ = ["is_array_like", "change_array_like", "NPArray"]
 
-class NPArray(NDArrayOperatorsMixin, np.ndarray):
+class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した型付き配列クラス"""
 
+    def __class_getitem__(cls, item: Any) -> type[NPArray[Any, Any]]: ...
+    @overload
+    def __new__(
+        cls,
+        data: ArrayLike,
+        dtype: None = None,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPArray[ArrayLike, np.dtype[Any]]: ...
+    @overload
+    def __new__(
+        cls,
+        data: ArrayLike,
+        dtype: type[np.generic],
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPArray[ArrayLike, np.dtype[np.generic]]: ...
+    @overload
+    def __new__(
+        cls,
+        data: ArrayLike,
+        dtype: np.dtype[_DTypeT],
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPArray[ArrayLike, _DTypeT]: ...
     def __new__(
         cls,
         data: ArrayLike,
@@ -17,7 +45,7 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPArray:
+    ) -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
 
@@ -32,19 +60,19 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
         :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: NPArray
+        :rtype:
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`__element_type`と一致しない場合に発生させる
         """
 
-    def __ne__(self, other: Any) -> NPArray: ...
-    def __eq__(self, other: Any) -> NPArray: ...
+    def __ne__(self, other: Any) -> NPArray[tuple[int, ...], np.dtype[bool]]: ...
+    def __eq__(self, other: Any) -> NPArray[tuple[int, ...], np.dtype[bool]]: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
     def __iter__(self) -> Iterator[Any]: ...
     def __len__(self) -> int: ...
-    def __reversed__(self) -> NPArray:
+    def __reversed__(self) -> Self:
         """
         逆順にした新しい配列オブジェクトを返す
 
@@ -95,17 +123,11 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
+    ) -> np.ndarray[_ShapeT, _DTypeT]: ...
     @overload
     def __array__(
         self, dtype: np._DTypeT, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
-    @overload
-    def __array__(
-        self, dtype: np._DTypeT | None, copy: bool | None = None
-    ) -> (
-        np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
-    ): ...
+    ) -> np.ndarray[_ShapeT, np._DTypeT]: ...
     def __array_function__(
         self,
         func: Any,

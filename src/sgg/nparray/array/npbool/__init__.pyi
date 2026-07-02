@@ -1,10 +1,10 @@
-from typing import Any, Iterator, overload
+from typing import Any, Iterator, Self, overload
 
 import numpy as np
+from numpy._typing import _DTypeLikeBool
 from numpy.typing import DTypeLike
 
-from ....typing import TypeArraysLikeBool
-from ..dev import NDArrayOperatorsMixin
+from .._typing import _DTypeT, _ShapeT
 
 __all__ = ["NPBool"]
 HANDLED_FUNCTIONS: dict
@@ -17,22 +17,41 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPBool(NDArrayOperatorsMixin, np.ndarray):
+class NPBool(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承したbool型の配列クラス"""
 
+    def __class_getitem__(cls, item: Any) -> type[NPBool[Any, Any]]: ...
+    @overload
     def __new__(
         cls,
-        data: TypeArraysLikeBool,
-        dtype: DTypeLike | None = np.bool_,
+        data: _ShapeT,
+        dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPBool:
+    ) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __new__(
+        cls,
+        data: _ShapeT,
+        dtype: _DTypeLikeBool,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPBool[_ShapeT, _DTypeLikeBool]: ...
+    def __new__(
+        cls,
+        data: _ShapeT,
+        dtype: _DTypeLikeBool | None = np.bool,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: ArrayLike
+        :type data: _ShapeT
         :param dtype: 配列のdtypeを指定する
         :type dtype: DTypeLike | None
         :param d_ndim: 固定される次元数を指定する
@@ -105,7 +124,7 @@ class NPBool(NDArrayOperatorsMixin, np.ndarray):
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
+    ) -> np.ndarray[np._ShapeT_co,]: ...
     @overload
     def __array__(
         self, dtype: np._DTypeT, copy: bool | None = None

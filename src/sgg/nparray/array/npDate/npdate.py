@@ -124,6 +124,9 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
+    def __class_getitem__(cls, item):
+        return np.ndarray.__class_getitem__.__func__(cls, item)
+
     def __add__(self, other):
         result = super().__add__(other)
         result._dtype = result.dtype

@@ -78,6 +78,9 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
         self._min_ndim = getattr(obj, "_min_ndim", None)
         self._max_ndim = getattr(obj, "_max_ndim", None)
 
+    def __class_getitem__(cls, item):
+        return np.ndarray.__class_getitem__.__func__(cls, item)
+
     @classmethod
     def _resolve_dtype(cls, dtype):
         if dtype is not None:

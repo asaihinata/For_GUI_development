@@ -1,9 +1,10 @@
-from typing import Any, Iterator, overload
+from typing import Any, Iterator, Self, overload
 
 import numpy as np
-from numpy.typing import ArrayLike, DTypeLike
+from numpy import datetime64
+from numpy.typing import DTypeLike
 
-from ..dev import NDArrayOperatorsMixin
+from .._typing import _DTypeT, _ShapeT
 from ..npbool import NPBool
 from ._typing import _DATES_UNITL
 
@@ -18,26 +19,56 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
+class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
 
+    def __class_getitem__(
+        cls, item: Any
+    ) -> type[Formatconversion[_ShapeT, np.dtype[_DTypeT]]]: ...
+    @overload
     def __new__(
         cls,
-        data: ArrayLike,
-        dtype: _DATES_UNITL | np.datetime64 = "datetime64[D]",
+        data: _ShapeT,
+        dtype: None = "datetime64[D]",
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> Formatconversion[datetime64[_ShapeT], np.dtype[datetime64]]: ...
+    @overload
+    def __new__(
+        cls,
+        data: _ShapeT,
+        dtype: _DATES_UNITL,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> Formatconversion[datetime64[_ShapeT], np.dtype[datetime64]]: ...
+    @overload
+    def __new__(
+        cls,
+        data: _ShapeT,
+        dtype: datetime64,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> Formatconversion[datetime64[_ShapeT], np.dtype[datetime64]]: ...
+    def __new__(
+        cls,
+        data: _ShapeT,
+        dtype: _DATES_UNITL | datetime64 | None = "datetime64[D]",
         yearfirst: bool = ...,
         dayfirst: bool = ...,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> Formatconversion:
+    ) -> Self:
         """
         様々な日付のフォーマットを特定の日付フォーマットに変換する配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
         :type data: ArrayLike
         :param dtype: 配列のdtypeを指定する
-        :type dtype: _DATES_UNITL | np.datetime64
+        :type dtype: _DATES_UNITL | datetime64 | None
         :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
         :type yearfirst: bool
         :param dayfirst: 曖昧な3つの整数からなる日付の最初の値を日もしくは月として解釈するかどうか指定する
@@ -49,7 +80,7 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
         :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: Formatconversion
+        :rtype: Self
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`__element_type`と一致しない場合に発生させる
         """

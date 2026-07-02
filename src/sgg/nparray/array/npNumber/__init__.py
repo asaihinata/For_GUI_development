@@ -128,6 +128,9 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
+    def __class_getitem__(cls, item):
+        return np.ndarray.__class_getitem__.__func__(cls, item)
+
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
 
