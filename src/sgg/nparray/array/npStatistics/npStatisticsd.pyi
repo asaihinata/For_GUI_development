@@ -1,14 +1,19 @@
 """基本的な統計の計算をするモジュール"""
 
-from typing import Any, Generator, Literal, SupportsIndex, TypeAlias, overload
+from typing import (Any, Generator, Literal, Self, SupportsIndex, TypeAlias, TypeVar,
+                    overload)
 
 import numpy as np
 from numpy.typing import ArrayLike, DTypeLike, NDArray
 
 from ....typing import TypeArrayLikeNumber
-from ..dev import NDArrayOperatorsMixin
+from .._typing import _NumberT
 
 __all__ = ["NPStatisticsd"]
+_ShapeT = TypeVar("_ShapeT", bound=tuple[int], default=tuple[int], covariant=True)
+_DTypeT = TypeVar(
+    "_DTypeT", bound=np.dtype, default=np.dtype[np.float64], covariant=True
+)
 
 Type_Method: TypeAlias = Literal[
     "inverted_cdf",
@@ -34,14 +39,27 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
+class NPStatisticsd(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した基本的な統計を計算する配列クラス"""
 
+    def __class_getitem__(cls, item: Any) -> type[NPStatisticsd[Any, Any]]: ...
+    @overload
     def __new__(
         cls,
-        data: TypeArrayLikeNumber,
-        dtype: DTypeLike | None = np.float64,
-    ) -> NPStatisticsd:
+        data: _ShapeT,
+        dtype: None = None,
+    ) -> NPStatisticsd[_ShapeT, np.dtype[np.float64]]: ...
+    @overload
+    def __new__(
+        cls,
+        data: _ShapeT,
+        dtype: _NumberT,
+    ) -> NPStatisticsd[_ShapeT, np.dtype[_NumberT]]: ...
+    def __new__(
+        cls,
+        data: _ShapeT,
+        dtype: _NumberT | None = np.float64,
+    ) -> Self:
         """
         基本的な統計の計算をする
 
@@ -49,8 +67,8 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         :type data: TypeArrayLikeNumber
         :param dtype: `NPStatisticsd`内の配列の型を指定する
         :type dtype: DTypeLike | None
+        :rtype: Self
         :return: `NPStatisticsd`オブジェクトを返す
-        :rtype: NPStatisticsd
         """
 
     def __repr__(self) -> str: ...

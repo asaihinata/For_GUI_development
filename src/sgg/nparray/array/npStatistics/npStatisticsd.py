@@ -47,6 +47,9 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
             return
         self._dtype = getattr(obj, "_dtype", None)
 
+    def __class_getitem__(cls, item):
+        return np.ndarray.__class_getitem__.__func__(cls, item)
+
     @classmethod
     def _resolve_dtype(cls, dtype):
         if dtype is not None:

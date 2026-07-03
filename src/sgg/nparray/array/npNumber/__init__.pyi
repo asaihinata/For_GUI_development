@@ -47,15 +47,6 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __new__(
         cls,
         data: _ShapeT,
-        dtype: type[np.generic],
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> NPNumber[_ShapeT, np.dtype[np.generic]]: ...
-    @overload
-    def __new__(
-        cls,
-        data: _ShapeT,
         dtype: type[_NumberT],
         d_ndim: int | None = None,
         min_ndim: int | None = None,

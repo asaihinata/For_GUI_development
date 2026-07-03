@@ -109,6 +109,9 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         elif isinstance(key, slice):
             return data[key]
 
+    def __class_getitem__(cls, item):
+        return np.ndarray.__class_getitem__.__func__(cls, item)
+
     @classmethod
     def _resolve_dtype(cls, dtype):
         if dtype is not None:
