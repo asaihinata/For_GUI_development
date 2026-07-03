@@ -11,7 +11,6 @@ from ..npbool import NPBool
 from ..npnumber import NPNumber
 from ._typing import _DATES_UNITL
 from .formatconversion import Formatconversion
-
 __all__ = ["NPDate"]
 
 class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
@@ -92,18 +91,18 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises TypeError: 要素型が`__element_type`と一致しない場合に発生させる
         """
 
-    def __ne__(self, other: Any) -> NPBool: ...
-    def __eq__(self, other: Any) -> NPBool: ...
-    def __add__(self, other: Any) -> NPDate: ...
-    def __radd__(self, other: Any) -> NPDate: ...
-    def __sub__(self, other: Any) -> NPDate: ...
-    def __rsub__(self, other: Any) -> NPDate: ...
+    def __ne__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
+    def __eq__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
+    def __add__(self, other: Any) -> Self: ...
+    def __radd__(self, other: Any) -> Self: ...
+    def __sub__(self, other: Any) -> Self: ...
+    def __rsub__(self, other: Any) -> Self: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
     def __iter__(self) -> Iterator[Any]: ...
     def __len__(self) -> int: ...
-    def __reversed__(self) -> NPDate:
+    def __reversed__(self) -> Self:
         """
         逆順にした新しい配列オブジェクトを返す
 
@@ -317,11 +316,11 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def todate(self) -> np.ndarray[date, np.dtype[date]]:
         """配列内の日付を`datetime.date`に変換する"""
 
-    def weekday(self) -> NPNumber:
+    def weekday(self) -> NPNumber[list[np.uint8], np.dtype[np.uint8]]:
         """その日付日時の曜日を求める"""
 
     @overload
-    def diff_today(self, days: bool = ...) -> NPNumber:
+    def diff_today(self, days: bool = ...) -> NPNumber[Any, np.dtype[np.int64]]:
         """
         今日の日付の差を求める
 
@@ -330,7 +329,7 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         """
 
     @overload
-    def diff_today(self, days: bool = True) -> NPNumber:
+    def diff_today(self, days: bool = True) -> NPNumber[Any, np.dtype[np.int64]]:
         """
         今日の日付の差(今日を含む)を求める
 
@@ -339,7 +338,7 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         """
 
     @overload
-    def diff_today(self, days: bool = False) -> NPNumber:
+    def diff_today(self, days: bool = False) -> NPNumber[Any, np.dtype[np.int64]]:
         """
         今日の日付の差(今日を含めない)を求める
 

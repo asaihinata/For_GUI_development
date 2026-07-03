@@ -5,7 +5,7 @@ from typing import (Any, Generator, Literal, Self, SupportsIndex, TypeAlias, Typ
 
 import numpy as np
 from numpy.typing import ArrayLike, DTypeLike, NDArray
-
+from ..dev import NDArrayOperatorsMixin
 from ....typing import TypeArrayLikeNumber
 from .._typing import _NumberT
 
@@ -39,22 +39,8 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPStatisticsd(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
     """`np.ndarray`を継承した基本的な統計を計算する配列クラス"""
-
-    def __class_getitem__(cls, item: Any) -> type[NPStatisticsd[Any, Any]]: ...
-    @overload
-    def __new__(
-        cls,
-        data: _ShapeT,
-        dtype: None = None,
-    ) -> NPStatisticsd[_ShapeT, np.dtype[np.float64]]: ...
-    @overload
-    def __new__(
-        cls,
-        data: _ShapeT,
-        dtype: _NumberT,
-    ) -> NPStatisticsd[_ShapeT, np.dtype[_NumberT]]: ...
     def __new__(
         cls,
         data: _ShapeT,
@@ -66,7 +52,7 @@ class NPStatisticsd(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :param data: 数値が入った一次元の配列を指定する
         :type data: TypeArrayLikeNumber
         :param dtype: `NPStatisticsd`内の配列の型を指定する
-        :type dtype: DTypeLike | None
+        :type dtype: _NumberT | None
         :rtype: Self
         :return: `NPStatisticsd`オブジェクトを返す
         """

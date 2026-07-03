@@ -1,13 +1,13 @@
 """基本的な数値の操作をするモジュール"""
 
-from typing import Any, Iterator, Literal, Self, TypeAlias, overload
+from typing import Any, Iterator, Literal, Self, TypeAlias, overload,TypeVar
 
 import numpy as np
 from numpy.typing import DTypeLike
 
-from .._typing import _DTypeT, _NumberT, _ShapeT
+from .._typing import _NumberT, _ShapeT
 from ..npbool import NPBool
-
+_DTypeT = TypeVar("_DTypeT", bound=np.dtype, default=np.dtype[np.float64], covariant=True)
 __all__ = ["NPNumber"]
 TYPEMETHOD: TypeAlias = Literal[
     "inverted_cdf",
@@ -137,12 +137,12 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: Any
         """
 
-    def __eq__(self, other: Any) -> NPBool: ...
-    def __ne__(self, other: Any) -> NPBool: ...
-    def __lt__(self, other: Any) -> NPBool: ...
-    def __le__(self, other: Any) -> NPBool: ...
-    def __gt__(self, other: Any) -> NPBool: ...
-    def __ge__(self, other: Any) -> NPBool: ...
+    def __eq__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
+    def __ne__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
+    def __lt__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
+    def __le__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
+    def __gt__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
+    def __ge__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
@@ -295,10 +295,10 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def sturgesval(self) -> np.floating:
         """スタージェスの公式を求める"""
 
-    def cussum(self) -> NPNumber:
+    def cussum(self) -> NPNumber[_ShapeT,_DTypeT]:
         """一つ前の元の値との和を求める"""
 
-    def cumprod(self) -> NPNumber:
+    def cumprod(self) -> NPNumber[_ShapeT,_DTypeT]:
         """一つ前の元の値との積を求める"""
 
     def percentile(
@@ -332,5 +332,5 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def ratio(self, axis: int | None = None) -> NPNumber:
         """行や列ごとの合計に対する比率を求める"""
 
-    def zero_check(self) -> NPBool:
+    def zero_check(self) -> NPBool[Any,np.dtype[np.bool]]:
         """要素の数値が0の位置を探す"""

@@ -1,21 +1,17 @@
 """2つの変数データから様々な統計の計算を行うモジュール"""
 
-from typing import Any, Iterator, Literal, Self, Sequence, TypeAlias, Union, overload
+from typing import Any, Iterator, Literal, TypeAlias, overload
 
 import numpy as np
 from numpy._typing import _ArrayLikeFloat_co
 from numpy.typing import DTypeLike, NDArray
-
-from .._typing import _DTypeT, _NumberT, _ShapeT
+from ..dev import NDArrayOperatorsMixin
+from .._typing import _NumberT
+from ....typing import TypeArrayLikeNumber
 from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
-_NumberScalar: TypeAlias = Union[int, float, complex, np.number]
 
-TypeArrayLikeNumber: TypeAlias = Union[
-    Sequence[_NumberScalar],
-    NDArray[np.number],
-]
 BINS_LIST: TypeAlias = Literal[
     "stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"
 ]
@@ -31,30 +27,15 @@ METHOD_LIST: TypeAlias = Literal[
     "normal_unbiased",
 ]
 
-class NPStatisticsds(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
     """2つの変数データから様々な統計の計算を行うオブジェクト"""
 
-    def __class_getitem__(cls, item: Any) -> type[NPStatisticsds[Any, Any]]: ...
-    @overload
     def __new__(
         cls,
         x: TypeArrayLikeNumber,
         y: TypeArrayLikeNumber,
-        dtype: None = None,
-    ) -> NPStatisticsds[_ShapeT, np.dtype[np.float64]]: ...
-    @overload
-    def __new__(
-        cls,
-        x: TypeArrayLikeNumber,
-        y: TypeArrayLikeNumber,
-        dtype: type[_NumberT],
-    ) -> NPStatisticsds[_ShapeT, np.dtype[_NumberT]]: ...
-    def __new__(
-        cls,
-        x: TypeArrayLikeNumber,
-        y: TypeArrayLikeNumber,
-        dtype: type[_NumberT] | None = np.float64,
-    ) -> Self:
+        dtype: np.dtype[_NumberT] | None = np.float64,
+    ) -> NPStatisticsds:
         """
         2つの変数データから様々な統計の計算を行うオブジェクト`NPStatisticsds`を返す
 
@@ -63,7 +44,7 @@ class NPStatisticsds(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :param y: 数値が入った一次元の配列を指定する
         :type y: TypeArrayLikeNumber
         :param dtype: `NPStatisticsds`内の配列の型を指定する
-        :type dtype: DTypeLike | None
+        :type dtype: np.dtype[_NumberT] | None
         :rtype: Self
         :return: `NPStatisticsds`オブジェクトを返す
         """
