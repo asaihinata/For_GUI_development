@@ -5,9 +5,8 @@ from typing import (Any, Generator, Literal, Self, SupportsIndex, TypeAlias, Typ
 
 import numpy as np
 from numpy.typing import ArrayLike, DTypeLike, NDArray
-
 from ....typing import TypeArrayLikeNumber
-from .._typing import _NumberT
+from .._typing import _ArrayLikeNumber_co, _NumberT
 from ..dev import NDArrayOperatorsMixin
 
 __all__ = ["NPStatisticsd"]
@@ -45,14 +44,14 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
 
     def __new__(
         cls,
-        data: _ShapeT,
+        data: _ArrayLikeNumber_co,
         dtype: _NumberT | None = np.float64,
     ) -> Self:
         """
         基本的な統計の計算をする
 
         :param data: 数値が入った一次元の配列を指定する
-        :type data: TypeArrayLikeNumber
+        :type data: _ArrayLikeNumber_co
         :param dtype: `NPStatisticsd`内の配列の型を指定する
         :type dtype: _NumberT | None
         :rtype: Self
@@ -206,7 +205,7 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         """
         配列のdtypeを設定する
 
-        :param dtype: 配列のdtypeを指定する
+        :param dtype: 配列の型を指定する
         :type dtype: DTypeLike | None
         :return:
         :rtype: numpy.dtype | None

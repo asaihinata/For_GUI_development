@@ -41,7 +41,7 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
 
         :param color: 変換する配列を指定する
         :type color: ArrayLike
-        :param dtype: 配列のdtypeを指定する
+        :param dtype: 配列の型を指定する
         :type dtype: DTypeLike | None
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
@@ -186,7 +186,7 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
         """
         配列のdtypeを設定する
 
-        :param dtype: 配列のdtypeを指定する
+        :param dtype: 配列の型を指定する
         :type dtype: DTypeLike | None
         :return:
         :rtype: numpy.dtype | None

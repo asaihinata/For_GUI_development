@@ -65,7 +65,7 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
 
         :param data: 変換する配列を指定する
         :type data: ArrayLike
-        :param dtype: 配列のdtypeを指定する
+        :param dtype: 配列の型を指定する
         :type dtype: _DATES_UNITL | datetime64 | None
         :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
         :type yearfirst: bool
@@ -199,7 +199,7 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         """
         配列のdtypeを設定する
 
-        :param dtype: 配列のdtypeを指定する
+        :param dtype: 配列の型を指定する
         :type dtype: DTypeLike | None
         :return:
         :rtype: numpy.dtype | None

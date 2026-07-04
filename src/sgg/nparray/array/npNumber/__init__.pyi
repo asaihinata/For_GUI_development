@@ -5,7 +5,7 @@ from typing import Any, Iterator, Literal, Self, TypeAlias, TypeVar, overload
 import numpy as np
 from numpy.typing import DTypeLike
 
-from .._typing import _NumberT, _ShapeT
+from .._typing import _ArrayLikeNumber_co, _NumberT, _ShapeT
 from ..npbool import NPBool
 
 _DTypeT = TypeVar(
@@ -40,7 +40,7 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ShapeT,
+        data: _ArrayLikeNumber_co,
         dtype: None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -49,7 +49,7 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ShapeT,
+        data: _ArrayLikeNumber_co,
         dtype: type[_NumberT],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -58,7 +58,7 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ShapeT,
+        data: _ArrayLikeNumber_co,
         dtype: DTypeLike | _NumberT | None = ...,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -68,9 +68,9 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: ArrayLike
-        :param dtype: 配列のdtypeを指定する
-        :type dtype: DTypeLike | None
+        :type data: _ArrayLikeNumber_co
+        :param dtype: 配列の型を指定する
+        :type dtype: DTypeLike | _NumberT | None
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
@@ -240,7 +240,7 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         """
         配列のdtypeを設定する
 
-        :param dtype: 配列のdtypeを指定する
+        :param dtype: 配列の型を指定する
         :type dtype: DTypeLike | None
         :return:
         :rtype: numpy.dtype | None
