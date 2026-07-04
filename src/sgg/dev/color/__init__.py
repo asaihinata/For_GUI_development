@@ -74,6 +74,7 @@ class Color:
     def color(self):
         return str(self.colors)
 
+
 def _gets(colorname):
     c, _ = where(colorname == cds)
     if c.size == 0:

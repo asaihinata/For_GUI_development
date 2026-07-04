@@ -51,7 +51,6 @@ _DTypeT = TypeVar("_DTypeT", bound=np.dtype, default=np.dtype, covariant=True)
 _CharType = TypeVar(
     "CharType", bound=np.dtype, default=np.dtype[np.str_], covariant=True
 )
-
 TypeNumber: TypeAlias = (
     _FloatLike_co | _IntLike_co | _UIntLike_co | np.generic | _ComplexLike_co
 )
