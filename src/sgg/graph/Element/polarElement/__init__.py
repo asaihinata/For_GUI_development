@@ -2,7 +2,7 @@ from matplotlib.projections.polar import PolarAxes
 from numpy import linspace, number, pi
 
 from ....dev import bols, list2num, num0s, parsecolor, range_num
-from ....nparray import NPArray, NPNumber
+from ....nparray import NPNumber
 from ..graph import GElement
 
 __all__ = ["polarElement"]

@@ -375,8 +375,7 @@ For_GUI_development
  │   │       │       │   └── __init__.pyi
  │   │       │       ├── imagelink
  │   │       │       │   ├── __init__.py
- │   │       │       │   ├── __init__.pyi
- │   │       │       │   └── getdata.py
+ │   │       │       │   └── __init__.pyi
  │   │       │       ├── link
  │   │       │       │   ├── __init__.py
  │   │       │       │   └── __init__.pyi
@@ -453,5 +452,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:314
+ファイル数:313
 フォルダ数:140
