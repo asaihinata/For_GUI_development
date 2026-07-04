@@ -17,16 +17,7 @@ class NPString(np.ndarray[_ShapeT, _CharType]):
     def __new__(
         cls,
         data: _ArrayLikeAnyString_co,
-        dtype: None = np.str_,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> NPString[_ShapeT, np.dtype[np.str_]]: ...
-    @overload
-    def __new__(
-        cls,
-        data: _ArrayLikeAnyString_co,
-        dtype: type[str],
+        dtype: type[str] | None = np.str_,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -43,7 +34,7 @@ class NPString(np.ndarray[_ShapeT, _CharType]):
     def __new__(
         cls,
         data: _ArrayLikeAnyString_co,
-        dtype: type[np.character] | str | None = np.str_,
+        dtype: type[np.character] | type[str] | None = np.str_,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -54,7 +45,7 @@ class NPString(np.ndarray[_ShapeT, _CharType]):
         :param data: 変換する配列を指定する
         :type data: _ArrayLikeAnyString_co
         :param dtype: 配列の型を指定する
-        :type dtype: type[np.character]|str | None
+        :type dtype: type[np.character] | type[str] | None
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する

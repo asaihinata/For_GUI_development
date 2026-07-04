@@ -41,7 +41,7 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __new__(
         cls,
         data: _ArrayLikeNumber_co,
-        dtype: None,
+        dtype: None = np.float64,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -59,7 +59,7 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __new__(
         cls,
         data: _ArrayLikeNumber_co,
-        dtype: DTypeLike | _NumberT | None = ...,
+        dtype: type[_NumberT] | None = np.float64,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -70,7 +70,7 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :param data: 変換する配列を指定する
         :type data: _ArrayLikeNumber_co
         :param dtype: 配列の型を指定する
-        :type dtype: DTypeLike | _NumberT | None
+        :type dtype: type[_NumberT] | None
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する

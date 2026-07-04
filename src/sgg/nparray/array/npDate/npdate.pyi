@@ -6,7 +6,7 @@ from numpy import datetime64
 from numpy._typing import _DTypeLikeTD64
 from numpy.typing import DTypeLike
 
-from .._typing import _DTypeT, _ShapeT
+from .._typing import _ArrayLikeTD64_co, _DTypeT, _ShapeT
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 from ._typing import _DATES_UNITL
@@ -23,39 +23,39 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ShapeT,
+        data: _ArrayLikeTD64_co,
         dtype: None = "datetime64[D]",
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[datetime64[_ShapeT], np.dtype[datetime64]]: ...
+    ) -> NPDate[_ShapeT, np.dtype[datetime64]]: ...
     @overload
     def __new__(
         cls,
-        data: _ShapeT,
+        data: _ArrayLikeTD64_co,
         dtype: _DATES_UNITL,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[datetime64[_ShapeT], np.dtype[datetime64[_DATES_UNITL]]]: ...
+    ) -> NPDate[_ShapeT, np.dtype[datetime64[_DATES_UNITL]]]: ...
     @overload
     def __new__(
         cls,
-        data: _ShapeT,
+        data: _ArrayLikeTD64_co,
         dtype: datetime64,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[datetime64[_ShapeT], np.dtype[datetime64]]: ...
+    ) -> NPDate[_ShapeT, np.dtype[datetime64]]: ...
     @overload
     def __new__(
         cls,
-        data: _ShapeT,
+        data: _ArrayLikeTD64_co,
         dtype: _DTypeLikeTD64,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[datetime64[_ShapeT], np.dtype[_DTypeLikeTD64]]: ...
+    ) -> NPDate[_ShapeT, np.dtype[_DTypeLikeTD64]]: ...
     @overload
     def __new__(
         cls,
@@ -64,10 +64,10 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[Formatconversion, np.dtype[datetime64]]: ...
+    ) -> NPDate[_ShapeT, np.dtype[datetime64]]: ...
     def __new__(
         cls,
-        data: _ShapeT | Formatconversion,
+        data: _ArrayLikeTD64_co | Formatconversion,
         dtype: _DTypeLikeTD64 | None = "datetime64[D]",
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -77,7 +77,7 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         新しい日付の配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: _ShapeT | Formatconversion
+        :type data: _ArrayLikeTD64_co | Formatconversion
         :param dtype: 配列の型を指定する
         :type dtype: _DTypeLikeTD64 | None
         :param d_ndim: 固定される次元数を指定する

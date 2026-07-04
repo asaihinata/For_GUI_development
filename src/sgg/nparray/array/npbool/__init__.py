@@ -17,7 +17,7 @@ def implements(np_function):
 class NPBool(NDArrayOperatorsMixin, np.ndarray):
     __element_type = (bool, np.bool_, np.bool)
 
-    def __new__(cls, data, dtype=np.bool, d_ndim=None, min_ndim=None, max_ndim=None):
+    def __new__(cls, data, dtype=np.bool_, d_ndim=None, min_ndim=None, max_ndim=None):
         resolved = cls._resolve_dtype(dtype)
         obj = np.asarray(data, dtype=resolved).view(cls)
         cls._validate_elements(obj)
@@ -42,7 +42,7 @@ class NPBool(NDArrayOperatorsMixin, np.ndarray):
     def _resolve_dtype(cls, dtype):
         if dtype is not None:
             return np.dtype(dtype)
-        return np.dtype(np.bool)
+        return np.dtype(np.bool_)
 
     @classmethod
     def _validate_ndim(cls, obj, min_ndim, max_ndim):

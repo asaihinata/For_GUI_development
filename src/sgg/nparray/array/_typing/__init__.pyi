@@ -1,9 +1,11 @@
+from datetime import date, datetime
 from typing import Any, TypeAlias, TypeAliasType, TypeVar, Union
 
 import numpy as np
 from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBool_co,
                            _ArrayLikeNumber_co, _ArrayLikeTD64_co, _CharLike_co,
-                           _ComplexLike_co, _FloatLike_co, _IntLike_co, _UIntLike_co)
+                           _ComplexLike_co, _FloatLike_co, _IntLike_co, _NestedSequence,
+                           _UIntLike_co)
 
 __all__ = [
     "_ArrayLikeAnyString_co",
@@ -40,6 +42,9 @@ __all__ = [
     "TypeArray2LikeBool",
     "TypeArraysLikeBool",
     "_CharType",
+    "ArrayLikeDateParse",
+    "DateParseScalar",
+    "_ArrayLikeDateParse_co",
 ]
 _ShapeT = TypeVar("_ShapeT", bound=np._Shape, default=np._AnyShape, covariant=True)
 _DTypeT = TypeVar("_DTypeT", bound=np.dtype, default=np.dtype, covariant=True)
@@ -82,3 +87,15 @@ ArrayLikeAny = TypeVar("ArrayLikeAny", bound=Union[Any])
 TypeArrayLikeAny: TypeAlias = np.ndarray[tuple[int], np.dtype[ArrayLikeAny]]
 TypeArray2LikeAny: TypeAlias = np.ndarray[tuple[int, int], np.dtype[ArrayLikeAny]]
 TypeArraysLikeAny: TypeAlias = np.ndarray[tuple[int, ...], np.dtype[ArrayLikeAny]]
+ArrayLikeDateParse = TypeVar(
+    "ArrayLikeDateParse",
+    bound=Union[str, bytes, np.str_, np.bytes_, datetime, date, np.datetime64],
+)
+DateParseScalar: TypeAlias = (
+    str | bytes | np.str_ | np.bytes_ | datetime | date | np.datetime64
+)
+_ArrayLikeDateParse_co: TypeAlias = (
+    DateParseScalar
+    | _NestedSequence[DateParseScalar]
+    | np.ndarray[Any, np.dtype[np.str_ | np.bytes_ | np.object_ | np.datetime64]]
+)

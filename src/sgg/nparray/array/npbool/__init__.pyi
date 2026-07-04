@@ -1,13 +1,14 @@
-from typing import Any, Iterator, Self, overload
+from typing import Any, Iterator, Self, TypeVar, overload
 
 import numpy as np
 from numpy._typing import _DTypeLikeBool
 from numpy.typing import DTypeLike
 
-from .._typing import _ArrayLikeBool_co, _DTypeT, _ShapeT
+from .._typing import _ArrayLikeBool_co, _ShapeT
 
 __all__ = ["NPBool"]
 HANDLED_FUNCTIONS: dict
+_DTypeT = TypeVar("_DTypeT", bound=np.dtype, default=np.dtype[np.bool_], covariant=True)
 
 def implements(np_function) -> Any:
     """
@@ -25,7 +26,7 @@ class NPBool(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __new__(
         cls,
         data: _ArrayLikeBool_co,
-        dtype: None = None,
+        dtype: None = np.bool_,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -38,11 +39,11 @@ class NPBool(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPBool[_ShapeT, _DTypeLikeBool]: ...
+    ) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
     def __new__(
         cls,
         data: _ArrayLikeBool_co,
-        dtype: _DTypeLikeBool | None = np.bool,
+        dtype: _DTypeLikeBool | None = np.bool_,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,

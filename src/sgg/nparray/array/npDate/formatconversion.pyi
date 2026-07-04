@@ -2,11 +2,11 @@ from typing import Any, Iterator, Self, overload
 
 import numpy as np
 from numpy import datetime64
+from numpy._typing import _DTypeLikeTD64
 from numpy.typing import DTypeLike
 
-from .._typing import _DTypeT, _ShapeT
+from .._typing import _ArrayLikeDateParse_co, _DTypeT, _ShapeT
 from ..npbool import NPBool
-from ._typing import _DATES_UNITL
 
 __all__ = ["Formatconversion"]
 HANDLED_FUNCTIONS: dict
@@ -26,7 +26,7 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ShapeT,
+        data: _ArrayLikeDateParse_co,
         dtype: None = "datetime64[D]",
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -35,25 +35,16 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ShapeT,
-        dtype: _DATES_UNITL,
+        data: _ArrayLikeDateParse_co,
+        dtype: type[_DTypeLikeTD64],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> Formatconversion[datetime64[_ShapeT], np.dtype[datetime64]]: ...
-    @overload
+    ) -> Formatconversion[datetime64[_ShapeT], np.dtype[_DTypeLikeTD64]]: ...
     def __new__(
         cls,
-        data: _ShapeT,
-        dtype: datetime64,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> Formatconversion[datetime64[_ShapeT], np.dtype[datetime64]]: ...
-    def __new__(
-        cls,
-        data: _ShapeT,
-        dtype: _DATES_UNITL | datetime64 | None = "datetime64[D]",
+        data: _ArrayLikeDateParse_co,
+        dtype: type[_DTypeLikeTD64] | None = "datetime64[D]",
         yearfirst: bool = ...,
         dayfirst: bool = ...,
         d_ndim: int | None = None,
@@ -64,9 +55,9 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         様々な日付のフォーマットを特定の日付フォーマットに変換する配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: ArrayLike
+        :type data: _ArrayLikeDateParse_co
         :param dtype: 配列の型を指定する
-        :type dtype: _DATES_UNITL | datetime64 | None
+        :type dtype: type[_DTypeLikeTD64] | None
         :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
         :type yearfirst: bool
         :param dayfirst: 曖昧な3つの整数からなる日付の最初の値を日もしくは月として解釈するかどうか指定する
