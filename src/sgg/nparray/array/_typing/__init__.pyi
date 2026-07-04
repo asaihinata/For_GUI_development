@@ -1,4 +1,4 @@
-from typing import TypeAlias, TypeAliasType, TypeVar,Union,Any
+from typing import Any, TypeAlias, TypeAliasType, TypeVar, Union
 
 import numpy as np
 from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBool_co,
@@ -11,8 +11,7 @@ __all__ = [
     "_ArrayLikeBool_co",
     "_ArrayLikeTD64_co",
     "_DTypeT",
-    "_ShapeT"
-    "TypeNumber",
+    "_ShapeT" "TypeNumber",
     "_NumberT",
     "TypeStr",
     "_StrT",
@@ -40,9 +39,13 @@ __all__ = [
     "TypeArrayLikeBool",
     "TypeArray2LikeBool",
     "TypeArraysLikeBool",
+    "_CharType",
 ]
 _ShapeT = TypeVar("_ShapeT", bound=np._Shape, default=np._AnyShape, covariant=True)
 _DTypeT = TypeVar("_DTypeT", bound=np.dtype, default=np.dtype, covariant=True)
+_CharType = TypeVar(
+    "CharType", bound=np.dtype, default=np.dtype[np.str_], covariant=True
+)
 
 TypeNumber: TypeAlias = (
     _FloatLike_co | _IntLike_co | _UIntLike_co | np.generic | _ComplexLike_co

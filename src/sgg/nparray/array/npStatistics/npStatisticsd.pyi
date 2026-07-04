@@ -5,6 +5,7 @@ from typing import (Any, Generator, Literal, Self, SupportsIndex, TypeAlias, Typ
 
 import numpy as np
 from numpy.typing import ArrayLike, DTypeLike, NDArray
+
 from ....typing import TypeArrayLikeNumber
 from .._typing import _ArrayLikeNumber_co, _NumberT
 from ..dev import NDArrayOperatorsMixin

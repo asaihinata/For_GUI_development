@@ -3,21 +3,21 @@
 from typing import Any, Iterator, Self, overload
 
 import numpy as np
-from numpy._typing import ArrayLike, DTypeLike
+from numpy._typing import ArrayLike
 
-from .._typing import _ArrayLikeAnyString_co, _DTypeT, _ShapeT, _StrT
+from .._typing import _ArrayLikeAnyString_co, _CharType, _ShapeT
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPString"]
 
-class NPString(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPString(np.ndarray[_ShapeT, _CharType]):
     def __class_getitem__(cls, item: Any) -> type[NPString[Any, Any]]: ...
     @overload
     def __new__(
         cls,
         data: _ArrayLikeAnyString_co,
-        dtype: None,
+        dtype: None = np.str_,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -26,15 +26,24 @@ class NPString(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __new__(
         cls,
         data: _ArrayLikeAnyString_co,
-        dtype: type[_StrT],
+        dtype: type[str],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPString[_ShapeT, np.dtype[_StrT]]: ...
+    ) -> NPString[_ShapeT, np.dtype[np.str_]]: ...
+    @overload
     def __new__(
         cls,
         data: _ArrayLikeAnyString_co,
-        dtype: type[_StrT] | None = np.str_,
+        dtype: type[np.character],
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPString[_ShapeT, np.dtype[np.character]]: ...
+    def __new__(
+        cls,
+        data: _ArrayLikeAnyString_co,
+        dtype: type[np.character] | str | None = np.str_,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -45,7 +54,7 @@ class NPString(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :param data: 変換する配列を指定する
         :type data: _ArrayLikeAnyString_co
         :param dtype: 配列の型を指定する
-        :type dtype: type[_StrT] | None
+        :type dtype: type[np.character]|str | None
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
@@ -93,7 +102,7 @@ class NPString(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
+    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _CharType]]: ...
     def __len__(self) -> int: ...
     def __reversed__(self) -> Self:
         """
@@ -237,7 +246,7 @@ class NPString(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         """
 
     @dtypes.setter
-    def dtypes(self, dtype: DTypeLike | None) -> np.dtype | None:
+    def dtypes(self, dtype: _CharType | None) -> np.dtype | None:
         """
         配列のdtypeを設定する
 

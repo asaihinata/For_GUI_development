@@ -4,7 +4,7 @@ import numpy as np
 from numpy._typing import _DTypeLikeBool
 from numpy.typing import DTypeLike
 
-from .._typing import _DTypeT, _ShapeT,_ArrayLikeBool_co
+from .._typing import _ArrayLikeBool_co, _DTypeT, _ShapeT
 
 __all__ = ["NPBool"]
 HANDLED_FUNCTIONS: dict
