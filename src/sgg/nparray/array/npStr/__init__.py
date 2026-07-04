@@ -183,38 +183,6 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
             return data[key]
         raise TypeError("keyにはintまたはsliceを指定してください")
 
-    def to_1d(self):
-        if self.min_ndim is not None and self.min_ndim > 1:
-            raise ValueError(f"min_ndimが{self.min_ndim}のため1次元に変換できません")
-        result = np.asarray(self).flatten().view(type(self))
-        result._dtype = self._dtype
-        return result
-
-    def lengtharange(self):
-        shapes = self.shape
-        lens = len(shapes)
-        if lens == 1:
-            raw = np.arange(0, self.size, 1)
-        else:
-            raw = np.tile(np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])).reshape(
-                shapes
-            )
-        return np.array(raw, dtype=np.uint64)
-
-    def shapesize(self, shapes):
-        if self.shape == shapes:
-            return True
-        return False
-
-    def tonumpy(self):
-        return np.asarray(self)
-
-    def all_None(self):
-        return bool(np.all(self.data == None))
-
-    def any_None(self):
-        return bool(np.any(self.data == None))
-
     def append(self, val):
         result = nps.add(np.asarray(self), val).view(type(self))
         result._dtype = result.dtype
@@ -251,4 +219,67 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
     def replace(self, old, new):
         result = nps.replace(self.data, old, new).view(type(self))
         result._dtype = result.dtype
+        return result
+
+    def to_1d(self):
+        if self.min_ndim is not None and self.min_ndim > 1:
+            raise ValueError(f"min_ndimが{self.min_ndim}のため1次元に変換できません")
+        result = np.asarray(self).flatten().view(type(self))
+        result._dtype = self._dtype
+        return result
+
+    def lengtharange(self):
+        shapes = self.shape
+        lens = len(shapes)
+        if lens == 1:
+            raw = np.arange(0, self.size, 1)
+        else:
+            raw = np.tile(np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])).reshape(
+                shapes
+            )
+        return np.array(raw, dtype=np.uint64)
+
+    def shapesize(self, shapes):
+        if self.shape == shapes:
+            return True
+        return False
+
+    def tonumpy(self):
+        return np.asarray(self)
+
+    def all_None(self):
+        return bool(np.all(self.data == None))
+
+    def any_None(self):
+        return bool(np.any(self.data == None))
+
+    def typeconversion(self, type, casting="safe"):
+        if casting not in ["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]:
+            casting = "safe"
+        return np.can_cast(np.asarray(self), type, casting=casting)
+
+    def count_nonzero(self, axis=None, keepdims=False):
+        if not isinstance(keepdims, bool):
+            keepdims = False
+        return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
+
+    def unique(self):
+        return np.unique(np.asarray(self))
+
+    def counts(self):
+        count = np.unique_counts(np.asarray(self))
+        return count.values, count.counts
+
+    def roll(self, shift, axis=None):
+        if not isinstance(shift, int | float):
+            raise TypeError("shiftには数値の型を指定してください")
+        result = np.roll(np.asarray(self), shift, axis).view(type(self))
+        result._dtype = self._dtype
+        return result
+
+    def rot90(self, k=1, axes=(0, 1)):
+        if self.ndim <= 1:
+            raise ValueError(f"配列には2次元以上ではないといけません")
+        result = np.rot90(np.asarray(self), k, axes).view(type(self))
+        result._dtype = self._dtype
         return result

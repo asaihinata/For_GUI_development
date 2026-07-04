@@ -184,6 +184,30 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
             return data[key]
         raise TypeError("keyにはintまたはsliceを指定してください")
 
+    def todatetime(self):
+        return self.data.astype(datetime)
+
+    def todate(self):
+        return self.data.astype(date)
+
+    def weekday(self):
+        dt = self.todatetime()
+        return NPNumber([i.weekday() for i in dt], dtype=np.uint8)
+
+    def diff_today(self, days=False):
+        if not isinstance(days, bool):
+            days = False
+        day = np.busday_count(np.asarray(self), self.today()) + int(days)
+        return NPNumber(day, dtype=np.int64)
+
+    @classmethod
+    def today(cls):
+        return NPDate([np.datetime64("today")], dtype="datetime64[D]")
+
+    @classmethod
+    def now(cls):
+        return NPDate([np.datetime64("now")], dtype="datetime64[h]")
+
     def to_1d(self):
         if self.min_ndim is not None and self.min_ndim > 1:
             raise ValueError(f"min_ndimが{self.min_ndim}のため1次元に変換できません")
@@ -216,26 +240,33 @@ class NPDate(NDArrayOperatorsMixin, np.ndarray):
     def any_None(self):
         return bool(np.any(self.data == None))
 
-    def todatetime(self):
-        return self.data.astype(datetime)
+    def typeconversion(self, type, casting="safe"):
+        if casting not in ["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]:
+            casting = "safe"
+        return np.can_cast(np.asarray(self), type, casting=casting)
 
-    def todate(self):
-        return self.data.astype(date)
+    def count_nonzero(self, axis=None, keepdims=False):
+        if not isinstance(keepdims, bool):
+            keepdims = False
+        return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
 
-    def weekday(self):
-        dt = self.todatetime()
-        return NPNumber([i.weekday() for i in dt], dtype=np.uint8)
+    def unique(self):
+        return np.unique(np.asarray(self))
 
-    def diff_today(self, days=False):
-        if not isinstance(days, bool):
-            days = False
-        day = np.busday_count(np.asarray(self), self.today()) + int(days)
-        return NPNumber(day, dtype=np.int64)
+    def counts(self):
+        count = np.unique_counts(np.asarray(self))
+        return count.values, count.counts
 
-    @classmethod
-    def today(cls):
-        return NPDate([np.datetime64("today")], dtype="datetime64[D]")
+    def roll(self, shift, axis=None):
+        if not isinstance(shift, int | float):
+            raise TypeError("shiftには数値の型を指定してください")
+        result = np.roll(np.asarray(self), shift, axis).view(type(self))
+        result._dtype = self._dtype
+        return result
 
-    @classmethod
-    def now(cls):
-        return NPDate([np.datetime64("now")], dtype="datetime64[h]")
+    def rot90(self, k=1, axes=(0, 1)):
+        if self.ndim <= 1:
+            raise ValueError(f"配列には2次元以上ではないといけません")
+        result = np.rot90(np.asarray(self), k, axes).view(type(self))
+        result._dtype = self._dtype
+        return result

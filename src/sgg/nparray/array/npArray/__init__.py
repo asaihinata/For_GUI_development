@@ -217,3 +217,34 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
 
     def any_None(self):
         return bool(np.any(self.data == None))
+
+    def typeconversion(self, type, casting="safe"):
+        if casting not in ["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]:
+            casting = "safe"
+        return np.can_cast(np.asarray(self), type, casting=casting)
+
+    def count_nonzero(self, axis=None, keepdims=False):
+        if not isinstance(keepdims, bool):
+            keepdims = False
+        return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
+
+    def unique(self):
+        return np.unique(np.asarray(self))
+
+    def counts(self):
+        count = np.unique_counts(np.asarray(self))
+        return count.values, count.counts
+
+    def roll(self, shift, axis=None):
+        if not isinstance(shift, int | float):
+            raise TypeError("shiftには数値の型を指定してください")
+        result = np.roll(np.asarray(self), shift, axis).view(type(self))
+        result._dtype = self._dtype
+        return result
+
+    def rot90(self, k=1, axes=(0, 1)):
+        if self.ndim <= 1:
+            raise ValueError(f"配列には2次元以上ではないといけません")
+        result = np.rot90(np.asarray(self), k, axes).view(type(self))
+        result._dtype = self._dtype
+        return result

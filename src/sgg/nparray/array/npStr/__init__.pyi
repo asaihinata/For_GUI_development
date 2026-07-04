@@ -1,9 +1,10 @@
 """基本的な文字列の操作をするモジュール"""
 
-from typing import Any, Iterator, Self, overload
+from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
-from numpy._typing import ArrayLike
+from numpy._typing import ArrayLike, _ShapeLike
+from numpy.typing import NDArray
 
 from .._typing import _ArrayLikeAnyString_co, _CharType, _ShapeT
 from ..npbool import NPBool
@@ -326,3 +327,65 @@ class NPString(np.ndarray[_ShapeT, _CharType]):
 
     def replace(self, old: str, new: str) -> NPString:
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
+
+    def typeconversion(
+        self,
+        type: np.DTypeLike,
+        casting: Literal[
+            "no", "equiv", "safe", "same_kind", "same_value", "unsafe"
+        ] = "safe",
+    ) -> bool:
+        """
+        配列の型が`type`で指定された型に変換可能か調べる
+
+        :param type: 型変換先のデータ型を指定する
+        :type type: np.DTypeLike
+        :param casting: どのようなデータ変換が行われるか指定する
+        :type casting: Literal["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]
+        """
+
+    @overload
+    def count_nonzero(self, axis: None = None, keepdims: bool = False) -> np.intp: ...
+    @overload
+    def count_nonzero(
+        self, axis: _ShapeLike | None = None, keepdims: bool = True
+    ) -> NDArray[np.intp]: ...
+    def count_nonzero(
+        self, axis: _ShapeLike | None = ..., keepdims: bool = ...
+    ) -> np.intp | NDArray[np.intp]:
+        """
+        0以外の要素の数を数える
+
+        :param axis: 要素を数える軸を指定する
+        :type axis: _ShapeLike | None
+        :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
+        :type keepdims: bool
+        """
+
+    def unique(self):
+        """配列の固有要素を見つける"""
+
+    def counts(self) -> tuple[NDArray[Any], NDArray[np.intp]]:
+        """配列内の要素とその要素が配列内に存在する個数を返す"""
+
+    def roll(self, shift: _ShapeLike, axis: _ShapeLike | None = None) -> NPString:
+        """
+        要素を指定された軸に沿って回転させる
+
+        :param shift: 要素を移動させる位置の数を指定する
+        :type shift: _ShapeLike
+        :param axis: 要素を移動させる軸を指定する
+        :type axis: _ShapeLike | None
+        """
+
+    def rot90(self, k: int = 1, axes: tuple[int, int] = (0, 1)) -> NPString:
+        """
+        指定された軸の平面内で配列を90度回転させる
+
+        :param k: 配列に90度回転させたい回数を指定する
+        :type k: int
+        :param axes: 平面内で回転される軸を指定する
+        :type axes: tuple[int,int]
+        :return: 回転させた配列を返す
+        :rtype: NPString
+        """
