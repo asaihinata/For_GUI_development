@@ -54,8 +54,31 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
         :raises ValueError: 次元数が範囲外の場合に発生させる
         """
 
-    def __ne__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
-    def __eq__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
+    @overload
+    def __getitem__(self, key: int) -> Any | None: ...
+    @overload
+    def __getitem__(self, key: slice) -> np.ndarray | None: ...
+    def __getitem__(self, key: int | slice) -> Any | np.ndarray | None:
+        """
+        インデックスアクセスをカスタマイズする
+
+        intキーの場合は配列を1次元に展開してからアクセスする。
+        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
+        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
+        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
+        ただし`key == size`の場合のみ,末尾の要素(`data[size - 1]`)を返す
+        特別な扱いとする。
+
+        :param key: インデックスまたはスライスを指定する
+        :type key: int | slice
+        :return: インデックスに対応する要素を返す
+        :rtype: Any | np.ndarray | None
+        :raises IndexError: 配列が空の場合に発生させる
+        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
+        """
+
+    def __ne__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
+    def __eq__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
 

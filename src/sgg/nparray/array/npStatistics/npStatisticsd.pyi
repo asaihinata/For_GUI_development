@@ -5,9 +5,10 @@ from typing import (Any, Generator, Literal, Self, SupportsIndex, TypeAlias, Typ
 
 import numpy as np
 from numpy.typing import ArrayLike, DTypeLike, NDArray
-from ..dev import NDArrayOperatorsMixin
+
 from ....typing import TypeArrayLikeNumber
 from .._typing import _NumberT
+from ..dev import NDArrayOperatorsMixin
 
 __all__ = ["NPStatisticsd"]
 _ShapeT = TypeVar("_ShapeT", bound=tuple[int], default=tuple[int], covariant=True)
@@ -41,6 +42,7 @@ def implements(np_function) -> Any:
 
 class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
     """`np.ndarray`を継承した基本的な統計を計算する配列クラス"""
+
     def __new__(
         cls,
         data: _ShapeT,
@@ -62,7 +64,7 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
     def __contains__(self, value: object) -> bool: ...
     def __iter__(self) -> Generator[tuple[NDArray[Any], ...], Any, None]: ...
     def __len__(self) -> int: ...
-    def __reversed__(self) -> NPStatisticsd:
+    def __reversed__(self) -> Self:
         """
         逆順にした新しい配列オブジェクトを返す
 
@@ -77,13 +79,19 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         """
         インデックスアクセスをカスタマイズする
 
-        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
+        intキーの場合は配列を1次元に展開してからアクセスする。
+        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
+        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
+        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
+        ただし`key == size`の場合のみ,末尾の要素(`data[size - 1]`)を返す
+        特別な扱いとする。
 
         :param key: インデックスまたはスライスを指定する
         :type key: int | slice
         :return: インデックスに対応する要素を返す
         :rtype: Any | np.ndarray | None
         :raises IndexError: 配列が空の場合に発生させる
+        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
     def __array_finalize__(self, obj: np.ndarray | None) -> None:

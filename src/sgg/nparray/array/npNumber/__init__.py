@@ -153,7 +153,7 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
         result._dtype = self._dtype
         return result
 
-    def __getitem__(self, key):
+    def __getitem__(self, key: int | slice):
         size = self.size
         if size == 0:
             raise IndexError("空の配列にはアクセスできません")
@@ -161,18 +161,19 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
         if isinstance(key, int):
             if key == size:
                 return data[size - 1]
-            elif key < size:
+            elif -size <= key < size:
                 return data[key]
             else:
                 return data[key % size]
         elif isinstance(key, slice):
             return data[key]
+        raise TypeError("keyにはintまたはsliceを指定してください")
 
     def __ne__(self, other):
-        return NPBool(super().__ne__(other))
+        return NPBool(np.not_equal(np.asarray(self), other))
 
     def __eq__(self, other):
-        return NPBool(super().__eq__(other))
+        return NPBool(np.equal(np.asarray(self), other))
 
     def __lt__(self, other):
         return NPBool(super().__lt__(other))

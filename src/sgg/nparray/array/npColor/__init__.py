@@ -60,6 +60,22 @@ class NPColor(NDArrayOperatorsMixin, np.ndarray):
             obj._max_ndim = max_ndim
         return obj
 
+    def __getitem__(self, key):
+        size = self.size
+        if size == 0:
+            raise IndexError("空の配列にはアクセスできません")
+        data = self.data.flatten()
+        if isinstance(key, int):
+            if key == size:
+                return data[size - 1]
+            elif -size <= key < size:
+                return data[key]
+            else:
+                return data[key % size]
+        elif isinstance(key, slice):
+            return data[key]
+        raise TypeError("keyにはintまたはsliceを指定してください")
+
     def __ne__(self, other):
         return NPBool(np.equal(np.asarray(self), other))
 

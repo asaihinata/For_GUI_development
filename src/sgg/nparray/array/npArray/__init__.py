@@ -140,12 +140,12 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
 
     def __ne__(self, other):
         result = np.asarray(super().__ne__(other)).view(type(self))
-        result._dtype = bool
+        result._dtype = np.bool
         return result
 
     def __eq__(self, other):
         result = np.asarray(super().__eq__(other)).view(type(self))
-        result._dtype = bool
+        result._dtype = np.bool
         return result
 
     def __repr__(self):
@@ -178,12 +178,13 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         if isinstance(key, int):
             if key == size:
                 return data[size - 1]
-            elif key < size:
+            elif -size <= key < size:
                 return data[key]
             else:
                 return data[key % size]
         elif isinstance(key, slice):
             return data[key]
+        raise TypeError("keyにはintまたはsliceを指定してください")
 
     def to_1d(self):
         if self.min_ndim is not None and self.min_ndim > 1:

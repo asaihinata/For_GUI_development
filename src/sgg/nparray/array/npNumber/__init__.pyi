@@ -1,13 +1,16 @@
 """基本的な数値の操作をするモジュール"""
 
-from typing import Any, Iterator, Literal, Self, TypeAlias, overload,TypeVar
+from typing import Any, Iterator, Literal, Self, TypeAlias, TypeVar, overload
 
 import numpy as np
 from numpy.typing import DTypeLike
 
 from .._typing import _NumberT, _ShapeT
 from ..npbool import NPBool
-_DTypeT = TypeVar("_DTypeT", bound=np.dtype, default=np.dtype[np.float64], covariant=True)
+
+_DTypeT = TypeVar(
+    "_DTypeT", bound=np.dtype, default=np.dtype[np.float64], covariant=True
+)
 __all__ = ["NPNumber"]
 TYPEMETHOD: TypeAlias = Literal[
     "inverted_cdf",
@@ -137,18 +140,18 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: Any
         """
 
-    def __eq__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
-    def __ne__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
-    def __lt__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
-    def __le__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
-    def __gt__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
-    def __ge__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
+    def __eq__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
+    def __ne__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
+    def __lt__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
+    def __le__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
+    def __gt__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
+    def __ge__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
-    def __iter__(self) -> Iterator[Any]: ...
+    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
     def __len__(self) -> int: ...
-    def __reversed__(self) -> NPNumber:
+    def __reversed__(self) -> Self:
         """
         逆順にした新しい配列オブジェクトを返す
 
@@ -163,13 +166,19 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         """
         インデックスアクセスをカスタマイズする
 
-        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
+        intキーの場合は配列を1次元に展開してからアクセスする。
+        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
+        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
+        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
+        ただし`key == size`の場合のみ,末尾の要素(`data[size - 1]`)を返す
+        特別な扱いとする。
 
         :param key: インデックスまたはスライスを指定する
         :type key: int | slice
         :return: インデックスに対応する要素を返す
         :rtype: Any | np.ndarray | None
         :raises IndexError: 配列が空の場合に発生させる
+        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
@@ -295,10 +304,10 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def sturgesval(self) -> np.floating:
         """スタージェスの公式を求める"""
 
-    def cussum(self) -> NPNumber[_ShapeT,_DTypeT]:
+    def cussum(self) -> NPNumber[_ShapeT, _DTypeT]:
         """一つ前の元の値との和を求める"""
 
-    def cumprod(self) -> NPNumber[_ShapeT,_DTypeT]:
+    def cumprod(self) -> NPNumber[_ShapeT, _DTypeT]:
         """一つ前の元の値との積を求める"""
 
     def percentile(
@@ -332,5 +341,5 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def ratio(self, axis: int | None = None) -> NPNumber:
         """行や列ごとの合計に対する比率を求める"""
 
-    def zero_check(self) -> NPBool[Any,np.dtype[np.bool]]:
+    def zero_check(self) -> NPBool[Any, np.dtype[np.bool]]:
         """要素の数値が0の位置を探す"""

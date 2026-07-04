@@ -22,7 +22,7 @@ def implements(np_function) -> Any:
 class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
 
-    def __class_getitem__(cls, item: Any) -> type[Formatconversion[Any,Any]]: ...
+    def __class_getitem__(cls, item: Any) -> type[Formatconversion[Any, Any]]: ...
     @overload
     def __new__(
         cls,
@@ -213,12 +213,12 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def max_ndim(self) -> int | None:
         """配列オブジェクトが許容する最大次元数を返す"""
 
-    def __ne__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
-    def __eq__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
+    def __ne__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
+    def __eq__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
-    def __iter__(self) -> Iterator[Any]: ...
+    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
     def __len__(self) -> int: ...
     def __reversed__(self) -> Self:
         """
@@ -235,13 +235,19 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         """
         インデックスアクセスをカスタマイズする
 
-        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
+        intキーの場合は配列を1次元に展開してからアクセスする。
+        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
+        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
+        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
+        ただし`key == size`の場合のみ,末尾の要素(`data[size - 1]`)を返す
+        特別な扱いとする。
 
         :param key: インデックスまたはスライスを指定する
         :type key: int | slice
         :return: インデックスに対応する要素を返す
         :rtype: Any | np.ndarray | None
         :raises IndexError: 配列が空の場合に発生させる
+        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
     def to_1d(self) -> Formatconversion:

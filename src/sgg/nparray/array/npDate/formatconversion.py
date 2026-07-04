@@ -63,10 +63,10 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
         return obj
 
     def __ne__(self, other):
-        return NPBool(super().__ne__(other))
+        return NPBool(np.not_equal(np.asarray(self), other))
 
     def __eq__(self, other):
-        return NPBool(super().__eq__(other))
+        return NPBool(np.equal(np.asarray(self), other))
 
     def __array__(self, dtype=np.dtype("datetime64[D]"), copy=None):
         return super().__array__(np.dtype(serchDtype(dtype)), copy=copy)
@@ -181,12 +181,13 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
         if isinstance(key, int):
             if key == size:
                 return data[size - 1]
-            elif key < size:
+            elif -size <= key < size:
                 return data[key]
             else:
                 return data[key % size]
         elif isinstance(key, slice):
             return data[key]
+        raise TypeError("keyにはintまたはsliceを指定してください")
 
     def to_1d(self):
         if self.min_ndim is not None and self.min_ndim > 1:

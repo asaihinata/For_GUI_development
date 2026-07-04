@@ -134,16 +134,17 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         size = self.size
         if size == 0:
             raise IndexError("空の配列にはアクセスできません")
-        data = self.data
+        data = self.data.flatten()
         if isinstance(key, int):
             if key == size:
                 return data[size - 1]
-            elif key < size:
+            elif -size <= key < size:
                 return data[key]
             else:
                 return data[key % size]
         elif isinstance(key, slice):
-            return self.data.flatten()[key]
+            return data[key]
+        raise TypeError("keyにはintまたはsliceを指定してください")
 
     def lengtharange(self):
         shapes = self.shape

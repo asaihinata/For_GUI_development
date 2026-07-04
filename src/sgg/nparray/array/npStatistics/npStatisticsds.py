@@ -102,12 +102,13 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         if isinstance(key, int):
             if key == size:
                 return data[size - 1]
-            elif key < size:
+            elif -size <= key < size:
                 return data[key]
             else:
                 return data[key % size]
         elif isinstance(key, slice):
             return data[key]
+        raise TypeError("keyにはintまたはsliceを指定してください")
 
     def __class_getitem__(cls, item):
         return np.ndarray.__class_getitem__.__func__(cls, item)

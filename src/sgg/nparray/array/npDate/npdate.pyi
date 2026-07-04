@@ -11,6 +11,7 @@ from ..npbool import NPBool
 from ..npnumber import NPNumber
 from ._typing import _DATES_UNITL
 from .formatconversion import Formatconversion
+
 __all__ = ["NPDate"]
 
 class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
@@ -91,8 +92,8 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises TypeError: 要素型が`__element_type`と一致しない場合に発生させる
         """
 
-    def __ne__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
-    def __eq__(self, other: Any) -> NPBool[Any,np.dtype[np.bool]]: ...
+    def __ne__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
+    def __eq__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
     def __add__(self, other: Any) -> Self: ...
     def __radd__(self, other: Any) -> Self: ...
     def __sub__(self, other: Any) -> Self: ...
@@ -100,7 +101,7 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
-    def __iter__(self) -> Iterator[Any]: ...
+    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
     def __len__(self) -> int: ...
     def __reversed__(self) -> Self:
         """
@@ -117,13 +118,19 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         """
         インデックスアクセスをカスタマイズする
 
-        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
+        intキーの場合は配列を1次元に展開してからアクセスする。
+        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
+        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
+        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
+        ただし`key == size`の場合のみ,末尾の要素(`data[size - 1]`)を返す
+        特別な扱いとする。
 
         :param key: インデックスまたはスライスを指定する
         :type key: int | slice
         :return: インデックスに対応する要素を返す
         :rtype: Any | np.ndarray | None
         :raises IndexError: 配列が空の場合に発生させる
+        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
     @overload

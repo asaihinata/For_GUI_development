@@ -1,13 +1,14 @@
 """2つの変数データから様々な統計の計算を行うモジュール"""
 
-from typing import Any, Iterator, Literal, TypeAlias, overload
+from typing import Any, Iterator, Literal, Self, TypeAlias, overload
 
 import numpy as np
 from numpy._typing import _ArrayLikeFloat_co
 from numpy.typing import DTypeLike, NDArray
-from ..dev import NDArrayOperatorsMixin
-from .._typing import _NumberT
+
 from ....typing import TypeArrayLikeNumber
+from .._typing import _NumberT
+from ..dev import NDArrayOperatorsMixin
 from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
@@ -35,7 +36,7 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         x: TypeArrayLikeNumber,
         y: TypeArrayLikeNumber,
         dtype: np.dtype[_NumberT] | None = np.float64,
-    ) -> NPStatisticsds:
+    ) -> Self:
         """
         2つの変数データから様々な統計の計算を行うオブジェクト`NPStatisticsds`を返す
 
@@ -54,7 +55,7 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
     def __contains__(self, value: object) -> bool: ...
     def __len__(self) -> int: ...
     def __iter__(self) -> Iterator[Any]: ...
-    def __reversed__(self) -> NPStatisticsd:
+    def __reversed__(self) -> Self:
         """
         逆順にした新しい配列オブジェクトを返す
 
@@ -69,13 +70,19 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         """
         インデックスアクセスをカスタマイズする
 
-        intキーの場合は1次元に展開してからアクセスし,範囲外のインデックスはモジュロで折り返す
+        intキーの場合は配列を1次元に展開してからアクセスする。
+        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
+        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
+        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
+        ただし`key == size`の場合のみ,末尾の要素(`data[size - 1]`)を返す
+        特別な扱いとする。
 
         :param key: インデックスまたはスライスを指定する
         :type key: int | slice
         :return: インデックスに対応する要素を返す
         :rtype: Any | np.ndarray | None
         :raises IndexError: 配列が空の場合に発生させる
+        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
     @overload
