@@ -1,6 +1,44 @@
 import numpy as np
 
-__all__ = ["_arrisuint", "is_array_like", "change_array_like"]
+from ..exceptions import *
+
+__all__ = [
+    "_arrisuint",
+    "is_array_like",
+    "change_array_like",
+    "_uint_check",
+    "_scalar_check",
+    "_intarraylike_check",
+]
+
+
+def _scalar_check(element):
+    return np.isscalar(element)
+
+
+def _uint_check(value):
+    if _scalar_check(value):
+        raise NoScalarError(value)
+    if not _intarraylike_check(value):
+        raise UIntError(value)
+
+
+def _intarraylike_check(obj):
+    try:
+        arr = np.asarray(obj)
+    except Exception:
+        return False
+    if arr.dtype.kind in "iub":
+        return True
+    if arr.dtype.kind == "f":
+        return arr.size > 0 and np.all(np.mod(arr, 1) == 0) and np.all(np.isfinite(arr))
+    if arr.dtype.kind == "O":
+        try:
+            arr.astype(np.int64)
+            return True
+        except (ValueError, TypeError):
+            return False
+    return False
 
 
 def _arrisuint(arr):

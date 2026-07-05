@@ -2,7 +2,7 @@ r"""
 src\sgg\nparray\array内の例外メッセージのモジュール
 """
 
-__all__ = ["ShapeError"]
+from ....exceptions import *
 
 
 class ShapeError(ValueError, IndexError):
@@ -10,5 +10,12 @@ class ShapeError(ValueError, IndexError):
         self.__shape = shape
 
     def __str__(self):
-        msg = f"shape({self.__shape})が正しい値ではありません"
-        return str(msg)
+        return str(f"shape({self.__shape})が正しい値ではありません")
+
+
+class NoScalarError(ValueError, IndexError):
+    def __init__(self, element):
+        self.__element = element
+
+    def __str__(self):
+        return str(f"{self.__element}はスカラー値ではありません")

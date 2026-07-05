@@ -3,10 +3,11 @@
 from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
-from numpy._typing import ArrayLike, _ShapeLike
+from numpy._typing import (ArrayLike, _ArrayLikeAnyString_co, _ArrayLikeInt_co,
+                           _ShapeLike)
 from numpy.typing import NDArray
 
-from .._typing import _ArrayLikeAnyString_co, _CharType, _ShapeT
+from .._typing import _CharType, _ShapeT
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -328,11 +329,86 @@ class NPString(np.ndarray[_ShapeT, _CharType]):
     def stringlen(self) -> NPNumber[_ShapeT, np.uint64]:
         """配列内の要素の文字の長さを求める"""
 
+    def max(self) -> int:
+        """文字列の長さが最も大きい数を求める"""
+
+    def min(self) -> int:
+        """文字列の長さが最も小さい数を求める"""
+
     def str_len(self) -> NPNumber[_ShapeT, np.uint64]:
         """配列内の要素の文字の長さを求める"""
 
     def replace(self, old: str, new: str) -> NPString[_ShapeT, _CharType]:
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
+
+    def center(
+        self, width: _ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
+    ) -> NPString[_ShapeT, _CharType]:
+        """
+        長さと`width`の幅内で中央寄せされた配列を返す
+
+        :param width: 結果として得られる文字列の長さを指定する
+        :type width: _ArrayLikeInt_co
+        :param fillchar: 使用する余白の文字を指定する
+        :type fillchar: _ArrayLikeAnyString_co
+        """
+
+    def left(
+        self, width: _ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
+    ) -> NPString[_ShapeT, _CharType]:
+        """
+        長さと`width`の幅内で左寄せされた配列を返す
+
+        :param width: 結果として得られる文字列の長さを指定する
+        :type width: _ArrayLikeInt_co
+        :param fillchar: 使用する余白の文字を指定する
+        :type fillchar: _ArrayLikeAnyString_co
+        """
+
+    def right(
+        self, width: _ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
+    ) -> NPString[_ShapeT, _CharType]:
+        """
+        長さと`width`の幅内で右寄せされた配列を返す
+
+        :param width: 結果として得られる文字列の長さを指定する
+        :type width: _ArrayLikeInt_co
+        :param fillchar: 使用する余白の文字を指定する
+        :type fillchar: _ArrayLikeAnyString_co
+        """
+
+    def zerofill(self, width: _ArrayLikeInt_co) -> NPString[_ShapeT, _CharType]:
+        """
+        数値文字列の左側を0で埋めて返します。
+
+        :param width: 0で埋める数を指定する
+        :type width: _ArrayLikeInt_co
+        """
+
+    def expandtabs(self, tabsize: _ArrayLikeInt_co = 4) -> NPString[_ShapeT, _CharType]:
+        """
+        各文字列要素について,すべてのタブを1つ以上のスペースに置き換えた配列を返す
+
+        :param tabsize: タブを置き換えたいスペースの数を指定する
+        :type tabsize: _ArrayLikeInt_co
+        """
+
+    def endswith(
+        self,
+        suffix: _ArrayLikeAnyString_co,
+        start: _ArrayLikeInt_co = 0,
+        end: _ArrayLikeInt_co | None = None,
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]:
+        """
+        配列の要素が`suffix`で終わるかを調べる
+
+        :param suffix: 終了する単語を指定する
+        :type suffix: _ArrayLikeAnyString_co
+        :param start: 比較を開始する位置を指定する
+        :type start: _ArrayLikeInt_co, optional
+        :param end: 比較を終える位置を指定する
+        :type end: _ArrayLikeInt_co | None, optional
+        """
 
     def typeconversion(
         self,

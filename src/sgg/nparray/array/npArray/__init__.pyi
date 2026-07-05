@@ -369,5 +369,5 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :type shape: _AnyShapeT
         :returns: 連続値を持つ`NPArray`の配列
         :rtype:
-        :raises ShapeError: `shape`が正の整数のみで構成されていない場合
+        :raises ShapeError: `shape`が正の整数のみで構成されていない場合に発生させる
         """

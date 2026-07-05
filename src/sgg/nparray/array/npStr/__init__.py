@@ -4,7 +4,8 @@ import numpy as np
 import numpy.strings as nps
 
 from ...isdtype import strDtype
-from ..dev import NDArrayOperatorsMixin
+from ..dev import NDArrayOperatorsMixin, _uint_check
+from ..exceptions import UIntError
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -214,6 +215,12 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
+    def max(self):
+        return int(np.max(np.vectorize(len)(self.data)))
+
+    def min(self):
+        return int(np.min(np.vectorize(len)(self.data)))
+
     def stringlen(self):
         return NPNumber(np.vectorize(len)(self), dtype=np.uint64)
 
@@ -221,9 +228,42 @@ class NPString(NDArrayOperatorsMixin, np.ndarray):
         return NPNumber(nps.str_len(self), dtype=np.uint64)
 
     def replace(self, old, new):
-        result = nps.replace(self.data, old, new).view(type(self))
+        result = nps.replace(np.asarray(self), old, new).view(type(self))
         result._dtype = result.dtype
         return result
+
+    def center(self, width, fillchar=" "):
+        _uint_check(width)
+        result = nps.center(np.asarray(self), width, fillchar).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def left(self, width, fillchar=" "):
+        _uint_check(width)
+        result = nps.ljust(np.asarray(self), width, fillchar).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def right(self, width, fillchar=" "):
+        _uint_check(width)
+        result = nps.rjust(np.asarray(self), width, fillchar).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def zerofill(self, width):
+        _uint_check(width)
+        result = nps.zfill(np.asarray(self), width).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def expandtabs(self, tabsize=4):
+        _uint_check(tabsize)
+        result = nps.expandtabs(np.asarray(self), tabsize).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def endswith(self, suffix, start=0, end=None):
+        return NPBool(nps.endswith(np.asarray(self), suffix, start, end))
 
     def to_1d(self):
         if self.min_ndim is not None and self.min_ndim > 1:
