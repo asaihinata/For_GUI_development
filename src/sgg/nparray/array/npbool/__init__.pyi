@@ -351,3 +351,6 @@ class NPBool(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :return: 回転させた配列を返す
         :rtype: NPBool
         """
+
+    def inversion(self) -> Self:
+        """配列内の真偽値を反転させる"""

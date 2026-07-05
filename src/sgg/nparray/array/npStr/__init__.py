@@ -5,7 +5,6 @@ import numpy.strings as nps
 
 from ...isdtype import strDtype
 from ..dev import NDArrayOperatorsMixin, _uint_check
-from ..exceptions import UIntError
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 

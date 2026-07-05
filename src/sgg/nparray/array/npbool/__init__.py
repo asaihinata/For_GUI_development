@@ -118,6 +118,11 @@ class NPBool(NDArrayOperatorsMixin, np.ndarray):
     def __class_getitem__(cls, item):
         return np.ndarray.__class_getitem__.__func__(cls, item)
 
+    def __invert__(self):
+        result = np.logical_not(np.asarray(self)).view(type(self))
+        result._dtype = self._dtype
+        return result
+
     def __ne__(self, other):
         return NPBool(np.not_equal(np.asarray(self), other))
 
@@ -228,5 +233,10 @@ class NPBool(NDArrayOperatorsMixin, np.ndarray):
         if self.ndim <= 1:
             raise ValueError(f"配列には2次元以上ではないといけません")
         result = np.rot90(np.asarray(self), k, axes).view(type(self))
+        result._dtype = self._dtype
+        return result
+
+    def inversion(self):
+        result = np.logical_not(np.asarray(self)).view(type(self))
         result._dtype = self._dtype
         return result
