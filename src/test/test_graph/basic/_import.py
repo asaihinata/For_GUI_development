@@ -54,7 +54,7 @@ dscattery = [3, 4, 9, 10]
 dscatterz = [10, 20, 30, 40]
 stepdata = rng.integers(1, 10, size=5)
 histdata = rng.normal(10, 50, size=1000)
-boxdata1 = rng.normal(10, 100, size=100)
+boxdata1 = rng.normal(20, 90, 100)
 boxdata2 = rng.normal(20, 90, size=(2, 150))
 eventdata = rng.gamma(4, size=(3, 50))
 ecdfdata = 4 + rng.normal(0, 1.5, size=100)

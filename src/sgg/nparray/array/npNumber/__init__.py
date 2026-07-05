@@ -158,6 +158,7 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
         return result
 
     def __getitem__(self, key: int | slice):
+        key=int(key)
         size = self.size
         if size == 0:
             raise IndexError("空の配列にはアクセスできません")

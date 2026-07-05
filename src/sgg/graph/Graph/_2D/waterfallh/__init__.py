@@ -45,7 +45,7 @@ class Waterfallh(twoElement):
         dcolor,
     ):
         self.clear()
-        x, y = x, y
+        x, y = x.data, y.data
         if sums:
             x = np.append(x, sumstext)
             y = np.append(y, np.sum(y))
@@ -53,8 +53,8 @@ class Waterfallh(twoElement):
         self.color = np.where(y <= 0, dcolor, ucolor)
         self.graphdata = [
             self.ax.barh(
-                x.data,
-                y.data,
+                x,
+                y,
                 color=self.color,
                 alpha=alpha,
                 height=height,

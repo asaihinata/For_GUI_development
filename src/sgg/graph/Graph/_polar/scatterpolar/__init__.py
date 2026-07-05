@@ -35,7 +35,9 @@ class Scatterpolar(polarElement):
         if not change_array_like(y):
             y = self.__y
         self.__x, self.__y = self._xyd(x, y, data)
-        self.marker = Marker(kw.get("marker", self.marker))
+        marker = kw.get("marker")
+        if marker is not None:
+            self.marker = Marker(marker)
         self.s = num1s(kw.get("markersize"), self.s)
         self.linewidth = num0(kw.get("linewidth"), self.linewidth)
         self.__plot(

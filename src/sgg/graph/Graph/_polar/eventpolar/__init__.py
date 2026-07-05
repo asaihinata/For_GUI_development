@@ -30,10 +30,11 @@ class Eventpolar(polarElement):
         linestyle,
     ):
         self.clear()
+        datas=self._places(data.ndim + 1)
         self.graphdata = [
             self.ax.eventplot(
                 ds,
-                lineoffsets=self._places(data.ndim + 1)[i],
+                lineoffsets=datas[i],
                 alpha=alpha,
                 linelengths=linelength,
                 linewidths=linewidth,
@@ -53,7 +54,9 @@ class Eventpolar(polarElement):
         )
         self.linewidth = num0(kw.get("linewidth"), self.linewidth)
         self.linelength = num0(kw.get("linelength"), self.linelength)
-        self.linestyle = Solid(kw.get("linestyle", self.linestyle))
+        linestyle = kw.get("linestyle")
+        if linestyle is not None:
+            self.linestyle = Solid(linestyle)
         self.__plot(
             self.__data,
             orientation=self.orientation,

@@ -6,7 +6,7 @@ __all__ = ["Boxplot"]
 class Boxplot(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__data = NPNumber(kw.get("data"))
+        self.__data = NPNumber(kw.get("data")).tonumpy()
         self.legends = bols(kw.get("legend"), False)
         if self.label:
             self.label = getLabel([f"box{i}" for i in range(self.__data.ndim)])
@@ -46,7 +46,7 @@ class Boxplot(twoElement):
     ):
         self.clear()
         boxplot = self.ax.boxplot(
-            np.asarray(data),
+            data.T,
             showfliers=showfliers,
             label=list(label),
             widths=width,
@@ -70,7 +70,7 @@ class Boxplot(twoElement):
     def update(self, data=None, **kw):
         self._updates(**kw)
         if change_array_like(data):
-            self.__data = NPNumber(data)
+            self.__data = NPNumber(data).tonumpy()
         self.legends = bols(kw.get("legend"), self.legends)
         self.fill = bols(kw.get("fill"), self.fill)
         self.notch = bols(kw.get("notch"), self.notch)

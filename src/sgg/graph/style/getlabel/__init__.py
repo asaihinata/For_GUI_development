@@ -1,5 +1,4 @@
-from numpy import all, array, tile
-
+from numpy import all, array, tile,asarray
 from ....nparray import NPArray
 
 __all__ = ["getLabel"]
@@ -12,7 +11,7 @@ class getLabel(NPArray):
         return super().__new__(cls, label, d_ndim=1)
 
     def __iter__(self):
-        return iter(self.data)
+        return iter(list(self.data.tolist()))
 
     def __getitem__(self, val):
         return super().__getitem__(val)
@@ -21,8 +20,8 @@ class getLabel(NPArray):
         return bool(all([x == None for x in self.data]))
 
     def __repr__(self):
-        return f"getLabel({self.data})"
+        return super().__repr__()
 
     def loop(self, lenght):
-        self.data = tile(self.data, lenght // self.size + 1)[:lenght]
-        return self
+        result = tile(asarray(self), lenght // self.size + 1)[:lenght]
+        return result

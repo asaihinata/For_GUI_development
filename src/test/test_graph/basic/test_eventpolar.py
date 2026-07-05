@@ -4,7 +4,7 @@ from _import import *
 def test_main():
 
     def updates():
-        radomdata = rng.gamma(4, size=(5, 50))
+        radomdata = rng.gamma(4, size=(3, 50))
         print(f"{radomdata=}")
         eventpolar: Eventpolar = win.get("eventpolar")
         eventpolar.update(data=radomdata)
