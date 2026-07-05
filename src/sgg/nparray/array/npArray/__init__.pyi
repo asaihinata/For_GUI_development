@@ -2,7 +2,7 @@ from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
 from numpy._typing import _ShapeLike
-from numpy.typing import ArrayLike, DTypeLike, NDArray
+from numpy.typing import DTypeLike, NDArray
 
 from .._typing import _DTypeT, _ShapeT
 
@@ -31,33 +31,33 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: ArrayLike,
+        data: _ShapeT,
         dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPArray[ArrayLike, np.dtype[Any]]: ...
+    ) -> NPArray[_ShapeT, np.dtype[Any]]: ...
     @overload
     def __new__(
         cls,
-        data: ArrayLike,
+        data: _ShapeT,
         dtype: type[np.generic],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPArray[ArrayLike, np.dtype[np.generic]]: ...
+    ) -> NPArray[_ShapeT, np.dtype[np.generic]]: ...
     @overload
     def __new__(
         cls,
-        data: ArrayLike,
+        data: _ShapeT,
         dtype: np.dtype[_DTypeT],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPArray[ArrayLike, _DTypeT]: ...
+    ) -> NPArray[_ShapeT, _DTypeT]: ...
     def __new__(
         cls,
-        data: ArrayLike,
+        data: _ShapeT,
         dtype: DTypeLike | None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -79,7 +79,7 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :return: 生成された配列オブジェクトインスタンスを返す
         :rtype:
         :raises ValueError: 次元数が範囲外の場合に発生させる
-        :raises TypeError: 要素型が`__element_type`と一致しない場合に発生させる
+        :raises TypeError: 要素型が`element_type`と一致しない場合に発生させる
         """
 
     def __ne__(self, other: Any) -> NPArray[Any, np.dtype[np.bool]]: ...
@@ -205,11 +205,15 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @classmethod
     def _validate_elements(cls, obj: np.ndarray) -> None:
         """
-        配列内の要素が`__element_type`と一致するか検証する
+        配列内の要素が`element_type`と一致するか検証する
 
         :param obj: 検証対象の配列
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
         """
+
+    @property
+    def element_type(self) -> None:
+        """NPArrayで許可されている型を取得する"""
 
     @property
     def data(self) -> NDArray[Any]:
@@ -251,7 +255,7 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 
-    def lengtharange(self) -> np.NDArray[np.unsignedinteger[np._64Bit]]:
+    def lengtharange(self) -> NDArray[np.unsignedinteger[np._64Bit]]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
@@ -323,7 +327,7 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :type keepdims: bool
         """
 
-    def unique(self):
+    def unique(self) -> NDArray:
         """配列の固有要素を見つける"""
 
     def counts(self) -> tuple[NDArray[Any], NDArray[np.intp]]:

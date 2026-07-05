@@ -224,7 +224,13 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         """
 
     @property
-    def data(self) -> np.NDArray[Any]:
+    def element_type(
+        self,
+    ) -> tuple[tuple[int], tuple[float], tuple[complex], tuple[np.number]]:
+        """NPNumberで許可されている型を取得する"""
+
+    @property
+    def data(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @property
@@ -263,7 +269,7 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 
-    def lengtharange(self) -> np.NDArray[np.unsignedinteger[np._64Bit]]:
+    def lengtharange(self) -> NDArray[np.unsignedinteger[np._64Bit]]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
@@ -282,7 +288,7 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: bool
         """
 
-    def tonumpy(self) -> np.NDArray[Any]:
+    def tonumpy(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def all_None(self) -> bool:
@@ -379,7 +385,7 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :type keepdims: bool
         """
 
-    def unique(self):
+    def unique(self) -> NDArray:
         """配列の固有要素を見つける"""
 
     def counts(self) -> tuple[NDArray[Any], NDArray[np.intp]]:

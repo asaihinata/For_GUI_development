@@ -189,6 +189,12 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         """
 
     @property
+    def element_type(
+        self,
+    ) -> tuple[tuple[int], tuple[float], tuple[complex], tuple[np.number]]:
+        """NPStatisticsdで許可されている型を取得する"""
+
+    @property
     def data(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 

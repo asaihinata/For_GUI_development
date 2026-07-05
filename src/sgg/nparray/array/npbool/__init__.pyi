@@ -203,7 +203,11 @@ class NPBool(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         """
 
     @property
-    def data(self) -> np.NDArray[Any]:
+    def element_type(self) -> tuple[type[bool], np.bool_, type[np.bool]]:
+        """NPBoolで許可されている型を取得する"""
+
+    @property
+    def data(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @property
@@ -242,7 +246,7 @@ class NPBool(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 
-    def lengtharange(self) -> np.NDArray[np.unsignedinteger[np._64Bit]]:
+    def lengtharange(self) -> NDArray[np.unsignedinteger[np._64Bit]]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
@@ -261,7 +265,7 @@ class NPBool(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: bool
         """
 
-    def tonumpy(self) -> np.NDArray[Any]:
+    def tonumpy(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def all_None(self) -> bool:
@@ -280,8 +284,12 @@ class NPBool(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: bool
         """
 
-    def all(self) -> bool: ...
-    def any(self) -> bool: ...
+    def all(self) -> bool:
+        """全ての要素が`True`かを調べる"""
+
+    def any(self) -> bool:
+        """どれかの要素が`True`かを調べる"""
+
     def typeconversion(
         self,
         type: np.DTypeLike,
@@ -316,7 +324,7 @@ class NPBool(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :type keepdims: bool
         """
 
-    def unique(self):
+    def unique(self) -> NDArray:
         """配列の固有要素を見つける"""
 
     def counts(self) -> tuple[NDArray[Any], NDArray[np.intp]]:

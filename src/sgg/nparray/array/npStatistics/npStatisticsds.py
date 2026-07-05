@@ -136,6 +136,10 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
                 )
 
     @property
+    def element_type(self):
+        return self.__element_type
+
+    @property
     def data(self):
         return np.asarray(self, dtype=self._dtype)
 

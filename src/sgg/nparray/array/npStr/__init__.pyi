@@ -225,7 +225,13 @@ class NPString(np.ndarray[_ShapeT, _CharType]):
         """
 
     @property
-    def data(self) -> np.NDArray[Any]:
+    def element_type(
+        self,
+    ) -> tuple[type[str], type[np.character], type[np.str_], type[np.bytes_]]:
+        """NPStringで許可されている型を取得する"""
+
+    @property
+    def data(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @property
@@ -264,7 +270,7 @@ class NPString(np.ndarray[_ShapeT, _CharType]):
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 
-    def lengtharange(self) -> np.NDArray[np.unsignedinteger[np._64Bit]]:
+    def lengtharange(self) -> NDArray[np.unsignedinteger[np._64Bit]]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
@@ -283,7 +289,7 @@ class NPString(np.ndarray[_ShapeT, _CharType]):
         :rtype: bool
         """
 
-    def tonumpy(self) -> np.NDArray[Any]:
+    def tonumpy(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def all_None(self) -> bool:
@@ -302,30 +308,30 @@ class NPString(np.ndarray[_ShapeT, _CharType]):
         :rtype: bool
         """
 
-    def append(self, val: Any) -> NPString:
+    def append(self, val: Any) -> NPString[_ShapeT, _CharType]:
         """配列内の要素の文字に`val`を付け加える"""
 
     @property
-    def low(self) -> NPString:
+    def low(self) -> NPString[_ShapeT, _CharType]:
         """`NPString`内の要素のアルファベットを小文字に変換する"""
 
     @property
-    def up(self) -> NPString:
+    def up(self) -> NPString[_ShapeT, _CharType]:
         """`NPString`内の要素のアルファベットを大文字に変換する"""
 
-    def lower(self) -> NPString:
+    def lower(self) -> NPString[_ShapeT, _CharType]:
         """`NPString`内の要素のアルファベットを小文字に変換する"""
 
-    def upper(self) -> NPString:
+    def upper(self) -> NPString[_ShapeT, _CharType]:
         """`NPString`内の要素のアルファベットを大文字に変換する"""
 
-    def stringlen(self) -> NPNumber:
+    def stringlen(self) -> NPNumber[_ShapeT, np.uint64]:
         """配列内の要素の文字の長さを求める"""
 
-    def str_len(self) -> NPNumber:
+    def str_len(self) -> NPNumber[_ShapeT, np.uint64]:
         """配列内の要素の文字の長さを求める"""
 
-    def replace(self, old: str, new: str) -> NPString:
+    def replace(self, old: str, new: str) -> NPString[_ShapeT, _CharType]:
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
 
     def typeconversion(
@@ -362,7 +368,7 @@ class NPString(np.ndarray[_ShapeT, _CharType]):
         :type keepdims: bool
         """
 
-    def unique(self):
+    def unique(self) -> NDArray:
         """配列の固有要素を見つける"""
 
     def counts(self) -> tuple[NDArray[Any], NDArray[np.intp]]:
