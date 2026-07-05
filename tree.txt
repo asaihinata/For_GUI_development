@@ -229,7 +229,11 @@ For_GUI_development
  │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── dev
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   │   ├── arrcheck.py
+ │   │   │   │   │   ├── ndarrayoperatorsmixin.py
+ │   │   │   │   │   └── ndarrayoperatorsmixin.pyi
+ │   │   │   │   ├── exceptions
+ │   │   │   │   │   └── __init__.py
  │   │   │   │   ├── nparray
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
@@ -452,5 +456,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:313
-フォルダ数:140
+ファイル数:316
+フォルダ数:141

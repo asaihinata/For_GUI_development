@@ -2,11 +2,11 @@ from abc import ABC, abstractmethod
 from typing import Any, Literal, type_check_only
 
 from numpy import ufunc
+from numpy.lib.mixins import NDArrayOperatorsMixin
 
 __all__ = ["NDArrayOperatorsMixin"]
 
 class NDArrayOperatorsMixin(ABC):
-    __slots__ = ()
     @type_check_only
     @abstractmethod
     def __array_ufunc__(

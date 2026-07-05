@@ -30,7 +30,7 @@ class Eventpolar(polarElement):
         linestyle,
     ):
         self.clear()
-        datas=self._places(data.ndim + 1)
+        datas = self._places(data.ndim + 1)
         self.graphdata = [
             self.ax.eventplot(
                 ds,

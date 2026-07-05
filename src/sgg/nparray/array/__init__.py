@@ -1,4 +1,4 @@
-from .nparray import NPArray, change_array_like, is_array_like
+from .nparray import NPArray
 from .npbool import NPBool
 from .npdate import Formatconversion, NPDate
 from .npnumber import NPNumber
@@ -14,6 +14,4 @@ __all__ = [
     "NPStatisticsd",
     "NPStatisticsds",
     "NPString",
-    "change_array_like",
-    "is_array_like",
 ]

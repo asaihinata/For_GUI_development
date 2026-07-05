@@ -1,4 +1,5 @@
-from numpy import all, array, tile,asarray
+from numpy import all, array, asarray, tile
+
 from ....nparray import NPArray
 
 __all__ = ["getLabel"]

@@ -45,6 +45,7 @@ __all__ = [
     "ArrayLikeDateParse",
     "DateParseScalar",
     "_ArrayLikeDateParse_co",
+    "Incomplete",
 ]
 _ShapeT = TypeVar("_ShapeT", bound=np._Shape, default=np._AnyShape, covariant=True)
 _DTypeT = TypeVar("_DTypeT", bound=np.dtype, default=np.dtype, covariant=True)
@@ -98,3 +99,4 @@ _ArrayLikeDateParse_co: TypeAlias = (
     | _NestedSequence[DateParseScalar]
     | np.ndarray[Any, np.dtype[np.str_ | np.bytes_ | np.object_ | np.datetime64]]
 )
+Incomplete: TypeAlias = Any

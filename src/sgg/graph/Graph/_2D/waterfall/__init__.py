@@ -45,7 +45,7 @@ class Waterfall(twoElement):
         dcolor,
     ):
         self.clear()
-        x,y=x.data,y.data
+        x, y = x.data, y.data
         if sums:
             x = np.append(x, sumstext)
             y = np.append(y, np.sum(y))

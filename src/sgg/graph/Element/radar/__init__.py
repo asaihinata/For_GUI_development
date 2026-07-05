@@ -1,11 +1,21 @@
 import numpy as np
 
 from ....dev import bols, num0s, parsecolor, range_num
-from ....nparray import NPNumber, change_array_like
+from ....nparray import NPNumber
 from ..graph import GElement
 from .custom import radar_factory
 
 __all__ = ["RadarElement"]
+
+
+def change_array_like(obj):
+    if isinstance(obj, np.ndarray | list | tuple | range):
+        return True
+    elif np.isscalar(obj):
+        return True
+    elif hasattr(obj, "__array__"):
+        return True
+    return False
 
 
 class RadarElement(GElement):

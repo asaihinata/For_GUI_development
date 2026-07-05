@@ -1,5 +1,5 @@
 from .array import (Formatconversion, NPArray, NPBool, NPDate, NPNumber, NPStatisticsd,
-                    NPStatisticsds, NPString, change_array_like, is_array_like)
+                    NPStatisticsds, NPString)
 from .isdtype import (booldDtype, boolDtype, complexdDtype, complexDtype, floatdDtype,
                       floatDtype, intdDtype, intDtype, integerdDtype, integerDtype,
                       numberdDtype, numberDtype, strdDtype, strDtype, uintdDtype,
@@ -36,6 +36,4 @@ __all__ = [
     "NPStatisticsd",
     "NPStatisticsds",
     "NPString",
-    "change_array_like",
-    "is_array_like",
 ]

@@ -1,27 +1,9 @@
 import numpy as np
 
-from ..dev import NDArrayOperatorsMixin
+from ..dev import NDArrayOperatorsMixin, _arrisuint
+from ..exceptions import ShapeError
 
-__all__ = ["is_array_like", "change_array_like", "NPArray"]
-
-
-def is_array_like(obj):
-    if isinstance(obj, np.ndarray | list | tuple | range):
-        return True
-    elif hasattr(obj, "__array__"):
-        return True
-    return False
-
-
-def change_array_like(obj):
-    if isinstance(obj, np.ndarray | list | tuple | range):
-        return True
-    elif np.isscalar(obj):
-        return True
-    elif hasattr(obj, "__array__"):
-        return True
-    return False
-
+__all__ = ["NPArray"]
 
 HANDLED_FUNCTIONS = {}
 
@@ -252,3 +234,22 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         result = np.rot90(np.asarray(self), k, axes).view(type(self))
         result._dtype = self._dtype
         return result
+
+    def EType(self):
+        return np.asarray(np.vectorize(type)(self))
+
+    @classmethod
+    def full(cls, fill_value, shape, dtype=None):
+        if _arrisuint(shape):
+            return np.full(shape, fill_value, np.dtype(dtype))
+        else:
+            raise ShapeError(shape)
+
+    @classmethod
+    def sequential(cls, shape):
+        if _arrisuint(shape):
+            return np.asarray(
+                np.arange(np.prod(shape), dtype=np.uint64).reshape(shape)
+            ).view(cls)
+        else:
+            raise ShapeError(shape)

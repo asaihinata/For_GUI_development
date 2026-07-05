@@ -4,15 +4,9 @@ import numpy as np
 from numpy._typing import _ShapeLike
 from numpy.typing import DTypeLike, NDArray
 
-from .._typing import _DTypeT, _ShapeT
+from .._typing import Incomplete, _DTypeT, _ShapeT
 
-__all__ = ["is_array_like", "change_array_like", "NPArray"]
-
-def is_array_like(obj: Any) -> bool:
-    """配列のようなオブジェクトかを判定する"""
-
-def change_array_like(obj: Any) -> bool:
-    """NumPyの`array`に変換できるかを判定する"""
+__all__ = ["NPArray"]
 
 HANDLED_FUNCTIONS: dict
 
@@ -264,6 +258,12 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :return: インデックス配列を返す
         """
 
+    @classmethod
+    def full(
+        cls, fill_value: Any, shape: np._AnyShapeT, dtype: _DTypeT | None = None
+    ) -> NPArray[np._AnyShapeT, _DTypeT]:
+        """指定された形状と配列の型を,fill_valueで埋める"""
+
     def shapesize(self, shapes: tuple[int, ...]) -> bool:
         """
         配列オブジェクトの`shape`が`shapes`と一致するかを確認する
@@ -353,4 +353,21 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :type axes: tuple[int,int]
         :return: 回転させた配列を返す
         :rtype: NPArray
+        """
+
+    def EType(self) -> NDArray[Incomplete]:
+        """要素の型を調べる"""
+
+    @classmethod
+    def sequential(
+        cls, shape: np._AnyShapeT
+    ) -> NPArray[np._AnyShapeT, np.dtype[np.uint64]]:
+        """
+        連続した整数値を要素に持つ配列を生成する
+
+        :param shape: 生成する配列の形状。各要素は正の整数でなければならない。
+        :type shape: _AnyShapeT
+        :returns: 連続値を持つ`NPArray`の配列
+        :rtype:
+        :raises ShapeError: `shape`が正の整数のみで構成されていない場合
         """
