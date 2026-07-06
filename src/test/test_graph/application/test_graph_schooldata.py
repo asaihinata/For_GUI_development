@@ -1,8 +1,6 @@
 from _import import *
-
-
 def test_main():
-    data = np.array(getcsv("school_test_demo_data.csv"))
+    data=readfile.Getcsv(Path(__file__).parent/"data"/"school_test_demo_data.csv").get_numpy()
     layout = []
     for i in range(6):
         tabs = []

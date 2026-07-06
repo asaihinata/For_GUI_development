@@ -399,6 +399,9 @@ For_GUI_development
  │       ├── test_all.py
  │       ├── test_graph
  │       │   ├── application
+ │       │   │   ├── data
+ │       │   │   │   ├── japan_population.csv
+ │       │   │   │   └── school_test_demo_data.csv
  │       │   │   ├── test_graph_schooldata.py
  │       │   │   └── test_japanese.py
  │       │   ├── basic
@@ -434,11 +437,6 @@ For_GUI_development
  │       │   │   ├── test_violinplot.py
  │       │   │   ├── test_waterfall.py
  │       │   │   └── test_waterfallh.py
- │       │   ├── data
- │       │   │   └── csv
- │       │   │       ├── __init__.py
- │       │   │       ├── japan_population.csv
- │       │   │       └── school_test_demo_data.csv
  │       │   └── style
  │       │       ├── test_linestyles.py
  │       │       └── test_marker.py
@@ -458,5 +456,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:317
-フォルダ数:142
+ファイル数:316
+フォルダ数:141

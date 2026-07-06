@@ -4,11 +4,11 @@ from ..exceptions import *
 
 __all__ = [
     "_arrisuint",
-    "is_array_like",
-    "change_array_like",
-    "_uint_check",
-    "_scalar_check",
     "_intarraylike_check",
+    "_scalar_check",
+    "_uint_check",
+    "change_array_like",
+    "is_array_like",
 ]
 
 

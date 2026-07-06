@@ -2,7 +2,7 @@ from _import import *
 
 
 def test_main():
-    data = np.array(getcsv("japan_population.csv"))[1:4, 2:8].astype(np.int64)
+    data=readfile.Getcsv(Path(__file__).parent/"data"/"japan_population.csv").get_numpy()[1:4, 2:8].astype(np.int64)
     layout = [
         [
             Guis.LineGraph(
