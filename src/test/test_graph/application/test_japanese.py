@@ -12,7 +12,7 @@ def test_main():
             Guis.LineGraph(
                 x=[2015, 2016, 2017, 2018, 2019, 2020],
                 y=data,
-                label=["総合", "女", "男"],
+                label=["女", "男", "総合"],
                 xlabel="年",
                 ylabel="人数",
                 title="人口の変化",

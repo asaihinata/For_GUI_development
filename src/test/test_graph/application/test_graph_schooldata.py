@@ -8,7 +8,7 @@ def test_main():
     layout = []
     for i in range(6):
         tabs = []
-        for j in range(1, 6):
+        for j in range(0, 5):
             datas = data[j + i * 5]
             tabs.append(
                 [
