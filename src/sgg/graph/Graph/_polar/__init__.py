@@ -4,3 +4,12 @@ from .eventpolar import Eventpolar
 from .linepolar import Linepolar
 from .scatterpolar import Scatterpolar
 from .stempolar import Stempolar
+
+__all__ = [
+    "Barpolar",
+    "Errorpolar",
+    "Eventpolar",
+    "Linepolar",
+    "Scatterpolar",
+    "Stempolar",
+]

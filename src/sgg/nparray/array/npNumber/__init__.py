@@ -8,15 +8,15 @@ from ..npbool import NPBool
 
 __all__ = ["NPNumber"]
 method_list = [
-    "inverted_cdf",
     "averaged_inverted_cdf",
     "closest_observation",
-    "interpolated_inverted_cdf",
     "hazen",
-    "weibull",
+    "interpolated_inverted_cdf",
+    "inverted_cdf",
     "linear",
     "median_unbiased",
     "normal_unbiased",
+    "weibull",
 ]
 HANDLED_FUNCTIONS = {}
 
@@ -253,6 +253,11 @@ class NPNumber(NDArrayOperatorsMixin, np.ndarray):
     def counts(self):
         count = np.unique_counts(np.asarray(self))
         return count.values, count.counts
+
+    def count_nonzero(self, axis=None, keepdims=False):
+        if not isinstance(keepdims, bool):
+            keepdims = False
+        return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
 
     @property
     def sturgesval(self):

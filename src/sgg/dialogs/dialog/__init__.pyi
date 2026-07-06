@@ -3,7 +3,16 @@ from tkinter import Misc, StringVar
 
 from _typeshed import StrOrBytesPath
 
-__all__ = ["askcolor", "asksaveasfilename", "askopenfilename", "askdirectory"]
+__all__ = [
+    "askcolor",
+    "askdirectory",
+    "askopenfilename",
+    "asksaveasfilename",
+    "Chooser",
+    "Directory",
+    "Open",
+    "SaveAs",
+]
 
 def askcolor(
     color: str | bytes | None = None,

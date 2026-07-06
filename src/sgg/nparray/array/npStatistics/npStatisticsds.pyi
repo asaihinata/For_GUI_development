@@ -16,15 +16,15 @@ BINS_LIST: TypeAlias = Literal[
     "stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"
 ]
 METHOD_LIST: TypeAlias = Literal[
-    "inverted_cdf",
     "averaged_inverted_cdf",
     "closest_observation",
-    "interpolated_inverted_cdf",
     "hazen",
-    "weibull",
+    "interpolated_inverted_cdf",
+    "inverted_cdf",
     "linear",
     "median_unbiased",
     "normal_unbiased",
+    "weibull",
 ]
 
 class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
@@ -47,6 +47,100 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         :type dtype: np.dtype[_NumberT] | None
         :rtype: Self
         :return: `NPStatisticsds`オブジェクトを返す
+        """
+
+    @classmethod
+    def _resolve_dtype(
+        cls,
+        dtype: np.dtype | str | type | None,
+    ) -> np.dtype | None:
+        """
+        引数dtypeを解決させる
+
+        :param dtype: ユーザーが指定するdtype
+        :return: 解決されたdtypeを返す
+        :rtype: numpy.dtype | None
+        """
+
+    @classmethod
+    def _validate_ndim(
+        cls,
+        obj: np.ndarray,
+    ) -> None:
+        """
+        配列の次元数が2次元か検証する
+
+        :param obj: 検証対象の配列
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        """
+
+    @classmethod
+    def _validate_elements(cls, obj: np.ndarray) -> None:
+        """
+        配列内の要素が`__element_type`と一致するか検証する
+
+        :param obj: 検証対象の配列
+        :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
+        """
+
+    def __array_finalize__(self, obj: np.ndarray | None) -> None:
+        """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
+
+    def __array_ufunc__(
+        self,
+        ufunc: np.ufunc,
+        method: str,
+        *inputs: Any,
+        **kwargs: Any,
+    ) -> NPStatisticsd | Any:
+        """
+        NumPyのufuncの動作をカスタマイズする
+
+        :param ufunc: 呼び出されたufunc
+        :type ufunc: np.ufunc
+        :param method: 呼び出しメソッド名
+        :type method: str
+        :param inputs: ufuncへの入力
+        :type inputs: Any
+        :param kwargs: ufuncへの追加引数
+        :type kwargs: Any
+        :return: 処理結果を返す
+        """
+
+    @overload
+    def __array__(
+        self, dtype: None = None, copy: bool | None = None
+    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
+    @overload
+    def __array__(
+        self, dtype: np._DTypeT, copy: bool | None = None
+    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
+    @overload
+    def __array__(
+        self, dtype: np._DTypeT | None, copy: bool | None = None
+    ) -> (
+        np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
+    ): ...
+    def __array_function__(
+        self,
+        func: Any,
+        types: Any,
+        args: tuple,
+        kwargs: dict,
+    ) -> Any:
+        """
+        numpy関数の動作をカスタマイズする
+
+        :param func: 呼び出されたnumpy関数
+        :type func: Any
+        :param types: 関連する型のコレクション
+        :type types: Any
+        :param args: 位置引数
+        :type args: tuple
+        :param kwargs: キーワード引数
+        :type kwargs: dict
+        :return: 演算結果を返す
+        :rtype: Any
         """
 
     def __repr__(self) -> str: ...
@@ -84,100 +178,6 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
-    @overload
-    def __array__(
-        self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
-    @overload
-    def __array__(
-        self, dtype: np._DTypeT, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
-    @overload
-    def __array__(
-        self, dtype: np._DTypeT | None, copy: bool | None = None
-    ) -> (
-        np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
-    ): ...
-    def __array_finalize__(self, obj: np.ndarray | None) -> None:
-        """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
-
-    def __array_ufunc__(
-        self,
-        ufunc: np.ufunc,
-        method: str,
-        *inputs: Any,
-        **kwargs: Any,
-    ) -> NPStatisticsd | Any:
-        """
-        NumPyのufuncの動作をカスタマイズする
-
-        :param ufunc: 呼び出されたufunc
-        :type ufunc: np.ufunc
-        :param method: 呼び出しメソッド名
-        :type method: str
-        :param inputs: ufuncへの入力
-        :type inputs: Any
-        :param kwargs: ufuncへの追加引数
-        :type kwargs: Any
-        :return: 処理結果を返す
-        """
-
-    def __array_function__(
-        self,
-        func: Any,
-        types: Any,
-        args: tuple,
-        kwargs: dict,
-    ) -> Any:
-        """
-        numpy関数の動作をカスタマイズする
-
-        :param func: 呼び出されたnumpy関数
-        :type func: Any
-        :param types: 関連する型のコレクション
-        :type types: Any
-        :param args: 位置引数
-        :type args: tuple
-        :param kwargs: キーワード引数
-        :type kwargs: dict
-        :return: 演算結果を返す
-        :rtype: Any
-        """
-
-    @classmethod
-    def _resolve_dtype(
-        cls,
-        dtype: np.dtype | str | type | None,
-    ) -> np.dtype | None:
-        """
-        引数dtypeを解決させる
-
-        :param dtype: ユーザーが指定するdtype
-        :return: 解決されたdtypeを返す
-        :rtype: numpy.dtype | None
-        """
-
-    @classmethod
-    def _validate_ndim(
-        cls,
-        obj: np.ndarray,
-    ) -> None:
-        """
-        配列の次元数が2次元か検証する
-
-        :param obj: 検証対象の配列
-        :raises ValueError: 次元数が範囲外の場合に発生させる
-        """
-
-    @classmethod
-    def _validate_elements(cls, obj: np.ndarray) -> None:
-        """
-        配列内の要素が`__element_type`と一致するか検証する
-
-        :param obj: 検証対象の配列
-        :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
-        """
-
     @property
     def element_type(
         self,
@@ -207,6 +207,22 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         :return:
         :rtype: numpy.dtype | None
         """
+
+    @property
+    def x(self) -> NPStatisticsd:
+        """`x`データを`NPStatisticsd`オブジェクトで返す"""
+
+    @property
+    def xmath(self) -> np.ndarray:
+        """`x`データをnumpyの配列で返す"""
+
+    @property
+    def y(self) -> NPStatisticsd:
+        """`y`データを`NPStatisticsd`オブジェクトで返す"""
+
+    @property
+    def ymath(self) -> np.ndarray:
+        """`y`データをnumpyの配列で返す"""
 
     def lengtharange(self) -> NDArray[np.unsignedinteger[np._64Bit]]:
         """
@@ -246,22 +262,6 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         :rtype: bool
         """
 
-    @property
-    def x(self) -> NPStatisticsd:
-        """`x`データを`NPStatisticsd`オブジェクトで返す"""
-
-    @property
-    def xmath(self) -> np.ndarray:
-        """`x`データをnumpyの配列で返す"""
-
-    @property
-    def y(self) -> NPStatisticsd:
-        """`y`データを`NPStatisticsd`オブジェクトで返す"""
-
-    @property
-    def ymath(self) -> np.ndarray:
-        """`y`データをnumpyの配列で返す"""
-
     def covariance(self) -> np.floating:
         """共分散を求める"""
 
@@ -270,7 +270,7 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
 
     def correlation_coefficient(self) -> np.floating:
         """単相関係数を求める"""
-    # x,y
+
     @property
     def Sxy(self) -> np.floating:
         """`x`と`y`の共分散を求める"""
@@ -282,7 +282,7 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
     @property
     def Sxxyyroot(self) -> np.floating:
         """`x`の偏差平方和と`y`の偏差平方和の積の平方和を求める"""
-    # 回帰直線
+
     def regression(self, n: int = 1) -> NDArray[np.floating]:
         """点(x,y)に次数`n`の多項式を当てはめる"""
 

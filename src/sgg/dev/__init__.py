@@ -4,16 +4,18 @@ from ._dnumber import *
 from .color import Color, parsecolor
 
 __all__ = [
-    "Color",
     "allNone",
     "allNones",
     "args",
     "bols",
+    "change_array_like",
+    "Color",
     "int0",
     "int0s",
     "int1s",
     "ints",
     "intsmin",
+    "is_array_like",
     "list2float",
     "list2int",
     "list2num",
@@ -28,8 +30,6 @@ __all__ = [
     "numsmin",
     "parsecolor",
     "range_num",
-    "is_array_like",
-    "change_array_like",
 ]
 
 

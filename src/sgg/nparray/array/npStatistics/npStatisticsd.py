@@ -8,15 +8,15 @@ from ..dev import NDArrayOperatorsMixin
 
 __all__ = ["NPStatisticsd"]
 method_list = [
-    "inverted_cdf",
     "averaged_inverted_cdf",
     "closest_observation",
-    "interpolated_inverted_cdf",
     "hazen",
-    "weibull",
+    "interpolated_inverted_cdf",
+    "inverted_cdf",
     "linear",
     "median_unbiased",
     "normal_unbiased",
+    "weibull",
 ]
 HANDLED_FUNCTIONS = {}
 
@@ -42,14 +42,6 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         cls._validate_ndim(obj)
         return obj
 
-    def __array_finalize__(self, obj):
-        if obj is None:
-            return
-        self._dtype = getattr(obj, "_dtype", None)
-
-    def __class_getitem__(cls, item):
-        return np.ndarray.__class_getitem__.__func__(cls, item)
-
     @classmethod
     def _resolve_dtype(cls, dtype):
         if dtype is not None:
@@ -72,26 +64,13 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
                     f"{cls.__name__}の要素は{cls.__element_type}のみ許可されています"
                 )
 
-    @property
-    def element_type(self):
-        return self.__element_type
-
-    @property
-    def data(self):
-        return np.asarray(self, dtype=self._dtype)
-
-    @property
-    def dtypes(self):
-        return self._dtype
-
-    @dtypes.setter
-    def dtypes(self, dtype):
-        if dtype is not None:
-            self._dtype = np.dtype(dtype)
-        return self._dtype
-
     def __array__(self, dtype=np.float64, copy=None):
         return super().__array__(dtype, copy=copy)
+
+    def __array_finalize__(self, obj):
+        if obj is None:
+            return
+        self._dtype = getattr(obj, "_dtype", None)
 
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
@@ -112,6 +91,9 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         if func in HANDLED_FUNCTIONS:
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
+
+    def __class_getitem__(cls, item):
+        return np.ndarray.__class_getitem__.__func__(cls, item)
 
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
@@ -149,6 +131,24 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         elif isinstance(key, slice):
             return data[key]
         raise TypeError("keyにはintまたはsliceを指定してください")
+
+    @property
+    def element_type(self):
+        return self.__element_type
+
+    @property
+    def data(self):
+        return np.asarray(self, dtype=self._dtype)
+
+    @property
+    def dtypes(self):
+        return self._dtype
+
+    @dtypes.setter
+    def dtypes(self, dtype):
+        if dtype is not None:
+            self._dtype = np.dtype(dtype)
+        return self._dtype
 
     def lengtharange(self):
         shapes = self.shape
@@ -244,6 +244,18 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
     def kurtosis(self):
         return np.sum((self.data - self.ave) ** 4) / (self.n * np.pow(self.var, 2))
 
+    @property
+    def n(self):
+        return self.data.size
+
+    @property
+    def n1(self):
+        return self.n - 1
+
+    @property
+    def CV(self):
+        return self.std / self.ave
+
     def percentile(self, q, method="linear"):
         if method not in method_list:
             method = "linear"
@@ -265,19 +277,6 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         iqr = (q3 - q1) * 1.5
         return self.data[(self.data < (q1 - iqr)) | (self.data > (q3 + iqr))]
 
-    @property
-    def n(self):
-        return self.data.size
-
-    @property
-    def n1(self):
-        return self.n - 1
-
-    @property
-    def CV(self):
-        return self.std / self.ave
-
-    # ヒストグラム
     def hist_bin_edges(self, bin=10, range=None, weights=None):
         return np.histogram_bin_edges(self.data, bins=bin, range=range, weights=weights)
 
@@ -287,7 +286,6 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
     def bincount(self, weights=None, min=0):
         return np.bincount(self.data, weights=weights, minlength=min)
 
-    # 母集団
     def ratio_E_samplingerror(self, parcent, cc=0.95):
         if not isinstance(parcent, float | int):
             raise TypeError("parcentにはint型もしくはfloat型を指定してください")

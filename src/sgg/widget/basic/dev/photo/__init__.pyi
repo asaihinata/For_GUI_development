@@ -5,7 +5,7 @@ from typing import IO
 from PIL.ImageFile import ImageFile
 from PIL._typing import StrOrBytesPath
 
-__all__ = ["Img_path", "Img_byte"]
+__all__ = ["Img_byte","Img_path"]
 
 class Img_conversion:
     def __init__(self, data: StrOrBytesPath | IO[bytes]): ...

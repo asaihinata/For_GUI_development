@@ -1,415 +1,328 @@
-"""基本的な数値の操作をするモジュール"""
-
-from typing import Any, Iterator, Literal, Self, TypeAlias, TypeVar, overload
+"""基本的な文字列の操作をするモジュール"""
 
 import numpy as np
-from numpy._typing import _ShapeLike
-from numpy.typing import DTypeLike, NDArray
+import numpy.strings as nps
 
-from .._typing import _ArrayLikeNumber_co, _NumberT, _ShapeT
+from ...isdtype import strDtype
+from ..dev import NDArrayOperatorsMixin, _uint_check
 from ..npbool import NPBool
+from ..npnumber import NPNumber
 
-_DTypeT = TypeVar(
-    "_DTypeT", bound=np.dtype, default=np.dtype[np.float64], covariant=True
-)
-__all__ = ["NPNumber"]
-TYPEMETHOD: TypeAlias = Literal[
-    "inverted_cdf",
-    "averaged_inverted_cdf",
-    "closest_observation",
-    "interpolated_inverted_cdf",
-    "hazen",
-    "weibull",
-    "linear",
-    "median_unbiased",
-    "normal_unbiased",
-]
-HANDLED_FUNCTIONS: dict
+__all__ = ["NPString"]
+HANDLED_FUNCTIONS = {}
 
 
-def implements(np_function) -> Any:
-    """
-    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
+def implements(np_function):
+    def decorator(func):
+        HANDLED_FUNCTIONS[np_function] = func
+        return func
 
-    :param np_function: 登録対象のnumpy関数
-    :return: デコレータ関数を返す
-    """
+    return decorator
 
 
-class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
-    """`np.ndarray`を継承した数値型の配列クラス"""
+class NPString(NDArrayOperatorsMixin, np.ndarray):
+    __element_type = (str, np.character, np.str_, np.bytes_)
 
-    @overload
-    def __new__(
-        cls,
-        data: _ArrayLikeNumber_co,
-        dtype: None = np.float64,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> NPNumber[_ShapeT, np.dtype[np.float64]]: ...
-    @overload
-    def __new__(
-        cls,
-        data: _ArrayLikeNumber_co,
-        dtype: type[_NumberT],
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> NPNumber[_ShapeT, np.dtype[_NumberT]]: ...
-    @overload
-    def __new__(
-        cls,
-        data: _ArrayLikeNumber_co,
-        dtype: type[_NumberT] | None = np.float64,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> Self:
-        """
-        新しい配列オブジェクトインスタンスを生成する
-
-        :param data: 変換する配列を指定する
-        :type data: _ArrayLikeNumber_co
-        :param dtype: 配列の型を指定する
-        :type dtype: type[_NumberT] | None
-        :param d_ndim: 固定される次元数を指定する
-        :type d_ndim: int | None
-        :param min_ndim: 許容する最小次元数を指定する
-        :type min_ndim: int | None
-        :param max_ndim: 許容する最大次元数を指定する
-        :type max_ndim: int | None
-        :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: Self
-        :raises ValueError: 次元数が範囲外の場合に発生させる
-        :raises TypeError: 要素型が`__element_type`と一致しない場合に発生させる
-        """
+    def __new__(cls, data, dtype=np.str_, d_ndim=None, min_ndim=None, max_ndim=None):
+        resolved = cls._resolve_dtype(dtype)
+        if strDtype(resolved):
+            raise TypeError("dtypeには文字列の型を指定してください")
+        obj = np.asarray(data, dtype=resolved).view(cls)
+        cls._validate_elements(obj)
+        obj._dtype = resolved
+        if isinstance(d_ndim, int):
+            cls._validate_ndim(obj, d_ndim, d_ndim)
+            obj._min_ndim = obj._max_ndim = d_ndim
+        else:
+            cls._validate_ndim(obj, min_ndim, max_ndim)
+            obj._min_ndim = min_ndim
+            obj._max_ndim = max_ndim
+        return obj
 
     @classmethod
-    def _resolve_dtype(
-        cls,
-        dtype: np.dtype | str | type | None,
-    ) -> np.dtype | None:
-        """
-        引数dtypeを解決させる
-
-        :param dtype: ユーザーが指定するdtype
-        :return: 解決されたdtypeを返す
-        :rtype: numpy.dtype | None
-        """
+    def _resolve_dtype(cls, dtype):
+        if dtype is not None:
+            return np.dtype(dtype)
+        return np.dtype(np.str_)
 
     @classmethod
-    def _validate_ndim(
-        cls,
-        obj: np.ndarray,
-        min_ndim: int | None,
-        max_ndim: int | None,
-    ) -> None:
-        """
-        配列の次元数がmin_ndim・max_ndimの範囲内か検証する
-
-        :param obj: 検証対象の配列
-        :param min_ndim: 許可する最小次元数を指定する。Noneの場合は制約なし
-        :param max_ndim: 許可する最大次元数を指定する。Noneの場合は制約なし
-        :raises ValueError: 次元数が範囲外の場合に発生させる
-        """
+    def _validate_ndim(cls, obj, min_ndim, max_ndim):
+        ndim = obj.ndim
+        if min_ndim is not None and ndim < min_ndim:
+            raise ValueError(
+                f"{cls.__name__}の次元数は{min_ndim}以上である必要があります"
+            )
+        if max_ndim is not None and ndim > max_ndim:
+            raise ValueError(
+                f"{cls.__name__}の次元数は{max_ndim}以下である必要があります"
+            )
 
     @classmethod
-    def _validate_elements(cls, obj: np.ndarray) -> None:
-        """
-        配列内の要素が`__element_type`と一致するか検証する
+    def _validate_elements(cls, obj):
+        if cls.__element_type is None:
+            return
+        for elem in obj.flat:
+            if not isinstance(elem, cls.__element_type):
+                raise TypeError(
+                    f"{cls.__name__}の要素は{cls.__element_type}のみ許可されています"
+                )
 
-        :param obj: 検証対象の配列
-        :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
-        """
+    def __array__(self, dtype=np.str_, copy=None):
+        return super().__array__(dtype, copy=copy)
 
-    def __array_finalize__(self, obj: np.ndarray | None) -> None:
-        """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
+    def __array_finalize__(self, obj):
+        if obj is None:
+            return
+        self._dtype = getattr(obj, "_dtype", None)
+        self._min_ndim = getattr(obj, "_min_ndim", None)
+        self._max_ndim = getattr(obj, "_max_ndim", None)
 
-    def __array_ufunc__(
-        self,
-        ufunc: np.ufunc,
-        method: str,
-        *inputs: Any,
-        **kwargs: Any,
-    ) -> NPNumber | Any:
-        """
-        NumPyのufuncの動作をカスタマイズする
+    def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
+        raw_inputs = tuple(
+            np.asarray(x) if isinstance(x, NPString) else x for x in inputs
+        )
+        result = getattr(ufunc, method)(*raw_inputs, **dict(kwargs))
 
-        :param ufunc: 呼び出されたufunc
-        :type ufunc: np.ufunc
-        :param method: 呼び出しメソッド名
-        :type method: str
-        :param inputs: ufuncへの入力
-        :type inputs: Any
-        :param kwargs: ufuncへの追加引数
-        :type kwargs: Any
-        :return: 処理結果を返す
-        """
+        if result is NotImplemented:
+            return NotImplemented
 
-    @overload
-    def __array__(
-        self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
-    @overload
-    def __array__(
-        self, dtype: np._DTypeT, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
-    @overload
-    def __array__(
-        self, dtype: np._DTypeT | None, copy: bool | None = None
-    ) -> (
-        np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
-    ): ...
-    def __array_function__(
-        self,
-        func: Any,
-        types: Any,
-        args: tuple,
-        kwargs: dict,
-    ) -> Any:
-        """
-        numpy関数の動作をカスタマイズする
+        if isinstance(result, np.ndarray):
+            result = result.view(type(self))
+            result._dtype = getattr(inputs[0], "_dtype", None)
 
-        :param func: 呼び出されたnumpy関数
-        :type func: Any
-        :param types: 関連する型のコレクション
-        :type types: Any
-        :param args: 位置引数
-        :type args: tuple
-        :param kwargs: キーワード引数
-        :type kwargs: dict
-        :return: 演算結果を返す
-        :rtype: Any
-        """
+        return result
 
-    def __eq__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
-    def __ne__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
-    def __lt__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
-    def __le__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
-    def __gt__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
-    def __ge__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
-    def __repr__(self) -> str: ...
-    def __str__(self) -> str: ...
-    def __contains__(self, value: object) -> bool: ...
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
-    def __len__(self) -> int: ...
-    def __reversed__(self) -> Self:
-        """
-        逆順にした新しい配列オブジェクトを返す
+    def __array_function__(self, func, types, args, kwargs):
+        if func in HANDLED_FUNCTIONS:
+            return HANDLED_FUNCTIONS[func](*args, **kwargs)
+        return super().__array_function__(func, types, args, kwargs)
 
-        :return: 全軸で反転した配列を返す
-        """
+    def __class_getitem__(cls, item):
+        return np.ndarray.__class_getitem__.__func__(cls, item)
 
-    @overload
-    def __getitem__(self, key: int) -> Any | None: ...
-    @overload
-    def __getitem__(self, key: slice) -> np.ndarray | None: ...
-    def __getitem__(self, key: int | slice) -> Any | np.ndarray | None:
-        """
-        インデックスアクセスをカスタマイズする
+    def __add__(self, other):
+        result = np.add(np.asarray(self), other).view(type(self))
+        result._dtype = result.dtype
+        return result
 
-        intキーの場合は配列を1次元に展開してからアクセスする。
-        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
-        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
-        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
-        ただし`key == size`の場合のみ,末尾の要素(`data[size - 1]`)を返す
-        特別な扱いとする。
+    def __mul__(self, i):
+        if not isinstance(i, int):
+            raise TypeError("int型で指定してください")
+        result = nps.multiply(np.asarray(self), i).view(type(self))
+        result._dtype = result.dtype
+        return result
 
-        :param key: インデックスまたはスライスを指定する
-        :type key: int | slice
-        :return: インデックスに対応する要素を返す
-        :rtype: Any | np.ndarray | None
-        :raises IndexError: 配列が空の場合に発生させる
-        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
-        """
+    __radd__ = __add__
+    __iadd__ = __add__
+    __rmul__ = __mul__
+    __imul__ = __mul__
+
+    def __ne__(self, other):
+        return NPBool(np.not_equal(np.asarray(self), other))
+
+    def __eq__(self, other):
+        return NPBool(np.equal(np.asarray(self), other))
+
+    def __repr__(self):
+        return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
+
+    def __str__(self):
+        return self.__repr__()
+
+    def __contains__(self, item):
+        return super().__contains__(item)
+
+    def __len__(self):
+        return super().__len__()
+
+    def __iter__(self):
+        if self.ndim == 1:
+            return iter([self.data])
+        return iter(self.data)
+
+    def __reversed__(self):
+        result = np.flip(np.asarray(self)).view(type(self))
+        result._dtype = self._dtype
+        return result
+
+    def __getitem__(self, key):
+        size = self.size
+        if size == 0:
+            raise IndexError("空の配列にはアクセスできません")
+        data = self.data.flatten()
+        if isinstance(key, int):
+            if key == size:
+                return data[size - 1]
+            elif -size <= key < size:
+                return data[key]
+            else:
+                return data[key % size]
+        elif isinstance(key, slice):
+            return data[key]
+        raise TypeError("keyにはintまたはsliceを指定してください")
 
     @property
-    def element_type(
-        self,
-    ) -> tuple[tuple[int], tuple[float], tuple[complex], tuple[np.number]]:
-        """NPNumberで許可されている型を取得する"""
+    def element_type(self):
+        return self.__element_type
 
     @property
-    def data(self) -> NDArray[Any]:
-        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
+    def data(self):
+        return np.asarray(self, dtype=self._dtype)
 
     @property
-    def dtypes(self) -> np.dtype | None:
-        """
-        インスタンス生成時に確定したdtypeを取得する
-
-        :return:
-        :rtype: numpy.dtype | None
-        """
+    def dtypes(self):
+        return self._dtype
 
     @dtypes.setter
-    def dtypes(self, dtype: DTypeLike | None) -> np.dtype | None:
-        """
-        配列のdtypeを設定する
-
-        :param dtype: 配列の型を指定する
-        :type dtype: DTypeLike | None
-        :return:
-        :rtype: numpy.dtype | None
-        """
+    def dtypes(self, dtype):
+        if dtype is not None:
+            self._dtype = np.dtype(dtype)
+        return self._dtype
 
     @property
-    def min_ndim(self) -> int | None:
-        """配列オブジェクトが許容する最小次元数を返す"""
+    def min_ndim(self):
+        return getattr(self, "_min_ndim", None)
 
     @property
-    def max_ndim(self) -> int | None:
-        """配列オブジェクトが許容する最大次元数を返す"""
+    def max_ndim(self):
+        return getattr(self, "_max_ndim", None)
 
-    def to_1d(self) -> NPNumber:
-        """
-        配列を1次元にフラット化した新しい配列オブジェクトを返す
+    def to_1d(self):
+        if self.min_ndim is not None and self.min_ndim > 1:
+            raise ValueError(f"min_ndimが{self.min_ndim}のため1次元に変換できません")
+        result = np.asarray(self).flatten().view(type(self))
+        result._dtype = self._dtype
+        return result
 
-        :return: フラット化した配列オブジェクトを返す
-        :raises ValueError: `min_ndim`が1以下の場合に発生させる
-        """
+    def lengtharange(self):
+        shapes = self.shape
+        lens = len(shapes)
+        if lens == 1:
+            raw = np.arange(0, self.size, 1)
+        else:
+            raw = np.tile(np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])).reshape(
+                shapes
+            )
+        return np.array(raw, dtype=np.uint64)
 
-    def lengtharange(self) -> NDArray[np.unsignedinteger[np._64Bit]]:
-        """
-        配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
+    def shapesize(self, shapes):
+        if self.shape == shapes:
+            return True
+        return False
 
-        `dtype`は`np.uint64`に固定される
+    def roll(self, shift, axis=None):
+        if not isinstance(shift, int | float):
+            raise TypeError("shiftには数値の型を指定してください")
+        result = np.roll(np.asarray(self), shift, axis).view(type(self))
+        result._dtype = self._dtype
+        return result
 
-        :return: インデックス配列を返す
-        """
+    def rot90(self, k=1, axes=(0, 1)):
+        if self.ndim <= 1:
+            raise ValueError(f"配列には2次元以上ではないといけません")
+        result = np.rot90(np.asarray(self), k, axes).view(type(self))
+        result._dtype = self._dtype
+        return result
 
-    def shapesize(self, shapes: tuple[int, ...]) -> bool:
-        """
-        配列オブジェクトの`shape`が`shapes`と一致するかを確認する
+    def tonumpy(self):
+        return np.asarray(self)
 
-        :param shapes: 比較する`shape`を指定する
-        :type shapes: tuple[int, ...]
-        :return: `shape`が一致する場合は`True`を返し,一致しない場合は`False`を返す
-        :rtype: bool
-        """
+    def typeconversion(self, type, casting="safe"):
+        if casting not in ["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]:
+            casting = "safe"
+        return np.can_cast(np.asarray(self), type, casting=casting)
 
-    def roll(self, shift: _ShapeLike, axis: _ShapeLike | None = None) -> NPNumber:
-        """
-        要素を指定された軸に沿って回転させる
+    def all_None(self):
+        return bool(np.all(self.data == None))
 
-        :param shift: 要素を移動させる位置の数を指定する
-        :type shift: _ShapeLike
-        :param axis: 要素を移動させる軸を指定する
-        :type axis: _ShapeLike | None
-        """
+    def any_None(self):
+        return bool(np.any(self.data == None))
 
-    def rot90(self, k: int = 1, axes: tuple[int, int] = (0, 1)) -> NPNumber:
-        """
-        指定された軸の平面内で配列を90度回転させる
+    def count_nonzero(self, axis=None, keepdims=False):
+        if not isinstance(keepdims, bool):
+            keepdims = False
+        return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
 
-        :param k: 配列に90度回転させたい回数を指定する
-        :type k: int
-        :param axes: 平面内で回転される軸を指定する
-        :type axes: tuple[int,int]
-        :return: 回転させた配列を返す
-        :rtype: NPNumber
-        """
+    def unique(self):
+        return np.unique(np.asarray(self))
 
-    def tonumpy(self) -> NDArray[Any]:
-        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
+    def counts(self):
+        count = np.unique_counts(np.asarray(self))
+        return count.values, count.counts
 
-    def typeconversion(
-        self,
-        type: np.DTypeLike,
-        casting: Literal[
-            "no", "equiv", "safe", "same_kind", "same_value", "unsafe"
-        ] = "safe",
-    ) -> bool:
-        """
-        配列の型が`type`で指定された型に変換可能か調べる
-
-        :param type: 型変換先のデータ型を指定する
-        :type type: np.DTypeLike
-        :param casting: どのようなデータ変換が行われるか指定する
-        :type casting: Literal["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]
-        """
-
-    def all_None(self) -> bool:
-        """
-        配列内の全要素が`None`かどうかを返す
-
-        :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
-
-    def any_None(self) -> bool:
-        """
-        配列内のいずれかの要素が`None`かどうかを返す
-
-        :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
-
-    @overload
-    def count_nonzero(self, axis: None = None, keepdims: bool = False) -> np.intp: ...
-    @overload
-    def count_nonzero(
-        self, axis: _ShapeLike | None = None, keepdims: bool = True
-    ) -> NDArray[np.intp]: ...
-    def count_nonzero(
-        self, axis: _ShapeLike | None = ..., keepdims: bool = ...
-    ) -> np.intp | NDArray[np.intp]:
-        """
-        0以外の要素の数を数える
-
-        :param axis: 要素を数える軸を指定する
-        :type axis: _ShapeLike | None
-        :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
-        :type keepdims: bool
-        """
-
-    def unique(self) -> NDArray:
-        """配列の固有要素を見つける"""
-
-    def counts(self) -> tuple[NDArray[Any], NDArray[np.intp]]:
-        """配列内の要素とその要素が配列内に存在する個数を返す"""
+    def append(self, val):
+        result = nps.add(np.asarray(self), val).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     @property
-    def sturgesval(self) -> np.floating:
-        """スタージェスの公式を求める"""
+    def low(self):
+        result = nps.lower(np.asarray(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
-    def cussum(self) -> NPNumber[_ShapeT, _DTypeT]:
-        """一つ前の元の値との和を求める"""
+    def lower(self):
+        result = nps.lower(np.asarray(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
-    def cumprod(self) -> NPNumber[_ShapeT, _DTypeT]:
-        """一つ前の元の値との積を求める"""
+    @property
+    def up(self):
+        result = nps.upper(np.asarray(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
-    def percentile(
-        self,
-        q: tuple[int | float, ...],
-        method: TYPEMETHOD = "linear",
-    ) -> NPNumber:
-        """
-        指定したパーセンタイルを計算する
+    def upper(self):
+        result = nps.upper(np.asarray(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
-        :param q: 求めたいパーセンタイル値を指定する
-        :type q: tuple[int | float,...]
-        :param method: パーセンタイルを推定するために使用する方法を指定する
-        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
-        """
+    def max(self):
+        return int(np.max(np.vectorize(len)(self.data)))
 
-    def quantile(
-        self,
-        q: tuple[float, ...],
-        method: TYPEMETHOD = "linear",
-    ) -> NPNumber:
-        """
-        指定した分位点を計算する
+    def min(self):
+        return int(np.min(np.vectorize(len)(self.data)))
 
-        :param q: 求めたい分位点を指定する
-        :type q: tuple[float,...]
-        :param method: 分位点を推定するために使用する方法を指定する
-        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
-        """
+    def stringlen(self):
+        return NPNumber(np.vectorize(len)(self), dtype=np.uint64)
 
-    def ratio(self, axis: int | None = None) -> NPNumber:
-        """行や列ごとの合計に対する比率を求める"""
+    def str_len(self):
+        return NPNumber(nps.str_len(self), dtype=np.uint64)
 
-    def zero_check(self) -> NPBool[Any, np.dtype[np.bool]]:
-        """要素の数値が0の位置を探す"""
+    def replace(self, old, new):
+        result = nps.replace(np.asarray(self), old, new).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def center(self, width, fillchar=" "):
+        _uint_check(width)
+        result = nps.center(np.asarray(self), width, fillchar).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def left(self, width, fillchar=" "):
+        _uint_check(width)
+        result = nps.ljust(np.asarray(self), width, fillchar).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def right(self, width, fillchar=" "):
+        _uint_check(width)
+        result = nps.rjust(np.asarray(self), width, fillchar).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def zerofill(self, width):
+        _uint_check(width)
+        result = nps.zfill(np.asarray(self), width).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def expandtabs(self, tabsize=4):
+        _uint_check(tabsize)
+        result = nps.expandtabs(np.asarray(self), tabsize).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def endswith(self, suffix, start=0, end=None):
+        return NPBool(nps.endswith(np.asarray(self), suffix, start, end))

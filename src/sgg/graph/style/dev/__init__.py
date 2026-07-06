@@ -3,9 +3,9 @@ import numpy as np
 __all__ = [
     "bol",
     "bols",
-    "listchose",
     "list2float",
     "list2number",
+    "listchose",
     "num0",
     "num0s",
     "num1s",

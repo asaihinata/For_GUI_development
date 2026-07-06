@@ -17,15 +17,15 @@ _DTypeT = TypeVar(
 )
 
 Type_Method: TypeAlias = Literal[
-    "inverted_cdf",
     "averaged_inverted_cdf",
     "closest_observation",
-    "interpolated_inverted_cdf",
     "hazen",
-    "weibull",
+    "interpolated_inverted_cdf",
+    "inverted_cdf",
     "linear",
     "median_unbiased",
     "normal_unbiased",
+    "weibull",
 ]
 BINS_LIST: TypeAlias = Literal[
     "stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"
@@ -59,39 +59,38 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         :return: `NPStatisticsd`オブジェクトを返す
         """
 
-    def __repr__(self) -> str: ...
-    def __str__(self) -> str: ...
-    def __contains__(self, value: object) -> bool: ...
-    def __iter__(self) -> Generator[tuple[NDArray[Any], ...], Any, None]: ...
-    def __len__(self) -> int: ...
-    def __reversed__(self) -> Self:
+    @classmethod
+    def _resolve_dtype(
+        cls,
+        dtype: np.dtype | str | type | None,
+    ) -> np.dtype | None:
         """
-        逆順にした新しい配列オブジェクトを返す
+        引数dtypeを解決させる
 
-        :return: 全軸で反転した配列を返す
+        :param dtype: ユーザーが指定するdtype
+        :return: 解決されたdtypeを返す
+        :rtype: numpy.dtype | None
         """
 
-    @overload
-    def __getitem__(self, key: int) -> Any | None: ...
-    @overload
-    def __getitem__(self, key: slice) -> np.ndarray | None: ...
-    def __getitem__(self, key: int | slice) -> Any | np.ndarray | None:
+    @classmethod
+    def _validate_ndim(
+        cls,
+        obj: np.ndarray,
+    ) -> None:
         """
-        インデックスアクセスをカスタマイズする
+        配列の次元数が1次元か検証する
 
-        intキーの場合は配列を1次元に展開してからアクセスする。
-        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
-        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
-        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
-        ただし`key == size`の場合のみ,末尾の要素(`data[size - 1]`)を返す
-        特別な扱いとする。
+        :param obj: 検証対象の配列
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        """
 
-        :param key: インデックスまたはスライスを指定する
-        :type key: int | slice
-        :return: インデックスに対応する要素を返す
-        :rtype: Any | np.ndarray | None
-        :raises IndexError: 配列が空の場合に発生させる
-        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
+    @classmethod
+    def _validate_elements(cls, obj: np.ndarray) -> None:
+        """
+        配列内の要素が`__element_type`と一致するか検証する
+
+        :param obj: 検証対象の配列
+        :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
         """
 
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
@@ -154,38 +153,39 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         :rtype: Any
         """
 
-    @classmethod
-    def _resolve_dtype(
-        cls,
-        dtype: np.dtype | str | type | None,
-    ) -> np.dtype | None:
+    def __repr__(self) -> str: ...
+    def __str__(self) -> str: ...
+    def __contains__(self, value: object) -> bool: ...
+    def __iter__(self) -> Generator[tuple[NDArray[Any], ...], Any, None]: ...
+    def __len__(self) -> int: ...
+    def __reversed__(self) -> Self:
         """
-        引数dtypeを解決させる
+        逆順にした新しい配列オブジェクトを返す
 
-        :param dtype: ユーザーが指定するdtype
-        :return: 解決されたdtypeを返す
-        :rtype: numpy.dtype | None
-        """
-
-    @classmethod
-    def _validate_ndim(
-        cls,
-        obj: np.ndarray,
-    ) -> None:
-        """
-        配列の次元数が1次元か検証する
-
-        :param obj: 検証対象の配列
-        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :return: 全軸で反転した配列を返す
         """
 
-    @classmethod
-    def _validate_elements(cls, obj: np.ndarray) -> None:
+    @overload
+    def __getitem__(self, key: int) -> Any | None: ...
+    @overload
+    def __getitem__(self, key: slice) -> np.ndarray | None: ...
+    def __getitem__(self, key: int | slice) -> Any | np.ndarray | None:
         """
-        配列内の要素が`__element_type`と一致するか検証する
+        インデックスアクセスをカスタマイズする
 
-        :param obj: 検証対象の配列
-        :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
+        intキーの場合は配列を1次元に展開してからアクセスする。
+        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
+        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
+        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
+        ただし`key == size`の場合のみ,末尾の要素(`data[size - 1]`)を返す
+        特別な扱いとする。
+
+        :param key: インデックスまたはスライスを指定する
+        :type key: int | slice
+        :return: インデックスに対応する要素を返す
+        :rtype: Any | np.ndarray | None
+        :raises IndexError: 配列が空の場合に発生させる
+        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
     @property
@@ -333,6 +333,18 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
     def kurtosis(self) -> np.floating:
         """尖度を求める"""
 
+    @property
+    def n(self) -> int:
+        """配列の長さの数を返す"""
+
+    @property
+    def n1(self) -> int:
+        """配列の長さの数-1の値を返す"""
+
+    @property
+    def CV(self) -> np.floating:
+        """変動係数を求める"""
+
     def percentile(
         self,
         q: tuple[int | float, ...],
@@ -375,18 +387,6 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
     def outlier(self) -> NDArray[np.floating]:
         """四分位範囲の外れ値を求める"""
 
-    @property
-    def CV(self) -> np.floating:
-        """変動係数を求める"""
-
-    @property
-    def n(self) -> int:
-        """配列の長さの数を返す"""
-
-    @property
-    def n1(self) -> int:
-        """配列の長さの数-1の値を返す"""
-    # ヒストグラム
     def hist_bin_edges(
         self,
         bin: int | BINS_LIST | ArrayLike = 10,
@@ -438,7 +438,7 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         :return: 入力配列をビン分割した結果を返す
         :rtype: NDArray[np.intp]
         """
-    # 母集団
+
     def ratio_E_samplingerror(
         self, parcent: int | float, cc: int | float
     ) -> np.float64:

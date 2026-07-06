@@ -5,10 +5,10 @@ from .solid import Solid, Solidlist
 
 __all__ = [
     "Capstyle",
-    "Hatch",
     "getLabel",
+    "Hatch",
     "Marker",
     "MarkerList",
-    "Solidlist",
     "Solid",
+    "Solidlist",
 ]

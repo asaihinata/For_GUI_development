@@ -22,9 +22,6 @@ def implements(np_function):
 class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
     __element_type = (np.datetime64, datetime, date)
 
-    # ==========================================================
-    # 生成関連
-    # ==========================================================
     def __new__(
         cls,
         data,
@@ -65,9 +62,6 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
             obj._max_ndim = max_ndim
         return obj
 
-    # ==========================================================
-    # クラスメソッド(検証・型解決)
-    # ==========================================================
     @classmethod
     def _resolve_dtype(cls, dtype):
         if dtype is not None:
@@ -96,9 +90,6 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
                     f"{cls.__name__}の要素は{cls.__element_type}のみ許可されています"
                 )
 
-    # ==========================================================
-    # numpyプロトコル関連
-    # ==========================================================
     def __array__(self, dtype=np.dtype("datetime64[D]"), copy=None):
         return super().__array__(np.dtype(serchDtype(dtype)), copy=copy)
 
@@ -132,9 +123,6 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
     def __class_getitem__(cls, item):
         return np.ndarray.__class_getitem__.__func__(cls, item)
 
-    # ==========================================================
-    # 特殊メソッド(演算子・組み込み関数)
-    # ==========================================================
     def __ne__(self, other):
         return NPBool(np.not_equal(np.asarray(self), other))
 
@@ -179,9 +167,6 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
             return data[key]
         raise TypeError("keyにはintまたはsliceを指定してください")
 
-    # ==========================================================
-    # プロパティ
-    # ==========================================================
     @property
     def element_type(self):
         return self.__element_type
@@ -208,9 +193,6 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
     def max_ndim(self):
         return getattr(self, "_max_ndim", None)
 
-    # ==========================================================
-    # 形状・次元関連
-    # ==========================================================
     def to_1d(self):
         if self.min_ndim is not None and self.min_ndim > 1:
             raise ValueError(f"min_ndimが{self.min_ndim}のため1次元に変換できません")
@@ -248,9 +230,6 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
         result._dtype = self._dtype
         return result
 
-    # ==========================================================
-    # 型・変換関連
-    # ==========================================================
     def tonumpy(self):
         return np.asarray(self)
 
@@ -259,9 +238,6 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
             casting = "safe"
         return np.can_cast(np.asarray(self), type, casting=casting)
 
-    # ==========================================================
-    # 値の検査・集計関連
-    # ==========================================================
     def all_None(self):
         return bool(np.all(self.data == None))
 

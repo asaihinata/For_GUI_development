@@ -3,15 +3,15 @@ import numpy as np
 __all__ = [
     "allNone",
     "allNones",
-    "list2num",
-    "list2int",
-    "list2float",
-    "list4num",
-    "list4int",
-    "list4float",
-    "listchose",
-    "is_array_like",
     "change_array_like",
+    "is_array_like",
+    "list2float",
+    "list2int",
+    "list2num",
+    "list4float",
+    "list4int",
+    "list4num",
+    "listchose",
 ]
 
 

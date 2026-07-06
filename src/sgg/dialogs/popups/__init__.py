@@ -5,14 +5,14 @@ from .question import (popupokcansel, popupquestion, popuptrys, popupyesno,
 from .warning import popupwarning, popupwarningyesno
 
 __all__ = [
+    "popup",
     "popuperror",
     "popuperroryesno",
-    "popup",
     "popupokcansel",
     "popupquestion",
     "popuptrys",
-    "popupyesno",
-    "popupyesnocansel",
     "popupwarning",
     "popupwarningyesno",
+    "popupyesno",
+    "popupyesnocansel",
 ]

@@ -9,15 +9,15 @@ from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
 method_list = [
-    "inverted_cdf",
     "averaged_inverted_cdf",
     "closest_observation",
-    "interpolated_inverted_cdf",
     "hazen",
-    "weibull",
+    "interpolated_inverted_cdf",
+    "inverted_cdf",
     "linear",
     "median_unbiased",
     "normal_unbiased",
+    "weibull",
 ]
 HANDLED_FUNCTIONS = {}
 
@@ -46,6 +46,28 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         cls.__ys = NPStatisticsd(y)
         return obj
 
+    @classmethod
+    def _resolve_dtype(cls, dtype):
+        if dtype is not None:
+            return np.dtype(dtype)
+        return np.dtype(np.float64)
+
+    @classmethod
+    def _validate_ndim(cls, obj):
+        ndim = obj.ndim
+        if ndim != 2:
+            raise ValueError(f"{cls.__name__}の次元数は2次元のみです")
+
+    @classmethod
+    def _validate_elements(cls, obj):
+        if cls.__element_type is None:
+            return
+        for elem in obj.flat:
+            if not isinstance(elem, cls.__element_type):
+                raise TypeError(
+                    f"{cls.__name__}の要素は{cls.__element_type}のみ許可されています"
+                )
+
     def __array__(self, dtype=np.float64, copy=None):
         return super().__array__(dtype, copy=copy)
 
@@ -73,6 +95,9 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         if func in HANDLED_FUNCTIONS:
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
+
+    def __class_getitem__(cls, item):
+        return np.ndarray.__class_getitem__.__func__(cls, item)
 
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
@@ -110,31 +135,6 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
             return data[key]
         raise TypeError("keyにはintまたはsliceを指定してください")
 
-    def __class_getitem__(cls, item):
-        return np.ndarray.__class_getitem__.__func__(cls, item)
-
-    @classmethod
-    def _resolve_dtype(cls, dtype):
-        if dtype is not None:
-            return np.dtype(dtype)
-        return np.dtype(np.float64)
-
-    @classmethod
-    def _validate_ndim(cls, obj):
-        ndim = obj.ndim
-        if ndim != 2:
-            raise ValueError(f"{cls.__name__}の次元数は2次元のみです")
-
-    @classmethod
-    def _validate_elements(cls, obj):
-        if cls.__element_type is None:
-            return
-        for elem in obj.flat:
-            if not isinstance(elem, cls.__element_type):
-                raise TypeError(
-                    f"{cls.__name__}の要素は{cls.__element_type}のみ許可されています"
-                )
-
     @property
     def element_type(self):
         return self.__element_type
@@ -152,6 +152,22 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         if dtype is not None:
             self._dtype = np.dtype(dtype)
         return self._dtype
+
+    @property
+    def x(self):
+        return self.__xs
+
+    @property
+    def xmath(self):
+        return self.__xs.data
+
+    @property
+    def y(self):
+        return self.__ys
+
+    @property
+    def ymath(self):
+        return self.__ys.data
 
     def lengtharange(self):
         shapes = self.shape
@@ -178,22 +194,6 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
     def any_None(self):
         return bool(np.any(self.data == None))
 
-    @property
-    def x(self):
-        return self.__xs
-
-    @property
-    def xmath(self):
-        return self.__xs.data
-
-    @property
-    def y(self):
-        return self.__ys
-
-    @property
-    def ymath(self):
-        return self.__ys.data
-
     def covariance(self):
         return np.cov(self.x, self.y)[0, 1]
 
@@ -203,7 +203,6 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
     def correlation_coefficient(self):
         return self.Sxy / self.Sxxyyroot
 
-    # x,y
     @property
     def Sxy(self):
         return np.cov(self.x, self.y)[0, 1]
@@ -216,7 +215,6 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
     def Sxxyyroot(self):
         return np.power(self.Sxxyy, 0.5)
 
-    # 回帰直線
     def regression(self, n=1):
         return chebfit(self.x, self.y, n)
 
