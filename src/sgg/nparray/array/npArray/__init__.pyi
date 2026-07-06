@@ -5,6 +5,7 @@ from numpy._typing import _ShapeLike
 from numpy.typing import DTypeLike, NDArray
 
 from .._typing import Incomplete, _DTypeT, _ShapeT
+from ..dev import _ArrayShapeMixin
 
 __all__ = ["NPArray"]
 
@@ -18,7 +19,7 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]], _ArrayShapeMixin):
     """`np.ndarray`を継承した型付き配列クラス"""
 
     @overload
@@ -95,45 +96,6 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises ShapeError: `shape`が正の整数のみで構成されていない場合に発生させる
         """
 
-    @classmethod
-    def _resolve_dtype(
-        cls,
-        dtype: np.dtype | str | type | None,
-    ) -> np.dtype | None:
-        """
-        引数dtypeを解決させる
-
-        :param dtype: ユーザーが指定するdtype
-        :return: 解決されたdtypeを返す
-        :rtype: numpy.dtype | None
-        """
-
-    @classmethod
-    def _validate_ndim(
-        cls,
-        obj: np.ndarray,
-        min_ndim: int | None,
-        max_ndim: int | None,
-    ) -> None:
-        """
-        配列の次元数がmin_ndim・max_ndimの範囲内か検証する
-
-        :param obj: 検証対象の配列
-        :param min_ndim: 許可する最小次元数を指定する。Noneの場合は制約なし
-        :param max_ndim: 許可する最大次元数を指定する。Noneの場合は制約なし
-        :raises ValueError: 次元数が範囲外の場合に発生させる
-        """
-
-    @classmethod
-    def _validate_elements(cls, obj: np.ndarray) -> None:
-        """
-        配列内の要素が`element_type`と一致するか検証する
-
-        :param obj: 検証対象の配列
-        :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
-        """
-
-    def __class_getitem__(cls, item: Any) -> type[NPArray[Any, Any]]: ...
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
 
@@ -225,50 +187,6 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
-    @property
-    def element_type(self) -> None:
-        """NPArrayで許可されている型を取得する"""
-
-    @property
-    def data(self) -> NDArray[Any]:
-        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
-
-    @property
-    def dtypes(self) -> np.dtype | None:
-        """
-        インスタンス生成時に確定したdtypeを取得する
-
-        :return:
-        :rtype: numpy.dtype | None
-        """
-
-    @dtypes.setter
-    def dtypes(self, dtype: DTypeLike | None) -> np.dtype | None:
-        """
-        配列のdtypeを設定する
-
-        :param dtype: 配列の型を指定する
-        :type dtype: DTypeLike | None
-        :return:
-        :rtype: numpy.dtype | None
-        """
-
-    @property
-    def min_ndim(self) -> int | None:
-        """配列オブジェクトが許容する最小次元数を返す"""
-
-    @property
-    def max_ndim(self) -> int | None:
-        """配列オブジェクトが許容する最大次元数を返す"""
-
-    def to_1d(self) -> NPArray:
-        """
-        配列を1次元にフラット化した新しい配列オブジェクトを返す
-
-        :return: フラット化した配列オブジェクトを返す
-        :raises ValueError: `min_ndim`が1以下の場合に発生させる
-        """
-
     def lengtharange(self) -> NDArray[np.unsignedinteger[np._64Bit]]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
@@ -288,46 +206,8 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: bool
         """
 
-    def roll(self, shift: _ShapeLike, axis: _ShapeLike | None = None) -> NPArray:
-        """
-        要素を指定された軸に沿って回転させる
-
-        :param shift: 要素を移動させる位置の数を指定する
-        :type shift: _ShapeLike
-        :param axis: 要素を移動させる軸を指定する
-        :type axis: _ShapeLike | None
-        """
-
-    def rot90(self, k: int = 1, axes: tuple[int, int] = (0, 1)) -> NPArray:
-        """
-        指定された軸の平面内で配列を90度回転させる
-
-        :param k: 配列に90度回転させたい回数を指定する
-        :type k: int
-        :param axes: 平面内で回転される軸を指定する
-        :type axes: tuple[int,int]
-        :return: 回転させた配列を返す
-        :rtype: NPArray
-        """
-
     def tonumpy(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
-
-    def typeconversion(
-        self,
-        type: np.DTypeLike,
-        casting: Literal[
-            "no", "equiv", "safe", "same_kind", "same_value", "unsafe"
-        ] = "safe",
-    ) -> bool:
-        """
-        配列の型が`type`で指定された型に変換可能か調べる
-
-        :param type: 型変換先のデータ型を指定する
-        :type type: np.DTypeLike
-        :param casting: どのようなデータ変換が行われるか指定する
-        :type casting: Literal["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]
-        """
 
     def EType(self) -> NDArray[Incomplete]:
         """要素の型を調べる"""

@@ -9,15 +9,15 @@ from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
 method_list = [
+    "inverted_cdf",
     "averaged_inverted_cdf",
     "closest_observation",
-    "hazen",
     "interpolated_inverted_cdf",
-    "inverted_cdf",
+    "hazen",
+    "weibull",
     "linear",
     "median_unbiased",
     "normal_unbiased",
-    "weibull",
 ]
 HANDLED_FUNCTIONS = {}
 
@@ -42,8 +42,8 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         cls._validate_elements(obj)
         obj._dtype = resolved
         cls._validate_ndim(obj)
-        cls.__xs = NPStatisticsd(x)
-        cls.__ys = NPStatisticsd(y)
+        obj.__xs = NPStatisticsd(x)
+        obj.__ys = NPStatisticsd(y)
         return obj
 
     @classmethod
@@ -75,6 +75,8 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         if obj is None:
             return
         self._dtype = getattr(obj, "_dtype", None)
+        self.__xs = getattr(obj, "_NPStatisticsds__xs", None)
+        self.__ys = getattr(obj, "_NPStatisticsds__ys", None)
 
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
