@@ -17,8 +17,8 @@ def implements(np_function):
 
 
 class NPArray(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
-    __element_type = None
-    _default_dtype = None
+    _element_type = None
+    _default_dtype = "object"
 
     def __new__(cls, data, dtype=None, d_ndim=None, min_ndim=None, max_ndim=None):
         if dtype is None:
@@ -127,32 +127,9 @@ class NPArray(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
         elif isinstance(key, slice):
             return data[key]
         raise TypeError("keyにはintまたはsliceを指定してください")
-
-    def shapesize(self, shapes):
-        if self.shape == shapes:
-            return True
-        return False
-
-    def tonumpy(self):
-        return np.asarray(self)
-
-    def EType(self):
-        return np.asarray(np.vectorize(type)(self))
-
-    def all_None(self):
-        return bool(np.all(self.data == None))
-
-    def any_None(self):
-        return bool(np.any(self.data == None))
-
     def count_nonzero(self, axis=None, keepdims=False):
         if not isinstance(keepdims, bool):
             keepdims = False
         return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
-
-    def unique(self):
-        return np.unique(np.asarray(self))
-
-    def counts(self):
-        count = np.unique_counts(np.asarray(self))
-        return count.values, count.counts
+    def EType(self):
+        return np.asarray(np.vectorize(type)(self))

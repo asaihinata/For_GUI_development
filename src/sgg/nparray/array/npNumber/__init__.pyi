@@ -344,14 +344,8 @@ class NPNumber(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: bool
         """
 
-    @overload
-    def count_nonzero(self, axis: None = None, keepdims: bool = False) -> np.intp: ...
-    @overload
     def count_nonzero(
-        self, axis: _ShapeLike | None = None, keepdims: bool = True
-    ) -> NDArray[np.intp]: ...
-    def count_nonzero(
-        self, axis: _ShapeLike | None = ..., keepdims: bool = ...
+        self, axis: np._ShapeLike | None = None, keepdims: bool = False
     ) -> np.intp | NDArray[np.intp]:
         """
         0以外の要素の数を数える

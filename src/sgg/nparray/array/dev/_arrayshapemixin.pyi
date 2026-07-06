@@ -1,13 +1,15 @@
 from typing import Any, Literal, Self
 
 import numpy as np
+from numpy._typing import DTypeLike, _ShapeLike
+from numpy.typing import NDArray
 
 __all__ = ["_ArrayCommonMixin", "_ArrayShapeMixin"]
 
 class _ArrayCommonMixin:
     """全ての配列クラスに共通する,形状に依存しない基本メソッド"""
 
-    def lengtharange(self) -> Any:
+    def lengtharange(self) -> NDArray[np.unsignedinteger[np._64Bit]]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
@@ -26,7 +28,7 @@ class _ArrayCommonMixin:
         :rtype: bool
         """
 
-    def tonumpy(self) -> Any:
+    def tonumpy(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def all_None(self) -> bool:
@@ -47,6 +49,9 @@ class _ArrayCommonMixin:
 
 class _ArrayShapeMixin(_ArrayCommonMixin):
     """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
+
+    _element_type: tuple[type, ...] | None
+    _default_dtype: type[np.generic]
 
     @classmethod
     def _resolve_dtype(
@@ -90,11 +95,11 @@ class _ArrayShapeMixin(_ArrayCommonMixin):
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
 
     @property
-    def element_type(self) -> Any:
-        """許可されている型を取得する"""
+    def element_type(self) -> tuple[type, ...] | None:
+        """許可されている型を取得する(各サブクラスで戻り値の型を絞り込む想定)"""
 
     @property
-    def data(self) -> Any:
+    def data(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @property
@@ -107,7 +112,7 @@ class _ArrayShapeMixin(_ArrayCommonMixin):
         """
 
     @dtypes.setter
-    def dtypes(self, dtype: np.dtype | str | type | None) -> None:
+    def dtypes(self, dtype: DTypeLike | None) -> None:
         """
         配列のdtypeを設定する
 
@@ -123,7 +128,7 @@ class _ArrayShapeMixin(_ArrayCommonMixin):
     def max_ndim(self) -> int | None:
         """配列オブジェクトが許容する最大次元数を返す"""
 
-    def to_1d(self) -> Any:
+    def to_1d(self) -> Self:
         """
         配列を1次元にフラット化した新しい配列オブジェクトを返す
 
@@ -133,7 +138,7 @@ class _ArrayShapeMixin(_ArrayCommonMixin):
 
     def typeconversion(
         self,
-        type: np.DTypeLike,
+        type: DTypeLike,
         casting: Literal[
             "no", "equiv", "safe", "same_kind", "same_value", "unsafe"
         ] = "safe",
@@ -142,35 +147,28 @@ class _ArrayShapeMixin(_ArrayCommonMixin):
         配列の型が`type`で指定された型に変換可能か調べる
 
         :param type: 型変換先のデータ型を指定する
-        :type type: np.DTypeLike
+        :type type: DTypeLike
         :param casting: どのようなデータ変換が行われるか指定する
         :type casting: Literal["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]
         """
 
-    def count_nonzero(self, axis: Any = None, keepdims: bool = False) -> Any:
-        """
-        0以外の要素の数を数える
-
-        :param axis: 要素を数える軸を指定する
-        :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
-        :type keepdims: bool
-        """
-
-    def unique(self) -> Any:
+    def unique(self) -> NDArray[Any]:
         """配列の固有要素を見つける"""
 
-    def counts(self) -> Any:
+    def counts(self) -> tuple[NDArray[Any], NDArray[np.intp]]:
         """配列内の要素とその要素が配列内に存在する個数を返す"""
 
-    def roll(self, shift: Any, axis: Any = None) -> Self:
+    def roll(self, shift: _ShapeLike, axis: _ShapeLike | None = None) -> Self:
         """
         要素を指定された軸に沿って回転させる
 
         :param shift: 要素を移動させる位置の数を指定する
+        :type shift: _ShapeLike
         :param axis: 要素を移動させる軸を指定する
+        :type axis: _ShapeLike | None
         """
 
-    def rot90(self, k: int = 1, axes: tuple[int, int] = (0, 1)) -> Any:
+    def rot90(self, k: int = 1, axes: tuple[int, int] = (0, 1)) -> Self:
         """
         指定された軸の平面内で配列を90度回転させる
 

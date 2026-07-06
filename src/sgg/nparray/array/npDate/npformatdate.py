@@ -244,11 +244,6 @@ class NPFormatDate(NDArrayOperatorsMixin, np.ndarray):
     def any_None(self):
         return bool(np.any(self.data == None))
 
-    def count_nonzero(self, axis=None, keepdims=False):
-        if not isinstance(keepdims, bool):
-            keepdims = False
-        return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
-
     def unique(self):
         return np.unique(np.asarray(self))
 

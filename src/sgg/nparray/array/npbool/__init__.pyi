@@ -169,40 +169,6 @@ class NPBool(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def element_type(self) -> tuple[type[bool], type[np.bool_], type[np.bool]]:
         """NPBoolで許可されている型を取得する"""
 
-    @property
-    def data(self) -> NDArray[Any]:
-        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
-
-    def to_1d(self) -> NPBool:
-        """
-        配列を1次元にフラット化した新しい配列オブジェクトを返す
-
-        :return: フラット化した配列オブジェクトを返す
-        :raises ValueError: `min_ndim`が1以下の場合に発生させる
-        """
-
-    def roll(self, shift: _ShapeLike, axis: _ShapeLike | None = None) -> NPBool:
-        """
-        要素を指定された軸に沿って回転させる
-
-        :param shift: 要素を移動させる位置の数を指定する
-        :type shift: _ShapeLike
-        :param axis: 要素を移動させる軸を指定する
-        :type axis: _ShapeLike | None
-        """
-
-    def rot90(self, k: int = 1, axes: tuple[int, int] = (0, 1)) -> NPBool:
-        """
-        指定された軸の平面内で配列を90度回転させる
-
-        :param k: 配列に90度回転させたい回数を指定する
-        :type k: int
-        :param axes: 平面内で回転される軸を指定する
-        :type axes: tuple[int,int]
-        :return: 回転させた配列を返す
-        :rtype: NPBool
-        """
-
     def all(self) -> bool:
         """全ての要素が`True`かを調べる"""
 

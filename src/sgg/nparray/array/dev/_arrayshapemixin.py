@@ -114,11 +114,6 @@ class _ArrayShapeMixin(_ArrayCommonMixin):
             casting = "safe"
         return np.can_cast(np.asarray(self), type, casting=casting)
 
-    def count_nonzero(self, axis=None, keepdims=False):
-        if not isinstance(keepdims, bool):
-            keepdims = False
-        return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
-
     def unique(self):
         return np.unique(np.asarray(self))
 

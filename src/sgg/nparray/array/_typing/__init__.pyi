@@ -16,7 +16,7 @@ __all__ = [
     "_CharType",
     "_DTypeT",
     "_NumberT",
-    "_ShapeT" "TypeNumber",
+    "_ShapeT",
     "_StrT",
     "ArrayLikeAny",
     "ArrayLikeBool",
@@ -45,6 +45,7 @@ __all__ = [
     "TypeArraysLikeNS",
     "TypeArraysLikeNumber",
     "TypeArraysLikeString",
+    "TypeNumber",
     "TypeStr",
 ]
 _ShapeT = TypeVar("_ShapeT", bound=np._Shape, default=np._AnyShape, covariant=True)

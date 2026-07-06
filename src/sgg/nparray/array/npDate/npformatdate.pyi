@@ -329,24 +329,6 @@ class NPFormatDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: bool
         """
 
-    @overload
-    def count_nonzero(self, axis: None = None, keepdims: bool = False) -> np.intp: ...
-    @overload
-    def count_nonzero(
-        self, axis: _ShapeLike | None = None, keepdims: bool = True
-    ) -> NDArray[np.intp]: ...
-    def count_nonzero(
-        self, axis: _ShapeLike | None = ..., keepdims: bool = ...
-    ) -> np.intp | NDArray[np.intp]:
-        """
-        0以外の要素の数を数える
-
-        :param axis: 要素を数える軸を指定する
-        :type axis: _ShapeLike | None
-        :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
-        :type keepdims: bool
-        """
-
     def unique(self) -> NDArray:
         """配列の固有要素を見つける"""
 

@@ -1,7 +1,6 @@
 from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
-from numpy._typing import _ShapeLike
 from numpy.typing import DTypeLike, NDArray
 
 from .._typing import Incomplete, _DTypeT, _ShapeT
@@ -19,8 +18,11 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]], _ArrayShapeMixin):
+class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した型付き配列クラス"""
+
+    _element_type: None
+    _default_dtype: Literal["object"]
 
     @overload
     def __new__(
@@ -71,9 +73,9 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]], _ArrayShapeMixin):
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
         :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype:
+        :rtype: Self
         :raises ValueError: 次元数が範囲外の場合に発生させる
-        :raises TypeError: 要素型が`element_type`と一致しない場合に発生させる
+        :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
     @classmethod
@@ -96,9 +98,7 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]], _ArrayShapeMixin):
         :raises ShapeError: `shape`が正の整数のみで構成されていない場合に発生させる
         """
 
-    def __array_finalize__(self, obj: np.ndarray | None) -> None:
-        """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
-
+    def __class_getitem__(cls, item: Any) -> type[NPArray[Any, Any]]: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -150,8 +150,8 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]], _ArrayShapeMixin):
         :rtype: Any
         """
 
-    def __ne__(self, other: Any) -> NPArray[Any, np.dtype[np.bool_]]: ...
-    def __eq__(self, other: Any) -> NPArray[Any, np.dtype[np.bool_]]: ...
+    def __ne__(self, other: Any) -> NPArray[Any, np.dtype[np.bool]]: ...
+    def __eq__(self, other: Any) -> NPArray[Any, np.dtype[np.bool]]: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
@@ -187,55 +187,11 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]], _ArrayShapeMixin):
         :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
-    def lengtharange(self) -> NDArray[np.unsignedinteger[np._64Bit]]:
-        """
-        配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
-
-        `dtype`は`np.uint64`に固定される
-
-        :return: インデックス配列を返す
-        """
-
-    def shapesize(self, shapes: tuple[int, ...]) -> bool:
-        """
-        配列オブジェクトの`shape`が`shapes`と一致するかを確認する
-
-        :param shapes: 比較する`shape`を指定する
-        :type shapes: tuple[int, ...]
-        :return: `shape`が一致する場合は`True`を返し,一致しない場合は`False`を返す
-        :rtype: bool
-        """
-
-    def tonumpy(self) -> NDArray[Any]:
-        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
-
-    def EType(self) -> NDArray[Incomplete]:
-        """要素の型を調べる"""
-
-    def all_None(self) -> bool:
-        """
-        配列内の全要素が`None`かどうかを返す
-
-        :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
-
-    def any_None(self) -> bool:
-        """
-        配列内のいずれかの要素が`None`かどうかを返す
-
-        :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
-
-    @overload
-    def count_nonzero(self, axis: None = None, keepdims: bool = False) -> np.intp: ...
-    @overload
+    @property
+    def element_type(self) -> None:
+        """NPArrayで許可されている型を取得する"""
     def count_nonzero(
-        self, axis: _ShapeLike | None = None, keepdims: bool = True
-    ) -> NDArray[np.intp]: ...
-    def count_nonzero(
-        self, axis: _ShapeLike | None = None, keepdims: bool = ...
+        self, axis: np._ShapeLike | None = None, keepdims: bool = False
     ) -> np.intp | NDArray[np.intp]:
         """
         0以外の要素の数を数える
@@ -245,9 +201,5 @@ class NPArray(np.ndarray[_ShapeT, np.dtype[_DTypeT]], _ArrayShapeMixin):
         :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
         :type keepdims: bool
         """
-
-    def unique(self) -> NDArray:
-        """配列の固有要素を見つける"""
-
-    def counts(self) -> tuple[NDArray[Any], NDArray[np.intp]]:
-        """配列内の要素とその要素が配列内に存在する個数を返す"""
+    def EType(self) -> NDArray[Incomplete]:
+        """要素の型を調べる"""
