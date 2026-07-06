@@ -6,7 +6,7 @@ from ..dev import NDArrayOperatorsMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 from ._typing import serchDtype
-from .formatconversion import Formatconversion
+from .npformatdate import NPFormatDate
 
 __all__ = ["NPDate"]
 HANDLED_FUNCTIONS = {}
@@ -21,7 +21,7 @@ def implements(np_function):
 
 
 class NPDate(NDArrayOperatorsMixin, np.ndarray):
-    __element_type = (Formatconversion, np.datetime64, datetime, date)
+    __element_type = (NPFormatDate, np.datetime64, datetime, date)
 
     def __new__(
         cls,

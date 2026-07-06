@@ -7,7 +7,7 @@ from ..dev import NDArrayOperatorsMixin
 from ..npbool import NPBool
 from ._typing import serchDtype
 
-__all__ = ["Formatconversion"]
+__all__ = ["NPFormatDate"]
 HANDLED_FUNCTIONS = {}
 
 
@@ -19,7 +19,7 @@ def implements(np_function):
     return decorator
 
 
-class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
+class NPFormatDate(NDArrayOperatorsMixin, np.ndarray):
     __element_type = (np.datetime64, datetime, date)
 
     def __new__(
@@ -102,7 +102,7 @@ class Formatconversion(NDArrayOperatorsMixin, np.ndarray):
 
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
-            np.asarray(x) if isinstance(x, Formatconversion) else x for x in inputs
+            np.asarray(x) if isinstance(x, NPFormatDate) else x for x in inputs
         )
         result = getattr(ufunc, method)(*raw_inputs, **dict(kwargs))
 

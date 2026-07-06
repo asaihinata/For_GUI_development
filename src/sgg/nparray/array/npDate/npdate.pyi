@@ -10,7 +10,7 @@ from .._typing import _ArrayLikeTD64_co, _DTypeT, _ShapeT
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 from ._typing import _DATES_UNITL
-from .formatconversion import Formatconversion
+from .npformatdate import NPFormatDate
 
 __all__ = ["NPDate"]
 
@@ -56,7 +56,7 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: Formatconversion,
+        data: NPFormatDate,
         dtype: datetime64,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -64,7 +64,7 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     ) -> NPDate[_ShapeT, np.dtype[datetime64]]: ...
     def __new__(
         cls,
-        data: _ArrayLikeTD64_co | Formatconversion,
+        data: _ArrayLikeTD64_co | NPFormatDate,
         dtype: _DTypeLikeTD64 | None = "datetime64[D]",
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -74,7 +74,7 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         新しい日付の配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: _ArrayLikeTD64_co | Formatconversion
+        :type data: _ArrayLikeTD64_co | NPFormatDate
         :param dtype: 配列の型を指定する
         :type dtype: _DTypeLikeTD64 | None
         :param d_ndim: 固定される次元数を指定する
@@ -242,7 +242,7 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @property
     def element_type(
         self,
-    ) -> tuple[type[Formatconversion], type[np.datetime64], type[datetime], type[date]]:
+    ) -> tuple[type[NPFormatDate], type[np.datetime64], type[datetime], type[date]]:
         """NPDateで許可されている型を取得する"""
 
     @property

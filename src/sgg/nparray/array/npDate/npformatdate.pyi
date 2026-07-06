@@ -9,7 +9,7 @@ from numpy.typing import DTypeLike, NDArray
 from .._typing import _ArrayLikeDateParse_co, _DTypeT, _ShapeT
 from ..npbool import NPBool
 
-__all__ = ["Formatconversion"]
+__all__ = ["NPFormatDate"]
 HANDLED_FUNCTIONS: dict
 
 def implements(np_function) -> Any:
@@ -20,7 +20,7 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPFormatDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
 
     @overload
@@ -31,7 +31,7 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> Formatconversion[datetime64[_ShapeT], np.dtype[datetime64]]: ...
+    ) -> NPFormatDate[datetime64[_ShapeT], np.dtype[datetime64]]: ...
     @overload
     def __new__(
         cls,
@@ -40,7 +40,7 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> Formatconversion[datetime64[_ShapeT], np.dtype[_DTypeLikeTD64]]: ...
+    ) -> NPFormatDate[datetime64[_ShapeT], np.dtype[_DTypeLikeTD64]]: ...
     def __new__(
         cls,
         data: _ArrayLikeDateParse_co,
@@ -121,7 +121,7 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         method: str,
         *inputs: Any,
         **kwargs: Any,
-    ) -> Formatconversion | Any:
+    ) -> NPFormatDate | Any:
         """
         NumPyのufuncの動作をカスタマイズする
 
@@ -211,7 +211,7 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
 
     @property
     def element_type(self) -> tuple[type[np.datetime64], type[datetime], type[date]]:
-        """Formatconversionで許可されている型を取得する"""
+        """NPFormatDateで許可されている型を取得する"""
 
     @property
     def data(self) -> NDArray[Any]:
@@ -245,7 +245,7 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def max_ndim(self) -> int | None:
         """配列オブジェクトが許容する最大次元数を返す"""
 
-    def to_1d(self) -> Formatconversion:
+    def to_1d(self) -> NPFormatDate:
         """
         配列を1次元にフラット化した新しい配列オブジェクトを返す
 
@@ -272,9 +272,7 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: bool
         """
 
-    def roll(
-        self, shift: _ShapeLike, axis: _ShapeLike | None = None
-    ) -> Formatconversion:
+    def roll(self, shift: _ShapeLike, axis: _ShapeLike | None = None) -> NPFormatDate:
         """
         要素を指定された軸に沿って回転させる
 
@@ -284,7 +282,7 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :type axis: _ShapeLike | None
         """
 
-    def rot90(self, k: int = 1, axes: tuple[int, int] = (0, 1)) -> Formatconversion:
+    def rot90(self, k: int = 1, axes: tuple[int, int] = (0, 1)) -> NPFormatDate:
         """
         指定された軸の平面内で配列を90度回転させる
 
@@ -293,7 +291,7 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :param axes: 平面内で回転される軸を指定する
         :type axes: tuple[int,int]
         :return: 回転させた配列を返す
-        :rtype: Formatconversion
+        :rtype: NPFormatDate
         """
 
     def tonumpy(self) -> NDArray[Any]:

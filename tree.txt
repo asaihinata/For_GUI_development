@@ -245,10 +245,10 @@ For_GUI_development
  │   │   │   │   ├── npdate
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   ├── _typing.py
- │   │   │   │   │   ├── formatconversion.py
- │   │   │   │   │   ├── formatconversion.pyi
  │   │   │   │   │   ├── npdate.py
- │   │   │   │   │   └── npdate.pyi
+ │   │   │   │   │   ├── npdate.pyi
+ │   │   │   │   │   ├── npformatdate.py
+ │   │   │   │   │   └── npformatdate.pyi
  │   │   │   │   ├── npnumber
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi

@@ -305,7 +305,7 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         """
         配列の各要素の底が`2`の対数を求める
 
-        ``numpy.log2`` を使用して計算する
+        `numpy.log2` を使用して計算する
         """
 
     @property
@@ -374,6 +374,7 @@ class NPStatisticsd(NDArrayOperatorsMixin, np.ndarray):
         """
 
     def IQR(
+        self,
         method: Type_Method = "linear",
     ) -> NDArray[np.floating]:
         """

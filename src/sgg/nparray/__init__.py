@@ -1,4 +1,4 @@
-from .array import (Formatconversion, NPArray, NPBool, NPDate, NPNumber, NPStatisticsd,
+from .array import (NPArray, NPBool, NPDate, NPFormatDate, NPNumber, NPStatisticsd,
                     NPStatisticsds, NPString)
 from .isdtype import (booldDtype, boolDtype, complexdDtype, complexDtype, floatdDtype,
                       floatDtype, intdDtype, intDtype, integerdDtype, integerDtype,
@@ -13,7 +13,6 @@ __all__ = [
     "complexDtype",
     "floatdDtype",
     "floatDtype",
-    "Formatconversion",
     "intdDtype",
     "intDtype",
     "integerdDtype",
@@ -21,6 +20,7 @@ __all__ = [
     "NPArray",
     "NPBool",
     "NPDate",
+    "NPFormatDate",
     "NPNumber",
     "NPStatisticsd",
     "NPStatisticsds",
