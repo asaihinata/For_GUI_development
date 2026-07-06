@@ -17,9 +17,6 @@ __all__ = ["NPDate"]
 class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した日付の配列クラス"""
 
-    def __class_getitem__(
-        cls, item: Any
-    ) -> type[NPDate[_ShapeT, np.dtype[_DTypeT]]]: ...
     @overload
     def __new__(
         cls,
@@ -92,106 +89,13 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises TypeError: 要素型が`__element_type`と一致しない場合に発生させる
         """
 
-    def __ne__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
-    def __eq__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
-    def __add__(self, other: Any) -> Self: ...
-    def __radd__(self, other: Any) -> Self: ...
-    def __sub__(self, other: Any) -> Self: ...
-    def __rsub__(self, other: Any) -> Self: ...
-    def __repr__(self) -> str: ...
-    def __str__(self) -> str: ...
-    def __contains__(self, value: object) -> bool: ...
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
-    def __len__(self) -> int: ...
-    def __reversed__(self) -> Self:
-        """
-        逆順にした新しい配列オブジェクトを返す
+    @classmethod
+    def today(cls) -> NPDate:
+        """現在日付(UTC時刻)を返す"""
 
-        :return: 全軸で反転した配列を返す
-        """
-
-    @overload
-    def __getitem__(self, key: int) -> Any | None: ...
-    @overload
-    def __getitem__(self, key: slice) -> np.ndarray | None: ...
-    def __getitem__(self, key: int | slice) -> Any | np.ndarray | None:
-        """
-        インデックスアクセスをカスタマイズする
-
-        intキーの場合は配列を1次元に展開してからアクセスする。
-        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
-        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
-        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
-        ただし`key == size`の場合のみ,末尾の要素(`data[size - 1]`)を返す
-        特別な扱いとする。
-
-        :param key: インデックスまたはスライスを指定する
-        :type key: int | slice
-        :return: インデックスに対応する要素を返す
-        :rtype: Any | np.ndarray | None
-        :raises IndexError: 配列が空の場合に発生させる
-        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
-        """
-
-    @overload
-    def __array__(
-        self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
-    @overload
-    def __array__(
-        self, dtype: np._DTypeT, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
-    @overload
-    def __array__(
-        self, dtype: np._DTypeT | None, copy: bool | None = None
-    ) -> (
-        np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
-    ): ...
-    def __array_ufunc__(
-        self,
-        ufunc: np.ufunc,
-        method: str,
-        *inputs: Any,
-        **kwargs: Any,
-    ) -> NPDate | Any:
-        """
-        NumPyのufuncの動作をカスタマイズする
-
-        :param ufunc: 呼び出されたufunc
-        :type ufunc: np.ufunc
-        :param method: 呼び出しメソッド名
-        :type method: str
-        :param inputs: ufuncへの入力
-        :type inputs: Any
-        :param kwargs: ufuncへの追加引数
-        :type kwargs: Any
-        :return: 処理結果を返す
-        """
-
-    def __array_function__(
-        self,
-        func: Any,
-        types: Any,
-        args: tuple,
-        kwargs: dict,
-    ) -> Any:
-        """
-        numpy関数の動作をカスタマイズする
-
-        :param func: 呼び出されたnumpy関数
-        :type func: Any
-        :param types: 関連する型のコレクション
-        :type types: Any
-        :param args: 位置引数
-        :type args: tuple
-        :param kwargs: キーワード引数
-        :type kwargs: dict
-        :return: 演算結果を返す
-        :rtype: Any
-        """
-
-    def __array_finalize__(self, obj: np.ndarray | None) -> None:
-        """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
+    @classmethod
+    def now(cls) -> NPDate:
+        """現在時刻(UTC時刻)を返す"""
 
     @classmethod
     def _resolve_dtype(
@@ -229,6 +133,110 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
 
         :param obj: 検証対象の配列
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
+        """
+
+    def __class_getitem__(
+        cls, item: Any
+    ) -> type[NPDate[_ShapeT, np.dtype[_DTypeT]]]: ...
+    def __array_finalize__(self, obj: np.ndarray | None) -> None:
+        """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
+
+    def __array_ufunc__(
+        self,
+        ufunc: np.ufunc,
+        method: str,
+        *inputs: Any,
+        **kwargs: Any,
+    ) -> NPDate | Any:
+        """
+        NumPyのufuncの動作をカスタマイズする
+
+        :param ufunc: 呼び出されたufunc
+        :type ufunc: np.ufunc
+        :param method: 呼び出しメソッド名
+        :type method: str
+        :param inputs: ufuncへの入力
+        :type inputs: Any
+        :param kwargs: ufuncへの追加引数
+        :type kwargs: Any
+        :return: 処理結果を返す
+        """
+
+    @overload
+    def __array__(
+        self, dtype: None = None, copy: bool | None = None
+    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
+    @overload
+    def __array__(
+        self, dtype: np._DTypeT, copy: bool | None = None
+    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
+    @overload
+    def __array__(
+        self, dtype: np._DTypeT | None, copy: bool | None = None
+    ) -> (
+        np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
+    ): ...
+    def __array_function__(
+        self,
+        func: Any,
+        types: Any,
+        args: tuple,
+        kwargs: dict,
+    ) -> Any:
+        """
+        numpy関数の動作をカスタマイズする
+
+        :param func: 呼び出されたnumpy関数
+        :type func: Any
+        :param types: 関連する型のコレクション
+        :type types: Any
+        :param args: 位置引数
+        :type args: tuple
+        :param kwargs: キーワード引数
+        :type kwargs: dict
+        :return: 演算結果を返す
+        :rtype: Any
+        """
+
+    def __add__(self, other: Any) -> Self: ...
+    def __radd__(self, other: Any) -> Self: ...
+    def __sub__(self, other: Any) -> Self: ...
+    def __rsub__(self, other: Any) -> Self: ...
+    def __ne__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
+    def __eq__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
+    def __repr__(self) -> str: ...
+    def __str__(self) -> str: ...
+    def __contains__(self, value: object) -> bool: ...
+    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
+    def __len__(self) -> int: ...
+    def __reversed__(self) -> Self:
+        """
+        逆順にした新しい配列オブジェクトを返す
+
+        :return: 全軸で反転した配列を返す
+        """
+
+    @overload
+    def __getitem__(self, key: int) -> Any | None: ...
+    @overload
+    def __getitem__(self, key: slice) -> np.ndarray | None: ...
+    def __getitem__(self, key: int | slice) -> Any | np.ndarray | None:
+        """
+        インデックスアクセスをカスタマイズする
+
+        intキーの場合は配列を1次元に展開してからアクセスする。
+        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
+        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
+        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
+        ただし`key == size`の場合のみ,末尾の要素(`data[size - 1]`)を返す
+        特別な扱いとする。
+
+        :param key: インデックスまたはスライスを指定する
+        :type key: int | slice
+        :return: インデックスに対応する要素を返す
+        :rtype: Any | np.ndarray | None
+        :raises IndexError: 配列が空の場合に発生させる
+        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
     @property
@@ -296,6 +304,44 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: bool
         """
 
+    def roll(self, shift: _ShapeLike, axis: _ShapeLike | None = None) -> NPDate:
+        """
+        要素を指定された軸に沿って回転させる
+
+        :param shift: 要素を移動させる位置の数を指定する
+        :type shift: _ShapeLike
+        :param axis: 要素を移動させる軸を指定する
+        :type axis: _ShapeLike | None
+        """
+
+    def rot90(self, k: int = 1, axes: tuple[int, int] = (0, 1)) -> NPDate:
+        """
+        指定された軸の平面内で配列を90度回転させる
+
+        :param k: 配列に90度回転させたい回数を指定する
+        :type k: int
+        :param axes: 平面内で回転される軸を指定する
+        :type axes: tuple[int,int]
+        :return: 回転させた配列を返す
+        :rtype: NPDate
+        """
+
+    def typeconversion(
+        self,
+        type: np.DTypeLike,
+        casting: Literal[
+            "no", "equiv", "safe", "same_kind", "same_value", "unsafe"
+        ] = "safe",
+    ) -> bool:
+        """
+        配列の型が`type`で指定された型に変換可能か調べる
+
+        :param type: 型変換先のデータ型を指定する
+        :type type: np.DTypeLike
+        :param casting: どのようなデータ変換が行われるか指定する
+        :type casting: Literal["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]
+        """
+
     def tonumpy(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
@@ -315,13 +361,29 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: bool
         """
 
-    @classmethod
-    def today(cls) -> NPDate:
-        """現在日付(UTC時刻)を返す"""
+    @overload
+    def count_nonzero(self, axis: None = None, keepdims: bool = False) -> np.intp: ...
+    @overload
+    def count_nonzero(
+        self, axis: _ShapeLike | None = None, keepdims: bool = True
+    ) -> NDArray[np.intp]: ...
+    def count_nonzero(
+        self, axis: _ShapeLike | None = ..., keepdims: bool = ...
+    ) -> np.intp | NDArray[np.intp]:
+        """
+        0以外の要素の数を数える
 
-    @classmethod
-    def now(cls) -> NPDate:
-        """現在時刻(UTC時刻)を返す"""
+        :param axis: 要素を数える軸を指定する
+        :type axis: _ShapeLike | None
+        :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
+        :type keepdims: bool
+        """
+
+    def unique(self) -> NDArray:
+        """配列の固有要素を見つける"""
+
+    def counts(self) -> tuple[NDArray[Any], NDArray[np.intp]]:
+        """配列内の要素とその要素が配列内に存在する個数を返す"""
 
     def todatetime(self) -> np.ndarray[datetime, np.dtype[datetime]]:
         """配列内の日付を`datetime.datetime`に変換する"""
@@ -357,66 +419,4 @@ class NPDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
 
         :param days: 今日を含めるか指定する
         :type days: bool
-        """
-
-    def typeconversion(
-        self,
-        type: np.DTypeLike,
-        casting: Literal[
-            "no", "equiv", "safe", "same_kind", "same_value", "unsafe"
-        ] = "safe",
-    ) -> bool:
-        """
-        配列の型が`type`で指定された型に変換可能か調べる
-
-        :param type: 型変換先のデータ型を指定する
-        :type type: np.DTypeLike
-        :param casting: どのようなデータ変換が行われるか指定する
-        :type casting: Literal["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]
-        """
-
-    @overload
-    def count_nonzero(self, axis: None = None, keepdims: bool = False) -> np.intp: ...
-    @overload
-    def count_nonzero(
-        self, axis: _ShapeLike | None = None, keepdims: bool = True
-    ) -> NDArray[np.intp]: ...
-    def count_nonzero(
-        self, axis: _ShapeLike | None = ..., keepdims: bool = ...
-    ) -> np.intp | NDArray[np.intp]:
-        """
-        0以外の要素の数を数える
-
-        :param axis: 要素を数える軸を指定する
-        :type axis: _ShapeLike | None
-        :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
-        :type keepdims: bool
-        """
-
-    def unique(self) -> NDArray:
-        """配列の固有要素を見つける"""
-
-    def counts(self) -> tuple[NDArray[Any], NDArray[np.intp]]:
-        """配列内の要素とその要素が配列内に存在する個数を返す"""
-
-    def roll(self, shift: _ShapeLike, axis: _ShapeLike | None = None) -> NPDate:
-        """
-        要素を指定された軸に沿って回転させる
-
-        :param shift: 要素を移動させる位置の数を指定する
-        :type shift: _ShapeLike
-        :param axis: 要素を移動させる軸を指定する
-        :type axis: _ShapeLike | None
-        """
-
-    def rot90(self, k: int = 1, axes: tuple[int, int] = (0, 1)) -> NPDate:
-        """
-        指定された軸の平面内で配列を90度回転させる
-
-        :param k: 配列に90度回転させたい回数を指定する
-        :type k: int
-        :param axes: 平面内で回転される軸を指定する
-        :type axes: tuple[int,int]
-        :return: 回転させた配列を返す
-        :rtype: NPDate
         """

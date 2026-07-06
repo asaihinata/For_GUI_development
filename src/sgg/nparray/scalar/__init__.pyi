@@ -7,7 +7,7 @@ https://numpy.org/doc/stable/reference/arrays.scalars.html
 
 import numpy as np
 
-__all__ = ["ScalarNum", "ScalarInt", "ScalarFloat", "ScalarStr", "ScalarBool"]
+__all__ = ["ScalarBool", "ScalarFloat", "ScalarInt", "ScalarNum", "ScalarStr"]
 
 class ScalarNum:
     def __init__(self, val: int | float | np.number) -> None:

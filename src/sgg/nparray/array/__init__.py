@@ -6,9 +6,9 @@ from .npstatistics import NPStatisticsd, NPStatisticsds
 from .npstr import NPString
 
 __all__ = [
-    "NPBool",
-    "NPArray",
     "Formatconversion",
+    "NPArray",
+    "NPBool",
     "NPDate",
     "NPNumber",
     "NPStatisticsd",

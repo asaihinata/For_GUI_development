@@ -23,7 +23,6 @@ def implements(np_function) -> Any:
 class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
 
-    def __class_getitem__(cls, item: Any) -> type[Formatconversion[Any, Any]]: ...
     @overload
     def __new__(
         cls,
@@ -75,66 +74,6 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises TypeError: 要素型が`__element_type`と一致しない場合に発生させる
         """
 
-    def __array_finalize__(self, obj: np.ndarray | None) -> None:
-        """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
-
-    @overload
-    def __array__(
-        self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
-    @overload
-    def __array__(
-        self, dtype: np._DTypeT, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
-    @overload
-    def __array__(
-        self, dtype: np._DTypeT | None, copy: bool | None = None
-    ) -> (
-        np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
-    ): ...
-    def __array_ufunc__(
-        self,
-        ufunc: np.ufunc,
-        method: str,
-        *inputs: Any,
-        **kwargs: Any,
-    ) -> Formatconversion | Any:
-        """
-        NumPyのufuncの動作をカスタマイズする
-
-        :param ufunc: 呼び出されたufunc
-        :type ufunc: np.ufunc
-        :param method: 呼び出しメソッド名
-        :type method: str
-        :param inputs: ufuncへの入力
-        :type inputs: Any
-        :param kwargs: ufuncへの追加引数
-        :type kwargs: Any
-        :return: 処理結果を返す
-        """
-
-    def __array_function__(
-        self,
-        func: Any,
-        types: Any,
-        args: tuple,
-        kwargs: dict,
-    ) -> Any:
-        """
-        numpy関数の動作をカスタマイズする
-
-        :param func: 呼び出されたnumpy関数
-        :type func: Any
-        :param types: 関連する型のコレクション
-        :type types: Any
-        :param args: 位置引数
-        :type args: tuple
-        :param kwargs: キーワード引数
-        :type kwargs: dict
-        :return: 演算結果を返す
-        :rtype: Any
-        """
-
     @classmethod
     def _resolve_dtype(
         cls,
@@ -173,41 +112,65 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
         """
 
-    @property
-    def element_type(self) -> tuple[type[np.datetime64], type[datetime], type[date]]:
-        """Formatconversionで許可されている型を取得する"""
+    def __array_finalize__(self, obj: np.ndarray | None) -> None:
+        """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
 
-    @property
-    def data(self) -> NDArray[Any]:
-        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
-
-    @property
-    def dtypes(self) -> np.dtype | None:
+    def __array_ufunc__(
+        self,
+        ufunc: np.ufunc,
+        method: str,
+        *inputs: Any,
+        **kwargs: Any,
+    ) -> Formatconversion | Any:
         """
-        インスタンス生成時に確定したdtypeを取得する
+        NumPyのufuncの動作をカスタマイズする
 
-        :return:
-        :rtype: numpy.dtype | None
-        """
-
-    @dtypes.setter
-    def dtypes(self, dtype: DTypeLike | None) -> np.dtype | None:
-        """
-        配列のdtypeを設定する
-
-        :param dtype: 配列の型を指定する
-        :type dtype: DTypeLike | None
-        :return:
-        :rtype: numpy.dtype | None
+        :param ufunc: 呼び出されたufunc
+        :type ufunc: np.ufunc
+        :param method: 呼び出しメソッド名
+        :type method: str
+        :param inputs: ufuncへの入力
+        :type inputs: Any
+        :param kwargs: ufuncへの追加引数
+        :type kwargs: Any
+        :return: 処理結果を返す
         """
 
-    @property
-    def min_ndim(self) -> int | None:
-        """配列オブジェクトが許容する最小次元数を返す"""
+    @overload
+    def __array__(
+        self, dtype: None = None, copy: bool | None = None
+    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
+    @overload
+    def __array__(
+        self, dtype: np._DTypeT, copy: bool | None = None
+    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
+    @overload
+    def __array__(
+        self, dtype: np._DTypeT | None, copy: bool | None = None
+    ) -> (
+        np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
+    ): ...
+    def __array_function__(
+        self,
+        func: Any,
+        types: Any,
+        args: tuple,
+        kwargs: dict,
+    ) -> Any:
+        """
+        numpy関数の動作をカスタマイズする
 
-    @property
-    def max_ndim(self) -> int | None:
-        """配列オブジェクトが許容する最大次元数を返す"""
+        :param func: 呼び出されたnumpy関数
+        :type func: Any
+        :param types: 関連する型のコレクション
+        :type types: Any
+        :param args: 位置引数
+        :type args: tuple
+        :param kwargs: キーワード引数
+        :type kwargs: dict
+        :return: 演算結果を返す
+        :rtype: Any
+        """
 
     def __ne__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
     def __eq__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
@@ -246,6 +209,42 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
+    @property
+    def element_type(self) -> tuple[type[np.datetime64], type[datetime], type[date]]:
+        """Formatconversionで許可されている型を取得する"""
+
+    @property
+    def data(self) -> NDArray[Any]:
+        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
+
+    @property
+    def dtypes(self) -> np.dtype | None:
+        """
+        インスタンス生成時に確定したdtypeを取得する
+
+        :return:
+        :rtype: numpy.dtype | None
+        """
+
+    @dtypes.setter
+    def dtypes(self, dtype: DTypeLike | None) -> np.dtype | None:
+        """
+        配列のdtypeを設定する
+
+        :param dtype: 配列の型を指定する
+        :type dtype: DTypeLike | None
+        :return:
+        :rtype: numpy.dtype | None
+        """
+
+    @property
+    def min_ndim(self) -> int | None:
+        """配列オブジェクトが許容する最小次元数を返す"""
+
+    @property
+    def max_ndim(self) -> int | None:
+        """配列オブジェクトが許容する最大次元数を返す"""
+
     def to_1d(self) -> Formatconversion:
         """
         配列を1次元にフラット化した新しい配列オブジェクトを返す
@@ -273,24 +272,32 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: bool
         """
 
+    def roll(
+        self, shift: _ShapeLike, axis: _ShapeLike | None = None
+    ) -> Formatconversion:
+        """
+        要素を指定された軸に沿って回転させる
+
+        :param shift: 要素を移動させる位置の数を指定する
+        :type shift: _ShapeLike
+        :param axis: 要素を移動させる軸を指定する
+        :type axis: _ShapeLike | None
+        """
+
+    def rot90(self, k: int = 1, axes: tuple[int, int] = (0, 1)) -> Formatconversion:
+        """
+        指定された軸の平面内で配列を90度回転させる
+
+        :param k: 配列に90度回転させたい回数を指定する
+        :type k: int
+        :param axes: 平面内で回転される軸を指定する
+        :type axes: tuple[int,int]
+        :return: 回転させた配列を返す
+        :rtype: Formatconversion
+        """
+
     def tonumpy(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
-
-    def all_None(self) -> bool:
-        """
-        配列内の全要素が`None`かどうかを返す
-
-        :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
-
-    def any_None(self) -> bool:
-        """
-        配列内のいずれかの要素が`None`かどうかを返す
-
-        :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
 
     def typeconversion(
         self,
@@ -306,6 +313,22 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :type type: np.DTypeLike
         :param casting: どのようなデータ変換が行われるか指定する
         :type casting: Literal["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]
+        """
+
+    def all_None(self) -> bool:
+        """
+        配列内の全要素が`None`かどうかを返す
+
+        :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
+        :rtype: bool
+        """
+
+    def any_None(self) -> bool:
+        """
+        配列内のいずれかの要素が`None`かどうかを返す
+
+        :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
+        :rtype: bool
         """
 
     @overload
@@ -331,27 +354,3 @@ class Formatconversion(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
 
     def counts(self) -> tuple[NDArray[Any], NDArray[np.intp]]:
         """配列内の要素とその要素が配列内に存在する個数を返す"""
-
-    def roll(
-        self, shift: _ShapeLike, axis: _ShapeLike | None = None
-    ) -> Formatconversion:
-        """
-        要素を指定された軸に沿って回転させる
-
-        :param shift: 要素を移動させる位置の数を指定する
-        :type shift: _ShapeLike
-        :param axis: 要素を移動させる軸を指定する
-        :type axis: _ShapeLike | None
-        """
-
-    def rot90(self, k: int = 1, axes: tuple[int, int] = (0, 1)) -> Formatconversion:
-        """
-        指定された軸の平面内で配列を90度回転させる
-
-        :param k: 配列に90度回転させたい回数を指定する
-        :type k: int
-        :param axes: 平面内で回転される軸を指定する
-        :type axes: tuple[int,int]
-        :return: 回転させた配列を返す
-        :rtype: Formatconversion
-        """

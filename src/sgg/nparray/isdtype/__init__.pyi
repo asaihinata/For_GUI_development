@@ -4,20 +4,20 @@ from typing import Any
 
 __all__ = [
     "booldDtype",
-    "complexdDtype",
-    "floatdDtype",
-    "intdDtype",
-    "integerdDtype",
-    "numberdDtype",
-    "strdDtype",
-    "uintdDtype",
     "boolDtype",
+    "complexdDtype",
     "complexDtype",
+    "floatdDtype",
     "floatDtype",
+    "intdDtype",
     "intDtype",
+    "integerdDtype",
     "integerDtype",
+    "numberdDtype",
     "numberDtype",
+    "strdDtype",
     "strDtype",
+    "uintdDtype",
     "uintDtype",
 ]
 

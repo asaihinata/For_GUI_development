@@ -37,15 +37,21 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
             obj._max_ndim = max_ndim
         return obj
 
-    def __array__(self, dtype=None, copy=None):
-        return super().__array__(dtype, copy=copy)
+    @classmethod
+    def full(cls, fill_value, shape, dtype=None):
+        if _arrisuint(shape):
+            return np.full(shape, fill_value, np.dtype(dtype))
+        else:
+            raise ShapeError(shape)
 
-    def __array_finalize__(self, obj):
-        if obj is None:
-            return
-        self._dtype = getattr(obj, "_dtype", None)
-        self._min_ndim = getattr(obj, "_min_ndim", None)
-        self._max_ndim = getattr(obj, "_max_ndim", None)
+    @classmethod
+    def sequential(cls, shape):
+        if _arrisuint(shape):
+            return np.asarray(
+                np.arange(np.prod(shape), dtype=np.uint64).reshape(shape)
+            ).view(cls)
+        else:
+            raise ShapeError(shape)
 
     @classmethod
     def _resolve_dtype(cls, dtype):
@@ -75,34 +81,15 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
                     f"{cls.__name__}の要素は{cls.__element_type}のみ許可されています"
                 )
 
-    @property
-    def element_type(self):
-        return self.__element_type
+    def __array__(self, dtype=None, copy=None):
+        return super().__array__(dtype, copy=copy)
 
-    @property
-    def data(self):
-        return np.asarray(self, dtype=self._dtype)
-
-    @property
-    def dtypes(self):
-        return self._dtype
-
-    @dtypes.setter
-    def dtypes(self, dtype):
-        if dtype is not None:
-            self._dtype = np.dtype(dtype)
-        return self._dtype
-
-    @property
-    def min_ndim(self):
-        return getattr(self, "_min_ndim", None)
-
-    @property
-    def max_ndim(self):
-        return getattr(self, "_max_ndim", None)
-
-    def __class_getitem__(cls, item):
-        return np.ndarray.__class_getitem__.__func__(cls, item)
+    def __array_finalize__(self, obj):
+        if obj is None:
+            return
+        self._dtype = getattr(obj, "_dtype", None)
+        self._min_ndim = getattr(obj, "_min_ndim", None)
+        self._max_ndim = getattr(obj, "_max_ndim", None)
 
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
@@ -123,6 +110,9 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         if func in HANDLED_FUNCTIONS:
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
+
+    def __class_getitem__(cls, item):
+        return np.ndarray.__class_getitem__.__func__(cls, item)
 
     def __ne__(self, other):
         result = np.asarray(super().__ne__(other)).view(type(self))
@@ -172,6 +162,32 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
             return data[key]
         raise TypeError("keyにはintまたはsliceを指定してください")
 
+    @property
+    def element_type(self):
+        return self.__element_type
+
+    @property
+    def data(self):
+        return np.asarray(self, dtype=self._dtype)
+
+    @property
+    def dtypes(self):
+        return self._dtype
+
+    @dtypes.setter
+    def dtypes(self, dtype):
+        if dtype is not None:
+            self._dtype = np.dtype(dtype)
+        return self._dtype
+
+    @property
+    def min_ndim(self):
+        return getattr(self, "_min_ndim", None)
+
+    @property
+    def max_ndim(self):
+        return getattr(self, "_max_ndim", None)
+
     def to_1d(self):
         if self.min_ndim is not None and self.min_ndim > 1:
             raise ValueError(f"min_ndimが{self.min_ndim}のため1次元に変換できません")
@@ -195,32 +211,6 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
             return True
         return False
 
-    def tonumpy(self):
-        return np.asarray(self)
-
-    def all_None(self):
-        return bool(np.all(self.data == None))
-
-    def any_None(self):
-        return bool(np.any(self.data == None))
-
-    def typeconversion(self, type, casting="safe"):
-        if casting not in ["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]:
-            casting = "safe"
-        return np.can_cast(np.asarray(self), type, casting=casting)
-
-    def count_nonzero(self, axis=None, keepdims=False):
-        if not isinstance(keepdims, bool):
-            keepdims = False
-        return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
-
-    def unique(self):
-        return np.unique(np.asarray(self))
-
-    def counts(self):
-        count = np.unique_counts(np.asarray(self))
-        return count.values, count.counts
-
     def roll(self, shift, axis=None):
         if not isinstance(shift, int | float):
             raise TypeError("shiftには数値の型を指定してください")
@@ -235,21 +225,31 @@ class NPArray(NDArrayOperatorsMixin, np.ndarray):
         result._dtype = self._dtype
         return result
 
+    def tonumpy(self):
+        return np.asarray(self)
+
+    def typeconversion(self, type, casting="safe"):
+        if casting not in ["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]:
+            casting = "safe"
+        return np.can_cast(np.asarray(self), type, casting=casting)
+
     def EType(self):
         return np.asarray(np.vectorize(type)(self))
 
-    @classmethod
-    def full(cls, fill_value, shape, dtype=None):
-        if _arrisuint(shape):
-            return np.full(shape, fill_value, np.dtype(dtype))
-        else:
-            raise ShapeError(shape)
+    def all_None(self):
+        return bool(np.all(self.data == None))
 
-    @classmethod
-    def sequential(cls, shape):
-        if _arrisuint(shape):
-            return np.asarray(
-                np.arange(np.prod(shape), dtype=np.uint64).reshape(shape)
-            ).view(cls)
-        else:
-            raise ShapeError(shape)
+    def any_None(self):
+        return bool(np.any(self.data == None))
+
+    def count_nonzero(self, axis=None, keepdims=False):
+        if not isinstance(keepdims, bool):
+            keepdims = False
+        return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
+
+    def unique(self):
+        return np.unique(np.asarray(self))
+
+    def counts(self):
+        count = np.unique_counts(np.asarray(self))
+        return count.values, count.counts

@@ -9,7 +9,7 @@ import numpy as np
 
 from ..isdtype import boolDtype, floatDtype, intDtype, numberDtype, strDtype
 
-__all__ = ["ScalarNum", "ScalarInt", "ScalarFloat", "ScalarStr", "ScalarBool"]
+__all__ = ["ScalarBool", "ScalarFloat", "ScalarInt", "ScalarNum", "ScalarStr"]
 
 
 class ScalarNum:
