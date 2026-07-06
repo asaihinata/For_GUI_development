@@ -3,7 +3,7 @@ from pathlib import Path, PosixPath, WindowsPath
 
 from PIL import Image
 
-__all__ = ["Img_byte","Img_path"]
+__all__ = ["Img_byte", "Img_path"]
 
 
 class Img_conversion:
