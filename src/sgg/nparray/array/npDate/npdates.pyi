@@ -9,7 +9,6 @@ from .._typing import _ArrayLikeTD64_co, _DTypeT, _ShapeT
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
-from ._types import _DATES_UNITL
 from .npformatdate import NPFormatDate
 
 __all__ = ["NPDate"]
@@ -31,15 +30,6 @@ class NPDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPDate[_ShapeT, np.dtype[datetime64]]: ...
-    @overload
-    def __new__(
-        cls,
-        data: _ArrayLikeTD64_co,
-        dtype: _DATES_UNITL,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> NPDate[_ShapeT, np.dtype[datetime64[_DATES_UNITL]]]: ...
     @overload
     def __new__(
         cls,

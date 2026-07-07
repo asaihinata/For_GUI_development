@@ -247,8 +247,8 @@ For_GUI_development
  │   │   │   │   ├── npdate
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   ├── _types.py
- │   │   │   │   │   ├── npdate.py
- │   │   │   │   │   ├── npdate.pyi
+ │   │   │   │   │   ├── npdates.py
+ │   │   │   │   │   ├── npdates.pyi
  │   │   │   │   │   ├── npformatdate.py
  │   │   │   │   │   └── npformatdate.pyi
  │   │   │   │   ├── npnumber

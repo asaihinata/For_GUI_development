@@ -3,8 +3,7 @@ from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
 from numpy import datetime64
-from numpy._typing import _DTypeLikeTD64, _ShapeLike
-from numpy.typing import NDArray
+from numpy._typing import _DTypeLikeTD64
 
 from .._typing import _ArrayLikeDateParse_co, _DTypeT, _ShapeT
 from ..dev import _ArrayShapeMixin
@@ -27,14 +26,13 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     _element_type: tuple[type[np.datetime64], type[datetime], type[date]]
     _default_dtype: Literal["datetime64[D]"]
 
-    # ==========================================================
-    # 生成関連
-    # ==========================================================
     @overload
     def __new__(
         cls,
         data: _ArrayLikeDateParse_co,
         dtype: None = "datetime64[D]",
+        yearfirst: bool = ...,
+        dayfirst: bool = ...,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -43,7 +41,9 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __new__(
         cls,
         data: _ArrayLikeDateParse_co,
-        dtype: type[_DTypeLikeTD64],
+        dtype: _DTypeLikeTD64,
+        yearfirst: bool = ...,
+        dayfirst: bool = ...,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -51,7 +51,7 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __new__(
         cls,
         data: _ArrayLikeDateParse_co,
-        dtype: type[_DTypeLikeTD64] | None = "datetime64[D]",
+        dtype: _DTypeLikeTD64 | None = "datetime64[D]",
         yearfirst: bool = ...,
         dayfirst: bool = ...,
         d_ndim: int | None = None,
@@ -81,15 +81,6 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    # ==========================================================
-    # クラスメソッド(検証・型解決)
-    # (_resolve_dtype, _validate_ndim, _validate_elements は
-    #  _ArrayShapeMixin が型定義済みのため省略)
-    # ==========================================================
-
-    # ==========================================================
-    # numpyプロトコル関連
-    # ==========================================================
     def __class_getitem__(cls, item: Any) -> type[NPFormatDate[Any, Any]]: ...
     def __array_ufunc__(
         self,
@@ -148,9 +139,6 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: Any
         """
 
-    # ==========================================================
-    # 特殊メソッド(演算子・組み込み関数)
-    # ==========================================================
     def __ne__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
     def __eq__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
     def __repr__(self) -> str: ...
@@ -188,30 +176,6 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
-    # ==========================================================
-    # プロパティ
-    # (element_typeのみNPFormatDate固有のタプル型に絞り込む
-    #  ためオーバーライド。data, dtypes, min_ndim, max_ndim は
-    #  _ArrayShapeMixin と同一の型のため省略)
-    # ==========================================================
     @property
     def element_type(self) -> tuple[type[np.datetime64], type[datetime], type[date]]:
         """NPFormatDateで許可されている型を取得する"""
-
-    # ==========================================================
-    # 形状・次元関連
-    # (to_1d, roll, rot90 は _ArrayShapeMixin の Self が
-    #  NPFormatDate型に解決されるため,ここでのオーバーライドは不要)
-    # ==========================================================
-
-    # ==========================================================
-    # 型・変換関連
-    # (tonumpy, typeconversion は _ArrayShapeMixin が型定義済み
-    #  のため省略)
-    # ==========================================================
-
-    # ==========================================================
-    # 値の検査・集計関連
-    # (all_None, any_None, count_nonzero, unique, counts は
-    #  Mixin が型定義済みのため省略)
-    # ==========================================================

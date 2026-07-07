@@ -32,6 +32,7 @@ class NPDate(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
         min_ndim=None,
         max_ndim=None,
     ):
+        print(type(NPFormatDate))
         resolved = cls._resolve_dtype(serchDtype(dtype))
         obj = np.asarray(data, dtype=resolved).view(cls)
         cls._validate_elements(obj)
