@@ -6,7 +6,6 @@ from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 from ._types import serchDtype
-from .npformatdate import NPFormatDate
 
 __all__ = ["NPDate"]
 HANDLED_FUNCTIONS = {}
@@ -21,7 +20,7 @@ def implements(np_function):
 
 
 class NPDate(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
-    _element_type = (NPFormatDate, np.datetime64, datetime, date)
+    _element_type = (np.datetime64, datetime, date)
     _default_dtype = "datetime64[D]"
 
     def __new__(
@@ -32,7 +31,6 @@ class NPDate(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
         min_ndim=None,
         max_ndim=None,
     ):
-        print(type(NPFormatDate))
         resolved = cls._resolve_dtype(serchDtype(dtype))
         obj = np.asarray(data, dtype=resolved).view(cls)
         cls._validate_elements(obj)

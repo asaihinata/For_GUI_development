@@ -20,8 +20,8 @@ def implements(np_function):
 
 
 class NPFormatDate(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
-    _element_type = str
-    _default_dtype = str
+    _element_type = (np.datetime64, datetime, date)
+    _default_dtype = "datetime64[D]"
 
     def __new__(
         cls,

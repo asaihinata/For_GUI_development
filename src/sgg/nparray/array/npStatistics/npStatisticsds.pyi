@@ -7,7 +7,7 @@ from numpy._typing import _ArrayLikeFloat_co
 from numpy.typing import DTypeLike, NDArray
 
 from .._typing import _ArrayLikeNumber_co, _NumberT
-from ..dev import NDArrayOperatorsMixin
+from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
 from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
@@ -16,18 +16,18 @@ BINS_LIST: TypeAlias = Literal[
     "stone", "auto", "scott", "doane", "fd", "rice", "sqrt", "sturges"
 ]
 METHOD_LIST: TypeAlias = Literal[
+    "inverted_cdf",
     "averaged_inverted_cdf",
     "closest_observation",
-    "hazen",
     "interpolated_inverted_cdf",
-    "inverted_cdf",
+    "hazen",
+    "weibull",
     "linear",
     "median_unbiased",
     "normal_unbiased",
-    "weibull",
 ]
 
-class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
+class NPStatisticsds(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
     """2つの変数データから様々な統計の計算を行うオブジェクト"""
 
     def __new__(
@@ -84,7 +84,7 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         """
 
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
-        """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
+        """スライスやview後もdtypeやx,yの情報を引き継がさせるメソッド"""
 
     def __array_ufunc__(
         self,
@@ -198,14 +198,12 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
         """
 
     @dtypes.setter
-    def dtypes(self, dtype: DTypeLike | None) -> np.dtype | None:
+    def dtypes(self, dtype: DTypeLike | None) -> None:
         """
         配列のdtypeを設定する
 
         :param dtype: 配列の型を指定する
         :type dtype: DTypeLike | None
-        :return:
-        :rtype: numpy.dtype | None
         """
 
     @property
@@ -223,44 +221,6 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
     @property
     def ymath(self) -> np.ndarray:
         """`y`データをnumpyの配列で返す"""
-
-    def lengtharange(self) -> NDArray[np.unsignedinteger[np._64Bit]]:
-        """
-        配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
-
-        `dtype`は`np.uint64`に固定される
-
-        :return: インデックス配列を返す
-        """
-
-    def shapesize(self, shapes: tuple[int, ...]) -> bool:
-        """
-        配列オブジェクトの`shape`が`shapes`と一致するかを確認する
-
-        :param shapes: 比較する`shape`を指定する
-        :type shapes: tuple[int, ...]
-        :return: `shape`が一致する場合は`True`を返し,一致しない場合は`False`を返す
-        :rtype: bool
-        """
-
-    def tonumpy(self) -> NDArray[Any]:
-        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
-
-    def all_None(self) -> bool:
-        """
-        配列内の全要素が`None`かどうかを返す
-
-        :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
-
-    def any_None(self) -> bool:
-        """
-        配列内のいずれかの要素が`None`かどうかを返す
-
-        :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
 
     def covariance(self) -> np.floating:
         """共分散を求める"""

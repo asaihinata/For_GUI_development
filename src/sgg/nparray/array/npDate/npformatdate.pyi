@@ -30,7 +30,7 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __new__(
         cls,
         data: _ArrayLikeDateParse_co,
-        dtype: None = "datetime64[D]",
+        dtype: None = None,
         yearfirst: bool = ...,
         dayfirst: bool = ...,
         d_ndim: int | None = None,
@@ -64,7 +64,7 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :param data: 変換する配列を指定する
         :type data: _ArrayLikeDateParse_co
         :param dtype: 配列の型を指定する
-        :type dtype: type[_DTypeLikeTD64] | None
+        :type dtype: _DTypeLikeTD64 | None
         :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
         :type yearfirst: bool
         :param dayfirst: 曖昧な3つの整数からなる日付の最初の値を日もしくは月として解釈するかどうか指定する
@@ -178,4 +178,4 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
 
     @property
     def element_type(self) -> tuple[type[np.datetime64], type[datetime], type[date]]:
-        """NPFormatDateで許可されている型を取得する"""
+        """NPFormatDatesで許可されている型を取得する"""

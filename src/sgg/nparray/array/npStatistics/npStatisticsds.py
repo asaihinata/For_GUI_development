@@ -4,7 +4,7 @@ import numpy as np
 from numpy.polynomial.chebyshev import chebfit, chebval
 
 from ...isdtype import numberDtype
-from ..dev import NDArrayOperatorsMixin
+from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
 from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
@@ -30,7 +30,7 @@ def implements(np_function):
     return decorator
 
 
-class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
+class NPStatisticsds(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
 
     __element_type = (int, float, complex, np.number)
 
@@ -153,7 +153,6 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
     def dtypes(self, dtype):
         if dtype is not None:
             self._dtype = np.dtype(dtype)
-        return self._dtype
 
     @property
     def x(self):
@@ -170,31 +169,6 @@ class NPStatisticsds(NDArrayOperatorsMixin, np.ndarray):
     @property
     def ymath(self):
         return self.__ys.data
-
-    def lengtharange(self):
-        shapes = self.shape
-        lens = len(shapes)
-        if lens == 1:
-            raw = np.arange(0, self.size, 1)
-        else:
-            raw = np.tile(np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])).reshape(
-                shapes
-            )
-        return np.array(raw, dtype=np.uint64)
-
-    def shapesize(self, shapes):
-        if self.shape == shapes:
-            return True
-        return False
-
-    def tonumpy(self):
-        return np.asarray(self)
-
-    def all_None(self):
-        return bool(np.all(self.data == None))
-
-    def any_None(self):
-        return bool(np.any(self.data == None))
 
     def covariance(self):
         return np.cov(self.x, self.y)[0, 1]
