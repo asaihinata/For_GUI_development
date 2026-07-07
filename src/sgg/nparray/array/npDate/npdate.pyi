@@ -9,7 +9,7 @@ from .._typing import _ArrayLikeTD64_co, _DTypeT, _ShapeT
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
-from ._typing import _DATES_UNITL
+from ._types import _DATES_UNITL
 from .npformatdate import NPFormatDate
 
 __all__ = ["NPDate"]

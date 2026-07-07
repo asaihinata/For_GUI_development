@@ -190,6 +190,7 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @property
     def element_type(self) -> None:
         """NPArrayで許可されている型を取得する"""
+
     def count_nonzero(
         self, axis: np._ShapeLike | None = None, keepdims: bool = False
     ) -> np.intp | NDArray[np.intp]:
@@ -201,5 +202,6 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
         :type keepdims: bool
         """
+
     def EType(self) -> NDArray[Incomplete]:
         """要素の型を調べる"""

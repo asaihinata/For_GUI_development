@@ -246,7 +246,7 @@ For_GUI_development
  │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── npdate
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── _typing.py
+ │   │   │   │   │   ├── _types.py
  │   │   │   │   │   ├── npdate.py
  │   │   │   │   │   ├── npdate.pyi
  │   │   │   │   │   ├── npformatdate.py

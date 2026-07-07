@@ -127,9 +127,11 @@ class NPArray(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
         elif isinstance(key, slice):
             return data[key]
         raise TypeError("keyにはintまたはsliceを指定してください")
+
     def count_nonzero(self, axis=None, keepdims=False):
         if not isinstance(keepdims, bool):
             keepdims = False
         return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
+
     def EType(self):
         return np.asarray(np.vectorize(type)(self))

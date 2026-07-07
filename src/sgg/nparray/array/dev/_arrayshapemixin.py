@@ -1,10 +1,3 @@
-"""
-np.ndarrayサブクラス間で共通するメソッドをまとめたMixinモジュール
-
-このモジュールのMixinは`np.ndarray`のサブクラスに対して使用することを前提とする。
-継承先クラスは`_dtype`属性(インスタンス変数)を持つ必要がある。
-"""
-
 import numpy as np
 
 __all__ = ["_ArrayCommonMixin", "_ArrayShapeMixin"]

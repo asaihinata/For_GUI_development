@@ -4,9 +4,10 @@ from typing import Any, Iterator, Literal, Self, overload
 import numpy as np
 from numpy import datetime64
 from numpy._typing import _DTypeLikeTD64, _ShapeLike
-from numpy.typing import DTypeLike, NDArray
+from numpy.typing import NDArray
 
 from .._typing import _ArrayLikeDateParse_co, _DTypeT, _ShapeT
+from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
 
 __all__ = ["NPFormatDate"]
@@ -20,9 +21,15 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPFormatDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
 
+    _element_type: tuple[type[np.datetime64], type[datetime], type[date]]
+    _default_dtype: Literal["datetime64[D]"]
+
+    # ==========================================================
+    # 生成関連
+    # ==========================================================
     @overload
     def __new__(
         cls,
@@ -71,50 +78,19 @@ class NPFormatDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :return: 生成された配列オブジェクトインスタンスを返す
         :rtype: Self
         :raises ValueError: 次元数が範囲外の場合に発生させる
-        :raises TypeError: 要素型が`__element_type`と一致しない場合に発生させる
+        :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    @classmethod
-    def _resolve_dtype(
-        cls,
-        dtype: np.dtype | str | type | None,
-    ) -> np.dtype | None:
-        """
-        引数dtypeを解決させる
+    # ==========================================================
+    # クラスメソッド(検証・型解決)
+    # (_resolve_dtype, _validate_ndim, _validate_elements は
+    #  _ArrayShapeMixin が型定義済みのため省略)
+    # ==========================================================
 
-        :param dtype: ユーザーが指定するdtype
-        :return: 解決されたdtypeを返す
-        :rtype: numpy.dtype | None
-        """
-
-    @classmethod
-    def _validate_ndim(
-        cls,
-        obj: np.ndarray,
-        min_ndim: int | None,
-        max_ndim: int | None,
-    ) -> None:
-        """
-        配列の次元数がmin_ndim・max_ndimの範囲内か検証する
-
-        :param obj: 検証対象の配列
-        :param min_ndim: 許可する最小次元数を指定する。Noneの場合は制約なし
-        :param max_ndim: 許可する最大次元数を指定する。Noneの場合は制約なし
-        :raises ValueError: 次元数が範囲外の場合に発生させる
-        """
-
-    @classmethod
-    def _validate_elements(cls, obj: np.ndarray) -> None:
-        """
-        配列内の要素が`__element_type`と一致するか検証する
-
-        :param obj: 検証対象の配列
-        :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
-        """
-
-    def __array_finalize__(self, obj: np.ndarray | None) -> None:
-        """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
-
+    # ==========================================================
+    # numpyプロトコル関連
+    # ==========================================================
+    def __class_getitem__(cls, item: Any) -> type[NPFormatDate[Any, Any]]: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -172,8 +148,11 @@ class NPFormatDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: Any
         """
 
-    def __ne__(self, other: Any) -> NPBool[Any, np.dtype[np.bool_]]: ...
-    def __eq__(self, other: Any) -> NPBool[Any, np.dtype[np.bool_]]: ...
+    # ==========================================================
+    # 特殊メソッド(演算子・組み込み関数)
+    # ==========================================================
+    def __ne__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
+    def __eq__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: object) -> bool: ...
@@ -209,128 +188,30 @@ class NPFormatDate(np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
+    # ==========================================================
+    # プロパティ
+    # (element_typeのみNPFormatDate固有のタプル型に絞り込む
+    #  ためオーバーライド。data, dtypes, min_ndim, max_ndim は
+    #  _ArrayShapeMixin と同一の型のため省略)
+    # ==========================================================
     @property
     def element_type(self) -> tuple[type[np.datetime64], type[datetime], type[date]]:
         """NPFormatDateで許可されている型を取得する"""
 
-    @property
-    def data(self) -> NDArray[Any]:
-        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
+    # ==========================================================
+    # 形状・次元関連
+    # (to_1d, roll, rot90 は _ArrayShapeMixin の Self が
+    #  NPFormatDate型に解決されるため,ここでのオーバーライドは不要)
+    # ==========================================================
 
-    @property
-    def dtypes(self) -> np.dtype | None:
-        """
-        インスタンス生成時に確定したdtypeを取得する
+    # ==========================================================
+    # 型・変換関連
+    # (tonumpy, typeconversion は _ArrayShapeMixin が型定義済み
+    #  のため省略)
+    # ==========================================================
 
-        :return:
-        :rtype: numpy.dtype | None
-        """
-
-    @dtypes.setter
-    def dtypes(self, dtype: DTypeLike | None) -> np.dtype | None:
-        """
-        配列のdtypeを設定する
-
-        :param dtype: 配列の型を指定する
-        :type dtype: DTypeLike | None
-        :return:
-        :rtype: numpy.dtype | None
-        """
-
-    @property
-    def min_ndim(self) -> int | None:
-        """配列オブジェクトが許容する最小次元数を返す"""
-
-    @property
-    def max_ndim(self) -> int | None:
-        """配列オブジェクトが許容する最大次元数を返す"""
-
-    def to_1d(self) -> NPFormatDate:
-        """
-        配列を1次元にフラット化した新しい配列オブジェクトを返す
-
-        :return: フラット化した配列オブジェクトを返す
-        :raises ValueError: `min_ndim`が1以下の場合に発生させる
-        """
-
-    def lengtharange(self) -> NDArray[np.unsignedinteger[np._64Bit]]:
-        """
-        配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
-
-        `dtype`は`np.uint64`に固定される
-
-        :return: インデックス配列を返す
-        """
-
-    def shapesize(self, shapes: tuple[int, ...]) -> bool:
-        """
-        配列オブジェクトの`shape`が`shapes`と一致するかを確認する
-
-        :param shapes: 比較する`shape`を指定する
-        :type shapes: tuple[int, ...]
-        :return: `shape`が一致する場合は`True`を返し,一致しない場合は`False`を返す
-        :rtype: bool
-        """
-
-    def roll(self, shift: _ShapeLike, axis: _ShapeLike | None = None) -> NPFormatDate:
-        """
-        要素を指定された軸に沿って回転させる
-
-        :param shift: 要素を移動させる位置の数を指定する
-        :type shift: _ShapeLike
-        :param axis: 要素を移動させる軸を指定する
-        :type axis: _ShapeLike | None
-        """
-
-    def rot90(self, k: int = 1, axes: tuple[int, int] = (0, 1)) -> NPFormatDate:
-        """
-        指定された軸の平面内で配列を90度回転させる
-
-        :param k: 配列に90度回転させたい回数を指定する
-        :type k: int
-        :param axes: 平面内で回転される軸を指定する
-        :type axes: tuple[int,int]
-        :return: 回転させた配列を返す
-        :rtype: NPFormatDate
-        """
-
-    def tonumpy(self) -> NDArray[Any]:
-        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
-
-    def typeconversion(
-        self,
-        type: np.DTypeLike,
-        casting: Literal[
-            "no", "equiv", "safe", "same_kind", "same_value", "unsafe"
-        ] = "safe",
-    ) -> bool:
-        """
-        配列の型が`type`で指定された型に変換可能か調べる
-
-        :param type: 型変換先のデータ型を指定する
-        :type type: np.DTypeLike
-        :param casting: どのようなデータ変換が行われるか指定する
-        :type casting: Literal["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]
-        """
-
-    def all_None(self) -> bool:
-        """
-        配列内の全要素が`None`かどうかを返す
-
-        :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
-
-    def any_None(self) -> bool:
-        """
-        配列内のいずれかの要素が`None`かどうかを返す
-
-        :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
-
-    def unique(self) -> NDArray:
-        """配列の固有要素を見つける"""
-
-    def counts(self) -> tuple[NDArray[Any], NDArray[np.intp]]:
-        """配列内の要素とその要素が配列内に存在する個数を返す"""
+    # ==========================================================
+    # 値の検査・集計関連
+    # (all_None, any_None, count_nonzero, unique, counts は
+    #  Mixin が型定義済みのため省略)
+    # ==========================================================

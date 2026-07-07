@@ -5,7 +5,7 @@ import numpy as np
 from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
-from ._typing import serchDtype
+from ._types import serchDtype
 from .npformatdate import NPFormatDate
 
 __all__ = ["NPDate"]
@@ -52,7 +52,6 @@ class NPDate(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     @classmethod
     def now(cls):
         return NPDate([np.datetime64("now")], dtype="datetime64[h]")
-
 
     def __array__(self, dtype=np.dtype("datetime64[D]"), copy=None):
         return super().__array__(np.dtype(serchDtype(dtype)), copy=copy)

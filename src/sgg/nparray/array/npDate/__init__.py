@@ -3,4 +3,4 @@
 from .npdate import NPDate
 from .npformatdate import NPFormatDate
 
-__all__ = ["NPFormatDate", "NPDate"]
+__all__ = ["NPDate", "NPFormatDate"]
