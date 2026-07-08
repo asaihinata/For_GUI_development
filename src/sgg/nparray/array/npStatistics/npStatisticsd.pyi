@@ -7,7 +7,7 @@ import numpy as np
 from numpy._typing import _FloatLike_co
 from numpy.typing import ArrayLike, DTypeLike, NDArray
 
-from sgg.typing import (TypeAixs, TypeArrayLikeNumber, _ArrayLikeNumber_co,
+from sgg.typing import (Typeaxis, TypeArrayLikeNumber, _ArrayLikeNumber_co,
                         _NumberT)
 
 from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
@@ -89,7 +89,7 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
     @classmethod
     def _validate_elements(cls, obj: np.ndarray) -> None:
         """
-        配列内の要素が`__element_type`と一致するか検証する
+        配列内の要素が`_element_type`と一致するか検証する
 
         :param obj: 検証対象の配列
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
@@ -276,7 +276,7 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
     def percentile(
         self,
         q: tuple[int | float, ...],
-        aixs: TypeAixs = None,
+        axis: Typeaxis = None,
         method: Type_Method = "linear",
     ) -> np.floating | NDArray[np.floating]:
         """
@@ -284,8 +284,8 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
 
         :param q: 求めたいパーセンタイル値を指定する
         :type q: tuple[int | float,...]
-        :param aixs: 計算する軸の方向を指定する
-        :type aixs: TypeAixs
+        :param axis: 計算する軸の方向を指定する
+        :type axis: Typeaxis
         :param method: パーセンタイルを推定するために使用する方法を指定する
         :type method: Type_Method
         """
@@ -293,7 +293,7 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
     def quantile(
         self,
         q: _FloatLike_co,
-        aixs: TypeAixs = None,
+        axis: Typeaxis = None,
         method: Type_Method = "linear",
     ) -> np.floating | NDArray[np.floating]:
         """
@@ -301,19 +301,22 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
 
         :param q: 求めたい分位点を指定する
         :type q: _FloatLike_co
-        :param aixs: 計算する軸の方向を指定する
-        :type aixs: TypeAixs
+        :param axis: 計算する軸の方向を指定する
+        :type axis: Typeaxis
         :param method: 分位点を推定するために使用する方法を指定する
         :type method: Type_Method
         """
 
     def IQR(
         self,
+        axis:Typeaxis=None,
         method: Type_Method = "linear",
     ) -> NDArray[np.floating]:
         """
         配列の四分位範囲を求める
 
+        :param axis: 計算する軸の方向を指定する
+        :type axis: Typeaxis
         :param method: 分位点を推定するために使用する方法を指定する
         :type method: Type_Method
         """
@@ -375,7 +378,7 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
         """
 
     def ratio_E_samplingerror(
-        self, parcent: int | float, cc: int | float
+        self, parcent: int | float, cc: int | float=0.95
     ) -> np.float64:
         """
         母比率の標本誤差を求める

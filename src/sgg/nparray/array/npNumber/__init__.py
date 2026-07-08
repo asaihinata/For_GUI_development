@@ -123,8 +123,24 @@ class NPNumber(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
         )
         result._dtype = result.dtype
         return result
+    def cusdiff(self):
+        datas = np.ravel(self)
+        splices = self.shape[-1]
+        result = (
+            np.array(
+                [
+                    j - np.insert(j, 0, 0)[:-1]
+                    for i in range(0, len(datas), splices)
+                    for j in [datas[i : i + splices]]
+                ]
+            )
+            .view(type(self))
+            .reshape(self.shape)
+        )
+        result._dtype = result.dtype
+        return result
 
-    def cumprod(self):
+    def cusprod(self):
         datas = np.ravel(self)
         splices = self.shape[-1]
         result = (
@@ -140,23 +156,44 @@ class NPNumber(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
         )
         result._dtype = result.dtype
         return result
+    def cusdiv(self):
+        datas = np.ravel(self)
+        splices = self.shape[-1]
+        result = (
+            np.array(
+                [
+                    np.insert(j, 0, 0)[:-1] / j
+                    for i in range(0, len(datas), splices)
+                    for j in [datas[i : i + splices]]
+                ]
+            )
+            .view(type(self))
+            .reshape(self.shape)
+        )
+        result._dtype = result.dtype
+        return result
 
     def percentile(self, q, axis=None, method="linear"):
         if method not in method_list:
             method = "linear"
-        result = np.percentile(self.data, q, axis=axis, method=method).view(type(self))
+        result = np.percentile(np.asarray(self), q, axis=axis, method=method).view(type(self))
         result._dtype = result.dtype
         return result
 
     def quantile(self, q, axis=None, method="linear"):
         if method not in method_list:
             method = "linear"
-        result = np.asarray(np.quantile(self.data, q, axis=axis, method=method)).view(
+        result = np.quantile(np.asarray(self), q, axis=axis, method=method).view(
             type(self)
         )
         result._dtype = result.dtype
         return result
-
+    def IQR(self, axis=None, method="linear"):
+        if method not in method_list:
+            method = "linear"
+        result=np.percentile(np.asarray(self), [25, 50, 75], axis=axis, method=method)
+        result._dtype = result.dtype
+        return result
     def ratio(self, axis=None):
         result = np.asarray((self / np.sum(self, axis=axis, keepdims=True)) * 100).view(
             type(self)

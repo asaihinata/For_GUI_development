@@ -3,7 +3,7 @@
 import numpy as np
 from scipy.stats import norm
 
-from sgg.nparray import numberDtype
+from sgg.nparray.isdtype import numberDtype
 from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
 
 __all__ = ["NPStatisticsd"]
@@ -30,7 +30,7 @@ def implements(np_function):
 
 
 class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
-    __element_type = (int, float, complex, np.number)
+    _element_type = (int, float, complex, np.number)
 
     def __new__(cls, data, dtype=np.float64):
         resolved = cls._resolve_dtype(dtype)
@@ -56,12 +56,12 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def _validate_elements(cls, obj):
-        if cls.__element_type is None:
+        if cls._element_type is None:
             return
         for elem in obj.flat:
-            if not isinstance(elem, cls.__element_type):
+            if not isinstance(elem, cls._element_type):
                 raise TypeError(
-                    f"{cls.__name__}の要素は{cls.__element_type}のみ許可されています"
+                    f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
                 )
 
     def __array__(self, dtype=np.float64, copy=None):
@@ -98,7 +98,7 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
 
     @property
     def element_type(self):
-        return self.__element_type
+        return self._element_type
 
     @property
     def data(self):

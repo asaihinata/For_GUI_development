@@ -88,7 +88,11 @@ class NPArray(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     def count_nonzero(self, axis=None, keepdims=False):
         if not isinstance(keepdims, bool):
             keepdims = False
-        return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
+        result=np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
+        result._dtype = result.dtype
+        return result
 
     def EType(self):
-        return np.asarray(np.vectorize(type)(self))
+        result=np.asarray(np.vectorize(type)(self))
+        result._dtype = result.dtype
+        return result

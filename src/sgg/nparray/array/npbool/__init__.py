@@ -62,12 +62,12 @@ class NPBool(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
 
     def __ne__(self, value):
         result = np.asarray(np.not_equal(np.asarray(self), value)).view(type(self))
-        result._dtype = np.bool_
+        result._dtype = result.dtype
         return result
 
     def __eq__(self, value):
         result = np.asarray(np.equal(np.asarray(self), value)).view(type(self))
-        result._dtype = np.bool_
+        result._dtype = result.dtype
         return result
 
     def all(self):

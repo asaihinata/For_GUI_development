@@ -49,7 +49,7 @@ __all__ = [
     "Type_icon",
     "Type_Marker",
     "Type_Solid",
-    "TypeAixs",
+    "Typeaxis",
     "TypeArray2LikeAny",
     "TypeArray2LikeBool",
     "TypeArray2Likedatetime",
@@ -203,4 +203,4 @@ Typeget_Array_NumStr: TypeAlias = np.ndarray[
 ]
 Typeget_Array: TypeAlias = np.ndarray[tuple[int], np.dtype[np.number]]
 Typetuple_float64: TypeAlias = tuple[np.float64, np.float64]
-TypeAixs: TypeAlias = np._ShapeLike | None
+Typeaxis: TypeAlias = np._ShapeLike | None

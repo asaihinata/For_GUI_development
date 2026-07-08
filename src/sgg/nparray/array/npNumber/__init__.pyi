@@ -4,8 +4,9 @@ from typing import Any, Iterator, Literal, Self, TypeAlias, TypeVar, overload
 
 import numpy as np
 from numpy.typing import NDArray
+from numpy._typing import _FloatLike_co
 
-from sgg.typing import _ArrayLikeNumber_co, _NumberT, _ShapeT
+from sgg.typing import _ArrayLikeNumber_co, _NumberT, _ShapeT,Typeaxis
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
@@ -181,36 +182,44 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
 
     def cussum(self) -> NPNumber[_ShapeT, _DTypeT]:
         """一つ前の元の値との和を求める"""
-
-    def cumprod(self) -> NPNumber[_ShapeT, _DTypeT]:
+    def cusdiff(self) -> NPNumber[_ShapeT, _DTypeT]:
+        """一つ前の元の値との差を求める"""
+    def cusprod(self) -> NPNumber[_ShapeT, _DTypeT]:
         """一つ前の元の値との積を求める"""
-
+    def cusdiv(self) -> NPNumber[_ShapeT, _DTypeT]:
+        """一つ前の元の値との除算を求める"""
     def percentile(
         self,
         q: tuple[int | float, ...],
+        axis: Typeaxis = None,
         method: TYPEMETHOD = "linear",
-    ) -> NPNumber:
+    ) -> NPNumber[Any,np.dtype[np.float64]]:
         """
         指定したパーセンタイルを計算する
 
         :param q: 求めたいパーセンタイル値を指定する
         :type q: tuple[int | float,...]
+        :param axis: 計算する軸の方向を指定する
+        :type axis: Typeaxis
         :param method: パーセンタイルを推定するために使用する方法を指定する
-        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
+        :type method: TYPEMETHOD
         """
 
     def quantile(
         self,
-        q: tuple[float, ...],
+        q: _FloatLike_co,
+        axis: Typeaxis = None,
         method: TYPEMETHOD = "linear",
-    ) -> NPNumber:
+    ) -> NPNumber[Any,np.dtype[np.float64]]:
         """
         指定した分位点を計算する
 
         :param q: 求めたい分位点を指定する
-        :type q: tuple[float,...]
+        :type q: _FloatLike_co
+        :param axis: 計算する軸の方向を指定する
+        :type axis: Typeaxis
         :param method: 分位点を推定するために使用する方法を指定する
-        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased"]
+        :type method: TYPEMETHOD
         """
 
     def ratio(self, axis: int | None = None) -> NPNumber:

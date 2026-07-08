@@ -29,11 +29,11 @@ class NPBool(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __new__(
         cls,
         data: _ArrayLikeBool_co,
-        dtype: None = np.bool_,
+        dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __new__(
         cls,
@@ -42,7 +42,7 @@ class NPBool(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     def __new__(
         cls,
         data: _ArrayLikeBool_co,

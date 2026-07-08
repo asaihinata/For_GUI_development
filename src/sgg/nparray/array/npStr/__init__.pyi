@@ -135,7 +135,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
         :type i: _ArrayLikeInt_co
         """
 
-    def __rmul__(self, other: _ArrayLikeInt_co) -> NPString:
+    def __rmul__(self, i: _ArrayLikeInt_co) -> NPString:
         """
         配列内の要素を`i`回付け加える
 
@@ -143,7 +143,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
         :type i: _ArrayLikeInt_co
         """
 
-    def __imul__(self, other: _ArrayLikeInt_co) -> NPString:
+    def __imul__(self, i: _ArrayLikeInt_co) -> NPString:
         """
         配列内の要素を`i`回付け加える
 
@@ -157,24 +157,6 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
         self,
     ) -> tuple[type[str], type[np.character], type[np.str_], type[np.bytes_]]:
         """NPStringで許可されている型を取得する"""
-
-    @overload
-    def count_nonzero(self, axis: None = None, keepdims: bool = False) -> np.intp: ...
-    @overload
-    def count_nonzero(
-        self, axis: _ShapeLike | None = None, keepdims: bool = True
-    ) -> NDArray[np.intp]: ...
-    def count_nonzero(
-        self, axis: _ShapeLike | None = ..., keepdims: bool = ...
-    ) -> np.intp | NDArray[np.intp]:
-        """
-        0以外の要素の数を数える
-
-        :param axis: 要素を数える軸を指定する
-        :type axis: _ShapeLike | None
-        :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
-        :type keepdims: bool
-        """
 
     def append(self, val: Any) -> NPString:
         """配列内の要素の文字に`val`を付け加える"""
