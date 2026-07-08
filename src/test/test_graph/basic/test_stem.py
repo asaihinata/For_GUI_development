@@ -1,4 +1,4 @@
-from _import import *
+from ._import import *
 
 
 def test_main():

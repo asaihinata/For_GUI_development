@@ -382,7 +382,7 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
         :raises ValueError: 信頼係数`cc`に0.0から1.0の範囲で指定しなかった場合に発生させる
         """
 
-    def ratio_E(self, p: int | float) -> tuple[np.float64, np.float64]:
+    def ratio_E(self, parcent: int | float, cc: int | float=0.95) -> tuple[np.float64, np.float64]:
         """
         母比率の上限値と下限値を求める
 
