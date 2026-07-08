@@ -63,11 +63,15 @@ class NPBool(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
         result._dtype = self._dtype
         return result
 
-    def __ne__(self, other):
-        return NPBool(np.not_equal(np.asarray(self), other))
+    def __ne__(self, value):
+        result = np.asarray(np.not_equal(np.asarray(self), value)).view(type(self))
+        result._dtype = np.bool_
+        return result
 
-    def __eq__(self, other):
-        return NPBool(np.equal(np.asarray(self), other))
+    def __eq__(self, value):
+        result = np.asarray(np.equal(np.asarray(self), value)).view(type(self))
+        result._dtype = np.bool_
+        return result
 
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
@@ -75,8 +79,8 @@ class NPBool(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     def __str__(self):
         return self.__repr__()
 
-    def __contains__(self, item):
-        return super().__contains__(item)
+    def __contains__(self, value):
+        return super().__contains__(value)
 
     def __len__(self):
         return super().__len__()

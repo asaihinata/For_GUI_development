@@ -35,8 +35,6 @@ class NPNumber(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
 
     def __new__(cls, data, dtype=np.float64, d_ndim=None, min_ndim=None, max_ndim=None):
         resolved = cls._resolve_dtype(dtype)
-        if numberDtype(resolved):
-            raise TypeError("dtypeには数値型を指定してください")
         obj = np.asarray(data, dtype=resolved).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
@@ -75,11 +73,11 @@ class NPNumber(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     def __class_getitem__(cls, item):
         return np.ndarray.__class_getitem__.__func__(cls, item)
 
-    def __ne__(self, other):
-        return NPBool(np.not_equal(np.asarray(self), other))
+    def __ne__(self, value):
+        return NPBool(np.not_equal(np.asarray(self), value))
 
-    def __eq__(self, other):
-        return NPBool(np.equal(np.asarray(self), other))
+    def __eq__(self, value):
+        return NPBool(np.equal(np.asarray(self), value))
 
     def __lt__(self, other):
         return NPBool(super().__lt__(other))
@@ -99,8 +97,8 @@ class NPNumber(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     def __str__(self):
         return self.__repr__()
 
-    def __contains__(self, item):
-        return super().__contains__(item)
+    def __contains__(self, value):
+        return super().__contains__(value)
 
     def __len__(self):
         return super().__len__()

@@ -101,8 +101,8 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
     def __str__(self):
         return self.__repr__()
 
-    def __contains__(self, item):
-        return super().__contains__(item)
+    def __contains__(self, value):
+        return super().__contains__(value)
 
     def __len__(self):
         return super().__len__()

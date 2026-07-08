@@ -73,8 +73,8 @@ class Marker:
             capstyle=cap,
         )
 
-    def __contains__(self, item):
-        return item in self.marker_list
+    def __contains__(self, value):
+        return value in self.marker_list
 
 
 class MarkerList(NPArray):

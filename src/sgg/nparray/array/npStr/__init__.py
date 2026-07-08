@@ -26,8 +26,6 @@ class NPString(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
 
     def __new__(cls, data, dtype=np.str_, d_ndim=None, min_ndim=None, max_ndim=None):
         resolved = cls._resolve_dtype(dtype)
-        if strDtype(resolved):
-            raise TypeError("dtypeには文字列の型を指定してください")
         obj = np.asarray(data, dtype=resolved).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
@@ -83,11 +81,11 @@ class NPString(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     __rmul__ = __mul__
     __imul__ = __mul__
 
-    def __ne__(self, other):
-        return NPBool(np.not_equal(np.asarray(self), other))
+    def __ne__(self, value):
+        return NPBool(np.not_equal(np.asarray(self), value))
 
-    def __eq__(self, other):
-        return NPBool(np.equal(np.asarray(self), other))
+    def __eq__(self, value):
+        return NPBool(np.equal(np.asarray(self), value))
 
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
@@ -95,8 +93,8 @@ class NPString(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     def __str__(self):
         return self.__repr__()
 
-    def __contains__(self, item):
-        return super().__contains__(item)
+    def __contains__(self, value):
+        return super().__contains__(value)
 
     def __len__(self):
         return super().__len__()

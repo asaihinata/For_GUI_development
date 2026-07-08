@@ -89,11 +89,11 @@ class NPFormatDate(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     def __class_getitem__(cls, item):
         return np.ndarray.__class_getitem__.__func__(cls, item)
 
-    def __ne__(self, other):
-        return NPBool(np.not_equal(np.asarray(self), other))
+    def __ne__(self, value):
+        return NPBool(np.not_equal(np.asarray(self), value))
 
-    def __eq__(self, other):
-        return NPBool(np.equal(np.asarray(self), other))
+    def __eq__(self, value):
+        return NPBool(np.equal(np.asarray(self), value))
 
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
@@ -101,8 +101,8 @@ class NPFormatDate(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     def __str__(self):
         return self.__repr__()
 
-    def __contains__(self, item):
-        return super().__contains__(item)
+    def __contains__(self, value):
+        return super().__contains__(value)
 
     def __len__(self):
         return super().__len__()

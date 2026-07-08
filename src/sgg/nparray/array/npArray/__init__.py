@@ -81,14 +81,14 @@ class NPArray(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     def __class_getitem__(cls, item):
         return np.ndarray.__class_getitem__.__func__(cls, item)
 
-    def __ne__(self, other):
-        result = np.asarray(super().__ne__(other)).view(type(self))
-        result._dtype = np.bool
+    def __ne__(self, value):
+        result = np.asarray(np.not_equal(np.asarray(self), value)).view(type(self))
+        result._dtype = np.bool_
         return result
 
-    def __eq__(self, other):
-        result = np.asarray(super().__eq__(other)).view(type(self))
-        result._dtype = np.bool
+    def __eq__(self, value):
+        result = np.asarray(np.equal(np.asarray(self), value)).view(type(self))
+        result._dtype = np.bool_
         return result
 
     def __repr__(self):
@@ -97,8 +97,8 @@ class NPArray(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     def __str__(self):
         return self.__repr__()
 
-    def __contains__(self, item):
-        return super().__contains__(item)
+    def __contains__(self, value):
+        return super().__contains__(value)
 
     def __len__(self):
         return super().__len__()
