@@ -3,9 +3,9 @@ from tkinter import Misc
 from matplotlib.projections.polar import PolarAxes
 from numpy import dtype, float64, ndarray
 
-from ....nparray import NPNumber
-from ...typing import *
-from ..graph import GElement
+from sgg.graph.element.graph import GElement
+from sgg.graph.typing import *
+from sgg.nparray import NPNumber
 
 __all__ = ["RadarElement"]
 

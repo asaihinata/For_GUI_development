@@ -1,6 +1,6 @@
 from matplotlib.lines import Line2D
 
-from ...dev import *
+from sgg.graph.graph.dev import *
 
 __all__ = ["RadarFill"]
 

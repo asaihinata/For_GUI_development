@@ -1,7 +1,7 @@
 from tkinter import Text
 
-from .....typing import ColorType, Literal
-from ....base import _Element
+from sgg.typing import ColorType, Literal
+from sgg.widget.base import _Element
 
 __all__ = ["Multiline"]
 

@@ -1,16 +1,16 @@
 from re import findall
 from tkinter import Misc
 
+import numpy as np
 from cycler import cycler
 from matplotlib.axes._axes import Axes
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-import numpy as np
 
-from ....dev import bols, listchose, num0s, num1s, parsecolor, range_num
-from ...style import getLabel
+from sgg.dev import bols, listchose, num0s, num1s, parsecolor, range_num
+from sgg.graph.style import getLabel
 
 __all__ = ["GElement"]
 graph_color = [

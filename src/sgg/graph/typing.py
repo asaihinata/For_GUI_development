@@ -4,7 +4,7 @@ from typing import Literal, TypeAlias
 
 import numpy as np
 
-from ..typing import *
+from sgg.typing import *
 
 Type_Solid: TypeAlias = Literal["-", "--", "-.", ":", "None", " ", ""]
 Type_Marker: TypeAlias = Literal[

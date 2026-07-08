@@ -1,4 +1,5 @@
-from ..nparray.isdtype import boolDtype
+from sgg.nparray.isdtype import boolDtype
+
 from ._darray import *
 from ._dnumber import *
 from .color import Color, parsecolor

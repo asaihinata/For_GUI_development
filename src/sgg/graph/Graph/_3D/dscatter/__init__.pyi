@@ -1,7 +1,8 @@
 from matplotlib.collections import PathCollection
 from numpy.typing import NDArray
 
-from ....typing import *
+from sgg.graph.typing import *
+
 from .._3gset import _3Gset
 
 __all__ = ["DScatter"]

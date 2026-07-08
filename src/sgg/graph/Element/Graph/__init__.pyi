@@ -9,8 +9,8 @@ from matplotlib.projections.polar import PolarAxes
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
 
-from ...style import getLabel
-from ...typing import ColorType
+from sgg.graph.style import getLabel
+from sgg.typing import ColorType
 
 __all__ = ["GElement"]
 

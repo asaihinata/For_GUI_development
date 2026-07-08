@@ -1,6 +1,6 @@
 from types import FunctionType
 
-from ...dev import *
+from sgg.graph.graph.dev import *
 
 __all__ = ["Violinplot"]
 

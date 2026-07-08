@@ -1,6 +1,7 @@
 from matplotlib.collections import EventCollection
 
-from ....typing import *
+from sgg.graph.typing import *
+
 from .._Polarset import _polarset
 
 __all__ = ["Eventpolar"]

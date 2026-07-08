@@ -8,11 +8,8 @@ https://zipcloud.ibsnet.co.jp/doc/api
 """
 
 import json
-
-from _import import *
 import requests
-
-
+from sgg import *
 def test_main():
     def ztoy():
         zyuusyo: Listboxs = win.get("zyuusyo")

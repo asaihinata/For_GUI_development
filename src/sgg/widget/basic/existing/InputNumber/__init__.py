@@ -1,6 +1,6 @@
 from tkinter import IntVar, Spinbox
 
-from ...common import *
+from sgg.widget.basic.common import *
 
 __all__ = ["InputNumber"]
 

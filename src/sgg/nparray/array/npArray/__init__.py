@@ -1,7 +1,8 @@
 import numpy as np
 
+from sgg.nparray.exceptions import ShapeError
+
 from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin, _arrisuint
-from ...exceptions import ShapeError
 
 __all__ = ["NPArray"]
 

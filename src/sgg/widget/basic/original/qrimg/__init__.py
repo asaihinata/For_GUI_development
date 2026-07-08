@@ -3,7 +3,7 @@ from tkinter import Label
 from PIL.ImageTk import PhotoImage
 from qrcode import make
 
-from ...common import *
+from sgg.widget.basic.common import *
 
 __all__ = ["QRImage"]
 

@@ -1,4 +1,5 @@
 For_GUI_development
+ ├── MANIFEST.in
  ├── README.md
  ├── docs
  │   ├── data
@@ -60,8 +61,6 @@ For_GUI_development
  │   │   │       │   ├── askretrycancel.py
  │   │   │       │   ├── askyesno.py
  │   │   │       │   └── askyesnocancel.py
- │   │   │       ├── typing
- │   │   │       │   └── __init__.py
  │   │   │       └── warning
  │   │   │           ├── __init__.py
  │   │   │           └── __init__.pyi
@@ -237,8 +236,6 @@ For_GUI_development
  │   │   │   │   │   ├── _ndarrayoperatorsmixin.py
  │   │   │   │   │   ├── _ndarrayoperatorsmixin.pyi
  │   │   │   │   │   └── arrcheck.py
- │   │   │   │   ├── exceptions
- │   │   │   │   │   └── __init__.py
  │   │   │   │   ├── nparray
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
@@ -263,6 +260,9 @@ For_GUI_development
  │   │   │   │   └── npstr
  │   │   │   │       ├── __init__.py
  │   │   │   │       └── __init__.pyi
+ │   │   │   ├── exceptions
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
  │   │   │   ├── isdtype
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
@@ -458,5 +458,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:317
-フォルダ数:142
+ファイル数:318
+フォルダ数:141

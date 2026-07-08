@@ -1,10 +1,10 @@
 from matplotlib.projections.polar import PolarAxes
 from numpy import float64, ndarray, number
 
-from ....nparray import NPArray, NPNumber
-from ...style import getLabel
-from ...typing import *
-from ..graph import GElement
+from sgg.graph.element.graph import GElement
+from sgg.graph.style import getLabel
+from sgg.graph.typing import *
+from sgg.nparray import NPArray, NPNumber
 
 __all__ = ["polarElement"]
 

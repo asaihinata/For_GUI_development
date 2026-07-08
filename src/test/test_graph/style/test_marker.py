@@ -1,6 +1,5 @@
-from _import import *
-
-
+from sgg import *
+import numpy as np
 def test_main():
     marker1 = [",", "1", "2", "3", "4", "+", "x", "|", "_"]
     marker2 = list(range(1, 12, 1))

@@ -1,7 +1,7 @@
 from os.path import split
 from typing import ClassVar
 
-from ..maindialog import _Dialog
+from sgg.dialogs.maindialog import _Dialog
 
 __all__ = ["Open", "askopenfilename"]
 

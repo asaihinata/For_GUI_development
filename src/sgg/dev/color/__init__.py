@@ -1,11 +1,11 @@
 from pathlib import Path
 from re import compile, findall
 
-from matplotlib.colors import to_hex
 import numpy as np
+from matplotlib.colors import to_hex
 from numpy import array, fromiter, nditer, uint8, where
 
-from ...readfile import Getcsv
+from sgg.readfile import Getcsv
 
 __all__ = ["Color", "parsecolor"]
 cds = Getcsv(Path(__file__).parent / "color.csv").get_numpy()

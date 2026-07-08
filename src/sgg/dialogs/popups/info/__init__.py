@@ -1,4 +1,4 @@
-from ...maindialog import _iconset, _show
+from sgg.dialogs.maindialog import _iconset, _show
 
 __all__ = ["popup"]
 

@@ -2,8 +2,8 @@ from io import BytesIO
 from pathlib import Path, PosixPath, WindowsPath
 from typing import IO
 
-from PIL.ImageFile import ImageFile
 from PIL._typing import StrOrBytesPath
+from PIL.ImageFile import ImageFile
 
 __all__ = ["Img_byte", "Img_path"]
 

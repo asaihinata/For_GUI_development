@@ -1,6 +1,6 @@
 from tkinter import Button
 
-from ...common import *
+from sgg.widget.basic.common import *
 
 __all__ = ["Buttons"]
 

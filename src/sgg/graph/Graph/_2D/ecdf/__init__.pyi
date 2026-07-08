@@ -1,6 +1,7 @@
 from matplotlib.lines import Line2D
 
-from ....typing import *
+from sgg.graph.typing import *
+
 from .._2gset import _2Gset
 
 __all__ = ["Ecdf"]

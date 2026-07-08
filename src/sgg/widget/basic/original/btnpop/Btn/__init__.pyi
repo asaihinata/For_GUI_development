@@ -1,9 +1,9 @@
 from tkinter import *
 
-from ......dialogs import *
-from ......typing import ColorType
-from .....base import _Element
-from ....common import *
+from sgg.dialogs import *
+from sgg.typing import ColorType
+from sgg.widget.base import _Element
+from sgg.widget.basic.common import *
 
 class Btn(_Element):
     widget: Button

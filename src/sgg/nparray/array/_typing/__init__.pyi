@@ -3,9 +3,10 @@ from typing import Any, Literal, TypeAlias, TypeAliasType, TypeVar, Union
 
 import numpy as np
 from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBool_co,
-                           _ArrayLikeNumber_co, _ArrayLikeTD64_co, _CharLike_co,
-                           _ComplexLike_co, _DTypeLikeTD64, _FloatLike_co, _IntLike_co,
-                           _NestedSequence, _UIntLike_co)
+                           _ArrayLikeNumber_co, _ArrayLikeTD64_co,
+                           _CharLike_co, _ComplexLike_co, _DTypeLikeTD64,
+                           _FloatLike_co, _IntLike_co, _NestedSequence,
+                           _UIntLike_co)
 from numpy._typing._char_codes import _DT64Codes
 
 __all__ = [

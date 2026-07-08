@@ -1,4 +1,4 @@
-from ...dev import RadarElement
+from sgg.graph.graph.dev import RadarElement
 
 __all__ = ["RadarFill"]
 

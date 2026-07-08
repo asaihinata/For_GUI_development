@@ -1,6 +1,6 @@
 from numpy import all, array, asarray, tile
 
-from ....nparray import NPArray
+from sgg.nparray import NPArray
 
 __all__ = ["getLabel"]
 

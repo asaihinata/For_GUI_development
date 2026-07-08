@@ -1,7 +1,8 @@
 from matplotlib.container import BarContainer
 from matplotlib.patches import Polygon
 
-from ....typing import *
+from sgg.graph.typing import *
+
 from .._2gset import _2Gset
 
 __all__ = ["Hist"]

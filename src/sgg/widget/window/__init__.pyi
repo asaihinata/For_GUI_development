@@ -1,8 +1,8 @@
 from tkinter import Tk
 from typing import Any
 
-from ...graph import *
-from ..basic import *
+from sgg.graph import *
+from sgg.widget.basic import *
 
 __all__ = ["WindowController"]
 

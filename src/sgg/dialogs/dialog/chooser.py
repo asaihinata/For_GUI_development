@@ -1,6 +1,6 @@
 from typing import ClassVar
 
-from ..maindialog import Dialog
+from sgg.dialogs.maindialog import Dialog
 
 __all__ = ["Chooser", "askcolor"]
 

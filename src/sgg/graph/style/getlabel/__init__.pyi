@@ -3,7 +3,7 @@ from typing import Any
 
 import numpy as np
 
-from ....nparray import NPArray
+from sgg.nparray import NPArray
 
 __all__ = ["getLabel"]
 

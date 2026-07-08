@@ -5,10 +5,11 @@ from types import FunctionType
 
 from PIL import ImageGrab
 
-from ...dev import bols, is_array_like, listchose, num0s, parsecolor, range_num
-from ...dialogs import asksaveasfilename
-from ...graph import *
-from ..basic import *
+from sgg.dev import (bols, is_array_like, listchose, num0s, parsecolor,
+                     range_num)
+from sgg.dialogs import asksaveasfilename
+from sgg.graph import *
+from sgg.widget.basic import *
 
 __all__ = ["WindowController"]
 

@@ -1,6 +1,6 @@
 from tkinter import LabelFrame
 
-from ...common import *
+from sgg.widget.basic.common import *
 
 __all__ = ["Frames"]
 

@@ -1,4 +1,4 @@
-from ...dev import Marker, RadarElement, Solid, num0
+from sgg.graph.graph.dev import Marker, RadarElement, Solid, num0
 
 __all__ = ["RadarLine"]
 

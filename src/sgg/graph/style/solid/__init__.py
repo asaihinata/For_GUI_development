@@ -1,6 +1,6 @@
 """グラフの線を設定するモジュール"""
 
-from ....nparray import NPArray
+from sgg.nparray import NPArray
 
 __all__ = ["Solid", "Solidlist"]
 

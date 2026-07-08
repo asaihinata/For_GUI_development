@@ -1,6 +1,6 @@
 from itertools import product
 
-from ...dev import *
+from sgg.graph.graph.dev import *
 
 __all__ = ["DScatter"]
 

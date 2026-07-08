@@ -3,8 +3,8 @@
 from tkinter import Misc, Tk
 from tkinter.font import Font, families
 
-from ..dev import bols, listchose
-from ..readfile import Getfont
+from sgg.dev import bols, listchose
+from sgg.readfile import Getfont
 
 __all__ = ["TKFont"]
 

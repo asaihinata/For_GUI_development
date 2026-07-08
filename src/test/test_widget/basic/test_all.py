@@ -1,7 +1,6 @@
 import pathlib
 
-from _import import *
-
+from sgg import *
 
 def test_main():
     def txtchange():

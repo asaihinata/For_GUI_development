@@ -51,6 +51,7 @@ __all__ = [
     "TypeStr",
 ]
 
+
 def serchDtype(dtype="datetime64[D]"):
     if issubdtype(dtype, datetime64) or dtype in _DT64Codes:
         return dtype

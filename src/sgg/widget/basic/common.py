@@ -1,2 +1,2 @@
-from ...dev import *
-from ..base import Element
+from sgg.dev import *
+from sgg.widget.base import Element

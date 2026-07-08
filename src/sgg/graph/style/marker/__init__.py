@@ -1,10 +1,10 @@
 """マーカーを設定するモジュール"""
 
+import numpy as np
 from matplotlib.markers import MarkerStyle
 from matplotlib.transforms import Affine2D
-import numpy as np
 
-from ....nparray import NPArray
+from sgg.nparray import NPArray
 
 __all__ = ["Marker", "MarkerList"]
 

@@ -1,7 +1,7 @@
 from tkinter import Misc, _Cursor
+from typing import Callable
 
-from ...font import TKFont
-from ...typing import Callable
+from sgg.font import TKFont
 
 __all__ = ["_Element", "Element"]
 

@@ -1,12 +1,13 @@
 """基本的な統計の計算をするモジュール"""
 
-from typing import (Any, Generator, Literal, Self, SupportsIndex, TypeAlias, TypeVar,
-                    overload)
+from typing import (Any, Generator, Literal, Self, SupportsIndex, TypeAlias,
+                    TypeVar, overload)
 
 import numpy as np
 from numpy.typing import ArrayLike, DTypeLike, NDArray
 
-from ....typing import TypeArrayLikeNumber
+from sgg.typing import TypeArrayLikeNumber
+
 from .._typing import _ArrayLikeNumber_co, _NumberT
 from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
 

@@ -1,9 +1,9 @@
 from matplotlib.projections.polar import PolarAxes
 from numpy import linspace, number, pi
 
-from ....dev import bols, list2num, num0s, parsecolor, range_num
-from ....nparray import NPNumber
-from ..graph import GElement
+from sgg.dev import bols, list2num, num0s, parsecolor, range_num
+from sgg.graph.element.graph import GElement
+from sgg.nparray import NPNumber
 
 __all__ = ["polarElement"]
 

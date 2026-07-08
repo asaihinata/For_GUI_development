@@ -1,4 +1,4 @@
-from ..nparray.isdtype import integerDtype, numberDtype
+from sgg.nparray.isdtype import integerDtype, numberDtype
 
 __all__ = [
     "int0",

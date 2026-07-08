@@ -1,9 +1,9 @@
 from re import findall
 from types import FunctionType
 
-from ...dev import bols, listchose, num0s, parsecolor
-from ...font import TKFont
-from ...readfile import Getfont
+from sgg.dev import bols, listchose, num0s, parsecolor
+from sgg.font import TKFont
+from sgg.readfile import Getfont
 
 __all__ = ["Element"]
 

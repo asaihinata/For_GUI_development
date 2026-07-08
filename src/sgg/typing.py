@@ -1,7 +1,7 @@
 """フレームワーク全体で使用する型を設定しているモジュール"""
 
-from typing import (Any, Callable, Collection, Literal, TypeAlias, TypeVar, Union,
-                    overload)
+from typing import (Any, Callable, Collection, Literal, TypeAlias, TypeVar,
+                    Union, overload)
 
 import numpy as np
 from numpy.typing import ArrayLike
@@ -75,3 +75,5 @@ ArrayLikeAny = TypeVar("ArrayLikeAny", bound=Union[Any])
 TypeArrayLikeAny: TypeAlias = np.ndarray[tuple[int], np.dtype[ArrayLikeAny]]
 TypeArray2LikeAny: TypeAlias = np.ndarray[tuple[int, int], np.dtype[ArrayLikeAny]]
 TypeArraysLikeAny: TypeAlias = np.ndarray[tuple[int, ...], np.dtype[ArrayLikeAny]]
+# dialogのアイコン
+Type_icon: TypeAlias = Literal["error", "info", "question", "warning"]

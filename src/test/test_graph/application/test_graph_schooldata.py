@@ -1,5 +1,6 @@
-from _import import *
-
+import numpy as np
+from pathlib import Path
+from sgg import *
 
 def test_main():
     data = readfile.Getcsv(

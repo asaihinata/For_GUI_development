@@ -2,8 +2,8 @@
 
 from collections.abc import Iterator
 
-from ....nparray import NPString
-from ...typing import Type_Solid
+from sgg.graph.typing import Type_Solid
+from sgg.nparray import NPString
 
 __all__ = ["Solid", "Solidlist"]
 

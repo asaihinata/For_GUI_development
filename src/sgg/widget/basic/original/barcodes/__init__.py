@@ -1,12 +1,12 @@
 from io import BytesIO
 from tkinter import Label
 
-from PIL.ImageTk import PhotoImage
 import barcode
 from barcode.writer import ImageWriter
+from PIL.ImageTk import PhotoImage
 
-from ...common import *
-from ...dev import Img_byte
+from sgg.widget.basic.common import *
+from sgg.widget.basic.dev import Img_byte
 
 __all__ = ["Barcode"]
 support_barcode = [

@@ -1,6 +1,6 @@
 import numpy as np
 
-from ...exceptions import *
+from sgg.nparray.exceptions import *
 
 __all__ = [
     "_arrisuint",
@@ -36,7 +36,7 @@ def _intarraylike_check(obj):
         try:
             arr.astype(np.int64)
             return True
-        except (ValueError, TypeError):
+        except ValueError, TypeError:
             return False
     return False
 

@@ -1,8 +1,9 @@
 import numpy as np
 
-from ....dev import bols, num0s, parsecolor, range_num
-from ....nparray import NPNumber
-from ..graph import GElement
+from sgg.dev import bols, num0s, parsecolor, range_num
+from sgg.graph.element.graph import GElement
+from sgg.nparray import NPNumber
+
 from .custom import radar_factory
 
 __all__ = ["RadarElement"]

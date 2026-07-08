@@ -1,6 +1,6 @@
 from tkinter.ttk import Combobox
 
-from ....base import _Element
+from sgg.widget.base import _Element
 
 __all__ = ["TCombobox"]
 

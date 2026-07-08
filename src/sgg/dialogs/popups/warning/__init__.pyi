@@ -1,4 +1,6 @@
-from ..typing import Literal, Type_icon
+from typing import Literal
+
+from sgg.typing import Type_icon
 
 __all__ = ["popupwarning", "popupwarningyesno"]
 

@@ -2,9 +2,9 @@ from pathlib import Path
 from tkinter import Label
 from webbrowser import open
 
-from .....font import TKFont
-from ...common import *
-from ...dev import linkcheck
+from sgg.font import TKFont
+from sgg.widget.basic.common import *
+from sgg.widget.basic.dev import linkcheck
 
 __all__ = ["Link"]
 

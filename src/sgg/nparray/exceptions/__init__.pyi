@@ -2,7 +2,7 @@ r"""
 src\sgg\nparray内の例外メッセージのモジュール
 """
 
-from ...exceptions import *
+from sgg.exceptions import *
 
 class ShapeError(ValueError, IndexError):
     def __init__(self, shape):
@@ -10,7 +10,6 @@ class ShapeError(ValueError, IndexError):
 
     def __str__(self):
         return str(f"shape({self.__shape})が正しい値ではありません")
-
 
 class NoScalarError(ValueError, IndexError):
     def __init__(self, element):

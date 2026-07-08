@@ -1,7 +1,7 @@
 from tkinter import Button
 
-from ......dialogs import *
-from ....common import *
+from sgg.dialogs import *
+from sgg.widget.basic.common import *
 
 
 class Btn(Element):

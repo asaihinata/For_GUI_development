@@ -1,6 +1,6 @@
 from tkinter.ttk import Notebook, Style
 
-from ...common import *
+from sgg.widget.basic.common import *
 
 __all__ = ["Tab"]
 

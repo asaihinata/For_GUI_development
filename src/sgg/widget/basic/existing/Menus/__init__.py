@@ -1,6 +1,6 @@
 from tkinter import Menu
 
-from ...common import *
+from sgg.widget.basic.common import *
 
 __all__ = ["Menus"]
 

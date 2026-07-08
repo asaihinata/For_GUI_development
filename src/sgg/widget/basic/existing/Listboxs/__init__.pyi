@@ -1,7 +1,7 @@
 from tkinter import Listbox
 
-from .....typing import Any, ColorType, Literal
-from ....base import _Element
+from sgg.typing import Any, ColorType, Literal
+from sgg.widget.base import _Element
 
 __all__ = ["Listboxs"]
 

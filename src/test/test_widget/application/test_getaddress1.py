@@ -7,8 +7,8 @@ ExcelAPIの詳細
 https://excelapi.org/docs/post/zipcode/
 """
 
-from _import import *
 import requests
+from sgg import *
 
 
 def test_main():

@@ -3,11 +3,11 @@
 from collections.abc import Iterator
 from typing import Any, Literal
 
-from matplotlib.markers import MarkerStyle
 import numpy as np
+from matplotlib.markers import MarkerStyle
 
-from ....nparray import NPArray
-from ...typing import Type_Marker
+from sgg.graph.typing import Type_Marker
+from sgg.nparray import NPArray
 
 __all__ = ["Marker", "MarkerList"]
 

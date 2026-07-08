@@ -4,7 +4,7 @@ from re import compile
 
 import numpy as np
 
-from ....nparray import NPBool, NPString
+from sgg.nparray import NPBool, NPString
 
 __all__ = ["Hatch"]
 
