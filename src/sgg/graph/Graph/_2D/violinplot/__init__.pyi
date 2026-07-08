@@ -1,3 +1,5 @@
+from typing import Callable
+
 from matplotlib.collections import Collection
 from matplotlib.mlab import GaussianKDE
 

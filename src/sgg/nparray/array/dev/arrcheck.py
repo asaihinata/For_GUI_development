@@ -8,16 +8,19 @@ __all__ = [
     "_scalar_check",
     "change_array_like",
     "is_array_like",
-    "_int_co_check"
+    "_int_co_check",
 ]
+
 
 def _int_co_check(obj):
     obj = np.asanyarray(obj)
     if not np.issubdtype(obj.dtype, np.integer):
         raise TypeError(f"{obj.dtype}には整数型を指定してください")
 
+
 def _scalar_check(element):
     return np.isscalar(element)
+
 
 def _intarraylike_check(obj):
     try:

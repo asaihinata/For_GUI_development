@@ -3,7 +3,7 @@
 import numpy as np
 from numpy.polynomial.chebyshev import chebfit, chebval
 
-from ...isdtype import numberDtype
+from sgg.nparray import numberDtype
 from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
 from .npstatisticsd import NPStatisticsd
 
@@ -75,8 +75,8 @@ class NPStatisticsds(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
         if obj is None:
             return
         self._dtype = getattr(obj, "_dtype", None)
-        self.__xs = getattr(obj, "_NPStatisticsds__xs", None)
-        self.__ys = getattr(obj, "_NPStatisticsds__ys", None)
+        self.__xs = getattr(obj, "__xs", None)
+        self.__ys = getattr(obj, "__ys", None)
 
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(

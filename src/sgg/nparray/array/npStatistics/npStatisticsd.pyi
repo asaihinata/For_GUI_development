@@ -4,9 +4,11 @@ from typing import (Any, Generator, Literal, Self, SupportsIndex, TypeAlias,
                     TypeVar, overload)
 
 import numpy as np
+from numpy._typing import _FloatLike_co
 from numpy.typing import ArrayLike, DTypeLike, NDArray
 
-from sgg.typing import TypeArrayLikeNumber, _ArrayLikeNumber_co, _NumberT
+from sgg.typing import (TypeAixs, TypeArrayLikeNumber, _ArrayLikeNumber_co,
+                        _NumberT)
 
 from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
 
@@ -274,6 +276,7 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
     def percentile(
         self,
         q: tuple[int | float, ...],
+        aixs: TypeAixs = None,
         method: Type_Method = "linear",
     ) -> np.floating | NDArray[np.floating]:
         """
@@ -281,20 +284,25 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
 
         :param q: 求めたいパーセンタイル値を指定する
         :type q: tuple[int | float,...]
+        :param aixs: 計算する軸の方向を指定する
+        :type aixs: TypeAixs
         :param method: パーセンタイルを推定するために使用する方法を指定する
         :type method: Type_Method
         """
 
     def quantile(
         self,
-        q: tuple[float, ...],
+        q: _FloatLike_co,
+        aixs: TypeAixs = None,
         method: Type_Method = "linear",
     ) -> np.floating | NDArray[np.floating]:
         """
         指定した分位点を計算する
 
         :param q: 求めたい分位点を指定する
-        :type q: tuple[float,...]
+        :type q: _FloatLike_co
+        :param aixs: 計算する軸の方向を指定する
+        :type aixs: TypeAixs
         :param method: 分位点を推定するために使用する方法を指定する
         :type method: Type_Method
         """
@@ -382,7 +390,9 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
         :raises ValueError: 信頼係数`cc`に0.0から1.0の範囲で指定しなかった場合に発生させる
         """
 
-    def ratio_E(self, parcent: int | float, cc: int | float=0.95) -> tuple[np.float64, np.float64]:
+    def ratio_E(
+        self, parcent: int | float, cc: int | float = 0.95
+    ) -> tuple[np.float64, np.float64]:
         """
         母比率の上限値と下限値を求める
 

@@ -1,8 +1,8 @@
 """フレームワーク全体で使用する型を設定しているモジュール"""
 
 from datetime import date, datetime
-from typing import (Any, Callable, Collection, Literal, TypeAlias,
-                    TypeAliasType, TypeVar, Union, overload)
+from typing import (Any, Literal, TypeAlias, TypeAliasType, TypeVar, Union,
+                    overload)
 
 import numpy as np
 from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBool_co,
@@ -36,8 +36,6 @@ __all__ = [
     "ArrayLikeNS",
     "ArrayLikeNumber",
     "ArrayLikeString",
-    "Callable",
-    "Collection",
     "ColorType",
     "ColorTypeN",
     "DateParseScalar",
@@ -51,7 +49,7 @@ __all__ = [
     "Type_icon",
     "Type_Marker",
     "Type_Solid",
-    "TypeAlias",
+    "TypeAixs",
     "TypeArray2LikeAny",
     "TypeArray2LikeBool",
     "TypeArray2Likedatetime",
@@ -205,3 +203,4 @@ Typeget_Array_NumStr: TypeAlias = np.ndarray[
 ]
 Typeget_Array: TypeAlias = np.ndarray[tuple[int], np.dtype[np.number]]
 Typetuple_float64: TypeAlias = tuple[np.float64, np.float64]
+TypeAixs: TypeAlias = np._ShapeLike | None

@@ -7,7 +7,7 @@ from sgg import *
 
 def test_main():
     data = (
-        readfile.Getcsv(Path(__file__).parent / "data" / "japan_population.csv")
+        Getcsv(Path(__file__).parent / "data" / "japan_population.csv")
         .get_numpy()[1:4, 2:8]
         .astype(np.int64)
     )

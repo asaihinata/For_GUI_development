@@ -3,7 +3,7 @@
 import numpy as np
 from scipy.stats import norm
 
-from ...isdtype import numberDtype
+from sgg.nparray import numberDtype
 from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
 
 __all__ = ["NPStatisticsd"]
@@ -194,20 +194,20 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
     def CV(self):
         return self.std / self.ave
 
-    def percentile(self, q, method="linear"):
+    def percentile(self, q, axis=None, method="linear"):
         if method not in method_list:
             method = "linear"
-        return np.percentile(self.data, q, method=method)
+        return np.percentile(self.data, q, axis=axis, method=method)
 
     def quantile(self, q, axis=None, method="linear"):
         if method not in method_list:
             method = "linear"
-        return np.quantile(self.data, q, method=method)
+        return np.quantile(self.data, q, axis=axis, method=method)
 
-    def IQR(self, method="linear"):
+    def IQR(self, axis=None, method="linear"):
         if method not in method_list:
             method = "linear"
-        return np.percentile(self.data, [25, 50, 75], method=method)
+        return np.percentile(self.data, [25, 50, 75], axis=axis, method=method)
 
     @property
     def outlier(self):

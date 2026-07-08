@@ -3,7 +3,7 @@
 import numpy as np
 import numpy.strings as nps
 
-from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin,_int_co_check
+from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin, _int_co_check
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -67,7 +67,7 @@ class NPString(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
 
     def __mul__(self, i):
         _int_co_check(i)
-        result = nps.multiply(np.asarray(self), np.maximum(i,0)).view(type(self))
+        result = nps.multiply(np.asarray(self), np.maximum(i, 0)).view(type(self))
         result._dtype = result.dtype
         return result
 

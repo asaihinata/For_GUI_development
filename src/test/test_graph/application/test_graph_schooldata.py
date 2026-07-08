@@ -6,7 +6,7 @@ from sgg import *
 
 
 def test_main():
-    data = readfile.Getcsv(
+    data = Getcsv(
         Path(__file__).parent / "data" / "school_test_demo_data.csv"
     ).get_numpy()
     layout = []
