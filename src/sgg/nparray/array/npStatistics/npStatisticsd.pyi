@@ -153,41 +153,7 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
         :rtype: Any
         """
 
-    def __repr__(self) -> str: ...
-    def __str__(self) -> str: ...
-    def __contains__(self, value: object) -> bool: ...
     def __iter__(self) -> Generator[tuple[NDArray[Any], ...], Any, None]: ...
-    def __len__(self) -> int: ...
-    def __reversed__(self) -> Self:
-        """
-        逆順にした新しい配列オブジェクトを返す
-
-        :return: 全軸で反転した配列を返す
-        """
-
-    @overload
-    def __getitem__(self, key: int) -> Any | None: ...
-    @overload
-    def __getitem__(self, key: slice) -> np.ndarray | None: ...
-    def __getitem__(self, key: int | slice) -> Any | np.ndarray | None:
-        """
-        インデックスアクセスをカスタマイズする
-
-        intキーの場合は配列を1次元に展開してからアクセスする。
-        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
-        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
-        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
-        ただし`key == size`の場合のみ,末尾の要素(`data[size - 1]`)を返す
-        特別な扱いとする。
-
-        :param key: インデックスまたはスライスを指定する
-        :type key: int | slice
-        :return: インデックスに対応する要素を返す
-        :rtype: Any | np.ndarray | None
-        :raises IndexError: 配列が空の場合に発生させる
-        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
-        """
-
     @property
     def element_type(
         self,

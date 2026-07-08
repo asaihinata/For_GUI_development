@@ -127,68 +127,31 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
     def __add__(self, other: ArrayLike) -> NPString: ...
     def __radd__(self, other: ArrayLike) -> NPString: ...
     def __iadd__(self, other: ArrayLike) -> NPString: ...
-    def __mul__(self, i: int) -> NPString:
+    def __mul__(self, i: _ArrayLikeInt_co) -> NPString:
         """
         配列内の要素を`i`回付け加える
 
         :param i: 付け加える回数を指定する
-        :type i: int
-        :raises TypeError: `i`に`int`型以外を指定した場合に発生させる
+        :type i: _ArrayLikeInt_co
         """
 
-    def __rmul__(self, other: int) -> NPString:
-        """
-        配列内の要素を`i`回付け加える
-
-        :param i: 付け加える回数を指定する
-        :type i: int
-        :raises TypeError: `i`に`int`型以外を指定した場合に発生させる
-        """
-
-    def __imul__(self, other: int) -> NPString:
+    def __rmul__(self, other: _ArrayLikeInt_co) -> NPString:
         """
         配列内の要素を`i`回付け加える
 
         :param i: 付け加える回数を指定する
-        :type i: int
-        :raises TypeError: `i`に`int`型以外を指定した場合に発生させる
+        :type i: _ArrayLikeInt_co
         """
 
-    def __repr__(self) -> str: ...
-    def __str__(self) -> str: ...
-    def __contains__(self, value: object) -> bool: ...
+    def __imul__(self, other: _ArrayLikeInt_co) -> NPString:
+        """
+        配列内の要素を`i`回付け加える
+
+        :param i: 付け加える回数を指定する
+        :type i: _ArrayLikeInt_co
+        """
+
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _CharType]]: ...
-    def __len__(self) -> int: ...
-    def __reversed__(self) -> Self:
-        """
-        逆順にした新しい配列オブジェクトを返す
-
-        :return: 全軸で反転した配列を返す
-        """
-
-    @overload
-    def __getitem__(self, key: int) -> Any | None: ...
-    @overload
-    def __getitem__(self, key: slice) -> np.ndarray | None: ...
-    def __getitem__(self, key: int | slice) -> Any | np.ndarray | None:
-        """
-        インデックスアクセスをカスタマイズする
-
-        intキーの場合は配列を1次元に展開してからアクセスする。
-        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
-        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
-        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
-        ただし`key == size`の場合のみ,末尾の要素(`data[size - 1]`)を返す
-        特別な扱いとする。
-
-        :param key: インデックスまたはスライスを指定する
-        :type key: int | slice
-        :return: インデックスに対応する要素を返す
-        :rtype: Any | np.ndarray | None
-        :raises IndexError: 配列が空の場合に発生させる
-        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
-        """
-
     @property
     def element_type(
         self,
@@ -213,7 +176,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
         :type keepdims: bool
         """
 
-    def append(self, val: Any) -> NPString[_ShapeT, _CharType]:
+    def append(self, val: Any) -> NPString:
         """配列内の要素の文字に`val`を付け加える"""
 
     @property
@@ -234,10 +197,10 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
         """配列内の要素の文字の長さを求める"""
 
     def max(self) -> int:
-        """文字列の長さが最も大きい数を求める"""
+        """配列内の要素の文字列の長さが最も大きい数値を求める"""
 
     def min(self) -> int:
-        """文字列の長さが最も小さい数を求める"""
+        """配列内の要素の文字列の長さが最も小さい数値を求める"""
 
     def str_len(self) -> NPNumber[_ShapeT, np.uint64]:
         """配列内の要素の文字の長さを求める"""
@@ -247,7 +210,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
 
     def center(
         self, width: _ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
-    ) -> NPString[_ShapeT, _CharType]:
+    ) -> NPString:
         """
         長さと`width`の幅内で中央寄せされた配列を返す
 
@@ -259,7 +222,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
 
     def left(
         self, width: _ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
-    ) -> NPString[_ShapeT, _CharType]:
+    ) -> NPString:
         """
         長さと`width`の幅内で左寄せされた配列を返す
 
@@ -271,7 +234,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
 
     def right(
         self, width: _ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
-    ) -> NPString[_ShapeT, _CharType]:
+    ) -> NPString:
         """
         長さと`width`の幅内で右寄せされた配列を返す
 
@@ -281,7 +244,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
         :type fillchar: _ArrayLikeAnyString_co
         """
 
-    def zerofill(self, width: _ArrayLikeInt_co) -> NPString[_ShapeT, _CharType]:
+    def zerofill(self, width: _ArrayLikeInt_co) -> NPString:
         """
         数値文字列の左側を0で埋めて返します。
 
@@ -289,7 +252,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
         :type width: _ArrayLikeInt_co
         """
 
-    def expandtabs(self, tabsize: _ArrayLikeInt_co = 4) -> NPString[_ShapeT, _CharType]:
+    def expandtabs(self, tabsize: _ArrayLikeInt_co = 4) -> NPString:
         """
         各文字列要素について,すべてのタブを1つ以上のスペースに置き換えた配列を返す
 

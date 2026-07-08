@@ -92,45 +92,9 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
-    def __class_getitem__(cls, item):
-        return np.ndarray.__class_getitem__.__func__(cls, item)
-
-    def __repr__(self):
-        return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
-
-    def __str__(self):
-        return self.__repr__()
-
-    def __contains__(self, value):
-        return super().__contains__(value)
-
-    def __len__(self):
-        return super().__len__()
-
     def __iter__(self):
         for i in np.nditer(self.data):
             yield i
-
-    def __reversed__(self):
-        result = np.flip(np.asarray(self)).view(type(self))
-        result._dtype = self._dtype
-        return result
-
-    def __getitem__(self, key):
-        size = self.size
-        if size == 0:
-            raise IndexError("空の配列にはアクセスできません")
-        data = self.data.flatten()
-        if isinstance(key, int):
-            if key == size:
-                return data[size - 1]
-            elif -size <= key < size:
-                return data[key]
-            else:
-                return data[key % size]
-        elif isinstance(key, slice):
-            return data[key]
-        raise TypeError("keyにはintまたはsliceを指定してください")
 
     @property
     def element_type(self):

@@ -6,6 +6,42 @@ __all__ = ["_ArrayCommonMixin", "_ArrayShapeMixin"]
 class _ArrayCommonMixin:
     """全ての配列クラスに共通する,形状に依存しない基本メソッド"""
 
+    def __repr__(self):
+        return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
+
+    def __str__(self):
+        return self.__repr__()
+
+    def __contains__(self, value):
+        return super().__contains__(value)
+
+    def __len__(self):
+        return super().__len__()
+
+    def __getitem__(self, key):
+        size = self.size
+        if size == 0:
+            raise IndexError("空の配列にはアクセスできません")
+        data = self.data.flatten()
+        if isinstance(key, int):
+            if key == size:
+                return data[size - 1]
+            elif -size <= key < size:
+                return data[key]
+            else:
+                return data[key % size]
+        elif isinstance(key, slice):
+            return data[key]
+        raise TypeError("keyにはintまたはsliceを指定してください")
+
+    def __reversed__(self):
+        result = np.flip(np.asarray(self)).view(type(self))
+        result._dtype = self._dtype
+        return result
+
+    def __class_getitem__(cls, item):
+        return np.ndarray.__class_getitem__.__func__(cls, item)
+
     def lengtharange(self):
         shapes = self.shape
         lens = len(shapes)
@@ -34,6 +70,11 @@ class _ArrayCommonMixin:
 
 class _ArrayShapeMixin(_ArrayCommonMixin):
     """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
+
+    def __iter__(self):
+        if self.ndim == 1:
+            return iter([self.data])
+        return iter(self.data)
 
     @classmethod
     def _resolve_dtype(cls, dtype):

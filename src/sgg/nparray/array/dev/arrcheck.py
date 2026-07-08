@@ -6,27 +6,23 @@ __all__ = [
     "_arrisuint",
     "_intarraylike_check",
     "_scalar_check",
-    "_uint_check",
     "change_array_like",
     "is_array_like",
+    "_int_co_check"
 ]
 
+def _int_co_check(obj):
+    obj = np.asanyarray(obj)
+    if not np.issubdtype(obj.dtype, np.integer):
+        raise TypeError(f"{obj.dtype}には整数型を指定してください")
 
 def _scalar_check(element):
     return np.isscalar(element)
 
-
-def _uint_check(value):
-    if _scalar_check(value):
-        raise NoScalarError(value)
-    if not _intarraylike_check(value):
-        raise UIntError(value)
-
-
 def _intarraylike_check(obj):
     try:
         arr = np.asarray(obj)
-    except:
+    except Exception:
         return False
     if arr.dtype.kind in "iub":
         return True

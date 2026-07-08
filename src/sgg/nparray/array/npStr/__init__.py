@@ -3,8 +3,7 @@
 import numpy as np
 import numpy.strings as nps
 
-from ...isdtype import strDtype
-from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin, _uint_check
+from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin,_int_co_check
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -61,18 +60,14 @@ class NPString(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
-    def __class_getitem__(cls, item):
-        return np.ndarray.__class_getitem__.__func__(cls, item)
-
     def __add__(self, other):
         result = np.add(np.asarray(self), other).view(type(self))
         result._dtype = result.dtype
         return result
 
     def __mul__(self, i):
-        if not isinstance(i, int):
-            raise TypeError("int型で指定してください")
-        result = nps.multiply(np.asarray(self), i).view(type(self))
+        _int_co_check(i)
+        result = nps.multiply(np.asarray(self), np.maximum(i,0)).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -87,46 +82,8 @@ class NPString(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     def __eq__(self, value):
         return NPBool(np.equal(np.asarray(self), value))
 
-    def __repr__(self):
-        return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
-
-    def __str__(self):
-        return self.__repr__()
-
-    def __contains__(self, value):
-        return super().__contains__(value)
-
-    def __len__(self):
-        return super().__len__()
-
-    def __iter__(self):
-        if self.ndim == 1:
-            return iter([self.data])
-        return iter(self.data)
-
-    def __reversed__(self):
-        result = np.flip(np.asarray(self)).view(type(self))
-        result._dtype = self._dtype
-        return result
-
-    def __getitem__(self, key):
-        size = self.size
-        if size == 0:
-            raise IndexError("空の配列にはアクセスできません")
-        data = self.data.flatten()
-        if isinstance(key, int):
-            if key == size:
-                return data[size - 1]
-            elif -size <= key < size:
-                return data[key]
-            else:
-                return data[key % size]
-        elif isinstance(key, slice):
-            return data[key]
-        raise TypeError("keyにはintまたはsliceを指定してください")
-
     def append(self, val):
-        result = nps.add(np.asarray(self), val).view(type(self))
+        result = np.asarray(nps.add(self, val)).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -170,31 +127,26 @@ class NPString(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
         return result
 
     def center(self, width, fillchar=" "):
-        _uint_check(width)
         result = nps.center(np.asarray(self), width, fillchar).view(type(self))
         result._dtype = result.dtype
         return result
 
     def left(self, width, fillchar=" "):
-        _uint_check(width)
         result = nps.ljust(np.asarray(self), width, fillchar).view(type(self))
         result._dtype = result.dtype
         return result
 
     def right(self, width, fillchar=" "):
-        _uint_check(width)
         result = nps.rjust(np.asarray(self), width, fillchar).view(type(self))
         result._dtype = result.dtype
         return result
 
     def zerofill(self, width):
-        _uint_check(width)
         result = nps.zfill(np.asarray(self), width).view(type(self))
         result._dtype = result.dtype
         return result
 
     def expandtabs(self, tabsize=4):
-        _uint_check(tabsize)
         result = nps.expandtabs(np.asarray(self), tabsize).view(type(self))
         result._dtype = result.dtype
         return result

@@ -2,7 +2,6 @@
 
 import numpy as np
 
-from ...isdtype import numberDtype
 from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin
 from ..npbool import NPBool
 
@@ -70,9 +69,6 @@ class NPNumber(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
-    def __class_getitem__(cls, item):
-        return np.ndarray.__class_getitem__.__func__(cls, item)
-
     def __ne__(self, value):
         return NPBool(np.not_equal(np.asarray(self), value))
 
@@ -90,28 +86,6 @@ class NPNumber(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
 
     def __ge__(self, other):
         return NPBool(super().__ge__(other))
-
-    def __repr__(self):
-        return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
-
-    def __str__(self):
-        return self.__repr__()
-
-    def __contains__(self, value):
-        return super().__contains__(value)
-
-    def __len__(self):
-        return super().__len__()
-
-    def __iter__(self):
-        if self.ndim == 1:
-            return iter([self.data])
-        return iter(self.data)
-
-    def __reversed__(self):
-        result = np.flip(np.asarray(self)).view(type(self))
-        result._dtype = self._dtype
-        return result
 
     def __getitem__(self, key: int | slice):
         size = self.size
