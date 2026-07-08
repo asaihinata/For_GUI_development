@@ -2,6 +2,7 @@ r"""
 src\sgg内のモジュールで使用する例外メッセージのモジュール
 """
 
+__all__=["UIntError"]
 
 class UIntError(ValueError, IndexError):
     """値が正の整数ではなかった場合の例外"""

@@ -1,0 +1,3 @@
+recursive-include src/sgg *.pyi
+recursive-include src/sgg *.csv
+include src/sgg/py.typed

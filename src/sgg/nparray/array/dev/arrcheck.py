@@ -1,6 +1,6 @@
 import numpy as np
 
-from ..exceptions import *
+from ...exceptions import *
 
 __all__ = [
     "_arrisuint",

@@ -1,7 +1,7 @@
 import numpy as np
 
 from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin, _arrisuint
-from ..exceptions import ShapeError
+from ...exceptions import ShapeError
 
 __all__ = ["NPArray"]
 
