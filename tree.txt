@@ -228,6 +228,7 @@ For_GUI_development
  │   │   │   ├── array
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── _typing
+ │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── dev
  │   │   │   │   │   ├── __init__.py
@@ -246,11 +247,10 @@ For_GUI_development
  │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── npdate
  │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── _types.py
- │   │   │   │   │   ├── npdates.py
- │   │   │   │   │   ├── npdates.pyi
- │   │   │   │   │   ├── npformatdate.py
- │   │   │   │   │   └── npformatdate.pyi
+ │   │   │   │   │   └── __init__.pyi
+ │   │   │   │   ├── npformatdate
+ │   │   │   │   │   ├── __init__.py
+ │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── npnumber
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
@@ -458,5 +458,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:318
-フォルダ数:141
+ファイル数:317
+フォルダ数:142

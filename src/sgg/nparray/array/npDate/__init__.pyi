@@ -5,23 +5,15 @@ import numpy as np
 from numpy import datetime64
 from numpy._typing import _DTypeLikeTD64
 
-from .._typing import _ArrayLikeDateParse_co, _DTypeT, _ShapeT
+from .._typing import _ArrayLikeTD64_co, _DTypeT, _ShapeT
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
+from ..npnumber import NPNumber
 
-__all__ = ["NPFormatDate"]
-HANDLED_FUNCTIONS: dict
+__all__ = ["NPDate"]
 
-def implements(np_function) -> Any:
-    """
-    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
-
-    :param np_function: 登録対象のnumpy関数
-    :return: デコレータ関数を返す
-    """
-
-class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
-    """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
+class NPDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+    """`np.ndarray`を継承した日付の配列クラス"""
 
     _element_type: tuple[type[np.datetime64], type[datetime], type[date]]
     _default_dtype: Literal["datetime64[D]"]
@@ -29,46 +21,36 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ArrayLikeDateParse_co,
+        data: _ArrayLikeTD64_co,
         dtype: None = None,
-        yearfirst: bool = ...,
-        dayfirst: bool = ...,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPFormatDate[datetime64[_ShapeT], np.dtype[datetime64]]: ...
+    ) -> NPDate[_ShapeT, np.dtype[datetime64]]: ...
     @overload
     def __new__(
         cls,
-        data: _ArrayLikeDateParse_co,
+        data: _ArrayLikeTD64_co,
         dtype: _DTypeLikeTD64,
-        yearfirst: bool = ...,
-        dayfirst: bool = ...,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPFormatDate[datetime64[_ShapeT], np.dtype[_DTypeLikeTD64]]: ...
+    ) -> NPDate[_ShapeT, np.dtype[_DTypeLikeTD64]]: ...
     def __new__(
         cls,
-        data: _ArrayLikeDateParse_co,
+        data: _ArrayLikeTD64_co,
         dtype: _DTypeLikeTD64 | None = "datetime64[D]",
-        yearfirst: bool = ...,
-        dayfirst: bool = ...,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> Self:
         """
-        様々な日付のフォーマットを特定の日付フォーマットに変換する配列オブジェクトインスタンスを生成する
+        新しい日付の配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: _ArrayLikeDateParse_co
+        :type data: _ArrayLikeTD64_co
         :param dtype: 配列の型を指定する
         :type dtype: _DTypeLikeTD64 | None
-        :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
-        :type yearfirst: bool
-        :param dayfirst: 曖昧な3つの整数からなる日付の最初の値を日もしくは月として解釈するかどうか指定する
-        :type dayfirst: bool
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
@@ -81,14 +63,16 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    def __class_getitem__(cls, item: Any) -> type[NPFormatDate[Any, Any]]: ...
+    def __class_getitem__(
+        cls, item: Any
+    ) -> type[NPDate[_ShapeT, np.dtype[_DTypeT]]]: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
         method: str,
         *inputs: Any,
         **kwargs: Any,
-    ) -> NPFormatDate | Any:
+    ) -> NPDate | Any:
         """
         NumPyのufuncの動作をカスタマイズする
 
@@ -139,6 +123,10 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :rtype: Any
         """
 
+    def __add__(self, other: Any) -> Self: ...
+    def __radd__(self, other: Any) -> Self: ...
+    def __sub__(self, other: Any) -> Self: ...
+    def __rsub__(self, other: Any) -> Self: ...
     def __ne__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
     def __eq__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
     def __repr__(self) -> str: ...
@@ -177,5 +165,51 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         """
 
     @property
-    def element_type(self) -> tuple[type[np.datetime64], type[datetime], type[date]]:
-        """NPFormatDatesで許可されている型を取得する"""
+    def element_type(
+        self,
+    ) -> tuple[type[np.datetime64], type[datetime], type[date]]:
+        """NPDateで許可されている型を取得する"""
+
+    def todatetime(self) -> np.ndarray[datetime, np.dtype[datetime]]:
+        """配列内の日付を`datetime.datetime`に変換する"""
+
+    def todate(self) -> np.ndarray[date, np.dtype[date]]:
+        """配列内の日付を`datetime.date`に変換する"""
+
+    @classmethod
+    def today(cls) -> NPDate:
+        """現在日付(UTC時刻)を返す"""
+
+    @classmethod
+    def now(cls) -> NPDate:
+        """現在時刻(UTC時刻)を返す"""
+
+    def weekday(self) -> NPNumber[Any, np.dtype[np.uint8]]:
+        """その日付日時の曜日を求める"""
+
+    @overload
+    def diff_today(self, days: bool = True) -> NPNumber[Any, np.dtype[np.int64]]:
+        """
+        今日の日付の差(今日を含む)を求める
+
+        :param days: 今日を含めるか指定する
+        :type days: bool
+        """
+
+    @overload
+    def diff_today(self, days: bool = False) -> NPNumber[Any, np.dtype[np.int64]]:
+        """
+        今日の日付の差(今日を含めない)を求める
+
+        :param days: 今日を含めるか指定する
+        :type days: bool
+        """
+
+    @overload
+    def diff_today(self, days: bool = ...) -> NPNumber[Any, np.dtype[np.int64]]:
+        """
+        今日の日付の差を求める
+
+        :param days: 今日を含めるか指定する
+        :type days: bool
+        """

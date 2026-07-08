@@ -1,11 +1,12 @@
 from datetime import date, datetime
-from typing import Any, TypeAlias, TypeAliasType, TypeVar, Union
+from typing import Any, Literal, TypeAlias, TypeAliasType, TypeVar, Union
 
 import numpy as np
 from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBool_co,
                            _ArrayLikeNumber_co, _ArrayLikeTD64_co, _CharLike_co,
-                           _ComplexLike_co, _FloatLike_co, _IntLike_co, _NestedSequence,
-                           _UIntLike_co)
+                           _ComplexLike_co, _DTypeLikeTD64, _FloatLike_co, _IntLike_co,
+                           _NestedSequence, _UIntLike_co)
+from numpy._typing._char_codes import _DT64Codes
 
 __all__ = [
     "_ArrayLikeAnyString_co",
@@ -14,7 +15,11 @@ __all__ = [
     "_ArrayLikeNumber_co",
     "_ArrayLikeTD64_co",
     "_CharType",
+    "_DATE_UNITL",
+    "_DT64Codes",
+    "_DTypeLikeTD64",
     "_DTypeT",
+    "_NATIVETIME_UNITL",
     "_NumberT",
     "_ShapeT",
     "_StrT",
@@ -26,7 +31,11 @@ __all__ = [
     "ArrayLikeNumber",
     "ArrayLikeString",
     "DateParseScalar",
+    "DATESUNIT",
+    "DateUnit",
     "Incomplete",
+    "NativeTimeUnit",
+    "serchDtype",
     "TypeArray2LikeAny",
     "TypeArray2LikeBool",
     "TypeArray2Likedatetime",
@@ -78,6 +87,16 @@ ArrayLikedatetime = TypeVar("ArrayLikedatetime", bound=np.datetime64)
 TypeArrayLikedatetime: TypeAlias = np.ndarray[tuple[int], np.dtype[np.datetime64]]
 TypeArray2Likedatetime: TypeAlias = np.ndarray[tuple[int, int], np.dtype[np.datetime64]]
 TypeArraysLikedatetime: TypeAlias = np.ndarray[tuple[int, ...], np.dtype[np.datetime64]]
+_DATE_UNITL = Literal["Y", "M", "W", "D", b"Y", b"M", b"W", b"D"]
+_NATIVETIME_UNITL = Literal[
+    "h", "m", "s", "ms", "us", "μs", b"h", b"m", b"s", b"ms", b"us"
+]
+DATESUNIT: TypeAlias = _DT64Codes
+DateUnit: TypeAlias = _DATE_UNITL
+NativeTimeUnit: TypeAlias = _NATIVETIME_UNITL
+
+def serchDtype(dtype: _DTypeLikeTD64 = "datetime64[D]") -> _DTypeLikeTD64: ...
+
 # bool
 ArrayLikeBool = TypeVar("ArrayLikedatetime", bound=Union[np.bool_, bool])
 TypeArrayLikeBool: TypeAlias = np.ndarray[tuple[int], np.dtype[ArrayLikeBool]]

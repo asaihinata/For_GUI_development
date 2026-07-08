@@ -1,6 +1,7 @@
 from .nparray import NPArray
 from .npbool import NPBool
-from .npdate import NPDate, NPFormatDate
+from .npdate import NPDate
+from .npformatdate import NPFormatDate
 from .npnumber import NPNumber
 from .npstatistics import NPStatisticsd, NPStatisticsds
 from .npstr import NPString

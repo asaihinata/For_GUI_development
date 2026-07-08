@@ -1,6 +1,6 @@
 """基本的な文字列の操作をするモジュール"""
 
-from typing import Any, Iterator, Literal, Self, overload
+from typing import Any, Iterator, Self, overload
 
 import numpy as np
 from numpy._typing import (ArrayLike, _ArrayLikeAnyString_co, _ArrayLikeInt_co,
@@ -121,8 +121,8 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
         :rtype: Any
         """
 
-    def __ne__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
-    def __eq__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
+    def __ne__(self, other: Any) -> NPBool[Any]: ...
+    def __eq__(self, other: Any) -> NPBool[Any]: ...
     def __add__(self, other: ArrayLike) -> NPString: ...
     def __radd__(self, other: ArrayLike) -> NPString: ...
     def __iadd__(self, other: ArrayLike) -> NPString: ...
@@ -216,17 +216,17 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
         """配列内の要素の文字に`val`を付け加える"""
 
     @property
-    def low(self) -> NPString[_ShapeT, _CharType]:
+    def low(self) -> Self:
         """`NPString`内の要素のアルファベットを小文字に変換する"""
 
     @property
-    def up(self) -> NPString[_ShapeT, _CharType]:
+    def up(self) -> Self:
         """`NPString`内の要素のアルファベットを大文字に変換する"""
 
-    def lower(self) -> NPString[_ShapeT, _CharType]:
+    def lower(self) -> Self:
         """`NPString`内の要素のアルファベットを小文字に変換する"""
 
-    def upper(self) -> NPString[_ShapeT, _CharType]:
+    def upper(self) -> Self:
         """`NPString`内の要素のアルファベットを大文字に変換する"""
 
     def stringlen(self) -> NPNumber[_ShapeT, np.uint64]:
