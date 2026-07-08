@@ -1,7 +1,8 @@
+import numpy as np
 from matplotlib.container import BarContainer
 from matplotlib.patches import Polygon
 
-from sgg.graph.typing import *
+from sgg.typing import *
 
 from .._2gset import _2Gset
 

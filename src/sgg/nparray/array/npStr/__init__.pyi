@@ -7,7 +7,8 @@ from numpy._typing import (ArrayLike, _ArrayLikeAnyString_co, _ArrayLikeInt_co,
                            _ShapeLike)
 from numpy.typing import NDArray
 
-from .._typing import _CharType, _ShapeT
+from sgg.typing import _CharType, _ShapeT
+
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber

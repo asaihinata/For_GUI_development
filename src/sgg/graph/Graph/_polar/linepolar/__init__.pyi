@@ -1,6 +1,6 @@
 from matplotlib.lines import Line2D
 
-from sgg.graph.typing import *
+from sgg.typing import *
 
 from .._Polarset import _polarset
 

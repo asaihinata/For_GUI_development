@@ -1,6 +1,7 @@
+import numpy as np
 from matplotlib.collections import QuadMesh
 
-from sgg.graph.typing import *
+from sgg.typing import *
 
 from .._2gset import _2Gset
 

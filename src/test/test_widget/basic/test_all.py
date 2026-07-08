@@ -2,6 +2,7 @@ import pathlib
 
 from sgg import *
 
+
 def test_main():
     def txtchange():
         win.get("txt1").set_text("!!!変わった!!!")

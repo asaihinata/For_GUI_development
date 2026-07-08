@@ -5,7 +5,8 @@ import numpy as np
 from numpy import datetime64
 from numpy._typing import _DTypeLikeTD64
 
-from .._typing import _ArrayLikeTD64_co, _DTypeT, _ShapeT
+from sgg.typing import _ArrayLikeTD64_co, _DTypeT, _ShapeT
+
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber

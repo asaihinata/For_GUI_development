@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg.nparray.exceptions import *
+from sgg.exceptions import *
 
 __all__ = [
     "_arrisuint",
@@ -26,7 +26,7 @@ def _uint_check(value):
 def _intarraylike_check(obj):
     try:
         arr = np.asarray(obj)
-    except Exception:
+    except:
         return False
     if arr.dtype.kind in "iub":
         return True

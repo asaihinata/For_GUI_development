@@ -5,7 +5,8 @@ from typing import Any, Iterator, Literal, Self, TypeAlias, TypeVar, overload
 import numpy as np
 from numpy.typing import NDArray
 
-from .._typing import _ArrayLikeNumber_co, _NumberT, _ShapeT
+from sgg.typing import _ArrayLikeNumber_co, _NumberT, _ShapeT
+
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
 

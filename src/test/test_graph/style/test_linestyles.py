@@ -1,5 +1,8 @@
-from sgg import *
 import numpy as np
+
+from sgg import *
+
+
 def test_main():
     linestyle = ["solid", "dotted", "dashed", "dashdot", "None"]
     x = np.arange(1, 10)

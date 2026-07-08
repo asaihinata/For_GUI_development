@@ -1,6 +1,6 @@
 from matplotlib.collections import FillBetweenPolyCollection
 
-from sgg.graph.typing import *
+from sgg.typing import *
 
 from .._2gset import _2Gset
 

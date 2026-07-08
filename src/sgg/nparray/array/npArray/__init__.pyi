@@ -3,7 +3,8 @@ from typing import Any, Iterator, Literal, Self, overload
 import numpy as np
 from numpy.typing import DTypeLike, NDArray
 
-from .._typing import Incomplete, _DTypeT, _ShapeT
+from sgg.typing import Incomplete, _DTypeT, _ShapeT
+
 from ..dev import _ArrayShapeMixin
 
 __all__ = ["NPArray"]

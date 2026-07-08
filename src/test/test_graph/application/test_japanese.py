@@ -1,6 +1,9 @@
-import numpy as np
 from pathlib import Path
+
+import numpy as np
+
 from sgg import *
+
 
 def test_main():
     data = (

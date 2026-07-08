@@ -1,6 +1,6 @@
 from matplotlib.container import StemContainer
 
-from sgg.graph.typing import *
+from sgg.typing import *
 
 from .._Polarset import _polarset
 

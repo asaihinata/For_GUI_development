@@ -2,9 +2,9 @@ from typing import Any, Iterator, Self, TypeVar, overload
 
 import numpy as np
 from numpy._typing import _DTypeLikeBool
-from numpy.typing import NDArray
 
-from .._typing import _ArrayLikeBool_co, _ShapeT
+from sgg.typing import _ArrayLikeBool_co, _ShapeT
+
 from ..dev import _ArrayShapeMixin
 
 __all__ = ["NPBool"]

@@ -3,7 +3,8 @@ from datetime import date, datetime
 import numpy as np
 from dateutil.parser import parse
 
-from .._typing import serchDtype
+from sgg.typing import serchDtype
+
 from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin
 from ..npbool import NPBool
 

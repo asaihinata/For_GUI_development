@@ -6,9 +6,8 @@ from typing import (Any, Generator, Literal, Self, SupportsIndex, TypeAlias,
 import numpy as np
 from numpy.typing import ArrayLike, DTypeLike, NDArray
 
-from sgg.typing import TypeArrayLikeNumber
+from sgg.typing import TypeArrayLikeNumber, _ArrayLikeNumber_co, _NumberT
 
-from .._typing import _ArrayLikeNumber_co, _NumberT
 from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
 
 __all__ = ["NPStatisticsd"]

@@ -6,8 +6,8 @@ from typing import Any, Literal
 import numpy as np
 from matplotlib.markers import MarkerStyle
 
-from sgg.graph.typing import Type_Marker
 from sgg.nparray import NPArray
+from sgg.typing import Type_Marker
 
 __all__ = ["Marker", "MarkerList"]
 

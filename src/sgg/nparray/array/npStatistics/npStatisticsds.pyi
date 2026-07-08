@@ -6,7 +6,8 @@ import numpy as np
 from numpy._typing import _ArrayLikeFloat_co
 from numpy.typing import DTypeLike, NDArray
 
-from .._typing import _ArrayLikeNumber_co, _NumberT
+from sgg.typing import _ArrayLikeNumber_co, _NumberT
+
 from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
 from .npstatisticsd import NPStatisticsd
 
