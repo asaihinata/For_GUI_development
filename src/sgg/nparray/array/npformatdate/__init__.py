@@ -7,6 +7,7 @@ from sgg.typing import serchDtype
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
+from ..npnumber import NPNumber
 
 __all__ = ["NPFormatDate"]
 HANDLED_FUNCTIONS = {}
@@ -21,7 +22,7 @@ def implements(np_function):
 
 
 class NPFormatDate(_ArrayShapeMixin, np.ndarray):
-    _element_type = (np.datetime64, datetime, date)
+    _element_type = np.datetime64
     _default_dtype = "datetime64[D]"
 
     def __new__(
@@ -40,13 +41,12 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray):
             yearfirst = False
         if not isinstance(dayfirst, bool):
             dayfirst = False
-        dtype = np.dtype(serchDtype(dtype))
         func = np.vectorize(
             lambda strs, yearfirst, dayfirst: str(
                 parse(str(strs), yearfirst=yearfirst, dayfirst=dayfirst)
             )
         )
-        resolved = cls._resolve_dtype(dtype)
+        resolved = cls._resolve_dtype(serchDtype(dtype))
         obj = np.asarray(
             np.array(
                 [func(i, yearfirst, dayfirst) for i in np.nditer(data)], dtype=dtype
@@ -91,3 +91,36 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray):
 
     def __eq__(self, value):
         return NPBool(np.equal(np.asarray(self), value))
+
+    def __add__(self, other):
+        result = np.add(np.asarray(self), other).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def __sub__(self, other):
+        result = np.subtract(np.asarray(self), other).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    __radd__ = __add__
+    __iadd__ = __add__
+    __rsub__ = __sub__
+    __isub__ = __sub__
+
+    def todatetime(self):
+        return self.data.astype(datetime)
+
+    def todate(self):
+        return self.data.astype(date)
+
+    def weekday(self):
+        dt = self.todatetime()
+        return NPNumber([i.weekday() for i in dt], dtype=np.uint8)
+
+    def diff_today(self, days=False):
+        if not isinstance(days, bool):
+            days = False
+        day = np.busday_count(
+            np.asarray(self).astype("datetime64[D]"), np.datetime64("today")
+        ) + int(days)
+        return NPNumber(day, dtype=np.int64)

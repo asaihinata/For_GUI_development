@@ -69,17 +69,19 @@ class NPDate(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
         return super().__array_function__(func, types, args, kwargs)
 
     def __add__(self, other):
-        result = super().__add__(other)
+        result = np.add(np.asarray(self), other).view(type(self))
         result._dtype = result.dtype
         return result
 
     def __sub__(self, other):
-        result = super().__sub__(other)
+        result = np.subtract(np.asarray(self), other).view(type(self))
         result._dtype = result.dtype
         return result
 
     __radd__ = __add__
+    __iadd__ = __add__
     __rsub__ = __sub__
+    __isub__ = __sub__
 
     def __ne__(self, value):
         return NPBool(np.not_equal(np.asarray(self), value))

@@ -132,15 +132,13 @@ class NPDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __eq__(self, other: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
     @property
-    def element_type(
-        self,
-    ) -> tuple[type[np.datetime64], type[datetime], type[date]]:
+    def element_type(self) -> tuple[type[np.datetime64], type[datetime], type[date]]:
         """NPDateで許可されている型を取得する"""
 
-    def todatetime(self) -> np.ndarray[datetime, np.dtype[datetime]]:
+    def todatetime(self) -> np.ndarray[_ShapeT, np.dtype[datetime]]:
         """配列内の日付を`datetime.datetime`に変換する"""
 
-    def todate(self) -> np.ndarray[date, np.dtype[date]]:
+    def todate(self) -> np.ndarray[_ShapeT, np.dtype[date]]:
         """配列内の日付を`datetime.date`に変換する"""
 
     @classmethod
@@ -151,31 +149,30 @@ class NPDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def now(cls) -> NPDate:
         """現在時刻(UTC時刻)を返す"""
 
-    def weekday(self) -> NPNumber[Any, np.dtype[np.uint8]]:
+    def weekday(self) -> NPNumber[_ShapeT, np.dtype[np.uint8]]:
         """その日付日時の曜日を求める"""
 
     @overload
-    def diff_today(self, days: bool = True) -> NPNumber[Any, np.dtype[np.int64]]:
+    def diff_today(self, days: bool = True) -> NPNumber[_ShapeT, np.dtype[np.int64]]:
         """
-        今日の日付の差(今日を含む)を求める
+        配列の日付と今日の日付の差を求める(今日を含む)
 
         :param days: 今日を含めるか指定する
         :type days: bool
         """
 
     @overload
-    def diff_today(self, days: bool = False) -> NPNumber[Any, np.dtype[np.int64]]:
+    def diff_today(self, days: bool = False) -> NPNumber[_ShapeT, np.dtype[np.int64]]:
         """
-        今日の日付の差(今日を含めない)を求める
+        配列の日付と今日の日付の差を求める(今日を含めない)
 
         :param days: 今日を含めるか指定する
         :type days: bool
         """
 
-    @overload
-    def diff_today(self, days: bool = ...) -> NPNumber[Any, np.dtype[np.int64]]:
+    def diff_today(self, days: bool = ...) -> NPNumber[_ShapeT, np.dtype[np.int64]]:
         """
-        今日の日付の差を求める
+        配列の日付と今日の日付の差を求める
 
         :param days: 今日を含めるか指定する
         :type days: bool

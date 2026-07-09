@@ -1,14 +1,15 @@
 from datetime import date, datetime
-from typing import Any, Iterator, Literal, Self, overload
+from typing import Any, Iterator, Literal, Self, TypeVar, overload
 
 import numpy as np
 from numpy import datetime64
 from numpy._typing import _DTypeLikeTD64
 
-from sgg.typing import _ArrayLikeDateParse_co, _DTypeT, _ShapeT
+from sgg.typing import _ArrayLikeDateParse_co, _ShapeT
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
+from ..npnumber import NPNumber
 
 __all__ = ["NPFormatDate"]
 HANDLED_FUNCTIONS: dict
@@ -21,10 +22,14 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
+_DTypeT = TypeVar(
+    "_DTypeT", bound=np.dtype, default=np.dtype[datetime64], covariant=True
+)
+
 class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
 
-    _element_type: tuple[type[np.datetime64], type[datetime], type[date]]
+    _element_type: type[np.datetime64]
     _default_dtype: Literal["datetime64[D]"]
 
     @overload
@@ -144,5 +149,40 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __eq__(self, value: Any) -> NPBool[Any]: ...
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
     @property
-    def element_type(self) -> tuple[type[np.datetime64], type[datetime], type[date]]:
+    def element_type(self) -> type[np.datetime64]:
         """NPFormatDateで許可されている型を取得する"""
+
+    def todatetime(self) -> np.ndarray[_ShapeT, np.dtype[datetime]]:
+        """配列内の日付を`datetime.datetime`に変換する"""
+
+    def todate(self) -> np.ndarray[_ShapeT, np.dtype[date]]:
+        """配列内の日付を`datetime.date`に変換する"""
+
+    def weekday(self) -> NPNumber[_ShapeT, np.dtype[np.uint8]]:
+        """その日付日時の曜日を求める"""
+
+    @overload
+    def diff_today(self, days: bool = True) -> NPNumber[_ShapeT, np.dtype[np.int64]]:
+        """
+        配列の日付と今日の日付の差を求める(今日を含む)
+
+        :param days: 今日を含めるか指定する
+        :type days: bool
+        """
+
+    @overload
+    def diff_today(self, days: bool = False) -> NPNumber[_ShapeT, np.dtype[np.int64]]:
+        """
+        配列の日付と今日の日付の差を求める(今日を含めない)
+
+        :param days: 今日を含めるか指定する
+        :type days: bool
+        """
+
+    def diff_today(self, days: bool = ...) -> NPNumber[_ShapeT, np.dtype[np.int64]]:
+        """
+        配列の日付と今日の日付の差を求める
+
+        :param days: 今日を含めるか指定する
+        :type days: bool
+        """
