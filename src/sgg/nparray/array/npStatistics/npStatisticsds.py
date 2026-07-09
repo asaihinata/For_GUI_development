@@ -4,6 +4,7 @@ import numpy as np
 from numpy.polynomial.chebyshev import chebfit, chebval
 
 from sgg.nparray.isdtype import numberDtype
+
 from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
 from .npstatisticsd import NPStatisticsd
 

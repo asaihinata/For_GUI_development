@@ -75,17 +75,17 @@ class NPNumber(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     def __eq__(self, value):
         return NPBool(np.equal(np.asarray(self), value))
 
-    def __lt__(self, other):
-        return NPBool(super().__lt__(other))
+    def __lt__(self, value):
+        return NPBool(super().__lt__(value))
 
-    def __le__(self, other):
-        return NPBool(super().__le__(other))
+    def __le__(self, value):
+        return NPBool(super().__le__(value))
 
-    def __gt__(self, other):
-        return NPBool(super().__gt__(other))
+    def __gt__(self, value):
+        return NPBool(super().__gt__(value))
 
-    def __ge__(self, other):
-        return NPBool(super().__ge__(other))
+    def __ge__(self, value):
+        return NPBool(super().__ge__(value))
 
     def __getitem__(self, key: int | slice):
         size = self.size
@@ -123,6 +123,7 @@ class NPNumber(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
         )
         result._dtype = result.dtype
         return result
+
     def cusdiff(self):
         datas = np.ravel(self)
         splices = self.shape[-1]
@@ -156,6 +157,7 @@ class NPNumber(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
         )
         result._dtype = result.dtype
         return result
+
     def cusdiv(self):
         datas = np.ravel(self)
         splices = self.shape[-1]
@@ -176,7 +178,9 @@ class NPNumber(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     def percentile(self, q, axis=None, method="linear"):
         if method not in method_list:
             method = "linear"
-        result = np.percentile(np.asarray(self), q, axis=axis, method=method).view(type(self))
+        result = np.percentile(np.asarray(self), q, axis=axis, method=method).view(
+            type(self)
+        )
         result._dtype = result.dtype
         return result
 
@@ -188,12 +192,16 @@ class NPNumber(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
         )
         result._dtype = result.dtype
         return result
+
     def IQR(self, axis=None, method="linear"):
         if method not in method_list:
             method = "linear"
-        result=np.percentile(np.asarray(self), [25, 50, 75], axis=axis, method=method)
-        result._dtype = result.dtype
+        result = np.percentile(
+            np.asarray(self), [25, 50, 75], axis=axis, method=method
+        ).view(type(self))
+        result._dtype = np.float64
         return result
+
     def ratio(self, axis=None):
         result = np.asarray((self / np.sum(self, axis=axis, keepdims=True)) * 100).view(
             type(self)

@@ -3,10 +3,10 @@
 from typing import Any, Iterator, Literal, Self, TypeAlias, TypeVar, overload
 
 import numpy as np
-from numpy.typing import NDArray
 from numpy._typing import _FloatLike_co
+from numpy.typing import NDArray
 
-from sgg.typing import _ArrayLikeNumber_co, _NumberT, _ShapeT,Typeaxis
+from sgg.typing import Typeaxis, _ArrayLikeNumber_co, _NumberT, _ShapeT
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
@@ -147,10 +147,10 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
 
     def __eq__(self, value: Any) -> NPBool[Any]: ...
     def __ne__(self, value: Any) -> NPBool[Any]: ...
-    def __lt__(self, other: Any) -> NPBool[Any]: ...
-    def __le__(self, other: Any) -> NPBool[Any]: ...
-    def __gt__(self, other: Any) -> NPBool[Any]: ...
-    def __ge__(self, other: Any) -> NPBool[Any]: ...
+    def __lt__(self, value: Any) -> NPBool[Any]: ...
+    def __le__(self, value: Any) -> NPBool[Any]: ...
+    def __gt__(self, value: Any) -> NPBool[Any]: ...
+    def __ge__(self, value: Any) -> NPBool[Any]: ...
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
     @property
     def element_type(
@@ -182,18 +182,22 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
 
     def cussum(self) -> NPNumber[_ShapeT, _DTypeT]:
         """一つ前の元の値との和を求める"""
+
     def cusdiff(self) -> NPNumber[_ShapeT, _DTypeT]:
         """一つ前の元の値との差を求める"""
+
     def cusprod(self) -> NPNumber[_ShapeT, _DTypeT]:
         """一つ前の元の値との積を求める"""
+
     def cusdiv(self) -> NPNumber[_ShapeT, _DTypeT]:
         """一つ前の元の値との除算を求める"""
+
     def percentile(
         self,
         q: tuple[int | float, ...],
         axis: Typeaxis = None,
         method: TYPEMETHOD = "linear",
-    ) -> NPNumber[Any,np.dtype[np.float64]]:
+    ) -> NPNumber[Any, np.dtype[np.float64]]:
         """
         指定したパーセンタイルを計算する
 
@@ -210,7 +214,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         q: _FloatLike_co,
         axis: Typeaxis = None,
         method: TYPEMETHOD = "linear",
-    ) -> NPNumber[Any,np.dtype[np.float64]]:
+    ) -> NPNumber[Any, np.dtype[np.float64]]:
         """
         指定した分位点を計算する
 
@@ -222,8 +226,22 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :type method: TYPEMETHOD
         """
 
-    def ratio(self, axis: int | None = None) -> NPNumber:
+    def ratio(self, axis: Typeaxis = None) -> NPNumber:
         """行や列ごとの合計に対する比率を求める"""
 
     def zero_check(self) -> NPBool[Any, np.dtype[np.bool]]:
         """要素の数値が0の位置を探す"""
+
+    def IQR(
+        self,
+        axis: Typeaxis = None,
+        method: TYPEMETHOD = "linear",
+    ) -> NPNumber:
+        """
+        配列の四分位範囲を求める
+
+        :param axis: 計算する軸の方向を指定する
+        :type axis: Typeaxis
+        :param method: 分位点を推定するために使用する方法を指定する
+        :type method: TYPEMETHOD
+        """

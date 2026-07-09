@@ -14,7 +14,7 @@ from .typing import *
 from .version import __version__
 from .widget import *
 
-__all__:list[str] = [
+__all__: list[str] = [
     "__version__",
     "askcolor",
     "askdirectory",

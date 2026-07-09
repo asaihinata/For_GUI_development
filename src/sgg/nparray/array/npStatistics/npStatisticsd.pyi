@@ -7,7 +7,7 @@ import numpy as np
 from numpy._typing import _FloatLike_co
 from numpy.typing import ArrayLike, DTypeLike, NDArray
 
-from sgg.typing import (Typeaxis, TypeArrayLikeNumber, _ArrayLikeNumber_co,
+from sgg.typing import (TypeArrayLikeNumber, Typeaxis, _ArrayLikeNumber_co,
                         _NumberT)
 
 from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
@@ -309,7 +309,7 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
 
     def IQR(
         self,
-        axis:Typeaxis=None,
+        axis: Typeaxis = None,
         method: Type_Method = "linear",
     ) -> NDArray[np.floating]:
         """
@@ -378,7 +378,7 @@ class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
         """
 
     def ratio_E_samplingerror(
-        self, parcent: int | float, cc: int | float=0.95
+        self, parcent: int | float, cc: int | float = 0.95
     ) -> np.float64:
         """
         母比率の標本誤差を求める

@@ -41,19 +41,21 @@ class NPArray(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def full(cls, fill_value, shape, dtype=None):
-        if _arrisuint(shape):
-            return np.full(shape, fill_value, np.dtype(dtype))
-        else:
+        if not _arrisuint(shape):
             raise ShapeError(shape)
+        result = np.asarray(np.full(shape, fill_value, dtype=dtype)).view(cls)
+        result._dtype = dtype
+        return result
 
     @classmethod
     def sequential(cls, shape):
-        if _arrisuint(shape):
-            return np.asarray(
-                np.arange(np.prod(shape), dtype=np.uint64).reshape(shape)
-            ).view(cls)
-        else:
+        if not _arrisuint(shape):
             raise ShapeError(shape)
+        result = np.asarray(
+            np.arange(np.prod(shape), dtype=np.uint64).reshape(shape)
+        ).view(cls)
+        result._dtype = result.dtype
+        return result
 
     def __array__(self, dtype=None, copy=None):
         return super().__array__(dtype, copy=copy)
@@ -88,11 +90,9 @@ class NPArray(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
     def count_nonzero(self, axis=None, keepdims=False):
         if not isinstance(keepdims, bool):
             keepdims = False
-        result=np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
-        result._dtype = result.dtype
-        return result
+        return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
 
     def EType(self):
-        result=np.asarray(np.vectorize(type)(self))
+        result = np.vectorize(type)(self)
         result._dtype = result.dtype
         return result

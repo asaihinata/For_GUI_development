@@ -37,7 +37,7 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPFormatDate[datetime64[_ShapeT], np.dtype[datetime64]]: ...
+    ) -> NPFormatDate[_ShapeT, np.dtype[datetime64]]: ...
     @overload
     def __new__(
         cls,
@@ -48,7 +48,7 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPFormatDate[datetime64[_ShapeT], np.dtype[_DTypeLikeTD64]]: ...
+    ) -> NPFormatDate[_ShapeT, np.dtype[_DTypeLikeTD64]]: ...
     def __new__(
         cls,
         data: _ArrayLikeDateParse_co,

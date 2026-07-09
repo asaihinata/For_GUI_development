@@ -4,6 +4,7 @@ import numpy as np
 from scipy.stats import norm
 
 from sgg.nparray.isdtype import numberDtype
+
 from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
 
 __all__ = ["NPStatisticsd"]

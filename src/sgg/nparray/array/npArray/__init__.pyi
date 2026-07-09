@@ -1,9 +1,9 @@
 from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
-from numpy.typing import DTypeLike, NDArray
+from numpy.typing import ArrayLike, DTypeLike, NDArray
 
-from sgg.typing import Incomplete, _DTypeT, _ShapeT
+from sgg.typing import _DTypeT, _ShapeT
 
 from ..dev import _ArrayShapeMixin
 
@@ -28,7 +28,7 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ShapeT,
+        data: ArrayLike,
         dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -37,7 +37,7 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ShapeT,
+        data: ArrayLike,
         dtype: type[np.generic],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -46,7 +46,7 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ShapeT,
+        data: ArrayLike,
         dtype: np.dtype[_DTypeT],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -54,7 +54,7 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     ) -> NPArray[_ShapeT, _DTypeT]: ...
     def __new__(
         cls,
-        data: _ShapeT,
+        data: ArrayLike,
         dtype: DTypeLike | None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -170,5 +170,5 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :type keepdims: bool
         """
 
-    def EType(self) -> NDArray[Incomplete]:
+    def EType(self) -> NPArray[Any, np.dtype[object]]:
         """要素の型を調べる"""

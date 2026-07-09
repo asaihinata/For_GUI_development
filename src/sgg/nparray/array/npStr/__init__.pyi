@@ -3,9 +3,7 @@
 from typing import Any, Iterator, Self, overload
 
 import numpy as np
-from numpy._typing import (ArrayLike, _ArrayLikeAnyString_co, _ArrayLikeInt_co,
-                           _ShapeLike)
-from numpy.typing import NDArray
+from numpy._typing import ArrayLike, _ArrayLikeAnyString_co, _ArrayLikeInt_co
 
 from sgg.typing import _CharType, _ShapeT
 
