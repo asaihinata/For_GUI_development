@@ -5,7 +5,7 @@ from numpy.typing import ArrayLike, DTypeLike, NDArray
 
 from sgg.typing import _DTypeT, _ShapeT
 
-from ..dev import _ArrayShapeMixin
+from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin
 
 __all__ = ["NPArray"]
 
@@ -19,7 +19,9 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPArray(
+    _ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
+):
     """`np.ndarray`を継承した型付き配列クラス"""
 
     _element_type: None

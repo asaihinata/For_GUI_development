@@ -5,7 +5,7 @@ from dateutil.parser import parse
 
 from sgg.typing import serchDtype
 
-from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin
+from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
 
 __all__ = ["NPFormatDate"]
@@ -20,7 +20,7 @@ def implements(np_function):
     return decorator
 
 
-class NPFormatDate(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
+class NPFormatDate(_ArrayShapeMixin, np.ndarray):
     _element_type = (np.datetime64, datetime, date)
     _default_dtype = "datetime64[D]"
 

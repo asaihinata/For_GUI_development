@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin
+from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
 
 __all__ = ["NPNumber"]
@@ -28,7 +28,7 @@ def implements(np_function):
     return decorator
 
 
-class NPNumber(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
+class NPNumber(_ArrayShapeMixin, np.ndarray):
     _element_type = (int, float, complex, np.number)
     _default_dtype = np.float64
 
@@ -86,6 +86,76 @@ class NPNumber(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
 
     def __ge__(self, value):
         return NPBool(super().__ge__(value))
+
+    def __add__(self, value):
+        result = np.add(np.asarray(self), value).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    __radd__ = __add__
+    __iadd__ = __add__
+
+    def __sub__(self, value):
+        result = np.subtract(np.asarray(self), value).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    __rsub__ = __sub__
+    __isub__ = __sub__
+
+    def __mul__(self, value):
+        result = np.multiply(np.asarray(self), value).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    __rmul__ = __mul__
+    __imul__ = __mul__
+
+    def __truediv__(self, value):
+        result = np.divide(np.asarray(self), value).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    __rtruediv__ = __truediv__
+    __itruediv__ = __truediv__
+
+    def __floordiv__(self, value):
+        result = np.floor_divide(np.asarray(self), value).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    __rfloordiv__ = __floordiv__
+    __ifloordiv__ = __floordiv__
+
+    def __mod__(self, value):
+        result = np.mod(np.asarray(self), value).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    __rmod__ = __mod__
+    __imod__ = __mod__
+
+    def __pow__(self, value):
+        result = np.pow(np.asarray(self), value).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    __rpow__ = __pow__
+    __ipow__ = __pow__
+
+    def __divmod__(self, value):
+        result1, result2 = np.divmod(np.asarray(self), value)
+        result1, result2 = result1.view(type(self)), result2.view(type(self))
+        result1._dtype = result1.dtype
+        result2._dtype = result2.dtype
+        return result1, result2
+
+    __rdivmod__ = __divmod__
+
+    def __abs__(self):
+        result = np.abs(np.asarray(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __getitem__(self, key: int | slice):
         size = self.size

@@ -3,7 +3,7 @@
 import numpy as np
 import numpy.strings as nps
 
-from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin, _int_co_check
+from ..dev import _ArrayShapeMixin, _int_co_check
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -19,7 +19,7 @@ def implements(np_function):
     return decorator
 
 
-class NPString(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
+class NPString(_ArrayShapeMixin, np.ndarray):
     _element_type = (str, np.character, np.str_, np.bytes_)
     _default_dtype = np.str_
 

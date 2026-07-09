@@ -1,6 +1,6 @@
 import numpy as np
 
-from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin
+from ..dev import _ArrayShapeMixin
 
 __all__ = ["NPBool"]
 HANDLED_FUNCTIONS = {}
@@ -14,7 +14,7 @@ def implements(np_function):
     return decorator
 
 
-class NPBool(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
+class NPBool(_ArrayShapeMixin, np.ndarray):
     _element_type = (bool, np.bool_, np.bool)
     _default_dtype = np.bool_
 
@@ -61,12 +61,12 @@ class NPBool(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
         return result
 
     def __ne__(self, value):
-        result = np.asarray(np.not_equal(np.asarray(self), value)).view(type(self))
+        result = np.not_equal(np.asarray(self), value).view(type(self))
         result._dtype = result.dtype
         return result
 
     def __eq__(self, value):
-        result = np.asarray(np.equal(np.asarray(self), value)).view(type(self))
+        result = np.equal(np.asarray(self), value).view(type(self))
         result._dtype = result.dtype
         return result
 
