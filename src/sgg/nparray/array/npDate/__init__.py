@@ -4,7 +4,7 @@ import numpy as np
 
 from sgg.typing import serchDtype
 
-from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin
+from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -20,7 +20,7 @@ def implements(np_function):
     return decorator
 
 
-class NPDate(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
+class NPDate(_ArrayShapeMixin, np.ndarray):
     _element_type = (np.datetime64, datetime, date)
     _default_dtype = "datetime64[D]"
 
@@ -68,13 +68,13 @@ class NPDate(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
-    def __add__(self, other):
-        result = np.add(np.asarray(self), other).view(type(self))
+    def __add__(self, value):
+        result = np.add(np.asarray(self), value).view(type(self))
         result._dtype = result.dtype
         return result
 
-    def __sub__(self, other):
-        result = np.subtract(np.asarray(self), other).view(type(self))
+    def __sub__(self, value):
+        result = np.subtract(np.asarray(self), value).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -97,11 +97,15 @@ class NPDate(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
 
     @classmethod
     def today(cls):
-        return NPDate([np.datetime64("today")], dtype="datetime64[D]")
+        result = np.asarray([np.datetime64("today")]).view(cls)
+        result._dtype = "datetime64[D]"
+        return result
 
     @classmethod
     def now(cls):
-        return NPDate([np.datetime64("now")], dtype="datetime64[h]")
+        result = np.asarray([np.datetime64("now")]).view(cls)
+        result._dtype = "datetime64[s]"
+        return result
 
     def weekday(self):
         dt = self.todatetime()

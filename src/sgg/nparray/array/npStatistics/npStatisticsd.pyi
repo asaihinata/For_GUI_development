@@ -10,7 +10,7 @@ from numpy.typing import ArrayLike, DTypeLike, NDArray
 from sgg.typing import (TypeArrayLikeNumber, Typeaxis, _ArrayLikeNumber_co,
                         _NumberT)
 
-from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
+from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPStatisticsd"]
 _ShapeT = TypeVar("_ShapeT", bound=tuple[int], default=tuple[int], covariant=True)
@@ -42,7 +42,7 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
+class NPStatisticsd(_ArrayCommonMixin, np.ndarray):
     """`np.ndarray`を継承した基本的な統計を計算する配列クラス"""
 
     def __new__(

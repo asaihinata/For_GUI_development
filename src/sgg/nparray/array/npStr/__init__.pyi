@@ -1,9 +1,10 @@
 """基本的な文字列の操作をするモジュール"""
 
-from typing import Any, Iterator, Self, overload
+from typing import Any, Iterator, Self, TypeAlias, overload
 
 import numpy as np
-from numpy._typing import ArrayLike, _ArrayLikeAnyString_co, _ArrayLikeInt_co
+from numpy._typing import _ArrayLikeAnyString_co, _ArrayLikeInt_co
+from numpy._typing import _ArrayLikeBytes_co as S_co,_ArrayLikeStr_co as U_co,_ArrayLikeString_co as T_co
 
 from sgg.typing import _CharType, _ShapeT
 
@@ -12,6 +13,7 @@ from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPString"]
+_StringDTypeSupportsArray: TypeAlias = np._SupportsArray[np.dtypes.StringDType]
 
 class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
 
@@ -119,12 +121,53 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
         :return: 演算結果を返す
         :rtype: Any
         """
-
-    def __ne__(self, value: Any) -> NPBool[Any]: ...
-    def __eq__(self, value: Any) -> NPBool[Any]: ...
-    def __add__(self, other: ArrayLike) -> NPString: ...
-    def __radd__(self, other: ArrayLike) -> NPString: ...
-    def __iadd__(self, other: ArrayLike) -> NPString: ...
+    @overload
+    def __ne__(self:NPString[_ShapeT,U_co], value: U_co) -> NPBool[_ShapeT]: ...
+    @overload
+    def __ne__(self:NPString[_ShapeT,S_co], value: S_co) -> NPBool[_ShapeT]: ...
+    @overload
+    def __ne__(self:NPString[_ShapeT,T_co], value: T_co) -> NPBool[_ShapeT]: ...
+    @overload
+    def __eq__(self:NPString[_ShapeT,U_co], value: U_co) -> NPBool[_ShapeT]: ...
+    @overload
+    def __eq__(self:NPString[_ShapeT,S_co], value: S_co) -> NPBool[_ShapeT]: ...
+    @overload
+    def __eq__(self:NPString[_ShapeT,T_co], value: T_co) -> NPBool[_ShapeT]: ...
+    @overload
+    def __add__(self: NPString[_ShapeT, U_co], value: U_co) -> NPString[_ShapeT, np.str_]: ...
+    @overload
+    def __add__(self: NPString[_ShapeT, S_co], value: S_co) -> NPString[_ShapeT, np.bytes_]: ...
+    @overload
+    def __add__(
+        self: NPString[_ShapeT, _StringDTypeSupportsArray],
+        value: _StringDTypeSupportsArray,
+    ) -> NPString[_ShapeT, np.dtypes.StringDType]: ...
+    @overload
+    def __add__(self: NPString[_ShapeT, T_co], value: T_co) -> (
+        NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, np.dtypes.StringDType]
+    ): ...
+    @overload
+    def __iadd__(self: NPString[_ShapeT, U_co], value: U_co) -> NPString[_ShapeT, np.str_]: ...
+    @overload
+    def __iadd__(self: NPString[_ShapeT, S_co], value: S_co) -> NPString[_ShapeT, np.bytes_]: ...
+    @overload
+    def __iadd__(
+        self: NPString[_ShapeT, _StringDTypeSupportsArray],
+        value: _StringDTypeSupportsArray,
+    ) -> NPString[_ShapeT, np.dtypes.StringDType]: ...
+    @overload
+    def __iadd__(self: NPString[_ShapeT, T_co], value: T_co) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, np.dtypes.StringDType]: ...
+    @overload
+    def __radd__(self: NPString[_ShapeT, U_co], value: U_co) -> NPString[_ShapeT, np.str_]: ...
+    @overload
+    def __radd__(self: NPString[_ShapeT, S_co], value: S_co) -> NPString[_ShapeT, np.bytes_]: ...
+    @overload
+    def __radd__(
+        self: NPString[_ShapeT, _StringDTypeSupportsArray],
+        value: _StringDTypeSupportsArray,
+    ) -> NPString[_ShapeT, np.dtypes.StringDType]: ...
+    @overload
+    def __radd__(self: NPString[_ShapeT, T_co], value: T_co) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, np.dtypes.StringDType]: ...
     def __mul__(self, i: _ArrayLikeInt_co) -> NPString:
         """
         配列内の要素を`i`回付け加える
@@ -151,9 +194,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
 
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _CharType]]: ...
     @property
-    def element_type(
-        self,
-    ) -> tuple[type[str], type[np.character], type[np.str_], type[np.bytes_]]:
+    def element_type(self) -> tuple[type[str], type[np.character], type[np.str_], type[np.bytes_]]:
         """NPStringで許可されている型を取得する"""
 
     def append(self, val: Any) -> NPString:

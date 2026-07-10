@@ -60,8 +60,8 @@ class NPString(_ArrayShapeMixin, np.ndarray):
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
-    def __add__(self, other):
-        result = np.add(np.asarray(self), other).view(type(self))
+    def __add__(self, value):
+        result = nps.add(np.asarray(self), value).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -77,10 +77,10 @@ class NPString(_ArrayShapeMixin, np.ndarray):
     __imul__ = __mul__
 
     def __ne__(self, value):
-        return NPBool(np.not_equal(np.asarray(self), value))
+        return NPBool(nps.not_equal(np.asarray(self), value))
 
     def __eq__(self, value):
-        return NPBool(np.equal(np.asarray(self), value))
+        return NPBool(nps.equal(np.asarray(self), value))
 
     def append(self, val):
         result = np.asarray(nps.add(self, val)).view(type(self))

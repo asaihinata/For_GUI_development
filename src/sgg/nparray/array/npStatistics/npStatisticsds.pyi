@@ -8,7 +8,7 @@ from numpy.typing import DTypeLike, NDArray
 
 from sgg.typing import _ArrayLikeNumber_co, _NumberT
 
-from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
+from ..dev import _ArrayCommonMixin
 from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
@@ -28,7 +28,7 @@ METHOD_LIST: TypeAlias = Literal[
     "normal_unbiased",
 ]
 
-class NPStatisticsds(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
+class NPStatisticsds(_ArrayCommonMixin, np.ndarray):
     """2つの変数データから様々な統計の計算を行うオブジェクト"""
 
     def __new__(

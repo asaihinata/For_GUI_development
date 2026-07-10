@@ -5,7 +5,7 @@ from numpy.polynomial.chebyshev import chebfit, chebval
 
 from sgg.nparray.isdtype import numberDtype
 
-from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
+from ..dev import _ArrayCommonMixin
 from .npstatisticsd import NPStatisticsd
 
 __all__ = ["NPStatisticsds"]
@@ -31,7 +31,7 @@ def implements(np_function):
     return decorator
 
 
-class NPStatisticsds(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
+class NPStatisticsds(_ArrayCommonMixin, np.ndarray):
 
     _element_type = (int, float, complex, np.number)
 

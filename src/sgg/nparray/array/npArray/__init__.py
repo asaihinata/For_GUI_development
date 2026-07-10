@@ -2,7 +2,7 @@ import numpy as np
 
 from sgg.exceptions import ShapeError
 
-from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin, _arrisuint
+from ..dev import _ArrayShapeMixin, _arrisuint
 
 __all__ = ["NPArray"]
 
@@ -17,7 +17,7 @@ def implements(np_function):
     return decorator
 
 
-class NPArray(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
+class NPArray(_ArrayShapeMixin, np.ndarray):
     _element_type = None
     _default_dtype = "object"
 
@@ -94,5 +94,5 @@ class NPArray(_ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray):
 
     def EType(self):
         result = np.vectorize(type)(self)
-        result._dtype = result.dtype
+        result._dtype = np.dtype(object)
         return result

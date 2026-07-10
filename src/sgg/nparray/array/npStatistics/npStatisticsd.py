@@ -5,7 +5,7 @@ from scipy.stats import norm
 
 from sgg.nparray.isdtype import numberDtype
 
-from ..dev import NDArrayOperatorsMixin, _ArrayCommonMixin
+from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPStatisticsd"]
 method_list = [
@@ -30,7 +30,7 @@ def implements(np_function):
     return decorator
 
 
-class NPStatisticsd(_ArrayCommonMixin, NDArrayOperatorsMixin, np.ndarray):
+class NPStatisticsd(_ArrayCommonMixin, np.ndarray):
     _element_type = (int, float, complex, np.number)
 
     def __new__(cls, data, dtype=np.float64):

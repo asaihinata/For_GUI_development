@@ -92,13 +92,13 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray):
     def __eq__(self, value):
         return NPBool(np.equal(np.asarray(self), value))
 
-    def __add__(self, other):
-        result = np.add(np.asarray(self), other).view(type(self))
+    def __add__(self, value):
+        result = np.add(np.asarray(self), value).view(type(self))
         result._dtype = result.dtype
         return result
 
-    def __sub__(self, other):
-        result = np.subtract(np.asarray(self), other).view(type(self))
+    def __sub__(self, value):
+        result = np.subtract(np.asarray(self), value).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -120,7 +120,10 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray):
     def diff_today(self, days=False):
         if not isinstance(days, bool):
             days = False
-        day = np.busday_count(
-            np.asarray(self).astype("datetime64[D]"), np.datetime64("today")
-        ) + int(days)
-        return NPNumber(day, dtype=np.int64)
+        return NPNumber(
+            np.busday_count(
+                np.asarray(self).astype("datetime64[D]"), np.datetime64("today")
+            )
+            + int(days),
+            dtype=np.int64,
+        )

@@ -5,7 +5,7 @@ from numpy.typing import ArrayLike, DTypeLike, NDArray
 
 from sgg.typing import _DTypeT, _ShapeT
 
-from ..dev import NDArrayOperatorsMixin, _ArrayShapeMixin
+from ..dev import _ArrayShapeMixin
 
 __all__ = ["NPArray"]
 
@@ -19,9 +19,7 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPArray(
-    _ArrayShapeMixin, NDArrayOperatorsMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
-):
+class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した型付き配列クラス"""
 
     _element_type: None
@@ -153,8 +151,8 @@ class NPArray(
         :rtype: Any
         """
 
-    def __ne__(self, other: Any) -> NPArray[Any, np.dtype[np.bool_]]: ...
-    def __eq__(self, other: Any) -> NPArray[Any, np.dtype[np.bool_]]: ...
+    def __ne__(self, value: Any) -> NPArray[Any, np.dtype[np.bool_]]: ...
+    def __eq__(self, value: Any) -> NPArray[Any, np.dtype[np.bool_]]: ...
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
     @property
     def element_type(self) -> None:
@@ -172,5 +170,5 @@ class NPArray(
         :type keepdims: bool
         """
 
-    def EType(self) -> NPArray[Any, np.dtype[object]]:
+    def EType(self) -> NPArray[_ShapeT, np.dtype[object]]:
         """要素の型を調べる"""

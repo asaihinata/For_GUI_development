@@ -95,7 +95,7 @@ class _ArrayShapeMixin(_ArrayCommonMixin):
         """
         引数dtypeを解決させる
 
-        :param dtype: ユーザーが指定するdtype
+        :param dtype: ユーザーが指定するdtypeを指定する
         :return: 解決されたdtypeを返す
         :rtype: numpy.dtype | None
         """
@@ -121,7 +121,7 @@ class _ArrayShapeMixin(_ArrayCommonMixin):
         """
         配列内の要素が`_element_type`と一致するか検証する
 
-        :param obj: 検証対象の配列
+        :param obj: 検証対象の配列を指定する
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
         """
 
@@ -209,6 +209,6 @@ class _ArrayShapeMixin(_ArrayCommonMixin):
         :param k: 配列に90度回転させたい回数を指定する
         :type k: int
         :param axes: 平面内で回転される軸を指定する
-        :type axes: tuple[int,int]
+        :type axes: tuple[int, int]
         :return: 回転させた配列を返す
         """
