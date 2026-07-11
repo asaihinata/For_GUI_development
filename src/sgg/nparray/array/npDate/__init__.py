@@ -21,7 +21,7 @@ def implements(np_function):
 
 
 class NPDate(_ArrayShapeMixin, np.ndarray):
-    _element_type = (np.datetime64, datetime, date)
+    _element_type = np.datetime64
     _default_dtype = "datetime64[D]"
 
     def __new__(
@@ -88,6 +88,18 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
 
     def __eq__(self, value):
         return NPBool(np.equal(np.asarray(self), value))
+
+    def __lt__(self, value):
+        return NPBool(np.less(np.asarray(self), value))
+
+    def __le__(self, value):
+        return NPBool(np.less_equal(np.asarray(self), value))
+
+    def __gt__(self, value):
+        return NPBool(np.greater(np.asarray(self), value))
+
+    def __ge__(self, value):
+        return NPBool(np.greater_equal(np.asarray(self), value))
 
     def todatetime(self):
         return self.data.astype(datetime)

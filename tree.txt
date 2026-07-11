@@ -10,6 +10,7 @@ For_GUI_development
  │   ├── dev
  │   │   ├── commonly_used_words.md
  │   │   ├── naming_conventions.md
+ │   │   ├── numpy_special_method.md
  │   │   └── short_word.md
  │   ├── for_development
  │   │   ├── explanation_graph1.png
@@ -452,5 +453,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:313
+ファイル数:314
 フォルダ数:140

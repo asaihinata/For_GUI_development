@@ -35,8 +35,6 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray):
         min_ndim=None,
         max_ndim=None,
     ):
-        if not isinstance(data, np.ndarray):
-            data = np.array(data)
         if not isinstance(yearfirst, bool):
             yearfirst = False
         if not isinstance(dayfirst, bool):
@@ -46,6 +44,7 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray):
                 parse(str(strs), yearfirst=yearfirst, dayfirst=dayfirst)
             )
         )
+        data = np.asanyarray(data)
         resolved = cls._resolve_dtype(serchDtype(dtype))
         obj = np.asarray(
             np.array(
@@ -91,6 +90,18 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray):
 
     def __eq__(self, value):
         return NPBool(np.equal(np.asarray(self), value))
+
+    def __lt__(self, value):
+        return NPBool(np.less(np.asarray(self), value))
+
+    def __le__(self, value):
+        return NPBool(np.less_equal(np.asarray(self), value))
+
+    def __gt__(self, value):
+        return NPBool(np.greater(np.asarray(self), value))
+
+    def __ge__(self, value):
+        return NPBool(np.greater_equal(np.asarray(self), value))
 
     def __add__(self, value):
         result = np.add(np.asarray(self), value).view(type(self))

@@ -2,7 +2,7 @@ from typing import ClassVar
 
 from sgg.dialogs.maindialog import Dialog
 
-__all__ = ["Chooser", "askcolor"]
+__all__ = ["askcolor","Chooser",]
 
 
 class Chooser(Dialog):

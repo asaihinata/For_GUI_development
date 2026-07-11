@@ -1,8 +1,6 @@
-r"""
-src\sgg内のモジュールで使用する例外メッセージのモジュール
-"""
+r"""src\sgg内のモジュールで使用する例外メッセージのモジュール"""
 
-__all__ = ["UIntError", "ShapeError", "NoScalarError"]
+__all__ = ["NoScalarError","ShapeError","UIntError",]
 
 
 class UIntError(ValueError, IndexError):

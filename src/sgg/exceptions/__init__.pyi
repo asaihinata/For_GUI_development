@@ -1,8 +1,6 @@
-r"""
-src\sgg\nparray内の例外メッセージのモジュール
-"""
+r"""src\sgg\nparray内の例外メッセージのモジュール"""
 
-__all__ = ["UIntError", "ShapeError", "NoScalarError"]
+__all__ = ["NoScalarError","ShapeError","UIntError",]
 
 class UIntError(ValueError, IndexError):
     """値が正の整数ではなかった場合のさせる例外"""

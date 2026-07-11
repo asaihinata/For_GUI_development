@@ -3,7 +3,7 @@ from typing import Any, Iterator, Literal, Self, TypeVar, overload
 
 import numpy as np
 from numpy import datetime64
-from numpy._typing import _ArrayLikeDT64_co, _DTypeLikeTD64
+from numpy._typing import _ArrayLikeDT64_co, _DTypeLikeTD64, _NestedSequence
 
 from sgg.typing import _ArrayLikeTD64_co, _ShapeT
 
@@ -19,7 +19,7 @@ _DTypeT = TypeVar(
 class NPDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した日付の配列クラス"""
 
-    _element_type: tuple[type[np.datetime64], type[datetime], type[date]]
+    _element_type: type[np.datetime64]
     _default_dtype: Literal["datetime64[D]"]
 
     @overload
@@ -157,11 +157,57 @@ class NPDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __rsub__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, _DTypeT]: ...
     def __rsub__(self, value: int | bool | _ArrayLikeDT64_co) -> NPDate: ...
-    def __ne__(self, value: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
-    def __eq__(self, value: Any) -> NPBool[Any, np.dtype[np.bool]]: ...
+    @overload
+    def __ne__(self, value: datetime64) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __ne__(
+        self, value: _ArrayLikeDT64_co | _NestedSequence[np._SupportsGT]
+    ) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __ne__(self, value: np._SupportsGT) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __eq__(self, value: datetime64) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __eq__(
+        self, value: _ArrayLikeDT64_co | _NestedSequence[np._SupportsGT]
+    ) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __eq__(self, value: np._SupportsGT) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __lt__(self, value: datetime64) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __lt__(
+        self, value: _ArrayLikeDT64_co | _NestedSequence[np._SupportsGT]
+    ) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __lt__(self, value: np._SupportsGT) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __le__(self, value: datetime64) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __le__(
+        self, value: _ArrayLikeDT64_co | _NestedSequence[np._SupportsGT]
+    ) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __le__(self, value: np._SupportsGT) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __gt__(self, value: datetime64) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __gt__(
+        self, value: _ArrayLikeDT64_co | _NestedSequence[np._SupportsGT]
+    ) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __gt__(self, value: np._SupportsGT) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __ge__(self, value: datetime64) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __ge__(
+        self, value: _ArrayLikeDT64_co | _NestedSequence[np._SupportsGT]
+    ) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
+    @overload
+    def __ge__(self, value: np._SupportsGT) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
     @property
-    def element_type(self) -> tuple[type[np.datetime64], type[datetime], type[date]]:
+    def element_type(self) -> type[np.datetime64]:
         """NPDateで許可されている型を取得する"""
 
     def todatetime(self) -> np.ndarray[_ShapeT, np.dtype[datetime]]:

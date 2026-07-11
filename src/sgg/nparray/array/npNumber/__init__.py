@@ -34,7 +34,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
 
     def __new__(cls, data, dtype=np.float64, d_ndim=None, min_ndim=None, max_ndim=None):
         resolved = cls._resolve_dtype(dtype)
-        obj = np.asarray(data, dtype=resolved).view(cls)
+        obj = np.asanyarray(data, dtype=resolved).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         if isinstance(d_ndim, int):
@@ -76,16 +76,16 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
         return NPBool(np.equal(np.asarray(self), value))
 
     def __lt__(self, value):
-        return NPBool(super().__lt__(value))
+        return NPBool(np.less(np.asarray(self), value))
 
     def __le__(self, value):
-        return NPBool(super().__le__(value))
+        return NPBool(np.less_equal(np.asarray(self), value))
 
     def __gt__(self, value):
-        return NPBool(super().__gt__(value))
+        return NPBool(np.greater(np.asarray(self), value))
 
     def __ge__(self, value):
-        return NPBool(super().__ge__(value))
+        return NPBool(np.greater_equal(np.asarray(self), value))
 
     def __add__(self, value):
         result = np.add(np.asarray(self), value).view(type(self))

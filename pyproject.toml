@@ -40,3 +40,11 @@ where = ["src"]
 "sgg.dev.color" = ["color.csv"]
 [tool.setuptools.exclude-package-data]
 "*" = ["__pycache__", "*.pyc"]
+[tool.isort]
+profile = "black"
+line_length = 88
+multi_line_output = 0
+include_trailing_comma = false
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
