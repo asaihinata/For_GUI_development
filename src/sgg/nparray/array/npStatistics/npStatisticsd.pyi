@@ -1,7 +1,15 @@
 """基本的な統計の計算をするモジュール"""
 
-from typing import (Any, Generator, Literal, Self, SupportsIndex, TypeAlias, TypeVar,
-                    overload)
+from typing import (
+    Any,
+    Generator,
+    Literal,
+    Self,
+    SupportsIndex,
+    TypeAlias,
+    TypeVar,
+    overload,
+)
 
 import numpy as np
 from numpy._typing import _FloatLike_co

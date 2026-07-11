@@ -2,8 +2,13 @@ import japanize_matplotlib
 import numpy as np
 
 from sgg.dev import *
-from sgg.graph.element import (RadarElement, polarElement, radar_factory, threeElement,
-                               twoElement)
+from sgg.graph.element import (
+    RadarElement,
+    polarElement,
+    radar_factory,
+    threeElement,
+    twoElement,
+)
 from sgg.graph.style import *
 from sgg.nparray import *
 from sgg.typing import *

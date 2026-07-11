@@ -3,7 +3,10 @@ from typing import ClassVar
 
 from sgg.dialogs.maindialog import _Dialog
 
-__all__ = ["askopenfilename","Open",]
+__all__ = [
+    "askopenfilename",
+    "Open",
+]
 
 
 class Open(_Dialog):

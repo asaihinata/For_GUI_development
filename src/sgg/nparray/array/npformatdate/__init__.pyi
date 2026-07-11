@@ -29,7 +29,7 @@ _DTypeT = TypeVar(
 class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
 
-    _element_type: type[np.datetime64]
+    _element_type: type[datetime64]
     _default_dtype: Literal["datetime64[D]"]
 
     @overload
@@ -179,7 +179,7 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __eq__(self, value: Any) -> NPBool[Any]: ...
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
     @property
-    def element_type(self) -> type[np.datetime64]:
+    def element_type(self) -> type[datetime64]:
         """NPFormatDateで許可されている型を取得する"""
 
     def todatetime(self) -> np.ndarray[_ShapeT, np.dtype[datetime]]:

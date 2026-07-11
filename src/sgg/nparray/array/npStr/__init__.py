@@ -109,11 +109,11 @@ class NPString(_ArrayShapeMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
-    def max(self):
-        return int(np.max(np.vectorize(len)(self.data)))
+    def max(self, axis=None):
+        return np.max(nps.str_len(self.data), axis=axis)
 
-    def min(self):
-        return int(np.min(np.vectorize(len)(self.data)))
+    def min(self, axis=1):
+        return np.min(nps.str_len(self.data), axis=axis)
 
     def stringlen(self):
         return NPNumber(np.vectorize(len)(self), dtype=np.uint64)

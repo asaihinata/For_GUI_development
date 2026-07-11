@@ -3,10 +3,15 @@
 from typing import Any, Iterator, Self, TypeAlias, overload
 
 import numpy as np
-from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBytes_co, _ArrayLikeInt_co,
-                           _ArrayLikeStr_co, _ArrayLikeString_co)
+from numpy._typing import (
+    _ArrayLikeAnyString_co,
+    _ArrayLikeBytes_co,
+    _ArrayLikeInt_co,
+    _ArrayLikeStr_co,
+    _ArrayLikeString_co,
+)
 
-from sgg.typing import _CharType, _ShapeT
+from sgg.typing import Typeaxis, _CharType, _ShapeT
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
@@ -123,17 +128,29 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
         """
 
     @overload
-    def __ne__(self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co) -> NPBool[_ShapeT]: ...
+    def __ne__(
+        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+    ) -> NPBool[_ShapeT]: ...
     @overload
-    def __ne__(self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co) -> NPBool[_ShapeT]: ...
+    def __ne__(
+        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+    ) -> NPBool[_ShapeT]: ...
     @overload
-    def __ne__(self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co) -> NPBool[_ShapeT]: ...
+    def __ne__(
+        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
+    ) -> NPBool[_ShapeT]: ...
     @overload
-    def __eq__(self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co) -> NPBool[_ShapeT]: ...
+    def __eq__(
+        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+    ) -> NPBool[_ShapeT]: ...
     @overload
-    def __eq__(self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co) -> NPBool[_ShapeT]: ...
+    def __eq__(
+        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+    ) -> NPBool[_ShapeT]: ...
     @overload
-    def __eq__(self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co) -> NPBool[_ShapeT]: ...
+    def __eq__(
+        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
+    ) -> NPBool[_ShapeT]: ...
     @overload
     def __add__(
         self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
@@ -242,13 +259,23 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
     def stringlen(self) -> NPNumber[_ShapeT, np.uint64]:
         """配列内の要素の文字の長さを求める"""
 
-    def max(self) -> int:
+    @overload
+    def max(self, axis: np._ShapeLike) -> Any:
         """配列内の要素の文字列の長さが最も大きい数値を求める"""
 
-    def min(self) -> int:
+    @overload
+    def max(self, axis: Typeaxis = None) -> np.int_:
+        """配列内の要素の文字列の長さが最も大きい数値を求める"""
+
+    @overload
+    def min(self, axis: np._ShapeLike) -> Any:
+        """配列内の要素の文字列の長さが最も大きい数値を求める"""
+
+    @overload
+    def min(self, axis: Typeaxis = None) -> np.int_:
         """配列内の要素の文字列の長さが最も小さい数値を求める"""
 
-    def str_len(self) -> NPNumber[_ShapeT, np.uint64]:
+    def str_len(self) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
         """配列内の要素の文字の長さを求める"""
 
     def replace(self, old: str, new: str) -> NPString[_ShapeT, _CharType]:

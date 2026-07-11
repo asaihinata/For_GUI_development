@@ -17,6 +17,7 @@ def _int_co_check(obj):
     if not np.issubdtype(obj.dtype, np.integer):
         raise TypeError(f"{obj.dtype}には整数型を指定してください")
 
+
 def _scalar_check(element):
     return np.isscalar(element)
 

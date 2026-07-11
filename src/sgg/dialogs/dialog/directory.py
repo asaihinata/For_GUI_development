@@ -2,7 +2,10 @@ from typing import ClassVar
 
 from sgg.dialogs.maindialog import Dialog
 
-__all__ = ["askdirectory","Directory",]
+__all__ = [
+    "askdirectory",
+    "Directory",
+]
 
 
 class Directory(Dialog):

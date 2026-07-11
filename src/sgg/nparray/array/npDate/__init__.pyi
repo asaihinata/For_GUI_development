@@ -5,7 +5,7 @@ import numpy as np
 from numpy import datetime64
 from numpy._typing import _ArrayLikeDT64_co, _DTypeLikeTD64, _NestedSequence
 
-from sgg.typing import _ArrayLikeTD64_co, _ShapeT
+from sgg.typing import Typeaxis, _ArrayLikeTD64_co, _ShapeT
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
@@ -19,7 +19,7 @@ _DTypeT = TypeVar(
 class NPDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した日付の配列クラス"""
 
-    _element_type: type[np.datetime64]
+    _element_type: type[datetime64]
     _default_dtype: Literal["datetime64[D]"]
 
     @overload
@@ -207,7 +207,7 @@ class NPDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __ge__(self, value: np._SupportsGT) -> NPBool[_ShapeT, np.dtype[np.bool]]: ...
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
     @property
-    def element_type(self) -> type[np.datetime64]:
+    def element_type(self) -> type[datetime64]:
         """NPDateで許可されている型を取得する"""
 
     def todatetime(self) -> np.ndarray[_ShapeT, np.dtype[datetime]]:
@@ -251,4 +251,23 @@ class NPDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
 
         :param days: 今日を含めるか指定する
         :type days: bool
+        """
+
+    @overload
+    def range(
+        self: NPDate[_ShapeT, _DTypeT], axis: None = None
+    ) -> tuple[datetime64[_DTypeT], datetime64[_DTypeT]]: ...
+    @overload
+    def range(
+        self: NPDate[_ShapeT, _DTypeT], axis: np._ShapeLike
+    ) -> tuple[NPDate[_ShapeT, _DTypeT], NPDate[_ShapeT, _DTypeT]]: ...
+    def range(self, axis: Typeaxis = None) -> tuple[
+        NPDate[_ShapeT, _DTypeT] | datetime64[_DTypeT],
+        NPDate[_ShapeT, _DTypeT] | datetime64[_DTypeT],
+    ]:
+        """
+        配列内の日付の最小の日付と最大の日付を求める
+
+        :param axis: 求める軸を指定する。
+        :type axis: Typeaxis
         """

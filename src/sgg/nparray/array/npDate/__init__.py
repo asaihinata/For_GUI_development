@@ -128,3 +128,7 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
             days = False
         day = np.busday_count(np.asarray(self), self.today()) + int(days)
         return NPNumber(day, dtype=np.int64)
+
+    def range(self, axis=None):
+        data = np.asarray(self).view(type(self))
+        return np.min(data, axis=axis), np.max(data, axis=axis)
