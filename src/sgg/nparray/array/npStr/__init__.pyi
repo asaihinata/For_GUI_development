@@ -29,7 +29,16 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
     def __new__(
         cls,
         data: _ArrayLikeAnyString_co,
-        dtype: type[str] | None = np.str_,
+        dtype: None = None,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPString[_ShapeT, np.dtype[np.str_]]: ...
+    @overload
+    def __new__(
+        cls,
+        data: _ArrayLikeAnyString_co,
+        dtype: type[str],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -46,7 +55,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
     def __new__(
         cls,
         data: _ArrayLikeAnyString_co,
-        dtype: type[np.character] | type[str] | None = np.str_,
+        dtype: type[np.character] | type[str] | None = ...,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -256,8 +265,21 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
     def upper(self) -> Self:
         """`NPString`内の要素のアルファベットを大文字に変換する"""
 
-    def stringlen(self) -> NPNumber[_ShapeT, np.uint64]:
-        """配列内の要素の文字の長さを求める"""
+    def stringlen(self,axis:Typeaxis=None) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
+        """
+        配列内の要素の文字の長さを求める
+        
+        :param axis: 長さを求める軸を指定する
+        :type axis: Typeaxis
+        """
+
+    def str_len(self,axis:Typeaxis=None) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
+        """
+        配列内の要素の文字の長さを求める
+        
+        :param axis: 長さを求める軸を指定する
+        :type axis: Typeaxis
+        """
 
     @overload
     def max(self, axis: np._ShapeLike) -> Any:
@@ -274,9 +296,6 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
     @overload
     def min(self, axis: Typeaxis = None) -> np.int_:
         """配列内の要素の文字列の長さが最も小さい数値を求める"""
-
-    def str_len(self) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
-        """配列内の要素の文字の長さを求める"""
 
     def replace(self, old: str, new: str) -> NPString[_ShapeT, _CharType]:
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
@@ -345,7 +364,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
         :param suffix: 終了する単語を指定する
         :type suffix: _ArrayLikeAnyString_co
         :param start: 比較を開始する位置を指定する
-        :type start: _ArrayLikeInt_co, optional
+        :type start: _ArrayLikeInt_co
         :param end: 比較を終える位置を指定する
-        :type end: _ArrayLikeInt_co | None, optional
+        :type end: _ArrayLikeInt_co | None
         """

@@ -3,7 +3,7 @@
 import numpy as np
 import numpy.strings as nps
 
-from ..dev import _ArrayShapeMixin, _int_co_check
+from ..dev import _ArrayShapeMixin, _int_co_check, _normalize_axis
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -110,16 +110,28 @@ class NPString(_ArrayShapeMixin, np.ndarray):
         return result
 
     def max(self, axis=None):
+        if axis is not None:
+            axis=_normalize_axis(axis)
         return np.max(nps.str_len(self.data), axis=axis)
 
-    def min(self, axis=1):
+    def min(self, axis=None):
+        if axis is not None:
+            axis=_normalize_axis(axis)
         return np.min(nps.str_len(self.data), axis=axis)
 
-    def stringlen(self):
-        return NPNumber(np.vectorize(len)(self), dtype=np.uint64)
+    def stringlen(self,axis=None):
+        if axis is None:
+            return NPNumber(np.vectorize(len)(self), dtype=np.uint64)
+        def _lenfunc(a):
+            return np.vectorize(len)(a)
+        return NPNumber(np.apply_along_axis(_lenfunc,_normalize_axis(axis),self.data), dtype=np.uint64)
 
-    def str_len(self):
-        return NPNumber(nps.str_len(self), dtype=np.uint64)
+    def str_len(self,axis=None):
+        if axis is None:
+            return NPNumber(nps.str_len(self), dtype=np.uint64)
+        def _lenfunc(a):
+            return nps.str_len(a)
+        return NPNumber(np.apply_along_axis(_lenfunc,_normalize_axis(axis),self.data), dtype=np.uint64)
 
     def replace(self, old, new):
         result = nps.replace(np.asarray(self), old, new).view(type(self))

@@ -269,3 +269,15 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :param method: 分位点を推定するために使用する方法を指定する
         :type method: TYPEMETHOD
         """
+
+    def count_nonzero(
+        self, axis: Typeaxis = None, keepdims: bool = False
+    ) -> np.intp | NDArray[np.intp]:
+        """
+        0以外の要素の数を数える
+
+        :param axis: 要素を数える軸を指定する
+        :type axis: Typeaxis
+        :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
+        :type keepdims: bool
+        """

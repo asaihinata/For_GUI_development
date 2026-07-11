@@ -1,9 +1,9 @@
 from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
-from numpy.typing import ArrayLike, DTypeLike, NDArray
+from numpy.typing import DTypeLike, NDArray
 
-from sgg.typing import _DTypeT, _ShapeT
+from sgg.typing import Typeaxis, _DTypeT, _ShapeT
 
 from ..dev import _ArrayShapeMixin
 
@@ -28,16 +28,16 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: ArrayLike,
+        data: _ShapeT,
         dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPArray[_ShapeT, np.dtype[Any]]: ...
+    ) -> NPArray[_ShapeT, np.dtype[object]]: ...
     @overload
     def __new__(
         cls,
-        data: ArrayLike,
+        data: _ShapeT,
         dtype: type[np.generic],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -46,16 +46,25 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: ArrayLike,
-        dtype: np.dtype[_DTypeT],
+        data: _ShapeT,
+        dtype: type[_DTypeT],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPArray[_ShapeT, _DTypeT]: ...
+    @overload
     def __new__(
         cls,
-        data: ArrayLike,
-        dtype: DTypeLike | None = None,
+        data: _ShapeT,
+        dtype: DTypeLike,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPArray[_ShapeT, np.dtype[DTypeLike]]: ...
+    def __new__(
+        cls,
+        data: _ShapeT,
+        dtype: Any = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -66,7 +75,7 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :param data: 変換する配列を指定する
         :type data: ArrayLike
         :param dtype: 配列の型を指定する
-        :type dtype: DTypeLike | None
+        :type dtype: Any
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
@@ -99,7 +108,9 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises ShapeError: `shape`が正の整数のみで構成されていない場合に発生させる
         """
 
-    def __class_getitem__(cls, item: Any) -> type[NPArray[Any, Any]]: ...
+    def __class_getitem__(
+        cls, item: Any
+    ) -> type[NPArray[_ShapeT, np.dtype[_DTypeT]]]: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -159,13 +170,13 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         """NPArrayで許可されている型を取得する"""
 
     def count_nonzero(
-        self, axis: np._ShapeLike | None = None, keepdims: bool = False
+        self, axis: Typeaxis = None, keepdims: bool = False
     ) -> np.intp | NDArray[np.intp]:
         """
         0以外の要素の数を数える
 
         :param axis: 要素を数える軸を指定する
-        :type axis: _ShapeLike | None
+        :type axis: Typeaxis
         :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
         :type keepdims: bool
         """

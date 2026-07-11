@@ -1,4 +1,8 @@
+from operator import index
+
 import numpy as np
+from numpy._core.multiarray import normalize_axis_index
+from numpy._core.overrides import set_module
 
 from sgg.exceptions import *
 
@@ -6,6 +10,7 @@ __all__ = [
     "_arrisuint",
     "_int_co_check",
     "_intarraylike_check",
+    "_normalize_axis",
     "_scalar_check",
     "change_array_like",
     "is_array_like",
@@ -65,3 +70,19 @@ def change_array_like(obj):
     elif hasattr(obj, "__array__"):
         return True
     return False
+
+
+@set_module("numpy.lib.array_utils")
+def _normalize_axis(axis, ndim, argname=None, allow_duplicate=False):
+    if not isinstance(axis, tuple | list):
+        try:
+            axis = [index(axis)]
+        except TypeError:
+            pass
+    axis = tuple(normalize_axis_index(ax, ndim, argname) for ax in axis)
+    if not allow_duplicate and len(set(axis)) != len(axis):
+        if argname:
+            raise ValueError(f"引数{argname}で軸が重複しています")
+        else:
+            raise ValueError("軸が繰り返しです")
+    return axis

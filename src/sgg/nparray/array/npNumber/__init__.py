@@ -281,3 +281,8 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
 
     def zero_check(self):
         return NPBool(self.data == 0)
+
+    def count_nonzero(self, axis=None, keepdims=False):
+        if not isinstance(keepdims, bool):
+            keepdims = False
+        return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)

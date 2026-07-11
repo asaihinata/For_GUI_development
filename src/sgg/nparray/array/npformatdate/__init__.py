@@ -5,7 +5,7 @@ from dateutil.parser import parse
 
 from sgg.typing import serchDtype
 
-from ..dev import _ArrayShapeMixin
+from ..dev import _ArrayShapeMixin, _normalize_axis
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -138,3 +138,9 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray):
             + int(days),
             dtype=np.int64,
         )
+
+    def range(self, axis=None):
+        if axis is not None:
+            axis = _normalize_axis(axis, self.ndim, "range")
+        data = np.asarray(self).view(type(self))
+        return np.min(data, axis=axis), np.max(data, axis=axis)
