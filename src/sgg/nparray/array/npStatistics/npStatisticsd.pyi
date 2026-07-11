@@ -51,7 +51,7 @@ def implements(np_function) -> Any:
 
 class NPStatisticsd(_ArrayCommonMixin, np.ndarray):
     """`np.ndarray`を継承した基本的な統計を計算する配列クラス"""
-
+    _element_type=tuple[type[int], type[float], type[complex], type[np.number]]
     def __new__(
         cls,
         data: _ArrayLikeNumber_co,
@@ -129,11 +129,11 @@ class NPStatisticsd(_ArrayCommonMixin, np.ndarray):
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
+    ) -> np.ndarray[_ShapeT, np.dtype[np.float64]]: ...
     @overload
     def __array__(
         self, dtype: np._DTypeT, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
+    ) -> np.ndarray[_ShapeT, np._DTypeT]: ...
     @overload
     def __array__(
         self, dtype: np._DTypeT | None, copy: bool | None = None
@@ -166,7 +166,7 @@ class NPStatisticsd(_ArrayCommonMixin, np.ndarray):
     @property
     def element_type(
         self,
-    ) -> tuple[tuple[int], tuple[float], tuple[complex], tuple[np.number]]:
+    ) -> tuple[type[int], type[float], type[complex], type[np.number]]:
         """NPStatisticsdで許可されている型を取得する"""
 
     @property
@@ -320,7 +320,7 @@ class NPStatisticsd(_ArrayCommonMixin, np.ndarray):
         method: Type_Method = "linear",
     ) -> NDArray[np.floating]:
         """
-        配列の四分位範囲を求める
+        配列の四分位数を求める
 
         :param axis: 計算する軸の方向を指定する
         :type axis: Typeaxis

@@ -40,7 +40,7 @@ def _intarraylike_check(obj):
         try:
             arr.astype(np.int64)
             return True
-        except ValueError, TypeError:
+        except(ValueError, TypeError):
             return False
     return False
 

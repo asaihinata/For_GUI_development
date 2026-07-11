@@ -110,13 +110,13 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
     @classmethod
     def today(cls):
         result = np.asarray([np.datetime64("today")]).view(cls)
-        result._dtype = "datetime64[D]"
+        result._dtype = np.dtype("datetime64[D]")
         return result
 
     @classmethod
     def now(cls):
         result = np.asarray([np.datetime64("now")]).view(cls)
-        result._dtype = "datetime64[s]"
+        result._dtype = np.dtype("datetime64[s]")
         return result
 
     def weekday(self):

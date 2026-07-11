@@ -21,10 +21,10 @@ class _ArrayCommonMixin:
         """
 
     @overload
-    def __getitem__(self, key: int) -> Any | None: ...
+    def __getitem__(self, key: int) -> Any: ...
     @overload
-    def __getitem__(self, key: slice) -> np.ndarray | None: ...
-    def __getitem__(self, key: int | slice) -> Any | np.ndarray | None:
+    def __getitem__(self, key: slice) -> np.ndarray: ...
+    def __getitem__(self, key: int | slice) -> Any | np.ndarray:
         """
         インデックスアクセスをカスタマイズする
 
@@ -38,7 +38,7 @@ class _ArrayCommonMixin:
         :param key: インデックスまたはスライスを指定する
         :type key: int | slice
         :return: インデックスに対応する要素を返す
-        :rtype: Any | np.ndarray | None
+        :rtype: Any | np.ndarray
         :raises IndexError: 配列が空の場合に発生させる
         :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """

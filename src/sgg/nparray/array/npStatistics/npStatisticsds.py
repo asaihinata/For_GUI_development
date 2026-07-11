@@ -37,14 +37,12 @@ class NPStatisticsds(_ArrayCommonMixin, np.ndarray):
 
     def __new__(cls, x, y, dtype=np.float64):
         resolved = cls._resolve_dtype(dtype)
-        if numberDtype(resolved):
-            raise TypeError("dtypeには数値型を指定してください")
         obj = np.asarray([x, y], dtype=resolved).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         cls._validate_ndim(obj)
-        obj.__xs = NPStatisticsd(x)
-        obj.__ys = NPStatisticsd(y)
+        obj.xs = NPStatisticsd(x)
+        obj.ys = NPStatisticsd(y)
         return obj
 
     @classmethod
@@ -76,8 +74,8 @@ class NPStatisticsds(_ArrayCommonMixin, np.ndarray):
         if obj is None:
             return
         self._dtype = getattr(obj, "_dtype", None)
-        self.__xs = getattr(obj, "__xs", None)
-        self.__ys = getattr(obj, "__ys", None)
+        self.xs = getattr(obj, "xs", None)
+        self.ys = getattr(obj, "ys", None)
 
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(

@@ -156,8 +156,6 @@ class _ArrayShapeMixin(_ArrayCommonMixin):
         return count.values, count.counts
 
     def roll(self, shift, axis=None):
-        if not isinstance(shift, int | float):
-            raise TypeError("shiftには数値の型を指定してください")
         result = np.roll(np.asarray(self), shift, axis).view(type(self))
         result._dtype = self._dtype
         return result

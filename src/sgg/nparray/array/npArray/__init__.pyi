@@ -182,4 +182,4 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         """
 
     def EType(self) -> NPArray[_ShapeT, np.dtype[object]]:
-        """要素の型を調べる"""
+        """配列内の要素の型を調べる"""

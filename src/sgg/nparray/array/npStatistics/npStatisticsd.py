@@ -35,8 +35,6 @@ class NPStatisticsd(_ArrayCommonMixin, np.ndarray):
 
     def __new__(cls, data, dtype=np.float64):
         resolved = cls._resolve_dtype(dtype)
-        if numberDtype(resolved):
-            raise TypeError("dtypeには数値型を指定してください")
         obj = np.asarray(data, dtype=resolved).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved

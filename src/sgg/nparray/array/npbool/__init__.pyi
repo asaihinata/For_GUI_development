@@ -9,7 +9,7 @@ from ..dev import _ArrayShapeMixin
 
 __all__ = ["NPBool"]
 HANDLED_FUNCTIONS: dict
-_DTypeT = TypeVar("_DTypeT", bound=np.dtype, default=np.dtype[np.bool_], covariant=True)
+_DTypeT = TypeVar("_DTypeT", bound=np.generic, default=np.dtype[np.bool_], covariant=True)
 
 def implements(np_function) -> Any:
     """
@@ -95,17 +95,11 @@ class NPBool(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co,]: ...
+    ) -> np.ndarray[_ShapeT,np.dtype[np.bool_]]: ...
     @overload
     def __array__(
         self, dtype: np._DTypeT, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
-    @overload
-    def __array__(
-        self, dtype: np._DTypeT | None, copy: bool | None = None
-    ) -> (
-        np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
-    ): ...
+    ) -> np.ndarray[_ShapeT,np._DTypeT]: ...
     def __array_function__(
         self,
         func: Any,
@@ -131,6 +125,7 @@ class NPBool(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __ne__(self, value: Any) -> NPBool[Any]: ...
     def __eq__(self, value: Any) -> NPBool[Any]: ...
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
+    def __invert__(self)->Self:...
     @property
     def element_type(self) -> tuple[type[bool], type[np.bool_], type[np.bool]]:
         """NPBoolで許可されている型を取得する"""

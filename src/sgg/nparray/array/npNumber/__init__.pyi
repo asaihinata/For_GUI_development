@@ -170,10 +170,10 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __rmod__(self, value: Any) -> NPNumber: ...
     def __imod__(self, value: Any) -> NPNumber: ...
     def __pow__(self, value: Any) -> NPNumber: ...
-    def __rmod__(self, value: Any) -> NPNumber: ...
-    def __imod__(self, value: Any) -> NPNumber: ...
-    def __divmod__(self, value: Any) -> NPNumber: ...
-    def __rdivmod__(self, value: Any) -> NPNumber: ...
+    def __rpow__(self, value: Any) -> NPNumber: ...
+    def __ipow__(self, value: Any) -> NPNumber: ...
+    def __divmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
+    def __rdivmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
     def __abs__(self) -> NPNumber: ...
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
     @property
@@ -189,13 +189,13 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         self, axis: np._ShapeLike | None = None, keepdims: bool = True
     ) -> NDArray[np.intp]: ...
     def count_nonzero(
-        self, axis: np._ShapeLike | None = ..., keepdims: bool = ...
+        self, axis: Typeaxis = ..., keepdims: bool = ...
     ) -> np.intp | NDArray[np.intp]:
         """
         0以外の要素の数を数える
 
         :param axis: 要素を数える軸を指定する
-        :type axis: _ShapeLike | None
+        :type axis: Typeaxis
         :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
         :type keepdims: bool
         """
@@ -218,7 +218,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
 
     def percentile(
         self,
-        q: tuple[int | float, ...],
+        q: _FloatLike_co,
         axis: Typeaxis = None,
         method: TYPEMETHOD = "linear",
     ) -> NPNumber[Any, np.dtype[np.float64]]:
@@ -226,7 +226,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         指定したパーセンタイルを計算する
 
         :param q: 求めたいパーセンタイル値を指定する
-        :type q: tuple[int | float,...]
+        :type q: _FloatLike_co
         :param axis: 計算する軸の方向を指定する
         :type axis: Typeaxis
         :param method: パーセンタイルを推定するために使用する方法を指定する
@@ -260,24 +260,12 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         self,
         axis: Typeaxis = None,
         method: TYPEMETHOD = "linear",
-    ) -> NPNumber:
+    ) -> NPNumber[_ShapeT,np.dtype[np.float64]]:
         """
-        配列の四分位範囲を求める
+        配列の四分位数を求める
 
         :param axis: 計算する軸の方向を指定する
         :type axis: Typeaxis
         :param method: 分位点を推定するために使用する方法を指定する
         :type method: TYPEMETHOD
-        """
-
-    def count_nonzero(
-        self, axis: Typeaxis = None, keepdims: bool = False
-    ) -> np.intp | NDArray[np.intp]:
-        """
-        0以外の要素の数を数える
-
-        :param axis: 要素を数える軸を指定する
-        :type axis: Typeaxis
-        :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
-        :type keepdims: bool
         """

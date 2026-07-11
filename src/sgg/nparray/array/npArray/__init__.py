@@ -44,7 +44,10 @@ class NPArray(_ArrayShapeMixin, np.ndarray):
         if not _arrisuint(shape):
             raise ShapeError(shape)
         result = np.asarray(np.full(shape, fill_value, dtype=dtype)).view(cls)
-        result._dtype = dtype
+        if dtype is None:
+            result._dtype = result.dtype
+        else:
+            result._dtype = dtype
         return result
 
     @classmethod
@@ -93,6 +96,6 @@ class NPArray(_ArrayShapeMixin, np.ndarray):
         return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
 
     def EType(self):
-        result = np.vectorize(type)(self)
+        result = np.asarray(np.vectorize(type)(self)).view(type(self))
         result._dtype = np.dtype(object)
         return result

@@ -23,7 +23,7 @@ def implements(np_function) -> Any:
     """
 
 _DTypeT = TypeVar(
-    "_DTypeT", bound=np.dtype, default=np.dtype[datetime64], covariant=True
+    "_DTypeT", bound=np.generic, default=np.dtype[datetime64], covariant=True
 )
 
 class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
