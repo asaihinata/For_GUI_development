@@ -1,14 +1,20 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
 
     def updates():
-        radomdata = randsint(30, 50, lenght=5)
+        radomdata = rng.random(5) * 30 + 50
         print(f"{radomdata=}")
         pies: Pie = win.get("pie")
         pies.update(radomdata)
 
+    piedata = rng.integers(30, 50, size=5)
+    pielabel = ["1月", "2月", "3月", "4月", "5月"]
     print(f"{piedata=}")
     layout = [
         [

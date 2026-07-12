@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,6 +13,7 @@ def test_main():
         radarline: RadarLine = win.get("radarline")
         radarline.update(data=radomdata)
 
+    radarplotdata = rng.integers(10, 15, size=5)
     print(f"{radarplotdata=}")
     layout = [
         [

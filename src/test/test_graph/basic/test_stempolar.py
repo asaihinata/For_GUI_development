@@ -1,14 +1,21 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
 
     def updates():
-        radomdata = randsint(50, 80, lenght=3)
+        radomdata = rng.integers(low=50, high=80, size=3)
         print(f"{radomdata=}")
         stemplot: Stempolar = win.get("stempolar")
         stemplot.update(x=radomdata)
 
+    stempolarx = rng.integers(50, 80, size=3)
+    stempolary = np.arange(1, 4, 1)
+    stempolardata = rng.integers(50, 80, size=3)
     print(f"{stempolarx=}")
     print(f"{stempolary=}")
     print(f"{stempolardata=}")

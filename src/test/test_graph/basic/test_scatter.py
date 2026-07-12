@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,6 +13,10 @@ def test_main():
         scatter: Scatter = win.get("scatter")
         scatter.update(y=radomdata)
 
+    scatterx1 = ["1月", "2月", "3月", "4月", "5月"]
+    scattery1 = rng.integers(0, 10, size=5)
+    scatterx2 = np.arange(1, 4, 1)
+    scattery2 = rng.integers(100, 400, size=(2, 3))
     print(f"{scatterx1=}")
     print(f"{scattery1=}")
     print(f"{scatterx2=}")
@@ -19,15 +27,15 @@ def test_main():
                 x=scatterx1,
                 y=scattery1,
                 title="散布図の基本1",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Scatter(
                 x=scatterx2,
                 y=scattery2,
                 title="散布図の基本2",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
         ],
         [

@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,14 +13,15 @@ def test_main():
         funne: Funne = win.get("funne")
         funne.update(radomdata)
 
+    funnedata = rng.integers(10, 50, size=3)
     print(f"{funnedata=}")
     layout = [
         [
             Guis.Funne(
                 data=funnedata,
                 title="じょうごグラフの基本",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Funne(data=funnedata, title="高さを変更する", height=0.5),
         ],

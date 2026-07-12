@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,6 +13,10 @@ def test_main():
         barhGraph: BarhGraph = win.get("BarhGraph")
         barhGraph.update(x=radomdata)
 
+    bargraphx1 = ["1月", "2月", "3月", "4月", "5月"]
+    bargraphy1 = rng.integers(30, 60, size=5)
+    bargraphx2 = ["1月", "2月", "3月"]
+    bargraphy2 = rng.integers(30, 60, size=(2, 3))
     print(f"{bargraphx1=}")
     print(f"{bargraphx2=}")
     print(f"{bargraphy1=}")
@@ -19,16 +27,16 @@ def test_main():
                 x=bargraphy1,
                 y=bargraphx1,
                 title="横向き棒グラフの基本1",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
                 label=["bar1"],
             ),
             Guis.BarhGraph(
                 x=bargraphy2,
                 y=bargraphx2,
                 title="横向き棒グラフの基本2",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
                 label=["bar1", "bar2"],
             ),
         ],

@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,11 +13,15 @@ def test_main():
         step: Step = win.get("step")
         step.update(radomdata)
 
+    stepdata = rng.integers(1, 10, size=5)
     print(f"{stepdata=}")
     layout = [
         [
             Guis.Step(
-                data=stepdata, title="階段グラフの基本", xlabel=xlabel, ylabel=ylabel
+                data=stepdata,
+                title="階段グラフの基本",
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Step(data=stepdata, title="階段の範囲を指定する", range=5),
         ],

@@ -1,14 +1,20 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
 
     def updates():
-        radomdata = randsint(-100, 100, 6)
+        radomdata = rng.integers(-100, 100, 6)
         print(f"{radomdata=}")
         waterfall: Waterfall = win.get("waterfall")
         waterfall.update(y=radomdata)
 
+    waterfallx = ["1月", "2月", "3月", "4月", "5月", "6月"]
+    waterfally = [30, -10, 10, 5, 10, -80]
     print(f"{waterfallx=}")
     print(f"{waterfally=}")
     layout = [
@@ -17,8 +23,8 @@ def test_main():
                 x=waterfallx,
                 y=waterfally,
                 title="滝グラフの基本",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Waterfall(
                 x=waterfallx, y=waterfally, title="バーの幅を変更する", width=0.5

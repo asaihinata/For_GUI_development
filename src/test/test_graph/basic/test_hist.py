@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,11 +13,15 @@ def test_main():
         hist: Hist = win.get("hist")
         hist.update(radomdata)
 
+    histdata = rng.normal(10, 50, size=1000)
     print(f"{histdata=}")
     layout = [
         [
             Guis.Hist(
-                data=histdata, title="ヒストグラフの基本", xlabel=xlabel, ylabel=ylabel
+                data=histdata,
+                title="ヒストグラフの基本",
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Hist(data=histdata, title="表示される範囲を指定する", min=50, max=75),
         ],

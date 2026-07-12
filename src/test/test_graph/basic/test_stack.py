@@ -1,14 +1,20 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
 
     def updates():
-        radomdata = randsint(50, 80, lenght=3, hierarchy=2)
+        radomdata = rng.integers(low=50, high=80, size=(2, 3))
         print(f"{radomdata=}")
         stack: Stack = win.get("stack")
         stack.update(y=radomdata)
 
+    stackx = np.arange(1, 4, 1)
+    stacky = rng.integers(50, 80, size=(2, 3))
     print(f"{stackx=}")
     print(f"{stacky=}")
     layout = [
@@ -17,8 +23,8 @@ def test_main():
                 x=stackx,
                 y=stacky,
                 title="積み上げグラフの基本",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Stack(
                 x=stackx, y=stacky, title="塗りつぶす領域内の模様を指定する", hatch="-"

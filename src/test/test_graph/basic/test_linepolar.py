@@ -1,14 +1,21 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
 
     def updates():
-        radomdata = randrange(50, 80, size=3)
+        radomdata = rng.random(3) * 30 + 50
         print(f"{radomdata=}")
         linepolar: Linepolar = win.get("linepolar")
         linepolar.update(y=radomdata)
 
+    linepolarx = np.arange(1, 4, 1)
+    linepolary = rng.integers(50, 80, size=3)
+    linepolardata = np.arange(1, 4, 1)
     print(f"{linepolarx=}")
     print(f"{linepolary=}")
     print(f"{linepolardata=}")

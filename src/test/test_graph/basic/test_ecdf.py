@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,14 +13,15 @@ def test_main():
         ecdf: Ecdf = win.get("ecdf")
         ecdf.update(radomdata)
 
+    ecdfdata = 4 + rng.normal(0, 1.5, size=100)
     print(f"{ecdfdata=}")
     layout = [
         [
             Guis.Ecdf(
                 data=ecdfdata,
                 title="経験的累積分布関数の基本",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Ecdf(
                 data=ecdfdata, title="同一値のデータをまとめて最適化する", compress=True

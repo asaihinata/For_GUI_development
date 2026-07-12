@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,15 +13,23 @@ def test_main():
         boxplot: Boxplot = win.get("boxplot")
         boxplot.update(radomdata)
 
+    boxdata1 = rng.normal(20, 90, 100)
+    boxdata2 = rng.normal(20, 90, size=(2, 150))
     print(f"{boxdata1=}")
     print(f"{boxdata2=}")
     layout = [
         [
             Guis.Boxplot(
-                data=boxdata1, title="箱ひげ図の基本1", xlabel=xlabel, ylabel=ylabel
+                data=boxdata1,
+                title="箱ひげ図の基本1",
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Boxplot(
-                data=boxdata2, title="箱ひげ図の基本2", xlabel=xlabel, ylabel=ylabel
+                data=boxdata2,
+                title="箱ひげ図の基本2",
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
         ],
         [

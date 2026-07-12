@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,6 +13,8 @@ def test_main():
         hat: Hatplot = win.get("hat")
         hat.update(x=radomdata, data=radomdata + 2)
 
+    hatplotx = rng.integers(20, 30, size=5, endpoint=True)
+    hatplotdata = hatplotx + 3
     print(f"{hatplotx=}")
     print(f"{hatplotdata=}")
     layout = [
@@ -17,8 +23,8 @@ def test_main():
                 x=hatplotx,
                 data=hatplotdata,
                 title="ハットグラフの基本",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
                 yticksrange=5,
             ),
             Guis.Hatplot(

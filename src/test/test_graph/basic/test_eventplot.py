@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,14 +13,15 @@ def test_main():
         event: Eventplot = win.get("event")
         event.update(radomdata)
 
+    eventdata = rng.gamma(4, size=(3, 50))
     print(f"{eventdata=}")
     layout = [
         [
             Guis.Eventplot(
                 data=eventdata,
                 title="イベントグラフの基本",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Eventplot(
                 data=eventdata, title="ラベルを付ける", label=["a", "b", "c"]

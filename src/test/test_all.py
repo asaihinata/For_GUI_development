@@ -400,8 +400,8 @@ def test_main():
             Guis.Violinplot(
                 data=violindata,
                 title="バイオリングラフ",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             )
         ],
         [
@@ -409,8 +409,8 @@ def test_main():
                 x=hatplotx,
                 data=hatplotdata,
                 title="ハットグラフ",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
                 yticksrange=5,
             )
         ],
@@ -419,8 +419,8 @@ def test_main():
                 x=hexbinx1,
                 y=hexbiny1,
                 title="2次元六角形グラフ",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             )
         ],
         [
@@ -428,8 +428,8 @@ def test_main():
                 x=hist2dx,
                 y=hist2dy,
                 title="2次元ヒストグラム",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             )
         ],
         [
@@ -438,8 +438,8 @@ def test_main():
                 ymax=linefillymax,
                 ymin=linefillymin,
                 title="積上げ面グラフ",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             )
         ],
         [Guis.Funne(data=funnedata, title="じょうごグラフ")],

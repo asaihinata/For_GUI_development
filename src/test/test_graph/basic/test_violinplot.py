@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,14 +13,15 @@ def test_main():
         violin: Violinplot = win.get("violin")
         violin.update(radomdata)
 
+    violindata = rng.normal((3, 5, 4), (0.75, 1.00, 0.75), (200, 3))
     print(f"{violindata=}")
     layout = [
         [
             Guis.Violinplot(
                 data=violindata,
                 title="バイオリングラフの基本",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Violinplot(data=violindata, title="幅を変更する", width=0.6),
         ],

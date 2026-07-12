@@ -1,24 +1,39 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
 
     def updates():
-        radomdata = randsint(50, 80, lenght=3, hierarchy=2)
+        radomdata = rng.integers(low=50, high=80, size=(2, 3))
         print(f"{radomdata=}")
         stemplot: Stem = win.get("stem")
         stemplot.update(x=radomdata)
 
+    stemx1 = rng.integers(50, 80, size=3)
+    stemx2 = rng.integers(50, 80, size=(2, 3))
+    stemy = np.arange(1, 4, 1)
     print(f"{stemx1=}")
     print(f"{stemx2=}")
     print(f"{stemy=}")
     layout = [
         [
             Guis.Stem(
-                x=stemx1, y=stemy, title="幹図の基本1", xlabel=xlabel, ylabel=ylabel
+                x=stemx1,
+                y=stemy,
+                title="幹図の基本1",
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Stem(
-                x=stemx2, y=stemy, title="幹図の基本2", xlabel=xlabel, ylabel=ylabel
+                x=stemx2,
+                y=stemy,
+                title="幹図の基本2",
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
         ],
         [

@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -11,6 +15,8 @@ def test_main():
         hist2d: Hist2d = win.get("hist2d")
         hist2d.update(x=radomdata1, y=radomdata2)
 
+    hist2dx = rng.standard_normal(5000)
+    hist2dy = 1.2 * hist2dx + rng.standard_normal(5000) / 3
     print(f"{hist2dx}")
     print(f"{hist2dy}")
     layout = [
@@ -19,8 +25,8 @@ def test_main():
                 x=hist2dx,
                 y=hist2dy,
                 title="2次元ヒストグラムの基本",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Hist2d(
                 x=hist2dx,

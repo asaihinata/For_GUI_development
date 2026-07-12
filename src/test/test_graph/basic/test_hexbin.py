@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -13,6 +17,10 @@ def test_main():
         hexbin: Hexbin = win.get("hexbin")
         hexbin.update(x=radomdata1, y=radomdata2)
 
+    hexbinx1 = rng.standard_normal((1, 5000))
+    hexbiny1 = 1.2 * hexbinx1 + rng.standard_normal((1, 5000)) / 3
+    hexbinx2 = 2 + rng.random((1, 5000))
+    hexbiny2 = 2 + 1.2 * hexbinx2 + rng.standard_normal((1, 5000)) / 3
     print(f"{hexbinx1=}")
     print(f"{hexbiny1=}")
     print(f"{hexbinx2=}")
@@ -23,8 +31,8 @@ def test_main():
                 x=hexbinx1,
                 y=hexbiny1,
                 title="2次元六角形ビニンググラフの基本",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Hexbin(
                 x=hexbinx1, y=hexbiny1, title="binsの細かさを指定する", gridsize=300

@@ -1,14 +1,21 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
 
     def updates():
-        radomdata = randrange(50, 80, size=(4, 3))
+        radomdata = rng.random((4, 3)) * 30 + 50
         print(f"{radomdata=}")
         lineplot: LineGraph = win.get("lineplot")
         lineplot.update(y=radomdata)
 
+    linex = np.arange(1, 4, 1)
+    liney1 = rng.integers(50, 80, size=3)
+    liney2 = rng.integers(50, 80, size=(4, 3))
     print(f"{linex=}")
     print(f"{liney1=}")
     print(f"{liney2=}")
@@ -18,8 +25,8 @@ def test_main():
                 x=linex,
                 y=liney1,
                 title="折り線グラフの基本",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.LineGraph(x=linex, y=liney2, title="複数の折り線グラフを表示させる"),
         ],

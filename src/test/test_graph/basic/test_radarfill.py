@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,6 +13,8 @@ def test_main():
         radarfill: RadarFill = win.get("radarfill")
         radarfill.update(data=radomdata)
 
+    radarfilldata1 = rng.integers(50, 100, size=5)
+    radarfilldata2 = rng.integers(50, 100, size=(3, 5))
     print(f"{radarfilldata1=}")
     print(f"{radarfilldata2=}")
     layout = [

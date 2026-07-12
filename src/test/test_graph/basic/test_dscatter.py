@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,6 +13,9 @@ def test_main():
         dscatter: DScatter = win.get("dscatter")
         dscatter.update(y=radomdata)
 
+    dscatterx = np.arange(0, 4, 1)
+    dscattery = [3, 4, 9, 10]
+    dscatterz = [10, 20, 30, 40]
     print(f"{dscatterx=}")
     print(f"{dscattery=}")
     print(f"{dscatterz=}")
@@ -19,18 +26,18 @@ def test_main():
                 y=dscattery,
                 z=dscatterz,
                 title="立体散布図の基本",
-                xlabel=xlabel,
-                ylabel=ylabel,
-                zlabel=zlabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
+                zlabel="z軸のラベル",
             ),
             Guis.DScatter(
                 x=dscatterx,
                 y=dscattery,
                 z=dscatterz,
                 title="グラフを動かす",
-                xlabel=xlabel,
-                ylabel=ylabel,
-                zlabel=zlabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
+                zlabel="z軸のラベル",
                 mouse_rotation=False,
             ),
         ],

@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -11,6 +15,9 @@ def test_main():
         linefill: Linefill = win.get("linefill")
         linefill.update(ymax=radomdata1, ymin=radomdata2)
 
+    linefillx = np.linspace(0, 8, 16)
+    linefillymax = 3 + 4 * linefillx / 8 + rng.uniform(0.0, 0.5, len(linefillx))
+    linefillymin = 1 + 2 * linefillx / 8 + rng.uniform(0.0, 0.5, len(linefillx))
     print(f"{linefillx=}")
     print(f"{linefillymax=}")
     print(f"{linefillymin=}")
@@ -21,8 +28,8 @@ def test_main():
                 ymax=linefillymax,
                 ymin=linefillymin,
                 title="積上げ面グラフの基本",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Linefill(
                 x=linefillx,

@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,6 +13,11 @@ def test_main():
         errorpolar: Errorpolar = win.get("errorpolar")
         errorpolar.update(y=radomdata)
 
+    errorpolarx = np.arange(2, 12, 2)
+    errorpolary = rng.integers(0, 3, 5)
+    polarerr = rng.integers(2, size=5) + 0.5
+    polarxerr = rng.integers(2, size=5) + 0.5
+    polaryerr = rng.integers(2, size=5) + 0.5
     print(f"{errorpolarx=}")
     print(f"{errorpolary=}")
     print(f"{polarerr=}")

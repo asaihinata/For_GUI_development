@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,6 +13,9 @@ def test_main():
         barpolar: Barpolar = win.get("Barpolar")
         barpolar.update(y=radomdata)
 
+    barpolarx = np.linspace(0, np.pi * 2, 5)
+    barpolary = rng.integers(30, 60, size=5)
+    barpolardata = rng.integers(30, 60, size=5)
     print(f"{barpolarx=}")
     print(f"{barpolary=}")
     print(f"{barpolardata=}")

@@ -1,5 +1,7 @@
-from sgg.graph.graph.dev import *
 from numpy.polynomial.chebyshev import chebfit, chebval
+
+from sgg.graph.graph.dev import *
+
 __all__ = ["Scatter"]
 
 

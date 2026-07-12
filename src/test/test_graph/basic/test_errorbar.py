@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,6 +13,11 @@ def test_main():
         error: Errorbar = win.get("errorbar")
         error.update(y=radomdata)
 
+    errorbarx = np.arange(2, 12, 2)
+    errorbary = rng.integers(0, 3, 5)
+    err = rng.integers(3, size=5)
+    xerr = rng.integers(3, size=5)
+    yerr = rng.integers(3, size=5)
     print(f"{errorbarx=}")
     print(f"{errorbary=}")
     print(f"{err=}")
@@ -21,8 +30,8 @@ def test_main():
                 y=errorbary,
                 err=err,
                 title="エラーグラフの基本1",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
             Guis.Errorbar(
                 x=errorbarx,
@@ -30,8 +39,8 @@ def test_main():
                 xerr=xerr,
                 yerr=yerr,
                 title="エラーグラフの基本2",
-                xlabel=xlabel,
-                ylabel=ylabel,
+                xlabel="x軸のラベル",
+                ylabel="y軸のラベル",
             ),
         ],
         [

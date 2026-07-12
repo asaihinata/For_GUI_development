@@ -1,4 +1,8 @@
-from ._import import *
+import numpy as np
+
+from sgg import *
+
+rng = np.random.default_rng(seed=42)
 
 
 def test_main():
@@ -9,6 +13,7 @@ def test_main():
         eventpolar: Eventpolar = win.get("eventpolar")
         eventpolar.update(data=radomdata)
 
+    eventdata = rng.gamma(4, size=(3, 50))
     print(f"{eventdata=}")
     layout = [
         [
