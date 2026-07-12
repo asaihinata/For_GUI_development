@@ -1,9 +1,8 @@
 # docs
 docs/*
 !docs/dev
+!docs/templates
 !docs/requirements.txt
-!docs/data/
-!docs/for_development/
 !docs/icon.png
 # デモファイル
 demo/

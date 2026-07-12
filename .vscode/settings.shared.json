@@ -1,5 +1,8 @@
 {
+    "autoDocstring.customTemplatePath": "docs/templates/document_text.mustache",
     "autoDocstring.docstringFormat": "sphinx",
+    "files.encoding": "utf8",
+    "files.trimTrailingWhitespace": true,
     "gitlens.codeLens.enabled": true,
     "search.exclude": {
         ".crossnote": true,

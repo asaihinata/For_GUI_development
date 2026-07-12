@@ -157,22 +157,6 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
-    def __getitem__(self, key: int | slice):
-        size = self.size
-        if size == 0:
-            raise IndexError("空の配列にはアクセスできません")
-        data = self.data.flatten()
-        if isinstance(key, int):
-            if key == size:
-                return data[size - 1]
-            elif -size <= key < size:
-                return data[key]
-            else:
-                return data[key % size]
-        elif isinstance(key, slice):
-            return data[key]
-        raise TypeError("keyにはintまたはsliceを指定してください")
-
     @property
     def sturgesval(self):
         return 1 + np.log2(self.size)
