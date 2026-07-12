@@ -1,0 +1,12 @@
+{
+    "autoDocstring.docstringFormat": "sphinx",
+    "extensions.ignoreRecommendations": false,
+    "launch": {
+        "compounds": [],
+        "configurations": []
+    },
+    "overrideWorkspaceSettings": {
+        "path": ".vscode/settings.local.json"
+    },
+    "settings.cycle.warnOnWorkspaceSettingsCollisions": true
+}

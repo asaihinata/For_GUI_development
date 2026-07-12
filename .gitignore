@@ -26,6 +26,7 @@ __pycache__
 .exe
 .ini
 .gitignore
-.vscode
+# vscode
+.vscode/settings.local.json
 # test
 !src/test/test_log/*.log
