@@ -57,7 +57,7 @@ class NPBool(_ArrayShapeMixin, np.ndarray):
 
     def __invert__(self):
         result = np.logical_not(np.asarray(self)).view(type(self))
-        result._dtype = self._dtype
+        result._dtype = self.dtypes
         return result
 
     def __ne__(self, value):
@@ -78,5 +78,5 @@ class NPBool(_ArrayShapeMixin, np.ndarray):
 
     def inversion(self):
         result = np.logical_not(np.asarray(self)).view(type(self))
-        result._dtype = self._dtype
+        result._dtype = self.dtypes
         return result

@@ -1,7 +1,6 @@
 [build-system]
 requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
-
 [project]
 name = "sgg"
 version = "0.0.0"
@@ -40,6 +39,16 @@ where = ["src"]
 "sgg.dev.color" = ["color.csv"]
 [tool.setuptools.exclude-package-data]
 "*" = ["__pycache__", "*.pyc"]
+[tool.black]
+line-length = 88
+
+force-exclude = '''
+/(
+    \pycachekill.py
+  | \tree.py
+  | demo
+)/
+'''
 [tool.isort]
 profile = "black"
 line_length = 88
@@ -48,3 +57,6 @@ include_trailing_comma = false
 force_grid_wrap = 0
 use_parentheses = true
 ensure_newline_before_comments = true
+skip = ["tree.py","pycachekill.py", "demo"]
+skip_glob = ["*/demo*.py", "*/*demo.py",","*/*demo*.py"]
+skip_gitignore = true

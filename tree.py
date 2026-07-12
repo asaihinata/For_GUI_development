@@ -1,5 +1,6 @@
 from glob import glob
 from pathlib import Path, PosixPath, WindowsPath
+
 from pathspec import PathSpec
 
 TypePath = Path | WindowsPath | PosixPath
@@ -127,7 +128,9 @@ class Treetxt:
                 self.file = self.file + 1
                 self.txt += f"{indent_lower}{'└── ' if lens else '├── '}{replaces(p.split('/')[::-1][0])}\n"
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     from skip import skiplist
+
     paths = Path(__file__).parent
     Treetxt(path=paths, save=paths / "tree.txt", skip=skiplist)

@@ -1,4 +1,4 @@
-from typing import Any, Iterator, Literal, Self, overload
+from typing import Any, Iterator, Literal, Self, TypeAlias, overload
 
 import numpy as np
 from numpy.typing import NDArray
@@ -35,7 +35,7 @@ class NPArray[_ShapeT, _DTypeT](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPArray[_ShapeT, np.dtype[_ShapeT]]: ...
+    ) -> NPArray[_ShapeT, Any]: ...
     @overload
     def __new__(
         cls,
@@ -57,9 +57,9 @@ class NPArray[_ShapeT, _DTypeT](
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: ArrayLike
+        :type data: array_like
         :param dtype: 配列の型を指定する
-        :type dtype: Any
+        :type dtype: data-type
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する

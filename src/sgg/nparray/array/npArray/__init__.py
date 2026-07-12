@@ -81,12 +81,12 @@ class NPArray(_ArrayShapeMixin, np.ndarray):
         return super().__array_function__(func, types, args, kwargs)
 
     def __ne__(self, value):
-        result = np.asarray(np.not_equal(np.asarray(self), value)).view(type(self))
+        result = np.not_equal(np.asarray(self), value).view(type(self))
         result._dtype = np.bool_
         return result
 
     def __eq__(self, value):
-        result = np.asarray(np.equal(np.asarray(self), value)).view(type(self))
+        result = np.equal(np.asarray(self), value).view(type(self))
         result._dtype = np.bool_
         return result
 
@@ -104,6 +104,14 @@ class NPArray(_ArrayShapeMixin, np.ndarray):
         if np.issubdtype(self.dtypes, np.number):
             return self
         else:
-            result = np.asarray(self.lengtharange(), dtype=np.uint64).view(type(self))
-            result._dtype = np.uint64
-            return result
+            shapes = self.shape
+            lens = len(shapes)
+            if lens == 1:
+                raw = np.arange(0, self.size, 1)
+            else:
+                raw = np.tile(
+                    np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])
+                ).reshape(shapes)
+            raw = np.asarray(raw).view(type(self))
+            raw._dtype = np.uint64
+            return raw
