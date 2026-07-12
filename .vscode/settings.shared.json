@@ -1,0 +1,16 @@
+{
+    "autoDocstring.docstringFormat": "sphinx",
+    "gitlens.codeLens.enabled": true,
+    "search.exclude": {
+        ".crossnote": true,
+        ".editorconfig": true,
+        ".gitattributes": true,
+        ".gitignore": true,
+        ".vscode": true,
+        "docs": true,
+        "pyproject.toml": true,
+        "README.md": true,
+        "src/test": true,
+        "tree.txt": true
+    }
+}
