@@ -5,8 +5,13 @@ For_GUI_development
  │   ├── dev
  │   │   ├── color_table.md
  │   │   ├── naming_conventions.md
- │   │   └── numpy_special_method.md
- │   └── icon.png
+ │   │   └── numpy
+ │   │       ├── numpy_dtype.md
+ │   │       ├── numpy_glossary.md
+ │   │       └── numpy_special_method.md
+ │   ├── icon.png
+ │   └── templates
+ │       └── document_text.mustache
  ├── pyproject.toml
  ├── src
  │   ├── sgg
@@ -436,5 +441,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:301
-フォルダ数:136
+ファイル数:304
+フォルダ数:138
