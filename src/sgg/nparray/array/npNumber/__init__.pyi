@@ -12,7 +12,7 @@ from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
 
 _DTypeT = TypeVar(
-    "_DTypeT", bound=np.dtype, default=np.dtype[np.float64], covariant=True
+    "_DTypeT", bound=np.generic, default=np.dtype[np.float64], covariant=True
 )
 __all__ = ["NPNumber"]
 TYPEMETHOD: TypeAlias = Literal[
@@ -36,7 +36,7 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPNumber[_ShapeT: np._SupportsArray[_ArrayLikeNumber_co], _DTypeT](_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
     _element_type: tuple[type[int], type[float], type[complex], type[np.number]]
@@ -45,7 +45,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ArrayLikeNumber_co,
+        data: _ShapeT,
         dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -54,7 +54,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ArrayLikeNumber_co,
+        data: _ShapeT,
         dtype: type[_NumberT],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -62,7 +62,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     ) -> NPNumber[_ShapeT, np.dtype[_NumberT]]: ...
     def __new__(
         cls,
-        data: _ArrayLikeNumber_co,
+        data: _ShapeT,
         dtype: type[_NumberT] | None = np.float64,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -87,7 +87,9 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    def __class_getitem__(cls, item: Any) -> type[NPNumber[Any, Any]]: ...
+    def __class_getitem__(
+        cls, item: Any
+    ) -> type[NPNumber[_ShapeT, np.dtype[_DTypeT]]]: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -112,17 +114,11 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
+    ) -> np.ndarray[_ShapeT, _DTypeT]: ...
     @overload
-    def __array__(
-        self, dtype: np._DTypeT, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
-    @overload
-    def __array__(
-        self, dtype: np._DTypeT | None, copy: bool | None = None
-    ) -> (
-        np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
-    ): ...
+    def __array__[DType](
+        self, dtype: DType, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, np.dtype[DType]]: ...
     def __array_function__(
         self,
         func: Any,
@@ -260,7 +256,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         self,
         axis: Typeaxis = None,
         method: TYPEMETHOD = "linear",
-    ) -> NPNumber[_ShapeT,np.dtype[np.float64]]:
+    ) -> NPNumber[_ShapeT, np.dtype[np.float64]]:
         """
         配列の四分位数を求める
 

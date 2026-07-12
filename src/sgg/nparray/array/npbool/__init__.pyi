@@ -3,13 +3,15 @@ from typing import Any, Iterator, Self, TypeVar, overload
 import numpy as np
 from numpy._typing import _DTypeLikeBool
 
-from sgg.typing import _ArrayLikeBool_co, _ShapeT
+from sgg.typing import _ArrayLikeBool_co
 
 from ..dev import _ArrayShapeMixin
 
 __all__ = ["NPBool"]
 HANDLED_FUNCTIONS: dict
-_DTypeT = TypeVar("_DTypeT", bound=np.generic, default=np.dtype[np.bool_], covariant=True)
+_DTypeT = TypeVar(
+    "_DTypeT", bound=np.generic, default=np.dtype[np.bool_], covariant=True
+)
 
 def implements(np_function) -> Any:
     """
@@ -19,7 +21,9 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPBool(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPBool[_ShapeT: np._SupportsArray[_ArrayLikeBool_co], _DTypeT](
+    _ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
+):
     """`np.ndarray`を継承したbool型の配列クラス"""
 
     _element_type: tuple[type[bool], type[np.bool_], type[np.bool]]
@@ -28,7 +32,7 @@ class NPBool(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ArrayLikeBool_co,
+        data: _ShapeT,
         dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -37,7 +41,7 @@ class NPBool(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ArrayLikeBool_co,
+        data: _ShapeT,
         dtype: _DTypeLikeBool,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -45,7 +49,7 @@ class NPBool(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     def __new__(
         cls,
-        data: _ArrayLikeBool_co,
+        data: _ShapeT,
         dtype: _DTypeLikeBool | None = np.bool_,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -70,7 +74,7 @@ class NPBool(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    def __class_getitem__(cls, item: Any) -> type[NPBool[Any, Any]]: ...
+    def __class_getitem__(cls, item: Any) -> type[NPBool[_ShapeT, _DTypeT]]: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -95,11 +99,11 @@ class NPBool(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT,np.dtype[np.bool_]]: ...
+    ) -> np.ndarray[_ShapeT, _DTypeT]: ...
     @overload
-    def __array__(
-        self, dtype: np._DTypeT, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT,np._DTypeT]: ...
+    def __array__[DType](
+        self, dtype: DType, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, np.dtype[DType]]: ...
     def __array_function__(
         self,
         func: Any,
@@ -125,7 +129,7 @@ class NPBool(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __ne__(self, value: Any) -> NPBool[Any]: ...
     def __eq__(self, value: Any) -> NPBool[Any]: ...
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
-    def __invert__(self)->Self:...
+    def __invert__(self) -> Self: ...
     @property
     def element_type(self) -> tuple[type[bool], type[np.bool_], type[np.bool]]:
         """NPBoolで許可されている型を取得する"""

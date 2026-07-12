@@ -5,7 +5,7 @@ import numpy as np
 from numpy import datetime64
 from numpy._typing import _ArrayLikeDT64_co, _DTypeLikeTD64
 
-from sgg.typing import Typeaxis, _ArrayLikeDateParse_co, _ShapeT
+from sgg.typing import Typeaxis, _ArrayLikeDateParse_co
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
@@ -26,7 +26,7 @@ _DTypeT = TypeVar(
     "_DTypeT", bound=np.generic, default=np.dtype[datetime64], covariant=True
 )
 
-class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPFormatDate[_ShapeT: np._SupportsArray[_ArrayLikeDateParse_co], _DTypeT](_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
 
     _element_type: type[datetime64]
@@ -35,7 +35,7 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ArrayLikeDateParse_co,
+        data: _ShapeT,
         dtype: None = None,
         yearfirst: bool = ...,
         dayfirst: bool = ...,
@@ -46,7 +46,7 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ArrayLikeDateParse_co,
+        data: _ShapeT,
         dtype: _DTypeLikeTD64,
         yearfirst: bool = ...,
         dayfirst: bool = ...,
@@ -56,7 +56,7 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     ) -> NPFormatDate[_ShapeT, np.dtype[_DTypeLikeTD64]]: ...
     def __new__(
         cls,
-        data: _ArrayLikeDateParse_co,
+        data: _ShapeT,
         dtype: _DTypeLikeTD64 | None = "datetime64[D]",
         yearfirst: bool = ...,
         dayfirst: bool = ...,
@@ -111,7 +111,9 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     def __rsub__(self, value: int | bool) -> NPFormatDate[_ShapeT, _DTypeT]: ...
     @overload
     def __rsub__(self, value: _ArrayLikeDT64_co) -> NPFormatDate[Any, _DTypeT]: ...
-    def __class_getitem__(cls, item: Any) -> type[NPFormatDate[Any, Any]]: ...
+    def __class_getitem__(
+        cls, item: Any
+    ) -> type[NPFormatDate[_ShapeT, np.dtype[_DTypeT]]]: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -136,17 +138,11 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
+    ) -> np.ndarray[_ShapeT, _DTypeT]: ...
     @overload
-    def __array__(
-        self, dtype: np._DTypeT, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
-    @overload
-    def __array__(
-        self, dtype: np._DTypeT | None, copy: bool | None = None
-    ) -> (
-        np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
-    ): ...
+    def __array__[DType](
+        self, dtype: DType, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, np.dtype[DType]]: ...
     def __array_function__(
         self,
         func: Any,

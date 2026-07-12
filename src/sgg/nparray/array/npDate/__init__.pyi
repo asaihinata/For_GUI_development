@@ -5,18 +5,17 @@ import numpy as np
 from numpy import datetime64
 from numpy._typing import _ArrayLikeDT64_co, _DTypeLikeTD64, _NestedSequence
 
-from sgg.typing import Typeaxis, _ArrayLikeTD64_co, _ShapeT
+from sgg.typing import Typeaxis, _ArrayLikeTD64_co
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPDate"]
-_DTypeT = TypeVar(
-    "_DTypeT", bound=np.generic, default=np.dtype[datetime64], covariant=True
-)
 
-class NPDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPDate[_ShapeT: np._SupportsArray[_ArrayLikeTD64_co], _DTypeT](
+_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
+):
     """`np.ndarray`を継承した日付の配列クラス"""
 
     _element_type: type[datetime64]
@@ -25,16 +24,16 @@ class NPDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __new__(
         cls,
-        data: _ArrayLikeTD64_co,
+        data: _ShapeT,
         dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[_ShapeT, np.dtype[datetime64]]: ...
+    ) -> NPDate[_ShapeT, np.dtype[_DTypeLikeTD64]]: ...
     @overload
     def __new__(
         cls,
-        data: _ArrayLikeTD64_co,
+        data: _ShapeT,
         dtype: _DTypeLikeTD64,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -42,7 +41,7 @@ class NPDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     ) -> NPDate[_ShapeT, np.dtype[_DTypeLikeTD64]]: ...
     def __new__(
         cls,
-        data: _ArrayLikeTD64_co,
+        data: _ShapeT,
         dtype: _DTypeLikeTD64 | None = "datetime64[D]",
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -94,17 +93,11 @@ class NPDate(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
+    ) -> np.ndarray[_ShapeT, _DTypeT]: ...
     @overload
-    def __array__(
-        self, dtype: np._DTypeT, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
-    @overload
-    def __array__(
-        self, dtype: np._DTypeT | None, copy: bool | None = None
-    ) -> (
-        np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
-    ): ...
+    def __array__[DType](
+        self, dtype: DType, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, np.dtype[DType]]: ...
     def __array_function__(
         self,
         func: Any,

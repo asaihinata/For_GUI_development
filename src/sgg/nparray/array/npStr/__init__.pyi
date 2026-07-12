@@ -20,7 +20,7 @@ from ..npnumber import NPNumber
 __all__ = ["NPString"]
 _StringDTypeSupportsArray: TypeAlias = np._SupportsArray[np.dtypes.StringDType]
 
-class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
+class NPString[_ShapeT: np._SupportsArray[_ArrayLikeAnyString_co], _DTypeT](_ArrayShapeMixin, np.ndarray[_ShapeT, _DTypeT]):
 
     _element_type: tuple[type[str], type[np.character], type[np.str_], type[np.bytes_]]
     _default_dtype: type[np.str_]
@@ -28,7 +28,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
     @overload
     def __new__(
         cls,
-        data: _ArrayLikeAnyString_co,
+        data: _ShapeT,
         dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -37,7 +37,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
     @overload
     def __new__(
         cls,
-        data: _ArrayLikeAnyString_co,
+        data: _ShapeT,
         dtype: type[str],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -46,7 +46,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
     @overload
     def __new__(
         cls,
-        data: _ArrayLikeAnyString_co,
+        data: _ShapeT,
         dtype: type[np.character],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -54,7 +54,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
     ) -> NPString[_ShapeT, np.dtype[np.character]]: ...
     def __new__(
         cls,
-        data: _ArrayLikeAnyString_co,
+        data: _ShapeT,
         dtype: type[np.character] | type[str] | None = ...,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -103,17 +103,11 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
+    ) -> np.ndarray[_ShapeT, _DTypeT]: ...
     @overload
-    def __array__(
-        self, dtype: np._DTypeT, copy: bool | None = None
-    ) -> np.ndarray[np._ShapeT_co, np._DTypeT]: ...
-    @overload
-    def __array__(
-        self, dtype: np._DTypeT | None, copy: bool | None = None
-    ) -> (
-        np.ndarray[np._ShapeT_co, np._DTypeT] | np.ndarray[np._ShapeT_co, np._DTypeT_co]
-    ): ...
+    def __array__[DType](
+        self, dtype: DType, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, np.dtype[DType]]: ...
     def __array_function__(
         self,
         func: Any,
@@ -241,7 +235,7 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
         :type i: _ArrayLikeInt_co
         """
 
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _CharType]]: ...
+    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
     @property
     def element_type(
         self,
@@ -265,18 +259,20 @@ class NPString(_ArrayShapeMixin, np.ndarray[_ShapeT, _CharType]):
     def upper(self) -> Self:
         """`NPString`内の要素のアルファベットを大文字に変換する"""
 
-    def stringlen(self,axis:Typeaxis=None) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
+    def stringlen(
+        self, axis: Typeaxis = None
+    ) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
         """
         配列内の要素の文字の長さを求める
-        
+
         :param axis: 長さを求める軸を指定する
         :type axis: Typeaxis
         """
 
-    def str_len(self,axis:Typeaxis=None) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
+    def str_len(self, axis: Typeaxis = None) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
         """
         配列内の要素の文字の長さを求める
-        
+
         :param axis: 長さを求める軸を指定する
         :type axis: Typeaxis
         """

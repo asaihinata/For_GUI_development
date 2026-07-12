@@ -22,7 +22,7 @@ from ..dev import _ArrayCommonMixin
 __all__ = ["NPStatisticsd"]
 _ShapeT = TypeVar("_ShapeT", bound=tuple[int], default=tuple[int], covariant=True)
 _DTypeT = TypeVar(
-    "_DTypeT", bound=np.dtype, default=np.dtype[np.float64], covariant=True
+    "_DTypeT", bound=np.generic, default=np.dtype[np.float64], covariant=True
 )
 
 Type_Method: TypeAlias = Literal[
@@ -51,7 +51,8 @@ def implements(np_function) -> Any:
 
 class NPStatisticsd(_ArrayCommonMixin, np.ndarray):
     """`np.ndarray`を継承した基本的な統計を計算する配列クラス"""
-    _element_type=tuple[type[int], type[float], type[complex], type[np.number]]
+
+    _element_type = tuple[type[int], type[float], type[complex], type[np.number]]
     def __new__(
         cls,
         data: _ArrayLikeNumber_co,

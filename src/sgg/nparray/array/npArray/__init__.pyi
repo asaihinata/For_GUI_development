@@ -1,9 +1,9 @@
-from typing import Any, Iterator, Literal, Self, overload
+from typing import Any, Iterator, Literal, Self, get_args, get_type_hints, overload
 
 import numpy as np
-from numpy.typing import DTypeLike, NDArray
+from numpy.typing import NDArray
 
-from sgg.typing import Typeaxis, _DTypeT, _ShapeT
+from sgg.typing import Typeaxis
 
 from ..dev import _ArrayShapeMixin
 
@@ -19,7 +19,9 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPArray[_ShapeT, _DTypeT](
+    np.ndarray[_ShapeT, np.dtype[_DTypeT]], _ArrayShapeMixin, np._ArrayOrScalarCommon
+):
     """`np.ndarray`を継承した型付き配列クラス"""
 
     _element_type: None
@@ -33,16 +35,7 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPArray[_ShapeT, np.dtype[object]]: ...
-    @overload
-    def __new__(
-        cls,
-        data: _ShapeT,
-        dtype: type[np.generic],
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> NPArray[_ShapeT, np.dtype[np.generic]]: ...
+    ) -> NPArray[_ShapeT, np.dtype[_ShapeT]]: ...
     @overload
     def __new__(
         cls,
@@ -51,20 +44,11 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPArray[_ShapeT, _DTypeT]: ...
-    @overload
+    ) -> NPArray[_ShapeT, np.dtype[_DTypeT]]: ...
     def __new__(
         cls,
         data: _ShapeT,
-        dtype: DTypeLike,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> NPArray[_ShapeT, np.dtype[DTypeLike]]: ...
-    def __new__(
-        cls,
-        data: _ShapeT,
-        dtype: Any = None,
+        dtype: type[_DTypeT] | None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -137,9 +121,9 @@ class NPArray(_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
         self, dtype: None = None, copy: bool | None = None
     ) -> np.ndarray[_ShapeT, _DTypeT]: ...
     @overload
-    def __array__(
-        self, dtype: np._DTypeT, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, np._DTypeT]: ...
+    def __array__[DType](
+        self, dtype: DType, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, np.dtype[DType]]: ...
     def __array_function__(
         self,
         func: Any,

@@ -30,7 +30,8 @@ METHOD_LIST: TypeAlias = Literal[
 
 class NPStatisticsds(_ArrayCommonMixin, np.ndarray):
     """2つの変数データから様々な統計の計算を行うオブジェクト"""
-    _element_type=tuple[type[int], type[float], type[complex], type[np.number]]
+
+    _element_type = tuple[type[int], type[float], type[complex], type[np.number]]
     def __new__(
         cls,
         x: _ArrayLikeNumber_co,
