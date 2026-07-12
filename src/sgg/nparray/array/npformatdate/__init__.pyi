@@ -26,7 +26,9 @@ _DTypeT = TypeVar(
     "_DTypeT", bound=np.generic, default=np.dtype[datetime64], covariant=True
 )
 
-class NPFormatDate[_ShapeT: np._SupportsArray[_ArrayLikeDateParse_co], _DTypeT](_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPFormatDate[_ShapeT: np._SupportsArray[_ArrayLikeDateParse_co], _DTypeT](
+    _ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
+):
     """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
 
     _element_type: type[datetime64]

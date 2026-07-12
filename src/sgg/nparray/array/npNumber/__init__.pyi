@@ -6,7 +6,7 @@ import numpy as np
 from numpy._typing import _FloatLike_co
 from numpy.typing import NDArray
 
-from sgg.typing import Typeaxis, _ArrayLikeNumber_co, _NumberT, _ShapeT
+from sgg.typing import Typeaxis, _ArrayLikeNumber_co, _NumberT
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
@@ -36,7 +36,9 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPNumber[_ShapeT: np._SupportsArray[_ArrayLikeNumber_co], _DTypeT](_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPNumber[_ShapeT: np._SupportsArray[_ArrayLikeNumber_co], _DTypeT](
+    _ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
+):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
     _element_type: tuple[type[int], type[float], type[complex], type[np.number]]

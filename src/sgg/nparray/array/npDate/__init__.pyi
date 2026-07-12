@@ -1,5 +1,5 @@
 from datetime import date, datetime
-from typing import Any, Iterator, Literal, Self, TypeVar, overload
+from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
 from numpy import datetime64
@@ -14,7 +14,7 @@ from ..npnumber import NPNumber
 __all__ = ["NPDate"]
 
 class NPDate[_ShapeT: np._SupportsArray[_ArrayLikeTD64_co], _DTypeT](
-_ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
+    _ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
 ):
     """`np.ndarray`を継承した日付の配列クラス"""
 

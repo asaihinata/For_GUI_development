@@ -1,5 +1,5 @@
 from sgg.graph.graph.dev import *
-
+from numpy.polynomial.chebyshev import chebfit, chebval
 __all__ = ["Scatter"]
 
 
@@ -51,7 +51,7 @@ class Scatter(twoElement):
                 offsets = np.array(scatter.get_offsets())
                 xs, ys = offsets[:, 0], offsets[:, 1]
                 xssort = np.sort(np.unique(xs))
-                regressionline = NPStatisticsds(xs, ys).chebysheveve(xssort)
+                regressionline = chebval(xssort, chebfit(xs, ys, 1))
                 self.ax.plot(
                     xssort, regressionline, linestyle=line.solid, linewidth=linewidth
                 )

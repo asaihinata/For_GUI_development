@@ -246,12 +246,6 @@ For_GUI_development
  │   │   │   │   ├── npnumber
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
- │   │   │   │   ├── npstatistics
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── npstatisticsd.py
- │   │   │   │   │   ├── npstatisticsd.pyi
- │   │   │   │   │   ├── npstatisticsds.py
- │   │   │   │   │   └── npstatisticsds.pyi
  │   │   │   │   └── npstr
  │   │   │   │       ├── __init__.py
  │   │   │   │       └── __init__.pyi
@@ -452,5 +446,5 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:313
-フォルダ数:140
+ファイル数:308
+フォルダ数:139

@@ -11,7 +11,7 @@ from numpy._typing import (
     _ArrayLikeString_co,
 )
 
-from sgg.typing import Typeaxis, _CharType, _ShapeT
+from sgg.typing import Typeaxis, _CharType
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
@@ -20,7 +20,9 @@ from ..npnumber import NPNumber
 __all__ = ["NPString"]
 _StringDTypeSupportsArray: TypeAlias = np._SupportsArray[np.dtypes.StringDType]
 
-class NPString[_ShapeT: np._SupportsArray[_ArrayLikeAnyString_co], _DTypeT](_ArrayShapeMixin, np.ndarray[_ShapeT, _DTypeT]):
+class NPString[_ShapeT: np._SupportsArray[_ArrayLikeAnyString_co], _DTypeT](
+    _ArrayShapeMixin, np.ndarray[_ShapeT, _DTypeT]
+):
 
     _element_type: tuple[type[str], type[np.character], type[np.str_], type[np.bytes_]]
     _default_dtype: type[np.str_]

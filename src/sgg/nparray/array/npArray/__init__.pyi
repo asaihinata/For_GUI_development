@@ -1,4 +1,4 @@
-from typing import Any, Iterator, Literal, Self, get_args, get_type_hints, overload
+from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
 from numpy.typing import NDArray

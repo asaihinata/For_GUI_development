@@ -18,8 +18,6 @@ __all__ = [
     "NPDate",
     "NPFormatDate",
     "NPNumber",
-    "NPStatisticsd",
-    "NPStatisticsds",
     "NPString",
     "numberdDtype",
     "numberDtype",
