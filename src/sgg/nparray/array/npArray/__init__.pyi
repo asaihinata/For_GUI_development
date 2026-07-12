@@ -167,3 +167,10 @@ class NPArray[_ShapeT, _DTypeT](
 
     def EType(self) -> NPArray[_ShapeT, np.dtype[object]]:
         """配列内の要素の型を調べる"""
+
+    def numandserial(self) -> NPArray[_ShapeT, np.dtype[np.uint64 | np.number]]:
+        """
+        配列の`dtype`が数値型場合そのままの配列を返す。
+
+        配列の`dtype`が数値型でない場合は連番を作成し返す。
+        """

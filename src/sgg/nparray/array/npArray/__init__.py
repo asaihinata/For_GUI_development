@@ -99,3 +99,11 @@ class NPArray(_ArrayShapeMixin, np.ndarray):
         result = np.asarray(np.vectorize(type)(self)).view(type(self))
         result._dtype = np.dtype(object)
         return result
+
+    def numandserial(self):
+        if np.issubdtype(self.dtypes, np.number):
+            return self
+        else:
+            result = np.asarray(self.lengtharange(), dtype=np.uint64).view(type(self))
+            result._dtype = np.uint64
+            return result
