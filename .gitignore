@@ -4,29 +4,26 @@ docs/*
 !docs/requirements.txt
 !docs/data/
 !docs/for_development/
-!docs/img/
+!docs/icon.png
 # デモファイル
 demo/
 demo.py
 demo*.py
 *demo.py
 *deom*.py
-# vscode
-my-project.code-workspace
-# 隠しファイル
-.gitmessage
-.DS_Store
-.env
 # Python
 __pycache__
 *.pyc
-*.log
+# vscode
+my-project.code-workspace
+.vscode/*.local.json
+.vscode/settings.json
 # その他
+*.egg-info
 .dll
 .exe
 .ini
-# vscode
-.vscode/*.local.json
-.vscode/settings.json
-# test
-!src/test/test_log/*.log
+.gitmessage
+.DS_Store
+.env
+*.txt

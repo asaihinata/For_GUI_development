@@ -2,22 +2,11 @@ For_GUI_development
  ├── MANIFEST.in
  ├── README.md
  ├── docs
- │   ├── data
- │   │   ├── browser_jp.csv
- │   │   ├── color1.csv
- │   │   ├── color2.csv
- │   │   └── jp_name.csv
  │   ├── dev
- │   │   ├── commonly_used_words.md
+ │   │   ├── color_table.md
  │   │   ├── naming_conventions.md
- │   │   ├── numpy_special_method.md
- │   │   └── short_word.md
- │   ├── for_development
- │   │   ├── explanation_graph1.png
- │   │   └── explanation_graph2.png
- │   ├── img
- │   │   └── icon.png
- │   └── requirements.txt
+ │   │   └── numpy_special_method.md
+ │   └── icon.png
  ├── pyproject.toml
  ├── src
  │   ├── sgg
@@ -436,7 +425,6 @@ For_GUI_development
  │           │   └── test_getaddress2.py
  │           └── basic
  │               └── test_all.py
- ├── tree.txt
  ├── .crossnote
  │   ├── config.js
  │   ├── head.html
@@ -446,5 +434,7 @@ For_GUI_development
  ├── .gitattributes
  ├── .gitignore
  └── .vscode
-ファイル数:308
-フォルダ数:139
+     ├── extensions.json
+     └── settings.shared.json
+ファイル数:301
+フォルダ数:136
