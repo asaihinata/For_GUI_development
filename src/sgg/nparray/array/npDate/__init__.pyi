@@ -3,9 +3,9 @@ from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
 from numpy import datetime64
-from numpy._typing import _ArrayLikeDT64_co, _DTypeLikeTD64, _NestedSequence
+from numpy._typing import _ArrayLikeDT64_co, _NestedSequence
 
-from sgg.typing import Typeaxis, _ArrayLikeTD64_co
+from sgg.typing import MDateUnitSet, Typeaxis, _ArrayLikeTD64_co
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
@@ -29,20 +29,20 @@ class NPDate[_ShapeT: np._SupportsArray[_ArrayLikeTD64_co], _DTypeT](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[_ShapeT, np.dtype[_DTypeLikeTD64]]: ...
+    ) -> NPDate[_ShapeT, _DTypeT]: ...
     @overload
     def __new__(
         cls,
         data: _ShapeT,
-        dtype: _DTypeLikeTD64,
+        dtype: MDateUnitSet,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[_ShapeT, np.dtype[_DTypeLikeTD64]]: ...
+    ) -> NPDate[_ShapeT, _DTypeT]: ...
     def __new__(
         cls,
         data: _ShapeT,
-        dtype: _DTypeLikeTD64 | None = "datetime64[D]",
+        dtype: MDateUnitSet | None = "datetime64[D]",
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -53,7 +53,7 @@ class NPDate[_ShapeT: np._SupportsArray[_ArrayLikeTD64_co], _DTypeT](
         :param data: 変換する配列を指定する
         :type data: _ArrayLikeTD64_co
         :param dtype: 配列の型を指定する
-        :type dtype: _DTypeLikeTD64 | None
+        :type dtype: MDateUnitSet | None
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
@@ -211,6 +211,8 @@ class NPDate[_ShapeT: np._SupportsArray[_ArrayLikeTD64_co], _DTypeT](
     def now(cls) -> NPDate:
         """現在時刻(UTC時刻)を返す"""
 
+    @classmethod
+    def unixtime(cls, dtype: MDateUnitSet | None = None) -> NPDate: ...
     def weekday(self) -> NPNumber[_ShapeT, np.dtype[np.uint8]]:
         """その日付日時の曜日を求める"""
 

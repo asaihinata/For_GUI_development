@@ -2,7 +2,7 @@ from datetime import date, datetime
 
 import numpy as np
 
-from sgg.typing import serchDtype
+from sgg.typing import _dt64_unit, _get_dt64_unit
 
 from ..dev import _ArrayShapeMixin, _normalize_axis
 from ..npbool import NPBool
@@ -22,7 +22,7 @@ def implements(np_function):
 
 class NPDate(_ArrayShapeMixin, np.ndarray):
     _element_type = np.datetime64
-    _default_dtype = "datetime64[D]"
+    _default_dtype = np.dtype("datetime64[D]")
 
     def __new__(
         cls,
@@ -32,7 +32,7 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
         min_ndim=None,
         max_ndim=None,
     ):
-        resolved = cls._resolve_dtype(serchDtype(dtype))
+        resolved = cls._resolve_dtype(np.dtype(_dt64_unit(dtype)))
         obj = np.asarray(data, dtype=resolved).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
@@ -46,7 +46,7 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
         return obj
 
     def __array__(self, dtype="datetime64[D]", copy=None):
-        return super().__array__(np.dtype(serchDtype(dtype)), copy=copy)
+        return super().__array__(np.dtype(_dt64_unit(dtype)), copy=copy)
 
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
@@ -109,14 +109,21 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
 
     @classmethod
     def today(cls):
-        result = np.asarray([np.datetime64("today")]).view(cls)
+        result = np.asarray(np.datetime64("today")).view(cls)
         result._dtype = np.dtype("datetime64[D]")
         return result
 
     @classmethod
     def now(cls):
-        result = np.asarray([np.datetime64("now")]).view(cls)
+        result = np.asarray(np.datetime64("now")).view(cls)
         result._dtype = np.dtype("datetime64[s]")
+        return result
+
+    @classmethod
+    def unixtime(cls, dtype="h"):
+        dtype = _get_dt64_unit(dtype)
+        result = np.asarray(np.datetime64(0, dtype)).view(cls)
+        result._dtype = result.dtype
         return result
 
     def weekday(self):

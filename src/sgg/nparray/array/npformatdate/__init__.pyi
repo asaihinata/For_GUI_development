@@ -3,9 +3,9 @@ from typing import Any, Iterator, Literal, Self, TypeVar, overload
 
 import numpy as np
 from numpy import datetime64
-from numpy._typing import _ArrayLikeDT64_co, _DTypeLikeTD64
+from numpy._typing import _ArrayLikeDT64_co
 
-from sgg.typing import Typeaxis, _ArrayLikeDateParse_co
+from sgg.typing import MDateUnitSet, Typeaxis, _ArrayLikeDateParse_co
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
@@ -49,17 +49,17 @@ class NPFormatDate[_ShapeT: np._SupportsArray[_ArrayLikeDateParse_co], _DTypeT](
     def __new__(
         cls,
         data: _ShapeT,
-        dtype: _DTypeLikeTD64,
+        dtype: MDateUnitSet,
         yearfirst: bool = ...,
         dayfirst: bool = ...,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPFormatDate[_ShapeT, np.dtype[_DTypeLikeTD64]]: ...
+    ) -> NPFormatDate[_ShapeT, np.dtype[MDateUnitSet]]: ...
     def __new__(
         cls,
         data: _ShapeT,
-        dtype: _DTypeLikeTD64 | None = "datetime64[D]",
+        dtype: MDateUnitSet | None = "datetime64[D]",
         yearfirst: bool = ...,
         dayfirst: bool = ...,
         d_ndim: int | None = None,
@@ -72,7 +72,7 @@ class NPFormatDate[_ShapeT: np._SupportsArray[_ArrayLikeDateParse_co], _DTypeT](
         :param data: 変換する配列を指定する
         :type data: _ArrayLikeDateParse_co
         :param dtype: 配列の型を指定する
-        :type dtype: _DTypeLikeTD64 | None
+        :type dtype: MDateUnitSet | None
         :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
         :type yearfirst: bool
         :param dayfirst: 曖昧な3つの整数からなる日付の最初の値を日もしくは月として解釈するかどうか指定する

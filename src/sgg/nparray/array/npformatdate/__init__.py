@@ -3,7 +3,7 @@ from datetime import date, datetime
 import numpy as np
 from dateutil.parser import parse
 
-from sgg.typing import serchDtype
+from sgg.typing import _dt64_unit
 
 from ..dev import _ArrayShapeMixin, _normalize_axis
 from ..npbool import NPBool
@@ -22,7 +22,7 @@ def implements(np_function):
 
 
 class NPFormatDate(_ArrayShapeMixin, np.ndarray):
-    _element_type = np.datetime64
+    _element_type = (np.datetime64)
     _default_dtype = "datetime64[D]"
 
     def __new__(
@@ -45,12 +45,11 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray):
             )
         )
         data = np.asanyarray(data)
-        resolved = cls._resolve_dtype(serchDtype(dtype))
+        resolved = cls._resolve_dtype(np.dtype(_dt64_unit(dtype)))
         obj = np.asarray(
             np.array(
-                [func(i, yearfirst, dayfirst) for i in np.nditer(data)], dtype=dtype
-            ).reshape(data.shape),
-            dtype=resolved,
+                [func(i, yearfirst, dayfirst) for i in np.nditer(data)], dtype=resolved
+            ).reshape(data.shape)
         ).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
@@ -64,7 +63,7 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray):
         return obj
 
     def __array__(self, dtype="datetime64[D]", copy=None):
-        return super().__array__(np.dtype(serchDtype(dtype)), copy=copy)
+        return super().__array__(np.dtype(_dt64_unit(dtype)), copy=copy)
 
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(

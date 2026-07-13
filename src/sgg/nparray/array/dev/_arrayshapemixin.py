@@ -79,9 +79,9 @@ class _ArrayShapeMixin(_ArrayCommonMixin):
 
     @classmethod
     def _resolve_dtype(cls, dtype):
-        if dtype is not None:
-            return np.dtype(dtype)
-        return np.dtype(cls._default_dtype)
+        if dtype is None:
+            return np.dtype(cls._default_dtype)
+        return np.dtype(dtype)
 
     @classmethod
     def _validate_ndim(cls, obj, min_ndim, max_ndim):

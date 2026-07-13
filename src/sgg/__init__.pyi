@@ -6,11 +6,12 @@ from typing import Callable
 from matplotlib.mlab import GaussianKDE
 from numpy.typing import ArrayLike
 
+from sgg.typing import *
+
 from .dialogs import *
 from .graph import *
 from .nparray import *
 from .readfile import Getcsv, Getfont, Getjosn
-from .typing import *
 from .version import __version__
 from .widget import *
 
