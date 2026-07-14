@@ -5,7 +5,8 @@ from types import FunctionType
 
 from PIL import ImageGrab
 
-from sgg.dev import bols, is_array_like, listchose, num0s, parsecolor, range_num
+from sgg.dev import (bols, is_array_like, listchose, num0s, parsecolor,
+                     range_num)
 from sgg.dialogs import asksaveasfilename
 from sgg.graph import *
 from sgg.widget.basic import *

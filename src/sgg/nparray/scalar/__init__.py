@@ -7,7 +7,8 @@ https://numpy.org/doc/stable/reference/arrays.scalars.html
 
 import numpy as np
 
-from sgg.nparray.isdtype import boolDtype, floatDtype, intDtype, numberDtype, strDtype
+from sgg.nparray.isdtype import (boolDtype, floatDtype, intDtype, numberDtype,
+                                 strDtype)
 
 __all__ = ["ScalarBool", "ScalarFloat", "ScalarInt", "ScalarNum", "ScalarStr"]
 

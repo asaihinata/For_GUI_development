@@ -1,23 +1,15 @@
 """フレームワーク全体で使用する型を設定しているモジュール"""
 
 from datetime import date, datetime
-from typing import Any, Literal, TypeAlias, TypeAliasType, TypeVar, Union, overload
+from typing import (Any, Literal, TypeAlias, TypeAliasType, TypeVar, Union,
+                    overload)
 
 import numpy as np
-from numpy._typing import (
-    _ArrayLikeAnyString_co,
-    _ArrayLikeBool_co,
-    _ArrayLikeNumber_co,
-    _ArrayLikeTD64_co,
-    _CharLike_co,
-    _ComplexLike_co,
-    _DT64Codes,
-    _DTypeLikeTD64,
-    _FloatLike_co,
-    _IntLike_co,
-    _NestedSequence,
-    _UIntLike_co,
-)
+from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBool_co,
+                           _ArrayLikeNumber_co, _ArrayLikeTD64_co,
+                           _CharLike_co, _ComplexLike_co, _DT64Codes,
+                           _DTypeLikeTD64, _FloatLike_co, _IntLike_co,
+                           _NestedSequence, _UIntLike_co)
 from numpy.typing import ArrayLike
 
 __all__ = [
@@ -282,7 +274,7 @@ ArrayLikeDateParse = TypeVar(
     bound=Union[str, bytes, np.str_, np.bytes_, datetime, date, np.datetime64],
 )
 DateParseScalar: TypeAlias = (
-    str | bytes | np.str_ | np.bytes_ | datetime | date | np.datetime64
+    str | bytes | np.str_ | np.bytes_ | datetime | date | np.datetime64 | int
 )
 _ArrayLikeDateParse_co: TypeAlias = (
     DateParseScalar

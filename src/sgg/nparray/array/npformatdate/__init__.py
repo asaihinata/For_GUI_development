@@ -22,7 +22,7 @@ def implements(np_function):
 
 
 class NPFormatDate(_ArrayShapeMixin, np.ndarray):
-    _element_type = (np.datetime64)
+    _element_type = np.datetime64
     _default_dtype = "datetime64[D]"
 
     def __new__(
@@ -117,14 +117,14 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray):
     __rsub__ = __sub__
     __isub__ = __sub__
 
-    def todatetime(self):
+    def to_datetime(self):
         return self.data.astype(datetime)
 
-    def todate(self):
+    def to_date(self):
         return self.data.astype(date)
 
     def weekday(self):
-        dt = self.todatetime()
+        dt = self.to_datetime()
         return NPNumber([i.weekday() for i in dt], dtype=np.uint8)
 
     def diff_today(self, days=False):

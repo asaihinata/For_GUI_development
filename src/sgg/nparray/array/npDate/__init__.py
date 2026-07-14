@@ -101,11 +101,16 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
     def __ge__(self, value):
         return NPBool(np.greater_equal(np.asarray(self), value))
 
-    def todatetime(self):
+    def to_datetime(self):
         return self.data.astype(datetime)
 
-    def todate(self):
+    def to_date(self):
         return self.data.astype(date)
+
+    def to_int(self, dtype=None):
+        if dtype is None:
+            dtype = self.dtypes
+        return NPNumber(self.astype(_dt64_unit(dtype)).astype(np.int64), np.int64)
 
     @classmethod
     def today(cls):
@@ -127,7 +132,7 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
         return result
 
     def weekday(self):
-        dt = self.todatetime()
+        dt = self.to_datetime()
         return NPNumber([i.weekday() for i in dt], dtype=np.uint8)
 
     def diff_today(self, days=False):

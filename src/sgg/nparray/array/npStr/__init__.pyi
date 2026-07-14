@@ -3,13 +3,9 @@
 from typing import Any, Iterator, Self, TypeAlias, overload
 
 import numpy as np
-from numpy._typing import (
-    _ArrayLikeAnyString_co,
-    _ArrayLikeBytes_co,
-    _ArrayLikeInt_co,
-    _ArrayLikeStr_co,
-    _ArrayLikeString_co,
-)
+from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBytes_co,
+                           _ArrayLikeInt_co, _ArrayLikeStr_co,
+                           _ArrayLikeString_co)
 
 from sgg.typing import Typeaxis, _CharType
 

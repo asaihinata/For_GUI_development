@@ -26,7 +26,7 @@ _DTypeT = TypeVar(
     "_DTypeT", bound=np.generic, default=np.dtype[datetime64], covariant=True
 )
 
-class NPFormatDate[_ShapeT: np._SupportsArray[_ArrayLikeDateParse_co], _DTypeT](
+class NPFormatDate[_ShapeT: _ArrayLikeDateParse_co, _DTypeT](
     _ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
 ):
     """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
@@ -174,10 +174,10 @@ class NPFormatDate[_ShapeT: np._SupportsArray[_ArrayLikeDateParse_co], _DTypeT](
     def element_type(self) -> type[datetime64]:
         """NPFormatDateで許可されている型を取得する"""
 
-    def todatetime(self) -> np.ndarray[_ShapeT, np.dtype[datetime]]:
+    def to_datetime(self) -> np.ndarray[_ShapeT, np.dtype[datetime]]:
         """配列内の日付を`datetime.datetime`に変換する"""
 
-    def todate(self) -> np.ndarray[_ShapeT, np.dtype[date]]:
+    def to_date(self) -> np.ndarray[_ShapeT, np.dtype[date]]:
         """配列内の日付を`datetime.date`に変換する"""
 
     def weekday(self) -> NPNumber[_ShapeT, np.dtype[np.uint8]]:

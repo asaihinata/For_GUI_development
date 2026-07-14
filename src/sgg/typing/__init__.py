@@ -2,6 +2,8 @@
 
 from re import compile, fullmatch
 
+import numpy as np
+
 __VALID_UNITS = {
     "Y",
     "M",
@@ -24,7 +26,9 @@ __DT64_GENERIC_PATTERN = compile(r"^(?:datetime64|M8)$")
 
 
 def _dt64_unit(spec):
-    if isinstance(spec, bytes):
+    if isinstance(spec, np.datetime64):
+        return spec
+    elif isinstance(spec, bytes):
         spec = spec.decode("ascii")
     elif not isinstance(spec, str):
         return "datetime64[D]"

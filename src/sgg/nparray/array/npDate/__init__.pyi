@@ -3,9 +3,9 @@ from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
 from numpy import datetime64
-from numpy._typing import _ArrayLikeDT64_co, _NestedSequence
+from numpy._typing import _ArrayLike, _ArrayLikeDT64_co, _NestedSequence
 
-from sgg.typing import MDateUnitSet, Typeaxis, _ArrayLikeTD64_co
+from sgg.typing import MDateUnitSet, Typeaxis
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
@@ -13,8 +13,8 @@ from ..npnumber import NPNumber
 
 __all__ = ["NPDate"]
 
-class NPDate[_ShapeT: np._SupportsArray[_ArrayLikeTD64_co], _DTypeT](
-    _ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
+class NPDate[_ShapeTs, _Dtypes](
+    _ArrayShapeMixin, np.ndarray[_ShapeTs, np.dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承した日付の配列クラス"""
 
@@ -22,31 +22,60 @@ class NPDate[_ShapeT: np._SupportsArray[_ArrayLikeTD64_co], _DTypeT](
     _default_dtype: Literal["datetime64[D]"]
 
     @overload
-    def __new__(
+    def __new__[_ShapeT: (datetime, date, None)](
         cls,
         data: _ShapeT,
         dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[_ShapeT, _DTypeT]: ...
+    ) -> NPDate[datetime64[_ShapeT], np.dtype[datetime64]]: ...
+    @overload
+    def __new__[_ShapeT: (datetime, date, None), Dtype: np._DateUnit](
+        cls,
+        data: _ShapeT,
+        dtype: np._TimeUnitSpec[Dtype],
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPDate[datetime64[_ShapeT], np.dtype[np.datetime64[Dtype]]]: ...
     @overload
     def __new__(
         cls,
-        data: _ShapeT,
-        dtype: MDateUnitSet,
+        data: int | bytes | str | date,
+        dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[_ShapeT, _DTypeT]: ...
+    ) -> NPDate[datetime64[date], np.dtype[np.datetime64[date]]]: ...
+    @overload
+    def __new__[_ShapeT: (datetime, date, None)](
+        cls,
+        data: _NestedSequence[_ShapeT],
+        dtype: None = None,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPDate[_ArrayLike[datetime64[_ShapeT]], np.dtype[datetime64]]: ...
+    @overload
+    def __new__[_ShapeT: (datetime, date, None), Dtype: np._DateUnit](
+        cls,
+        data: _NestedSequence[_ShapeT],
+        dtype: np._TimeUnitSpec[Dtype],
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPDate[_ArrayLike[datetime64[_ShapeT]], np.dtype[np.datetime64[Dtype]]]: ...
+    @overload
     def __new__(
         cls,
-        data: _ShapeT,
-        dtype: MDateUnitSet | None = "datetime64[D]",
+        data: _NestedSequence[int | bytes | str | date],
+        dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> Self:
+    ) -> NPDate[_ArrayLike[datetime64[date]], np.dtype[np.datetime64[date]]]: ...
+    def __new__() -> Self:
         """
         新しい日付の配列オブジェクトインスタンスを生成する
 
@@ -66,9 +95,7 @@ class NPDate[_ShapeT: np._SupportsArray[_ArrayLikeTD64_co], _DTypeT](
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    def __class_getitem__(
-        cls, item: Any
-    ) -> type[NPDate[_ShapeT, np.dtype[_DTypeT]]]: ...
+    def __class_getitem__(cls, item: Any) -> type[NPDate[Any, Any]]: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -93,11 +120,11 @@ class NPDate[_ShapeT: np._SupportsArray[_ArrayLikeTD64_co], _DTypeT](
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, _DTypeT]: ...
+    ) -> np.ndarray[_ShapeTs, np.dtype[_Dtypes]]: ...
     @overload
     def __array__[DType](
         self, dtype: DType, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, np.dtype[DType]]: ...
+    ) -> np.ndarray[_ShapeTs, np.dtype[DType]]: ...
     def __array_function__(
         self,
         func: Any,
@@ -121,88 +148,89 @@ class NPDate[_ShapeT: np._SupportsArray[_ArrayLikeTD64_co], _DTypeT](
         """
 
     @overload
-    def __add__(self, value: int | bool) -> NPDate[_ShapeT, _DTypeT]: ...
+    def __add__(self, value: int | bool) -> NPDate[Any, Any]: ...
     @overload
-    def __add__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, _DTypeT]: ...
+    def __add__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, Any]: ...
     @overload
-    def __iadd__(self, value: int | bool) -> NPDate[_ShapeT, _DTypeT]: ...
+    def __iadd__(self, value: int | bool) -> NPDate[Any, Any]: ...
     @overload
-    def __iadd__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, _DTypeT]: ...
+    def __iadd__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, Any]: ...
     @overload
-    def __radd__(self, value: int | bool) -> NPDate[_ShapeT, _DTypeT]: ...
+    def __radd__(self, value: int | bool) -> NPDate[Any, Any]: ...
     @overload
-    def __radd__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, _DTypeT]: ...
+    def __radd__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, Any]: ...
     @overload
-    def __sub__(self, value: int | bool) -> NPDate[_ShapeT, _DTypeT]: ...
+    def __sub__(self, value: int | bool) -> NPDate[Any, Any]: ...
     @overload
-    def __sub__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, _DTypeT]: ...
+    def __sub__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, Any]: ...
     @overload
-    def __isub__(self, value: int | bool) -> NPDate[_ShapeT, _DTypeT]: ...
+    def __isub__(self, value: int | bool) -> NPDate[Any, Any]: ...
     @overload
-    def __isub__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, _DTypeT]: ...
+    def __isub__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, Any]: ...
     @overload
-    def __rsub__(self, value: int | bool) -> NPDate[_ShapeT, _DTypeT]: ...
+    def __rsub__(self, value: int | bool) -> NPDate[Any, Any]: ...
     @overload
-    def __rsub__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, _DTypeT]: ...
+    def __rsub__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, Any]: ...
     @overload
-    def __ne__(self, value: datetime64) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __ne__(self, value: datetime64) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
     def __ne__(
         self, value: _ArrayLikeDT64_co | _NestedSequence[np._SupportsGT]
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    ) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
-    def __ne__(self, value: np._SupportsGT) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __ne__(self, value: np._SupportsGT) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
-    def __eq__(self, value: datetime64) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __eq__(self, value: datetime64) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
     def __eq__(
         self, value: _ArrayLikeDT64_co | _NestedSequence[np._SupportsGT]
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    ) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
-    def __eq__(self, value: np._SupportsGT) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __eq__(self, value: np._SupportsGT) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
-    def __lt__(self, value: datetime64) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __lt__(self, value: datetime64) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
     def __lt__(
         self, value: _ArrayLikeDT64_co | _NestedSequence[np._SupportsGT]
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    ) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
-    def __lt__(self, value: np._SupportsGT) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __lt__(self, value: np._SupportsGT) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
-    def __le__(self, value: datetime64) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __le__(self, value: datetime64) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
     def __le__(
         self, value: _ArrayLikeDT64_co | _NestedSequence[np._SupportsGT]
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    ) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
-    def __le__(self, value: np._SupportsGT) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __le__(self, value: np._SupportsGT) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
-    def __gt__(self, value: datetime64) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __gt__(self, value: datetime64) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
     def __gt__(
         self, value: _ArrayLikeDT64_co | _NestedSequence[np._SupportsGT]
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    ) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
-    def __gt__(self, value: np._SupportsGT) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __gt__(self, value: np._SupportsGT) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
-    def __ge__(self, value: datetime64) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __ge__(self, value: datetime64) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
     def __ge__(
         self, value: _ArrayLikeDT64_co | _NestedSequence[np._SupportsGT]
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    ) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload
-    def __ge__(self, value: np._SupportsGT) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
+    def __ge__(self, value: np._SupportsGT) -> NPBool[Any, np.dtype[np.bool_]]: ...
+    def __iter__(self) -> Iterator[np.ndarray[Any, Any]]: ...
     @property
     def element_type(self) -> type[datetime64]:
         """NPDateで許可されている型を取得する"""
 
-    def todatetime(self) -> np.ndarray[_ShapeT, np.dtype[datetime]]:
+    def to_datetime(self) -> np.ndarray[Any, np.dtype[datetime]]:
         """配列内の日付を`datetime.datetime`に変換する"""
 
-    def todate(self) -> np.ndarray[_ShapeT, np.dtype[date]]:
+    def to_date(self) -> np.ndarray[Any, np.dtype[date]]:
         """配列内の日付を`datetime.date`に変換する"""
 
+    def to_int(self, dtype: MDateUnitSet | None = None) -> NPNumber: ...
     @classmethod
     def today(cls) -> NPDate:
         """現在日付(UTC時刻)を返す"""
@@ -213,11 +241,11 @@ class NPDate[_ShapeT: np._SupportsArray[_ArrayLikeTD64_co], _DTypeT](
 
     @classmethod
     def unixtime(cls, dtype: MDateUnitSet | None = None) -> NPDate: ...
-    def weekday(self) -> NPNumber[_ShapeT, np.dtype[np.uint8]]:
+    def weekday(self) -> NPNumber[Any, np.dtype[np.uint8]]:
         """その日付日時の曜日を求める"""
 
     @overload
-    def diff_today(self, days: bool = True) -> NPNumber[_ShapeT, np.dtype[np.int64]]:
+    def diff_today(self, days: bool = True) -> NPNumber[Any, np.dtype[np.int64]]:
         """
         配列の日付と今日の日付の差を求める(今日を含む)
 
@@ -226,7 +254,7 @@ class NPDate[_ShapeT: np._SupportsArray[_ArrayLikeTD64_co], _DTypeT](
         """
 
     @overload
-    def diff_today(self, days: bool = False) -> NPNumber[_ShapeT, np.dtype[np.int64]]:
+    def diff_today(self, days: bool = False) -> NPNumber[Any, np.dtype[np.int64]]:
         """
         配列の日付と今日の日付の差を求める(今日を含めない)
 
@@ -234,7 +262,7 @@ class NPDate[_ShapeT: np._SupportsArray[_ArrayLikeTD64_co], _DTypeT](
         :type days: bool
         """
 
-    def diff_today(self, days: bool = ...) -> NPNumber[_ShapeT, np.dtype[np.int64]]:
+    def diff_today(self, days: bool = ...) -> NPNumber[Any, np.dtype[np.int64]]:
         """
         配列の日付と今日の日付の差を求める
 
@@ -244,15 +272,15 @@ class NPDate[_ShapeT: np._SupportsArray[_ArrayLikeTD64_co], _DTypeT](
 
     @overload
     def range(
-        self: NPDate[_ShapeT, _DTypeT], axis: None = None
-    ) -> tuple[datetime64[_DTypeT], datetime64[_DTypeT]]: ...
+        self: NPDate[Any, Any], axis: None = None
+    ) -> tuple[datetime64[Any], datetime64[Any]]: ...
     @overload
     def range(
-        self: NPDate[_ShapeT, _DTypeT], axis: np._ShapeLike
-    ) -> tuple[NPDate[_ShapeT, _DTypeT], NPDate[_ShapeT, _DTypeT]]: ...
+        self: NPDate[Any, Any], axis: np._ShapeLike
+    ) -> tuple[NPDate[Any, Any], NPDate[Any, Any]]: ...
     def range(self, axis: Typeaxis = None) -> tuple[
-        NPDate[_ShapeT, _DTypeT] | datetime64[_DTypeT],
-        NPDate[_ShapeT, _DTypeT] | datetime64[_DTypeT],
+        NPDate[Any, Any] | datetime64[Any],
+        NPDate[Any, Any] | datetime64[Any],
     ]:
         """
         配列内の日付の最小の日付と最大の日付を求める
