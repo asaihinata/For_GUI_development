@@ -38,7 +38,7 @@ class NPDate[_ShapeTs, _Dtypes](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[datetime64[_ShapeT], np.dtype[np.datetime64[Dtype]]]: ...
+    ) -> NPDate[datetime64[_ShapeT], np.dtype[datetime64[Dtype]]]: ...
     @overload
     def __new__(
         cls,
@@ -47,7 +47,7 @@ class NPDate[_ShapeTs, _Dtypes](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[datetime64[date], np.dtype[np.datetime64[date]]]: ...
+    ) -> NPDate[datetime64[date], np.dtype[datetime64[date]]]: ...
     @overload
     def __new__[_ShapeT: (datetime, date, None)](
         cls,
@@ -65,7 +65,7 @@ class NPDate[_ShapeTs, _Dtypes](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[_ArrayLike[datetime64[_ShapeT]], np.dtype[np.datetime64[Dtype]]]: ...
+    ) -> NPDate[_ArrayLike[datetime64[_ShapeT]], np.dtype[datetime64[Dtype]]]: ...
     @overload
     def __new__(
         cls,
@@ -74,15 +74,15 @@ class NPDate[_ShapeTs, _Dtypes](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[_ArrayLike[datetime64[date]], np.dtype[np.datetime64[date]]]: ...
+    ) -> NPDate[_ArrayLike[datetime64[date]], np.dtype[datetime64[date]]]: ...
     def __new__() -> Self:
         """
         新しい日付の配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: _ArrayLikeTD64_co
+        :type data: -
         :param dtype: 配列の型を指定する
-        :type dtype: MDateUnitSet | None
+        :type dtype: -
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
