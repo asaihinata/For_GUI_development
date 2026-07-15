@@ -3,16 +3,16 @@
 from typing import Any, Iterator, Literal, Self, TypeAlias, TypeVar, overload
 
 import numpy as np
-from numpy._typing import _FloatLike_co
+from numpy._typing import _FloatLike_co,_NumberLike_co,_DTypeLike,_ArrayLikeNumber_co
 from numpy.typing import NDArray
 
-from sgg.typing import Typeaxis, _ArrayLikeNumber_co, _NumberT
+from sgg.typing import Typeaxis
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
 
-_DTypeT = TypeVar(
-    "_DTypeT", bound=np.generic, default=np.dtype[np.float64], covariant=True
+_DType = TypeVar(
+    "_DType", bound=np.generic, default=np.dtype[np.float64], covariant=True
 )
 __all__ = ["NPNumber"]
 TYPEMETHOD: TypeAlias = Literal[
@@ -36,8 +36,8 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPNumber[_ShapeT: np._SupportsArray[_ArrayLikeNumber_co], _DTypeT](
-    _ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
+class NPNumber[_ShapeTs](
+    _ArrayShapeMixin, np.ndarray[_ShapeTs, np.dtype[_DType]]
 ):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
@@ -45,7 +45,7 @@ class NPNumber[_ShapeT: np._SupportsArray[_ArrayLikeNumber_co], _DTypeT](
     _default_dtype: type[np.float64]
 
     @overload
-    def __new__(
+    def __new__[_ShapeT:_NumberLike_co](
         cls,
         data: _ShapeT,
         dtype: None = None,
@@ -54,29 +54,40 @@ class NPNumber[_ShapeT: np._SupportsArray[_ArrayLikeNumber_co], _DTypeT](
         max_ndim: int | None = None,
     ) -> NPNumber[_ShapeT, np.dtype[np.float64]]: ...
     @overload
-    def __new__(
+    def __new__[_ShapeT:_NumberLike_co,DType:np.number](
         cls,
         data: _ShapeT,
-        dtype: type[_NumberT],
+        dtype: _DTypeLike[DType],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPNumber[_ShapeT, np.dtype[_NumberT]]: ...
-    def __new__(
+    ) -> NPNumber[_ShapeT, np.dtype[DType]]: ...
+    @overload
+    def __new__[_ShapeT:_ArrayLikeNumber_co](
         cls,
         data: _ShapeT,
-        dtype: type[_NumberT] | None = np.float64,
+        dtype: None=None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> Self:
+    ) -> NPNumber[_ShapeT, _DType]: ...
+    @overload
+    def __new__[_ShapeT:_ArrayLikeNumber_co,DType:np.number](
+        cls,
+        data: _ShapeT,
+        dtype: _DTypeLike[DType],
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPNumber[_ShapeT, np.dtype[DType]]: ...
+    def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: _ArrayLikeNumber_co
+        :type data: -
         :param dtype: 配列の型を指定する
-        :type dtype: type[_NumberT] | None
+        :type dtype: -
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
@@ -91,7 +102,7 @@ class NPNumber[_ShapeT: np._SupportsArray[_ArrayLikeNumber_co], _DTypeT](
 
     def __class_getitem__(
         cls, item: Any
-    ) -> type[NPNumber[_ShapeT, np.dtype[_DTypeT]]]: ...
+    ) -> type[NPNumber[_ShapeTs, np.dtype[_DType]]]: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -116,11 +127,11 @@ class NPNumber[_ShapeT: np._SupportsArray[_ArrayLikeNumber_co], _DTypeT](
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, _DTypeT]: ...
+    ) -> np.ndarray[_ShapeTs, _DType]: ...
     @overload
     def __array__[DType](
         self, dtype: DType, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, np.dtype[DType]]: ...
+    ) -> np.ndarray[_ShapeTs, np.dtype[DType]]: ...
     def __array_function__(
         self,
         func: Any,
@@ -143,12 +154,12 @@ class NPNumber[_ShapeT: np._SupportsArray[_ArrayLikeNumber_co], _DTypeT](
         :rtype: Any
         """
 
-    def __eq__(self, value: Any) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    def __ne__(self, value: Any) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    def __lt__(self, value: Any) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    def __le__(self, value: Any) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    def __gt__(self, value: Any) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    def __ge__(self, value: Any) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __eq__(self, value: Any) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
+    def __ne__(self, value: Any) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
+    def __lt__(self, value: Any) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
+    def __le__(self, value: Any) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
+    def __gt__(self, value: Any) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
+    def __ge__(self, value: Any) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
     def __add__(self, value: Any) -> NPNumber: ...
     def __radd__(self, value: Any) -> NPNumber: ...
     def __iadd__(self, value: Any) -> NPNumber: ...
@@ -173,7 +184,7 @@ class NPNumber[_ShapeT: np._SupportsArray[_ArrayLikeNumber_co], _DTypeT](
     def __divmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
     def __rdivmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
     def __abs__(self) -> NPNumber: ...
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
+    def __iter__(self) -> Iterator[np.ndarray[_ShapeTs, _DType]]: ...
     @property
     def element_type(
         self,
@@ -202,16 +213,16 @@ class NPNumber[_ShapeT: np._SupportsArray[_ArrayLikeNumber_co], _DTypeT](
     def sturgesval(self) -> np.floating:
         """スタージェスの公式を求める"""
 
-    def cussum(self) -> NPNumber[_ShapeT, _DTypeT]:
+    def cussum(self) -> NPNumber[_ShapeTs, _DType]:
         """一つ前の元の値との和を求める"""
 
-    def cusdiff(self) -> NPNumber[_ShapeT, _DTypeT]:
+    def cusdiff(self) -> NPNumber[_ShapeTs, _DType]:
         """一つ前の元の値との差を求める"""
 
-    def cusprod(self) -> NPNumber[_ShapeT, _DTypeT]:
+    def cusprod(self) -> NPNumber[_ShapeTs, _DType]:
         """一つ前の元の値との積を求める"""
 
-    def cusdiv(self) -> NPNumber[_ShapeT, _DTypeT]:
+    def cusdiv(self) -> NPNumber[_ShapeTs, _DType]:
         """一つ前の元の値との除算を求める"""
 
     def percentile(
@@ -258,7 +269,7 @@ class NPNumber[_ShapeT: np._SupportsArray[_ArrayLikeNumber_co], _DTypeT](
         self,
         axis: Typeaxis = None,
         method: TYPEMETHOD = "linear",
-    ) -> NPNumber[_ShapeT, np.dtype[np.float64]]:
+    ) -> NPNumber[_ShapeTs, np.dtype[np.float64]]:
         """
         配列の四分位数を求める
 

@@ -1,8 +1,13 @@
 """基本的な文字列の操作をするモジュール"""
 
-from typing import Any, Iterator, Self, TypeAlias, overload
+from typing import Any, Iterator, Self, TypeAlias, overload,Union
 
 import numpy as np
+from numpy._typing import (
+_CharLike_co,
+_DTypeLike,
+_NestedSequence
+)
 from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBytes_co,
                            _ArrayLikeInt_co, _ArrayLikeStr_co,
                            _ArrayLikeString_co)
@@ -16,15 +21,13 @@ from ..npnumber import NPNumber
 __all__ = ["NPString"]
 _StringDTypeSupportsArray: TypeAlias = np._SupportsArray[np.dtypes.StringDType]
 
-class NPString[_ShapeT: np._SupportsArray[_ArrayLikeAnyString_co], _DTypeT](
-    _ArrayShapeMixin, np.ndarray[_ShapeT, _DTypeT]
-):
+class NPString[_ShapeTs, _DTypeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, _DTypeTs]):
 
-    _element_type: tuple[type[str], type[np.character], type[np.str_], type[np.bytes_]]
+    _element_type: tuple[type[str], type[np.character], type[np.str_], type[np.bytes_], type[np.void]]
     _default_dtype: type[np.str_]
 
     @overload
-    def __new__(
+    def __new__[_ShapeT:Union[np.flexible, _CharLike_co]](
         cls,
         data: _ShapeT,
         dtype: None = None,
@@ -33,38 +36,40 @@ class NPString[_ShapeT: np._SupportsArray[_ArrayLikeAnyString_co], _DTypeT](
         max_ndim: int | None = None,
     ) -> NPString[_ShapeT, np.dtype[np.str_]]: ...
     @overload
-    def __new__(
+    def __new__[_ShapeT:Union[np.flexible, _CharLike_co],DType:np.flexible](
         cls,
         data: _ShapeT,
-        dtype: type[str],
+        dtype: _DTypeLike[DType],
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPString[np.str_, np.dtype[DType]]: ...
+    @overload
+    def __new__[_ShapeT:_NestedSequence[bytes | str | np.flexible]](
+        cls,
+        data:_ShapeT,
+        dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPString[_ShapeT, np.dtype[np.str_]]: ...
     @overload
-    def __new__(
+    def __new__[_ShapeT:_NestedSequence[bytes | str | np.flexible],DType:np.flexible](
         cls,
         data: _ShapeT,
-        dtype: type[np.character],
+        dtype: _DTypeLike[DType],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPString[_ShapeT, np.dtype[np.character]]: ...
-    def __new__(
-        cls,
-        data: _ShapeT,
-        dtype: type[np.character] | type[str] | None = ...,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> Self:
+    ) -> NPString[_ShapeT, np.dtype[DType]]: ...
+    def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: _ArrayLikeAnyString_co
+        :type data: -
         :param dtype: 配列の型を指定する
-        :type dtype: type[np.character] | type[str] | None
+        :type dtype: -
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
@@ -101,11 +106,11 @@ class NPString[_ShapeT: np._SupportsArray[_ArrayLikeAnyString_co], _DTypeT](
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, _DTypeT]: ...
+    ) -> np.ndarray[_ShapeTs, _DTypeTs]: ...
     @overload
     def __array__[DType](
         self, dtype: DType, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, np.dtype[DType]]: ...
+    ) -> np.ndarray[_ShapeTs, np.dtype[DType]]: ...
     def __array_function__(
         self,
         func: Any,
@@ -130,84 +135,84 @@ class NPString[_ShapeT: np._SupportsArray[_ArrayLikeAnyString_co], _DTypeT](
 
     @overload
     def __ne__(
-        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+        self: NPString[_ShapeTs, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+    ) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
     @overload
     def __ne__(
-        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+        self: NPString[_ShapeTs, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+    ) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
     @overload
     def __ne__(
-        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+        self: NPString[_ShapeTs, _ArrayLikeString_co], value: _ArrayLikeString_co
+    ) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
     @overload
     def __eq__(
-        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+        self: NPString[_ShapeTs, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+    ) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
     @overload
     def __eq__(
-        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+        self: NPString[_ShapeTs, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+    ) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
     @overload
     def __eq__(
-        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+        self: NPString[_ShapeTs, _ArrayLikeString_co], value: _ArrayLikeString_co
+    ) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
-    ) -> NPString[_ShapeT, np.str_]: ...
+        self: NPString[_ShapeTs, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+    ) -> NPString[_ShapeTs, np.str_]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
-    ) -> NPString[_ShapeT, np.bytes_]: ...
+        self: NPString[_ShapeTs, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+    ) -> NPString[_ShapeTs, np.bytes_]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeT, _StringDTypeSupportsArray],
+        self: NPString[_ShapeTs, _StringDTypeSupportsArray],
         value: _StringDTypeSupportsArray,
-    ) -> NPString[_ShapeT, np.dtypes.StringDType]: ...
+    ) -> NPString[_ShapeTs, np.dtypes.StringDType]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
+        self: NPString[_ShapeTs, _ArrayLikeString_co], value: _ArrayLikeString_co
     ) -> (
-        NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, np.dtypes.StringDType]
+        NPString[_ShapeTs, np.dtype[np.str_]] | NPString[_ShapeTs, np.dtypes.StringDType]
     ): ...
     @overload
     def __iadd__(
-        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
-    ) -> NPString[_ShapeT, np.str_]: ...
+        self: NPString[_ShapeTs, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+    ) -> NPString[_ShapeTs, np.str_]: ...
     @overload
     def __iadd__(
-        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
-    ) -> NPString[_ShapeT, np.bytes_]: ...
+        self: NPString[_ShapeTs, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+    ) -> NPString[_ShapeTs, np.bytes_]: ...
     @overload
     def __iadd__(
-        self: NPString[_ShapeT, _StringDTypeSupportsArray],
+        self: NPString[_ShapeTs, _StringDTypeSupportsArray],
         value: _StringDTypeSupportsArray,
-    ) -> NPString[_ShapeT, np.dtypes.StringDType]: ...
+    ) -> NPString[_ShapeTs, np.dtypes.StringDType]: ...
     @overload
     def __iadd__(
-        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
+        self: NPString[_ShapeTs, _ArrayLikeString_co], value: _ArrayLikeString_co
     ) -> (
-        NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, np.dtypes.StringDType]
+        NPString[_ShapeTs, np.dtype[np.str_]] | NPString[_ShapeTs, np.dtypes.StringDType]
     ): ...
     @overload
     def __radd__(
-        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
-    ) -> NPString[_ShapeT, np.str_]: ...
+        self: NPString[_ShapeTs, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+    ) -> NPString[_ShapeTs, np.str_]: ...
     @overload
     def __radd__(
-        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
-    ) -> NPString[_ShapeT, np.bytes_]: ...
+        self: NPString[_ShapeTs, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+    ) -> NPString[_ShapeTs, np.bytes_]: ...
     @overload
     def __radd__(
-        self: NPString[_ShapeT, _StringDTypeSupportsArray],
+        self: NPString[_ShapeTs, _StringDTypeSupportsArray],
         value: _StringDTypeSupportsArray,
-    ) -> NPString[_ShapeT, np.dtypes.StringDType]: ...
+    ) -> NPString[_ShapeTs, np.dtypes.StringDType]: ...
     @overload
     def __radd__(
-        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
+        self: NPString[_ShapeTs, _ArrayLikeString_co], value: _ArrayLikeString_co
     ) -> (
-        NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, np.dtypes.StringDType]
+        NPString[_ShapeTs, np.dtype[np.str_]] | NPString[_ShapeTs, np.dtypes.StringDType]
     ): ...
     def __mul__(self, i: _ArrayLikeInt_co) -> NPString:
         """
@@ -233,11 +238,11 @@ class NPString[_ShapeT: np._SupportsArray[_ArrayLikeAnyString_co], _DTypeT](
         :type i: _ArrayLikeInt_co
         """
 
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
+    def __iter__(self) -> Iterator[np.ndarray[_ShapeTs, _DTypeTs]]: ...
     @property
     def element_type(
         self,
-    ) -> tuple[type[str], type[np.character], type[np.str_], type[np.bytes_]]:
+    ) -> tuple[type[str], type[np.character], type[np.str_], type[np.bytes_], type[np.void]]:
         """NPStringで許可されている型を取得する"""
 
     def append(self, val: Any) -> NPString:
@@ -259,7 +264,7 @@ class NPString[_ShapeT: np._SupportsArray[_ArrayLikeAnyString_co], _DTypeT](
 
     def stringlen(
         self, axis: Typeaxis = None
-    ) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
+    ) -> NPNumber[_ShapeTs, np.dtype[np.uint64]]:
         """
         配列内の要素の文字の長さを求める
 
@@ -267,7 +272,7 @@ class NPString[_ShapeT: np._SupportsArray[_ArrayLikeAnyString_co], _DTypeT](
         :type axis: Typeaxis
         """
 
-    def str_len(self, axis: Typeaxis = None) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
+    def str_len(self, axis: Typeaxis = None) -> NPNumber[_ShapeTs, np.dtype[np.uint64]]:
         """
         配列内の要素の文字の長さを求める
 
@@ -291,7 +296,7 @@ class NPString[_ShapeT: np._SupportsArray[_ArrayLikeAnyString_co], _DTypeT](
     def min(self, axis: Typeaxis = None) -> np.int_:
         """配列内の要素の文字列の長さが最も小さい数値を求める"""
 
-    def replace(self, old: str, new: str) -> NPString[_ShapeT, _CharType]:
+    def replace(self, old: str, new: str) -> NPString[_ShapeTs, _CharType]:
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
 
     def center(
@@ -351,7 +356,7 @@ class NPString[_ShapeT: np._SupportsArray[_ArrayLikeAnyString_co], _DTypeT](
         suffix: _ArrayLikeAnyString_co,
         start: _ArrayLikeInt_co = 0,
         end: _ArrayLikeInt_co | None = None,
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]:
+    ) -> NPBool[_ShapeTs, np.dtype[np.bool_]]:
         """
         配列の要素が`suffix`で終わるかを調べる
 

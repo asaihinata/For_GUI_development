@@ -1,7 +1,7 @@
 from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
-from numpy.typing import NDArray
+from numpy.typing import NDArray,ArrayLike,DTypeLike
 
 from sgg.typing import Typeaxis
 
@@ -19,16 +19,14 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPArray[_ShapeT, _DTypeT](
-    np.ndarray[_ShapeT, np.dtype[_DTypeT]], _ArrayShapeMixin, np._ArrayOrScalarCommon
-):
+class NPArray[_ShapeT, _DTypeT](_ArrayShapeMixin,np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
     """`np.ndarray`を継承した型付き配列クラス"""
 
     _element_type: None
     _default_dtype: Literal["object"]
-
+    # 1D
     @overload
-    def __new__(
+    def __new__[_ShapeT:ArrayLike](
         cls,
         data: _ShapeT,
         dtype: None = None,
@@ -37,29 +35,31 @@ class NPArray[_ShapeT, _DTypeT](
         max_ndim: int | None = None,
     ) -> NPArray[_ShapeT, Any]: ...
     @overload
-    def __new__(
+    def __new__[_ShapeT:ArrayLike,_DType:DTypeLike](
         cls,
         data: _ShapeT,
-        dtype: type[_DTypeT],
+        dtype: _DType,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPArray[_ShapeT, np.dtype[_DTypeT]]: ...
-    def __new__(
+    ) -> NPArray[_ShapeT, _DType]: ...
+    @overload
+    def __new__[_ShapeT:ArrayLike,_DType:np.generic](
         cls,
         data: _ShapeT,
-        dtype: type[_DTypeT] | None = None,
+        dtype: np._DTypeLike[_DType],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> Self:
+    ) -> NPArray[_ShapeT, _DType]: ...
+    def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: array_like
+        :type data: -
         :param dtype: 配列の型を指定する
-        :type dtype: data-type
+        :type dtype: -
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する

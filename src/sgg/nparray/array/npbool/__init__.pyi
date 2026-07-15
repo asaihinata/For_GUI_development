@@ -1,17 +1,11 @@
-from typing import Any, Iterator, Self, TypeVar, overload
+from typing import Any, Iterator, Self,TypeVar, TypeAlias, overload
 
 import numpy as np
-from numpy._typing import _DTypeLikeBool
-
-from sgg.typing import _ArrayLikeBool_co
-
+from numpy._typing import _DTypeLikeBool,_NestedSequence,_ArrayLike
 from ..dev import _ArrayShapeMixin
 
 __all__ = ["NPBool"]
 HANDLED_FUNCTIONS: dict
-_DTypeT = TypeVar(
-    "_DTypeT", bound=np.generic, default=np.dtype[np.bool_], covariant=True
-)
 
 def implements(np_function) -> Any:
     """
@@ -20,9 +14,11 @@ def implements(np_function) -> Any:
     :param np_function: 登録対象のnumpy関数
     :return: デコレータ関数を返す
     """
-
-class NPBool[_ShapeT: np._SupportsArray[_ArrayLikeBool_co], _DTypeT](
-    _ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
+BoolList:TypeAlias=bool|np.bool|np.bool_
+DBoolList:TypeAlias=np.dtype[np.bool]|np.dtype[np.bool_]
+_DTypeT = TypeVar("_DTypeT", bound=np.generic, default=np.bool_, covariant=True)
+class NPBool[_ShapeTs, _Dtypes:_DTypeT](
+    _ArrayShapeMixin, np.ndarray[_ShapeTs, np.dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承したbool型の配列クラス"""
 
@@ -30,38 +26,49 @@ class NPBool[_ShapeT: np._SupportsArray[_ArrayLikeBool_co], _DTypeT](
     _default_dtype: type[np.bool_]
 
     @overload
-    def __new__(
+    def __new__[_ShapeT:BoolList](
         cls,
         data: _ShapeT,
         dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    ) -> NPBool[_ShapeT, np.dtype[_DTypeT]]: ...
     @overload
-    def __new__(
+    def __new__[_ShapeT:BoolList](
         cls,
         data: _ShapeT,
         dtype: _DTypeLikeBool,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    def __new__(
+    ) -> NPBool[_ShapeT, np.dtype[_DTypeLikeBool]]: ...
+    @overload
+    def __new__[_ShapeT:np._ArrayLikeBool_co](
         cls,
-        data: _ShapeT,
-        dtype: _DTypeLikeBool | None = np.bool_,
+        data: _NestedSequence[_ShapeT],
+        dtype: None=None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> Self:
+    ) -> NPBool[_ArrayLike[_ShapeT], np.dtype[_DTypeT]]: ...
+    @overload
+    def __new__[_ShapeT:np._ArrayLikeBool_co](
+        cls,
+        data: _NestedSequence[_ShapeT],
+        dtype: _DTypeLikeBool,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPBool[_ArrayLike[_ShapeT], np.dtype[_DTypeLikeBool]]: ...
+    def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: _ArrayLikeBool_co
+        :type data: -
         :param dtype: 配列の型を指定する
-        :type dtype: _DTypeLikeBool | None
+        :type dtype: -
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
@@ -74,7 +81,7 @@ class NPBool[_ShapeT: np._SupportsArray[_ArrayLikeBool_co], _DTypeT](
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    def __class_getitem__(cls, item: Any) -> type[NPBool[_ShapeT, _DTypeT]]: ...
+    def __class_getitem__(cls, item: Any) -> type[NPBool[_ShapeTs, _Dtypes]]: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -99,11 +106,11 @@ class NPBool[_ShapeT: np._SupportsArray[_ArrayLikeBool_co], _DTypeT](
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, _DTypeT]: ...
+    ) -> np.ndarray[_ShapeTs, _Dtypes]: ...
     @overload
     def __array__[DType](
         self, dtype: DType, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, np.dtype[DType]]: ...
+    ) -> np.ndarray[_ShapeTs, np.dtype[DType]]: ...
     def __array_function__(
         self,
         func: Any,
@@ -128,7 +135,7 @@ class NPBool[_ShapeT: np._SupportsArray[_ArrayLikeBool_co], _DTypeT](
 
     def __ne__(self, value: Any) -> NPBool[Any]: ...
     def __eq__(self, value: Any) -> NPBool[Any]: ...
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
+    def __iter__(self) -> Iterator[np.ndarray[_ShapeTs, _Dtypes]]: ...
     def __invert__(self) -> Self:
         """配列内の真偽値を反転させる"""
 

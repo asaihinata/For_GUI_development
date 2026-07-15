@@ -20,7 +20,7 @@ def implements(np_function):
 
 
 class NPString(_ArrayShapeMixin, np.ndarray):
-    _element_type = (str, np.character, np.str_, np.bytes_)
+    _element_type = (str, np.character, np.str_, np.bytes_, np.void)
     _default_dtype = np.str_
 
     def __new__(cls, data, dtype=np.str_, d_ndim=None, min_ndim=None, max_ndim=None):
