@@ -32,7 +32,7 @@ class Step(twoElement):
                 label=self.label[i],
                 alpha=alpha,
             )
-            for i, d in enumerate(data)
+            for i, d in enumerate([data] if data.ndim == 1 else data)
         ]
         self._apply_labels(self.xlabel, self.ylabel)
         self.legend()

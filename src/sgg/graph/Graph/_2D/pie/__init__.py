@@ -16,7 +16,7 @@ class Pie(twoElement):
         if isinstance(explode, int | float):
             self.explode = np.tile(explode, self.__data.size).astype(float)
         elif change_array_like(explode):
-            self.explode = np.array(explode, dtype=np.float64).astype(float)
+            self.explode = np.asanyarray(explode, dtype=np.float64).astype(float)
         else:
             self.explode = None
         self.__plot(
@@ -69,7 +69,7 @@ class Pie(twoElement):
         if isinstance(explode, int | float):
             self.explode = np.tile(explode, self.__data.size).astype(float)
         elif change_array_like(explode):
-            self.explode = np.array(explode, dtype=np.float64).astype(float)
+            self.explode = np.asanyarray(explode, dtype=np.float64).astype(float)
         else:
             self.explode = None
         self.startangle = nums(kw.get("startangle"), self.startangle)

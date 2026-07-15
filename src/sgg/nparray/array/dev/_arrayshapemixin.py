@@ -72,10 +72,7 @@ class _ArrayShapeMixin(_ArrayCommonMixin):
     """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
 
     def __iter__(self):
-        data = np.asarray(self)
-        if self.ndim == 1:
-            return iter([data])
-        return iter(data)
+        return iter(np.asarray(self))
 
     @classmethod
     def _resolve_dtype(cls, dtype):

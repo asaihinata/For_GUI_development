@@ -1,16 +1,12 @@
 """基本的な文字列の操作をするモジュール"""
 
-from typing import Any, Iterator, Self, TypeAlias, overload,Union
+from typing import Any, Iterator, Self, TypeAlias, Union, overload
 
 import numpy as np
-from numpy._typing import (
-_CharLike_co,
-_DTypeLike,
-_NestedSequence
-)
 from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBytes_co,
                            _ArrayLikeInt_co, _ArrayLikeStr_co,
-                           _ArrayLikeString_co)
+                           _ArrayLikeString_co, _CharLike_co, _DTypeLike,
+                           _NestedSequence)
 
 from sgg.typing import Typeaxis, _CharType
 
@@ -23,11 +19,13 @@ _StringDTypeSupportsArray: TypeAlias = np._SupportsArray[np.dtypes.StringDType]
 
 class NPString[_ShapeTs, _DTypeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, _DTypeTs]):
 
-    _element_type: tuple[type[str], type[np.character], type[np.str_], type[np.bytes_], type[np.void]]
+    _element_type: tuple[
+        type[str], type[np.character], type[np.str_], type[np.bytes_], type[np.void]
+    ]
     _default_dtype: type[np.str_]
 
     @overload
-    def __new__[_ShapeT:Union[np.flexible, _CharLike_co]](
+    def __new__[_ShapeT: Union[np.flexible, _CharLike_co]](
         cls,
         data: _ShapeT,
         dtype: None = None,
@@ -36,7 +34,7 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, _DType
         max_ndim: int | None = None,
     ) -> NPString[_ShapeT, np.dtype[np.str_]]: ...
     @overload
-    def __new__[_ShapeT:Union[np.flexible, _CharLike_co],DType:np.flexible](
+    def __new__[_ShapeT: Union[np.flexible, _CharLike_co], DType: np.flexible](
         cls,
         data: _ShapeT,
         dtype: _DTypeLike[DType],
@@ -45,16 +43,18 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, _DType
         max_ndim: int | None = None,
     ) -> NPString[np.str_, np.dtype[DType]]: ...
     @overload
-    def __new__[_ShapeT:_NestedSequence[bytes | str | np.flexible]](
+    def __new__[_ShapeT: _NestedSequence[bytes | str | np.flexible]](
         cls,
-        data:_ShapeT,
+        data: _ShapeT,
         dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPString[_ShapeT, np.dtype[np.str_]]: ...
     @overload
-    def __new__[_ShapeT:_NestedSequence[bytes | str | np.flexible],DType:np.flexible](
+    def __new__[
+        _ShapeT: _NestedSequence[bytes | str | np.flexible], DType: np.flexible
+    ](
         cls,
         data: _ShapeT,
         dtype: _DTypeLike[DType],
@@ -174,7 +174,8 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, _DType
     def __add__(
         self: NPString[_ShapeTs, _ArrayLikeString_co], value: _ArrayLikeString_co
     ) -> (
-        NPString[_ShapeTs, np.dtype[np.str_]] | NPString[_ShapeTs, np.dtypes.StringDType]
+        NPString[_ShapeTs, np.dtype[np.str_]]
+        | NPString[_ShapeTs, np.dtypes.StringDType]
     ): ...
     @overload
     def __iadd__(
@@ -193,7 +194,8 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, _DType
     def __iadd__(
         self: NPString[_ShapeTs, _ArrayLikeString_co], value: _ArrayLikeString_co
     ) -> (
-        NPString[_ShapeTs, np.dtype[np.str_]] | NPString[_ShapeTs, np.dtypes.StringDType]
+        NPString[_ShapeTs, np.dtype[np.str_]]
+        | NPString[_ShapeTs, np.dtypes.StringDType]
     ): ...
     @overload
     def __radd__(
@@ -212,7 +214,8 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, _DType
     def __radd__(
         self: NPString[_ShapeTs, _ArrayLikeString_co], value: _ArrayLikeString_co
     ) -> (
-        NPString[_ShapeTs, np.dtype[np.str_]] | NPString[_ShapeTs, np.dtypes.StringDType]
+        NPString[_ShapeTs, np.dtype[np.str_]]
+        | NPString[_ShapeTs, np.dtypes.StringDType]
     ): ...
     def __mul__(self, i: _ArrayLikeInt_co) -> NPString:
         """
@@ -242,7 +245,9 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, _DType
     @property
     def element_type(
         self,
-    ) -> tuple[type[str], type[np.character], type[np.str_], type[np.bytes_], type[np.void]]:
+    ) -> tuple[
+        type[str], type[np.character], type[np.str_], type[np.bytes_], type[np.void]
+    ]:
         """NPStringで許可されている型を取得する"""
 
     def append(self, val: Any) -> NPString:

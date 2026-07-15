@@ -48,7 +48,7 @@ class LineGraph(twoElement):
                 alpha=alpha,
                 label=label[i],
             )
-            for i, (xs, ys) in enumerate(product(x, y))
+            for i, (xs, ys) in enumerate(TwoArray(x, y, ydtype=np.float64))
         ][0]
         self._apply_labels(self.xlabel, self.ylabel)
         self.legend()

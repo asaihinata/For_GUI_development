@@ -1,3 +1,5 @@
+import numpy as np
+
 from sgg.graph.graph.dev import Marker, RadarElement, Solid, num0
 
 __all__ = ["RadarLine"]
@@ -21,6 +23,8 @@ class RadarLine(RadarElement):
 
     def __plot(self, data, marker, linewidth, linestyle, markersize, alpha):
         self.clear()
+        if data.ndim == 1:
+            data = np.array([data])
         self.graphdata = [
             self.ax.plot(
                 self.theta,

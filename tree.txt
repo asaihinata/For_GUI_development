@@ -196,6 +196,9 @@ For_GUI_development
  │   │   │   │   │       └── __init__.pyi
  │   │   │   │   └── dev
  │   │   │   │       ├── __init__.py
+ │   │   │   │       ├── threearray
+ │   │   │   │       │   ├── __init__.py
+ │   │   │   │       │   └── __init__.pyi
  │   │   │   │       └── twoarray
  │   │   │   │           ├── __init__.py
  │   │   │   │           └── __init__.pyi
@@ -441,5 +444,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:304
-フォルダ数:138
+ファイル数:306
+フォルダ数:139

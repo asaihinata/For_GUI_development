@@ -1,7 +1,8 @@
-from typing import Any, Iterator, Self,TypeVar, TypeAlias, overload
+from typing import Any, Iterator, Self, TypeAlias, TypeVar, overload
 
 import numpy as np
-from numpy._typing import _DTypeLikeBool,_NestedSequence,_ArrayLike
+from numpy._typing import _ArrayLike, _DTypeLikeBool, _NestedSequence
+
 from ..dev import _ArrayShapeMixin
 
 __all__ = ["NPBool"]
@@ -14,10 +15,12 @@ def implements(np_function) -> Any:
     :param np_function: 登録対象のnumpy関数
     :return: デコレータ関数を返す
     """
-BoolList:TypeAlias=bool|np.bool|np.bool_
-DBoolList:TypeAlias=np.dtype[np.bool]|np.dtype[np.bool_]
+
+BoolList: TypeAlias = bool | np.bool | np.bool_
+DBoolList: TypeAlias = np.dtype[np.bool] | np.dtype[np.bool_]
 _DTypeT = TypeVar("_DTypeT", bound=np.generic, default=np.bool_, covariant=True)
-class NPBool[_ShapeTs, _Dtypes:_DTypeT](
+
+class NPBool[_ShapeTs, _Dtypes: _DTypeT](
     _ArrayShapeMixin, np.ndarray[_ShapeTs, np.dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承したbool型の配列クラス"""
@@ -26,7 +29,7 @@ class NPBool[_ShapeTs, _Dtypes:_DTypeT](
     _default_dtype: type[np.bool_]
 
     @overload
-    def __new__[_ShapeT:BoolList](
+    def __new__[_ShapeT: BoolList](
         cls,
         data: _ShapeT,
         dtype: None = None,
@@ -35,7 +38,7 @@ class NPBool[_ShapeTs, _Dtypes:_DTypeT](
         max_ndim: int | None = None,
     ) -> NPBool[_ShapeT, np.dtype[_DTypeT]]: ...
     @overload
-    def __new__[_ShapeT:BoolList](
+    def __new__[_ShapeT: BoolList](
         cls,
         data: _ShapeT,
         dtype: _DTypeLikeBool,
@@ -44,16 +47,16 @@ class NPBool[_ShapeTs, _Dtypes:_DTypeT](
         max_ndim: int | None = None,
     ) -> NPBool[_ShapeT, np.dtype[_DTypeLikeBool]]: ...
     @overload
-    def __new__[_ShapeT:np._ArrayLikeBool_co](
+    def __new__[_ShapeT: np._ArrayLikeBool_co](
         cls,
         data: _NestedSequence[_ShapeT],
-        dtype: None=None,
+        dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPBool[_ArrayLike[_ShapeT], np.dtype[_DTypeT]]: ...
     @overload
-    def __new__[_ShapeT:np._ArrayLikeBool_co](
+    def __new__[_ShapeT: np._ArrayLikeBool_co](
         cls,
         data: _NestedSequence[_ShapeT],
         dtype: _DTypeLikeBool,

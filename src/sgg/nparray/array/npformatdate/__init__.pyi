@@ -77,9 +77,7 @@ class NPFormatDate[_ShapeTs, _Dtypes](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPFormatDate[
-        _ArrayLike[datetime64[_ShapeT]], np.dtype[datetime64[Dtype]]
-    ]: ...
+    ) -> NPFormatDate[_ArrayLike[datetime64[_ShapeT]], np.dtype[datetime64[Dtype]]]: ...
     def __new__() -> Self:
         """
         様々な日付のフォーマットを特定の日付フォーマットに変換する配列オブジェクトインスタンスを生成する

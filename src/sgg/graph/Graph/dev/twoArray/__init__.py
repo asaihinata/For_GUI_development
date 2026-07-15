@@ -2,25 +2,25 @@
 
 from itertools import product
 
-from numpy import append, array, concatenate
+import numpy as np
 
 __all__ = ["TwoArray"]
 
 
 class TwoArray:
     def __init__(self, x, y, xdtype=object, ydtype=object):
-        self.__x = array(x, dtype=xdtype)
-        self.__y = array(y, dtype=ydtype)
+        self.__x = np.asanyarray(x, dtype=xdtype)
+        self.__y = np.asanyarray(y, dtype=ydtype)
         if self.__x.ndim == 1:
-            self.__x = array([x], dtype=xdtype)
+            self.__x = np.asanyarray([x], dtype=xdtype)
         if self.__y.ndim == 1:
-            self.__y = array([y], dtype=ydtype)
+            self.__y = np.asanyarray([y], dtype=ydtype)
         data = []
         self.__data = [
             (
-                [concatenate([[xs], [ys]])]
+                [np.concatenate([[xs], [ys]])]
                 if len(data) == 0
-                else append(data, [concatenate([[xs], [ys]])], axis=0)
+                else np.append(data, [np.concatenate([[xs], [ys]])], axis=0)
             )
             for xs, ys in product(self.__x, self.__y)
         ]

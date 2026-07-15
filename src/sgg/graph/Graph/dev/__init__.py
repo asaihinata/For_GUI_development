@@ -8,6 +8,7 @@ from sgg.graph.style import *
 from sgg.nparray import *
 from sgg.typing import *
 
+from .threearray import ThreeArray
 from .twoarray import TwoArray
 
 

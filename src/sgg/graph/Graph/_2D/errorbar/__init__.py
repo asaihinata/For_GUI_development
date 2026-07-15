@@ -1,5 +1,3 @@
-from itertools import product
-
 from sgg.graph.graph.dev import *
 
 __all__ = ["Errorbar"]
@@ -92,7 +90,7 @@ class Errorbar(twoElement):
                 errorevery=errorevery,
                 alpha=alpha,
             )
-            for i, (xs, ys) in enumerate(product(x, y))
+            for i, (xs, ys) in enumerate(TwoArray(x, y, ydtype=np.float64))
         ]
         self._apply_labels(self.xlabel, self.ylabel)
         self.legend()

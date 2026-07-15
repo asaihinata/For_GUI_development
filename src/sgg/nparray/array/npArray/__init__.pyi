@@ -1,7 +1,7 @@
 from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
-from numpy.typing import NDArray,ArrayLike,DTypeLike
+from numpy.typing import ArrayLike, DTypeLike, NDArray
 
 from sgg.typing import Typeaxis
 
@@ -19,14 +19,16 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPArray[_ShapeT, _DTypeT](_ArrayShapeMixin,np.ndarray[_ShapeT, np.dtype[_DTypeT]]):
+class NPArray[_ShapeT, _DTypeT](
+    _ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
+):
     """`np.ndarray`を継承した型付き配列クラス"""
 
     _element_type: None
     _default_dtype: Literal["object"]
     # 1D
     @overload
-    def __new__[_ShapeT:ArrayLike](
+    def __new__[_ShapeT: ArrayLike](
         cls,
         data: _ShapeT,
         dtype: None = None,
@@ -35,7 +37,7 @@ class NPArray[_ShapeT, _DTypeT](_ArrayShapeMixin,np.ndarray[_ShapeT, np.dtype[_D
         max_ndim: int | None = None,
     ) -> NPArray[_ShapeT, Any]: ...
     @overload
-    def __new__[_ShapeT:ArrayLike,_DType:DTypeLike](
+    def __new__[_ShapeT: ArrayLike, _DType: DTypeLike](
         cls,
         data: _ShapeT,
         dtype: _DType,
@@ -44,7 +46,7 @@ class NPArray[_ShapeT, _DTypeT](_ArrayShapeMixin,np.ndarray[_ShapeT, np.dtype[_D
         max_ndim: int | None = None,
     ) -> NPArray[_ShapeT, _DType]: ...
     @overload
-    def __new__[_ShapeT:ArrayLike,_DType:np.generic](
+    def __new__[_ShapeT: ArrayLike, _DType: np.generic](
         cls,
         data: _ShapeT,
         dtype: np._DTypeLike[_DType],

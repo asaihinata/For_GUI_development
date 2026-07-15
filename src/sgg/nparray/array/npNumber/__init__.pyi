@@ -3,7 +3,8 @@
 from typing import Any, Iterator, Literal, Self, TypeAlias, TypeVar, overload
 
 import numpy as np
-from numpy._typing import _FloatLike_co,_NumberLike_co,_DTypeLike,_ArrayLikeNumber_co
+from numpy._typing import (_ArrayLikeNumber_co, _DTypeLike, _FloatLike_co,
+                           _NumberLike_co)
 from numpy.typing import NDArray
 
 from sgg.typing import Typeaxis
@@ -36,16 +37,14 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPNumber[_ShapeTs](
-    _ArrayShapeMixin, np.ndarray[_ShapeTs, np.dtype[_DType]]
-):
+class NPNumber[_ShapeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, np.dtype[_DType]]):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
     _element_type: tuple[type[int], type[float], type[complex], type[np.number]]
     _default_dtype: type[np.float64]
 
     @overload
-    def __new__[_ShapeT:_NumberLike_co](
+    def __new__[_ShapeT: _NumberLike_co](
         cls,
         data: _ShapeT,
         dtype: None = None,
@@ -54,7 +53,7 @@ class NPNumber[_ShapeTs](
         max_ndim: int | None = None,
     ) -> NPNumber[_ShapeT, np.dtype[np.float64]]: ...
     @overload
-    def __new__[_ShapeT:_NumberLike_co,DType:np.number](
+    def __new__[_ShapeT: _NumberLike_co, DType: np.number](
         cls,
         data: _ShapeT,
         dtype: _DTypeLike[DType],
@@ -63,16 +62,16 @@ class NPNumber[_ShapeTs](
         max_ndim: int | None = None,
     ) -> NPNumber[_ShapeT, np.dtype[DType]]: ...
     @overload
-    def __new__[_ShapeT:_ArrayLikeNumber_co](
+    def __new__[_ShapeT: _ArrayLikeNumber_co](
         cls,
         data: _ShapeT,
-        dtype: None=None,
+        dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPNumber[_ShapeT, _DType]: ...
     @overload
-    def __new__[_ShapeT:_ArrayLikeNumber_co,DType:np.number](
+    def __new__[_ShapeT: _ArrayLikeNumber_co, DType: np.number](
         cls,
         data: _ShapeT,
         dtype: _DTypeLike[DType],

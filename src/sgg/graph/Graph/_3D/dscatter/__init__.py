@@ -1,5 +1,3 @@
-from itertools import product
-
 from sgg.graph.graph.dev import *
 
 __all__ = ["DScatter"]
@@ -20,13 +18,18 @@ class DScatter(threeElement):
             marker=self.marker,
             alpha=self.alpha,
             label=self.label,
+            s=self.s,
         )
 
-    def __plot(self, x, y, z, label, marker, alpha):
+    def __plot(self, x, y, z, label, marker, alpha, s):
         self.clear()
+        for i, (xs, ys, zs) in enumerate(ThreeArray(x, y, z)):
+            print(xs, ys, zs)
         self.graphdata = [
-            self.ax.scatter(xs, ys, zs, label=label[i], marker=marker[i], alpha=alpha)
-            for i, (xs, ys, zs) in enumerate(product(x, y, z))
+            self.ax.scatter(
+                xs, ys, zs, label=label[i], marker=marker[i], alpha=alpha, s=s
+            )
+            for i, (xs, ys, zs) in enumerate(ThreeArray(x, y, z))
         ]
         self._apply_labels(self.xlabel, self.ylabel, self.zlabel)
         self.legend()
@@ -51,6 +54,7 @@ class DScatter(threeElement):
             marker=self.marker,
             alpha=self.alpha,
             label=self.label,
+            s=self.s,
         )
         self._redraw()
 
