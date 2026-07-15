@@ -270,3 +270,51 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
         if not isinstance(keepdims, bool):
             keepdims = False
         return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
+
+    def isinf(self):
+        return NPBool(np.isinf(self))
+
+    def anyisinf(self):
+        return np.any(np.isinf(self))
+
+    def allisinf(self):
+        return np.all(np.isinf(self))
+
+    def isnan(self):
+        return NPBool(np.isnan(self))
+
+    def anyisnan(self):
+        return np.any(np.isnan(self))
+
+    def allisnan(self):
+        return np.all(np.isnan(self))
+
+    def isfinite(self):
+        return NPBool(np.isfinite(self))
+
+    def anyisfinite(self):
+        return np.any(np.isfinite(self))
+
+    def allisfinite(self):
+        return np.all(np.isfinite(self))
+
+    def isposinf(self):
+        return NPBool(np.isposinf(self))
+
+    def anyisposinf(self):
+        return np.any(np.isposinf(self))
+
+    def allisposinf(self):
+        return np.all(np.isposinf(self))
+
+    def iscomplexobj(self):
+        return np.iscomplexobj(self)
+
+    def isreal(self):
+        return NPBool(np.isreal(self))
+
+    def anyisreal(self):
+        return np.any(np.isreal(self))
+
+    def allisreal(self):
+        return np.all(np.isreal(self))

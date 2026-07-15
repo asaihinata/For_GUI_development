@@ -71,6 +71,9 @@ class _ArrayCommonMixin:
 class _ArrayShapeMixin(_ArrayCommonMixin):
     """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
 
+    def isscalar(self):
+        return np.isscalar(self.tolist())
+
     def __iter__(self):
         return iter(np.asarray(self))
 

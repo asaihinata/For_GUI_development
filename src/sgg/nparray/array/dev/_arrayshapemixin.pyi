@@ -212,3 +212,6 @@ class _ArrayShapeMixin(_ArrayCommonMixin):
         :type axes: tuple[int, int]
         :return: 回転させた配列を返す
         """
+
+    def isscalar(self) -> bool:
+        """配列がスカラー値かを調べる"""
