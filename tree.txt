@@ -3,15 +3,21 @@ For_GUI_development
  ├── README.md
  ├── docs
  │   ├── dev
- │   │   ├── color_table.md
- │   │   ├── naming_conventions.md
- │   │   └── numpy
- │   │       ├── numpy_dtype.md
- │   │       ├── numpy_glossary.md
- │   │       └── numpy_special_method.md
+ │   │   └── md
+ │   │       ├── developer
+ │   │       │   ├── howto_markdown.md
+ │   │       │   ├── naming_conventions.md
+ │   │       │   └── py_mustache_custom_docstring_templates.md
+ │   │       ├── numpy
+ │   │       │   ├── numpy_dtype.md
+ │   │       │   ├── numpy_glossary.md
+ │   │       │   ├── numpy_routines.md
+ │   │       │   └── numpy_special_method.md
+ │   │       └── other
+ │   │           └── color_table.md
  │   ├── icon.png
  │   └── templates
- │       └── document_text.mustache
+ │       └── py_document_text.mustache
  ├── pyproject.toml
  ├── src
  │   ├── sgg
@@ -444,5 +450,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:306
-フォルダ数:139
+ファイル数:309
+フォルダ数:142

@@ -1,6 +1,6 @@
 {
     "[python]": {
-        "autoDocstring.customTemplatePath": "docs/templates/document_text.mustache"
+        "autoDocstring.customTemplatePath": "docs/templates/py_document_text.mustache"
     },
     "autoDocstring.docstringFormat": "sphinx",
     "files.encoding": "utf8",
