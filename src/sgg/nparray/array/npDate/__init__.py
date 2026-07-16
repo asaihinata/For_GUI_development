@@ -100,7 +100,15 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
 
     def __ge__(self, value):
         return NPBool(np.greater_equal(np.asarray(self), value))
-
+    @property
+    def year(self):
+        return NPNumber(self.astype('datetime64[Y]').astype(int),np.int64) + 1970
+    @property
+    def month(self):
+        return NPNumber(self.astype('datetime64[M]').astype(int),np.uint8) % 12
+    @property
+    def day(self):
+        return NPNumber((self - self.astype('datetime64[M]')).astype(int) + 1,np.uint8)
     def to_datetime(self):
         return self.data.astype(datetime)
 
@@ -125,9 +133,8 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
         return result
 
     @classmethod
-    def unixtime(cls, dtype="h"):
-        dtype = _get_dt64_unit(dtype)
-        result = np.asarray(np.datetime64(0, dtype)).view(cls)
+    def unix(cls, dtype="h"):
+        result = np.asarray(np.datetime64(0, _get_dt64_unit(dtype))).view(cls)
         result._dtype = result.dtype
         return result
 

@@ -240,7 +240,7 @@ class NPDate[_ShapeTs, _Dtypes](
         """現在時刻(UTC時刻)を返す"""
 
     @classmethod
-    def unixtime(cls, dtype: MDateUnitSet | None = None) -> NPDate: ...
+    def unix(cls, dtype: MDateUnitSet | None = None) -> NPDate: ...
     def weekday(self) -> NPNumber[Any, np.dtype[np.uint8]]:
         """その日付日時の曜日を求める"""
 
