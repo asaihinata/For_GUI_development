@@ -1,21 +1,10 @@
 {
     "[python]": {
+        "autoDocstring.docstringFormat": "sphinx",
         "autoDocstring.customTemplatePath": "docs/templates/py_document_text.mustache"
     },
-    "autoDocstring.docstringFormat": "sphinx",
+    "extensions.ignoreRecommendations": false,
     "files.encoding": "utf8",
     "files.trimTrailingWhitespace": true,
-    "gitlens.codeLens.enabled": true,
-    "search.exclude": {
-        ".crossnote": true,
-        ".editorconfig": true,
-        ".gitattributes": true,
-        ".gitignore": true,
-        ".vscode": true,
-        "docs": true,
-        "pyproject.toml": true,
-        "README.md": true,
-        "src/test": true,
-        "tree.txt": true
-    }
+    "gitlens.codeLens.enabled": true
 }
