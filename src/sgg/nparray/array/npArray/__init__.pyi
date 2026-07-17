@@ -2,7 +2,7 @@ from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
 from numpy.typing import ArrayLike, DTypeLike, NDArray
-
+from numpy._typing import _AnyShape
 from sgg.typing import Typeaxis
 
 from ..dev import _ArrayShapeMixin
@@ -35,6 +35,7 @@ class NPArray[_ShapeT, _DTypeT](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPArray[_ShapeT, Any]: ...
     @overload
     def __new__[_ShapeT: ArrayLike, _DType: DTypeLike](
@@ -44,6 +45,7 @@ class NPArray[_ShapeT, _DTypeT](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPArray[_ShapeT, _DType]: ...
     @overload
     def __new__[_ShapeT: ArrayLike, _DType: np.generic](
@@ -53,6 +55,7 @@ class NPArray[_ShapeT, _DTypeT](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPArray[_ShapeT, _DType]: ...
     def __new__() -> Self:
         """
@@ -68,6 +71,8 @@ class NPArray[_ShapeT, _DTypeT](
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す
         :rtype: Self
         :raises ValueError: 次元数が範囲外の場合に発生させる
@@ -76,14 +81,14 @@ class NPArray[_ShapeT, _DTypeT](
 
     @classmethod
     def full(
-        cls, fill_value: Any, shape: np._AnyShapeT, dtype: _DTypeT | None = None
-    ) -> NPArray[np._AnyShapeT, _DTypeT]:
+        cls, fill_value: Any, shape: _AnyShape, dtype: _DTypeT | None = None
+    ) -> NPArray[_AnyShape, _DTypeT]:
         """指定された形状と配列の型を,fill_valueで埋める"""
 
     @classmethod
     def sequential(
-        cls, shape: np._AnyShapeT
-    ) -> NPArray[np._AnyShapeT, np.dtype[np.uint64]]:
+        cls, shape: _AnyShape
+    ) -> NPArray[_AnyShape, np.dtype[np.uint64]]:
         """
         連続した整数値を要素に持つ配列を生成する
 

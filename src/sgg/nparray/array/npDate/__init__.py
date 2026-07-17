@@ -69,12 +69,12 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
         return super().__array_function__(func, types, args, kwargs)
 
     def __add__(self, value):
-        result = np.add(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.add(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def __sub__(self, value):
-        result = np.subtract(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.subtract(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -100,25 +100,35 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
 
     def __ge__(self, value):
         return NPBool(np.greater_equal(np.asarray(self), value))
+
     @property
     def year(self):
-        return NPNumber(self.astype('datetime64[Y]').astype(int),np.int64) + 1970
+        years = NPNumber(self.astype("datetime64[Y]").astype(np.int64), np.int64)
+        return years + 1970
+
     @property
     def month(self):
-        return NPNumber(self.astype('datetime64[M]').astype(int),np.uint8) % 12
+        return NPNumber(
+            np.mod(self.astype("datetime64[M]").astype(np.int64), 12) + 1, np.uint8
+        )
+
     @property
     def day(self):
-        return NPNumber((self - self.astype('datetime64[M]')).astype(int) + 1,np.uint8)
+        return NPNumber((self - self.astype("datetime64[M]")).astype(int) + 1, np.uint8)
+
     def to_datetime(self):
         return self.data.astype(datetime)
 
     def to_date(self):
         return self.data.astype(date)
 
-    def to_int(self, dtype=None):
-        if dtype is None:
-            dtype = self.dtypes
-        return NPNumber(self.astype(_dt64_unit(dtype)).astype(np.int64), np.int64)
+    @classmethod
+    def arange(cls, start, stop, step=1, dtype=None, device=None, like=None):
+        dtype = _dt64_unit(dtype)
+        return cls(
+            np.arange(start, stop, step=step, dtype=dtype, device=device, like=like),
+            dtype=dtype,
+        )
 
     @classmethod
     def today(cls):
@@ -153,3 +163,7 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
             axis = _normalize_axis(axis, self.ndim, "range")
         data = np.asarray(self).view(type(self))
         return np.min(data, axis=axis), np.max(data, axis=axis)
+
+    def leapyear(self):
+        year = np.asarray(self.year)
+        return NPBool((year % 4 == 0) & ((year % 100 != 0) | (year % 400 == 0)))

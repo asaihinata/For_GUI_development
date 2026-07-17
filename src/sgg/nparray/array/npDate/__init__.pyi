@@ -2,8 +2,9 @@ from datetime import date, datetime
 from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
-from numpy import datetime64
-from numpy._typing import _ArrayLike, _ArrayLikeDT64_co, _NestedSequence
+from _typeshed import Incomplete
+from numpy import datetime64,_1D
+from numpy._typing import (_ArrayLike, _ArrayLikeDT64_co,_DTypeLike, _NestedSequence, _SupportsArrayFunc,_TD64Like_co)
 
 from sgg.typing import MDateUnitSet, Typeaxis
 
@@ -12,9 +13,10 @@ from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPDate"]
+type _Array1D[ScalarT: np.generic] = np.ndarray[tuple[int], np.dtype[ScalarT]]
 
-class NPDate[_ShapeTs, _Dtypes](
-    _ArrayShapeMixin, np.ndarray[_ShapeTs, np.dtype[_Dtypes]]
+class NPDate[_ShapeT, _Dtypes](
+    _ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承した日付の配列クラス"""
 
@@ -120,11 +122,11 @@ class NPDate[_ShapeTs, _Dtypes](
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[_ShapeTs, np.dtype[_Dtypes]]: ...
+    ) -> np.ndarray[_ShapeT, np.dtype[_Dtypes]]: ...
     @overload
     def __array__[DType](
         self, dtype: DType, copy: bool | None = None
-    ) -> np.ndarray[_ShapeTs, np.dtype[DType]]: ...
+    ) -> np.ndarray[_ShapeT, np.dtype[DType]]: ...
     def __array_function__(
         self,
         func: Any,
@@ -221,6 +223,17 @@ class NPDate[_ShapeTs, _Dtypes](
     def __ge__(self, value: np._SupportsGT) -> NPBool[Any, np.dtype[np.bool_]]: ...
     def __iter__(self) -> Iterator[np.ndarray[Any, Any]]: ...
     @property
+    def year(self)->NPNumber:
+        """配列の年を返す"""
+
+    @property
+    def month(self)->NPNumber:
+        """配列の月を返す"""
+
+    @property
+    def day(self)->NPNumber:
+        """配列の日付を返す"""
+    @property
     def element_type(self) -> type[datetime64]:
         """NPDateで許可されている型を取得する"""
 
@@ -230,7 +243,62 @@ class NPDate[_ShapeTs, _Dtypes](
     def to_date(self) -> np.ndarray[Any, np.dtype[date]]:
         """配列内の日付を`datetime.date`に変換する"""
 
-    def to_int(self, dtype: MDateUnitSet | None = None) -> NPNumber: ...
+    @overload
+    @classmethod
+    def arange(
+        cls,
+        start: datetime64,
+        stop: datetime64,
+        step: _TD64Like_co | None = 1,
+        *,
+        dtype: _DTypeLike[datetime64] | None = None,
+        device: Literal["cpu"] | None = None,
+        like: _SupportsArrayFunc | None = None,
+    ) -> NPDate[_Array1D[datetime64[Incomplete]],np.dtype[datetime64[Incomplete]]]:
+        """
+        指定された間隔内で,等間隔の日付を返します。
+
+        :param start: 区間を開始する日付を指定する
+        :type start: datetime64
+        :param stop: 区間を終了する日付を指定する
+        :type stop: datetime64
+        :param step: 値の間隔を指定する
+        :type step: _TD64Like_co | None
+        :param dtype: 出力配列の型を指定する
+        :type dtype: _DTypeLike[datetime64] | None
+        :param device: 作成された配列を配置する場所を指定する
+        :type device: Literal["cpu"] | None
+        :param like: NumPy配列ではない配列を作成できるようにする参照するオブジェクトを指定する
+        :type like: _SupportsArrayFunc | None
+        """
+    @overload
+    @classmethod
+    def arange(
+        cls,
+        start: str,
+        stop: str,
+        step: _TD64Like_co | None = 1,
+        *,
+        dtype: _DTypeLike[datetime64] | MDateUnitSet,
+        device: Literal["cpu"] | None = None,
+        like: _SupportsArrayFunc | None = None,
+    ) -> NPDate[_Array1D[datetime64[Incomplete]],np.dtype[datetime64[Incomplete]]]:
+        """
+        指定された間隔内で,等間隔の日付を返します。
+
+        :param start: 区間を開始する日付を指定する
+        :type start: str
+        :param stop: 区間を終了する日付を指定する
+        :type stop: str
+        :param step: 値の間隔を指定する
+        :type step: _TD64Like_co | None
+        :param dtype: 出力配列の型を指定する
+        :type dtype: _DTypeLike[datetime64] | MDateUnitSet
+        :param device: 作成された配列を配置する場所を指定する
+        :type device: Literal["cpu"] | None
+        :param like: NumPy配列ではない配列を作成できるようにする参照するオブジェクトを指定する
+        :type like: _SupportsArrayFunc | None
+        """
     @classmethod
     def today(cls) -> NPDate:
         """現在日付(UTC時刻)を返す"""
@@ -288,3 +356,8 @@ class NPDate[_ShapeTs, _Dtypes](
         :param axis: 求める軸を指定する。
         :type axis: Typeaxis
         """
+
+    def leapyear(
+        self: NPDate[_ShapeT, np.dtype[_Dtypes]],
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]:
+        """その日付の年がうるう年かどうかを判定する"""

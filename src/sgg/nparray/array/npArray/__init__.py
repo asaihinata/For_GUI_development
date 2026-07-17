@@ -21,13 +21,17 @@ class NPArray(_ArrayShapeMixin, np.ndarray):
     _element_type = None
     _default_dtype = "object"
 
-    def __new__(cls, data, dtype=None, d_ndim=None, min_ndim=None, max_ndim=None):
+    def __new__(
+        cls, data, dtype=None, d_ndim=None, min_ndim=None, max_ndim=None, copy=True
+    ):
+        if not isinstance(copy, bool):
+            copy = True
         if dtype is None:
-            obj = np.asarray(data).view(cls)
+            obj = np.array(data, copy=copy).view(cls)
             resolved = obj.dtype
         else:
             resolved = cls._resolve_dtype(dtype)
-            obj = np.asarray(data, dtype=resolved).view(cls)
+            obj = np.array(data, dtype=resolved, copy=copy).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         if isinstance(d_ndim, int):

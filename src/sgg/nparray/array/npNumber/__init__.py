@@ -88,7 +88,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
         return NPBool(np.greater_equal(np.asarray(self), value))
 
     def __add__(self, value):
-        result = np.add(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.add(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -96,7 +96,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
     __iadd__ = __add__
 
     def __sub__(self, value):
-        result = np.subtract(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.subtract(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -104,7 +104,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
     __isub__ = __sub__
 
     def __mul__(self, value):
-        result = np.multiply(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.multiply(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -112,7 +112,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
     __imul__ = __mul__
 
     def __truediv__(self, value):
-        result = np.divide(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.divide(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -120,7 +120,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
     __itruediv__ = __truediv__
 
     def __floordiv__(self, value):
-        result = np.floor_divide(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.floor_divide(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -128,7 +128,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
     __ifloordiv__ = __floordiv__
 
     def __mod__(self, value):
-        result = np.mod(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.mod(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -136,7 +136,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
     __imod__ = __mod__
 
     def __pow__(self, value):
-        result = np.pow(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.pow(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -144,7 +144,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
     __ipow__ = __pow__
 
     def __divmod__(self, value):
-        result1, result2 = np.divmod(np.asarray(self), value)
+        result1, result2 = np.asarray(np.divmod(self, value))
         result1, result2 = result1.view(type(self)), result2.view(type(self))
         result1._dtype = result1.dtype
         result2._dtype = result2.dtype
@@ -153,7 +153,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
     __rdivmod__ = __divmod__
 
     def __abs__(self):
-        result = np.abs(np.asarray(self)).view(type(self))
+        result = np.asarray(np.abs(self)).view(type(self))
         result._dtype = result.dtype
         return result
 

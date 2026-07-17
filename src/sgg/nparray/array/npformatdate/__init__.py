@@ -108,12 +108,12 @@ class NPFormatDate(_ArrayShapeMixin, np.ndarray):
         return NPBool(np.greater_equal(np.asarray(self), value))
 
     def __add__(self, value):
-        result = np.add(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.add(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def __sub__(self, value):
-        result = np.subtract(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.subtract(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
