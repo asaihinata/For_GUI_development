@@ -1,7 +1,8 @@
 from typing import Literal
 
-from numpy._typing import _DT64Codes
 import numpy as np
+from numpy._typing import _DT64Codes
+
 __all__ = [
     "_DATE_UNITL",
     "_MDT64Codes",

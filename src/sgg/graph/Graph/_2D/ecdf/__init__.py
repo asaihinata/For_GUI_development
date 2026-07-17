@@ -33,8 +33,8 @@ class Ecdf(twoElement):
         alpha,
     ):
         self.clear()
-        if data.ndim==1:
-            data=np.array([data])
+        if data.ndim == 1:
+            data = np.array([data])
         self.graphdata = [
             self.ax.ecdf(
                 ds,

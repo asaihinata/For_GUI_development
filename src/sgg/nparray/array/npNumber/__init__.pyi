@@ -1,6 +1,7 @@
 """基本的な数値の操作をするモジュール"""
 
-from typing import Any, Iterator, Literal, Self, TypeAlias, TypeVar, overload
+from typing import (Any, Iterator, Literal, Self, Sequence, SupportsIndex,
+                    TypeAlias, TypeVar, overload)
 
 import numpy as np
 from numpy._typing import (_ArrayLikeNumber_co, _DTypeLike, _FloatLike_co,
@@ -12,10 +13,25 @@ from sgg.typing import Typeaxis
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
 
+__all__ = ["NPNumber"]
 _DType = TypeVar(
     "_DType", bound=np.generic, default=np.dtype[np.float64], covariant=True
 )
-__all__ = ["NPNumber"]
+type _SortKind = Literal[
+    "Q",
+    "quick",
+    "quicksort",
+    "M",
+    "merge",
+    "mergesort",
+    "H",
+    "heap",
+    "heapsort",
+    "S",
+    "stable",
+    "stablesort",
+]
+
 TYPEMETHOD: TypeAlias = Literal[
     "inverted_cdf",
     "averaged_inverted_cdf",
@@ -278,19 +294,37 @@ class NPNumber[_ShapeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, np.dtype[_DType]
         :type method: TYPEMETHOD
         """
 
-    def isinf(self) -> NPBool: ...
-    def anyisinf(self) -> bool: ...
-    def allisinf(self) -> bool: ...
-    def isnan(self) -> NPBool: ...
-    def anyisnan(self) -> bool: ...
-    def allisnan(self) -> bool: ...
-    def isfinite(self) -> NPBool: ...
-    def anyisfinite(self) -> bool: ...
-    def allisfinite(self) -> bool: ...
-    def isposinf(self) -> NPBool: ...
-    def anyisposinf(self) -> bool: ...
-    def allisposinf(self) -> bool: ...
-    def iscomplexobj(self) -> NPBool: ...
-    def isreal(self) -> NPBool: ...
-    def anyisreal(self) -> bool: ...
-    def allisreal(self) -> bool: ...
+    def isinf(self) -> NPBool:
+        """配列の各要素が正または負の無限大(`np.inf`)かどうかを判定する"""
+
+    def isnan(self) -> NPBool:
+        """配列の各要素がNaN(`np.nan`)であるかを判定する"""
+
+    def isfinite(self) -> NPBool:
+        """配列の各要素が有限かどうかを判定する"""
+
+    def isposinf(self) -> NPBool:
+        """配列の各要素が正の無限大(`+np.inf`)かどうかを判定する"""
+
+    def isreal(self) -> NPBool:
+        """配列の各要素が実数かどうかを判定する"""
+
+    def iscomplexobj(self) -> bool:
+        """配列の型が複素数型かどうかを判定する"""
+
+    def sorts(
+        self,
+        axis: SupportsIndex | None = -1,
+        kind: _SortKind | None = None,
+        order: str | Sequence[str] | None = None,
+    ) -> Self:
+        """
+        配列内の数値を並び替える
+
+        :param axis: ソートの基準となる軸を指定する
+        :type axis: SupportsIndex | None
+        :param kind: ソートアルゴリズムの種類を指定する
+        :type kind: _SortKind | None
+        :param order: `NPNumber`がフィールド定義を持つ配列である場合,どのフィールドを優先して比較するかを指定する
+        :type order: str | Sequence[str] | None
+        """
