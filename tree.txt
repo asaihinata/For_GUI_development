@@ -271,7 +271,15 @@ For_GUI_development
  │   │   │       └── __init__.pyi
  │   │   ├── typing
  │   │   │   ├── __init__.py
- │   │   │   └── __init__.pyi
+ │   │   │   ├── array
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── _array.py
+ │   │   │   │   ├── _date.py
+ │   │   │   │   ├── _date_fn.py
+ │   │   │   │   ├── _date_fn.pyi
+ │   │   │   │   └── _dtype.py
+ │   │   │   └── widget
+ │   │   │       └── __init__.py
  │   │   ├── version.py
  │   │   └── widget
  │   │       ├── __init__.py
@@ -450,5 +458,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:309
-フォルダ数:142
+ファイル数:315
+フォルダ数:144

@@ -2,11 +2,11 @@ from datetime import date, datetime
 from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
-from _typeshed import Incomplete
-from numpy import datetime64,_1D
-from numpy._typing import (_ArrayLike, _ArrayLikeDT64_co,_DTypeLike, _NestedSequence, _SupportsArrayFunc,_TD64Like_co)
+from numpy import datetime64
+from numpy._typing import (_ArrayLike, _ArrayLikeDT64_co, _DTypeLike,
+                           _NestedSequence, _SupportsArrayFunc, _TD64Like_co)
 
-from sgg.typing import MDateUnitSet, Typeaxis
+from sgg.typing import Incomplete, MDateUnitSet, Typeaxis
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
@@ -223,16 +223,17 @@ class NPDate[_ShapeT, _Dtypes](
     def __ge__(self, value: np._SupportsGT) -> NPBool[Any, np.dtype[np.bool_]]: ...
     def __iter__(self) -> Iterator[np.ndarray[Any, Any]]: ...
     @property
-    def year(self)->NPNumber:
+    def year(self) -> NPNumber:
         """配列の年を返す"""
 
     @property
-    def month(self)->NPNumber:
+    def month(self) -> NPNumber:
         """配列の月を返す"""
 
     @property
-    def day(self)->NPNumber:
+    def day(self) -> NPNumber:
         """配列の日付を返す"""
+
     @property
     def element_type(self) -> type[datetime64]:
         """NPDateで許可されている型を取得する"""
@@ -254,7 +255,7 @@ class NPDate[_ShapeT, _Dtypes](
         dtype: _DTypeLike[datetime64] | None = None,
         device: Literal["cpu"] | None = None,
         like: _SupportsArrayFunc | None = None,
-    ) -> NPDate[_Array1D[datetime64[Incomplete]],np.dtype[datetime64[Incomplete]]]:
+    ) -> NPDate[_Array1D[datetime64[Incomplete]], np.dtype[datetime64[Incomplete]]]:
         """
         指定された間隔内で,等間隔の日付を返します。
 
@@ -271,6 +272,7 @@ class NPDate[_ShapeT, _Dtypes](
         :param like: NumPy配列ではない配列を作成できるようにする参照するオブジェクトを指定する
         :type like: _SupportsArrayFunc | None
         """
+
     @overload
     @classmethod
     def arange(
@@ -282,7 +284,7 @@ class NPDate[_ShapeT, _Dtypes](
         dtype: _DTypeLike[datetime64] | MDateUnitSet,
         device: Literal["cpu"] | None = None,
         like: _SupportsArrayFunc | None = None,
-    ) -> NPDate[_Array1D[datetime64[Incomplete]],np.dtype[datetime64[Incomplete]]]:
+    ) -> NPDate[_Array1D[datetime64[Incomplete]], np.dtype[datetime64[Incomplete]]]:
         """
         指定された間隔内で,等間隔の日付を返します。
 
@@ -299,6 +301,7 @@ class NPDate[_ShapeT, _Dtypes](
         :param like: NumPy配列ではない配列を作成できるようにする参照するオブジェクトを指定する
         :type like: _SupportsArrayFunc | None
         """
+
     @classmethod
     def today(cls) -> NPDate:
         """現在日付(UTC時刻)を返す"""

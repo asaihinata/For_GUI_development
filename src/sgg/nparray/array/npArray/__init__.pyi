@@ -1,8 +1,9 @@
 from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
-from numpy.typing import ArrayLike, DTypeLike, NDArray
 from numpy._typing import _AnyShape
+from numpy.typing import ArrayLike, DTypeLike, NDArray
+
 from sgg.typing import Typeaxis
 
 from ..dev import _ArrayShapeMixin
@@ -86,9 +87,7 @@ class NPArray[_ShapeT, _DTypeT](
         """指定された形状と配列の型を,fill_valueで埋める"""
 
     @classmethod
-    def sequential(
-        cls, shape: _AnyShape
-    ) -> NPArray[_AnyShape, np.dtype[np.uint64]]:
+    def sequential(cls, shape: _AnyShape) -> NPArray[_AnyShape, np.dtype[np.uint64]]:
         """
         連続した整数値を要素に持つ配列を生成する
 

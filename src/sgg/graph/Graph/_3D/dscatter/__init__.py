@@ -23,8 +23,6 @@ class DScatter(threeElement):
 
     def __plot(self, x, y, z, label, marker, alpha, s):
         self.clear()
-        for i, (xs, ys, zs) in enumerate(ThreeArray(x, y, z)):
-            print(xs, ys, zs)
         self.graphdata = [
             self.ax.scatter(
                 xs, ys, zs, label=label[i], marker=marker[i], alpha=alpha, s=s

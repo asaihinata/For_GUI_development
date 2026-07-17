@@ -7,7 +7,6 @@ class Ecdf(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.__data = NPNumber(kw.get("data"))
-        print(self.__data)
         self.complementary = bols(kw.get("complementary"), False)
         self.compress = bols(kw.get("compress"), False)
         self.orientation = listchose(kw.get("orientation"), ["vertical", "horizontal"])

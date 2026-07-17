@@ -1,37 +1,23 @@
-"""フレームワーク全体で使用する型を設定しているモジュール"""
-
-from typing import Any, Literal, TypeVar, overload
-
-from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBool_co,
-                           _ArrayLikeNumber_co, _ArrayLikeTD64_co, _DT64Codes,
-                           _DTypeLikeTD64)
-from numpy.typing import ArrayLike
-
-from .array import *
-from .widget import ColorType, ColorTypeN, Type_icon, Type_Marker, Type_Solid
+from ._array import *
+from ._date import *
+from ._date_fn import *
+from ._dtype import *
 
 __all__ = [
     "_AnyShape",
-    "_ArrayLikeAnyString_co",
-    "_ArrayLikeBool_co",
     "_ArrayLikeDateParse_co",
-    "_ArrayLikeNumber_co",
-    "_ArrayLikeTD64_co",
     "_CharType",
     "_DATE_UNITL",
     "_dt64_unit",
-    "_DT64Codes",
-    "_DTypeLikeTD64",
     "_DTypeT",
     "_get_dt64_unit",
+    "_MDT64Codes",
     "_NATIVETIME_UNITL",
     "_NumberT",
     "_Shape",
     "_ShapeLike",
     "_ShapeT",
     "_StrT",
-    "Any",
-    "ArrayLike",
     "ArrayLikeAny",
     "ArrayLikeBool",
     "ArrayLikeDateParse",
@@ -39,17 +25,11 @@ __all__ = [
     "ArrayLikeNS",
     "ArrayLikeNumber",
     "ArrayLikeString",
-    "ColorType",
-    "ColorTypeN",
     "DateParseScalar",
     "DateUnit",
-    "Incomplete",
-    "Literal",
+    "DateUnitSet",
+    "MDateUnitSet",
     "NativeTimeUnit",
-    "overload",
-    "Type_icon",
-    "Type_Marker",
-    "Type_Solid",
     "TypeArray2LikeAny",
     "TypeArray2LikeBool",
     "TypeArray2Likedatetime",
@@ -78,8 +58,4 @@ __all__ = [
     "TypeNumber",
     "TypeStr",
     "Typetuple_float64",
-    "TypeVar",
 ]
-
-# その他
-type Incomplete = Any
