@@ -271,7 +271,6 @@ For_GUI_development
  │   │   │       └── __init__.pyi
  │   │   ├── typing
  │   │   │   ├── __init__.py
- │   │   │   ├── __init__.pyi
  │   │   │   ├── _array_date_unit.py
  │   │   │   ├── _array_dtype.py
  │   │   │   ├── _arraylike.py
@@ -456,5 +455,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:315
+ファイル数:314
 フォルダ数:142

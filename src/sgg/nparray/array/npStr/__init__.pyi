@@ -1,6 +1,6 @@
 """基本的な文字列の操作をするモジュール"""
 
-from typing import Any, Iterator, Self, TypeAlias, Union, overload
+from typing import Any, Iterator, Self, Union, overload
 
 import numpy as np
 from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBytes_co,
@@ -8,14 +8,13 @@ from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBytes_co,
                            _ArrayLikeString_co, _CharLike_co, _DTypeLike,
                            _NestedSequence)
 
-from sgg.typing import Typeaxis, _CharType
+from sgg.typing import Typeaxis, _StringDTypeSupportsArray
 
 from ..dev import _ArrayShapeMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPString"]
-_StringDTypeSupportsArray: TypeAlias = np._SupportsArray[np.dtypes.StringDType]
 
 class NPString[_ShapeTs, _DTypeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, _DTypeTs]):
 
@@ -301,7 +300,7 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, _DType
     def min(self, axis: Typeaxis = None) -> np.int_:
         """配列内の要素の文字列の長さが最も小さい数値を求める"""
 
-    def replace(self, old: str, new: str) -> NPString[_ShapeTs, _CharType]:
+    def replace(self, old: str, new: str) -> NPString[_ShapeTs, _DTypeTs]:
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
 
     def center(

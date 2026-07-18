@@ -1,7 +1,7 @@
 from typing import Any
 
 import numpy as np
-from numpy._typing._dtype_like import _SupportsDType
+from numpy._typing import _SupportsDType,_StrCodes,_DTypeLike
 
 __all__ = ["NumericDTypeLike"]
 type NumericDTypeLike = (
@@ -13,3 +13,4 @@ type NumericDTypeLike = (
     | _SupportsDType[np.dtype[np.bool_ | np.number[Any]]]
     | str
 )
+type StringDTypeLike=type[str] | _DTypeLike[np.str_] | _StrCodes

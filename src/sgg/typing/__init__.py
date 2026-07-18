@@ -10,6 +10,7 @@ from ._widget_graph import *
 
 __all__ = [
     "_AllDateUnit",
+    "_StringDTypeSupportsArray",
     "_AnyShape",
     "_DateUnit",
     "_DayUnit",
