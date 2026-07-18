@@ -2,9 +2,7 @@ from datetime import date, datetime
 
 import numpy as np
 
-from sgg.typing import _dt64_unit, _get_dt64_unit
-
-from ..dev import _ArrayShapeMixin, _normalize_axis
+from ..dev import _ArrayShapeMixin, _dt64_unit, _get_dt64_unit, _normalize_axis
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 

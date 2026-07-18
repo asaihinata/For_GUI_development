@@ -1,4 +1,5 @@
 from tkinter import Misc
+from typing import Literal
 
 from matplotlib.projections.polar import PolarAxes
 from numpy import dtype, float64, ndarray

@@ -1,3 +1,5 @@
+from typing import Literal
+
 from matplotlib.container import BarContainer
 
 from sgg.typing import *

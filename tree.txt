@@ -271,15 +271,13 @@ For_GUI_development
  │   │   │       └── __init__.pyi
  │   │   ├── typing
  │   │   │   ├── __init__.py
- │   │   │   ├── array
- │   │   │   │   ├── __init__.py
- │   │   │   │   ├── _array.py
- │   │   │   │   ├── _date.py
- │   │   │   │   ├── _date_fn.py
- │   │   │   │   ├── _date_fn.pyi
- │   │   │   │   └── _dtype.py
- │   │   │   └── widget
- │   │   │       └── __init__.py
+ │   │   │   ├── __init__.pyi
+ │   │   │   ├── _array_date_unit.py
+ │   │   │   ├── _array_dtype.py
+ │   │   │   ├── _arraylike.py
+ │   │   │   ├── _scalar.py
+ │   │   │   ├── _widget_all.py
+ │   │   │   └── _widget_graph.py
  │   │   ├── version.py
  │   │   └── widget
  │   │       ├── __init__.py
@@ -459,4 +457,4 @@ For_GUI_development
      ├── extensions.json
      └── settings.shared.json
 ファイル数:315
-フォルダ数:144
+フォルダ数:142

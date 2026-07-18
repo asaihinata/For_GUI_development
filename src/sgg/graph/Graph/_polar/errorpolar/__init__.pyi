@@ -1,3 +1,5 @@
+from typing import overload
+
 from matplotlib.container import ErrorbarContainer
 
 from sgg.typing import *

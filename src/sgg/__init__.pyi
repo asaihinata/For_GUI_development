@@ -1,7 +1,7 @@
 from io import BytesIO
 from pathlib import Path, PosixPath, WindowsPath
 from tkinter import _Cursor
-from typing import Callable
+from typing import Any, Callable, Literal, overload
 
 from matplotlib.mlab import GaussianKDE
 from numpy.typing import ArrayLike

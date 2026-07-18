@@ -1,3 +1,5 @@
+from typing import Literal
+
 from matplotlib.patches import StepPatch
 
 from sgg.typing import *

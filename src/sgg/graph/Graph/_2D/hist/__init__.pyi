@@ -1,3 +1,5 @@
+from typing import Literal
+
 import numpy as np
 from matplotlib.container import BarContainer
 from matplotlib.patches import Polygon

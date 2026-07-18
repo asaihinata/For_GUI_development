@@ -4,9 +4,7 @@ import numpy as np
 from dateutil.parser import parse
 from numpy.strings import isnumeric
 
-from sgg.typing import _dt64_unit
-
-from ..dev import _ArrayShapeMixin, _normalize_axis
+from ..dev import _ArrayShapeMixin, _dt64_unit, _normalize_axis
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 

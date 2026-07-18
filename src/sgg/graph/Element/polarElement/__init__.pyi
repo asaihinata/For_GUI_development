@@ -1,3 +1,5 @@
+from typing import overload
+
 from matplotlib.projections.polar import PolarAxes
 from numpy import float64, ndarray, number
 

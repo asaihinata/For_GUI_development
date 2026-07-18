@@ -6,13 +6,12 @@ from sgg.graph.element import (RadarElement, polarElement, radar_factory,
                                threeElement, twoElement)
 from sgg.graph.style import *
 from sgg.nparray import *
-from sgg.typing import *
 
 from .threearray import ThreeArray
 from .twoarray import TwoArray
 
 
-def parameters(vals: Any, do1: Any, do2: Any) -> Any:
+def parameters(vals, do1, do2):
     """
     :param vals: Noneかを調べる値を指定する
     :type vals: Any

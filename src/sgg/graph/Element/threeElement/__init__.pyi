@@ -1,8 +1,10 @@
 from collections.abc import Iterable
+from typing import overload
 
 from matplotlib.axis import Tick
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import float64, ndarray
+from numpy.typing import ArrayLike
 
 from sgg.graph.element.graph import GElement
 from sgg.graph.style import getLabel

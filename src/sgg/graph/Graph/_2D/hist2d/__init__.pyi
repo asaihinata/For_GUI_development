@@ -1,5 +1,6 @@
 import numpy as np
 from matplotlib.collections import QuadMesh
+from numpy.typing import ArrayLike
 
 from sgg.typing import *
 

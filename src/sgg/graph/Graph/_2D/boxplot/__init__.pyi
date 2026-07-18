@@ -1,3 +1,5 @@
+from typing import Any, Literal
+
 from sgg.typing import *
 
 from .._2gset import _2Gset

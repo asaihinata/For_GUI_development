@@ -1,3 +1,5 @@
+from typing import overload
+
 import numpy as np
 from matplotlib.collections import PathCollection
 from numpy.typing import NDArray

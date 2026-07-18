@@ -1,0 +1,138 @@
+from typing import Literal, SupportsIndex
+
+import numpy as np
+
+__all__ = [
+    "_AllDateUnit",
+    "_DateUnit",
+    "_DayUnit",
+    "_DT64Codes",
+    "_DT64Codes_any",
+    "_DT64Codes_date",
+    "_DT64Codes_datetime",
+    "_DT64Codes_int",
+    "_DT64Date",
+    "_DT64Now",
+    "_IntTD64Unit",
+    "_IntTimeUnit",
+    "_MonthUnit",
+    "_NativeTD64Unit",
+    "_NativeTimeUnit",
+    "_NaTValue",
+    "_TD64Unit",
+    "_TimeUnit",
+    "_TimeUnitSpec",
+]
+type _DT64Date = np._HasDateAttributes | Literal["TODAY", "today", b"TODAY", b"today"]
+type _DT64Now = Literal["NOW", "now", b"NOW", b"now"]
+type _NaTValue = Literal["NAT", "NaT", "nat", b"NAT", b"NaT", b"nat"]
+type _MonthUnit = Literal["Y", "M", b"Y", b"M"]
+type _DayUnit = Literal["W", "D", b"W", b"D"]
+type _DateUnit = Literal[_MonthUnit, _DayUnit]
+type _NativeTimeUnit = Literal[
+    "h", "m", "s", "ms", "us", "μs", b"h", b"m", b"s", b"ms", b"us"
+]
+type _IntTimeUnit = Literal["ns", "ps", "fs", "as", b"ns", b"ps", b"fs", b"as"]
+type _TimeUnit = Literal[_NativeTimeUnit, _IntTimeUnit]
+type _NativeTD64Unit = Literal[_DayUnit, _NativeTimeUnit]
+type _IntTD64Unit = Literal[_MonthUnit, _IntTimeUnit]
+type _TD64Unit = Literal[_DateUnit, _TimeUnit]
+type _TimeUnitSpec[UnitT: _TD64Unit] = _TD64Unit | tuple[_TD64Unit, SupportsIndex]
+type _DT64Codes_any = Literal["datetime64", "M", "M8", "|M8", "=M8", "<M8", ">M8"]
+type _DT64Codes_date = Literal[
+    "datetime64[Y]",
+    "M8[Y]",
+    "|M8[Y]",
+    "=M8[Y]",
+    "<M8[Y]",
+    ">M8[Y]",
+    "datetime64[M]",
+    "M8[M]",
+    "|M8[M]",
+    "=M8[M]",
+    "<M8[M]",
+    ">M8[M]",
+    "datetime64[W]",
+    "M8[W]",
+    "|M8[W]",
+    "=M8[W]",
+    "<M8[W]",
+    ">M8[W]",
+    "datetime64[D]",
+    "M8[D]",
+    "|M8[D]",
+    "=M8[D]",
+    "<M8[D]",
+    ">M8[D]",
+]
+type _DT64Codes_datetime = Literal[
+    "datetime64[h]",
+    "M8[h]",
+    "|M8[h]",
+    "=M8[h]",
+    "<M8[h]",
+    ">M8[h]",
+    "datetime64[m]",
+    "M8[m]",
+    "|M8[m]",
+    "=M8[m]",
+    "<M8[m]",
+    ">M8[m]",
+    "datetime64[s]",
+    "M8[s]",
+    "|M8[s]",
+    "=M8[s]",
+    "<M8[s]",
+    ">M8[s]",
+    "datetime64[ms]",
+    "M8[ms]",
+    "|M8[ms]",
+    "=M8[ms]",
+    "<M8[ms]",
+    ">M8[ms]",
+    "datetime64[us]",
+    "M8[us]",
+    "|M8[us]",
+    "=M8[us]",
+    "<M8[us]",
+    ">M8[us]",
+    "datetime64[μs]",
+    "M8[μs]",
+    "|M8[μs]",
+    "=M8[μs]",
+    "<M8[μs]",
+    ">M8[μs]",
+]
+type _DT64Codes_int = Literal[
+    "datetime64[ns]",
+    "M8[ns]",
+    "|M8[ns]",
+    "=M8[ns]",
+    "<M8[ns]",
+    ">M8[ns]",
+    "datetime64[ps]",
+    "M8[ps]",
+    "|M8[ps]",
+    "=M8[ps]",
+    "<M8[ps]",
+    ">M8[ps]",
+    "datetime64[fs]",
+    "M8[fs]",
+    "|M8[fs]",
+    "=M8[fs]",
+    "<M8[fs]",
+    ">M8[fs]",
+    "datetime64[as]",
+    "M8[as]",
+    "|M8[as]",
+    "=M8[as]",
+    "<M8[as]",
+    ">M8[as]",
+]
+type _DT64Codes = Literal[
+    _DT64Codes_any,
+    _DT64Codes_date,
+    _DT64Codes_datetime,
+    _DT64Codes_int,
+]
+type _AllDateUnit = Literal[_DT64Codes, _TD64Unit]

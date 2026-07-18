@@ -1,3 +1,5 @@
+from typing import Literal
+
 from matplotlib.collections import FillBetweenPolyCollection
 
 from sgg.typing import *

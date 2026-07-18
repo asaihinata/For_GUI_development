@@ -1,3 +1,5 @@
+from typing import Literal
+
 from matplotlib.lines import Line2D
 
 from sgg.typing import *

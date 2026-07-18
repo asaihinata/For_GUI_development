@@ -1,7 +1,3 @@
-"""フレームワーク全体で使用する型を設定しているモジュール"""
-
-from typing import Any
-
 from ._array_date_unit import *
 from ._array_dtype import *
 from ._arraylike import *
@@ -58,4 +54,3 @@ __all__ = [
     "Typeget_Arrays_NumStr",
     "Typetuple_float64",
 ]
-type Incomplete = Any

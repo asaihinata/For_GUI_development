@@ -1,3 +1,5 @@
+from typing import Literal
+
 from matplotlib.collections import PolyCollection
 
 from sgg.typing import *
