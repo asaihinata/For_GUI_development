@@ -154,3 +154,11 @@ class NPBool[_ShapeTs, _Dtypes: _DTypeT](
 
     def inversion(self) -> Self:
         """配列内の真偽値を反転させる"""
+
+    @property
+    def TrueCount(self) -> int:
+        """配列内の`True`の数を数える"""
+
+    @property
+    def FalseCount(self) -> int:
+        """配列内の`False`の数を数える"""

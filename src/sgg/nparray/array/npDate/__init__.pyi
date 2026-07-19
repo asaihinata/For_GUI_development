@@ -382,3 +382,6 @@ class NPDate[_ShapeT, _Dtypes](
         self: NPDate[_ShapeT, np.dtype[_Dtypes]],
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]:
         """その日付の年がうるう年かどうかを判定する"""
+
+    def leapcount(self) -> int:
+        """配列内のうるう年の数を数える"""

@@ -114,6 +114,9 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
     def day(self):
         return NPNumber((self - self.astype("datetime64[M]")).astype(int) + 1, np.uint8)
 
+    def isnat(self):
+        return np.asarray(np.isnat(self)).view(type(self))
+
     def to_datetime(self):
         return self.data.astype(datetime)
 
@@ -121,7 +124,7 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
         return self.data.astype(date)
 
     @classmethod
-    def arange(cls, start, stop, step=1, dtype=None, device=None, like=None):
+    def arange(cls, start, stop=None, step=1, dtype=None, device=None, like=None):
         dtype = _dt64_unit(dtype)
         return cls(
             np.arange(start, stop, step=step, dtype=dtype, device=device, like=like),
@@ -165,3 +168,9 @@ class NPDate(_ArrayShapeMixin, np.ndarray):
     def leapyear(self):
         year = np.asarray(self.year)
         return NPBool((year % 4 == 0) & ((year % 100 != 0) | (year % 400 == 0)))
+
+    def leapcount(self):
+        year = np.asarray(self.year)
+        return NPBool(
+            (year % 4 == 0) & ((year % 100 != 0) | (year % 400 == 0))
+        ).TrueCount

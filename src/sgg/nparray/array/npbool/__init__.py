@@ -80,3 +80,11 @@ class NPBool(_ArrayShapeMixin, np.ndarray):
         result = np.logical_not(np.asarray(self)).view(type(self))
         result._dtype = self.dtypes
         return result
+
+    @property
+    def TrueCount(self):
+        return int(np.count_nonzero(self))
+
+    @property
+    def FalseCount(self):
+        return int(np.count_nonzero(~self))
