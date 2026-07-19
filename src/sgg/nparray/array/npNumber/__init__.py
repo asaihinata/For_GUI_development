@@ -46,7 +46,9 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
             obj._max_ndim = max_ndim
         return obj
 
-    def __array__(self, dtype=np.float64, copy=None):
+    def __array__(self, dtype=None, copy=None):
+        if dtype is None:
+            dtype=self.dtypes
         return super().__array__(dtype, copy=copy)
 
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):

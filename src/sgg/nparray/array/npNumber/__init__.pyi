@@ -53,7 +53,7 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPNumber[_ShapeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, np.dtype[_DType]]):
+class NPNumber[_ShapeTs,_Dtypes:np.dtype[_DType]](_ArrayShapeMixin, np.ndarray[_ShapeTs, _Dtypes]):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
     _element_type: tuple[type[int], type[float], type[complex], type[np.number]]
@@ -142,7 +142,7 @@ class NPNumber[_ShapeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, np.dtype[_DType]
     @overload
     def __array__(
         self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[_ShapeTs, _DType]: ...
+    ) -> np.ndarray[_ShapeTs, _Dtypes]: ...
     @overload
     def __array__[DType](
         self, dtype: DType, copy: bool | None = None
@@ -198,7 +198,7 @@ class NPNumber[_ShapeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, np.dtype[_DType]
     def __ipow__(self, value: Any) -> NPNumber: ...
     def __divmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
     def __rdivmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
-    def __abs__(self) -> NPNumber: ...
+    def __abs__(self) -> Self: ...
     def __iter__(self) -> Iterator[np.ndarray[_ShapeTs, _DType]]: ...
     @property
     def element_type(
