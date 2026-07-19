@@ -1,7 +1,9 @@
-from typing import Any, Iterator, Self, TypeAlias, TypeVar, overload
+from typing import Any, Iterator, Self, TypeVar, overload
 
 import numpy as np
-from numpy._typing import _ArrayLike, _DTypeLikeBool, _NestedSequence
+from numpy._typing import _DTypeLikeBool
+
+from sgg.typing import BoolScalar, _ArrayLikeBool_co
 
 from ..dev import _ArrayShapeMixin
 
@@ -16,8 +18,6 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-BoolList: TypeAlias = bool | np.bool | np.bool_
-DBoolList: TypeAlias = np.dtype[np.bool] | np.dtype[np.bool_]
 _DTypeT = TypeVar("_DTypeT", bound=np.generic, default=np.bool_, covariant=True)
 
 class NPBool[_ShapeTs, _Dtypes: _DTypeT](
@@ -29,7 +29,7 @@ class NPBool[_ShapeTs, _Dtypes: _DTypeT](
     _default_dtype: type[np.bool_]
 
     @overload
-    def __new__[_ShapeT: BoolList](
+    def __new__[_ShapeT: BoolScalar](
         cls,
         data: _ShapeT,
         dtype: None = None,
@@ -38,7 +38,7 @@ class NPBool[_ShapeTs, _Dtypes: _DTypeT](
         max_ndim: int | None = None,
     ) -> NPBool[_ShapeT, np.dtype[_DTypeT]]: ...
     @overload
-    def __new__[_ShapeT: BoolList](
+    def __new__[_ShapeT: BoolScalar](
         cls,
         data: _ShapeT,
         dtype: _DTypeLikeBool,
@@ -47,23 +47,23 @@ class NPBool[_ShapeTs, _Dtypes: _DTypeT](
         max_ndim: int | None = None,
     ) -> NPBool[_ShapeT, np.dtype[_DTypeLikeBool]]: ...
     @overload
-    def __new__[_ShapeT: np._ArrayLikeBool_co](
+    def __new__[_ShapeT: _ArrayLikeBool_co](
         cls,
-        data: _NestedSequence[_ShapeT],
+        data: _ShapeT,
         dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPBool[_ArrayLike[_ShapeT], np.dtype[_DTypeT]]: ...
+    ) -> NPBool[_ShapeT, np.dtype[_DTypeT]]: ...
     @overload
-    def __new__[_ShapeT: np._ArrayLikeBool_co](
+    def __new__[_ShapeT: _ArrayLikeBool_co](
         cls,
-        data: _NestedSequence[_ShapeT],
+        data: _ShapeT,
         dtype: _DTypeLikeBool,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPBool[_ArrayLike[_ShapeT], np.dtype[_DTypeLikeBool]]: ...
+    ) -> NPBool[_ShapeT, np.dtype[_DTypeLikeBool]]: ...
     def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する

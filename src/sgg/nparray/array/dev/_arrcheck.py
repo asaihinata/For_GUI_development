@@ -1,5 +1,5 @@
 from operator import index
-from re import compile, fullmatch
+from re import compile
 
 import numpy as np
 from numpy._core.multiarray import normalize_axis_index
@@ -91,59 +91,43 @@ def _normalize_axis(axis, ndim, argname=None, allow_duplicate=False):
     return axis
 
 
-__VALID_UNITS = {
-    "Y",
-    "M",
-    "W",
-    "D",
-    "h",
-    "m",
-    "s",
-    "ms",
-    "us",
-    "ns",
-    "ps",
-    "fs",
-    "as",
-    "μs",
-}
-
-__DT64_PATTERN = compile(r"^(?:datetime64|M8)\[(?P<unit>\w+)\]$")
-__DT64_GENERIC_PATTERN = compile(r"^(?:datetime64|M8)$")
+_VALID_UNITS = frozenset(
+    {"Y", "M", "W", "D", "h", "m", "s", "ms", "us", "ns", "ps", "fs", "as"}
+)
+_UNIT_ALIASES = {"μs": "us"}
+_DTYPE_PATTERN = compile(r"^(?:datetime64|[|=<>]?M8)(?:\[(?P<unit>[^\[\]]+)\])?$")
 
 
-def _dt64_unit(spec):
-    if isinstance(spec, np.datetime64):
-        return spec
-    elif isinstance(spec, bytes):
-        spec = spec.decode("ascii")
-    elif not isinstance(spec, str):
-        return "datetime64[D]"
-    spec = spec.strip()
-    if spec and spec[0] in "|=<>":
-        spec = spec[1:]
-    if not spec:
-        return "datetime64[D]"
-    match = __DT64_PATTERN.match(spec)
-    if match:
-        unit = match.group("unit")
-        if unit not in __VALID_UNITS:
-            return "datetime64[D]"
-        return f"datetime64[{unit}]"
-    if __DT64_GENERIC_PATTERN.match(spec):
-        return "datetime64"
-    if spec in __VALID_UNITS:
-        return f"datetime64[{spec}]"
-    return "datetime64[D]"
+def _to_str(value):
+    if isinstance(value, bytes):
+        return value.decode("ascii")
+    if isinstance(value, str):
+        return value
+    try:
+        return str(np.dtype(value))
+    except TypeError:
+        pass
+    raise TypeError(f"{value}にはstrまたはbytesを指定してください")
 
 
-def _get_dt64_unit(dtype_str, auto="D"):
-    if not isinstance(dtype_str, str | bytes):
-        return auto
-    dtype_str = _dt64_unit(dtype_str)
-    if dtype_str[0] in [">", "|", "<", "="]:
-        dtype_str = dtype_str[1:]
-    m = fullmatch(r"datetime64\[(\w+)\]", dtype_str)
-    if m is None:
-        return auto
-    return m.group(1)
+def _normalize_unit(unit: str):
+    return _UNIT_ALIASES.get(unit, unit)
+
+
+def _get_dt64_unit(value):
+    s = _to_str(value).strip()
+    m = _DTYPE_PATTERN.match(s)
+    if m is not None:
+        unit = m.group("unit")
+        return _normalize_unit(unit) if unit is not None else ""
+    normalized = _normalize_unit(s)
+    if normalized in _VALID_UNITS:
+        return normalized
+    raise ValueError(f"認識できないdatetime64の単位/dtype文字列です: {value!r}")
+
+
+def _dt64_unit(value):
+    if isinstance(value, np.datetime64):
+        return value
+    unit = _get_dt64_unit(value)
+    return f"datetime64[{unit}]" if unit else "datetime64"

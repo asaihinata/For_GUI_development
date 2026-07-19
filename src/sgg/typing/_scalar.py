@@ -2,7 +2,9 @@ from datetime import date, datetime
 
 import numpy as np
 
-__all__ = ["DateParseScalar"]
-type DateParseScalar = (
-    str | bytes | np.str_ | np.bytes_ | datetime | date | np.datetime64 | int
-)
+__all__ = [
+    "BoolScalar",
+    "DateParseScalar",
+]
+type DateParseScalar = (str | np.str_ | datetime | date | np.datetime64 | int)
+type BoolScalar = bool | np.bool | np.bool_

@@ -6,6 +6,7 @@ from numpy._typing import _NestedSequence, _SupportsArray
 from numpy.dtypes import StringDType
 
 __all__ = [
+    "_Array1D",
     "_AnyShape",
     "_ArrayLikeBool_co",
     "_ArrayLikeBytes_co",
@@ -29,6 +30,8 @@ type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
     | BuiltinT
     | _NestedSequence[BuiltinT]
 )
+# 配列
+type _Array1D[ScalarT: np.generic] = np.ndarray[tuple[int], np.dtype[ScalarT]]
 # 形状
 type _Shape = tuple[int, ...]
 type _AnyShape = tuple[Any, ...]
