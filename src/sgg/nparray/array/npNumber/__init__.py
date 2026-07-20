@@ -48,7 +48,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
 
     def __array__(self, dtype=None, copy=None):
         if dtype is None:
-            dtype=self.dtypes
+            dtype = self.dtypes
         return super().__array__(dtype, copy=copy)
 
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
@@ -255,7 +255,7 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
         result = np.percentile(
             np.asarray(self), [25, 50, 75], axis=axis, method=method
         ).view(type(self))
-        result._dtype = np.float64
+        result._dtype = result.dtype
         return result
 
     def ratio(self, axis=None):
@@ -293,5 +293,69 @@ class NPNumber(_ArrayShapeMixin, np.ndarray):
 
     def sorts(self, axis=-1, kind=None, order=None):
         result = np.asarray(np.sort(self, axis, kind, order)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    @property
+    def degree(self):
+        result = np.asarray(self * np.pi / 180).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    @property
+    def deg(self):
+        result = np.asarray(self * np.pi / 180).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def deg_to_rad(self):
+        result = np.asarray(self * np.pi / 180).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    @property
+    def radian(self):
+        result = np.asarray(180 * self / np.pi).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    @property
+    def rad(self):
+        result = np.asarray(180 * self / np.pi).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def rad_to_deg(self):
+        result = np.asarray(180 * self / np.pi).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def dsin(self):
+        result = np.asarray(np.sin(self * np.pi / 180)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def dcos(self):
+        result = np.asarray(np.cos(self * np.pi / 180)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def dtan(self):
+        result = np.asarray(np.tan(self * np.pi / 180)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def darcsin(self):
+        result = np.asarray(180 * np.arcsin(self) / np.pi).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def darccos(self):
+        result = np.asarray(180 * np.arccos(self) / np.pi).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def darctan(self):
+        result = np.asarray(180 * np.arctan(self) / np.pi).view(type(self))
         result._dtype = result.dtype
         return result

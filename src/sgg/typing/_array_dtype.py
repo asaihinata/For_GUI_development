@@ -1,10 +1,16 @@
 from typing import Any
 
 import numpy as np
-from numpy._typing import _NestedSequence, _SupportsArray, _SupportsDType
+from numpy._typing import (_DTypeLikeComplex, _NestedSequence, _SupportsArray,
+                           _SupportsDType)
 from numpy.dtypes import StringDType
 
-__all__ = ["_ArrayLikeAnyString_co", "_NumericDTypeLike"]
+__all__ = [
+    "_ArrayLikeAnyString_co",
+    "_ComplexDtypeLike",
+    "_NumericDTypeLike",
+    "_RealNumericDTypeLike",
+]
 type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
     _SupportsArray[DTypeT]
     | _NestedSequence[_SupportsArray[DTypeT]]
@@ -20,6 +26,18 @@ type _NumericDTypeLike = (
     | _SupportsDType[np.dtype[np.bool_ | np.number[Any]]]
     | str
 )
+"""数値全般のdtype"""
+type _RealNumericDTypeLike = (
+    type[bool]
+    | type[int]
+    | type[float]
+    | np.dtype[np.bool_ | np.integer[Any] | np.floating[Any]]
+    | _SupportsDType[np.dtype[np.bool_ | np.integer[Any] | np.floating[Any]]]
+    | str
+)
+"""`実数`全般のdtype"""
+type _ComplexDtypeLike = _DTypeLikeComplex
+"""`複素数`全般のdtype"""
 type _ArrayLikeAnyString_co = _DualArrayLike[
     np.dtype[np.character] | StringDType,
     bytes | str,

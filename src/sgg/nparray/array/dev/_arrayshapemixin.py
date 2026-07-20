@@ -61,12 +61,6 @@ class _ArrayCommonMixin:
     def tonumpy(self):
         return np.asarray(self)
 
-    def all_None(self):
-        return bool(np.all(self.data == None))
-
-    def any_None(self):
-        return bool(np.any(self.data == None))
-
 
 class _ArrayShapeMixin(_ArrayCommonMixin):
     """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""

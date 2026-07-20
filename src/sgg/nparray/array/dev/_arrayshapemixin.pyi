@@ -65,22 +65,6 @@ class _ArrayCommonMixin:
     def tonumpy(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
-    def all_None(self) -> bool:
-        """
-        配列内の全要素が`None`かどうかを返す
-
-        :return: 配列内の全要素が`None`の場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
-
-    def any_None(self) -> bool:
-        """
-        配列内のいずれかの要素が`None`かどうかを返す
-
-        :return: `None`の要素が1つでもある場合は`True`を返し,そうでなければ`False`を返す
-        :rtype: bool
-        """
-
 class _ArrayShapeMixin(_ArrayCommonMixin):
     """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
 
