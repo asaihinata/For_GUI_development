@@ -1,14 +1,14 @@
 """基本的な文字列の操作をするモジュール"""
 
-from typing import Any, Iterator, Self, Union, overload
+from typing import Any, Iterator, Self, overload
 
 import numpy as np
 from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBytes_co,
                            _ArrayLikeInt_co, _ArrayLikeStr_co,
-                           _ArrayLikeString_co, _CharLike_co, _DTypeLike,
-                           _NestedSequence)
+                           _ArrayLikeString_co)
 
-from sgg.typing import Typeaxis, _StringDTypeSupportsArray
+from sgg.typing import (Typeaxis, _ArrayLikeAnyString_co, _StringDTypeLike,
+                        _StringDTypeSupportsArray)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -24,7 +24,7 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayCommonMixin, np.ndarray[_ShapeTs, _DTyp
     _default_dtype: type[np.str_]
 
     @overload
-    def __new__[_ShapeT: Union[np.flexible, _CharLike_co]](
+    def __new__[_ShapeT: _ArrayLikeAnyString_co](
         cls,
         data: _ShapeT,
         dtype: None = None,
@@ -33,34 +33,14 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayCommonMixin, np.ndarray[_ShapeTs, _DTyp
         max_ndim: int | None = None,
     ) -> NPString[_ShapeT, np.dtype[np.str_]]: ...
     @overload
-    def __new__[_ShapeT: Union[np.flexible, _CharLike_co], DType: np.flexible](
+    def __new__[_ShapeT: _ArrayLikeAnyString_co, DType: _StringDTypeLike](
         cls,
         data: _ShapeT,
-        dtype: _DTypeLike[DType],
+        dtype: DType,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPString[np.str_, np.dtype[DType]]: ...
-    @overload
-    def __new__[_ShapeT: _NestedSequence[bytes | str | np.flexible]](
-        cls,
-        data: _ShapeT,
-        dtype: None = None,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> NPString[_ShapeT, np.dtype[np.str_]]: ...
-    @overload
-    def __new__[
-        _ShapeT: _NestedSequence[bytes | str | np.flexible], DType: np.flexible
-    ](
-        cls,
-        data: _ShapeT,
-        dtype: _DTypeLike[DType],
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> NPString[_ShapeT, np.dtype[DType]]: ...
     def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する

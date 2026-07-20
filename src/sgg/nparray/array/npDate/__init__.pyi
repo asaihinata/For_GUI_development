@@ -1,14 +1,14 @@
 from datetime import date, datetime
-from typing import Any, Iterator, Literal, Self, overload
+from typing import Any, Iterator, Literal, Self, overload,Never
 
 import numpy as np
-from numpy import datetime64
-from numpy._typing import (_ArrayLike, _ArrayLikeDT64_co, _DTypeLike,
+from numpy import datetime64,timedelta64
+from numpy._typing import (_ArrayLike, _DTypeLike,
                            _NestedSequence, _SupportsArrayFunc, _TD64Like_co)
 
 from sgg.typing import (Incomplete, Typeaxis, _AllDateUnit, _Array1D,
-                        _DateParseScalar, _DayU64, _IntUD64, _MonthU64,
-                        _TimeUnitSpec)
+                        _DateParseScalar, _DayU64, _IntUD64, _MonthU64,_IntsLike_co,
+                        _TimeUnitSpec,_ArrayLikeDT64_co,_ArrayLikeNone_co)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -25,6 +25,42 @@ class NPDate[_ShapeT, _Dtypes](
     _default_dtype: Literal["datetime64[D]"]
 
     @overload
+    def __new__[_ShapeT:_ArrayLikeNone_co](
+        cls,
+        data: _ShapeT,
+        dtype: None = None,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPDate[_ShapeT,np.dtype[datetime64[date]]]: ...
+    @overload
+    def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: _MonthU64](
+        cls,
+        data: _ShapeT,
+        dtype: _TimeUnitSpec[Dtype],
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPDate[_ShapeT, np.dtype[datetime64[date]]]: ...
+    @overload
+    def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: _DayU64](
+        cls,
+        data: _ShapeT,
+        dtype: _TimeUnitSpec[Dtype],
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPDate[_ShapeT, np.dtype[datetime64[datetime]]]: ...
+    @overload
+    def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: _IntUD64](
+        cls,
+        data: _ShapeT,
+        dtype: _TimeUnitSpec[Dtype],
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPDate[_ShapeT, np.dtype[datetime64[int]]]: ...
+    @overload
     def __new__[_ShapeT: _DateParseScalar](
         cls,
         data: _ShapeT,
@@ -32,7 +68,7 @@ class NPDate[_ShapeT, _Dtypes](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[datetime64[date], np.dtype[datetime64[date]]]: ...
+    ) -> NPDate[datetime64[Incomplete], np.dtype[datetime64[date]]]: ...
     @overload
     def __new__[_ShapeT: _DateParseScalar, Dtype: _MonthU64](
         cls,
@@ -68,7 +104,7 @@ class NPDate[_ShapeT, _Dtypes](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPDate[_ArrayLike[datetime64[date]], np.dtype[datetime64[date]]]: ...
+    ) -> NPDate[_ArrayLike[datetime64[Incomplete]], np.dtype[datetime64[date]]]: ...
     @overload
     def __new__[_ShapeT: _DateParseScalar, Dtype: _MonthU64](
         cls,
@@ -169,29 +205,17 @@ class NPDate[_ShapeT, _Dtypes](
         """
 
     @overload
-    def __add__(self, value: int | bool) -> NPDate[Any, Any]: ...
+    def __add__(self:NPDate[None], value: _IntsLike_co) -> Self: ...
     @overload
     def __add__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, Any]: ...
-    @overload
-    def __iadd__(self, value: int | bool) -> NPDate[Any, Any]: ...
-    @overload
-    def __iadd__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, Any]: ...
-    @overload
-    def __radd__(self, value: int | bool) -> NPDate[Any, Any]: ...
-    @overload
-    def __radd__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, Any]: ...
+    __iadd__=__add__
+    __radd__=__add__
     @overload
     def __sub__(self, value: int | bool) -> NPDate[Any, Any]: ...
     @overload
     def __sub__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, Any]: ...
-    @overload
-    def __isub__(self, value: int | bool) -> NPDate[Any, Any]: ...
-    @overload
-    def __isub__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, Any]: ...
-    @overload
-    def __rsub__(self, value: int | bool) -> NPDate[Any, Any]: ...
-    @overload
-    def __rsub__(self, value: _ArrayLikeDT64_co) -> NPDate[Any, Any]: ...
+    __isub__=__sub__
+    __rsub__=__sub__
     @overload
     def __ne__(self, value: datetime64) -> NPBool[Any, np.dtype[np.bool_]]: ...
     @overload

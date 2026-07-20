@@ -1,6 +1,6 @@
 from typing import Literal
 
-__all__ = ["Type_icon", "ColorType", "ColorTypeN"]
+__all__ = ["ColorType", "ColorTypeN", "Type_icon"]
 # dialogのアイコン
 type Type_icon = Literal["error", "info", "question", "warning"]
 # 色

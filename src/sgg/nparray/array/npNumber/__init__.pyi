@@ -4,11 +4,12 @@ from typing import (Any, Iterator, Literal, Self, Sequence, SupportsIndex,
                     TypeAlias, TypeVar, overload)
 
 import numpy as np
-from numpy._typing import (_ArrayLikeNumber_co, _DTypeLike, _FloatLike_co,
-                           _NumberLike_co)
+from numpy._typing import _FloatLike_co
 from numpy.typing import NDArray
 
-from sgg.typing import Typeaxis, _ComplexDtypeLike,_RealNumericDTypeLike
+from sgg.typing import (Typeaxis, _ArrayLikeNumber_co, _ComplexDtypeLike,
+                        _NumberScalar, _NumericDTypeLike,
+                        _RealNumericDTypeLike)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -62,7 +63,7 @@ class NPNumber[_ShapeTs, _Dtypes: np.dtype[_DType]](
     _default_dtype: type[np.float64]
 
     @overload
-    def __new__[_ShapeT: _NumberLike_co](
+    def __new__[_ShapeT: _NumberScalar](
         cls,
         data: _ShapeT,
         dtype: None = None,
@@ -71,10 +72,10 @@ class NPNumber[_ShapeTs, _Dtypes: np.dtype[_DType]](
         max_ndim: int | None = None,
     ) -> NPNumber[_ShapeT, np.dtype[np.float64]]: ...
     @overload
-    def __new__[_ShapeT: _NumberLike_co, DType: np.number](
+    def __new__[_ShapeT: _NumberScalar, DType: _NumericDTypeLike](
         cls,
         data: _ShapeT,
-        dtype: _DTypeLike[DType],
+        dtype: DType,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -89,10 +90,10 @@ class NPNumber[_ShapeTs, _Dtypes: np.dtype[_DType]](
         max_ndim: int | None = None,
     ) -> NPNumber[_ShapeT, _DType]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeNumber_co, DType: np.number](
+    def __new__[_ShapeT: _ArrayLikeNumber_co, DType: _NumericDTypeLike](
         cls,
         data: _ShapeT,
-        dtype: _DTypeLike[DType],
+        dtype: DType,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,

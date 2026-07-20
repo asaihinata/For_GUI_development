@@ -1,7 +1,7 @@
-from typing import Any, Literal, Self, overload,TypeVar
+from typing import Any, Literal, Self, TypeVar, overload
 
 import numpy as np
-from numpy._typing import _AnyShape,_DTypeLike,_Shape
+from numpy._typing import _AnyShape, _DTypeLike, _Shape
 from numpy.typing import NDArray
 
 from sgg.typing import Typeaxis
@@ -19,9 +19,11 @@ def implements(np_function) -> Any:
     :param np_function: 登録対象のnumpy関数
     :return: デコレータ関数を返す
     """
+
 _ShapeT_co = TypeVar("_ShapeT_co", bound=_Shape, default=_AnyShape, covariant=True)
 _DTypeT_co = TypeVar("_DTypeT_co", bound=np.dtype, default=np.dtype, covariant=True)
-class NPArray[_ShapeTs:_ShapeT_co, _DTypeTs:_DTypeT_co](
+
+class NPArray[_ShapeTs: _ShapeT_co, _DTypeTs: _DTypeT_co](
     _ArrayCommonMixin, np.ndarray[_ShapeTs, _DTypeTs]
 ):
     """`np.ndarray`を継承した型付き配列クラス"""

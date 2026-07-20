@@ -1,13 +1,16 @@
 from collections.abc import Sequence
 from typing import Any, SupportsIndex
+from types import NoneType
 
 import numpy as np
 from numpy._typing import _NestedSequence, _SupportsArray
 from numpy.dtypes import StringDType
 
 __all__ = [
-    "_Array1D",
     "_AnyShape",
+    "_ArrayLikeNone_co",
+    "_Array1D",
+    "_ArrayLikeAnyString_co",
     "_ArrayLikeBool_co",
     "_ArrayLikeBytes_co",
     "_ArrayLikeComplex_co",
@@ -16,7 +19,7 @@ __all__ = [
     "_ArrayLikeNumber_co",
     "_ArrayLikeStr_co",
     "_ArrayLikeString_co",
-    "_ArrayLikeTD64_co",
+    "_ArrayLikeDT64_co",
     "_ArrayLikeUInt_co",
     "_DualArrayLike",
     "_Shape",
@@ -47,17 +50,28 @@ type _ArrayLikeFloat_co = _DualArrayLike[
     float,
 ]
 type _ArrayLikeComplex_co = _DualArrayLike[np.dtype[np.bool | np.number], complex]
-type _ArrayLikeNumber_co = _ArrayLikeComplex_co
+type _ArrayLikeNumber_co = _DualArrayLike[
+    np.dtype[np.bool | np.number], int | float | complex
+]
 # string and bytes
 type _StringDTypeSupportsArray = _SupportsArray[StringDType]
 """可変長文字列型(StringDType)のデータを持った配列"""
 type _ArrayLikeStr_co = _DualArrayLike[np.dtype[np.str_], str]
 type _ArrayLikeBytes_co = _DualArrayLike[np.dtype[np.bytes_], bytes]
 type _ArrayLikeString_co = _DualArrayLike[StringDType, str]
+type _ArrayLikeAnyString_co = _DualArrayLike[
+    np.dtype[np.character] | StringDType,
+    bytes | str,
+]
 # date
-type _ArrayLikeTD64_co = _DualArrayLike[
-    np.dtype[np.bool | np.integer | np.timedelta64],
+type _ArrayLikeDT64_co = _DualArrayLike[
+    np.dtype[np.bool | np.integer | np.datetime64],
     int,
+]
+# None
+type _ArrayLikeNone_co = _DualArrayLike[
+    np.dtype[NoneType],
+    NoneType,
 ]
 # その他
 type Typeaxis = _ShapeLike | None

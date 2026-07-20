@@ -6,10 +6,10 @@ from numpy._typing import (_DTypeLikeComplex, _NestedSequence, _SupportsArray,
 from numpy.dtypes import StringDType
 
 __all__ = [
-    "_ArrayLikeAnyString_co",
     "_ComplexDtypeLike",
     "_NumericDTypeLike",
     "_RealNumericDTypeLike",
+    "_StringDTypeLike",
 ]
 type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
     _SupportsArray[DTypeT]
@@ -40,8 +40,11 @@ type _RealNumericDTypeLike = (
 type _ComplexDtypeLike = _DTypeLikeComplex
 """`複素数`全般のdtype"""
 # 文字列
-type _ArrayLikeAnyString_co = _DualArrayLike[
-    np.dtype[np.character] | StringDType,
-    bytes | str,
-]
+type _StringDTypeLike = (
+    type[str]
+    | type[bytes]
+    | np.dtype[np.flexible[Any] | StringDType]
+    | _SupportsDType[np.dtype[np.flexible[Any] | StringDType]]
+    | str
+)
 """numpyとPythonの文字列全般の型の型ヒント"""
