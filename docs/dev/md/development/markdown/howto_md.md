@@ -1,3 +1,7 @@
+---
+markdown:
+  path: output.md
+---
 # Markdown 記法マニュアル
 
 ## 目次

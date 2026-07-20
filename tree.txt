@@ -4,8 +4,10 @@ For_GUI_development
  ├── docs
  │   ├── dev
  │   │   └── md
- │   │       ├── developer
- │   │       │   ├── howto_markdown.md
+ │   │       ├── development
+ │   │       │   ├── markdown
+ │   │       │   │   ├── howto_md.md
+ │   │       │   │   └── howto_md_math.md
  │   │       │   ├── naming_conventions.md
  │   │       │   └── py_mustache_custom_docstring_templates.md
  │   │       ├── numpy
@@ -15,7 +17,6 @@ For_GUI_development
  │   │       │   └── numpy_special_method.md
  │   │       └── other
  │   │           └── color_table.md
- │   ├── icon.png
  │   └── templates
  │       └── py_document_text.mustache
  ├── pyproject.toml
@@ -456,4 +457,4 @@ For_GUI_development
      ├── extensions.json
      └── settings.shared.json
 ファイル数:314
-フォルダ数:142
+フォルダ数:143
