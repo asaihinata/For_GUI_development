@@ -4,7 +4,7 @@ import numpy as np
 from dateutil.parser import parse
 from numpy.strings import isnumeric
 
-from ..dev import _ArrayShapeMixin, _dt64_unit, _normalize_axis
+from ..dev import _ArrayCommonMixin, _dt64_unit, _normalize_axis
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -20,7 +20,7 @@ def implements(np_function):
     return decorator
 
 
-class NPFormatDate(_ArrayShapeMixin, np.ndarray):
+class NPFormatDate(_ArrayCommonMixin, np.ndarray):
     _element_type = np.datetime64
     _default_dtype = "datetime64[D]"
 

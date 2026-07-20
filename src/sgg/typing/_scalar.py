@@ -3,8 +3,8 @@ from datetime import date, datetime
 import numpy as np
 
 __all__ = [
-    "BoolScalar",
-    "DateParseScalar",
+    "_BoolScalar",
+    "_DateParseScalar",
 ]
-type DateParseScalar = (str | np.str_ | datetime | date | np.datetime64 | int)
-type BoolScalar = bool | np.bool | np.bool_
+type _BoolScalar = bool | np.bool | np.bool_
+type _DateParseScalar = (str | np.str_ | datetime | date | np.datetime64 | int)

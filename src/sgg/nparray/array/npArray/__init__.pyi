@@ -1,4 +1,4 @@
-from typing import Any, Iterator, Literal, Self, overload
+from typing import Any, Literal, Self, overload
 
 import numpy as np
 from numpy._typing import _AnyShape
@@ -6,7 +6,7 @@ from numpy.typing import ArrayLike, DTypeLike, NDArray
 
 from sgg.typing import Typeaxis
 
-from ..dev import _ArrayShapeMixin
+from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPArray"]
 
@@ -21,7 +21,7 @@ def implements(np_function) -> Any:
     """
 
 class NPArray[_ShapeT, _DTypeT](
-    _ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
+    _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_DTypeT]]
 ):
     """`np.ndarray`を継承した型付き配列クラス"""
 
@@ -154,7 +154,6 @@ class NPArray[_ShapeT, _DTypeT](
 
     def __ne__(self, value: Any) -> NPArray[Any, np.dtype[np.bool_]]: ...
     def __eq__(self, value: Any) -> NPArray[Any, np.dtype[np.bool_]]: ...
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
     @property
     def element_type(self) -> None:
         """NPArrayで許可されている型を取得する"""

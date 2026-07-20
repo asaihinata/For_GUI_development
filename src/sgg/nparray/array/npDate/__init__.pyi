@@ -6,17 +6,18 @@ from numpy import datetime64
 from numpy._typing import (_ArrayLike, _ArrayLikeDT64_co, _DTypeLike,
                            _NestedSequence, _SupportsArrayFunc, _TD64Like_co)
 
-from sgg.typing import (DateParseScalar, Incomplete, Typeaxis, _AllDateUnit,
-                        _Array1D, _DayU64, _IntUD64, _MonthU64, _TimeUnitSpec)
+from sgg.typing import (Incomplete, Typeaxis, _AllDateUnit, _Array1D,
+                        _DateParseScalar, _DayU64, _IntUD64, _MonthU64,
+                        _TimeUnitSpec)
 
-from ..dev import _ArrayShapeMixin
+from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPDate"]
 
 class NPDate[_ShapeT, _Dtypes](
-    _ArrayShapeMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
+    _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承した日付の配列クラス"""
 
@@ -24,7 +25,7 @@ class NPDate[_ShapeT, _Dtypes](
     _default_dtype: Literal["datetime64[D]"]
 
     @overload
-    def __new__[_ShapeT: DateParseScalar](
+    def __new__[_ShapeT: _DateParseScalar](
         cls,
         data: _ShapeT,
         dtype: None = None,
@@ -33,7 +34,7 @@ class NPDate[_ShapeT, _Dtypes](
         max_ndim: int | None = None,
     ) -> NPDate[datetime64[date], np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[_ShapeT: DateParseScalar, Dtype: _MonthU64](
+    def __new__[_ShapeT: _DateParseScalar, Dtype: _MonthU64](
         cls,
         data: _ShapeT,
         dtype: _TimeUnitSpec[Dtype],
@@ -42,7 +43,7 @@ class NPDate[_ShapeT, _Dtypes](
         max_ndim: int | None = None,
     ) -> NPDate[datetime64[date], np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[_ShapeT: DateParseScalar, Dtype: _DayU64](
+    def __new__[_ShapeT: _DateParseScalar, Dtype: _DayU64](
         cls,
         data: _ShapeT,
         dtype: _TimeUnitSpec[Dtype],
@@ -51,7 +52,7 @@ class NPDate[_ShapeT, _Dtypes](
         max_ndim: int | None = None,
     ) -> NPDate[datetime64[datetime], np.dtype[datetime64[datetime]]]: ...
     @overload
-    def __new__[_ShapeT: DateParseScalar, Dtype: _IntUD64](
+    def __new__[_ShapeT: _DateParseScalar, Dtype: _IntUD64](
         cls,
         data: _ShapeT,
         dtype: _TimeUnitSpec[Dtype],
@@ -60,7 +61,7 @@ class NPDate[_ShapeT, _Dtypes](
         max_ndim: int | None = None,
     ) -> NPDate[datetime64[int], np.dtype[datetime64[int]]]: ...
     @overload
-    def __new__[_ShapeT: DateParseScalar](
+    def __new__[_ShapeT: _DateParseScalar](
         cls,
         data: _NestedSequence[_ShapeT],
         dtype: None = None,
@@ -69,7 +70,7 @@ class NPDate[_ShapeT, _Dtypes](
         max_ndim: int | None = None,
     ) -> NPDate[_ArrayLike[datetime64[date]], np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[_ShapeT: DateParseScalar, Dtype: _MonthU64](
+    def __new__[_ShapeT: _DateParseScalar, Dtype: _MonthU64](
         cls,
         data: _NestedSequence[_ShapeT],
         dtype: _TimeUnitSpec[Dtype],
@@ -78,7 +79,7 @@ class NPDate[_ShapeT, _Dtypes](
         max_ndim: int | None = None,
     ) -> NPDate[_ArrayLike[datetime64[date]], np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[_ShapeT: DateParseScalar, Dtype: _DayU64](
+    def __new__[_ShapeT: _DateParseScalar, Dtype: _DayU64](
         cls,
         data: _NestedSequence[_ShapeT],
         dtype: _TimeUnitSpec[Dtype],
@@ -87,7 +88,7 @@ class NPDate[_ShapeT, _Dtypes](
         max_ndim: int | None = None,
     ) -> NPDate[_ArrayLike[datetime64[datetime]], np.dtype[datetime64[datetime]]]: ...
     @overload
-    def __new__[_ShapeT: DateParseScalar, Dtype: _IntUD64](
+    def __new__[_ShapeT: _DateParseScalar, Dtype: _IntUD64](
         cls,
         data: _NestedSequence[_ShapeT],
         dtype: _TimeUnitSpec[Dtype],
@@ -275,7 +276,7 @@ class NPDate[_ShapeT, _Dtypes](
         like: _SupportsArrayFunc | None = None,
     ) -> NPDate[_Array1D[datetime64[Incomplete]], np.dtype[datetime64[Incomplete]]]:
         """
-        指定された間隔内で,等間隔の日付を返します。
+        指定された間隔内で等間隔の日付を返す
 
         :param start: 区間を開始する日付を指定する
         :type start: datetime64
@@ -304,7 +305,7 @@ class NPDate[_ShapeT, _Dtypes](
         like: _SupportsArrayFunc | None = None,
     ) -> NPDate[_Array1D[datetime64[Incomplete]], np.dtype[datetime64[Incomplete]]]:
         """
-        指定された間隔内で,等間隔の日付を返します。
+        指定された間隔内で等間隔の日付を返す
 
         :param start: 区間を開始する日付を指定する
         :type start: str

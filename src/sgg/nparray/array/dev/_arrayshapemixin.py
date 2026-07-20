@@ -1,10 +1,10 @@
 import numpy as np
 
-__all__ = ["_ArrayCommonMixin", "_ArrayShapeMixin"]
+__all__ = ["_ArrayCommonMixin"]
 
 
 class _ArrayCommonMixin:
-    """全ての配列クラスに共通する,形状に依存しない基本メソッド"""
+    """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
 
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
@@ -60,10 +60,6 @@ class _ArrayCommonMixin:
 
     def tonumpy(self):
         return np.asarray(self)
-
-
-class _ArrayShapeMixin(_ArrayCommonMixin):
-    """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
 
     def isscalar(self):
         return np.isscalar(self.tolist())

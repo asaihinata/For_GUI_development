@@ -8,10 +8,9 @@ from numpy._typing import (_ArrayLikeNumber_co, _DTypeLike, _FloatLike_co,
                            _NumberLike_co)
 from numpy.typing import NDArray
 
-from sgg.typing import (Typeaxis, _AnyShape, _ComplexDtypeLike,
-                        _RealNumericDTypeLike)
+from sgg.typing import Typeaxis, _ComplexDtypeLike,_RealNumericDTypeLike
 
-from ..dev import _ArrayShapeMixin
+from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
 
 __all__ = ["NPNumber"]
@@ -55,7 +54,7 @@ def implements(np_function) -> Any:
     """
 
 class NPNumber[_ShapeTs, _Dtypes: np.dtype[_DType]](
-    _ArrayShapeMixin, np.ndarray[_ShapeTs, _Dtypes]
+    _ArrayCommonMixin, np.ndarray[_ShapeTs, _Dtypes]
 ):
     """`np.ndarray`を継承した数値型の配列クラス"""
 

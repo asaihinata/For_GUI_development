@@ -7,7 +7,7 @@ from numpy._typing import _ArrayLike, _ArrayLikeDT64_co, _NestedSequence
 
 from sgg.typing import Typeaxis
 
-from ..dev import _ArrayShapeMixin
+from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -27,7 +27,7 @@ _DTypeT = TypeVar(
 )
 
 class NPFormatDate[_ShapeTs, _Dtypes](
-    _ArrayShapeMixin, np.ndarray[_ShapeTs, np.dtype[_Dtypes]]
+    _ArrayCommonMixin, np.ndarray[_ShapeTs, np.dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
 

@@ -10,13 +10,13 @@ from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBytes_co,
 
 from sgg.typing import Typeaxis, _StringDTypeSupportsArray
 
-from ..dev import _ArrayShapeMixin
+from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPString"]
 
-class NPString[_ShapeTs, _DTypeTs](_ArrayShapeMixin, np.ndarray[_ShapeTs, _DTypeTs]):
+class NPString[_ShapeTs, _DTypeTs](_ArrayCommonMixin, np.ndarray[_ShapeTs, _DTypeTs]):
 
     _element_type: tuple[
         type[str], type[np.character], type[np.str_], type[np.bytes_], type[np.void]

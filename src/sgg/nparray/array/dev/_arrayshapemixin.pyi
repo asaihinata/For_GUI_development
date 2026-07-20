@@ -1,13 +1,16 @@
-from typing import Any, Literal, Self, overload
+from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
 from numpy._typing import DTypeLike, _ShapeLike
 from numpy.typing import NDArray
 
-__all__ = ["_ArrayCommonMixin", "_ArrayShapeMixin"]
+__all__ = ["_ArrayCommonMixin"]
 
 class _ArrayCommonMixin:
-    """全ての配列クラスに共通する,形状に依存しない基本メソッド"""
+    """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
+
+    _element_type: tuple[type, ...] | None
+    _default_dtype: type[np.generic]
 
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
@@ -43,6 +46,8 @@ class _ArrayCommonMixin:
         :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
+    @overload
+    def __iter__(self) -> Iterator[Any]: ...
     def lengtharange(self) -> NDArray[np.unsignedinteger[np._64Bit]]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
@@ -64,12 +69,6 @@ class _ArrayCommonMixin:
 
     def tonumpy(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
-
-class _ArrayShapeMixin(_ArrayCommonMixin):
-    """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
-
-    _element_type: tuple[type, ...] | None
-    _default_dtype: type[np.generic]
 
     @classmethod
     def _resolve_dtype(

@@ -3,9 +3,9 @@ from typing import Any, Iterator, Self, TypeVar, overload
 import numpy as np
 from numpy._typing import _DTypeLikeBool
 
-from sgg.typing import BoolScalar, _ArrayLikeBool_co
+from sgg.typing import _ArrayLikeBool_co, _BoolScalar
 
-from ..dev import _ArrayShapeMixin
+from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPBool"]
 HANDLED_FUNCTIONS: dict
@@ -21,7 +21,7 @@ def implements(np_function) -> Any:
 _DTypeT = TypeVar("_DTypeT", bound=np.generic, default=np.bool_, covariant=True)
 
 class NPBool[_ShapeTs, _Dtypes: _DTypeT](
-    _ArrayShapeMixin, np.ndarray[_ShapeTs, np.dtype[_Dtypes]]
+    _ArrayCommonMixin, np.ndarray[_ShapeTs, np.dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承したbool型の配列クラス"""
 
@@ -29,7 +29,7 @@ class NPBool[_ShapeTs, _Dtypes: _DTypeT](
     _default_dtype: type[np.bool_]
 
     @overload
-    def __new__[_ShapeT: BoolScalar](
+    def __new__[_ShapeT: _BoolScalar](
         cls,
         data: _ShapeT,
         dtype: None = None,
@@ -38,7 +38,7 @@ class NPBool[_ShapeTs, _Dtypes: _DTypeT](
         max_ndim: int | None = None,
     ) -> NPBool[_ShapeT, np.dtype[_DTypeT]]: ...
     @overload
-    def __new__[_ShapeT: BoolScalar](
+    def __new__[_ShapeT: _BoolScalar](
         cls,
         data: _ShapeT,
         dtype: _DTypeLikeBool,

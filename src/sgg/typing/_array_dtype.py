@@ -17,6 +17,7 @@ type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
     | BuiltinT
     | _NestedSequence[BuiltinT]
 )
+# 数値
 type _NumericDTypeLike = (
     type[bool]
     | type[int]
@@ -38,6 +39,7 @@ type _RealNumericDTypeLike = (
 """`実数`全般のdtype"""
 type _ComplexDtypeLike = _DTypeLikeComplex
 """`複素数`全般のdtype"""
+# 文字列
 type _ArrayLikeAnyString_co = _DualArrayLike[
     np.dtype[np.character] | StringDType,
     bytes | str,

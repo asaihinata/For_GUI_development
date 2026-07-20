@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from ..dev import _ArrayShapeMixin
+from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
 
 __all__ = ["NPNumber"]
@@ -28,7 +28,7 @@ def implements(np_function):
     return decorator
 
 
-class NPNumber(_ArrayShapeMixin, np.ndarray):
+class NPNumber(_ArrayCommonMixin, np.ndarray):
     _element_type = (int, float, complex, np.number)
     _default_dtype = np.float64
 

@@ -2,7 +2,8 @@ from datetime import date, datetime
 
 import numpy as np
 
-from ..dev import _ArrayShapeMixin, _dt64_unit, _get_dt64_unit, _normalize_axis
+from ..dev import (_ArrayCommonMixin, _dt64_unit, _get_dt64_unit,
+                   _normalize_axis)
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -18,7 +19,7 @@ def implements(np_function):
     return decorator
 
 
-class NPDate(_ArrayShapeMixin, np.ndarray):
+class NPDate(_ArrayCommonMixin, np.ndarray):
     _element_type = np.datetime64
     _default_dtype = np.dtype("datetime64[D]")
 

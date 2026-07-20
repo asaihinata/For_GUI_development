@@ -1,6 +1,6 @@
 import numpy as np
 
-from ..dev import _ArrayShapeMixin
+from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPBool"]
 HANDLED_FUNCTIONS = {}
@@ -14,7 +14,7 @@ def implements(np_function):
     return decorator
 
 
-class NPBool(_ArrayShapeMixin, np.ndarray):
+class NPBool(_ArrayCommonMixin, np.ndarray):
     _element_type = (bool, np.bool_, np.bool)
     _default_dtype = np.bool_
 
