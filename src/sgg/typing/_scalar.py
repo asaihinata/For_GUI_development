@@ -11,12 +11,12 @@ __all__ = [
     "_TD64Like_co",
     "_UIntLike_co",
     "_IntsLike_co",
-    "_FloatLike_co"
+    "_FloatLike_co",
 ]
 type _BoolScalar = bool | np.bool | np.bool_
 type _UIntLike_co = _BoolScalar | np.unsignedinteger
 type _IntLike_co = int | np.integer | _BoolScalar
-type _IntsLike_co = np.unsignedinteger |_IntLike_co
+type _IntsLike_co = np.unsignedinteger | _IntLike_co
 type _FloatLike_co = float | np.floating | _IntsLike_co
 type _NumberScalar = int | float | complex | np.number | _BoolScalar
 type _StrScalar = str | bytes | np.character | np.flexible

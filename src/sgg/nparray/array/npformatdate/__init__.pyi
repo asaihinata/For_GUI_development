@@ -3,9 +3,10 @@ from typing import Any, Iterator, Literal, Self, TypeVar, overload
 
 import numpy as np
 from numpy import datetime64
-from numpy._typing import _ArrayLike, _ArrayLikeDT64_co, _NestedSequence
+from numpy._typing import _ArrayLikeDT64_co
 
-from sgg.typing import Typeaxis
+from sgg.typing import (Typeaxis, _ArrayLikeDT64_co, _ArrayLikeStr_co, _DayU64,
+                        _IntUD64, _MonthU64, _TimeUnitSpec)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -35,49 +36,41 @@ class NPFormatDate[_ShapeTs, _Dtypes](
     _default_dtype: Literal["datetime64[D]"]
 
     @overload
-    def __new__[_ShapeT: (str, np.str_)](
+    def __new__[_ShapeT: _ArrayLikeStr_co](
         cls,
         data: _ShapeT,
         dtype: None = None,
-        yearfirst: bool = ...,
-        dayfirst: bool = ...,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPFormatDate[datetime64[_ShapeT], np.dtype[datetime64]]: ...
+    ) -> NPFormatDate[_ShapeT, np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[_ShapeT: (str, np.str_), Dtype: np._DateUnit](
+    def __new__[_ShapeT: _ArrayLikeStr_co, Dtype: _MonthU64](
         cls,
         data: _ShapeT,
-        dtype: np._TimeUnitSpec[Dtype],
-        yearfirst: bool = ...,
-        dayfirst: bool = ...,
+        dtype: _TimeUnitSpec[Dtype],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPFormatDate[datetime64[_ShapeT], np.dtype[datetime64]]: ...
+    ) -> NPFormatDate[_ShapeT, np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[_ShapeT: (str, np.str_)](
+    def __new__[_ShapeT: _ArrayLikeStr_co, Dtype: _DayU64](
         cls,
-        data: _NestedSequence[_ShapeT],
-        dtype: None = None,
-        yearfirst: bool = ...,
-        dayfirst: bool = ...,
+        data: _ShapeT,
+        dtype: _TimeUnitSpec[Dtype],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPFormatDate[_ArrayLike[datetime64[_ShapeT]], np.dtype[datetime64]]: ...
+    ) -> NPFormatDate[_ShapeT, np.dtype[datetime64[datetime]]]: ...
     @overload
-    def __new__[_ShapeT: (str, np.str_), Dtype: np._DateUnit](
+    def __new__[_ShapeT: _ArrayLikeStr_co, Dtype: _IntUD64](
         cls,
-        data: _NestedSequence[_ShapeT],
-        dtype: np._TimeUnitSpec[Dtype],
-        yearfirst: bool = ...,
-        dayfirst: bool = ...,
+        data: _ShapeT,
+        dtype: _TimeUnitSpec[Dtype],
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPFormatDate[_ArrayLike[datetime64[_ShapeT]], np.dtype[datetime64[Dtype]]]: ...
+    ) -> NPFormatDate[_ShapeT, np.dtype[datetime64[int]]]: ...
     def __new__() -> Self:
         """
         様々な日付のフォーマットを特定の日付フォーマットに変換する配列オブジェクトインスタンスを生成する

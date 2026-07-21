@@ -39,13 +39,13 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         if not isinstance(dayfirst, bool):
             dayfirst = False
 
-        def conversion(strs, yearfirst, dayfirst):
+        def _conversion(strs, yearfirst, dayfirst):
             if isnumeric(strs):
                 strs = np.datetime64("today", "D") + np.int64(strs)
             return parse(str(strs), yearfirst=yearfirst, dayfirst=dayfirst)
 
         func = np.vectorize(
-            lambda strs, yearfirst, dayfirst: conversion(strs, yearfirst, dayfirst)
+            lambda strs, yearfirst, dayfirst: _conversion(strs, yearfirst, dayfirst)
         )
         data = np.asanyarray(data, dtype=np.str_)
         resolved = cls._resolve_dtype(np.dtype(_dt64_unit(dtype)))

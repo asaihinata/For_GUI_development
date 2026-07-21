@@ -1,6 +1,7 @@
 from collections.abc import Sequence
-from typing import Any, SupportsIndex
+from datetime import date, datetime
 from types import NoneType
+from typing import Any, SupportsIndex
 
 import numpy as np
 from numpy._typing import _NestedSequence, _SupportsArray
@@ -65,8 +66,8 @@ type _ArrayLikeAnyString_co = _DualArrayLike[
 ]
 # date
 type _ArrayLikeDT64_co = _DualArrayLike[
-    np.dtype[np.bool | np.integer | np.datetime64],
-    int,
+    np.dtype[np.bool | np.integer | np.str_ | np.datetime64],
+    int | bool | str | datetime | date,
 ]
 # None
 type _ArrayLikeNone_co = _DualArrayLike[
