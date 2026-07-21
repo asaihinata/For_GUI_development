@@ -1,5 +1,5 @@
 from collections.abc import Sequence
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from types import NoneType
 from typing import Any, SupportsIndex
 
@@ -19,6 +19,7 @@ __all__ = [
     "_ArrayLikeInt_co",
     "_ArrayLikeNumber_co",
     "_ArrayLikeStr_co",
+    "_ArrayLikeTD64_co",
     "_ArrayLikeString_co",
     "_ArrayLikeDT64_co",
     "_ArrayLikeUInt_co",
@@ -68,6 +69,10 @@ type _ArrayLikeAnyString_co = _DualArrayLike[
 type _ArrayLikeDT64_co = _DualArrayLike[
     np.dtype[np.bool | np.integer | np.str_ | np.datetime64],
     int | bool | str | datetime | date,
+]
+type _ArrayLikeTD64_co = _DualArrayLike[
+    np.dtype[np.bool | np.integer | np.timedelta64],
+    bool | int | timedelta,
 ]
 # None
 type _ArrayLikeNone_co = _DualArrayLike[
