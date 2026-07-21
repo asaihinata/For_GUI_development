@@ -1,3 +1,5 @@
+"""様々な日付の文字列フォーマットから日付に変換するオブジェクト"""
+
 from datetime import date, datetime
 from typing import Any, Iterator, Literal, Self, TypeVar, overload
 
@@ -5,28 +7,20 @@ import numpy as np
 from numpy import datetime64
 
 from sgg.typing import (Typeaxis, _ArrayLikeStr_co, _ArrayLikeTD64_co, _DayU64,
-                        _DTypeLike, _IntUD64, _MonthU64, _TimeUnitSpec)
+                        _DTypeLike, _IntUD64, _MonthU64, _ShapeT_co,
+                        _TimeUnitSpec)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPFormatDate"]
-HANDLED_FUNCTIONS: dict
-
-def implements(np_function) -> Any:
-    """
-    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
-
-    :param np_function: 登録対象のnumpy関数
-    :return: デコレータ関数を返す
-    """
 
 _DTypeT = TypeVar(
     "_DTypeT", bound=np.generic, default=np.dtype[datetime64], covariant=True
 )
 
-class NPFormatDate[_ShapeT, _Dtypes](
+class NPFormatDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT](
     _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
@@ -260,3 +254,13 @@ class NPFormatDate[_ShapeT, _Dtypes](
         :param axis: 求める軸を指定する。
         :type axis: Typeaxis
         """
+
+HANDLED_FUNCTIONS: dict
+
+def implements(np_function) -> Any:
+    """
+    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
+
+    :param np_function: 登録対象のnumpy関数
+    :return: デコレータ関数を返す
+    """

@@ -10,7 +10,7 @@ from numpy.typing import NDArray
 from sgg.typing import (Typeaxis, _ArrayLikeNumber_co, _ComplexDtypeLike,
                         _DTypeLike, _FloatsNumericDTypeLike,
                         _IntsNumericDTypeLike, _NumberScalar,
-                        _NumericDTypeLike, _RealNumericDTypeLike)
+                        _NumericDTypeLike, _RealNumericDTypeLike, _ShapeT_co)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -45,18 +45,9 @@ TYPEMETHOD: TypeAlias = Literal[
     "median_unbiased",
     "normal_unbiased",
 ]
-HANDLED_FUNCTIONS: dict
 
-def implements(np_function) -> Any:
-    """
-    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
-
-    :param np_function: 登録対象のnumpy関数
-    :return: デコレータ関数を返す
-    """
-
-class NPNumber[_ShapeT, _Dtypes: np.dtype[_DType]](
-    _ArrayCommonMixin, np.ndarray[_ShapeT, _Dtypes]
+class NPNumber[_ShapeT: _ShapeT_co, _Dtypes: _DType](
+    _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
@@ -497,3 +488,13 @@ class NPNumber[_ShapeT, _Dtypes: np.dtype[_DType]](
     def dtypeinfo[_DType: _IntsNumericDTypeLike](
         self: NPNumber[_ShapeT, _DType],
     ) -> np.iinfo[_DType]: ...
+
+HANDLED_FUNCTIONS: dict
+
+def implements(np_function) -> Any:
+    """
+    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
+
+    :param np_function: 登録対象のnumpy関数
+    :return: デコレータ関数を返す
+    """

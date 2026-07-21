@@ -1,30 +1,17 @@
-from typing import Any, Literal, Self, TypeVar, overload
+from typing import Any, Literal, Self, overload
 
 import numpy as np
-from numpy._typing import _AnyShape, _DTypeLike, _Shape
+from numpy._typing import _AnyShape, _DTypeLike
 from numpy.typing import NDArray
 
-from sgg.typing import Typeaxis
+from sgg.typing import Typeaxis, _ShapeT_co
 
 from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPArray"]
 
-HANDLED_FUNCTIONS: dict
-
-def implements(np_function) -> Any:
-    """
-    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
-
-    :param np_function: 登録対象のnumpy関数
-    :return: デコレータ関数を返す
-    """
-
-_ShapeT_co = TypeVar("_ShapeT_co", bound=_Shape, default=_AnyShape, covariant=True)
-_DTypeT_co = TypeVar("_DTypeT_co", bound=np.dtype, default=np.dtype, covariant=True)
-
-class NPArray[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
-    _ArrayCommonMixin, np.ndarray[_ShapeT, _Dtypes]
+class NPArray[_ShapeT: _ShapeT_co, _Dtypes](
+    _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承した型付き配列クラス"""
 
@@ -184,3 +171,13 @@ class NPArray[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
 
         配列の`dtype`が数値型でない場合は連番を作成し返す。
         """
+
+HANDLED_FUNCTIONS: dict
+
+def implements(np_function) -> Any:
+    """
+    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
+
+    :param np_function: 登録対象のnumpy関数
+    :return: デコレータ関数を返す
+    """

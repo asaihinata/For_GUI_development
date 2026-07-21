@@ -1,6 +1,6 @@
 """基本的な文字列の操作をするモジュール"""
 
-from typing import Any, Iterator, Self, overload
+from typing import Any, Iterator, Self, TypeVar, overload
 
 import numpy as np
 from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBytes_co,
@@ -8,15 +8,19 @@ from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBytes_co,
                            _ArrayLikeString_co)
 
 from sgg.typing import (Typeaxis, _ArrayLikeAnyString_co, _DTypeLike,
-                        _StringDTypeLike, _StringDTypeSupportsArray)
+                        _ShapeT_co, _StringDTypeLike,
+                        _StringDTypeSupportsArray)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPString"]
+_DType = TypeVar("_DType", bound=np.generic, default=np.dtype[np.str_], covariant=True)
 
-class NPString[_ShapeT, _Dtypes](_ArrayCommonMixin, np.ndarray[_ShapeT, _Dtypes]):
+class NPString[_ShapeT: _ShapeT_co, _Dtypes: _DType](
+    _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
+):
 
     _element_type: tuple[
         type[str], type[np.character], type[np.str_], type[np.bytes_], type[np.void]
@@ -348,3 +352,13 @@ class NPString[_ShapeT, _Dtypes](_ArrayCommonMixin, np.ndarray[_ShapeT, _Dtypes]
         :param end: 比較を終える位置を指定する
         :type end: _ArrayLikeInt_co | None
         """
+
+HANDLED_FUNCTIONS: dict
+
+def implements(np_function) -> Any:
+    """
+    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
+
+    :param np_function: 登録対象のnumpy関数
+    :return: デコレータ関数を返す
+    """

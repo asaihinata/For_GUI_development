@@ -5,17 +5,16 @@ import numpy as np
 from numpy import datetime64
 from numpy._typing import _DTypeLike, _SupportsArrayFunc, _TD64Like_co
 
-from sgg.typing import (Incomplete, Typeaxis, _AllDateUnit, _AnyShape,
-                        _Array1D, _ArrayLikeDT64_co, _ArrayLikeNone_co,
+from sgg.typing import (Incomplete, Typeaxis, _AllDateUnit, _Array1D,
+                        _ArrayLikeDT64_co, _ArrayLikeNone_co,
                         _ArrayLikeTD64_co, _DayU64, _DTypeLike, _IntUD64,
-                        _MonthU64, _Shape, _TimeUnitSpec)
+                        _MonthU64, _ShapeT_co, _TimeUnitSpec)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPDate"]
-_ShapeT_co = TypeVar("_ShapeT_co", bound=_Shape, default=_AnyShape, covariant=True)
 _DTypeT_co = TypeVar(
     "_DTypeT_co", bound=np.dtype, default=np.dtype[datetime64], covariant=True
 )
@@ -372,3 +371,13 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
 
     def leapcount(self) -> int:
         """配列内のうるう年の数を数える"""
+
+HANDLED_FUNCTIONS: dict
+
+def implements(np_function) -> Any:
+    """
+    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
+
+    :param np_function: 登録対象のnumpy関数
+    :return: デコレータ関数を返す
+    """

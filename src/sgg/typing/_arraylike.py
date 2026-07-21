@@ -1,7 +1,7 @@
 from collections.abc import Sequence
 from datetime import date, datetime, timedelta
 from types import NoneType
-from typing import Any, SupportsIndex
+from typing import Any, SupportsIndex, TypeVar
 
 import numpy as np
 from numpy._typing import _NestedSequence, _SupportsArray
@@ -28,6 +28,7 @@ __all__ = [
     "_ShapeLike",
     "_StringDTypeSupportsArray",
     "Typeaxis",
+    "_ShapeT_co",
 ]
 type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
     _SupportsArray[DTypeT]
@@ -42,6 +43,7 @@ type _Shape = tuple[int, ...]
 type _AnyShape = tuple[Any, ...]
 type _ShapeLike = SupportsIndex | Sequence[SupportsIndex]
 """shapeタプルに変換可能なものなら何でも"""
+_ShapeT_co = TypeVar("_ShapeT_co", bound=_Shape, default=_AnyShape, covariant=True)
 # bool
 type _ArrayLikeBool_co = _DualArrayLike[np.dtype[np.bool | np.bool_], bool]
 # number

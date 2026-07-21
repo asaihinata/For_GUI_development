@@ -3,24 +3,15 @@ from typing import Any, Iterator, Self, TypeVar, overload
 import numpy as np
 from numpy._typing import _DTypeLikeBool
 
-from sgg.typing import _ArrayLikeBool_co, _BoolScalar, _DTypeLike
+from sgg.typing import _ArrayLikeBool_co, _BoolScalar, _DTypeLike, _ShapeT_co
 
 from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPBool"]
-HANDLED_FUNCTIONS: dict
-
-def implements(np_function) -> Any:
-    """
-    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
-
-    :param np_function: 登録対象のnumpy関数
-    :return: デコレータ関数を返す
-    """
 
 _DTypeT = TypeVar("_DTypeT", bound=np.generic, default=np.bool_, covariant=True)
 
-class NPBool[_ShapeT, _Dtypes: _DTypeT](
+class NPBool[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT](
     _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承したbool型の配列クラス"""
@@ -162,3 +153,13 @@ class NPBool[_ShapeT, _Dtypes: _DTypeT](
     @property
     def FalseCount(self) -> int:
         """配列内の`False`の数を数える"""
+
+HANDLED_FUNCTIONS: dict
+
+def implements(np_function) -> Any:
+    """
+    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
+
+    :param np_function: 登録対象のnumpy関数
+    :return: デコレータ関数を返す
+    """
