@@ -228,32 +228,30 @@ For_GUI_development
  │   │   │           └── __init__.pyi
  │   │   ├── nparray
  │   │   │   ├── __init__.py
- │   │   │   ├── array
+ │   │   │   ├── dev
  │   │   │   │   ├── __init__.py
- │   │   │   │   ├── dev
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── _arrayshapemixin.py
- │   │   │   │   │   ├── _arrayshapemixin.pyi
- │   │   │   │   │   └── _arrcheck.py
- │   │   │   │   ├── nparray
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
- │   │   │   │   ├── npbool
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
- │   │   │   │   ├── npdate
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
- │   │   │   │   ├── npformatdate
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
- │   │   │   │   ├── npnumber
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   └── __init__.pyi
- │   │   │   │   └── npstr
- │   │   │   │       ├── __init__.py
- │   │   │   │       └── __init__.pyi
+ │   │   │   │   ├── _arrayshapemixin.py
+ │   │   │   │   ├── _arrayshapemixin.pyi
+ │   │   │   │   └── _arrcheck.py
  │   │   │   ├── isdtype
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
+ │   │   │   ├── nparray
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
+ │   │   │   ├── npbool
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
+ │   │   │   ├── npdate
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
+ │   │   │   ├── npformatdate
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
+ │   │   │   ├── npnumber
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
+ │   │   │   ├── npstr
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
  │   │   │   └── scalar
@@ -456,5 +454,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:314
-フォルダ数:143
+ファイル数:313
+フォルダ数:142
