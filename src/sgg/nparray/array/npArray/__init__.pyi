@@ -23,8 +23,8 @@ def implements(np_function) -> Any:
 _ShapeT_co = TypeVar("_ShapeT_co", bound=_Shape, default=_AnyShape, covariant=True)
 _DTypeT_co = TypeVar("_DTypeT_co", bound=np.dtype, default=np.dtype, covariant=True)
 
-class NPArray[_ShapeTs: _ShapeT_co, _DTypeTs: _DTypeT_co](
-    _ArrayCommonMixin, np.ndarray[_ShapeTs, _DTypeTs]
+class NPArray[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
+    _ArrayCommonMixin, np.ndarray[_ShapeT, _Dtypes]
 ):
     """`np.ndarray`を継承した型付き配列クラス"""
 
@@ -33,36 +33,36 @@ class NPArray[_ShapeTs: _ShapeT_co, _DTypeTs: _DTypeT_co](
     @overload
     def __new__(
         cls,
-        data: _ShapeTs,
+        data: _ShapeT,
         dtype: None = None,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPArray[_ShapeTs, _DTypeTs]: ...
+    ) -> NPArray[_ShapeT, _Dtypes]: ...
     @overload
     def __new__[ScalarT: np.generic](
         cls,
-        data: _ShapeTs,
+        data: _ShapeT,
         dtype: _DTypeLike[ScalarT],
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPArray[_ShapeTs, ScalarT]: ...
+    ) -> NPArray[_ShapeT, ScalarT]: ...
     @overload
     def __new__[ScalarT](
         cls,
-        data: _ShapeTs,
+        data: _ShapeT,
         dtype: ScalarT,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPArray[_ShapeTs, np.dtype[ScalarT]]: ...
+    ) -> NPArray[_ShapeT, np.dtype[ScalarT]]: ...
     def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
@@ -87,8 +87,8 @@ class NPArray[_ShapeTs: _ShapeT_co, _DTypeTs: _DTypeT_co](
 
     @classmethod
     def full(
-        cls, fill_value: Any, shape: _AnyShape, dtype: _DTypeTs | None = None
-    ) -> NPArray[_AnyShape, _DTypeTs]:
+        cls, fill_value: Any, shape: _AnyShape, dtype: _Dtypes | None = None
+    ) -> NPArray[_AnyShape, _Dtypes]:
         """指定された形状と配列の型を,fill_valueで埋める"""
 
     @classmethod
@@ -105,7 +105,7 @@ class NPArray[_ShapeTs: _ShapeT_co, _DTypeTs: _DTypeT_co](
 
     def __class_getitem__(
         cls, item: Any
-    ) -> type[NPArray[_ShapeTs, np.dtype[_DTypeTs]]]: ...
+    ) -> type[NPArray[_ShapeT, np.dtype[_Dtypes]]]: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -128,13 +128,13 @@ class NPArray[_ShapeTs: _ShapeT_co, _DTypeTs: _DTypeT_co](
         """
 
     @overload
-    def __array__(
-        self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[_ShapeTs, _DTypeTs]: ...
+    def __array__[_ShapeT](
+        self, dtype: None = None, /, *, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, _Dtypes]: ...
     @overload
-    def __array__[DType](
-        self, dtype: DType, copy: bool | None = None
-    ) -> np.ndarray[_ShapeTs, np.dtype[DType]]: ...
+    def __array__[DType: np._dtype | _DTypeLike[np.generic]](
+        self, dtype: DType, /, *, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, DType]: ...
     def __array_function__(
         self,
         func: Any,
@@ -175,10 +175,10 @@ class NPArray[_ShapeTs: _ShapeT_co, _DTypeTs: _DTypeT_co](
         :type keepdims: bool
         """
 
-    def EType(self) -> NPArray[_ShapeTs, np.dtype[object]]:
+    def EType(self) -> NPArray[_ShapeT, np.dtype[object]]:
         """配列内の要素の型を調べる"""
 
-    def numandserial(self) -> NPArray[_ShapeTs, np.dtype[np.uint64 | np.number]]:
+    def numandserial(self) -> NPArray[_ShapeT, np.dtype[np.uint64 | np.number]]:
         """
         配列の`dtype`が数値型場合そのままの配列を返す。
 

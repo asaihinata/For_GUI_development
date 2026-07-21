@@ -32,9 +32,6 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
             obj._max_ndim = max_ndim
         return obj
 
-    def __array__(self, dtype=np.bool_, copy=None):
-        return super().__array__(dtype, copy=copy)
-
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
             np.asarray(x) if isinstance(x, NPBool) else x for x in inputs

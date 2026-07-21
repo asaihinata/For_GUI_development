@@ -64,9 +64,6 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
-    def __array__(self, dtype=None, copy=None):
-        return super().__array__(dtype, copy=copy)
-
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
             np.asarray(x) if isinstance(x, NPArray) else x for x in inputs

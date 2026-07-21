@@ -7,8 +7,8 @@ from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBytes_co,
                            _ArrayLikeInt_co, _ArrayLikeStr_co,
                            _ArrayLikeString_co)
 
-from sgg.typing import (Typeaxis, _ArrayLikeAnyString_co, _StringDTypeLike,
-                        _StringDTypeSupportsArray)
+from sgg.typing import (Typeaxis, _ArrayLikeAnyString_co, _DTypeLike,
+                        _StringDTypeLike, _StringDTypeSupportsArray)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -16,7 +16,7 @@ from ..npnumber import NPNumber
 
 __all__ = ["NPString"]
 
-class NPString[_ShapeTs, _DTypeTs](_ArrayCommonMixin, np.ndarray[_ShapeTs, _DTypeTs]):
+class NPString[_ShapeT, _Dtypes](_ArrayCommonMixin, np.ndarray[_ShapeT, _Dtypes]):
 
     _element_type: tuple[
         type[str], type[np.character], type[np.str_], type[np.bytes_], type[np.void]
@@ -84,12 +84,12 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayCommonMixin, np.ndarray[_ShapeTs, _DTyp
 
     @overload
     def __array__(
-        self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[_ShapeTs, _DTypeTs]: ...
+        self, dtype: None = None, /, *, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, _Dtypes]: ...
     @overload
-    def __array__[DType](
-        self, dtype: DType, copy: bool | None = None
-    ) -> np.ndarray[_ShapeTs, np.dtype[DType]]: ...
+    def __array__[DType: np._dtype | _DTypeLike[np.generic]](
+        self, dtype: DType, /, *, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, DType]: ...
     def __array_function__(
         self,
         func: Any,
@@ -114,87 +114,84 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayCommonMixin, np.ndarray[_ShapeTs, _DTyp
 
     @overload
     def __ne__(
-        self: NPString[_ShapeTs, _ArrayLikeStr_co], value: _ArrayLikeStr_co
-    ) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
+        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __ne__(
-        self: NPString[_ShapeTs, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
-    ) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
+        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __ne__(
-        self: NPString[_ShapeTs, _ArrayLikeString_co], value: _ArrayLikeString_co
-    ) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
+        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __eq__(
-        self: NPString[_ShapeTs, _ArrayLikeStr_co], value: _ArrayLikeStr_co
-    ) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
+        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __eq__(
-        self: NPString[_ShapeTs, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
-    ) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
+        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __eq__(
-        self: NPString[_ShapeTs, _ArrayLikeString_co], value: _ArrayLikeString_co
-    ) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
+        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeTs, _ArrayLikeStr_co], value: _ArrayLikeStr_co
-    ) -> NPString[_ShapeTs, np.str_]: ...
+        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+    ) -> NPString[_ShapeT, np.str_]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeTs, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
-    ) -> NPString[_ShapeTs, np.bytes_]: ...
+        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+    ) -> NPString[_ShapeT, np.bytes_]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeTs, _StringDTypeSupportsArray],
+        self: NPString[_ShapeT, _StringDTypeSupportsArray],
         value: _StringDTypeSupportsArray,
-    ) -> NPString[_ShapeTs, np.dtypes.StringDType]: ...
+    ) -> NPString[_ShapeT, np.dtypes.StringDType]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeTs, _ArrayLikeString_co], value: _ArrayLikeString_co
+        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
     ) -> (
-        NPString[_ShapeTs, np.dtype[np.str_]]
-        | NPString[_ShapeTs, np.dtypes.StringDType]
+        NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, np.dtypes.StringDType]
     ): ...
     @overload
     def __iadd__(
-        self: NPString[_ShapeTs, _ArrayLikeStr_co], value: _ArrayLikeStr_co
-    ) -> NPString[_ShapeTs, np.str_]: ...
+        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+    ) -> NPString[_ShapeT, np.str_]: ...
     @overload
     def __iadd__(
-        self: NPString[_ShapeTs, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
-    ) -> NPString[_ShapeTs, np.bytes_]: ...
+        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+    ) -> NPString[_ShapeT, np.bytes_]: ...
     @overload
     def __iadd__(
-        self: NPString[_ShapeTs, _StringDTypeSupportsArray],
+        self: NPString[_ShapeT, _StringDTypeSupportsArray],
         value: _StringDTypeSupportsArray,
-    ) -> NPString[_ShapeTs, np.dtypes.StringDType]: ...
+    ) -> NPString[_ShapeT, np.dtypes.StringDType]: ...
     @overload
     def __iadd__(
-        self: NPString[_ShapeTs, _ArrayLikeString_co], value: _ArrayLikeString_co
+        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
     ) -> (
-        NPString[_ShapeTs, np.dtype[np.str_]]
-        | NPString[_ShapeTs, np.dtypes.StringDType]
+        NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, np.dtypes.StringDType]
     ): ...
     @overload
     def __radd__(
-        self: NPString[_ShapeTs, _ArrayLikeStr_co], value: _ArrayLikeStr_co
-    ) -> NPString[_ShapeTs, np.str_]: ...
+        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+    ) -> NPString[_ShapeT, np.str_]: ...
     @overload
     def __radd__(
-        self: NPString[_ShapeTs, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
-    ) -> NPString[_ShapeTs, np.bytes_]: ...
+        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+    ) -> NPString[_ShapeT, np.bytes_]: ...
     @overload
     def __radd__(
-        self: NPString[_ShapeTs, _StringDTypeSupportsArray],
+        self: NPString[_ShapeT, _StringDTypeSupportsArray],
         value: _StringDTypeSupportsArray,
-    ) -> NPString[_ShapeTs, np.dtypes.StringDType]: ...
+    ) -> NPString[_ShapeT, np.dtypes.StringDType]: ...
     @overload
     def __radd__(
-        self: NPString[_ShapeTs, _ArrayLikeString_co], value: _ArrayLikeString_co
+        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
     ) -> (
-        NPString[_ShapeTs, np.dtype[np.str_]]
-        | NPString[_ShapeTs, np.dtypes.StringDType]
+        NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, np.dtypes.StringDType]
     ): ...
     def __mul__(self, i: _ArrayLikeInt_co) -> NPString:
         """
@@ -220,7 +217,7 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayCommonMixin, np.ndarray[_ShapeTs, _DTyp
         :type i: _ArrayLikeInt_co
         """
 
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeTs, _DTypeTs]]: ...
+    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _Dtypes]]: ...
     @property
     def element_type(
         self,
@@ -248,7 +245,7 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayCommonMixin, np.ndarray[_ShapeTs, _DTyp
 
     def stringlen(
         self, axis: Typeaxis = None
-    ) -> NPNumber[_ShapeTs, np.dtype[np.uint64]]:
+    ) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
         """
         配列内の要素の文字の長さを求める
 
@@ -256,7 +253,7 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayCommonMixin, np.ndarray[_ShapeTs, _DTyp
         :type axis: Typeaxis
         """
 
-    def str_len(self, axis: Typeaxis = None) -> NPNumber[_ShapeTs, np.dtype[np.uint64]]:
+    def str_len(self, axis: Typeaxis = None) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
         """
         配列内の要素の文字の長さを求める
 
@@ -280,7 +277,7 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayCommonMixin, np.ndarray[_ShapeTs, _DTyp
     def min(self, axis: Typeaxis = None) -> np.int_:
         """配列内の要素の文字列の長さが最も小さい数値を求める"""
 
-    def replace(self, old: str, new: str) -> NPString[_ShapeTs, _DTypeTs]:
+    def replace(self, old: str, new: str) -> NPString[_ShapeT, _Dtypes]:
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
 
     def center(
@@ -340,7 +337,7 @@ class NPString[_ShapeTs, _DTypeTs](_ArrayCommonMixin, np.ndarray[_ShapeTs, _DTyp
         suffix: _ArrayLikeAnyString_co,
         start: _ArrayLikeInt_co = 0,
         end: _ArrayLikeInt_co | None = None,
-    ) -> NPBool[_ShapeTs, np.dtype[np.bool_]]:
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]:
         """
         配列の要素が`suffix`で終わるかを調べる
 

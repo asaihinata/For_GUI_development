@@ -65,9 +65,6 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
             obj._max_ndim = max_ndim
         return obj
 
-    def __array__(self, dtype="datetime64[D]", copy=None):
-        return super().__array__(np.dtype(_dt64_unit(dtype)), copy=copy)
-
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
             np.asarray(x) if isinstance(x, NPFormatDate) else x for x in inputs

@@ -37,9 +37,6 @@ class NPString(_ArrayCommonMixin, np.ndarray):
             obj._max_ndim = max_ndim
         return obj
 
-    def __array__(self, dtype=np.str_, copy=None):
-        return super().__array__(dtype, copy=copy)
-
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
             np.asarray(x) if isinstance(x, NPString) else x for x in inputs

@@ -43,17 +43,21 @@ type _AnyShape = tuple[Any, ...]
 type _ShapeLike = SupportsIndex | Sequence[SupportsIndex]
 """shapeタプルに変換可能なものなら何でも"""
 # bool
-type _ArrayLikeBool_co = _DualArrayLike[np.dtype[np.bool | np.bool_ | bool], bool]
+type _ArrayLikeBool_co = _DualArrayLike[np.dtype[np.bool | np.bool_], bool]
 # number
-type _ArrayLikeUInt_co = _DualArrayLike[np.dtype[np.bool | np.unsignedinteger], bool]
-type _ArrayLikeInt_co = _DualArrayLike[np.dtype[np.bool | np.integer], int]
+type _ArrayLikeUInt_co = _DualArrayLike[
+    np.dtype[np.bool | np.bool_ | np.unsignedinteger], bool
+]
+type _ArrayLikeInt_co = _DualArrayLike[np.dtype[np.bool | np.bool_ | np.integer], int]
 type _ArrayLikeFloat_co = _DualArrayLike[
-    np.dtype[np.bool | np.integer | np.floating],
+    np.dtype[np.bool | np.bool_ | np.integer | np.floating],
     float,
 ]
-type _ArrayLikeComplex_co = _DualArrayLike[np.dtype[np.bool | np.number], complex]
+type _ArrayLikeComplex_co = _DualArrayLike[
+    np.dtype[np.bool | np.bool_ | np.number], complex
+]
 type _ArrayLikeNumber_co = _DualArrayLike[
-    np.dtype[np.bool | np.number], int | float | complex
+    np.dtype[np.bool | np.bool_ | np.number], int | float | complex
 ]
 # string and bytes
 type _StringDTypeSupportsArray = _SupportsArray[StringDType]
@@ -67,11 +71,11 @@ type _ArrayLikeAnyString_co = _DualArrayLike[
 ]
 # date
 type _ArrayLikeDT64_co = _DualArrayLike[
-    np.dtype[np.bool | np.integer | np.str_ | np.datetime64],
+    np.dtype[np.bool | np.bool_ | np.integer | np.str_ | np.datetime64],
     int | bool | str | datetime | date,
 ]
 type _ArrayLikeTD64_co = _DualArrayLike[
-    np.dtype[np.bool | np.integer | np.timedelta64],
+    np.dtype[np.bool | np.bool_ | np.integer | np.timedelta64],
     bool | int | timedelta,
 ]
 # None

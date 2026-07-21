@@ -8,8 +8,9 @@ from numpy._typing import _FloatLike_co
 from numpy.typing import NDArray
 
 from sgg.typing import (Typeaxis, _ArrayLikeNumber_co, _ComplexDtypeLike,
-                        _NumberScalar, _NumericDTypeLike,
-                        _RealNumericDTypeLike)
+                        _DTypeLike, _FloatsNumericDTypeLike,
+                        _IntsNumericDTypeLike, _NumberScalar,
+                        _NumericDTypeLike, _RealNumericDTypeLike)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -54,8 +55,8 @@ def implements(np_function) -> Any:
     :return: デコレータ関数を返す
     """
 
-class NPNumber[_ShapeTs, _Dtypes: np.dtype[_DType]](
-    _ArrayCommonMixin, np.ndarray[_ShapeTs, _Dtypes]
+class NPNumber[_ShapeT, _Dtypes: np.dtype[_DType]](
+    _ArrayCommonMixin, np.ndarray[_ShapeT, _Dtypes]
 ):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
@@ -120,14 +121,14 @@ class NPNumber[_ShapeTs, _Dtypes: np.dtype[_DType]](
 
     def __class_getitem__(
         cls, item: Any
-    ) -> type[NPNumber[_ShapeTs, np.dtype[_DType]]]: ...
+    ) -> type[NPNumber[_ShapeT, np.dtype[_DType]]]: ...
     def __array_ufunc__[DType](
-        self: NPNumber[_ShapeTs, DType],
+        self: NPNumber[_ShapeT, DType],
         ufunc: np.ufunc,
         method: str,
         *inputs: Any,
         **kwargs: Any,
-    ) -> NPNumber[_ShapeTs, DType] | Any:
+    ) -> NPNumber[_ShapeT, DType] | Any:
         """
         NumPyのufuncの動作をカスタマイズする
 
@@ -144,12 +145,12 @@ class NPNumber[_ShapeTs, _Dtypes: np.dtype[_DType]](
 
     @overload
     def __array__(
-        self, dtype: None = None, copy: bool | None = None
-    ) -> np.ndarray[_ShapeTs, _Dtypes]: ...
+        self, dtype: None = None, /, *, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, _Dtypes]: ...
     @overload
-    def __array__[DType](
-        self, dtype: DType, copy: bool | None = None
-    ) -> np.ndarray[_ShapeTs, np.dtype[DType]]: ...
+    def __array__[DType: np._dtype | _DTypeLike[np.generic]](
+        self, dtype: DType, /, *, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, DType]: ...
     def __array_function__(
         self,
         func: Any,
@@ -172,12 +173,12 @@ class NPNumber[_ShapeTs, _Dtypes: np.dtype[_DType]](
         :rtype: Any
         """
 
-    def __eq__(self, value: Any) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
-    def __ne__(self, value: Any) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
-    def __lt__(self, value: Any) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
-    def __le__(self, value: Any) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
-    def __gt__(self, value: Any) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
-    def __ge__(self, value: Any) -> NPBool[_ShapeTs, np.dtype[np.bool_]]: ...
+    def __eq__(self, value: Any) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __ne__(self, value: Any) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __lt__(self, value: Any) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __le__(self, value: Any) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __gt__(self, value: Any) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __ge__(self, value: Any) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     def __add__(self, value: Any) -> NPNumber: ...
     def __radd__(self, value: Any) -> NPNumber: ...
     def __iadd__(self, value: Any) -> NPNumber: ...
@@ -202,7 +203,7 @@ class NPNumber[_ShapeTs, _Dtypes: np.dtype[_DType]](
     def __divmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
     def __rdivmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
     def __abs__(self) -> Self: ...
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeTs, _DType]]: ...
+    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DType]]: ...
     @property
     def element_type(
         self,
@@ -231,16 +232,16 @@ class NPNumber[_ShapeTs, _Dtypes: np.dtype[_DType]](
     def sturgesval(self) -> np.floating:
         """スタージェスの公式を求める"""
 
-    def cussum(self) -> NPNumber[_ShapeTs, _DType]:
+    def cussum(self) -> NPNumber[_ShapeT, _DType]:
         """一つ前の元の値との和を求める"""
 
-    def cusdiff(self) -> NPNumber[_ShapeTs, _DType]:
+    def cusdiff(self) -> NPNumber[_ShapeT, _DType]:
         """一つ前の元の値との差を求める"""
 
-    def cusprod(self) -> NPNumber[_ShapeTs, _DType]:
+    def cusprod(self) -> NPNumber[_ShapeT, _DType]:
         """一つ前の元の値との積を求める"""
 
-    def cusdiv(self) -> NPNumber[_ShapeTs, _DType]:
+    def cusdiv(self) -> NPNumber[_ShapeT, _DType]:
         """一つ前の元の値との除算を求める"""
 
     def percentile(
@@ -287,7 +288,7 @@ class NPNumber[_ShapeTs, _Dtypes: np.dtype[_DType]](
         self,
         axis: Typeaxis = None,
         method: TYPEMETHOD = "linear",
-    ) -> NPNumber[_ShapeTs, np.dtype[np.float64]]:
+    ) -> NPNumber[_ShapeT, np.dtype[np.float64]]:
         """
         配列の四分位数を求める
 
@@ -335,151 +336,164 @@ class NPNumber[_ShapeTs, _Dtypes: np.dtype[_DType]](
     @overload
     @property
     def degree[DType: _RealNumericDTypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[np.floating]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
         """角度を度数法から弧度法に変換する"""
 
     @overload
     @property
     def degree[DType: _ComplexDtypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[_ComplexDtypeLike]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
         """角度を度数法から弧度法に変換する"""
 
     @overload
     @property
     def deg[DType: _RealNumericDTypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[np.floating]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
         """角度を度数法から弧度法に変換する"""
 
     @overload
     @property
     def deg[DType: _ComplexDtypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[_ComplexDtypeLike]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
         """角度を度数法から弧度法に変換する"""
 
     @overload
     def deg_to_rad[DType: _RealNumericDTypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[np.floating]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
         """角度を度数法から弧度法に変換する"""
 
     @overload
     def deg_to_rad[DType: _ComplexDtypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[_ComplexDtypeLike]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
         """角度を度数法から弧度法に変換する"""
 
     @overload
     @property
     def radian[DType: _RealNumericDTypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[np.floating]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
         """角度を弧度法から度数法に変換する"""
 
     @overload
     @property
     def radian[DType: _ComplexDtypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[_ComplexDtypeLike]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
         """角度を弧度法から度数法に変換する"""
 
     @overload
     @property
     def rad[DType: _RealNumericDTypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[np.floating]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
         """角度を弧度法から度数法に変換する"""
 
     @overload
     @property
     def rad[DType: _ComplexDtypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[_ComplexDtypeLike]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
         """角度を弧度法から度数法に変換する"""
 
     @overload
     def rad_to_deg[DType: _RealNumericDTypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[np.floating]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
         """角度を弧度法から度数法に変換する"""
 
     @overload
     def rad_to_deg[DType: _ComplexDtypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[_ComplexDtypeLike]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
         """角度を弧度法から度数法に変換する"""
 
     @overload
     def dsin[DType: _RealNumericDTypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[np.floating]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
         """三角関数の正弦を度数法として要素毎に計算する"""
 
     @overload
     def dsin[DType: _ComplexDtypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[_ComplexDtypeLike]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
         """三角関数の正弦を度数法として要素毎に計算する"""
 
     @overload
     def dcos[DType: _RealNumericDTypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[np.floating]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
         """三角関数の余弦を度数法として要素毎に計算する"""
 
     @overload
     def dcos[DType: _ComplexDtypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[_ComplexDtypeLike]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
         """三角関数の余弦を度数法として要素毎に計算する"""
 
     @overload
     def dtan[DType: _RealNumericDTypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[np.floating]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
         """三角関数の正接を度数法として要素毎に計算する"""
 
     @overload
     def dtan[DType: _ComplexDtypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[_ComplexDtypeLike]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
         """三角関数の正接を度数法として要素毎に計算する"""
 
     @overload
     def darcsin[DType: _RealNumericDTypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[np.floating]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
         """逆正弦関数の結果を度数法で求める"""
 
     @overload
     def darcsin[DType: _ComplexDtypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[_ComplexDtypeLike]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
         """逆正弦関数の結果を度数法で求める"""
 
     @overload
     def darccos[DType: _RealNumericDTypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[np.floating]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
         """逆余弦関数の結果を度数法で求める"""
 
     @overload
     def darccos[DType: _ComplexDtypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[_ComplexDtypeLike]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
         """逆余弦関数の結果を度数法で求める"""
 
     @overload
     def dartan[DType: _RealNumericDTypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[np.floating]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
         """逆正接関数の結果を度数法で求める"""
 
     @overload
     def dartan[DType: _ComplexDtypeLike](
-        self: NPNumber[_ShapeTs, np.dtype[DType]],
-    ) -> NPNumber[_ShapeTs, np.dtype[_ComplexDtypeLike]]:
+        self: NPNumber[_ShapeT, np.dtype[DType]],
+    ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
         """逆正接関数の結果を度数法で求める"""
+
+    @overload
+    def dtypeinfo[_DType: _FloatsNumericDTypeLike](
+        self: NPNumber[_ShapeT, _DType],
+    ) -> np.finfo[_DType]: ...
+    @overload
+    def dtypeinfo[_DType: _ComplexDtypeLike](
+        self: NPNumber[_ShapeT, _DType],
+    ) -> np.finfo[_DType]: ...
+    @overload
+    def dtypeinfo[_DType: _IntsNumericDTypeLike](
+        self: NPNumber[_ShapeT, _DType],
+    ) -> np.iinfo[_DType]: ...

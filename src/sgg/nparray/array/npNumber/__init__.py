@@ -46,11 +46,6 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
             obj._max_ndim = max_ndim
         return obj
 
-    def __array__(self, dtype=None, copy=None):
-        if dtype is None:
-            dtype = self.dtypes
-        return super().__array__(dtype, copy=copy)
-
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
             np.asarray(x) if isinstance(x, NPNumber) else x for x in inputs
@@ -162,6 +157,12 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
     @property
     def sturgesval(self):
         return 1 + np.log2(self.size)
+
+    def dtypeinfo(self):
+        if np.issubdtype(self.dtype, np.integer):
+            return np.iinfo(self.dtype)
+        else:
+            return np.finfo(self.dtype)
 
     def cussum(self):
         datas = np.ravel(self)

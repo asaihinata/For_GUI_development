@@ -39,6 +39,11 @@ class _ArrayCommonMixin:
         result._dtype = self._dtype
         return result
 
+    def __array__(self, dtype=None, copy=None):
+        if dtype is None:
+            dtype = self.dtypes
+        return super().__array__(dtype, copy=copy)
+
     def __class_getitem__(cls, item):
         return np.ndarray.__class_getitem__.__func__(cls, item)
 
