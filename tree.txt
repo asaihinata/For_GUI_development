@@ -233,9 +233,6 @@ For_GUI_development
  │   │   │   │   ├── _arrayshapemixin.py
  │   │   │   │   ├── _arrayshapemixin.pyi
  │   │   │   │   └── _arrcheck.py
- │   │   │   ├── isdtype
- │   │   │   │   ├── __init__.py
- │   │   │   │   └── __init__.pyi
  │   │   │   ├── nparray
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
@@ -251,10 +248,7 @@ For_GUI_development
  │   │   │   ├── npnumber
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
- │   │   │   ├── npstr
- │   │   │   │   ├── __init__.py
- │   │   │   │   └── __init__.pyi
- │   │   │   └── scalar
+ │   │   │   └── npstr
  │   │   │       ├── __init__.py
  │   │   │       └── __init__.pyi
  │   │   ├── readfile
@@ -454,5 +448,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:313
-フォルダ数:142
+ファイル数:309
+フォルダ数:140

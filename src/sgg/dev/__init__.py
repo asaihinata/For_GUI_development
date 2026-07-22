@@ -1,8 +1,6 @@
-from sgg.nparray.isdtype import boolDtype
-
 from ._darray import *
 from ._dnumber import *
-from .color import Color, parsecolor
+from .color import parsecolor
 
 __all__ = [
     "allNone",
@@ -10,7 +8,6 @@ __all__ = [
     "args",
     "bols",
     "change_array_like",
-    "Color",
     "int0",
     "int0s",
     "int1s",
@@ -28,7 +25,6 @@ __all__ = [
     "num0s",
     "num1s",
     "nums",
-    "numsmin",
     "parsecolor",
     "range_num",
 ]
@@ -50,6 +46,6 @@ def args(*args, data=None, x=None, y=None):
 
 
 def bols(j, o=True):
-    if boolDtype(j):
-        return bool(j)
+    if isinstance(j, bool):
+        return j
     return o

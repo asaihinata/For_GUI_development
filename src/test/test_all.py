@@ -53,14 +53,9 @@ def test_main():
         ["が", "ぎ", "ぐ", "げ", "ご"],
     ]
     rng = np.random.default_rng(seed=42)
-    xlabel = "x軸のラベル"
-    ylabel = "y軸のラベル"
-    zlabel = "z軸のラベル"
     linex = np.arange(1, 4, 1)
     liney1 = rng.integers(50, 80, size=3)
-    liney2 = rng.integers(50, 80, size=(4, 3))
     stemx1 = rng.integers(50, 80, size=3)
-    stemx2 = rng.integers(50, 80, size=(2, 3))
     stemy = np.arange(1, 4, 1)
     piedata = rng.integers(30, 50, size=5)
     pielabel = ["1月", "2月", "3月", "4月", "5月"]
@@ -87,7 +82,6 @@ def test_main():
     stepdata = rng.integers(1, 10, size=5)
     histdata = rng.normal(10, 50, size=1000)
     boxdata1 = rng.normal(10, 100, size=100)
-    boxdata2 = rng.normal(20, 90, size=(2, 150))
     eventdata = rng.gamma(4, size=(3, 50))
     ecdfdata = 4 + rng.normal(0, 1.5, size=100)
     stackeddata = rng.integers(1, 10, (3, 3)) + 2
