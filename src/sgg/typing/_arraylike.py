@@ -9,6 +9,7 @@ from numpy.dtypes import StringDType
 
 __all__ = [
     "_AnyShape",
+    "_Array",
     "_ArrayLikeNone_co",
     "_Array1D",
     "_ArrayLikeAnyString_co",
@@ -29,6 +30,7 @@ __all__ = [
     "_StringDTypeSupportsArray",
     "Typeaxis",
     "_ShapeT_co",
+    "_ToArray",
 ]
 type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
     _SupportsArray[DTypeT]
@@ -37,7 +39,9 @@ type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
     | _NestedSequence[BuiltinT]
 )
 # 配列
+type _Array[ShapeT: _Shape, ScalarT: np.generic] = np.ndarray[ShapeT, np.dtype[ScalarT]]
 type _Array1D[ScalarT: np.generic] = np.ndarray[tuple[int], np.dtype[ScalarT]]
+type _ToArray[ScalarT: np.generic] = _Array[_AnyShape,ScalarT] | Sequence[ScalarT]
 # 形状
 type _Shape = tuple[int, ...]
 type _AnyShape = tuple[Any, ...]
