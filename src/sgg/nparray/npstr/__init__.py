@@ -24,7 +24,15 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     _default_dtype = np.str_
 
     def __new__(
-        cls, data, dtype=np.str_, d_ndim=None, min_ndim=None, max_ndim=None, copy=True
+        cls,
+        data,
+        /,
+        dtype=np.str_,
+        *,
+        d_ndim=None,
+        min_ndim=None,
+        max_ndim=None,
+        copy=True,
     ):
         if not isinstance(copy, bool):
             copy = True

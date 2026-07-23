@@ -24,12 +24,37 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
 
     _element_type: tuple[type[str], type[bytes], type[np.str_], type[np.bytes_]]
     _default_dtype: type[np.str_]
-
+    @overload
+    def __new__[_ShapeTs, _Dtype](
+        cls,
+        data: NPString[_ShapeTs, _Dtype],
+        /,
+        dtype: None = None,
+        *,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPString[_ShapeTs, _Dtype]: ...
+    @overload
+    def __new__[Dtype: _StringDTypeLike](
+        cls,
+        data: NPString[_ShapeT, _Dtypes],
+        /,
+        dtype: Dtype,
+        *,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPString[_ShapeT, np.dtype[Dtype]]: ...
     @overload
     def __new__(
         cls,
         data: _ShapeT,
+        /,
         dtype: None = None,
+        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -39,7 +64,9 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     def __new__[DType: _StringDTypeLike](
         cls,
         data: _ShapeT,
+        /,
         dtype: DType,
+        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,

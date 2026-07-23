@@ -26,7 +26,9 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     def __new__(
         cls,
         data,
+        /,
         dtype="datetime64[D]",
+        *,
         d_ndim=None,
         min_ndim=None,
         max_ndim=None,

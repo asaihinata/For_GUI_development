@@ -19,7 +19,15 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
     _default_dtype = np.bool_
 
     def __new__(
-        cls, data, dtype=np.bool_, d_ndim=None, min_ndim=None, max_ndim=None, copy=True
+        cls,
+        data,
+        /,
+        dtype=np.bool_,
+        *,
+        d_ndim=None,
+        min_ndim=None,
+        max_ndim=None,
+        copy=True,
     ):
         if not isinstance(copy, bool):
             copy = True

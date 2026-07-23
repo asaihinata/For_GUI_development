@@ -18,12 +18,14 @@ class NPArray[_ShapeT: _ShapeT_co, _Dtypes](
 
     _element_type: None
     _default_dtype: Literal["object"]
-    # NPArray
+
     @overload
     def __new__[_ShapeTs, _Dtype](
         cls,
         data: NPArray[_ShapeTs, _Dtype],
+        /,
         dtype: None = None,
+        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -33,18 +35,21 @@ class NPArray[_ShapeT: _ShapeT_co, _Dtypes](
     def __new__[Dtype: DTypeLike](
         cls,
         data: NPArray[_ShapeT, _Dtypes],
+        /,
         dtype: Dtype,
+        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
     ) -> NPArray[_ShapeT, np.dtype[Dtype]]: ...
-    # array
     @overload
     def __new__(
         cls,
         data: _ShapeT,
+        /,
         dtype: None = None,
+        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -54,7 +59,9 @@ class NPArray[_ShapeT: _ShapeT_co, _Dtypes](
     def __new__[Dtype: DTypeLike](
         cls,
         data: _ShapeT,
+        /,
         dtype: Dtype,
+        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,

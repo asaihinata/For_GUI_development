@@ -56,10 +56,36 @@ class NPNumber[_ShapeT: _ArrayLikeNumber_co, _Dtypes: _DTypeT](
     _default_dtype: type[np.float64]
 
     @overload
+    def __new__[_ShapeTs, _Dtype](
+        cls,
+        data: NPNumber[_ShapeTs, _Dtype],
+        /,
+        dtype: None = None,
+        *,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPNumber[_ShapeTs, _Dtype]: ...
+    @overload
+    def __new__[Dtype: _NumericDTypeLike](
+        cls,
+        data: NPNumber[_ShapeT, _Dtypes],
+        /,
+        dtype: Dtype,
+        *,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPNumber[_ShapeT, np.dtype[Dtype]]: ...
+    @overload
     def __new__(
         cls,
         data: _ShapeT,
+        /,
         dtype: None = None,
+        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -69,7 +95,9 @@ class NPNumber[_ShapeT: _ArrayLikeNumber_co, _Dtypes: _DTypeT](
     def __new__[DType: _NumericDTypeLike](
         cls,
         data: _ShapeT,
+        /,
         dtype: DType,
+        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,

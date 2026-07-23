@@ -33,7 +33,9 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
     def __new__(
         cls,
         data: _ShapeT,
+        /,
         dtype: None = None,
+        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -43,7 +45,9 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
     def __new__[Dtype: _MonthU64](
         cls,
         data: _ShapeT,
+        /,
         dtype: Dtype,
+        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -53,7 +57,9 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
     def __new__[_ShapeT: _ArrayLikeStr_co, Dtype: (_DayU64 | _NVU64)](
         cls,
         data: _ShapeT,
+        /,
         dtype: Dtype,
+        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -65,7 +71,9 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
     def __new__[_ShapeT: _ArrayLikeStr_co, Dtype: _IntUD64](
         cls,
         data: _ShapeT,
+        /,
         dtype: Dtype,
+        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -75,7 +83,9 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
     def __new__[_ShapeT: _ArrayLikeStr_co, Dtype: _DT64Codes_any](
         cls,
         data: _ShapeT,
+        /,
         dtype: Dtype,
+        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,

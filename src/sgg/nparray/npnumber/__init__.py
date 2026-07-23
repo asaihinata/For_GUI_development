@@ -35,7 +35,9 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
     def __new__(
         cls,
         data,
+        /,
         dtype=np.float64,
+        *,
         d_ndim=None,
         min_ndim=None,
         max_ndim=None,
