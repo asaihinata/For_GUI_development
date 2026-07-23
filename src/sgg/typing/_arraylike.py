@@ -41,7 +41,7 @@ type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
 # 配列
 type _Array[ShapeT: _Shape, ScalarT: np.generic] = np.ndarray[ShapeT, np.dtype[ScalarT]]
 type _Array1D[ScalarT: np.generic] = np.ndarray[tuple[int], np.dtype[ScalarT]]
-type _ToArray[ScalarT: np.generic] = _Array[_AnyShape,ScalarT] | Sequence[ScalarT]
+type _ToArray[ScalarT: np.generic] = _Array[_AnyShape, ScalarT] | Sequence[ScalarT]
 # 形状
 type _Shape = tuple[int, ...]
 type _AnyShape = tuple[Any, ...]

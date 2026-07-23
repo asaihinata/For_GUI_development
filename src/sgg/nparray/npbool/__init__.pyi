@@ -1,18 +1,18 @@
+from types import GenericAlias
 from typing import Any, Iterator, Self, TypeVar, overload
 
 import numpy as np
-from numpy._typing import _DTypeLikeBool
 
-from sgg.typing import _ArrayLikeBool_co, _BoolScalar, _DTypeLike, _ShapeT_co
+from sgg.typing import _ArrayLikeBool_co, _DTypeLike
 
 from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPBool"]
 
-_DTypeT = TypeVar("_DTypeT", bound=np.generic, default=np.bool_, covariant=True)
+_DTypeT = TypeVar("_DTypeT", bound=np.dtype, default=np.dtype[np.bool_], covariant=True)
 
-class NPBool[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT](
-    _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
+class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
+    _ArrayCommonMixin, np.ndarray[_ShapeT, _Dtypes]
 ):
     """`np.ndarray`を継承したbool型の配列クラス"""
 
@@ -20,41 +20,23 @@ class NPBool[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT](
     _default_dtype: type[np.bool_]
 
     @overload
-    def __new__[_ShapeT: _BoolScalar](
+    def __new__(
         cls,
         data: _ShapeT,
         dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPBool[_ShapeT, np.dtype[_DTypeT]]: ...
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
-    def __new__[_ShapeT: _BoolScalar](
+    def __new__[Dtype: _DTypeLike[np.bool | np.bool_] | type[bool]](
         cls,
         data: _ShapeT,
-        dtype: _DTypeLikeBool,
+        dtype: Dtype,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPBool[_ShapeT, np.dtype[_DTypeLikeBool]]: ...
-    @overload
-    def __new__[_ShapeT: _ArrayLikeBool_co](
-        cls,
-        data: _ShapeT,
-        dtype: None = None,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> NPBool[_ShapeT, np.dtype[_DTypeT]]: ...
-    @overload
-    def __new__[_ShapeT: _ArrayLikeBool_co](
-        cls,
-        data: _ShapeT,
-        dtype: _DTypeLikeBool,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> NPBool[_ShapeT, np.dtype[_DTypeLikeBool]]: ...
+    ) -> NPBool[_ShapeT, np.dtype[Dtype]]: ...
     def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
@@ -75,7 +57,7 @@ class NPBool[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT](
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    def __class_getitem__(cls, item: Any) -> type[NPBool[_ShapeT, _Dtypes]]: ...
+    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,

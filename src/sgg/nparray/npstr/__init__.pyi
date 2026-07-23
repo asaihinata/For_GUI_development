@@ -1,5 +1,6 @@
 """基本的な文字列の操作をするモジュール"""
 
+from types import GenericAlias
 from typing import Any, Iterator, Self, TypeVar, overload
 
 import numpy as np
@@ -18,17 +19,15 @@ from ..npnumber import NPNumber
 __all__ = ["NPString"]
 _DType = TypeVar("_DType", bound=np.generic, default=np.dtype[np.str_], covariant=True)
 
-class NPString[_ShapeT: _ShapeT_co, _Dtypes: _DType](
+class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
 ):
 
-    _element_type: tuple[
-        type[str], type[np.character], type[np.str_], type[np.bytes_], type[np.void]
-    ]
+    _element_type: tuple[type[str], type[bytes], type[np.str_], type[np.bytes_]]
     _default_dtype: type[np.str_]
 
     @overload
-    def __new__[_ShapeT: _ArrayLikeAnyString_co](
+    def __new__(
         cls,
         data: _ShapeT,
         dtype: None = None,
@@ -37,14 +36,14 @@ class NPString[_ShapeT: _ShapeT_co, _Dtypes: _DType](
         max_ndim: int | None = None,
     ) -> NPString[_ShapeT, np.dtype[np.str_]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeAnyString_co, DType: _StringDTypeLike](
+    def __new__[DType: _StringDTypeLike](
         cls,
         data: _ShapeT,
         dtype: DType,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPString[np.str_, np.dtype[DType]]: ...
+    ) -> NPString[_ShapeT, np.dtype[DType]]: ...
     def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
@@ -222,12 +221,11 @@ class NPString[_ShapeT: _ShapeT_co, _Dtypes: _DType](
         """
 
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _Dtypes]]: ...
+    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     @property
     def element_type(
         self,
-    ) -> tuple[
-        type[str], type[np.character], type[np.str_], type[np.bytes_], type[np.void]
-    ]:
+    ) -> tuple[type[str], type[bytes], type[np.str_], type[np.bytes_]]:
         """NPStringで許可されている型を取得する"""
 
     def append(self, val: Any) -> NPString:

@@ -1,8 +1,5 @@
-from typing import Any
-
 import numpy as np
-from numpy._typing import _NestedSequence, _SupportsArray, _SupportsDType
-from numpy.dtypes import StringDType
+from numpy._typing import _NestedSequence, _SupportsArray,_DTypeLike
 
 __all__ = [
     "_DTypeLike",
@@ -15,9 +12,6 @@ __all__ = [
     "_ComplexDtypeLike",
     "_StringDTypeLike",
 ]
-type _DTypeLike[ScalarT: np.generic] = (
-    type[ScalarT] | np.dtype[ScalarT] | _SupportsDType[np.dtype[ScalarT]]
-)
 type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
     _SupportsArray[DTypeT]
     | _NestedSequence[_SupportsArray[DTypeT]]
@@ -25,55 +19,18 @@ type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
     | _NestedSequence[BuiltinT]
 )
 # 真偽型
-type _BoolDTypeLike = (
-    type[bool]
-    | np.dtype[np.bool_ | np.bool]
-    | _SupportsDType[np.dtype[np.bool_ | np.bool]]
-)
+type _BoolDTypeLike = np.dtype[np.bool_ | np.bool] | type[bool]
 # 数値
-type _NumericDTypeLike = (
-    type[bool]
-    | type[int]
-    | type[float]
-    | type[complex]
-    | np.dtype[np.bool_ | np.number[Any]]
-    | _SupportsDType[np.dtype[np.bool_ | np.number[Any]]]
-    | str
-)
+type _NumericDTypeLike = _DTypeLike[np.number] | type[int] | type[float] | type[complex]
 """数値全般のdtype"""
-type _RealNumericDTypeLike = (
-    type[bool]
-    | type[int]
-    | type[float]
-    | np.dtype[np.bool_ | np.integer[Any] | np.floating[Any]]
-    | _SupportsDType[np.dtype[np.bool_ | np.integer[Any] | np.floating[Any]]]
-)
+type _RealNumericDTypeLike = _DTypeLike[np.integer | np.floating] | type[int] | type[float]
 """`実数`全般のdtype"""
-type _IntsNumericDTypeLike = (
-    type[bool]
-    | type[int]
-    | np.dtype[np.bool_ | np.integer[Any]]
-    | _SupportsDType[np.dtype[np.bool_ | np.integer[Any]]]
-    | str
-)
+type _IntsNumericDTypeLike = _DTypeLike[np.integer] | type[int]
 """`整数`全般のdtype"""
-type _FloatsNumericDTypeLike = (
-    type[float]
-    | np.dtype[np.floating[Any]]
-    | _SupportsDType[np.dtype[np.floating[Any]]]
-    | str
-)
+type _FloatsNumericDTypeLike = _DTypeLike[np.floating] | type[float]
 """`浮動小数型`全般のdtype"""
-type _ComplexDtypeLike = (
-    type[complex] | np.dtype[np.complexfloating] | np._ComplexFloatingCodes
-)
+type _ComplexDtypeLike = np.dtype[np.complexfloating] | type[complex]
 """`複素数`全般のdtype"""
 # 文字列
-type _StringDTypeLike = (
-    type[str]
-    | type[bytes]
-    | np.dtype[np.flexible[Any] | StringDType]
-    | _SupportsDType[np.dtype[np.flexible[Any] | StringDType]]
-    | str
-)
+type _StringDTypeLike = np.dtype[np.str_|np.bytes_] | type[str] | type[bytes]
 """numpyとPythonの文字列全般の型の型ヒント"""

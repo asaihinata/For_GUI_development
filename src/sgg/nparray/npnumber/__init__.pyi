@@ -1,5 +1,6 @@
 """基本的な数値の操作をするモジュール"""
 
+from types import GenericAlias
 from typing import (Any, Iterator, Literal, Self, Sequence, SupportsIndex,
                     TypeAlias, TypeVar, overload)
 
@@ -9,15 +10,14 @@ from numpy.typing import NDArray
 
 from sgg.typing import (Typeaxis, _ArrayLikeNumber_co, _ComplexDtypeLike,
                         _DTypeLike, _FloatsNumericDTypeLike,
-                        _IntsNumericDTypeLike, _NumberScalar,
-                        _NumericDTypeLike, _RealNumericDTypeLike, _ShapeT_co)
+                        _IntsNumericDTypeLike,_NumericDTypeLike, _RealNumericDTypeLike)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
 
 __all__ = ["NPNumber"]
-_DType = TypeVar(
-    "_DType", bound=np.generic, default=np.dtype[np.float64], covariant=True
+_DTypeT = TypeVar(
+    "_DTypeT", bound=np.generic, default=np.dtype[np.float64], covariant=True
 )
 type _SortKind = Literal[
     "Q",
@@ -46,7 +46,7 @@ TYPEMETHOD: TypeAlias = Literal[
     "normal_unbiased",
 ]
 
-class NPNumber[_ShapeT: _ShapeT_co, _Dtypes: _DType](
+class NPNumber[_ShapeT: _ArrayLikeNumber_co, _Dtypes: _DTypeT](
     _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承した数値型の配列クラス"""
@@ -55,34 +55,16 @@ class NPNumber[_ShapeT: _ShapeT_co, _Dtypes: _DType](
     _default_dtype: type[np.float64]
 
     @overload
-    def __new__[_ShapeT: _NumberScalar](
+    def __new__(
         cls,
         data: _ShapeT,
         dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
-    ) -> NPNumber[_ShapeT, np.dtype[np.float64]]: ...
+    ) -> NPNumber[_ShapeT, _DTypeT]: ...
     @overload
-    def __new__[_ShapeT: _NumberScalar, DType: _NumericDTypeLike](
-        cls,
-        data: _ShapeT,
-        dtype: DType,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> NPNumber[_ShapeT, np.dtype[DType]]: ...
-    @overload
-    def __new__[_ShapeT: _ArrayLikeNumber_co](
-        cls,
-        data: _ShapeT,
-        dtype: None = None,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-    ) -> NPNumber[_ShapeT, _DType]: ...
-    @overload
-    def __new__[_ShapeT: _ArrayLikeNumber_co, DType: _NumericDTypeLike](
+    def __new__[DType: _NumericDTypeLike](
         cls,
         data: _ShapeT,
         dtype: DType,
@@ -110,9 +92,7 @@ class NPNumber[_ShapeT: _ShapeT_co, _Dtypes: _DType](
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    def __class_getitem__(
-        cls, item: Any
-    ) -> type[NPNumber[_ShapeT, np.dtype[_DType]]]: ...
+    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     def __array_ufunc__[DType](
         self: NPNumber[_ShapeT, DType],
         ufunc: np.ufunc,
@@ -194,7 +174,7 @@ class NPNumber[_ShapeT: _ShapeT_co, _Dtypes: _DType](
     def __divmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
     def __rdivmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
     def __abs__(self) -> Self: ...
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DType]]: ...
+    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
     @property
     def element_type(
         self,
@@ -223,16 +203,16 @@ class NPNumber[_ShapeT: _ShapeT_co, _Dtypes: _DType](
     def sturgesval(self) -> np.floating:
         """スタージェスの公式を求める"""
 
-    def cussum(self) -> NPNumber[_ShapeT, _DType]:
+    def cussum(self) -> NPNumber[_ShapeT, _DTypeT]:
         """一つ前の元の値との和を求める"""
 
-    def cusdiff(self) -> NPNumber[_ShapeT, _DType]:
+    def cusdiff(self) -> NPNumber[_ShapeT, _DTypeT]:
         """一つ前の元の値との差を求める"""
 
-    def cusprod(self) -> NPNumber[_ShapeT, _DType]:
+    def cusprod(self) -> NPNumber[_ShapeT, _DTypeT]:
         """一つ前の元の値との積を求める"""
 
-    def cusdiv(self) -> NPNumber[_ShapeT, _DType]:
+    def cusdiv(self) -> NPNumber[_ShapeT, _DTypeT]:
         """一つ前の元の値との除算を求める"""
 
     def percentile(
@@ -477,17 +457,17 @@ class NPNumber[_ShapeT: _ShapeT_co, _Dtypes: _DType](
         """逆正接関数の結果を度数法で求める"""
 
     @overload
-    def dtypeinfo[_DType: _FloatsNumericDTypeLike](
-        self: NPNumber[_ShapeT, _DType],
-    ) -> np.finfo[_DType]: ...
+    def dtypeinfo[_DTypeT: _FloatsNumericDTypeLike](
+        self: NPNumber[_ShapeT, _DTypeT],
+    ) -> np.finfo[_DTypeT]: ...
     @overload
-    def dtypeinfo[_DType: _ComplexDtypeLike](
-        self: NPNumber[_ShapeT, _DType],
-    ) -> np.finfo[_DType]: ...
+    def dtypeinfo[_DTypeT: _ComplexDtypeLike](
+        self: NPNumber[_ShapeT, _DTypeT],
+    ) -> np.finfo[_DTypeT]: ...
     @overload
-    def dtypeinfo[_DType: _IntsNumericDTypeLike](
-        self: NPNumber[_ShapeT, _DType],
-    ) -> np.iinfo[_DType]: ...
+    def dtypeinfo[_DTypeT: _IntsNumericDTypeLike](
+        self: NPNumber[_ShapeT, _DTypeT],
+    ) -> np.iinfo[_DTypeT]: ...
 
 HANDLED_FUNCTIONS: dict
 

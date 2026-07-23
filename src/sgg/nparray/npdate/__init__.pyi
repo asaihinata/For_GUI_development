@@ -1,14 +1,15 @@
 from datetime import date, datetime
+from types import GenericAlias
 from typing import Any, Iterator, Literal, Self, TypeVar, overload
 
 import numpy as np
 from numpy import datetime64
 from numpy._typing import _DTypeLike, _SupportsArrayFunc, _TD64Like_co
 
-from sgg.typing import (Incomplete, Typeaxis, _AllDateUnit, _Array1D,
+from sgg.typing import (_NVU64, Incomplete, Typeaxis, _AllDateUnit, _Array1D,
                         _ArrayLikeDT64_co, _ArrayLikeNone_co,
-                        _ArrayLikeTD64_co, _DayU64, _DTypeLike, _IntUD64,
-                        _MonthU64, _ShapeT_co, _TimeUnitSpec, _ToArray)
+                        _ArrayLikeTD64_co, _DayU64, _DT64Codes_any, _DTypeLike,
+                        _IntUD64, _MonthU64, _ShapeT_co, _ToArray)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -28,46 +29,73 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
     _default_dtype: Literal["datetime64[D]"]
 
     @overload
-    def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: _MonthU64](
+    def __new__[_ShapeT: _ArrayLikeNone_co](
         cls,
         data: _ShapeT,
-        dtype: _TimeUnitSpec[Dtype]|None=None,
+        dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPDate[_ToArray[datetime64[None]], np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: _DayU64](
+    def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: _MonthU64](
         cls,
         data: _ShapeT,
-        dtype: _TimeUnitSpec[Dtype],
+        dtype: Dtype,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPDate[_ToArray[datetime64[None]], np.dtype[datetime64[date]]]: ...
+    @overload
+    def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: (_DayU64 | _NVU64)](
+        cls,
+        data: _ShapeT,
+        dtype: Dtype,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPDate[_ToArray[datetime64[None]], np.dtype[datetime64[datetime]]]: ...
     @overload
+    def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: _DT64Codes_any](
+        cls,
+        data: _ShapeT,
+        dtype: Dtype,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPDate[_ToArray[datetime64[None]], np.dtype[datetime64[Any]]]: ...
+    @overload
     def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: _IntUD64](
         cls,
         data: _ShapeT,
-        dtype: _TimeUnitSpec[Dtype],
+        dtype: Dtype,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPDate[_ToArray[datetime64[None]], np.dtype[datetime64[int]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeDT64_co,Dtype: _MonthU64](
+    def __new__[_ShapeT: _ArrayLikeDT64_co](
         cls,
         data: _ShapeT,
-        dtype: _TimeUnitSpec[Dtype]|None = None,
+        dtype: None = None,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPDate[_ToArray[datetime64[date]], np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeDT64_co, Dtype: _DayU64](
+    def __new__[_ShapeT: _ArrayLikeDT64_co, Dtype: _MonthU64](
         cls,
         data: _ShapeT,
-        dtype: _TimeUnitSpec[Dtype],
+        dtype: Dtype,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPDate[_ToArray[datetime64[date]], np.dtype[datetime64[date]]]: ...
+    @overload
+    def __new__[_ShapeT: _ArrayLikeDT64_co, Dtype: (_DayU64 | _NVU64)](
+        cls,
+        data: _ShapeT,
+        dtype: Dtype,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -76,11 +104,20 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
     def __new__[_ShapeT: _ArrayLikeDT64_co, Dtype: _IntUD64](
         cls,
         data: _ShapeT,
-        dtype: _TimeUnitSpec[Dtype],
+        dtype: Dtype,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
     ) -> NPDate[_ToArray[datetime64[int]], np.dtype[datetime64[int]]]: ...
+    @overload
+    def __new__[_ShapeT: _ArrayLikeDT64_co, Dtype: _DT64Codes_any](
+        cls,
+        data: _ShapeT,
+        dtype: Dtype,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+    ) -> NPDate[_ToArray[datetime64[Any]], np.dtype[datetime64[Any]]]: ...
     def __new__() -> Self:
         """
         新しい日付の配列オブジェクトインスタンスを生成する
@@ -101,7 +138,7 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    def __class_getitem__(cls, item: Any) -> type[NPDate[Any, Any]]: ...
+    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,

@@ -1,3 +1,4 @@
+from types import GenericAlias
 from typing import Any, Literal, Self, overload
 
 import numpy as np
@@ -17,6 +18,30 @@ class NPArray[_ShapeT: _ShapeT_co, _Dtypes](
 
     _element_type: None
     _default_dtype: Literal["object"]
+    # NPArray
+    @overload
+    def __new__[_ShapeTs,_Dtype](
+        cls,
+        data: NPArray[_ShapeTs, _Dtype],
+        dtype: None = None,
+        *,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPArray[_ShapeTs, _Dtype]: ...
+    @overload
+    def __new__[Dtype: _DTypeLike[np.generic] | type](
+        cls,
+        data: NPArray[_ShapeT, _Dtypes],
+        dtype: Dtype,
+        *,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPArray[_ShapeT, np.dtype[Dtype]]: ...
+    # array
     @overload
     def __new__(
         cls,
@@ -27,29 +52,18 @@ class NPArray[_ShapeT: _ShapeT_co, _Dtypes](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPArray[_ShapeT, _Dtypes]: ...
+    ) -> NPArray[_ShapeT, np.dtype[np.generic]]: ...
     @overload
-    def __new__[ScalarT: np.generic](
+    def __new__[Dtype: _DTypeLike[np.generic] | type](
         cls,
         data: _ShapeT,
-        dtype: _DTypeLike[ScalarT],
+        dtype: Dtype,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPArray[_ShapeT, ScalarT]: ...
-    @overload
-    def __new__[ScalarT](
-        cls,
-        data: _ShapeT,
-        dtype: ScalarT,
-        *,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-        copy: bool = True,
-    ) -> NPArray[_ShapeT, np.dtype[ScalarT]]: ...
+    ) -> NPArray[_ShapeT, np.dtype[Dtype]]: ...
     def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
@@ -90,9 +104,10 @@ class NPArray[_ShapeT: _ShapeT_co, _Dtypes](
         :raises ShapeError: `shape`が正の整数のみで構成されていない場合に発生させる
         """
 
-    def __class_getitem__(
-        cls, item: Any
-    ) -> type[NPArray[_ShapeT, np.dtype[_Dtypes]]]: ...
+    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
+    # def __class_getitem__(
+    #     cls, item: Any
+    # ) -> type[NPArray[_ShapeT, np.dtype[_Dtypes]]]: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,

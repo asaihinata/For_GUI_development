@@ -10,7 +10,8 @@ __all__ = [
     "_DT64Codes",
     "_DT64Codes_any",
     "_DT64Codes_date",
-    "_DT64Codes_datetime",
+    "_DT64Codes_NativeTime",
+    "_NVU64",
     "_DT64Codes_Day",
     "_DT64Codes_int",
     "_DT64Codes_Month",
@@ -67,7 +68,7 @@ type _DateUnit = Literal[_MonthUnit, _DayUnit]
 type _NativeTimeUnit = Literal[
     "h", "m", "s", "ms", "us", "μs", b"h", b"m", b"s", b"ms", b"us"
 ]
-type _DT64Codes_datetime = Literal[
+type _DT64Codes_NativeTime = Literal[
     "datetime64[h]",
     "M8[h]",
     "|M8[h]",
@@ -105,6 +106,7 @@ type _DT64Codes_datetime = Literal[
     "<M8[μs]",
     ">M8[μs]",
 ]
+type _NVU64 = Literal[_NativeTimeUnit, _DT64Codes_NativeTime]
 type _IntTimeUnit = Literal["ns", "ps", "fs", "as", b"ns", b"ps", b"fs", b"as"]
 type _DT64Codes_int = Literal[
     "datetime64[ns]",
@@ -142,7 +144,7 @@ type _DT64Codes_any = Literal["datetime64", "M", "M8", "|M8", "=M8", "<M8", ">M8
 type _DT64Codes = Literal[
     _DT64Codes_any,
     _DT64Codes_date,
-    _DT64Codes_datetime,
+    _DT64Codes_NativeTime,
     _DT64Codes_int,
 ]
 type _AllDateUnit = Literal[_DT64Codes, _TD64Unit]
