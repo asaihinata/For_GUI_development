@@ -2,7 +2,7 @@ from types import GenericAlias
 from typing import Any, Literal, Self, overload
 
 import numpy as np
-from numpy._typing import _AnyShape, _DTypeLike
+from numpy._typing import DTypeLike, _AnyShape, _DTypeLike
 from numpy.typing import NDArray
 
 from sgg.typing import Typeaxis, _ShapeT_co
@@ -20,22 +20,20 @@ class NPArray[_ShapeT: _ShapeT_co, _Dtypes](
     _default_dtype: Literal["object"]
     # NPArray
     @overload
-    def __new__[_ShapeTs,_Dtype](
+    def __new__[_ShapeTs, _Dtype](
         cls,
         data: NPArray[_ShapeTs, _Dtype],
         dtype: None = None,
-        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
     ) -> NPArray[_ShapeTs, _Dtype]: ...
     @overload
-    def __new__[Dtype: _DTypeLike[np.generic] | type](
+    def __new__[Dtype: DTypeLike](
         cls,
         data: NPArray[_ShapeT, _Dtypes],
         dtype: Dtype,
-        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -47,18 +45,16 @@ class NPArray[_ShapeT: _ShapeT_co, _Dtypes](
         cls,
         data: _ShapeT,
         dtype: None = None,
-        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPArray[_ShapeT, np.dtype[np.generic]]: ...
+    ) -> NPArray[_ShapeT, np.dtype[Any]]: ...
     @overload
-    def __new__[Dtype: _DTypeLike[np.generic] | type](
+    def __new__[Dtype: DTypeLike](
         cls,
         data: _ShapeT,
         dtype: Dtype,
-        *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,

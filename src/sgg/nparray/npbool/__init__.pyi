@@ -3,7 +3,7 @@ from typing import Any, Iterator, Self, TypeVar, overload
 
 import numpy as np
 
-from sgg.typing import _ArrayLikeBool_co, _DTypeLike
+from sgg.typing import _ArrayLikeBool_co, _BoolDTypeLike, _DTypeLike
 
 from ..dev import _ArrayCommonMixin
 
@@ -27,15 +27,17 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
-    def __new__[Dtype: _DTypeLike[np.bool | np.bool_] | type[bool]](
+    def __new__[Dtype: _BoolDTypeLike](
         cls,
         data: _ShapeT,
         dtype: Dtype,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPBool[_ShapeT, np.dtype[Dtype]]: ...
     def __new__() -> Self:
         """
@@ -51,6 +53,8 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す
         :rtype: Self
         :raises ValueError: 次元数が範囲外の場合に発生させる

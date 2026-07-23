@@ -33,6 +33,7 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         d_ndim=None,
         min_ndim=None,
         max_ndim=None,
+        copy=True,
     ):
         if not isinstance(yearfirst, bool):
             yearfirst = False
@@ -47,13 +48,27 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         func = np.vectorize(
             lambda strs, yearfirst, dayfirst: _conversion(strs, yearfirst, dayfirst)
         )
+        if not isinstance(copy, bool):
+            copy = True
+        if dtype is None:
+            obj = np.asarray(
+                np.array(
+                    [func(i, yearfirst, dayfirst) for i in np.nditer(data)],
+                    dtype=resolved,
+                    copy=copy,
+                ).reshape(data.shape)
+            ).view(cls)
+            resolved = obj.dtype
+        else:
+            resolved = cls._resolve_dtype(np.dtype(_dt64_unit(dtype)))
+            obj = np.asarray(
+                np.array(
+                    [func(i, yearfirst, dayfirst) for i in np.nditer(data)],
+                    dtype=resolved,
+                    copy=copy,
+                ).reshape(data.shape)
+            ).view(cls)
         data = np.asanyarray(data, dtype=np.str_)
-        resolved = cls._resolve_dtype(np.dtype(_dt64_unit(dtype)))
-        obj = np.asarray(
-            np.array(
-                [func(i, yearfirst, dayfirst) for i in np.nditer(data)], dtype=resolved
-            ).reshape(data.shape)
-        ).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         if isinstance(d_ndim, int):

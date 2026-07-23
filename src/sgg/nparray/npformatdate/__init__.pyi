@@ -37,6 +37,7 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPFormatDate[_ToArray[datetime64[date]], np.dtype[datetime64[date]]]: ...
     @overload
     def __new__[Dtype: _MonthU64](
@@ -46,6 +47,7 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPFormatDate[_ToArray[datetime64[date]], np.dtype[datetime64[date]]]: ...
     @overload
     def __new__[_ShapeT: _ArrayLikeStr_co, Dtype: (_DayU64 | _NVU64)](
@@ -55,6 +57,7 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPFormatDate[
         _ToArray[datetime64[datetime]], np.dtype[datetime64[datetime]]
     ]: ...
@@ -66,6 +69,7 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPFormatDate[_ToArray[datetime64[int]], np.dtype[datetime64[int]]]: ...
     @overload
     def __new__[_ShapeT: _ArrayLikeStr_co, Dtype: _DT64Codes_any](
@@ -75,6 +79,7 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPFormatDate[_ToArray[datetime64[Any]], np.dtype[datetime64[Any]]]: ...
     def __new__() -> Self:
         """
@@ -94,6 +99,8 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す
         :rtype: Self
         :raises ValueError: 次元数が範囲外の場合に発生させる

@@ -23,9 +23,17 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     _element_type = (str, np.str_, bytes, np.bytes_)
     _default_dtype = np.str_
 
-    def __new__(cls, data, dtype=np.str_, d_ndim=None, min_ndim=None, max_ndim=None):
-        resolved = cls._resolve_dtype(dtype)
-        obj = np.asarray(data, dtype=resolved).view(cls)
+    def __new__(
+        cls, data, dtype=np.str_, d_ndim=None, min_ndim=None, max_ndim=None, copy=True
+    ):
+        if not isinstance(copy, bool):
+            copy = True
+        if dtype is None:
+            obj = np.asarray(data, copy=copy).view(cls)
+            resolved = obj.dtype
+        else:
+            resolved = cls._resolve_dtype(dtype)
+            obj = np.asarray(data, dtype=resolved, copy=copy).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         if isinstance(d_ndim, int):

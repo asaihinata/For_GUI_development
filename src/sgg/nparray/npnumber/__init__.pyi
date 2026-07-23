@@ -10,7 +10,8 @@ from numpy.typing import NDArray
 
 from sgg.typing import (Typeaxis, _ArrayLikeNumber_co, _ComplexDtypeLike,
                         _DTypeLike, _FloatsNumericDTypeLike,
-                        _IntsNumericDTypeLike,_NumericDTypeLike, _RealNumericDTypeLike)
+                        _IntsNumericDTypeLike, _NumericDTypeLike,
+                        _RealNumericDTypeLike)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -62,6 +63,7 @@ class NPNumber[_ShapeT: _ArrayLikeNumber_co, _Dtypes: _DTypeT](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPNumber[_ShapeT, _DTypeT]: ...
     @overload
     def __new__[DType: _NumericDTypeLike](
@@ -71,6 +73,7 @@ class NPNumber[_ShapeT: _ArrayLikeNumber_co, _Dtypes: _DTypeT](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPNumber[_ShapeT, np.dtype[DType]]: ...
     def __new__() -> Self:
         """
@@ -86,6 +89,8 @@ class NPNumber[_ShapeT: _ArrayLikeNumber_co, _Dtypes: _DTypeT](
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す
         :rtype: Self
         :raises ValueError: 次元数が範囲外の場合に発生させる

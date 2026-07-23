@@ -1,5 +1,5 @@
 import numpy as np
-from numpy._typing import _NestedSequence, _SupportsArray,_DTypeLike
+from numpy._typing import _DTypeLike, _NestedSequence, _SupportsArray
 
 __all__ = [
     "_DTypeLike",
@@ -23,7 +23,9 @@ type _BoolDTypeLike = np.dtype[np.bool_ | np.bool] | type[bool]
 # 数値
 type _NumericDTypeLike = _DTypeLike[np.number] | type[int] | type[float] | type[complex]
 """数値全般のdtype"""
-type _RealNumericDTypeLike = _DTypeLike[np.integer | np.floating] | type[int] | type[float]
+type _RealNumericDTypeLike = _DTypeLike[np.integer | np.floating] | type[int] | type[
+    float
+]
 """`実数`全般のdtype"""
 type _IntsNumericDTypeLike = _DTypeLike[np.integer] | type[int]
 """`整数`全般のdtype"""
@@ -32,5 +34,5 @@ type _FloatsNumericDTypeLike = _DTypeLike[np.floating] | type[float]
 type _ComplexDtypeLike = np.dtype[np.complexfloating] | type[complex]
 """`複素数`全般のdtype"""
 # 文字列
-type _StringDTypeLike = np.dtype[np.str_|np.bytes_] | type[str] | type[bytes]
+type _StringDTypeLike = np.dtype[np.str_ | np.bytes_] | type[str] | type[bytes]
 """numpyとPythonの文字列全般の型の型ヒント"""

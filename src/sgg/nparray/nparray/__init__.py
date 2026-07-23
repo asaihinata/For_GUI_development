@@ -27,11 +27,11 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
         if not isinstance(copy, bool):
             copy = True
         if dtype is None:
-            obj = np.array(data, copy=copy).view(cls)
+            obj = np.asarray(data, copy=copy).view(cls)
             resolved = obj.dtype
         else:
             resolved = cls._resolve_dtype(dtype)
-            obj = np.array(data, dtype=resolved, copy=copy).view(cls)
+            obj = np.asarray(data, dtype=resolved, copy=copy).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         if isinstance(d_ndim, int):

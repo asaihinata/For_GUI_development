@@ -9,7 +9,7 @@ from numpy._typing import _DTypeLike, _SupportsArrayFunc, _TD64Like_co
 from sgg.typing import (_NVU64, Incomplete, Typeaxis, _AllDateUnit, _Array1D,
                         _ArrayLikeDT64_co, _ArrayLikeNone_co,
                         _ArrayLikeTD64_co, _DayU64, _DT64Codes_any, _DTypeLike,
-                        _IntUD64, _MonthU64, _ShapeT_co, _ToArray)
+                        _IntUD64, _MonthU64, _ToArray)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -20,7 +20,7 @@ _DTypeT_co = TypeVar(
     "_DTypeT_co", bound=np.dtype, default=np.dtype[datetime64], covariant=True
 )
 
-class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
+class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
     _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承した日付の配列クラス"""
@@ -36,6 +36,7 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPDate[_ToArray[datetime64[None]], np.dtype[datetime64[date]]]: ...
     @overload
     def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: _MonthU64](
@@ -45,6 +46,7 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPDate[_ToArray[datetime64[None]], np.dtype[datetime64[date]]]: ...
     @overload
     def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: (_DayU64 | _NVU64)](
@@ -54,6 +56,7 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPDate[_ToArray[datetime64[None]], np.dtype[datetime64[datetime]]]: ...
     @overload
     def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: _DT64Codes_any](
@@ -63,6 +66,7 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPDate[_ToArray[datetime64[None]], np.dtype[datetime64[Any]]]: ...
     @overload
     def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: _IntUD64](
@@ -72,6 +76,7 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPDate[_ToArray[datetime64[None]], np.dtype[datetime64[int]]]: ...
     @overload
     def __new__[_ShapeT: _ArrayLikeDT64_co](
@@ -81,6 +86,7 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPDate[_ToArray[datetime64[date]], np.dtype[datetime64[date]]]: ...
     @overload
     def __new__[_ShapeT: _ArrayLikeDT64_co, Dtype: _MonthU64](
@@ -90,6 +96,7 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPDate[_ToArray[datetime64[date]], np.dtype[datetime64[date]]]: ...
     @overload
     def __new__[_ShapeT: _ArrayLikeDT64_co, Dtype: (_DayU64 | _NVU64)](
@@ -99,6 +106,7 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPDate[_ToArray[datetime64[datetime]], np.dtype[datetime64[datetime]]]: ...
     @overload
     def __new__[_ShapeT: _ArrayLikeDT64_co, Dtype: _IntUD64](
@@ -108,6 +116,7 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPDate[_ToArray[datetime64[int]], np.dtype[datetime64[int]]]: ...
     @overload
     def __new__[_ShapeT: _ArrayLikeDT64_co, Dtype: _DT64Codes_any](
@@ -117,6 +126,7 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPDate[_ToArray[datetime64[Any]], np.dtype[datetime64[Any]]]: ...
     def __new__() -> Self:
         """
@@ -132,6 +142,8 @@ class NPDate[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す
         :rtype: Self
         :raises ValueError: 次元数が範囲外の場合に発生させる

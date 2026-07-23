@@ -9,8 +9,7 @@ from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBytes_co,
                            _ArrayLikeString_co)
 
 from sgg.typing import (Typeaxis, _ArrayLikeAnyString_co, _DTypeLike,
-                        _ShapeT_co, _StringDTypeLike,
-                        _StringDTypeSupportsArray)
+                        _StringDTypeLike, _StringDTypeSupportsArray)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -34,6 +33,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPString[_ShapeT, np.dtype[np.str_]]: ...
     @overload
     def __new__[DType: _StringDTypeLike](
@@ -43,6 +43,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
+        copy: bool = True,
     ) -> NPString[_ShapeT, np.dtype[DType]]: ...
     def __new__() -> Self:
         """
@@ -58,6 +59,8 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す
         :rtype: Self
         :raises ValueError: 次元数が範囲外の場合に発生させる
