@@ -108,9 +108,6 @@ class NPArray[_ShapeT: _ShapeT_co, _Dtypes](
         """
 
     def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
-    # def __class_getitem__(
-    #     cls, item: Any
-    # ) -> type[NPArray[_ShapeT, np.dtype[_Dtypes]]]: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,

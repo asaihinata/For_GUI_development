@@ -315,35 +315,35 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
 
     @property
     def degree(self):
-        result = np.asarray(self * np.pi / 180).view(type(self))
+        result = np.asarray(180 * self / np.pi).view(type(self))
         result._dtype = result.dtype
         return result
 
     @property
     def deg(self):
-        result = np.asarray(self * np.pi / 180).view(type(self))
+        result = np.asarray(180 * self / np.pi).view(type(self))
         result._dtype = result.dtype
         return result
 
     def deg_to_rad(self):
-        result = np.asarray(self * np.pi / 180).view(type(self))
+        result = np.asarray(180 * self / np.pi).view(type(self))
         result._dtype = result.dtype
         return result
 
     @property
     def radian(self):
-        result = np.asarray(180 * self / np.pi).view(type(self))
+        result = np.asarray(self * np.pi / 180).view(type(self))
         result._dtype = result.dtype
         return result
 
     @property
     def rad(self):
-        result = np.asarray(180 * self / np.pi).view(type(self))
+        result = np.asarray(self * np.pi / 180).view(type(self))
         result._dtype = result.dtype
         return result
 
     def rad_to_deg(self):
-        result = np.asarray(180 * self / np.pi).view(type(self))
+        result = np.asarray(self * np.pi / 180).view(type(self))
         result._dtype = result.dtype
         return result
 

@@ -5,13 +5,13 @@ from typing import (Any, Iterator, Literal, Self, Sequence, SupportsIndex,
                     TypeAlias, TypeVar, overload)
 
 import numpy as np
-from numpy._typing import _FloatLike_co
+from numpy._typing import _FloatLike_co,_SupportsArrayFunc
 from numpy.typing import NDArray
 
 from sgg.typing import (Typeaxis, _ArrayLikeNumber_co, _ComplexDtypeLike,
-                        _DTypeLike, _FloatsNumericDTypeLike,
-                        _IntsNumericDTypeLike, _NumericDTypeLike,
-                        _RealNumericDTypeLike)
+                        _DTypeLike, _FloatsNumericDTypeLike,_Array1D,
+                        _IntsNumericDTypeLike, _NumberScalar,
+                        _NumericDTypeLike, _RealNumericDTypeLike,_Arange_Number)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -342,80 +342,80 @@ class NPNumber[_ShapeT: _ArrayLikeNumber_co, _Dtypes: _DTypeT](
     def degree[DType: _RealNumericDTypeLike](
         self: NPNumber[_ShapeT, np.dtype[DType]],
     ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
-        """角度を度数法から弧度法に変換する"""
+        """角度を弧度法から度数法に変換する"""
 
     @overload
     @property
     def degree[DType: _ComplexDtypeLike](
         self: NPNumber[_ShapeT, np.dtype[DType]],
     ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
-        """角度を度数法から弧度法に変換する"""
+        """角度を弧度法から度数法に変換する"""
 
     @overload
     @property
     def deg[DType: _RealNumericDTypeLike](
         self: NPNumber[_ShapeT, np.dtype[DType]],
     ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
-        """角度を度数法から弧度法に変換する"""
+        """角度を弧度法から度数法に変換する"""
 
     @overload
     @property
     def deg[DType: _ComplexDtypeLike](
         self: NPNumber[_ShapeT, np.dtype[DType]],
     ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
-        """角度を度数法から弧度法に変換する"""
+        """角度を弧度法から度数法に変換する"""
 
     @overload
     def deg_to_rad[DType: _RealNumericDTypeLike](
         self: NPNumber[_ShapeT, np.dtype[DType]],
     ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
-        """角度を度数法から弧度法に変換する"""
+        """角度を弧度法から度数法に変換する"""
 
     @overload
     def deg_to_rad[DType: _ComplexDtypeLike](
         self: NPNumber[_ShapeT, np.dtype[DType]],
     ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
-        """角度を度数法から弧度法に変換する"""
+        """角度を弧度法から度数法に変換する"""
 
     @overload
     @property
     def radian[DType: _RealNumericDTypeLike](
         self: NPNumber[_ShapeT, np.dtype[DType]],
     ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
-        """角度を弧度法から度数法に変換する"""
+        """角度を度数法から弧度法に変換する"""
 
     @overload
     @property
     def radian[DType: _ComplexDtypeLike](
         self: NPNumber[_ShapeT, np.dtype[DType]],
     ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
-        """角度を弧度法から度数法に変換する"""
+        """角度を度数法から弧度法に変換する"""
 
     @overload
     @property
     def rad[DType: _RealNumericDTypeLike](
         self: NPNumber[_ShapeT, np.dtype[DType]],
     ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
-        """角度を弧度法から度数法に変換する"""
+        """角度を度数法から弧度法に変換する"""
 
     @overload
     @property
     def rad[DType: _ComplexDtypeLike](
         self: NPNumber[_ShapeT, np.dtype[DType]],
     ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
-        """角度を弧度法から度数法に変換する"""
+        """角度を度数法から弧度法に変換する"""
 
     @overload
     def rad_to_deg[DType: _RealNumericDTypeLike](
         self: NPNumber[_ShapeT, np.dtype[DType]],
     ) -> NPNumber[_ShapeT, np.dtype[np.floating]]:
-        """角度を弧度法から度数法に変換する"""
+        """角度を度数法から弧度法に変換する"""
 
     @overload
     def rad_to_deg[DType: _ComplexDtypeLike](
         self: NPNumber[_ShapeT, np.dtype[DType]],
     ) -> NPNumber[_ShapeT, np.dtype[_ComplexDtypeLike]]:
-        """角度を弧度法から度数法に変換する"""
+        """角度を度数法から弧度法に変換する"""
 
     @overload
     def dsin[DType: _RealNumericDTypeLike](
