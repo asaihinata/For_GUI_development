@@ -3,6 +3,7 @@ from datetime import date, datetime
 import numpy as np
 
 __all__ = [
+    "_Arange_Number",
     "_BoolScalar",
     "_DateParseScalar",
     "_NumberScalar",
@@ -22,3 +23,4 @@ type _NumberScalar = int | float | complex | np.number | _BoolScalar
 type _StrScalar = str | bytes | np.character | np.flexible
 type _DateParseScalar = str | np.str_ | datetime | date | np.datetime64 | int
 type _TD64Like_co = np.timedelta64 | _IntLike_co
+type _Arange_Number = np.integer | np.floating | int | float

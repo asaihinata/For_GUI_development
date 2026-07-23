@@ -363,6 +363,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
     def arange(
         cls,
         start: datetime64,
+        /,
         stop: datetime64,
         step: _TD64Like_co | None = 1,
         *,
@@ -392,6 +393,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
     def arange(
         cls,
         start: str,
+        /,
         stop: str,
         step: _TD64Like_co | None = 1,
         *,

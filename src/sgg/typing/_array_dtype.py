@@ -2,6 +2,7 @@ import numpy as np
 from numpy._typing import _DTypeLike, _NestedSequence, _SupportsArray
 
 __all__ = [
+    "_ArangeNumber_DtypeLike",
     "_DTypeLike",
     "_DualArrayLike",
     "_BoolDTypeLike",
@@ -21,6 +22,7 @@ type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
 # 真偽型
 type _BoolDTypeLike = np.dtype[np.bool_ | np.bool] | type[bool]
 # 数値
+type _ArangeNumber_DtypeLike = _DTypeLike[np.integer | np.floating]
 type _NumericDTypeLike = _DTypeLike[np.number] | type[int] | type[float] | type[complex]
 """数値全般のdtype"""
 type _RealNumericDTypeLike = _DTypeLike[np.integer | np.floating] | type[int] | type[

@@ -313,6 +313,13 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
+    @classmethod
+    def arange(cls, start, /, stop=None, step=1, *, dtype=None, device=None, like=None):
+        return cls(
+            np.arange(start, stop, step=step, dtype=dtype, device=device, like=like),
+            dtype=dtype,
+        )
+
     @property
     def degree(self):
         result = np.asarray(180 * self / np.pi).view(type(self))
