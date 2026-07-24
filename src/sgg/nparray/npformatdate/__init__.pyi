@@ -96,7 +96,7 @@ class NPFormatDate[_ShapeT: sgt._ArrayLikeStr_co, _Dtypes: _DTypeT](
         :param data: 変換する配列を指定する
         :type data: -
         :param dtype: 配列の型を指定する
-        :type dtype: -
+        :type dtype: dtype
         :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
         :type yearfirst: bool
         :param dayfirst: 曖昧な3つの整数からなる日付の最初の値を日もしくは月として解釈するかどうか指定する

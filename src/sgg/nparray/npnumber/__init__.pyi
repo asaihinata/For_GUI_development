@@ -113,7 +113,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         :param data: 変換する配列を指定する
         :type data: -
         :param dtype: 配列の型を指定する
-        :type dtype: -
+        :type dtype: dtype
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
@@ -391,7 +391,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         :param step: 値の間隔を指定する
         :type step: -
         :param dtype: 出力される配列の型を指定する
-        :type dtype: -
+        :type dtype: dtype
         :param device: 作成された配列を配置する場所を指定する
         :type device: Literal["cpu"] | None
         :param like: NumPy配列ではない配列を作成できるようにする参照するオブジェクトを指定する

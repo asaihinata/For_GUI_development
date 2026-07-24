@@ -73,7 +73,7 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
         :param data: 変換する配列を指定する
         :type data: -
         :param dtype: 配列の型を指定する
-        :type dtype: -
+        :type dtype: dtype
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
