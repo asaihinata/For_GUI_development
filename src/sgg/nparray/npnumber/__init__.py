@@ -345,6 +345,20 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         )
         return cls(result, dtype=result.dtype)
 
+    @classmethod
+    def logspace(
+        cls, start, stop, num=50, endpoint=True, base=10.0, dtype=None, axis=0
+    ):
+        result = np.logspace(
+            start, stop, num=num, endpoint=endpoint, base=base, dtype=dtype, axis=axis
+        )
+        return cls(result, dtype=result.dtype)
+
+    @classmethod
+    def geomspace(cls, start, stop, num=50, endpoint=True, dtype=None, axis=0):
+        result = np.geomspace(start, stop, num, endpoint, dtype=dtype, axis=axis)
+        return cls(result, dtype=result.dtype)
+
     @property
     def degree(self):
         result = np.asarray(180 * self / np.pi).view(type(self))

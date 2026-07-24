@@ -680,6 +680,278 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         """
 
     @overload
+    @classmethod
+    def logspace(
+        cls,
+        start: _ToFloat64,
+        stop: _ToFloat64,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        base: _ToFloat64 = 10.0,
+        dtype: None = None,
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, np.float64]: ...
+    @overload
+    @classmethod
+    def logspace(
+        cls,
+        start: complex,
+        stop: complex,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        base: complex = 10.0,
+        dtype: None = None,
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, np.complex128 | Any]: ...
+    @overload
+    @classmethod
+    def logspace[ScalarT: np.generic](
+        cls,
+        start: _ComplexLike_co,
+        stop: _ComplexLike_co,
+        num: SupportsIndex,
+        endpoint: bool,
+        base: _ComplexLike_co,
+        dtype: sgt._DTypeLike[ScalarT],
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, ScalarT]: ...
+    @overload
+    @classmethod
+    def logspace[ScalarT: np.generic](
+        cls,
+        start: _ComplexLike_co,
+        stop: _ComplexLike_co,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        base: sgt._ArrayLikeComplex_co = 10.0,
+        *,
+        dtype: sgt._DTypeLike[ScalarT],
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, ScalarT]: ...
+    @overload
+    @classmethod
+    def logspace(
+        cls,
+        start: _ToArrayFloat64,
+        stop: _ToArrayFloat64,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        base: _ToArrayFloat64 = 10.0,
+        dtype: None = None,
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, np.float64]: ...
+    @overload
+    @classmethod
+    def logspace(
+        cls,
+        start: sgt._ArrayLikeComplex_co,
+        stop: sgt._ArrayLikeComplex_co,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        base: sgt._ArrayLikeComplex_co = 10.0,
+        dtype: None = None,
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, np.float64 | Any]: ...
+    @overload
+    @classmethod
+    def logspace(
+        cls,
+        start: sgt._ArrayLikeComplex_co,
+        stop: sgt._ArrayLikeComplex_co,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        base: sgt._ArrayLikeComplex_co = 10.0,
+        dtype: None = None,
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, np.complex128 | Any]: ...
+    @overload
+    @classmethod
+    def logspace[ScalarT: np.generic](
+        cls,
+        start: sgt._ArrayLikeComplex_co,
+        stop: sgt._ArrayLikeComplex_co,
+        num: SupportsIndex,
+        endpoint: bool,
+        base: sgt._ArrayLikeComplex_co,
+        dtype: sgt._DTypeLike[ScalarT],
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, ScalarT]: ...
+    @overload
+    @classmethod
+    def logspace[ScalarT: np.generic](
+        cls,
+        start: sgt._ArrayLikeComplex_co,
+        stop: sgt._ArrayLikeComplex_co,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        base: sgt._ArrayLikeComplex_co = 10.0,
+        *,
+        dtype: sgt._DTypeLike[ScalarT],
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, ScalarT]: ...
+    @overload
+    @classmethod
+    def logspace(
+        cls,
+        start: sgt._ArrayLikeComplex_co,
+        stop: sgt._ArrayLikeComplex_co,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        base: sgt._ArrayLikeComplex_co = 10.0,
+        dtype: DTypeLike | None = None,
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, sgt.Incomplete]: ...
+    @classmethod
+    def logspace():
+        """
+        対数スケール上で等間隔に並んだ数値の配列を作成する
+
+        :param start: 数列の開始値を指定する
+        :type start: -
+        :param stop:
+        シーケンスの終了値を指定する。
+        ただし `endpoint`が`False` の場合,生成される値の範囲は[`start`,`stop`)である。
+        `endpoint`が`True` の場合,生成される値の範囲は[`start`,`stop`]である。
+
+        :type stop: -
+        :param num: 生成する値の数を指定する
+        :type num: int
+        :param endpoint: 生成させる配列の範囲を指定する
+        :type endpoint: bool
+        :param base: 対数の底を指定する
+        :type base: array_like
+        :param dtype: 出力される配列の型を指定する
+        :type dtype: dtype
+        :param axis: 結果を収納する軸を指定する
+        :type axis: int
+        """
+
+    @overload
+    @classmethod
+    def geomspace(
+        start: _ToFloat64,
+        stop: _ToFloat64,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        dtype: None = None,
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[tuple[int], np.float64]: ...
+    @overload
+    @classmethod
+    def geomspace(
+        start: complex,
+        stop: complex,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        dtype: None = None,
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[tuple[int], np.complex128 | Any]: ...
+    @overload
+    @classmethod
+    def geomspace[ScalarT: np.generic](
+        start: _ComplexLike_co,
+        stop: _ComplexLike_co,
+        num: SupportsIndex,
+        endpoint: bool,
+        dtype: sgt._DTypeLike[ScalarT],
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[tuple[int], ScalarT]: ...
+    @overload
+    @classmethod
+    def geomspace[ScalarT: np.generic](
+        start: _ComplexLike_co,
+        stop: _ComplexLike_co,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        *,
+        dtype: sgt._DTypeLike[ScalarT],
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[tuple[int], ScalarT]: ...
+    @overload
+    @classmethod
+    def geomspace(
+        start: _ToArrayFloat64,
+        stop: _ToArrayFloat64,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        dtype: None = None,
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, np.float64]: ...
+    @overload
+    @classmethod
+    def geomspace(
+        start: sgt._ArrayLikeFloat_co,
+        stop: sgt._ArrayLikeFloat_co,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        dtype: None = None,
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, np.float64 | Any]: ...
+    @overload
+    @classmethod
+    def geomspace(
+        start: sgt._ArrayLikeComplex_co,
+        stop: sgt._ArrayLikeComplex_co,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        dtype: None = None,
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, np.complex128 | Any]: ...
+    @overload
+    @classmethod
+    def geomspace[ScalarT: np.generic](
+        start: sgt._ArrayLikeComplex_co,
+        stop: sgt._ArrayLikeComplex_co,
+        num: SupportsIndex,
+        endpoint: bool,
+        dtype: sgt._DTypeLike[ScalarT],
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, ScalarT]: ...
+    @overload
+    @classmethod
+    def geomspace[ScalarT: np.generic](
+        start: sgt._ArrayLikeComplex_co,
+        stop: sgt._ArrayLikeComplex_co,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        *,
+        dtype: sgt._DTypeLike[ScalarT],
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, ScalarT]: ...
+    @overload
+    @classmethod
+    def geomspace(
+        start: sgt._ArrayLikeComplex_co,
+        stop: sgt._ArrayLikeComplex_co,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        dtype: DTypeLike | None = None,
+        axis: SupportsIndex = 0,
+    ) -> NPNumber[sgt._AnyShape, sgt.Incomplete]: ...
+    @classmethod
+    def geomspace() -> NPNumber[sgt._AnyShape, sgt.Incomplete]:
+        """
+        対数スケール上で等間隔に配置された(等比数列)配列を作成する
+
+        :param start: 数列の開始値を指定する
+        :type start: -
+        :param stop:
+        シーケンスの終了値を指定する。
+        ただし `endpoint`が`False` の場合,生成される値の範囲は[`start`,`stop`)である。
+        `endpoint`が`True` の場合,生成される値の範囲は[`start`,`stop`]である。
+
+        :type stop: -
+        :param num: 生成する値の数を指定する
+        :type num: int
+        :param endpoint: 生成させる配列の範囲を指定する
+        :type endpoint: bool
+        :param dtype: 出力される配列の型を指定する
+        :type dtype: dtype
+        :param axis: 結果を収納する軸を指定する
+        :type axis: int
+        """
+
+    @overload
     @property
     def degree[DType: sgt._RealNumericDTypeLike](
         self: NPNumber[_ShapeT, dtype[DType]],
