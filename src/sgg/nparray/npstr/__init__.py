@@ -122,43 +122,17 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
-    def max(self, axis=None):
-        if axis is not None:
-            axis = _normalize_axis(axis, self.ndim, "max")
-        return np.max(nps.str_len(self.data), axis=axis)
+    def max(self):
+        return np.max(nps.str_len(self.data))
 
-    def min(self, axis=None):
-        if axis is not None:
-            axis = _normalize_axis(axis, self.ndim, "min")
-        return np.min(nps.str_len(self.data), axis=axis)
+    def min(self):
+        return np.min(nps.str_len(self.data))
 
-    def stringlen(self, axis=None):
-        if axis is None:
-            return NPNumber(np.vectorize(len)(self), dtype=np.uint64)
+    def stringlen(self):
+        return NPNumber(np.vectorize(len)(self), dtype=np.uint64)
 
-        def _lenfunc(a):
-            return np.vectorize(len)(a)
-
-        return NPNumber(
-            np.apply_along_axis(
-                _lenfunc, _normalize_axis(axis, self.ndim, "stringlen"), self.data
-            ),
-            dtype=np.uint64,
-        )
-
-    def str_len(self, axis=None):
-        if axis is None:
-            return NPNumber(nps.str_len(self), dtype=np.uint64)
-
-        def _lenfunc(a):
-            return nps.str_len(a)
-
-        return NPNumber(
-            np.apply_along_axis(
-                _lenfunc, _normalize_axis(axis, self.ndim, "str_len"), self.data
-            ),
-            dtype=np.uint64,
-        )
+    def str_len(self):
+        return NPNumber(nps.str_len(self), dtype=np.uint64)
 
     def replace(self, old, new):
         result = nps.replace(np.asarray(self), old, new).view(type(self))

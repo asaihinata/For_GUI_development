@@ -275,39 +275,17 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     def upper(self) -> Self:
         """`NPString`内の要素のアルファベットを大文字に変換する"""
 
-    def stringlen(
-        self, axis: Typeaxis = None
-    ) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
-        """
-        配列内の要素の文字の長さを求める
+    def stringlen(self) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
+        """配列内の要素の文字の長さを求める"""
 
-        :param axis: 長さを求める軸を指定する
-        :type axis: Typeaxis
-        """
+    def str_len(self) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
+        """配列内の要素の文字の長さを求める"""
 
-    def str_len(self, axis: Typeaxis = None) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
-        """
-        配列内の要素の文字の長さを求める
+    def max(self) -> np.uint64:
+        """配列内の要素の文字列の長さが最も長い数値を求める"""
 
-        :param axis: 長さを求める軸を指定する
-        :type axis: Typeaxis
-        """
-
-    @overload
-    def max(self, axis: np._ShapeLike) -> Any:
-        """配列内の要素の文字列の長さが最も大きい数値を求める"""
-
-    @overload
-    def max(self, axis: Typeaxis = None) -> np.int_:
-        """配列内の要素の文字列の長さが最も大きい数値を求める"""
-
-    @overload
-    def min(self, axis: np._ShapeLike) -> Any:
-        """配列内の要素の文字列の長さが最も大きい数値を求める"""
-
-    @overload
-    def min(self, axis: Typeaxis = None) -> np.int_:
-        """配列内の要素の文字列の長さが最も小さい数値を求める"""
+    def min(self) -> np.uint64:
+        """配列内の要素の文字列の長さが最も短い数値を求める"""
 
     def replace(self, old: str, new: str) -> NPString[_ShapeT, _Dtypes]:
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
