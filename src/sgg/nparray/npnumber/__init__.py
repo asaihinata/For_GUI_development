@@ -320,6 +320,31 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
             dtype=dtype,
         )
 
+    @classmethod
+    def linspace(
+        cls,
+        start,
+        stop,
+        num=50,
+        endpoint=True,
+        retstep=False,
+        dtype=None,
+        axis=0,
+        *,
+        device=None,
+    ):
+        result = np.linspace(
+            start,
+            stop,
+            num,
+            endpoint,
+            retstep=retstep,
+            dtype=dtype,
+            axis=axis,
+            device=device,
+        )
+        return cls(result, dtype=result.dtype)
+
     @property
     def degree(self):
         result = np.asarray(180 * self / np.pi).view(type(self))
