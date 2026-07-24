@@ -6,10 +6,7 @@ import numpy as np
 from numpy import datetime64
 from numpy._typing import _DTypeLike, _SupportsArrayFunc, _TD64Like_co
 
-from sgg.typing import (_NVU64, Incomplete, Typeaxis, _AllDateUnit, _Array1D,
-                        _ArrayLikeDT64_co, _ArrayLikeNone_co,
-                        _ArrayLikeTD64_co, _DayU64, _DT64Codes_any, _DTypeLike,
-                        _IntUD64, _MonthU64)
+import sgg.typing as sgt
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -40,7 +37,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         copy: bool = True,
     ) -> NPDate[_ShapeT, _Dtype]: ...
     @overload
-    def __new__[_ShapeT, Dtype: _MonthU64](
+    def __new__[_ShapeT, Dtype: sgt._MonthU64](
         cls,
         data: NPDate[_ShapeT],
         /,
@@ -52,7 +49,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         copy: bool = True,
     ) -> NPDate[_ShapeT, np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[_ShapeT, Dtype: (_DayU64 | _NVU64)](
+    def __new__[_ShapeT, Dtype: (sgt._DayU64 | sgt._NVU64)](
         cls,
         data: NPDate[_ShapeT],
         /,
@@ -64,7 +61,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         copy: bool = True,
     ) -> NPDate[_ShapeT, np.dtype[datetime64[datetime]]]: ...
     @overload
-    def __new__[_ShapeT, Dtype: _DT64Codes_any](
+    def __new__[_ShapeT, Dtype: sgt._DT64Codes_any](
         cls,
         data: NPDate[_ShapeT],
         /,
@@ -76,7 +73,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         copy: bool = True,
     ) -> NPDate[_ShapeT, np.dtype[datetime64[Any]]]: ...
     @overload
-    def __new__[_ShapeT, Dtype: _IntUD64](
+    def __new__[_ShapeT, Dtype: sgt._IntUD64](
         cls,
         data: NPDate[_ShapeT],
         /,
@@ -88,7 +85,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         copy: bool = True,
     ) -> NPDate[_ShapeT, np.dtype[datetime64[int]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeNone_co](
+    def __new__[_ShapeT: sgt._ArrayLikeNone_co](
         cls,
         data: _ShapeT,
         /,
@@ -100,7 +97,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         copy: bool = True,
     ) -> NPDate[_ShapeT, np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: _MonthU64](
+    def __new__[_ShapeT: sgt._ArrayLikeNone_co, Dtype: sgt._MonthU64](
         cls,
         data: _ShapeT,
         /,
@@ -112,7 +109,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         copy: bool = True,
     ) -> NPDate[_ShapeT, np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: (_DayU64 | _NVU64)](
+    def __new__[_ShapeT: sgt._ArrayLikeNone_co, Dtype: (sgt._DayU64 | sgt._NVU64)](
         cls,
         data: _ShapeT,
         /,
@@ -124,7 +121,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         copy: bool = True,
     ) -> NPDate[_ShapeT, np.dtype[datetime64[datetime]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: _DT64Codes_any](
+    def __new__[_ShapeT: sgt._ArrayLikeNone_co, Dtype: sgt._DT64Codes_any](
         cls,
         data: _ShapeT,
         /,
@@ -136,7 +133,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         copy: bool = True,
     ) -> NPDate[_ShapeT, np.dtype[datetime64[Any]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeNone_co, Dtype: _IntUD64](
+    def __new__[_ShapeT: sgt._ArrayLikeNone_co, Dtype: sgt._IntUD64](
         cls,
         data: _ShapeT,
         /,
@@ -148,7 +145,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         copy: bool = True,
     ) -> NPDate[_ShapeT, np.dtype[datetime64[int]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeDT64_co](
+    def __new__[_ShapeT: sgt._ArrayLikeDT64_co](
         cls,
         data: _ShapeT,
         /,
@@ -160,7 +157,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         copy: bool = True,
     ) -> NPDate[_ShapeT, np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeDT64_co, Dtype: _MonthU64](
+    def __new__[_ShapeT: sgt._ArrayLikeDT64_co, Dtype: sgt._MonthU64](
         cls,
         data: _ShapeT,
         /,
@@ -172,7 +169,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         copy: bool = True,
     ) -> NPDate[_ShapeT, np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeDT64_co, Dtype: (_DayU64 | _NVU64)](
+    def __new__[_ShapeT: sgt._ArrayLikeDT64_co, Dtype: (sgt._DayU64 | sgt._NVU64)](
         cls,
         data: _ShapeT,
         /,
@@ -184,7 +181,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         copy: bool = True,
     ) -> NPDate[_ShapeT, np.dtype[datetime64[datetime]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeDT64_co, Dtype: _IntUD64](
+    def __new__[_ShapeT: sgt._ArrayLikeDT64_co, Dtype: sgt._IntUD64](
         cls,
         data: _ShapeT,
         /,
@@ -196,7 +193,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         copy: bool = True,
     ) -> NPDate[_ShapeT, np.dtype[datetime64[int]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeDT64_co, Dtype: _DT64Codes_any](
+    def __new__[_ShapeT: sgt._ArrayLikeDT64_co, Dtype: sgt._DT64Codes_any](
         cls,
         data: _ShapeT,
         dtype: Dtype,
@@ -281,10 +278,10 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         :rtype: Any
         """
 
-    def __add__(self, value: _ArrayLikeTD64_co) -> Self: ...
+    def __add__(self, value: sgt._ArrayLikeTD64_co) -> Self: ...
     __iadd__ = __add__
     __radd__ = __add__
-    def __sub__(self, value: _ArrayLikeTD64_co) -> Self: ...
+    def __sub__(self, value: sgt._ArrayLikeTD64_co) -> Self: ...
     __isub__ = __sub__
     __rsub__ = __sub__
     @overload
@@ -370,7 +367,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         dtype: _DTypeLike[datetime64] | None = None,
         device: Literal["cpu"] | None = None,
         like: _SupportsArrayFunc | None = None,
-    ) -> NPDate[_Array1D[datetime64[Incomplete]], np.dtype[datetime64[Incomplete]]]:
+    ) -> NPDate[sgt._Array1D[datetime64[sgt.Incomplete]], np.dtype[datetime64[sgt.Incomplete]]]:
         """
         指定された間隔内で等間隔の日付を返す
 
@@ -381,7 +378,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         :param step: 値の間隔を指定する
         :type step: _TD64Like_co | None
         :param dtype: 出力配列の型を指定する
-        :type dtype: _DTypeLike[datetime64] | None
+        :type dtype: dtype
         :param device: 作成された配列を配置する場所を指定する
         :type device: Literal["cpu"] | None
         :param like: NumPy配列ではない配列を作成できるようにする参照するオブジェクトを指定する
@@ -397,10 +394,10 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         stop: str,
         step: _TD64Like_co | None = 1,
         *,
-        dtype: _DTypeLike[datetime64] | _AllDateUnit,
+        dtype: _DTypeLike[datetime64] | sgt._AllDateUnit,
         device: Literal["cpu"] | None = None,
         like: _SupportsArrayFunc | None = None,
-    ) -> NPDate[_Array1D[datetime64[Incomplete]], np.dtype[datetime64[Incomplete]]]:
+    ) -> NPDate[sgt._Array1D[datetime64[sgt.Incomplete]], np.dtype[datetime64[sgt.Incomplete]]]:
         """
         指定された間隔内で等間隔の日付を返す
 
@@ -411,7 +408,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         :param step: 値の間隔を指定する
         :type step: _TD64Like_co | None
         :param dtype: 出力配列の型を指定する
-        :type dtype: _DTypeLike[datetime64] | _AllDateUnit
+        :type dtype: dtype
         :param device: 作成された配列を配置する場所を指定する
         :type device: Literal["cpu"] | None
         :param like: NumPy配列ではない配列を作成できるようにする参照するオブジェクトを指定する
@@ -427,7 +424,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         """現在時刻(UTC時刻)を返す"""
 
     @classmethod
-    def unix(cls, dtype: _AllDateUnit | None = None) -> NPDate: ...
+    def unix(cls, dtype: sgt._AllDateUnit | None = None) -> NPDate: ...
     def weekday(self) -> NPNumber[Any, np.dtype[np.uint8]]:
         """その日付日時の曜日を求める"""
 
@@ -465,7 +462,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
     def range(
         self: NPDate[Any, Any], axis: np._ShapeLike
     ) -> tuple[NPDate[Any, Any], NPDate[Any, Any]]: ...
-    def range(self, axis: Typeaxis = None) -> tuple[
+    def range(self, axis: sgt.Typeaxis = None) -> tuple[
         NPDate[Any, Any] | datetime64[Any],
         NPDate[Any, Any] | datetime64[Any],
     ]:
@@ -473,7 +470,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         配列内の日付の最小の日付と最大の日付を求める
 
         :param axis: 求める軸を指定する。
-        :type axis: Typeaxis
+        :type axis: sgt.Typeaxis
         """
 
     def leapyear(

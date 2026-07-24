@@ -7,9 +7,7 @@ from typing import Any, Iterator, Literal, Self, TypeVar, overload
 import numpy as np
 from numpy import datetime64
 
-from sgg.typing import (_NVU64, Typeaxis, _ArrayLikeStr_co, _ArrayLikeTD64_co,
-                        _DayU64, _DT64Codes_any, _DTypeLike, _IntUD64,
-                        _MonthU64, _ToArray)
+import sgg.typing as sgt
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -21,7 +19,7 @@ _DTypeT = TypeVar(
     "_DTypeT", bound=np.generic, default=np.dtype[datetime64], covariant=True
 )
 
-class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
+class NPFormatDate[_ShapeT: sgt._ArrayLikeStr_co, _Dtypes: _DTypeT](
     _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
@@ -40,9 +38,9 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPFormatDate[_ToArray[datetime64[date]], np.dtype[datetime64[date]]]: ...
+    ) -> NPFormatDate[sgt._ToArray[datetime64[date]], np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[Dtype: _MonthU64](
+    def __new__[Dtype: sgt._MonthU64](
         cls,
         data: _ShapeT,
         /,
@@ -52,9 +50,9 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPFormatDate[_ToArray[datetime64[date]], np.dtype[datetime64[date]]]: ...
+    ) -> NPFormatDate[sgt._ToArray[datetime64[date]], np.dtype[datetime64[date]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeStr_co, Dtype: (_DayU64 | _NVU64)](
+    def __new__[_ShapeT: sgt._ArrayLikeStr_co, Dtype: (sgt._DayU64 | sgt._NVU64)](
         cls,
         data: _ShapeT,
         /,
@@ -65,10 +63,10 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
         max_ndim: int | None = None,
         copy: bool = True,
     ) -> NPFormatDate[
-        _ToArray[datetime64[datetime]], np.dtype[datetime64[datetime]]
+        sgt._ToArray[datetime64[datetime]], np.dtype[datetime64[datetime]]
     ]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeStr_co, Dtype: _IntUD64](
+    def __new__[_ShapeT: sgt._ArrayLikeStr_co, Dtype: sgt._IntUD64](
         cls,
         data: _ShapeT,
         /,
@@ -78,9 +76,9 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPFormatDate[_ToArray[datetime64[int]], np.dtype[datetime64[int]]]: ...
+    ) -> NPFormatDate[sgt._ToArray[datetime64[int]], np.dtype[datetime64[int]]]: ...
     @overload
-    def __new__[_ShapeT: _ArrayLikeStr_co, Dtype: _DT64Codes_any](
+    def __new__[_ShapeT: sgt._ArrayLikeStr_co, Dtype: sgt._DT64Codes_any](
         cls,
         data: _ShapeT,
         /,
@@ -90,7 +88,7 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPFormatDate[_ToArray[datetime64[Any]], np.dtype[datetime64[Any]]]: ...
+    ) -> NPFormatDate[sgt._ToArray[datetime64[Any]], np.dtype[datetime64[Any]]]: ...
     def __new__() -> Self:
         """
         様々な日付のフォーマットを特定の日付フォーマットに変換する配列オブジェクトインスタンスを生成する
@@ -117,10 +115,10 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    def __add__(self, value: _ArrayLikeTD64_co) -> Self: ...
+    def __add__(self, value: sgt._ArrayLikeTD64_co) -> Self: ...
     __iadd__ = __add__
     __radd__ = __add__
-    def __sub__(self, value: _ArrayLikeTD64_co) -> Self: ...
+    def __sub__(self, value: sgt._ArrayLikeTD64_co) -> Self: ...
     __isub__ = __sub__
     __rsub__ = __sub__
     @overload
@@ -198,7 +196,7 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
         self, dtype: None = None, /, *, copy: bool | None = None
     ) -> np.ndarray[_ShapeT, _Dtypes]: ...
     @overload
-    def __array__[DType: np._dtype | _DTypeLike[np.generic]](
+    def __array__[DType: np._dtype | sgt._DTypeLike[np.generic]](
         self, dtype: DType, /, *, copy: bool | None = None
     ) -> np.ndarray[_ShapeT, DType]: ...
     def __array_function__(
@@ -271,7 +269,7 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
     def range(
         self: NPFormatDate[_ShapeT, _DTypeT], axis: np._ShapeLike
     ) -> tuple[NPFormatDate[_ShapeT, _DTypeT], NPFormatDate[_ShapeT, _DTypeT]]: ...
-    def range(self, axis: Typeaxis = None) -> tuple[
+    def range(self, axis: sgt.Typeaxis = None) -> tuple[
         NPFormatDate[_ShapeT, _DTypeT] | datetime64[_DTypeT],
         NPFormatDate[_ShapeT, _DTypeT] | datetime64[_DTypeT],
     ]:
@@ -279,7 +277,7 @@ class NPFormatDate[_ShapeT: _ArrayLikeStr_co, _Dtypes: _DTypeT](
         配列内の日付の最小の日付と最大の日付を求める
 
         :param axis: 求める軸を指定する。
-        :type axis: Typeaxis
+        :type axis: sgt.Typeaxis
         """
 
 HANDLED_FUNCTIONS: dict
