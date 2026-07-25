@@ -487,6 +487,9 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
     def leapcount(self) -> int:
         """配列内のうるう年の数を数える"""
 
+    def cleanNaT[_Dtype](self: NPDate[_ShapeT, _Dtype]) -> NPDate[tuple[int], _Dtype]:
+        """配列を一次元配列にし欠損日(NaT)を削除する"""
+
 HANDLED_FUNCTIONS: dict
 
 def implements(np_function) -> Any:

@@ -176,3 +176,9 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         return NPBool(
             (year % 4 == 0) & ((year % 100 != 0) | (year % 400 == 0))
         ).TrueCount
+
+    def cleanNaT(self):
+        flat, dtype = self.flat, self.dtype
+        result = np.asarray(flat[~np.isnat(flat)], dtype=dtype).view(type(self))
+        result._dtype = dtype
+        return result
