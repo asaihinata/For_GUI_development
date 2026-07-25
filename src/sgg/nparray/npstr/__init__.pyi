@@ -7,8 +7,8 @@ import numpy as np
 import numpy._typing as np_t
 from numpy.dtypes import StringDType
 
-from sgg.typing import (_ArrayLikeAnyString_co, _DTypeLike, _StringDTypeLike,
-                        _StringDTypeSupportsArray)
+from sgg.typing import (_AnyShape, _ArrayLikeAnyString_co, _DTypeLike,
+                        _StringDTypeLike, _StringDTypeSupportsArray)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -146,32 +146,8 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         :rtype: Any
         """
 
-    @overload
-    def __eq__(
-        self: NPString[_ShapeT, np_t._ArrayLikeStr_co], value: np_t._ArrayLikeStr_co
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    @overload
-    def __eq__(
-        self: NPString[_ShapeT, np_t._ArrayLikeBytes_co], value: np_t._ArrayLikeBytes_co
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    @overload
-    def __eq__(
-        self: NPString[_ShapeT, np_t._ArrayLikeString_co],
-        value: np_t._ArrayLikeString_co,
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    @overload
-    def __ne__(
-        self: NPString[_ShapeT, np_t._ArrayLikeStr_co], value: np_t._ArrayLikeStr_co
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    @overload
-    def __ne__(
-        self: NPString[_ShapeT, np_t._ArrayLikeBytes_co], value: np_t._ArrayLikeBytes_co
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    @overload
-    def __ne__(
-        self: NPString[_ShapeT, np_t._ArrayLikeString_co],
-        value: np_t._ArrayLikeString_co,
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __eq__(self, value: Any) -> NPBool[_AnyShape, np.dtype[np.bool_]]: ...
+    def __ne__(self, value: Any) -> NPBool[_AnyShape, np.dtype[np.bool_]]: ...
     @overload
     def __add__(
         self: NPString[_ShapeT, np_t._ArrayLikeStr_co], value: np_t._ArrayLikeStr_co
@@ -190,65 +166,17 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         self: NPString[_ShapeT, np_t._ArrayLikeString_co],
         value: np_t._ArrayLikeString_co,
     ) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, StringDType]: ...
-    @overload
-    def __iadd__(
-        self: NPString[_ShapeT, np_t._ArrayLikeStr_co], value: np_t._ArrayLikeStr_co
-    ) -> NPString[_ShapeT, np.str_]: ...
-    @overload
-    def __iadd__(
-        self: NPString[_ShapeT, np_t._ArrayLikeBytes_co], value: np_t._ArrayLikeBytes_co
-    ) -> NPString[_ShapeT, np.bytes_]: ...
-    @overload
-    def __iadd__(
-        self: NPString[_ShapeT, _StringDTypeSupportsArray],
-        value: _StringDTypeSupportsArray,
-    ) -> NPString[_ShapeT, StringDType]: ...
-    @overload
-    def __iadd__(
-        self: NPString[_ShapeT, np_t._ArrayLikeString_co],
-        value: np_t._ArrayLikeString_co,
-    ) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, StringDType]: ...
-    @overload
-    def __radd__(
-        self: NPString[_ShapeT, np_t._ArrayLikeStr_co], value: np_t._ArrayLikeStr_co
-    ) -> NPString[_ShapeT, np.str_]: ...
-    @overload
-    def __radd__(
-        self: NPString[_ShapeT, np_t._ArrayLikeBytes_co], value: np_t._ArrayLikeBytes_co
-    ) -> NPString[_ShapeT, np.bytes_]: ...
-    @overload
-    def __radd__(
-        self: NPString[_ShapeT, _StringDTypeSupportsArray],
-        value: _StringDTypeSupportsArray,
-    ) -> NPString[_ShapeT, StringDType]: ...
-    @overload
-    def __radd__(
-        self: NPString[_ShapeT, np_t._ArrayLikeString_co],
-        value: np_t._ArrayLikeString_co,
-    ) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, StringDType]: ...
+    __iadd__ = __add__
+    __radd__ = __add__
     def __mul__(self, i: np_t._ArrayLikeInt_co) -> NPString:
         """
         配列内の要素を`i`回付け加える
 
         :param i: 付け加える回数を指定する
-        :type i: np_t._ArrayLikeInt_co
+        :type i: int
         """
-
-    def __rmul__(self, i: np_t._ArrayLikeInt_co) -> NPString:
-        """
-        配列内の要素を`i`回付け加える
-
-        :param i: 付け加える回数を指定する
-        :type i: np_t._ArrayLikeInt_co
-        """
-
-    def __imul__(self, i: np_t._ArrayLikeInt_co) -> NPString:
-        """
-        配列内の要素を`i`回付け加える
-
-        :param i: 付け加える回数を指定する
-        :type i: np_t._ArrayLikeInt_co
-        """
+    __imul__ = __mul__
+    __rmul__ = __mul__
 
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _Dtypes]]: ...
     def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...

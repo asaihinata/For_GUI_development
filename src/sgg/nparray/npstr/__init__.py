@@ -2,6 +2,7 @@
 
 import numpy as np
 import numpy.strings as nps
+from numpy.dtypes import StringDType
 
 from ..dev import _ArrayCommonMixin, _int_co_check
 from ..npbool import NPBool
@@ -20,7 +21,7 @@ def implements(np_function):
 
 
 class NPString(_ArrayCommonMixin, np.ndarray):
-    _element_type = (str, np.str_, bytes, np.bytes_, np.dtypes.StringDType)
+    _element_type = (str, np.str_, bytes, np.bytes_, StringDType)
     _default_dtype = np.str_
 
     def __new__(
@@ -74,13 +75,18 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         return super().__array_function__(func, types, args, kwargs)
 
     def __add__(self, value):
-        result = nps.add(np.asarray(self), value).view(type(self))
+        result = np.asarray(nps.add(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def __mul__(self, i):
         _int_co_check(i)
-        result = nps.multiply(np.asarray(self), np.maximum(i, 0)).view(type(self))
+        if isinstance(self.dtypes, StringDType):
+            result = np.asarray(nps.multiply(np.asarray(self), np.maximum(i, 0))).view(
+                type(self)
+            )
+        else:
+            result = nps.multiply(np.asarray(self), np.maximum(i, 0)).view(type(self))
         result._dtype = result.dtype
         return result
 
