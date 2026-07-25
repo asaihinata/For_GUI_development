@@ -89,11 +89,11 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     __rmul__ = __mul__
     __imul__ = __mul__
 
-    def __ne__(self, value):
-        return NPBool(nps.not_equal(np.asarray(self), value))
-
     def __eq__(self, value):
         return NPBool(nps.equal(np.asarray(self), value))
+
+    def __ne__(self, value):
+        return NPBool(nps.not_equal(np.asarray(self), value))
 
     def append(self, val):
         result = np.asarray(nps.add(self, val)).view(type(self))

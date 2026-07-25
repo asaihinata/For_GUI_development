@@ -147,18 +147,6 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         """
 
     @overload
-    def __ne__(
-        self: NPString[_ShapeT, np_t._ArrayLikeStr_co], value: np_t._ArrayLikeStr_co
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    @overload
-    def __ne__(
-        self: NPString[_ShapeT, np_t._ArrayLikeBytes_co], value: np_t._ArrayLikeBytes_co
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    @overload
-    def __ne__(
-        self: NPString[_ShapeT, np_t._ArrayLikeString_co], value: np_t._ArrayLikeString_co
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    @overload
     def __eq__(
         self: NPString[_ShapeT, np_t._ArrayLikeStr_co], value: np_t._ArrayLikeStr_co
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
@@ -168,7 +156,21 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __eq__(
-        self: NPString[_ShapeT, np_t._ArrayLikeString_co], value: np_t._ArrayLikeString_co
+        self: NPString[_ShapeT, np_t._ArrayLikeString_co],
+        value: np_t._ArrayLikeString_co,
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    @overload
+    def __ne__(
+        self: NPString[_ShapeT, np_t._ArrayLikeStr_co], value: np_t._ArrayLikeStr_co
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    @overload
+    def __ne__(
+        self: NPString[_ShapeT, np_t._ArrayLikeBytes_co], value: np_t._ArrayLikeBytes_co
+    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    @overload
+    def __ne__(
+        self: NPString[_ShapeT, np_t._ArrayLikeString_co],
+        value: np_t._ArrayLikeString_co,
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __add__(
@@ -185,7 +187,8 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     ) -> NPString[_ShapeT, StringDType]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeT, np_t._ArrayLikeString_co], value: np_t._ArrayLikeString_co
+        self: NPString[_ShapeT, np_t._ArrayLikeString_co],
+        value: np_t._ArrayLikeString_co,
     ) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, StringDType]: ...
     @overload
     def __iadd__(
@@ -202,7 +205,8 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     ) -> NPString[_ShapeT, StringDType]: ...
     @overload
     def __iadd__(
-        self: NPString[_ShapeT, np_t._ArrayLikeString_co], value: np_t._ArrayLikeString_co
+        self: NPString[_ShapeT, np_t._ArrayLikeString_co],
+        value: np_t._ArrayLikeString_co,
     ) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, StringDType]: ...
     @overload
     def __radd__(
@@ -219,7 +223,8 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     ) -> NPString[_ShapeT, StringDType]: ...
     @overload
     def __radd__(
-        self: NPString[_ShapeT, np_t._ArrayLikeString_co], value: np_t._ArrayLikeString_co
+        self: NPString[_ShapeT, np_t._ArrayLikeString_co],
+        value: np_t._ArrayLikeString_co,
     ) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, StringDType]: ...
     def __mul__(self, i: np_t._ArrayLikeInt_co) -> NPString:
         """

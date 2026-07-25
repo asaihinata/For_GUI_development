@@ -122,19 +122,19 @@ class NPFormatDate[_ShapeT: sgt._ArrayLikeStr_co, _Dtypes: _DTypeT](
     __isub__ = __sub__
     __rsub__ = __sub__
     @overload
-    def __ne__(
+    def __eq__(
         self: NPBool[_ShapeT, _Dtypes], value: datetime64
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
-    def __ne__(
+    def __eq__(
         self: NPFormatDate[_ShapeT], value: NPFormatDate[_ShapeT]
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
-    def __eq__(
+    def __ne__(
         self: NPBool[_ShapeT, _Dtypes], value: datetime64
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
-    def __eq__(
+    def __ne__(
         self: NPFormatDate[_ShapeT], value: NPFormatDate[_ShapeT]
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload

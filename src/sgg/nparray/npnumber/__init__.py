@@ -82,11 +82,11 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
-    def __ne__(self, value):
-        return NPBool(np.not_equal(np.asarray(self), value))
-
     def __eq__(self, value):
         return NPBool(np.equal(np.asarray(self), value))
+
+    def __ne__(self, value):
+        return NPBool(np.not_equal(np.asarray(self), value))
 
     def __lt__(self, value):
         return NPBool(np.less(np.asarray(self), value))

@@ -89,13 +89,13 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
             return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
-    def __ne__(self, value):
-        result = np.not_equal(np.asarray(self), value).view(type(self))
+    def __eq__(self, value):
+        result = np.equal(np.asarray(self), value).view(type(self))
         result._dtype = np.bool_
         return result
 
-    def __eq__(self, value):
-        result = np.equal(np.asarray(self), value).view(type(self))
+    def __ne__(self, value):
+        result = np.not_equal(np.asarray(self), value).view(type(self))
         result._dtype = np.bool_
         return result
 

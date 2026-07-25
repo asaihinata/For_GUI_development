@@ -73,13 +73,13 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
         result._dtype = self.dtypes
         return result
 
-    def __ne__(self, value):
-        result = np.not_equal(np.asarray(self), value).view(type(self))
+    def __eq__(self, value):
+        result = np.equal(np.asarray(self), value).view(type(self))
         result._dtype = result.dtype
         return result
 
-    def __eq__(self, value):
-        result = np.equal(np.asarray(self), value).view(type(self))
+    def __ne__(self, value):
+        result = np.not_equal(np.asarray(self), value).view(type(self))
         result._dtype = result.dtype
         return result
 

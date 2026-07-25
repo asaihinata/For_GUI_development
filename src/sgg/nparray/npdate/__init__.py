@@ -2,8 +2,7 @@ from datetime import date, datetime
 
 import numpy as np
 
-from ..dev import (_ArrayCommonMixin, _dt64_unit, _get_dt64_unit,
-                   _normalize_axis)
+from ..dev import _ArrayCommonMixin, _dt64_unit, _normalize_axis
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -36,12 +35,8 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     ):
         if not isinstance(copy, bool):
             copy = True
-        if dtype is None:
-            obj = np.asarray(data, copy=copy).view(cls)
-            resolved = obj.dtype
-        else:
-            resolved = cls._resolve_dtype(dtype)
-            obj = np.asarray(data, dtype=resolved, copy=copy).view(cls)
+        resolved = cls._resolve_dtype(_dt64_unit(dtype))
+        obj = np.asarray(data, dtype=resolved, copy=copy).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         if isinstance(d_ndim, int):
@@ -88,11 +83,11 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     __rsub__ = __sub__
     __isub__ = __sub__
 
-    def __ne__(self, value):
-        return NPBool(np.not_equal(np.asarray(self), value))
-
     def __eq__(self, value):
         return NPBool(np.equal(np.asarray(self), value))
+
+    def __ne__(self, value):
+        return NPBool(np.not_equal(np.asarray(self), value))
 
     def __lt__(self, value):
         return NPBool(np.less(np.asarray(self), value))
@@ -140,19 +135,19 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
 
     @classmethod
     def today(cls):
-        result = np.asarray(np.datetime64("today")).view(cls)
-        result._dtype = np.dtype("datetime64[D]")
+        result = np.asarray(np.datetime64("today"), dtype="datetime64[D]").view(cls)
+        result._dtype = result.dtype
         return result
 
     @classmethod
     def now(cls):
-        result = np.asarray(np.datetime64("now")).view(cls)
-        result._dtype = np.dtype("datetime64[s]")
+        result = np.asarray(np.datetime64("now"), dtype="datetime64[s]").view(cls)
+        result._dtype = result.dtype
         return result
 
     @classmethod
-    def unix(cls, dtype="h"):
-        result = np.asarray(np.datetime64(0, _get_dt64_unit(dtype))).view(cls)
+    def unix(cls):
+        result = np.asarray(np.datetime64(0, "s")).view(cls)
         result._dtype = result.dtype
         return result
 

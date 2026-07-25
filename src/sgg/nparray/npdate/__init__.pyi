@@ -285,19 +285,19 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
     __isub__ = __sub__
     __rsub__ = __sub__
     @overload
-    def __ne__(
+    def __eq__(
         self: NPBool[_ShapeT, _Dtypes], value: datetime64
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
-    def __ne__(
+    def __eq__(
         self: NPDate[_ShapeT], value: NPDate[_ShapeT]
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
-    def __eq__(
+    def __ne__(
         self: NPBool[_ShapeT, _Dtypes], value: datetime64
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
-    def __eq__(
+    def __ne__(
         self: NPDate[_ShapeT], value: NPDate[_ShapeT]
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
@@ -420,15 +420,17 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         """
 
     @classmethod
-    def today(cls) -> NPDate:
+    def today(cls) -> NPDate[datetime64[date], np.dtype[datetime64[date]]]:
         """現在日付(UTC時刻)を返す"""
 
     @classmethod
-    def now(cls) -> NPDate:
+    def now(cls) -> NPDate[datetime64[datetime], np.dtype[datetime64[datetime]]]:
         """現在時刻(UTC時刻)を返す"""
 
     @classmethod
-    def unix(cls, dtype: sgt._AllDateUnit | None = None) -> NPDate: ...
+    def unix(cls) -> NPDate[datetime64[datetime], np.dtype[datetime64[datetime]]]:
+        """UTC時刻を返す"""
+
     def weekday(self) -> NPNumber[Any, np.dtype[np.uint8]]:
         """その日付日時の曜日を求める"""
 
