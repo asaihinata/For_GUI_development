@@ -4,9 +4,7 @@ from types import GenericAlias
 from typing import Any, Iterator, Self, TypeVar, overload
 
 import numpy as np
-from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBytes_co,
-                           _ArrayLikeInt_co, _ArrayLikeStr_co,
-                           _ArrayLikeString_co)
+import numpy._typing as np_t
 from numpy.dtypes import StringDType
 
 from sgg.typing import (_ArrayLikeAnyString_co, _DTypeLike, _StringDTypeLike,
@@ -150,35 +148,35 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
 
     @overload
     def __ne__(
-        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+        self: NPString[_ShapeT, np_t._ArrayLikeStr_co], value: np_t._ArrayLikeStr_co
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __ne__(
-        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+        self: NPString[_ShapeT, np_t._ArrayLikeBytes_co], value: np_t._ArrayLikeBytes_co
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __ne__(
-        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
+        self: NPString[_ShapeT, np_t._ArrayLikeString_co], value: np_t._ArrayLikeString_co
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __eq__(
-        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+        self: NPString[_ShapeT, np_t._ArrayLikeStr_co], value: np_t._ArrayLikeStr_co
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __eq__(
-        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+        self: NPString[_ShapeT, np_t._ArrayLikeBytes_co], value: np_t._ArrayLikeBytes_co
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __eq__(
-        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
+        self: NPString[_ShapeT, np_t._ArrayLikeString_co], value: np_t._ArrayLikeString_co
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+        self: NPString[_ShapeT, np_t._ArrayLikeStr_co], value: np_t._ArrayLikeStr_co
     ) -> NPString[_ShapeT, np.str_]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+        self: NPString[_ShapeT, np_t._ArrayLikeBytes_co], value: np_t._ArrayLikeBytes_co
     ) -> NPString[_ShapeT, np.bytes_]: ...
     @overload
     def __add__(
@@ -187,15 +185,15 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     ) -> NPString[_ShapeT, StringDType]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
+        self: NPString[_ShapeT, np_t._ArrayLikeString_co], value: np_t._ArrayLikeString_co
     ) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, StringDType]: ...
     @overload
     def __iadd__(
-        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+        self: NPString[_ShapeT, np_t._ArrayLikeStr_co], value: np_t._ArrayLikeStr_co
     ) -> NPString[_ShapeT, np.str_]: ...
     @overload
     def __iadd__(
-        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+        self: NPString[_ShapeT, np_t._ArrayLikeBytes_co], value: np_t._ArrayLikeBytes_co
     ) -> NPString[_ShapeT, np.bytes_]: ...
     @overload
     def __iadd__(
@@ -204,15 +202,15 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     ) -> NPString[_ShapeT, StringDType]: ...
     @overload
     def __iadd__(
-        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
+        self: NPString[_ShapeT, np_t._ArrayLikeString_co], value: np_t._ArrayLikeString_co
     ) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, StringDType]: ...
     @overload
     def __radd__(
-        self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
+        self: NPString[_ShapeT, np_t._ArrayLikeStr_co], value: np_t._ArrayLikeStr_co
     ) -> NPString[_ShapeT, np.str_]: ...
     @overload
     def __radd__(
-        self: NPString[_ShapeT, _ArrayLikeBytes_co], value: _ArrayLikeBytes_co
+        self: NPString[_ShapeT, np_t._ArrayLikeBytes_co], value: np_t._ArrayLikeBytes_co
     ) -> NPString[_ShapeT, np.bytes_]: ...
     @overload
     def __radd__(
@@ -221,30 +219,30 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     ) -> NPString[_ShapeT, StringDType]: ...
     @overload
     def __radd__(
-        self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
+        self: NPString[_ShapeT, np_t._ArrayLikeString_co], value: np_t._ArrayLikeString_co
     ) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, StringDType]: ...
-    def __mul__(self, i: _ArrayLikeInt_co) -> NPString:
+    def __mul__(self, i: np_t._ArrayLikeInt_co) -> NPString:
         """
         配列内の要素を`i`回付け加える
 
         :param i: 付け加える回数を指定する
-        :type i: _ArrayLikeInt_co
+        :type i: np_t._ArrayLikeInt_co
         """
 
-    def __rmul__(self, i: _ArrayLikeInt_co) -> NPString:
-        """
-        配列内の要素を`i`回付け加える
-
-        :param i: 付け加える回数を指定する
-        :type i: _ArrayLikeInt_co
-        """
-
-    def __imul__(self, i: _ArrayLikeInt_co) -> NPString:
+    def __rmul__(self, i: np_t._ArrayLikeInt_co) -> NPString:
         """
         配列内の要素を`i`回付け加える
 
         :param i: 付け加える回数を指定する
-        :type i: _ArrayLikeInt_co
+        :type i: np_t._ArrayLikeInt_co
+        """
+
+    def __imul__(self, i: np_t._ArrayLikeInt_co) -> NPString:
+        """
+        配列内の要素を`i`回付け加える
+
+        :param i: 付け加える回数を指定する
+        :type i: np_t._ArrayLikeInt_co
         """
 
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _Dtypes]]: ...
@@ -290,62 +288,62 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
 
     def center(
-        self, width: _ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
+        self, width: np_t._ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で中央寄せされた配列を返す
 
         :param width: 結果として得られる文字列の長さを指定する
-        :type width: _ArrayLikeInt_co
+        :type width: np_t._ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
         :type fillchar: _ArrayLikeAnyString_co
         """
 
     def left(
-        self, width: _ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
+        self, width: np_t._ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で左寄せされた配列を返す
 
         :param width: 結果として得られる文字列の長さを指定する
-        :type width: _ArrayLikeInt_co
+        :type width: np_t._ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
         :type fillchar: _ArrayLikeAnyString_co
         """
 
     def right(
-        self, width: _ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
+        self, width: np_t._ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で右寄せされた配列を返す
 
         :param width: 結果として得られる文字列の長さを指定する
-        :type width: _ArrayLikeInt_co
+        :type width: np_t._ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
         :type fillchar: _ArrayLikeAnyString_co
         """
 
-    def zerofill(self, width: _ArrayLikeInt_co) -> NPString:
+    def zerofill(self, width: np_t._ArrayLikeInt_co) -> NPString:
         """
         数値文字列の左側を0で埋めて返します。
 
         :param width: 0で埋める数を指定する
-        :type width: _ArrayLikeInt_co
+        :type width: np_t._ArrayLikeInt_co
         """
 
-    def expandtabs(self, tabsize: _ArrayLikeInt_co = 4) -> NPString:
+    def expandtabs(self, tabsize: np_t._ArrayLikeInt_co = 4) -> NPString:
         """
         各文字列要素について,すべてのタブを1つ以上のスペースに置き換えた配列を返す
 
         :param tabsize: タブを置き換えたいスペースの数を指定する
-        :type tabsize: _ArrayLikeInt_co
+        :type tabsize: np_t._ArrayLikeInt_co
         """
 
     def endswith(
         self,
         suffix: _ArrayLikeAnyString_co,
-        start: _ArrayLikeInt_co = 0,
-        end: _ArrayLikeInt_co | None = None,
+        start: np_t._ArrayLikeInt_co = 0,
+        end: np_t._ArrayLikeInt_co | None = None,
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]:
         """
         配列の要素が`suffix`で終わるかを調べる
@@ -353,9 +351,9 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         :param suffix: 終了する単語を指定する
         :type suffix: _ArrayLikeAnyString_co
         :param start: 比較を開始する位置を指定する
-        :type start: _ArrayLikeInt_co
+        :type start: np_t._ArrayLikeInt_co
         :param end: 比較を終える位置を指定する
-        :type end: _ArrayLikeInt_co | None
+        :type end: np_t._ArrayLikeInt_co | None
         """
 
 HANDLED_FUNCTIONS: dict

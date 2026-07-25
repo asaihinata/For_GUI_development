@@ -3,14 +3,14 @@ from numpy._typing import _DTypeLike, _NestedSequence, _SupportsArray
 
 __all__ = [
     "_ArangeNumber_DtypeLike",
+    "_BoolDTypeLike",
+    "_ComplexDtypeLike",
     "_DTypeLike",
     "_DualArrayLike",
-    "_BoolDTypeLike",
+    "_FloatsNumericDTypeLike",
+    "_IntsNumericDTypeLike",
     "_NumericDTypeLike",
     "_RealNumericDTypeLike",
-    "_IntsNumericDTypeLike",
-    "_FloatsNumericDTypeLike",
-    "_ComplexDtypeLike",
     "_StringDTypeLike",
 ]
 type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (

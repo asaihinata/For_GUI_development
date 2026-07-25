@@ -23,9 +23,7 @@ type _ToFloat64 = float | np.integer | np.bool
 type _ToArrayFloat64 = sgt._DualArrayLike[
     np.dtype[np.float64 | np.integer | np.bool], float
 ]
-type _ArrayLikeSignedInt_co = sgt._DualArrayLike[
-    np.dtype[np.bool_ | np.signedinteger], int
-]
+
 type _SortKind = Literal[
     "Q",
     "quick",
@@ -189,38 +187,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
     def __le__(self, value: Any) -> NPBool[_ShapeT, dtype[np.bool_]]: ...
     def __gt__(self, value: Any) -> NPBool[_ShapeT, dtype[np.bool_]]: ...
     def __ge__(self, value: Any) -> NPBool[_ShapeT, dtype[np.bool_]]: ...
-    @overload
-    def __add__(
-        self: NPNumber[_ShapeT, dtype[np.integer]],
-        value: sgt._ArrayLikeInt_co,
-    ) -> NPNumber[_ShapeT, dtype[np.integer]]: ...
-    @overload
-    def __add__(
-        self: NPNumber[_ShapeT, dtype[np.unsignedinteger]],
-        value: sgt._ArrayLikeInt_co,
-    ) -> NPNumber[_ShapeT, dtype[np.integer]]: ...
-    @overload
-    def __add__(
-        self: NPNumber[_ShapeT, dtype[np.unsignedinteger]],
-        value: sgt._ArrayLikeUInt_co,
-    ) -> NPNumber[_ShapeT, dtype[np.unsignedinteger]]: ...
-    @overload
-    def __add__(
-        self: NPNumber[_ShapeT, dtype[np.floating]],
-        value: sgt._ArrayLikeRealNumeric_co,
-    ) -> NPNumber[_ShapeT, dtype[np.floating]]: ...
-    @overload
-    def __add__(
-        self: NPNumber[_ShapeT, dtype[sgt._RealNumericDTypeLike]],
-        value: sgt._ArrayLikeFloat_co,
-    ) -> NPNumber[_ShapeT, dtype[np.floating]]: ...
-    @overload
-    def __add__(
-        self: NPNumber[_ShapeT, dtype[np.number]],
-        value: sgt._ArrayLikeComplex_co,
-    ) -> NPNumber[_ShapeT, dtype[np.complexfloating]]: ...
-    @overload
-    def __add__(self, value: Any, /) -> NPNumber: ...
+    def __add__(self, value: Any) -> NPNumber: ...
     def __radd__(self, value: Any) -> NPNumber: ...
     def __iadd__(self, value: Any) -> NPNumber: ...
     def __sub__(self, value: Any) -> NPNumber: ...
