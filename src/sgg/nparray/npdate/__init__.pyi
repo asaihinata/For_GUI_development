@@ -367,7 +367,9 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         dtype: _DTypeLike[datetime64] | None = None,
         device: Literal["cpu"] | None = None,
         like: _SupportsArrayFunc | None = None,
-    ) -> NPDate[sgt._Array1D[datetime64[sgt.Incomplete]], np.dtype[datetime64[sgt.Incomplete]]]:
+    ) -> NPDate[
+        sgt._Array1D[datetime64[sgt.Incomplete]], np.dtype[datetime64[sgt.Incomplete]]
+    ]:
         """
         指定された間隔内で等間隔の日付を返す
 
@@ -397,7 +399,9 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         dtype: _DTypeLike[datetime64] | sgt._AllDateUnit,
         device: Literal["cpu"] | None = None,
         like: _SupportsArrayFunc | None = None,
-    ) -> NPDate[sgt._Array1D[datetime64[sgt.Incomplete]], np.dtype[datetime64[sgt.Incomplete]]]:
+    ) -> NPDate[
+        sgt._Array1D[datetime64[sgt.Incomplete]], np.dtype[datetime64[sgt.Incomplete]]
+    ]:
         """
         指定された間隔内で等間隔の日付を返す
 

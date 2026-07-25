@@ -3,7 +3,7 @@
 import numpy as np
 import numpy.strings as nps
 
-from ..dev import _ArrayCommonMixin, _int_co_check, _normalize_axis
+from ..dev import _ArrayCommonMixin, _int_co_check
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 
@@ -20,7 +20,7 @@ def implements(np_function):
 
 
 class NPString(_ArrayCommonMixin, np.ndarray):
-    _element_type = (str, np.str_, bytes, np.bytes_)
+    _element_type = (str, np.str_, bytes, np.bytes_, np.dtypes.StringDType)
     _default_dtype = np.str_
 
     def __new__(

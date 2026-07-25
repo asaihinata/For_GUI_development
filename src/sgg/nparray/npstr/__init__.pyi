@@ -7,9 +7,10 @@ import numpy as np
 from numpy._typing import (_ArrayLikeAnyString_co, _ArrayLikeBytes_co,
                            _ArrayLikeInt_co, _ArrayLikeStr_co,
                            _ArrayLikeString_co)
+from numpy.dtypes import StringDType
 
-from sgg.typing import (Typeaxis, _ArrayLikeAnyString_co, _DTypeLike,
-                        _StringDTypeLike, _StringDTypeSupportsArray)
+from sgg.typing import (_ArrayLikeAnyString_co, _DTypeLike, _StringDTypeLike,
+                        _StringDTypeSupportsArray)
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -22,7 +23,9 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
 ):
 
-    _element_type: tuple[type[str], type[bytes], type[np.str_], type[np.bytes_]]
+    _element_type: tuple[
+        type[str], type[bytes], type[np.str_], type[np.bytes_], type[StringDType]
+    ]
     _default_dtype: type[np.str_]
     @overload
     def __new__[_ShapeTs, _Dtype](
@@ -181,13 +184,11 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     def __add__(
         self: NPString[_ShapeT, _StringDTypeSupportsArray],
         value: _StringDTypeSupportsArray,
-    ) -> NPString[_ShapeT, np.dtypes.StringDType]: ...
+    ) -> NPString[_ShapeT, StringDType]: ...
     @overload
     def __add__(
         self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
-    ) -> (
-        NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, np.dtypes.StringDType]
-    ): ...
+    ) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, StringDType]: ...
     @overload
     def __iadd__(
         self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
@@ -200,13 +201,11 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     def __iadd__(
         self: NPString[_ShapeT, _StringDTypeSupportsArray],
         value: _StringDTypeSupportsArray,
-    ) -> NPString[_ShapeT, np.dtypes.StringDType]: ...
+    ) -> NPString[_ShapeT, StringDType]: ...
     @overload
     def __iadd__(
         self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
-    ) -> (
-        NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, np.dtypes.StringDType]
-    ): ...
+    ) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, StringDType]: ...
     @overload
     def __radd__(
         self: NPString[_ShapeT, _ArrayLikeStr_co], value: _ArrayLikeStr_co
@@ -219,13 +218,11 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     def __radd__(
         self: NPString[_ShapeT, _StringDTypeSupportsArray],
         value: _StringDTypeSupportsArray,
-    ) -> NPString[_ShapeT, np.dtypes.StringDType]: ...
+    ) -> NPString[_ShapeT, StringDType]: ...
     @overload
     def __radd__(
         self: NPString[_ShapeT, _ArrayLikeString_co], value: _ArrayLikeString_co
-    ) -> (
-        NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, np.dtypes.StringDType]
-    ): ...
+    ) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, StringDType]: ...
     def __mul__(self, i: _ArrayLikeInt_co) -> NPString:
         """
         配列内の要素を`i`回付け加える
@@ -255,7 +252,9 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     @property
     def element_type(
         self,
-    ) -> tuple[type[str], type[bytes], type[np.str_], type[np.bytes_]]:
+    ) -> tuple[
+        type[str], type[bytes], type[np.str_], type[np.bytes_], type[StringDType]
+    ]:
         """NPStringで許可されている型を取得する"""
 
     def append(self, val: Any) -> NPString:

@@ -19,6 +19,7 @@ __all__ = [
     "_ArrayLikeFloat_co",
     "_ArrayLikeInt_co",
     "_ArrayLikeNumber_co",
+    "_ArrayLikeRealNumeric_co",
     "_ArrayLikeStr_co",
     "_ArrayLikeTD64_co",
     "_ArrayLikeString_co",
@@ -58,6 +59,10 @@ type _ArrayLikeInt_co = _DualArrayLike[np.dtype[np.bool | np.bool_ | np.integer]
 type _ArrayLikeFloat_co = _DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.floating],
     float,
+]
+type _ArrayLikeRealNumeric_co = _DualArrayLike[
+    np.dtype[np.bool | np.bool_ | np.integer | np.floating],
+    int | float | bool,
 ]
 type _ArrayLikeComplex_co = _DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.number], complex
