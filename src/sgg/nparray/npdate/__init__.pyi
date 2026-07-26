@@ -476,7 +476,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         配列内の日付の最小の日付と最大の日付を求める
 
         :param axis: 求める軸を指定する。
-        :type axis: sgt.Typeaxis
+        :type axis: Typeaxis
         """
 
     def leapyear(

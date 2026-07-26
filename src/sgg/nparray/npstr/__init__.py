@@ -183,17 +183,17 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
-    def decode(self,encoding=None,errors=None):
-        if not np.issubdtype(self.dtypes,np.bytes_):
+    def decode(self, encoding=None, errors=None):
+        if not np.issubdtype(self.dtypes, np.bytes_):
             raise TypeError
-        result = nps.decode(np.asarray(self),encoding,errors).view(type(self))
+        result = nps.decode(np.asarray(self), encoding, errors).view(type(self))
         result._dtype = result.dtype
         return result
 
-    def encode(self,encoding=None,errors=None):
-        if self.dtype.kind not in {"U","T"}:
+    def encode(self, encoding=None, errors=None):
+        if self.dtype.kind not in {"U", "T"}:
             raise TypeError
-        result = nps.encode(np.asarray(self),encoding,errors).view(type(self))
+        result = nps.encode(np.asarray(self), encoding, errors).view(type(self))
         result._dtype = result.dtype
         return result
 

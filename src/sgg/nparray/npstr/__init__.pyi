@@ -227,7 +227,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         長さと`width`の幅内で中央寄せされた配列を返す
 
         :param width: 結果として得られる文字列の長さを指定する
-        :type width: npt._ArrayLikeInt_co
+        :type width: _ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
         :type fillchar: _ArrayLikeAnyString_co
         """
@@ -239,7 +239,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         長さと`width`の幅内で左寄せされた配列を返す
 
         :param width: 結果として得られる文字列の長さを指定する
-        :type width: npt._ArrayLikeInt_co
+        :type width: _ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
         :type fillchar: _ArrayLikeAnyString_co
         """
@@ -251,7 +251,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         長さと`width`の幅内で右寄せされた配列を返す
 
         :param width: 結果として得られる文字列の長さを指定する
-        :type width: npt._ArrayLikeInt_co
+        :type width: _ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
         :type fillchar: _ArrayLikeAnyString_co
         """
@@ -261,7 +261,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         数値文字列の左側を0で埋めて返します。
 
         :param width: 0で埋める数を指定する
-        :type width: npt._ArrayLikeInt_co
+        :type width: _ArrayLikeInt_co
         """
 
     def expandtabs(self, tabsize: npt._ArrayLikeInt_co = 4) -> NPString:
@@ -269,7 +269,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         各文字列要素について,すべてのタブを1つ以上のスペースに置き換えた配列を返す
 
         :param tabsize: タブを置き換えたいスペースの数を指定する
-        :type tabsize: npt._ArrayLikeInt_co
+        :type tabsize: _ArrayLikeInt_co
         """
 
     def endswith(
@@ -277,7 +277,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         suffix: _ArrayLikeAnyString_co,
         start: npt._ArrayLikeInt_co = 0,
         end: npt._ArrayLikeInt_co | None = None,
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]:
+    ) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
         """
         配列の要素が`suffix`で終わるかを調べる
 
