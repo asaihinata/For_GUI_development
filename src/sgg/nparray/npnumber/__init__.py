@@ -282,6 +282,16 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
+    @classmethod
+    def zeros(cls, shape, dtype=None, order="C", *, device=None, like=None):
+        result = np.zeros(shape, dtype, order=order, device=device, like=like)
+        return cls(result, result.dtype)
+
+    @classmethod
+    def ones(cls, shape, dtype=None, order="C", *, device=None, like=None):
+        result = np.ones(shape, dtype, order=order, device=device, like=like)
+        return cls(result, result.dtype)
+
     def zero_check(self):
         return NPBool(self.data == 0)
 

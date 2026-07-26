@@ -7,7 +7,8 @@ from typing import (Any, Iterator, Literal, Self, Sequence, SupportsIndex,
 import numpy as np
 from numpy import dtype
 from numpy._typing import (DTypeLike, _ComplexLike_co, _FloatLike_co,
-                           _IntLike_co, _SupportsArrayFunc)
+                           _IntLike_co, _Shape, _SupportsArrayFunc,
+                           _SupportsDType)
 from numpy.typing import NDArray
 
 import sgg.typing as sgt
@@ -23,7 +24,7 @@ type _ToFloat64 = float | np.integer | np.bool
 type _ToArrayFloat64 = sgt._DualArrayLike[
     np.dtype[np.float64 | np.integer | np.bool], float
 ]
-
+type _OrderCF = Literal["C", "F"] | None
 type _SortKind = Literal[
     "Q",
     "quick",
@@ -288,6 +289,102 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
 
     def ratio(self, axis: sgt.Typeaxis = None) -> NPNumber:
         """行や列ごとの合計に対する比率を求める"""
+
+    @overload
+    @classmethod
+    def zeros(
+        cls,
+        shape: SupportsIndex,
+        dtype: None = None,
+        order: _OrderCF = "C",
+        *,
+        device: Literal["cpu"] | None = None,
+        like: _SupportsArrayFunc | None = None,
+    ) -> NPNumber[tuple[int], np.dtype[np.float64]]: ...
+    @overload
+    @classmethod
+    def zeros[DTypeT: np.generic](
+        cls,
+        shape: SupportsIndex,
+        dtype: type[DTypeT],
+        order: _OrderCF = "C",
+        *,
+        device: Literal["cpu"] | None = None,
+        like: _SupportsArrayFunc | None = None,
+    ) -> NPNumber[tuple[int], np.dtype[DTypeT]]: ...
+    @overload
+    @classmethod
+    def zeros[ShapeT: _Shape](
+        cls,
+        shape: ShapeT,
+        dtype: None = None,
+        order: _OrderCF = "C",
+        *,
+        device: Literal["cpu"] | None = None,
+        like: _SupportsArrayFunc | None = None,
+    ) -> NPNumber[ShapeT, np.dtype[np.float64]]: ...
+    @overload
+    @classmethod
+    def zeros[ShapeT: _Shape, DTypeT: np.generic](
+        cls,
+        shape: ShapeT,
+        dtype: type[DTypeT],
+        order: _OrderCF = "C",
+        *,
+        device: Literal["cpu"] | None = None,
+        like: _SupportsArrayFunc | None = None,
+    ) -> NPNumber[ShapeT, np.dtype[DTypeT]]: ...
+    @classmethod
+    def zeros():
+        """指定された形状と型の新しい配列を0で埋めた配列を作成する"""
+
+    @overload
+    @classmethod
+    def ones(
+        cls,
+        shape: SupportsIndex,
+        dtype: None = None,
+        order: _OrderCF = "C",
+        *,
+        device: Literal["cpu"] | None = None,
+        like: _SupportsArrayFunc | None = None,
+    ) -> NPNumber[tuple[int], np.dtype[np.float64]]: ...
+    @overload
+    @classmethod
+    def ones[DTypeT: np.generic](
+        cls,
+        shape: SupportsIndex,
+        dtype: type[DTypeT],
+        order: _OrderCF = "C",
+        *,
+        device: Literal["cpu"] | None = None,
+        like: _SupportsArrayFunc | None = None,
+    ) -> NPNumber[tuple[int], np.dtype[DTypeT]]: ...
+    @overload
+    @classmethod
+    def ones[ShapeT: _Shape](
+        cls,
+        shape: ShapeT,
+        dtype: None = None,
+        order: _OrderCF = "C",
+        *,
+        device: Literal["cpu"] | None = None,
+        like: _SupportsArrayFunc | None = None,
+    ) -> NPNumber[ShapeT, np.dtype[np.float64]]: ...
+    @overload
+    @classmethod
+    def ones[ShapeT: _Shape, DTypeT: np.generic](
+        cls,
+        shape: ShapeT,
+        dtype: type[DTypeT],
+        order: _OrderCF = "C",
+        *,
+        device: Literal["cpu"] | None = None,
+        like: _SupportsArrayFunc | None = None,
+    ) -> NPNumber[ShapeT, np.dtype[DTypeT]]: ...
+    @classmethod
+    def ones():
+        """指定された形状と型の新しい配列を0で埋めた配列を作成する"""
 
     def zero_check(self) -> NPBool[Any, dtype[np.bool]]:
         """要素の数値が0の位置を探す"""
