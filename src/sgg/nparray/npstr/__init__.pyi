@@ -325,6 +325,34 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     def title(self) -> NPString:
         """文字列を要素ごとにタイトルケースに変換する"""
 
+    def decode[_ShapeT](
+        self: NPString[_ShapeT, np.dtype[np.bytes_]],
+        encoding: str | None = None,
+        errors: str | None = None,
+    ) -> NPString[_ShapeT, np.dtype[np.str_]]:
+        """
+        要素ごとに`bytes.decode`を呼び出す
+
+        :param encoding: エンコード文字を指定する
+        :type encoding: str | None
+        :param errors: エンコードエラーの処理方法を指定する
+        :type errors: str | None
+        """
+
+    def encode[_ShapeT](
+        self: NPString[_ShapeT, npt._ArrayLikeStr_co | npt._ArrayLikeString_co],
+        encoding: str | None = None,
+        errors: str | None = None,
+    ) -> NPString[_ShapeT, np.dtype[np.byte_]]:
+        """
+        要素ごとに`str.encode`を呼び出す
+
+        :param encoding: エンコード文字を指定する
+        :type encoding: str | None
+        :param errors: エンコードエラーの処理方法を指定する
+        :type errors: str | None
+        """
+
     def istitle(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
         """
         要素がタイトルケースの文字列であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
@@ -345,25 +373,27 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
 
         そうでない場合は`False`を返す。
         """
+
     def isspace(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
         """
         各要素内の文字列内に空白文字のみが存在し,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
+
     def isdecimal(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
         """
         各要素内の文字列がすべて10進数文字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
+
     def isupper(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
         """
         各要素内の文字列内のすべての文字が大文字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
-
 
 HANDLED_FUNCTIONS: dict
 
