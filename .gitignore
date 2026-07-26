@@ -3,7 +3,10 @@ docs/*
 !docs/dev
 !docs/templates
 !docs/requirements.txt
-# デモファイル
+# demo and tests
+tests/
+*tests_*.py
+*/*tests_*.py
 demo/
 demo.py
 demo*.py
@@ -16,8 +19,20 @@ __pycache__
 my-project.code-workspace
 .vscode/*.local.json
 .vscode/settings.json
+# AI
+# Gemini
+GEMINI.md
+.gemini/
+.geminiignore
+# Claude Code
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+.claudeignore
 # その他
+.git
 *.egg-info
+.venv
 .dll
 .exe
 .ini

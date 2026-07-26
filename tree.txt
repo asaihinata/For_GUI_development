@@ -445,8 +445,9 @@ For_GUI_development
  ├── .editorconfig
  ├── .gitattributes
  ├── .gitignore
+ ├── .python-version
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:309
+ファイル数:310
 フォルダ数:140
