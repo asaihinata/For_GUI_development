@@ -188,3 +188,15 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def isnumeric(self):
         return NPBool(nps.isnumeric(np.asarray(self)))
+
+    def isdecimal(self):
+        return NPBool(nps.isdecimal(np.asarray(self)))
+
+    def isalnum(self):
+        return NPBool(nps.isalnum(np.asarray(self)))
+
+    def isspace(self):
+        return NPBool(nps.isspace(np.asarray(self)))
+
+    def isupper(self):
+        return NPBool(nps.isupper(np.asarray(self)))

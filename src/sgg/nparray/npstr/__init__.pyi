@@ -339,6 +339,32 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         そうでない場合は`False`を返す。
         """
 
+    def isalnum(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
+        """
+        各要素内の文字列のすべての文字が英数字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
+
+        そうでない場合は`False`を返す。
+        """
+    def isspace(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
+        """
+        各要素内の文字列内に空白文字のみが存在し,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
+
+        そうでない場合は`False`を返す。
+        """
+    def isdecimal(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
+        """
+        各要素内の文字列がすべて10進数文字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
+
+        そうでない場合は`False`を返す。
+        """
+    def isupper(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
+        """
+        各要素内の文字列内のすべての文字が大文字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
+
+        そうでない場合は`False`を返す。
+        """
+
+
 HANDLED_FUNCTIONS: dict
 
 def implements(np_function) -> Any:
