@@ -4,7 +4,7 @@ from types import GenericAlias
 from typing import Any, Iterator, Self, TypeVar, overload
 
 import numpy as np
-import numpy._typing as np_t
+import numpy._typing as npt
 from numpy.dtypes import StringDType
 
 from sgg.typing import (_AnyShape, _ArrayLikeAnyString_co, _DTypeLike,
@@ -150,11 +150,11 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     def __ne__(self, value: Any) -> NPBool[_AnyShape, np.dtype[np.bool_]]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeT, np_t._ArrayLikeStr_co], value: np_t._ArrayLikeStr_co
+        self: NPString[_ShapeT, npt._ArrayLikeStr_co], value: npt._ArrayLikeStr_co
     ) -> NPString[_ShapeT, np.str_]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeT, np_t._ArrayLikeBytes_co], value: np_t._ArrayLikeBytes_co
+        self: NPString[_ShapeT, npt._ArrayLikeBytes_co], value: npt._ArrayLikeBytes_co
     ) -> NPString[_ShapeT, np.bytes_]: ...
     @overload
     def __add__(
@@ -163,12 +163,12 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     ) -> NPString[_ShapeT, StringDType]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeT, np_t._ArrayLikeString_co],
-        value: np_t._ArrayLikeString_co,
-    ) -> NPString[_ShapeT, np.dtype[np.str_]] | NPString[_ShapeT, StringDType]: ...
+        self: NPString[_ShapeT, npt._ArrayLikeString_co],
+        value: npt._ArrayLikeString_co,
+    ) -> NPString[_ShapeT, np.dtype[np.str_ | StringDType]]: ...
     __iadd__ = __add__
     __radd__ = __add__
-    def __mul__(self, i: np_t._ArrayLikeInt_co) -> NPString:
+    def __mul__(self, i: npt._ArrayLikeInt_co) -> NPString:
         """
         配列内の要素を`i`回付け加える
 
@@ -221,62 +221,62 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
 
     def center(
-        self, width: np_t._ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
+        self, width: npt._ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で中央寄せされた配列を返す
 
         :param width: 結果として得られる文字列の長さを指定する
-        :type width: np_t._ArrayLikeInt_co
+        :type width: npt._ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
         :type fillchar: _ArrayLikeAnyString_co
         """
 
     def left(
-        self, width: np_t._ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
+        self, width: npt._ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で左寄せされた配列を返す
 
         :param width: 結果として得られる文字列の長さを指定する
-        :type width: np_t._ArrayLikeInt_co
+        :type width: npt._ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
         :type fillchar: _ArrayLikeAnyString_co
         """
 
     def right(
-        self, width: np_t._ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
+        self, width: npt._ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で右寄せされた配列を返す
 
         :param width: 結果として得られる文字列の長さを指定する
-        :type width: np_t._ArrayLikeInt_co
+        :type width: npt._ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
         :type fillchar: _ArrayLikeAnyString_co
         """
 
-    def zerofill(self, width: np_t._ArrayLikeInt_co) -> NPString:
+    def zerofill(self, width: npt._ArrayLikeInt_co) -> NPString:
         """
         数値文字列の左側を0で埋めて返します。
 
         :param width: 0で埋める数を指定する
-        :type width: np_t._ArrayLikeInt_co
+        :type width: npt._ArrayLikeInt_co
         """
 
-    def expandtabs(self, tabsize: np_t._ArrayLikeInt_co = 4) -> NPString:
+    def expandtabs(self, tabsize: npt._ArrayLikeInt_co = 4) -> NPString:
         """
         各文字列要素について,すべてのタブを1つ以上のスペースに置き換えた配列を返す
 
         :param tabsize: タブを置き換えたいスペースの数を指定する
-        :type tabsize: np_t._ArrayLikeInt_co
+        :type tabsize: npt._ArrayLikeInt_co
         """
 
     def endswith(
         self,
         suffix: _ArrayLikeAnyString_co,
-        start: np_t._ArrayLikeInt_co = 0,
-        end: np_t._ArrayLikeInt_co | None = None,
+        start: npt._ArrayLikeInt_co = 0,
+        end: npt._ArrayLikeInt_co | None = None,
     ) -> NPBool[_ShapeT, np.dtype[np.bool_]]:
         """
         配列の要素が`suffix`で終わるかを調べる
@@ -284,9 +284,59 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         :param suffix: 終了する単語を指定する
         :type suffix: _ArrayLikeAnyString_co
         :param start: 比較を開始する位置を指定する
-        :type start: np_t._ArrayLikeInt_co
+        :type start: _ArrayLikeInt_co
         :param end: 比較を終える位置を指定する
-        :type end: np_t._ArrayLikeInt_co | None
+        :type end: _ArrayLikeInt_co | None
+        """
+
+    @overload
+    def capitalize[_ShapeT](
+        self: npt._ArrayLikeStr_co,
+    ) -> NPString[_ShapeT, np.str_]: ...
+    @overload
+    def capitalize[_ShapeT](
+        self: npt._ArrayLikeBytes_co,
+    ) -> NPString[_ShapeT, np.bytes_]: ...
+    @overload
+    def capitalize(
+        self: NPString[_ShapeT, _StringDTypeSupportsArray],
+    ) -> NPString[_ShapeT, StringDType]: ...
+    @overload
+    def capitalize[_ShapeT](
+        self: NPString[_ShapeT, npt._ArrayLikeString_co],
+    ) -> NPString[_ShapeT, np.dtype[np.str_ | StringDType]]: ...
+    def capitalize(self) -> NPString:
+        """各要素の最初の文字のみを大文字にしたコピーを返します。"""
+
+    @overload
+    def title[_ShapeT](self: npt._ArrayLikeStr_co) -> NPString[_ShapeT, np.str_]: ...
+    @overload
+    def title[_ShapeT](
+        self: npt._ArrayLikeBytes_co,
+    ) -> NPString[_ShapeT, np.bytes_]: ...
+    @overload
+    def title(
+        self: NPString[_ShapeT, _StringDTypeSupportsArray],
+    ) -> NPString[_ShapeT, StringDType]: ...
+    @overload
+    def title[_ShapeT](
+        self: NPString[_ShapeT, npt._ArrayLikeString_co],
+    ) -> NPString[_ShapeT, np.dtype[np.str_ | StringDType]]: ...
+    def title(self) -> NPString:
+        """文字列を要素ごとにタイトルケースに変換する"""
+
+    def istitle(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
+        """
+        要素がタイトルケースの文字列であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
+
+        そうでない場合は`False`を返す。
+        """
+
+    def isnumeric(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
+        """
+        各要素について,その要素が数値のみが含まれている場合は`True`を返す。
+
+        そうでない場合は`False`を返す。
         """
 
 HANDLED_FUNCTIONS: dict

@@ -172,3 +172,19 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def endswith(self, suffix, start=0, end=None):
         return NPBool(nps.endswith(np.asarray(self), suffix, start, end))
+
+    def capitalize(self):
+        result = nps.capitalize(np.asarray(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def title(self):
+        result = nps.title(np.asarray(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def istitle(self):
+        return NPBool(nps.istitle(np.asarray(self)))
+
+    def isnumeric(self):
+        return NPBool(nps.isnumeric(np.asarray(self)))
