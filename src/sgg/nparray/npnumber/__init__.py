@@ -461,3 +461,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
             low, high, size=shape, dtype=dtype, endpoint=endpoint
         )
         return cls(result, dtype=result.dtype)
+
+    @classmethod
+    def logseries(cls, p, size=None, dtype=np.int64, seed=None):
+        return cls(default_rng(seed).logseries(p, size), dtype=dtype)

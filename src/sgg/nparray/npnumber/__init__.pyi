@@ -1397,6 +1397,101 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         :param seed: 乱数のシード値を指定する
         """
 
+    @overload
+    @classmethod
+    def logseries(
+        cls,
+        /,
+        p: _FloatLike_co,
+        size: None = None,
+        dtype: None = None,
+        seed: _Seed = None,
+    ) -> NPNumber[np.int64, np.dtype[np.int64]]: ...
+    @overload
+    @classmethod
+    def logseries[Dtype: np.number](
+        cls,
+        /,
+        p: _FloatLike_co,
+        size: None = None,
+        *,
+        dtype: sgt._DTypeLike[Dtype],
+        seed: _Seed = None,
+    ) -> NPNumber[Dtype, np.dtype[Dtype]]: ...
+    @overload
+    @classmethod
+    def logseries(
+        cls,
+        /,
+        p: sgt._ArrayLikeFloat_co,
+        size: sgt._ShapeLike,
+        dtype: None = None,
+        seed: _Seed = None,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[np.int64]]: ...
+    @overload
+    @classmethod
+    def logseries[Dtype: np.number](
+        cls,
+        /,
+        p: sgt._ArrayLikeFloat_co,
+        size: sgt._ShapeLike,
+        *,
+        dtype: sgt._DTypeLike[Dtype],
+        seed: _Seed = None,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
+    @overload
+    @classmethod
+    def logseries(
+        cls,
+        /,
+        p: _NDArrayLikeFloat,
+        size: None = None,
+        dtype: None = None,
+        seed: _Seed = None,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[np.int64]]: ...
+    @overload
+    @classmethod
+    def logseries[Dtype: np.number](
+        cls,
+        /,
+        p: _NDArrayLikeFloat,
+        size: None = None,
+        *,
+        dtype: sgt._DTypeLike[Dtype],
+        seed: _Seed = None,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
+    @overload
+    @classmethod
+    def logseries(
+        cls,
+        /,
+        p: sgt._ArrayLikeFloat_co,
+        size: None = None,
+        dtype: None = None,
+        seed: _Seed = None,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[np.int64]] | Any: ...
+    @overload
+    @classmethod
+    def logseries[Dtype: np.number](
+        cls,
+        /,
+        p: sgt._ArrayLikeFloat_co,
+        size: None = None,
+        *,
+        dtype: sgt._DTypeLike[Dtype],
+        seed: _Seed = None,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]] | Any: ...
+    @classmethod
+    def logseries():
+        """
+        対数級数分布からなる配列を生成する
+
+        :param p: 分布の形状を指定する。`p`の範囲は[0,1)である必要がある。
+        :param size: 出力する配列の形状を指定する
+        :param dtype: 出力される配列の型を指定する
+        :param seed: 乱数のシード値を指定する
+        """
+
 HANDLED_FUNCTIONS: dict
 
 def implements(np_function) -> Any:
