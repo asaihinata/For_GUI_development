@@ -454,6 +454,6 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         return cls(result, dtype=dtype)
 
     @classmethod
-    def randint(cls, low, high=None, shape=None, dtype=np.int64, seed=None):
-        result = default_rng(seed).integers(low, high, size=shape, dtype=dtype)
+    def randint(cls, low, high=None, shape=None, dtype=np.int64,endpoint=False, seed=None):
+        result = default_rng(seed).integers(low, high, size=shape, dtype=dtype,endpoint=endpoint)
         return cls(result, dtype=result.dtype)

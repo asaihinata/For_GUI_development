@@ -27,6 +27,7 @@ type _ToArrayFloat64 = sgt._DualArrayLike[
 type _NDArrayLikeInt = NDArray[np.generic[int]] | _NestedSequence[int]
 type _NDArrayLikeFloat = NDArray[np.generic[float]] | _NestedSequence[float]
 type _OrderCF = Literal["C", "F"] | None
+type _Seed = _Seed
 type _SortKind = Literal[
     "Q",
     "quick",
@@ -1217,75 +1218,183 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
     @overload
     @classmethod
     def uniform(
-        self,
+        cls,
         /,
         low: _FloatLike_co = 0.0,
         high: _FloatLike_co = 1.0,
-        size: None = None,
+        shape: None = None,
+        dtype: None = None,
+        seed: _Seed = None,
     ) -> NPNumber[float, np.dtype[np.float64]]: ...
     @overload
     @classmethod
-    def uniform(
-        self,
+    def uniform[Dtype: DTypeLike](
+        cls,
         /,
-        low: sgt._ArrayLikeFloat_co,
-        high: sgt._ArrayLikeFloat_co,
-        size: sgt._ShapeLike,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
-    @overload
-    @classmethod
-    def uniform(
-        self, /, low: sgt._ArrayLikeFloat_co, high: _NDArrayLikeFloat, size: None = None
-    ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
-    @overload
-    @classmethod
-    def uniform(
-        self,
-        /,
-        low: sgt._ArrayLikeFloat_co = 0.0,
-        high: sgt._ArrayLikeFloat_co = 1.0,
+        low: _FloatLike_co = 0.0,
+        high: _FloatLike_co = 1.0,
+        shape: None = None,
         *,
-        size: sgt._ShapeLike,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
+        dtype: Dtype,
+        seed: _Seed = None,
+    ) -> NPNumber[float, np.dtype[Dtype]]: ...
     @overload
     @classmethod
     def uniform(
-        self,
+        cls,
         /,
-        low: sgt._ArrayLikeFloat_co = 0.0,
+        low: _FloatLike_co = 0.0,
+        high: _FloatLike_co = 1.0,
         *,
-        high: _NDArrayLikeFloat,
-        size: None = None,
+        shape: sgt._ShapeLike,
+        dtype: None = None,
+        seed: _Seed = None,
     ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
     @overload
     @classmethod
-    def uniform(
-        self,
+    def uniform[Dtype: DTypeLike](
+        cls,
         /,
-        low: _NDArrayLikeFloat,
-        high: sgt._ArrayLikeFloat_co = 1.0,
-        size: None = None,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
-    @overload
-    @classmethod
-    def uniform(
-        self,
-        /,
-        low: sgt._ArrayLikeFloat_co = 0.0,
-        high: sgt._ArrayLikeFloat_co = 1.0,
-        size: None = None,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]] | Any: ...
+        low: _FloatLike_co = 0.0,
+        high: _FloatLike_co = 1.0,
+        *,
+        shape: sgt._ShapeLike,
+        dtype: Dtype,
+        seed: _Seed = None,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
     @classmethod
     def uniform():
         """
-        一様分布に従う乱数配列を生成する
+        一様分布からなる配列を生成する
 
         :param low: 生成する乱数の下限値を指定する
-        :type low: _ArrayLikeFloat_co
         :param high: 生成する乱数の上限値を指定する
-        :type high: _ArrayLikeFloat_co
         :param shape: 生成する配列の形状を指定する
-        :type shape: _AnyShape | SupportsIndex | None
+        :param dtype: 出力される配列の型を指定する
+        :param seed: 乱数のシード値を指定する
+        """
+
+    @overload
+    @classmethod
+    def normal(
+        cls,
+        /,
+        loc: _FloatLike_co = 0.0,
+        scale: _FloatLike_co = 1.0,
+        shape: None = None,
+        dtype: None = None,
+        seed: _Seed = None,
+    ) -> NPNumber[float, np.dtype[np.float64]]: ...
+    @overload
+    @classmethod
+    def normal[Dtype: np.number](
+        cls,
+        /,
+        loc: _FloatLike_co = 0.0,
+        scale: _FloatLike_co = 1.0,
+        shape: None = None,
+        *,
+        dtype: sgt._DTypeLike[Dtype],
+        seed: _Seed = None,
+    ) -> NPNumber[float, np.dtype[Dtype]]: ...
+    @overload
+    @classmethod
+    def normal(
+        cls,
+        /,
+        loc: _FloatLike_co = 0.0,
+        scale: _FloatLike_co = 1.0,
+        *,
+        shape: sgt._ShapeLike,
+        dtype: None = None,
+        seed: _Seed = None,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
+    @overload
+    @classmethod
+    def normal[Dtype: np.number](
+        cls,
+        /,
+        loc: _FloatLike_co = 0.0,
+        scale: _FloatLike_co = 1.0,
+        *,
+        shape: sgt._ShapeLike,
+        dtype: sgt._DTypeLike[Dtype],
+        seed: _Seed = None,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
+    @classmethod
+    def normal():
+        """
+        正規分布からなる配列を生成する
+
+        :param loc: 分布の平均値を指定する
+        :param scale: 分布の標準偏差を指定する
+        :param shape: 生成する配列の形状を指定する
+        :param dtype: 出力される配列の型を指定する
+        :param seed: 乱数のシード値を指定する
+        """
+
+    @overload
+    @classmethod
+    def randint(
+        cls,
+        /,
+        low: int,
+        high: int | None = None,
+        shape: None = None,
+        dtype: None=None,
+        endpoint: bool = False,
+        seed:_Seed=None,
+    )->NPNumber[np.int64,np.dtype[np.int64]]: ...
+    @overload
+    @classmethod
+    def randint[Dtype: np.integer | np.bool](
+        cls,
+        /,
+        low: int,
+        high: int | None = None,
+        shape: None = None,
+        *,
+        dtype: sgt._DTypeLike[Dtype],
+        endpoint: bool = False,
+        seed:_Seed=None,
+    )->NPNumber[np.int64,np.dtype[Dtype]]: ...
+    @overload
+    @classmethod
+    def randint(
+        cls,
+        /,
+        low: int,
+        high: int | None = None,
+        *,
+        shape: sgt._ShapeLike,
+        dtype: None=None,
+        endpoint: bool = False,
+        seed:_Seed=None,
+    )->NPNumber[sgt._AnyShape,np.dtype[np.int64]]: ...
+    @overload
+    @classmethod
+    def randint[Dtype: np.integer | np.bool](
+        cls,
+        /,
+        low: int,
+        high: int | None = None,
+        *,
+        shape: sgt._ShapeLike,
+        dtype: sgt._DTypeLike[Dtype],
+        endpoint: bool = False,
+        seed:_Seed=None,
+    )->NPNumber[sgt._AnyShape,np.dtype[Dtype]]:...
+    @classmethod
+    def randint():
+        """
+        最小値から最大値までの整数の値からなるランダムに生成された配列を作成する
+
+        :param low: 生成される範囲の最小値を指定する
+        :param high: 生成される範囲の最大値を指定する
+        :param shape: 生成する配列の形状を指定する
+        :param dtype: 出力される配列の型を指定する
+        :param endpoint: 生成される区間の範囲を指定する
+        :param seed: 乱数のシード値を指定する
         """
 
 HANDLED_FUNCTIONS: dict
