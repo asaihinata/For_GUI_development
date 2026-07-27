@@ -1,4 +1,5 @@
 """基本的な数値の操作をするモジュール"""
+
 from numbers import Number
 
 import numpy as np
@@ -371,6 +372,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         result = np.geomspace(start, stop, num, endpoint, dtype=dtype, axis=axis)
         return cls(result, dtype=result.dtype)
 
+    # 角度
     @property
     def degree(self):
         result = np.asarray(180 * self / np.pi).view(type(self))
@@ -405,6 +407,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
+    # 三角関数
     def dsin(self):
         result = np.asarray(np.sin(self * np.pi / 180)).view(type(self))
         result._dtype = result.dtype
@@ -435,18 +438,19 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
+    # random
     @classmethod
     def uniform(cls, low=0.0, high=1.0, shape=None, dtype=None, seed=None):
         result = default_rng(seed).uniform(low, high, size=shape)
         if dtype is None:
-            dtype=np.dtype(type(result)) if np.isscalar(result) else result.dtype
+            dtype = np.dtype(type(result)) if np.isscalar(result) else result.dtype
         return cls(result, dtype=dtype)
 
     @classmethod
     def normal(cls, loc=0.0, scale=1.0, shape=None, dtype=None, seed=None):
         result = default_rng(seed).normal(loc, scale, size=shape)
         if dtype is None:
-            dtype=np.dtype(type(result)) if np.isscalar(result) else result.dtype
+            dtype = np.dtype(type(result)) if np.isscalar(result) else result.dtype
         return cls(result, dtype=dtype)
 
     @classmethod

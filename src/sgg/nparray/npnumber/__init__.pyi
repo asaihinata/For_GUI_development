@@ -7,7 +7,8 @@ from typing import (Any, Iterator, Literal, Self, Sequence, SupportsIndex,
 import numpy as np
 from numpy import dtype
 from numpy._typing import (DTypeLike, _ComplexLike_co, _FloatLike_co,
-                           _IntLike_co, _Shape, _SupportsArrayFunc)
+                           _IntLike_co, _NestedSequence, _Shape,
+                           _SupportsArrayFunc)
 from numpy.typing import NDArray
 
 import sgg.typing as sgt
@@ -23,6 +24,8 @@ type _ToFloat64 = float | np.integer | np.bool
 type _ToArrayFloat64 = sgt._DualArrayLike[
     np.dtype[np.float64 | np.integer | np.bool], float
 ]
+type _NDArrayLikeInt = NDArray[np.generic[int]] | _NestedSequence[int]
+type _NDArrayLikeFloat = NDArray[np.generic[float]] | _NestedSequence[float]
 type _OrderCF = Literal["C", "F"] | None
 type _SortKind = Literal[
     "Q",
@@ -1211,6 +1214,79 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
     def dtypeinfo[_DTypeT: sgt._IntsNumericDTypeLike](
         self: NPNumber[_ShapeT, _DTypeT],
     ) -> np.iinfo[_DTypeT]: ...
+    @overload
+    @classmethod
+    def uniform(
+        self,
+        /,
+        low: _FloatLike_co = 0.0,
+        high: _FloatLike_co = 1.0,
+        size: None = None,
+    ) -> NPNumber[float, np.dtype[np.float64]]: ...
+    @overload
+    @classmethod
+    def uniform(
+        self,
+        /,
+        low: sgt._ArrayLikeFloat_co,
+        high: sgt._ArrayLikeFloat_co,
+        size: sgt._ShapeLike,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
+    @overload
+    @classmethod
+    def uniform(
+        self, /, low: sgt._ArrayLikeFloat_co, high: _NDArrayLikeFloat, size: None = None
+    ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
+    @overload
+    @classmethod
+    def uniform(
+        self,
+        /,
+        low: sgt._ArrayLikeFloat_co = 0.0,
+        high: sgt._ArrayLikeFloat_co = 1.0,
+        *,
+        size: sgt._ShapeLike,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
+    @overload
+    @classmethod
+    def uniform(
+        self,
+        /,
+        low: sgt._ArrayLikeFloat_co = 0.0,
+        *,
+        high: _NDArrayLikeFloat,
+        size: None = None,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
+    @overload
+    @classmethod
+    def uniform(
+        self,
+        /,
+        low: _NDArrayLikeFloat,
+        high: sgt._ArrayLikeFloat_co = 1.0,
+        size: None = None,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
+    @overload
+    @classmethod
+    def uniform(
+        self,
+        /,
+        low: sgt._ArrayLikeFloat_co = 0.0,
+        high: sgt._ArrayLikeFloat_co = 1.0,
+        size: None = None,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]] | Any: ...
+    @classmethod
+    def uniform():
+        """
+        一様分布に従う乱数配列を生成する
+
+        :param low: 生成する乱数の下限値を指定する
+        :type low: _ArrayLikeFloat_co
+        :param high: 生成する乱数の上限値を指定する
+        :type high: _ArrayLikeFloat_co
+        :param shape: 生成する配列の形状を指定する
+        :type shape: _AnyShape | SupportsIndex | None
+        """
 
 HANDLED_FUNCTIONS: dict
 
