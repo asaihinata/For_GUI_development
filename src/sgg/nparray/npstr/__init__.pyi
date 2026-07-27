@@ -395,6 +395,22 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         そうでない場合は`False`を返す。
         """
 
+    @classmethod
+    def randombytes(
+        cls,
+        length: int,
+        seed: int | np.random.SeedSequence | np.random.Generator | None = None,
+    ) -> NPString[np.bytes_, np.dtype[np.bytes_]]:
+        """
+        指定された長さのランダムに生成されたバイト列を作成する
+
+        :param length: 生成するバイト列の長さを指定する
+        :type length: int
+        :param seed: 乱数のシード値を指定する
+        :raises TypeError: `length`にint型以外を指定した場合に発生させる
+        :raises ValueError: `length`に1未満の整数を指定した場合に発生させる
+        """
+
 HANDLED_FUNCTIONS: dict
 
 def implements(np_function) -> Any:

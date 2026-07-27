@@ -27,7 +27,7 @@ type _ToArrayFloat64 = sgt._DualArrayLike[
 type _NDArrayLikeInt = NDArray[np.generic[int]] | _NestedSequence[int]
 type _NDArrayLikeFloat = NDArray[np.generic[float]] | _NestedSequence[float]
 type _OrderCF = Literal["C", "F"] | None
-type _Seed = _Seed
+type _Seed = int | np.random.SeedSequence | np.random.Generator | None
 type _SortKind = Literal[
     "Q",
     "quick",
@@ -1341,10 +1341,10 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         low: int,
         high: int | None = None,
         shape: None = None,
-        dtype: None=None,
+        dtype: None = None,
         endpoint: bool = False,
-        seed:_Seed=None,
-    )->NPNumber[np.int64,np.dtype[np.int64]]: ...
+        seed: _Seed = None,
+    ) -> NPNumber[np.int64, np.dtype[np.int64]]: ...
     @overload
     @classmethod
     def randint[Dtype: np.integer | np.bool](
@@ -1356,8 +1356,8 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         *,
         dtype: sgt._DTypeLike[Dtype],
         endpoint: bool = False,
-        seed:_Seed=None,
-    )->NPNumber[np.int64,np.dtype[Dtype]]: ...
+        seed: _Seed = None,
+    ) -> NPNumber[np.int64, np.dtype[Dtype]]: ...
     @overload
     @classmethod
     def randint(
@@ -1367,10 +1367,10 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         high: int | None = None,
         *,
         shape: sgt._ShapeLike,
-        dtype: None=None,
+        dtype: None = None,
         endpoint: bool = False,
-        seed:_Seed=None,
-    )->NPNumber[sgt._AnyShape,np.dtype[np.int64]]: ...
+        seed: _Seed = None,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[np.int64]]: ...
     @overload
     @classmethod
     def randint[Dtype: np.integer | np.bool](
@@ -1382,8 +1382,8 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         shape: sgt._ShapeLike,
         dtype: sgt._DTypeLike[Dtype],
         endpoint: bool = False,
-        seed:_Seed=None,
-    )->NPNumber[sgt._AnyShape,np.dtype[Dtype]]:...
+        seed: _Seed = None,
+    ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
     @classmethod
     def randint():
         """

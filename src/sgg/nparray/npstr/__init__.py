@@ -214,3 +214,11 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def isupper(self):
         return NPBool(nps.isupper(np.asarray(self)))
+
+    @classmethod
+    def randombytes(cls, length, seed=None):
+        if not isinstance(length, int):
+            raise TypeError("lengthにはint型を指定してください")
+        if length < 1:
+            raise ValueError("lengthには1以上の整数を指定してください")
+        return cls(np.random.default_rng(seed).bytes(length), dtype=np.bytes_)
