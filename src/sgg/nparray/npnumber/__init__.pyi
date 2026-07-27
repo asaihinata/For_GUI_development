@@ -7,8 +7,7 @@ from typing import (Any, Iterator, Literal, Self, Sequence, SupportsIndex,
 import numpy as np
 from numpy import dtype
 from numpy._typing import (DTypeLike, _ComplexLike_co, _FloatLike_co,
-                           _IntLike_co, _Shape, _SupportsArrayFunc,
-                           _SupportsDType)
+                           _IntLike_co, _Shape, _SupportsArrayFunc)
 from numpy.typing import NDArray
 
 import sgg.typing as sgt

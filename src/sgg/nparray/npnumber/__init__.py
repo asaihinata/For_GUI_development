@@ -1,6 +1,8 @@
 """基本的な数値の操作をするモジュール"""
+from numbers import Number
 
 import numpy as np
+from numpy.random import default_rng
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -432,3 +434,22 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         result = np.asarray(180 * np.arctan(self) / np.pi).view(type(self))
         result._dtype = result.dtype
         return result
+
+    @classmethod
+    def uniform(cls, low=0.0, high=1.0, shape=None, dtype=None, seed=None):
+        result = default_rng(seed).uniform(low, high, size=shape)
+        if dtype is None:
+            dtype=np.dtype(type(result)) if np.isscalar(result) else result.dtype
+        return cls(result, dtype=dtype)
+
+    @classmethod
+    def normal(cls, loc=0.0, scale=1.0, shape=None, dtype=None, seed=None):
+        result = default_rng(seed).normal(loc, scale, size=shape)
+        if dtype is None:
+            dtype=np.dtype(type(result)) if np.isscalar(result) else result.dtype
+        return cls(result, dtype=dtype)
+
+    @classmethod
+    def randint(cls, low, high=None, shape=None, dtype=np.int64, seed=None):
+        result = default_rng(seed).integers(low, high, size=shape, dtype=dtype)
+        return cls(result, dtype=result.dtype)
