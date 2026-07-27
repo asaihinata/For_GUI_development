@@ -126,7 +126,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         return self.data.astype(date)
 
     @classmethod
-    def arange(cls, start, /, stop=None, step=1, *, dtype=None, device=None, like=None):
+    def arange(cls, start, /, stop=None, step=1, *, dtype="D", device=None, like=None):
         dtype = _dt64_unit(dtype)
         return cls(
             np.arange(start, stop, step=step, dtype=dtype, device=device, like=like),
