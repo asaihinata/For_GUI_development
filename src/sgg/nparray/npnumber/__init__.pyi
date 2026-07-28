@@ -27,7 +27,6 @@ type _ToArrayFloat64 = sgt._DualArrayLike[
 type _NDArrayLikeInt = NDArray[np.generic[int]] | _NestedSequence[int]
 type _NDArrayLikeFloat = NDArray[np.generic[float]] | _NestedSequence[float]
 type _OrderCF = Literal["C", "F"] | None
-type _Seed = int | np.random.SeedSequence | np.random.Generator | None
 type _SortKind = Literal[
     "Q",
     "quick",
@@ -42,7 +41,6 @@ type _SortKind = Literal[
     "stable",
     "stablesort",
 ]
-
 type TYPEMETHOD = Literal[
     "inverted_cdf",
     "averaged_inverted_cdf",
@@ -1224,7 +1222,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         high: _FloatLike_co = 1.0,
         shape: None = None,
         dtype: None = None,
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[float, np.dtype[np.float64]]: ...
     @overload
     @classmethod
@@ -1236,7 +1234,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         shape: None = None,
         *,
         dtype: Dtype,
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[float, np.dtype[Dtype]]: ...
     @overload
     @classmethod
@@ -1248,7 +1246,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         *,
         shape: sgt._ShapeLike,
         dtype: None = None,
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
     @overload
     @classmethod
@@ -1260,7 +1258,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         *,
         shape: sgt._ShapeLike,
         dtype: Dtype,
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
     @classmethod
     def uniform():
@@ -1283,7 +1281,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         scale: _FloatLike_co = 1.0,
         shape: None = None,
         dtype: None = None,
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[float, np.dtype[np.float64]]: ...
     @overload
     @classmethod
@@ -1295,7 +1293,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         shape: None = None,
         *,
         dtype: sgt._DTypeLike[Dtype],
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[float, np.dtype[Dtype]]: ...
     @overload
     @classmethod
@@ -1307,7 +1305,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         *,
         shape: sgt._ShapeLike,
         dtype: None = None,
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
     @overload
     @classmethod
@@ -1319,7 +1317,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         *,
         shape: sgt._ShapeLike,
         dtype: sgt._DTypeLike[Dtype],
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
     @classmethod
     def normal():
@@ -1343,7 +1341,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         shape: None = None,
         dtype: None = None,
         endpoint: bool = False,
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[np.int64, np.dtype[np.int64]]: ...
     @overload
     @classmethod
@@ -1356,7 +1354,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         *,
         dtype: sgt._DTypeLike[Dtype],
         endpoint: bool = False,
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[np.int64, np.dtype[Dtype]]: ...
     @overload
     @classmethod
@@ -1369,7 +1367,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         shape: sgt._ShapeLike,
         dtype: None = None,
         endpoint: bool = False,
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[sgt._AnyShape, np.dtype[np.int64]]: ...
     @overload
     @classmethod
@@ -1382,7 +1380,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         shape: sgt._ShapeLike,
         dtype: sgt._DTypeLike[Dtype],
         endpoint: bool = False,
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
     @classmethod
     def randint():
@@ -1405,7 +1403,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         p: _FloatLike_co,
         size: None = None,
         dtype: None = None,
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[np.int64, np.dtype[np.int64]]: ...
     @overload
     @classmethod
@@ -1416,7 +1414,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         size: None = None,
         *,
         dtype: sgt._DTypeLike[Dtype],
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[Dtype, np.dtype[Dtype]]: ...
     @overload
     @classmethod
@@ -1426,7 +1424,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         p: sgt._ArrayLikeFloat_co,
         size: sgt._ShapeLike,
         dtype: None = None,
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[sgt._AnyShape, np.dtype[np.int64]]: ...
     @overload
     @classmethod
@@ -1437,7 +1435,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         size: sgt._ShapeLike,
         *,
         dtype: sgt._DTypeLike[Dtype],
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
     @overload
     @classmethod
@@ -1447,7 +1445,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         p: _NDArrayLikeFloat,
         size: None = None,
         dtype: None = None,
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[sgt._AnyShape, np.dtype[np.int64]]: ...
     @overload
     @classmethod
@@ -1458,7 +1456,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         size: None = None,
         *,
         dtype: sgt._DTypeLike[Dtype],
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
     @overload
     @classmethod
@@ -1468,7 +1466,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         p: sgt._ArrayLikeFloat_co,
         size: None = None,
         dtype: None = None,
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[sgt._AnyShape, np.dtype[np.int64]] | Any: ...
     @overload
     @classmethod
@@ -1479,7 +1477,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         size: None = None,
         *,
         dtype: sgt._DTypeLike[Dtype],
-        seed: _Seed = None,
+        seed: sgt._Seed = None,
     ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]] | Any: ...
     @classmethod
     def logseries():

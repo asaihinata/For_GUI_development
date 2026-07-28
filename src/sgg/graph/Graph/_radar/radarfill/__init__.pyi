@@ -1,7 +1,7 @@
 from matplotlib.lines import Line2D
 
 from sgg.graph.graph.dev import *
-from sgg.typing import ColorType, TypeArrayLikeNumber, GetList
+from sgg.typing import ColorType, GetList, TypeArrayLikeNumber
 
 __all__ = ["RadarFill"]
 

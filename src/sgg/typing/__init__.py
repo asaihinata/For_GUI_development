@@ -2,6 +2,8 @@
 
 from typing import Any
 
+import numpy as np
+
 from ._array_date_unit import *
 from ._array_dtype import *
 from ._arraylike import *
@@ -10,8 +12,9 @@ from ._widget_all import *
 from ._widget_graph import *
 
 type Incomplete = Any
+type _Seed = int | np.random.SeedSequence | np.random.Generator | None
 __all__ = (
-    ["Incomplete"]
+    ["Incomplete", "_Seed"]
     + getattr(_array_date_unit, "__all__", [])
     + getattr(_array_dtype, "__all__", [])
     + getattr(_arraylike, "__all__", [])

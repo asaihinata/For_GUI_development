@@ -7,8 +7,7 @@ import numpy as np
 import numpy._typing as npt
 from numpy.dtypes import StringDType
 
-from sgg.typing import (_AnyShape, _ArrayLikeAnyString_co, _DTypeLike,
-                        _StringDTypeLike, _StringDTypeSupportsArray)
+import sgg.typing as sgt
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
@@ -17,7 +16,7 @@ from ..npnumber import NPNumber
 __all__ = ["NPString"]
 _DType = TypeVar("_DType", bound=np.generic, default=np.dtype[np.str_], covariant=True)
 
-class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
+class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
     _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
 ):
 
@@ -38,7 +37,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         copy: bool = True,
     ) -> NPString[_ShapeTs, _Dtype]: ...
     @overload
-    def __new__[Dtype: _StringDTypeLike](
+    def __new__[Dtype: sgt._StringDTypeLike](
         cls,
         data: NPString[_ShapeT, _Dtypes],
         /,
@@ -62,7 +61,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         copy: bool = True,
     ) -> NPString[_ShapeT, np.dtype[np.str_]]: ...
     @overload
-    def __new__[DType: _StringDTypeLike](
+    def __new__[DType: sgt._StringDTypeLike](
         cls,
         data: _ShapeT,
         /,
@@ -121,7 +120,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         self, dtype: None = None, /, *, copy: bool | None = None
     ) -> np.ndarray[_ShapeT, _Dtypes]: ...
     @overload
-    def __array__[DType: np._dtype | _DTypeLike[np.generic]](
+    def __array__[DType: np._dtype | sgt._DTypeLike[np.generic]](
         self, dtype: DType, /, *, copy: bool | None = None
     ) -> np.ndarray[_ShapeT, DType]: ...
     def __array_function__(
@@ -146,8 +145,8 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         :rtype: Any
         """
 
-    def __eq__(self, value: Any) -> NPBool[_AnyShape, np.dtype[np.bool_]]: ...
-    def __ne__(self, value: Any) -> NPBool[_AnyShape, np.dtype[np.bool_]]: ...
+    def __eq__(self, value: Any) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]: ...
+    def __ne__(self, value: Any) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]: ...
     @overload
     def __add__(
         self: NPString[_ShapeT, npt._ArrayLikeStr_co], value: npt._ArrayLikeStr_co
@@ -158,8 +157,8 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     ) -> NPString[_ShapeT, np.bytes_]: ...
     @overload
     def __add__(
-        self: NPString[_ShapeT, _StringDTypeSupportsArray],
-        value: _StringDTypeSupportsArray,
+        self: NPString[_ShapeT, sgt._StringDTypeSupportsArray],
+        value: sgt._StringDTypeSupportsArray,
     ) -> NPString[_ShapeT, StringDType]: ...
     @overload
     def __add__(
@@ -221,7 +220,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
 
     def center(
-        self, width: npt._ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
+        self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeAnyString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で中央寄せされた配列を返す
@@ -229,11 +228,11 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         :param width: 結果として得られる文字列の長さを指定する
         :type width: _ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
-        :type fillchar: _ArrayLikeAnyString_co
+        :type fillchar: sgt._ArrayLikeAnyString_co
         """
 
     def left(
-        self, width: npt._ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
+        self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeAnyString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で左寄せされた配列を返す
@@ -241,11 +240,11 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         :param width: 結果として得られる文字列の長さを指定する
         :type width: _ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
-        :type fillchar: _ArrayLikeAnyString_co
+        :type fillchar: sgt._ArrayLikeAnyString_co
         """
 
     def right(
-        self, width: npt._ArrayLikeInt_co, fillchar: _ArrayLikeAnyString_co = " "
+        self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeAnyString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で右寄せされた配列を返す
@@ -253,7 +252,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         :param width: 結果として得られる文字列の長さを指定する
         :type width: _ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
-        :type fillchar: _ArrayLikeAnyString_co
+        :type fillchar: sgt._ArrayLikeAnyString_co
         """
 
     def zerofill(self, width: npt._ArrayLikeInt_co) -> NPString:
@@ -274,15 +273,15 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
 
     def endswith(
         self,
-        suffix: _ArrayLikeAnyString_co,
+        suffix: sgt._ArrayLikeAnyString_co,
         start: npt._ArrayLikeInt_co = 0,
         end: npt._ArrayLikeInt_co | None = None,
-    ) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
+    ) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]:
         """
         配列の要素が`suffix`で終わるかを調べる
 
         :param suffix: 終了する単語を指定する
-        :type suffix: _ArrayLikeAnyString_co
+        :type suffix: sgt._ArrayLikeAnyString_co
         :param start: 比較を開始する位置を指定する
         :type start: _ArrayLikeInt_co
         :param end: 比較を終える位置を指定する
@@ -299,7 +298,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     ) -> NPString[_ShapeT, np.bytes_]: ...
     @overload
     def capitalize(
-        self: NPString[_ShapeT, _StringDTypeSupportsArray],
+        self: NPString[_ShapeT, sgt._StringDTypeSupportsArray],
     ) -> NPString[_ShapeT, StringDType]: ...
     @overload
     def capitalize[_ShapeT](
@@ -316,7 +315,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     ) -> NPString[_ShapeT, np.bytes_]: ...
     @overload
     def title(
-        self: NPString[_ShapeT, _StringDTypeSupportsArray],
+        self: NPString[_ShapeT, sgt._StringDTypeSupportsArray],
     ) -> NPString[_ShapeT, StringDType]: ...
     @overload
     def title[_ShapeT](
@@ -353,42 +352,42 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
         :type errors: str | None
         """
 
-    def istitle(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
+    def istitle(self) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]:
         """
         要素がタイトルケースの文字列であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isnumeric(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
+    def isnumeric(self) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]:
         """
         各要素について,その要素が数値のみが含まれている場合は`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isalnum(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
+    def isalnum(self) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]:
         """
         各要素内の文字列のすべての文字が英数字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isspace(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
+    def isspace(self) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]:
         """
         各要素内の文字列内に空白文字のみが存在し,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isdecimal(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
+    def isdecimal(self) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]:
         """
         各要素内の文字列がすべて10進数文字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isupper(self) -> NPBool[_AnyShape, np.dtype[np.bool_]]:
+    def isupper(self) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]:
         """
         各要素内の文字列内のすべての文字が大文字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
@@ -399,7 +398,7 @@ class NPString[_ShapeT: _ArrayLikeAnyString_co, _Dtypes: _DType](
     def randombytes(
         cls,
         length: int,
-        seed: int | np.random.SeedSequence | np.random.Generator | None = None,
+        seed: sgt._Seed = None,
     ) -> NPString[np.bytes_, np.dtype[np.bytes_]]:
         """
         指定された長さのランダムに生成されたバイト列を作成する

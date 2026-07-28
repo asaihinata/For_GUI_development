@@ -162,3 +162,8 @@ class _ArrayCommonMixin:
         result = np.rot90(np.asarray(self), k, axes).view(type(self))
         result._dtype = self._dtype
         return result
+
+    def choice(self, size=None, replace=True, p=None, axis=0, shuffle=True, seed=None):
+        return np.random.default_rng(seed).choice(
+            self, size=size, replace=replace, p=p, axis=axis, shuffle=shuffle
+        )

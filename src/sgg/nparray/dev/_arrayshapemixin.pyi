@@ -1,8 +1,10 @@
 from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
-from numpy._typing import DTypeLike, _ShapeLike
+from numpy._typing import DTypeLike, _ArrayLikeFloat_co, _ShapeLike
 from numpy.typing import NDArray
+
+from sgg.typing import _Seed
 
 __all__ = ["_ArrayCommonMixin"]
 
@@ -198,3 +200,13 @@ class _ArrayCommonMixin:
 
     def isscalar(self) -> bool:
         """配列がスカラー値かを調べる"""
+
+    def choice(
+        self,
+        size: _ShapeLike | None = None,
+        replace: bool = True,
+        p: _ArrayLikeFloat_co | None = None,
+        axis: int = 0,
+        shuffle: bool = True,
+        seed: _Seed = None,
+    ) -> np.ndarray: ...

@@ -28,13 +28,15 @@ type TypeArrayLikeString = np.ndarray[tuple[int], np.dtype[_ArrayLikeString]]
 type TypeArray2LikeString = np.ndarray[tuple[int, int], np.dtype[_ArrayLikeString]]
 type TypeArraysLikeString = np.ndarray[tuple[int, ...], np.dtype[_ArrayLikeString]]
 # 数値 + 文字列
-_ArrayLikeNS = TypeVar("_ArrayLikeNS", bound=Union[np.generic, int, float, np.str_, str])
+_ArrayLikeNS = TypeVar(
+    "_ArrayLikeNS", bound=Union[np.generic, int, float, np.str_, str]
+)
 type TypeArrayLikeNS = np.ndarray[tuple[int], np.dtype[_ArrayLikeNS]]
 type TypeArray2LikeNS = np.ndarray[tuple[int, int], np.dtype[_ArrayLikeNS]]
 type TypeArraysLikeNS = np.ndarray[tuple[int, ...], np.dtype[_ArrayLikeNS]]
 type Typetuple_float64 = tuple[np.float64, np.float64]
 # 配列
-type GetList=np.ndarray
+type GetList = np.ndarray
 # その他
 type Type_Solid = Literal["-", "--", "-.", ":", "None", " ", ""]
 type Type_Marker = Literal[
