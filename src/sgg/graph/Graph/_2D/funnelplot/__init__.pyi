@@ -24,5 +24,5 @@ class Funne(_2Gset):
     def get(self) -> list[BarContainer]:
         """`matplotlib.container.BarContainer`の配列を返す"""
 
-    def getdata(self) -> Typeget_Array_Number:
+    def getdata(self) -> GetList:
         """`data`のデータを取得する"""

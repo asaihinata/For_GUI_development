@@ -36,5 +36,5 @@ class Violinplot(_2Gset):
     def get(self) -> list[dict[str, Collection]]:
         """辞書型が入った配列を返す"""
 
-    def getdata(self) -> Typeget_Arrays_Number:
+    def getdata(self) -> GetList:
         """`data`のデータを取得する"""

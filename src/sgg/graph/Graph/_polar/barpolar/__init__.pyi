@@ -43,8 +43,8 @@ class Barpolar(_polarset):
     def get(self) -> list[BarContainer]:
         """`matplotlib.container.BarContainer`の配列を返す"""
 
-    def getx(self) -> Typeget_Array_Number:
+    def getx(self) -> GetList:
         """`x`のデータを取得する"""
 
-    def gety(self) -> Typeget_Array_NumStr:
+    def gety(self) -> GetList:
         """`y`のデータを取得する"""

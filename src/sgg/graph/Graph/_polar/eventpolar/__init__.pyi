@@ -27,5 +27,5 @@ class Eventpolar(_polarset):
     def get(self) -> list[EventCollection]:
         """`matplotlib.collections.EventCollection`の配列を返す"""
 
-    def getdata(self) -> Typeget_Array_NumStr:
+    def getdata(self) -> GetList:
         """`data`のデータを取得する"""

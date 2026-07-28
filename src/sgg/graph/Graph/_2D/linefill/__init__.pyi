@@ -27,11 +27,11 @@ class Linefill(_2Gset):
     def get(self) -> list[FillBetweenPolyCollection, Line2D]:
         """`matplotlib.collections.PathCollection`と`matplotlib.lines.Line2D`の配列を返す"""
 
-    def getx(self) -> Typeget_Array_Number:
+    def getx(self) -> GetList:
         """`x`のデータを取得する"""
 
-    def getymin(self) -> Typeget_Array_Number:
+    def getymin(self) -> GetList:
         """`ymin`のデータを取得する"""
 
-    def getymax(self) -> Typeget_Array_Number:
+    def getymax(self) -> GetList:
         """`ymax`のデータを取得する"""

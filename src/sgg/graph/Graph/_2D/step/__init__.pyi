@@ -34,5 +34,5 @@ class Step(_2Gset):
     def get(self) -> list[StepPatch]:
         """`matplotlib.patches.StepPatch`の配列を返す"""
 
-    def getdata(self) -> Typeget_Arrays_Number:
+    def getdata(self) -> GetList:
         """`data`のデータを取得する"""

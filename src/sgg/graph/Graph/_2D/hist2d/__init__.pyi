@@ -35,8 +35,8 @@ class Hist2d(_2Gset):
     def get(self) -> list[np.ndarray, np.ndarray, np.ndarray, QuadMesh]:
         """`matplotlib.axes.Axes.hist2d`の戻り値を配列で返す"""
 
-    def getx(self) -> Typeget_Array_Number:
+    def getx(self) -> GetList:
         """`x`のデータを取得する"""
 
-    def gety(self) -> Typeget_Array_Number:
+    def gety(self) -> GetList:
         """`y`のデータを取得する"""

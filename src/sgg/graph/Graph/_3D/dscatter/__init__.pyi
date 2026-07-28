@@ -33,13 +33,13 @@ class DScatter(_3Gset):
     def get(self) -> list[PathCollection]:
         """`matplotlib.collections.PathCollection`の配列を返す"""
 
-    def getx(self) -> Typeget_Arrays_Number:
+    def getx(self) -> GetList:
         """`x`のデータを取得する"""
 
-    def gety(self) -> Typeget_Arrays_Number:
+    def gety(self) -> GetList:
         """`y`のデータを取得する"""
 
-    def getz(self) -> Typeget_Arrays_Number:
+    def getz(self) -> GetList:
         """`z`のデータを取得する"""
 
     def getcoordinate(

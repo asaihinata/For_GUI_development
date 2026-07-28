@@ -2,7 +2,7 @@ from matplotlib.lines import Line2D
 
 from sgg.graph.graph.dev import *
 from sgg.typing import (ColorType, Type_Marker, Type_Solid,
-                        TypeArrayLikeNumber, Typeget_Array_Number)
+                        TypeArrayLikeNumber, GetList)
 
 __all__ = ["RadarLine"]
 
@@ -25,5 +25,5 @@ class RadarLine(RadarElement):
     def get(self) -> list[Line2D]:
         """`matplotlib.lines.Line2D`の配列を返す"""
 
-    def getdata(self) -> Typeget_Array_Number:
+    def getdata(self) -> GetList:
         """`data`のデータを取得する"""
