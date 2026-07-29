@@ -61,13 +61,17 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
+    __radd__ = __add__
+
     def __sub__(self, value):
         result = np.asarray(np.subtract(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
+    def __rsub__(self, value):
+        result = np.asarray(np.subtract(value, self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
-    __radd__ = __add__
-    __rsub__ = __sub__
 
     def __eq__(self, value):
         return NPBool(np.equal(np.asarray(self), value))

@@ -1,12 +1,12 @@
 """基本的な時間の差や期間について操作するモジュール"""
 
-from datetime import timedelta
+from datetime import date, datetime, timedelta
 from types import GenericAlias
-from typing import Any, Iterator, Self, TypeVar, overload,Never
+from typing import Any, Iterator, Never, Self, TypeVar, overload
 
 import numpy as np
 import numpy._typing as npt
-from numpy import timedelta64,dtype
+from numpy import dtype, timedelta64
 
 import sgg.typing as sgt
 
@@ -17,7 +17,8 @@ __all__ = ["NPTimedelta"]
 _DType = TypeVar(
     "_DType", bound=np.timedelta64, default=np.timedelta64[int], covariant=True
 )
-type NDTimedelta[ScalarT]=NPTimedelta[sgt._AnyShape, dtype[ScalarT]]
+type NDTimedelta[ScalarT] = NPTimedelta[sgt._AnyShape, dtype[ScalarT]]
+
 class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
     _ArrayCommonMixin, np.ndarray[_ShapeT, dtype[_Dtypes]]
 ):
@@ -172,20 +173,23 @@ class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
     def __eq__(self, value: Any) -> NPBool[sgt._AnyShape, dtype[np.bool_]]: ...
     def __ne__(self, value: Any) -> NPBool[sgt._AnyShape, dtype[np.bool_]]: ...
     @overload
-    def __add__(
-        self: NPTimedelta[_ShapeT, np.dtype[timedelta64[Never]]], value: NDTimedelta[int | timedelta]|timedelta64[int | timedelta]
-    ) -> NPTimedelta[_ShapeT,dtype[timedelta64]]: ...
-    __iadd__ = __add__
+    def __add__(self, value: int) -> Self: ...
+    @overload
+    def __add__[ShapeT, Dtype](
+        self: NPTimedelta[ShapeT, Dtype], value: NPTimedelta[ShapeT, Dtype]
+    ) -> Self: ...
+    @overload
+    def __add__(self, value: Any) -> Any: ...
     __radd__ = __add__
-    def __mul__(self, i: npt._ArrayLikeInt_co) -> NPTimedelta:
-        """
-        配列内の要素を`i`回付け加える
-
-        :param i: 付け加える回数を指定する
-        :type i: int
-        """
-    __imul__ = __mul__
-    __rmul__ = __mul__
+    @overload
+    def __sub__(self, value: int) -> Self: ...
+    @overload
+    def __sub__[ShapeT, Dtype](
+        self: NPTimedelta[ShapeT, Dtype], value: NPTimedelta[ShapeT, Dtype]
+    ) -> Self: ...
+    @overload
+    def __sub__(self, value: Any) -> Any: ...
+    __rsub__ = __sub__
 
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _Dtypes]]: ...
     def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
