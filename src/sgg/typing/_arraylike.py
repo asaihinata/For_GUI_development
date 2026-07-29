@@ -24,6 +24,7 @@ __all__ = [
     "_ArrayLikeStr_co",
     "_ArrayLikeString_co",
     "_ArrayLikeTD64_co",
+    "_ArrayLikeTD64Int_co",
     "_ArrayLikeUInt_co",
     "_DualArrayLike",
     "_Shape",
@@ -88,6 +89,10 @@ type _ArrayLikeDT64_co = _DualArrayLike[
 type _ArrayLikeTD64_co = _DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.timedelta64],
     bool | int | timedelta,
+]
+type _ArrayLikeTD64Int_co = _DualArrayLike[
+    np.dtype[np.bool | np.bool_ | np.integer],
+    bool | int,
 ]
 # None
 type _ArrayLikeNone_co = _DualArrayLike[

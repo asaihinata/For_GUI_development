@@ -1,4 +1,4 @@
-"""基本的な文字列の操作をするモジュール"""
+"""基本的な時間の差や期間について操作するモジュール"""
 
 from datetime import timedelta
 from types import GenericAlias
@@ -25,53 +25,53 @@ class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
     _element_type: tuple[type[np.timedelta64]]
     _default_dtype: type[np.dtype[np.timedelta64]]
     @overload
-    def __new__[_ShapeTs, _Dtype](
+    def __new__[ShapeT: sgt._ArrayLikeTD64Int_co](
         cls,
-        data: NPTimedelta[_ShapeTs, _Dtype],
+        data: ShapeT,
         /,
-        dtype: None = None,
+        dtype: None=None,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPTimedelta[_ShapeTs, _Dtype]: ...
+    ) -> NPTimedelta[ShapeT, np.dtype[timedelta64[int]]]: ...
     @overload
-    def __new__[Dtype: sgt._DTypeLikeDT64](
+    def __new__[ShapeT: sgt._ArrayLikeTD64Int_co](
         cls,
-        data: NPTimedelta[_ShapeT, np.dtype[_Dtypes]],
+        data: ShapeT,
         /,
-        dtype: Dtype,
+        dtype: np._TimeUnitSpec[np._IntTD64Unit],
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPTimedelta[_ShapeT, np.dtype[Dtype]]: ...
+    ) -> NPTimedelta[ShapeT, np.dtype[timedelta64[int]]]: ...
     @overload
-    def __new__(
+    def __new__[ShapeT: sgt._ArrayLikeTD64_co](
         cls,
-        data: _ShapeT,
+        data: ShapeT,
         /,
-        dtype: None = None,
+        dtype: None=None,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPTimedelta[_ShapeT, np.dtype[timedelta64]]: ...
+    ) -> NPTimedelta[ShapeT, np.dtype[timedelta64[timedelta]]]: ...
     @overload
-    def __new__[DType: sgt._DTypeLikeDT64](
+    def __new__[ShapeT: sgt._ArrayLikeTD64_co](
         cls,
-        data: _ShapeT,
+        data: ShapeT,
         /,
-        dtype: DType,
+        dtype: np._TimeUnitSpec[np._NativeTD64Unit],
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPTimedelta[_ShapeT, np.dtype[DType]]: ...
+    ) -> NPTimedelta[ShapeT, np.dtype[timedelta64[timedelta]]]: ...
     def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する

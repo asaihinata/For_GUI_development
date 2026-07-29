@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 import numpy as np
 
@@ -14,6 +14,7 @@ __all__ = [
     "_IntsLike_co",
     "_FloatLike_co",
 ]
+type _Arange_Number = np.integer | np.floating | int | float
 type _BoolScalar = bool | np.bool | np.bool_
 type _UIntLike_co = _BoolScalar | np.unsignedinteger
 type _IntLike_co = int | np.integer | _BoolScalar
@@ -22,5 +23,4 @@ type _FloatLike_co = float | np.floating | _IntsLike_co
 type _NumberScalar = int | float | complex | np.number | _BoolScalar
 type _StrScalar = str | bytes | np.character | np.flexible
 type _DateParseScalar = str | np.str_ | datetime | date | np.datetime64 | int
-type _TD64Like_co = np.timedelta64 | _IntLike_co
-type _Arange_Number = np.integer | np.floating | int | float
+type _TD64Like_co = timedelta | _IntLike_co

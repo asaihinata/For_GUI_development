@@ -1,3 +1,5 @@
+"""基本的な時間の差や期間について操作するモジュール"""
+
 import numpy as np
 
 from ..dev import _ArrayCommonMixin, _tm64_unit
