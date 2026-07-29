@@ -5,6 +5,7 @@ from .npformatdate import NPFormatDate
 from .npnumber import NPNumber
 from .npstr import NPString
 from .nptimedelta import NPTimedelta
+
 __all__ = [
     "NPArray",
     "NPBool",

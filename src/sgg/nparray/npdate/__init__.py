@@ -152,11 +152,15 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
-    def strftime(self,format):
-        return NPString([i.strftime(format) for i in self.to_datetime().flatten()], dtype=np.str_).reshape(self.shape)
+    def strftime(self, format):
+        return NPString(
+            [i.strftime(format) for i in self.to_datetime().flatten()], dtype=np.str_
+        ).reshape(self.shape)
 
     def weekday(self):
-        return NPNumber([i.weekday() for i in self.to_datetime().flatten()], dtype=np.uint8).reshape(self.shape)
+        return NPNumber(
+            [i.weekday() for i in self.to_datetime().flatten()], dtype=np.uint8
+        ).reshape(self.shape)
 
     def diff_today(self, days=False):
         if not isinstance(days, bool):

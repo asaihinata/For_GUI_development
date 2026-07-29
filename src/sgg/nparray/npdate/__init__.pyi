@@ -431,9 +431,15 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
     @classmethod
     def unix(cls) -> NPDate[datetime64[datetime], np.dtype[datetime64[datetime]]]:
         """UTC時刻を返す"""
-    def strftime[ShapeT](self:NPDate[ShapeT,np.dtype[datetime64]],format:str)->NPString[ShapeT,np.dtype[np.str_]]:
+
+    def strftime[ShapeT](
+        self: NPDate[ShapeT, np.dtype[datetime64]], format: str
+    ) -> NPString[ShapeT, np.dtype[np.str_]]:
         """日付のフォーマットを別のフォーマットで変換する"""
-    def weekday[ShapeT](self:NPDate[ShapeT,np.dtype[datetime64]])-> NPNumber[ShapeT, np.dtype[np.uint8]]:
+
+    def weekday[ShapeT](
+        self: NPDate[ShapeT, np.dtype[datetime64]],
+    ) -> NPNumber[ShapeT, np.dtype[np.uint8]]:
         """その日付日時の曜日を求める"""
 
     @overload

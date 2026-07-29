@@ -5,6 +5,7 @@ __all__ = [
     "_ArangeNumber_DtypeLike",
     "_BoolDTypeLike",
     "_ComplexDtypeLike",
+    "_DTypeLikeDT64",
     "_DTypeLike",
     "_DTypeLikeF32",
     "_DTypeLikeF64",

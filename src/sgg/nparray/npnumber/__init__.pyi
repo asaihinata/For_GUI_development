@@ -25,8 +25,8 @@ type _ToArrayFloat64 = sgt._DualArrayLike[
     np.dtype[np.float64 | np.integer | np.bool], float
 ]
 type _NDArrayLikeFloat = NDArray[np.generic[float]] | _NestedSequence[float]
-type _ArrayF32 = NPNumber[sgt._ShapeLike,np.dtype[type[np.float32]]]
-type _ArrayF64 = NPNumber[sgt._ShapeLike,np.dtype[type[np.float64]]]
+type _ArrayF32 = NPNumber[sgt._ShapeLike, np.dtype[type[np.float32]]]
+type _ArrayF64 = NPNumber[sgt._ShapeLike, np.dtype[type[np.float64]]]
 type _OrderCF = Literal["C", "F"] | None
 type _SortKind = Literal[
     "Q",
@@ -1222,7 +1222,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         dtype: sgt._DTypeLikeFloat = ...,
         out: None = None,
         seed: sgt._Seed = None,
-    ) -> NPNumber[np.float64,np.dtype[np.float64]]: ...
+    ) -> NPNumber[np.float64, np.dtype[np.float64]]: ...
     @overload
     @classmethod
     def random(
@@ -1231,7 +1231,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         dtype: sgt._DTypeLikeF64 = ...,
         out: None = None,
         seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._ShapeLike,np.dtype[np.float64]]: ...
+    ) -> NPNumber[sgt._ShapeLike, np.dtype[np.float64]]: ...
     @overload
     @classmethod
     def random(
@@ -1240,7 +1240,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         dtype: sgt._DTypeLikeF32,
         out: None = None,
         seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._ShapeLike,np.dtype[np.float32]]: ...
+    ) -> NPNumber[sgt._ShapeLike, np.dtype[np.float32]]: ...
     @overload
     @classmethod
     def random[ShapeT: _ArrayF64](
@@ -1278,7 +1278,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         dtype: sgt._DTypeLikeF32,
         out: ShapeT,
         seed: sgt._Seed = None,
-    ) -> ShapeT:...
+    ) -> ShapeT: ...
     @classmethod
     def random():
         """
@@ -1289,6 +1289,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         :param out: 結果を格納する代替出力配列を指定する
         :param seed: 乱数のシード値を指定する
         """
+
     @overload
     @classmethod
     def uniform(

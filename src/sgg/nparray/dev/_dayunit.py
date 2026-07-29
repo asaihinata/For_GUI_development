@@ -1,6 +1,11 @@
-from numpy import dtype,datetime64
 from re import compile
-__all__=["_dt64_unit","_get_dt64_unit",]
+
+from numpy import datetime64, dtype
+
+__all__ = [
+    "_dt64_unit",
+    "_get_dt64_unit",
+]
 _VALID_UNITS = frozenset(
     {"Y", "M", "W", "D", "h", "m", "s", "ms", "us", "ns", "ps", "fs", "as"}
 )

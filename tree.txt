@@ -232,7 +232,9 @@ For_GUI_development
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── _arrayshapemixin.py
  │   │   │   │   ├── _arrayshapemixin.pyi
- │   │   │   │   └── _arrcheck.py
+ │   │   │   │   ├── _arrcheck.py
+ │   │   │   │   ├── _dayunit.py
+ │   │   │   │   └── _timeunit.py
  │   │   │   ├── nparray
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
@@ -248,7 +250,10 @@ For_GUI_development
  │   │   │   ├── npnumber
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
- │   │   │   └── npstr
+ │   │   │   ├── npstr
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── __init__.pyi
+ │   │   │   └── nptimedelta
  │   │   │       ├── __init__.py
  │   │   │       └── __init__.pyi
  │   │   ├── readfile
@@ -449,5 +454,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:310
-フォルダ数:140
+ファイル数:314
+フォルダ数:141

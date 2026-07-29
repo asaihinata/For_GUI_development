@@ -1,6 +1,11 @@
-from numpy import dtype,timedelta64
 from re import compile
-__all__=["_tm64_unit","_get_tm64_unit",]
+
+from numpy import dtype, timedelta64
+
+__all__ = [
+    "_tm64_unit",
+    "_get_tm64_unit",
+]
 _VALID_UNITS = frozenset(
     {"Y", "M", "W", "D", "h", "m", "s", "ms", "us", "ns", "ps", "fs", "as"}
 )
