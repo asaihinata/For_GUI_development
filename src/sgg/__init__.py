@@ -59,6 +59,7 @@ __all__ = [
     "NPFormatDate",
     "NPNumber",
     "NPString",
+    "NPTimedelta",
     "Open",
     "Pie",
     "popup",

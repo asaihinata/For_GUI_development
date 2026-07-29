@@ -46,3 +46,5 @@ type _ComplexDtypeLike = np.dtype[np.complexfloating] | type[complex]
 # 文字列
 type _StringDTypeLike = np.dtype[np.str_ | np.bytes_] | type[str] | type[bytes]
 """numpyとPythonの文字列全般の型の型ヒント"""
+# 日付
+type _DTypeLikeDT64 = _DTypeLike[np.timedelta64] | np._TD64Codes

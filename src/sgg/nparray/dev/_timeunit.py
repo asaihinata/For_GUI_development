@@ -1,0 +1,43 @@
+from numpy import dtype,timedelta64
+from re import compile
+__all__=["_tm64_unit","_get_tm64_unit",]
+_VALID_UNITS = frozenset(
+    {"Y", "M", "W", "D", "h", "m", "s", "ms", "us", "ns", "ps", "fs", "as"}
+)
+_UNIT_ALIASES = {"μs": "us"}
+_DTYPE_PATTERN = compile(r"^(?:timedelta64|[|=<>]?m8)(?:\[(?P<unit>[^\[\]]+)\])?$")
+
+
+def _to_str(value):
+    if isinstance(value, bytes):
+        return value.decode("ascii")
+    if isinstance(value, str):
+        return value
+    try:
+        return str(dtype(value))
+    except TypeError:
+        pass
+    raise TypeError(f"{value}にはstrまたはbytesを指定してください")
+
+
+def _normalize_unit(unit: str):
+    return _UNIT_ALIASES.get(unit, unit)
+
+
+def _get_tm64_unit(value):
+    s = _to_str(value).strip()
+    m = _DTYPE_PATTERN.match(s)
+    if m is not None:
+        unit = m.group("unit")
+        return _normalize_unit(unit) if unit is not None else ""
+    normalized = _normalize_unit(s)
+    if normalized in _VALID_UNITS:
+        return normalized
+    raise ValueError(f"認識できないtimedelta64の単位/dtype文字列です: {value!r}")
+
+
+def _tm64_unit(value):
+    if isinstance(value, timedelta64):
+        return value
+    unit = _get_tm64_unit(value)
+    return f"timedelta64[{unit}]" if unit else "timedelta64"

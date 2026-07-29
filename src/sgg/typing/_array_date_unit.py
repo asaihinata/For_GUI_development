@@ -149,3 +149,24 @@ type _DT64Codes = Literal[
 ]
 type _AllDateUnit = Literal[_DT64Codes, _TD64Unit]
 type _TimeUnitSpec = _AllDateUnit | tuple[_AllDateUnit, SupportsIndex]
+
+type _TD64Codes_any = Literal["timedelta64", "m", "m8", "|m8", "=m8", "<m8", ">m8"]
+type _TD64Codes_int = Literal[
+    "timedelta64[Y]", "m8[Y]", "|m8[Y]", "=m8[Y]", "<m8[Y]", ">m8[Y]",
+    "timedelta64[M]", "m8[M]", "|m8[M]", "=m8[M]", "<m8[M]", ">m8[M]",
+    "timedelta64[ns]", "m8[ns]", "|m8[ns]", "=m8[ns]", "<m8[ns]", ">m8[ns]",
+    "timedelta64[ps]", "m8[ps]", "|m8[ps]", "=m8[ps]", "<m8[ps]", ">m8[ps]",
+    "timedelta64[fs]", "m8[fs]", "|m8[fs]", "=m8[fs]", "<m8[fs]", ">m8[fs]",
+    "timedelta64[as]", "m8[as]", "|m8[as]", "=m8[as]", "<m8[as]", ">m8[as]",
+]  # fmt: skip
+type _TD64Codes_timedelta = Literal[
+    "timedelta64[W]", "m8[W]", "|m8[W]", "=m8[W]", "<m8[W]", ">m8[W]",
+    "timedelta64[D]", "m8[D]", "|m8[D]", "=m8[D]", "<m8[D]", ">m8[D]",
+    "timedelta64[h]", "m8[h]", "|m8[h]", "=m8[h]", "<m8[h]", ">m8[h]",
+    "timedelta64[m]", "m8[m]", "|m8[m]", "=m8[m]", "<m8[m]", ">m8[m]",
+    "timedelta64[s]", "m8[s]", "|m8[s]", "=m8[s]", "<m8[s]", ">m8[s]",
+    "timedelta64[ms]", "m8[ms]", "|m8[ms]", "=m8[ms]", "<m8[ms]", ">m8[ms]",
+    "timedelta64[us]", "m8[us]", "|m8[us]", "=m8[us]", "<m8[us]", ">m8[us]",
+    "timedelta64[μs]", "m8[μs]", "|m8[μs]", "=m8[μs]", "<m8[μs]", ">m8[μs]",
+]  # fmt: skip
+type _TD64Codes = Literal[_TD64Codes_any, _TD64Codes_int, _TD64Codes_timedelta]

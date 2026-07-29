@@ -15,6 +15,10 @@ demo*.py
 # Python
 __pycache__
 *.pyc
+*.py
+*.pyi
+!src/**/*.py
+!src/**/*.pyi
 # vscode
 my-project.code-workspace
 .vscode/*.local.json
