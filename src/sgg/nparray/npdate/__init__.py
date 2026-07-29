@@ -5,6 +5,7 @@ import numpy as np
 from ..dev import _ArrayCommonMixin, _dt64_unit, _normalize_axis
 from ..npbool import NPBool
 from ..npnumber import NPNumber
+from ..npstr import NPString
 
 __all__ = ["NPDate"]
 HANDLED_FUNCTIONS = {}
@@ -151,9 +152,11 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
+    def strftime(self,format):
+        return NPString([i.strftime(format) for i in self.to_datetime().flatten()], dtype=np.str_).reshape(self.shape)
+
     def weekday(self):
-        dt = self.to_datetime()
-        return NPNumber([i.weekday() for i in dt], dtype=np.uint8)
+        return NPNumber([i.weekday() for i in self.to_datetime().flatten()], dtype=np.uint8).reshape(self.shape)
 
     def diff_today(self, days=False):
         if not isinstance(days, bool):
