@@ -24,8 +24,9 @@ type _ToFloat64 = float | np.integer | np.bool
 type _ToArrayFloat64 = sgt._DualArrayLike[
     np.dtype[np.float64 | np.integer | np.bool], float
 ]
-type _NDArrayLikeInt = NDArray[np.generic[int]] | _NestedSequence[int]
 type _NDArrayLikeFloat = NDArray[np.generic[float]] | _NestedSequence[float]
+type _ArrayF32 = NPNumber[sgt._ShapeLike,np.dtype[type[np.float32]]]
+type _ArrayF64 = NPNumber[sgt._ShapeLike,np.dtype[type[np.float64]]]
 type _OrderCF = Literal["C", "F"] | None
 type _SortKind = Literal[
     "Q",
@@ -1213,6 +1214,81 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
     def dtypeinfo[_DTypeT: sgt._IntsNumericDTypeLike](
         self: NPNumber[_ShapeT, _DTypeT],
     ) -> np.iinfo[_DTypeT]: ...
+    @overload
+    @classmethod
+    def random(
+        cls,
+        size: None = None,
+        dtype: sgt._DTypeLikeFloat = ...,
+        out: None = None,
+        seed: sgt._Seed = None,
+    ) -> NPNumber[np.float64,np.dtype[np.float64]]: ...
+    @overload
+    @classmethod
+    def random(
+        cls,
+        size: sgt._ShapeLike,
+        dtype: sgt._DTypeLikeF64 = ...,
+        out: None = None,
+        seed: sgt._Seed = None,
+    ) -> NPNumber[sgt._ShapeLike,np.dtype[np.float64]]: ...
+    @overload
+    @classmethod
+    def random(
+        cls,
+        size: sgt._ShapeLike,
+        dtype: sgt._DTypeLikeF32,
+        out: None = None,
+        seed: sgt._Seed = None,
+    ) -> NPNumber[sgt._ShapeLike,np.dtype[np.float32]]: ...
+    @overload
+    @classmethod
+    def random[ShapeT: _ArrayF64](
+        cls,
+        size: sgt._ShapeLike | None = None,
+        dtype: sgt._DTypeLikeF64 = ...,
+        *,
+        out: ShapeT,
+        seed: sgt._Seed = None,
+    ) -> ShapeT: ...
+    @overload
+    @classmethod
+    def random[ShapeT: _ArrayF32](
+        cls,
+        size: sgt._ShapeLike | None = None,
+        *,
+        dtype: sgt._DTypeLikeF32,
+        out: ShapeT,
+        seed: sgt._Seed = None,
+    ) -> ShapeT: ...
+    @overload
+    @classmethod
+    def random[ShapeT: _ArrayF64](
+        cls,
+        size: sgt._ShapeLike | None,
+        dtype: sgt._DTypeLikeF64,
+        out: ShapeT,
+        seed: sgt._Seed = None,
+    ) -> ShapeT: ...
+    @overload
+    @classmethod
+    def random[ShapeT: _ArrayF32](
+        cls,
+        size: sgt._ShapeLike | None,
+        dtype: sgt._DTypeLikeF32,
+        out: ShapeT,
+        seed: sgt._Seed = None,
+    ) -> ShapeT:...
+    @classmethod
+    def random():
+        """
+        [0,1)の範囲でランダムな浮動小数点数の配列を作成する
+
+        :param size: 生成する配列の形状を指定する
+        :param dtype: 出力される配列の型を指定する
+        :param out: 結果を格納する代替出力配列を指定する
+        :param seed: 乱数のシード値を指定する
+        """
     @overload
     @classmethod
     def uniform(

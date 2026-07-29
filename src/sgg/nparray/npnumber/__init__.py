@@ -440,6 +440,13 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
 
     # random
     @classmethod
+    def random(cls, size=None, dtype=None, seed=None):
+        result = default_rng(seed).random(size=size, dtype=dtype)
+        if dtype is None:
+            dtype = np.dtype(type(result)) if np.isscalar(result) else result.dtype
+        return cls(result, dtype=dtype)
+
+    @classmethod
     def uniform(cls, low=0.0, high=1.0, shape=None, dtype=None, seed=None):
         result = default_rng(seed).uniform(low, high, size=shape)
         if dtype is None:
