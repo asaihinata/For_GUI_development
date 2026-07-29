@@ -1,11 +1,10 @@
 """基本的な時間の差や期間について操作するモジュール"""
 
-from datetime import date, datetime, timedelta
+from datetime import timedelta
 from types import GenericAlias
-from typing import Any, Iterator, Never, Self, TypeVar, overload
+from typing import Any, Iterator, Self, TypeVar, overload
 
 import numpy as np
-import numpy._typing as npt
 from numpy import dtype, timedelta64
 
 import sgg.typing as sgt
@@ -170,8 +169,8 @@ class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
         :rtype: Any
         """
 
-    def __eq__(self, value: Any) -> NPBool[sgt._AnyShape, dtype[np.bool_]]: ...
-    def __ne__(self, value: Any) -> NPBool[sgt._AnyShape, dtype[np.bool_]]: ...
+    def __eq__(self, value: Any) -> NPBool[_ShapeT, dtype[np.bool_]]: ...
+    def __ne__(self, value: Any) -> NPBool[_ShapeT, dtype[np.bool_]]: ...
     @overload
     def __add__(self, value: int) -> Self: ...
     @overload

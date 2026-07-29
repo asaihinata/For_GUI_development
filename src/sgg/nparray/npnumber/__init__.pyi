@@ -388,7 +388,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
     def ones():
         """指定された形状と型の新しい配列を0で埋めた配列を作成する"""
 
-    def zero_check(self) -> NPBool[Any, dtype[np.bool]]:
+    def zero_check(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
         """要素の数値が0の位置を探す"""
 
     def IQR(
@@ -405,19 +405,19 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         :type method: TYPEMETHOD
         """
 
-    def isinf(self) -> NPBool:
+    def isinf(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
         """配列の各要素が正または負の無限大(`np.inf`)かどうかを判定する"""
 
-    def isnan(self) -> NPBool:
+    def isnan(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
         """配列の各要素がNaN(`np.nan`)であるかを判定する"""
 
-    def isfinite(self) -> NPBool:
+    def isfinite(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
         """配列の各要素が有限かどうかを判定する"""
 
-    def isposinf(self) -> NPBool:
+    def isposinf(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
         """配列の各要素が正の無限大(`+np.inf`)かどうかを判定する"""
 
-    def isreal(self) -> NPBool:
+    def isreal(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
         """配列の各要素が実数かどうかを判定する"""
 
     def iscomplexobj(self) -> bool:
