@@ -2,11 +2,11 @@
 
 from datetime import timedelta
 from types import GenericAlias
-from typing import Any, Iterator, Self, TypeVar, overload
+from typing import Any, Iterator, Self, TypeVar, overload,Never
 
 import numpy as np
 import numpy._typing as npt
-from numpy import timedelta64
+from numpy import timedelta64,dtype
 
 import sgg.typing as sgt
 
@@ -17,25 +17,49 @@ __all__ = ["NPTimedelta"]
 _DType = TypeVar(
     "_DType", bound=np.timedelta64, default=np.timedelta64[int], covariant=True
 )
-
+type NDTimedelta[ScalarT]=NPTimedelta[sgt._AnyShape, dtype[ScalarT]]
 class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
-    _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
+    _ArrayCommonMixin, np.ndarray[_ShapeT, dtype[_Dtypes]]
 ):
 
     _element_type: tuple[type[np.timedelta64]]
-    _default_dtype: type[np.dtype[np.timedelta64]]
+    _default_dtype: type[dtype[np.timedelta64]]
     @overload
-    def __new__[ShapeT: sgt._ArrayLikeTD64Int_co](
+    def __new__[ShapeT: sgt._ArrayLikeNone_co](
         cls,
         data: ShapeT,
         /,
-        dtype: None=None,
+        dtype: None = None,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPTimedelta[ShapeT, np.dtype[timedelta64[int]]]: ...
+    ) -> NPTimedelta[ShapeT, dtype[timedelta64[None]]]: ...
+    @overload
+    def __new__[ShapeT: sgt._ArrayLikeNone_co](
+        cls,
+        data: ShapeT,
+        /,
+        dtype: np._TimeUnitSpec[np._IntTD64Unit],
+        *,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPTimedelta[ShapeT, dtype[timedelta64[None]]]: ...
+    @overload
+    def __new__[ShapeT: sgt._ArrayLikeTD64Int_co](
+        cls,
+        data: ShapeT,
+        /,
+        dtype: None = None,
+        *,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPTimedelta[ShapeT, dtype[timedelta64[int]]]: ...
     @overload
     def __new__[ShapeT: sgt._ArrayLikeTD64Int_co](
         cls,
@@ -47,19 +71,19 @@ class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPTimedelta[ShapeT, np.dtype[timedelta64[int]]]: ...
+    ) -> NPTimedelta[ShapeT, dtype[timedelta64[int]]]: ...
     @overload
     def __new__[ShapeT: sgt._ArrayLikeTD64_co](
         cls,
         data: ShapeT,
         /,
-        dtype: None=None,
+        dtype: None = None,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPTimedelta[ShapeT, np.dtype[timedelta64[timedelta]]]: ...
+    ) -> NPTimedelta[ShapeT, dtype[timedelta64[timedelta]]]: ...
     @overload
     def __new__[ShapeT: sgt._ArrayLikeTD64_co](
         cls,
@@ -71,7 +95,7 @@ class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPTimedelta[ShapeT, np.dtype[timedelta64[timedelta]]]: ...
+    ) -> NPTimedelta[ShapeT, dtype[timedelta64[timedelta]]]: ...
     def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
@@ -145,17 +169,12 @@ class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
         :rtype: Any
         """
 
-    def __eq__(self, value: Any) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]: ...
-    def __ne__(self, value: Any) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]: ...
+    def __eq__(self, value: Any) -> NPBool[sgt._AnyShape, dtype[np.bool_]]: ...
+    def __ne__(self, value: Any) -> NPBool[sgt._AnyShape, dtype[np.bool_]]: ...
     @overload
     def __add__(
-        self: NPTimedelta[_ShapeT, npt._ArrayLikeStr_co], value: npt._ArrayLikeStr_co
-    ) -> NPTimedelta[_ShapeT, np.str_]: ...
-    @overload
-    def __add__(
-        self: NPTimedelta[_ShapeT, npt._ArrayLikeBytes_co],
-        value: npt._ArrayLikeBytes_co,
-    ) -> NPTimedelta[_ShapeT, np.bytes_]: ...
+        self: NPTimedelta[_ShapeT, np.dtype[timedelta64[Never]]], value: NDTimedelta[int | timedelta]|timedelta64[int | timedelta]
+    ) -> NPTimedelta[_ShapeT,dtype[timedelta64]]: ...
     __iadd__ = __add__
     __radd__ = __add__
     def __mul__(self, i: npt._ArrayLikeInt_co) -> NPTimedelta:
