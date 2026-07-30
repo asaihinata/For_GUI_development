@@ -5,6 +5,7 @@ from typing import Any, Iterator, Self, TypeVar, overload
 
 import numpy as np
 import numpy._typing as npt
+from numpy import bytes_, dtype, str_
 from numpy.dtypes import StringDType
 
 import sgg.typing as sgt
@@ -14,20 +15,20 @@ from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPString"]
-_DType = TypeVar("_DType", bound=np.generic, default=np.dtype[np.str_], covariant=True)
+_DType = TypeVar("_DType", bound=np.generic, default=dtype[str_], covariant=True)
 
 class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
-    _ArrayCommonMixin, np.ndarray[_ShapeT, np.dtype[_Dtypes]]
+    _ArrayCommonMixin, np.ndarray[_ShapeT, dtype[_Dtypes]]
 ):
 
     _element_type: tuple[
-        type[str], type[bytes], type[np.str_], type[np.bytes_], type[StringDType]
+        type[str], type[bytes], type[str_], type[bytes_], type[StringDType]
     ]
-    _default_dtype: type[np.str_]
+    _default_dtype: type[str_]
     @overload
-    def __new__[_ShapeTs, _Dtype](
+    def __new__[_ShapeTs, Dtype](
         cls,
-        data: NPString[_ShapeTs, _Dtype],
+        data: NPString[_ShapeTs, Dtype],
         /,
         dtype: None = None,
         *,
@@ -35,9 +36,9 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPString[_ShapeTs, _Dtype]: ...
+    ) -> NPString[_ShapeTs, Dtype]: ...
     @overload
-    def __new__[Dtype: sgt._StringDTypeLike](
+    def __new__[Dtype: np.str_ | np.bytes_ | type[str] | type[bytes]](
         cls,
         data: NPString[_ShapeT, _Dtypes],
         /,
@@ -47,7 +48,7 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPString[_ShapeT, np.dtype[Dtype]]: ...
+    ) -> NPString[_ShapeT, dtype[Dtype]]: ...
     @overload
     def __new__(
         cls,
@@ -59,19 +60,19 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPString[_ShapeT, np.dtype[np.str_]]: ...
+    ) -> NPString[_ShapeT, dtype[str_]]: ...
     @overload
-    def __new__[DType: sgt._StringDTypeLike](
+    def __new__[Dtype: sgt._StringDTypeLike](
         cls,
         data: _ShapeT,
         /,
-        dtype: DType,
+        dtype: Dtype,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPString[_ShapeT, np.dtype[DType]]: ...
+    ) -> NPString[_ShapeT, dtype[Dtype]]: ...
     def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
@@ -145,16 +146,16 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         :rtype: Any
         """
 
-    def __eq__(self, value: Any) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    def __ne__(self, value: Any) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
+    def __eq__(self, value: Any) -> NPBool[_ShapeT, dtype[np.bool_]]: ...
+    def __ne__(self, value: Any) -> NPBool[_ShapeT, dtype[np.bool_]]: ...
     @overload
     def __add__(
         self: NPString[_ShapeT, npt._ArrayLikeStr_co], value: npt._ArrayLikeStr_co
-    ) -> NPString[_ShapeT, np.str_]: ...
+    ) -> NPString[_ShapeT, str_]: ...
     @overload
     def __add__(
         self: NPString[_ShapeT, npt._ArrayLikeBytes_co], value: npt._ArrayLikeBytes_co
-    ) -> NPString[_ShapeT, np.bytes_]: ...
+    ) -> NPString[_ShapeT, bytes_]: ...
     @overload
     def __add__(
         self: NPString[_ShapeT, sgt._StringDTypeSupportsArray],
@@ -164,7 +165,7 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
     def __add__(
         self: NPString[_ShapeT, npt._ArrayLikeString_co],
         value: npt._ArrayLikeString_co,
-    ) -> NPString[_ShapeT, np.dtype[np.str_ | StringDType]]: ...
+    ) -> NPString[_ShapeT, dtype[str_ | StringDType]]: ...
     __iadd__ = __add__
     __radd__ = __add__
     def __mul__(self, i: npt._ArrayLikeInt_co) -> NPString:
@@ -182,9 +183,7 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
     @property
     def element_type(
         self,
-    ) -> tuple[
-        type[str], type[bytes], type[np.str_], type[np.bytes_], type[StringDType]
-    ]:
+    ) -> tuple[type[str], type[bytes], type[str_], type[bytes_], type[StringDType]]:
         """NPStringで許可されている型を取得する"""
 
     def append(self, val: Any) -> NPString:
@@ -204,10 +203,10 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
     def upper(self) -> Self:
         """`NPString`内の要素のアルファベットを大文字に変換する"""
 
-    def stringlen(self) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
+    def stringlen(self) -> NPNumber[_ShapeT, dtype[np.uint64]]:
         """配列内の要素の文字の長さを求める"""
 
-    def str_len(self) -> NPNumber[_ShapeT, np.dtype[np.uint64]]:
+    def str_len(self) -> NPNumber[_ShapeT, dtype[np.uint64]]:
         """配列内の要素の文字の長さを求める"""
 
     def max(self) -> np.uint64:
@@ -276,7 +275,7 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         suffix: sgt._ArrayLikeAnyString_co,
         start: npt._ArrayLikeInt_co = 0,
         end: npt._ArrayLikeInt_co | None = None,
-    ) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]:
+    ) -> NPBool[_ShapeT, dtype[np.bool_]]:
         """
         配列の要素が`suffix`で終わるかを調べる
 
@@ -291,11 +290,11 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
     @overload
     def capitalize[_ShapeT](
         self: npt._ArrayLikeStr_co,
-    ) -> NPString[_ShapeT, np.str_]: ...
+    ) -> NPString[_ShapeT, str_]: ...
     @overload
     def capitalize[_ShapeT](
         self: npt._ArrayLikeBytes_co,
-    ) -> NPString[_ShapeT, np.bytes_]: ...
+    ) -> NPString[_ShapeT, bytes_]: ...
     @overload
     def capitalize(
         self: NPString[_ShapeT, sgt._StringDTypeSupportsArray],
@@ -303,32 +302,18 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
     @overload
     def capitalize[_ShapeT](
         self: NPString[_ShapeT, npt._ArrayLikeString_co],
-    ) -> NPString[_ShapeT, np.dtype[np.str_ | StringDType]]: ...
+    ) -> NPString[_ShapeT, dtype[str_ | StringDType]]: ...
     def capitalize(self) -> NPString:
         """各要素の最初の文字のみを大文字にしたコピーを返します。"""
 
-    @overload
-    def title[_ShapeT](self: npt._ArrayLikeStr_co) -> NPString[_ShapeT, np.str_]: ...
-    @overload
-    def title[_ShapeT](
-        self: npt._ArrayLikeBytes_co,
-    ) -> NPString[_ShapeT, np.bytes_]: ...
-    @overload
-    def title(
-        self: NPString[_ShapeT, sgt._StringDTypeSupportsArray],
-    ) -> NPString[_ShapeT, StringDType]: ...
-    @overload
-    def title[_ShapeT](
-        self: NPString[_ShapeT, npt._ArrayLikeString_co],
-    ) -> NPString[_ShapeT, np.dtype[np.str_ | StringDType]]: ...
-    def title(self) -> NPString:
+    def title(self) -> Self:
         """文字列を要素ごとにタイトルケースに変換する"""
 
     def decode[_ShapeT](
-        self: NPString[_ShapeT, np.dtype[np.bytes_]],
+        self: NPString[_ShapeT, dtype[bytes_]],
         encoding: str | None = None,
         errors: str | None = None,
-    ) -> NPString[_ShapeT, np.dtype[np.str_]]:
+    ) -> NPString[_ShapeT, dtype[str_]]:
         """
         要素ごとに`bytes.decode`を呼び出す
 
@@ -342,7 +327,7 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         self: NPString[_ShapeT, npt._ArrayLikeStr_co | npt._ArrayLikeString_co],
         encoding: str | None = None,
         errors: str | None = None,
-    ) -> NPString[_ShapeT, np.dtype[np.byte_]]:
+    ) -> NPString[_ShapeT, dtype[bytes_]]:
         """
         要素ごとに`str.encode`を呼び出す
 
@@ -352,42 +337,42 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         :type errors: str | None
         """
 
-    def istitle(self) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]:
+    def istitle(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
         """
         要素がタイトルケースの文字列であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isnumeric(self) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]:
+    def isnumeric(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
         """
         各要素について,その要素が数値のみが含まれている場合は`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isalnum(self) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]:
+    def isalnum(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
         """
         各要素内の文字列のすべての文字が英数字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isspace(self) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]:
+    def isspace(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
         """
         各要素内の文字列内に空白文字のみが存在し,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isdecimal(self) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]:
+    def isdecimal(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
         """
         各要素内の文字列がすべて10進数文字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isupper(self) -> NPBool[sgt._AnyShape, np.dtype[np.bool_]]:
+    def isupper(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
         """
         各要素内の文字列内のすべての文字が大文字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
@@ -399,7 +384,7 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         cls,
         length: int,
         seed: sgt._Seed = None,
-    ) -> NPString[np.bytes_, np.dtype[np.bytes_]]:
+    ) -> NPString[bytes_, dtype[bytes_]]:
         """
         指定された長さのランダムに生成されたバイト列を作成する
 
