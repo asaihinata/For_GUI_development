@@ -1,6 +1,5 @@
 """基本的な時間の差や期間について操作するモジュール"""
 
-from datetime import timedelta
 from types import GenericAlias
 from typing import Any, Iterator, Self, TypeVar, overload
 
@@ -15,17 +14,39 @@ from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPTimedelta"]
-_DType = TypeVar(
-    "_DType", bound=np.timedelta64, default=np.timedelta64[int], covariant=True
-)
+_DType = TypeVar("_DType", bound=timedelta64, default=timedelta64[int], covariant=True)
 type NDTimedelta[ScalarT] = NPTimedelta[sgt._AnyShape, dtype[ScalarT]]
 
 class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
     _ArrayCommonMixin, np.ndarray[_ShapeT, dtype[_Dtypes]]
 ):
 
-    _element_type: tuple[type[np.timedelta64]]
-    _default_dtype: type[dtype[np.timedelta64]]
+    _element_type: tuple[type[timedelta64]]
+    _default_dtype: type[dtype[timedelta64]]
+    @overload
+    def __new__[_ShapeT, _Dtype](
+        cls,
+        data: NPTimedelta[_ShapeT, _Dtype],
+        /,
+        dtype: None = None,
+        *,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPTimedelta[_ShapeT, _Dtype]: ...
+    @overload
+    def __new__[_ShapeT, _Dtype](
+        cls,
+        data: NPTimedelta[_ShapeT, _Dtype],
+        /,
+        dtype: np._TimeUnitSpec[np._IntTD64Unit],
+        *,
+        d_ndim: int | None = None,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPTimedelta[_ShapeT, dtype[timedelta64[int]]]: ...
     @overload
     def __new__[ShapeT: sgt._ArrayLikeNone_co](
         cls,
@@ -85,7 +106,7 @@ class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPTimedelta[ShapeT, dtype[timedelta64[timedelta]]]: ...
+    ) -> NPTimedelta[ShapeT, dtype[timedelta64[int]]]: ...
     @overload
     def __new__[ShapeT: sgt._ArrayLikeTD64_co](
         cls,
@@ -97,7 +118,7 @@ class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPTimedelta[ShapeT, dtype[timedelta64[timedelta]]]: ...
+    ) -> NPTimedelta[ShapeT, dtype[timedelta64[int]]]: ...
     def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
@@ -171,9 +192,9 @@ class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
         :rtype: Any
         """
 
-    def __int__(self: NPTimedelta[int | np.integer, np.dtype[timedelta64]]) -> int: ...
+    def __int__(self: NPTimedelta[int | np.integer, dtype[timedelta64]]) -> int: ...
     def __float__(
-        self: NPTimedelta[int | np.integer, np.dtype[timedelta64]],
+        self: NPTimedelta[int | np.integer, dtype[timedelta64]],
     ) -> float: ...
     def __neg__(self) -> Self: ...
     def __pos__(self) -> Self: ...
@@ -208,10 +229,10 @@ class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
     def __truediv__(self, value: sgt._IntLike_co) -> Self: ...
     @overload
     def __truediv__(
-        self, value: timedelta64 | NDArray[timedelta64]
+        self, value: timedelta64 | NDArray[timedelta64] | NPTimedelta
     ) -> NPNumber[_ShapeT, dtype[np.float64]]: ...
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _Dtypes]]: ...
     def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     @property
-    def element_type(self) -> tuple[type[np.timedelta64]]:
+    def element_type(self) -> tuple[type[timedelta64]]:
         """NPTimedeltaで許可されている型を取得する"""
