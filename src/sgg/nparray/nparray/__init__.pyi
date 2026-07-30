@@ -93,7 +93,7 @@ class NPArray[_ShapeT: _ShapeT_co, _Dtypes](
     def full(
         cls, fill_value: Any, shape: _AnyShape, dtype: _Dtypes | None = None
     ) -> NPArray[_AnyShape, _Dtypes]:
-        """指定された形状と配列の型を,fill_valueで埋める"""
+        """指定された形状と配列の型を,`fill_value`で埋める"""
 
     @classmethod
     def sequential(cls, shape: _AnyShape) -> NPArray[_AnyShape, np.dtype[np.uint64]]:

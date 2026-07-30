@@ -428,16 +428,13 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
 
     @overload
     def range(
-        self: NPDate[Any, Any], axis: None = None
-    ) -> tuple[datetime64[Any], datetime64[Any]]: ...
+        self, axis: None = None
+    ) -> tuple[datetime64, datetime64]: ...
     @overload
     def range(
-        self: NPDate[Any, Any], axis: np._ShapeLike
-    ) -> tuple[NPDate[Any, Any], NPDate[Any, Any]]: ...
-    def range(self, axis: sgt.Typeaxis = None) -> tuple[
-        NPDate[Any, Any] | datetime64[Any],
-        NPDate[Any, Any] | datetime64[Any],
-    ]:
+        self, axis: np._ShapeLike
+    ) -> tuple[NPDate[_ShapeT, _Dtypes], NPDate[_ShapeT, _Dtypes]]: ...
+    def range():
         """
         配列内の日付の最小の日付と最大の日付を求める
 

@@ -38,7 +38,7 @@ class NPFormatDate[_ShapeT: sgt._ArrayLikeStr_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPFormatDate[sgt._ToArray[datetime64[date]], np.dtype[datetime64[date]]]: ...
+    ) -> NPFormatDate[_ShapeT, np.dtype[datetime64[date]]]: ...
     @overload
     def __new__[Dtype: sgt._MonthU64](
         cls,
@@ -50,7 +50,7 @@ class NPFormatDate[_ShapeT: sgt._ArrayLikeStr_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPFormatDate[sgt._ToArray[datetime64[date]], np.dtype[datetime64[date]]]: ...
+    ) -> NPFormatDate[_ShapeT, np.dtype[datetime64[date]]]: ...
     @overload
     def __new__[_ShapeT: sgt._ArrayLikeStr_co, Dtype: (sgt._DayU64 | sgt._NVU64)](
         cls,
@@ -62,9 +62,7 @@ class NPFormatDate[_ShapeT: sgt._ArrayLikeStr_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPFormatDate[
-        sgt._ToArray[datetime64[datetime]], np.dtype[datetime64[datetime]]
-    ]: ...
+    ) -> NPFormatDate[_ShapeT, np.dtype[datetime64[datetime]]]: ...
     @overload
     def __new__[_ShapeT: sgt._ArrayLikeStr_co, Dtype: sgt._IntUD64](
         cls,
@@ -76,7 +74,7 @@ class NPFormatDate[_ShapeT: sgt._ArrayLikeStr_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPFormatDate[sgt._ToArray[datetime64[int]], np.dtype[datetime64[int]]]: ...
+    ) -> NPFormatDate[_ShapeT, np.dtype[datetime64[int]]]: ...
     @overload
     def __new__[_ShapeT: sgt._ArrayLikeStr_co, Dtype: sgt._DT64Codes_any](
         cls,
@@ -88,7 +86,7 @@ class NPFormatDate[_ShapeT: sgt._ArrayLikeStr_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPFormatDate[sgt._ToArray[datetime64[Any]], np.dtype[datetime64[Any]]]: ...
+    ) -> NPFormatDate[_ShapeT, np.dtype[datetime64[Any]]]: ...
     def __new__() -> Self:
         """
         様々な日付のフォーマットを特定の日付フォーマットに変換する配列オブジェクトインスタンスを生成する
