@@ -38,7 +38,7 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         copy: bool = True,
     ) -> NPString[_ShapeTs, Dtype]: ...
     @overload
-    def __new__[Dtype: np.str_ | np.bytes_ | type[str] | type[bytes]](
+    def __new__[Dtype: sgt._StringsDTypeLike](
         cls,
         data: NPString[_ShapeT, _Dtypes],
         /,
@@ -62,7 +62,7 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         copy: bool = True,
     ) -> NPString[_ShapeT, dtype[str_]]: ...
     @overload
-    def __new__[Dtype: sgt._StringDTypeLike](
+    def __new__[Dtype: sgt._StringsDTypeLike](
         cls,
         data: _ShapeT,
         /,
@@ -151,16 +151,16 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
     @overload
     def __add__(
         self: NPString[_ShapeT, npt._ArrayLikeStr_co], value: npt._ArrayLikeStr_co
-    ) -> NPString[_ShapeT, str_]: ...
+    ) -> NPString[_ShapeT, dtype[str_]]: ...
     @overload
     def __add__(
         self: NPString[_ShapeT, npt._ArrayLikeBytes_co], value: npt._ArrayLikeBytes_co
-    ) -> NPString[_ShapeT, bytes_]: ...
+    ) -> NPString[_ShapeT, dtype[bytes_]]: ...
     @overload
     def __add__(
         self: NPString[_ShapeT, sgt._StringDTypeSupportsArray],
         value: sgt._StringDTypeSupportsArray,
-    ) -> NPString[_ShapeT, StringDType]: ...
+    ) -> NPString[_ShapeT, dtype[StringDType]]: ...
     @overload
     def __add__(
         self: NPString[_ShapeT, npt._ArrayLikeString_co],
@@ -168,7 +168,9 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
     ) -> NPString[_ShapeT, dtype[str_ | StringDType]]: ...
     __iadd__ = __add__
     __radd__ = __add__
-    def __mul__(self, i: npt._ArrayLikeInt_co) -> NPString:
+    def __mul__[Dtype: sgt._StringsDTypeLike](
+        self: NPString[_ShapeT, dtype[Dtype]], i: npt._ArrayLikeInt_co
+    ) -> NPString[_ShapeT, dtype[Dtype]]:
         """
         配列内の要素を`i`回付け加える
 
@@ -215,7 +217,23 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
     def min(self) -> np.uint64:
         """配列内の要素の文字列の長さが最も短い数値を求める"""
 
-    def replace(self, old: str, new: str) -> NPString[_ShapeT, _Dtypes]:
+    @overload
+    def replace(
+        self: NPString[_ShapeT, dtype[type[str_]]], old: sgt._StringScalar, new: sgt._StringScalar
+    ) -> NPString[_ShapeT, dtype[str_]]: ...
+    @overload
+    def replace(
+        self: NPString[_ShapeT, dtype[bytes_]], old: sgt._ArrayLikeBytes_co, new: sgt._ArrayLikeBytes_co
+    ) -> NPString[_ShapeT, dtype[bytes_]]: ...
+    @overload
+    def replace(
+        self: NPString[_ShapeT, dtype[StringDType]], old: sgt._StringDTypeSupportsArray, new: sgt._StringDTypeSupportsArray
+    ) -> NPString[_ShapeT, dtype[StringDType]]: ...
+    @overload
+    def replace(
+        self: NPString[_ShapeT, dtype[StringDType]], old: sgt._ArrayLikeString_co, new: sgt._ArrayLikeString_co
+    ) -> NPString[_ShapeT, dtype[str_ | StringDType]]: ...
+    def replace():
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
 
     def center(
@@ -227,7 +245,7 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         :param width: 結果として得られる文字列の長さを指定する
         :type width: _ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
-        :type fillchar: sgt._ArrayLikeAnyString_co
+        :type fillchar: _ArrayLikeAnyString_co
         """
 
     def left(
@@ -239,7 +257,7 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         :param width: 結果として得られる文字列の長さを指定する
         :type width: _ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
-        :type fillchar: sgt._ArrayLikeAnyString_co
+        :type fillchar: _ArrayLikeAnyString_co
         """
 
     def right(
@@ -251,7 +269,7 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         :param width: 結果として得られる文字列の長さを指定する
         :type width: _ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
-        :type fillchar: sgt._ArrayLikeAnyString_co
+        :type fillchar: _ArrayLikeAnyString_co
         """
 
     def zerofill(self, width: npt._ArrayLikeInt_co) -> NPString:
@@ -303,7 +321,7 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
     def capitalize[_ShapeT](
         self: NPString[_ShapeT, npt._ArrayLikeString_co],
     ) -> NPString[_ShapeT, dtype[str_ | StringDType]]: ...
-    def capitalize(self) -> NPString:
+    def capitalize():
         """各要素の最初の文字のみを大文字にしたコピーを返します。"""
 
     def title(self) -> Self:

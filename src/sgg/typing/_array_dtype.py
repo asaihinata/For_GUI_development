@@ -17,6 +17,7 @@ __all__ = [
     "_NumericDTypeLike",
     "_RealNumericDTypeLike",
     "_StringDTypeLike",
+    "_StringsDTypeLike",
 ]
 type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
     _SupportsArray[DTypeT]
@@ -45,7 +46,10 @@ type _FloatsNumericDTypeLike = _DTypeLike[np.floating] | type[float]
 type _ComplexDtypeLike = np.dtype[np.complexfloating] | type[complex]
 """`複素数`全般のdtype"""
 # 文字列
-type _StringDTypeLike = np.dtype[np.str_ | np.bytes_] | type[str] | type[bytes]
+type _DTypeLikeBytes = type[bytes] | _DTypeLike[np.bytes_] | np._BytesCodes
+type _DTypeLikeStr = type[str] | _DTypeLike[np.str_] | np._StrCodes
+type _StringDTypeLike = _DTypeLike[np.str_ | np.bytes_] | type[str] | type[bytes]
+type _StringsDTypeLike = _DTypeLike[np.str_ | np.bytes_] | np.dtypes.StringDType | type[str] | type[bytes]
 """numpyとPythonの文字列全般の型の型ヒント"""
 # 日付
 type _DTypeLikeDT64 = _DTypeLike[np.timedelta64] | np._TD64Codes

@@ -141,22 +141,22 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         return NPNumber(nps.str_len(self), dtype=np.uint64)
 
     def replace(self, old, new):
-        result = nps.replace(np.asarray(self), old, new).view(type(self))
+        result = np.asarray(nps.replace(self, old, new)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def center(self, width, fillchar=" "):
-        result = nps.center(np.asarray(self), width, fillchar).view(type(self))
+        result = np.asarray(nps.center(self, width, fillchar)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def left(self, width, fillchar=" "):
-        result = nps.ljust(np.asarray(self), width, fillchar).view(type(self))
+        result = np.asarray(nps.ljust(self, width, fillchar)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def right(self, width, fillchar=" "):
-        result = nps.rjust(np.asarray(self), width, fillchar).view(type(self))
+        result = np.asarray(nps.rjust(self, width, fillchar)).view(type(self))
         result._dtype = result.dtype
         return result
 
