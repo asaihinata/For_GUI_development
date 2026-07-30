@@ -225,9 +225,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
     def count_nonzero(
         self, axis: np._ShapeLike | None = None, keepdims: bool = True
     ) -> NDArray[np.intp]: ...
-    def count_nonzero(
-        self, axis: sgt.Typeaxis = ..., keepdims: bool = ...
-    ) -> np.intp | NDArray[np.intp]:
+    def count_nonzero():
         """
         0以外の要素の数を数える
 
@@ -286,8 +284,11 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         :param method: 分位点を推定するために使用する方法を指定する
         :type method: TYPEMETHOD
         """
-
-    def ratio(self, axis: sgt.Typeaxis = None) -> NPNumber:
+    @overload
+    def ratio(self, axis: None=None) -> NPNumber[_ShapeT,np.dtype[np.float64]]:...
+    @overload
+    def ratio(self, axis: SupportsIndex) -> NPNumber[_ShapeT,np.dtype[np.float64]]:...
+    def ratio():
         """行や列ごとの合計に対する比率を求める"""
 
     @overload
@@ -1026,7 +1027,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         axis: SupportsIndex = 0,
     ) -> NPNumber[sgt._AnyShape, sgt.Incomplete]: ...
     @classmethod
-    def geomspace() -> NPNumber[sgt._AnyShape, sgt.Incomplete]:
+    def geomspace():
         """
         対数スケール上で等間隔に配置された(等比数列)配列を作成する
 

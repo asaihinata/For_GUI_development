@@ -18,10 +18,11 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
 
     _element_type: tuple[type[bool], type[np.bool_], type[np.bool]]
     _default_dtype: type[np.bool_]
+
     @overload
-    def __new__[_ShapeTs, _Dtype](
+    def __new__[_ShapeTs, Dtype](
         cls,
-        data: NPBool[_ShapeTs, _Dtype],
+        data: NPBool[_ShapeTs, Dtype],
         /,
         dtype: None = None,
         *,
@@ -29,11 +30,11 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPBool[_ShapeTs, _Dtype]: ...
+    ) -> NPBool[_ShapeTs, Dtype]: ...
     @overload
-    def __new__[Dtype: _BoolDTypeLike](
+    def __new__[_ShapeTs,Dtype: _BoolDTypeLike](
         cls,
-        data: NPBool[_ShapeT, _Dtypes],
+        data: NPBool[_ShapeTs, _Dtypes],
         /,
         dtype: Dtype,
         *,
@@ -41,7 +42,7 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPBool[_ShapeT, np.dtype[Dtype]]: ...
+    ) -> NPBool[_ShapeTs, np.dtype[Dtype]]: ...
     @overload
     def __new__(
         cls,

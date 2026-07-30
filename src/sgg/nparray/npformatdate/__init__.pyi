@@ -209,7 +209,7 @@ class NPFormatDate[_ShapeT: sgt._ArrayLikeStr_co, _Dtypes: _DTypeT](
         :type days: bool
         """
 
-    def diff_today(self, days: bool = ...) -> NPNumber[_ShapeT, np.dtype[np.int64]]:
+    def diff_today():
         """
         配列の日付と今日の日付の差を求める
 
@@ -225,10 +225,7 @@ class NPFormatDate[_ShapeT: sgt._ArrayLikeStr_co, _Dtypes: _DTypeT](
     def range(
         self: NPFormatDate[_ShapeT, _DTypeT], axis: np._ShapeLike
     ) -> tuple[NPFormatDate[_ShapeT, _DTypeT], NPFormatDate[_ShapeT, _DTypeT]]: ...
-    def range(self, axis: sgt.Typeaxis = None) -> tuple[
-        NPFormatDate[_ShapeT, _DTypeT] | datetime64[_DTypeT],
-        NPFormatDate[_ShapeT, _DTypeT] | datetime64[_DTypeT],
-    ]:
+    def range():
         """
         配列内の日付の最小の日付と最大の日付を求める
 
