@@ -67,11 +67,38 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
         result = np.asarray(np.subtract(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
+
     def __rsub__(self, value):
         result = np.asarray(np.subtract(value, self)).view(type(self))
         result._dtype = result.dtype
         return result
 
+    def __int__(self):
+        lists = self.tolist()
+        if np.isscalar(lists):
+            return int(lists)
+        raise ValueError
+
+    def __float__(self):
+        lists = self.tolist()
+        if np.isscalar(lists):
+            return float(lists)
+        raise ValueError
+
+    def __neg__(self):
+        result = np.asarray(np.negative(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def __pos__(self):
+        result = np.asarray(np.positive(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def __abs__(self):
+        result = np.asarray(np.abs(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __eq__(self, value):
         return NPBool(np.equal(np.asarray(self), value))
