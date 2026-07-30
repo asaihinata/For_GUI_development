@@ -5,8 +5,8 @@ from typing import (Any, Iterator, Literal, Self, Sequence, SupportsIndex,
                     TypeVar, overload)
 
 import numpy as np
-from numpy import dtype
 import numpy._typing as npt
+from numpy import dtype
 from numpy.typing import NDArray
 
 import sgg.typing as sgt

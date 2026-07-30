@@ -4,6 +4,7 @@ import numpy as np
 
 from ..dev import _ArrayCommonMixin, _tm64_unit
 from ..npbool import NPBool
+from ..npnumber import NPNumber
 
 __all__ = ["NPTimedelta"]
 
@@ -70,6 +71,18 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
 
     def __rsub__(self, value):
         result = np.asarray(np.subtract(value, self)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def __mul__(self, value):
+        result = np.asarray(np.multiply(self, value)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def __truediv__(self, value):
+        if isinstance(value, np.ndarray | np.timedelta64) and value.dtype.kind == "m":
+            return NPNumber(np.true_divide(self, value))
+        result = np.asarray(np.true_divide(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 

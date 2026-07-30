@@ -28,6 +28,7 @@ __all__ = [
     "_ArrayLikeUInt_co",
     "_DualArrayLike",
     "_Shape",
+    "_TD64ItemT_co",
     "_ShapeLike",
     "_ShapeT_co",
     "_StringDTypeSupportsArray",
@@ -94,6 +95,9 @@ type _ArrayLikeTD64Int_co = _DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer],
     bool | int,
 ]
+_TD64ItemT_co = TypeVar(
+    "_TD64ItemT_co", bound=np._TD64Item, default=Any, covariant=True
+)
 # None
 type _ArrayLikeNone_co = _DualArrayLike[
     np.dtype[NoneType],

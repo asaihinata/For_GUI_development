@@ -6,11 +6,13 @@ from typing import Any, Iterator, Self, TypeVar, overload
 
 import numpy as np
 from numpy import dtype, timedelta64
+from numpy.typing import NDArray
 
 import sgg.typing as sgt
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
+from ..npnumber import NPNumber
 
 __all__ = ["NPTimedelta"]
 _DType = TypeVar(
@@ -196,7 +198,18 @@ class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
     @overload
     def __sub__(self, value: Any) -> Any: ...
     __rsub__ = __sub__
-
+    @overload
+    def __mul__[ShapeT: sgt._ArrayLikeNone_co, Dtype](
+        self: NPTimedelta[ShapeT, Dtype], value: sgt._FloatLike_co, /
+    ) -> NPTimedelta[ShapeT, dtype[timedelta64[None]]]: ...
+    @overload
+    def __mul__(self, value: sgt._IntLike_co | float | np.floating, /) -> Self: ...
+    @overload
+    def __truediv__(self, value: sgt._IntLike_co) -> Self: ...
+    @overload
+    def __truediv__(
+        self, value: timedelta64 | NDArray[timedelta64]
+    ) -> NPNumber[_ShapeT, dtype[np.float64]]: ...
     def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _Dtypes]]: ...
     def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     @property
