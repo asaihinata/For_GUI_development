@@ -28,7 +28,7 @@ type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
     | _NestedSequence[BuiltinT]
 )
 # 真偽型
-type _BoolDTypeLike = np.dtype[np.bool_ | np.bool] | type[bool]
+type _BoolDTypeLike = _DTypeLike[np.bool_ | np.bool] | type[bool]
 # 数値
 type _ArangeNumber_DtypeLike = _DTypeLike[np.integer | np.floating]
 type _NumericDTypeLike = _DTypeLike[np.number] | type[int] | type[float] | type[complex]

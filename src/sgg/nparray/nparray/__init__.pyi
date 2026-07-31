@@ -2,7 +2,7 @@ from types import GenericAlias
 from typing import Any, Literal, Self, overload,TypeVar,SupportsIndex
 
 import numpy as np
-from numpy._typing import DTypeLike, _AnyShape, _DTypeLike
+from numpy._typing import DTypeLike, _DTypeLike
 from numpy.typing import NDArray
 
 from sgg.typing import Typeaxis, _ShapeT_co,_Shape
@@ -164,9 +164,9 @@ class NPArray[_ShapeT: _ShapeT_co, _Dtypes:_DTypeT_co](
         self, dtype: None = None, /, *, copy: bool | None = None
     ) -> np.ndarray[_ShapeT, _Dtypes]: ...
     @overload
-    def __array__[DType: np._dtype | _DTypeLike[np.generic]](
-        self, dtype: DType, /, *, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, DType]: ...
+    def __array__[Dtype: np._dtype | _DTypeLike[np.generic]](
+        self, dtype: Dtype, /, *, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, Dtype]: ...
     def __array_function__(
         self,
         func: Any,

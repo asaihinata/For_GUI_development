@@ -9,7 +9,7 @@ from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPBool"]
 
-_DTypeT = TypeVar("_DTypeT", bound=np.dtype, default=np.dtype[np.bool_], covariant=True)
+_DTypeT = TypeVar("_DTypeT", bound=np.generic, default=np.dtype[np.bool_], covariant=True)
 
 class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
     _ArrayCommonMixin, np.ndarray[_ShapeT, _Dtypes]
@@ -20,9 +20,9 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
     _default_dtype: type[np.bool_]
 
     @overload
-    def __new__[_ShapeTs, Dtype](
+    def __new__[ShapeT, Dtype](
         cls,
-        data: NPBool[_ShapeTs, Dtype],
+        data: NPBool[ShapeT, Dtype],
         /,
         dtype: None = None,
         *,
@@ -30,11 +30,11 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPBool[_ShapeTs, Dtype]: ...
+    ) -> NPBool[ShapeT, Dtype]: ...
     @overload
-    def __new__[_ShapeTs,Dtype: _BoolDTypeLike](
+    def __new__[ShapeT,Dtype: _BoolDTypeLike](
         cls,
-        data: NPBool[_ShapeTs, _Dtypes],
+        data: NPBool[ShapeT],
         /,
         dtype: Dtype,
         *,
@@ -42,7 +42,7 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPBool[_ShapeTs, np.dtype[Dtype]]: ...
+    ) -> NPBool[ShapeT, np.dtype[Dtype]]: ...
     @overload
     def __new__(
         cls,
@@ -116,9 +116,9 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
         self, dtype: None = None, /, *, copy: bool | None = None
     ) -> np.ndarray[_ShapeT, _Dtypes]: ...
     @overload
-    def __array__[DType: np._dtype | _DTypeLike[np.generic]](
-        self, dtype: DType, /, *, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, DType]: ...
+    def __array__[Dtype: np._dtype | _DTypeLike[np.generic]](
+        self, dtype: Dtype, /, *, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, Dtype]: ...
     def __array_function__(
         self,
         func: Any,

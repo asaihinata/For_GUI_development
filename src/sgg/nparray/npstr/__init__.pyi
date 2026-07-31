@@ -169,9 +169,9 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         self, dtype: None = None, /, *, copy: bool | None = None
     ) -> np.ndarray[_ShapeT, _Dtypes]: ...
     @overload
-    def __array__[DType: np._dtype | sgt._DTypeLike[np.generic]](
-        self, dtype: DType, /, *, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, DType]: ...
+    def __array__[Dtype: np._dtype | sgt._DTypeLike[np.generic]](
+        self, dtype: Dtype, /, *, copy: bool | None = None
+    ) -> np.ndarray[_ShapeT, Dtype]: ...
     def __array_function__(
         self,
         func: Any,

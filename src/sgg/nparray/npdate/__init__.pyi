@@ -26,9 +26,9 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
     _element_type: type[datetime64]
     _default_dtype: Literal["datetime64[D]"]
     @overload
-    def __new__[_ShapeT, _Dtype](
+    def __new__[_ShapeT, Dtype](
         cls,
-        data: NPDate[_ShapeT, _Dtype],
+        data: NPDate[_ShapeT, Dtype],
         /,
         dtype: None = None,
         *,
@@ -36,7 +36,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPDate[_ShapeT, _Dtype]: ...
+    ) -> NPDate[_ShapeT, Dtype]: ...
     @overload
     def __new__[_ShapeT, Dtype: sgt._MonthU64](
         cls,
