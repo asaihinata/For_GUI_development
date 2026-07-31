@@ -233,6 +233,14 @@ class NPFormatDate[_ShapeT: sgt._ArrayLikeStr_co, _Dtypes: _DTypeT](
         :type axis: Typeaxis
         """
 
+    def to_1d(self) -> NPFormatDate[tuple[int], _Dtypes]:
+        """
+        配列を1次元にフラット化した新しい配列オブジェクトを返す
+
+        :return: フラット化した配列オブジェクトを返す
+        :raises ValueError: `min_ndim`が1以下の場合に発生させる
+        """
+
 HANDLED_FUNCTIONS: dict
 
 def implements(np_function) -> Any:

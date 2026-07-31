@@ -217,6 +217,14 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
     ) -> tuple[type[int], type[float], type[complex], type[np.number]]:
         """NPNumberで許可されている型を取得する"""
 
+    def to_1d(self) -> NPNumber[tuple[int], _Dtypes]:
+        """
+        配列を1次元にフラット化した新しい配列オブジェクトを返す
+
+        :return: フラット化した配列オブジェクトを返す
+        :raises ValueError: `min_ndim`が1以下の場合に発生させる
+        """
+
     @overload
     def count_nonzero(self, axis: None = None, keepdims: bool = False) -> np.intp: ...
     @overload
@@ -335,7 +343,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         like: npt._SupportsArrayFunc | None = None,
     ) -> NPNumber[ShapeT, np.dtype[DTypeT]]: ...
     @classmethod
-    def zeros()->NPNumber:
+    def zeros() -> NPNumber:
         """指定された形状と型の新しい配列を0で埋めた配列を作成する"""
 
     @overload

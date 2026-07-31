@@ -236,3 +236,11 @@ class NPTimedelta[_ShapeT: sgt._ArrayLikeTD64_co, _Dtypes: _DType](
     @property
     def element_type(self) -> tuple[type[timedelta64]]:
         """NPTimedeltaで許可されている型を取得する"""
+
+    def to_1d(self) -> NPTimedelta[tuple[int], _Dtypes]:
+        """
+        配列を1次元にフラット化した新しい配列オブジェクトを返す
+
+        :return: フラット化した配列オブジェクトを返す
+        :raises ValueError: `min_ndim`が1以下の場合に発生させる
+        """

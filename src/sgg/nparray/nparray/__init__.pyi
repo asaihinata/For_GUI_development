@@ -219,6 +219,14 @@ class NPArray[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
         配列の`dtype`が数値型でない場合は連番を作成し返す。
         """
 
+    def to_1d(self) -> NPArray[tuple[int], _Dtypes]:
+        """
+        配列を1次元にフラット化した新しい配列オブジェクトを返す
+
+        :return: フラット化した配列オブジェクトを返す
+        :raises ValueError: `min_ndim`が1以下の場合に発生させる
+        """
+
 HANDLED_FUNCTIONS: dict
 
 def implements(np_function) -> Any:

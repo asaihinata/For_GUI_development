@@ -16,15 +16,9 @@ class _ArrayCommonMixin:
 
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
-    def __contains__(self, value: object) -> bool: ...
+    def __contains__(self, value: Any) -> bool: ...
     def __len__(self) -> int: ...
-    def __reversed__(self) -> Self:
-        """
-        逆順にした新しい配列オブジェクトを返す
-
-        :return: 全軸で反転した配列を返す
-        """
-
+    def __reversed__(self) -> Self: ...
     @overload
     def __getitem__(self, key: int) -> Any: ...
     @overload
@@ -50,7 +44,7 @@ class _ArrayCommonMixin:
 
     @overload
     def __iter__(self) -> Iterator[Any]: ...
-    def lengtharange(self) -> NDArray[np.unsignedinteger[np._64Bit]]:
+    def lengtharange(self) -> NDArray[np.uint64]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
 
@@ -146,14 +140,6 @@ class _ArrayCommonMixin:
     @property
     def max_ndim(self) -> int | None:
         """配列オブジェクトが許容する最大次元数を返す"""
-
-    def to_1d(self) -> Self:
-        """
-        配列を1次元にフラット化した新しい配列オブジェクトを返す
-
-        :return: フラット化した配列オブジェクトを返す
-        :raises ValueError: `min_ndim`が1以下の場合に発生させる
-        """
 
     def typeconversion(
         self,

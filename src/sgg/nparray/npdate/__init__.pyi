@@ -451,6 +451,14 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
     def cleanNaT[_Dtype](self: NPDate[_ShapeT, _Dtype]) -> NPDate[tuple[int], _Dtype]:
         """配列を一次元配列にし欠損日(NaT)を削除する"""
 
+    def to_1d(self) -> NPDate[tuple[int], _Dtypes]:
+        """
+        配列を1次元にフラット化した新しい配列オブジェクトを返す
+
+        :return: フラット化した配列オブジェクトを返す
+        :raises ValueError: `min_ndim`が1以下の場合に発生させる
+        """
+
 HANDLED_FUNCTIONS: dict
 
 def implements(np_function) -> Any:
