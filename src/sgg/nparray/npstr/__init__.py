@@ -96,10 +96,10 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     __imul__ = __mul__
 
     def __eq__(self, value):
-        return NPBool(nps.equal(np.asarray(self), value))
+        return NPBool(nps.equal(self, value))
 
     def __ne__(self, value):
-        return NPBool(nps.not_equal(np.asarray(self), value))
+        return NPBool(nps.not_equal(self, value))
 
     def append(self, val):
         result = np.asarray(nps.add(self, val)).view(type(self))
@@ -108,23 +108,23 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     @property
     def low(self):
-        result = nps.lower(np.asarray(self)).view(type(self))
+        result = np.asarray(nps.lower(self)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def lower(self):
-        result = nps.lower(np.asarray(self)).view(type(self))
+        result = np.asarray(nps.lower(self)).view(type(self))
         result._dtype = result.dtype
         return result
 
     @property
     def up(self):
-        result = nps.upper(np.asarray(self)).view(type(self))
+        result = np.asarray(nps.upper(self)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def upper(self):
-        result = nps.upper(np.asarray(self)).view(type(self))
+        result = np.asarray(nps.upper(self)).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -165,55 +165,55 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
-    def expandtabs(self, tabsize=4):
-        result = nps.expandtabs(np.asarray(self), tabsize).view(type(self))
+    def expandtabs(self, tabsize=8):
+        result = np.asarray(nps.expandtabs(self, tabsize)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def endswith(self, suffix, start=0, end=None):
-        return NPBool(nps.endswith(np.asarray(self), suffix, start, end))
+        return NPBool(nps.endswith(self, suffix, start, end))
 
     def capitalize(self):
-        result = nps.capitalize(np.asarray(self)).view(type(self))
+        result = np.asarray(nps.capitalize(self)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def title(self):
-        result = nps.title(np.asarray(self)).view(type(self))
+        result = np.asarray(nps.title(self)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def decode(self, encoding=None, errors=None):
         if not np.issubdtype(self.dtypes, np.bytes_):
             raise TypeError
-        result = nps.decode(np.asarray(self), encoding, errors).view(type(self))
+        result = np.asarray(nps.decode(self, encoding, errors)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def encode(self, encoding=None, errors=None):
         if self.dtype.kind not in {"U", "T"}:
             raise TypeError
-        result = nps.encode(np.asarray(self), encoding, errors).view(type(self))
+        result = np.asarray(nps.encode(self, encoding, errors)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def istitle(self):
-        return NPBool(nps.istitle(np.asarray(self)))
+        return NPBool(nps.istitle(self))
 
     def isnumeric(self):
-        return NPBool(nps.isnumeric(np.asarray(self)))
+        return NPBool(nps.isnumeric(self))
 
     def isdecimal(self):
-        return NPBool(nps.isdecimal(np.asarray(self)))
+        return NPBool(nps.isdecimal(self))
 
     def isalnum(self):
-        return NPBool(nps.isalnum(np.asarray(self)))
+        return NPBool(nps.isalnum(self))
 
     def isspace(self):
-        return NPBool(nps.isspace(np.asarray(self)))
+        return NPBool(nps.isspace(self))
 
     def isupper(self):
-        return NPBool(nps.isupper(np.asarray(self)))
+        return NPBool(nps.isupper(self))
 
     @classmethod
     def randombytes(cls, length, seed=None):
