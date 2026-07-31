@@ -15,9 +15,7 @@ from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
 
 __all__ = ["NPNumber"]
-_DTypeT = TypeVar(
-    "_DTypeT", bound=np.generic, default=dtype[np.float64], covariant=True
-)
+_DType = TypeVar("_DType", bound=np.generic, default=dtype[np.float64], covariant=True)
 type _ToFloat64 = float | np.integer | np.bool
 type _ToArrayFloat64 = sgt._DualArrayLike[
     np.dtype[np.float64 | np.integer | np.bool], float
@@ -52,7 +50,7 @@ type TYPEMETHOD = Literal[
     "normal_unbiased",
 ]
 
-class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
+class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
     _ArrayCommonMixin, np.ndarray[_ShapeT, dtype[_Dtypes]]
 ):
     """`np.ndarray`を継承した数値型の配列クラス"""
@@ -95,7 +93,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPNumber[_ShapeT, _DTypeT]: ...
+    ) -> NPNumber[_ShapeT, _DType]: ...
     @overload
     def __new__[Dtype: sgt._NumericDTypeLike](
         cls,
@@ -212,7 +210,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
     def __divmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
     def __rdivmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
     def __abs__(self) -> Self: ...
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DTypeT]]: ...
+    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DType]]: ...
     @property
     def element_type(
         self,
@@ -239,16 +237,16 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
     def sturgesval(self) -> np.floating:
         """スタージェスの公式を求める"""
 
-    def cussum(self) -> NPNumber[_ShapeT, _DTypeT]:
+    def cussum(self) -> NPNumber[_ShapeT, _DType]:
         """一つ前の元の値との和を求める"""
 
-    def cusdiff(self) -> NPNumber[_ShapeT, _DTypeT]:
+    def cusdiff(self) -> NPNumber[_ShapeT, _DType]:
         """一つ前の元の値との差を求める"""
 
-    def cusprod(self) -> NPNumber[_ShapeT, _DTypeT]:
+    def cusprod(self) -> NPNumber[_ShapeT, _DType]:
         """一つ前の元の値との積を求める"""
 
-    def cusdiv(self) -> NPNumber[_ShapeT, _DTypeT]:
+    def cusdiv(self) -> NPNumber[_ShapeT, _DType]:
         """一つ前の元の値との除算を求める"""
 
     def percentile(
@@ -284,10 +282,11 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         :param method: 分位点を推定するために使用する方法を指定する
         :type method: TYPEMETHOD
         """
+
     @overload
-    def ratio(self, axis: None=None) -> NPNumber[_ShapeT,np.dtype[np.float64]]:...
+    def ratio(self, axis: None = None) -> NPNumber[_ShapeT, np.dtype[np.float64]]: ...
     @overload
-    def ratio(self, axis: SupportsIndex) -> NPNumber[_ShapeT,np.dtype[np.float64]]:...
+    def ratio(self, axis: SupportsIndex) -> NPNumber[_ShapeT, np.dtype[np.float64]]: ...
     def ratio():
         """行や列ごとの合計に対する比率を求める"""
 
@@ -1202,17 +1201,17 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DTypeT](
         """逆正接関数の結果を度数法で求める"""
 
     @overload
-    def dtypeinfo[_DTypeT: sgt._FloatsNumericDTypeLike](
-        self: NPNumber[_ShapeT, _DTypeT],
-    ) -> np.finfo[_DTypeT]: ...
+    def dtypeinfo[_DType: sgt._FloatsNumericDTypeLike](
+        self: NPNumber[_ShapeT, _DType],
+    ) -> np.finfo[_DType]: ...
     @overload
-    def dtypeinfo[_DTypeT: sgt._ComplexDtypeLike](
-        self: NPNumber[_ShapeT, _DTypeT],
-    ) -> np.finfo[_DTypeT]: ...
+    def dtypeinfo[_DType: sgt._ComplexDtypeLike](
+        self: NPNumber[_ShapeT, _DType],
+    ) -> np.finfo[_DType]: ...
     @overload
-    def dtypeinfo[_DTypeT: sgt._IntsNumericDTypeLike](
-        self: NPNumber[_ShapeT, _DTypeT],
-    ) -> np.iinfo[_DTypeT]: ...
+    def dtypeinfo[_DType: sgt._IntsNumericDTypeLike](
+        self: NPNumber[_ShapeT, _DType],
+    ) -> np.iinfo[_DType]: ...
     @overload
     @classmethod
     def random(

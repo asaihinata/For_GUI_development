@@ -9,7 +9,9 @@ from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPBool"]
 
-_DTypeT = TypeVar("_DTypeT", bound=np.generic, default=np.dtype[np.bool_], covariant=True)
+_DTypeT = TypeVar(
+    "_DTypeT", bound=np.generic, default=np.dtype[np.bool_], covariant=True
+)
 
 class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
     _ArrayCommonMixin, np.ndarray[_ShapeT, _Dtypes]
@@ -32,7 +34,7 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
         copy: bool = True,
     ) -> NPBool[ShapeT, Dtype]: ...
     @overload
-    def __new__[ShapeT,Dtype: _BoolDTypeLike](
+    def __new__[ShapeT, Dtype: _BoolDTypeLike](
         cls,
         data: NPBool[ShapeT],
         /,

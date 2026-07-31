@@ -79,7 +79,7 @@ type _ArrayLikeStr_co = _DualArrayLike[np.dtype[np.str_], str]
 type _ArrayLikeBytes_co = _DualArrayLike[np.dtype[np.bytes_], bytes]
 type _ArrayLikeString_co = _DualArrayLike[StringDType, str]
 type _ArrayLikeAnyString_co = _DualArrayLike[
-    np.dtype[np.character] | StringDType,
+    np.dtype[np.character],
     bytes | str,
 ]
 # date

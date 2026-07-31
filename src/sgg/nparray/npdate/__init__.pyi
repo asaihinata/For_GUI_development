@@ -427,9 +427,7 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         """
 
     @overload
-    def range(
-        self, axis: None = None
-    ) -> tuple[datetime64, datetime64]: ...
+    def range(self, axis: None = None) -> tuple[datetime64, datetime64]: ...
     @overload
     def range(
         self, axis: np._ShapeLike

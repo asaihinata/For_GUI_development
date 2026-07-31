@@ -1,7 +1,8 @@
 {
     "[python]": {
+        "autoDocstring.customTemplatePath": "docs/templates/py_document_text.mustache",
         "autoDocstring.docstringFormat": "sphinx",
-        "autoDocstring.customTemplatePath": "docs/templates/py_document_text.mustache"
+        "python.languageServer": "Pylance"
     },
     "extensions.ignoreRecommendations": false,
     "files.encoding": "utf8",

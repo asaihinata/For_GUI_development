@@ -1,17 +1,18 @@
 from types import GenericAlias
-from typing import Any, Literal, Self, overload,TypeVar,SupportsIndex
+from typing import Any, Literal, Self, SupportsIndex, TypeVar, overload
 
 import numpy as np
 from numpy._typing import DTypeLike, _DTypeLike
 from numpy.typing import NDArray
 
-from sgg.typing import Typeaxis, _ShapeT_co,_Shape
+from sgg.typing import Typeaxis, _Shape, _ShapeT_co
 
 from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPArray"]
 _DTypeT_co = TypeVar("_DTypeT_co", bound=np.dtype, default=np.dtype, covariant=True)
-class NPArray[_ShapeT: _ShapeT_co, _Dtypes:_DTypeT_co](
+
+class NPArray[_ShapeT: _ShapeT_co, _Dtypes: _DTypeT_co](
     _ArrayCommonMixin, np.ndarray[_ShapeT, _Dtypes]
 ):
     """`np.ndarray`を継承した型付き配列クラス"""
@@ -88,45 +89,46 @@ class NPArray[_ShapeT: _ShapeT_co, _Dtypes:_DTypeT_co](
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
-
     # 1d
     @overload
     @classmethod
     def full[ScalarT: np.generic](
-        cls, fill_value: ScalarT, shape: SupportsIndex, dtype:None = None
-    ) -> NPArray[tuple[int], ScalarT]:...
+        cls, fill_value: ScalarT, shape: SupportsIndex, dtype: None = None
+    ) -> NPArray[tuple[int], ScalarT]: ...
     @overload
     @classmethod
     def full[DTypeT: np.dtype](
-        cls, fill_value: Any, shape: SupportsIndex, dtype:DTypeT
-    ) -> NPArray[tuple[int], DTypeT]:...
+        cls, fill_value: Any, shape: SupportsIndex, dtype: DTypeT
+    ) -> NPArray[tuple[int], DTypeT]: ...
     @overload
     @classmethod
     def full[ScalarT: np.generic](
-        cls, fill_value: Any, shape: SupportsIndex, dtype:type[ScalarT]
-    ) -> NPArray[tuple[int], ScalarT]:...
+        cls, fill_value: Any, shape: SupportsIndex, dtype: type[ScalarT]
+    ) -> NPArray[tuple[int], ScalarT]: ...
     # unknow shape
     @overload
     @classmethod
-    def full[ShapeT:_Shape,ScalarT: np.generic](
-        cls, fill_value: ScalarT, shape: ShapeT, dtype:None = None
-    ) -> NPArray[ShapeT, ScalarT]:...
+    def full[ShapeT: _Shape, ScalarT: np.generic](
+        cls, fill_value: ScalarT, shape: ShapeT, dtype: None = None
+    ) -> NPArray[ShapeT, ScalarT]: ...
     @overload
     @classmethod
-    def full[ShapeT:_Shape,DTypeT: np.dtype](
-        cls, fill_value: Any, shape: ShapeT, dtype:DTypeT
-    ) -> NPArray[ShapeT, DTypeT]:...
+    def full[ShapeT: _Shape, DTypeT: np.dtype](
+        cls, fill_value: Any, shape: ShapeT, dtype: DTypeT
+    ) -> NPArray[ShapeT, DTypeT]: ...
     @overload
     @classmethod
-    def full[ShapeT:_Shape,ScalarT: np.generic](
-        cls, fill_value: Any, shape: ShapeT, dtype:type[ScalarT]
-    ) -> NPArray[ShapeT, ScalarT]:...
+    def full[ShapeT: _Shape, ScalarT: np.generic](
+        cls, fill_value: Any, shape: ShapeT, dtype: type[ScalarT]
+    ) -> NPArray[ShapeT, ScalarT]: ...
     @classmethod
     def full():
         """指定された形状と配列の型を,`fill_value`で埋める"""
 
     @classmethod
-    def sequential[ShapeT:_Shape](cls, shape: ShapeT) -> NPArray[ShapeT, np.dtype[np.uint64]]:
+    def sequential[ShapeT: _Shape](
+        cls, shape: ShapeT
+    ) -> NPArray[ShapeT, np.dtype[np.uint64]]:
         """
         連続した整数値を要素に持つ配列を生成する
 

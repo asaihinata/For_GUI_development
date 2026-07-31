@@ -54,25 +54,25 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         cls,
         data: NPString[_ShapeT],
         /,
-        dtype: type[str]|str,
+        dtype: type[str] | str,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPString[_ShapeT, dtype[np.str_]]: ...
+    ) -> NPString[_ShapeT, dtype[str_]]: ...
     @overload
     def __new__(
         cls,
         data: NPString[_ShapeT],
         /,
-        dtype: type[bytes]|bytes,
+        dtype: type[bytes] | bytes,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPString[_ShapeT, dtype[np.bytes_]]: ...
+    ) -> NPString[_ShapeT, dtype[bytes_]]: ...
     @overload
     def __new__(
         cls,
@@ -102,25 +102,25 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         cls,
         data: _ShapeT,
         /,
-        dtype: type[str]|str,
+        dtype: type[str] | str,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPString[_ShapeT, dtype[type[str_]]]: ...
+    ) -> NPString[_ShapeT, dtype[str_]]: ...
     @overload
     def __new__(
         cls,
         data: _ShapeT,
         /,
-        dtype: type[bytes]|bytes,
+        dtype: type[bytes] | bytes,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPString[_ShapeT, dtype[type[bytes_]]]: ...
+    ) -> NPString[_ShapeT, dtype[bytes_]]: ...
     def __new__() -> Self:
         """
         新しい配列オブジェクトインスタンスを生成する
@@ -216,7 +216,7 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
     ) -> NPString[_ShapeT, dtype[str_ | StringDType]]: ...
     __iadd__ = __add__
     __radd__ = __add__
-    def __mul__(self,i: npt._ArrayLikeInt_co) -> Self:
+    def __mul__(self, i: npt._ArrayLikeInt_co) -> Self:
         """
         配列内の要素を`i`回付け加える
 
@@ -283,19 +283,27 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
 
     @overload
     def replace(
-        self: NPString[_ShapeT, dtype[type[str_]]], old: sgt._ArrayLikeStr_co, new: sgt._ArrayLikeStr_co
+        self: NPString[_ShapeT, dtype[type[str_]]],
+        old: sgt._ArrayLikeStr_co,
+        new: sgt._ArrayLikeStr_co,
     ) -> NPString[_ShapeT, dtype[str_]]: ...
     @overload
     def replace(
-        self: NPString[_ShapeT, dtype[bytes_]], old: sgt._ArrayLikeBytes_co, new: sgt._ArrayLikeBytes_co
+        self: NPString[_ShapeT, dtype[bytes_]],
+        old: sgt._ArrayLikeBytes_co,
+        new: sgt._ArrayLikeBytes_co,
     ) -> NPString[_ShapeT, dtype[bytes_]]: ...
     @overload
     def replace(
-        self: NPString[_ShapeT, dtype[StringDType]], old: sgt._StringDTypeSupportsArray, new: sgt._StringDTypeSupportsArray
+        self: NPString[_ShapeT, dtype[StringDType]],
+        old: sgt._StringDTypeSupportsArray,
+        new: sgt._StringDTypeSupportsArray,
     ) -> NPString[_ShapeT, dtype[StringDType]]: ...
     @overload
     def replace(
-        self: NPString[_ShapeT, dtype[StringDType]], old: sgt._ArrayLikeString_co, new: sgt._ArrayLikeString_co
+        self: NPString[_ShapeT, dtype[StringDType]],
+        old: sgt._ArrayLikeString_co,
+        new: sgt._ArrayLikeString_co,
     ) -> NPString[_ShapeT, dtype[str_ | StringDType]]: ...
     def replace():
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
