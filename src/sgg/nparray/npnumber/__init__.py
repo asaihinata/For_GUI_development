@@ -1,7 +1,5 @@
 """基本的な数値の操作をするモジュール"""
 
-from numbers import Number
-
 import numpy as np
 from numpy.random import default_rng
 
@@ -296,7 +294,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         return cls(result, result.dtype)
 
     def zero_check(self):
-        return NPBool(self.data == 0)
+        return NPBool(self == 0)
 
     def count_nonzero(self, axis=None, keepdims=False):
         if not isinstance(keepdims, bool):

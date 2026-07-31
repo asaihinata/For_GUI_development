@@ -335,7 +335,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         like: npt._SupportsArrayFunc | None = None,
     ) -> NPNumber[ShapeT, np.dtype[DTypeT]]: ...
     @classmethod
-    def zeros():
+    def zeros()->NPNumber:
         """指定された形状と型の新しい配列を0で埋めた配列を作成する"""
 
     @overload
