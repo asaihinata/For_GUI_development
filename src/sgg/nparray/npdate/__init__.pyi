@@ -308,17 +308,20 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
     def element_type(self) -> type[datetime64]:
         """NPDateで許可されている型を取得する"""
 
-    def to_datetime(self) -> np.ndarray[Any, np.dtype[datetime]]:
+    def to_datetime(self) -> np.ndarray[_ShapeT, np.dtype[datetime]]:
         """配列内の日付を`datetime.datetime`に変換する"""
 
-    def to_date(self) -> np.ndarray[Any, np.dtype[date]]:
+    def to_date(self) -> np.ndarray[_ShapeT, np.dtype[date]]:
         """配列内の日付を`datetime.date`に変換する"""
+
+    def to_str(self) -> NPString[_ShapeT, np.dtype[type[np.str_]]]:
+        """配列内の日付を`NPString`に変換する"""
 
     @classmethod
     def arange(
         cls,
-        start: sgt._DateArangeScalar,
-        stop: sgt._DateArangeScalar,
+        start: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
+        stop: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
         /,
         step: _TD64Like_co | None = 1,
         *,
@@ -332,9 +335,9 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         指定された間隔内で等間隔の日付を返す
 
         :param start: 区間を開始する日付を指定する
-        :type start: datetime64 | str | np.str_
+        :type start: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
         :param stop: 区間を終了する日付を指定する
-        :type stop: datetime64 | str | np.str_
+        :type stop: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
         :param step: 値の間隔を指定する
         :type step: _TD64Like_co | None
         :param dtype: 出力配列の型を指定する

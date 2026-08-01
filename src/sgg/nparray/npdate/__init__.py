@@ -127,13 +127,27 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     def to_date(self):
         return self.data.astype(date)
 
+    def to_str(self):
+        return NPString(np.datetime_as_string(self), dtype=np.str_)
+
     @classmethod
     def arange(cls, start, stop, /, step=1, *, dtype="D", device=None, like=None):
         dtype = _dt64_unit(dtype)
+        _pass_str_list = ["TODAY", "today", "NOW", "now"]
         if isinstance(start, (str, np.str_)):
-            start = np.datetime64(parse(str(start)))
+            start = str(start)
+            start = (
+                np.datetime64(start)
+                if start in _pass_str_list
+                else np.datetime64(parse(start))
+            )
         if isinstance(stop, (str, np.str_)):
-            stop = np.datetime64(parse(str(stop)))
+            stop = str(stop)
+            stop = (
+                np.datetime64(stop)
+                if stop in _pass_str_list
+                else np.datetime64(parse(stop))
+            )
         return cls(
             np.arange(start, stop, step=step, dtype=dtype, device=device, like=like),
             dtype=dtype,
