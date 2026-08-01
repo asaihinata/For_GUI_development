@@ -65,7 +65,7 @@ class Stempolar(polarElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonumpy()
+        return self.__x
 
     def gety(self):
-        return self.__y.tonumpy()
+        return self.__y

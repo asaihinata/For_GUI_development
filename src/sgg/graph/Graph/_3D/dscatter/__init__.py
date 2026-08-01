@@ -6,9 +6,9 @@ __all__ = ["DScatter"]
 class DScatter(threeElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = NPNumber(kw.get("x"))
-        self.__y = NPNumber(kw.get("y"))
-        self.__z = NPNumber(kw.get("z"))
+        self.__x = np.array(kw.get("x"))
+        self.__y = np.array(kw.get("y"))
+        self.__z = np.array(kw.get("z"))
         self.marker = MarkerList(kw.get("marker", "o"))
         self.s = num1s(kw.get("markersize"), 10)
         self.__plot(
@@ -36,11 +36,11 @@ class DScatter(threeElement):
     def update(self, x=None, y=None, z=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = NPNumber(x)
+            self.__x = np.array(x)
         if change_array_like(y):
-            self.__y = NPNumber(y)
+            self.__y = np.array(y)
         if change_array_like(z):
-            self.__z = NPNumber(z)
+            self.__z = np.array(z)
         markers = kw.get("marker", None)
         if markers != None:
             self.marker = MarkerList(markers)
@@ -60,13 +60,13 @@ class DScatter(threeElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonumpy()
+        return self.__x
 
     def gety(self):
-        return self.__y.tonumpy()
+        return self.__y
 
     def getz(self):
-        return self.__z.tonumpy()
+        return self.__z
 
     def getcoordinate(self):
         coords = []

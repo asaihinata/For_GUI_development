@@ -6,7 +6,7 @@ __all__ = ["Hist"]
 class Hist(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__data = NPNumber(kw.get("data"), max_ndim=1)
+        self.__data = np.array(kw.get("data"), ndmax=1)
         bins = kw.get("bins")
         if change_array_like(bins) or bins in [
             "auto",
@@ -20,9 +20,9 @@ class Hist(twoElement):
         ]:
             self.bins = bins
         elif isinstance(bins, int):
-            self.bins = num1s(bins, round(self.__data.sturgesval))
+            self.bins = num1s(bins, round(1 + np.log2(self.__data.size)))
         else:
-            self.bins = round(self.__data.sturgesval)
+            self.bins = round(1 + np.log2(self.__data.size))
         self.min = nums(kw.get("min"), self.__data.min())
         self.max = nums(kw.get("max"), self.__data.max())
         self.bottom = num0s(kw.get("bottom"))
@@ -75,7 +75,7 @@ class Hist(twoElement):
     def update(self, data=None, **kw):
         self._updates(**kw)
         if change_array_like(data):
-            self.__data = NPNumber(data, max_ndim=1)
+            self.__data = np.array(data, ndmax=1)
         bins = kw.get("bins")
         if change_array_like(bins) or bins in [
             "auto",
@@ -89,7 +89,7 @@ class Hist(twoElement):
         ]:
             self.bins = bins
         elif isinstance(bins, int):
-            self.bins = num1s(bins, round(self.__data.sturgesval))
+            self.bins = num1s(bins, round(1 + np.log2(self.__data.size)))
         self.min = nums(kw.get("min"), self.__data.min())
         self.max = nums(kw.get("max"), self.__data.max())
         self.bottom = num0s(kw.get("bottom"), self.bottom)
@@ -113,4 +113,4 @@ class Hist(twoElement):
         return self.graphdata
 
     def getdata(self):
-        return self.__data.tonumpy()
+        return self.__data

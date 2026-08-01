@@ -6,10 +6,10 @@ __all__ = ["Hexbin"]
 class Hexbin(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = NPNumber(kw.get("x"))
-        self.__y = NPNumber(kw.get("y"))
+        self.__x = np.array(kw.get("x"))
+        self.__y = np.array(kw.get("y"))
         c, extent, gridsize = kw.get("c"), kw.get("extent"), kw.get("gridsize", 100)
-        self.c = None if c is None else NPNumber(c)
+        self.c = None if c is None else np.array(c)
         self.gridsize = (
             gridsize if list2int(gridsize) or isinstance(gridsize, int) else 100
         )
@@ -73,11 +73,11 @@ class Hexbin(twoElement):
     def update(self, x=None, y=None, c=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = NPNumber(x)
+            self.__x = np.array(x)
         if change_array_like(y):
-            self.__y = NPNumber(y)
+            self.__y = np.array(y)
         if change_array_like(c):
-            self.c = NPNumber(c)
+            self.c = np.array(c)
         extent, gridsize = kw.get("extent", self.extent), kw.get(
             "gridsize", self.gridsize
         )
@@ -117,7 +117,7 @@ class Hexbin(twoElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonumpy()
+        return self.__x
 
     def gety(self):
-        return self.__y.tonumpy()
+        return self.__y

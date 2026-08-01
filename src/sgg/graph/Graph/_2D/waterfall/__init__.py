@@ -6,8 +6,8 @@ __all__ = ["Waterfall"]
 class Waterfall(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = NPArray(kw.get("x"), max_ndim=1)
-        self.__y = NPNumber(kw.get("y"), max_ndim=1)
+        self.__x = np.array(kw.get("x"), ndmax=1)
+        self.__y = np.array(kw.get("y"), ndmax=1)
         self.bottom = np.cumsum(np.append(0, self.__y)[0 : self.__y.size])
         self.ucolor = parsecolor(kw.get("ucolor"), "#156082")
         self.dcolor = parsecolor(kw.get("dcolor"), "#e97132")
@@ -45,7 +45,6 @@ class Waterfall(twoElement):
         dcolor,
     ):
         self.clear()
-        x, y = x.data, y.data
         if sums:
             x = np.append(x, sumstext)
             y = np.append(y, np.sum(y))
@@ -72,9 +71,9 @@ class Waterfall(twoElement):
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = NPArray(x, max_ndim=1)
+            self.__x = np.array(x, ndmax=1)
         if change_array_like(y):
-            self.__y = NPNumber(y, max_ndim=1)
+            self.__y = np.array(y, ndmax=1)
         self.sums = bols(kw.get("sums"), self.sums)
         self.sumstext = kw.get("sumstext", self.sumstext)
         self.bottom = np.cumsum(np.append(0, self.__y)[0 : self.__y.size])
@@ -104,10 +103,10 @@ class Waterfall(twoElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonumpy()
+        return self.__x
 
     def gety(self):
-        return self.__y.tonumpy()
+        return self.__y
 
     def _horiline(self, lin, width=1, color=None, linestyle="-"):
         lens, width, xmaxs, xmins = len(lin) - 1, width / 2, [], []

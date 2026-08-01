@@ -5,7 +5,6 @@ from numpy import float64, ndarray, number
 
 from sgg.graph.element.graph import GElement
 from sgg.graph.style import getLabel
-from sgg.nparray import NPArray, NPNumber
 from sgg.typing import *
 
 __all__ = ["polarElement"]
@@ -36,7 +35,7 @@ class polarElement(GElement):
         x: list | tuple | ndarray,
         y: list | tuple | ndarray,
         d: list | tuple | ndarray,
-    ) -> tuple[NPNumber, NPArray]: ...
+    ) -> tuple[np.array, np.array]: ...
     def _apply_labels(
         self,
         xlabel: str | list[str] | None = None,

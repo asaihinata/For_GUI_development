@@ -1,9 +1,8 @@
 from matplotlib.projections.polar import PolarAxes
-from numpy import linspace, number, pi
+from numpy import linspace, number, pi,array
 
 from sgg.dev import bols, list2num, num0s, parsecolor, range_num
 from sgg.graph.element.graph import GElement
-from sgg.nparray import NPNumber
 
 __all__ = ["polarElement"]
 
@@ -39,13 +38,13 @@ class polarElement(GElement):
             self.yticksrange = (0, 0)
 
     def _places(self, num):
-        return NPNumber(linspace(0, 2 * pi, num, endpoint=False)).data
+        return array(linspace(0, 2 * pi, num, endpoint=False))
 
     def _xyd(self, x, y, d=None):
         if d is None:
-            return NPNumber(x, d_ndim=1).data, NPNumber(y, d_ndim=1).data
+            return array(x, ndmax=1), array(y, ndmax=1)
         else:
-            data = NPNumber(d, d_ndim=1).data
+            data = array(d, ndmax=1)
             return self._places(data.size), data
 
     def _apply_theme_colors(self):

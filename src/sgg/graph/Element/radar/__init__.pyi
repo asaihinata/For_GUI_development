@@ -5,7 +5,6 @@ from matplotlib.projections.polar import PolarAxes
 from numpy import dtype, float64, ndarray
 
 from sgg.graph.element.graph import GElement
-from sgg.nparray import NPNumber
 from sgg.typing import *
 
 __all__ = ["RadarElement"]
@@ -15,7 +14,7 @@ class RadarElement(GElement):
     theta: ndarray[float64, dtype[float64]]
     frametype: Literal["circle", "polygon"] = "circle"
     def __init__(self, master: Misc, kw: dict) -> None:
-        self._data: NPNumber
+        self._data: ndarray
 
     def _updates(
         self,

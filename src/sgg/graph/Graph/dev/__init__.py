@@ -21,3 +21,16 @@ def parameters(vals, do1, do2):
     :type do2: Any
     """
     return do1 if vals == None else do2
+
+
+def lengtharange(data):
+    data = np.array(data)
+    shapes = data.shape
+    lens = len(shapes)
+    if lens == 1:
+        raw = np.arange(0, data.size, 1)
+    else:
+        raw = np.tile(np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])).reshape(
+            shapes
+        )
+    return np.array(raw, dtype=np.uint64)

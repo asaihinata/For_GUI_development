@@ -8,8 +8,8 @@ __all__ = ["LineGraph"]
 class LineGraph(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = NPArray(kw.get("x"))
-        self.__y = NPArray(kw.get("y"))
+        self.__x = np.array(kw.get("x"))
+        self.__y = np.array(kw.get("y"))
         self.marker = MarkerList(kw.get("marker", "none"))
         self.markersize = num0(kw.get("markersize"), 10)
         self.line = Solidlist(kw.get("linestyle", "-"))
@@ -57,9 +57,9 @@ class LineGraph(twoElement):
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = NPArray(x)
+            self.__x = np.array(x)
         if change_array_like(y):
-            self.__y = NPArray(y)
+            self.__y = np.array(y)
         markers = kw.get("marker")
         if markers is not None:
             self.marker = MarkerList(markers)
@@ -84,7 +84,7 @@ class LineGraph(twoElement):
         return self.graphdata
 
     def getx(self):
-        return self.__x.tonumpy()
+        return self.__x
 
     def gety(self):
-        return self.__y.tonumpy()
+        return self.__y
