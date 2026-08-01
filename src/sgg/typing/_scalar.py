@@ -5,16 +5,17 @@ import numpy as np
 __all__ = [
     "_Arange_Number",
     "_BoolScalar",
-    "_DateParseScalar",
-    "_NumberScalar",
-    "_StrScalar",
-    "_StringScalar",
     "_BytesScalar",
+    "_DateArangeScalar",
+    "_DateParseScalar",
+    "_FloatLike_co",
     "_IntLike_co",
+    "_IntsLike_co",
+    "_NumberScalar",
+    "_StringScalar",
+    "_StrScalar",
     "_TD64Like_co",
     "_UIntLike_co",
-    "_IntsLike_co",
-    "_FloatLike_co",
 ]
 type _Arange_Number = np.integer | np.floating | int | float
 type _BoolScalar = bool | np.bool | np.bool_
@@ -27,4 +28,5 @@ type _StrScalar = str | np.str_
 type _BytesScalar = bytes | np.bytes_
 type _StringScalar = str | bytes | np.character | np.flexible
 type _DateParseScalar = str | np.str_ | datetime | date | np.datetime64 | int
+type _DateArangeScalar = str | np.str_ | datetime | date | np.datetime64
 type _TD64Like_co = timedelta | _IntLike_co

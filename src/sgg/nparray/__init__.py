@@ -12,6 +12,6 @@ __all__ = [
     "NPDate",
     "NPFormatDate",
     "NPNumber",
-    "NPTimedelta",
     "NPString",
+    "NPTimedelta",
 ]

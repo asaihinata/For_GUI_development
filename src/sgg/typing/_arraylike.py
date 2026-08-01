@@ -28,10 +28,10 @@ __all__ = [
     "_ArrayLikeUInt_co",
     "_DualArrayLike",
     "_Shape",
-    "_TD64ItemT_co",
     "_ShapeLike",
     "_ShapeT_co",
     "_StringDTypeSupportsArray",
+    "_TD64ItemT_co",
     "_ToArray",
     "Typeaxis",
 ]

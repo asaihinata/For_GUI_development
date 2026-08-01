@@ -5,8 +5,8 @@ __all__ = [
     "_ArangeNumber_DtypeLike",
     "_BoolDTypeLike",
     "_ComplexDtypeLike",
-    "_DTypeLikeDT64",
     "_DTypeLike",
+    "_DTypeLikeDT64",
     "_DTypeLikeF32",
     "_DTypeLikeF64",
     "_DTypeLikeFloat",
@@ -16,10 +16,10 @@ __all__ = [
     "_IntsNumericDTypeLike",
     "_NumericDTypeLike",
     "_RealNumericDTypeLike",
-    "_StringDTypeLike",
-    "_StringsDTypeLike",
     "_StringDType",
+    "_StringDTypeLike",
     "_StringsDType",
+    "_StringsDTypeLike",
 ]
 type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
     _SupportsArray[DTypeT]

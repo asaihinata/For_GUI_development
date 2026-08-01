@@ -314,13 +314,12 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
     def to_date(self) -> np.ndarray[Any, np.dtype[date]]:
         """配列内の日付を`datetime.date`に変換する"""
 
-    @overload
     @classmethod
     def arange(
         cls,
-        start: datetime64,
+        start: sgt._DateArangeScalar,
+        stop: sgt._DateArangeScalar,
         /,
-        stop: datetime64,
         step: _TD64Like_co | None = 1,
         *,
         dtype: _DTypeLike[datetime64] | None = None,
@@ -333,41 +332,9 @@ class NPDate[_ShapeT, _Dtypes: _DTypeT_co](
         指定された間隔内で等間隔の日付を返す
 
         :param start: 区間を開始する日付を指定する
-        :type start: datetime64
+        :type start: datetime64 | str | np.str_
         :param stop: 区間を終了する日付を指定する
-        :type stop: datetime64
-        :param step: 値の間隔を指定する
-        :type step: _TD64Like_co | None
-        :param dtype: 出力配列の型を指定する
-        :type dtype: dtype
-        :param device: 作成された配列を配置する場所を指定する
-        :type device: Literal["cpu"] | None
-        :param like: NumPy配列ではない配列を作成できるようにする参照するオブジェクトを指定する
-        :type like: _SupportsArrayFunc | None
-        """
-
-    @overload
-    @classmethod
-    def arange(
-        cls,
-        start: str,
-        /,
-        stop: str,
-        step: _TD64Like_co | None = 1,
-        *,
-        dtype: _DTypeLike[datetime64] | sgt._AllDateUnit,
-        device: Literal["cpu"] | None = None,
-        like: _SupportsArrayFunc | None = None,
-    ) -> NPDate[
-        sgt._Array1D[datetime64[sgt.Incomplete]], np.dtype[datetime64[sgt.Incomplete]]
-    ]:
-        """
-        指定された間隔内で等間隔の日付を返す
-
-        :param start: 区間を開始する日付を指定する
-        :type start: str
-        :param stop: 区間を終了する日付を指定する
-        :type stop: str
+        :type stop: datetime64 | str | np.str_
         :param step: 値の間隔を指定する
         :type step: _TD64Like_co | None
         :param dtype: 出力配列の型を指定する

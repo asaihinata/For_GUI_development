@@ -1,5 +1,5 @@
 from matplotlib.projections.polar import PolarAxes
-from numpy import linspace, number, pi,array
+from numpy import array, linspace, number, pi
 
 from sgg.dev import bols, list2num, num0s, parsecolor, range_num
 from sgg.graph.element.graph import GElement

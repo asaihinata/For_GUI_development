@@ -1,6 +1,7 @@
 from datetime import date, datetime
 
 import numpy as np
+from dateutil.parser import parse
 
 from ..dev import _ArrayCommonMixin, _dt64_unit, _normalize_axis
 from ..npbool import NPBool
@@ -127,8 +128,12 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         return self.data.astype(date)
 
     @classmethod
-    def arange(cls, start, /, stop=None, step=1, *, dtype="D", device=None, like=None):
+    def arange(cls, start, stop, /, step=1, *, dtype="D", device=None, like=None):
         dtype = _dt64_unit(dtype)
+        if isinstance(start, (str, np.str_)):
+            start = np.datetime64(parse(str(start)))
+        if isinstance(stop, (str, np.str_)):
+            stop = np.datetime64(parse(str(stop)))
         return cls(
             np.arange(start, stop, step=step, dtype=dtype, device=device, like=like),
             dtype=dtype,
