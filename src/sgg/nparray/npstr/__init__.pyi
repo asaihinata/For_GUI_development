@@ -316,6 +316,46 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
     def replace():
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
 
+    def slices(
+        self,
+        start: npt._ArrayLikeInt_co | None = None,
+        stop: npt._ArrayLikeInt_co | np._NoValueType | None = None,
+        step: npt._ArrayLikeInt_co | None = None,
+    ) -> Self:
+        """
+        文字列を`start`,`stop`,`step`で指定されたスライスに分割する
+
+        :param start: スライスをする開始する位置を指定する
+        :type start: _ArrayLikeInt_co | None
+        :param stop: スライスをする終了する位置を指定する
+        :type stop: _ArrayLikeInt_co | np._NoValueType | None
+        :param step: スライスするステップ数を指定する
+        :type step: _ArrayLikeInt_co | None
+        """
+
+    @overload
+    def strip(
+        self: NPString[_ShapeT, dtype[type[str_]]],
+        chars: sgt._ArrayLikeStr_co | None = None,
+    ) -> NPString[_ShapeT, dtype[str_]]: ...
+    @overload
+    def strip(
+        self: NPString[_ShapeT, dtype[bytes_]],
+        chars: sgt._ArrayLikeBytes_co | None = None,
+    ) -> NPString[_ShapeT, dtype[bytes_]]: ...
+    @overload
+    def strip(
+        self: NPString[_ShapeT, dtype[StringDType]],
+        chars: sgt._ArrayLikeString_co | None = None,
+    ) -> NPString[_ShapeT, dtype[str_ | StringDType]]: ...
+    def strip():
+        """
+        配列の各要素について,先頭と末尾の文字を取り除いた配列を返す
+
+        :param chars: 削除する文字を指定する
+        :type chars: _ArrayLikeString_co | None
+        """
+
     def center(
         self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeAnyString_co = " "
     ) -> Self:
@@ -378,7 +418,24 @@ class NPString[_ShapeT: sgt._ArrayLikeAnyString_co, _Dtypes: _DType](
         配列の要素が`suffix`で終わるかを調べる
 
         :param suffix: 終了する単語を指定する
-        :type suffix: sgt._ArrayLikeAnyString_co
+        :type suffix: _ArrayLikeAnyString_co
+        :param start: 比較を開始する位置を指定する
+        :type start: _ArrayLikeInt_co
+        :param end: 比較を終える位置を指定する
+        :type end: _ArrayLikeInt_co | None
+        """
+
+    def startswith(
+        self,
+        prefix: sgt._ArrayLikeAnyString_co,
+        start: npt._ArrayLikeInt_co = 0,
+        end: npt._ArrayLikeInt_co | None = None,
+    ) -> NPBool[_ShapeT, dtype[np.bool_]]:
+        """
+        配列の要素が`prefix`で始まるかを調べる
+
+        :param prefix: 終了する単語を指定する
+        :type prefix: _ArrayLikeAnyString_co
         :param start: 比較を開始する位置を指定する
         :type start: _ArrayLikeInt_co
         :param end: 比較を終える位置を指定する

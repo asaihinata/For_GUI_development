@@ -145,6 +145,16 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
+    def slices(self, start=None, stop=np._NoValue, step=None):
+        result = np.asarray(nps.slice(self, start, stop, step)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def strip(self, char=None):
+        result = np.asarray(nps.strip(self, char)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
     def center(self, width, fillchar=" "):
         result = np.asarray(nps.center(self, width, fillchar)).view(type(self))
         result._dtype = result.dtype
@@ -172,6 +182,9 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def endswith(self, suffix, start=0, end=None):
         return NPBool(nps.endswith(self, suffix, start, end))
+
+    def startswith(self, prefix, start=0, end=None):
+        return NPBool(nps.startswith(self, prefix, start, end))
 
     def capitalize(self):
         result = np.asarray(nps.capitalize(self)).view(type(self))
