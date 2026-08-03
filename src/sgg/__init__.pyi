@@ -427,8 +427,7 @@ class Guis:
 
     @staticmethod
     def Imagebyte(
-        *,
-        byte: bytes | BytesIO = ..., takefocus: bool = ..., key: str | None = ...
+        *, byte: bytes | BytesIO = ..., takefocus: bool = ..., key: str | None = ...
     ) -> dict[str, Any]:
         """
         バイトデータから画像を作成する
@@ -443,8 +442,7 @@ class Guis:
 
     @staticmethod
     def Imagelink(
-        *,
-        link: str = ..., takefocus: bool = ..., key: str | None = ...
+        *, link: str = ..., takefocus: bool = ..., key: str | None = ...
     ) -> dict[str, Any]:
         """
         画像URLから画像を作成する
@@ -1785,8 +1783,7 @@ class Guis:
 
     @staticmethod
     def QRImage(
-        *,
-        text: str = ..., takefocus: bool = ..., key: str | None = ...
+        *, text: str = ..., takefocus: bool = ..., key: str | None = ...
     ) -> dict[str, Any]:
         """
         QRコードを作成する

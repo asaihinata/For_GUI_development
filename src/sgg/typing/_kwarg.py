@@ -10,6 +10,7 @@ __all__ = [
     "Dict_Radar",
 ]
 
+
 # 基本的なウィジェットのキーワード引数の型ヒントを保存するオブジェクト
 class _Dict_Graph_base(TypedDict):
     key: str | None = ...
