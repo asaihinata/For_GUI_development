@@ -1,7 +1,7 @@
 from io import BytesIO
 from pathlib import Path, PosixPath, WindowsPath
 from tkinter import _Cursor
-from typing import Any, Callable, Literal, overload
+from typing import Any, Callable, Literal, Unpack, overload
 
 from matplotlib.mlab import GaussianKDE
 from numpy.typing import ArrayLike
@@ -1771,6 +1771,7 @@ class Guis:
         :type key: str | None
         """
 
+    # 2D Graph
     @staticmethod
     def LineGraph(
         x: TypeArrayLikeNS,
@@ -2823,127 +2824,6 @@ class Guis:
         :type xticksdirection: Literal["out","in","inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
         :type yticksdirection: Literal["out","in","inout"]
-        :param key: ウィジェット固有の番号を指定する
-        :type key: str | None
-        """
-
-    @staticmethod
-    def DScatter(
-        x: TypeArraysLikeNumber,
-        y: TypeArraysLikeNumber,
-        z: TypeArraysLikeNumber,
-        xlabel: str = ...,
-        ylabel: str = ...,
-        zlabel: str = ...,
-        marker: Type_Marker = "o",
-        markersize: int | float = 10,
-        size: tuple[int | float, int | float] = (500, 400),
-        fg: ColorTypeN = "#000000",
-        bg: ColorTypeN = "#ffffff",
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        title: str = ...,
-        dpi: int | float = 100,
-        alpha: int | float = 1,
-        graph_grid: ColorTypeN = "#b7b7b7",
-        grid_xyz: bool = True,
-        grid_x: bool = False,
-        grid_y: bool = False,
-        grid_z: bool = False,
-        tight_layout: bool = True,
-        xticksrange: int | float | tuple[int | float, int | float] = 0,
-        yticksrange: int | float | tuple[int | float, int | float] = 0,
-        xmajorint: bool = True,
-        ymajorint: bool = True,
-        zmajorint: bool = True,
-        ticksshow: bool = False,
-        xticksshow: bool = False,
-        yticksshow: bool = False,
-        zticksshow: bool = False,
-        xticksdirection: Literal["out", "in", "inout"] = "out",
-        yticksdirection: Literal["out", "in", "inout"] = "out",
-        znumticks: int | float | None = None,
-        mouse_rotation: bool = True,
-        elev: int | float = 30,
-        azim: int | float = 45,
-        key: str | None = ...,
-    ) -> dict[str, Any]:
-        """
-        立体散布図を作成する
-
-        :param x: `x`のデータを指定する
-        :type x: TypeArraysLikeNumber
-        :param y: `y`のデータを指定する
-        :type y: TypeArraysLikeNumber
-        :param z: `z`のデータを指定する
-        :type z: TypeArraysLikeNumber
-        :param xlabel: x軸のラベルを指定する
-        :type xlabel: str
-        :param ylabel: y軸のラベルを指定する
-        :type ylabel: str
-        :param zlabel: z軸のラベルを指定する
-        :type zlabel: str
-        :param marker: 散布図のマーカーを指定する
-        :type marker: Type_Marker
-        :param markersize: 散布図のマーカーの大きさを指定する
-        :type markersize: int | float
-        :param title: グラフのタイトルを指定する
-        :type title: str
-        :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
-        :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
-        :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
-        :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
-        :param dpi: 1インチあたりのドット数を指定する
-        :type dpi: int | float
-        :param alpha: グラフの透明度を指定する
-        :type alpha: int | float
-        :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
-        :param grid_xyz: x軸,y軸,z軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`,`grid_z`より優先度が高い
-        :type grid_xyz: bool
-        :param grid_x: x軸にグリッド線を表示させるか指定する`grid_xyz`より優先度が低い
-        :type grid_x: bool
-        :param grid_y: y軸にグリッド線を表示させるか指定する`grid_xyz`より優先度が低い
-        :type grid_y: bool
-        :param grid_z: z軸にグリッド線を表示させるか指定する`grid_xyz`より優先度が低い
-        :type grid_z: bool
-        :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
-        :type tight_layout: bool
-        :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
-        :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
-        :param zticksrange: z軸の目盛の範囲を変更する
-        :type zticksrange: int | float | tuple[int | float,...]
-        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
-        :type xmajorint: bool
-        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
-        :type ymajorint: bool
-        :param zmajorint: z軸の目盛りを整数で自動調整させるか指定する
-        :type zmajorint: bool
-        :param ticksshow: x軸,y軸,z軸のグリッド線と目盛り値について表示するかを指定する
-        :type ticksshow: bool
-        :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
-        :type xticksshow: bool
-        :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
-        :type yticksshow: bool
-        :param zticksshow: z軸のグリッド線と目盛り値について表示するかを指定する
-        :type zticksshow: bool
-        :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
-        :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
-        :param znumticks: z軸の目盛りの数を指定する
-        :type znumticks: int | float | None
-        :param mouse_rotation: 表示されているグラフをマウスで操作できるか指定する
-        :type mouse_rotation: bool
-        :param elev: 仰角を度数表記で指定する
-        :type elev: int | float
-        :param azim: 方位角を度数表記で指定する
-        :type azim: int | float
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -4185,6 +4065,99 @@ class Guis:
         :type key: str | None
         """
 
+    # 3D
+    @staticmethod
+    def DScatter(
+        x: TypeArraysLikeNumber,
+        y: TypeArraysLikeNumber,
+        z: TypeArraysLikeNumber,
+        marker: Type_Marker = "o",
+        markersize: int | float = 10,
+        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
+        **kwargs: Unpack[Dict_3DGraph],
+    ) -> dict[str, Any]:
+        """
+        立体散布図を作成する
+
+        :param x: `x`のデータを指定する
+        :type x: TypeArraysLikeNumber
+        :param y: `y`のデータを指定する
+        :type y: TypeArraysLikeNumber
+        :param z: `z`のデータを指定する
+        :type z: TypeArraysLikeNumber
+        :param xlabel: x軸のラベルを指定する
+        :type xlabel: str
+        :param ylabel: y軸のラベルを指定する
+        :type ylabel: str
+        :param zlabel: z軸のラベルを指定する
+        :type zlabel: str
+        :param marker: 散布図のマーカーを指定する
+        :type marker: Type_Marker
+        :param markersize: 散布図のマーカーの大きさを指定する
+        :type markersize: int | float
+        :param title: グラフのタイトルを指定する
+        :type title: str
+        :param color: 色を指定する
+        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :param size: 表示させるグラフの大きさを指定する
+        :type size: tuple[int | float,int | float]
+        :param fg: グラフ内の文字色を指定する
+        :type fg: ColorTypeN
+        :param bg: グラフ内の背景色を指定する
+        :type bg: ColorTypeN
+        :param dpi: 1インチあたりのドット数を指定する
+        :type dpi: int | float
+        :param alpha: グラフの透明度を指定する
+        :type alpha: int | float
+        :param graph_grid: グラフのグリッド線の色を指定する
+        :type graph_grid: ColorTypeN
+        :param grid_xyz: x軸,y軸,z軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`,`grid_z`より優先度が高い
+        :type grid_xyz: bool
+        :param grid_x: x軸にグリッド線を表示させるか指定する`grid_xyz`より優先度が低い
+        :type grid_x: bool
+        :param grid_y: y軸にグリッド線を表示させるか指定する`grid_xyz`より優先度が低い
+        :type grid_y: bool
+        :param grid_z: z軸にグリッド線を表示させるか指定する`grid_xyz`より優先度が低い
+        :type grid_z: bool
+        :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
+        :type tight_layout: bool
+        :param xticksrange: x軸の目盛の範囲を変更する
+        :type xticksrange: int | float | tuple[int | float,int | float]
+        :param yticksrange: y軸の目盛の範囲を変更する
+        :type yticksrange: int | float | tuple[int | float,int | float]
+        :param zticksrange: z軸の目盛の範囲を変更する
+        :type zticksrange: int | float | tuple[int | float,...]
+        :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
+        :type xmajorint: bool
+        :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
+        :type ymajorint: bool
+        :param zmajorint: z軸の目盛りを整数で自動調整させるか指定する
+        :type zmajorint: bool
+        :param ticksshow: x軸,y軸,z軸のグリッド線と目盛り値について表示するかを指定する
+        :type ticksshow: bool
+        :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
+        :type xticksshow: bool
+        :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
+        :type yticksshow: bool
+        :param zticksshow: z軸のグリッド線と目盛り値について表示するかを指定する
+        :type zticksshow: bool
+        :param xticksdirection: x軸の目盛りの向きを指定する
+        :type xticksdirection: Literal["out","in","inout"]
+        :param yticksdirection: y軸の目盛りの向きを指定する
+        :type yticksdirection: Literal["out","in","inout"]
+        :param znumticks: z軸の目盛りの数を指定する
+        :type znumticks: int | float | None
+        :param mouse_rotation: 表示されているグラフをマウスで操作できるか指定する
+        :type mouse_rotation: bool
+        :param elev: 仰角を度数表記で指定する
+        :type elev: int | float
+        :param azim: 方位角を度数表記で指定する
+        :type azim: int | float
+        :param key: ウィジェット固有の番号を指定する
+        :type key: str | None
+        """
+
+    # polar
     @overload
     @staticmethod
     def Barpolar(
@@ -5097,6 +5070,7 @@ class Guis:
         :type key: str | None
         """
 
+    # Radar
     @staticmethod
     def RadarLine(
         data: TypeArrayLikeNumber = ...,

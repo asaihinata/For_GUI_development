@@ -8,8 +8,7 @@ from ._array_date_unit import *
 from ._array_dtype import *
 from ._arraylike import *
 from ._scalar import *
-from ._widget_all import *
-from ._widget_graph import *
+from ._widget import *
 
 type Incomplete = Any
 type _Seed = int | np.random.SeedSequence | np.random.Generator | None
@@ -19,6 +18,5 @@ __all__ = (
     + getattr(_array_dtype, "__all__", [])
     + getattr(_arraylike, "__all__", [])
     + getattr(_scalar, "__all__", [])
-    + getattr(_widget_all, "__all__", [])
-    + getattr(_widget_graph, "__all__", [])
+    + getattr(_widget, "__all__", [])
 )

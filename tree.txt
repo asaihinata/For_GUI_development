@@ -273,8 +273,7 @@ For_GUI_development
  │   │   │   ├── _array_dtype.py
  │   │   │   ├── _arraylike.py
  │   │   │   ├── _scalar.py
- │   │   │   ├── _widget_all.py
- │   │   │   └── _widget_graph.py
+ │   │   │   └── _widget.py
  │   │   ├── version.py
  │   │   └── widget
  │   │       ├── __init__.py
@@ -454,5 +453,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:314
+ファイル数:313
 フォルダ数:141
