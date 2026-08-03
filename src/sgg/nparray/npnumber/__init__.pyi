@@ -2,7 +2,7 @@
 
 from types import GenericAlias
 from typing import (Any, Iterator, Literal, Self, Sequence, SupportsIndex,
-                    TypeVar, overload)
+                    overload)
 
 import numpy as np
 import numpy._typing as npt
@@ -15,7 +15,6 @@ from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
 
 __all__ = ["NPNumber"]
-_DType = TypeVar("_DType", bound=np.generic, default=dtype[np.float64], covariant=True)
 type _ToFloat64 = float | np.integer | np.bool
 type _ToArrayFloat64 = sgt._DualArrayLike[
     np.dtype[np.float64 | np.integer | np.bool], float
@@ -50,63 +49,23 @@ type TYPEMETHOD = Literal[
     "normal_unbiased",
 ]
 
-class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
-    _ArrayCommonMixin, np.ndarray[_ShapeT, dtype[_Dtypes]]
-):
+class NPNumber(_ArrayCommonMixin, np.ndarray):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
     _element_type: tuple[type[int], type[float], type[complex], type[np.number]]
     _default_dtype: type[np.float64]
 
-    @overload
-    def __new__[_ShapeTs, _Dtype](
-        cls,
-        data: NPNumber[_ShapeTs, _Dtype],
-        /,
-        dtype: None = None,
-        *,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-        copy: bool = True,
-    ) -> NPNumber[_ShapeTs, _Dtype]: ...
-    @overload
-    def __new__[Dtype: sgt._NumericDTypeLike](
-        cls,
-        data: NPNumber[_ShapeT, _Dtypes],
-        /,
-        dtype: Dtype,
-        *,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-        copy: bool = True,
-    ) -> NPNumber[_ShapeT, dtype[Dtype]]: ...
-    @overload
     def __new__(
         cls,
-        data: _ShapeT,
+        data: Any,
         /,
-        dtype: None = None,
+        dtype: None=None,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPNumber[_ShapeT, _DType]: ...
-    @overload
-    def __new__[Dtype: sgt._NumericDTypeLike](
-        cls,
-        data: _ShapeT,
-        /,
-        dtype: Dtype,
-        *,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-        copy: bool = True,
-    ) -> NPNumber[_ShapeT, dtype[Dtype]]: ...
-    def __new__() -> Self:
+    ) -> NPNumber:
         """
         新しい配列オブジェクトインスタンスを生成する
 
@@ -129,13 +88,13 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         """
 
     def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
-    def __array_ufunc__[Dtype](
-        self: NPNumber[_ShapeT, Dtype],
+    def __array_ufunc__(
+        self,
         ufunc: np.ufunc,
         method: str,
         *inputs: Any,
         **kwargs: Any,
-    ) -> NPNumber[_ShapeT, Dtype] | Any:
+    ) -> NPNumber | Any:
         """
         NumPyのufuncの動作をカスタマイズする
 
@@ -150,14 +109,6 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         :return: 処理結果を返す
         """
 
-    @overload
-    def __array__(
-        self, dtype: None = None, /, *, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, _Dtypes]: ...
-    @overload
-    def __array__[Dtype: np._dtype | sgt._DTypeLike[np.generic]](
-        self, dtype: Dtype, /, *, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, Dtype]: ...
     def __array_function__(
         self,
         func: Any,
@@ -180,12 +131,12 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         :rtype: Any
         """
 
-    def __eq__(self, value: Any) -> NPBool[_ShapeT, dtype[np.bool_]]: ...
-    def __ne__(self, value: Any) -> NPBool[_ShapeT, dtype[np.bool_]]: ...
-    def __lt__(self, value: Any) -> NPBool[_ShapeT, dtype[np.bool_]]: ...
-    def __le__(self, value: Any) -> NPBool[_ShapeT, dtype[np.bool_]]: ...
-    def __gt__(self, value: Any) -> NPBool[_ShapeT, dtype[np.bool_]]: ...
-    def __ge__(self, value: Any) -> NPBool[_ShapeT, dtype[np.bool_]]: ...
+    def __eq__(self, value: Any) -> NPBool: ...
+    def __ne__(self, value: Any) -> NPBool: ...
+    def __lt__(self, value: Any) -> NPBool: ...
+    def __le__(self, value: Any) -> NPBool: ...
+    def __gt__(self, value: Any) -> NPBool: ...
+    def __ge__(self, value: Any) -> NPBool: ...
     def __add__(self, value: Any) -> NPNumber: ...
     def __radd__(self, value: Any) -> NPNumber: ...
     def __iadd__(self, value: Any) -> NPNumber: ...
@@ -210,14 +161,12 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
     def __divmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
     def __rdivmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
     def __abs__(self) -> Self: ...
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _DType]]: ...
+    def __iter__(self) -> Iterator[np.ndarray]: ...
     @property
-    def element_type(
-        self,
-    ) -> tuple[type[int], type[float], type[complex], type[np.number]]:
+    def element_type(self) -> tuple[type[int], type[float], type[complex], type[np.number]]:
         """NPNumberで許可されている型を取得する"""
 
-    def to_1d(self) -> NPNumber[tuple[int], _Dtypes]:
+    def to_1d(self) -> NPNumber:
         """
         配列を1次元にフラット化した新しい配列オブジェクトを返す
 
@@ -245,16 +194,16 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
     def sturgesval(self) -> np.floating:
         """スタージェスの公式を求める"""
 
-    def cussum(self) -> NPNumber[_ShapeT, _DType]:
+    def cussum(self) -> NPNumber:
         """一つ前の元の値との和を求める"""
 
-    def cusdiff(self) -> NPNumber[_ShapeT, _DType]:
+    def cusdiff(self) -> NPNumber:
         """一つ前の元の値との差を求める"""
 
-    def cusprod(self) -> NPNumber[_ShapeT, _DType]:
+    def cusprod(self) -> NPNumber:
         """一つ前の元の値との積を求める"""
 
-    def cusdiv(self) -> NPNumber[_ShapeT, _DType]:
+    def cusdiv(self) -> NPNumber:
         """一つ前の元の値との除算を求める"""
 
     def percentile(
@@ -291,14 +240,9 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         :type method: TYPEMETHOD
         """
 
-    @overload
-    def ratio(self, axis: None = None) -> NPNumber[_ShapeT, np.dtype[np.float64]]: ...
-    @overload
-    def ratio(self, axis: SupportsIndex) -> NPNumber[_ShapeT, np.dtype[np.float64]]: ...
-    def ratio():
+    def ratio(self, axis: SupportsIndex|None=None) -> NPNumber:
         """行や列ごとの合計に対する比率を求める"""
 
-    @overload
     @classmethod
     def zeros(
         cls,
@@ -308,45 +252,9 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         *,
         device: Literal["cpu"] | None = None,
         like: npt._SupportsArrayFunc | None = None,
-    ) -> NPNumber[tuple[int], np.dtype[np.float64]]: ...
-    @overload
-    @classmethod
-    def zeros[DTypeT: np.generic](
-        cls,
-        shape: SupportsIndex,
-        dtype: type[DTypeT],
-        order: _OrderCF = "C",
-        *,
-        device: Literal["cpu"] | None = None,
-        like: npt._SupportsArrayFunc | None = None,
-    ) -> NPNumber[tuple[int], np.dtype[DTypeT]]: ...
-    @overload
-    @classmethod
-    def zeros[ShapeT: npt._Shape](
-        cls,
-        shape: ShapeT,
-        dtype: None = None,
-        order: _OrderCF = "C",
-        *,
-        device: Literal["cpu"] | None = None,
-        like: npt._SupportsArrayFunc | None = None,
-    ) -> NPNumber[ShapeT, np.dtype[np.float64]]: ...
-    @overload
-    @classmethod
-    def zeros[ShapeT: npt._Shape, DTypeT: np.generic](
-        cls,
-        shape: ShapeT,
-        dtype: type[DTypeT],
-        order: _OrderCF = "C",
-        *,
-        device: Literal["cpu"] | None = None,
-        like: npt._SupportsArrayFunc | None = None,
-    ) -> NPNumber[ShapeT, np.dtype[DTypeT]]: ...
-    @classmethod
-    def zeros() -> NPNumber:
+    ) -> NPNumber:
         """指定された形状と型の新しい配列を0で埋めた配列を作成する"""
 
-    @overload
     @classmethod
     def ones(
         cls,
@@ -356,52 +264,17 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         *,
         device: Literal["cpu"] | None = None,
         like: npt._SupportsArrayFunc | None = None,
-    ) -> NPNumber[tuple[int], np.dtype[np.float64]]: ...
-    @overload
-    @classmethod
-    def ones[DTypeT: np.generic](
-        cls,
-        shape: SupportsIndex,
-        dtype: type[DTypeT],
-        order: _OrderCF = "C",
-        *,
-        device: Literal["cpu"] | None = None,
-        like: npt._SupportsArrayFunc | None = None,
-    ) -> NPNumber[tuple[int], np.dtype[DTypeT]]: ...
-    @overload
-    @classmethod
-    def ones[ShapeT: npt._Shape](
-        cls,
-        shape: ShapeT,
-        dtype: None = None,
-        order: _OrderCF = "C",
-        *,
-        device: Literal["cpu"] | None = None,
-        like: npt._SupportsArrayFunc | None = None,
-    ) -> NPNumber[ShapeT, np.dtype[np.float64]]: ...
-    @overload
-    @classmethod
-    def ones[ShapeT: npt._Shape, DTypeT: np.generic](
-        cls,
-        shape: ShapeT,
-        dtype: type[DTypeT],
-        order: _OrderCF = "C",
-        *,
-        device: Literal["cpu"] | None = None,
-        like: npt._SupportsArrayFunc | None = None,
-    ) -> NPNumber[ShapeT, np.dtype[DTypeT]]: ...
-    @classmethod
-    def ones():
+    ) -> NPNumber:
         """指定された形状と型の新しい配列を0で埋めた配列を作成する"""
 
-    def zero_check(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
+    def zero_check(self) -> NPBool:
         """要素の数値が0の位置を探す"""
 
     def IQR(
         self,
         axis: sgt.Typeaxis = None,
         method: TYPEMETHOD = "linear",
-    ) -> NPNumber[_ShapeT, dtype[np.float64]]:
+    ) -> NPNumber:
         """
         配列の四分位数を求める
 
@@ -411,19 +284,19 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         :type method: TYPEMETHOD
         """
 
-    def isinf(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
+    def isinf(self) -> NPBool:
         """配列の各要素が正または負の無限大(`np.inf`)かどうかを判定する"""
 
-    def isnan(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
+    def isnan(self) -> NPBool:
         """配列の各要素がNaN(`np.nan`)であるかを判定する"""
 
-    def isfinite(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
+    def isfinite(self) -> NPBool:
         """配列の各要素が有限かどうかを判定する"""
 
-    def isposinf(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
+    def isposinf(self) -> NPBool:
         """配列の各要素が正の無限大(`+np.inf`)かどうかを判定する"""
 
-    def isreal(self) -> NPBool[_ShapeT, dtype[np.bool_]]:
+    def isreal(self) -> NPBool:
         """配列の各要素が実数かどうかを判定する"""
 
     def iscomplexobj(self) -> bool:
@@ -446,47 +319,18 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         :type order: str | Sequence[str] | None
         """
 
-    @overload
     @classmethod
-    def arange[ScalarT: sgt._ArangeNumber_DtypeLike](
+    def arange(
         cls,
         start: sgt._Arange_Number,
         /,
         stop: sgt._Arange_Number,
         step: sgt._Arange_Number | None = 1,
         *,
-        dtype: ScalarT,
+        dtype: sgt._ArangeNumber_DtypeLike,
         device: Literal["cpu"] | None = None,
         like: npt._SupportsArrayFunc | None = None,
-    ) -> NPNumber[tuple[int], dtype[ScalarT]]: ...
-    @overload
-    @classmethod
-    def arange(
-        cls,
-        start: npt._IntLike_co,
-        /,
-        stop: npt._IntLike_co | None,
-        step: npt._IntLike_co | None = 1,
-        *,
-        dtype: type[int] | sgt._DTypeLike[np.int_] | None = None,
-        device: Literal["cpu"] | None = None,
-        like: npt._SupportsArrayFunc | None = None,
-    ) -> NPNumber[tuple[int], dtype[np.int_]]: ...
-    @overload
-    @classmethod
-    def arange(
-        cls,
-        start: float | np.floating,
-        /,
-        stop: npt._FloatLike_co,
-        step: npt._FloatLike_co | None = 1,
-        *,
-        dtype: type[float] | sgt._DTypeLike[np.float64] | None = None,
-        device: Literal["cpu"] | None = None,
-        like: npt._SupportsArrayFunc | None = None,
-    ) -> NPNumber[tuple[int], dtype[np.float64 | Any]]: ...
-    @classmethod
-    def arange():
+    ) -> NPNumber:
         """
         指定された間隔内で等間隔の数値の配列を返す
 
@@ -505,7 +349,6 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         :return: 指定された間隔内で等間隔の数値の配列を返す
         """
 
-    @overload
     @classmethod
     def linspace(
         cls,
@@ -518,247 +361,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         axis: SupportsIndex = 0,
         *,
         device: Literal["cpu"] | None = None,
-    ) -> NPNumber[tuple[int], np.float64]: ...
-    @overload
-    @classmethod
-    def linspace(
-        cls,
-        start: complex,
-        stop: complex,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        retstep: Literal[False] = False,
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-        *,
-        device: Literal["cpu"] | None = None,
-    ) -> NPNumber[tuple[int], np.complex128 | Any]: ...
-    @overload
-    @classmethod
-    def linspace[ScalarT: np.generic](
-        cls,
-        start: npt._ComplexLike_co,
-        stop: npt._ComplexLike_co,
-        num: SupportsIndex,
-        endpoint: bool,
-        retstep: Literal[False],
-        dtype: sgt._DTypeLike[ScalarT],
-        axis: SupportsIndex = 0,
-        *,
-        device: Literal["cpu"] | None = None,
-    ) -> NPNumber[tuple[int], ScalarT]: ...
-    @overload
-    @classmethod
-    def linspace[ScalarT: np.generic](
-        cls,
-        start: npt._ComplexLike_co,
-        stop: npt._ComplexLike_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        retstep: Literal[False] = False,
-        *,
-        dtype: sgt._DTypeLike[ScalarT],
-        axis: SupportsIndex = 0,
-        device: Literal["cpu"] | None = None,
-    ) -> NPNumber[tuple[int], ScalarT]: ...
-    @overload
-    @classmethod
-    def linspace(
-        cls,
-        start: _ToArrayFloat64,
-        stop: _ToArrayFloat64,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        retstep: Literal[False] = False,
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-        *,
-        device: Literal["cpu"] | None = None,
-    ) -> NPNumber[sgt._AnyShape, np.float64]: ...
-    @overload
-    @classmethod
-    def linspace(
-        cls,
-        start: sgt._ArrayLikeFloat_co,
-        stop: sgt._ArrayLikeFloat_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        retstep: Literal[False] = False,
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-        *,
-        device: Literal["cpu"] | None = None,
-    ) -> NPNumber[sgt._AnyShape, np.float64 | Any]: ...
-    @overload
-    @classmethod
-    def linspace(
-        cls,
-        start: sgt._ArrayLikeFloat_co,
-        stop: sgt._ArrayLikeFloat_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        retstep: Literal[False] = False,
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-        *,
-        device: Literal["cpu"] | None = None,
-    ) -> NPNumber[sgt._AnyShape, np.complex128 | Any]: ...
-    @overload
-    @classmethod
-    def linspace[ScalarT: np.generic](
-        cls,
-        start: sgt._ArrayLikeFloat_co,
-        stop: sgt._ArrayLikeFloat_co,
-        num: SupportsIndex,
-        endpoint: bool,
-        retstep: Literal[False],
-        dtype: sgt._DTypeLike[ScalarT],
-        axis: SupportsIndex = 0,
-        *,
-        device: Literal["cpu"] | None = None,
-    ) -> NPNumber[sgt._AnyShape, ScalarT]: ...
-    @overload
-    @classmethod
-    def linspace[ScalarT: np.generic](
-        cls,
-        start: sgt._ArrayLikeFloat_co,
-        stop: sgt._ArrayLikeFloat_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        retstep: Literal[False] = False,
-        *,
-        dtype: sgt._DTypeLike[ScalarT],
-        axis: SupportsIndex = 0,
-        device: Literal["cpu"] | None = None,
-    ) -> NPNumber[sgt._AnyShape, ScalarT]: ...
-    @overload
-    @classmethod
-    def linspace(
-        cls,
-        start: sgt._ArrayLikeFloat_co,
-        stop: sgt._ArrayLikeFloat_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        retstep: Literal[False] = False,
-        dtype: npt.DTypeLike | None = None,
-        axis: SupportsIndex = 0,
-        *,
-        device: Literal["cpu"] | None = None,
-    ) -> NPNumber[sgt._AnyShape, sgt.Incomplete]: ...
-    @overload
-    @classmethod
-    def linspace(
-        cls,
-        start: _ToFloat64,
-        stop: _ToFloat64,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        *,
-        retstep: Literal[True],
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-        device: Literal["cpu"] | None = None,
-    ) -> tuple[NPNumber[tuple[int], np.float64], np.float64]: ...
-    @overload
-    @classmethod
-    def linspace(
-        cls,
-        start: complex,
-        stop: complex,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        *,
-        retstep: Literal[True],
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-        device: Literal["cpu"] | None = None,
-    ) -> tuple[NPNumber[tuple[int], np.complex128 | Any], np.complex128 | Any]: ...
-    @overload
-    @classmethod
-    def linspace[ScalarT: np.generic](
-        cls,
-        start: npt._ComplexLike_co,
-        stop: npt._ComplexLike_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        *,
-        retstep: Literal[True],
-        dtype: sgt._DTypeLike[ScalarT],
-        axis: SupportsIndex = 0,
-        device: Literal["cpu"] | None = None,
-    ) -> tuple[NPNumber[tuple[int], ScalarT], ScalarT]: ...
-    @overload
-    @classmethod
-    def linspace(
-        cls,
-        start: _ToArrayFloat64,
-        stop: _ToArrayFloat64,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        *,
-        retstep: Literal[True],
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-        device: Literal["cpu"] | None = None,
-    ) -> tuple[NPNumber[sgt._AnyShape, np.float64], np.float64]: ...
-    @overload
-    @classmethod
-    def linspace(
-        cls,
-        start: sgt._ArrayLikeFloat_co,
-        stop: sgt._ArrayLikeFloat_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        *,
-        retstep: Literal[True],
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-        device: Literal["cpu"] | None = None,
-    ) -> tuple[NPNumber[sgt._AnyShape, np.float64 | Any], np.float64 | Any]: ...
-    @overload
-    @classmethod
-    def linspace(
-        cls,
-        start: sgt._ArrayLikeFloat_co,
-        stop: sgt._ArrayLikeFloat_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        *,
-        retstep: Literal[True],
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-        device: Literal["cpu"] | None = None,
-    ) -> tuple[NPNumber[sgt._AnyShape, np.complex128 | Any], np.complex128 | Any]: ...
-    @overload
-    @classmethod
-    def linspace[ScalarT: np.generic](
-        cls,
-        start: sgt._ArrayLikeFloat_co,
-        stop: sgt._ArrayLikeFloat_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        *,
-        retstep: Literal[True],
-        dtype: sgt._DTypeLike[ScalarT],
-        axis: SupportsIndex = 0,
-        device: Literal["cpu"] | None = None,
-    ) -> tuple[NPNumber[sgt._AnyShape, ScalarT], ScalarT]: ...
-    @overload
-    @classmethod
-    def linspace(
-        cls,
-        start: sgt._ArrayLikeComplex_co,
-        stop: sgt._ArrayLikeComplex_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        *,
-        retstep: Literal[True],
-        dtype: npt.DTypeLike | None = None,
-        axis: SupportsIndex = 0,
-        device: Literal["cpu"] | None = None,
-    ) -> tuple[NPNumber[sgt._AnyShape, sgt.Incomplete], sgt.Incomplete]: ...
-    @classmethod
-    def linspace():
+    ) -> NPNumber:
         """
         指定された間隔で等間隔​​の数値の配列を作成する
 
@@ -784,7 +387,6 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         :type device: Literal["cpu"] | None
         """
 
-    @overload
     @classmethod
     def logspace(
         cls,
@@ -795,119 +397,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         base: _ToFloat64 = 10.0,
         dtype: None = None,
         axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, np.float64]: ...
-    @overload
-    @classmethod
-    def logspace(
-        cls,
-        start: complex,
-        stop: complex,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        base: complex = 10.0,
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, np.complex128 | Any]: ...
-    @overload
-    @classmethod
-    def logspace[ScalarT: np.generic](
-        cls,
-        start: npt._ComplexLike_co,
-        stop: npt._ComplexLike_co,
-        num: SupportsIndex,
-        endpoint: bool,
-        base: npt._ComplexLike_co,
-        dtype: sgt._DTypeLike[ScalarT],
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, ScalarT]: ...
-    @overload
-    @classmethod
-    def logspace[ScalarT: np.generic](
-        cls,
-        start: npt._ComplexLike_co,
-        stop: npt._ComplexLike_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        base: sgt._ArrayLikeComplex_co = 10.0,
-        *,
-        dtype: sgt._DTypeLike[ScalarT],
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, ScalarT]: ...
-    @overload
-    @classmethod
-    def logspace(
-        cls,
-        start: _ToArrayFloat64,
-        stop: _ToArrayFloat64,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        base: _ToArrayFloat64 = 10.0,
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, np.float64]: ...
-    @overload
-    @classmethod
-    def logspace(
-        cls,
-        start: sgt._ArrayLikeComplex_co,
-        stop: sgt._ArrayLikeComplex_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        base: sgt._ArrayLikeComplex_co = 10.0,
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, np.float64 | Any]: ...
-    @overload
-    @classmethod
-    def logspace(
-        cls,
-        start: sgt._ArrayLikeComplex_co,
-        stop: sgt._ArrayLikeComplex_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        base: sgt._ArrayLikeComplex_co = 10.0,
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, np.complex128 | Any]: ...
-    @overload
-    @classmethod
-    def logspace[ScalarT: np.generic](
-        cls,
-        start: sgt._ArrayLikeComplex_co,
-        stop: sgt._ArrayLikeComplex_co,
-        num: SupportsIndex,
-        endpoint: bool,
-        base: sgt._ArrayLikeComplex_co,
-        dtype: sgt._DTypeLike[ScalarT],
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, ScalarT]: ...
-    @overload
-    @classmethod
-    def logspace[ScalarT: np.generic](
-        cls,
-        start: sgt._ArrayLikeComplex_co,
-        stop: sgt._ArrayLikeComplex_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        base: sgt._ArrayLikeComplex_co = 10.0,
-        *,
-        dtype: sgt._DTypeLike[ScalarT],
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, ScalarT]: ...
-    @overload
-    @classmethod
-    def logspace(
-        cls,
-        start: sgt._ArrayLikeComplex_co,
-        stop: sgt._ArrayLikeComplex_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        base: sgt._ArrayLikeComplex_co = 10.0,
-        dtype: npt.DTypeLike | None = None,
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, sgt.Incomplete]: ...
-    @classmethod
-    def logspace():
+    ) -> NPNumber:
         """
         対数スケール上で等間隔に並んだ数値の配列を作成する
 
@@ -931,99 +421,6 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         :type axis: int
         """
 
-    @overload
-    @classmethod
-    def geomspace(
-        start: _ToFloat64,
-        stop: _ToFloat64,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[tuple[int], np.float64]: ...
-    @overload
-    @classmethod
-    def geomspace(
-        start: complex,
-        stop: complex,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[tuple[int], np.complex128 | Any]: ...
-    @overload
-    @classmethod
-    def geomspace[ScalarT: np.generic](
-        start: npt._ComplexLike_co,
-        stop: npt._ComplexLike_co,
-        num: SupportsIndex,
-        endpoint: bool,
-        dtype: sgt._DTypeLike[ScalarT],
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[tuple[int], ScalarT]: ...
-    @overload
-    @classmethod
-    def geomspace[ScalarT: np.generic](
-        start: npt._ComplexLike_co,
-        stop: npt._ComplexLike_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        *,
-        dtype: sgt._DTypeLike[ScalarT],
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[tuple[int], ScalarT]: ...
-    @overload
-    @classmethod
-    def geomspace(
-        start: _ToArrayFloat64,
-        stop: _ToArrayFloat64,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, np.float64]: ...
-    @overload
-    @classmethod
-    def geomspace(
-        start: sgt._ArrayLikeFloat_co,
-        stop: sgt._ArrayLikeFloat_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, np.float64 | Any]: ...
-    @overload
-    @classmethod
-    def geomspace(
-        start: sgt._ArrayLikeComplex_co,
-        stop: sgt._ArrayLikeComplex_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        dtype: None = None,
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, np.complex128 | Any]: ...
-    @overload
-    @classmethod
-    def geomspace[ScalarT: np.generic](
-        start: sgt._ArrayLikeComplex_co,
-        stop: sgt._ArrayLikeComplex_co,
-        num: SupportsIndex,
-        endpoint: bool,
-        dtype: sgt._DTypeLike[ScalarT],
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, ScalarT]: ...
-    @overload
-    @classmethod
-    def geomspace[ScalarT: np.generic](
-        start: sgt._ArrayLikeComplex_co,
-        stop: sgt._ArrayLikeComplex_co,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        *,
-        dtype: sgt._DTypeLike[ScalarT],
-        axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, ScalarT]: ...
-    @overload
     @classmethod
     def geomspace(
         start: sgt._ArrayLikeComplex_co,
@@ -1032,9 +429,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         endpoint: bool = True,
         dtype: npt.DTypeLike | None = None,
         axis: SupportsIndex = 0,
-    ) -> NPNumber[sgt._AnyShape, sgt.Incomplete]: ...
-    @classmethod
-    def geomspace():
+    ) -> NPNumber:
         """
         対数スケール上で等間隔に配置された(等比数列)配列を作成する
 
@@ -1056,171 +451,47 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         :type axis: int
         """
 
-    @overload
     @property
-    def degree[Dtype: sgt._RealNumericDTypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[np.floating]]:
+    def degree(self) -> NPNumber:
         """角度を弧度法から度数法に変換する"""
 
-    @overload
     @property
-    def degree[Dtype: sgt._ComplexDtypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[sgt._ComplexDtypeLike]]:
+    def deg(self) -> NPNumber:
+        """角度を弧度法から度数法に変換する"""
+    def deg_to_rad(self) -> NPNumber:
         """角度を弧度法から度数法に変換する"""
 
-    @overload
     @property
-    def deg[Dtype: sgt._RealNumericDTypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[np.floating]]:
-        """角度を弧度法から度数法に変換する"""
-
-    @overload
-    @property
-    def deg[Dtype: sgt._ComplexDtypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[sgt._ComplexDtypeLike]]:
-        """角度を弧度法から度数法に変換する"""
-
-    @overload
-    def deg_to_rad[Dtype: sgt._RealNumericDTypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[np.floating]]:
-        """角度を弧度法から度数法に変換する"""
-
-    @overload
-    def deg_to_rad[Dtype: sgt._ComplexDtypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[sgt._ComplexDtypeLike]]:
-        """角度を弧度法から度数法に変換する"""
-
-    @overload
-    @property
-    def radian[Dtype: sgt._RealNumericDTypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[np.floating]]:
+    def radian(self) -> NPNumber:
         """角度を度数法から弧度法に変換する"""
 
-    @overload
     @property
-    def radian[Dtype: sgt._ComplexDtypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[sgt._ComplexDtypeLike]]:
+    def rad(self) -> NPNumber:
         """角度を度数法から弧度法に変換する"""
 
-    @overload
-    @property
-    def rad[Dtype: sgt._RealNumericDTypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[np.floating]]:
+    def rad_to_deg(self) -> NPNumber:
         """角度を度数法から弧度法に変換する"""
 
-    @overload
-    @property
-    def rad[Dtype: sgt._ComplexDtypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[sgt._ComplexDtypeLike]]:
-        """角度を度数法から弧度法に変換する"""
-
-    @overload
-    def rad_to_deg[Dtype: sgt._RealNumericDTypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[np.floating]]:
-        """角度を度数法から弧度法に変換する"""
-
-    @overload
-    def rad_to_deg[Dtype: sgt._ComplexDtypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[sgt._ComplexDtypeLike]]:
-        """角度を度数法から弧度法に変換する"""
-
-    @overload
-    def dsin[Dtype: sgt._RealNumericDTypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[np.floating]]:
+    def dsin(self) -> NPNumber:
         """三角関数の正弦を度数法として要素毎に計算する"""
 
-    @overload
-    def dsin[Dtype: sgt._ComplexDtypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[sgt._ComplexDtypeLike]]:
-        """三角関数の正弦を度数法として要素毎に計算する"""
-
-    @overload
-    def dcos[Dtype: sgt._RealNumericDTypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[np.floating]]:
+    def dcos(self) -> NPNumber:
         """三角関数の余弦を度数法として要素毎に計算する"""
 
-    @overload
-    def dcos[Dtype: sgt._ComplexDtypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[sgt._ComplexDtypeLike]]:
-        """三角関数の余弦を度数法として要素毎に計算する"""
-
-    @overload
-    def dtan[Dtype: sgt._RealNumericDTypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[np.floating]]:
+    def dtan(self) -> NPNumber:
         """三角関数の正接を度数法として要素毎に計算する"""
 
-    @overload
-    def dtan[Dtype: sgt._ComplexDtypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[sgt._ComplexDtypeLike]]:
-        """三角関数の正接を度数法として要素毎に計算する"""
-
-    @overload
-    def darcsin[Dtype: sgt._RealNumericDTypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[np.floating]]:
+    def darcsin(self) -> NPNumber:
         """逆正弦関数の結果を度数法で求める"""
 
-    @overload
-    def darcsin[Dtype: sgt._ComplexDtypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[sgt._ComplexDtypeLike]]:
-        """逆正弦関数の結果を度数法で求める"""
-
-    @overload
-    def darccos[Dtype: sgt._RealNumericDTypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[np.floating]]:
+    def darccos(self) -> NPNumber:
         """逆余弦関数の結果を度数法で求める"""
 
-    @overload
-    def darccos[Dtype: sgt._ComplexDtypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[sgt._ComplexDtypeLike]]:
-        """逆余弦関数の結果を度数法で求める"""
-
-    @overload
-    def dartan[Dtype: sgt._RealNumericDTypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[np.floating]]:
+    def dartan(self) -> NPNumber:
         """逆正接関数の結果を度数法で求める"""
 
-    @overload
-    def dartan[Dtype: sgt._ComplexDtypeLike](
-        self: NPNumber[_ShapeT, dtype[Dtype]],
-    ) -> NPNumber[_ShapeT, dtype[sgt._ComplexDtypeLike]]:
-        """逆正接関数の結果を度数法で求める"""
+    def dtypeinfo(self) -> np.iinfo|np.finfo:...
 
-    @overload
-    def dtypeinfo[_DType: sgt._FloatsNumericDTypeLike](
-        self: NPNumber[_ShapeT, _DType],
-    ) -> np.finfo[_DType]: ...
-    @overload
-    def dtypeinfo[_DType: sgt._ComplexDtypeLike](
-        self: NPNumber[_ShapeT, _DType],
-    ) -> np.finfo[_DType]: ...
-    @overload
-    def dtypeinfo[_DType: sgt._IntsNumericDTypeLike](
-        self: NPNumber[_ShapeT, _DType],
-    ) -> np.iinfo[_DType]: ...
-    @overload
     @classmethod
     def random(
         cls,
@@ -1228,65 +499,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         dtype: sgt._DTypeLikeFloat = ...,
         out: None = None,
         seed: sgt._Seed = None,
-    ) -> NPNumber[np.float64, np.dtype[np.float64]]: ...
-    @overload
-    @classmethod
-    def random(
-        cls,
-        size: sgt._ShapeLike,
-        dtype: sgt._DTypeLikeF64 = ...,
-        out: None = None,
-        seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._ShapeLike, np.dtype[np.float64]]: ...
-    @overload
-    @classmethod
-    def random(
-        cls,
-        size: sgt._ShapeLike,
-        dtype: sgt._DTypeLikeF32,
-        out: None = None,
-        seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._ShapeLike, np.dtype[np.float32]]: ...
-    @overload
-    @classmethod
-    def random[ShapeT: _ArrayF64](
-        cls,
-        size: sgt._ShapeLike | None = None,
-        dtype: sgt._DTypeLikeF64 = ...,
-        *,
-        out: ShapeT,
-        seed: sgt._Seed = None,
-    ) -> ShapeT: ...
-    @overload
-    @classmethod
-    def random[ShapeT: _ArrayF32](
-        cls,
-        size: sgt._ShapeLike | None = None,
-        *,
-        dtype: sgt._DTypeLikeF32,
-        out: ShapeT,
-        seed: sgt._Seed = None,
-    ) -> ShapeT: ...
-    @overload
-    @classmethod
-    def random[ShapeT: _ArrayF64](
-        cls,
-        size: sgt._ShapeLike | None,
-        dtype: sgt._DTypeLikeF64,
-        out: ShapeT,
-        seed: sgt._Seed = None,
-    ) -> ShapeT: ...
-    @overload
-    @classmethod
-    def random[ShapeT: _ArrayF32](
-        cls,
-        size: sgt._ShapeLike | None,
-        dtype: sgt._DTypeLikeF32,
-        out: ShapeT,
-        seed: sgt._Seed = None,
-    ) -> ShapeT: ...
-    @classmethod
-    def random():
+    ) -> NPNumber:
         """
         [0,1)の範囲でランダムな浮動小数点数の配列を作成する
 
@@ -1296,7 +509,6 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         :param seed: 乱数のシード値を指定する
         """
 
-    @overload
     @classmethod
     def uniform(
         cls,
@@ -1306,45 +518,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         shape: None = None,
         dtype: None = None,
         seed: sgt._Seed = None,
-    ) -> NPNumber[float, np.dtype[np.float64]]: ...
-    @overload
-    @classmethod
-    def uniform[Dtype: npt.DTypeLike](
-        cls,
-        /,
-        low: npt._FloatLike_co = 0.0,
-        high: npt._FloatLike_co = 1.0,
-        shape: None = None,
-        *,
-        dtype: Dtype,
-        seed: sgt._Seed = None,
-    ) -> NPNumber[float, np.dtype[Dtype]]: ...
-    @overload
-    @classmethod
-    def uniform(
-        cls,
-        /,
-        low: npt._FloatLike_co = 0.0,
-        high: npt._FloatLike_co = 1.0,
-        *,
-        shape: sgt._ShapeLike,
-        dtype: None = None,
-        seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
-    @overload
-    @classmethod
-    def uniform[Dtype: npt.DTypeLike](
-        cls,
-        /,
-        low: npt._FloatLike_co = 0.0,
-        high: npt._FloatLike_co = 1.0,
-        *,
-        shape: sgt._ShapeLike,
-        dtype: Dtype,
-        seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
-    @classmethod
-    def uniform():
+    ) -> NPNumber:
         """
         一様分布からなる配列を生成する
 
@@ -1355,7 +529,6 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         :param seed: 乱数のシード値を指定する
         """
 
-    @overload
     @classmethod
     def normal(
         cls,
@@ -1365,45 +538,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         shape: None = None,
         dtype: None = None,
         seed: sgt._Seed = None,
-    ) -> NPNumber[float, np.dtype[np.float64]]: ...
-    @overload
-    @classmethod
-    def normal[Dtype: np.number](
-        cls,
-        /,
-        loc: npt._FloatLike_co = 0.0,
-        scale: npt._FloatLike_co = 1.0,
-        shape: None = None,
-        *,
-        dtype: sgt._DTypeLike[Dtype],
-        seed: sgt._Seed = None,
-    ) -> NPNumber[float, np.dtype[Dtype]]: ...
-    @overload
-    @classmethod
-    def normal(
-        cls,
-        /,
-        loc: npt._FloatLike_co = 0.0,
-        scale: npt._FloatLike_co = 1.0,
-        *,
-        shape: sgt._ShapeLike,
-        dtype: None = None,
-        seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[np.float64]]: ...
-    @overload
-    @classmethod
-    def normal[Dtype: np.number](
-        cls,
-        /,
-        loc: npt._FloatLike_co = 0.0,
-        scale: npt._FloatLike_co = 1.0,
-        *,
-        shape: sgt._ShapeLike,
-        dtype: sgt._DTypeLike[Dtype],
-        seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
-    @classmethod
-    def normal():
+    ) -> NPNumber:
         """
         正規分布からなる配列を生成する
 
@@ -1414,7 +549,6 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         :param seed: 乱数のシード値を指定する
         """
 
-    @overload
     @classmethod
     def randint(
         cls,
@@ -1425,48 +559,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         dtype: None = None,
         endpoint: bool = False,
         seed: sgt._Seed = None,
-    ) -> NPNumber[np.int64, np.dtype[np.int64]]: ...
-    @overload
-    @classmethod
-    def randint[Dtype: np.integer | np.bool](
-        cls,
-        /,
-        low: int,
-        high: int | None = None,
-        shape: None = None,
-        *,
-        dtype: sgt._DTypeLike[Dtype],
-        endpoint: bool = False,
-        seed: sgt._Seed = None,
-    ) -> NPNumber[np.int64, np.dtype[Dtype]]: ...
-    @overload
-    @classmethod
-    def randint(
-        cls,
-        /,
-        low: int,
-        high: int | None = None,
-        *,
-        shape: sgt._ShapeLike,
-        dtype: None = None,
-        endpoint: bool = False,
-        seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[np.int64]]: ...
-    @overload
-    @classmethod
-    def randint[Dtype: np.integer | np.bool](
-        cls,
-        /,
-        low: int,
-        high: int | None = None,
-        *,
-        shape: sgt._ShapeLike,
-        dtype: sgt._DTypeLike[Dtype],
-        endpoint: bool = False,
-        seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
-    @classmethod
-    def randint():
+    ) -> NPNumber:
         """
         最小値から最大値までの整数の値からなるランダムに生成された配列を作成する
 
@@ -1478,7 +571,6 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         :param seed: 乱数のシード値を指定する
         """
 
-    @overload
     @classmethod
     def logseries(
         cls,
@@ -1487,83 +579,7 @@ class NPNumber[_ShapeT: sgt._ArrayLikeNumber_co, _Dtypes: _DType](
         size: None = None,
         dtype: None = None,
         seed: sgt._Seed = None,
-    ) -> NPNumber[np.int64, np.dtype[np.int64]]: ...
-    @overload
-    @classmethod
-    def logseries[Dtype: np.number](
-        cls,
-        /,
-        p: npt._FloatLike_co,
-        size: None = None,
-        *,
-        dtype: sgt._DTypeLike[Dtype],
-        seed: sgt._Seed = None,
-    ) -> NPNumber[Dtype, np.dtype[Dtype]]: ...
-    @overload
-    @classmethod
-    def logseries(
-        cls,
-        /,
-        p: sgt._ArrayLikeFloat_co,
-        size: sgt._ShapeLike,
-        dtype: None = None,
-        seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[np.int64]]: ...
-    @overload
-    @classmethod
-    def logseries[Dtype: np.number](
-        cls,
-        /,
-        p: sgt._ArrayLikeFloat_co,
-        size: sgt._ShapeLike,
-        *,
-        dtype: sgt._DTypeLike[Dtype],
-        seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
-    @overload
-    @classmethod
-    def logseries(
-        cls,
-        /,
-        p: _NDArrayLikeFloat,
-        size: None = None,
-        dtype: None = None,
-        seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[np.int64]]: ...
-    @overload
-    @classmethod
-    def logseries[Dtype: np.number](
-        cls,
-        /,
-        p: _NDArrayLikeFloat,
-        size: None = None,
-        *,
-        dtype: sgt._DTypeLike[Dtype],
-        seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]]: ...
-    @overload
-    @classmethod
-    def logseries(
-        cls,
-        /,
-        p: sgt._ArrayLikeFloat_co,
-        size: None = None,
-        dtype: None = None,
-        seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[np.int64]] | Any: ...
-    @overload
-    @classmethod
-    def logseries[Dtype: np.number](
-        cls,
-        /,
-        p: sgt._ArrayLikeFloat_co,
-        size: None = None,
-        *,
-        dtype: sgt._DTypeLike[Dtype],
-        seed: sgt._Seed = None,
-    ) -> NPNumber[sgt._AnyShape, np.dtype[Dtype]] | Any: ...
-    @classmethod
-    def logseries():
+    ) -> NPNumber:
         """
         対数級数分布からなる配列を生成する
 

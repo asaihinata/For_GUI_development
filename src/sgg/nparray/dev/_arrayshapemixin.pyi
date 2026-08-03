@@ -44,6 +44,7 @@ class _ArrayCommonMixin:
 
     @overload
     def __iter__(self) -> Iterator[Any]: ...
+    def __array__(self, dtype: None = None, /, *, copy: bool | None = None) -> np.ndarray: ...
     def lengtharange(self) -> NDArray[np.uint64]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す

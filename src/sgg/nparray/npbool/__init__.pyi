@@ -1,54 +1,21 @@
 from types import GenericAlias
-from typing import Any, Iterator, Self, TypeVar, overload
+from typing import Any, Iterator, Self
 
 import numpy as np
-
-from sgg.typing import _ArrayLikeBool_co, _BoolDTypeLike, _DTypeLike
 
 from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPBool"]
 
-_DTypeT = TypeVar(
-    "_DTypeT", bound=np.generic, default=np.dtype[np.bool_], covariant=True
-)
-
-class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
-    _ArrayCommonMixin, np.ndarray[_ShapeT, _Dtypes]
-):
+class NPBool(_ArrayCommonMixin, np.ndarray):
     """`np.ndarray`を継承したbool型の配列クラス"""
 
     _element_type: tuple[type[bool], type[np.bool_], type[np.bool]]
     _default_dtype: type[np.bool_]
 
-    @overload
-    def __new__[ShapeT, Dtype](
-        cls,
-        data: NPBool[ShapeT, Dtype],
-        /,
-        dtype: None = None,
-        *,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-        copy: bool = True,
-    ) -> NPBool[ShapeT, Dtype]: ...
-    @overload
-    def __new__[ShapeT, Dtype: _BoolDTypeLike](
-        cls,
-        data: NPBool[ShapeT],
-        /,
-        dtype: Dtype,
-        *,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-        copy: bool = True,
-    ) -> NPBool[ShapeT, np.dtype[Dtype]]: ...
-    @overload
     def __new__(
         cls,
-        data: _ShapeT,
+        data: Any,
         /,
         dtype: None = None,
         *,
@@ -56,20 +23,7 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPBool[_ShapeT, np.dtype[np.bool_]]: ...
-    @overload
-    def __new__[Dtype: _BoolDTypeLike](
-        cls,
-        data: _ShapeT,
-        /,
-        dtype: Dtype,
-        *,
-        d_ndim: int | None = None,
-        min_ndim: int | None = None,
-        max_ndim: int | None = None,
-        copy: bool = True,
-    ) -> NPBool[_ShapeT, np.dtype[Dtype]]: ...
-    def __new__() -> Self:
+    ) -> NPBool:
         """
         新しい配列オブジェクトインスタンスを生成する
 
@@ -113,14 +67,6 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
         :return: 処理結果を返す
         """
 
-    @overload
-    def __array__(
-        self, dtype: None = None, /, *, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, _Dtypes]: ...
-    @overload
-    def __array__[Dtype: np._dtype | _DTypeLike[np.generic]](
-        self, dtype: Dtype, /, *, copy: bool | None = None
-    ) -> np.ndarray[_ShapeT, Dtype]: ...
     def __array_function__(
         self,
         func: Any,
@@ -145,7 +91,7 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
 
     def __eq__(self, value: Any) -> Self: ...
     def __ne__(self, value: Any) -> Self: ...
-    def __iter__(self) -> Iterator[np.ndarray[_ShapeT, _Dtypes]]: ...
+    def __iter__(self) -> Iterator[np.ndarray]: ...
     def __invert__(self) -> Self:
         """配列内の真偽値を反転させる"""
 
@@ -170,7 +116,7 @@ class NPBool[_ShapeT: _ArrayLikeBool_co, _Dtypes: _DTypeT](
     def FalseCount(self) -> int:
         """配列内の`False`の数を数える"""
 
-    def to_1d(self) -> NPBool[tuple[int], _Dtypes]:
+    def to_1d(self) -> NPBool:
         """
         配列を1次元にフラット化した新しい配列オブジェクトを返す
 
