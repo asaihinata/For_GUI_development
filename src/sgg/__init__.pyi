@@ -2235,7 +2235,7 @@ class Guis:
         explode: list[int, float] | tuple[int, float] | int | float = ...,
         label: str | list[str] | None = ...,
         color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_PieGraph],
+        alpha: int | float = 1.0,
     ) -> dict[str, Any]:
         """
         円グラフを作成する
