@@ -262,6 +262,7 @@ class Guis:
 
     @staticmethod
     def Texts(
+        *,
         text: str = ...,
         width: int | float | None = ...,
         height: int | float | None = ...,
@@ -333,6 +334,7 @@ class Guis:
 
     @staticmethod
     def Link(
+        *,
         link: str | WindowsPath | PosixPath | Path,
         text: str = ...,
         takefocus: bool = ...,
@@ -407,6 +409,7 @@ class Guis:
 
     @staticmethod
     def Images(
+        *,
         path: WindowsPath | PosixPath | Path = ...,
         takefocus: bool = ...,
         key: str | None = ...,
@@ -424,6 +427,7 @@ class Guis:
 
     @staticmethod
     def Imagebyte(
+        *,
         byte: bytes | BytesIO = ..., takefocus: bool = ..., key: str | None = ...
     ) -> dict[str, Any]:
         """
@@ -439,6 +443,7 @@ class Guis:
 
     @staticmethod
     def Imagelink(
+        *,
         link: str = ..., takefocus: bool = ..., key: str | None = ...
     ) -> dict[str, Any]:
         """
@@ -454,6 +459,7 @@ class Guis:
 
     @staticmethod
     def Buttons(
+        *,
         text: str = ...,
         function: function | tuple[function, ...] | None = ...,
         takefocus: bool = ...,
@@ -527,6 +533,7 @@ class Guis:
 
     @staticmethod
     def Input(
+        *,
         text: str = ...,
         show: str = ...,
         insertwidth: int | float = 2,
@@ -592,6 +599,7 @@ class Guis:
 
     @staticmethod
     def Multiline(
+        *,
         text: str = ...,
         insertbg: ColorTypeN = "#000000",
         insertwidth: int | float = 2,
@@ -669,6 +677,7 @@ class Guis:
 
     @staticmethod
     def Table(
+        *,
         header_fg: ColorTypeN = "#000000",
         header_bg: ColorTypeN = "#cccccc",
         values: list = ...,
@@ -711,6 +720,7 @@ class Guis:
 
     @staticmethod
     def Tree(
+        *,
         values: list = ...,
         header: list = ...,
         bg: ColorTypeN = "#e0e0e0",
@@ -762,6 +772,7 @@ class Guis:
 
     @staticmethod
     def Listboxs(
+        *,
         values: list | tuple = ...,
         width: int | float = 20,
         height: int = 5,
@@ -830,6 +841,7 @@ class Guis:
 
     @staticmethod
     def TCombobox(
+        *,
         values: list = ...,
         default: str = ...,
         state: Literal["normal", "readonly", "disabled"] = "normal",
@@ -874,6 +886,7 @@ class Guis:
 
     @staticmethod
     def Radio(
+        *,
         text: str = ...,
         group: str = "default",
         bg: ColorType = ...,
@@ -940,6 +953,7 @@ class Guis:
 
     @staticmethod
     def Checkbox(
+        *,
         text: str = ...,
         default: bool = False,
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = ...,
@@ -1002,6 +1016,7 @@ class Guis:
 
     @staticmethod
     def Frames(
+        *,
         layout: list = ...,
         title: str = ...,
         labelanchor: Literal[
@@ -1068,6 +1083,7 @@ class Guis:
 
     @staticmethod
     def Menus(
+        *,
         list: list = ...,
         tearoff: bool = False,
         takefocus: bool = ...,
@@ -1121,6 +1137,7 @@ class Guis:
 
     @staticmethod
     def Menubuttons(
+        *,
         list: list = ...,
         text: str = ...,
         tearoff: bool = False,
@@ -1186,6 +1203,7 @@ class Guis:
 
     @staticmethod
     def Column(
+        *,
         layout: list[list] = [[]],
         borderwidth: int | float = 0,
         takefocus: bool = ...,
@@ -1222,6 +1240,7 @@ class Guis:
 
     @staticmethod
     def Slidebar(
+        *,
         value: int | float = 0,
         digits: int = 0,
         resolution: int | float = 1,
@@ -1257,6 +1276,7 @@ class Guis:
 
     @staticmethod
     def InputNumber(
+        *,
         values: int | float = 0,
         min: int | float = 0,
         max: int | float = 100,
@@ -1329,6 +1349,7 @@ class Guis:
 
     @staticmethod
     def FileLoad(
+        *,
         text: str = "select File",
         title: str = "select File",
         padx: int | float = ...,
@@ -1405,6 +1426,7 @@ class Guis:
 
     @staticmethod
     def FolderLoad(
+        *,
         text: str = "select Folder",
         title: str = "select Folder",
         wraplength: int | float = 0,
@@ -1480,6 +1502,7 @@ class Guis:
 
     @staticmethod
     def Savebtn(
+        *,
         initialfile: str = ...,
         initialdir: str = ...,
         filetypes: list[tuple[str, str]] = [("All files", "*.*")],
@@ -1567,6 +1590,7 @@ class Guis:
 
     @staticmethod
     def Colorbtn(
+        *,
         color: ColorTypeN = "#ffffff",
         text: str = "select color",
         title: str = "select color",
@@ -1645,6 +1669,7 @@ class Guis:
 
     @staticmethod
     def Tab(
+        *,
         tabs: list[list[str, list[list]]] = ...,
         bg: ColorTypeN = ...,
         fg: ColorTypeN = ...,
@@ -1683,6 +1708,7 @@ class Guis:
 
     @staticmethod
     def TProgressbar(
+        *,
         value: int | float = 0,
         max: int | float = 100,
         length: int | float = 200,
@@ -1715,6 +1741,7 @@ class Guis:
 
     @staticmethod
     def Barcode(
+        *,
         data: str | int,
         fotmat: Literal[
             "codabar",
@@ -1758,6 +1785,7 @@ class Guis:
 
     @staticmethod
     def QRImage(
+        *,
         text: str = ..., takefocus: bool = ..., key: str | None = ...
     ) -> dict[str, Any]:
         """
@@ -1773,6 +1801,7 @@ class Guis:
     # 2D Graph
     @staticmethod
     def LineGraph(
+        *,
         x: TypeArrayLikeNS,
         y: TypeArrayLikeNS,
         linewidth: int | float = 2,
@@ -1852,6 +1881,7 @@ class Guis:
 
     @staticmethod
     def BarGraph(
+        *,
         x: TypeArrayLikeNS,
         y: TypeArraysLikeNumber,
         logs: bool = False,
@@ -1931,6 +1961,7 @@ class Guis:
 
     @staticmethod
     def BarhGraph(
+        *,
         x: TypeArraysLikeNumber,
         y: TypeArrayLikeNS,
         logs: bool = False,
@@ -2010,6 +2041,7 @@ class Guis:
 
     @staticmethod
     def Funne(
+        *,
         data: TypeArrayLikeNumber,
         xmajormaxbins: int = 11,
         label: str | list[str] | None = ...,
@@ -2086,6 +2118,7 @@ class Guis:
 
     @staticmethod
     def Stacked(
+        *,
         data: TypeArraysLikeNumber,
         dataname: TypeArraysLikeNS,
         width: int | float = 0.8,
@@ -2156,6 +2189,7 @@ class Guis:
 
     @staticmethod
     def Stackedh(
+        *,
         data: TypeArraysLikeNumber,
         dataname: TypeArrayLikeNS,
         height: int | float = 0.8,
@@ -2226,6 +2260,7 @@ class Guis:
 
     @staticmethod
     def Pie(
+        *,
         data: TypeArrayLikeNumber,
         startangle: int | float = 0,
         startangletype: bool = True,
@@ -2276,6 +2311,7 @@ class Guis:
 
     @staticmethod
     def Boxplot(
+        *,
         data: TypeArraysLikeNumber,
         label: str | list[str] | None = ...,
         legend: bool = False,
@@ -2356,6 +2392,7 @@ class Guis:
 
     @staticmethod
     def Waterfall(
+        *,
         x: TypeArraysLikeNS,
         y: TypeArrayLikeNumber,
         sums: bool = False,
@@ -2438,6 +2475,7 @@ class Guis:
 
     @staticmethod
     def Waterfallh(
+        *,
         x: TypeArraysLikeNS,
         y: TypeArrayLikeNumber,
         sums: bool = False,
@@ -2521,6 +2559,7 @@ class Guis:
 
     @staticmethod
     def Scatter(
+        *,
         x: TypeArraysLikeNS,
         y: TypeArraysLikeNS,
         marker: Type_Marker = "o",
@@ -2603,6 +2642,7 @@ class Guis:
 
     @staticmethod
     def Stem(
+        *,
         x: TypeArrayLikeNumber = ...,
         y: TypeArrayLikeNumber = ...,
         label: str | list[str] | None = ...,
@@ -2686,6 +2726,7 @@ class Guis:
 
     @staticmethod
     def Step(
+        *,
         data: TypeArraysLikeNumber,
         fill: bool = False,
         baseline: int | float = 0,
@@ -2759,6 +2800,7 @@ class Guis:
 
     @staticmethod
     def Hatplot(
+        *,
         x: TypeArrayLikeNumber,
         data: TypeArrayLikeNumber,
         color: ColorTypeN = "#4477aa",
@@ -2823,6 +2865,7 @@ class Guis:
 
     @staticmethod
     def Hist(
+        *,
         data: TypeArrayLikeNumber,
         label: str | list[str] | None = ...,
         width: int | float = 1,
@@ -2913,6 +2956,7 @@ class Guis:
 
     @staticmethod
     def Stack(
+        *,
         x: TypeArrayLikeNumber,
         y: TypeArraysLikeNumber,
         hatch: str | None = None,
@@ -2986,6 +3030,7 @@ class Guis:
 
     @staticmethod
     def Linefill(
+        *,
         x: TypeArrayLikeNumber,
         ymin: TypeArrayLikeNumber = ...,
         ymax: TypeArrayLikeNumber = ...,
@@ -3060,6 +3105,7 @@ class Guis:
 
     @staticmethod
     def Ecdf(
+        *,
         data: TypeArraysLikeNumber,
         complementary: bool = False,
         compress: bool = False,
@@ -3138,6 +3184,7 @@ class Guis:
 
     @staticmethod
     def Errorbar(
+        *,
         x: TypeArraysLikeNumber,
         y: TypeArraysLikeNumber,
         err: TypeArraysLikeNumber = ...,
@@ -3241,6 +3288,7 @@ class Guis:
 
     @staticmethod
     def Eventplot(
+        *,
         data: TypeArrayLikeNumber,
         linewidth: int | float = 1,
         linelength: int | float = 1,
@@ -3317,6 +3365,7 @@ class Guis:
 
     @staticmethod
     def Hist2d(
+        *,
         x: TypeArrayLikeNumber,
         y: TypeArrayLikeNumber,
         max: int | float = ...,
@@ -3407,6 +3456,7 @@ class Guis:
 
     @staticmethod
     def Violinplot(
+        *,
         self,
         data: TypeArraysLikeNumber,
         x: TypeArrayLikeNumber,
@@ -3503,6 +3553,7 @@ class Guis:
 
     @staticmethod
     def Hexbin(
+        *,
         self,
         x: TypeArrayLikeNumber,
         y: TypeArrayLikeNumber,
@@ -3589,6 +3640,7 @@ class Guis:
     # 3D
     @staticmethod
     def DScatter(
+        *,
         x: TypeArraysLikeNumber,
         y: TypeArraysLikeNumber,
         z: TypeArraysLikeNumber,
@@ -3681,6 +3733,7 @@ class Guis:
     @overload
     @staticmethod
     def Barpolar(
+        *,
         x: TypeArrayLikeNumber = ...,
         y: TypeArrayLikeNumber = ...,
         align: Literal["center", "edge"] = "center",
@@ -3744,6 +3797,7 @@ class Guis:
     @overload
     @staticmethod
     def Barpolar(
+        *,
         data: TypeArrayLikeNumber = ...,
         align: Literal["center", "edge"] = "center",
         width: int | float = 1,
@@ -3804,6 +3858,7 @@ class Guis:
     @overload
     @staticmethod
     def Stempolar(
+        *,
         x: TypeArrayLikeNumber = ...,
         y: TypeArrayLikeNS = ...,
         linefmt: str | None = None,
@@ -3870,6 +3925,7 @@ class Guis:
     @overload
     @staticmethod
     def Stempolar(
+        *,
         data: TypeArrayLikeNS = ...,
         linefmt: str | None = None,
         markerfmt: str | None = None,
@@ -3933,6 +3989,7 @@ class Guis:
     @overload
     @staticmethod
     def Errorpolar(
+        *,
         x: TypeArrayLikeNumber = ...,
         y: TypeArrayLikeNS = ...,
         err: TypeArrayLikeNumber = ...,
@@ -4023,6 +4080,7 @@ class Guis:
     @overload
     @staticmethod
     def Errorpolar(
+        *,
         data: TypeArrayLikeNS = ...,
         err: TypeArrayLikeNumber = ...,
         xerr: TypeArrayLikeNumber = ...,
@@ -4110,6 +4168,7 @@ class Guis:
     @overload
     @staticmethod
     def Linepolar(
+        *,
         x: TypeArrayLikeNumber = ...,
         y: TypeArrayLikeNS = ...,
         linewidth: int | float = 2,
@@ -4176,6 +4235,7 @@ class Guis:
     @overload
     @staticmethod
     def Linepolar(
+        *,
         data: TypeArrayLikeNS = ...,
         linewidth: int | float = 2,
         markersize: int | float = 10,
@@ -4237,6 +4297,7 @@ class Guis:
         """
 
     def Eventpolar(
+        *,
         data: TypeArrayLikeNumber = ...,
         linewidth: int | float = 1,
         linelength: int | float = 1,
@@ -4300,6 +4361,7 @@ class Guis:
     @overload
     @staticmethod
     def Scatterpolar(
+        *,
         x: TypeArrayLikeNumber = ...,
         y: TypeArrayLikeNS = ...,
         marker: Type_Marker = "o",
@@ -4360,6 +4422,7 @@ class Guis:
     @overload
     @staticmethod
     def Scatterpolar(
+        *,
         data: TypeArrayLikeNS = ...,
         marker: Type_Marker = "o",
         markersize: int | float = 10,
@@ -4417,6 +4480,7 @@ class Guis:
     # Radar
     @staticmethod
     def RadarLine(
+        *,
         data: TypeArrayLikeNumber = ...,
         markersize: int | float = 10,
         marker: Type_Marker = "",
@@ -4471,6 +4535,7 @@ class Guis:
 
     @staticmethod
     def RadarFill(
+        *,
         data: TypeArrayLikeNumber = ...,
         **kwargs: Unpack[Dict_Radar],
     ) -> dict[str, Any]:
