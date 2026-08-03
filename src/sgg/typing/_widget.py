@@ -7,6 +7,10 @@ __all__ = [
     "ColorTypeN",
     "Dict_2DGraph",
     "Dict_3DGraph",
+    "Dict_LinefillGraph",
+    "Dict_PieGraph",
+    "Dict_Polar",
+    "Dict_Radar",
     "GetList",
     "Type_icon",
     "Type_Marker",
@@ -103,19 +107,41 @@ class _Dict_Graph_base(TypedDict):
     title: str = ...
     size: tuple[int | float, int | float] = (500, 400)
     dpi: int | float = 100
-    alpha: int | float = 1.0
     fg: ColorTypeN = "#000000"
     bg: ColorTypeN = "#ffffff"
-    graph_grid: ColorTypeN = "#b7b7b7"
+    tight_layout: bool = True
 
 
 class Dict_2DGraph(_Dict_Graph_base):
+    alpha: int | float = 1.0
     xlabel: str = ...
     ylabel: str = ...
+    graph_grid: ColorTypeN = "#b7b7b7"
     grid_xy: bool = True
     grid_x: bool = False
     grid_y: bool = False
-    tight_layout: bool = True
+    xticksrange: int | float | tuple[int | float, int | float] = 0
+    yticksrange: int | float | tuple[int | float, int | float] = 0
+    xmajorint: bool = True
+    ymajorint: bool = True
+    ticksshow: bool = False
+    xticksshow: bool = False
+    yticksshow: bool = False
+    xticksdirection: Literal["out", "in", "inout"] = "out"
+    yticksdirection: Literal["out", "in", "inout"] = "out"
+
+
+class Dict_PieGraph(_Dict_Graph_base):
+    alpha: int | float = 1.0
+
+
+class Dict_LinefillGraph(_Dict_Graph_base):
+    xlabel: str = ...
+    ylabel: str = ...
+    graph_grid: ColorTypeN = "#b7b7b7"
+    grid_xy: bool = True
+    grid_x: bool = False
+    grid_y: bool = False
     xticksrange: int | float | tuple[int | float, int | float] = 0
     yticksrange: int | float | tuple[int | float, int | float] = 0
     xmajorint: bool = True
@@ -128,14 +154,15 @@ class Dict_2DGraph(_Dict_Graph_base):
 
 
 class Dict_3DGraph(_Dict_Graph_base):
+    alpha: int | float = 1.0
     xlabel: str = ...
     ylabel: str = ...
     zlabel: str = ...
+    graph_grid: ColorTypeN = "#b7b7b7"
     grid_xyz: bool = True
     grid_x: bool = False
     grid_y: bool = False
     grid_z: bool = False
-    tight_layout: bool = True
     xticksrange: int | float | tuple[int | float, int | float] = 0
     yticksrange: int | float | tuple[int | float, int | float] = 0
     xmajorint: bool = True
@@ -151,3 +178,27 @@ class Dict_3DGraph(_Dict_Graph_base):
     mouse_rotation: bool = True
     elev: int | float = 30
     azim: int | float = 45
+
+
+class Dict_Polar(_Dict_Graph_base):
+    alpha: int | float = 1.0
+    graph_grid: ColorTypeN = "#b7b7b7"
+    grid_xy: bool = True
+    grid_x: bool = False
+    grid_y: bool = False
+    xticksrange: int | float | tuple[int | float, int | float] = 0
+    yticksrange: int | float | tuple[int | float, int | float] = 0
+    ticksshow: bool = False
+    xticksshow: bool = False
+    yticksshow: bool = False
+
+
+class Dict_Radar(_Dict_Graph_base):
+    alpha: int | float = 1.0
+    graph_grid: ColorTypeN = "#b7b7b7"
+    grid_xy: bool = True
+    grid_x: bool = False
+    grid_y: bool = False
+    ticksshow: bool = False
+    xticksshow: bool = False
+    yticksshow: bool = False
