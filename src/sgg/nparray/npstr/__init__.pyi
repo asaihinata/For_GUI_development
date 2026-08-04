@@ -1,11 +1,10 @@
 """基本的な文字列の操作をするモジュール"""
 
-from types import GenericAlias
-from typing import Any, Iterator, Self, TypeVar, overload
+from typing import Any, Iterator
 
 import numpy as np
 import numpy._typing as npt
-from numpy import bytes_, dtype, str_
+from numpy import bytes_, str_
 from numpy.dtypes import StringDType
 
 import sgg.typing as sgt
@@ -23,9 +22,9 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     _default_dtype: type[str_]
     def __new__(
         cls,
-        data: Any,
+        data: sgt._ArrayLikeAnyString_co,
         /,
-        dtype: type[bytes] | bytes,
+        dtype: sgt._StringsDTypeLike | None = None,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -48,7 +47,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: Self
+        :rtype: NPString
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
@@ -101,7 +100,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     def __add__(self, value: npt._ArrayLikeStr_co) -> NPString: ...
     __iadd__ = __add__
     __radd__ = __add__
-    def __mul__(self, i: npt._ArrayLikeInt_co) -> Self:
+    def __mul__(self, i: npt._ArrayLikeInt_co) -> NPString:
         """
         配列内の要素を`i`回付け加える
 
@@ -112,7 +111,6 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     __rmul__ = __mul__
 
     def __iter__(self) -> Iterator[np.ndarray]: ...
-    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     @property
     def element_type(
         self,
@@ -131,17 +129,17 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         """配列内の要素の文字に`val`を付け加える"""
 
     @property
-    def low(self) -> Self:
+    def low(self) -> NPString:
         """`NPString`内の要素のアルファベットを小文字に変換する"""
 
     @property
-    def up(self) -> Self:
+    def up(self) -> NPString:
         """`NPString`内の要素のアルファベットを大文字に変換する"""
 
-    def lower(self) -> Self:
+    def lower(self) -> NPString:
         """`NPString`内の要素のアルファベットを小文字に変換する"""
 
-    def upper(self) -> Self:
+    def upper(self) -> NPString:
         """`NPString`内の要素のアルファベットを大文字に変換する"""
 
     def stringlen(self) -> NPNumber:
@@ -168,7 +166,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         start: npt._ArrayLikeInt_co | None = None,
         stop: npt._ArrayLikeInt_co | np._NoValueType | None = None,
         step: npt._ArrayLikeInt_co | None = None,
-    ) -> Self:
+    ) -> NPString:
         """
         文字列を`start`,`stop`,`step`で指定されたスライスに分割する
 
@@ -180,7 +178,10 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         :type step: _ArrayLikeInt_co | None
         """
 
-    def strip(self,chars: sgt._ArrayLikeStr_co | None = None,) -> NPString:
+    def strip(
+        self,
+        chars: sgt._ArrayLikeStr_co | None = None,
+    ) -> NPString:
         """
         配列の各要素について,先頭と末尾の文字を取り除いた配列を返す
 
@@ -190,7 +191,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def center(
         self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeAnyString_co = " "
-    ) -> Self:
+    ) -> NPString:
         """
         長さと`width`の幅内で中央寄せされた配列を返す
 
@@ -202,7 +203,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def left(
         self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeAnyString_co = " "
-    ) -> Self:
+    ) -> NPString:
         """
         長さと`width`の幅内で左寄せされた配列を返す
 
@@ -214,7 +215,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def right(
         self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeAnyString_co = " "
-    ) -> Self:
+    ) -> NPString:
         """
         長さと`width`の幅内で右寄せされた配列を返す
 
@@ -224,7 +225,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         :type fillchar: _ArrayLikeAnyString_co
         """
 
-    def zerofill(self, width: npt._ArrayLikeInt_co) -> Self:
+    def zerofill(self, width: npt._ArrayLikeInt_co) -> NPString:
         """
         数値文字列の左側を0で埋めて返します。
 
@@ -232,7 +233,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         :type width: _ArrayLikeInt_co
         """
 
-    def expandtabs(self, tabsize: npt._ArrayLikeInt_co = 8) -> Self:
+    def expandtabs(self, tabsize: npt._ArrayLikeInt_co = 8) -> NPString:
         """
         各文字列要素について,すべてのタブを1つ以上のスペースに置き換えた配列を返す
 
@@ -274,10 +275,10 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         :type end: _ArrayLikeInt_co | None
         """
 
-    def capitalize(self) -> Self:
+    def capitalize(self) -> NPString:
         """各要素の最初の文字のみを大文字にしたコピーを返します。"""
 
-    def title(self) -> Self:
+    def title(self) -> NPString:
         """文字列を要素ごとにタイトルケースに変換する"""
 
     def decode(

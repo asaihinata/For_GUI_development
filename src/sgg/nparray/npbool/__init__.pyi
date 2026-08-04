@@ -1,7 +1,8 @@
-from types import GenericAlias
-from typing import Any, Iterator, Self
+from typing import Any, Iterator
 
 import numpy as np
+
+import sgg.typing as sgt
 
 from ..dev import _ArrayCommonMixin
 
@@ -12,12 +13,11 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
 
     _element_type: tuple[type[bool], type[np.bool_], type[np.bool]]
     _default_dtype: type[np.bool_]
-
     def __new__(
         cls,
-        data: Any,
+        data: sgt._ArrayLikeBool_co,
         /,
-        dtype: None = None,
+        dtype: sgt._BoolDTypeLike | None = None,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -40,12 +40,11 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: Self
+        :rtype: NPBool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -89,10 +88,10 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
         :rtype: Any
         """
 
-    def __eq__(self, value: Any) -> Self: ...
-    def __ne__(self, value: Any) -> Self: ...
+    def __eq__(self, value: Any) -> NPBool: ...
+    def __ne__(self, value: Any) -> NPBool: ...
     def __iter__(self) -> Iterator[np.ndarray]: ...
-    def __invert__(self) -> Self:
+    def __invert__(self) -> NPBool:
         """配列内の真偽値を反転させる"""
 
     @property
@@ -105,7 +104,7 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
     def any(self) -> bool:
         """どれかの要素が`True`かを調べる"""
 
-    def inversion(self) -> Self:
+    def inversion(self) -> NPBool:
         """配列内の真偽値を反転させる"""
 
     @property

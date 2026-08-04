@@ -1,8 +1,6 @@
 """基本的な数値の操作をするモジュール"""
 
-from types import GenericAlias
-from typing import (Any, Iterator, Literal, Self, Sequence, SupportsIndex,
-                    overload)
+from typing import Any, Iterator, Literal, Sequence, SupportsIndex, overload
 
 import numpy as np
 import numpy._typing as npt
@@ -16,12 +14,6 @@ from ..npbool import NPBool
 
 __all__ = ["NPNumber"]
 type _ToFloat64 = float | np.integer | np.bool
-type _ToArrayFloat64 = sgt._DualArrayLike[
-    np.dtype[np.float64 | np.integer | np.bool], float
-]
-type _NDArrayLikeFloat = NDArray[np.generic[float]] | npt._NestedSequence[float]
-type _ArrayF32 = NPNumber[sgt._ShapeLike, np.dtype[type[np.float32]]]
-type _ArrayF64 = NPNumber[sgt._ShapeLike, np.dtype[type[np.float64]]]
 type _OrderCF = Literal["C", "F"] | None
 type _SortKind = Literal[
     "Q",
@@ -54,12 +46,11 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
 
     _element_type: tuple[type[int], type[float], type[complex], type[np.number]]
     _default_dtype: type[np.float64]
-
     def __new__(
         cls,
-        data: Any,
+        data: sgt._ArrayLikeNumber_co,
         /,
-        dtype: None=None,
+        dtype: sgt._NumericDTypeLike | None = None,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -82,12 +73,11 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: Self
+        :rtype: NPNumber
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -160,10 +150,12 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
     def __ipow__(self, value: Any) -> NPNumber: ...
     def __divmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
     def __rdivmod__(self, value: Any) -> tuple[NPNumber, NPNumber]: ...
-    def __abs__(self) -> Self: ...
+    def __abs__(self) -> NPNumber: ...
     def __iter__(self) -> Iterator[np.ndarray]: ...
     @property
-    def element_type(self) -> tuple[type[int], type[float], type[complex], type[np.number]]:
+    def element_type(
+        self,
+    ) -> tuple[type[int], type[float], type[complex], type[np.number]]:
         """NPNumberで許可されている型を取得する"""
 
     def to_1d(self) -> NPNumber:
@@ -240,7 +232,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :type method: TYPEMETHOD
         """
 
-    def ratio(self, axis: SupportsIndex|None=None) -> NPNumber:
+    def ratio(self, axis: SupportsIndex | None = None) -> NPNumber:
         """行や列ごとの合計に対する比率を求める"""
 
     @classmethod
@@ -307,7 +299,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         axis: SupportsIndex | None = -1,
         kind: _SortKind | None = None,
         order: str | Sequence[str] | None = None,
-    ) -> Self:
+    ) -> NPNumber:
         """
         配列内の数値を並び替える
 
@@ -458,6 +450,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
     @property
     def deg(self) -> NPNumber:
         """角度を弧度法から度数法に変換する"""
+
     def deg_to_rad(self) -> NPNumber:
         """角度を弧度法から度数法に変換する"""
 
@@ -490,8 +483,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
     def dartan(self) -> NPNumber:
         """逆正接関数の結果を度数法で求める"""
 
-    def dtypeinfo(self) -> np.iinfo|np.finfo:...
-
+    def dtypeinfo(self) -> np.iinfo | np.finfo: ...
     @classmethod
     def random(
         cls,

@@ -1,7 +1,8 @@
+from types import GenericAlias
 from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
-from numpy._typing import DTypeLike, _ArrayLikeFloat_co, _ShapeLike
+from numpy._typing import DTypeLike, _ArrayLikeFloat_co, _DTypeLike, _ShapeLike
 from numpy.typing import NDArray
 
 from sgg.typing import _Seed
@@ -44,7 +45,9 @@ class _ArrayCommonMixin:
 
     @overload
     def __iter__(self) -> Iterator[Any]: ...
-    def __array__(self, dtype: None = None, /, *, copy: bool | None = None) -> np.ndarray: ...
+    def __array__(
+        self, dtype: _DTypeLike | None = None, /, *, copy: bool | None = None
+    ) -> np.ndarray: ...
     def lengtharange(self) -> NDArray[np.uint64]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
@@ -107,7 +110,7 @@ class _ArrayCommonMixin:
 
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
-
+    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     @property
     def element_type(self) -> tuple[type, ...] | None:
         """許可されている型を取得する(各サブクラスで戻り値の型を絞り込む想定)"""

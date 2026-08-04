@@ -1,7 +1,6 @@
 """様々な日付の文字列フォーマットから日付に変換するオブジェクト"""
 
-from types import GenericAlias
-from typing import Any, Iterator, Literal, Self, overload
+from typing import Any, Iterator, Literal, overload
 
 import numpy as np
 from numpy import datetime64
@@ -19,14 +18,14 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
 
     _element_type: type[datetime64]
     _default_dtype: Literal["datetime64[D]"]
-
-    @overload
     def __new__(
         cls,
-        data: Any,
+        data: sgt._ArrayLikeStr_co,
         /,
-        dtype: None=None,
+        dtype: sgt._DtypeLikeDT_All = None,
         *,
+        yearfirst: bool = False,
+        dayfirst: bool = False,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -52,15 +51,15 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: Self
+        :rtype: NPFormatDate
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    def __add__(self, value: sgt._ArrayLikeTD64_co) -> Self: ...
+    def __add__(self, value: sgt._ArrayLikeTD64_co) -> NPFormatDate: ...
     __iadd__ = __add__
     __radd__ = __add__
-    def __sub__(self, value: sgt._ArrayLikeTD64_co) -> Self: ...
+    def __sub__(self, value: sgt._ArrayLikeTD64_co) -> NPFormatDate: ...
     __isub__ = __sub__
     __rsub__ = __sub__
     def __eq__(self, value: Any) -> NPBool: ...
@@ -69,7 +68,6 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
     def __le__(self, value: Any) -> NPBool: ...
     def __gt__(self, value: Any) -> NPBool: ...
     def __ge__(self, value: Any) -> NPBool: ...
-    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -145,7 +143,7 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         :type days: bool
         """
 
-    def diff_today()->NPNumber:
+    def diff_today() -> NPNumber:
         """
         配列の日付と今日の日付の差を求める
 
@@ -154,13 +152,9 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         """
 
     @overload
-    def range(
-        self, axis: None = None
-    ) -> tuple[datetime64, datetime64]: ...
+    def range(self, axis: None = None) -> tuple[datetime64, datetime64]: ...
     @overload
-    def range(
-        self, axis: np._ShapeLike
-    ) -> tuple[NPFormatDate, NPFormatDate]: ...
+    def range(self, axis: np._ShapeLike) -> tuple[NPFormatDate, NPFormatDate]: ...
     def range():
         """
         配列内の日付の最小の日付と最大の日付を求める

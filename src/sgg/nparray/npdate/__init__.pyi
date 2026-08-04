@@ -1,6 +1,4 @@
-from datetime import date, datetime
-from types import GenericAlias
-from typing import Any, Iterator, Literal, Self, TypeVar, overload
+from typing import Any, Iterator, Literal, overload
 
 import numpy as np
 from numpy import datetime64
@@ -22,11 +20,11 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     _default_dtype: Literal["datetime64[D]"]
     def __new__(
         cls,
-        data: Any,
-        dtype: None,
+        data: sgt._ArrayLikeDT64_co,
         /,
-        d_ndim: int | None = None,
+        dtype: sgt._DtypeLikeDT_All = None,
         *,
+        d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
@@ -47,12 +45,11 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: Self
+        :rtype: NPDate
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -96,10 +93,10 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :rtype: Any
         """
 
-    def __add__(self, value: sgt._ArrayLikeTD64_co) -> Self: ...
+    def __add__(self, value: sgt._ArrayLikeTD64_co) -> NPDate: ...
     __iadd__ = __add__
     __radd__ = __add__
-    def __sub__(self, value: sgt._ArrayLikeTD64_co) -> Self: ...
+    def __sub__(self, value: sgt._ArrayLikeTD64_co) -> NPDate: ...
     __isub__ = __sub__
     __rsub__ = __sub__
     def __eq__(self, value: Any) -> NPBool: ...
@@ -108,7 +105,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     def __le__(self, value: Any) -> NPBool: ...
     def __gt__(self, value: Any) -> NPBool: ...
     def __ge__(self, value: Any) -> NPBool: ...
-    def __iter__(self) -> Iterator[np.ndarray[Any, Any]]: ...
+    def __iter__(self) -> Iterator[np.ndarray]: ...
     @property
     def year(self) -> NPNumber:
         """配列の年を返す"""
@@ -175,7 +172,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     def unix(cls) -> NPDate:
         """UTC時刻を返す"""
 
-    def strftime(self,format: str) -> NPString:
+    def strftime(self, format: str) -> NPString:
         """日付のフォーマットを別のフォーマットで変換する"""
 
     def weekday(self) -> NPNumber:
@@ -210,9 +207,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     @overload
     def range(self, axis: None = None) -> tuple[datetime64, datetime64]: ...
     @overload
-    def range(
-        self, axis: np._ShapeLike
-    ) -> tuple[NPDate, NPDate]: ...
+    def range(self, axis: np._ShapeLike) -> tuple[NPDate, NPDate]: ...
     def range():
         """
         配列内の日付の最小の日付と最大の日付を求める

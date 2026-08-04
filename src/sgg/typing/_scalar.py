@@ -1,5 +1,5 @@
-from typing import SupportsInt,SupportsFloat,SupportsComplex,TypeVar
 from datetime import date, datetime, timedelta
+from typing import SupportsComplex, SupportsFloat, SupportsInt, TypeVar
 
 import numpy as np
 
@@ -17,7 +17,7 @@ __all__ = [
     "_StrScalar",
     "_TD64Like_co",
     "_UIntLike_co",
-    "_ScalarT"
+    "_ScalarT",
 ]
 type _Arange_Number = np.integer | np.floating | SupportsInt | SupportsFloat
 type _BoolScalar = bool | np.bool | np.bool_

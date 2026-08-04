@@ -4,6 +4,7 @@ import numpy as np
 
 __all__ = [
     "_AllDateUnit",
+    "_AllTimeUnit",
     "_DateUnit",
     "_DayU64",
     "_DayUnit",
@@ -240,3 +241,4 @@ type _TD64Codes_timedelta = Literal[
     ">m8[μs]",
 ]
 type _TD64Codes = Literal[_TD64Codes_any, _TD64Codes_int, _TD64Codes_timedelta]
+type _AllTimeUnit = Literal[_DT64Codes, _TD64Unit]

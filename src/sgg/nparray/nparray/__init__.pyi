@@ -1,4 +1,3 @@
-from types import GenericAlias
 from typing import Any, Literal
 
 import numpy as np
@@ -16,12 +15,11 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
 
     _element_type: None
     _default_dtype: Literal["object"]
-
     def __new__(
         cls,
-        data:Any
-        ,/,
-        dtype: _DTypeLike|None = None,
+        data: Any,
+        /,
+        dtype: _DTypeLike | None = None,
         *,
         d_ndim: int | None = None,
         min_ndim: int | None = None,
@@ -44,12 +42,13 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: Self
+        :rtype: NPArray
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
+
     @classmethod
-    def full(fill_value: Any, shape: sgt._AnyShape, dtype:_DTypeLike|None=None):
+    def full(fill_value: Any, shape: sgt._AnyShape, dtype: _DTypeLike | None = None):
         """指定された形状と配列の型を,`fill_value`で埋める"""
 
     @classmethod
@@ -64,7 +63,6 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
         :raises ShapeError: `shape`が正の整数のみで構成されていない場合に発生させる
         """
 
-    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -108,8 +106,8 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
         :rtype: Any
         """
 
-    def __eq__(self, value: Any) -> NPArray:...
-    def __ne__(self, value: Any) -> NPArray:...
+    def __eq__(self, value: Any) -> NPArray: ...
+    def __ne__(self, value: Any) -> NPArray: ...
     @property
     def element_type(self) -> None:
         """NPArrayで許可されている型を取得する"""
