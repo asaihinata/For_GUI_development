@@ -10,6 +10,7 @@ __all__ = [
     "_DateArangeScalar",
     "_DateParseScalar",
     "_FloatLike_co",
+    "_RealNumeric_co",
     "_IntLike_co",
     "_IntsLike_co",
     "_NumberScalar",
@@ -25,6 +26,7 @@ type _UIntLike_co = _BoolScalar | np.unsignedinteger
 type _IntLike_co = SupportsInt | np.integer | _BoolScalar
 type _IntsLike_co = np.unsignedinteger | _IntLike_co
 type _FloatLike_co = SupportsFloat | np.floating | _IntsLike_co
+type _RealNumeric_co = _FloatLike_co
 type _NumberScalar = SupportsInt | SupportsFloat | SupportsComplex | np.number | _BoolScalar
 type _StrScalar = str | np.str_
 type _BytesScalar = bytes | np.bytes_

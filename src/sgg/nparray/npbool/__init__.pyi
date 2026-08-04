@@ -1,4 +1,4 @@
-from typing import Any, Iterator
+from typing import Any, Iterator,overload
 
 import numpy as np
 
@@ -13,13 +13,13 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
 
     _element_type: tuple[type[bool], type[np.bool_], type[np.bool]]
     _default_dtype: type[np.bool_]
+    @overload
     def __new__(
         cls,
         data: sgt._ArrayLikeBool_co,
         /,
         dtype: sgt._BoolDTypeLike | None = None,
         *,
-        d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
@@ -31,12 +31,36 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
         :type data: -
         :param dtype: 配列の型を指定する
         :type dtype: dtype
-        :param d_ndim: 固定される次元数を指定する
-        :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :return: 生成された配列オブジェクトインスタンスを返す
+        :rtype: NPBool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
+        """
+    @overload
+    def __new__(
+        cls,
+        data: sgt._ArrayLikeBool_co,
+        /,
+        dtype: sgt._BoolDTypeLike | None = None,
+        *,
+        d_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPBool:
+        """
+        新しい配列オブジェクトインスタンスを生成する
+
+        :param data: 変換する配列を指定する
+        :type data: -
+        :param dtype: 配列の型を指定する
+        :type dtype: dtype
+        :param d_ndim: 固定される次元数を指定する
+        :type d_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す

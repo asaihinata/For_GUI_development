@@ -18,6 +18,7 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
 
     _element_type: type[datetime64]
     _default_dtype: Literal["datetime64[D]"]
+    @overload
     def __new__(
         cls,
         data: sgt._ArrayLikeStr_co,
@@ -26,7 +27,6 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         *,
         yearfirst: bool = False,
         dayfirst: bool = False,
-        d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
@@ -42,12 +42,42 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         :type yearfirst: bool
         :param dayfirst: 曖昧な3つの整数からなる日付の最初の値を日もしくは月として解釈するかどうか指定する
         :type dayfirst: bool
-        :param d_ndim: 固定される次元数を指定する
-        :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :return: 生成された配列オブジェクトインスタンスを返す
+        :rtype: NPFormatDate
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
+        """
+    @overload
+    def __new__(
+        cls,
+        data: sgt._ArrayLikeStr_co,
+        /,
+        dtype: sgt._DtypeLikeDT_All = None,
+        *,
+        yearfirst: bool = False,
+        dayfirst: bool = False,
+        d_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPFormatDate:
+        """
+        様々な日付のフォーマットを特定の日付フォーマットに変換する配列オブジェクトインスタンスを生成する
+
+        :param data: 変換する配列を指定する
+        :type data: -
+        :param dtype: 配列の型を指定する
+        :type dtype: dtype
+        :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
+        :type yearfirst: bool
+        :param dayfirst: 曖昧な3つの整数からなる日付の最初の値を日もしくは月として解釈するかどうか指定する
+        :type dayfirst: bool
+        :param d_ndim: 固定される次元数を指定する
+        :type d_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す

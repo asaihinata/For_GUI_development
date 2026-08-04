@@ -18,13 +18,13 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
 
     _element_type: type[datetime64]
     _default_dtype: Literal["datetime64[D]"]
+    @overload
     def __new__(
         cls,
         data: sgt._ArrayLikeDT64_co,
         /,
         dtype: sgt._DtypeLikeDT_All = None,
         *,
-        d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
@@ -36,12 +36,36 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :type data: -
         :param dtype: 配列の型を指定する
         :type dtype: dtype
-        :param d_ndim: 固定される次元数を指定する
-        :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :return: 生成された配列オブジェクトインスタンスを返す
+        :rtype: NPDate
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
+        """
+    @overload
+    def __new__(
+        cls,
+        data: sgt._ArrayLikeDT64_co,
+        /,
+        dtype: sgt._DtypeLikeDT_All = None,
+        *,
+        d_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPDate:
+        """
+        新しい日付の配列オブジェクトインスタンスを生成する
+
+        :param data: 変換する配列を指定する
+        :type data: -
+        :param dtype: 配列の型を指定する
+        :type dtype: dtype
+        :param d_ndim: 固定される次元数を指定する
+        :type d_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す

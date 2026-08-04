@@ -1,27 +1,29 @@
 """基本的な時間の差や期間について操作するモジュール"""
 
-from typing import Any, Iterator
+from typing import Any, Iterator,overload
 
 import numpy as np
 from numpy import dtype, timedelta64
+from numpy.typing import NDArray
 
 import sgg.typing as sgt
 
 from ..dev import _ArrayCommonMixin
 from ..npbool import NPBool
+from ..npnumber import NPNumber
 
 __all__ = ["NPTimedelta"]
 
 class NPTimedelta(_ArrayCommonMixin, np.ndarray):
     _element_type: tuple[type[timedelta64]]
     _default_dtype: type[dtype[timedelta64]]
+    @overload
     def __new__(
         cls,
         data: sgt._ArrayLikeTD64_co,
         /,
         dtype: sgt._AllTimeUnit = None,
         *,
-        d_ndim: int | None = None,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
@@ -33,12 +35,36 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
         :type data: -
         :param dtype: 配列の型を指定する
         :type dtype: dtype
-        :param d_ndim: 固定される次元数を指定する
-        :type d_ndim: int | None
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :return: 生成された配列オブジェクトインスタンスを返す
+        :rtype: NPTimedelta
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
+        """
+    @overload
+    def __new__(
+        cls,
+        data: sgt._ArrayLikeTD64_co,
+        /,
+        dtype: sgt._AllTimeUnit = None,
+        *,
+        d_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPTimedelta:
+        """
+        新しい配列オブジェクトインスタンスを生成する
+
+        :param data: 変換する配列を指定する
+        :type data: -
+        :param dtype: 配列の型を指定する
+        :type dtype: dtype
+        :param d_ndim: 固定される次元数を指定する
+        :type d_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
         :return: 生成された配列オブジェクトインスタンスを返す
@@ -97,14 +123,17 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
     def __abs__(self) -> NPTimedelta: ...
     def __eq__(self, value: Any) -> NPBool: ...
     def __ne__(self, value: Any) -> NPBool: ...
-    def __add__(self, value: Any) -> NPTimedelta: ...
+    def __add__(self, value: int|timedelta64|NDArray[timedelta64]|NPTimedelta) -> NPTimedelta: ...
     __radd__ = __add__
-    def __sub__(self, value: Any) -> NPTimedelta: ...
+    def __sub__(self, value: int|timedelta64|NDArray[timedelta64]|NPTimedelta) -> NPTimedelta: ...
     __rsub__ = __sub__
     def __mul__(
         self, value: sgt._IntLike_co | float | np.floating, /
     ) -> NPTimedelta: ...
-    def __truediv__(self, value: sgt._IntLike_co) -> NPTimedelta: ...
+    @overload
+    def __truediv__(self, value: sgt._RealNumeric_co) -> NPTimedelta: ...
+    @overload
+    def __truediv__(self, value: timedelta64|NPTimedelta) -> NPNumber: ...
     def __iter__(self) -> Iterator[np.ndarray]: ...
     @property
     def element_type(self) -> tuple[type[timedelta64]]:
