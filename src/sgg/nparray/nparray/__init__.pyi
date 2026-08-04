@@ -1,4 +1,4 @@
-from typing import Any, Literal,overload
+from typing import Any, Literal, overload
 
 import numpy as np
 from numpy._typing import _DTypeLike
@@ -44,6 +44,7 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
+
     @overload
     def __new__(
         cls,
@@ -72,18 +73,19 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
         """
 
     @classmethod
-    def full(fill_value: Any, shape: sgt._AnyShape, dtype: _DTypeLike | None = None):
+    def full(
+        fill_value: Any, shape: sgt._AnyShape, dtype: _DTypeLike | None = None
+    ) -> NPArray:
         """指定された形状と配列の型を,`fill_value`で埋める"""
 
     @classmethod
-    def sequential(cls, shape: sgt._Shape) -> NPArray:
+    def sequential(cls, shape: sgt._AnyShape) -> NPArray:
         """
         連続した整数値を要素に持つ配列を生成する
 
         :param shape: 生成する配列の形状。各要素は正の整数でなければならない。
-        :type shape: _AnyShapeT
+        :type shape: _AnyShape
         :returns: 連続値を持つ`NPArray`の配列
-        :rtype:
         :raises ShapeError: `shape`が正の整数のみで構成されていない場合に発生させる
         """
 
@@ -108,28 +110,6 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
         :return: 処理結果を返す
         """
 
-    def __array_function__(
-        self,
-        func: Any,
-        types: Any,
-        args: tuple,
-        kwargs: dict,
-    ) -> Any:
-        """
-        numpy関数の動作をカスタマイズする
-
-        :param func: 呼び出されたnumpy関数
-        :type func: Any
-        :param types: 関連する型のコレクション
-        :type types: Any
-        :param args: 位置引数
-        :type args: tuple
-        :param kwargs: キーワード引数
-        :type kwargs: dict
-        :return: 演算結果を返す
-        :rtype: Any
-        """
-
     def __eq__(self, value: Any) -> NPArray: ...
     def __ne__(self, value: Any) -> NPArray: ...
     @property
@@ -143,7 +123,7 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
         0以外の要素の数を数える
 
         :param axis: 要素を数える軸を指定する
-        :type axis: sgt.Typeaxis
+        :type axis: Typeaxis
         :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
         :type keepdims: bool
         """
@@ -156,14 +136,6 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
         配列の`dtype`が数値型場合そのままの配列を返す。
 
         配列の`dtype`が数値型でない場合は連番を作成し返す。
-        """
-
-    def to_1d(self) -> NPArray:
-        """
-        配列を1次元にフラット化した新しい配列オブジェクトを返す
-
-        :return: フラット化した配列オブジェクトを返す
-        :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 
 HANDLED_FUNCTIONS: dict

@@ -11,10 +11,6 @@ __all__ = ["_ArrayCommonMixin"]
 
 class _ArrayCommonMixin:
     """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
-
-    _element_type: tuple[type, ...] | None
-    _default_dtype: type[np.generic]
-
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: Any) -> bool: ...
@@ -43,8 +39,33 @@ class _ArrayCommonMixin:
         :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
-    @overload
-    def __iter__(self) -> Iterator[Any]: ...
+    def __array_function__(
+        self,
+        func: Any,
+        types: Any,
+        args: tuple,
+        kwargs: dict,
+    ) -> Any:
+        """
+        numpy関数の動作をカスタマイズする
+
+        :param func: 呼び出されたnumpy関数
+        :type func: Any
+        :param types: 関連する型のコレクション
+        :type types: Any
+        :param args: 位置引数
+        :type args: tuple
+        :param kwargs: キーワード引数
+        :type kwargs: dict
+        :return: 演算結果を返す
+        :rtype: Any
+        """
+
+    def __array_finalize__(self, obj: np.ndarray | None) -> None:
+        """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
+
+    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
+    def __iter__(self) -> Iterator[np.ndarray]: ...
     def __array__(
         self, dtype: _DTypeLike | None = None, /, *, copy: bool | None = None
     ) -> np.ndarray: ...
@@ -108,9 +129,6 @@ class _ArrayCommonMixin:
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
         """
 
-    def __array_finalize__(self, obj: np.ndarray | None) -> None:
-        """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
-    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     @property
     def element_type(self) -> tuple[type, ...] | None:
         """許可されている型を取得する(各サブクラスで戻り値の型を絞り込む想定)"""
@@ -200,3 +218,10 @@ class _ArrayCommonMixin:
         shuffle: bool = True,
         seed: _Seed = None,
     ) -> np.ndarray: ...
+    def to_1d(self) -> Self:
+        """
+        配列を1次元にフラット化した新しい配列オブジェクトを返す
+
+        :return: フラット化した配列オブジェクトを返す
+        :raises ValueError: `min_ndim`が1以下の場合に発生させる
+        """

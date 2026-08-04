@@ -1,6 +1,6 @@
 """基本的な時間の差や期間について操作するモジュール"""
 
-from typing import Any, Iterator,overload
+from typing import Any, overload
 
 import numpy as np
 from numpy import dtype, timedelta64
@@ -46,6 +46,7 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
+
     @overload
     def __new__(
         cls,
@@ -94,28 +95,6 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
         :return: 処理結果を返す
         """
 
-    def __array_function__(
-        self,
-        func: Any,
-        types: Any,
-        args: tuple,
-        kwargs: dict,
-    ) -> Any:
-        """
-        numpy関数の動作をカスタマイズする
-
-        :param func: 呼び出されたnumpy関数
-        :type func: Any
-        :param types: 関連する型のコレクション
-        :type types: Any
-        :param args: 位置引数
-        :type args: tuple
-        :param kwargs: キーワード引数
-        :type kwargs: dict
-        :return: 演算結果を返す
-        :rtype: Any
-        """
-
     def __int__(self) -> int: ...
     def __float__(self) -> float: ...
     def __neg__(self) -> NPTimedelta: ...
@@ -123,9 +102,13 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
     def __abs__(self) -> NPTimedelta: ...
     def __eq__(self, value: Any) -> NPBool: ...
     def __ne__(self, value: Any) -> NPBool: ...
-    def __add__(self, value: int|timedelta64|NDArray[timedelta64]|NPTimedelta) -> NPTimedelta: ...
+    def __add__(
+        self, value: int | timedelta64 | NDArray[timedelta64] | NPTimedelta
+    ) -> NPTimedelta: ...
     __radd__ = __add__
-    def __sub__(self, value: int|timedelta64|NDArray[timedelta64]|NPTimedelta) -> NPTimedelta: ...
+    def __sub__(
+        self, value: int | timedelta64 | NDArray[timedelta64] | NPTimedelta
+    ) -> NPTimedelta: ...
     __rsub__ = __sub__
     def __mul__(
         self, value: sgt._IntLike_co | float | np.floating, /
@@ -133,16 +116,7 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
     @overload
     def __truediv__(self, value: sgt._RealNumeric_co) -> NPTimedelta: ...
     @overload
-    def __truediv__(self, value: timedelta64|NPTimedelta) -> NPNumber: ...
-    def __iter__(self) -> Iterator[np.ndarray]: ...
+    def __truediv__(self, value: timedelta64 | NPTimedelta) -> NPNumber: ...
     @property
     def element_type(self) -> tuple[type[timedelta64]]:
         """NPTimedeltaで許可されている型を取得する"""
-
-    def to_1d(self) -> NPTimedelta:
-        """
-        配列を1次元にフラット化した新しい配列オブジェクトを返す
-
-        :return: フラット化した配列オブジェクトを返す
-        :raises ValueError: `min_ndim`が1以下の場合に発生させる
-        """

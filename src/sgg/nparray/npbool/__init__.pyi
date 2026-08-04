@@ -1,4 +1,4 @@
-from typing import Any, Iterator,overload
+from typing import Any, overload
 
 import numpy as np
 
@@ -42,6 +42,7 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
+
     @overload
     def __new__(
         cls,
@@ -90,31 +91,8 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
         :return: 処理結果を返す
         """
 
-    def __array_function__(
-        self,
-        func: Any,
-        types: Any,
-        args: tuple,
-        kwargs: dict,
-    ) -> Any:
-        """
-        numpy関数の動作をカスタマイズする
-
-        :param func: 呼び出されたnumpy関数
-        :type func: Any
-        :param types: 関連する型のコレクション
-        :type types: Any
-        :param args: 位置引数
-        :type args: tuple
-        :param kwargs: キーワード引数
-        :type kwargs: dict
-        :return: 演算結果を返す
-        :rtype: Any
-        """
-
     def __eq__(self, value: Any) -> NPBool: ...
     def __ne__(self, value: Any) -> NPBool: ...
-    def __iter__(self) -> Iterator[np.ndarray]: ...
     def __invert__(self) -> NPBool:
         """配列内の真偽値を反転させる"""
 
@@ -138,14 +116,6 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
     @property
     def FalseCount(self) -> int:
         """配列内の`False`の数を数える"""
-
-    def to_1d(self) -> NPBool:
-        """
-        配列を1次元にフラット化した新しい配列オブジェクトを返す
-
-        :return: フラット化した配列オブジェクトを返す
-        :raises ValueError: `min_ndim`が1以下の場合に発生させる
-        """
 
 HANDLED_FUNCTIONS: dict
 

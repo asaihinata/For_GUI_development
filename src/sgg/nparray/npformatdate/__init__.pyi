@@ -1,6 +1,6 @@
 """様々な日付の文字列フォーマットから日付に変換するオブジェクト"""
 
-from typing import Any, Iterator, Literal, overload
+from typing import Any, Literal, overload
 
 import numpy as np
 from numpy import datetime64
@@ -53,6 +53,7 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
+
     @overload
     def __new__(
         cls,
@@ -119,29 +120,6 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         :return: 処理結果を返す
         """
 
-    def __array_function__(
-        self,
-        func: Any,
-        types: Any,
-        args: tuple,
-        kwargs: dict,
-    ) -> Any:
-        """
-        numpy関数の動作をカスタマイズする
-
-        :param func: 呼び出されたnumpy関数
-        :type func: Any
-        :param types: 関連する型のコレクション
-        :type types: Any
-        :param args: 位置引数
-        :type args: tuple
-        :param kwargs: キーワード引数
-        :type kwargs: dict
-        :return: 演算結果を返す
-        :rtype: Any
-        """
-
-    def __iter__(self) -> Iterator[np.ndarray]: ...
     @property
     def element_type(self) -> type[datetime64]:
         """NPFormatDateで許可されている型を取得する"""
@@ -190,15 +168,7 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         配列内の日付の最小の日付と最大の日付を求める
 
         :param axis: 求める軸を指定する。
-        :type axis: Typeaxis
-        """
-
-    def to_1d(self) -> NPFormatDate:
-        """
-        配列を1次元にフラット化した新しい配列オブジェクトを返す
-
-        :return: フラット化した配列オブジェクトを返す
-        :raises ValueError: `min_ndim`が1以下の場合に発生させる
+        :type axis: _ShapeLike | None
         """
 
 HANDLED_FUNCTIONS: dict

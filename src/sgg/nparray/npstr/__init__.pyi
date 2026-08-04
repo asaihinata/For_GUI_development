@@ -1,6 +1,6 @@
 """基本的な文字列の操作をするモジュール"""
 
-from typing import Any, Iterator,overload
+from typing import Any, overload
 
 import numpy as np
 import numpy._typing as npt
@@ -49,6 +49,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
+
     @overload
     def __new__(
         cls,
@@ -97,31 +98,9 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         :return: 処理結果を返す
         """
 
-    def __array_function__(
-        self,
-        func: Any,
-        types: Any,
-        args: tuple,
-        kwargs: dict,
-    ) -> Any:
-        """
-        numpy関数の動作をカスタマイズする
-
-        :param func: 呼び出されたnumpy関数
-        :type func: Any
-        :param types: 関連する型のコレクション
-        :type types: Any
-        :param args: 位置引数
-        :type args: tuple
-        :param kwargs: キーワード引数
-        :type kwargs: dict
-        :return: 演算結果を返す
-        :rtype: Any
-        """
-
     def __eq__(self, value: Any) -> NPBool: ...
     def __ne__(self, value: Any) -> NPBool: ...
-    def __add__(self, value: npt._ArrayLikeStr_co) -> NPString: ...
+    def __add__(self, value: npt._ArrayLikeAnyString_co) -> NPString: ...
     __iadd__ = __add__
     __radd__ = __add__
     def __mul__(self, i: npt._ArrayLikeInt_co) -> NPString:
@@ -134,22 +113,13 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     __imul__ = __mul__
     __rmul__ = __mul__
 
-    def __iter__(self) -> Iterator[np.ndarray]: ...
     @property
     def element_type(
         self,
     ) -> tuple[type[str], type[bytes], type[str_], type[bytes_], type[StringDType]]:
         """NPStringで許可されている型を取得する"""
 
-    def to_1d(self) -> NPString:
-        """
-        配列を1次元にフラット化した新しい配列オブジェクトを返す
-
-        :return: フラット化した配列オブジェクトを返す
-        :raises ValueError: `min_ndim`が1以下の場合に発生させる
-        """
-
-    def append(self, value: npt._ArrayLikeStr_co) -> NPString:
+    def append(self, value: npt._ArrayLikeAnyString_co) -> NPString:
         """配列内の要素の文字に`val`を付け加える"""
 
     @property
@@ -180,8 +150,8 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def replace(
         self,
-        old: sgt._ArrayLikeStr_co,
-        new: sgt._ArrayLikeStr_co,
+        old: sgt._ArrayLikeAnyString_co,
+        new: sgt._ArrayLikeAnyString_co,
     ) -> NPString:
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
 
@@ -204,7 +174,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def strip(
         self,
-        chars: sgt._ArrayLikeStr_co | None = None,
+        chars: sgt._ArrayLikeAnyString_co | None = None,
     ) -> NPString:
         """
         配列の各要素について,先頭と末尾の文字を取り除いた配列を返す

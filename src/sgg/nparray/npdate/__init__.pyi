@@ -1,4 +1,4 @@
-from typing import Any, Iterator, Literal, overload
+from typing import Any, Literal, overload
 
 import numpy as np
 from numpy import datetime64
@@ -47,6 +47,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
+
     @overload
     def __new__(
         cls,
@@ -95,28 +96,6 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :return: 処理結果を返す
         """
 
-    def __array_function__(
-        self,
-        func: Any,
-        types: Any,
-        args: tuple,
-        kwargs: dict,
-    ) -> Any:
-        """
-        numpy関数の動作をカスタマイズする
-
-        :param func: 呼び出されたnumpy関数
-        :type func: Any
-        :param types: 関連する型のコレクション
-        :type types: Any
-        :param args: 位置引数
-        :type args: tuple
-        :param kwargs: キーワード引数
-        :type kwargs: dict
-        :return: 演算結果を返す
-        :rtype: Any
-        """
-
     def __add__(self, value: sgt._ArrayLikeTD64_co) -> NPDate: ...
     __iadd__ = __add__
     __radd__ = __add__
@@ -129,7 +108,6 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     def __le__(self, value: Any) -> NPBool: ...
     def __gt__(self, value: Any) -> NPBool: ...
     def __ge__(self, value: Any) -> NPBool: ...
-    def __iter__(self) -> Iterator[np.ndarray]: ...
     @property
     def year(self) -> NPNumber:
         """配列の年を返す"""
@@ -237,7 +215,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         配列内の日付の最小の日付と最大の日付を求める
 
         :param axis: 求める軸を指定する。
-        :type axis: Typeaxis
+        :type axis: _ShapeLike | None
         """
 
     def leapyear(self) -> NPBool:
@@ -248,14 +226,6 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
 
     def cleanNaT(self) -> NPDate:
         """配列を一次元配列にし欠損日(NaT)を削除する"""
-
-    def to_1d(self) -> NPDate:
-        """
-        配列を1次元にフラット化した新しい配列オブジェクトを返す
-
-        :return: フラット化した配列オブジェクトを返す
-        :raises ValueError: `min_ndim`が1以下の場合に発生させる
-        """
 
 HANDLED_FUNCTIONS: dict
 
