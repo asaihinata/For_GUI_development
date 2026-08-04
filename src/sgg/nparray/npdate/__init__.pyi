@@ -214,7 +214,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         """
         配列内の日付の最小の日付と最大の日付を求める
 
-        :param axis: 求める軸を指定する。
+        :param axis: 求める軸を指定する
         :type axis: _ShapeLike | None
         """
 

@@ -10,15 +10,15 @@ __all__ = [
     "_DateArangeScalar",
     "_DateParseScalar",
     "_FloatLike_co",
-    "_RealNumeric_co",
     "_IntLike_co",
     "_IntsLike_co",
     "_NumberScalar",
+    "_RealNumeric_co",
+    "_ScalarT",
     "_StringScalar",
     "_StrScalar",
     "_TD64Like_co",
     "_UIntLike_co",
-    "_ScalarT",
 ]
 type _Arange_Number = np.integer | np.floating | SupportsInt | SupportsFloat
 type _BoolScalar = bool | np.bool | np.bool_

@@ -12,6 +12,7 @@ __all__ = [
     "_Array",
     "_Array1D",
     "_ArrayLikeAnyString_co",
+    "_ArrayLikeAnyStrings_co",
     "_ArrayLikeBool_co",
     "_ArrayLikeBytes_co",
     "_ArrayLikeComplex_co",
@@ -82,6 +83,7 @@ type _ArrayLikeAnyString_co = _DualArrayLike[
     np.dtype[np.character],
     bytes | str,
 ]
+type _ArrayLikeAnyStrings_co = _ArrayLikeAnyString_co | _StringDTypeSupportsArray | _ArrayLikeString_co
 # date
 type _ArrayLikeDT64_co = _DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.str_ | np.datetime64],

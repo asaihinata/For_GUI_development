@@ -161,15 +161,15 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
     def count_nonzero(self, axis: None = None, keepdims: bool = False) -> np.intp: ...
     @overload
     def count_nonzero(
-        self, axis: np._ShapeLike | None = None, keepdims: bool = True
+        self, axis: np._ShapeLike, keepdims: bool = False
     ) -> NDArray[np.intp]: ...
     def count_nonzero():
         """
         0以外の要素の数を数える
 
         :param axis: 要素を数える軸を指定する
-        :type axis: _ShapeLike
-        :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
+        :type axis: _ShapeLike | None
+        :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する
         :type keepdims: bool
         """
 
@@ -230,7 +230,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
     def zeros(
         cls,
         shape: SupportsIndex,
-        dtype: None = None,
+        dtype: sgt._NumericDTypeLike | None = None,
         order: _OrderCF = "C",
         *,
         device: Literal["cpu"] | None = None,
@@ -242,7 +242,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
     def ones(
         cls,
         shape: SupportsIndex,
-        dtype: None = None,
+        dtype: sgt._NumericDTypeLike | None = None,
         order: _OrderCF = "C",
         *,
         device: Literal["cpu"] | None = None,
@@ -337,7 +337,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         num: SupportsIndex = 50,
         endpoint: bool = True,
         retstep: Literal[False] = False,
-        dtype: None = None,
+        dtype: sgt._RealNumericDTypeLike | None = None,
         axis: SupportsIndex = 0,
         *,
         device: Literal["cpu"] | None = None,
@@ -373,7 +373,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         num: SupportsIndex = 50,
         endpoint: bool = True,
         base: _ToFloat64 = 10.0,
-        dtype: None = None,
+        dtype: sgt._RealNumericDTypeLike | None = None,
         axis: SupportsIndex = 0,
     ) -> NPNumber:
         """
@@ -403,7 +403,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         stop: sgt._ArrayLikeComplex_co,
         num: SupportsIndex = 50,
         endpoint: bool = True,
-        dtype: npt.DTypeLike | None = None,
+        dtype: sgt._RealNumericDTypeLike | None = None,
         axis: SupportsIndex = 0,
     ) -> NPNumber:
         """
