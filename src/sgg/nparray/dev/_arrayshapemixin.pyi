@@ -2,7 +2,7 @@ from types import GenericAlias
 from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
-from numpy._typing import DTypeLike, _ArrayLikeFloat_co, _DTypeLike, _ShapeLike
+from numpy._typing import DTypeLike, _ArrayLikeFloat_co, _ShapeLike
 from numpy.typing import NDArray
 
 from sgg.typing import _Seed
@@ -65,11 +65,16 @@ class _ArrayCommonMixin:
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
 
-    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
-    def __iter__(self) -> Iterator[np.ndarray]: ...
+    def __iter__(self) -> Iterator[np._ScalarNotObject|np.ndarray[np._AnyShape,np._dtype]|Any]: ...
+    @overload
     def __array__(
-        self, dtype: _DTypeLike | None = None, /, *, copy: bool | None = None
-    ) -> np.ndarray: ...
+        self, dtype:None = None, /, *, copy: bool | None = None
+    ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
+    @overload
+    def __array__[DTypeT: np.dtype](
+        self, dtype: DTypeT, /, *, copy: bool | None = None
+    ) -> np.ndarray[np._ShapeT_co, DTypeT]: ...
+    def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
     def lengtharange(self) -> NDArray[np.uint64]:
         """
         配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
@@ -98,10 +103,10 @@ class _ArrayCommonMixin:
         dtype: np.dtype | str | type | None,
     ) -> np.dtype | None:
         """
-        引数dtypeを解決させる
+        引数`dtype`を解決させる
 
         :param dtype: ユーザーが指定するdtypeを指定する
-        :return: 解決されたdtypeを返す
+        :return: 解決された`dtype`を返す
         :rtype: numpy.dtype | None
         """
 
@@ -145,15 +150,6 @@ class _ArrayCommonMixin:
 
         :return:
         :rtype: numpy.dtype | None
-        """
-
-    @dtypes.setter
-    def dtypes(self, dtype: DTypeLike | None) -> None:
-        """
-        配列のdtypeを設定する
-
-        :param dtype: 配列の型を指定する
-        :type dtype: DTypeLike | None
         """
 
     @property
@@ -212,13 +208,30 @@ class _ArrayCommonMixin:
 
     def choice(
         self,
-        size: _ShapeLike | None = None,
+        size: int | tuple[int,...] | None = None,
         replace: bool = True,
         p: _ArrayLikeFloat_co | None = None,
         axis: int = 0,
         shuffle: bool = True,
         seed: _Seed = None,
-    ) -> np.ndarray: ...
+    ) -> np.ndarray:
+        """
+        配列の要素もしくは軸の配列をランダムに抽選する
+
+        :param size: 出力する配列の形状を指定する
+        :type size: int | tuple[int,...] | None
+        :param replace: 抽選する値が復元抽出をするか非復元抽出をするかを指定する
+        :type replace: bool
+        :param p: 各要素が選ばれる重みを指定する
+        :type p: _ArrayLikeFloat_co | None
+        :param axis: 選択を行う軸を指定する
+        :type axis: int
+        :param shuffle: 非復元抽出をする際にサンプルをシャッフルするか指定する
+        :type shuffle: bool
+        :param seed: 乱数のシード値を指定する
+        :type seed: int | SeedSequence | Generator | None
+        :rtype: np.ndarray
+        """
     def to_1d(self) -> Self:
         """
         配列を1次元にフラット化した新しい配列オブジェクトを返す

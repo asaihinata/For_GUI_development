@@ -39,7 +39,7 @@ class _ArrayCommonMixin:
         result._dtype = self._dtype
         return result
 
-    def __array__(self, dtype=None, copy=None):
+    def __array__(self, dtype=None, /, *, copy=None):
         if dtype is None:
             dtype = self.dtypes
         return super().__array__(dtype, copy=copy)
@@ -113,16 +113,11 @@ class _ArrayCommonMixin:
 
     @property
     def data(self):
-        return np.asarray(self, dtype=self._dtype)
+        return self.__array__(self.dtypes)
 
     @property
     def dtypes(self):
         return self._dtype
-
-    @dtypes.setter
-    def dtypes(self, dtype):
-        if dtype is not None:
-            self._dtype = np.dtype(dtype)
 
     @property
     def min_ndim(self):
