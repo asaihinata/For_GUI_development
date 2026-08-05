@@ -1,16 +1,11 @@
 import numpy as np
 
 __all__ = [
-    "allNone",
-    "allNones",
     "change_array_like",
     "is_array_like",
-    "list2float",
     "list2int",
     "list2num",
     "list4float",
-    "list4int",
-    "list4num",
     "listchose",
     "tonparray",
 ]
@@ -39,7 +34,9 @@ def tonparray(data, *, ndmin=0, ndmax=0):
 
 
 def is_array_like(obj):
-    if isinstance(obj, np.ndarray | list | tuple | range):
+    if (isinstance(obj, np.ndarray) and 1 <= obj.ndim) or isinstance(
+        obj, list | tuple | range
+    ):
         return True
     elif hasattr(obj, "__array__"):
         return True
@@ -47,25 +44,15 @@ def is_array_like(obj):
 
 
 def change_array_like(obj):
-    if isinstance(obj, np.ndarray | list | tuple | range):
+    if (isinstance(obj, np.ndarray) and 1 <= obj.ndim) or isinstance(
+        obj, list | tuple | range
+    ):
         return True
     elif np.isscalar(obj):
         return True
     elif hasattr(obj, "__array__"):
         return True
     return False
-
-
-def allNone(a, b=None):
-    return True if a is None and b is None else False
-
-
-def allNones(a, b=None, other=None):
-    if (a is not None and b is not None) or (a is not None and b is None):
-        return a
-    elif a is None and b is not None:
-        return b
-    return other
 
 
 def list2num(lin=None):
@@ -80,30 +67,6 @@ def list2int(lin=None):
     if change_array_like(lin):
         arr = np.array(lin)
         if np.issubdtype(arr.dtype, np.integer) and arr.shape == (2,):
-            return True
-    return False
-
-
-def list2float(lin=None):
-    if change_array_like(lin):
-        arr = np.array(lin)
-        if np.issubdtype(arr.dtype, np.floating) and arr.shape == (2,):
-            return True
-    return False
-
-
-def list4num(lin=None):
-    if change_array_like(lin):
-        arr = np.array(lin)
-        if np.issubdtype(arr.dtype, np.number) and arr.shape == (4,):
-            return True
-    return False
-
-
-def list4int(lin=None):
-    if change_array_like(lin):
-        arr = np.array(lin)
-        if np.issubdtype(arr.dtype, np.integer) and arr.shape == (4,):
             return True
     return False
 

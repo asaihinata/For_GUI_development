@@ -3,7 +3,6 @@ import numpy as np
 __all__ = [
     "bol",
     "bols",
-    "list2float",
     "list2number",
     "listchose",
     "num0",
@@ -48,16 +47,6 @@ def list2number(lin=None):
         isinstance(lin, list | tuple)
         and len(lin) == 2
         and all(isinstance(i, np.number) for i in lin)
-    ):
-        return True
-    return False
-
-
-def list2float(lin=None):
-    if (
-        isinstance(lin, list | tuple)
-        and len(lin) == 2
-        and all(isinstance(i, float) for i in lin)
     ):
         return True
     return False

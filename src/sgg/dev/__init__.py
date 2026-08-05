@@ -3,9 +3,6 @@ from ._dnumber import *
 from .color import parsecolor
 
 __all__ = [
-    "allNone",
-    "allNones",
-    "args",
     "bols",
     "change_array_like",
     "int0",
@@ -14,36 +11,18 @@ __all__ = [
     "ints",
     "intsmin",
     "is_array_like",
-    "list2float",
     "list2int",
     "list2num",
     "list4float",
-    "list4int",
-    "list4num",
     "listchose",
-    "tonparray",
     "num0",
     "num0s",
     "num1s",
     "nums",
     "parsecolor",
     "range_num",
+    "tonparray",
 ]
-
-
-def args(*args, data=None, x=None, y=None):
-    lens = len(args)
-    if lens == 1:
-        data = args[0]
-    elif lens == 2:
-        x, y = args[0], args[1]
-    elif lens > 2:
-        raise ValueError("argsは最大2つまで指定してください")
-    if (data is not None and (x is not None or y is not None)) or (
-        data is None and (x is None or y is None)
-    ):
-        raise ValueError("組み合わせが不正です")
-    return (data, x, y)
 
 
 def bols(j, o=True):
