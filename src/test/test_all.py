@@ -457,7 +457,7 @@ def test_main():
         [Guis.Scatterpolar(x=scatterpolarx, y=scatterpolary, title="極軸散布図")],
         [Guis.Stempolar(x=stempolarx, y=stempolary, title="極軸幹図")],
         [Guis.RadarFill(data=radarfilldata, title="塗りつぶしレーダーチャート")],
-        [Guis.RadarLine(data=radarlinedata, title="塗りつぶし折線チャート")],
+        [Guis.RadarLine(data=radarlinedata, title="折線レーダーチャート")],
     ]
     win: WindowController = Guis.window(
         title="デモ", layout=layout, load=[progress_start], scroll=True, maxmine=True

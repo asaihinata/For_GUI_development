@@ -24,7 +24,7 @@ class RadarLine(RadarElement):
     def __plot(self, data, marker, linewidth, linestyle, markersize, alpha):
         self.clear()
         if data.ndim == 1:
-            data = np.array([data])
+            data = np.expand_dims(data, 0)
         self.graphdata = [
             self.ax.plot(
                 self.theta,

@@ -1,7 +1,7 @@
 import numpy as np
 from numpy._typing import _DTypeLike, _NestedSequence, _SupportsArray
 
-from sgg.typing._array_date_unit import _AllDateUnit, _AllTimeUnit
+from sgg.typing import _AllDateUnit, _AllTimeUnit
 
 __all__ = [
     "_ArangeNumber_DtypeLike",

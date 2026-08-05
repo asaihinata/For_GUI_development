@@ -335,7 +335,7 @@ class Guis:
     @staticmethod
     def Link(
         *,
-        link: str | WindowsPath | PosixPath | Path,
+        link: str | WindowsPath | PosixPath | Path = ...,
         text: str = ...,
         takefocus: bool = ...,
         padx: int | float = ...,
@@ -4598,12 +4598,7 @@ class Guis:
         """
 
     @classmethod
-    def Popupwarning(
-        cls,
-        title: str = "Warning",
-        message: str = "Warning message",
-        icon: Literal["info", "warning", "error", "question"] = "warning",
-    ) -> Literal["ok"]:
+    def Popupwarning(cls,**kwargs:Unpack[Dict_P_Warning]) -> Literal["ok"]:
         """
         指定されたタイトルとメッセージを含む警告メッセージボックスを表示させる
 
@@ -4618,12 +4613,7 @@ class Guis:
         """
 
     @classmethod
-    def Popupwarningyesno(
-        cls,
-        title: str = "Warning",
-        message: str = "Warning message",
-        icon: Literal["info", "warning", "error", "question"] = "warning",
-    ) -> Literal["yes", "no"]:
+    def Popupwarningyesno(cls,**kwargs:Unpack[Dict_P_Warning]) -> Literal["yes", "no"]:
         """
         指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つ警告メッセージボックスを表示させる
 
@@ -4638,12 +4628,7 @@ class Guis:
         """
 
     @classmethod
-    def Popuperror(
-        cls,
-        title: str = "Error",
-        message: str = "Error message",
-        icon: Literal["info", "warning", "error", "question"] = "error",
-    ) -> Literal["ok"]:
+    def Popuperror(cls,**kwargs:Unpack[Dict_P_Error]) -> Literal["ok"]:
         """
         指定されたタイトルとメッセージを持つエラーメッセージボックスを表示させる
 
@@ -4658,12 +4643,7 @@ class Guis:
         """
 
     @classmethod
-    def Popuperroryesno(
-        cls,
-        title: str = "Error",
-        message: str = "Error message",
-        icon: Literal["info", "warning", "error", "question"] = "error",
-    ) -> Literal["yes", "no"]:
+    def Popuperroryesno(cls,**kwargs:Unpack[Dict_P_Error]) -> Literal["yes", "no"]:
         """
         指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つエラーメッセージボックスを表示させる
 
@@ -4678,12 +4658,7 @@ class Guis:
         """
 
     @classmethod
-    def Popupquestion(
-        cls,
-        title: str = "Question",
-        message: str = "Question message",
-        icon: Literal["info", "warning", "error", "question"] = "question",
-    ) -> Literal["yes", "no"]:
+    def Popupquestion(cls,**kwargs:Unpack[Dict_P_Question]) -> Literal["yes", "no"]:
         """
         「はい(Yes)」と「いいえ(No)」を選択させるダイアログを表示させる
 
@@ -4698,12 +4673,7 @@ class Guis:
         """
 
     @classmethod
-    def Popupokcancel(
-        cls,
-        title: str = "Question",
-        message: str = "Question message",
-        icon: Literal["info", "warning", "error", "question"] = "question",
-    ) -> bool:
+    def Popupokcancel(cls,**kwargs:Unpack[Dict_P_Question]) -> bool:
         """
         「OK」と「キャンセル」を選択させるダイアログを表示させる
 
@@ -4718,12 +4688,7 @@ class Guis:
         """
 
     @classmethod
-    def Popupyesno(
-        cls,
-        title: str = "Question",
-        message: str = "Question message",
-        icon: Literal["info", "warning", "error", "question"] = "question",
-    ) -> bool:
+    def Popupyesno(cls,**kwargs:Unpack[Dict_P_Question]) -> bool:
         """
         「はい(Yes)」と「いいえ(No)」を選択させるダイアログを表示させる
 
@@ -4738,12 +4703,7 @@ class Guis:
         """
 
     @classmethod
-    def Popupyesnocancel(
-        cls,
-        title: str = "Question",
-        message: str = "Question message",
-        icon: Literal["info", "warning", "error", "question"] = "question",
-    ) -> bool | None:
+    def Popupyesnocancel(cls,**kwargs:Unpack[Dict_P_Question]) -> bool | None:
         """
         「はい(Yes)」,「いいえ(No)」,「キャンセル(Cancel)」を選択させるダイアログを表示させる
 
@@ -4758,12 +4718,7 @@ class Guis:
         """
 
     @classmethod
-    def Popuptry(
-        cls,
-        title: str = "Question",
-        message: str = "Question message",
-        icon: Literal["info", "warning", "error", "question"] = "question",
-    ) -> bool:
+    def Popuptry(cls,**kwargs:Unpack[Dict_P_Question]) -> bool:
         """
         操作を再試行するかどうかを尋ねる「再試行」と「キャンセル」が設置されたダイアログを表示させる
 

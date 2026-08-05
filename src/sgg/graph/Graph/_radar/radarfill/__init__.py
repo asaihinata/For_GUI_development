@@ -13,7 +13,7 @@ class RadarFill(RadarElement):
     def __plot(self, data, alpha):
         self.clear()
         if data.ndim == 1:
-            data = np.array([data])
+            data = np.expand_dims(data, 0)
         self.graphdata = [self.ax.fill(self.theta, d, alpha=alpha) for d in data][0]
         self._adjustment()
 

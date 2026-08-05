@@ -7,6 +7,7 @@ from .custom import radar_factory
 
 __all__ = ["RadarElement"]
 
+
 class RadarElement(GElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
