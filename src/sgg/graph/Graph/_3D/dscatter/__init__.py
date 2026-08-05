@@ -6,9 +6,9 @@ __all__ = ["DScatter"]
 class DScatter(threeElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = np.array(kw.get("x"))
-        self.__y = np.array(kw.get("y"))
-        self.__z = np.array(kw.get("z"))
+        self.__x = tonparray(kw.get("x"))
+        self.__y = tonparray(kw.get("y"))
+        self.__z = tonparray(kw.get("z"))
         self.marker = MarkerList(kw.get("marker", "o"))
         self.s = num1s(kw.get("markersize"), 10)
         self.__plot(
@@ -36,11 +36,11 @@ class DScatter(threeElement):
     def update(self, x=None, y=None, z=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = np.array(x)
+            self.__x = tonparray(x)
         if change_array_like(y):
-            self.__y = np.array(y)
+            self.__y = tonparray(y)
         if change_array_like(z):
-            self.__z = np.array(z)
+            self.__z = tonparray(z)
         markers = kw.get("marker", None)
         if markers != None:
             self.marker = MarkerList(markers)

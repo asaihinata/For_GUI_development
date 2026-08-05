@@ -6,8 +6,8 @@ __all__ = ["Hist2d"]
 class Hist2d(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = np.array(kw.get("x"), ndmax=1)
-        self.__y = np.array(kw.get("y"), ndmax=1)
+        self.__x = tonparray(kw.get("x"), ndmax=1)
+        self.__y = tonparray(kw.get("y"), ndmax=1)
         self.max = nums(kw.get("max"))
         self.min = nums(kw.get("min"))
         if self.max is not None or self.min is not None:
@@ -59,9 +59,9 @@ class Hist2d(twoElement):
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = np.array(x, ndmax=1)
+            self.__x = tonparray(x, ndmax=1)
         if change_array_like(y):
-            self.__y = np.array(y, ndmax=1)
+            self.__y = tonparray(y, ndmax=1)
         self.max = nums(kw.get("max"), self.max)
         self.min = nums(kw.get("min"), self.min)
         if (

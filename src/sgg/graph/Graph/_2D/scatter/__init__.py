@@ -8,8 +8,8 @@ __all__ = ["Scatter"]
 class Scatter(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = np.array(kw.get("x"))
-        self.__y = np.array(kw.get("y"))
+        self.__x = tonparray(kw.get("x"))
+        self.__y = tonparray(kw.get("y"))
         self.marker = MarkerList(kw.get("marker", "o"))
         self.s = num1s(kw.get("markersize"), 10)
         self.regression_bool = bols(kw.get("regression_bool"), False)
@@ -66,9 +66,9 @@ class Scatter(twoElement):
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = np.array(x)
+            self.__x = tonparray(x)
         if change_array_like(y):
-            self.__y = np.array(y)
+            self.__y = tonparray(y)
         markers = kw.get("marker", None)
         if markers is not None:
             self.marker = MarkerList(markers)

@@ -8,7 +8,7 @@ __all__ = ["Funne"]
 class Funne(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__data = np.array(kw.get("data"), ndmax=1)
+        self.__data = tonparray(kw.get("data"), ndmax=1)
         self.height = range_num(num0s(kw.get("height"), 1), 0, 1, 1)
         xmajormaxbins = intsmin(kw.get("xmajormaxbins"), 3, 11)
         if not isinstance(xmajormaxbins, int):
@@ -45,7 +45,7 @@ class Funne(twoElement):
     def update(self, data=None, **kw):
         self._updates(**kw)
         if change_array_like(data):
-            self.__data = np.array(data, ndmax=1)
+            self.__data = tonparray(data, ndmax=1)
         self.height = range_num(num0s(kw.get("height"), self.height), 0, 1, self.height)
         xmajormaxbins = intsmin(kw.get("xmajormaxbins"), 3, self.xmajormaxbins)
         if not isinstance(xmajormaxbins, int):

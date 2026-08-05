@@ -6,8 +6,8 @@ __all__ = ["BarhGraph"]
 class BarhGraph(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = np.array(kw.get("x"))
-        self.__y = np.array(kw.get("y"), ndmax=1)
+        self.__x = tonparray(kw.get("x"))
+        self.__y = tonparray(kw.get("y"), ndmax=1)
         self.logs = bols(kw.get("logs"), False)
         self.height = range_num(num0s(kw.get("height"), 1), 0, 1, 1)
         self.align = listchose(kw.get("align"), ["center", "edge"])
@@ -46,9 +46,9 @@ class BarhGraph(twoElement):
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = np.array(x)
+            self.__x = tonparray(x)
         if change_array_like(y):
-            self.__y = np.array(y, ndmax=1)
+            self.__y = tonparray(y, ndmax=1)
         self.height = range_num(num0s(kw.get("height"), self.height), 0, 1, self.height)
         self.align = listchose(kw.get("align"), ["center", "edge"], self.align)
         self.logs = bols(kw.get("logs"), self.logs)

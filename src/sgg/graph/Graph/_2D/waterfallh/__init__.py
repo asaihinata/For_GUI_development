@@ -6,8 +6,8 @@ __all__ = ["Waterfallh"]
 class Waterfallh(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = np.array(kw.get("x"), ndmax=1)
-        self.__y = np.array(kw.get("y"), ndmax=1)
+        self.__x = tonparray(kw.get("x"), ndmax=1)
+        self.__y = tonparray(kw.get("y"), ndmax=1)
         self.bottom = np.cumsum(np.append(0, self.__y)[0 : self.__y.size])
         self.ucolor = parsecolor(kw.get("ucolor"), "#156082")
         self.dcolor = parsecolor(kw.get("dcolor"), "#e97132")
@@ -72,9 +72,9 @@ class Waterfallh(twoElement):
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = np.array(x, ndmax=1)
+            self.__x = tonparray(x, ndmax=1)
         if change_array_like(y):
-            self.__y = np.array(y, ndmax=1)
+            self.__y = tonparray(y, ndmax=1)
         self.bottom = np.cumsum(np.append(0, self.__y)[0 : self.__y.size])
         self.sums = bols(kw.get("sums"), self.sums)
         self.sumstext = kw.get("sumstext", self.sumstext)

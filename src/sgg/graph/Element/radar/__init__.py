@@ -1,27 +1,16 @@
 import numpy as np
 
-from sgg.dev import bols, num0s, parsecolor, range_num
+from sgg.dev import bols, num0s, parsecolor, range_num, tonparray
 from sgg.graph.element.graph import GElement
 
 from .custom import radar_factory
 
 __all__ = ["RadarElement"]
 
-
-def change_array_like(obj):
-    if isinstance(obj, np.ndarray | list | tuple | range):
-        return True
-    elif np.isscalar(obj):
-        return True
-    elif hasattr(obj, "__array__"):
-        return True
-    return False
-
-
 class RadarElement(GElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self._data = np.array(kw.get("data"))
+        self._data = tonparray(kw.get("data"))
         self.theta = radar_factory(self._data.shape[-1], frame="circle")
         # グリッド線
         self.grid_xy = bols(kw.get("grid_xy"))
@@ -62,10 +51,8 @@ class RadarElement(GElement):
             self.ax.set_ylabel(ylabel)
 
     def _updates(self, **kw):
-        data = kw.get("data")
-        if change_array_like(data):
-            self._data = np.array(data)
-            self.theta = radar_factory(self._data.shape[-1], frame="circle")
+        self._data = tonparray(kw.get("data"))
+        self.theta = radar_factory(self._data.shape[-1], frame="circle")
         self.fg = parsecolor(kw.get("fg"), self.fg)
         self.graph_bg = parsecolor(kw.get("bg"), self.graph_bg)
         self.graph_grid = parsecolor(kw.get("graph_grid"), self.graph_grid)

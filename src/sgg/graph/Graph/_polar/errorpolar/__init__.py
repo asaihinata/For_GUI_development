@@ -13,12 +13,12 @@ class Errorpolar(polarElement):
         self.xerr = None
         self.yerr = None
         if err is not None:
-            self.err = np.array(err).data
+            self.err = tonparray(err)
             self.xerr, self.yerr = self.err, self.err
         if xerr is not None:
-            self.xerr = np.array(xerr).data
+            self.xerr = tonparray(xerr)
         if yerr is not None:
-            self.yerr = np.array(yerr).data
+            self.yerr = tonparray(yerr)
         self.xuplims = bols(kw.get("xuplims"), False)
         self.xlolims = bols(kw.get("xlolims"), False)
         self.yuplims = bols(kw.get("yuplims"), False)
@@ -103,12 +103,12 @@ class Errorpolar(polarElement):
             kw.get("yerr", self.yerr),
         )
         if err is not None:
-            self.err = np.array(err).data
+            self.err = tonparray(err)
             self.xerr, self.yerr = self.err, self.err
         if xerr is not None:
-            self.xerr = np.array(xerr).data
+            self.xerr = tonparray(xerr)
         if yerr is not None:
-            self.yerr = np.array(yerr).data
+            self.yerr = tonparray(yerr)
         self.xuplims = bols(kw.get("xuplims"), self.xuplims)
         self.xlolims = bols(kw.get("xlolims"), self.xlolims)
         self.yuplims = bols(kw.get("yuplims"), self.yuplims)

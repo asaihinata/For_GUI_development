@@ -6,19 +6,19 @@ __all__ = ["Errorbar"]
 class Errorbar(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = np.array(kw.get("x"))
-        self.__y = np.array(kw.get("y"))
+        self.__x = tonparray(kw.get("x"))
+        self.__y = tonparray(kw.get("y"))
         err = kw.get("err")
         xerr = kw.get("xerr")
         yerr = kw.get("yerr")
         self.xerr = None
         self.yerr = None
         if err is not None:
-            self.yerr = self.xerr = self.err = np.array(err)
+            self.yerr = self.xerr = self.err = tonparray(err)
         if xerr is not None:
-            self.xerr = np.array(xerr)
+            self.xerr = tonparray(xerr)
         if yerr is not None:
-            self.yerr = np.array(yerr)
+            self.yerr = tonparray(yerr)
         self.xuplims = bols(kw.get("xuplims"), False)
         self.xlolims = bols(kw.get("xlolims"), False)
         self.yuplims = bols(kw.get("yuplims"), False)
@@ -29,7 +29,7 @@ class Errorbar(twoElement):
         self.capsize = nums(kw.get("capsize"), 0)
         errorevery = kw.get("errorevery")
         if isinstance(errorevery, int) or (
-            change_array_like(errorevery) and np.array(errorevery).shape == ((1, 2))
+            change_array_like(errorevery) and tonparray(errorevery).shape == ((1, 2))
         ):
             self.errorevery = errorevery
         else:
@@ -99,15 +99,15 @@ class Errorbar(twoElement):
     def update(self, x=None, y=None, err=None, xerr=None, yerr=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = np.array(x)
+            self.__x = tonparray(x)
         if change_array_like(y):
-            self.__y = np.array(y)
+            self.__y = tonparray(y)
         if change_array_like(err):
-            self.yerr = self.xerr = self.err = np.array(err)
+            self.yerr = self.xerr = self.err = tonparray(err)
         if change_array_like(xerr):
-            self.xerr = np.array(xerr)
+            self.xerr = tonparray(xerr)
         if change_array_like(yerr):
-            self.yerr = np.array(yerr)
+            self.yerr = tonparray(yerr)
         self.xuplims = bols(kw.get("xuplims"), self.xuplims)
         self.xlolims = bols(kw.get("xlolims"), self.xlolims)
         self.yuplims = bols(kw.get("yuplims"), self.yuplims)
@@ -118,7 +118,7 @@ class Errorbar(twoElement):
         self.capsize = nums(kw.get("capsize"), self.capsize)
         errorevery = kw.get("errorevery", self.errorevery)
         if isinstance(errorevery, int) or (
-            change_array_like(errorevery) and np.array(errorevery).shape == ((1, 2))
+            change_array_like(errorevery) and tonparray(errorevery).shape == ((1, 2))
         ):
             self.errorevery = errorevery
         else:

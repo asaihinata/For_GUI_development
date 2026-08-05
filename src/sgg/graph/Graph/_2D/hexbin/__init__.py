@@ -6,8 +6,8 @@ __all__ = ["Hexbin"]
 class Hexbin(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = np.array(kw.get("x"))
-        self.__y = np.array(kw.get("y"))
+        self.__x = tonparray(kw.get("x"))
+        self.__y = tonparray(kw.get("y"))
         c, extent, gridsize = kw.get("c"), kw.get("extent"), kw.get("gridsize", 100)
         self.c = None if c is None else np.array(c)
         self.gridsize = (
@@ -73,9 +73,9 @@ class Hexbin(twoElement):
     def update(self, x=None, y=None, c=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = np.array(x)
+            self.__x = tonparray(x)
         if change_array_like(y):
-            self.__y = np.array(y)
+            self.__y = tonparray(y)
         if change_array_like(c):
             self.c = np.array(c)
         extent, gridsize = kw.get("extent", self.extent), kw.get(

@@ -1,7 +1,7 @@
 from matplotlib.projections.polar import PolarAxes
 from numpy import array, linspace, number, pi
 
-from sgg.dev import bols, list2num, num0s, parsecolor, range_num
+import sgg.dev as sgd
 from sgg.graph.element.graph import GElement
 
 __all__ = ["polarElement"]
@@ -11,20 +11,20 @@ class polarElement(GElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         # グリッド線
-        self.grid_xy = bols(kw.get("grid_xy"))
-        self.grid_x = bols(kw.get("grid_x"), False)
-        self.grid_y = bols(kw.get("grid_y"), False)
+        self.grid_xy = sgd.bols(kw.get("grid_xy"))
+        self.grid_x = sgd.bols(kw.get("grid_x"), False)
+        self.grid_y = sgd.bols(kw.get("grid_y"), False)
         # グラフの基盤
         self.ax: PolarAxes = self.fig.add_subplot(111, projection="polar")
         self.title = self.set_title(self.titles)
         # 目盛り
-        self.xticksshow = bols(kw.get("xticksshow"), False)
-        self.yticksshow = bols(kw.get("yticksshow"), False)
+        self.xticksshow = sgd.bols(kw.get("xticksshow"), False)
+        self.yticksshow = sgd.bols(kw.get("yticksshow"), False)
         xticksrange = kw.get("xticksrange", 0)
         if isinstance(xticksrange, int | float):
             xticksrange = abs(xticksrange)
             self.xticksrange = (xticksrange * -1, xticksrange)
-        elif list2num(xticksrange):
+        elif sgd.list2num(xticksrange):
             self.xticksrange = xticksrange
         else:
             self.xticksrange = (0, 0)
@@ -32,7 +32,7 @@ class polarElement(GElement):
         if isinstance(yticksrange, int | float):
             yticksrange = abs(yticksrange)
             self.yticksrange = (yticksrange * -1, yticksrange)
-        elif list2num(yticksrange):
+        elif sgd.list2num(yticksrange):
             self.yticksrange = yticksrange
         else:
             self.yticksrange = (0, 0)
@@ -42,9 +42,9 @@ class polarElement(GElement):
 
     def _xyd(self, x, y, d=None):
         if d is None:
-            return array(x, ndmax=1), array(y, ndmax=1)
+            return sgd.tonparray(x, ndmax=1), sgd.tonparray(y, ndmax=1)
         else:
-            data = array(d, ndmax=1)
+            data = sgd.tonparray(d, ndmax=1)
             return self._places(data.size), data
 
     def _apply_theme_colors(self):
@@ -69,11 +69,13 @@ class polarElement(GElement):
                 )
 
     def _updates(self, **kw):
-        self.fg = parsecolor(kw.get("fg"), self.fg)
-        self.graph_bg = parsecolor(kw.get("bg"), self.graph_bg)
-        self.graph_grid = parsecolor(kw.get("graph_grid"), self.graph_grid)
+        self.fg = sgd.parsecolor(kw.get("fg"), self.fg)
+        self.graph_bg = sgd.parsecolor(kw.get("bg"), self.graph_bg)
+        self.graph_grid = sgd.parsecolor(kw.get("graph_grid"), self.graph_grid)
         self.title = kw.get("title", self.titles)
-        self.alpha = range_num(num0s(kw.get("alpha"), self.alpha), 0, 1, self.alpha)
+        self.alpha = sgd.range_num(
+            sgd.num0s(kw.get("alpha"), self.alpha), 0, 1, self.alpha
+        )
 
     def _ticks(self):
         if self.ticksshow:

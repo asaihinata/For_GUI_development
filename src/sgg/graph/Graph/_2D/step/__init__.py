@@ -6,7 +6,7 @@ __all__ = ["Step"]
 class Step(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__data = np.array(kw.get("data"))
+        self.__data = tonparray(kw.get("data"))
         self.fill = bols(kw.get("fill"), False)
         self.baseline = num0s(kw.get("baseline"))
         self.orientation = listchose(kw.get("orientation"), ["vertical", "horizontal"])
@@ -41,7 +41,7 @@ class Step(twoElement):
     def update(self, data=None, **kw):
         self._updates(**kw)
         if change_array_like(data):
-            self.__data = np.array(data)
+            self.__data = tonparray(data)
         self.linewidth = num0(kw.get("linewidth"), self.linewidth)
         self.fill = bols(kw.get("fill"), self.fill)
         self.baseline = num0s(kw.get("baseline"), self.baseline)

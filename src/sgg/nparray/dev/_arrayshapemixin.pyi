@@ -65,10 +65,12 @@ class _ArrayCommonMixin:
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
         """スライスやview後もdtypeや次元数情報を引き継がさせるメソッド"""
 
-    def __iter__(self) -> Iterator[np._ScalarNotObject|np.ndarray[np._AnyShape,np._dtype]|Any]: ...
+    def __iter__(
+        self,
+    ) -> Iterator[np._ScalarNotObject | np.ndarray[np._AnyShape, np._dtype] | Any]: ...
     @overload
     def __array__(
-        self, dtype:None = None, /, *, copy: bool | None = None
+        self, dtype: None = None, /, *, copy: bool | None = None
     ) -> np.ndarray[np._ShapeT_co, np._DTypeT_co]: ...
     @overload
     def __array__[DTypeT: np.dtype](
@@ -208,7 +210,7 @@ class _ArrayCommonMixin:
 
     def choice(
         self,
-        size: int | tuple[int,...] | None = None,
+        size: int | tuple[int, ...] | None = None,
         replace: bool = True,
         p: _ArrayLikeFloat_co | None = None,
         axis: int = 0,
@@ -232,6 +234,7 @@ class _ArrayCommonMixin:
         :type seed: int | SeedSequence | Generator | None
         :rtype: np.ndarray
         """
+
     def to_1d(self) -> Self:
         """
         配列を1次元にフラット化した新しい配列オブジェクトを返す

@@ -6,9 +6,9 @@ __all__ = ["Linefill"]
 class Linefill(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = np.array(kw.get("x"), ndmax=1)
-        self.ymax = np.array(kw.get("ymax"), ndmax=1)
-        self.ymin = np.array(kw.get("ymin"), ndmax=1)
+        self.__x = tonparray(kw.get("x"), ndmax=1)
+        self.ymax = tonparray(kw.get("ymax"), ndmax=1)
+        self.ymin = tonparray(kw.get("ymin"), ndmax=1)
         self.centerlinewidth = num0(kw.get("centerlinewidth"), 2)
         self.alpha = range_num(num0s(kw.get("alpha"), 0.5), 0, 1, 0.5)
         self.__plot(
@@ -33,11 +33,11 @@ class Linefill(twoElement):
     def update(self, x=None, ymax=None, ymin=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = np.array(x, ndmax=1)
+            self.__x = tonparray(x, ndmax=1)
         if change_array_like(ymax):
-            self.ymax = np.array(ymax, ndmax=1)
+            self.ymax = tonparray(ymax, ndmax=1)
         if change_array_like(ymin):
-            self.ymin = np.array(ymin, ndmax=1)
+            self.ymin = tonparray(ymin, ndmax=1)
         self.centerlinewidth = num0(kw.get("centerlinewidth"), self.centerlinewidth)
         self.__plot(
             self.__x,

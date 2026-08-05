@@ -8,9 +8,9 @@ __all__ = ["Violinplot"]
 class Violinplot(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__data = np.array(kw.get("data"))
-        self.__x = np.array(kw.get("x", []), ndmax=1)
-        self.__y = np.array(kw.get("y", []), ndmax=1)
+        self.__data = tonparray(kw.get("data"))
+        self.__x = tonparray(kw.get("x", []), ndmax=1)
+        self.__y = tonparray(kw.get("y", []), ndmax=1)
         self.orientation = listchose(kw.get("orientation"), ["vertical", "horizontal"])
         self.width = range_num(num0s(kw.get("width"), 1), 0, 1, 1)
         self.showextrema = bols(kw.get("showextrema"))
@@ -85,11 +85,11 @@ class Violinplot(twoElement):
     def update(self, data=None, x=None, y=None, **kw):
         self._updates(**kw)
         if change_array_like(data):
-            self.__data = np.array(data)
+            self.__data = tonparray(data)
         if change_array_like(x):
-            self.__x = np.array(x, ndmax=1)
+            self.__x = tonparray(x, ndmax=1)
         if change_array_like(y):
-            self.__y = np.array(y, ndmax=1)
+            self.__y = tonparray(y, ndmax=1)
         self.orientation = listchose(
             kw.get("orientation"), ["vertical", "horizontal"], self.orientation
         )

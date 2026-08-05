@@ -6,8 +6,8 @@ __all__ = ["Stem"]
 class Stem(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = np.array(kw.get("x"))
-        self.__y = np.array(kw.get("y"))
+        self.__x = tonparray(kw.get("x"))
+        self.__y = tonparray(kw.get("y"))
         self.linefmt = kw.get("linefmt", None)
         self.markerfmt = kw.get("markerfmt", None)
         self.basefmt = kw.get("basefmt", None)
@@ -59,9 +59,9 @@ class Stem(twoElement):
     def update(self, x=None, y=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = np.array(x)
+            self.__x = tonparray(x)
         if change_array_like(y):
-            self.__y = np.array(y)
+            self.__y = tonparray(y)
         self.linefmt = kw.get("linefmt", self.linefmt)
         self.markerfmt = kw.get("markerfmt", self.markerfmt)
         self.basefmt = kw.get("basefmt", self.basefmt)

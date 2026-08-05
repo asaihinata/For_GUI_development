@@ -21,6 +21,7 @@ __all__ = [
     "list4int",
     "list4num",
     "listchose",
+    "tonparray",
     "num0",
     "num0s",
     "num1s",

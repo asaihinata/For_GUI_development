@@ -8,8 +8,8 @@ __all__ = ["Stacked"]
 class Stacked(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__data = np.array(kw.get("data"))
-        self.dataname = np.array(kw.get("dataname"), ndmax=1)
+        self.__data = tonparray(kw.get("data"))
+        self.dataname = tonparray(kw.get("dataname"), ndmax=1)
         if self.__data.shape[0] != self.dataname.shape[0]:
             raise ValueError("配列のエラー")
         self.width = range_num(num0s(kw.get("width"), 0.8), 0, 1, 0.8)
@@ -25,7 +25,7 @@ class Stacked(twoElement):
         self._apply_labels(self.xlabel, self.ylabel)
         self._adjustment()
 
-    def _survey(self, data: np.array, dataname, label=None, width=0.8):
+    def _survey(self, data, dataname, label=None, width=0.8):
         data = data.T
         lisarr = []
         data_percent = data / np.sum(data, axis=0) * 100
@@ -40,9 +40,9 @@ class Stacked(twoElement):
     def update(self, data=None, dataname=None, **kw):
         self._updates(**kw)
         if change_array_like(data):
-            self.__data = np.array(data)
+            self.__data = tonparray(data)
         if change_array_like(dataname):
-            self.dataname = np.array(dataname, ndmax=1)
+            self.dataname = tonparray(dataname, ndmax=1)
         if self.__data.shape[0] != self.dataname.shape[0]:
             raise ValueError("配列のエラー")
         self.width = range_num(num0s(kw.get("width"), self.width), 0, 1, self.width)

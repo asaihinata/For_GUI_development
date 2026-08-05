@@ -6,8 +6,8 @@ __all__ = ["Hatplot"]
 class Hatplot(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__x = np.array(kw.get("x"), ndmax=1)
-        self.__data = np.array(kw.get("data"), ndmax=1)
+        self.__x = tonparray(kw.get("x"), ndmax=1)
+        self.__data = tonparray(kw.get("data"), ndmax=1)
         self.color = parsecolor(kw.get("color"), "#4477aa")
         self.__plot(self.__x, self.__data, color=self.color, alpha=self.alpha)
 
@@ -19,7 +19,6 @@ class Hatplot(twoElement):
         self._adjustment()
 
     def hat_graph(self, x, data, color=None, alpha=1):
-        x, data = np.array(x), np.array(data)
         xlen = np.arange(x.shape[0])
         for i, heights in enumerate(np.vstack([x, data])):
             style = {"fill": False} if i == 0 else {"edgecolor": "black"}
@@ -49,9 +48,9 @@ class Hatplot(twoElement):
     def update(self, x=None, data=None, **kw):
         self._updates(**kw)
         if change_array_like(x):
-            self.__x = np.array(x, ndmax=1)
+            self.__x = tonparray(x, ndmax=1)
         if change_array_like(data):
-            self.__data = np.array(data, ndmax=1)
+            self.__data = tonparray(data, ndmax=1)
         self.color = parsecolor(kw.get("color"), self.color)
         self.__plot(self.__x, self.__data, color=self.color, alpha=self.alpha)
         self._redraw()

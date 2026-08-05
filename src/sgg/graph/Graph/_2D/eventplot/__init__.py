@@ -6,7 +6,7 @@ __all__ = ["Eventplot"]
 class Eventplot(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__data = np.array(kw.get("data"))
+        self.__data = tonparray(kw.get("data"))
         self.__x = np.arange(self.__data.shape[0])
         self.orientation = listchose(kw.get("orientation"), ["vertical", "horizontal"])
         self.linewidth = num0(kw.get("linewidth"), 1)
@@ -58,7 +58,7 @@ class Eventplot(twoElement):
     def update(self, data=None, **kw):
         self._updates(**kw)
         if change_array_like(data):
-            self.__data = np.array(data)
+            self.__data = tonparray(data)
         self.orientation = listchose(
             kw.get("orientation"), ["vertical", "horizontal"], self.orientation
         )

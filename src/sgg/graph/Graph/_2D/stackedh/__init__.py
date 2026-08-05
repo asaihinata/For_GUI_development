@@ -8,8 +8,8 @@ __all__ = ["Stackedh"]
 class Stackedh(twoElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__data = np.array(kw.get("data"))
-        self.dataname = np.array(kw.get("dataname"), ndmax=1)
+        self.__data = tonparray(kw.get("data"))
+        self.dataname = tonparray(kw.get("dataname"), ndmax=1)
         if self.__data.shape[0] != self.dataname.shape[0]:
             raise ValueError("配列のエラー")
         self.height = range_num(num0s(kw.get("height"), 0.8), 0, 1, 0.8)
@@ -41,9 +41,9 @@ class Stackedh(twoElement):
     def update(self, data=None, dataname=None, **kw):
         self._updates(**kw)
         if change_array_like(data):
-            self.__data = np.array(data)
+            self.__data = tonparray(data)
         if change_array_like(dataname):
-            self.dataname = np.array(dataname, ndmax=1)
+            self.dataname = tonparray(dataname, ndmax=1)
         if self.__data.shape[0] != self.dataname.shape[0]:
             raise ValueError("配列のエラー")
         self.height = range_num(num0s(kw.get("height"), self.height), 0, 1, self.height)

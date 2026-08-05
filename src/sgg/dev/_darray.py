@@ -12,7 +12,30 @@ __all__ = [
     "list4int",
     "list4num",
     "listchose",
+    "tonparray",
 ]
+
+
+def tonparray(data, *, ndmin=0, ndmax=0):
+    if isinstance(data, list | tuple | range):
+        kwargs = {}
+        if ndmin:
+            kwargs["ndmin"] = ndmin
+        if ndmax:
+            kwargs["ndmax"] = ndmax
+        return np.array(data, **kwargs)
+    elif not isinstance(data, np.ndarray) and hasattr(data, "__array__"):
+        data = data.__array__()
+        l = data.ndim
+        if l < 1 or (0 < ndmin and l < ndmin) or (0 < ndmax and ndmax < l):
+            raise TypeError
+        return data
+    elif isinstance(data, np.ndarray):
+        l = data.ndim
+        if l < 1 or (0 < ndmin and l < ndmin) or (0 < ndmax and ndmax < l):
+            raise TypeError
+        return data
+    raise TypeError
 
 
 def is_array_like(obj):
