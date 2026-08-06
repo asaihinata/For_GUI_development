@@ -137,32 +137,10 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     @classmethod
     def arange(cls, start, stop, /, step=1, *, dtype="D", device=None, like=None):
         dtype = _dt64_unit(dtype)
-        if isinstance(start, str):
-            start = np.datetime64(
-                start if start in _pass_str_list else parse(start), dtype
-            )
-        elif isinstance(start, np.str_):
-            start = str(start)
-            start = np.datetime64(
-                start if start in _pass_str_list else parse(start), dtype
-            )
-        elif isinstance(start, np.datetime64):
-            start = start.astype(_dt64_unit(dtype))
-        elif isinstance(start, datetime | date):
-            start = np.datetime64(start).astype(_dt64_unit(dtype))
-        else:
-            raise TypeError
-        if isinstance(stop, str):
-            stop = np.datetime64(stop if stop in _pass_str_list else parse(stop), dtype)
-        elif isinstance(stop, np.str_):
-            stop = str(stop)
-            stop = np.datetime64(stop if stop in _pass_str_list else parse(stop), dtype)
-        elif isinstance(start, np.datetime64):
-            start = start.astype(_dt64_unit(dtype))
-        elif isinstance(start, datetime | date):
-            start = np.datetime64(start).astype(_dt64_unit(dtype))
-        else:
-            raise TypeError
+        start = _obj_to_datetime64(start, dtype).astype("int64")
+        stop = _obj_to_datetime64(stop, dtype).astype("int64")
+        if stop < start:
+            start, stop = stop, start
         return cls(
             np.arange(start, stop, step=step, dtype=dtype, device=device, like=like),
             dtype=dtype,
@@ -173,6 +151,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         cls,
         start,
         stop,
+        /,
         num=50,
         endpoint=True,
         retstep=False,
@@ -182,36 +161,14 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         device=None,
     ):
         dtype = _get_dt64_unit(dtype)
-        if isinstance(start, str):
-            start = np.datetime64(
-                start if start in _pass_str_list else parse(start), dtype
-            )
-        elif isinstance(start, np.str_):
-            start = str(start)
-            start = np.datetime64(
-                start if start in _pass_str_list else parse(start), dtype
-            )
-        elif isinstance(start, np.datetime64):
-            start = start.astype(_dt64_unit(dtype))
-        elif isinstance(start, datetime | date):
-            start = np.datetime64(start).astype(_dt64_unit(dtype))
-        else:
-            raise TypeError
-        if isinstance(stop, str):
-            stop = np.datetime64(stop if stop in _pass_str_list else parse(stop), dtype)
-        elif isinstance(stop, np.str_):
-            stop = str(stop)
-            stop = np.datetime64(stop if stop in _pass_str_list else parse(stop), dtype)
-        elif isinstance(start, np.datetime64):
-            start = start.astype(_dt64_unit(dtype))
-        elif isinstance(start, datetime | date):
-            start = np.datetime64(start).astype(_dt64_unit(dtype))
-        else:
-            raise TypeError
+        start = _obj_to_datetime64(start, dtype).astype("int64")
+        stop = _obj_to_datetime64(stop, dtype).astype("int64")
+        if stop < start:
+            start, stop = stop, start
         if retstep:
-            a, b = np.linspace(
-                start.astype("int64"),
-                stop.astype("int64"),
+            samples, step = np.linspace(
+                start,
+                stop,
                 num,
                 endpoint,
                 retstep,
@@ -219,12 +176,12 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
                 axis,
                 device=device,
             )
-            return cls(a, dtype), b.astype(_tm64_unit(dtype))
+            return cls(samples, dtype), step.astype(_tm64_unit(dtype))
         else:
             return cls(
                 np.linspace(
-                    start.astype("int64"),
-                    stop.astype("int64"),
+                    start,
+                    stop,
                     num,
                     endpoint,
                     dtype=np.int64,
@@ -289,3 +246,17 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         result = np.asarray(flat[~np.isnat(flat)], dtype=dtype).view(type(self))
         result._dtype = dtype
         return result
+
+
+def _obj_to_datetime64(obj, dtype):
+    if isinstance(obj, str):
+        return np.datetime64(obj if obj in _pass_str_list else parse(obj), dtype)
+    elif isinstance(obj, np.str_):
+        obj = str(obj)
+        return np.datetime64(obj if obj in _pass_str_list else parse(obj), dtype)
+    elif isinstance(obj, np.datetime64):
+        return obj.astype(_dt64_unit(dtype))
+    elif isinstance(obj, datetime | date):
+        return np.datetime64(obj).astype(_dt64_unit(dtype))
+    else:
+        raise TypeError
