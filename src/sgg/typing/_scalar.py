@@ -8,7 +8,6 @@ __all__ = [
     "_BoolScalar",
     "_BytesScalar",
     "_DateArangeScalar",
-    "_DateParseScalar",
     "_FloatLike_co",
     "_IntLike_co",
     "_IntsLike_co",
@@ -31,7 +30,6 @@ type _NumberScalar = SupportsInt | SupportsFloat | SupportsComplex | np.number |
 type _StrScalar = str | np.str_
 type _BytesScalar = bytes | np.bytes_
 type _StringScalar = str | bytes | np.character | np.flexible
-type _DateParseScalar = str | np.str_ | datetime | date | np.datetime64 | SupportsInt
 type _DateArangeScalar = str | np.str_ | datetime | date | np.datetime64
 type _TD64Like_co = timedelta | _IntLike_co
 _ScalarT = TypeVar("_ScalarT", bound=np.generic)

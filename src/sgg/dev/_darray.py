@@ -57,7 +57,7 @@ def change_array_like(obj):
 
 def list2num(lin=None):
     if change_array_like(lin):
-        arr = np.array(lin)
+        arr = np.asanyarray(lin)
         if np.issubdtype(arr.dtype, np.number) and arr.shape == (2,):
             return True
     return False
@@ -65,7 +65,7 @@ def list2num(lin=None):
 
 def list2int(lin=None):
     if change_array_like(lin):
-        arr = np.array(lin)
+        arr = np.asanyarray(lin)
         if np.issubdtype(arr.dtype, np.integer) and arr.shape == (2,):
             return True
     return False
@@ -73,7 +73,7 @@ def list2int(lin=None):
 
 def list4float(lin=None):
     if change_array_like(lin):
-        arr = np.array(lin)
+        arr = np.asanyarray(lin)
         if np.issubdtype(arr.dtype, np.floating) and arr.shape == (4,):
             return True
     return False

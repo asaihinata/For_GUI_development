@@ -1,8 +1,8 @@
-from typing import Any, Literal, overload
+from typing import Any, Literal, SupportsIndex, overload
 
 import numpy as np
-from numpy import datetime64
-from numpy._typing import _DTypeLike, _SupportsArrayFunc, _TD64Like_co
+from numpy import datetime64, timedelta64
+from numpy._typing import _SupportsArrayFunc, _TD64Like_co
 
 import sgg.typing as sgt
 
@@ -141,7 +141,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         /,
         step: _TD64Like_co | None = 1,
         *,
-        dtype: _DTypeLike[datetime64] | None = None,
+        dtype: sgt._AllDateUnit | None = "D",
         device: Literal["cpu"] | None = None,
         like: _SupportsArrayFunc | None = None,
     ) -> NPDate:
@@ -155,11 +155,116 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :param step: 値の間隔を指定する
         :type step: _TD64Like_co | None
         :param dtype: 出力配列の型を指定する
-        :type dtype: dtype
+        :type dtype: _AllDateUnit | None
         :param device: 作成された配列を配置する場所を指定する
         :type device: Literal["cpu"] | None
         :param like: NumPy配列ではない配列を作成できるようにする参照するオブジェクトを指定する
         :type like: _SupportsArrayFunc | None
+        """
+
+    @overload
+    @classmethod
+    def linspace(
+        cls,
+        start: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
+        stop: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        retstep: bool = True,
+        dtype: sgt._AllDateUnit | None = "D",
+        axis: SupportsIndex = 0,
+        *,
+        device: Literal["cpu"] | None = None,
+    ) -> tuple[NPDate, timedelta64]:
+        """
+        指定された間隔で等間隔​​の日付を返します。
+
+        :param start: 区間を開始する日付を指定する
+        :type start: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
+        :param stop: 区間を終了する日付を指定する
+        :type stop: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
+        :param num: 生成する日付の数を指定する
+        :type num: int
+        :param endpoint: `stop`を結果に含めるか指定する
+        :type endpoint: bool
+        :param retstep: 計算された間隔を返すか指定する
+        :type retstep: bool
+        :param dtype: 配列の型を指定する
+        :type dtype: _AllDateUnit | None
+        :param axis: 結果にサンプルを格納する軸
+        :type axis: int
+        :param device: 作成された配列を配置するデバイスを指定する
+        :type device: Literal["cpu"] | None
+        """
+
+    @overload
+    @classmethod
+    def linspace(
+        cls,
+        start: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
+        stop: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        retstep: bool = False,
+        dtype: sgt._AllDateUnit | None = "D",
+        axis: SupportsIndex = 0,
+        *,
+        device: Literal["cpu"] | None = None,
+    ) -> NPDate:
+        """
+        指定された間隔で等間隔​​の日付を返します。
+
+        :param start: 区間を開始する日付を指定する
+        :type start: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
+        :param stop: 区間を終了する日付を指定する
+        :type stop: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
+        :param num: 生成する日付の数を指定する
+        :type num: int
+        :param endpoint: `stop`を結果に含めるか指定する
+        :type endpoint: bool
+        :param retstep: 計算された間隔を返すか指定する
+        :type retstep: bool
+        :param dtype: 配列の型を指定する
+        :type dtype: _AllDateUnit | None
+        :param axis: 結果にサンプルを格納する軸
+        :type axis: int
+        :param device: 作成された配列を配置するデバイスを指定する
+        :type device: Literal["cpu"] | None
+        """
+
+    @overload
+    @classmethod
+    def linspace(
+        cls,
+        start: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
+        stop: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        retstep: bool = ...,
+        dtype: sgt._AllDateUnit | None = "D",
+        axis: SupportsIndex = 0,
+        *,
+        device: Literal["cpu"] | None = None,
+    ) -> NPDate | tuple[NPDate, timedelta64]:
+        """
+        指定された間隔で等間隔​​の日付を返します。
+
+        :param start: 区間を開始する日付を指定する
+        :type start: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
+        :param stop: 区間を終了する日付を指定する
+        :type stop: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
+        :param num: 生成する日付の数を指定する
+        :type num: int
+        :param endpoint: `stop`を結果に含めるか指定する
+        :type endpoint: bool
+        :param retstep: 計算された間隔を返すか指定する
+        :type retstep: bool
+        :param dtype: 配列の型を指定する
+        :type dtype: _AllDateUnit | None
+        :param axis: 結果にサンプルを格納する軸
+        :type axis: int
+        :param device: 作成された配列を配置するデバイスを指定する
+        :type device: Literal["cpu"] | None
         """
 
     @classmethod

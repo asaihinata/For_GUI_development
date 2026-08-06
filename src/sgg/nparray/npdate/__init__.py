@@ -3,7 +3,8 @@ from datetime import date, datetime
 import numpy as np
 from dateutil.parser import parse
 
-from ..dev import _ArrayCommonMixin, _dt64_unit, _normalize_axis
+from ..dev import (_ArrayCommonMixin, _dt64_unit, _get_dt64_unit,
+                   _normalize_axis, _tm64_unit)
 from ..npbool import NPBool
 from ..npnumber import NPNumber
 from ..npstr import NPString
@@ -18,6 +19,9 @@ def implements(np_function):
         return func
 
     return decorator
+
+
+_pass_str_list = ["TODAY", "today", "NOW", "now"]
 
 
 class NPDate(_ArrayCommonMixin, np.ndarray):
@@ -133,25 +137,102 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     @classmethod
     def arange(cls, start, stop, /, step=1, *, dtype="D", device=None, like=None):
         dtype = _dt64_unit(dtype)
-        _pass_str_list = ["TODAY", "today", "NOW", "now"]
-        if isinstance(start, (str, np.str_)):
+        if isinstance(start, str):
+            start = np.datetime64(
+                start if start in _pass_str_list else parse(start), dtype
+            )
+        elif isinstance(start, np.str_):
             start = str(start)
-            start = (
-                np.datetime64(start)
-                if start in _pass_str_list
-                else np.datetime64(parse(start))
+            start = np.datetime64(
+                start if start in _pass_str_list else parse(start), dtype
             )
-        if isinstance(stop, (str, np.str_)):
+        elif isinstance(start, np.datetime64):
+            start = start.astype(_dt64_unit(dtype))
+        elif isinstance(start, datetime | date):
+            start = np.datetime64(start).astype(_dt64_unit(dtype))
+        else:
+            raise TypeError
+        if isinstance(stop, str):
+            stop = np.datetime64(stop if stop in _pass_str_list else parse(stop), dtype)
+        elif isinstance(stop, np.str_):
             stop = str(stop)
-            stop = (
-                np.datetime64(stop)
-                if stop in _pass_str_list
-                else np.datetime64(parse(stop))
-            )
+            stop = np.datetime64(stop if stop in _pass_str_list else parse(stop), dtype)
+        elif isinstance(start, np.datetime64):
+            start = start.astype(_dt64_unit(dtype))
+        elif isinstance(start, datetime | date):
+            start = np.datetime64(start).astype(_dt64_unit(dtype))
+        else:
+            raise TypeError
         return cls(
             np.arange(start, stop, step=step, dtype=dtype, device=device, like=like),
             dtype=dtype,
         )
+
+    @classmethod
+    def linspace(
+        cls,
+        start,
+        stop,
+        num=50,
+        endpoint=True,
+        retstep=False,
+        dtype="D",
+        axis=0,
+        *,
+        device=None,
+    ):
+        dtype = _get_dt64_unit(dtype)
+        if isinstance(start, str):
+            start = np.datetime64(
+                start if start in _pass_str_list else parse(start), dtype
+            )
+        elif isinstance(start, np.str_):
+            start = str(start)
+            start = np.datetime64(
+                start if start in _pass_str_list else parse(start), dtype
+            )
+        elif isinstance(start, np.datetime64):
+            start = start.astype(_dt64_unit(dtype))
+        elif isinstance(start, datetime | date):
+            start = np.datetime64(start).astype(_dt64_unit(dtype))
+        else:
+            raise TypeError
+        if isinstance(stop, str):
+            stop = np.datetime64(stop if stop in _pass_str_list else parse(stop), dtype)
+        elif isinstance(stop, np.str_):
+            stop = str(stop)
+            stop = np.datetime64(stop if stop in _pass_str_list else parse(stop), dtype)
+        elif isinstance(start, np.datetime64):
+            start = start.astype(_dt64_unit(dtype))
+        elif isinstance(start, datetime | date):
+            start = np.datetime64(start).astype(_dt64_unit(dtype))
+        else:
+            raise TypeError
+        if retstep:
+            a, b = np.linspace(
+                start.astype("int64"),
+                stop.astype("int64"),
+                num,
+                endpoint,
+                retstep,
+                np.int64,
+                axis,
+                device=device,
+            )
+            return cls(a, dtype), b.astype(_tm64_unit(dtype))
+        else:
+            return cls(
+                np.linspace(
+                    start.astype("int64"),
+                    stop.astype("int64"),
+                    num,
+                    endpoint,
+                    dtype=np.int64,
+                    axis=axis,
+                    device=device,
+                ),
+                dtype,
+            )
 
     @classmethod
     def today(cls):
