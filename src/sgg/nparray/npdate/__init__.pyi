@@ -13,10 +13,6 @@ from ..npstr import NPString
 
 __all__ = ["NPDate"]
 
-type ComparisonType = np._SupportsGT | datetime64 | NPDate | np._ArrayLikeDT64_co | np._NestedSequence[
-    np._SupportsGT
-]
-
 class NPDate(_ArrayCommonMixin, np.ndarray):
     """`np.ndarray`を継承した日付の配列クラス"""
 
@@ -37,7 +33,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         新しい日付の配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: 任意のdatetime64型(dtype)を持つ配列のようなオブジェクト
+        :type data: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
         :param min_ndim: 許容する最小次元数を指定する
@@ -64,7 +60,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         新しい日付の配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: 任意のdatetime64型(dtype)を持つ配列のようなオブジェクト
+        :type data: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
         :param d_ndim: 固定される次元数を指定する
@@ -102,27 +98,27 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     __isub__ = __sub__
 
     @overload
-    def __eq__(self, value: ComparisonType) -> NPBool: ...
+    def __eq__(self, value: sgt._ComparisonType | NPDate) -> NPBool: ...
     @overload
     def __eq__(self, value: Any, /) -> NoReturn: ...
     @overload
-    def __ne__(self, value: ComparisonType) -> NPBool: ...
+    def __ne__(self, value: sgt._ComparisonType | NPDate) -> NPBool: ...
     @overload
     def __ne__(self, value: Any, /) -> NoReturn: ...
     @overload
-    def __lt__(self, value: ComparisonType, /) -> NPBool: ...
+    def __lt__(self, value: sgt._ComparisonType | NPDate, /) -> NPBool: ...
     @overload
     def __lt__(self, value: Any, /) -> NoReturn: ...
     @overload
-    def __le__(self, value: ComparisonType, /) -> NPBool: ...
+    def __le__(self, value: sgt._ComparisonType | NPDate, /) -> NPBool: ...
     @overload
     def __le__(self, value: Any, /) -> NoReturn: ...
     @overload
-    def __gt__(self, value: ComparisonType, /) -> NPBool: ...
+    def __gt__(self, value: sgt._ComparisonType | NPDate, /) -> NPBool: ...
     @overload
     def __gt__(self, value: Any, /) -> NoReturn: ...
     @overload
-    def __ge__(self, value: ComparisonType, /) -> NPBool: ...
+    def __ge__(self, value: sgt._ComparisonType | NPDate, /) -> NPBool: ...
     @overload
     def __ge__(self, value: Any, /) -> NoReturn: ...
     @property
@@ -333,13 +329,3 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
 
     def cleanNaT(self) -> NPDate:
         """配列を一次元配列にし欠損日(NaT)を削除する"""
-
-HANDLED_FUNCTIONS: dict
-
-def implements(np_function) -> Any:
-    """
-    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
-
-    :param np_function: 登録対象のnumpy関数
-    :return: デコレータ関数を返す
-    """

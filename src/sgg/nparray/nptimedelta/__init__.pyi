@@ -32,7 +32,7 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: 任意のtimedelta64型(dtype)を持つ配列のようなオブジェクト
+        :type data: 任意のtimedelta64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: np.timedelta64 | _TD64Codes_All
         :param min_ndim: 許容する最小次元数を指定する
@@ -59,7 +59,7 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: 任意のtimedelta64型(dtype)を持つ配列のようなオブジェクト
+        :type data: 任意のtimedelta64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: np.timedelta64 | _TD64Codes_All
         :param d_ndim: 固定される次元数を指定する

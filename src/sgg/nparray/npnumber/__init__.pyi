@@ -59,7 +59,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: 任意の数値型(dtype)を持つ配列のようなオブジェクト
+        :type data: 任意の数値型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: int | float | complex | np.number
         :param min_ndim: 許容する最小次元数を指定する
@@ -85,7 +85,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: 任意の数値型(dtype)を持つ配列のようなオブジェクト
+        :type data: 任意の数値型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: int | float | complex | np.number
         :param d_ndim: 固定される次元数を指定する
@@ -565,13 +565,3 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :param dtype: 出力される配列に使用するデータ型を指定する
         :param seed: 乱数のシード値を指定する
         """
-
-HANDLED_FUNCTIONS: dict
-
-def implements(np_function) -> Any:
-    """
-    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
-
-    :param np_function: 登録対象のnumpy関数
-    :return: デコレータ関数を返す
-    """

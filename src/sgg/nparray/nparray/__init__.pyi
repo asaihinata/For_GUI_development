@@ -135,13 +135,3 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
 
     def EType(self) -> NPArray:
         """配列内の要素の型を調べる"""
-
-HANDLED_FUNCTIONS: dict
-
-def implements(np_function) -> Any:
-    """
-    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
-
-    :param np_function: 登録対象のnumpy関数
-    :return: デコレータ関数を返す
-    """

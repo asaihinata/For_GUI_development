@@ -1,6 +1,6 @@
 """様々な日付の文字列フォーマットから日付に変換するオブジェクト"""
 
-from typing import Any, Literal, overload
+from typing import Any, Literal, NoReturn, overload
 
 import numpy as np
 from numpy import datetime64
@@ -35,9 +35,9 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         様々な日付のフォーマットを特定の日付フォーマットに変換する配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: 任意の文字列型(dtype)を持つ配列のようなオブジェクト
+        :type data: 任意の文字列型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: datetime64 | _DT64Codes_All
+        :type dtype: np.datetime64 | _DT64Codes_All
         :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
         :type yearfirst: bool
         :param dayfirst: 曖昧な3つの整数からなる日付の最初の値を日もしくは月として解釈するかどうか指定する
@@ -68,9 +68,9 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         様々な日付のフォーマットを特定の日付フォーマットに変換する配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: 任意の文字列型(dtype)を持つ配列のようなオブジェクト
+        :type data: 任意の文字列型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: datetime64 | _DT64Codes_All
+        :type dtype: np.datetime64 | _DT64Codes_All
         :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
         :type yearfirst: bool
         :param dayfirst: 曖昧な3つの整数からなる日付の最初の値を日もしくは月として解釈するかどうか指定する
@@ -89,12 +89,30 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
     def __sub__(self, value: sgt._ArrayLikeTD64_co) -> NPFormatDate: ...
     __isub__ = __sub__
     __rsub__ = __sub__
-    def __eq__(self, value: Any) -> NPBool: ...
-    def __ne__(self, value: Any) -> NPBool: ...
-    def __lt__(self, value: Any) -> NPBool: ...
-    def __le__(self, value: Any) -> NPBool: ...
-    def __gt__(self, value: Any) -> NPBool: ...
-    def __ge__(self, value: Any) -> NPBool: ...
+    @overload
+    def __eq__(self, value: sgt._ComparisonType) -> NPBool: ...
+    @overload
+    def __eq__(self, value: Any, /) -> NoReturn: ...
+    @overload
+    def __ne__(self, value: sgt._ComparisonType) -> NPBool: ...
+    @overload
+    def __ne__(self, value: Any, /) -> NoReturn: ...
+    @overload
+    def __lt__(self, value: sgt._ComparisonType, /) -> NPBool: ...
+    @overload
+    def __lt__(self, value: Any, /) -> NoReturn: ...
+    @overload
+    def __le__(self, value: sgt._ComparisonType, /) -> NPBool: ...
+    @overload
+    def __le__(self, value: Any, /) -> NoReturn: ...
+    @overload
+    def __gt__(self, value: sgt._ComparisonType, /) -> NPBool: ...
+    @overload
+    def __gt__(self, value: Any, /) -> NoReturn: ...
+    @overload
+    def __ge__(self, value: sgt._ComparisonType, /) -> NPBool: ...
+    @overload
+    def __ge__(self, value: Any, /) -> NoReturn: ...
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -148,13 +166,3 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         :param axis: 求める軸を指定する
         :type axis: _ShapeLike | None
         """
-
-HANDLED_FUNCTIONS: dict
-
-def implements(np_function) -> Any:
-    """
-    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
-
-    :param np_function: 登録対象のnumpy関数
-    :return: デコレータ関数を返す
-    """

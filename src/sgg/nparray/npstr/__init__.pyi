@@ -3,7 +3,6 @@
 from typing import Any, overload
 
 import numpy as np
-import numpy._typing as npt
 from numpy import bytes_, str_
 from numpy.dtypes import StringDType
 
@@ -35,9 +34,9 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: 任意のstr型もしくはbytes型(dtype)を持つ配列のようなオブジェクト
+        :type data: 任意の文字列型かバイト型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: str | np.str_ | np.bytes_ | bytes | np.dtypes.StringDType
+        :type dtype: str | np.str_ | np.dtypes.StringDType | bytes | np.bytes_
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
@@ -62,9 +61,9 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: 任意のstr型もしくはbytes型(dtype)を持つ配列のようなオブジェクト
+        :type data: 任意の文字列型かバイト型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: str | np.str_ | np.bytes_ | bytes | np.dtypes.StringDType
+        :type dtype: str | np.str_ | np.dtypes.StringDType | bytes | np.bytes_
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
@@ -96,10 +95,10 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def __eq__(self, value: Any) -> NPBool: ...
     def __ne__(self, value: Any) -> NPBool: ...
-    def __add__(self, value: npt._ArrayLikeString_co) -> NPString: ...
+    def __add__(self, value: sgt._ArrayLikeString_co) -> NPString: ...
     __iadd__ = __add__
     __radd__ = __add__
-    def __mul__(self, i: npt._ArrayLikeInt_co) -> NPString:
+    def __mul__(self, i: sgt._ArrayLikeInt_co) -> NPString:
         """
         配列内の要素を`i`回付け加える
 
@@ -115,7 +114,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     ) -> tuple[type[str], type[bytes], type[str_], type[bytes_], type[StringDType]]:
         """NPStringで許可されている型を取得する"""
 
-    def append(self, value: npt._ArrayLikeString_co) -> NPString:
+    def append(self, value: sgt._ArrayLikeString_co) -> NPString:
         """配列内の要素の文字に`val`を付け加える"""
 
     @property
@@ -138,131 +137,158 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     def str_len(self) -> NPNumber:
         """配列内の要素の文字の長さを求める"""
 
-    def max(self) -> np.uint64:
+    def len_max(self) -> np.uint64:
         """配列内の要素の文字列の長さが最も長い数値を求める"""
 
-    def min(self) -> np.uint64:
+    def len_min(self) -> np.uint64:
         """配列内の要素の文字列の長さが最も短い数値を求める"""
 
+    @overload
     def replace(
         self,
-        old: sgt._ArrayLikeString_co,
-        new: sgt._ArrayLikeString_co,
+        old: sgt._ArrayLikeStr_co,
+        new: sgt._ArrayLikeStr_co,
     ) -> NPString:
+        """
+        NPString`内の要素の文字列の`old`を`new`に置き換える
+
+        :param old: 置き換えたいの文字列を指定する
+        :type old: 任意のstr型を持つ配列のようなオブジェクト
+        :param new: 新しい置換後の文字列を指定する
+        :type new: 任意のstr型を持つ配列のようなオブジェクト
+        """
+
+    @overload
+    def replace(
+        self,
+        old: sgt._ArrayLikeBytes_co,
+        new: sgt._ArrayLikeBytes_co,
+    ) -> NPString:
+        """
+        NPString`内の要素の文字列の`old`を`new`に置き換える
+
+        :param old: 置き換えたいの文字列を指定する
+        :type old: 任意のbytes型を持つ配列のようなオブジェクト
+        :param new: 新しい置換後の文字列を指定する
+        :type new: 任意のbytes型を持つ配列のようなオブジェクト
+        """
+
+    @overload
+    def replace(self, old: Any, new: Any) -> Any:
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
 
     def slices(
         self,
-        start: npt._ArrayLikeInt_co | None = None,
-        stop: npt._ArrayLikeInt_co | np._NoValueType | None = None,
-        step: npt._ArrayLikeInt_co | None = None,
+        start: sgt._ArrayLikeInt_co | None = None,
+        stop: sgt._ArrayLikeInt_co | np._NoValueType | None = None,
+        step: sgt._ArrayLikeInt_co | None = None,
     ) -> NPString:
         """
         文字列を`start`,`stop`,`step`で指定されたスライスに分割する
 
         :param start: スライスをする開始する位置を指定する
-        :type start: _ArrayLikeInt_co | None
+        :type start: 整数もしくは整数の配列
         :param stop: スライスをする終了する位置を指定する
-        :type stop: _ArrayLikeInt_co | np._NoValueType | None
+        :type stop: 整数もしくは整数の配列
         :param step: スライスするステップ数を指定する
-        :type step: _ArrayLikeInt_co | None
+        :type step: 整数もしくは整数の配列
         """
 
     def strip(
         self,
-        chars: sgt._ArrayLikeString_co | None = None,
+        chars: sgt._ArrayLikeStrings_co | None = None,
     ) -> NPString:
         """
         配列の各要素について,先頭と末尾の文字を取り除いた配列を返す
 
         :param chars: 削除する文字を指定する
-        :type chars: _ArrayLikeString_co | None
+        :type chars: 文字列型もしくはバイト型を持つ配列のようなオブジェクト | None
         """
 
     def center(
-        self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeString_co = " "
+        self, width: sgt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で中央寄せされた配列を返す
 
         :param width: 結果として得られる文字列の長さを指定する
-        :type width: _ArrayLikeInt_co
+        :type width: 整数もしくは整数の配列
         :param fillchar: 使用する余白の文字を指定する
-        :type fillchar: _ArrayLikeString_co
+        :type fillchar: 文字列型もしくはバイト型を持つ配列のようなオブジェクト
         """
 
     def left(
-        self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeString_co = " "
+        self, width: sgt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で左寄せされた配列を返す
 
         :param width: 結果として得られる文字列の長さを指定する
-        :type width: _ArrayLikeInt_co
+        :type width: 整数もしくは整数の配列
         :param fillchar: 使用する余白の文字を指定する
-        :type fillchar: _ArrayLikeString_co
+        :type fillchar: 文字列型もしくはバイト型を持つ配列のようなオブジェクト
         """
 
     def right(
-        self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeString_co = " "
+        self, width: sgt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で右寄せされた配列を返す
 
         :param width: 結果として得られる文字列の長さを指定する
-        :type width: _ArrayLikeInt_co
+        :type width: 整数もしくは整数の配列
         :param fillchar: 使用する余白の文字を指定する
-        :type fillchar: _ArrayLikeString_co
+        :type fillchar: 文字列型もしくはバイト型を持つ配列のようなオブジェクト
         """
 
-    def zerofill(self, width: npt._ArrayLikeInt_co) -> NPString:
+    def zerofill(self, width: sgt._ArrayLikeInt_co) -> NPString:
         """
         数値文字列の左側を0で埋めて返します。
 
         :param width: 0で埋める数を指定する
-        :type width: _ArrayLikeInt_co
+        :type width: 整数もしくは整数の配列
         """
 
-    def expandtabs(self, tabsize: npt._ArrayLikeInt_co = 8) -> NPString:
+    def expandtabs(self, tabsize: sgt._ArrayLikeInt_co = 8) -> NPString:
         """
         各文字列要素について,すべてのタブを1つ以上のスペースに置き換えた配列を返す
 
         :param tabsize: タブを置き換えたいスペースの数を指定する
-        :type tabsize: _ArrayLikeInt_co
+        :type tabsize: 整数もしくは整数の配列
         """
 
     def endswith(
         self,
         suffix: sgt._ArrayLikeString_co,
-        start: npt._ArrayLikeInt_co = 0,
-        end: npt._ArrayLikeInt_co | None = None,
+        start: sgt._ArrayLikeInt_co = 0,
+        end: sgt._ArrayLikeInt_co | None = None,
     ) -> NPBool:
         """
         配列の要素が`suffix`で終わるかを調べる
 
         :param suffix: 終了する単語を指定する
-        :type suffix: _ArrayLikeString_co
+        :type suffix: 文字列型もしくはバイト型を持つ配列のようなオブジェクト
         :param start: 比較を開始する位置を指定する
-        :type start: _ArrayLikeInt_co
+        :type start: 整数もしくは整数の配列
         :param end: 比較を終える位置を指定する
-        :type end: _ArrayLikeInt_co | None
+        :type end: 整数もしくは整数の配列
         """
 
     def startswith(
         self,
         prefix: sgt._ArrayLikeString_co,
-        start: npt._ArrayLikeInt_co = 0,
-        end: npt._ArrayLikeInt_co | None = None,
+        start: sgt._ArrayLikeInt_co = 0,
+        end: sgt._ArrayLikeInt_co | None = None,
     ) -> NPBool:
         """
         配列の要素が`prefix`で始まるかを調べる
 
         :param prefix: 終了する単語を指定する
-        :type prefix: _ArrayLikeString_co
+        :type prefix: 文字列型もしくはバイト型を持つ配列のようなオブジェクト
         :param start: 比較を開始する位置を指定する
-        :type start: _ArrayLikeInt_co
+        :type start: 整数もしくは整数の配列
         :param end: 比較を終える位置を指定する
-        :type end: _ArrayLikeInt_co | None
+        :type end: 整数もしくは整数の配列
         """
 
     def capitalize(self) -> NPString:
@@ -356,13 +382,3 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         :raises TypeError: `length`にint型以外を指定した場合に発生させる
         :raises ValueError: `length`に1未満の整数を指定した場合に発生させる
         """
-
-HANDLED_FUNCTIONS: dict
-
-def implements(np_function) -> Any:
-    """
-    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
-
-    :param np_function: 登録対象のnumpy関数
-    :return: デコレータ関数を返す
-    """

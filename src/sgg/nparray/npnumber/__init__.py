@@ -20,15 +20,6 @@ method_list = [
     "median_unbiased",
     "normal_unbiased",
 ]
-HANDLED_FUNCTIONS = {}
-
-
-def implements(np_function):
-    def decorator(func):
-        HANDLED_FUNCTIONS[np_function] = func
-        return func
-
-    return decorator
 
 
 class NPNumber(_ArrayCommonMixin, np.ndarray):
@@ -81,8 +72,6 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         return result
 
     def __array_function__(self, func, types, args, kwargs):
-        if func in HANDLED_FUNCTIONS:
-            return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
     def __eq__(self, value):

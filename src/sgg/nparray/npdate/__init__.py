@@ -10,16 +10,6 @@ from ..npnumber import NPNumber
 from ..npstr import NPString
 
 __all__ = ["NPDate"]
-HANDLED_FUNCTIONS = {}
-
-
-def implements(np_function):
-    def decorator(func):
-        HANDLED_FUNCTIONS[np_function] = func
-        return func
-
-    return decorator
-
 
 _pass_str_list = ["TODAY", "today", "NOW", "now"]
 
@@ -70,8 +60,6 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         return result
 
     def __array_function__(self, func, types, args, kwargs):
-        if func in HANDLED_FUNCTIONS:
-            return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
     def __add__(self, value):

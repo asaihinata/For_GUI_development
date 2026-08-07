@@ -9,15 +9,6 @@ from ..npbool import NPBool
 from ..npnumber import NPNumber
 
 __all__ = ["NPString"]
-HANDLED_FUNCTIONS = {}
-
-
-def implements(np_function):
-    def decorator(func):
-        HANDLED_FUNCTIONS[np_function] = func
-        return func
-
-    return decorator
 
 
 class NPString(_ArrayCommonMixin, np.ndarray):
@@ -70,8 +61,6 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         return result
 
     def __array_function__(self, func, types, args, kwargs):
-        if func in HANDLED_FUNCTIONS:
-            return HANDLED_FUNCTIONS[func](*args, **kwargs)
         return super().__array_function__(func, types, args, kwargs)
 
     def __add__(self, value):
@@ -128,11 +117,11 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
-    def max(self):
-        return np.max(nps.str_len(self.data))
+    def len_max(self):
+        return np.max(nps.str_len(self))
 
-    def min(self):
-        return np.min(nps.str_len(self.data))
+    def len_min(self):
+        return np.min(nps.str_len(self))
 
     def stringlen(self):
         return NPNumber(np.vectorize(len)(self), dtype=np.uint64)
@@ -141,7 +130,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         return NPNumber(nps.str_len(self), dtype=np.uint64)
 
     def replace(self, old, new):
-        result = np.asarray(nps.replace(self, old, new)).view(type(self))
+        result = nps.replace(np.asarray(self), old, new).view(type(self))
         result._dtype = result.dtype
         return result
 

@@ -28,7 +28,7 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: 任意のbool型(dtype)を持つ配列のようなオブジェクト
+        :type data: 任意のbool型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: np.bool_ | np.bool | bool
         :param min_ndim: 許容する最小次元数を指定する
@@ -55,7 +55,7 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: 任意のbool型(dtype)を持つ配列のようなオブジェクト
+        :type data: 任意のbool型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: np.bool_ | np.bool | bool
         :param d_ndim: 固定される次元数を指定する
@@ -112,13 +112,3 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
     @property
     def FalseCount(self) -> int:
         """配列内の`False`の数を数える"""
-
-HANDLED_FUNCTIONS: dict
-
-def implements(np_function) -> Any:
-    """
-    numpyの関数を`HANDLED_FUNCTIONS`に登録するデコレータ
-
-    :param np_function: 登録対象のnumpy関数
-    :return: デコレータ関数を返す
-    """
