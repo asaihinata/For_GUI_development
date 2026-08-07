@@ -1,4 +1,4 @@
-from typing import Any, overload
+from typing import Any, NoReturn, overload
 
 import numpy as np
 
@@ -87,8 +87,14 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
         :return: 処理結果を返す
         """
 
-    def __eq__(self, value: Any) -> NPBool: ...
-    def __ne__(self, value: Any) -> NPBool: ...
+    @overload
+    def __eq__(self, value: sgt._ArrayLikeBool_co | NPBool) -> NPBool: ...
+    @overload
+    def __eq__(self, value: Any) -> NoReturn: ...
+    @overload
+    def __ne__(self, value: sgt._ArrayLikeBool_co | NPBool) -> NPBool: ...
+    @overload
+    def __ne__(self, value: Any) -> NoReturn: ...
     def __invert__(self) -> NPBool:
         """配列内の真偽値を反転させる"""
 

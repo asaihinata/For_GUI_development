@@ -2,7 +2,7 @@ from typing import Any, Literal, NoReturn, SupportsIndex, overload
 
 import numpy as np
 from numpy import datetime64, timedelta64
-from numpy._typing import _SupportsArrayFunc, _TD64Like_co
+from numpy._typing import _TD64Like_co
 
 import sgg.typing as sgt
 
@@ -100,27 +100,27 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     @overload
     def __eq__(self, value: sgt._ComparisonType | NPDate) -> NPBool: ...
     @overload
-    def __eq__(self, value: Any, /) -> NoReturn: ...
+    def __eq__(self, value: Any) -> NoReturn: ...
     @overload
     def __ne__(self, value: sgt._ComparisonType | NPDate) -> NPBool: ...
     @overload
-    def __ne__(self, value: Any, /) -> NoReturn: ...
+    def __ne__(self, value: Any) -> NoReturn: ...
     @overload
-    def __lt__(self, value: sgt._ComparisonType | NPDate, /) -> NPBool: ...
+    def __lt__(self, value: sgt._ComparisonType | NPDate) -> NPBool: ...
     @overload
-    def __lt__(self, value: Any, /) -> NoReturn: ...
+    def __lt__(self, value: Any) -> NoReturn: ...
     @overload
-    def __le__(self, value: sgt._ComparisonType | NPDate, /) -> NPBool: ...
+    def __le__(self, value: sgt._ComparisonType | NPDate) -> NPBool: ...
     @overload
-    def __le__(self, value: Any, /) -> NoReturn: ...
+    def __le__(self, value: Any) -> NoReturn: ...
     @overload
-    def __gt__(self, value: sgt._ComparisonType | NPDate, /) -> NPBool: ...
+    def __gt__(self, value: sgt._ComparisonType | NPDate) -> NPBool: ...
     @overload
-    def __gt__(self, value: Any, /) -> NoReturn: ...
+    def __gt__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ge__(self, value: sgt._ComparisonType | NPDate, /) -> NPBool: ...
+    def __ge__(self, value: sgt._ComparisonType | NPDate) -> NPBool: ...
     @overload
-    def __ge__(self, value: Any, /) -> NoReturn: ...
+    def __ge__(self, value: Any) -> NoReturn: ...
     @property
     def year(self) -> NPNumber:
         """配列の年を返す"""
@@ -155,8 +155,6 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         step: _TD64Like_co | None = 1,
         *,
         dtype: sgt._DT64Codes_All | None = "D",
-        device: Literal["cpu"] | None = None,
-        like: _SupportsArrayFunc | None = None,
     ) -> NPDate:
         """
         指定された間隔内で等間隔の日付を返す
@@ -169,10 +167,6 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :type step: int | np.timedelta64 | np.integer | np.bool | None
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: _DT64Codes_All | None
-        :param device: 作成された配列を配置する場所を指定する
-        :type device: Literal["cpu"] | None
-        :param like: NumPy配列ではない配列を作成できるようにする参照するオブジェクトを指定する
-        :type like: _SupportsArrayFunc | None
         """
 
     @overload
@@ -309,17 +303,8 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :type days: bool
         """
 
-    @overload
-    def range(self, axis: None = None) -> tuple[datetime64, datetime64]: ...
-    @overload
-    def range(self, axis: np._ShapeLike) -> tuple[NPDate, NPDate]: ...
-    def range():
-        """
-        配列内の日付の最小の日付と最大の日付を求める
-
-        :param axis: 求める軸を指定する
-        :type axis: _ShapeLike | None
-        """
+    def range(self) -> tuple[datetime64, datetime64]:
+        """配列内の日付の最小の日付と最大の日付を求める"""
 
     def leapyear(self) -> NPBool:
         """その日付の年がうるう年かどうかを判定する"""

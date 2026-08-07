@@ -1,6 +1,6 @@
 """基本的な数値の操作をするモジュール"""
 
-from typing import Any, Literal, Sequence, SupportsIndex, overload
+from typing import Any, Literal, NoReturn, Sequence, SupportsIndex, overload
 
 import numpy as np
 import numpy._typing as npt
@@ -117,35 +117,79 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :return: 処理結果を返す
         """
 
-    def __eq__(self, value: Any) -> NPBool: ...
-    def __ne__(self, value: Any) -> NPBool: ...
-    def __lt__(self, value: Any) -> NPBool: ...
-    def __le__(self, value: Any) -> NPBool: ...
-    def __gt__(self, value: Any) -> NPBool: ...
-    def __ge__(self, value: Any) -> NPBool: ...
-    def __add__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __radd__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __iadd__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __sub__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __rsub__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __isub__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __mul__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __rmul__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __imul__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __truediv__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __rtruediv__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __itruediv__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __floordiv__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __rfloordiv__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __ifloordiv__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __mod__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __rmod__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __imod__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __pow__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __rpow__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __ipow__(self, value: sgt._NumberScalar) -> NPNumber: ...
-    def __divmod__(self, value: sgt._NumberScalar) -> tuple[NPNumber, NPNumber]: ...
-    def __rdivmod__(self, value: sgt._NumberScalar) -> tuple[NPNumber, NPNumber]: ...
+    @overload
+    def __eq__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NPBool: ...
+    @overload
+    def __eq__(self, value: Any) -> NoReturn: ...
+    @overload
+    def __ne__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NPBool: ...
+    @overload
+    def __ne__(self, value: Any) -> NoReturn: ...
+    @overload
+    def __lt__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NPBool: ...
+    @overload
+    def __lt__(self, value: Any) -> NoReturn: ...
+    @overload
+    def __le__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NPBool: ...
+    @overload
+    def __le__(self, value: Any) -> NoReturn: ...
+    @overload
+    def __gt__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NPBool: ...
+    @overload
+    def __gt__(self, value: Any) -> NoReturn: ...
+    @overload
+    def __ge__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NPBool: ...
+    @overload
+    def __ge__(self, value: Any) -> NoReturn: ...
+    @overload
+    def __add__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
+    @overload
+    def __add__(self, value: Any) -> NoReturn: ...
+    __radd__ = __add__
+    __iadd__ = __add__
+    @overload
+    def __sub__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
+    @overload
+    def __sub__(self, value: Any) -> NoReturn: ...
+    __rsub__ = __sub__
+    __isub__ = __sub__
+    @overload
+    def __mul__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
+    @overload
+    def __mul__(self, value: Any) -> NoReturn: ...
+    __rmul__ = __mul__
+    __imul__ = __mul__
+    @overload
+    def __truediv__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
+    @overload
+    def __truediv__(self, value: Any) -> NoReturn: ...
+    __rtruediv__ = __truediv__
+    __itruediv__ = __truediv__
+    @overload
+    def __floordiv__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
+    @overload
+    def __floordiv__(self, value: Any) -> NoReturn: ...
+    __rfloordiv__ = __floordiv__
+    __ifloordiv__ = __floordiv__
+    @overload
+    def __mod__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
+    @overload
+    def __mod__(self, value: Any) -> NoReturn: ...
+    __rmod__ = __mod__
+    __imod__ = __mod__
+    @overload
+    def __pow__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
+    @overload
+    def __pow__(self, value: Any) -> NoReturn: ...
+    __rpow__ = __pow__
+    __ipow__ = __pow__
+    @overload
+    def __divmod__(
+        self, value: sgt._ArrayLikeNumber_co
+    ) -> tuple[NPNumber, NPNumber]: ...
+    @overload
+    def __divmod__(self, value: Any) -> NoReturn: ...
+    __rdivmod__ = __divmod__
     def __abs__(self) -> NPNumber: ...
     @property
     def element_type(
@@ -164,7 +208,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         0以外の要素の数を数える
 
         :param axis: 要素を数える軸を指定する
-        :type axis: _ShapeLike | None
+        :type axis: int | tuple[int,...] | None
         :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する
         :type keepdims: bool
         """
@@ -195,11 +239,11 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         指定したパーセンタイルを計算する
 
         :param q: 求めたいパーセンタイル値を指定する
-        :type q: npt._FloatLike_co
+        :type q: float
         :param axis: 計算する軸の方向を指定する
-        :type axis: Typeaxis
+        :type axis: int | tuple[int,...] | None
         :param method: パーセンタイルを推定するために使用する方法を指定する
-        :type method: TYPEMETHOD
+        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased",]
         """
 
     def quantile(
@@ -212,11 +256,11 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         指定した分位点を計算する
 
         :param q: 求めたい分位点を指定する
-        :type q: npt._FloatLike_co
+        :type q: float
         :param axis: 計算する軸の方向を指定する
-        :type axis: Typeaxis
+        :type axis: int | tuple[int,...] | None
         :param method: 分位点を推定するために使用する方法を指定する
-        :type method: TYPEMETHOD
+        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased",]
         """
 
     def ratio(self, axis: SupportsIndex | None = None) -> NPNumber:
@@ -224,25 +268,13 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
 
     @classmethod
     def zeros(
-        cls,
-        shape: SupportsIndex,
-        dtype: sgt._NumericDTypeLike | None = None,
-        order: _OrderCF = "C",
-        *,
-        device: Literal["cpu"] | None = None,
-        like: npt._SupportsArrayFunc | None = None,
+        cls, shape: SupportsIndex, dtype: sgt._NumericDTypeLike | None = None
     ) -> NPNumber:
         """指定された形状と型の新しい配列を0で埋めた配列を作成する"""
 
     @classmethod
     def ones(
-        cls,
-        shape: SupportsIndex,
-        dtype: sgt._NumericDTypeLike | None = None,
-        order: _OrderCF = "C",
-        *,
-        device: Literal["cpu"] | None = None,
-        like: npt._SupportsArrayFunc | None = None,
+        cls, shape: SupportsIndex, dtype: sgt._NumericDTypeLike | None = None
     ) -> NPNumber:
         """指定された形状と型の新しい配列を0で埋めた配列を作成する"""
 
@@ -258,9 +290,9 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         配列の四分位数を求める
 
         :param axis: 計算する軸の方向を指定する
-        :type axis: Typeaxis
+        :type axis: int | tuple[int,...] | None
         :param method: 分位点を推定するために使用する方法を指定する
-        :type method: TYPEMETHOD
+        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased",]
         """
 
     def isinf(self) -> NPBool:
@@ -291,9 +323,9 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         配列内の数値を並び替える
 
         :param axis: ソートの基準となる軸を指定する
-        :type axis: SupportsIndex | None
+        :type axis: int | None
         :param kind: ソートアルゴリズムの種類を指定する
-        :type kind: _SortKind | None
+        :type kind: Literal["Q","quick","quicksort","M","merge","mergesort","H","heap","heapsort","S","stable","stablesort"] | None
         :param order: `NPNumber`がフィールド定義を持つ配列である場合,どのフィールドを優先して比較するかを指定する
         :type order: str | Sequence[str] | None
         """
@@ -316,8 +348,6 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         step: sgt._NumberScalar | None = 1,
         *,
         dtype: sgt._RealNumericDTypeLike | None = None,
-        device: Literal["cpu"] | None = None,
-        like: npt._SupportsArrayFunc | None = None,
     ) -> NPNumber:
         """
         指定された間隔内で等間隔の数値の配列を返す
@@ -327,25 +357,19 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :param step: 値の間隔を指定する
         :param dtype: 出力される配列に使用するデータ型を指定する
         :type dtype: `実数型`もしくは`None`
-        :param device: 作成された配列を配置する場所を指定する
-        :type device: Literal["cpu"] | None
-        :param like: NumPy配列ではない配列を作成できるようにする参照するオブジェクトを指定する
-        :type like: _SupportsArrayFunc | None
         :return: 指定された間隔内で等間隔の数値の配列を返す
         """
 
     @classmethod
     def linspace(
         cls,
-        start: _ToFloat64,
-        stop: _ToFloat64,
+        start: sgt._NumberScalar,
+        stop: sgt._NumberScalar,
         num: SupportsIndex = 50,
         endpoint: bool = True,
         retstep: Literal[False] = False,
         dtype: sgt._RealNumericDTypeLike | None = None,
         axis: SupportsIndex = 0,
-        *,
-        device: Literal["cpu"] | None = None,
     ) -> NPNumber:
         """
         指定された間隔で等間隔​​の数値の配列を作成する
@@ -363,11 +387,9 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :param endpoint: 生成させる配列の範囲を指定する
         :type endpoint: bool
         :param dtype: 出力する配列に使用するデータ型を指定する
-        :type dtype: `実数型`もしくは`None`
+        :type dtype: 実数型
         :param axis: 結果にサンプルを格納する軸を指定する
         :type axis: int
-        :param device: 作成された配列を配置するデバイスを指定する
-        :type device: Literal["cpu"] | None
         """
 
     @classmethod
@@ -395,9 +417,8 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :param endpoint: 生成させる配列の範囲を指定する
         :type endpoint: bool
         :param base: 対数の底を指定する
-        :type base: array_like
         :param dtype: 出力される配列に使用するデータ型を指定する
-        :type dtype: dtype
+        :type dtype: 実数型
         :param axis: 結果を収納する軸を指定する
         :type axis: int
         """
@@ -425,7 +446,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :param endpoint: 生成させる配列の範囲を指定する
         :type endpoint: bool
         :param dtype: 出力される配列に使用するデータ型を指定する
-        :type dtype: dtype
+        :type dtype: 実数型
         :param axis: 結果を収納する軸を指定する
         :type axis: int
         """

@@ -1,6 +1,6 @@
 """基本的な文字列の操作をするモジュール"""
 
-from typing import Any, overload
+from typing import Any, NoReturn, overload
 
 import numpy as np
 from numpy import bytes_, str_
@@ -93,11 +93,21 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         :return: 処理結果を返す
         """
 
-    def __eq__(self, value: Any) -> NPBool: ...
-    def __ne__(self, value: Any) -> NPBool: ...
-    def __add__(self, value: sgt._ArrayLikeString_co) -> NPString: ...
+    @overload
+    def __eq__(self, value: sgt._ArrayLikeString_co | NPString) -> NPBool: ...
+    @overload
+    def __eq__(self, value: Any) -> NoReturn: ...
+    @overload
+    def __ne__(self, value: sgt._ArrayLikeString_co | NPString) -> NPBool: ...
+    @overload
+    def __ne__(self, value: Any) -> NoReturn: ...
+    @overload
+    def __add__(self, value: sgt._ArrayLikeString_co | NPString) -> NPString: ...
+    @overload
+    def __add__(self, value: Any) -> NoReturn: ...
     __iadd__ = __add__
     __radd__ = __add__
+    @overload
     def __mul__(self, i: sgt._ArrayLikeInt_co) -> NPString:
         """
         配列内の要素を`i`回付け加える
@@ -105,6 +115,9 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         :param i: 付け加える回数を指定する
         :type i: int
         """
+
+    @overload
+    def __mul__(self, i: Any) -> NoReturn: ...
     __imul__ = __mul__
     __rmul__ = __mul__
 

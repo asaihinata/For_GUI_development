@@ -121,14 +121,14 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         return NPString(np.datetime_as_string(self), dtype=np.str_)
 
     @classmethod
-    def arange(cls, start, stop, /, step=1, *, dtype="D", device=None, like=None):
+    def arange(cls, start, stop, /, step=1, *, dtype="D"):
         dtype = _dt64_unit(dtype)
         start = _obj_to_datetime64(start, dtype).astype("int64")
         stop = _obj_to_datetime64(stop, dtype).astype("int64")
         if stop < start:
             start, stop = stop, start
         return cls(
-            np.arange(start, stop, step=step, dtype=dtype, device=device, like=like),
+            np.arange(start, stop, step=step, dtype=dtype),
             dtype=dtype,
         )
 
@@ -211,11 +211,8 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         day = np.busday_count(np.asarray(self), self.today()) + int(days)
         return NPNumber(day, dtype=np.int64)
 
-    def range(self, axis=None):
-        if axis is not None:
-            axis = _normalize_axis(axis, self.ndim, "range")
-        data = np.asarray(self).view(type(self))
-        return np.min(data, axis=axis), np.max(data, axis=axis)
+    def range(self):
+        return np.min(self), np.max(self)
 
     def leapyear(self):
         year = np.asarray(self.year)

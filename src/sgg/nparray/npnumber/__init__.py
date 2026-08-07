@@ -275,13 +275,13 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         return result
 
     @classmethod
-    def zeros(cls, shape, dtype=None, order="C", *, device=None, like=None):
-        result = np.zeros(shape, dtype, order=order, device=device, like=like)
+    def zeros(cls, shape, dtype=None):
+        result = np.zeros(shape, dtype)
         return cls(result, result.dtype)
 
     @classmethod
-    def ones(cls, shape, dtype=None, order="C", *, device=None, like=None):
-        result = np.ones(shape, dtype, order=order, device=device, like=like)
+    def ones(cls, shape, dtype=None):
+        result = np.ones(shape, dtype)
         return cls(result, result.dtype)
 
     def zero_check(self):
@@ -326,14 +326,12 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         return result
 
     @classmethod
-    def arange(cls, start, /, stop=None, step=1, *, dtype=None, device=None, like=None):
+    def arange(cls, start, /, stop=None, step=1, *, dtype=None):
         if dtype is None:
-            aranges = np.arange(start, stop, step=step, device=device, like=like)
+            aranges = np.arange(start, stop, step=step)
             dtype = aranges.dtype
         else:
-            aranges = np.arange(
-                start, stop, step=step, dtype=dtype, device=device, like=like
-            )
+            aranges = np.arange(start, stop, step=step, dtype=dtype)
         return cls(
             aranges,
             dtype=dtype,
@@ -349,8 +347,6 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         retstep=False,
         dtype=None,
         axis=0,
-        *,
-        device=None,
     ):
         result = np.linspace(
             start,
@@ -360,7 +356,6 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
             retstep=retstep,
             dtype=dtype,
             axis=axis,
-            device=device,
         )
         return cls(result, dtype=result.dtype)
 

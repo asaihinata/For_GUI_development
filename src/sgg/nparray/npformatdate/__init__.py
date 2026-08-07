@@ -139,11 +139,8 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
             dtype=np.int64,
         )
 
-    def range(self, axis=None):
-        if axis is not None:
-            axis = _normalize_axis(axis, self.ndim, "range")
-        data = np.asarray(self).view(type(self))
-        return np.min(data, axis=axis), np.max(data, axis=axis)
+    def range(self):
+        return np.min(self), np.max(self)
 
 
 def _conversion(strs, yearfirst, dayfirst):
