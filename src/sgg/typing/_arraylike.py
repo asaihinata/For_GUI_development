@@ -18,6 +18,7 @@ __all__ = [
     "_ArrayLikeString_co",
     "_ArrayLikeTD64_co",
     "_Shape",
+    "_ShapeInt",
     "_ShapeLike",
     "Typeaxis",
 ]
@@ -32,10 +33,13 @@ type _Shape = tuple[int, ...]
 type _AnyShape = tuple[Any, ...]
 type _ShapeLike = SupportsIndex | Sequence[SupportsIndex]
 """shapeタプルに変換可能なものなら何でも"""
+type _ShapeInt = int | tuple[int, ...]
 # bool
 type _ArrayLikeBool_co = _DualArrayLike[np.dtype[np.bool | np.bool_], bool]
 # number
-type _ArrayLikeInt_co = _DualArrayLike[np.dtype[np.bool | np.bool_ | np.integer], int | bool]
+type _ArrayLikeInt_co = _DualArrayLike[
+    np.dtype[np.bool | np.bool_ | np.integer], int | bool
+]
 type _ArrayLikeFloat_co = _DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.floating],
     float | bool,

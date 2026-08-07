@@ -3,7 +3,9 @@
 import numpy as np
 from numpy.random import default_rng
 
-from ..dev import _ArrayCommonMixin
+from sgg.exceptions import ShapeError
+
+from ..dev import _ArrayCommonMixin, _arrisuint
 from ..npbool import NPBool
 
 __all__ = ["NPNumber"]
@@ -325,12 +327,24 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         return result
 
     @classmethod
+    def sequential(cls, shape):
+        if not _arrisuint(shape):
+            raise ShapeError(shape)
+        result = np.asarray(
+            np.arange(np.prod(shape), dtype=np.uint64).reshape(shape)
+        ).view(cls)
+        result._dtype = result.dtype
+        return result
+
+    @classmethod
     def arange(cls, start, /, stop=None, step=1, *, dtype=None, device=None, like=None):
         if dtype is None:
-            aranges=np.arange(start, stop, step=step, device=device, like=like)
-            dtype=aranges.dtype
+            aranges = np.arange(start, stop, step=step, device=device, like=like)
+            dtype = aranges.dtype
         else:
-            aranges=np.arange(start, stop, step=step,dtype=dtype, device=device, like=like)
+            aranges = np.arange(
+                start, stop, step=step, dtype=dtype, device=device, like=like
+            )
         return cls(
             aranges,
             dtype=dtype,

@@ -108,19 +108,3 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
         result = np.asarray(np.vectorize(type)(self)).view(type(self))
         result._dtype = np.dtype(object)
         return result
-
-    def numandserial(self):
-        if np.issubdtype(self.dtypes, np.number):
-            return self
-        else:
-            shapes = self.shape
-            lens = len(shapes)
-            if lens == 1:
-                raw = np.arange(0, self.size, 1)
-            else:
-                raw = np.tile(
-                    np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])
-                ).reshape(shapes)
-            raw = np.asarray(raw).view(type(self))
-            raw._dtype = np.uint64
-            return raw

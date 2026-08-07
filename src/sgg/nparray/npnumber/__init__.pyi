@@ -59,17 +59,15 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: -
-        :param dtype: 配列の型を指定する
-        :type dtype: dtype
+        :type data: 任意の数値型(dtype)を持つ配列のようなオブジェクト
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: int | float | complex | np.number
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
-        :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: NPNumber
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
@@ -87,15 +85,13 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: -
-        :param dtype: 配列の型を指定する
-        :type dtype: dtype
+        :type data: 任意の数値型(dtype)を持つ配列のようなオブジェクト
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: int | float | complex | np.number
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
-        :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: NPNumber
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
@@ -303,6 +299,15 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         """
 
     @classmethod
+    def sequential(cls, shape: sgt._ShapeInt) -> NPNumber:
+        """
+        `shape`の形状に沿った連続した整数値の配列を生成する
+
+        :param shape: 配列の形状を指定する
+        :type shape: int | tuple[int, ...]
+        """
+
+    @classmethod
     def arange(
         cls,
         start: sgt._NumberScalar,
@@ -320,7 +325,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :param start: 区間を開始する数値を指定する
         :param stop: 区間を終了する数値を指定する
         :param step: 値の間隔を指定する
-        :param dtype: 出力される配列の型を指定する
+        :param dtype: 出力される配列に使用するデータ型を指定する
         :type dtype: `実数型`もしくは`None`
         :param device: 作成された配列を配置する場所を指定する
         :type device: Literal["cpu"] | None
@@ -357,7 +362,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :type num: int
         :param endpoint: 生成させる配列の範囲を指定する
         :type endpoint: bool
-        :param dtype: 出力する配列の型を指定する
+        :param dtype: 出力する配列に使用するデータ型を指定する
         :type dtype: `実数型`もしくは`None`
         :param axis: 結果にサンプルを格納する軸を指定する
         :type axis: int
@@ -391,7 +396,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :type endpoint: bool
         :param base: 対数の底を指定する
         :type base: array_like
-        :param dtype: 出力される配列の型を指定する
+        :param dtype: 出力される配列に使用するデータ型を指定する
         :type dtype: dtype
         :param axis: 結果を収納する軸を指定する
         :type axis: int
@@ -419,7 +424,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :type num: int
         :param endpoint: 生成させる配列の範囲を指定する
         :type endpoint: bool
-        :param dtype: 出力される配列の型を指定する
+        :param dtype: 出力される配列に使用するデータ型を指定する
         :type dtype: dtype
         :param axis: 結果を収納する軸を指定する
         :type axis: int
@@ -477,7 +482,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         [0,1)の範囲でランダムな浮動小数点数の配列を作成する
 
         :param size: 生成する配列の形状を指定する
-        :param dtype: 出力される配列の型を指定する
+        :param dtype: 出力される配列に使用するデータ型を指定する
         :param seed: 乱数のシード値を指定する
         """
 
@@ -497,7 +502,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :param low: 生成する乱数の下限値を指定する
         :param high: 生成する乱数の上限値を指定する
         :param shape: 生成する配列の形状を指定する
-        :param dtype: 出力される配列の型を指定する
+        :param dtype: 出力される配列に使用するデータ型を指定する
         :param seed: 乱数のシード値を指定する
         """
 
@@ -517,7 +522,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :param loc: 分布の平均値を指定する
         :param scale: 分布の標準偏差を指定する
         :param shape: 生成する配列の形状を指定する
-        :param dtype: 出力される配列の型を指定する
+        :param dtype: 出力される配列に使用するデータ型を指定する
         :param seed: 乱数のシード値を指定する
         """
 
@@ -538,7 +543,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :param low: 生成される範囲の最小値を指定する
         :param high: 生成される範囲の最大値を指定する
         :param shape: 生成する配列の形状を指定する
-        :param dtype: 出力される配列の型を指定する
+        :param dtype: 出力される配列に使用するデータ型を指定する
         :param endpoint: 生成される区間の範囲を指定する
         :param seed: 乱数のシード値を指定する
         """
@@ -557,7 +562,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
 
         :param p: 分布の形状を指定する。`p`の範囲は[0,1)である必要がある。
         :param size: 出力する配列の形状を指定する
-        :param dtype: 出力される配列の型を指定する
+        :param dtype: 出力される配列に使用するデータ型を指定する
         :param seed: 乱数のシード値を指定する
         """
 

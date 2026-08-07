@@ -35,8 +35,8 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         様々な日付のフォーマットを特定の日付フォーマットに変換する配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: -
-        :param dtype: 配列の型を指定する
+        :type data: 任意の文字列型(dtype)を持つ配列のようなオブジェクト
+        :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
         :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
         :type yearfirst: bool
@@ -48,8 +48,6 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         :type max_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
-        :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: NPFormatDate
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
@@ -70,8 +68,8 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         様々な日付のフォーマットを特定の日付フォーマットに変換する配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: -
-        :param dtype: 配列の型を指定する
+        :type data: 任意の文字列型(dtype)を持つ配列のようなオブジェクト
+        :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
         :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
         :type yearfirst: bool
@@ -81,8 +79,6 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         :type d_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
-        :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: NPFormatDate
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
@@ -133,27 +129,9 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
     def weekday(self) -> NPNumber:
         """その日付日時の曜日を求める"""
 
-    @overload
-    def diff_today(self, days: bool = True) -> NPNumber:
+    def diff_today(self, days: bool = ...) -> NPNumber:
         """
         配列の日付と今日の日付の差を求める(今日を含む)
-
-        :param days: 今日を含めるか指定する
-        :type days: bool
-        """
-
-    @overload
-    def diff_today(self, days: bool = False) -> NPNumber:
-        """
-        配列の日付と今日の日付の差を求める(今日を含めない)
-
-        :param days: 今日を含めるか指定する
-        :type days: bool
-        """
-
-    def diff_today() -> NPNumber:
-        """
-        配列の日付と今日の日付の差を求める
 
         :param days: 今日を含めるか指定する
         :type days: bool

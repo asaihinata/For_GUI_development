@@ -2,7 +2,7 @@
 
 from typing import Any
 
-from numpy.random import SeedSequence,Generator
+from numpy.random import Generator, SeedSequence
 
 from ._array_date_unit import *
 from ._array_dtype import *

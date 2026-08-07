@@ -37,8 +37,8 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         新しい日付の配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: -
-        :param dtype: 配列の型を指定する
+        :type data: 任意のdatetime64型(dtype)を持つ配列のようなオブジェクト
+        :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
@@ -46,8 +46,6 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :type max_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
-        :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: NPDate
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
@@ -66,15 +64,13 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         新しい日付の配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: -
-        :param dtype: 配列の型を指定する
+        :type data: 任意のdatetime64型(dtype)を持つ配列のようなオブジェクト
+        :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
-        :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: NPDate
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
@@ -157,8 +153,8 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     @classmethod
     def arange(
         cls,
-        start: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
-        stop: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
+        start: sgt._DateArangeScalar,
+        stop: sgt._DateArangeScalar,
         /,
         step: _TD64Like_co | None = 1,
         *,
@@ -175,7 +171,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :type stop: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
         :param step: 値の間隔を指定する
         :type step: int | np.timedelta64 | np.integer | np.bool | None
-        :param dtype: 出力配列の型を指定する
+        :param dtype: 配列に使用するデータ型を指定する
         :type dtype: _DT64Codes_All | None
         :param device: 作成された配列を配置する場所を指定する
         :type device: Literal["cpu"] | None
@@ -187,8 +183,8 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     @classmethod
     def linspace(
         cls,
-        start: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
-        stop: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
+        start: sgt._DateArangeScalar,
+        stop: sgt._DateArangeScalar,
         /,
         num: SupportsIndex = 50,
         endpoint: bool = True,
@@ -211,7 +207,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :type endpoint: bool
         :param retstep: 計算された間隔を返すか指定する
         :type retstep: bool
-        :param dtype: 配列の型を指定する
+        :param dtype: 配列に使用するデータ型を指定する
         :type dtype: _DT64Codes_All | None
         :param axis: 結果にサンプルを格納する軸
         :type axis: int
@@ -223,8 +219,8 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     @classmethod
     def linspace(
         cls,
-        start: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
-        stop: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
+        start: sgt._DateArangeScalar,
+        stop: sgt._DateArangeScalar,
         /,
         num: SupportsIndex = 50,
         endpoint: bool = True,
@@ -247,7 +243,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :type endpoint: bool
         :param retstep: 計算された間隔を返すか指定する
         :type retstep: bool
-        :param dtype: 配列の型を指定する
+        :param dtype: 配列に使用するデータ型を指定する
         :type dtype: _DT64Codes_All
         :param axis: 結果にサンプルを格納する軸
         :type axis: int
@@ -259,8 +255,8 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     @classmethod
     def linspace(
         cls,
-        start: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
-        stop: Literal["TODAY", "today", "NOW", "now"] | sgt._DateArangeScalar,
+        start: sgt._DateArangeScalar,
+        stop: sgt._DateArangeScalar,
         /,
         num: SupportsIndex = 50,
         endpoint: bool = True,
@@ -283,7 +279,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :type endpoint: bool
         :param retstep: 計算された間隔を返すか指定する
         :type retstep: bool
-        :param dtype: 配列の型を指定する
+        :param dtype: 配列に使用するデータ型を指定する
         :type dtype: _DT64Codes_All
         :param axis: 結果にサンプルを格納する軸
         :type axis: int
@@ -308,24 +304,6 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
 
     def weekday(self) -> NPNumber:
         """その日付日時の曜日を求める"""
-
-    @overload
-    def diff_today(self, days: bool = True) -> NPNumber:
-        """
-        配列の日付と今日の日付の差を求める(今日を含む)
-
-        :param days: 今日を含めるか指定する
-        :type days: bool
-        """
-
-    @overload
-    def diff_today(self, days: bool = False) -> NPNumber:
-        """
-        配列の日付と今日の日付の差を求める(今日を含めない)
-
-        :param days: 今日を含めるか指定する
-        :type days: bool
-        """
 
     def diff_today(self, days: bool = ...) -> NPNumber:
         """

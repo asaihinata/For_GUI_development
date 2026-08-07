@@ -30,17 +30,15 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: -
-        :param dtype: 配列の型を指定する
-        :type dtype: dtype
+        :type data: 配列のようなオブジェクト
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: dtype | type
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
-        :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: NPArray
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
@@ -59,34 +57,41 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
         新しい配列オブジェクトインスタンスを生成する
 
         :param data: 変換する配列を指定する
-        :type data: -
-        :param dtype: 配列の型を指定する
-        :type dtype: dtype
+        :type data: 配列のようなオブジェクト
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: dtype | type
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
         :type copy: bool
-        :return: 生成された配列オブジェクトインスタンスを返す
-        :rtype: NPArray
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
     @classmethod
     def full(
-        fill_value: Any, shape: sgt._AnyShape, dtype: _DTypeLike | None = None
+        fill_value: Any, shape: sgt._ShapeInt, dtype: _DTypeLike | None = None
     ) -> NPArray:
-        """指定された形状と配列の型を,`fill_value`で埋める"""
+        """
+        指定された形状と配列の型で,`fill_value`で埋める
+
+        :param fill_value: 配列内に埋めるスカラー値を指定する
+        :type fill_value: スカラー値
+        :param shape: 配列の形状を指定する
+        :type shape: int | tuple[int, ...]
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: _DTypeLike | None
+        """
 
     @classmethod
-    def sequential(cls, shape: sgt._AnyShape) -> NPArray:
+    def sequential(cls, shape: sgt._ShapeInt) -> NPArray:
         """
         連続した整数値を要素に持つ配列を生成する
 
-        :param shape: 生成する配列の形状。各要素は正の整数でなければならない。
-        :type shape: _AnyShape
-        :returns: 連続値を持つ`NPArray`の配列
-        :raises ShapeError: `shape`が正の整数のみで構成されていない場合に発生させる
+        :param shape: 配列の形状を指定する
+        :type shape: int | tuple[int, ...]
+        :returns: 連続値を持つ`NPArray`の配列を返す
+        :rtype: NPArray
         """
 
     def __array_ufunc__(
@@ -120,7 +125,7 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
         self, axis: sgt.Typeaxis = None, keepdims: bool = False
     ) -> np.intp | NDArray[np.intp]:
         """
-        0以外の要素の数を数える
+        配列内の要素で0以外の値の数を数える
 
         :param axis: 要素を数える軸を指定する
         :type axis: Typeaxis
@@ -130,13 +135,6 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
 
     def EType(self) -> NPArray:
         """配列内の要素の型を調べる"""
-
-    def numandserial(self) -> NPArray:
-        """
-        配列の`dtype`が数値型場合そのままの配列を返す。
-
-        配列の`dtype`が数値型でない場合は連番を作成し返す。
-        """
 
 HANDLED_FUNCTIONS: dict
 
