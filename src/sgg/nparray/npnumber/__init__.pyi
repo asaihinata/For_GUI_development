@@ -310,7 +310,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         stop: sgt._NumberScalar,
         step: sgt._NumberScalar | None = 1,
         *,
-        dtype: sgt._ArangeNumber_DtypeLike,
+        dtype: sgt._RealNumericDTypeLike | None = None,
         device: Literal["cpu"] | None = None,
         like: npt._SupportsArrayFunc | None = None,
     ) -> NPNumber:
@@ -321,7 +321,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :param stop: 区間を終了する数値を指定する
         :param step: 値の間隔を指定する
         :param dtype: 出力される配列の型を指定する
-        :type dtype: dtype
+        :type dtype: `実数型`もしくは`None`
         :param device: 作成された配列を配置する場所を指定する
         :type device: Literal["cpu"] | None
         :param like: NumPy配列ではない配列を作成できるようにする参照するオブジェクトを指定する
@@ -358,7 +358,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :param endpoint: 生成させる配列の範囲を指定する
         :type endpoint: bool
         :param dtype: 出力する配列の型を指定する
-        :type dtype: dtype
+        :type dtype: `実数型`もしくは`None`
         :param axis: 結果にサンプルを格納する軸を指定する
         :type axis: int
         :param device: 作成された配列を配置するデバイスを指定する

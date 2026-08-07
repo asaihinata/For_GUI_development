@@ -326,8 +326,13 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
 
     @classmethod
     def arange(cls, start, /, stop=None, step=1, *, dtype=None, device=None, like=None):
+        if dtype is None:
+            aranges=np.arange(start, stop, step=step, device=device, like=like)
+            dtype=aranges.dtype
+        else:
+            aranges=np.arange(start, stop, step=step,dtype=dtype, device=device, like=like)
         return cls(
-            np.arange(start, stop, step=step, dtype=dtype, device=device, like=like),
+            aranges,
             dtype=dtype,
         )
 
