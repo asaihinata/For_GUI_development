@@ -1,8 +1,8 @@
-from typing import Any, Literal, SupportsIndex, overload
+from typing import Any, Literal, NoReturn, SupportsIndex, overload
 
 import numpy as np
 from numpy import datetime64, timedelta64
-from numpy._typing import _SupportsArrayFunc, _TD64Like_co
+from numpy._typing import NDArray, _SupportsArrayFunc, _TD64Like_co
 
 import sgg.typing as sgt
 
@@ -12,6 +12,10 @@ from ..npnumber import NPNumber
 from ..npstr import NPString
 
 __all__ = ["NPDate"]
+
+type ComparisonType = np._SupportsGT | datetime64 | NPDate | np._ArrayLikeDT64_co | np._NestedSequence[
+    np._SupportsGT
+]
 
 class NPDate(_ArrayCommonMixin, np.ndarray):
     """`np.ndarray`を継承した日付の配列クラス"""
@@ -23,7 +27,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         cls,
         data: sgt._ArrayLikeDT64_co,
         /,
-        dtype: sgt._DtypeLikeDT_All = None,
+        dtype: sgt._DtypeLikeDT = "datetime64[D]",
         *,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -35,7 +39,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :param data: 変換する配列を指定する
         :type data: -
         :param dtype: 配列の型を指定する
-        :type dtype: dtype
+        :type dtype: datetime64 | _DT64Codes_All
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
@@ -53,7 +57,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         cls,
         data: sgt._ArrayLikeDT64_co,
         /,
-        dtype: sgt._DtypeLikeDT_All = None,
+        dtype: sgt._DtypeLikeDT = "datetime64[D]",
         *,
         d_ndim: int | None = None,
         copy: bool = True,
@@ -64,7 +68,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :param data: 変換する配列を指定する
         :type data: -
         :param dtype: 配列の型を指定する
-        :type dtype: dtype
+        :type dtype: datetime64 | _DT64Codes_All
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
@@ -98,16 +102,33 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
 
     def __add__(self, value: sgt._ArrayLikeTD64_co) -> NPDate: ...
     __iadd__ = __add__
-    __radd__ = __add__
     def __sub__(self, value: sgt._ArrayLikeTD64_co) -> NPDate: ...
     __isub__ = __sub__
-    __rsub__ = __sub__
-    def __eq__(self, value: Any) -> NPBool: ...
-    def __ne__(self, value: Any) -> NPBool: ...
-    def __lt__(self, value: Any) -> NPBool: ...
-    def __le__(self, value: Any) -> NPBool: ...
-    def __gt__(self, value: Any) -> NPBool: ...
-    def __ge__(self, value: Any) -> NPBool: ...
+
+    @overload
+    def __eq__(self, value: ComparisonType) -> NPBool: ...
+    @overload
+    def __eq__(self, value: Any, /) -> NoReturn: ...
+    @overload
+    def __ne__(self, value: ComparisonType) -> NPBool: ...
+    @overload
+    def __ne__(self, value: Any, /) -> NoReturn: ...
+    @overload
+    def __lt__(self, value: ComparisonType, /) -> NPBool: ...
+    @overload
+    def __lt__(self, value: Any, /) -> NoReturn: ...
+    @overload
+    def __le__(self, value: ComparisonType, /) -> NPBool: ...
+    @overload
+    def __le__(self, value: Any, /) -> NoReturn: ...
+    @overload
+    def __gt__(self, value: ComparisonType, /) -> NPBool: ...
+    @overload
+    def __gt__(self, value: Any, /) -> NoReturn: ...
+    @overload
+    def __ge__(self, value: ComparisonType, /) -> NPBool: ...
+    @overload
+    def __ge__(self, value: Any, /) -> NoReturn: ...
     @property
     def year(self) -> NPNumber:
         """配列の年を返す"""
@@ -141,7 +162,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         /,
         step: _TD64Like_co | None = 1,
         *,
-        dtype: sgt._AllDateUnit | None = "D",
+        dtype: sgt._DT64Codes_All | None = "D",
         device: Literal["cpu"] | None = None,
         like: _SupportsArrayFunc | None = None,
     ) -> NPDate:
@@ -153,9 +174,9 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :param stop: 区間を終了する日付を指定する
         :type stop: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
         :param step: 値の間隔を指定する
-        :type step: _TD64Like_co | None
+        :type step: int | np.timedelta64 | np.integer | np.bool | None
         :param dtype: 出力配列の型を指定する
-        :type dtype: _AllDateUnit | None
+        :type dtype: _DT64Codes_All | None
         :param device: 作成された配列を配置する場所を指定する
         :type device: Literal["cpu"] | None
         :param like: NumPy配列ではない配列を作成できるようにする参照するオブジェクトを指定する
@@ -172,7 +193,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         num: SupportsIndex = 50,
         endpoint: bool = True,
         retstep: bool = True,
-        dtype: sgt._AllDateUnit | None = "D",
+        dtype: sgt._DT64Codes_All | None = "D",
         axis: SupportsIndex = 0,
         *,
         device: Literal["cpu"] | None = None,
@@ -191,7 +212,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :param retstep: 計算された間隔を返すか指定する
         :type retstep: bool
         :param dtype: 配列の型を指定する
-        :type dtype: _AllDateUnit | None
+        :type dtype: _DT64Codes_All | None
         :param axis: 結果にサンプルを格納する軸
         :type axis: int
         :param device: 作成された配列を配置するデバイスを指定する
@@ -208,7 +229,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         num: SupportsIndex = 50,
         endpoint: bool = True,
         retstep: bool = False,
-        dtype: sgt._AllDateUnit | None = "D",
+        dtype: sgt._DT64Codes_All = "D",
         axis: SupportsIndex = 0,
         *,
         device: Literal["cpu"] | None = None,
@@ -227,7 +248,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :param retstep: 計算された間隔を返すか指定する
         :type retstep: bool
         :param dtype: 配列の型を指定する
-        :type dtype: _AllDateUnit | None
+        :type dtype: _DT64Codes_All
         :param axis: 結果にサンプルを格納する軸
         :type axis: int
         :param device: 作成された配列を配置するデバイスを指定する
@@ -244,7 +265,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         num: SupportsIndex = 50,
         endpoint: bool = True,
         retstep: bool = ...,
-        dtype: sgt._AllDateUnit | None = "D",
+        dtype: sgt._DT64Codes_All = "D",
         axis: SupportsIndex = 0,
         *,
         device: Literal["cpu"] | None = None,
@@ -263,7 +284,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :param retstep: 計算された間隔を返すか指定する
         :type retstep: bool
         :param dtype: 配列の型を指定する
-        :type dtype: _AllDateUnit | None
+        :type dtype: _DT64Codes_All
         :param axis: 結果にサンプルを格納する軸
         :type axis: int
         :param device: 作成された配列を配置するデバイスを指定する

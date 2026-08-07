@@ -23,7 +23,7 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         cls,
         data: sgt._ArrayLikeStr_co,
         /,
-        dtype: sgt._DtypeLikeDT_All = None,
+        dtype: sgt._DtypeLikeDT = "datetime64[D]",
         *,
         yearfirst: bool = False,
         dayfirst: bool = False,
@@ -37,7 +37,7 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         :param data: 変換する配列を指定する
         :type data: -
         :param dtype: 配列の型を指定する
-        :type dtype: dtype
+        :type dtype: datetime64 | _DT64Codes_All
         :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
         :type yearfirst: bool
         :param dayfirst: 曖昧な3つの整数からなる日付の最初の値を日もしくは月として解釈するかどうか指定する
@@ -59,7 +59,7 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         cls,
         data: sgt._ArrayLikeStr_co,
         /,
-        dtype: sgt._DtypeLikeDT_All = None,
+        dtype: sgt._DtypeLikeDT = "datetime64[D]",
         *,
         yearfirst: bool = False,
         dayfirst: bool = False,
@@ -72,7 +72,7 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         :param data: 変換する配列を指定する
         :type data: -
         :param dtype: 配列の型を指定する
-        :type dtype: dtype
+        :type dtype: datetime64 | _DT64Codes_All
         :param yearfirst: 曖昧な3つの整数からなる日付の最初の値を年として解釈するかどうか指定する
         :type yearfirst: bool
         :param dayfirst: 曖昧な3つの整数からなる日付の最初の値を日もしくは月として解釈するかどうか指定する

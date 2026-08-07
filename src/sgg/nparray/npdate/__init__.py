@@ -79,14 +79,13 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
+    __iadd__ = __add__
+
     def __sub__(self, value):
         result = np.asarray(np.subtract(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
-    __radd__ = __add__
-    __iadd__ = __add__
-    __rsub__ = __sub__
     __isub__ = __sub__
 
     def __eq__(self, value):
@@ -109,8 +108,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
 
     @property
     def year(self):
-        years = NPNumber(self.astype("datetime64[Y]").astype(np.int64), np.int64)
-        return years + 1970
+        return NPNumber(self.astype("datetime64[Y]").astype(np.int64), np.int64) + 1970
 
     @property
     def month(self):

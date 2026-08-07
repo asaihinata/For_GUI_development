@@ -1,20 +1,21 @@
 import numpy as np
 from numpy._typing import _DTypeLike, _NestedSequence, _SupportsArray
 
-from sgg.typing import _AllDateUnit, _AllTimeUnit
+from sgg.typing import _DT64Codes_All, _TD64Codes_All
 
 __all__ = [
     "_ArangeNumber_DtypeLike",
     "_BoolDTypeLike",
     "_ComplexDtypeLike",
     "_DTypeLike",
-    "_DtypeLikeDT_All",
+    "_DtypeLikeDT",
     "_DTypeLikeDT64",
     "_DTypeLikeF32",
     "_DTypeLikeF64",
     "_DTypeLikeFloat",
     "_DTypeLikeI64",
     "_DTypeLikeInt",
+    "_DtypeLikeTD",
     "_DTypeLikeTD64",
     "_DualArrayLike",
     "_FloatsNumericDTypeLike",
@@ -65,6 +66,6 @@ type _StringsDTypeLike = _DTypeLike[np.str_ | np.bytes_] | np.dtypes.StringDType
 """numpyとPythonの文字列全般の型の型ヒント"""
 # 日付
 type _DTypeLikeDT64 = _DTypeLike[np.datetime64]
-type _DtypeLikeDT_All = _DTypeLikeDT64 | _AllDateUnit | None
+type _DtypeLikeDT = _DTypeLikeDT64 | _DT64Codes_All | None
 type _DTypeLikeTD64 = _DTypeLike[np.timedelta64]
-type _DtypeLikeTD_All = _DTypeLikeTD64 | _AllTimeUnit | None
+type _DtypeLikeTD = _DTypeLikeTD64 | _TD64Codes_All | None
