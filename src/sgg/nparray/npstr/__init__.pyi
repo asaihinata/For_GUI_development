@@ -23,7 +23,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     @overload
     def __new__(
         cls,
-        data: sgt._ArrayLikeAnyString_co,
+        data: sgt._ArrayLikeString_co,
         /,
         dtype: sgt._StringsDTypeLike | None = None,
         *,
@@ -53,7 +53,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     @overload
     def __new__(
         cls,
-        data: sgt._ArrayLikeAnyString_co,
+        data: sgt._ArrayLikeString_co,
         /,
         dtype: sgt._StringsDTypeLike | None = None,
         *,
@@ -100,7 +100,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def __eq__(self, value: Any) -> NPBool: ...
     def __ne__(self, value: Any) -> NPBool: ...
-    def __add__(self, value: npt._ArrayLikeAnyString_co) -> NPString: ...
+    def __add__(self, value: npt._ArrayLikeString_co) -> NPString: ...
     __iadd__ = __add__
     __radd__ = __add__
     def __mul__(self, i: npt._ArrayLikeInt_co) -> NPString:
@@ -119,7 +119,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     ) -> tuple[type[str], type[bytes], type[str_], type[bytes_], type[StringDType]]:
         """NPStringで許可されている型を取得する"""
 
-    def append(self, value: npt._ArrayLikeAnyString_co) -> NPString:
+    def append(self, value: npt._ArrayLikeString_co) -> NPString:
         """配列内の要素の文字に`val`を付け加える"""
 
     @property
@@ -150,8 +150,8 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def replace(
         self,
-        old: sgt._ArrayLikeAnyString_co,
-        new: sgt._ArrayLikeAnyString_co,
+        old: sgt._ArrayLikeString_co,
+        new: sgt._ArrayLikeString_co,
     ) -> NPString:
         """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
 
@@ -174,7 +174,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def strip(
         self,
-        chars: sgt._ArrayLikeAnyString_co | None = None,
+        chars: sgt._ArrayLikeString_co | None = None,
     ) -> NPString:
         """
         配列の各要素について,先頭と末尾の文字を取り除いた配列を返す
@@ -184,7 +184,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         """
 
     def center(
-        self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeAnyString_co = " "
+        self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で中央寄せされた配列を返す
@@ -192,11 +192,11 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         :param width: 結果として得られる文字列の長さを指定する
         :type width: _ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
-        :type fillchar: _ArrayLikeAnyString_co
+        :type fillchar: _ArrayLikeString_co
         """
 
     def left(
-        self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeAnyString_co = " "
+        self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で左寄せされた配列を返す
@@ -204,11 +204,11 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         :param width: 結果として得られる文字列の長さを指定する
         :type width: _ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
-        :type fillchar: _ArrayLikeAnyString_co
+        :type fillchar: _ArrayLikeString_co
         """
 
     def right(
-        self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeAnyString_co = " "
+        self, width: npt._ArrayLikeInt_co, fillchar: sgt._ArrayLikeString_co = " "
     ) -> NPString:
         """
         長さと`width`の幅内で右寄せされた配列を返す
@@ -216,7 +216,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         :param width: 結果として得られる文字列の長さを指定する
         :type width: _ArrayLikeInt_co
         :param fillchar: 使用する余白の文字を指定する
-        :type fillchar: _ArrayLikeAnyString_co
+        :type fillchar: _ArrayLikeString_co
         """
 
     def zerofill(self, width: npt._ArrayLikeInt_co) -> NPString:
@@ -237,7 +237,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def endswith(
         self,
-        suffix: sgt._ArrayLikeAnyString_co,
+        suffix: sgt._ArrayLikeString_co,
         start: npt._ArrayLikeInt_co = 0,
         end: npt._ArrayLikeInt_co | None = None,
     ) -> NPBool:
@@ -245,7 +245,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         配列の要素が`suffix`で終わるかを調べる
 
         :param suffix: 終了する単語を指定する
-        :type suffix: _ArrayLikeAnyString_co
+        :type suffix: _ArrayLikeString_co
         :param start: 比較を開始する位置を指定する
         :type start: _ArrayLikeInt_co
         :param end: 比較を終える位置を指定する
@@ -254,7 +254,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
 
     def startswith(
         self,
-        prefix: sgt._ArrayLikeAnyString_co,
+        prefix: sgt._ArrayLikeString_co,
         start: npt._ArrayLikeInt_co = 0,
         end: npt._ArrayLikeInt_co | None = None,
     ) -> NPBool:
@@ -262,7 +262,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         配列の要素が`prefix`で始まるかを調べる
 
         :param prefix: 終了する単語を指定する
-        :type prefix: _ArrayLikeAnyString_co
+        :type prefix: _ArrayLikeString_co
         :param start: 比較を開始する位置を指定する
         :type start: _ArrayLikeInt_co
         :param end: 比較を終える位置を指定する

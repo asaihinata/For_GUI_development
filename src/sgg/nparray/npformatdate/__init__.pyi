@@ -21,7 +21,7 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
     @overload
     def __new__(
         cls,
-        data: sgt._ArrayLikeStr_co,
+        data: sgt._ArrayLikeString_co,
         /,
         dtype: sgt._DtypeLikeDT = "datetime64[D]",
         *,
@@ -57,7 +57,7 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
     @overload
     def __new__(
         cls,
-        data: sgt._ArrayLikeStr_co,
+        data: sgt._ArrayLikeString_co,
         /,
         dtype: sgt._DtypeLikeDT = "datetime64[D]",
         *,

@@ -2,7 +2,7 @@ from typing import Any, Literal, NoReturn, SupportsIndex, overload
 
 import numpy as np
 from numpy import datetime64, timedelta64
-from numpy._typing import NDArray, _SupportsArrayFunc, _TD64Like_co
+from numpy._typing import _SupportsArrayFunc, _TD64Like_co
 
 import sgg.typing as sgt
 

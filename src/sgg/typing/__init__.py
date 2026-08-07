@@ -2,7 +2,7 @@
 
 from typing import Any
 
-import numpy as np
+from numpy.random import SeedSequence,Generator
 
 from ._array_date_unit import *
 from ._array_dtype import *
@@ -12,7 +12,7 @@ from ._scalar import *
 from ._widget import *
 
 type Incomplete = Any
-type _Seed = int | np.random.SeedSequence | np.random.Generator | None
+type _Seed = int | SeedSequence | Generator | None
 __all__ = (
     ["Incomplete", "_Seed"]
     + getattr(_array_date_unit, "__all__", [])
