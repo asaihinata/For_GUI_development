@@ -57,6 +57,7 @@ class NPString(_ArrayCommonMixin):
             result._dtype = getattr(inputs[0], "_dtype", None)
 
         return result
+
     def __add__(self, value):
         result = np.asarray(nps.add(self, value)).view(type(self))
         result._dtype = result.dtype

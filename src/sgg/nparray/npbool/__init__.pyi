@@ -118,3 +118,29 @@ class NPBool(_ArrayCommonMixin):
     @property
     def FalseCount(self) -> int:
         """配列内の`False`の数を数える"""
+
+    def choice(
+        self,
+        size: int | tuple[int, ...] | None = None,
+        replace: bool = True,
+        p: sgt._ArrayLikeFloat_co | None = None,
+        axis: int = 0,
+        shuffle: bool = True,
+        seed: sgt._Seed = None,
+    ) -> sgt.RBool_:
+        """
+        配列の要素もしくは軸の配列をランダムに抽選する
+
+        :param size: 出力する配列の形状を指定する
+        :type size: int | tuple[int,...] | None
+        :param replace: 抽選する値が復元抽出をするか非復元抽出をするかを指定する
+        :type replace: bool
+        :param p: 各要素が選ばれる重みを指定する
+        :type p: _ArrayLikeFloat_co | None
+        :param axis: 選択を行う軸を指定する
+        :type axis: int
+        :param shuffle: 非復元抽出をする際にサンプルをシャッフルするか指定する
+        :type shuffle: bool
+        :param seed: 乱数のシード値を指定する
+        :type seed: int | SeedSequence | Generator | None
+        """

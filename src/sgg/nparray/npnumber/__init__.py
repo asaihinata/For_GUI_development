@@ -69,6 +69,7 @@ class NPNumber(_ArrayCommonMixin):
             result._dtype = getattr(inputs[0], "_dtype", None)
 
         return result
+
     def __eq__(self, value):
         return np.array(np.equal(self, value), dtype=np.bool_)
 
@@ -285,7 +286,9 @@ class NPNumber(_ArrayCommonMixin):
     def count_nonzero(self, axis=None, keepdims=False):
         if not isinstance(keepdims, bool):
             keepdims = False
-        result = np.asarray(np.count_nonzero(self, axis=axis, keepdims=keepdims),np.uint64).view(type(self))
+        result = np.asarray(
+            np.count_nonzero(self, axis=axis, keepdims=keepdims), np.uint64
+        ).view(type(self))
         result._dtype = np.uint64
         return result
 

@@ -92,15 +92,11 @@ class NPString(_ArrayCommonMixin):
         """
 
     @overload
-    def __eq__(
-        self, value: sgt._ArrayLikeString_co | NPString
-    ) -> sgt.RBool_: ...
+    def __eq__(self, value: sgt._ArrayLikeString_co | NPString) -> sgt.RBool_: ...
     @overload
     def __eq__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ne__(
-        self, value: sgt._ArrayLikeString_co | NPString
-    ) -> sgt.RBool_: ...
+    def __ne__(self, value: sgt._ArrayLikeString_co | NPString) -> sgt.RBool_: ...
     @overload
     def __ne__(self, value: Any) -> NoReturn: ...
     @overload
@@ -380,6 +376,32 @@ class NPString(_ArrayCommonMixin):
         各要素内の文字列内のすべての文字が大文字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
+        """
+    # random
+    def choice(
+        self,
+        size: int | tuple[int, ...] | None = None,
+        replace: bool = True,
+        p: sgt._ArrayLikeFloat_co | None = None,
+        axis: int = 0,
+        shuffle: bool = True,
+        seed: sgt._Seed = None,
+    ) -> sgt.RString:
+        """
+        配列の要素もしくは軸の配列をランダムに抽選する
+
+        :param size: 出力する配列の形状を指定する
+        :type size: int | tuple[int,...] | None
+        :param replace: 抽選する値が復元抽出をするか非復元抽出をするかを指定する
+        :type replace: bool
+        :param p: 各要素が選ばれる重みを指定する
+        :type p: _ArrayLikeFloat_co | None
+        :param axis: 選択を行う軸を指定する
+        :type axis: int
+        :param shuffle: 非復元抽出をする際にサンプルをシャッフルするか指定する
+        :type shuffle: bool
+        :param seed: 乱数のシード値を指定する
+        :type seed: int | SeedSequence | Generator | None
         """
 
     @classmethod

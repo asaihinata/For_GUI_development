@@ -4,7 +4,7 @@ from types import NoneType
 from typing import Any, SupportsIndex
 
 import numpy as np
-from numpy._typing import _NestedSequence, _SupportsArray,NDArray
+from numpy._typing import NDArray, _NestedSequence, _SupportsArray
 from numpy.dtypes import StringDType
 
 __all__ = [
@@ -25,13 +25,16 @@ __all__ = [
     "_Shape",
     "_ShapeInt",
     "_ShapeLike",
+    "RAny",
     "RBool_",
-    "RUInt8",
     "Rdatetime64",
-    "RNumber",
     "RInt64",
-    "RUInt64",
+    "RNumber",
     "RStr_",
+    "RString",
+    "Rtimedelta64",
+    "RUInt64",
+    "RUInt8",
     "Typeaxis",
 ]
 type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
@@ -86,13 +89,19 @@ type _ArrayLikeNone_co = _DualArrayLike[
     NoneType,
 ]
 # 戻り値
-type RBool_ = NDArray[np.bool_] | np.bool_
-type RNumber = NDArray[np.number] | np.number
-type RInt64 = NDArray[np.int64] | np.int64
-type RUInt64 = NDArray[np.uint64] | np.uint64
-type RUInt8 = NDArray[np.uint8] | np.uint8
-type RStr_ = NDArray[np.str_] | np.str_
-type Rdatetime64 = NDArray[np.datetime64] | np.datetime64
+type _ReturnDtype[DTypeT: np.generic] = (NDArray[DTypeT] | DTypeT)
+type RBool_ = _ReturnDtype[np.bool_]
+type RNumber = _ReturnDtype[np.number]
+type RInt64 = _ReturnDtype[np.int64]
+type RUInt64 = _ReturnDtype[np.uint64]
+type RUInt8 = _ReturnDtype[np.uint8]
+type RStr_ = _ReturnDtype[np.str_]
+type RString = NDArray[np.str_ | np.bytes_] | np.ndarray[
+    _AnyShape, StringDType
+] | np.str_ | np.bytes_
+type Rdatetime64 = _ReturnDtype[np.datetime64]
+type Rtimedelta64 = _ReturnDtype[np.timedelta64]
+type RAny = NDArray[Any] | Any
 # その他
 type Typeaxis = _ShapeLike | None
 """`axis`専用の型ヒント"""

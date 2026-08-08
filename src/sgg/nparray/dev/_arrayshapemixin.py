@@ -16,7 +16,7 @@ class _ArrayCommonMixin(np.ndarray):
         return super().__contains__(value)
 
     def __len__(self):
-        if self.size==1:
+        if self.size == 1:
             return 1
         return super().__len__()
 

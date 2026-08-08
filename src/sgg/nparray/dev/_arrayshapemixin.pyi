@@ -2,10 +2,10 @@ from types import GenericAlias
 from typing import Any, Iterator, Literal, Self, overload
 
 import numpy as np
-from numpy._typing import DTypeLike, _ArrayLikeFloat_co, _ShapeLike
+from numpy._typing import DTypeLike, _ShapeLike
 from numpy.typing import NDArray
 
-from sgg.typing import _Seed,RUInt64
+from sgg.typing import RUInt64
 
 __all__ = ["_ArrayCommonMixin"]
 
@@ -94,18 +94,7 @@ class _ArrayCommonMixin(np.ndarray):
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @classmethod
-    def _resolve_dtype(
-        cls,
-        dtype: np.dtype | str | type | None,
-    ) -> np.dtype | None:
-        """
-        引数`dtype`を解決させる
-
-        :param dtype: ユーザーが指定するdtypeを指定する
-        :return: 解決された`dtype`を返す
-        :rtype: numpy.dtype | None
-        """
-
+    def _resolve_dtype(cls, dtype: np.dtype | str | type | None) -> np.dtype | None: ...
     @classmethod
     def _validate_ndim(
         cls,
@@ -201,33 +190,6 @@ class _ArrayCommonMixin(np.ndarray):
 
     def isscalar(self) -> bool:
         """配列がスカラー値かを調べる"""
-
-    def choice(
-        self,
-        size: int | tuple[int, ...] | None = None,
-        replace: bool = True,
-        p: _ArrayLikeFloat_co | None = None,
-        axis: int = 0,
-        shuffle: bool = True,
-        seed: _Seed = None,
-    ) -> np.ndarray:
-        """
-        配列の要素もしくは軸の配列をランダムに抽選する
-
-        :param size: 出力する配列の形状を指定する
-        :type size: int | tuple[int,...] | None
-        :param replace: 抽選する値が復元抽出をするか非復元抽出をするかを指定する
-        :type replace: bool
-        :param p: 各要素が選ばれる重みを指定する
-        :type p: _ArrayLikeFloat_co | None
-        :param axis: 選択を行う軸を指定する
-        :type axis: int
-        :param shuffle: 非復元抽出をする際にサンプルをシャッフルするか指定する
-        :type shuffle: bool
-        :param seed: 乱数のシード値を指定する
-        :type seed: int | SeedSequence | Generator | None
-        :rtype: np.ndarray
-        """
 
     def to_1d(self) -> Self:
         """

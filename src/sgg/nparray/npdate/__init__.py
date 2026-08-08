@@ -52,6 +52,7 @@ class NPDate(_ArrayCommonMixin):
             result._dtype = getattr(inputs[0], "_dtype", None)
 
         return result
+
     def __add__(self, value):
         result = np.asarray(np.add(self, value)).view(type(self))
         result._dtype = result.dtype

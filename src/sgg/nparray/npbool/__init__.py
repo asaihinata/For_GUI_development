@@ -53,6 +53,7 @@ class NPBool(_ArrayCommonMixin):
             result._dtype = getattr(inputs[0], "_dtype", None)
 
         return result
+
     def __invert__(self):
         result = np.asarray(np.logical_not(self)).view(type(self))
         result._dtype = self.dtypes

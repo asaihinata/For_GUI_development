@@ -116,39 +116,27 @@ class NPNumber(_ArrayCommonMixin):
         """
 
     @overload
-    def __eq__(
-        self, value: sgt._ArrayLikeNumber_co | NPNumber
-    ) -> sgt.RBool_: ...
+    def __eq__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> sgt.RBool_: ...
     @overload
     def __eq__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ne__(
-        self, value: sgt._ArrayLikeNumber_co | NPNumber
-    ) -> sgt.RBool_: ...
+    def __ne__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> sgt.RBool_: ...
     @overload
     def __ne__(self, value: Any) -> NoReturn: ...
     @overload
-    def __lt__(
-        self, value: sgt._ArrayLikeNumber_co | NPNumber
-    ) -> sgt.RBool_: ...
+    def __lt__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> sgt.RBool_: ...
     @overload
     def __lt__(self, value: Any) -> NoReturn: ...
     @overload
-    def __le__(
-        self, value: sgt._ArrayLikeNumber_co | NPNumber
-    ) -> sgt.RBool_: ...
+    def __le__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> sgt.RBool_: ...
     @overload
     def __le__(self, value: Any) -> NoReturn: ...
     @overload
-    def __gt__(
-        self, value: sgt._ArrayLikeNumber_co | NPNumber
-    ) -> sgt.RBool_: ...
+    def __gt__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> sgt.RBool_: ...
     @overload
     def __gt__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ge__(
-        self, value: sgt._ArrayLikeNumber_co | NPNumber
-    ) -> sgt.RBool_: ...
+    def __ge__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> sgt.RBool_: ...
     @overload
     def __ge__(self, value: Any) -> NoReturn: ...
     @overload
@@ -207,7 +195,9 @@ class NPNumber(_ArrayCommonMixin):
     ) -> tuple[type[int], type[float], type[complex], type[np.number]]:
         """NPNumberで許可されている型を取得する"""
 
-    def count_nonzero(self, axis: sgt._ShapeLike | None = None, keepdims: bool = False) -> NPNumber:
+    def count_nonzero(
+        self, axis: sgt._ShapeLike | None = None, keepdims: bool = False
+    ) -> NPNumber:
         """
         0以外の要素の数を数える
 
@@ -494,6 +484,34 @@ class NPNumber(_ArrayCommonMixin):
         """逆正接関数の結果を度数法で求める"""
 
     def dtypeinfo(self) -> np.iinfo | np.finfo: ...
+
+    # random
+    def choice(
+        self,
+        size: int | tuple[int, ...] | None = None,
+        replace: bool = True,
+        p: sgt._ArrayLikeFloat_co | None = None,
+        axis: int = 0,
+        shuffle: bool = True,
+        seed: sgt._Seed = None,
+    ) -> sgt.RNumber:
+        """
+        配列の要素もしくは軸の配列をランダムに抽選する
+
+        :param size: 出力する配列の形状を指定する
+        :type size: int | tuple[int,...] | None
+        :param replace: 抽選する値が復元抽出をするか非復元抽出をするかを指定する
+        :type replace: bool
+        :param p: 各要素が選ばれる重みを指定する
+        :type p: _ArrayLikeFloat_co | None
+        :param axis: 選択を行う軸を指定する
+        :type axis: int
+        :param shuffle: 非復元抽出をする際にサンプルをシャッフルするか指定する
+        :type shuffle: bool
+        :param seed: 乱数のシード値を指定する
+        :type seed: int | SeedSequence | Generator | None
+        """
+
     @classmethod
     def random(
         cls,
