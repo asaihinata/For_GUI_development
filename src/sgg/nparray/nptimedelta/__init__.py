@@ -3,7 +3,7 @@
 import numpy as np
 
 from ..dev import _ArrayCommonMixin, _tm64_unit
-from ..npbool import NPBool
+from ..npdate import NPDate
 from ..npnumber import NPNumber
 
 __all__ = ["NPTimedelta"]
@@ -65,14 +65,14 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
     __radd__ = __add__
 
     def __sub__(self, value):
+        if isinstance(value, np.ndarray | np.datetime64) and value.dtype.kind == "M":
+            result = np.subtract(value, self)
+            return NPDate(result, result.dtype)
         result = np.asarray(np.subtract(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
-    def __rsub__(self, value):
-        result = np.asarray(np.subtract(value, self)).view(type(self))
-        result._dtype = result.dtype
-        return result
+    __rsub__ = __sub__
 
     def __mul__(self, value):
         result = np.asarray(np.multiply(self, value)).view(type(self))
@@ -114,19 +114,23 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
         return result
 
     def __eq__(self, value):
-        return NPBool(np.equal(np.asarray(self), value))
+        return np.array(np.equal(np.asarray(self), value),dtype=np.bool_)
 
     def __ne__(self, value):
-        return NPBool(np.not_equal(np.asarray(self), value))
+        return np.array(np.not_equal(np.asarray(self), value),dtype=np.bool_)
 
     def __lt__(self, value):
-        return NPBool(np.less(np.asarray(self), value))
+        return np.array(np.less(np.asarray(self), value),dtype=np.bool_)
 
     def __le__(self, value):
-        return NPBool(np.less_equal(np.asarray(self), value))
+        return np.array(np.less_equal(np.asarray(self), value),dtype=np.bool_)
 
     def __gt__(self, value):
-        return NPBool(np.greater(np.asarray(self), value))
+        return np.array(np.greater(np.asarray(self), value),dtype=np.bool_)
 
     def __ge__(self, value):
-        return NPBool(np.greater_equal(np.asarray(self), value))
+        return np.array(np.greater_equal(np.asarray(self), value),dtype=np.bool_)
+
+    @classmethod
+    def arange(cls, start, /, stop=None, step=1, dtype="timedelta64[D]"):
+        return cls(np.arange(start, stop=stop, step=step), dtype=dtype)

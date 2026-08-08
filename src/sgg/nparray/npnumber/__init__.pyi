@@ -9,7 +9,6 @@ from numpy.typing import NDArray
 import sgg.typing as sgt
 
 from ..dev import _ArrayCommonMixin
-from ..npbool import NPBool
 
 __all__ = ["NPNumber"]
 type _ToFloat64 = float | np.integer | np.bool
@@ -118,27 +117,27 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         """
 
     @overload
-    def __eq__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NPBool: ...
+    def __eq__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NDArray[np.bool_]: ...
     @overload
     def __eq__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ne__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NPBool: ...
+    def __ne__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NDArray[np.bool_]: ...
     @overload
     def __ne__(self, value: Any) -> NoReturn: ...
     @overload
-    def __lt__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NPBool: ...
+    def __lt__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NDArray[np.bool_]: ...
     @overload
     def __lt__(self, value: Any) -> NoReturn: ...
     @overload
-    def __le__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NPBool: ...
+    def __le__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NDArray[np.bool_]: ...
     @overload
     def __le__(self, value: Any) -> NoReturn: ...
     @overload
-    def __gt__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NPBool: ...
+    def __gt__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NDArray[np.bool_]: ...
     @overload
     def __gt__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ge__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NPBool: ...
+    def __ge__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> NDArray[np.bool_]: ...
     @overload
     def __ge__(self, value: Any) -> NoReturn: ...
     @overload
@@ -278,7 +277,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
     ) -> NPNumber:
         """指定された形状と型の新しい配列を0で埋めた配列を作成する"""
 
-    def zero_check(self) -> NPBool:
+    def zero_check(self) -> NDArray[np.bool_]:
         """要素の数値が0の位置を探す"""
 
     def IQR(
@@ -295,19 +294,19 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased",]
         """
 
-    def isinf(self) -> NPBool:
+    def isinf(self) -> NDArray[np.bool_]:
         """配列の各要素が正または負の無限大(`np.inf`)かどうかを判定する"""
 
-    def isnan(self) -> NPBool:
+    def isnan(self) -> NDArray[np.bool_]:
         """配列の各要素がNaN(`np.nan`)であるかを判定する"""
 
-    def isfinite(self) -> NPBool:
+    def isfinite(self) -> NDArray[np.bool_]:
         """配列の各要素が有限かどうかを判定する"""
 
-    def isposinf(self) -> NPBool:
+    def isposinf(self) -> NDArray[np.bool_]:
         """配列の各要素が正の無限大(`+np.inf`)かどうかを判定する"""
 
-    def isreal(self) -> NPBool:
+    def isreal(self) -> NDArray[np.bool_]:
         """配列の各要素が実数かどうかを判定する"""
 
     def iscomplexobj(self) -> bool:
@@ -344,7 +343,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         cls,
         start: sgt._NumberScalar,
         /,
-        stop: sgt._NumberScalar,
+        stop: sgt._NumberScalar | None = None,
         step: sgt._NumberScalar | None = 1,
         *,
         dtype: sgt._RealNumericDTypeLike | None = None,
@@ -356,8 +355,6 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         :param stop: 区間を終了する数値を指定する
         :param step: 値の間隔を指定する
         :param dtype: 出力される配列に使用するデータ型を指定する
-        :type dtype: `実数型`もしくは`None`
-        :return: 指定された間隔内で等間隔の数値の配列を返す
         """
 
     @classmethod

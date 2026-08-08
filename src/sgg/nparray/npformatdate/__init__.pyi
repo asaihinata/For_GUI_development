@@ -4,12 +4,11 @@ from typing import Any, Literal, NoReturn, overload
 
 import numpy as np
 from numpy import datetime64
+from numpy._typing import NDArray
 
 import sgg.typing as sgt
 
 from ..dev import _ArrayCommonMixin
-from ..npbool import NPBool
-from ..npnumber import NPNumber
 
 __all__ = ["NPFormatDate"]
 
@@ -90,27 +89,27 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
     __isub__ = __sub__
     __rsub__ = __sub__
     @overload
-    def __eq__(self, value: sgt._ComparisonType) -> NPBool: ...
+    def __eq__(self, value: sgt._ComparisonType) -> NDArray[np.bool_]: ...
     @overload
     def __eq__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ne__(self, value: sgt._ComparisonType) -> NPBool: ...
+    def __ne__(self, value: sgt._ComparisonType) -> NDArray[np.bool_]: ...
     @overload
     def __ne__(self, value: Any) -> NoReturn: ...
     @overload
-    def __lt__(self, value: sgt._ComparisonType) -> NPBool: ...
+    def __lt__(self, value: sgt._ComparisonType) -> NDArray[np.bool_]: ...
     @overload
     def __lt__(self, value: Any) -> NoReturn: ...
     @overload
-    def __le__(self, value: sgt._ComparisonType) -> NPBool: ...
+    def __le__(self, value: sgt._ComparisonType) -> NDArray[np.bool_]: ...
     @overload
     def __le__(self, value: Any) -> NoReturn: ...
     @overload
-    def __gt__(self, value: sgt._ComparisonType) -> NPBool: ...
+    def __gt__(self, value: sgt._ComparisonType) -> NDArray[np.bool_]: ...
     @overload
     def __gt__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ge__(self, value: sgt._ComparisonType) -> NPBool: ...
+    def __ge__(self, value: sgt._ComparisonType) -> NDArray[np.bool_]: ...
     @overload
     def __ge__(self, value: Any) -> NoReturn: ...
     def __array_ufunc__(
@@ -144,12 +143,12 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
     def to_date(self) -> np.ndarray:
         """配列内の日付を`datetime.date`に変換する"""
 
-    def weekday(self) -> NPNumber:
-        """その日付日時の曜日を求める"""
+    def weekday(self) -> NDArray[np.uint8]:
+        """その日付時刻の曜日をツェラーの公式で求める"""
 
-    def diff_today(self, days: bool = ...) -> NPNumber:
+    def diff_today(self, days: bool = ...) -> NDArray[np.int64]:
         """
-        配列の日付と今日の日付の差を求める(今日を含む)
+        配列の日付と今日の日付の差を求める
 
         :param days: 今日を含めるか指定する
         :type days: bool

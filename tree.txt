@@ -16,7 +16,8 @@ For_GUI_development
  │   │       │   ├── numpy_routines.md
  │   │       │   └── numpy_special_method.md
  │   │       └── other
- │   │           └── color_table.md
+ │   │           ├── color_table.md
+ │   │           └── youbi.md
  │   └── templates
  │       └── py_document_text.mustache
  ├── pyproject.toml
@@ -454,5 +455,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:314
+ファイル数:315
 フォルダ数:141

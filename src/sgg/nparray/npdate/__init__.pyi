@@ -2,14 +2,11 @@ from typing import Any, Literal, NoReturn, SupportsIndex, overload
 
 import numpy as np
 from numpy import datetime64, timedelta64
-from numpy._typing import _TD64Like_co
+from numpy._typing import _TD64Like_co,NDArray
 
 import sgg.typing as sgt
 
 from ..dev import _ArrayCommonMixin
-from ..npbool import NPBool
-from ..npnumber import NPNumber
-from ..npstr import NPString
 
 __all__ = ["NPDate"]
 
@@ -98,53 +95,63 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     __isub__ = __sub__
 
     @overload
-    def __eq__(self, value: sgt._ComparisonType | NPDate) -> NPBool: ...
+    def __eq__(self, value: sgt._ComparisonType | NPDate) -> NDArray[np.bool_]: ...
     @overload
     def __eq__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ne__(self, value: sgt._ComparisonType | NPDate) -> NPBool: ...
+    def __ne__(self, value: sgt._ComparisonType | NPDate) -> NDArray[np.bool_]: ...
     @overload
     def __ne__(self, value: Any) -> NoReturn: ...
     @overload
-    def __lt__(self, value: sgt._ComparisonType | NPDate) -> NPBool: ...
+    def __lt__(self, value: sgt._ComparisonType | NPDate) -> NDArray[np.bool_]: ...
     @overload
     def __lt__(self, value: Any) -> NoReturn: ...
     @overload
-    def __le__(self, value: sgt._ComparisonType | NPDate) -> NPBool: ...
+    def __le__(self, value: sgt._ComparisonType | NPDate) -> NDArray[np.bool_]: ...
     @overload
     def __le__(self, value: Any) -> NoReturn: ...
     @overload
-    def __gt__(self, value: sgt._ComparisonType | NPDate) -> NPBool: ...
+    def __gt__(self, value: sgt._ComparisonType | NPDate) -> NDArray[np.bool_]: ...
     @overload
     def __gt__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ge__(self, value: sgt._ComparisonType | NPDate) -> NPBool: ...
+    def __ge__(self, value: sgt._ComparisonType | NPDate) -> NDArray[np.bool_]: ...
     @overload
     def __ge__(self, value: Any) -> NoReturn: ...
-    @property
-    def year(self) -> NPNumber:
-        """配列の年を返す"""
-
-    @property
-    def month(self) -> NPNumber:
-        """配列の月を返す"""
-
-    @property
-    def day(self) -> NPNumber:
-        """配列の日付を返す"""
 
     @property
     def element_type(self) -> type[datetime64]:
         """NPDateで許可されている型を取得する"""
 
+    # 日付
+    @property
+    def year(self) -> NDArray[np.int64]:
+        """配列の年を返す"""
+
+    @property
+    def month(self) -> NDArray[np.uint8]:
+        """配列の月を返す"""
+
+    @property
+    def day(self) -> NDArray[np.uint8]:
+        """配列の日付を返す"""
+
+    # 判定
+    def isnat(self) -> NDArray[np.bool_]:
+        """要素が欠損(Nat)かを判定する"""
+
+    # 変換
     def to_datetime(self) -> np.ndarray:
         """配列内の日付を`datetime.datetime`に変換する"""
 
     def to_date(self) -> np.ndarray:
         """配列内の日付を`datetime.date`に変換する"""
 
-    def to_str(self) -> NPString:
+    def to_str(self) -> NDArray[np.str_]:
         """配列内の日付を`NPString`に変換する"""
+
+    def strftime(self, format: str) -> NDArray[np.str_]:
+        """日付のフォーマットを別のフォーマットで変換する"""
 
     @classmethod
     def arange(
@@ -178,43 +185,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         /,
         num: SupportsIndex = 50,
         endpoint: bool = True,
-        retstep: bool = True,
-        dtype: sgt._DT64Codes_All | None = "D",
-        axis: SupportsIndex = 0,
-        *,
-        device: Literal["cpu"] | None = None,
-    ) -> tuple[NPDate, timedelta64]:
-        """
-        指定された間隔で等間隔​​の日付を返します。
-
-        :param start: 区間を開始する日付を指定する
-        :type start: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
-        :param stop: 区間を終了する日付を指定する
-        :type stop: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
-        :param num: 生成する日付の数を指定する
-        :type num: int
-        :param endpoint: `stop`を結果に含めるか指定する
-        :type endpoint: bool
-        :param retstep: 計算された間隔を返すか指定する
-        :type retstep: bool
-        :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: _DT64Codes_All | None
-        :param axis: 結果にサンプルを格納する軸
-        :type axis: int
-        :param device: 作成された配列を配置するデバイスを指定する
-        :type device: Literal["cpu"] | None
-        """
-
-    @overload
-    @classmethod
-    def linspace(
-        cls,
-        start: sgt._DateArangeScalar,
-        stop: sgt._DateArangeScalar,
-        /,
-        num: SupportsIndex = 50,
-        endpoint: bool = True,
-        retstep: bool = False,
+        retstep: Literal[False]= False,
         dtype: sgt._DT64Codes_All = "D",
         axis: SupportsIndex = 0,
         *,
@@ -250,12 +221,35 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         /,
         num: SupportsIndex = 50,
         endpoint: bool = True,
-        retstep: bool = ...,
-        dtype: sgt._DT64Codes_All = "D",
+        retstep: Literal[True] = True,
+        dtype: sgt._DT64Codes_All | None = "D",
         axis: SupportsIndex = 0,
         *,
         device: Literal["cpu"] | None = None,
-    ) -> NPDate | tuple[NPDate, timedelta64]:
+    ) -> tuple[NPDate, timedelta64]:
+        """
+        指定された間隔で等間隔​​の日付を返します。
+
+        :param start: 区間を開始する日付を指定する
+        :type start: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
+        :param stop: 区間を終了する日付を指定する
+        :type stop: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
+        :param num: 生成する日付の数を指定する
+        :type num: int
+        :param endpoint: `stop`を結果に含めるか指定する
+        :type endpoint: bool
+        :param retstep: 計算された間隔を返すか指定する
+        :type retstep: bool
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: _DT64Codes_All | None
+        :param axis: 結果にサンプルを格納する軸
+        :type axis: int
+        :param device: 作成された配列を配置するデバイスを指定する
+        :type device: Literal["cpu"] | None
+        """
+
+    @classmethod
+    def linspace():
         """
         指定された間隔で等間隔​​の日付を返します。
 
@@ -277,6 +271,9 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :type device: Literal["cpu"] | None
         """
 
+    def range(self) -> tuple[datetime64, datetime64]:
+        """配列内の日付の最小の日付と最大の日付を求める"""
+
     @classmethod
     def today(cls) -> NPDate:
         """現在日付(UTC時刻)を返す"""
@@ -289,13 +286,16 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     def unix(cls) -> NPDate:
         """UTC時刻を返す"""
 
-    def strftime(self, format: str) -> NPString:
-        """日付のフォーマットを別のフォーマットで変換する"""
+    def weekday(self) -> NDArray[np.uint8]:
+        """その日付時刻の曜日をツェラーの公式で求める"""
 
-    def weekday(self) -> NPNumber:
-        """その日付日時の曜日を求める"""
+    def begin_month_weekday(self) -> NDArray[np.uint8]:
+        """その日付時刻の月初の曜日をツェラーの公式で求める"""
 
-    def diff_today(self, days: bool = ...) -> NPNumber:
+    def end_month_weekday(self) -> NDArray[np.uint8]:
+        """その日付時刻の月末の曜日をツェラーの公式で求める"""
+
+    def diff_today(self, days: bool = ...) -> NDArray[np.int64]:
         """
         配列の日付と今日の日付の差を求める
 
@@ -303,14 +303,9 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         :type days: bool
         """
 
-    def range(self) -> tuple[datetime64, datetime64]:
-        """配列内の日付の最小の日付と最大の日付を求める"""
-
-    def leapyear(self) -> NPBool:
+    # 閏年
+    def leapyear(self) -> NDArray[np.bool_]:
         """その日付の年がうるう年かどうかを判定する"""
 
     def leapcount(self) -> int:
         """配列内のうるう年の数を数える"""
-
-    def cleanNaT(self) -> NPDate:
-        """配列を一次元配列にし欠損日(NaT)を削除する"""

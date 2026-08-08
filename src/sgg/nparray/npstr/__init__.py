@@ -5,8 +5,6 @@ import numpy.strings as nps
 from numpy.dtypes import StringDType
 
 from ..dev import _ArrayCommonMixin, _int_co_check
-from ..npbool import NPBool
-from ..npnumber import NPNumber
 
 __all__ = ["NPString"]
 
@@ -85,10 +83,10 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     __imul__ = __mul__
 
     def __eq__(self, value):
-        return NPBool(nps.equal(self, value))
+        return np.array(nps.equal(self, value),dtype=np.bool_)
 
     def __ne__(self, value):
-        return NPBool(nps.not_equal(self, value))
+        return np.array(nps.not_equal(self, value),dtype=np.bool_)
 
     def append(self, val):
         result = np.asarray(nps.add(self, val)).view(type(self))
@@ -124,10 +122,10 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         return np.min(nps.str_len(self))
 
     def stringlen(self):
-        return NPNumber(np.vectorize(len)(self), dtype=np.uint64)
+        return np.array(np.vectorize(len)(self), dtype=np.uint64)
 
     def str_len(self):
-        return NPNumber(nps.str_len(self), dtype=np.uint64)
+        return np.array(nps.str_len(self), dtype=np.uint64)
 
     def replace(self, old, new):
         result = nps.replace(np.asarray(self), old, new).view(type(self))
@@ -170,10 +168,10 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         return result
 
     def endswith(self, suffix, start=0, end=None):
-        return NPBool(nps.endswith(self, suffix, start, end))
+        return np.array(nps.endswith(self, suffix, start, end),dtype=np.bool_)
 
     def startswith(self, prefix, start=0, end=None):
-        return NPBool(nps.startswith(self, prefix, start, end))
+        return np.array(nps.startswith(self, prefix, start, end),dtype=np.bool_)
 
     def capitalize(self):
         result = np.asarray(nps.capitalize(self)).view(type(self))
@@ -200,22 +198,22 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         return result
 
     def istitle(self):
-        return NPBool(nps.istitle(self))
+        return np.array(nps.istitle(self),dtype=np.bool_)
 
     def isnumeric(self):
-        return NPBool(nps.isnumeric(self))
+        return np.array(nps.isnumeric(self),dtype=np.bool_)
 
     def isdecimal(self):
-        return NPBool(nps.isdecimal(self))
+        return np.array(nps.isdecimal(self),dtype=np.bool_)
 
     def isalnum(self):
-        return NPBool(nps.isalnum(self))
+        return np.array(nps.isalnum(self),dtype=np.bool_)
 
     def isspace(self):
-        return NPBool(nps.isspace(self))
+        return np.array(nps.isspace(self),dtype=np.bool_)
 
     def isupper(self):
-        return NPBool(nps.isupper(self))
+        return np.array(nps.isupper(self),dtype=np.bool_)
 
     @classmethod
     def randombytes(cls, length, seed=None):

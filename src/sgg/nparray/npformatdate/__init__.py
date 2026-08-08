@@ -4,9 +4,7 @@ import numpy as np
 from dateutil.parser import parse
 from numpy.strings import isnumeric
 
-from ..dev import _ArrayCommonMixin, _dt64_unit, _normalize_axis
-from ..npbool import NPBool
-from ..npnumber import NPNumber
+from ..dev import _ArrayCommonMixin, _dt64_unit
 
 __all__ = ["NPFormatDate"]
 
@@ -86,22 +84,22 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         return super().__array_function__(func, types, args, kwargs)
 
     def __eq__(self, value):
-        return NPBool(np.equal(np.asarray(self), value))
+        return np.array(np.equal(np.asarray(self), value),dtype=np.bool_)
 
     def __ne__(self, value):
-        return NPBool(np.not_equal(np.asarray(self), value))
+        return np.array(np.not_equal(np.asarray(self), value),dtype=np.bool_)
 
     def __lt__(self, value):
-        return NPBool(np.less(np.asarray(self), value))
+        return np.array(np.less(np.asarray(self), value),dtype=np.bool_)
 
     def __le__(self, value):
-        return NPBool(np.less_equal(np.asarray(self), value))
+        return np.array(np.less_equal(np.asarray(self), value),dtype=np.bool_)
 
     def __gt__(self, value):
-        return NPBool(np.greater(np.asarray(self), value))
+        return np.array(np.greater(np.asarray(self), value),dtype=np.bool_)
 
     def __ge__(self, value):
-        return NPBool(np.greater_equal(np.asarray(self), value))
+        return np.array(np.greater_equal(np.asarray(self), value),dtype=np.bool_)
 
     def __add__(self, value):
         result = np.asarray(np.add(self, value)).view(type(self))
@@ -125,19 +123,16 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         return self.data.astype(date)
 
     def weekday(self):
-        dt = self.to_datetime()
-        return NPNumber([i.weekday() for i in dt], dtype=np.uint8)
+        m=self.month
+        flag=(m<=2)
+        y,m=np.where(flag,self.year-1,self.year),np.where(flag,m+12,m)
+        return (y+y//4-y//100+y//400+(13*m+8)//5+self.day)%7
 
     def diff_today(self, days=False):
         if not isinstance(days, bool):
             days = False
-        return NPNumber(
-            np.busday_count(
-                np.asarray(self).astype("datetime64[D]"), np.datetime64("today")
-            )
-            + int(days),
-            dtype=np.int64,
-        )
+        day = np.busday_count(np.asarray(self), self.today()) + int(days)
+        return np.array(day, dtype=np.int64)
 
     def range(self):
         return np.min(self), np.max(self)

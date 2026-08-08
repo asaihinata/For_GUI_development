@@ -9,8 +9,7 @@ from numpy.typing import NDArray
 import sgg.typing as sgt
 
 from ..dev import _ArrayCommonMixin
-from ..npbool import NPBool
-from ..npnumber import NPNumber
+from ..npdate import NPDate
 
 __all__ = ["NPTimedelta"]
 
@@ -97,11 +96,11 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
     def __pos__(self) -> NPTimedelta: ...
     def __abs__(self) -> NPTimedelta: ...
     @overload
-    def __eq__(self, value: sgt._ArrayLikeTD64_co | NPTimedelta) -> NPBool: ...
+    def __eq__(self, value: sgt._ArrayLikeTD64_co | NPTimedelta) -> NDArray[np.bool_]: ...
     @overload
     def __eq__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ne__(self, value: sgt._ArrayLikeTD64_co | NPTimedelta) -> NPBool: ...
+    def __ne__(self, value: sgt._ArrayLikeTD64_co | NPTimedelta) -> NDArray[np.bool_]: ...
     @overload
     def __ne__(self, value: Any) -> NoReturn: ...
     @overload
@@ -116,6 +115,10 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
         self, value: int | timedelta64 | NDArray[timedelta64] | NPTimedelta
     ) -> NPTimedelta: ...
     @overload
+    def __sub__(
+        self, value: NDArray[np.datetime64] | np.datetime64 | NPDate
+    ) -> NDArray[np.datetime64]: ...
+    @overload
     def __sub__(self, value: Any) -> NoReturn: ...
     __rsub__ = __sub__
     @overload
@@ -125,9 +128,18 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
     @overload
     def __truediv__(self, value: sgt._RealNumeric_co) -> NPTimedelta: ...
     @overload
-    def __truediv__(self, value: timedelta64 | NPTimedelta) -> NPNumber: ...
+    def __truediv__(self, value: timedelta64 | NPTimedelta) -> NDArray[np.number]: ...
     @overload
     def __truediv__(self, value: Any) -> NoReturn: ...
     @property
     def element_type(self) -> tuple[type[timedelta64]]:
         """NPTimedeltaで許可されている型を取得する"""
+
+    def arange(
+        cls,
+        start: sgt._NumberScalar,
+        /,
+        stop: sgt._NumberScalar | None = None,
+        step: sgt._NumberScalar | None = 1,
+        dtype: sgt._DtypeLikeTD = "timedelta64[D]",
+    ) -> NPTimedelta: ...

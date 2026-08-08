@@ -3,11 +3,7 @@ from datetime import date, datetime
 import numpy as np
 from dateutil.parser import parse
 
-from ..dev import (_ArrayCommonMixin, _dt64_unit, _get_dt64_unit,
-                   _normalize_axis, _tm64_unit)
-from ..npbool import NPBool
-from ..npnumber import NPNumber
-from ..npstr import NPString
+from ..dev import _ArrayCommonMixin, _dt64_unit, _get_dt64_unit, _tm64_unit
 
 __all__ = ["NPDate"]
 
@@ -77,40 +73,43 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     __isub__ = __sub__
 
     def __eq__(self, value):
-        return NPBool(np.equal(np.asarray(self), value))
+        return np.array(np.equal(np.asarray(self), value),dtype=np.bool_)
 
     def __ne__(self, value):
-        return NPBool(np.not_equal(np.asarray(self), value))
+        return np.array(np.not_equal(np.asarray(self), value),dtype=np.bool_)
 
     def __lt__(self, value):
-        return NPBool(np.less(np.asarray(self), value))
+        return np.array(np.less(np.asarray(self), value),dtype=np.bool_)
 
     def __le__(self, value):
-        return NPBool(np.less_equal(np.asarray(self), value))
+        return np.array(np.less_equal(np.asarray(self), value),dtype=np.bool_)
 
     def __gt__(self, value):
-        return NPBool(np.greater(np.asarray(self), value))
+        return np.array(np.greater(np.asarray(self), value),dtype=np.bool_)
 
     def __ge__(self, value):
-        return NPBool(np.greater_equal(np.asarray(self), value))
+        return np.array(np.greater_equal(np.asarray(self), value),dtype=np.bool_)
 
+    # 日付
     @property
     def year(self):
-        return NPNumber(self.astype("datetime64[Y]").astype(np.int64), np.int64) + 1970
+        return np.array(self.astype("datetime64[Y]").astype(np.int64), np.int64) + 1970
 
     @property
     def month(self):
-        return NPNumber(
+        return np.array(
             np.mod(self.astype("datetime64[M]").astype(np.int64), 12) + 1, np.uint8
         )
 
     @property
     def day(self):
-        return NPNumber((self - self.astype("datetime64[M]")).astype(int) + 1, np.uint8)
+        return np.array((self - self.astype("datetime64[M]")).astype(int) + 1, np.uint8)
 
+    # 判定
     def isnat(self):
-        return np.asarray(np.isnat(self)).view(type(self))
+        return np.array(np.isnat(self),np.bool_)
 
+    # 変換
     def to_datetime(self):
         return self.data.astype(datetime)
 
@@ -118,19 +117,23 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         return self.data.astype(date)
 
     def to_str(self):
-        return NPString(np.datetime_as_string(self), dtype=np.str_)
+        return np.array(np.datetime_as_string(self), dtype=np.str_)
 
+    def strftime(self, format):
+        def func(arr,format):return arr.strftime(format)
+        return np.array(np.vectorize(func)(self.astype(datetime),format))
+
+    # 範囲
     @classmethod
     def arange(cls, start, stop, /, step=1, *, dtype="D"):
-        dtype = _dt64_unit(dtype)
+        dtype = _get_dt64_unit(dtype)
         start = _obj_to_datetime64(start, dtype).astype("int64")
         stop = _obj_to_datetime64(stop, dtype).astype("int64")
         if stop < start:
             start, stop = stop, start
-        return cls(
-            np.arange(start, stop, step=step, dtype=dtype),
-            dtype=dtype,
-        )
+        result = np.asarray(np.arange(start, stop, step=step), dtype=_dt64_unit(dtype)).view(cls)
+        result._dtype = result.dtype
+        return result
 
     @classmethod
     def linspace(
@@ -143,8 +146,6 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         retstep=False,
         dtype="D",
         axis=0,
-        *,
-        device=None,
     ):
         dtype = _get_dt64_unit(dtype)
         start = _obj_to_datetime64(start, dtype).astype("int64")
@@ -159,23 +160,27 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
                 endpoint,
                 retstep,
                 np.int64,
-                axis,
-                device=device,
+                axis
             )
-            return cls(samples, dtype), step.astype(_tm64_unit(dtype))
+            result = np.asarray(samples, dtype=_dt64_unit(dtype)).view(cls)
+            result._dtype = result.dtype
+            return result, step.astype(_tm64_unit(dtype))
         else:
-            return cls(
-                np.linspace(
-                    start,
-                    stop,
-                    num,
-                    endpoint,
-                    dtype=np.int64,
-                    axis=axis,
-                    device=device,
-                ),
-                dtype,
+            result=np.linspace(
+                start,
+                stop,
+                num,
+                endpoint,
+                retstep,
+                np.int64,
+                axis
             )
+            result = np.asarray(result, dtype=_dt64_unit(dtype)).view(cls)
+            result._dtype = result.dtype
+            return result
+
+    def range(self):
+        return np.min(self), np.max(self)
 
     @classmethod
     def today(cls):
@@ -195,41 +200,37 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         result._dtype = result.dtype
         return result
 
-    def strftime(self, format):
-        return NPString(
-            [i.strftime(format) for i in self.to_datetime().flatten()], dtype=np.str_
-        ).reshape(self.shape)
-
+    # 曜日
     def weekday(self):
-        return NPNumber(
-            [i.weekday() for i in self.to_datetime().flatten()], dtype=np.uint8
-        ).reshape(self.shape)
+        m=self.month
+        flag=(m<=2)
+        y,m=np.where(flag,self.year-1,self.year),np.where(flag,m+12,m)
+        return (y+y//4-y//100+y//400+(13*m+8)//5+self.day)%7
+
+    def begin_month_weekday(self):
+        m=self.month
+        flag=(m<=2)
+        y,m=np.where(flag,self.year-1,self.year),np.where(flag,m+12,m)
+        return (y+y//4-y//100+y//400+(13*m+8)//5+1)%7
+
+    def end_month_weekday(self):
+        dates=NPDate(self.astype("datetime64[M]") + np.timedelta64(1, "M"),"M") - np.timedelta64(1, "D")
+        return dates.weekday()
 
     def diff_today(self, days=False):
         if not isinstance(days, bool):
             days = False
         day = np.busday_count(np.asarray(self), self.today()) + int(days)
-        return NPNumber(day, dtype=np.int64)
+        return np.array(day, dtype=np.int64)
 
-    def range(self):
-        return np.min(self), np.max(self)
-
+    # 閏年
     def leapyear(self):
-        year = np.asarray(self.year)
-        return NPBool((year % 4 == 0) & ((year % 100 != 0) | (year % 400 == 0)))
+        year = self.year
+        return np.array((year % 4 == 0) & ((year % 100 != 0) | (year % 400 == 0)))
 
     def leapcount(self):
-        year = np.asarray(self.year)
-        return NPBool(
-            (year % 4 == 0) & ((year % 100 != 0) | (year % 400 == 0))
-        ).TrueCount
-
-    def cleanNaT(self):
-        flat, dtype = self.flat, self.dtype
-        result = np.asarray(flat[~np.isnat(flat)], dtype=dtype).view(type(self))
-        result._dtype = dtype
-        return result
-
+        year = self.year
+        return int(np.count_nonzero((year % 4 == 0) & ((year % 100 != 0) | (year % 400 == 0))))
 
 def _obj_to_datetime64(obj, dtype):
     if isinstance(obj, str):
