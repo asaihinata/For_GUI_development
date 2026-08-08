@@ -83,10 +83,10 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     __imul__ = __mul__
 
     def __eq__(self, value):
-        return np.array(nps.equal(self, value),dtype=np.bool_)
+        return np.array(nps.equal(self, value), dtype=np.bool_)
 
     def __ne__(self, value):
-        return np.array(nps.not_equal(self, value),dtype=np.bool_)
+        return np.array(nps.not_equal(self, value), dtype=np.bool_)
 
     def append(self, val):
         result = np.asarray(nps.add(self, val)).view(type(self))
@@ -168,10 +168,10 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         return result
 
     def endswith(self, suffix, start=0, end=None):
-        return np.array(nps.endswith(self, suffix, start, end),dtype=np.bool_)
+        return np.array(nps.endswith(self, suffix, start, end), dtype=np.bool_)
 
     def startswith(self, prefix, start=0, end=None):
-        return np.array(nps.startswith(self, prefix, start, end),dtype=np.bool_)
+        return np.array(nps.startswith(self, prefix, start, end), dtype=np.bool_)
 
     def capitalize(self):
         result = np.asarray(nps.capitalize(self)).view(type(self))
@@ -198,22 +198,22 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         return result
 
     def istitle(self):
-        return np.array(nps.istitle(self),dtype=np.bool_)
+        return np.array(nps.istitle(self), dtype=np.bool_)
 
     def isnumeric(self):
-        return np.array(nps.isnumeric(self),dtype=np.bool_)
+        return np.array(nps.isnumeric(self), dtype=np.bool_)
 
     def isdecimal(self):
-        return np.array(nps.isdecimal(self),dtype=np.bool_)
+        return np.array(nps.isdecimal(self), dtype=np.bool_)
 
     def isalnum(self):
-        return np.array(nps.isalnum(self),dtype=np.bool_)
+        return np.array(nps.isalnum(self), dtype=np.bool_)
 
     def isspace(self):
-        return np.array(nps.isspace(self),dtype=np.bool_)
+        return np.array(nps.isspace(self), dtype=np.bool_)
 
     def isupper(self):
-        return np.array(nps.isupper(self),dtype=np.bool_)
+        return np.array(nps.isupper(self), dtype=np.bool_)
 
     @classmethod
     def randombytes(cls, length, seed=None):

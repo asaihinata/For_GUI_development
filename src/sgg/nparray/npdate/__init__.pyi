@@ -2,7 +2,7 @@ from typing import Any, Literal, NoReturn, SupportsIndex, overload
 
 import numpy as np
 from numpy import datetime64, timedelta64
-from numpy._typing import _TD64Like_co,NDArray
+from numpy._typing import NDArray, _TD64Like_co
 
 import sgg.typing as sgt
 
@@ -118,28 +118,24 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     def __ge__(self, value: sgt._ComparisonType | NPDate) -> NDArray[np.bool_]: ...
     @overload
     def __ge__(self, value: Any) -> NoReturn: ...
-
     @property
     def element_type(self) -> type[datetime64]:
         """NPDateで許可されている型を取得する"""
-
     # 日付
     @property
-    def year(self) -> NDArray[np.int64]:
+    def year(self) -> NDArray[np.int64] | np.int64:
         """配列の年を返す"""
 
     @property
-    def month(self) -> NDArray[np.uint8]:
+    def month(self) -> NDArray[np.uint8] | np.uint8:
         """配列の月を返す"""
 
     @property
-    def day(self) -> NDArray[np.uint8]:
+    def day(self) -> NDArray[np.uint8] | np.uint8:
         """配列の日付を返す"""
-
     # 判定
     def isnat(self) -> NDArray[np.bool_]:
         """要素が欠損(Nat)かを判定する"""
-
     # 変換
     def to_datetime(self) -> np.ndarray:
         """配列内の日付を`datetime.datetime`に変換する"""
@@ -152,7 +148,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
 
     def strftime(self, format: str) -> NDArray[np.str_]:
         """日付のフォーマットを別のフォーマットで変換する"""
-
+    # 範囲
     @classmethod
     def arange(
         cls,
@@ -185,7 +181,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         /,
         num: SupportsIndex = 50,
         endpoint: bool = True,
-        retstep: Literal[False]= False,
+        retstep: Literal[False] = False,
         dtype: sgt._DT64Codes_All = "D",
         axis: SupportsIndex = 0,
         *,
@@ -274,6 +270,14 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     def range(self) -> tuple[datetime64, datetime64]:
         """配列内の日付の最小の日付と最大の日付を求める"""
 
+    def diff_today(self, days: bool = ...) -> NDArray[np.int64] | np.int64:
+        """
+        配列の日付と今日の日付の差を求める
+
+        :param days: 今日を含めるか指定する
+        :type days: bool
+        """
+
     @classmethod
     def today(cls) -> NPDate:
         """現在日付(UTC時刻)を返す"""
@@ -285,27 +289,18 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     @classmethod
     def unix(cls) -> NPDate:
         """UTC時刻を返す"""
-
-    def weekday(self) -> NDArray[np.uint8]:
+    # 曜日
+    def weekday(self) -> NDArray[np.uint8] | np.uint8:
         """その日付時刻の曜日をツェラーの公式で求める"""
 
-    def begin_month_weekday(self) -> NDArray[np.uint8]:
+    def begin_month_weekday(self) -> NDArray[np.uint8] | np.uint8:
         """その日付時刻の月初の曜日をツェラーの公式で求める"""
 
-    def end_month_weekday(self) -> NDArray[np.uint8]:
+    def end_month_weekday(self) -> NDArray[np.uint8] | np.uint8:
         """その日付時刻の月末の曜日をツェラーの公式で求める"""
-
-    def diff_today(self, days: bool = ...) -> NDArray[np.int64]:
-        """
-        配列の日付と今日の日付の差を求める
-
-        :param days: 今日を含めるか指定する
-        :type days: bool
-        """
-
     # 閏年
-    def leapyear(self) -> NDArray[np.bool_]:
-        """その日付の年がうるう年かどうかを判定する"""
+    def leapyear(self) -> NDArray[np.bool_] | np.bool_:
+        """その日付の年が閏年かどうかを判定する"""
 
     def leapcount(self) -> int:
-        """配列内のうるう年の数を数える"""
+        """配列内の閏年の数を数える"""

@@ -142,8 +142,20 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
 
     def to_date(self) -> np.ndarray:
         """配列内の日付を`datetime.date`に変換する"""
+    # 日付
+    @property
+    def year(self) -> NDArray[np.int64] | np.int64:
+        """配列の年を返す"""
 
-    def weekday(self) -> NDArray[np.uint8]:
+    @property
+    def month(self) -> NDArray[np.uint8] | np.uint8:
+        """配列の月を返す"""
+
+    @property
+    def day(self) -> NDArray[np.uint8] | np.uint8:
+        """配列の日付を返す"""
+
+    def weekday(self) -> NDArray[np.uint8] | np.uint8:
         """その日付時刻の曜日をツェラーの公式で求める"""
 
     def diff_today(self, days: bool = ...) -> NDArray[np.int64]:

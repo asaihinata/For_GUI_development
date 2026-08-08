@@ -7,8 +7,6 @@ from ..dev import _ArrayCommonMixin, _dt64_unit, _get_dt64_unit, _tm64_unit
 
 __all__ = ["NPDate"]
 
-_pass_str_list = ["TODAY", "today", "NOW", "now"]
-
 
 class NPDate(_ArrayCommonMixin, np.ndarray):
     _element_type = np.datetime64
@@ -73,22 +71,22 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     __isub__ = __sub__
 
     def __eq__(self, value):
-        return np.array(np.equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.equal(self, value), dtype=np.bool_)
 
     def __ne__(self, value):
-        return np.array(np.not_equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.not_equal(self, value), dtype=np.bool_)
 
     def __lt__(self, value):
-        return np.array(np.less(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.less(self, value), dtype=np.bool_)
 
     def __le__(self, value):
-        return np.array(np.less_equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.less_equal(self, value), dtype=np.bool_)
 
     def __gt__(self, value):
-        return np.array(np.greater(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.greater(self, value), dtype=np.bool_)
 
     def __ge__(self, value):
-        return np.array(np.greater_equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.greater_equal(self, value), dtype=np.bool_)
 
     # 日付
     @property
@@ -107,7 +105,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
 
     # 判定
     def isnat(self):
-        return np.array(np.isnat(self),np.bool_)
+        return np.array(np.isnat(self), np.bool_)
 
     # 変換
     def to_datetime(self):
@@ -120,8 +118,10 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         return np.array(np.datetime_as_string(self), dtype=np.str_)
 
     def strftime(self, format):
-        def func(arr,format):return arr.strftime(format)
-        return np.array(np.vectorize(func)(self.astype(datetime),format))
+        def func(arr, format):
+            return arr.strftime(format)
+
+        return np.array(np.vectorize(func)(self.astype(datetime), format))
 
     # 範囲
     @classmethod
@@ -131,7 +131,9 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         stop = _obj_to_datetime64(stop, dtype).astype("int64")
         if stop < start:
             start, stop = stop, start
-        result = np.asarray(np.arange(start, stop, step=step), dtype=_dt64_unit(dtype)).view(cls)
+        result = np.asarray(
+            np.arange(start, stop, step=step), dtype=_dt64_unit(dtype)
+        ).view(cls)
         result._dtype = result.dtype
         return result
 
@@ -154,33 +156,25 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
             start, stop = stop, start
         if retstep:
             samples, step = np.linspace(
-                start,
-                stop,
-                num,
-                endpoint,
-                retstep,
-                np.int64,
-                axis
+                start, stop, num, endpoint, retstep, np.int64, axis
             )
             result = np.asarray(samples, dtype=_dt64_unit(dtype)).view(cls)
             result._dtype = result.dtype
             return result, step.astype(_tm64_unit(dtype))
         else:
-            result=np.linspace(
-                start,
-                stop,
-                num,
-                endpoint,
-                retstep,
-                np.int64,
-                axis
-            )
+            result = np.linspace(start, stop, num, endpoint, retstep, np.int64, axis)
             result = np.asarray(result, dtype=_dt64_unit(dtype)).view(cls)
             result._dtype = result.dtype
             return result
 
     def range(self):
         return np.min(self), np.max(self)
+
+    def diff_today(self, days=False):
+        if not isinstance(days, bool):
+            days = False
+        day = np.busday_count(np.asarray(self), self.today()) + int(days)
+        return np.array(day, dtype=np.int64)
 
     @classmethod
     def today(cls):
@@ -202,26 +196,22 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
 
     # 曜日
     def weekday(self):
-        m=self.month
-        flag=(m<=2)
-        y,m=np.where(flag,self.year-1,self.year),np.where(flag,m+12,m)
-        return (y+y//4-y//100+y//400+(13*m+8)//5+self.day)%7
+        m = self.month
+        flag = m <= 2
+        y, m = np.where(flag, self.year - 1, self.year), np.where(flag, m + 12, m)
+        return (y + y // 4 - y // 100 + y // 400 + (13 * m + 8) // 5 + self.day) % 7
 
     def begin_month_weekday(self):
-        m=self.month
-        flag=(m<=2)
-        y,m=np.where(flag,self.year-1,self.year),np.where(flag,m+12,m)
-        return (y+y//4-y//100+y//400+(13*m+8)//5+1)%7
+        m = self.month
+        flag = m <= 2
+        y, m = np.where(flag, self.year - 1, self.year), np.where(flag, m + 12, m)
+        return (y + y // 4 - y // 100 + y // 400 + (13 * m + 8) // 5 + 1) % 7
 
     def end_month_weekday(self):
-        dates=NPDate(self.astype("datetime64[M]") + np.timedelta64(1, "M"),"M") - np.timedelta64(1, "D")
+        dates = NPDate(
+            self.astype("datetime64[M]") + np.timedelta64(1, "M"), "M"
+        ) - np.timedelta64(1, "D")
         return dates.weekday()
-
-    def diff_today(self, days=False):
-        if not isinstance(days, bool):
-            days = False
-        day = np.busday_count(np.asarray(self), self.today()) + int(days)
-        return np.array(day, dtype=np.int64)
 
     # 閏年
     def leapyear(self):
@@ -230,14 +220,21 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
 
     def leapcount(self):
         year = self.year
-        return int(np.count_nonzero((year % 4 == 0) & ((year % 100 != 0) | (year % 400 == 0))))
+        return int(
+            np.count_nonzero((year % 4 == 0) & ((year % 100 != 0) | (year % 400 == 0)))
+        )
+
 
 def _obj_to_datetime64(obj, dtype):
     if isinstance(obj, str):
-        return np.datetime64(obj if obj in _pass_str_list else parse(obj), dtype)
+        return np.datetime64(
+            obj if obj in ["TODAY", "today", "NOW", "now"] else parse(obj), dtype
+        )
     elif isinstance(obj, np.str_):
         obj = str(obj)
-        return np.datetime64(obj if obj in _pass_str_list else parse(obj), dtype)
+        return np.datetime64(
+            obj if obj in ["TODAY", "today", "NOW", "now"] else parse(obj), dtype
+        )
     elif isinstance(obj, np.datetime64):
         return obj.astype(_dt64_unit(dtype))
     elif isinstance(obj, datetime | date):

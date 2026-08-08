@@ -4,8 +4,8 @@ from typing import Any, NoReturn, overload
 
 import numpy as np
 from numpy import bytes_, str_
-from numpy.dtypes import StringDType
 from numpy._typing import NDArray
+from numpy.dtypes import StringDType
 
 import sgg.typing as sgt
 
@@ -93,11 +93,15 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         """
 
     @overload
-    def __eq__(self, value: sgt._ArrayLikeString_co | NPString) -> NDArray[np.bool_]: ...
+    def __eq__(
+        self, value: sgt._ArrayLikeString_co | NPString
+    ) -> NDArray[np.bool_]: ...
     @overload
     def __eq__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ne__(self, value: sgt._ArrayLikeString_co | NPString) -> NDArray[np.bool_]: ...
+    def __ne__(
+        self, value: sgt._ArrayLikeString_co | NPString
+    ) -> NDArray[np.bool_]: ...
     @overload
     def __ne__(self, value: Any) -> NoReturn: ...
     @overload

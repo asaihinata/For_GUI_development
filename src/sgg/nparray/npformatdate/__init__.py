@@ -83,23 +83,22 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
     def __array_function__(self, func, types, args, kwargs):
         return super().__array_function__(func, types, args, kwargs)
 
-    def __eq__(self, value):
-        return np.array(np.equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.equal(self, value), dtype=np.bool_)
 
     def __ne__(self, value):
-        return np.array(np.not_equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.not_equal(self, value), dtype=np.bool_)
 
     def __lt__(self, value):
-        return np.array(np.less(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.less(self, value), dtype=np.bool_)
 
     def __le__(self, value):
-        return np.array(np.less_equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.less_equal(self, value), dtype=np.bool_)
 
     def __gt__(self, value):
-        return np.array(np.greater(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.greater(self, value), dtype=np.bool_)
 
     def __ge__(self, value):
-        return np.array(np.greater_equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.greater_equal(self, value), dtype=np.bool_)
 
     def __add__(self, value):
         result = np.asarray(np.add(self, value)).view(type(self))
@@ -122,11 +121,26 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
     def to_date(self):
         return self.data.astype(date)
 
+    # 日付
+    @property
+    def year(self):
+        return np.array(self.astype("datetime64[Y]").astype(np.int64), np.int64) + 1970
+
+    @property
+    def month(self):
+        return np.array(
+            np.mod(self.astype("datetime64[M]").astype(np.int64), 12) + 1, np.uint8
+        )
+
+    @property
+    def day(self):
+        return np.array((self - self.astype("datetime64[M]")).astype(int) + 1, np.uint8)
+
     def weekday(self):
-        m=self.month
-        flag=(m<=2)
-        y,m=np.where(flag,self.year-1,self.year),np.where(flag,m+12,m)
-        return (y+y//4-y//100+y//400+(13*m+8)//5+self.day)%7
+        m = self.month
+        flag = m <= 2
+        y, m = np.where(flag, self.year - 1, self.year), np.where(flag, m + 12, m)
+        return (y + y // 4 - y // 100 + y // 400 + (13 * m + 8) // 5 + self.day) % 7
 
     def diff_today(self, days=False):
         if not isinstance(days, bool):

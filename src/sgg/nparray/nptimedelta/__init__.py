@@ -114,22 +114,22 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
         return result
 
     def __eq__(self, value):
-        return np.array(np.equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.equal(self, value), dtype=np.bool_)
 
     def __ne__(self, value):
-        return np.array(np.not_equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.not_equal(self, value), dtype=np.bool_)
 
     def __lt__(self, value):
-        return np.array(np.less(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.less(self, value), dtype=np.bool_)
 
     def __le__(self, value):
-        return np.array(np.less_equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.less_equal(self, value), dtype=np.bool_)
 
     def __gt__(self, value):
-        return np.array(np.greater(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.greater(self, value), dtype=np.bool_)
 
     def __ge__(self, value):
-        return np.array(np.greater_equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.greater_equal(self, value), dtype=np.bool_)
 
     @classmethod
     def arange(cls, start, /, stop=None, step=1, dtype="timedelta64[D]"):

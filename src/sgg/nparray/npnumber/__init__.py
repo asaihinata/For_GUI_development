@@ -74,22 +74,22 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         return super().__array_function__(func, types, args, kwargs)
 
     def __eq__(self, value):
-        return np.array(np.equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.equal(self, value), dtype=np.bool_)
 
     def __ne__(self, value):
-        return np.array(np.not_equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.not_equal(self, value), dtype=np.bool_)
 
     def __lt__(self, value):
-        return np.array(np.less(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.less(self, value), dtype=np.bool_)
 
     def __le__(self, value):
-        return np.array(np.less_equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.less_equal(self, value), dtype=np.bool_)
 
     def __gt__(self, value):
-        return np.array(np.greater(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.greater(self, value), dtype=np.bool_)
 
     def __ge__(self, value):
-        return np.array(np.greater_equal(np.asarray(self), value),dtype=np.bool_)
+        return np.array(np.greater_equal(self, value), dtype=np.bool_)
 
     def __add__(self, value):
         result = np.asarray(np.add(self, value)).view(type(self))
@@ -284,7 +284,7 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         return cls(result, result.dtype)
 
     def zero_check(self):
-        return np.array(self == 0,dtype=np.bool_)
+        return np.array(self == 0, dtype=np.bool_)
 
     def count_nonzero(self, axis=None, keepdims=False):
         if not isinstance(keepdims, bool):
@@ -292,19 +292,19 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
         return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
 
     def isinf(self):
-        return np.array(np.isinf(self),dtype=np.bool_)
+        return np.array(np.isinf(self), dtype=np.bool_)
 
     def isnan(self):
-        return np.array(np.isnan(self),dtype=np.bool_)
+        return np.array(np.isnan(self), dtype=np.bool_)
 
     def isfinite(self):
-        return np.array(np.isfinite(self),dtype=np.bool_)
+        return np.array(np.isfinite(self), dtype=np.bool_)
 
     def isposinf(self):
-        return np.array(np.isposinf(self),dtype=np.bool_)
+        return np.array(np.isposinf(self), dtype=np.bool_)
 
     def isreal(self):
-        return np.array(np.isreal(self),dtype=np.bool_)
+        return np.array(np.isreal(self), dtype=np.bool_)
 
     def iscomplexobj(self):
         return np.iscomplexobj(self)
