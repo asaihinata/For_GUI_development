@@ -9,7 +9,7 @@ from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPArray"]
 
-class NPArray(_ArrayCommonMixin, np.ndarray):
+class NPArray(_ArrayCommonMixin):
     """`np.ndarray`を継承した型付き配列クラス"""
 
     _element_type: None

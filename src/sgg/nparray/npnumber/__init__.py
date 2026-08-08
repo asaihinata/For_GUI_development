@@ -21,7 +21,7 @@ method_list = [
 ]
 
 
-class NPNumber(_ArrayCommonMixin, np.ndarray):
+class NPNumber(_ArrayCommonMixin):
     _element_type = (int, float, complex, np.number)
     _default_dtype = np.float64
 
@@ -69,10 +69,6 @@ class NPNumber(_ArrayCommonMixin, np.ndarray):
             result._dtype = getattr(inputs[0], "_dtype", None)
 
         return result
-
-    def __array_function__(self, func, types, args, kwargs):
-        return super().__array_function__(func, types, args, kwargs)
-
     def __eq__(self, value):
         return np.array(np.equal(self, value), dtype=np.bool_)
 

@@ -8,7 +8,7 @@ from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPBool"]
 
-class NPBool(_ArrayCommonMixin, np.ndarray):
+class NPBool(_ArrayCommonMixin):
     """`np.ndarray`を継承したbool型の配列クラス"""
 
     _element_type: tuple[type[bool], type[np.bool_], type[np.bool]]

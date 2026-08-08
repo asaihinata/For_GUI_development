@@ -9,7 +9,7 @@ from ..dev import _ArrayCommonMixin, _dt64_unit
 __all__ = ["NPFormatDate"]
 
 
-class NPFormatDate(_ArrayCommonMixin, np.ndarray):
+class NPFormatDate(_ArrayCommonMixin):
     _element_type = np.datetime64
     _default_dtype = "datetime64[D]"
 
@@ -79,10 +79,6 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
             result = result.view(type(self))
             result._dtype = getattr(inputs[0], "_dtype", None)
         return result
-
-    def __array_function__(self, func, types, args, kwargs):
-        return super().__array_function__(func, types, args, kwargs)
-
         return np.array(np.equal(self, value), dtype=np.bool_)
 
     def __ne__(self, value):

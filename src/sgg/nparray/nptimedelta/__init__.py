@@ -9,7 +9,7 @@ from ..npnumber import NPNumber
 __all__ = ["NPTimedelta"]
 
 
-class NPTimedelta(_ArrayCommonMixin, np.ndarray):
+class NPTimedelta(_ArrayCommonMixin):
     _element_type = np.timedelta64
     _default_dtype = np.dtype("timedelta64[D]")
 
@@ -53,10 +53,6 @@ class NPTimedelta(_ArrayCommonMixin, np.ndarray):
             result._dtype = getattr(inputs[0], "_dtype", None)
 
         return result
-
-    def __array_function__(self, func, types, args, kwargs):
-        return super().__array_function__(func, types, args, kwargs)
-
     def __add__(self, value):
         result = np.asarray(np.add(self, value)).view(type(self))
         result._dtype = result.dtype

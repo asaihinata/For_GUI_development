@@ -12,7 +12,7 @@ from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPString"]
 
-class NPString(_ArrayCommonMixin, np.ndarray):
+class NPString(_ArrayCommonMixin):
     _element_type: tuple[
         type[str], type[bytes], type[str_], type[bytes_], type[StringDType]
     ]

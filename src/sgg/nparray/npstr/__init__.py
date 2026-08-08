@@ -9,7 +9,7 @@ from ..dev import _ArrayCommonMixin, _int_co_check
 __all__ = ["NPString"]
 
 
-class NPString(_ArrayCommonMixin, np.ndarray):
+class NPString(_ArrayCommonMixin):
     _element_type = (str, np.str_, bytes, np.bytes_, StringDType)
     _default_dtype = np.str_
 
@@ -57,10 +57,6 @@ class NPString(_ArrayCommonMixin, np.ndarray):
             result._dtype = getattr(inputs[0], "_dtype", None)
 
         return result
-
-    def __array_function__(self, func, types, args, kwargs):
-        return super().__array_function__(func, types, args, kwargs)
-
     def __add__(self, value):
         result = np.asarray(nps.add(self, value)).view(type(self))
         result._dtype = result.dtype

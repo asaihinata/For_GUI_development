@@ -13,7 +13,7 @@ from ..npdate import NPDate
 
 __all__ = ["NPTimedelta"]
 
-class NPTimedelta(_ArrayCommonMixin, np.ndarray):
+class NPTimedelta(_ArrayCommonMixin):
     _element_type: tuple[type[timedelta64]]
     _default_dtype: type[dtype[timedelta64]]
     @overload

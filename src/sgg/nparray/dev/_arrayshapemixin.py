@@ -3,7 +3,7 @@ import numpy as np
 __all__ = ["_ArrayCommonMixin"]
 
 
-class _ArrayCommonMixin:
+class _ArrayCommonMixin(np.ndarray):
     """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
 
     def __repr__(self):
@@ -16,6 +16,8 @@ class _ArrayCommonMixin:
         return super().__contains__(value)
 
     def __len__(self):
+        if self.size==1:
+            return 1
         return super().__len__()
 
     def __getitem__(self, key):
@@ -46,6 +48,9 @@ class _ArrayCommonMixin:
 
     def __class_getitem__(cls, item):
         return np.ndarray.__class_getitem__.__func__(cls, item)
+
+    def __array_function__(self, func, types, args, kwargs):
+        return super().__array_function__(func, types, args, kwargs)
 
     def lengtharange(self):
         shapes = self.shape

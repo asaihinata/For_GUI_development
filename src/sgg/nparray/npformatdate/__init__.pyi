@@ -11,7 +11,7 @@ from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPFormatDate"]
 
-class NPFormatDate(_ArrayCommonMixin, np.ndarray):
+class NPFormatDate(_ArrayCommonMixin):
     """`np.ndarray`を継承した様々な日付のフォーマットを特定の日付フォーマットに変換する配列クラス"""
 
     _element_type: type[datetime64]

@@ -10,7 +10,7 @@ from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPDate"]
 
-class NPDate(_ArrayCommonMixin, np.ndarray):
+class NPDate(_ArrayCommonMixin):
     """`np.ndarray`を継承した日付の配列クラス"""
 
     _element_type: type[datetime64]

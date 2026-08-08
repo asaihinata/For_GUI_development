@@ -7,7 +7,7 @@ from ..dev import _ArrayCommonMixin, _arrisuint
 __all__ = ["NPArray"]
 
 
-class NPArray(_ArrayCommonMixin, np.ndarray):
+class NPArray(_ArrayCommonMixin):
     _element_type = None
     _default_dtype = "object"
 
@@ -73,10 +73,6 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
             result = result.view(type(self))
             result._dtype = getattr(inputs[0], "_dtype", None)
         return result
-
-    def __array_function__(self, func, types, args, kwargs):
-        return super().__array_function__(func, types, args, kwargs)
-
     def __eq__(self, value):
         result = np.equal(np.asarray(self), value).view(type(self))
         result._dtype = np.bool_

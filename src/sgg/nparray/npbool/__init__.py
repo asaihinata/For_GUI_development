@@ -5,7 +5,7 @@ from ..dev import _ArrayCommonMixin
 __all__ = ["NPBool"]
 
 
-class NPBool(_ArrayCommonMixin, np.ndarray):
+class NPBool(_ArrayCommonMixin):
     _element_type = (bool, np.bool_, np.bool)
     _default_dtype = np.bool_
 
@@ -53,22 +53,18 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
             result._dtype = getattr(inputs[0], "_dtype", None)
 
         return result
-
-    def __array_function__(self, func, types, args, kwargs):
-        return super().__array_function__(func, types, args, kwargs)
-
     def __invert__(self):
-        result = np.logical_not(np.asarray(self)).view(type(self))
+        result = np.asarray(np.logical_not(self)).view(type(self))
         result._dtype = self.dtypes
         return result
 
     def __eq__(self, value):
-        result = np.equal(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.equal(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def __ne__(self, value):
-        result = np.not_equal(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.not_equal(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -79,7 +75,7 @@ class NPBool(_ArrayCommonMixin, np.ndarray):
         return bool(np.any(np.asarray(self)))
 
     def inversion(self):
-        result = np.logical_not(np.asarray(self)).view(type(self))
+        result = np.asarray(np.logical_not(self)).view(type(self))
         result._dtype = self.dtypes
         return result
 

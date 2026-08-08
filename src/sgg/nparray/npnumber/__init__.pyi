@@ -38,7 +38,7 @@ type TYPEMETHOD = Literal[
     "normal_unbiased",
 ]
 
-class NPNumber(_ArrayCommonMixin, np.ndarray):
+class NPNumber(_ArrayCommonMixin):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
     _element_type: tuple[type[int], type[float], type[complex], type[np.number]]

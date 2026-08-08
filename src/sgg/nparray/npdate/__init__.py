@@ -8,7 +8,7 @@ from ..dev import _ArrayCommonMixin, _dt64_unit, _get_dt64_unit, _tm64_unit
 __all__ = ["NPDate"]
 
 
-class NPDate(_ArrayCommonMixin, np.ndarray):
+class NPDate(_ArrayCommonMixin):
     _element_type = np.datetime64
     _default_dtype = np.dtype("datetime64[D]")
 
@@ -52,10 +52,6 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
             result._dtype = getattr(inputs[0], "_dtype", None)
 
         return result
-
-    def __array_function__(self, func, types, args, kwargs):
-        return super().__array_function__(func, types, args, kwargs)
-
     def __add__(self, value):
         result = np.asarray(np.add(self, value)).view(type(self))
         result._dtype = result.dtype

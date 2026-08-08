@@ -9,7 +9,7 @@ from sgg.typing import _Seed,RUInt64
 
 __all__ = ["_ArrayCommonMixin"]
 
-class _ArrayCommonMixin:
+class _ArrayCommonMixin(np.ndarray):
     """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
 
     def __repr__(self) -> str: ...
