@@ -2,7 +2,7 @@ from typing import Any, Literal, NoReturn, SupportsIndex, overload
 
 import numpy as np
 from numpy import datetime64, timedelta64
-from numpy._typing import NDArray, _TD64Like_co
+from numpy._typing import _TD64Like_co
 
 import sgg.typing as sgt
 
@@ -95,27 +95,27 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     __isub__ = __sub__
 
     @overload
-    def __eq__(self, value: sgt._ComparisonType | NPDate) -> NDArray[np.bool_]: ...
+    def __eq__(self, value: sgt._ComparisonType | NPDate) -> sgt.RBool_: ...
     @overload
     def __eq__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ne__(self, value: sgt._ComparisonType | NPDate) -> NDArray[np.bool_]: ...
+    def __ne__(self, value: sgt._ComparisonType | NPDate) -> sgt.RBool_: ...
     @overload
     def __ne__(self, value: Any) -> NoReturn: ...
     @overload
-    def __lt__(self, value: sgt._ComparisonType | NPDate) -> NDArray[np.bool_]: ...
+    def __lt__(self, value: sgt._ComparisonType | NPDate) -> sgt.RBool_: ...
     @overload
     def __lt__(self, value: Any) -> NoReturn: ...
     @overload
-    def __le__(self, value: sgt._ComparisonType | NPDate) -> NDArray[np.bool_]: ...
+    def __le__(self, value: sgt._ComparisonType | NPDate) -> sgt.RBool_: ...
     @overload
     def __le__(self, value: Any) -> NoReturn: ...
     @overload
-    def __gt__(self, value: sgt._ComparisonType | NPDate) -> NDArray[np.bool_]: ...
+    def __gt__(self, value: sgt._ComparisonType | NPDate) -> sgt.RBool_: ...
     @overload
     def __gt__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ge__(self, value: sgt._ComparisonType | NPDate) -> NDArray[np.bool_]: ...
+    def __ge__(self, value: sgt._ComparisonType | NPDate) -> sgt.RBool_: ...
     @overload
     def __ge__(self, value: Any) -> NoReturn: ...
     @property
@@ -123,18 +123,18 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
         """NPDateで許可されている型を取得する"""
     # 日付
     @property
-    def year(self) -> NDArray[np.int64] | np.int64:
+    def year(self) -> sgt.RInt64:
         """配列の年を返す"""
 
     @property
-    def month(self) -> NDArray[np.uint8] | np.uint8:
+    def month(self) -> sgt.RUInt8:
         """配列の月を返す"""
 
     @property
-    def day(self) -> NDArray[np.uint8] | np.uint8:
+    def day(self) -> sgt.RUInt8:
         """配列の日付を返す"""
     # 判定
-    def isnat(self) -> NDArray[np.bool_]:
+    def isnat(self) -> sgt.RBool_:
         """要素が欠損(Nat)かを判定する"""
     # 変換
     def to_datetime(self) -> np.ndarray:
@@ -143,10 +143,10 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     def to_date(self) -> np.ndarray:
         """配列内の日付を`datetime.date`に変換する"""
 
-    def to_str(self) -> NDArray[np.str_]:
+    def to_str(self) -> sgt.RStr_:
         """配列内の日付を`NPString`に変換する"""
 
-    def strftime(self, format: str) -> NDArray[np.str_]:
+    def strftime(self, format: str) -> sgt.RStr_:
         """日付のフォーマットを別のフォーマットで変換する"""
     # 範囲
     @classmethod
@@ -270,7 +270,7 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     def range(self) -> tuple[datetime64, datetime64]:
         """配列内の日付の最小の日付と最大の日付を求める"""
 
-    def diff_today(self, days: bool = ...) -> NDArray[np.int64] | np.int64:
+    def diff_today(self, days: bool = ...) -> sgt.RInt64:
         """
         配列の日付と今日の日付の差を求める
 
@@ -290,16 +290,16 @@ class NPDate(_ArrayCommonMixin, np.ndarray):
     def unix(cls) -> NPDate:
         """UTC時刻を返す"""
     # 曜日
-    def weekday(self) -> NDArray[np.uint8] | np.uint8:
+    def weekday(self) -> sgt.RUInt8:
         """その日付時刻の曜日をツェラーの公式で求める"""
 
-    def begin_month_weekday(self) -> NDArray[np.uint8] | np.uint8:
+    def begin_month_weekday(self) -> sgt.RUInt8:
         """その日付時刻の月初の曜日をツェラーの公式で求める"""
 
-    def end_month_weekday(self) -> NDArray[np.uint8] | np.uint8:
+    def end_month_weekday(self) -> sgt.RUInt8:
         """その日付時刻の月末の曜日をツェラーの公式で求める"""
     # 閏年
-    def leapyear(self) -> NDArray[np.bool_] | np.bool_:
+    def leapyear(self) -> sgt.RBool_:
         """その日付の年が閏年かどうかを判定する"""
 
     def leapcount(self) -> int:

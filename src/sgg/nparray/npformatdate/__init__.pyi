@@ -4,7 +4,6 @@ from typing import Any, Literal, NoReturn, overload
 
 import numpy as np
 from numpy import datetime64
-from numpy._typing import NDArray
 
 import sgg.typing as sgt
 
@@ -89,27 +88,27 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
     __isub__ = __sub__
     __rsub__ = __sub__
     @overload
-    def __eq__(self, value: sgt._ComparisonType) -> NDArray[np.bool_]: ...
+    def __eq__(self, value: sgt._ComparisonType) -> sgt.RBool_: ...
     @overload
     def __eq__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ne__(self, value: sgt._ComparisonType) -> NDArray[np.bool_]: ...
+    def __ne__(self, value: sgt._ComparisonType) -> sgt.RBool_: ...
     @overload
     def __ne__(self, value: Any) -> NoReturn: ...
     @overload
-    def __lt__(self, value: sgt._ComparisonType) -> NDArray[np.bool_]: ...
+    def __lt__(self, value: sgt._ComparisonType) -> sgt.RBool_: ...
     @overload
     def __lt__(self, value: Any) -> NoReturn: ...
     @overload
-    def __le__(self, value: sgt._ComparisonType) -> NDArray[np.bool_]: ...
+    def __le__(self, value: sgt._ComparisonType) -> sgt.RBool_: ...
     @overload
     def __le__(self, value: Any) -> NoReturn: ...
     @overload
-    def __gt__(self, value: sgt._ComparisonType) -> NDArray[np.bool_]: ...
+    def __gt__(self, value: sgt._ComparisonType) -> sgt.RBool_: ...
     @overload
     def __gt__(self, value: Any) -> NoReturn: ...
     @overload
-    def __ge__(self, value: sgt._ComparisonType) -> NDArray[np.bool_]: ...
+    def __ge__(self, value: sgt._ComparisonType) -> sgt.RBool_: ...
     @overload
     def __ge__(self, value: Any) -> NoReturn: ...
     def __array_ufunc__(
@@ -144,21 +143,21 @@ class NPFormatDate(_ArrayCommonMixin, np.ndarray):
         """配列内の日付を`datetime.date`に変換する"""
     # 日付
     @property
-    def year(self) -> NDArray[np.int64] | np.int64:
+    def year(self) -> sgt.RInt64:
         """配列の年を返す"""
 
     @property
-    def month(self) -> NDArray[np.uint8] | np.uint8:
+    def month(self) -> sgt.RUInt8:
         """配列の月を返す"""
 
     @property
-    def day(self) -> NDArray[np.uint8] | np.uint8:
+    def day(self) -> sgt.RUInt8:
         """配列の日付を返す"""
 
-    def weekday(self) -> NDArray[np.uint8] | np.uint8:
+    def weekday(self) -> sgt.RUInt8:
         """その日付時刻の曜日をツェラーの公式で求める"""
 
-    def diff_today(self, days: bool = ...) -> NDArray[np.int64]:
+    def diff_today(self, days: bool = ...) -> sgt.RInt64:
         """
         配列の日付と今日の日付の差を求める
 

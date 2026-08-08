@@ -4,7 +4,6 @@ from typing import Any, NoReturn, overload
 
 import numpy as np
 from numpy import bytes_, str_
-from numpy._typing import NDArray
 from numpy.dtypes import StringDType
 
 import sgg.typing as sgt
@@ -95,13 +94,13 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     @overload
     def __eq__(
         self, value: sgt._ArrayLikeString_co | NPString
-    ) -> NDArray[np.bool_]: ...
+    ) -> sgt.RBool_: ...
     @overload
     def __eq__(self, value: Any) -> NoReturn: ...
     @overload
     def __ne__(
         self, value: sgt._ArrayLikeString_co | NPString
-    ) -> NDArray[np.bool_]: ...
+    ) -> sgt.RBool_: ...
     @overload
     def __ne__(self, value: Any) -> NoReturn: ...
     @overload
@@ -147,10 +146,10 @@ class NPString(_ArrayCommonMixin, np.ndarray):
     def upper(self) -> NPString:
         """`NPString`内の要素のアルファベットを大文字に変換する"""
 
-    def stringlen(self) -> NDArray[np.uint64]:
+    def stringlen(self) -> sgt.RUInt64:
         """配列内の要素の文字の長さを求める"""
 
-    def str_len(self) -> NDArray[np.uint64]:
+    def str_len(self) -> sgt.RUInt64:
         """配列内の要素の文字の長さを求める"""
 
     def len_max(self) -> np.uint64:
@@ -278,7 +277,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         suffix: sgt._ArrayLikeString_co,
         start: sgt._ArrayLikeInt_co = 0,
         end: sgt._ArrayLikeInt_co | None = None,
-    ) -> NDArray[np.bool_]:
+    ) -> sgt.RBool_:
         """
         配列の要素が`suffix`で終わるかを調べる
 
@@ -295,7 +294,7 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         prefix: sgt._ArrayLikeString_co,
         start: sgt._ArrayLikeInt_co = 0,
         end: sgt._ArrayLikeInt_co | None = None,
-    ) -> NDArray[np.bool_]:
+    ) -> sgt.RBool_:
         """
         配列の要素が`prefix`で始まるかを調べる
 
@@ -341,42 +340,42 @@ class NPString(_ArrayCommonMixin, np.ndarray):
         :type errors: str | None
         """
 
-    def istitle(self) -> NDArray[np.bool_]:
+    def istitle(self) -> sgt.RBool_:
         """
         要素がタイトルケースの文字列であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isnumeric(self) -> NDArray[np.bool_]:
+    def isnumeric(self) -> sgt.RBool_:
         """
         各要素について,その要素が数値のみが含まれている場合は`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isalnum(self) -> NDArray[np.bool_]:
+    def isalnum(self) -> sgt.RBool_:
         """
         各要素内の文字列のすべての文字が英数字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isspace(self) -> NDArray[np.bool_]:
+    def isspace(self) -> sgt.RBool_:
         """
         各要素内の文字列内に空白文字のみが存在し,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isdecimal(self) -> NDArray[np.bool_]:
+    def isdecimal(self) -> sgt.RBool_:
         """
         各要素内の文字列がすべて10進数文字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 
         そうでない場合は`False`を返す。
         """
 
-    def isupper(self) -> NDArray[np.bool_]:
+    def isupper(self) -> sgt.RBool_:
         """
         各要素内の文字列内のすべての文字が大文字であり,かつ少なくとも1文字が含まれている場合は,各要素に対して`True`を返す。
 

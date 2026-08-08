@@ -4,7 +4,7 @@ from types import NoneType
 from typing import Any, SupportsIndex
 
 import numpy as np
-from numpy._typing import _NestedSequence, _SupportsArray
+from numpy._typing import _NestedSequence, _SupportsArray,NDArray
 from numpy.dtypes import StringDType
 
 __all__ = [
@@ -25,6 +25,13 @@ __all__ = [
     "_Shape",
     "_ShapeInt",
     "_ShapeLike",
+    "RBool_",
+    "RUInt8",
+    "Rdatetime64",
+    "RNumber",
+    "RInt64",
+    "RUInt64",
+    "RStr_",
     "Typeaxis",
 ]
 type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
@@ -78,6 +85,14 @@ type _ArrayLikeNone_co = _DualArrayLike[
     np.dtype[NoneType],
     NoneType,
 ]
+# 戻り値
+type RBool_ = NDArray[np.bool_] | np.bool_
+type RNumber = NDArray[np.number] | np.number
+type RInt64 = NDArray[np.int64] | np.int64
+type RUInt64 = NDArray[np.uint64] | np.uint64
+type RUInt8 = NDArray[np.uint8] | np.uint8
+type RStr_ = NDArray[np.str_] | np.str_
+type Rdatetime64 = NDArray[np.datetime64] | np.datetime64
 # その他
 type Typeaxis = _ShapeLike | None
 """`axis`専用の型ヒント"""

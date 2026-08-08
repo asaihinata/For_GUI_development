@@ -5,7 +5,7 @@ import numpy as np
 from numpy._typing import DTypeLike, _ArrayLikeFloat_co, _ShapeLike
 from numpy.typing import NDArray
 
-from sgg.typing import _Seed
+from sgg.typing import _Seed,RUInt64
 
 __all__ = ["_ArrayCommonMixin"]
 
@@ -77,14 +77,8 @@ class _ArrayCommonMixin:
         self, dtype: DTypeT, /, *, copy: bool | None = None
     ) -> np.ndarray[np._ShapeT_co, DTypeT]: ...
     def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
-    def lengtharange(self) -> NDArray[np.uint64]:
-        """
-        配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す
-
-        `dtype`は`np.uint64`に固定される
-
-        :return: インデックス配列を返す
-        """
+    def lengtharange(self) -> RUInt64:
+        """配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す"""
 
     def shapesize(self, shapes: tuple[int, ...]) -> bool:
         """

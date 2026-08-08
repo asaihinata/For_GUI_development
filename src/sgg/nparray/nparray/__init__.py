@@ -90,7 +90,9 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
     def count_nonzero(self, axis=None, keepdims=False):
         if not isinstance(keepdims, bool):
             keepdims = False
-        return np.count_nonzero(np.asarray(self), axis=axis, keepdims=keepdims)
+        result = np.asarray(np.count_nonzero(self, axis=axis, keepdims=keepdims),np.uint64).view(type(self))
+        result._dtype = np.uint64
+        return result
 
     def EType(self):
         result = np.asarray(np.vectorize(type)(self)).view(type(self))

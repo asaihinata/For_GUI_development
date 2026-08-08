@@ -2,7 +2,6 @@ from typing import Any, Literal, overload
 
 import numpy as np
 from numpy._typing import _DTypeLike
-from numpy.typing import NDArray
 
 import sgg.typing as sgt
 
@@ -121,15 +120,13 @@ class NPArray(_ArrayCommonMixin, np.ndarray):
     def element_type(self) -> None:
         """NPArrayで許可されている型を取得する"""
 
-    def count_nonzero(
-        self, axis: sgt.Typeaxis = None, keepdims: bool = False
-    ) -> np.intp | NDArray[np.intp]:
+    def count_nonzero(self, axis: sgt._ShapeLike | None = None, keepdims: bool = False) -> NPArray:
         """
-        配列内の要素で0以外の値の数を数える
+        0以外の要素の数を数える
 
         :param axis: 要素を数える軸を指定する
-        :type axis: Typeaxis
-        :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する。
+        :type axis: int | tuple[int,...] | None
+        :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する
         :type keepdims: bool
         """
 
