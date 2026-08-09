@@ -66,7 +66,6 @@ __all__: list[str] = [
     "NPArray",
     "NPBool",
     "NPDate",
-    "NPFormatDate",
     "NPNumber",
     "NPString",
     "NPTimedelta",

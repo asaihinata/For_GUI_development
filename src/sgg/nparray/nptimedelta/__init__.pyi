@@ -134,6 +134,7 @@ class NPTimedelta(_ArrayCommonMixin):
     @property
     def element_type(self) -> tuple[type[timedelta64]]:
         """NPTimedeltaで許可されている型を取得する"""
+
     def choice(
         self,
         size: sgt._ShapeInt | None = None,

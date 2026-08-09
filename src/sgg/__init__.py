@@ -56,7 +56,6 @@ __all__ = [
     "NPArray",
     "NPBool",
     "NPDate",
-    "NPFormatDate",
     "NPNumber",
     "NPString",
     "NPTimedelta",

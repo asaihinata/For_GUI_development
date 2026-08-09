@@ -36,6 +36,9 @@ class _ArrayCommonMixin(np.ndarray):
             return data[key]
         raise TypeError("keyにはintまたはsliceを指定してください")
 
+    def __iter__(self):
+        return iter(np.asarray(self))
+
     def __reversed__(self):
         result = np.flip(np.asarray(self)).view(type(self))
         result._dtype = self._dtype
@@ -52,30 +55,12 @@ class _ArrayCommonMixin(np.ndarray):
     def __array_function__(self, func, types, args, kwargs):
         return super().__array_function__(func, types, args, kwargs)
 
-    def lengtharange(self):
-        shapes = self.shape
-        lens = len(shapes)
-        if lens == 1:
-            raw = np.arange(0, self.size, 1)
-        else:
-            raw = np.tile(np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])).reshape(
-                shapes
-            )
-        return np.array(raw, dtype=np.uint64)
-
-    def shapesize(self, shapes):
-        if self.shape == shapes:
-            return True
-        return False
-
-    def tonumpy(self):
-        return np.asarray(self)
-
-    def isscalar(self):
-        return np.isscalar(self.tolist())
-
-    def __iter__(self):
-        return iter(np.asarray(self))
+    def __array_finalize__(self, obj):
+        if obj is None:
+            return
+        self._dtype = getattr(obj, "_dtype", None)
+        self._min_ndim = getattr(obj, "_min_ndim", None)
+        self._max_ndim = getattr(obj, "_max_ndim", None)
 
     @classmethod
     def _resolve_dtype(cls, dtype):
@@ -105,32 +90,37 @@ class _ArrayCommonMixin(np.ndarray):
                     f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
                 )
 
-    def __array_finalize__(self, obj):
-        if obj is None:
+    @classmethod
+    def _validate_element_type(cls, obj):
+        if cls._permissible_type is None:
             return
-        self._dtype = getattr(obj, "_dtype", None)
-        self._min_ndim = getattr(obj, "_min_ndim", None)
-        self._max_ndim = getattr(obj, "_max_ndim", None)
+        for elem in obj.flat:
+            if not isinstance(elem, cls._element_type):
+                raise TypeError(
+                    f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
+                )
 
-    @property
-    def element_type(self):
-        return self._element_type
+    def lengtharange(self):
+        shapes = self.shape
+        lens = len(shapes)
+        if lens == 1:
+            raw = np.arange(0, self.size, 1)
+        else:
+            raw = np.tile(np.arange(0, shapes[lens - 1]), np.prod(shapes[:-1])).reshape(
+                shapes
+            )
+        return np.array(raw, dtype=np.uint64)
 
-    @property
-    def data(self):
-        return self.__array__(self.dtypes)
+    def shapesize(self, shapes):
+        if self.shape == shapes:
+            return True
+        return False
 
-    @property
-    def dtypes(self):
-        return self._dtype
+    def tonumpy(self):
+        return np.asarray(self)
 
-    @property
-    def min_ndim(self):
-        return getattr(self, "_min_ndim", None)
-
-    @property
-    def max_ndim(self):
-        return getattr(self, "_max_ndim", None)
+    def isscalar(self):
+        return np.isscalar(self.tolist())
 
     def to_1d(self):
         if self.min_ndim is not None and self.min_ndim > 1:
@@ -167,3 +157,23 @@ class _ArrayCommonMixin(np.ndarray):
         return np.random.default_rng(seed).choice(
             self, size=size, replace=replace, p=p, axis=axis, shuffle=shuffle
         )
+
+    @property
+    def element_type(self):
+        return self._element_type
+
+    @property
+    def data(self):
+        return self.__array__(self.dtypes)
+
+    @property
+    def dtypes(self):
+        return self._dtype
+
+    @property
+    def min_ndim(self):
+        return getattr(self, "_min_ndim", None)
+
+    @property
+    def max_ndim(self):
+        return getattr(self, "_max_ndim", None)

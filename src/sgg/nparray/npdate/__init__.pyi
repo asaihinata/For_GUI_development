@@ -304,7 +304,6 @@ class NPDate(_ArrayCommonMixin):
 
     def leapcount(self) -> int:
         """配列内の閏年の数を数える"""
-
     # random
     def choice(
         self,

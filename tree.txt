@@ -245,9 +245,6 @@ For_GUI_development
  │   │   │   ├── npdate
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
- │   │   │   ├── npformatdate
- │   │   │   │   ├── __init__.py
- │   │   │   │   └── __init__.pyi
  │   │   │   ├── npnumber
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
@@ -455,5 +452,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:315
-フォルダ数:141
+ファイル数:313
+フォルダ数:140

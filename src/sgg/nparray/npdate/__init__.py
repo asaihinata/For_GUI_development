@@ -23,11 +23,20 @@ class NPDate(_ArrayCommonMixin):
         max_ndim=None,
         copy=True,
     ):
+        def _func(x):
+            try:
+                if x in ["TODAY","today", b"TODAY", b"today","NOW","now", b"NOW", b"now"]:
+                    return x
+                elif isinstance(x, str | np.str_):
+                    return parse(x)
+                return x
+            except:
+                return None
+
         if not isinstance(copy, bool):
             copy = True
         resolved = cls._resolve_dtype(_dt64_unit(dtype))
-        obj = np.asarray(data, dtype=resolved, copy=copy).view(cls)
-        cls._validate_elements(obj)
+        obj = np.asarray(np.vectorize(_func, otypes=[resolved])(data), copy=copy).view(cls)
         obj._dtype = resolved
         if isinstance(d_ndim, int):
             cls._validate_ndim(obj, d_ndim, d_ndim)
