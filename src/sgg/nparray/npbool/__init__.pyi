@@ -1,4 +1,4 @@
-from typing import Any, NoReturn, overload
+from typing import Any, Literal, NoReturn, overload
 
 import numpy as np
 
@@ -12,7 +12,7 @@ class NPBool(_ArrayCommonMixin):
     """`np.ndarray`を継承したbool型の配列クラス"""
 
     _element_type: tuple[type[bool], type[np.bool_], type[np.bool]]
-    _default_dtype: type[np.bool_]
+    _default_dtype: np.bool_
     @overload
     def __new__(
         cls,
@@ -144,3 +144,21 @@ class NPBool(_ArrayCommonMixin):
         :param seed: 乱数のシード値を指定する
         :type seed: int | SeedSequence | Generator | None
         """
+    # dtype
+    @property
+    def types(self) -> type[np.bool | np.bool_]: ...
+    @property
+    def dtypes(self) -> np.dtype[np.bool | np.bool_]:
+        """インスタンス生成時に確定したdtypeを取得する"""
+
+    @property
+    def kinds(self) -> Literal["b"]:
+        """配列のデータ型の一般的な種類を識別する文字コードを返す"""
+
+    @property
+    def chars(self) -> Literal["b"]:
+        """配列のデータ型固有の文字コードを返す"""
+
+    @property
+    def nums(self) -> Literal[0]:
+        """配列のデータ型固有の番号を返す"""

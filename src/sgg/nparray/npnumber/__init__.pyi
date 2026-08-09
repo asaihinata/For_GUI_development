@@ -42,7 +42,7 @@ class NPNumber(_ArrayCommonMixin):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
     _element_type: tuple[type[int], type[float], type[complex], type[np.number]]
-    _default_dtype: type[np.float64]
+    _default_dtype: np.float64
     def __new__(
         cls,
         data: sgt._ArrayLikeNumber_co,
@@ -606,3 +606,25 @@ class NPNumber(_ArrayCommonMixin):
         :param dtype: 出力される配列に使用するデータ型を指定する
         :param seed: 乱数のシード値を指定する
         """
+    # dtype
+    @property
+    def types(self) -> type[np.number]: ...
+    @property
+    def dtypes(self) -> np.dtype[np.number]:
+        """インスタンス生成時に確定したdtypeを取得する"""
+
+    @property
+    def kinds(self) -> Literal["i", "u", "f", "c"]:
+        """配列のデータ型の一般的な種類を識別する文字コードを返す"""
+
+    @property
+    def chars(
+        self,
+    ) -> Literal[
+        "h", "H", "i", "I", "l", "L", "q", "Q", "e", "f", "d", "g", "F", "D", "G"
+    ]:
+        """配列のデータ型固有の文字コードを返す"""
+
+    @property
+    def nums(self) -> Literal[3, 4, 5, 6, 7, 8, 9, 10, 23, 11, 12, 13, 14, 15, 16]:
+        """配列のデータ型固有の番号を返す"""

@@ -1,3 +1,4 @@
+from datetime import date
 from typing import Any, Literal, NoReturn, SupportsIndex, overload
 
 import numpy as np
@@ -14,7 +15,7 @@ class NPDate(_ArrayCommonMixin):
     """`np.ndarray`を継承した日付の配列クラス"""
 
     _element_type: type[datetime64]
-    _default_dtype: Literal["datetime64[D]"]
+    _default_dtype: np.dtype[datetime64[date]]
     @overload
     def __new__(
         cls,
@@ -383,3 +384,21 @@ class NPDate(_ArrayCommonMixin):
         :param seed: 乱数のシード値を指定する
         :type seed: int | SeedSequence | Generator | None
         """
+    # dtype
+    @property
+    def types(self) -> type[datetime64]: ...
+    @property
+    def dtypes(self) -> np.dtype[datetime64]:
+        """インスタンス生成時に確定したdtypeを取得する"""
+
+    @property
+    def kinds(self) -> Literal["M"]:
+        """配列のデータ型の一般的な種類を識別する文字コードを返す"""
+
+    @property
+    def chars(self) -> Literal["M"]:
+        """配列のデータ型固有の文字コードを返す"""
+
+    @property
+    def nums(self) -> Literal[21]:
+        """配列のデータ型固有の番号を返す"""

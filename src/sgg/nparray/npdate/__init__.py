@@ -51,9 +51,9 @@ class NPDate(_ArrayCommonMixin):
         if not isinstance(copy, bool):
             copy = True
         resolved = cls._resolve_dtype(_dt64_unit(dtype))
-        obj = np.asarray(np.vectorize(_func, otypes=[resolved])(np.asarray(data)), copy=copy).view(
-            cls
-        )
+        obj = np.asarray(
+            np.vectorize(_func, otypes=[resolved])(np.asarray(data)), copy=copy
+        ).view(cls)
         obj._dtype = resolved
         if isinstance(d_ndim, int):
             cls._validate_ndim(obj, d_ndim, d_ndim)

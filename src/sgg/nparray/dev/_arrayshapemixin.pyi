@@ -1,5 +1,5 @@
 from types import GenericAlias
-from typing import Any, Iterator, Literal, Self, overload
+from typing import Any, Iterator, Literal, LiteralString, Self, overload
 
 import numpy as np
 from numpy._typing import DTypeLike, _ShapeLike
@@ -77,22 +77,6 @@ class _ArrayCommonMixin(np.ndarray):
         self, dtype: DTypeT, /, *, copy: bool | None = None
     ) -> np.ndarray[np._ShapeT_co, DTypeT]: ...
     def __class_getitem__(cls, item: Any, /) -> GenericAlias: ...
-    def lengtharange(self) -> RUInt64:
-        """配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す"""
-
-    def shapesize(self, shapes: tuple[int, ...]) -> bool:
-        """
-        配列オブジェクトの`shape`が`shapes`と一致するかを確認する
-
-        :param shapes: 比較する`shape`を指定する
-        :type shapes: tuple[int, ...]
-        :return: `shape`が一致する場合は`True`を返し,一致しない場合は`False`を返す
-        :rtype: bool
-        """
-
-    def tonumpy(self) -> NDArray[Any]:
-        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
-
     @classmethod
     def _resolve_dtype(cls, dtype: np.dtype | str | type | None) -> np.dtype | None: ...
     @classmethod
@@ -120,30 +104,21 @@ class _ArrayCommonMixin(np.ndarray):
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
         """
 
-    @property
-    def element_type(self) -> tuple[type, ...] | None:
-        """許可されている型を取得する(各サブクラスで戻り値の型を絞り込む想定)"""
+    def lengtharange(self) -> RUInt64:
+        """配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す"""
 
-    @property
-    def data(self) -> NDArray[Any]:
+    def shapesize(self, shapes: tuple[int, ...]) -> bool:
+        """
+        配列オブジェクトの`shape`が`shapes`と一致するかを確認する
+
+        :param shapes: 比較する`shape`を指定する
+        :type shapes: tuple[int, ...]
+        :return: `shape`が一致する場合は`True`を返し,一致しない場合は`False`を返す
+        :rtype: bool
+        """
+
+    def tonumpy(self) -> NDArray[Any]:
         """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
-
-    @property
-    def dtypes(self) -> np.dtype | None:
-        """
-        インスタンス生成時に確定したdtypeを取得する
-
-        :return:
-        :rtype: numpy.dtype | None
-        """
-
-    @property
-    def min_ndim(self) -> int | None:
-        """配列オブジェクトが許容する最小次元数を返す"""
-
-    @property
-    def max_ndim(self) -> int | None:
-        """配列オブジェクトが許容する最大次元数を返す"""
 
     def typeconversion(
         self,
@@ -198,3 +173,49 @@ class _ArrayCommonMixin(np.ndarray):
         :return: フラット化した配列オブジェクトを返す
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
+
+    @property
+    def element_type(self) -> tuple[type, ...] | None:
+        """許可されている型を取得する(各サブクラスで戻り値の型を絞り込む想定)"""
+
+    @property
+    def data(self) -> NDArray[Any]:
+        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
+
+    @property
+    def min_ndim(self) -> int | None:
+        """配列オブジェクトが許容する最小次元数を返す"""
+
+    @property
+    def max_ndim(self) -> int | None:
+        """配列オブジェクトが許容する最大次元数を返す"""
+    # dtype
+    @property
+    def types(self) -> type[np.generic | Any]: ...
+    @property
+    def dtypes(self) -> np.dtype | None:
+        """インスタンス生成時に確定したdtypeを取得する"""
+
+    @property
+    def kinds(self) -> np._DTypeKind:
+        """配列のデータ型の一般的な種類を識別する文字コードを返す"""
+
+    @property
+    def chars(self) -> np._DTypeChar:
+        """配列のデータ型固有の文字コードを返す"""
+
+    @property
+    def nums(self) -> np._DTypeNum:
+        """配列のデータ型固有の番号を返す"""
+
+    @property
+    def strs(self) -> LiteralString:
+        """データ型の配列プロトコル型文字列を返す"""
+
+    @property
+    def names(self) -> LiteralString:
+        """データ型を表すビット幅名を返す"""
+
+    @property
+    def itemsizes(self) -> int:
+        """データ型の容量を返す"""

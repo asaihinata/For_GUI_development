@@ -35,7 +35,7 @@ class polarElement(GElement):
         x: list | tuple | ndarray,
         y: list | tuple | ndarray,
         d: list | tuple | ndarray,
-    ) -> tuple[np.array, np.array]: ...
+    ) -> tuple[ndarray, ndarray]: ...
     def _apply_labels(
         self,
         xlabel: str | list[str] | None = None,

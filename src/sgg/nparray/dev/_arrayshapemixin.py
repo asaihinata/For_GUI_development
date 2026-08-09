@@ -157,13 +157,42 @@ class _ArrayCommonMixin(np.ndarray):
         return self.__array__(self.dtypes)
 
     @property
-    def dtypes(self):
-        return self._dtype
-
-    @property
     def min_ndim(self):
         return getattr(self, "_min_ndim", None)
 
     @property
     def max_ndim(self):
         return getattr(self, "_max_ndim", None)
+
+    # dtype
+    @property
+    def dtypes(self):
+        return self._dtype
+
+    @property
+    def kinds(self):
+        return self.dtype.kind
+
+    @property
+    def types(self):
+        return self.dtype.type
+
+    @property
+    def chars(self):
+        return self.dtype.char
+
+    @property
+    def nums(self):
+        return self.dtype.num
+
+    @property
+    def strs(self):
+        return self.dtype.str
+
+    @property
+    def names(self):
+        return self.dtype.name
+
+    @property
+    def itemsizes(self):
+        return self.dtype.itemsize

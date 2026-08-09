@@ -13,7 +13,7 @@ class NPArray(_ArrayCommonMixin):
     """`np.ndarray`を継承した型付き配列クラス"""
 
     _element_type: None
-    _default_dtype: Literal["object"]
+    _default_dtype: str = "object"
     @overload
     def __new__(
         cls,

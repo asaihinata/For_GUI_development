@@ -16,7 +16,6 @@ def parameters(vals, do1, do2):
 
 
 def lengtharange(data):
-    data = np.array(data)
     shapes = data.shape
     lens = len(shapes)
     if lens == 1:

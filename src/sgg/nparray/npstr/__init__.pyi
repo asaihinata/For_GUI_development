@@ -1,6 +1,6 @@
 """基本的な文字列の操作をするモジュール"""
 
-from typing import Any, NoReturn, overload
+from typing import Any, Literal, NoReturn, overload
 
 import numpy as np
 from numpy import bytes_, str_
@@ -16,7 +16,7 @@ class NPString(_ArrayCommonMixin):
     _element_type: tuple[
         type[str], type[bytes], type[str_], type[bytes_], type[StringDType]
     ]
-    _default_dtype: type[str_]
+    _default_dtype: str_
     @overload
     def __new__(
         cls,
@@ -419,3 +419,21 @@ class NPString(_ArrayCommonMixin):
         :raises TypeError: `length`にint型以外を指定した場合に発生させる
         :raises ValueError: `length`に1未満の整数を指定した場合に発生させる
         """
+    # dtype
+    @property
+    def types(self) -> type[str_ | bytes_ | StringDType]: ...
+    @property
+    def dtypes(self) -> np.dtype[str_ | bytes_ | StringDType]:
+        """インスタンス生成時に確定したdtypeを取得する"""
+
+    @property
+    def kinds(self) -> Literal["S", "U", "T"]:
+        """配列のデータ型の一般的な種類を識別する文字コードを返す"""
+
+    @property
+    def chars(self) -> Literal["S", "U", "c", "T"]:
+        """配列のデータ型固有の文字コードを返す"""
+
+    @property
+    def nums(self) -> Literal[18, 19, 2056]:
+        """配列のデータ型固有の番号を返す"""
