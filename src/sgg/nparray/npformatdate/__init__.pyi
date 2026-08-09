@@ -168,9 +168,10 @@ class NPFormatDate(_ArrayCommonMixin):
     def range(self) -> tuple[datetime64, datetime64]:
         """配列内の日付の最小の日付と最大の日付を求める"""
 
+    # random
     def choice(
         self,
-        size: int | tuple[int, ...] | None = None,
+        size: sgt._ShapeInt | None = None,
         replace: bool = True,
         p: sgt._ArrayLikeFloat_co | None = None,
         axis: int = 0,

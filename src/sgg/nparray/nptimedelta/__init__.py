@@ -127,7 +127,3 @@ class NPTimedelta(_ArrayCommonMixin):
 
     def __ge__(self, value):
         return np.array(np.greater_equal(self, value), dtype=np.bool_)
-
-    @classmethod
-    def arange(cls, start, /, stop=None, step=1, dtype="timedelta64[D]"):
-        return cls(np.arange(start, stop=stop, step=step), dtype=dtype)

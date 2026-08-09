@@ -134,18 +134,9 @@ class NPTimedelta(_ArrayCommonMixin):
     @property
     def element_type(self) -> tuple[type[timedelta64]]:
         """NPTimedeltaで許可されている型を取得する"""
-
-    def arange(
-        cls,
-        start: sgt._NumberScalar,
-        /,
-        stop: sgt._NumberScalar | None = None,
-        step: sgt._NumberScalar | None = 1,
-        dtype: sgt._DtypeLikeTD = "timedelta64[D]",
-    ) -> NPTimedelta: ...
     def choice(
         self,
-        size: int | tuple[int, ...] | None = None,
+        size: sgt._ShapeInt | None = None,
         replace: bool = True,
         p: sgt._ArrayLikeFloat_co | None = None,
         axis: int = 0,

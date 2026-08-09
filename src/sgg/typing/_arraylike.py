@@ -89,7 +89,7 @@ type _ArrayLikeNone_co = _DualArrayLike[
     NoneType,
 ]
 # 戻り値
-type _ReturnDtype[DTypeT: np.generic] = (NDArray[DTypeT] | DTypeT)
+type _ReturnDtype[DTypeT: np.generic] = NDArray[DTypeT] | DTypeT
 type RBool_ = _ReturnDtype[np.bool_]
 type RNumber = _ReturnDtype[np.number]
 type RInt64 = _ReturnDtype[np.int64]
@@ -98,7 +98,7 @@ type RUInt8 = _ReturnDtype[np.uint8]
 type RStr_ = _ReturnDtype[np.str_]
 type RString = NDArray[np.str_ | np.bytes_] | np.ndarray[
     _AnyShape, StringDType
-] | np.str_ | np.bytes_
+] | np.str_ | np.bytes_ | StringDType
 type Rdatetime64 = _ReturnDtype[np.datetime64]
 type Rtimedelta64 = _ReturnDtype[np.timedelta64]
 type RAny = NDArray[Any] | Any

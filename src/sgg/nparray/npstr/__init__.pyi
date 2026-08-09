@@ -380,7 +380,7 @@ class NPString(_ArrayCommonMixin):
     # random
     def choice(
         self,
-        size: int | tuple[int, ...] | None = None,
+        size: sgt._ShapeInt | None = None,
         replace: bool = True,
         p: sgt._ArrayLikeFloat_co | None = None,
         axis: int = 0,
