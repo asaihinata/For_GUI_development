@@ -1,7 +1,7 @@
 from collections.abc import Sequence
 from datetime import date, datetime, timedelta
 from types import NoneType
-from typing import Any, SupportsIndex
+from typing import Any, Literal, SupportsIndex
 
 import numpy as np
 from numpy._typing import NDArray, _NestedSequence, _SupportsArray
@@ -22,6 +22,13 @@ __all__ = [
     "_ArrayLikeStringDtype_co",
     "_ArrayLikeStrings_co",
     "_ArrayLikeTD64_co",
+    "_DateWord_NAT",
+    "_DateWord_NOW",
+    "_DateWord_TODAY",
+    "_DateWordAll",
+    "_DT64Date_co",
+    "_DT64Now_co",
+    "_NaTValue_co",
     "_Shape",
     "_ShapeInt",
     "_ShapeLike",
@@ -43,6 +50,7 @@ type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
     | BuiltinT
     | _NestedSequence[BuiltinT]
 )
+type _ReturnDtype[DTypeT: np.generic] = NDArray[DTypeT] | DTypeT
 # 形状
 type _Shape = tuple[int, ...]
 type _AnyShape = tuple[Any, ...]
@@ -75,9 +83,16 @@ type _ArrayLikeBytes_co = _DualArrayLike[np.dtype[np.bytes_], bytes]
 type _ArrayLikeStringDtype_co = _DualArrayLike[StringDType, str]
 type _ArrayLikeStrings_co = _ArrayLikeStr_co | _ArrayLikeBytes_co | _ArrayLikeStringDtype_co
 # date
+type _DateWord_TODAY = Literal["TODAY", "today", b"TODAY", b"today"]
+type _DateWord_NOW = Literal["NOW", "now", b"NOW", b"now"]
+type _DateWord_NAT = Literal["NAT", "NaT", "nat", b"NAT", b"NaT", b"nat"]
+type _DateWordAll = Literal[_DateWord_TODAY, _DateWord_NOW, _DateWord_NAT]
+type _DT64Date_co = _NestedSequence[_DateWord_TODAY]
+type _DT64Now_co = _NestedSequence[_DateWord_NOW]
+type _NaTValue_co = _NestedSequence[_DateWord_NAT]
 type _ArrayLikeDT64_co = _DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.str_ | np.datetime64],
-    int | bool | str | datetime | date,
+    int | bool | str | datetime | date | _DateWordAll,
 ]
 type _ArrayLikeTD64_co = _DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.timedelta64],
@@ -89,7 +104,6 @@ type _ArrayLikeNone_co = _DualArrayLike[
     NoneType,
 ]
 # 戻り値
-type _ReturnDtype[DTypeT: np.generic] = NDArray[DTypeT] | DTypeT
 type RBool_ = _ReturnDtype[np.bool_]
 type RNumber = _ReturnDtype[np.number]
 type RInt64 = _ReturnDtype[np.int64]

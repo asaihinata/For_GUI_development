@@ -11,6 +11,22 @@ __all__ = ["NPDate"]
 class NPDate(_ArrayCommonMixin):
     _element_type = np.datetime64
     _default_dtype = np.dtype("datetime64[D]")
+    __Word = [
+        "NAT",
+        "NaT",
+        "nat",
+        b"NAT",
+        b"NaT",
+        b"nat",
+        "NOW",
+        "now",
+        b"NOW",
+        b"now",
+        "TODAY",
+        "today",
+        b"TODAY",
+        b"today",
+    ]
 
     def __new__(
         cls,
@@ -25,18 +41,19 @@ class NPDate(_ArrayCommonMixin):
     ):
         def _func(x):
             try:
-                if x in ["TODAY","today", b"TODAY", b"today","NOW","now", b"NOW", b"now"]:
+                if x in cls.__Word:
                     return x
                 elif isinstance(x, str | np.str_):
                     return parse(x)
-                return x
             except:
                 return None
 
         if not isinstance(copy, bool):
             copy = True
         resolved = cls._resolve_dtype(_dt64_unit(dtype))
-        obj = np.asarray(np.vectorize(_func, otypes=[resolved])(data), copy=copy).view(cls)
+        obj = np.asarray(np.vectorize(_func, otypes=[resolved])(np.asarray(data)), copy=copy).view(
+            cls
+        )
         obj._dtype = resolved
         if isinstance(d_ndim, int):
             cls._validate_ndim(obj, d_ndim, d_ndim)

@@ -90,16 +90,6 @@ class _ArrayCommonMixin(np.ndarray):
                     f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
                 )
 
-    @classmethod
-    def _validate_element_type(cls, obj):
-        if cls._permissible_type is None:
-            return
-        for elem in obj.flat:
-            if not isinstance(elem, cls._element_type):
-                raise TypeError(
-                    f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
-                )
-
     def lengtharange(self):
         shapes = self.shape
         lens = len(shapes)
