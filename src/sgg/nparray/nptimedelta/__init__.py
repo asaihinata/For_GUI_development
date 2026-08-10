@@ -127,3 +127,11 @@ class NPTimedelta(_ArrayCommonMixin):
 
     def __ge__(self, value):
         return np.array(np.greater_equal(self, value), dtype=np.bool_)
+
+    @property
+    def dtypeunit(self):
+        dy = str(self._dtype)
+        place = dy.find("[") + 1
+        if place == 0:
+            return dy
+        return dy[(place) : (len(dy) - 1)]

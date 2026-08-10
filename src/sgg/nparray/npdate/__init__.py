@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 import numpy as np
 from dateutil.parser import parse
@@ -34,6 +34,7 @@ class NPDate(_ArrayCommonMixin):
         /,
         dtype="datetime64[D]",
         *,
+        localtime=False,
         d_ndim=None,
         min_ndim=None,
         max_ndim=None,
@@ -51,9 +52,10 @@ class NPDate(_ArrayCommonMixin):
         if not isinstance(copy, bool):
             copy = True
         resolved = cls._resolve_dtype(_dt64_unit(dtype))
-        obj = np.asarray(
-            np.vectorize(_func, otypes=[resolved])(np.asarray(data)), copy=copy
-        ).view(cls)
+        date = np.vectorize(_func, otypes=[resolved])(np.asarray(data))
+        if localtime:
+            date = date + _local_utc_difference(dtype)
+        obj = np.asarray(date, copy=copy).view(cls)
         obj._dtype = resolved
         if isinstance(d_ndim, int):
             cls._validate_ndim(obj, d_ndim, d_ndim)
@@ -148,15 +150,19 @@ class NPDate(_ArrayCommonMixin):
 
     # 範囲
     @classmethod
-    def arange(cls, start, stop, /, step=1, *, dtype="D"):
+    def arange(cls, start, stop, /, step=1, *, dtype="D", localtime=False):
         dtype = _get_dt64_unit(dtype)
         start = _obj_to_datetime64(start, dtype).astype("int64")
         stop = _obj_to_datetime64(stop, dtype).astype("int64")
         if stop < start:
             start, stop = stop, start
-        result = np.asarray(
-            np.arange(start, stop, step=step), dtype=_dt64_unit(dtype)
-        ).view(cls)
+        if isinstance(step, timedelta):
+            step = np.timedelta64(step)
+        dtype = _dt64_unit(dtype)
+        result = np.arange(start, stop, step=step)
+        if localtime:
+            result = result + _local_utc_difference(dtype)
+        result = np.asarray(result, dtype=_dt64_unit(dtype)).view(cls)
         result._dtype = result.dtype
         return result
 
@@ -171,6 +177,7 @@ class NPDate(_ArrayCommonMixin):
         retstep=False,
         dtype="D",
         axis=0,
+        localtime=False,
     ):
         dtype = _get_dt64_unit(dtype)
         start = _obj_to_datetime64(start, dtype).astype("int64")
@@ -178,14 +185,18 @@ class NPDate(_ArrayCommonMixin):
         if stop < start:
             start, stop = stop, start
         if retstep:
-            samples, step = np.linspace(
+            result, step = np.linspace(
                 start, stop, num, endpoint, retstep, np.int64, axis
             )
-            result = np.asarray(samples, dtype=_dt64_unit(dtype)).view(cls)
+            if localtime:
+                result = result + _local_utc_difference(dtype)
+            result = np.asarray(result, dtype=_dt64_unit(dtype)).view(cls)
             result._dtype = result.dtype
             return result, step.astype(_tm64_unit(dtype))
         else:
             result = np.linspace(start, stop, num, endpoint, retstep, np.int64, axis)
+            if localtime:
+                result = result + _local_utc_difference(dtype)
             result = np.asarray(result, dtype=_dt64_unit(dtype)).view(cls)
             result._dtype = result.dtype
             return result
@@ -200,13 +211,31 @@ class NPDate(_ArrayCommonMixin):
         return np.array(day, dtype=np.int64)
 
     @classmethod
-    def today(cls):
+    def today(cls, localtime=False):
+        result = np.asarray(np.datetime64("today"), dtype="datetime64[D]").view(cls)
+        dtype = result.dtype
+        if localtime:
+            result = result + _local_utc_difference(dtype)
+        result._dtype = dtype
+        return result
+
+    @classmethod
+    def utctoday(cls):
         result = np.asarray(np.datetime64("today"), dtype="datetime64[D]").view(cls)
         result._dtype = result.dtype
         return result
 
     @classmethod
-    def now(cls):
+    def now(cls, localtime=False):
+        result = np.asarray(np.datetime64("now"), dtype="datetime64[s]").view(cls)
+        dtype = result.dtype
+        if localtime:
+            result = result + _local_utc_difference(dtype)
+        result._dtype = dtype
+        return result
+
+    @classmethod
+    def utcnow(cls):
         result = np.asarray(np.datetime64("now"), dtype="datetime64[s]").view(cls)
         result._dtype = result.dtype
         return result
@@ -247,6 +276,14 @@ class NPDate(_ArrayCommonMixin):
             np.count_nonzero((year % 4 == 0) & ((year % 100 != 0) | (year % 400 == 0)))
         )
 
+    @property
+    def dtypeunit(self):
+        dy = str(self._dtype)
+        place = dy.find("[") + 1
+        if place == 0:
+            return dy
+        return dy[(place) : (len(dy) - 1)]
+
 
 def _obj_to_datetime64(obj, dtype):
     if isinstance(obj, str):
@@ -264,3 +301,9 @@ def _obj_to_datetime64(obj, dtype):
         return np.datetime64(obj).astype(_dt64_unit(dtype))
     else:
         raise TypeError
+
+
+def _local_utc_difference(dtype):
+    return np.timedelta64(
+        datetime.now().astimezone().utcoffset(), _get_dt64_unit(dtype)
+    )

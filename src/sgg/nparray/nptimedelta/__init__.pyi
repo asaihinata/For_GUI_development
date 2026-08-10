@@ -169,6 +169,8 @@ class NPTimedelta(_ArrayCommonMixin):
         """インスタンス生成時に確定したdtypeを取得する"""
 
     @property
+    def dtypeunit(self) -> Literal[sgt._TimeStrUnit, "timedelta64"]: ...
+    @property
     def kinds(self) -> Literal["m"]:
         """配列のデータ型の一般的な種類を識別する文字コードを返す"""
 

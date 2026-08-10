@@ -3,7 +3,6 @@ from typing import Any, Literal, NoReturn, SupportsIndex, overload
 
 import numpy as np
 from numpy import datetime64, timedelta64
-from numpy._typing import _TD64Like_co
 
 import sgg.typing as sgt
 
@@ -23,6 +22,7 @@ class NPDate(_ArrayCommonMixin):
         /,
         dtype: sgt._DtypeLikeDT = "datetime64[D]",
         *,
+        localtime: bool = False,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
@@ -34,6 +34,8 @@ class NPDate(_ArrayCommonMixin):
         :type data: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
+        :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
+        :type localtime: bool
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
@@ -51,6 +53,7 @@ class NPDate(_ArrayCommonMixin):
         /,
         dtype: Any | sgt._DtypeLikeDT | None = None,
         *,
+        localtime: bool = False,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
@@ -62,6 +65,8 @@ class NPDate(_ArrayCommonMixin):
         :type data: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
+        :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
+        :type localtime: bool
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
@@ -79,6 +84,7 @@ class NPDate(_ArrayCommonMixin):
         /,
         dtype: sgt._DtypeLikeDT = "datetime64[D]",
         *,
+        localtime: bool = False,
         d_ndim: int | None = None,
         copy: bool = True,
     ) -> NPDate:
@@ -89,6 +95,8 @@ class NPDate(_ArrayCommonMixin):
         :type data: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
+        :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
+        :type localtime: bool
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
@@ -104,6 +112,7 @@ class NPDate(_ArrayCommonMixin):
         /,
         dtype: Any | sgt._DtypeLikeDT | None = None,
         *,
+        localtime: bool = False,
         d_ndim: int | None = None,
         copy: bool = True,
     ) -> NPDate:
@@ -114,6 +123,8 @@ class NPDate(_ArrayCommonMixin):
         :type data: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
+        :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
+        :type localtime: bool
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
@@ -209,9 +220,10 @@ class NPDate(_ArrayCommonMixin):
         start: sgt._DateArangeScalar,
         stop: sgt._DateArangeScalar,
         /,
-        step: _TD64Like_co | None = 1,
+        step: sgt._TD64Like_co | None = 1,
         *,
         dtype: sgt._DT64Codes_All | None = "D",
+        localtime: bool = False,
     ) -> NPDate:
         """
         指定された間隔内で等間隔の日付を返す
@@ -224,6 +236,8 @@ class NPDate(_ArrayCommonMixin):
         :type step: int | np.timedelta64 | np.integer | np.bool | None
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: _DT64Codes_All | None
+        :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
+        :type localtime: bool
         """
 
     @overload
@@ -238,8 +252,7 @@ class NPDate(_ArrayCommonMixin):
         retstep: Literal[False] = False,
         dtype: sgt._DT64Codes_All = "D",
         axis: SupportsIndex = 0,
-        *,
-        device: Literal["cpu"] | None = None,
+        localtime: bool = False,
     ) -> NPDate:
         """
         指定された間隔で等間隔​​の日付を返します。
@@ -258,8 +271,8 @@ class NPDate(_ArrayCommonMixin):
         :type dtype: _DT64Codes_All
         :param axis: 結果にサンプルを格納する軸
         :type axis: int
-        :param device: 作成された配列を配置するデバイスを指定する
-        :type device: Literal["cpu"] | None
+        :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
+        :type localtime: bool
         """
 
     @overload
@@ -274,8 +287,7 @@ class NPDate(_ArrayCommonMixin):
         retstep: Literal[True] = True,
         dtype: sgt._DT64Codes_All | None = "D",
         axis: SupportsIndex = 0,
-        *,
-        device: Literal["cpu"] | None = None,
+        localtime: bool = False,
     ) -> tuple[NPDate, timedelta64]:
         """
         指定された間隔で等間隔​​の日付を返します。
@@ -294,31 +306,8 @@ class NPDate(_ArrayCommonMixin):
         :type dtype: _DT64Codes_All | None
         :param axis: 結果にサンプルを格納する軸
         :type axis: int
-        :param device: 作成された配列を配置するデバイスを指定する
-        :type device: Literal["cpu"] | None
-        """
-
-    @classmethod
-    def linspace():
-        """
-        指定された間隔で等間隔​​の日付を返します。
-
-        :param start: 区間を開始する日付を指定する
-        :type start: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
-        :param stop: 区間を終了する日付を指定する
-        :type stop: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
-        :param num: 生成する日付の数を指定する
-        :type num: int
-        :param endpoint: `stop`を結果に含めるか指定する
-        :type endpoint: bool
-        :param retstep: 計算された間隔を返すか指定する
-        :type retstep: bool
-        :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: _DT64Codes_All
-        :param axis: 結果にサンプルを格納する軸
-        :type axis: int
-        :param device: 作成された配列を配置するデバイスを指定する
-        :type device: Literal["cpu"] | None
+        :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
+        :type localtime: bool
         """
 
     def range(self) -> tuple[datetime64, datetime64]:
@@ -333,11 +322,29 @@ class NPDate(_ArrayCommonMixin):
         """
 
     @classmethod
-    def today(cls) -> NPDate:
-        """現在日付(UTC時刻)を返す"""
+    def today(cls, localtime: bool = False) -> NPDate:
+        """
+        現在日付(UTCの日付)を返す
+
+        :param localtime: ローカルの日付かUTCの日付かを指定する
+        :type localtime: bool
+        """
 
     @classmethod
-    def now(cls) -> NPDate:
+    def utctoday(cls) -> NPDate:
+        """現在日付(UTCの日付)を返す"""
+
+    @classmethod
+    def now(cls, localtime: bool = False) -> NPDate:
+        """
+        現在時刻(UTC時刻)を返す
+
+        :param localtime: ローカル時刻かUTC時刻かを指定する
+        :type localtime: bool
+        """
+
+    @classmethod
+    def utcnow(cls) -> NPDate:
         """現在時刻(UTC時刻)を返す"""
 
     @classmethod
@@ -391,6 +398,8 @@ class NPDate(_ArrayCommonMixin):
     def dtypes(self) -> np.dtype[datetime64]:
         """インスタンス生成時に確定したdtypeを取得する"""
 
+    @property
+    def dtypeunit(self) -> Literal[sgt._TimeStrUnit, "datetime64"]: ...
     @property
     def kinds(self) -> Literal["M"]:
         """配列のデータ型の一般的な種類を識別する文字コードを返す"""

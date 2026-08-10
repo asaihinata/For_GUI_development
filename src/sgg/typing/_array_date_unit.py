@@ -8,12 +8,14 @@ __all__ = [
     "_NaTValue",
     "_TD64Codes",
     "_TD64Codes_All",
+    "_TimeByteUnit",
+    "_TimeStrUnit",
     "_TimeUnit",
 ]
 type _DT64Date = Literal["TODAY", "today", b"TODAY", b"today"]
 type _DT64Now = Literal["NOW", "now", b"NOW", b"now"]
 type _NaTValue = Literal["NAT", "NaT", "nat", b"NAT", b"NaT", b"nat"]
-type _TimeUnit = Literal[
+type _TimeStrUnit = Literal[
     "as",
     "D",
     "fs",
@@ -28,6 +30,8 @@ type _TimeUnit = Literal[
     "W",
     "Y",
     "μs",
+]
+type _TimeByteUnit = Literal[
     b"as",
     b"D",
     b"fs",
@@ -42,6 +46,7 @@ type _TimeUnit = Literal[
     b"W",
     b"Y",
 ]
+type _TimeUnit = Literal[_TimeStrUnit, _TimeByteUnit]
 type _DT64Codes = Literal[
     "datetime64",
     "datetime64[as]",
