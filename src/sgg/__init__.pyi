@@ -6,7 +6,8 @@ from typing import Any, Callable, Literal, Unpack, overload
 from matplotlib.mlab import GaussianKDE
 from numpy.typing import ArrayLike
 
-from sgg.typing import *
+# from sgg.typing import *
+import sgg.typing as sgt
 
 from .dialogs import *
 from .graph import *
@@ -140,7 +141,7 @@ class Guis:
         :param load: ウィンドウ表示時に実行される関数を指定する
         :type load: function | tuple[function,...] | None
         :param bg: ウィンドウの背景を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param scroll: ウィンドウのx軸,y軸方向にスクロールできるか指定する
         :type scroll: bool
         :param scroll_x: ウィンドウのx軸方向にスクロールできるか指定する
@@ -190,7 +191,7 @@ class Guis:
         :param load: ウィンドウ表示時に実行される関数を指定する
         :type load: function | tuple[function,...] | None
         :param bg: ウィンドウの背景を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param scroll: ウィンドウのx軸,y軸方向にスクロールできるか指定する
         :type scroll: bool
         :param scroll_x: ウィンドウのx軸方向にスクロールできるか指定する
@@ -238,7 +239,7 @@ class Guis:
         :param load: ウィンドウ表示時に実行される関数を指定する
         :type load: function | tuple[function,...] | None
         :param bg: ウィンドウの背景を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param scroll: ウィンドウのx軸,y軸方向にスクロールできるか指定する
         :type scroll: bool
         :param scroll_x: ウィンドウのx軸方向にスクロールできるか指定する
@@ -265,8 +266,8 @@ class Guis:
         text: str = ...,
         width: int | float | None = ...,
         height: int | float | None = ...,
-        bg: ColorTypeN = ...,
-        fg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = ...,
+        fg: sgt.ColorTypeN = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -294,9 +295,9 @@ class Guis:
         :param height: ウィジェットの高さを指定する
         :type height: int | float | None
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -342,8 +343,8 @@ class Guis:
         wraplength: int | float = 0,
         cursor: _Cursor = ...,
         borderwidth: int | float = 0,
-        bg: ColorTypeN = ...,
-        fg: ColorTypeN = "#0000ee",
+        bg: sgt.ColorTypeN = ...,
+        fg: sgt.ColorTypeN = "#0000ee",
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -369,9 +370,9 @@ class Guis:
         :param height: ウィジェットの高さを指定する
         :type height: int | float | None
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -464,8 +465,8 @@ class Guis:
         pady: int | float = ...,
         wraplength: int | float = 0,
         cursor: _Cursor = ...,
-        bg: ColorTypeN = ...,
-        fg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = ...,
+        fg: sgt.ColorTypeN = ...,
         borderwidth: int | float = 0,
         family: str = ...,
         font_size: int | float = 14,
@@ -493,9 +494,9 @@ class Guis:
         :param height: ウィジェットの高さを指定する
         :type height: int | float | None
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -534,13 +535,13 @@ class Guis:
         text: str = ...,
         show: str = ...,
         insertwidth: int | float = 2,
-        insertbg: ColorTypeN = "#000000",
+        insertbg: sgt.ColorTypeN = "#000000",
         width: int | float = 20,
         borderwidth: int | float = 0,
         takefocus: bool = ...,
         cursor: _Cursor = ...,
-        bg: ColorTypeN = "#e0e0e0",
-        fg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = "#e0e0e0",
+        fg: sgt.ColorTypeN = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -559,15 +560,15 @@ class Guis:
         :param insertwidth: Inputウィジェットの入力時の挿入ポイントの幅を指定する
         :type insertwidth: int | float
         :param insertbg: Inputウィジェットの入力時の挿入ポイントの色を指定する
-        :type insertbg: ColorTypeN
+        :type insertbg: 色名 | None
         :param show: 実際の入力内容の各文字の代わりに表示させる文字を指定する
         :type show: str
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -598,7 +599,7 @@ class Guis:
     def Multiline(
         *,
         text: str = ...,
-        insertbg: ColorTypeN = "#000000",
+        insertbg: sgt.ColorTypeN = "#000000",
         insertwidth: int | float = 2,
         state: Literal["normal", "disabled"] = "normal",
         width: int | float = 20,
@@ -609,8 +610,8 @@ class Guis:
         padx: int | float = ...,
         pady: int | float = ...,
         cursor: _Cursor = ...,
-        bg: ColorTypeN = ...,
-        fg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = ...,
+        fg: sgt.ColorTypeN = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -627,7 +628,7 @@ class Guis:
         :param text: Multilineウィジェットに表記させる文字を指定する
         :type text: str
         :param insertbg: Multilineウィジェットの入力時の挿入ポイントの色を指定する
-        :type insertbg: ColorTypeN
+        :type insertbg: 色名 | None
         :param insertwidth: Multilineウィジェットの入力時の挿入ポイントの幅を指定する
         :type insertwidth: int | float
         :param wrap: Multilineウィジェットの折り返しについて指定する
@@ -639,9 +640,9 @@ class Guis:
         :param height: ウィジェットの高さを指定する
         :type height: int | float | None
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -675,24 +676,24 @@ class Guis:
     @staticmethod
     def Table(
         *,
-        header_fg: ColorTypeN = "#000000",
-        header_bg: ColorTypeN = "#cccccc",
+        header_fg: sgt.ColorTypeN = "#000000",
+        header_bg: sgt.ColorTypeN = "#cccccc",
         values: list = ...,
         header: list = ...,
         height: int = 1,
         rowheader: list = ...,
         colwidth: int | float = 120,
         rowheight: int | float = 50,
-        bg: ColorTypeN = "#e0e0e0",
+        bg: sgt.ColorTypeN = "#e0e0e0",
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
         表を作成する
 
         :param header_fg: Tableウィジェットの見出しの文字色を指定する
-        :type header_fg: ColorTypeN
+        :type header_fg: 色名 | None
         :param header_bg: Tableウィジェットの見出しの背景色を指定する
-        :type header_bg: ColorTypeN
+        :type header_bg: 色名 | None
         :param values: Tableウィジェット本体に表示させる文字の配列を指定する
         :type values: list
         :param header: Tableウィジェット見出しに表示させる文字の配列を指定する
@@ -710,7 +711,7 @@ class Guis:
         :param height: ウィジェットの高さを指定する
         :type height: int | float | None
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -720,10 +721,10 @@ class Guis:
         *,
         values: list = ...,
         header: list = ...,
-        bg: ColorTypeN = "#e0e0e0",
+        bg: sgt.ColorTypeN = "#e0e0e0",
         colwidth: int | float = 120,
-        header_fg: ColorTypeN = "#000000",
-        header_bg: ColorTypeN = "#cccccc",
+        header_fg: sgt.ColorTypeN = "#000000",
+        header_bg: sgt.ColorTypeN = "#cccccc",
         rowheight: int | float = 50,
         side_header: str = ...,
         family: str = ...,
@@ -738,9 +739,9 @@ class Guis:
         ツリーを作成する
 
         :param header_fg: Treeウィジェットの見出しの文字色を指定する
-        :type header_fg: ColorTypeN
+        :type header_fg: 色名 | None
         :param header_bg: Treeウィジェットの見出しの背景色を指定する
-        :type header_bg: ColorTypeN
+        :type header_bg: 色名 | None
         :param side_header: Treeウィジェットの階層列のテキストを指定する
         :type side_header: str
         :param values: Treeウィジェット本体に表示させる文字の配列を指定する
@@ -773,8 +774,8 @@ class Guis:
         values: list | tuple = ...,
         width: int | float = 20,
         height: int = 5,
-        selectfg: ColorTypeN = "#000000",
-        selectbg: ColorTypeN = "#1967d2",
+        selectfg: sgt.ColorTypeN = "#000000",
+        selectbg: sgt.ColorTypeN = "#1967d2",
         select: int = 0,
         exportselection: bool = False,
         selectmode: Literal["browse", "single", "multiple", "extended"] = "browse",
@@ -786,8 +787,8 @@ class Guis:
         slant: Literal["roman", "italic"] = ...,
         underline: bool = ...,
         overstrike: bool = ...,
-        fg: ColorTypeN = "#000000",
-        bg: ColorTypeN = "#e0e0e0",
+        fg: sgt.ColorTypeN = "#000000",
+        bg: sgt.ColorTypeN = "#e0e0e0",
         borderwidth: int | float = 0,
         key: str | None = ...,
     ) -> dict[str, Any]:
@@ -797,9 +798,9 @@ class Guis:
         :param values: Listboxウィジェットに表記させるリストを指定する
         :type values: list | tuple
         :param selectfg: Listboxウィジェットのリストに選択されているリストの文字色を指定する
-        :type selectfg: ColorTypeN
+        :type selectfg: 色名 | None
         :param selectbg: Listboxウィジェットのリストに選択されているリストの背景色を指定する
-        :type selectbg: ColorTypeN
+        :type selectbg: 色名 | None
         :param select: 選択項目の初期値を指定する
         :type select: int
         :param exportselection: 選択中の項目のコピー操作を指定する
@@ -813,9 +814,9 @@ class Guis:
         :param height: ウィジェットの高さを指定する
         :type height: int | float | None
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param cursor: マウスカーソルを指定する
         :type cursor: _Cursor
         :param family: ウィジェットに表示させる文字のフォント名を指定する
@@ -886,8 +887,8 @@ class Guis:
         *,
         text: str = ...,
         group: str = "default",
-        bg: ColorType = ...,
-        fg: ColorType = ...,
+        bg: sgt.ColorTypeN = ...,
+        fg: sgt.ColorTypeN = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -913,9 +914,9 @@ class Guis:
         :param group: Radioウィジェットのグループを指定する同じ名前にすることで,そのグループ内で排他的な選択を実施する
         :type group: str
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -960,8 +961,8 @@ class Guis:
         wraplength: int | float = 0,
         borderwidth: int | float = 0,
         cursor: _Cursor = ...,
-        bg: ColorTypeN = ...,
-        fg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = ...,
+        fg: sgt.ColorTypeN = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -978,9 +979,9 @@ class Guis:
         :param default: 読み込み時,Checkboxウィジェットがチェックするかを指定する
         :type default: bool
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -1029,8 +1030,8 @@ class Guis:
         slant: Literal["roman", "italic"] = ...,
         underline: bool = ...,
         overstrike: bool = ...,
-        bg: ColorTypeN = ...,
-        fg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = ...,
+        fg: sgt.ColorTypeN = ...,
         relief: Literal[
             "raised", "sunken", "flat", "ridge", "solid", "groove"
         ] = "solid",
@@ -1047,9 +1048,9 @@ class Guis:
         :param labelanchor: タイトルを表記する場所を指定する
         :type labelanchor: Literal["nw","n","ne","w","center","e","sw","s","se"]
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -1085,8 +1086,8 @@ class Guis:
         tearoff: bool = False,
         takefocus: bool = ...,
         cursor: _Cursor = ...,
-        bg: ColorTypeN = ...,
-        fg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = ...,
+        fg: sgt.ColorTypeN = ...,
         borderwidth: int | float = 0,
         family: str = ...,
         font_size: int | float = 14,
@@ -1105,9 +1106,9 @@ class Guis:
         :param tearoff: メニューウィジェットを独立したウィンドウにするかを指定する
         :type tearoff: bool
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -1142,8 +1143,8 @@ class Guis:
         padx: int | float = ...,
         pady: int | float = ...,
         cursor: _Cursor = ...,
-        bg: ColorTypeN = ...,
-        fg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = ...,
+        fg: sgt.ColorTypeN = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -1165,9 +1166,9 @@ class Guis:
         :param tearoff: メニューウィジェットを独立したウィンドウにするかを指定する
         :type tearoff: bool
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -1207,7 +1208,7 @@ class Guis:
         padx: int | float = ...,
         pady: int | float = ...,
         cursor: _Cursor = ...,
-        bg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = ...,
         relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
@@ -1217,7 +1218,7 @@ class Guis:
         :param layout: Columnウィジェットに表示させるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
         :type layout: list[list]
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :type overstrike: bool
         :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
         :type takefocus: bool
@@ -1281,7 +1282,7 @@ class Guis:
         cursor: _Cursor = ...,
         relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         insertwidth: int | float = 2,
-        insertbg: ColorTypeN = "#000000",
+        insertbg: sgt.ColorTypeN = "#000000",
         step: int | float = 1,
         width: int | float = 20,
         wrap: bool = False,
@@ -1291,8 +1292,8 @@ class Guis:
         slant: Literal["roman", "italic"] = ...,
         underline: bool = ...,
         overstrike: bool = ...,
-        bg: ColorTypeN = "#e0e0e0",
-        fg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = "#e0e0e0",
+        fg: sgt.ColorTypeN = ...,
         borderwidth: int | float = 0,
         justify: Literal["left", "center", "right"] = "left",
         key: str | None = ...,
@@ -1305,7 +1306,7 @@ class Guis:
         :param insertwidth: InputNumberウィジェットの入力時の挿入ポイントの幅を指定する
         :type insertwidth: int | float
         :param insertbg: InputNumberウィジェットの入力時の挿入ポイントの色を指定する
-        :type insertbg: ColorTypeN
+        :type insertbg: 色名 | None
         :param step: スライダーのステップ数を指定する
         :type step: int | float
         :param min: Slidebarウィジェットの数値の最小値を指定する
@@ -1321,9 +1322,9 @@ class Guis:
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -1361,8 +1362,8 @@ class Guis:
         width: int | float | None = ...,
         height: int | float | None = ...,
         relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
-        bg: ColorTypeN = "#e0e0e0",
-        fg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = "#e0e0e0",
+        fg: sgt.ColorTypeN = ...,
         takefocus: bool = ...,
         justify: Literal["left", "center", "right"] = "left",
         wraplength: int | float = 0,
@@ -1384,9 +1385,9 @@ class Guis:
         :param height: ウィジェットの高さを指定する
         :type height: int | float | None
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -1431,8 +1432,8 @@ class Guis:
         anchor: Literal[
             "nw", "n", "ne", "w", "center", "e", "sw", "s", "se"
         ] = "center",
-        bg: ColorTypeN = "#e0e0e0",
-        fg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = "#e0e0e0",
+        fg: sgt.ColorTypeN = ...,
         padx: int | float = ...,
         pady: int | float = ...,
         cursor: _Cursor = ...,
@@ -1460,9 +1461,9 @@ class Guis:
         :param height: ウィジェットの高さを指定する
         :type height: int | float | None
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -1506,8 +1507,8 @@ class Guis:
         defaultextension: str = ".txt",
         text: str = "Save file",
         title: str = "Save file",
-        bg: ColorTypeN = "#e0e0e0",
-        fg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = "#e0e0e0",
+        fg: sgt.ColorTypeN = ...,
         justify: Literal["left", "center", "right"] = "left",
         wraplength: int | float = 0,
         borderwidth: int | float = 0,
@@ -1548,9 +1549,9 @@ class Guis:
         :param height: ウィジェットの高さを指定する
         :type height: int | float | None
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -1588,12 +1589,12 @@ class Guis:
     @staticmethod
     def Colorbtn(
         *,
-        color: ColorTypeN = "#ffffff",
+        color: sgt.ColorTypeN = "#ffffff",
         text: str = "select color",
         title: str = "select color",
         key: str | None = ...,
-        bg: ColorTypeN = "#e0e0e0",
-        fg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = "#e0e0e0",
+        fg: sgt.ColorTypeN = ...,
         justify: Literal["left", "center", "right"] = "left",
         wraplength: int | float = 0,
         borderwidth: int | float = 0,
@@ -1617,7 +1618,7 @@ class Guis:
         色を選択し,選択された色を取得するダイアログを発生させるボタンを作成する
 
         :param color: ダイアログで選択される色の初期値を選択する
-        :type color: ColorTypeN
+        :type color: 色名 | None
         :param text: Colorbtnウィジェットのボタンに表示させる文字を指定する
         :type text: str
         :param title: 色を選択するダイアログのタイトルを指定する
@@ -1627,9 +1628,9 @@ class Guis:
         :param height: ウィジェットの高さを指定する
         :type height: int | float | None
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -1668,8 +1669,8 @@ class Guis:
     def Tab(
         *,
         tabs: list[list[str, list[list]]] = ...,
-        bg: ColorTypeN = ...,
-        fg: ColorTypeN = ...,
+        bg: sgt.ColorTypeN = ...,
+        fg: sgt.ColorTypeN = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -1684,9 +1685,9 @@ class Guis:
         :param tabs: Tabウィジェットに表示させるウィジェットを指定する配列の最初の要素にタブ名を,次の要素にTabウィジェットに表示させる`layout`を指定する
         :type tabs: list[list[str,list[list]]]
         :param bg: ウィジェットの背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -1798,15 +1799,15 @@ class Guis:
     @staticmethod
     def LineGraph(
         *,
-        x: TypeArrayLikeNS,
-        y: TypeArrayLikeNS,
+        x: sgt.TypeArrayLikeNS,
+        y: sgt.TypeArrayLikeNS,
         linewidth: int | float = 2,
         markersize: int | float = 10,
-        marker: Type_Marker = "none",
-        linestyle: Type_Solid = "-",
+        marker: sgt.Type_Marker = "none",
+        linestyle: sgt.Type_Solid = "-",
         label: str | list[str] | None = ...,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         折線グラフを作成する
@@ -1828,23 +1829,23 @@ class Guis:
         :param marker: 折線グラフのマーカーを指定する
         :type marker: Type_Marker
         :param linestyle: 折線グラフの線の種類を指定する
-        :type linestyle: Literal["-","--","-.",":","None"," ",""]
+        :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -1878,15 +1879,15 @@ class Guis:
     @staticmethod
     def BarGraph(
         *,
-        x: TypeArrayLikeNS,
-        y: TypeArraysLikeNumber,
+        x: sgt.TypeArrayLikeNS,
+        y: sgt.TypeArraysLikeNumber,
         logs: bool = False,
         label: str | list[str] | None = ...,
         linewidth: int | float = 2,
         width: int | float = 1,
         align: Literal["center", "edge"] = "center",
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         棒グラフを作成する
@@ -1912,19 +1913,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -1958,15 +1959,15 @@ class Guis:
     @staticmethod
     def BarhGraph(
         *,
-        x: TypeArraysLikeNumber,
-        y: TypeArrayLikeNS,
+        x: sgt.TypeArraysLikeNumber,
+        y: sgt.TypeArrayLikeNS,
         logs: bool = False,
         label: str | list[str] | None = ...,
         linewidth: int | float = 2,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
+        color: sgt.ColorListType = ...,
         height: int | float = 1,
         align: Literal["center", "edge"] = "center",
-        **kwargs: Unpack[Dict_2DGraph],
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         横向き棒グラフを作成する
@@ -1992,19 +1993,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -2038,14 +2039,14 @@ class Guis:
     @staticmethod
     def Funne(
         *,
-        data: TypeArrayLikeNumber,
+        data: sgt.TypeArrayLikeNumber,
         xmajormaxbins: int = 11,
         label: str | list[str] | None = ...,
         linewidth: int | float = 2,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
+        color: sgt.ColorListType = ...,
         height: int | float = 1,
         align: Literal["center", "edge"] = "center",
-        **kwargs: Unpack[Dict_2DGraph],
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         じょうごグラフを作成する
@@ -2069,19 +2070,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -2115,12 +2116,12 @@ class Guis:
     @staticmethod
     def Stacked(
         *,
-        data: TypeArraysLikeNumber,
-        dataname: TypeArraysLikeNS,
+        data: sgt.TypeArraysLikeNumber,
+        dataname: sgt.TypeArraysLikeNS,
         width: int | float = 0.8,
         label: str | list[str] | None = ...,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         積み上げ棒グラフを作成する
@@ -2140,19 +2141,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -2186,12 +2187,12 @@ class Guis:
     @staticmethod
     def Stackedh(
         *,
-        data: TypeArraysLikeNumber,
-        dataname: TypeArrayLikeNS,
+        data: sgt.TypeArraysLikeNumber,
+        dataname: sgt.TypeArrayLikeNS,
         height: int | float = 0.8,
         label: str | list[str] | None = ...,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         積み上げ横向き棒グラフを作成する
@@ -2211,19 +2212,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -2257,7 +2258,7 @@ class Guis:
     @staticmethod
     def Pie(
         *,
-        data: TypeArrayLikeNumber,
+        data: sgt.TypeArrayLikeNumber,
         startangle: int | float = 0,
         startangletype: bool = True,
         shadow: bool = False,
@@ -2265,7 +2266,7 @@ class Guis:
         labeldistance: int | float = 1.1,
         explode: list[int, float] | tuple[int, float] | int | float = ...,
         label: str | list[str] | None = ...,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
+        color: sgt.ColorListType = ...,
         alpha: int | float = 1.0,
     ) -> dict[str, Any]:
         """
@@ -2290,13 +2291,13 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
@@ -2308,7 +2309,7 @@ class Guis:
     @staticmethod
     def Boxplot(
         *,
-        data: TypeArraysLikeNumber,
+        data: sgt.TypeArraysLikeNumber,
         label: str | list[str] | None = None,
         legend: bool = False,
         fill: bool = False,
@@ -2317,7 +2318,7 @@ class Guis:
         orientation: Literal["horizontal", "vertical"] = "vertical",
         width: int | float = 0.15,
         whis: float | tuple[float, float] = 1.5,
-        **kwargs: Unpack[Dict_2DGraph],
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         箱ひげ図を作成する
@@ -2343,15 +2344,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -2389,16 +2390,16 @@ class Guis:
     @staticmethod
     def Waterfall(
         *,
-        x: TypeArraysLikeNS,
-        y: TypeArrayLikeNumber,
+        x: sgt.TypeArraysLikeNS,
+        y: sgt.TypeArrayLikeNumber,
         sums: bool = False,
         sumstext: str = "sum",
-        colorline: ColorTypeN = "#4477aa",
-        linestyle: Type_Solid = "-",
-        ucolor: ColorTypeN = "#156082",
-        dcolor: ColorTypeN = "#e97132",
+        colorline: sgt.ColorTypeN = "#4477aa",
+        linestyle: sgt.Type_Solid = "-",
+        ucolor: sgt.ColorTypeN = "#156082",
+        dcolor: sgt.ColorTypeN = "#e97132",
         width: int | float = 1,
-        **kwargs: Unpack[Dict_2DGraph],
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         横向き滝グラフを作成する
@@ -2412,15 +2413,15 @@ class Guis:
         :param sumstext: 合計のラベルを指定する
         :type sumstext: str
         :param colorline: バーとバーを繋げる線の色を指定する
-        :type colorline: ColorTypeN
+        :type colorline: 色名 | None
         :param ucolor: 上昇バーの色を指定する
-        :type ucolor: ColorTypeN
+        :type ucolor: 色名 | None
         :param dcolor: 下降バーの色を指定する
-        :type dcolor: ColorTypeN
+        :type dcolor: 色名 | None
         :param width: バーの幅を指定する
         :type width: int | float
         :param linestyle: バーとバーを繋げる線の種類を指定する
-        :type linestyle: Literal["-","--","-.",":","None"," ",""]
+        :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""]
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -2430,15 +2431,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -2472,17 +2473,17 @@ class Guis:
     @staticmethod
     def Waterfallh(
         *,
-        x: TypeArraysLikeNS,
-        y: TypeArrayLikeNumber,
+        x: sgt.TypeArraysLikeNS,
+        y: sgt.TypeArrayLikeNumber,
         sums: bool = False,
         sumstext: str = "sum",
-        colorline: ColorTypeN = "#4477aa",
-        linestyle: Type_Solid = "-",
-        ucolor: ColorTypeN = "#156082",
-        dcolor: ColorTypeN = "#e97132",
+        colorline: sgt.ColorTypeN = "#4477aa",
+        linestyle: sgt.Type_Solid = "-",
+        ucolor: sgt.ColorTypeN = "#156082",
+        dcolor: sgt.ColorTypeN = "#e97132",
         height: int | float = 1,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         y軸向きにバーを設置された滝グラフを作成する
@@ -2496,13 +2497,13 @@ class Guis:
         :param sumstext: 合計のラベルを指定する
         :type sumstext: str
         :param colorline: バーとバーを繋げる線の色を指定する
-        :type colorline: ColorTypeN
+        :type colorline: 色名 | None
         :param linestyle: バーとバーを繋げる線の種類を指定する
-        :type linestyle: Literal["-","--","-.",":","None"," ",""]
+        :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""]
         :param ucolor: 上昇バーの色を指定する
-        :type ucolor: ColorTypeN
+        :type ucolor: 色名 | None
         :param dcolor: 下降バーの色を指定する
-        :type dcolor: ColorTypeN
+        :type dcolor: 色名 | None
         :param height: バーの幅を指定する
         :type height: int | float
         :param xlabel: x軸のラベルを指定する
@@ -2514,15 +2515,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -2556,16 +2557,16 @@ class Guis:
     @staticmethod
     def Scatter(
         *,
-        x: TypeArraysLikeNS,
-        y: TypeArraysLikeNS,
-        marker: Type_Marker = "o",
+        x: sgt.TypeArraysLikeNS,
+        y: sgt.TypeArraysLikeNS,
+        marker: sgt.Type_Marker = "o",
         markersize: int | float = 10,
         regression_bool: bool = False,
-        linestyle: Type_Solid = "-",
+        linestyle: sgt.Type_Solid = "-",
         linewidth: int | float = 2,
         label: str | list[str] | None = ...,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         散布図を作成する
@@ -2587,25 +2588,25 @@ class Guis:
         :param regression_bool: 散布図に回帰直線を描画させるか指定する
         :type regression_bool: bool
         :param linestyle: 散布図に回帰直線の線の種類を指定する
-        :type linestyle: Type_Solid
+        :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""]
         :param linewidth: 散布図に回帰直線の線の太さを指定する
         :type linewidth: int | float
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -2639,15 +2640,15 @@ class Guis:
     @staticmethod
     def Stem(
         *,
-        x: TypeArrayLikeNumber = ...,
-        y: TypeArrayLikeNumber = ...,
+        x: sgt.TypeArrayLikeNumber = ...,
+        y: sgt.TypeArrayLikeNumber = ...,
         label: str | list[str] | None = ...,
         orientation: Literal["horizontal", "vertical"] = "vertical",
         bottom: int | float = 0,
         linefmt: str | None = ...,
         markerfmt: str | None = ...,
         basefmt: str | None = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         幹図を作成する
@@ -2677,15 +2678,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -2723,13 +2724,13 @@ class Guis:
     @staticmethod
     def Step(
         *,
-        data: TypeArraysLikeNumber,
+        data: sgt.TypeArraysLikeNumber,
         fill: bool = False,
         baseline: int | float = 0,
         orientation: Literal["horizontal", "vertical"] = "vertical",
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
+        color: sgt.ColorListType = ...,
         label: str | list[str] | None = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         階段グラフを作成する
@@ -2749,19 +2750,19 @@ class Guis:
         :param label: ラベルを指定する
         :type label: str | list[str] | None
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -2797,10 +2798,10 @@ class Guis:
     @staticmethod
     def Hatplot(
         *,
-        x: TypeArrayLikeNumber,
-        data: TypeArrayLikeNumber,
-        color: ColorTypeN = "#4477aa",
-        **kwargs: Unpack[Dict_2DGraph],
+        x: sgt.TypeArrayLikeNumber,
+        data: sgt.TypeArrayLikeNumber,
+        color: sgt.ColorTypeN = "#4477aa",
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         ハットグラフを作成する
@@ -2816,19 +2817,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN
+        :type color: 色名 | None
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -2862,7 +2863,7 @@ class Guis:
     @staticmethod
     def Hist(
         *,
-        data: TypeArrayLikeNumber,
+        data: sgt.TypeArrayLikeNumber,
         label: str | list[str] | None = ...,
         width: int | float = 1,
         min: int | float = ...,
@@ -2876,8 +2877,8 @@ class Guis:
                 "auto", "fd", "doane", "scott", "stone", "rice", "sturges", "sqrt"
             ]
         ) = ...,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         ヒストグラムを作成する
@@ -2905,19 +2906,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -2953,13 +2954,13 @@ class Guis:
     @staticmethod
     def Stack(
         *,
-        x: TypeArrayLikeNumber,
-        y: TypeArraysLikeNumber,
+        x: sgt.TypeArrayLikeNumber,
+        y: sgt.TypeArraysLikeNumber,
         hatch: str | None = None,
         baseline: Literal["zero", "sym", "wiggle", "weighted_wiggle"] = "zero",
         label: str | list[str] | None = ...,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         積み上げエリアチャートを作成する
@@ -2981,19 +2982,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -3027,14 +3028,14 @@ class Guis:
     @staticmethod
     def Linefill(
         *,
-        x: TypeArrayLikeNumber,
-        ymin: TypeArrayLikeNumber = ...,
-        ymax: TypeArrayLikeNumber = ...,
+        x: sgt.TypeArrayLikeNumber,
+        ymin: sgt.TypeArrayLikeNumber = ...,
+        ymax: sgt.TypeArrayLikeNumber = ...,
         centerlinewidth: int | float = 2,
         alpha: int | float = 0.5,
         label: str | list[str] | None = ...,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_LinefillGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_LinefillGraph],
     ) -> dict[str, Any]:
         """
         積上げ面グラフを作成する
@@ -3056,19 +3057,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -3102,14 +3103,14 @@ class Guis:
     @staticmethod
     def Ecdf(
         *,
-        data: TypeArraysLikeNumber,
+        data: sgt.TypeArraysLikeNumber,
         complementary: bool = False,
         compress: bool = False,
         orientation: Literal["horizontal", "vertical"] = "vertical",
-        linestyle: Type_Solid = "-",
+        linestyle: sgt.Type_Solid = "-",
         linewidth: int | float = 1.5,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         経験的累積分布関数を作成する
@@ -3123,7 +3124,7 @@ class Guis:
         :param orientation: プロットの向きを指定する
         :type orientation: Literal["horizontal","vertical"]
         :param linestyle: 線の種類を指定する
-        :type linestyle: Literal["-","--","-.",":","None"," ",""]
+        :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""]
         :param linewidth: 線の太さを指定する
         :type linewidth: int | float
         :param xlabel: x軸のラベルを指定する
@@ -3135,19 +3136,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -3181,11 +3182,11 @@ class Guis:
     @staticmethod
     def Errorbar(
         *,
-        x: TypeArraysLikeNumber,
-        y: TypeArraysLikeNumber,
-        err: TypeArraysLikeNumber = ...,
-        xerr: TypeArraysLikeNumber = ...,
-        yerr: TypeArraysLikeNumber = ...,
+        x: sgt.TypeArraysLikeNumber,
+        y: sgt.TypeArraysLikeNumber,
+        err: sgt.TypeArraysLikeNumber = ...,
+        xerr: sgt.TypeArraysLikeNumber = ...,
+        yerr: sgt.TypeArraysLikeNumber = ...,
         xuplims: bool = False,
         xlolims: bool = False,
         yuplims: bool = False,
@@ -3195,9 +3196,9 @@ class Guis:
         capthick: int | float = 10,
         capsize: int | float = 0,
         errorevery: int | tuple[int, ...] = 1,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
+        color: sgt.ColorListType = ...,
         label: str | list[str] | None = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         誤差範囲付きの線グラフもしくはマーカーグラフ,あるいはその両方のエラーグラフを作成する
@@ -3239,19 +3240,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -3285,14 +3286,14 @@ class Guis:
     @staticmethod
     def Eventplot(
         *,
-        data: TypeArrayLikeNumber,
+        data: sgt.TypeArrayLikeNumber,
         linewidth: int | float = 1,
         linelength: int | float = 1,
-        linestyle: Type_Solid | tuple[Type_Solid, ...] = "-",
+        linestyle: sgt.Type_Solid | tuple[sgt.Type_Solid, ...] = "-",
         orientation: Literal["horizontal", "vertical"] = "vertical",
         label: str | list[str] | None = ...,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         イベントグラフを作成する
@@ -3304,7 +3305,7 @@ class Guis:
         :param linelength: 線の合計の高さを指定する
         :type linelength: int | float
         :param linestyle: 線の種類を指定する
-        :type linestyle: Literal["-","--","-.",":","None"," ",""] | tuple[Literal["-","--","-.",":","None"," ",""],...]
+        :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] | tuple[Literal["-", "--", "-.", ":", "None", " ", ""],...]
         :param orientation: 向きを指定する
         :type orientation: Literal["horizontal","vertical"]
         :param label: ラベルを指定する
@@ -3316,19 +3317,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -3362,8 +3363,8 @@ class Guis:
     @staticmethod
     def Hist2d(
         *,
-        x: TypeArrayLikeNumber,
-        y: TypeArrayLikeNumber,
+        x: sgt.TypeArrayLikeNumber,
+        y: sgt.TypeArrayLikeNumber,
         max: int | float = ...,
         min: int | float = ...,
         xmax: int | float = ...,
@@ -3372,8 +3373,8 @@ class Guis:
         ymin: int | float = ...,
         bins: int | tuple[int, int] | ArrayLike | tuple[ArrayLike, ArrayLike] = 10,
         density: bool = False,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         2次元ヒストグラムを作成する
@@ -3395,7 +3396,7 @@ class Guis:
         :param ymin: y軸の`bins`の範囲の最小値を指定する
         :type ymin: int | float
         :param bins: ビンの数を指定する
-        :type bins: int | tuple[int,int] | ArrayLike | tuple[ArrayLike,ArrayLike]
+        :type bins: int | tuple[int, int] | ArrayLike | tuple[ArrayLike, ArrayLike]
         :param density: ヒストグラムを正規化かするかを指定する
         :type density: bool
         :param xlabel: x軸のラベルを指定する
@@ -3405,19 +3406,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -3454,9 +3455,9 @@ class Guis:
     def Violinplot(
         *,
         self,
-        data: TypeArraysLikeNumber,
-        x: TypeArrayLikeNumber,
-        y: TypeArrayLikeNumber,
+        data: sgt.TypeArraysLikeNumber,
+        x: sgt.TypeArrayLikeNumber,
+        y: sgt.TypeArrayLikeNumber,
         orientation: Literal["horizontal", "vertical"] = "vertical",
         width: int | float = 1,
         showextrema: bool = True,
@@ -3467,8 +3468,8 @@ class Guis:
             Literal["scott", "silverman"] | float | Callable[[GaussianKDE], float]
         ) = "scott",
         side: Literal["both", "low", "high"] = "both",
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         バイオリングラフを作成する
@@ -3504,19 +3505,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -3551,17 +3552,17 @@ class Guis:
     def Hexbin(
         *,
         self,
-        x: TypeArrayLikeNumber,
-        y: TypeArrayLikeNumber,
-        c: TypeArrayLikeNumber | None = None,
+        x: sgt.TypeArrayLikeNumber,
+        y: sgt.TypeArrayLikeNumber,
+        c: sgt.TypeArrayLikeNumber | None = None,
         gridsize: int | tuple[int, int] = 100,
         extent: tuple[int | float, int | float, int | float, int | float] | None = None,
         xscale: Literal["linear", "log"] = "linear",
         yscale: Literal["linear", "log"] = "linear",
         mincnt: int = 1,
         bins: Literal["log"] | int | tuple[float, ...] | None = None,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_2DGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
         2次元六角形ビニンググラフを作成する
@@ -3571,7 +3572,7 @@ class Guis:
         :param y: `y`のデータを指定する
         :type y: TypeArrayLikeNumber
         :param c: 各ポイントの値を指定する
-        :type c: TypeArrayLikeNumber
+        :type c: TypeArrayLikeNumber | None
         :param gridsize: `bins`の細かさを指定する
         :type gridsize: int | tuple[int,int]
         :param extent: 各ポイントの値を指定する
@@ -3591,19 +3592,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -3637,13 +3638,13 @@ class Guis:
     @staticmethod
     def DScatter(
         *,
-        x: TypeArraysLikeNumber,
-        y: TypeArraysLikeNumber,
-        z: TypeArraysLikeNumber,
-        marker: Type_Marker = "o",
+        x: sgt.TypeArraysLikeNumber,
+        y: sgt.TypeArraysLikeNumber,
+        z: sgt.TypeArraysLikeNumber,
+        marker: sgt.Type_Marker = "o",
         markersize: int | float = 10,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_3DGraph],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_3DGraph],
     ) -> dict[str, Any]:
         """
         立体散布図を作成する
@@ -3667,19 +3668,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xyz: x軸,y軸,z軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`,`grid_z`より優先度が高い
         :type grid_xyz: bool
         :param grid_x: x軸にグリッド線を表示させるか指定する`grid_xyz`より優先度が低い
@@ -3730,12 +3731,12 @@ class Guis:
     @staticmethod
     def Barpolar(
         *,
-        x: TypeArrayLikeNumber = ...,
-        y: TypeArrayLikeNumber = ...,
+        x: sgt.TypeArrayLikeNumber = ...,
+        y: sgt.TypeArrayLikeNumber = ...,
         align: Literal["center", "edge"] = "center",
         width: int | float = 1,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_Polar],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_Polar],
     ) -> dict[str, Any]:
         """
         極軸棒グラフを作成する
@@ -3751,19 +3752,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -3794,11 +3795,11 @@ class Guis:
     @staticmethod
     def Barpolar(
         *,
-        data: TypeArrayLikeNumber = ...,
+        data: sgt.TypeArrayLikeNumber = ...,
         align: Literal["center", "edge"] = "center",
         width: int | float = 1,
-        color: ColorTypeN | tuple[ColorTypeN, ...] = ...,
-        **kwargs: Unpack[Dict_Polar],
+        color: sgt.ColorListType = ...,
+        **kwargs: Unpack[sgt.Dict_G_Polar],
     ) -> dict[str, Any]:
         """
         極軸棒グラフを作成する
@@ -3812,19 +3813,19 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
-        :type color: ColorTypeN | tuple[ColorTypeN,...]
+        :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -3855,13 +3856,13 @@ class Guis:
     @staticmethod
     def Stempolar(
         *,
-        x: TypeArrayLikeNumber = ...,
-        y: TypeArrayLikeNS = ...,
+        x: sgt.TypeArrayLikeNumber = ...,
+        y: sgt.TypeArrayLikeNS = ...,
         linefmt: str | None = None,
         markerfmt: str | None = None,
         basefmt: str | None = None,
         bottom: int | float = 0,
-        **kwargs: Unpack[Dict_Polar],
+        **kwargs: Unpack[sgt.Dict_G_Polar],
     ) -> dict[str, Any]:
         """
         極軸幹図を作成する
@@ -3883,15 +3884,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -3922,12 +3923,12 @@ class Guis:
     @staticmethod
     def Stempolar(
         *,
-        data: TypeArrayLikeNS = ...,
+        data: sgt.TypeArrayLikeNS = ...,
         linefmt: str | None = None,
         markerfmt: str | None = None,
         basefmt: str | None = None,
         bottom: int | float = 0,
-        **kwargs: Unpack[Dict_Polar],
+        **kwargs: Unpack[sgt.Dict_G_Polar],
     ) -> dict[str, Any]:
         """
         極軸幹図を作成する
@@ -3947,15 +3948,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -3986,11 +3987,11 @@ class Guis:
     @staticmethod
     def Errorpolar(
         *,
-        x: TypeArrayLikeNumber = ...,
-        y: TypeArrayLikeNS = ...,
-        err: TypeArrayLikeNumber = ...,
-        xerr: TypeArrayLikeNumber = ...,
-        yerr: TypeArrayLikeNumber = ...,
+        x: sgt.TypeArrayLikeNumber = ...,
+        y: sgt.TypeArrayLikeNS = ...,
+        err: sgt.TypeArrayLikeNumber = ...,
+        xerr: sgt.TypeArrayLikeNumber = ...,
+        yerr: sgt.TypeArrayLikeNumber = ...,
         xuplims: bool = False,
         xlolims: bool = False,
         yuplims: bool = False,
@@ -4000,7 +4001,7 @@ class Guis:
         capthick: int | float = 10,
         capsize: int | float = 0,
         errorevery: int | list[int] | tuple[int] = 1,
-        **kwargs: Unpack[Dict_Polar],
+        **kwargs: Unpack[sgt.Dict_G_Polar],
     ) -> dict[str, Any]:
         """
         極軸エラーグラフを作成する
@@ -4038,15 +4039,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -4077,10 +4078,10 @@ class Guis:
     @staticmethod
     def Errorpolar(
         *,
-        data: TypeArrayLikeNS = ...,
-        err: TypeArrayLikeNumber = ...,
-        xerr: TypeArrayLikeNumber = ...,
-        yerr: TypeArrayLikeNumber = ...,
+        data: sgt.TypeArrayLikeNS = ...,
+        err: sgt.TypeArrayLikeNumber = ...,
+        xerr: sgt.TypeArrayLikeNumber = ...,
+        yerr: sgt.TypeArrayLikeNumber = ...,
         xuplims: bool = False,
         xlolims: bool = False,
         yuplims: bool = False,
@@ -4090,7 +4091,7 @@ class Guis:
         capthick: int | float = 10,
         capsize: int | float = 0,
         errorevery: int | list[int] | tuple[int] = 1,
-        **kwargs: Unpack[Dict_Polar],
+        **kwargs: Unpack[sgt.Dict_G_Polar],
     ) -> dict[str, Any]:
         """
         極軸エラーグラフを作成する
@@ -4126,15 +4127,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -4165,13 +4166,13 @@ class Guis:
     @staticmethod
     def Linepolar(
         *,
-        x: TypeArrayLikeNumber = ...,
-        y: TypeArrayLikeNS = ...,
+        x: sgt.TypeArrayLikeNumber = ...,
+        y: sgt.TypeArrayLikeNS = ...,
         linewidth: int | float = 2,
         markersize: int | float = 10,
-        marker: Type_Marker = "",
-        linestyle: Type_Solid = "-",
-        **kwargs: Unpack[Dict_Polar],
+        marker: sgt.Type_Marker = "",
+        linestyle: sgt.Type_Solid = "-",
+        **kwargs: Unpack[sgt.Dict_G_Polar],
     ) -> dict[str, Any]:
         """
         極軸折線グラフを作成する
@@ -4193,15 +4194,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -4232,12 +4233,12 @@ class Guis:
     @staticmethod
     def Linepolar(
         *,
-        data: TypeArrayLikeNS = ...,
+        data: sgt.TypeArrayLikeNS = ...,
         linewidth: int | float = 2,
         markersize: int | float = 10,
-        marker: Type_Marker = None,
-        linestyle: Type_Solid = "-",
-        **kwargs: Unpack[Dict_Polar],
+        marker: sgt.Type_Marker = None,
+        linestyle: sgt.Type_Solid = "-",
+        **kwargs: Unpack[sgt.Dict_G_Polar],
     ) -> dict[str, Any]:
         """
         極軸折線グラフを作成する
@@ -4257,15 +4258,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -4294,12 +4295,12 @@ class Guis:
 
     def Eventpolar(
         *,
-        data: TypeArrayLikeNumber = ...,
+        data: sgt.TypeArrayLikeNumber = ...,
         linewidth: int | float = 1,
         linelength: int | float = 1,
-        linestyle: Type_Solid = "-",
+        linestyle: sgt.Type_Solid = "-",
         orientation: Literal["horizontal", "vertical"] = "vertical",
-        **kwargs: Unpack[Dict_Polar],
+        **kwargs: Unpack[sgt.Dict_G_Polar],
     ) -> dict[str, Any]:
         """
         極軸イベントグラフを作成する
@@ -4311,7 +4312,7 @@ class Guis:
         :param linelength: 線の合計の高さを指定する
         :type linelength: int | float
         :param linestyle: 線の種類を指定する
-        :type linestyle: Literal["-","--","-.",":","None"," ",""]
+        :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""]
         :param orientation: 向きを指定する
         :type orientation: Literal["horizontal","vertical"]
         :param title: グラフのタイトルを指定する
@@ -4319,15 +4320,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -4358,11 +4359,11 @@ class Guis:
     @staticmethod
     def Scatterpolar(
         *,
-        x: TypeArrayLikeNumber = ...,
-        y: TypeArrayLikeNS = ...,
-        marker: Type_Marker = "o",
+        x: sgt.TypeArrayLikeNumber = ...,
+        y: sgt.TypeArrayLikeNS = ...,
+        marker: sgt.Type_Marker = "o",
         markersize: int | float = 10,
-        **kwargs: Unpack[Dict_Polar],
+        **kwargs: Unpack[sgt.Dict_G_Polar],
     ) -> dict[str, Any]:
         """
         極軸散布図を作成する
@@ -4380,15 +4381,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -4419,10 +4420,10 @@ class Guis:
     @staticmethod
     def Scatterpolar(
         *,
-        data: TypeArrayLikeNS = ...,
-        marker: Type_Marker = "o",
+        data: sgt.TypeArrayLikeNS = ...,
+        marker: sgt.Type_Marker = "o",
         markersize: int | float = 10,
-        **kwargs: Unpack[Dict_Polar],
+        **kwargs: Unpack[sgt.Dict_G_Polar],
     ) -> dict[str, Any]:
         """
         極軸散布図を作成する
@@ -4438,15 +4439,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -4477,12 +4478,12 @@ class Guis:
     @staticmethod
     def RadarLine(
         *,
-        data: TypeArrayLikeNumber = ...,
+        data: sgt.TypeArrayLikeNumber = ...,
         markersize: int | float = 10,
-        marker: Type_Marker = "",
-        linestyle: Type_Solid = "-",
+        marker: sgt.Type_Marker = "",
+        linestyle: sgt.Type_Solid = "-",
         linewidth: int | float = 2,
-        **kwargs: Unpack[Dict_Radar],
+        **kwargs: Unpack[sgt.Dict_G_Radar],
     ) -> dict[str, Any]:
         """
         折線レーダーチャートを作成する
@@ -4502,15 +4503,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -4532,8 +4533,8 @@ class Guis:
     @staticmethod
     def RadarFill(
         *,
-        data: TypeArrayLikeNumber = ...,
-        **kwargs: Unpack[Dict_Radar],
+        data: sgt.TypeArrayLikeNumber = ...,
+        **kwargs: Unpack[sgt.Dict_G_Radar],
     ) -> dict[str, Any]:
         """
         塗りつぶしレーダーチャートを作成する
@@ -4545,15 +4546,15 @@ class Guis:
         :param size: 表示させるグラフの大きさを指定する
         :type size: tuple[int | float,int | float]
         :param fg: グラフ内の文字色を指定する
-        :type fg: ColorTypeN
+        :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
-        :type bg: ColorTypeN
+        :type bg: 色名 | None
         :param dpi: 1インチあたりのドット数を指定する
         :type dpi: int | float
         :param alpha: グラフの透明度を指定する
         :type alpha: int | float
         :param graph_grid: グラフのグリッド線の色を指定する
-        :type graph_grid: ColorTypeN
+        :type graph_grid: 色名 | None
         :param grid_xy: x軸とy軸にグリッド線を表示させるか指定する`grid_x`,`grid_y`より優先度が高い
         :type grid_xy: bool
         :param grid_x: x軸にグリッド線を表示させるか指定するgrid_xyより優先度が低い
@@ -4591,13 +4592,13 @@ class Guis:
         :param message: 情報メッセージボックスに表示させるメッセージを指定する
         :type message: str
         :param icon: 情報メッセージボックスに表示させるアイコンを指定する
-        :type icon: Literal["info","warning","error","question"]
+        :type icon: Literal["error", "info", "question", "warning"]
         :return: ポップアップの返答を返す
         :rtype: Literal["ok"]
         """
 
     @classmethod
-    def Popupwarning(cls, **kwargs: Unpack[Dict_P_Warning]) -> Literal["ok"]:
+    def Popupwarning(cls, **kwargs: Unpack[sgt.Dict_P_Warning]) -> Literal["ok"]:
         """
         指定されたタイトルとメッセージを含む警告メッセージボックスを表示させる
 
@@ -4606,14 +4607,14 @@ class Guis:
         :param message: 警告メッセージボックスに表示させるメッセージを指定する
         :type message: str
         :param icon: 警告メッセージボックスに表示させるアイコンを指定する
-        :type icon: Literal["info","warning","error","question"]
+        :type icon: Literal["error", "info", "question", "warning"]
         :return: ポップアップの返答を返す
         :rtype: Literal["ok"]
         """
 
     @classmethod
     def Popupwarningyesno(
-        cls, **kwargs: Unpack[Dict_P_Warning]
+        cls, **kwargs: Unpack[sgt.Dict_P_Warning]
     ) -> Literal["yes", "no"]:
         """
         指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つ警告メッセージボックスを表示させる
@@ -4623,13 +4624,13 @@ class Guis:
         :param message: 警告メッセージボックスに表示させるメッセージを指定する
         :type message: str
         :param icon: 警告メッセージボックスに表示させるアイコンを指定する
-        :type icon: Literal["info","warning","error","question"]
+        :type icon: Literal["error", "info", "question", "warning"]
         :return: ポップアップの返答を返す
         :rtype: Literal["yes", "no"]
         """
 
     @classmethod
-    def Popuperror(cls, **kwargs: Unpack[Dict_P_Error]) -> Literal["ok"]:
+    def Popuperror(cls, **kwargs: Unpack[sgt.Dict_P_Error]) -> Literal["ok"]:
         """
         指定されたタイトルとメッセージを持つエラーメッセージボックスを表示させる
 
@@ -4638,13 +4639,13 @@ class Guis:
         :param message: エラーメッセージボックスに表示させるメッセージを指定する
         :type message: str
         :param icon: エラーメッセージボックスに表示させるアイコンを指定する
-        :type icon: Literal["info","warning","error","question"]
+        :type icon: Literal["error", "info", "question", "warning"]
         :return: ポップアップの返答を返す
         :rtype: Literal["ok"]
         """
 
     @classmethod
-    def Popuperroryesno(cls, **kwargs: Unpack[Dict_P_Error]) -> Literal["yes", "no"]:
+    def Popuperroryesno(cls, **kwargs: Unpack[sgt.Dict_P_Error]) -> Literal["yes", "no"]:
         """
         指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つエラーメッセージボックスを表示させる
 
@@ -4653,13 +4654,13 @@ class Guis:
         :param message: エラーメッセージボックスに表示させるメッセージを指定する
         :type message: str
         :param icon: エラーメッセージボックスに表示させるアイコンを指定する
-        :type icon: Literal["info","warning","error","question"]
+        :type icon: Literal["error", "info", "question", "warning"]
         :return: ポップアップの返答を返す
         :rtype: Literal["yes", "no"]
         """
 
     @classmethod
-    def Popupquestion(cls, **kwargs: Unpack[Dict_P_Question]) -> Literal["yes", "no"]:
+    def Popupquestion(cls, **kwargs: Unpack[sgt.Dict_P_Question]) -> Literal["yes", "no"]:
         """
         「はい(Yes)」と「いいえ(No)」を選択させるダイアログを表示させる
 
@@ -4668,13 +4669,13 @@ class Guis:
         :param message: ダイアログに表示させるメッセージを指定する
         :type message: str
         :param icon: ダイアログに表示させるアイコンを指定する
-        :type icon: Literal["info","warning","error","question"]
+        :type icon: Literal["error", "info", "question", "warning"]
         :return: ポップアップの返答を返す
         :rtype: Literal["yes", "no"]
         """
 
     @classmethod
-    def Popupokcancel(cls, **kwargs: Unpack[Dict_P_Question]) -> bool:
+    def Popupokcancel(cls, **kwargs: Unpack[sgt.Dict_P_Question]) -> bool:
         """
         「OK」と「キャンセル」を選択させるダイアログを表示させる
 
@@ -4683,13 +4684,13 @@ class Guis:
         :param message: ダイアログに表示させるメッセージを指定する
         :type message: str
         :param icon: ダイアログに表示させるアイコンを指定する
-        :type icon: Literal["info","warning","error","question"]
+        :type icon: Literal["error", "info", "question", "warning"]
         :return: ポップアップの返答を返す
         :rtype: bool
         """
 
     @classmethod
-    def Popupyesno(cls, **kwargs: Unpack[Dict_P_Question]) -> bool:
+    def Popupyesno(cls, **kwargs: Unpack[sgt.Dict_P_Question]) -> bool:
         """
         「はい(Yes)」と「いいえ(No)」を選択させるダイアログを表示させる
 
@@ -4698,13 +4699,13 @@ class Guis:
         :param message: ダイアログに表示させるメッセージを指定する
         :type message: str
         :param icon: ダイアログに表示させるアイコンを指定する
-        :type icon: Literal["info","warning","error","question"]
+        :type icon: Literal["error", "info", "question", "warning"]
         :return: ポップアップの返答を返す
         :rtype: Literal["ok"]
         """
 
     @classmethod
-    def Popupyesnocancel(cls, **kwargs: Unpack[Dict_P_Question]) -> bool | None:
+    def Popupyesnocancel(cls, **kwargs: Unpack[sgt.Dict_P_Question]) -> bool | None:
         """
         「はい(Yes)」,「いいえ(No)」,「キャンセル(Cancel)」を選択させるダイアログを表示させる
 
@@ -4713,13 +4714,13 @@ class Guis:
         :param message: ダイアログに表示させるメッセージを指定する
         :type message: str
         :param icon: ダイアログに表示させるアイコンを指定する
-        :type icon: Literal["info","warning","error","question"]
+        :type icon: Literal["error", "info", "question", "warning"]
         :return: ポップアップの返答を返す
         :rtype: bool | None
         """
 
     @classmethod
-    def Popuptry(cls, **kwargs: Unpack[Dict_P_Question]) -> bool:
+    def Popuptry(cls, **kwargs: Unpack[sgt.Dict_P_Question]) -> bool:
         """
         操作を再試行するかどうかを尋ねる「再試行」と「キャンセル」が設置されたダイアログを表示させる
 
@@ -4728,7 +4729,7 @@ class Guis:
         :param message: ダイアログに表示させるメッセージを指定する
         :type message: str
         :param icon: ダイアログに表示させるアイコンを指定する
-        :type icon: Literal["info","warning","error","question"]
+        :type icon: Literal["error", "info", "question", "warning"]
         :return: ポップアップの返答を返す
         :rtype: bool
         """

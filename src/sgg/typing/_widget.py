@@ -3,6 +3,7 @@ from typing import Literal, TypeVar, Union
 import numpy as np
 
 __all__ = [
+    "ColorListType",
     "ColorType",
     "ColorTypeN",
     "GetList",
@@ -23,6 +24,7 @@ __all__ = [
 # 色
 type ColorType = str
 type ColorTypeN = str | None
+type ColorListType = ColorTypeN | tuple[ColorType, ...]
 
 # dialogのアイコン
 type Type_icon = Literal["error", "info", "question", "warning"]
