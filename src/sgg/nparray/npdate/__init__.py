@@ -1,4 +1,5 @@
 from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 import numpy as np
 from dateutil.parser import parse
@@ -142,6 +143,17 @@ class NPDate(_ArrayCommonMixin):
     def to_str(self):
         return np.array(np.datetime_as_string(self), dtype=np.str_)
 
+    def to_timezone(self, timezone, /):
+        try:
+            return self + np.timedelta64(
+                datetime.now(ZoneInfo("UTC"))
+                .astimezone(ZoneInfo(timezone))
+                .utcoffset(),
+                _get_dt64_unit(self.dtype),
+            )
+        except:
+            return self
+
     def strftime(self, format):
         def func(arr, format):
             return arr.strftime(format)
@@ -150,7 +162,7 @@ class NPDate(_ArrayCommonMixin):
 
     # 範囲
     @classmethod
-    def arange(cls, start, stop, /, step=1, *, dtype="D", localtime=False):
+    def arange(cls, start, stop, /, step=1, *, dtype="D"):
         dtype = _get_dt64_unit(dtype)
         start = _obj_to_datetime64(start, dtype).astype("int64")
         stop = _obj_to_datetime64(stop, dtype).astype("int64")
@@ -159,10 +171,9 @@ class NPDate(_ArrayCommonMixin):
         if isinstance(step, timedelta):
             step = np.timedelta64(step)
         dtype = _dt64_unit(dtype)
-        result = np.arange(start, stop, step=step)
-        if localtime:
-            result = result + _local_utc_difference(dtype)
-        result = np.asarray(result, dtype=_dt64_unit(dtype)).view(cls)
+        result = np.asarray(
+            np.arange(start, stop, step=step), dtype=_dt64_unit(dtype)
+        ).view(cls)
         result._dtype = result.dtype
         return result
 
@@ -177,7 +188,6 @@ class NPDate(_ArrayCommonMixin):
         retstep=False,
         dtype="D",
         axis=0,
-        localtime=False,
     ):
         dtype = _get_dt64_unit(dtype)
         start = _obj_to_datetime64(start, dtype).astype("int64")
@@ -188,15 +198,11 @@ class NPDate(_ArrayCommonMixin):
             result, step = np.linspace(
                 start, stop, num, endpoint, retstep, np.int64, axis
             )
-            if localtime:
-                result = result + _local_utc_difference(dtype)
             result = np.asarray(result, dtype=_dt64_unit(dtype)).view(cls)
             result._dtype = result.dtype
             return result, step.astype(_tm64_unit(dtype))
         else:
             result = np.linspace(start, stop, num, endpoint, retstep, np.int64, axis)
-            if localtime:
-                result = result + _local_utc_difference(dtype)
             result = np.asarray(result, dtype=_dt64_unit(dtype)).view(cls)
             result._dtype = result.dtype
             return result

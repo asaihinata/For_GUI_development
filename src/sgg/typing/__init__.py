@@ -9,6 +9,7 @@ from ._array_dtype import *
 from ._arraylike import *
 from ._kwarg import *
 from ._scalar import *
+from ._timezone import *
 from ._widget import *
 
 type Incomplete = Any
@@ -20,5 +21,6 @@ __all__ = (
     + getattr(_arraylike, "__all__", [])
     + getattr(_kwarg, "__all__", [])
     + getattr(_scalar, "__all__", [])
+    + getattr(_timezone, "__all__", [])
     + getattr(_widget, "__all__", [])
 )

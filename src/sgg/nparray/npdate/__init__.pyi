@@ -211,6 +211,9 @@ class NPDate(_ArrayCommonMixin):
     def to_str(self) -> sgt.RStr_:
         """配列内の日付を`NPString`に変換する"""
 
+    def to_timezone(self, timezone: sgt.Type_Timezone, /) -> NPDate:
+        """配列内の日付のタイムゾーンを指定したタイムゾーン(`timezone`)の日付の配列を作成する"""
+
     def strftime(self, format: str) -> sgt.RStr_:
         """日付のフォーマットを別のフォーマットで変換する"""
     # 範囲
@@ -221,9 +224,8 @@ class NPDate(_ArrayCommonMixin):
         stop: sgt._DateArangeScalar,
         /,
         step: sgt._TD64Like_co | None = 1,
-        *,
         dtype: sgt._DT64Codes_All | None = "D",
-        localtime: bool = False,
+        endpoint: bool = False,
     ) -> NPDate:
         """
         指定された間隔内で等間隔の日付を返す
@@ -236,8 +238,8 @@ class NPDate(_ArrayCommonMixin):
         :type step: int | np.timedelta64 | np.integer | np.bool | None
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: _DT64Codes_All | None
-        :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
-        :type localtime: bool
+        :param endpoint: 生成される配列の区間に`stop`を含むか指定する
+        :type endpoint: bool
         """
 
     @overload
@@ -252,7 +254,6 @@ class NPDate(_ArrayCommonMixin):
         retstep: Literal[False] = False,
         dtype: sgt._DT64Codes_All = "D",
         axis: SupportsIndex = 0,
-        localtime: bool = False,
     ) -> NPDate:
         """
         指定された間隔で等間隔​​の日付を返します。
@@ -269,10 +270,8 @@ class NPDate(_ArrayCommonMixin):
         :type retstep: bool
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: _DT64Codes_All
-        :param axis: 結果にサンプルを格納する軸
+        :param axis: 結果にサンプルを格納する軸を指定する
         :type axis: int
-        :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
-        :type localtime: bool
         """
 
     @overload
@@ -287,7 +286,6 @@ class NPDate(_ArrayCommonMixin):
         retstep: Literal[True] = True,
         dtype: sgt._DT64Codes_All | None = "D",
         axis: SupportsIndex = 0,
-        localtime: bool = False,
     ) -> tuple[NPDate, timedelta64]:
         """
         指定された間隔で等間隔​​の日付を返します。
@@ -304,10 +302,8 @@ class NPDate(_ArrayCommonMixin):
         :type retstep: bool
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: _DT64Codes_All | None
-        :param axis: 結果にサンプルを格納する軸
+        :param axis: 結果にサンプルを格納する軸を指定する
         :type axis: int
-        :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
-        :type localtime: bool
         """
 
     def range(self) -> tuple[datetime64, datetime64]:
