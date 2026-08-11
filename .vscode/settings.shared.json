@@ -1,4 +1,8 @@
 {
+    "[markdown]": {
+        "markdown-pdf.stylesRelativePathFile": true,
+        "markdown-pdf.styles": ["docs/css/style.css"]
+    },
     "[python]": {
         "autoDocstring.customTemplatePath": "docs/templates/py_document_text.mustache",
         "autoDocstring.docstringFormat": "sphinx",
@@ -7,5 +11,5 @@
     "extensions.ignoreRecommendations": false,
     "files.encoding": "utf8",
     "files.trimTrailingWhitespace": false,
-    "gitlens.codeLens.enabled": true
+    "gitlens.codeLens.enabled": true,
 }
