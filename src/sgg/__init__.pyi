@@ -2309,7 +2309,7 @@ class Guis:
     def Boxplot(
         *,
         data: TypeArraysLikeNumber,
-        label: str | list[str] | None = ...,
+        label: str | list[str] | None = None,
         legend: bool = False,
         fill: bool = False,
         notch: bool = False,
@@ -2324,7 +2324,7 @@ class Guis:
 
         :param data: `data`のデータを指定する
         :type data: TypeArraysLikeNumber
-        :param label: 箱ひげ図のデータ名を指定する指定しなかった場合`box`+データの数になる例)box0,box1
+        :param label: 箱ひげ図のデータ名を指定する。指定しなかった場合`box`+データの数になる例)box0,box1
         :type label: str | list[str] | None
         :param legend: 凡例を表示させるか指定する
         :type legend: bool

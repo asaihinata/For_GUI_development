@@ -38,7 +38,7 @@ class BarhGraph(twoElement):
         ym = lengtharange(y)
         if np.issubdtype(y.dtype, np.number):
             ym = ym + np.min(y)
-        self.set_yticks(ym, y.astype(np.str_))
+        self.set_yticks(ym, y)
         self._apply_labels(self.xlabel, self.ylabel)
         self.legend()
         self._adjustment()
