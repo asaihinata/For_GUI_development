@@ -6,7 +6,6 @@ from typing import Any, Callable, Literal, Unpack, overload
 from matplotlib.mlab import GaussianKDE
 from numpy.typing import ArrayLike
 
-# from sgg.typing import *
 import sgg.typing as sgt
 
 from .dialogs import *
@@ -4645,7 +4644,9 @@ class Guis:
         """
 
     @classmethod
-    def Popuperroryesno(cls, **kwargs: Unpack[sgt.Dict_P_Error]) -> Literal["yes", "no"]:
+    def Popuperroryesno(
+        cls, **kwargs: Unpack[sgt.Dict_P_Error]
+    ) -> Literal["yes", "no"]:
         """
         指定されたタイトルとメッセージを含む「はい」と「いいえ」のボタンを持つエラーメッセージボックスを表示させる
 
@@ -4660,7 +4661,9 @@ class Guis:
         """
 
     @classmethod
-    def Popupquestion(cls, **kwargs: Unpack[sgt.Dict_P_Question]) -> Literal["yes", "no"]:
+    def Popupquestion(
+        cls, **kwargs: Unpack[sgt.Dict_P_Question]
+    ) -> Literal["yes", "no"]:
         """
         「はい(Yes)」と「いいえ(No)」を選択させるダイアログを表示させる
 

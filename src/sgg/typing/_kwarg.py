@@ -113,6 +113,7 @@ class Dict_G_Radar(_Dict_Graph_base):
     xticksshow: bool = False
     yticksshow: bool = False
 
+
 # popup
 class Dict_P_Information(TypedDict):
     title: str = "Information"

@@ -1,6 +1,4 @@
-[色データ(color.csv)](../../src/sgg/dev/color/color.csv)
-の色データ
-=====
+# [色データのデータ(color.csv)](../../src/sgg/dev/color/color.csv)
 [src/sgg/dev/color/color.csv](../../src/sgg/dev/color/color.csv)内に保存されている色データとその色の表記
 | 色名                       | 表示                                                      |
 | :------------------------- | :-------------------------------------------------------- |
