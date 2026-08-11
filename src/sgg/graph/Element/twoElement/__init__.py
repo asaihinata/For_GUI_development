@@ -1,4 +1,3 @@
-import numpy as np
 from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
 
@@ -145,7 +144,7 @@ class twoElement(GElement):
         return self.ax.get_yticks()
 
     def set_xticks(self, ticks, labels=None, minor=False):
-        return self.ax.set_xticks(np.array(ticks), labels=np.array(labels), minor=minor)
+        self.ax.set_xticks(ticks, labels=labels, minor=minor)
 
     def set_yticks(self, ticks, labels=None, minor=False):
-        return self.ax.set_yticks(np.array(ticks), labels=np.array(labels), minor=minor)
+        return self.ax.set_yticks(ticks, labels=labels, minor=minor)

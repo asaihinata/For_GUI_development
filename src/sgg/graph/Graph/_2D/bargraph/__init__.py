@@ -32,7 +32,7 @@ class BarGraph(twoElement):
         xm = lengtharange(x)
         if np.issubdtype(x.dtype, np.number):
             xm = xm + np.min(x)
-        self.set_xticks(xm, x.astype(np.str_))
+        self.set_xticks(xm, x)
         self._apply_labels(self.xlabel, self.ylabel)
         self.legend()
         self._adjustment()

@@ -18,20 +18,23 @@ def tonparray(data, *, ndmin=0, ndmax=0):
             kwargs["ndmin"] = ndmin
         if ndmax:
             kwargs["ndmax"] = ndmax
-        return np.array(data, **kwargs)
-    elif not isinstance(data, np.ndarray) and hasattr(data, "__array__"):
+        result = np.array(data, **kwargs)
+    elif hasattr(data, "__array__"):
         data = data.__array__()
         l = data.ndim
         if l < 1 or (0 < ndmin and l < ndmin) or (0 < ndmax and ndmax < l):
             raise TypeError
-        return data
+        result = data
     elif isinstance(data, np.ndarray):
         l = data.ndim
         if l < 1 or (0 < ndmin and l < ndmin) or (0 < ndmax and ndmax < l):
             raise TypeError
-        return data
-    raise TypeError
-
+        result = data
+    else:
+        raise TypeError
+    if isinstance(result,np.ndarray) and result.dtype.kind=="M":
+        return np.datetime_as_string(result)
+    return result
 
 def is_array_like(obj):
     if (isinstance(obj, np.ndarray) and 1 <= obj.ndim) or isinstance(
