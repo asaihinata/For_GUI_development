@@ -6,7 +6,6 @@ import numpy as np
 
 __all__ = [
     "_BoolScalar",
-    "_ComparisonType",
     "_DateArangeScalar",
     "_DateWordScalar",
     "_FloatLike_co",
@@ -25,6 +24,3 @@ type _DateWordScalar = Literal[
 ]
 type _DateArangeScalar = _DateWordScalar | str | np.str_ | datetime | date | np.datetime64
 type _TD64Like_co = timedelta | _IntLike_co
-type _ComparisonType = np._SupportsGT | np.datetime64 | np._ArrayLikeDT64_co | np._NestedSequence[
-    np._SupportsGT
-]

@@ -9,6 +9,7 @@ from numpy.dtypes import StringDType
 
 __all__ = [
     "_AnyShape",
+    "_ArrayDT64",
     "_ArrayLikeBool_co",
     "_ArrayLikeBytes_co",
     "_ArrayLikeComplex_co",
@@ -22,6 +23,7 @@ __all__ = [
     "_ArrayLikeStringDtype_co",
     "_ArrayLikeStrings_co",
     "_ArrayLikeTD64_co",
+    "_ComparisonDT64",
     "_DateWord_NAT",
     "_DateWord_NOW",
     "_DateWord_TODAY",
@@ -90,13 +92,15 @@ type _DateWordAll = Literal[_DateWord_TODAY, _DateWord_NOW, _DateWord_NAT]
 type _DT64Date_co = _NestedSequence[_DateWord_TODAY]
 type _DT64Now_co = _NestedSequence[_DateWord_NOW]
 type _NaTValue_co = _NestedSequence[_DateWord_NAT]
+type _ArrayDT64 = _NestedSequence[np.datetime64] | np.datetime64
+type _ComparisonDT64 = _ArrayDT64 | datetime | date
 type _ArrayLikeDT64_co = _DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.str_ | np.datetime64],
     int | bool | str | datetime | date | _DateWordAll,
 ]
 type _ArrayLikeTD64_co = _DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.timedelta64],
-    bool | int | timedelta,
+    bool | int | timedelta | _DateWord_NAT,
 ]
 # None
 type _ArrayLikeNone_co = _DualArrayLike[

@@ -90,6 +90,10 @@ class NPDate(_ArrayCommonMixin):
     __iadd__ = __add__
 
     def __sub__(self, value):
+        if isinstance(value, datetime | date):
+            return np.array(np.subtract(self, np.datetime64(value)), dtype=np.int64)
+        elif isinstance(value, np.ndarray | np.datetime64) and value.dtype.kind == "M":
+            return np.array(np.subtract(self, value), dtype=np.int64)
         result = np.asarray(np.subtract(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
@@ -97,22 +101,22 @@ class NPDate(_ArrayCommonMixin):
     __isub__ = __sub__
 
     def __eq__(self, value):
-        return np.array(np.equal(self, value), dtype=np.bool_)
+        return np.array(np.equal(self, _to_datetime64(value)), dtype=np.bool_)
 
     def __ne__(self, value):
-        return np.array(np.not_equal(self, value), dtype=np.bool_)
+        return np.array(np.not_equal(self, _to_datetime64(value)), dtype=np.bool_)
 
     def __lt__(self, value):
-        return np.array(np.less(self, value), dtype=np.bool_)
+        return np.array(np.less(self, _to_datetime64(value)), dtype=np.bool_)
 
     def __le__(self, value):
-        return np.array(np.less_equal(self, value), dtype=np.bool_)
+        return np.array(np.less_equal(self, _to_datetime64(value)), dtype=np.bool_)
 
     def __gt__(self, value):
-        return np.array(np.greater(self, value), dtype=np.bool_)
+        return np.array(np.greater(self, _to_datetime64(value)), dtype=np.bool_)
 
     def __ge__(self, value):
-        return np.array(np.greater_equal(self, value), dtype=np.bool_)
+        return np.array(np.greater_equal(self, _to_datetime64(value)), dtype=np.bool_)
 
     # 日付
     @property
@@ -307,6 +311,12 @@ def _obj_to_datetime64(obj, dtype):
         return np.datetime64(obj).astype(_dt64_unit(dtype))
     else:
         raise TypeError
+
+
+def _to_datetime64(value):
+    if isinstance(value, datetime | date):
+        return np.datetime64(value)
+    return value
 
 
 def _local_utc_difference(dtype):
