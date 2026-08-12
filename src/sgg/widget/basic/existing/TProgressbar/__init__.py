@@ -15,9 +15,9 @@ class TProgressbar(Element):
         self.orient = listchose(kw.get("orient"), ["horizontal", "vertical"])
         style = Style()
         self.style_name = (
-            f"Custom{kw.get('count')}.Horizontal.TProgressbar"
+            f"Custom{kw.get("count")}.Horizontal.TProgressbar"
             if self.orient == "horizontal"
-            else f"Custom{kw.get('count')}.Vertical.TProgressbar"
+            else f"Custom{kw.get("count")}.Vertical.TProgressbar"
         )
         style.theme_use("default")
         style.layout(

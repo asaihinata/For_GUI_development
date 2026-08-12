@@ -316,9 +316,9 @@ class NPDate(_ArrayCommonMixin):
     def range(self) -> tuple[datetime64, datetime64]:
         """配列内の日付の最小の日付と最大の日付を求める"""
 
-    def diff_today(self, days: bool = ...) -> sgt.RInt64:
+    def diff_today(self, days: bool = False) -> sgt.RInt64:
         """
-        配列の日付と今日の日付の差を求める
+        配列内の日付を今日の日にちで引いた配列を求める
 
         :param days: 今日を含めるか指定する
         :type days: bool
@@ -362,6 +362,9 @@ class NPDate(_ArrayCommonMixin):
 
     def end_month_weekday(self) -> sgt.RUInt8:
         """その日付時刻の月末の曜日をツェラーの公式で求める"""
+
+    def week_name(self) -> sgt.RStr_:
+        """日付の曜日を`%A`のフォーマットで取得する"""
     # 閏年
     def leapyear(self) -> sgt.RBool_:
         """その日付の年が閏年かどうかを判定する"""

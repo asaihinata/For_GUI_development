@@ -12,7 +12,7 @@ class TCombobox(Element):
         self.default = kw.get("default")
         self.states = listchose(kw.get("state"), ["normal", "readonly", "disabled"])
         style = Style()
-        self.stylename = f"Custom{kw.get('count')}.TCombobox"
+        self.stylename = f"Custom{kw.get("count")}.TCombobox"
         style.configure(
             self.stylename,
             foreground=self.fg,

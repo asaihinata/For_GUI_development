@@ -1,5 +1,6 @@
 # docs
 docs/*
+!docs/css
 !docs/dev
 !docs/templates
 !docs/requirements.txt

@@ -17,7 +17,7 @@ class Table(Element):
         self.height = num0s(kw.get("height"), max(len(self.values), 1))
         self.rowheight = num0s(kw.get("rowheight"), 50)
         self.rowheader = kw.get("rowheader", [])
-        self.stylename = f"Table{kw.get('count')}.Treeview"
+        self.stylename = f"Table{kw.get("count")}.Treeview"
         self.widget = Treeview(
             self.master,
             show="headings",

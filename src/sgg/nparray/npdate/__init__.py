@@ -162,7 +162,7 @@ class NPDate(_ArrayCommonMixin):
         def func(arr, format):
             return arr.strftime(format)
 
-        return np.array(np.vectorize(func)(self.astype(datetime), format))
+        return np.array(np.vectorize(func)(self.tolist(), format))
 
     # 範囲
     @classmethod
@@ -217,8 +217,10 @@ class NPDate(_ArrayCommonMixin):
     def diff_today(self, days=False):
         if not isinstance(days, bool):
             days = False
-        day = np.busday_count(np.asarray(self), self.today()) + int(days)
-        return np.array(day, dtype=np.int64)
+        return np.array(
+            self.astype("datetime64[D]") - np.datetime64("today", "D") + int(days),
+            dtype=np.int64,
+        )
 
     @classmethod
     def today(cls, localtime=False):
@@ -274,6 +276,25 @@ class NPDate(_ArrayCommonMixin):
             self.astype("datetime64[M]") + np.timedelta64(1, "M"), "M"
         ) - np.timedelta64(1, "D")
         return dates.weekday()
+
+    def week_name(self):
+        week = self.weekday()
+        return np.array(
+            np.select(
+                [week == i for i in range(7)],
+                [
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                ],
+                default="",
+            ),
+            dtype=np.str_,
+        )
 
     # 閏年
     def leapyear(self):

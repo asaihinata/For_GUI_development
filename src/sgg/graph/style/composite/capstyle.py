@@ -11,7 +11,7 @@ class Capstyle:
         閉じられていない線の両端点の描画の方法を指定する
 
         :param cap: 閉じられていない線の両端点の描画の方法を指定する
-        :type cap: Literal['butt','round','projecting']
+        :type cap: Literal["butt","round","projecting"]
         :raises TypeError: `cap`に`str`型以外の型を指定した場合に発生させる
         """
         if not isinstance(cap, str):

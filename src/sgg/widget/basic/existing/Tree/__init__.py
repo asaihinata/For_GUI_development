@@ -43,7 +43,7 @@ class Tree(Element):
             self.widget.heading(c, text="" if self.header == [] else self.header[i])
             self.widget.column(c, width=self.colwidth, anchor="w")
         style = Style()
-        self.stylename = f"Tree{kw.get('count')}.Treeview"
+        self.stylename = f"Tree{kw.get("count")}.Treeview"
         style.configure(
             style=f"{self.stylename}.Heading",
             background=self.header_bg,

@@ -2,6 +2,8 @@ For_GUI_development
  ├── MANIFEST.in
  ├── README.md
  ├── docs
+ │   ├── css
+ │   │   └── style.css
  │   ├── dev
  │   │   └── md
  │   │       ├── development
@@ -22,6 +24,7 @@ For_GUI_development
  │   └── templates
  │       └── py_document_text.mustache
  ├── pyproject.toml
+ ├── pyrightconfig.json
  ├── src
  │   ├── sgg
  │   │   ├── __init__.py
@@ -454,5 +457,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:315
-フォルダ数:140
+ファイル数:317
+フォルダ数:141

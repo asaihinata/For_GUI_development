@@ -9,7 +9,7 @@ class Tab(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         style = Style()
-        self.stylename = f"Custom{kw.get('count')}.TNotebook"
+        self.stylename = f"Custom{kw.get("count")}.TNotebook"
         style.theme_use("default")
         style.configure(self.stylename, background=self.back_bg)
         style.configure(

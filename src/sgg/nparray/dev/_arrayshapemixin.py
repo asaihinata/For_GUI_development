@@ -7,7 +7,7 @@ class _ArrayCommonMixin(np.ndarray):
     """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
 
     def __repr__(self):
-        return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=',')},dtype={self.dtype})"
+        return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=",")},dtype={self.dtype})"
 
     def __str__(self):
         return self.__repr__()
