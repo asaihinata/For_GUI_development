@@ -96,9 +96,15 @@ class NPDate(_ArrayCommonMixin):
 
     def __sub__(self, value):
         if isinstance(value, datetime | date):
-            return np.array(np.subtract(self, np.datetime64(value)), dtype=np.int64)
+            result=np.subtract(self.__array__(), np.datetime64(value))
+            if np.ndim(result) == 0:
+                return result
+            return np.array(result)
         elif isinstance(value, np.ndarray | np.datetime64) and value.dtype.kind == "M":
-            return np.array(np.subtract(self, value), dtype=np.int64)
+            result=np.subtract(self, np.datetime64(value))
+            if np.ndim(result) == 0:
+                return result
+            return np.array(result)
         result = np.asarray(np.subtract(self, value)).view(type(self))
         result._dtype = result.dtype
         return result

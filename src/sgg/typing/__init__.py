@@ -2,6 +2,7 @@
 
 from typing import Any
 
+from numpy._typing import _NestedSequence
 from numpy.random import Generator, SeedSequence
 
 from ._array_date_unit import *
@@ -15,7 +16,7 @@ from ._widget import *
 type Incomplete = Any
 type _Seed = int | SeedSequence | Generator | None
 __all__ = (
-    ["Incomplete", "_Seed"]
+    ["_NestedSequence", "_Seed", "Incomplete"]
     + getattr(_array_date_unit, "__all__", [])
     + getattr(_array_dtype, "__all__", [])
     + getattr(_arraylike, "__all__", [])

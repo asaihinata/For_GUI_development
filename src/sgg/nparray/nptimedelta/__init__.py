@@ -3,8 +3,6 @@
 import numpy as np
 
 from ..dev import _ArrayCommonMixin, _tm64_unit
-from ..npdate import NPDate
-from ..npnumber import NPNumber
 
 __all__ = ["NPTimedelta"]
 
@@ -64,7 +62,9 @@ class NPTimedelta(_ArrayCommonMixin):
     def __sub__(self, value):
         if isinstance(value, np.ndarray | np.datetime64) and value.dtype.kind == "M":
             result = np.subtract(value, self)
-            return NPDate(result, result.dtype)
+            if np.ndim(result) == 0:
+                return np.datetime64(result, result.dtype)
+            return np.array(result, result.dtype)
         result = np.asarray(np.subtract(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
@@ -78,22 +78,23 @@ class NPTimedelta(_ArrayCommonMixin):
 
     def __truediv__(self, value):
         if isinstance(value, np.ndarray | np.timedelta64) and value.dtype.kind == "m":
-            return NPNumber(np.true_divide(self, value))
+            result = np.true_divide(self, value)
+            if np.ndim(result) == 0:
+                return result
+            return np.array(result, result.dtype)
         result = np.asarray(np.true_divide(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def __int__(self):
-        lists = self.tolist()
+        lists = self.item()
         if np.isscalar(lists):
             return int(lists)
-        raise ValueError
 
     def __float__(self):
-        lists = self.tolist()
+        lists = self.item()
         if np.isscalar(lists):
             return float(lists)
-        raise ValueError
 
     def __neg__(self):
         result = np.asarray(np.negative(self)).view(type(self))

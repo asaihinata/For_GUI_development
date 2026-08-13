@@ -36,12 +36,12 @@ __all__ = [
     "_ShapeLike",
     "RAny",
     "RBool_",
-    "Rdatetime64",
+    "RDatetime64",
     "RInt64",
     "RNumber",
     "RStr_",
     "RString",
-    "Rtimedelta64",
+    "RTimedelta64",
     "RUInt64",
     "RUInt8",
     "Typeaxis",
@@ -117,8 +117,8 @@ type RStr_ = _ReturnDtype[np.str_]
 type RString = NDArray[np.str_ | np.bytes_] | np.ndarray[
     _AnyShape, StringDType
 ] | np.str_ | np.bytes_ | StringDType
-type Rdatetime64 = _ReturnDtype[np.datetime64]
-type Rtimedelta64 = _ReturnDtype[np.timedelta64]
+type RDatetime64 = _ReturnDtype[np.datetime64]
+type RTimedelta64 = _ReturnDtype[np.timedelta64]
 type RAny = NDArray[Any] | Any
 # その他
 type Typeaxis = _ShapeLike | None

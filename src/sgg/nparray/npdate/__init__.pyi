@@ -65,7 +65,7 @@ class NPDate(_ArrayCommonMixin):
         :param data: 変換する配列を指定する
         :type data: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: datetime64 | _DT64Codes_All
+        :type dtype: Any
         :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
         :type localtime: bool
         :param min_ndim: 許容する最小次元数を指定する
@@ -123,7 +123,7 @@ class NPDate(_ArrayCommonMixin):
         :param data: 変換する配列を指定する
         :type data: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: datetime64 | _DT64Codes_All
+        :type dtype: Any
         :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
         :type localtime: bool
         :param d_ndim: 固定される次元数を指定する
@@ -156,11 +156,13 @@ class NPDate(_ArrayCommonMixin):
         """
 
     def __add__(self, value: sgt._ArrayLikeTD64_co) -> NPDate: ...
+
     __iadd__ = __add__
+
     @overload
     def __sub__(
         self, value: datetime | date | datetime64 | NDArray[datetime64] | NPDate
-    ) -> sgt.RInt64: ...
+    ) -> sgt.RTimedelta64: ...
     @overload
     def __sub__(self, value: sgt._ArrayLikeTD64_co) -> NPDate: ...
 
@@ -380,7 +382,7 @@ class NPDate(_ArrayCommonMixin):
         axis: int = 0,
         shuffle: bool = True,
         seed: sgt._Seed = None,
-    ) -> sgt.Rdatetime64:
+    ) -> sgt.RDatetime64:
         """
         配列の要素もしくは軸の配列をランダムに抽選する
 
