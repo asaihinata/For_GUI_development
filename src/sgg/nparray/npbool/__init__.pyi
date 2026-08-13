@@ -132,7 +132,7 @@ class NPBool(_ArrayCommonMixin):
         配列の要素もしくは軸の配列をランダムに抽選する
 
         :param size: 出力する配列の形状を指定する
-        :type size: int | tuple[int,...] | None
+        :type size: int | tuple[int, ...] | None
         :param replace: 抽選する値が復元抽出をするか非復元抽出をするかを指定する
         :type replace: bool
         :param p: 各要素が選ばれる重みを指定する

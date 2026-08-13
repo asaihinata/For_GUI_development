@@ -7,27 +7,26 @@ from dateutil.parser import parse
 from ..dev import _ArrayCommonMixin, _dt64_unit, _get_dt64_unit, _tm64_unit
 
 __all__ = ["NPDate"]
-
+_Word = [
+    "NAT",
+    b"NAT",
+    "NaT",
+    b"NaT",
+    "nat",
+    b"nat",
+    "NOW",
+    b"NOW",
+    "now",
+    b"now",
+    "TODAY",
+    b"TODAY",
+    "today",
+    b"today",
+]
 
 class NPDate(_ArrayCommonMixin):
     _element_type = np.datetime64
     _default_dtype = np.dtype("datetime64[D]")
-    __Word = [
-        "NAT",
-        "NaT",
-        "nat",
-        b"NAT",
-        b"NaT",
-        b"nat",
-        "NOW",
-        "now",
-        b"NOW",
-        b"now",
-        "TODAY",
-        "today",
-        b"TODAY",
-        b"today",
-    ]
 
     def __new__(
         cls,
@@ -43,10 +42,12 @@ class NPDate(_ArrayCommonMixin):
     ):
         def _func(x):
             try:
-                if x in cls.__Word:
+                if x in _Word:
                     return x
                 elif isinstance(x, str | np.str_):
                     return parse(x)
+                else:
+                    return x
             except:
                 return None
 
@@ -55,7 +56,10 @@ class NPDate(_ArrayCommonMixin):
         resolved = cls._resolve_dtype(_dt64_unit(dtype))
         date = np.vectorize(_func, otypes=[resolved])(np.asarray(data))
         if localtime:
-            date = date + _local_utc_difference(dtype)
+            try:
+                date = date + _local_utc_difference(dtype)
+            except OverflowError as e:
+                raise OverflowError(e)
         obj = np.asarray(date, copy=copy).view(cls)
         obj._dtype = resolved
         if isinstance(d_ndim, int):

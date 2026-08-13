@@ -34,7 +34,7 @@ class NPString(_ArrayCommonMixin):
         :param data: 変換する配列を指定する
         :type data: 任意の文字列型かバイト型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: str | np.str_ | np.dtypes.StringDType | bytes | np.bytes_
+        :type dtype: str | np.str_ | np.dtypes.StringDType | bytes | np.bytes_ | None
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
@@ -61,7 +61,7 @@ class NPString(_ArrayCommonMixin):
         :param data: 変換する配列を指定する
         :type data: 任意の文字列型かバイト型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: str | np.str_ | np.dtypes.StringDType | bytes | np.bytes_
+        :type dtype: str | np.str_ | np.dtypes.StringDType | bytes | np.bytes_ | None
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param copy: `data`から独立したコピーを作成するか指定する
@@ -210,7 +210,7 @@ class NPString(_ArrayCommonMixin):
         chars: sgt._ArrayLikeStrings_co | None = None,
     ) -> NPString:
         """
-        配列の各要素について,先頭と末尾の文字を取り除いた配列を返す
+        配列の各要素について先頭と末尾の文字を取り除いた配列を返す
 
         :param chars: 削除する文字を指定する
         :type chars: 文字列型もしくはバイト型を持つ配列のようなオブジェクト | None
@@ -254,7 +254,7 @@ class NPString(_ArrayCommonMixin):
 
     def zerofill(self, width: sgt._ArrayLikeInt_co) -> NPString:
         """
-        数値文字列の左側を0で埋めて返します。
+        数値文字列の左側を0で埋めて返す
 
         :param width: 0で埋める数を指定する
         :type width: 整数もしくは整数の配列
@@ -303,7 +303,7 @@ class NPString(_ArrayCommonMixin):
         """
 
     def capitalize(self) -> NPString:
-        """各要素の最初の文字のみを大文字にしたコピーを返します。"""
+        """各要素の最初の文字のみを大文字にした配列を返す"""
 
     def title(self) -> NPString:
         """文字列を要素ごとにタイトルケースに変換する"""
@@ -391,7 +391,7 @@ class NPString(_ArrayCommonMixin):
         配列の要素もしくは軸の配列をランダムに抽選する
 
         :param size: 出力する配列の形状を指定する
-        :type size: int | tuple[int,...] | None
+        :type size: int | tuple[int, ...] | None
         :param replace: 抽選する値が復元抽出をするか非復元抽出をするかを指定する
         :type replace: bool
         :param p: 各要素が選ばれる重みを指定する

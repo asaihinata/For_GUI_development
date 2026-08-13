@@ -1,4 +1,4 @@
-from typing import Any, Literal, overload
+from typing import Any, overload
 
 import numpy as np
 from numpy._typing import _DTypeLike
@@ -127,7 +127,7 @@ class NPArray(_ArrayCommonMixin):
         0以外の要素の数を数える
 
         :param axis: 要素を数える軸を指定する
-        :type axis: int | tuple[int,...] | None
+        :type axis: int | tuple[int, ...] | None
         :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する
         :type keepdims: bool
         """
@@ -148,7 +148,7 @@ class NPArray(_ArrayCommonMixin):
         配列の要素もしくは軸の配列をランダムに抽選する
 
         :param size: 出力する配列の形状を指定する
-        :type size: int | tuple[int,...] | None
+        :type size: int | tuple[int, ...] | None
         :param replace: 抽選する値が復元抽出をするか非復元抽出をするかを指定する
         :type replace: bool
         :param p: 各要素が選ばれる重みを指定する

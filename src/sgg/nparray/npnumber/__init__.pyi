@@ -11,7 +11,6 @@ from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPNumber"]
 type _ToFloat64 = float | np.integer | np.bool
-type _OrderCF = Literal["C", "F"] | None
 type _SortKind = Literal[
     "Q",
     "quick",
@@ -202,7 +201,7 @@ class NPNumber(_ArrayCommonMixin):
         0以外の要素の数を数える
 
         :param axis: 要素を数える軸を指定する
-        :type axis: int | tuple[int,...] | None
+        :type axis: int | tuple[int, ...] | None
         :param keepdims: 要素の数を数えた戻り値をサイズ1の次元にするか指定する
         :type keepdims: bool
         """
@@ -235,9 +234,9 @@ class NPNumber(_ArrayCommonMixin):
         :param q: 求めたいパーセンタイル値を指定する
         :type q: float
         :param axis: 計算する軸の方向を指定する
-        :type axis: int | tuple[int,...] | None
+        :type axis: int | tuple[int, ...] | None
         :param method: パーセンタイルを推定するために使用する方法を指定する
-        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased",]
+        :type method: Literal["inverted_cdf", "averaged_inverted_cdf", "closest_observation", "interpolated_inverted_cdf", "hazen", "weibull", "linear", "median_unbiased", "normal_unbiased"]
         """
 
     def quantile(
@@ -252,9 +251,9 @@ class NPNumber(_ArrayCommonMixin):
         :param q: 求めたい分位点を指定する
         :type q: float
         :param axis: 計算する軸の方向を指定する
-        :type axis: int | tuple[int,...] | None
+        :type axis: int | tuple[int, ...] | None
         :param method: 分位点を推定するために使用する方法を指定する
-        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased",]
+        :type method: Literal["inverted_cdf", "averaged_inverted_cdf", "closest_observation", "interpolated_inverted_cdf", "hazen", "weibull", "linear", "median_unbiased", "normal_unbiased"]
         """
 
     def ratio(self, axis: SupportsIndex | None = None) -> NPNumber:
@@ -284,9 +283,9 @@ class NPNumber(_ArrayCommonMixin):
         配列の四分位数を求める
 
         :param axis: 計算する軸の方向を指定する
-        :type axis: int | tuple[int,...] | None
+        :type axis: int | tuple[int, ...] | None
         :param method: 分位点を推定するために使用する方法を指定する
-        :type method: Literal["inverted_cdf","averaged_inverted_cdf","closest_observation","interpolated_inverted_cdf","hazen","weibull","linear","median_unbiased","normal_unbiased",]
+        :type method: Literal["inverted_cdf", "averaged_inverted_cdf", "closest_observation", "interpolated_inverted_cdf", "hazen", "weibull", "linear", "median_unbiased", "normal_unbiased"]
         """
 
     def isinf(self) -> sgt.RBool_:
@@ -319,7 +318,7 @@ class NPNumber(_ArrayCommonMixin):
         :param axis: ソートの基準となる軸を指定する
         :type axis: int | None
         :param kind: ソートアルゴリズムの種類を指定する
-        :type kind: Literal["Q","quick","quicksort","M","merge","mergesort","H","heap","heapsort","S","stable","stablesort"] | None
+        :type kind: Literal["Q", "quick", "quicksort", "M", "merge", "mergesort", "H", "heap", "heapsort", "S", "stable", "stablesort"] | None
         :param order: `NPNumber`がフィールド定義を持つ配列である場合,どのフィールドを優先して比較するかを指定する
         :type order: str | Sequence[str] | None
         """
@@ -369,8 +368,8 @@ class NPNumber(_ArrayCommonMixin):
         :param start: 数列の開始値を指定する
         :param stop:
         シーケンスの終了値を指定する。
-        ただし `endpoint`が`False` の場合,生成される値の範囲は[`start`,`stop`)である。
-        `endpoint`が`True` の場合,生成される値の範囲は[`start`,`stop`]である。
+        ただし `endpoint`が`False` の場合,生成される値の範囲は`[start,stop)`である。
+        `endpoint`が`True` の場合,生成される値の範囲は`[start,stop]`である。
 
         :param retstep: `retstep`が`True`の場合,戻り値にステップ数を追加する
         :type retstep: bool
@@ -401,8 +400,8 @@ class NPNumber(_ArrayCommonMixin):
         :param start: 数列の開始値を指定する
         :param stop:
         シーケンスの終了値を指定する。
-        ただし `endpoint`が`False` の場合,生成される値の範囲は[`start`,`stop`)である。
-        `endpoint`が`True` の場合,生成される値の範囲は[`start`,`stop`]である。
+        ただし `endpoint`が`False` の場合,生成される値の範囲は`[start,stop)`である。
+        `endpoint`が`True` の場合,生成される値の範囲は`[start,stop]`である。
 
         :param num: 生成する値の数を指定する
         :type num: int
@@ -430,8 +429,8 @@ class NPNumber(_ArrayCommonMixin):
         :param start: 数列の開始値を指定する
         :param stop:
         シーケンスの終了値を指定する。
-        ただし `endpoint`が`False` の場合,生成される値の範囲は[`start`,`stop`)である。
-        `endpoint`が`True` の場合,生成される値の範囲は[`start`,`stop`]である。
+        ただし `endpoint`が`False` の場合,生成される値の範囲は`[start,stop)`である。
+        `endpoint`が`True` の場合,生成される値の範囲は`[start,stop]`である。
 
         :param num: 生成する値の数を指定する
         :type num: int
@@ -499,7 +498,7 @@ class NPNumber(_ArrayCommonMixin):
         配列の要素もしくは軸の配列をランダムに抽選する
 
         :param size: 出力する配列の形状を指定する
-        :type size: int | tuple[int,...] | None
+        :type size: int | tuple[int, ...] | None
         :param replace: 抽選する値が復元抽出をするか非復元抽出をするかを指定する
         :type replace: bool
         :param p: 各要素が選ばれる重みを指定する

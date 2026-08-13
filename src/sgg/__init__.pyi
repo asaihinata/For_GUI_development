@@ -3229,7 +3229,7 @@ class Guis:
         :param capsize: エラーバーの先端にあるキャップの長さを指定する
         :type capsize: int | float
         :param errorevery: エラーバーを表示する頻度を指定する
-        :type errorevery: int | tuple[int,...]
+        :type errorevery: int | tuple[int, ...]
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
