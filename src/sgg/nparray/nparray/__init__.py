@@ -41,27 +41,6 @@ class NPArray(_ArrayCommonMixin):
             obj._max_ndim = max_ndim
         return obj
 
-    @classmethod
-    def full(cls, fill_value, shape, dtype=None):
-        if not _arrisuint(shape):
-            raise ShapeError(shape)
-        result = np.asarray(np.full(shape, fill_value, dtype=dtype)).view(cls)
-        if dtype is None:
-            result._dtype = result.dtype
-        else:
-            result._dtype = dtype
-        return result
-
-    @classmethod
-    def sequential(cls, shape):
-        if not _arrisuint(shape):
-            raise ShapeError(shape)
-        result = np.asarray(
-            np.arange(np.prod(shape), dtype=np.uint64).reshape(shape)
-        ).view(cls)
-        result._dtype = result.dtype
-        return result
-
     def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
         raw_inputs = tuple(
             np.asarray(x) if isinstance(x, NPArray) else x for x in inputs
@@ -82,6 +61,27 @@ class NPArray(_ArrayCommonMixin):
     def __ne__(self, value):
         result = np.not_equal(np.asarray(self), value).view(type(self))
         result._dtype = np.bool_
+        return result
+
+    @classmethod
+    def full(cls, fill_value, shape, dtype=None):
+        if not _arrisuint(shape):
+            raise ShapeError(shape)
+        result = np.asarray(np.full(shape, fill_value, dtype=dtype)).view(cls)
+        if dtype is None:
+            result._dtype = result.dtype
+        else:
+            result._dtype = dtype
+        return result
+
+    @classmethod
+    def sequential(cls, shape):
+        if not _arrisuint(shape):
+            raise ShapeError(shape)
+        result = np.asarray(
+            np.arange(np.prod(shape), dtype=np.uint64).reshape(shape)
+        ).view(cls)
+        result._dtype = result.dtype
         return result
 
     def count_nonzero(self, axis=None, keepdims=False):

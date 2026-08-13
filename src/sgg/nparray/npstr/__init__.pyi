@@ -130,17 +130,17 @@ class NPString(_ArrayCommonMixin):
 
     @property
     def low(self) -> NPString:
-        """`NPString`内の要素のアルファベットを小文字に変換する"""
+        """NPString内の要素のアルファベットを小文字に変換する"""
 
     @property
     def up(self) -> NPString:
-        """`NPString`内の要素のアルファベットを大文字に変換する"""
+        """NPString内の要素のアルファベットを大文字に変換する"""
 
     def lower(self) -> NPString:
-        """`NPString`内の要素のアルファベットを小文字に変換する"""
+        """NPString内の要素のアルファベットを小文字に変換する"""
 
     def upper(self) -> NPString:
-        """`NPString`内の要素のアルファベットを大文字に変換する"""
+        """NPString内の要素のアルファベットを大文字に変換する"""
 
     def stringlen(self) -> sgt.RUInt64:
         """配列内の要素の文字の長さを求める"""
@@ -186,7 +186,7 @@ class NPString(_ArrayCommonMixin):
 
     @overload
     def replace(self, old: Any, new: Any) -> Any:
-        """`NPString`内の要素の文字列の`old`を`new`に置き換える"""
+        """NPString内の要素の文字列の`old`を`new`に置き換える"""
 
     def slices(
         self,

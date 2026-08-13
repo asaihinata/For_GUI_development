@@ -102,6 +102,14 @@ class NPBool(_ArrayCommonMixin):
     def element_type(self) -> tuple[type[bool], type[np.bool_], type[np.bool]]:
         """NPBoolで許可されている型を取得する"""
 
+    @property
+    def TrueCount(self) -> int:
+        """配列内の`True`の数を数える"""
+
+    @property
+    def FalseCount(self) -> int:
+        """配列内の`False`の数を数える"""
+
     def all(self) -> bool:
         """全ての要素が`True`かを調べる"""
 
@@ -110,14 +118,6 @@ class NPBool(_ArrayCommonMixin):
 
     def inversion(self) -> NPBool:
         """配列内の真偽値を反転させる"""
-
-    @property
-    def TrueCount(self) -> int:
-        """配列内の`True`の数を数える"""
-
-    @property
-    def FalseCount(self) -> int:
-        """配列内の`False`の数を数える"""
 
     def choice(
         self,

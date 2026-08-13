@@ -24,6 +24,7 @@ _Word = [
     b"today",
 ]
 
+
 class NPDate(_ArrayCommonMixin):
     _element_type = np.datetime64
     _default_dtype = np.dtype("datetime64[D]")

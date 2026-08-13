@@ -67,32 +67,6 @@ class NPArray(_ArrayCommonMixin):
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    @classmethod
-    def full(
-        fill_value: Any, shape: sgt._ShapeInt, dtype: _DTypeLike | None = None
-    ) -> NPArray:
-        """
-        指定された形状と配列の型で,`fill_value`で埋める
-
-        :param fill_value: 配列内に埋めるスカラー値を指定する
-        :type fill_value: スカラー値
-        :param shape: 配列の形状を指定する
-        :type shape: int | tuple[int, ...]
-        :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: _DTypeLike | None
-        """
-
-    @classmethod
-    def sequential(cls, shape: sgt._ShapeInt) -> NPArray:
-        """
-        連続した整数値を要素に持つ配列を生成する
-
-        :param shape: 配列の形状を指定する
-        :type shape: int | tuple[int, ...]
-        :returns: 連続値を持つ`NPArray`の配列を返す
-        :rtype: NPArray
-        """
-
     def __array_ufunc__(
         self,
         ufunc: np.ufunc,
@@ -119,6 +93,32 @@ class NPArray(_ArrayCommonMixin):
     @property
     def element_type(self) -> None:
         """NPArrayで許可されている型を取得する"""
+
+    @classmethod
+    def full(
+        fill_value: Any, shape: sgt._ShapeInt, dtype: _DTypeLike | None = None
+    ) -> NPArray:
+        """
+        指定された形状と配列の型で,`fill_value`で埋める
+
+        :param fill_value: 配列内に埋めるスカラー値を指定する
+        :type fill_value: スカラー値
+        :param shape: 配列の形状を指定する
+        :type shape: int | tuple[int, ...]
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: _DTypeLike | None
+        """
+
+    @classmethod
+    def sequential(cls, shape: sgt._ShapeInt) -> NPArray:
+        """
+        連続した整数値を要素に持つ配列を生成する
+
+        :param shape: 配列の形状を指定する
+        :type shape: int | tuple[int, ...]
+        :returns: 連続値を持つNPArrayの配列を返す
+        :rtype: NPArray
+        """
 
     def count_nonzero(
         self, axis: sgt._ShapeLike | None = None, keepdims: bool = False

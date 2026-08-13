@@ -319,7 +319,7 @@ class NPNumber(_ArrayCommonMixin):
         :type axis: int | None
         :param kind: ソートアルゴリズムの種類を指定する
         :type kind: Literal["Q", "quick", "quicksort", "M", "merge", "mergesort", "H", "heap", "heapsort", "S", "stable", "stablesort"] | None
-        :param order: `NPNumber`がフィールド定義を持つ配列である場合,どのフィールドを優先して比較するかを指定する
+        :param order: NPNumberがフィールド定義を持つ配列である場合,どのフィールドを優先して比較するかを指定する
         :type order: str | Sequence[str] | None
         """
 

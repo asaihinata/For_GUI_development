@@ -69,6 +69,14 @@ class NPBool(_ArrayCommonMixin):
         result._dtype = result.dtype
         return result
 
+    @property
+    def TrueCount(self):
+        return int(np.count_nonzero(self))
+
+    @property
+    def FalseCount(self):
+        return int(np.count_nonzero(~self))
+
     def all(self):
         return bool(np.all(np.asarray(self)))
 
@@ -79,11 +87,3 @@ class NPBool(_ArrayCommonMixin):
         result = np.asarray(np.logical_not(self)).view(type(self))
         result._dtype = self.dtypes
         return result
-
-    @property
-    def TrueCount(self):
-        return int(np.count_nonzero(self))
-
-    @property
-    def FalseCount(self):
-        return int(np.count_nonzero(~self))

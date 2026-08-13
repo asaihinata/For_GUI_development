@@ -14,7 +14,7 @@ __all__ = ["NPDate"]
 class NPDate(_ArrayCommonMixin):
     """`np.ndarray`を継承した日付の配列クラス"""
 
-    _element_type: type[datetime64]
+    _element_type: datetime64
     _default_dtype: np.dtype[datetime64[date]]
     @overload
     def __new__(
@@ -210,13 +210,13 @@ class NPDate(_ArrayCommonMixin):
         """要素が欠損(Nat)かを判定する"""
     # 変換
     def to_datetime(self) -> np.ndarray:
-        """配列内の日付を`datetime.datetime`に変換する"""
+        """配列内の日付を`datetime.datetime`の配列に変換する"""
 
     def to_date(self) -> np.ndarray:
-        """配列内の日付を`datetime.date`に変換する"""
+        """配列内の日付を`datetime.date`の配列に変換する"""
 
     def to_str(self) -> sgt.RStr_:
-        """配列内の日付を`NPString`に変換する"""
+        """配列内の日付を文字列型の配列に変換する"""
 
     def to_timezone(self, timezone: sgt.Type_Timezone, /) -> NPDate:
         """配列内の日付のタイムゾーンを指定したタイムゾーン(`timezone`)の日付の配列を作成する"""
