@@ -5,6 +5,7 @@ import numpy as np
 from dateutil.parser import parse
 
 from ..dev import _ArrayCommonMixin, _dt64_unit, _get_dt64_unit, _tm64_unit
+from ..nptimedelta import NPTimedelta
 
 __all__ = ["NPDate"]
 _Word = [
@@ -250,13 +251,23 @@ class NPDate(_ArrayCommonMixin):
     def range(self):
         return np.min(self), np.max(self)
 
+    # 日付差
     def diff_today(self, days=False):
         if not isinstance(days, bool):
             days = False
-        return np.array(
-            self.astype("datetime64[D]") - np.datetime64("today", "D") + int(days),
-            dtype=np.int64,
-        )
+        return self.astype("datetime64[D]") - np.datetime64("today", "D") + int(days)
+
+    def diff_tfyear(self):
+        return self - self.astype("datetime64[Y]").astype("datetime64[D]")
+
+    def diff_teyear(self):
+        return (self.astype("datetime64[Y]") + 1).astype("datetime64[D]") - 1 - self
+
+    def diff_tfmonth(self):
+        return self - self.astype("datetime64[M]").astype("datetime64[D]")
+
+    def diff_temonth(self):
+        return (self.astype("datetime64[M]") + 1).astype("datetime64[D]") - 1 - self
 
     @classmethod
     def today(cls, localtime=False):

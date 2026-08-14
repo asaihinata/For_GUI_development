@@ -361,14 +361,26 @@ class NPDate(_ArrayCommonMixin):
 
     def range(self) -> tuple[datetime64, datetime64]:
         """配列内の日付の最小の日付と最大の日付を求める"""
-
-    def diff_today(self, days: bool = False) -> sgt.RInt64:
+    # 日付差
+    def diff_today(self, days: bool = False) -> sgt.RTimedelta64:
         """
         配列内の日付を今日の日にちで引いた配列を求める
 
         :param days: 今日を含めるか指定する
         :type days: bool
         """
+
+    def diff_tfyear(self) -> sgt.RTimedelta64:
+        """配列内の日付の年の開始からの日付の差を求める"""
+
+    def diff_teyear(self) -> sgt.RTimedelta64:
+        """配列内の日付の年の終わりからの日付の差を求める"""
+
+    def diff_tfmonth(self) -> sgt.RTimedelta64:
+        """配列内の日付の月の開始からの日付の差を求める"""
+
+    def diff_temonth(self) -> sgt.RTimedelta64:
+        """配列内の日付の月の終わりからの日付の差を求める"""
 
     @classmethod
     def today(cls, localtime: bool = False) -> NPDate:
