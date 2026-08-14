@@ -1,6 +1,7 @@
 from typing import Any, Literal, NoReturn, overload
 
 import numpy as np
+from numpy._typing import DTypeLike, NDArray, _DTypeLike
 
 import sgg.typing as sgt
 
@@ -118,6 +119,19 @@ class NPBool(_ArrayCommonMixin):
 
     def inversion(self) -> NPBool:
         """配列内の真偽値を反転させる"""
+
+    @overload
+    def astype(self, dtype: sgt._BoolDTypeLike, copy: bool = True) -> NPBool:
+        """
+        配列の要素の型を変換した新しい配列オブジェクトを生成する
+
+        :param dtype: 変換後に使用するデータ型を指定する
+        :type dtype: _BoolDTypeLike
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
+        """
 
     def choice(
         self,

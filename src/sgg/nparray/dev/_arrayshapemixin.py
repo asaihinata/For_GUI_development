@@ -124,6 +124,20 @@ class _ArrayCommonMixin(np.ndarray):
             casting = "safe"
         return np.can_cast(np.asarray(self), type, casting=casting)
 
+    def astype(self, dtype, copy=True):
+        if not isinstance(copy, bool):
+            copy = True
+        dtype = np.dtype(dtype)
+        if self._element_type is None or dtype in self._element_type:
+            return type(self)(
+                np.asarray(self),
+                dtype=dtype,
+                min_ndim=self.min_ndim,
+                max_ndim=self.max_ndim,
+                copy=copy,
+            )
+        return self.__array__(dtype, copy=copy)
+
     def unique(self):
         return np.unique(np.asarray(self))
 
@@ -154,7 +168,7 @@ class _ArrayCommonMixin(np.ndarray):
 
     @property
     def data(self):
-        return self.__array__(self.dtypes)
+        return self.__array__()
 
     @property
     def min_ndim(self):

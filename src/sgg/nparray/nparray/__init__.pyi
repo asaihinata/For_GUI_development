@@ -135,6 +135,34 @@ class NPArray(_ArrayCommonMixin):
     def EType(self) -> NPArray:
         """配列内の要素の型を調べる"""
 
+    @overload
+    def astype[ScalarT: np.generic](
+        self, dtype: _DTypeLike[ScalarT], copy: bool = True
+    ) -> NPArray:
+        """
+        配列の要素の型を変換した新しい配列オブジェクトを生成する
+
+        :param dtype: 変換後に使用するデータ型を指定する
+        :type dtype: _DTypeLike[generic]
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
+        """
+
+    @overload
+    def astype(self, dtype: np.DTypeLike | None, copy: bool = True) -> NPArray:
+        """
+        配列の要素の型を変換した新しい配列オブジェクトを生成する
+
+        :param dtype: 変換後に使用するデータ型を指定する
+        :type dtype: DTypeLike | None
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
+        """
+
     def choice(
         self,
         size: sgt._ShapeInt | None = None,

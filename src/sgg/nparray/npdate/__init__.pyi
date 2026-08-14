@@ -3,7 +3,7 @@ from typing import Any, Literal, NoReturn, SupportsIndex, overload
 
 import numpy as np
 from numpy import datetime64, timedelta64
-from numpy._typing import NDArray
+from numpy._typing import DTypeLike, NDArray, _DTypeLike
 
 import sgg.typing as sgt
 
@@ -211,6 +211,47 @@ class NPDate(_ArrayCommonMixin):
     def isnat(self) -> sgt.RBool_:
         """要素が欠損(Nat)かを判定する"""
     # 変換
+    @overload
+    def astype(self, dtype: sgt._DtypeLikeDT, copy: bool = True) -> NPDate:
+        """
+        配列の要素の型を変換した新しい配列オブジェクトを生成する
+
+        :param dtype: 変換後に使用するデータ型を指定する
+        :type dtype: _DtypeLikeDT
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
+        """
+
+    @overload
+    def astype[ScalarT: np.generic](
+        self, dtype: _DTypeLike[ScalarT], copy: bool = True
+    ) -> NDArray[ScalarT]:
+        """
+        配列の要素の型を変換した新しい配列オブジェクトを生成する
+
+        :param dtype: 変換後に使用するデータ型を指定する
+        :type dtype: _DTypeLike[ScalarT]
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
+        """
+
+    @overload
+    def astype(self, dtype: sgt.DTypeNLike, copy: bool = True) -> NDArray[Any]:
+        """
+        配列の要素の型を変換した新しい配列オブジェクトを生成する
+
+        :param dtype: 変換後に使用するデータ型を指定する
+        :type dtype: DTypeNLike
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
+        """
+
     def to_datetime(self) -> np.ndarray:
         """配列内の日付を`datetime.datetime`の配列に変換する"""
 

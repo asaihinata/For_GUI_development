@@ -129,6 +129,21 @@ class NPTimedelta(_ArrayCommonMixin):
     def __ge__(self, value):
         return np.array(np.greater_equal(self, value), dtype=np.bool_)
 
+    def astype(self, dtype, copy=True):
+        try:
+            dtype = np.dtype(_tm64_unit(dtype))
+        except:
+            dtype = np.dtype(dtype)
+        if dtype.kind == "M":
+            return NPTimedelta(
+                np.asarray(self),
+                dtype=dtype,
+                min_ndim=self.min_ndim,
+                max_ndim=self.max_ndim,
+                copy=copy,
+            )
+        return self.__array__(dtype, copy=copy)
+
     @property
     def dtypeunit(self):
         dy = str(self._dtype)

@@ -2,7 +2,7 @@ from types import GenericAlias
 from typing import Any, Iterator, Literal, LiteralString, Self, overload
 
 import numpy as np
-from numpy._typing import DTypeLike, NDArray, _ShapeLike
+from numpy._typing import DTypeLike, NDArray, _DTypeLike, _ShapeLike
 
 from sgg.typing import RUInt64
 

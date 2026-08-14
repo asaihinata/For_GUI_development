@@ -1,8 +1,5 @@
 import numpy as np
-from numpy._typing import (_BoolCodes, _CharacterCodes, _ComplexFloatingCodes,
-                           _DTypeLike, _FloatingCodes, _NestedSequence,
-                           _NumberCodes, _SignedIntegerCodes, _SupportsArray,
-                           _UnsignedIntegerCodes)
+import numpy._typing as npt
 
 from sgg.typing import _DT64Codes_All, _TD64Codes_All
 
@@ -16,31 +13,34 @@ __all__ = [
     "_NumericDTypeLike",
     "_RealNumericDTypeLike",
     "_StringsDTypeLike",
+    "DTypeNLike",
 ]
 type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
-    _SupportsArray[DTypeT]
-    | _NestedSequence[_SupportsArray[DTypeT]]
+    npt._SupportsArray[DTypeT]
+    | npt._NestedSequence[npt._SupportsArray[DTypeT]]
     | BuiltinT
-    | _NestedSequence[BuiltinT]
+    | npt._NestedSequence[BuiltinT]
 )
 # 真偽型
-type _BoolDTypeLike = _DTypeLike[np.bool_ | np.bool] | type[bool] | _BoolCodes
+type _BoolDTypeLike = npt._DTypeLike[np.bool_ | np.bool] | type[bool] | npt._BoolCodes
 # 数値
-type _NumericDTypeLike = _DTypeLike[np.number] | type[
+type _NumericDTypeLike = npt._DTypeLike[np.number] | type[
     int | float | complex
-] | _NumberCodes
-type _DTypeLikeInt = _DTypeLike[np.integer] | type[
+] | npt._NumberCodes
+type _DTypeLikeInt = npt._DTypeLike[np.integer] | type[
     int
-] | _SignedIntegerCodes | _UnsignedIntegerCodes
-type _DTypeLikeFloat = _DTypeLike[np.floating] | type[float] | _FloatingCodes
+] | npt._SignedIntegerCodes | npt._UnsignedIntegerCodes
+type _DTypeLikeFloat = npt._DTypeLike[np.floating] | type[float] | npt._FloatingCodes
 type _RealNumericDTypeLike = _DTypeLikeInt | _DTypeLikeFloat
 type _ComplexDtypeLike = np.dtype[np.complexfloating] | type[
     complex
-] | _ComplexFloatingCodes
+] | npt._ComplexFloatingCodes
 # 文字列
-type _StringsDTypeLike = _DTypeLike[np.str_ | np.bytes_] | np.dtypes.StringDType | type[
-    str | bytes
-] | _CharacterCodes
+type _StringsDTypeLike = npt._DTypeLike[
+    np.str_ | np.bytes_
+] | np.dtypes.StringDType | type[str | bytes] | npt._CharacterCodes
 # 日付
-type _DtypeLikeDT = _DTypeLike[np.datetime64] | _DT64Codes_All
-type _DtypeLikeTD = _DTypeLike[np.timedelta64] | _TD64Codes_All
+type _DtypeLikeDT = npt._DTypeLike[np.datetime64] | _DT64Codes_All
+type _DtypeLikeTD = npt._DTypeLike[np.timedelta64] | _TD64Codes_All
+# その他
+type DTypeNLike = npt.DTypeLike | None

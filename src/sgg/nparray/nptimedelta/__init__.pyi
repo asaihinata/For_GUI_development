@@ -5,7 +5,7 @@ from typing import Any, Literal, NoReturn, overload
 
 import numpy as np
 from numpy import dtype, timedelta64
-from numpy.typing import NDArray
+from numpy._typing import NDArray, _DTypeLike
 
 import sgg.typing as sgt
 
@@ -134,7 +134,47 @@ class NPTimedelta(_ArrayCommonMixin):
     def element_type(self) -> tuple[type[timedelta64]]:
         """NPTimedeltaで許可されている型を取得する"""
 
-    def tolist(self) -> int | timedelta | sgt._NestedSequence[int | timedelta]: ...
+    @overload
+    def astype(self, dtype: sgt._DtypeLikeTD, copy: bool = True) -> NPTimedelta:
+        """
+        配列の要素の型を変換した新しい配列オブジェクトを生成する
+
+        :param dtype: 変換後に使用するデータ型を指定する
+        :type dtype: _DtypeLikeTD
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
+        """
+
+    @overload
+    def astype[ScalarT: np.generic](
+        self, dtype: _DTypeLike[ScalarT], copy: bool = True
+    ) -> NDArray[ScalarT]:
+        """
+        配列の要素の型を変換した新しい配列オブジェクトを生成する
+
+        :param dtype: 変換後に使用するデータ型を指定する
+        :type dtype: _DTypeLike[ScalarT]
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
+        """
+
+    @overload
+    def astype(self, dtype: sgt.DTypeNLike, copy: bool = True) -> NDArray[Any]:
+        """
+        配列の要素の型を変換した新しい配列オブジェクトを生成する
+
+        :param dtype: 変換後に使用するデータ型を指定する
+        :type dtype: DTypeNLike
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
+        """
+
     def choice(
         self,
         size: sgt._ShapeInt | None = None,

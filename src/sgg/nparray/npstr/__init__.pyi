@@ -4,6 +4,7 @@ from typing import Any, Literal, NoReturn, overload
 
 import numpy as np
 from numpy import bytes_, str_
+from numpy._typing import NDArray, _DTypeLike
 from numpy.dtypes import StringDType
 
 import sgg.typing as sgt
@@ -266,6 +267,47 @@ class NPString(_ArrayCommonMixin):
 
         :param tabsize: タブを置き換えたいスペースの数を指定する
         :type tabsize: 整数もしくは整数の配列
+        """
+
+    @overload
+    def astype(self, dtype: sgt._StringsDTypeLike, copy: bool = True) -> NPString:
+        """
+        配列の要素の型を変換した新しい配列オブジェクトを生成する
+
+        :param dtype: 変換後に使用するデータ型を指定する
+        :type dtype: _StringsDTypeLike
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
+        """
+
+    @overload
+    def astype[ScalarT: np.generic](
+        self, dtype: _DTypeLike[ScalarT], copy: bool = True
+    ) -> NDArray[ScalarT]:
+        """
+        配列の要素の型を変換した新しい配列オブジェクトを生成する
+
+        :param dtype: 変換後に使用するデータ型を指定する
+        :type dtype: _DTypeLike[ScalarT]
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
+        """
+
+    @overload
+    def astype(self, dtype: sgt.DTypeNLike, copy: bool = True) -> NDArray[Any]:
+        """
+        配列の要素の型を変換した新しい配列オブジェクトを生成する
+
+        :param dtype: 変換後に使用するデータ型を指定する
+        :type dtype: DTypeNLike
+        :param copy: `data`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
         """
 
     def endswith(
