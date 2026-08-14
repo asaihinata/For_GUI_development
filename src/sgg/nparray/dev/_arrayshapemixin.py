@@ -1,4 +1,5 @@
 import numpy as np
+from numpy._core.fromnumeric import _wrapfunc
 
 __all__ = ["_ArrayCommonMixin"]
 
@@ -106,6 +107,11 @@ class _ArrayCommonMixin(np.ndarray):
             return True
         return False
 
+    def reshape(self, shape):
+        return np.asarray(
+            _wrapfunc(self.__array__(), "reshape", shape), dtype=self.dtype
+        )
+
     def tonumpy(self):
         return np.asarray(self)
 
@@ -162,6 +168,7 @@ class _ArrayCommonMixin(np.ndarray):
             self, size=size, replace=replace, p=p, axis=axis, shuffle=shuffle
         )
 
+    # property
     @property
     def element_type(self):
         return self._element_type

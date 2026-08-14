@@ -3,7 +3,7 @@ from typing import Any, Literal, NoReturn, SupportsIndex, overload
 
 import numpy as np
 from numpy import datetime64, timedelta64
-from numpy._typing import DTypeLike, NDArray, _DTypeLike
+from numpy._typing import NDArray, _DTypeLike
 
 import sgg.typing as sgt
 
@@ -192,6 +192,9 @@ class NPDate(_ArrayCommonMixin):
     def __ge__(self, value: sgt._ComparisonDT64 | NPDate) -> sgt.RBool_: ...
     @overload
     def __ge__(self, value: Any) -> NoReturn: ...
+    def __int__(self) -> int | NoReturn: ...
+    def __float__(self) -> float | NoReturn: ...
+    # property
     @property
     def element_type(self) -> type[datetime64]:
         """NPDateで許可されている型を取得する"""

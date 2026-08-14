@@ -1,7 +1,6 @@
 from typing import Any, Literal, NoReturn, overload
 
 import numpy as np
-from numpy._typing import DTypeLike, NDArray, _DTypeLike
 
 import sgg.typing as sgt
 

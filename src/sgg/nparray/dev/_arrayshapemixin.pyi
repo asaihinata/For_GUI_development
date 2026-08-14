@@ -2,7 +2,7 @@ from types import GenericAlias
 from typing import Any, Iterator, Literal, LiteralString, Self, overload
 
 import numpy as np
-from numpy._typing import DTypeLike, NDArray, _DTypeLike, _ShapeLike
+from numpy._typing import DTypeLike, NDArray, _ShapeLike
 
 from sgg.typing import RUInt64
 
@@ -106,14 +106,21 @@ class _ArrayCommonMixin(np.ndarray):
     def lengtharange(self) -> RUInt64:
         """配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す"""
 
-    def shapesize(self, shapes: tuple[int, ...]) -> bool:
+    def shapesize(self, shapes: _ShapeLike) -> bool:
         """
         配列オブジェクトの`shape`が`shapes`と一致するかを確認する
 
         :param shapes: 比較する`shape`を指定する
-        :type shapes: tuple[int, ...]
+        :type shapes: int | tuple[int, ...]
         :return: `shape`が一致する場合は`True`を返し,一致しない場合は`False`を返す
         :rtype: bool
+        """
+
+    def reshape(self, shape: _ShapeLike) -> Self:
+        """配列の形状を`shape`に変更する
+
+        :param shape: 変更したい形状を指定する
+        :type shape: int | tuple[int, ...]
         """
 
     def tonumpy(self) -> NDArray[Any]:

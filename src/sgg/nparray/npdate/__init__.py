@@ -101,7 +101,7 @@ class NPDate(_ArrayCommonMixin):
                 return result
             return np.array(result)
         elif isinstance(value, np.ndarray | np.datetime64) and value.dtype.kind == "M":
-            result = np.subtract(self, np.datetime64(value))
+            result = np.subtract(self, value)
             if np.ndim(result) == 0:
                 return result
             return np.array(result)
@@ -129,6 +129,12 @@ class NPDate(_ArrayCommonMixin):
     def __ge__(self, value):
         return np.array(np.greater_equal(self, _to_datetime64(value)), dtype=np.bool_)
 
+    def __int__(self):
+        return int(self.astype(int).item())
+
+    def __float__(self):
+        return float(self.astype(float).item())
+
     # 日付
     @property
     def year(self):
@@ -142,7 +148,9 @@ class NPDate(_ArrayCommonMixin):
 
     @property
     def day(self):
-        return np.array((self - self.astype("datetime64[M]")).astype(int) + 1, np.uint8)
+        return np.array(
+            (self - self.astype("datetime64[M]")).astype(np.uint8) + 1, np.uint8
+        )
 
     # 判定
     def isnat(self):
