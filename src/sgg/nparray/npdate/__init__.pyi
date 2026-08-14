@@ -2,6 +2,7 @@ from datetime import date, datetime
 from typing import Any, Literal, NoReturn, SupportsIndex, overload
 
 import numpy as np
+from dateutil.relativedelta import relativedelta
 from numpy import datetime64, timedelta64
 from numpy._typing import NDArray, _DTypeLike
 
@@ -155,8 +156,10 @@ class NPDate(_ArrayCommonMixin):
         :return: 処理結果を返す
         """
 
+    @overload
     def __add__(self, value: sgt._ArrayLikeTD64_co) -> NPDate: ...
-
+    @overload
+    def __add__(self, value: relativedelta) -> NPDate: ...
     __iadd__ = __add__
 
     @overload
@@ -165,6 +168,8 @@ class NPDate(_ArrayCommonMixin):
     ) -> sgt.RTimedelta64: ...
     @overload
     def __sub__(self, value: sgt._ArrayLikeTD64_co) -> NPDate: ...
+    @overload
+    def __sub__(self, value: relativedelta) -> NPDate: ...
 
     __isub__ = __sub__
 

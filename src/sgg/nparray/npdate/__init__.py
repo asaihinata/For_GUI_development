@@ -3,9 +3,9 @@ from zoneinfo import ZoneInfo
 
 import numpy as np
 from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta
 
 from ..dev import _ArrayCommonMixin, _dt64_unit, _get_dt64_unit, _tm64_unit
-from ..nptimedelta import NPTimedelta
 
 __all__ = ["NPDate"]
 _Word = [
@@ -89,6 +89,12 @@ class NPDate(_ArrayCommonMixin):
         return result
 
     def __add__(self, value):
+        if isinstance(value, relativedelta):
+
+            def _func(x, value):
+                return x + value
+
+            return np.vectorize(_func, otypes=[self.dtype])(self, value)
         result = np.asarray(np.add(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
@@ -96,7 +102,13 @@ class NPDate(_ArrayCommonMixin):
     __iadd__ = __add__
 
     def __sub__(self, value):
-        if isinstance(value, datetime | date):
+        if isinstance(value, relativedelta):
+
+            def _func(x, value):
+                return x - value
+
+            return np.vectorize(_func, otypes=[self.dtype])(self, value)
+        elif isinstance(value, datetime | date):
             result = np.subtract(self.__array__(), np.datetime64(value))
             if np.ndim(result) == 0:
                 return result
