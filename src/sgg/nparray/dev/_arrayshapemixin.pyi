@@ -5,7 +5,7 @@ from typing import (Any, Iterable, Iterator, Literal, LiteralString, Self,
 import numpy as np
 from numpy._typing import DTypeLike, NDArray, _DTypeLike, _ShapeLike
 
-from sgg.typing import RUInt64
+from sgg.typing import IntScalar, RUInt64
 
 __all__ = ["_ArrayCommonMixin"]
 
@@ -22,10 +22,7 @@ class _ArrayCommonMixin(np.ndarray):
     def __len__(self) -> int: ...
     def __reversed__(self) -> Self: ...
     @overload
-    def __getitem__(self, key: int) -> Any: ...
-    @overload
-    def __getitem__(self, key: slice) -> np.ndarray: ...
-    def __getitem__(self, key: int | slice) -> Any | np.ndarray:
+    def __getitem__(self, key: IntScalar) -> Any:
         """
         インデックスアクセスをカスタマイズする
 
@@ -37,9 +34,25 @@ class _ArrayCommonMixin(np.ndarray):
         特別な扱いとする。
 
         :param key: インデックスまたはスライスを指定する
-        :type key: int | slice
-        :return: インデックスに対応する要素を返す
-        :rtype: Any | np.ndarray
+        :type key: int | np.integer
+        :raises IndexError: 配列が空の場合に発生させる
+        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
+        """
+
+    @overload
+    def __getitem__(self, key: slice) -> NDArray[Any]:
+        """
+        インデックスアクセスをカスタマイズする
+
+        intキーの場合は配列を1次元に展開してからアクセスする。
+        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
+        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
+        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
+        ただし`key == size`の場合のみ,末尾の要素(`obj[size - 1]`)を返す
+        特別な扱いとする。
+
+        :param key: インデックスまたはスライスを指定する
+        :type key: slice
         :raises IndexError: 配列が空の場合に発生させる
         :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
@@ -202,7 +215,6 @@ class _ArrayCommonMixin(np.ndarray):
         """
         配列を1次元にフラット化した新しい配列オブジェクトを返す
 
-        :return: フラット化した配列オブジェクトを返す
         :raises ValueError: `min_ndim`が1以下の場合に発生させる
         """
 

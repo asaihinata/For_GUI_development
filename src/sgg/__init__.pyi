@@ -1826,7 +1826,7 @@ class Guis:
         :param markersize: 折線グラフのマーカーの大きさを指定する
         :type markersize: int | float
         :param marker: 折線グラフのマーカーを指定する
-        :type marker: Type_Marker
+        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param linestyle: 折線グラフの線の種類を指定する
         :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""]
         :param title: グラフのタイトルを指定する
@@ -2581,7 +2581,7 @@ class Guis:
         :param label: ラベルを指定する
         :type label: str | list[str] | None
         :param marker: 散布図のマーカーを指定する
-        :type marker: Type_Marker
+        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param markersize: 散布図のマーカーの大きさを指定する
         :type markersize: int | float
         :param regression_bool: 散布図に回帰直線を描画させるか指定する
@@ -3575,7 +3575,7 @@ class Guis:
         :param gridsize: `bins`の細かさを指定する
         :type gridsize: int | tuple[int,int]
         :param extent: 各ポイントの値を指定する
-        :type extent: tuple[int|float,int|float,int|float,int|float] | None
+        :type extent: tuple[int | float,int | float,int | float,int | float] | None
         :param xscale,yscale: 軸のスケールを指定する
         :type xscale,yscale: Literal["linear","log"]
         :param mincnt: 描画する`bins`の最小カウント数を指定する
@@ -3661,7 +3661,7 @@ class Guis:
         :param zlabel: z軸のラベルを指定する
         :type zlabel: str
         :param marker: 散布図のマーカーを指定する
-        :type marker: Type_Marker
+        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param markersize: 散布図のマーカーの大きさを指定する
         :type markersize: int | float
         :param title: グラフのタイトルを指定する
@@ -4185,7 +4185,7 @@ class Guis:
         :param markersize: 極軸折線グラフのマーカーの大きさを指定する
         :type markersize: int | float
         :param marker: 折線グラフのマーカーを指定する
-        :type marker: Type_Marker
+        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param linestyle: 折線グラフの線の種類を指定する
         :type linestyle: Literal["solid","-","dashed","--","dash-dot","-.","dotted",": ","none",None," ",""]
         :param title: グラフのタイトルを指定する
@@ -4249,7 +4249,7 @@ class Guis:
         :param markersize: 極軸折線グラフのマーカーの大きさを指定する
         :type markersize: int | float
         :param marker: 折線グラフのマーカーを指定する
-        :type marker: Type_Marker
+        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param linestyle: 折線グラフの線の種類を指定する
         :type linestyle: Literal["solid","-","dashed","--","dash-dot","-.","dotted",": ","none",None," ",""]
         :param title: グラフのタイトルを指定する
@@ -4372,7 +4372,7 @@ class Guis:
         :param y: `y`のデータを指定する
         :type y: TypeArrayLikeNS
         :param marker: 極軸散布図のマーカーを指定する
-        :type marker: Type_Marker
+        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param markersize: 極軸散布図のマーカーの大きさを指定する
         :type markersize: int | float
         :param title: グラフのタイトルを指定する
@@ -4430,7 +4430,7 @@ class Guis:
         :param data: `data`のデータを指定する
         :type data: TypeArrayLikeNS
         :param marker: 極軸散布図のマーカーを指定する
-        :type marker: Type_Marker
+        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param markersize: 極軸散布図のマーカーの大きさを指定する
         :type markersize: int | float
         :param title: グラフのタイトルを指定する
@@ -4494,7 +4494,7 @@ class Guis:
         :param markersize: 折線レーダーチャートのマーカーの大きさを指定する
         :type markersize: int | float
         :param marker: 折線レーダーチャートのマーカーを指定する
-        :type marker: Type_Marker
+        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param linestyle: 折線グラフの線の種類を指定する
         :type linestyle: Literal["solid","-","dashed","--","dash-dot","-.","dotted",": ","none",None," ",""]
         :param title: グラフのタイトルを指定する

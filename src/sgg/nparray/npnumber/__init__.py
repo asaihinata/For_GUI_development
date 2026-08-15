@@ -140,6 +140,16 @@ class NPNumber(_ArrayCommonMixin):
 
     __rdivmod__ = __divmod__
 
+    def __pos__(self):
+        result = np.asarray(np.positive(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def __neg__(self):
+        result = np.asarray(np.negative(self)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
     def __abs__(self):
         result = np.asarray(np.abs(self)).view(type(self))
         result._dtype = result.dtype

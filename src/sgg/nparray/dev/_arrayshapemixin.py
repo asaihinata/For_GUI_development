@@ -25,11 +25,13 @@ class _ArrayCommonMixin(np.ndarray):
         return super().__len__()
 
     def __getitem__(self, key):
+        if not isinstance(key, int | np.integer | slice):
+            raise TypeError("keyにはint型もしくはslice型を指定してください")
         size = self.size
         if size == 0:
             raise IndexError("空の配列にはアクセスできません")
-        obj = self.data.flatten()
-        if isinstance(key, int):
+        if isinstance(key, int | np.integer):
+            obj = self.data.flatten()
             if key == size:
                 return obj[size - 1]
             elif -size <= key < size:
@@ -37,8 +39,7 @@ class _ArrayCommonMixin(np.ndarray):
             else:
                 return obj[key % size]
         elif isinstance(key, slice):
-            return obj[key]
-        raise TypeError("keyにはintまたはsliceを指定してください")
+            return self.__array__(copy=False)[key]
 
     def __iter__(self):
         return iter(np.asarray(self))
@@ -126,9 +127,12 @@ class _ArrayCommonMixin(np.ndarray):
         return False
 
     def reshape(self, shape):
-        return np.asarray(
-            _wrapfunc(self.__array__(), "reshape", shape), dtype=self.dtype
-        )
+        dtype=self.dtype
+        result = np.asarray(
+            _wrapfunc(self.__array__(), "reshape", shape), dtype=dtype
+        ).view(type(self))
+        result._dtype = dtype
+        return result
 
     def tonumpy(self):
         return np.asarray(self)

@@ -195,9 +195,9 @@ class GElement:
         グラフの大きさのサイズを定める
 
         :param sizes: グラフの大きさを指定する
-        :type sizes: tuple[int|float,int|float]
+        :type sizes: tuple[int | float,int | float]
         :return: 決定したグラフの大きさをタプルで返す
-        :rtype: tuple[int|float,int|float]
+        :rtype: tuple[int | float,int | float]
         """
 
     def _apply_theme_colors(self) -> None:

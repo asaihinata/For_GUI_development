@@ -34,6 +34,7 @@ __all__ = [
     "_Shape",
     "_ShapeInt",
     "_ShapeLike",
+    "NDArray",
     "RAny",
     "RBool_",
     "RDatetime64",

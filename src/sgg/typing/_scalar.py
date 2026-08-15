@@ -13,10 +13,12 @@ __all__ = [
     "_NumberScalar",
     "_RealNumeric_co",
     "_TD64Like_co",
+    "IntScalar",
 ]
 type _BoolScalar = bool | np.bool | np.bool_
-type _IntLike_co = SupportsInt | np.integer | _BoolScalar
-type _FloatLike_co = SupportsFloat | np.floating | np.unsignedinteger | _IntLike_co
+type _IntLike_co = int | SupportsInt | np.integer | _BoolScalar
+type IntScalar = int | SupportsInt | np.integer | _BoolScalar
+type _FloatLike_co = float | SupportsFloat | np.floating | np.unsignedinteger | _IntLike_co
 type _RealNumeric_co = _FloatLike_co
 type _NumberScalar = Number | SupportsInt | SupportsFloat | SupportsComplex | np.number | _BoolScalar
 type _DateWordScalar = Literal[

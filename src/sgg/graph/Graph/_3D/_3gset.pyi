@@ -47,7 +47,7 @@ class _3Gset:
         """ウィジェットのサイズと位置を返す
 
         :return: ウィジェットのサイズと位置を返す
-        :rtype: tuple[int|float,int|float,int|float,int|float]"""
+        :rtype: tuple[int | float,int | float,int | float,int | float]"""
 
     def rootxy(self) -> tuple[int, int]:
         """画面全体に対するウィジェットの座標を返す

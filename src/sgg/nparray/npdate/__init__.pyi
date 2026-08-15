@@ -179,6 +179,41 @@ class NPDate(_ArrayCommonMixin):
     def __ge__(self, value: Any) -> NoReturn: ...
     def __int__(self) -> int | NoReturn: ...
     def __float__(self) -> float | NoReturn: ...
+    @overload
+    def __getitem__(self, key: int | np.integer) -> datetime64:
+        """
+        インデックスアクセスをカスタマイズする
+
+        intキーの場合は配列を1次元に展開してからアクセスする。
+        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
+        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
+        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
+        ただし`key == size`の場合のみ,末尾の要素(`obj[size - 1]`)を返す
+        特別な扱いとする。
+
+        :param key: インデックスまたはスライスを指定する
+        :type key: int | np.integer
+        :raises IndexError: 配列が空の場合に発生させる
+        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
+        """
+
+    @overload
+    def __getitem__(self, key: slice) -> sgt.NDArray[datetime64]:
+        """
+        インデックスアクセスをカスタマイズする
+
+        intキーの場合は配列を1次元に展開してからアクセスする。
+        `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
+        (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
+        正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
+        ただし`key == size`の場合のみ,末尾の要素(`obj[size - 1]`)を返す
+        特別な扱いとする。
+
+        :param key: インデックスまたはスライスを指定する
+        :type key: slice
+        :raises IndexError: 配列が空の場合に発生させる
+        :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
+        """
     # property
     @property
     def element_type(self) -> type[datetime64]:
@@ -233,7 +268,7 @@ class NPDate(_ArrayCommonMixin):
         配列の要素の型を変換した新しい配列オブジェクトを生成する
 
         :param dtype: 変換後に使用するデータ型を指定する
-        :type dtype: DTypeNLike
+        :type dtype: DTypeLike | None
         :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
