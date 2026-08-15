@@ -449,6 +449,7 @@ class NPDate(_ArrayCommonMixin):
 
     def leapcount(self) -> int:
         """配列内の閏年の数を数える"""
+
     def tonumpy(self, copy: bool | None = None) -> sgt.NDDatetime64:
         """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
     # random

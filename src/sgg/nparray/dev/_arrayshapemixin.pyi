@@ -164,7 +164,8 @@ class _ArrayCommonMixin(np.ndarray):
         :param shape: 変更したい形状を指定する
         :type shape: int | tuple[int, ...]
         """
-    def tolist(self) -> Any | sgt.NestedList:...
+
+    def tolist(self) -> Any | sgt.NestedList: ...
     def tonumpy(self, copy: bool | None = None) -> NDArray[Any]:
         """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
 

@@ -51,7 +51,7 @@ class _ArrayCommonMixin(np.ndarray):
 
     def __array__(self, dtype=None, /, *, copy=None):
         if dtype is None:
-            dtype = self.dtypes
+            dtype = self._dtype
         return super().__array__(dtype, copy=copy)
 
     def __class_getitem__(cls, item):

@@ -17,7 +17,7 @@ __all__ = [
 ]
 type _BoolScalar = bool | np.bool | np.bool_
 type _IntLike_co = int | SupportsInt | np.integer | _BoolScalar
-type IntScalar = int | SupportsInt | np.integer | _BoolScalar
+type IntScalar = _IntLike_co
 type _FloatLike_co = float | SupportsFloat | np.floating | np.unsignedinteger | _IntLike_co
 type _RealNumeric_co = _FloatLike_co
 type _NumberScalar = Number | SupportsInt | SupportsFloat | SupportsComplex | np.number | _BoolScalar

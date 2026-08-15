@@ -34,7 +34,6 @@ __all__ = [
     "_Shape",
     "_ShapeInt",
     "_ShapeLike",
-    "NestedList",
     "NDArray",
     "NDBool",
     "NDBool_",
@@ -49,8 +48,13 @@ __all__ = [
     "NDString",
     "NDStringDtype",
     "NDTimedelta64",
+    "NestedList",
     "RAny",
+    "RBool",
     "RBool_",
+    "RBools",
+    "RBytes_",
+    "RCharacter",
     "RDatetime64",
     "RInt64",
     "RInt8",
@@ -62,13 +66,13 @@ __all__ = [
     "RUInt8",
     "Typeaxis",
 ]
-type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
+type __DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
     _SupportsArray[DTypeT]
     | _NestedSequence[_SupportsArray[DTypeT]]
     | BuiltinT
     | _NestedSequence[BuiltinT]
 )
-type _ReturnDtype[DTypeT: np.generic] = NDArray[DTypeT] | DTypeT
+type __ReturnDtype[DTypeT: np.generic] = NDArray[DTypeT] | DTypeT
 # 形状
 type _Shape = tuple[int, ...]
 type _AnyShape = tuple[Any, ...]
@@ -77,29 +81,29 @@ type _ShapeLike = SupportsIndex | Sequence[SupportsIndex]
 type _ShapeInt = int | tuple[int, ...]
 type NestedList = list["NestedList"]
 # bool
-type _ArrayLikeBool_co = _DualArrayLike[np.dtype[np.bool | np.bool_], bool]
+type _ArrayLikeBool_co = __DualArrayLike[np.dtype[np.bool | np.bool_], bool]
 # number
-type _ArrayLikeInt_co = _DualArrayLike[
+type _ArrayLikeInt_co = __DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer], int | bool
 ]
-type _ArrayLikeFloat_co = _DualArrayLike[
+type _ArrayLikeFloat_co = __DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.floating],
     float | bool,
 ]
-type _ArrayLikeComplex_co = _DualArrayLike[
+type _ArrayLikeComplex_co = __DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.number], complex
 ]
-type _ArrayLikeNumber_co = _DualArrayLike[
+type _ArrayLikeNumber_co = __DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.number], int | float | complex | bool
 ]
 # string and bytes
-type _ArrayLikeString_co = _DualArrayLike[
+type _ArrayLikeString_co = __DualArrayLike[
     np.dtype[np.character] | StringDType,
     bytes | str,
 ]
-type _ArrayLikeStr_co = _DualArrayLike[np.dtype[np.str_], str]
-type _ArrayLikeBytes_co = _DualArrayLike[np.dtype[np.bytes_], bytes]
-type _ArrayLikeStringDtype_co = _DualArrayLike[StringDType, str]
+type _ArrayLikeStr_co = __DualArrayLike[np.dtype[np.str_], str]
+type _ArrayLikeBytes_co = __DualArrayLike[np.dtype[np.bytes_], bytes]
+type _ArrayLikeStringDtype_co = __DualArrayLike[StringDType, str]
 type _ArrayLikeStrings_co = _ArrayLikeStr_co | _ArrayLikeBytes_co | _ArrayLikeStringDtype_co
 # date
 type _DateWord_TODAY = Literal["TODAY", "today", b"TODAY", b"today"]
@@ -111,16 +115,16 @@ type _DT64Now_co = _NestedSequence[_DateWord_NOW]
 type _NaTValue_co = _NestedSequence[_DateWord_NAT]
 type _ArrayDT64 = _NestedSequence[np.datetime64] | np.datetime64
 type _ComparisonDT64 = _ArrayDT64 | datetime | date
-type _ArrayLikeDT64_co = _DualArrayLike[
+type _ArrayLikeDT64_co = __DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.str_ | np.datetime64],
     int | bool | str | datetime | date | _DateWordAll,
 ]
-type _ArrayLikeTD64_co = _DualArrayLike[
+type _ArrayLikeTD64_co = __DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.timedelta64],
     bool | int | timedelta | _DateWord_NAT,
 ]
 # None
-type _ArrayLikeNone_co = _DualArrayLike[
+type _ArrayLikeNone_co = __DualArrayLike[
     np.dtype[NoneType],
     NoneType,
 ]
@@ -139,18 +143,22 @@ type NDString = NDCharacter | NDStringDtype
 type NDDatetime64 = NDArray[np.datetime64]
 type NDTimedelta64 = NDArray[np.timedelta64]
 # 戻り値
-type RBool_ = _ReturnDtype[np.bool_]
-type RNumber = _ReturnDtype[np.number]
-type RInt64 = _ReturnDtype[np.int64]
-type RInt8 = _ReturnDtype[np.int8]
-type RUInt64 = _ReturnDtype[np.uint64]
-type RUInt8 = _ReturnDtype[np.uint8]
-type RStr_ = _ReturnDtype[np.str_]
+type RBool = __ReturnDtype[np.bool]
+type RBool_ = __ReturnDtype[np.bool_]
+type RBools = __ReturnDtype[np.bool | np.bool_]
+type RNumber = __ReturnDtype[np.number]
+type RInt64 = __ReturnDtype[np.int64]
+type RInt8 = __ReturnDtype[np.int8]
+type RUInt64 = __ReturnDtype[np.uint64]
+type RUInt8 = __ReturnDtype[np.uint8]
+type RStr_ = __ReturnDtype[np.str_]
+type RBytes_ = __ReturnDtype[np.bytes_]
+type RCharacter = __ReturnDtype[np.character]
 type RString = NDArray[np.str_ | np.bytes_] | np.ndarray[
     _AnyShape, StringDType
 ] | np.str_ | np.bytes_ | StringDType
-type RDatetime64 = _ReturnDtype[np.datetime64]
-type RTimedelta64 = _ReturnDtype[np.timedelta64]
+type RDatetime64 = __ReturnDtype[np.datetime64]
+type RTimedelta64 = __ReturnDtype[np.timedelta64]
 type RAny = NDArray[Any] | Any
 # その他
 type Typeaxis = _ShapeLike | None

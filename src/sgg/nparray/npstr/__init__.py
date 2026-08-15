@@ -52,12 +52,11 @@ class NPString(_ArrayCommonMixin):
 
     def __mul__(self, i):
         _int_co_check(i)
+        result = self.__array__(copy=False)
         if isinstance(self.dtypes, StringDType):
-            result = np.asarray(nps.multiply(np.asarray(self), np.maximum(i, 0))).view(
-                type(self)
-            )
+            result = np.asarray(nps.multiply(result, np.maximum(i, 0))).view(type(self))
         else:
-            result = nps.multiply(np.asarray(self), np.maximum(i, 0)).view(type(self))
+            result = nps.multiply(result, np.maximum(i, 0)).view(type(self))
         result._dtype = result.dtype
         return result
 

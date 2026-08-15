@@ -76,7 +76,7 @@ class NPArray(_ArrayCommonMixin):
 
     @classmethod
     def full(
-        fill_value: Any, shape: sgt._ShapeInt, dtype: _DTypeLike | None = None
+        cls, fill_value: Any, shape: sgt._ShapeInt, dtype: _DTypeLike | None = None
     ) -> NPArray:
         """
         指定された形状と配列の型で,`fill_value`で埋める
