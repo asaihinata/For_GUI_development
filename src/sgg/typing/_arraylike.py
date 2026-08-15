@@ -38,6 +38,7 @@ __all__ = [
     "RBool_",
     "RDatetime64",
     "RInt64",
+    "RInt8",
     "RNumber",
     "RStr_",
     "RString",
@@ -111,6 +112,7 @@ type _ArrayLikeNone_co = _DualArrayLike[
 type RBool_ = _ReturnDtype[np.bool_]
 type RNumber = _ReturnDtype[np.number]
 type RInt64 = _ReturnDtype[np.int64]
+type RInt8 = _ReturnDtype[np.int8]
 type RUInt64 = _ReturnDtype[np.uint64]
 type RUInt8 = _ReturnDtype[np.uint8]
 type RStr_ = _ReturnDtype[np.str_]

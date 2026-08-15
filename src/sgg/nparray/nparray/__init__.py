@@ -8,6 +8,8 @@ __all__ = ["NPArray"]
 
 
 class NPArray(_ArrayCommonMixin):
+    """`np.ndarray`を継承した型付き配列クラス"""
+
     _element_type = None
     _default_dtype = "object"
 
@@ -40,18 +42,6 @@ class NPArray(_ArrayCommonMixin):
             obj._min_ndim = min_ndim
             obj._max_ndim = max_ndim
         return obj
-
-    def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
-        raw_inputs = tuple(
-            np.asarray(x) if isinstance(x, NPArray) else x for x in inputs
-        )
-        result = getattr(ufunc, method)(*raw_inputs, **dict(kwargs))
-        if result is NotImplemented:
-            return NotImplemented
-        if isinstance(result, np.ndarray):
-            result = result.view(type(self))
-            result._dtype = getattr(inputs[0], "_dtype", None)
-        return result
 
     def __eq__(self, value):
         result = np.equal(np.asarray(self), value).view(type(self))

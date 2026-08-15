@@ -40,6 +40,7 @@ type TYPEMETHOD = Literal[
 class NPNumber(_ArrayCommonMixin):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
+    __doc__: str
     _element_type: tuple[type[int], type[float], type[complex], type[np.number]]
     _default_dtype: np.float64
     def __new__(
@@ -91,27 +92,6 @@ class NPNumber(_ArrayCommonMixin):
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
-        """
-
-    def __array_ufunc__(
-        self,
-        ufunc: np.ufunc,
-        method: str,
-        *inputs: Any,
-        **kwargs: Any,
-    ) -> NPNumber | Any:
-        """
-        NumPyのufuncの動作をカスタマイズする
-
-        :param ufunc: 呼び出されたufunc
-        :type ufunc: np.ufunc
-        :param method: 呼び出しメソッド名
-        :type method: str
-        :param inputs: ufuncへの入力
-        :type inputs: Any
-        :param kwargs: ufuncへの追加引数
-        :type kwargs: Any
-        :return: 処理結果を返す
         """
 
     @overload

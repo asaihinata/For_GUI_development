@@ -15,6 +15,9 @@ from ..npdate import NPDate
 __all__ = ["NPTimedelta"]
 
 class NPTimedelta(_ArrayCommonMixin):
+    """`np.ndarray`を継承したtimedelta64型の配列クラス"""
+
+    __doc__: str
     _element_type: timedelta64
     _default_dtype: dtype[timedelta64[timedelta]]
     @overload
@@ -68,27 +71,6 @@ class NPTimedelta(_ArrayCommonMixin):
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
-        """
-
-    def __array_ufunc__(
-        self,
-        ufunc: np.ufunc,
-        method: str,
-        *inputs: Any,
-        **kwargs: Any,
-    ) -> NPTimedelta | Any:
-        """
-        NumPyのufuncの動作をカスタマイズする
-
-        :param ufunc: 呼び出されたufunc
-        :type ufunc: np.ufunc
-        :param method: 呼び出しメソッド名
-        :type method: str
-        :param inputs: ufuncへの入力
-        :type inputs: Any
-        :param kwargs: ufuncへの追加引数
-        :type kwargs: Any
-        :return: 処理結果を返す
         """
 
     def __int__(self) -> int | NoReturn: ...

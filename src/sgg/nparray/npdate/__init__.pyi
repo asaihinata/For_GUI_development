@@ -13,8 +13,9 @@ from ..dev import _ArrayCommonMixin
 __all__ = ["NPDate"]
 
 class NPDate(_ArrayCommonMixin):
-    """`np.ndarray`を継承した日付の配列クラス"""
+    """`np.ndarray`を継承したdatetime64型の配列クラス"""
 
+    __doc__: str
     _element_type: datetime64
     _default_dtype: np.dtype[datetime64[date]]
     @overload
@@ -23,8 +24,8 @@ class NPDate(_ArrayCommonMixin):
         data: sgt._ArrayLikeDT64_co,
         /,
         dtype: sgt._DtypeLikeDT = "datetime64[D]",
-        *,
         localtime: bool = False,
+        *,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
@@ -54,8 +55,8 @@ class NPDate(_ArrayCommonMixin):
         data: Any,
         /,
         dtype: Any | sgt._DtypeLikeDT | None = None,
-        *,
         localtime: bool = False,
+        *,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
         copy: bool = True,
@@ -85,8 +86,8 @@ class NPDate(_ArrayCommonMixin):
         data: sgt._ArrayLikeDT64_co,
         /,
         dtype: sgt._DtypeLikeDT = "datetime64[D]",
-        *,
         localtime: bool = False,
+        *,
         d_ndim: int | None = None,
         copy: bool = True,
     ) -> NPDate:
@@ -113,8 +114,8 @@ class NPDate(_ArrayCommonMixin):
         data: Any,
         /,
         dtype: Any | sgt._DtypeLikeDT | None = None,
-        *,
         localtime: bool = False,
+        *,
         d_ndim: int | None = None,
         copy: bool = True,
     ) -> NPDate:
@@ -133,27 +134,6 @@ class NPDate(_ArrayCommonMixin):
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
-        """
-
-    def __array_ufunc__(
-        self,
-        ufunc: np.ufunc,
-        method: str,
-        *inputs: Any,
-        **kwargs: Any,
-    ) -> NPDate | Any:
-        """
-        NumPyのufuncの動作をカスタマイズする
-
-        :param ufunc: 呼び出されたufunc
-        :type ufunc: np.ufunc
-        :param method: 呼び出しメソッド名
-        :type method: str
-        :param inputs: ufuncへの入力
-        :type inputs: Any
-        :param kwargs: ufuncへの追加引数
-        :type kwargs: Any
-        :return: 処理結果を返す
         """
 
     @overload
@@ -209,7 +189,7 @@ class NPDate(_ArrayCommonMixin):
         """配列の年を返す"""
 
     @property
-    def month(self) -> sgt.RUInt8:
+    def month(self) -> sgt.RInt8:
         """配列の月を返す"""
 
     @property

@@ -7,6 +7,9 @@ __all__ = ["_ArrayCommonMixin"]
 class _ArrayCommonMixin(np.ndarray):
     """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
 
+    def __dir__(self):
+        return np.sort(super().__dir__()).tolist()
+
     def __repr__(self):
         return f"{type(self).__name__}({np.array2string(np.asarray(self), separator=",")},dtype={self.dtype})"
 
@@ -55,6 +58,21 @@ class _ArrayCommonMixin(np.ndarray):
 
     def __array_function__(self, func, types, args, kwargs):
         return super().__array_function__(func, types, args, kwargs)
+
+    def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
+        raw_inputs = tuple(
+            np.asarray(x) if isinstance(x, self.__class__) else x for x in inputs
+        )
+        result = getattr(ufunc, method)(*raw_inputs, **dict(kwargs))
+
+        if result is NotImplemented:
+            return NotImplemented
+
+        if isinstance(result, np.ndarray):
+            result = result.view(type(self))
+            result._dtype = getattr(inputs[0], "_dtype", None)
+
+        return result
 
     def __array_finalize__(self, obj):
         if obj is None:

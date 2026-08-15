@@ -6,6 +6,8 @@ __all__ = ["NPBool"]
 
 
 class NPBool(_ArrayCommonMixin):
+    """`np.ndarray`を継承したbool型の配列クラス"""
+
     _element_type = (bool, np.bool_, np.bool)
     _default_dtype = np.bool_
 
@@ -38,21 +40,6 @@ class NPBool(_ArrayCommonMixin):
             obj._min_ndim = min_ndim
             obj._max_ndim = max_ndim
         return obj
-
-    def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
-        raw_inputs = tuple(
-            np.asarray(x) if isinstance(x, NPBool) else x for x in inputs
-        )
-        result = getattr(ufunc, method)(*raw_inputs, **dict(kwargs))
-
-        if result is NotImplemented:
-            return NotImplemented
-
-        if isinstance(result, np.ndarray):
-            result = result.view(type(self))
-            result._dtype = getattr(inputs[0], "_dtype", None)
-
-        return result
 
     def __invert__(self):
         result = np.asarray(np.logical_not(self)).view(type(self))

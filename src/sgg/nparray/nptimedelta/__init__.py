@@ -8,6 +8,8 @@ __all__ = ["NPTimedelta"]
 
 
 class NPTimedelta(_ArrayCommonMixin):
+    """`np.ndarray`を継承したtimedelta64型の配列クラス"""
+
     _element_type = np.timedelta64
     _default_dtype = np.dtype("timedelta64[D]")
 
@@ -36,21 +38,6 @@ class NPTimedelta(_ArrayCommonMixin):
             obj._min_ndim = min_ndim
             obj._max_ndim = max_ndim
         return obj
-
-    def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
-        raw_inputs = tuple(
-            np.asarray(x) if isinstance(x, NPTimedelta) else x for x in inputs
-        )
-        result = getattr(ufunc, method)(*raw_inputs, **dict(kwargs))
-
-        if result is NotImplemented:
-            return NotImplemented
-
-        if isinstance(result, np.ndarray):
-            result = result.view(type(self))
-            result._dtype = getattr(inputs[0], "_dtype", None)
-
-        return result
 
     def __add__(self, value):
         result = np.asarray(np.add(self, value)).view(type(self))

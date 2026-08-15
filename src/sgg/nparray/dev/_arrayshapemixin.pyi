@@ -1,8 +1,9 @@
 from types import GenericAlias
-from typing import Any, Iterator, Literal, LiteralString, Self, overload
+from typing import (Any, Iterable, Iterator, Literal, LiteralString, Self,
+                    overload)
 
 import numpy as np
-from numpy._typing import DTypeLike, NDArray, _ShapeLike
+from numpy._typing import DTypeLike, NDArray, _DTypeLike, _ShapeLike
 
 from sgg.typing import RUInt64
 
@@ -11,6 +12,10 @@ __all__ = ["_ArrayCommonMixin"]
 class _ArrayCommonMixin(np.ndarray):
     """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
 
+    _min_ndim: int | None
+    _max_ndim: int | None
+    _dtype: _DTypeLike | None
+    def __dir__(self) -> Iterable[str]: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
     def __contains__(self, value: Any) -> bool: ...
@@ -59,6 +64,27 @@ class _ArrayCommonMixin(np.ndarray):
         :type kwargs: dict
         :return: 演算結果を返す
         :rtype: Any
+        """
+
+    def __array_ufunc__(
+        self,
+        ufunc: np.ufunc,
+        method: str,
+        *inputs: Any,
+        **kwargs: Any,
+    ) -> Self | Any:
+        """
+        NumPyのufuncの動作をカスタマイズする
+
+        :param ufunc: 呼び出されたufunc
+        :type ufunc: np.ufunc
+        :param method: 呼び出しメソッド名
+        :type method: str
+        :param inputs: ufuncへの入力
+        :type inputs: Any
+        :param kwargs: ufuncへの追加引数
+        :type kwargs: Any
+        :return: 処理結果を返す
         """
 
     def __array_finalize__(self, obj: np.ndarray | None) -> None:

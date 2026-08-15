@@ -1,4 +1,5 @@
 from datetime import date, datetime, timedelta
+from typing import Self
 from zoneinfo import ZoneInfo
 
 import numpy as np
@@ -27,6 +28,8 @@ _Word = [
 
 
 class NPDate(_ArrayCommonMixin):
+    """`np.ndarray`を継承したdatetime64型の配列クラス"""
+
     _element_type = np.datetime64
     _default_dtype = np.dtype("datetime64[D]")
 
@@ -35,8 +38,8 @@ class NPDate(_ArrayCommonMixin):
         data,
         /,
         dtype="datetime64[D]",
-        *,
         localtime=False,
+        *,
         d_ndim=None,
         min_ndim=None,
         max_ndim=None,
@@ -57,12 +60,12 @@ class NPDate(_ArrayCommonMixin):
             copy = True
         resolved = cls._resolve_dtype(_dt64_unit(dtype))
         date = np.vectorize(_func, otypes=[resolved])(np.asarray(data))
+        obj = np.asarray(date, copy=copy).view(cls)
         if localtime:
             try:
-                date = date + _local_utc_difference(dtype)
+                obj = obj + _local_utc_difference(dtype)
             except OverflowError as e:
                 raise OverflowError(e)
-        obj = np.asarray(date, copy=copy).view(cls)
         obj._dtype = resolved
         if isinstance(d_ndim, int):
             cls._validate_ndim(obj, d_ndim, d_ndim)
@@ -73,29 +76,14 @@ class NPDate(_ArrayCommonMixin):
             obj._max_ndim = max_ndim
         return obj
 
-    def __array_ufunc__(self, ufunc, method, *inputs, **kwargs):
-        raw_inputs = tuple(
-            np.asarray(x) if isinstance(x, NPDate) else x for x in inputs
-        )
-        result = getattr(ufunc, method)(*raw_inputs, **dict(kwargs))
-
-        if result is NotImplemented:
-            return NotImplemented
-
-        if isinstance(result, np.ndarray):
-            result = result.view(type(self))
-            result._dtype = getattr(inputs[0], "_dtype", None)
-
-        return result
-
     def __add__(self, value):
         if isinstance(value, relativedelta):
-
-            def _func(x, value):
-                return x + value
-
-            return np.vectorize(_func, otypes=[self.dtype])(self, value)
-        result = np.asarray(np.add(self, value)).view(type(self))
+            result = np.vectorize(lambda x, val: x + val, otypes=[self.dtype])(
+                self, value
+            )
+        else:
+            result = np.add(self, value)
+        result = np.asarray(result).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -103,11 +91,11 @@ class NPDate(_ArrayCommonMixin):
 
     def __sub__(self, value):
         if isinstance(value, relativedelta):
-
-            def _func(x, value):
-                return x - value
-
-            return np.vectorize(_func, otypes=[self.dtype])(self, value)
+            result = np.asarray(
+                np.vectorize(lambda x, val: x - val, otypes=[self.dtype])(self, value)
+            ).view(type(self))
+            result._dtype = result.dtype
+            return result
         elif isinstance(value, datetime | date):
             result = np.subtract(self.__array__(), np.datetime64(value))
             if np.ndim(result) == 0:
@@ -151,19 +139,15 @@ class NPDate(_ArrayCommonMixin):
     # 日付
     @property
     def year(self):
-        return np.array(self.astype("datetime64[Y]").astype(np.int64), np.int64) + 1970
+        return self.astype("datetime64[Y]").astype(np.int64) + 1970
 
     @property
     def month(self):
-        return np.array(
-            np.mod(self.astype("datetime64[M]").astype(np.int64), 12) + 1, np.uint8
-        )
+        return np.mod(self.astype("datetime64[M]").astype(np.int8), 12) + 1
 
     @property
     def day(self):
-        return np.array(
-            (self - self.astype("datetime64[M]")).astype(np.uint8) + 1, np.uint8
-        )
+        return (self - self.astype("datetime64[M]")).astype(np.uint8) + 1
 
     # 判定
     def isnat(self):
