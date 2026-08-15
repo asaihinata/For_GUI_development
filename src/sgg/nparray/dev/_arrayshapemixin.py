@@ -127,15 +127,15 @@ class _ArrayCommonMixin(np.ndarray):
         return False
 
     def reshape(self, shape):
-        dtype=self.dtype
+        dtype = self.dtype
         result = np.asarray(
             _wrapfunc(self.__array__(), "reshape", shape), dtype=dtype
         ).view(type(self))
         result._dtype = dtype
         return result
 
-    def tonumpy(self):
-        return np.asarray(self)
+    def tonumpy(self, copy=None):
+        return self.__array__(copy=copy)
 
     def isscalar(self):
         return np.isscalar(self.tolist())

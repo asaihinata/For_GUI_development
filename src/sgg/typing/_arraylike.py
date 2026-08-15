@@ -34,7 +34,21 @@ __all__ = [
     "_Shape",
     "_ShapeInt",
     "_ShapeLike",
+    "NestedList",
     "NDArray",
+    "NDBool",
+    "NDBool_",
+    "NDBools",
+    "NDBytes_",
+    "NDCharacter",
+    "NDDatetime64",
+    "NDFloating",
+    "NDInteger",
+    "NDNumber",
+    "NDStr_",
+    "NDString",
+    "NDStringDtype",
+    "NDTimedelta64",
     "RAny",
     "RBool_",
     "RDatetime64",
@@ -61,6 +75,7 @@ type _AnyShape = tuple[Any, ...]
 type _ShapeLike = SupportsIndex | Sequence[SupportsIndex]
 """shapeタプルに変換可能なものなら何でも"""
 type _ShapeInt = int | tuple[int, ...]
+type NestedList = list["NestedList"]
 # bool
 type _ArrayLikeBool_co = _DualArrayLike[np.dtype[np.bool | np.bool_], bool]
 # number
@@ -109,6 +124,20 @@ type _ArrayLikeNone_co = _DualArrayLike[
     np.dtype[NoneType],
     NoneType,
 ]
+# NDArray
+type NDBool = NDArray[np.bool]
+type NDBool_ = NDArray[np.bool_]
+type NDBools = NDArray[np.bool | np.bool_]
+type NDInteger = NDArray[np.integer]
+type NDFloating = NDArray[np.floating]
+type NDNumber = NDArray[np.number]
+type NDStr_ = NDArray[np.str_]
+type NDBytes_ = NDArray[np.bytes_]
+type NDCharacter = NDArray[np.character]
+type NDStringDtype = _ArrayLikeStringDtype_co
+type NDString = NDCharacter | NDStringDtype
+type NDDatetime64 = NDArray[np.datetime64]
+type NDTimedelta64 = NDArray[np.timedelta64]
 # 戻り値
 type RBool_ = _ReturnDtype[np.bool_]
 type RNumber = _ReturnDtype[np.number]

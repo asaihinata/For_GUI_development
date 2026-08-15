@@ -5,7 +5,7 @@ from typing import (Any, Iterable, Iterator, Literal, LiteralString, Self,
 import numpy as np
 from numpy._typing import DTypeLike, NDArray, _DTypeLike, _ShapeLike
 
-from sgg.typing import IntScalar, RUInt64
+import sgg.typing as sgt
 
 __all__ = ["_ArrayCommonMixin"]
 
@@ -22,7 +22,7 @@ class _ArrayCommonMixin(np.ndarray):
     def __len__(self) -> int: ...
     def __reversed__(self) -> Self: ...
     @overload
-    def __getitem__(self, key: IntScalar) -> Any:
+    def __getitem__(self, key: sgt.IntScalar) -> Any:
         """
         インデックスアクセスをカスタマイズする
 
@@ -97,7 +97,6 @@ class _ArrayCommonMixin(np.ndarray):
         :type inputs: Any
         :param kwargs: ufuncへの追加引数
         :type kwargs: Any
-        :return: 処理結果を返す
         """
 
     def __array_finalize__(self, obj: np.ndarray | None) -> None:
@@ -127,10 +126,13 @@ class _ArrayCommonMixin(np.ndarray):
         """
         配列の次元数がmin_ndim・max_ndimの範囲内か検証する
 
-        :param obj: 検証対象の配列
+        :param obj: 検証対象の配列を指定する
+        :type obj: ndarray
         :param min_ndim: 許可する最小次元数を指定する。Noneの場合は制約なし
+        :type min_ndim: int | None
         :param max_ndim: 許可する最大次元数を指定する。Noneの場合は制約なし
-        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :type max_ndim: int | None
+        :raises ValueError: 次元数(ndim)がmin_ndim<=ndim<=max_ndimの範囲外の場合に発生させる
         """
 
     @classmethod
@@ -139,10 +141,11 @@ class _ArrayCommonMixin(np.ndarray):
         配列内の要素が`_element_type`と一致するか検証する
 
         :param obj: 検証対象の配列を指定する
+        :type obj: ndarray
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
         """
 
-    def lengtharange(self) -> RUInt64:
+    def lengtharange(self) -> sgt.RUInt64:
         """配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す"""
 
     def shapesize(self, shapes: _ShapeLike) -> bool:
@@ -161,9 +164,9 @@ class _ArrayCommonMixin(np.ndarray):
         :param shape: 変更したい形状を指定する
         :type shape: int | tuple[int, ...]
         """
-
-    def tonumpy(self) -> NDArray[Any]:
-        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
+    def tolist(self) -> Any | sgt.NestedList:...
+    def tonumpy(self, copy: bool | None = None) -> NDArray[Any]:
+        """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def typeconversion(
         self,
@@ -224,7 +227,7 @@ class _ArrayCommonMixin(np.ndarray):
 
     @property
     def data(self) -> NDArray[Any]:
-        """配列オブジェクトオブジェクトを`np.ndarray`オブジェクトに変換する"""
+        """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @property
     def min_ndim(self) -> int | None:

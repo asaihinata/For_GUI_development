@@ -171,7 +171,7 @@ class NPNumber(_ArrayCommonMixin):
     def __neg__(self) -> NPNumber: ...
     def __abs__(self) -> NPNumber: ...
     @overload
-    def __getitem__(self, key: int | np.integer) -> np.number:
+    def __getitem__(self, key: sgt.IntScalar) -> np.number:
         """
         インデックスアクセスをカスタマイズする
 
@@ -664,6 +664,9 @@ class NPNumber(_ArrayCommonMixin):
         :param dtype: 出力される配列に使用するデータ型を指定する
         :param seed: 乱数のシード値を指定する
         """
+
+    def tonumpy(self, copy: bool | None = None) -> sgt.NDNumber:
+        """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
     # dtype
     @property
     def types(self) -> type[np.number]: ...

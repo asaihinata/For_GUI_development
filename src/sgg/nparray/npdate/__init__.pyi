@@ -180,7 +180,7 @@ class NPDate(_ArrayCommonMixin):
     def __int__(self) -> int | NoReturn: ...
     def __float__(self) -> float | NoReturn: ...
     @overload
-    def __getitem__(self, key: int | np.integer) -> datetime64:
+    def __getitem__(self, key: sgt.IntScalar) -> datetime64:
         """
         インデックスアクセスをカスタマイズする
 
@@ -449,6 +449,8 @@ class NPDate(_ArrayCommonMixin):
 
     def leapcount(self) -> int:
         """配列内の閏年の数を数える"""
+    def tonumpy(self, copy: bool | None = None) -> sgt.NDDatetime64:
+        """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
     # random
     def choice(
         self,

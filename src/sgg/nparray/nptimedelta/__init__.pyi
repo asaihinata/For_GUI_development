@@ -113,7 +113,7 @@ class NPTimedelta(_ArrayCommonMixin):
     @overload
     def __truediv__(self, value: Any) -> NoReturn: ...
     @overload
-    def __getitem__(self, key: int | np.integer) -> timedelta64:
+    def __getitem__(self, key: sgt.IntScalar) -> timedelta64:
         """
         インデックスアクセスをカスタマイズする
 
@@ -192,6 +192,9 @@ class NPTimedelta(_ArrayCommonMixin):
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
         """
+
+    def tonumpy(self, copy: bool | None = None) -> sgt.NDTimedelta64:
+        """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     def choice(
         self,

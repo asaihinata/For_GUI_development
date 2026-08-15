@@ -79,7 +79,7 @@ class NPBool(_ArrayCommonMixin):
         """配列内の真偽値を反転させる"""
 
     @overload
-    def __getitem__(self, key: int | np.integer) -> np.bool | np.bool_:
+    def __getitem__(self, key: sgt.IntScalar) -> np.bool | np.bool_:
         """
         インデックスアクセスをカスタマイズする
 
@@ -134,6 +134,9 @@ class NPBool(_ArrayCommonMixin):
 
     def inversion(self) -> NPBool:
         """配列内の真偽値を反転させる"""
+
+    def tonumpy(self, copy: bool | None = None) -> sgt.NDBools:
+        """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
 
     @overload
     def astype(self, dtype: sgt._BoolDTypeLike, copy: bool = True) -> NPBool:

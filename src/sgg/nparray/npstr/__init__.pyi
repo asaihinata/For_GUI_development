@@ -102,7 +102,7 @@ class NPString(_ArrayCommonMixin):
     __imul__ = __mul__
     __rmul__ = __mul__
     @overload
-    def __getitem__(self, key: int | np.integer) -> np.character | StringDType:
+    def __getitem__(self, key: sgt.IntScalar) -> np.character | StringDType:
         """
         インデックスアクセスをカスタマイズする
 
@@ -438,6 +438,9 @@ class NPString(_ArrayCommonMixin):
 
         そうでない場合は`False`を返す。
         """
+
+    def tonumpy(self, copy: bool | None = None) -> sgt.NDString:
+        """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
     # random
     def choice(
         self,
