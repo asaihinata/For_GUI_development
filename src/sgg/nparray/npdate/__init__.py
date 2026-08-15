@@ -35,7 +35,7 @@ class NPDate(_ArrayCommonMixin):
 
     def __new__(
         cls,
-        data,
+        obj,
         /,
         dtype="datetime64[D]",
         localtime=False,
@@ -59,8 +59,8 @@ class NPDate(_ArrayCommonMixin):
         if not isinstance(copy, bool):
             copy = True
         resolved = cls._resolve_dtype(_dt64_unit(dtype))
-        date = np.vectorize(_func, otypes=[resolved])(np.asarray(data))
-        obj = np.asarray(date, copy=copy).view(cls)
+        obj = np.vectorize(_func, otypes=[resolved])(np.asarray(obj))
+        obj = np.asarray(obj, copy=copy).view(cls)
         if localtime:
             try:
                 obj = obj + _local_utc_difference(dtype)

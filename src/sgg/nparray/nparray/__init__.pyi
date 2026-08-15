@@ -18,7 +18,7 @@ class NPArray(_ArrayCommonMixin):
     @overload
     def __new__(
         cls,
-        data: Any,
+        obj: Any,
         /,
         dtype: _DTypeLike | None = None,
         *,
@@ -29,15 +29,15 @@ class NPArray(_ArrayCommonMixin):
         """
         新しい配列オブジェクトインスタンスを生成する
 
-        :param data: 変換する配列を指定する
-        :type data: 配列のようなオブジェクト
+        :param obj: 変換する配列を指定する
+        :type obj: 配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: dtype | type
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
@@ -46,7 +46,7 @@ class NPArray(_ArrayCommonMixin):
     @overload
     def __new__(
         cls,
-        data: Any,
+        obj: Any,
         /,
         dtype: _DTypeLike | None = None,
         *,
@@ -56,13 +56,13 @@ class NPArray(_ArrayCommonMixin):
         """
         新しい配列オブジェクトインスタンスを生成する
 
-        :param data: 変換する配列を指定する
-        :type data: 配列のようなオブジェクト
+        :param obj: 変換する配列を指定する
+        :type obj: 配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: dtype | type
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
@@ -124,7 +124,7 @@ class NPArray(_ArrayCommonMixin):
 
         :param dtype: 変換後に使用するデータ型を指定する
         :type dtype: _DTypeLike[generic]
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
@@ -137,7 +137,7 @@ class NPArray(_ArrayCommonMixin):
 
         :param dtype: 変換後に使用するデータ型を指定する
         :type dtype: DTypeLike | None
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる

@@ -23,7 +23,7 @@ class NPTimedelta(_ArrayCommonMixin):
     @overload
     def __new__(
         cls,
-        data: sgt._ArrayLikeTD64_co,
+        obj: sgt._ArrayLikeTD64_co,
         /,
         dtype: sgt._DtypeLikeTD = "timedelta64[D]",
         *,
@@ -34,15 +34,15 @@ class NPTimedelta(_ArrayCommonMixin):
         """
         新しい配列オブジェクトインスタンスを生成する
 
-        :param data: 変換する配列を指定する
-        :type data: 任意のtimedelta64型を持つ配列のようなオブジェクト
+        :param obj: 変換する配列を指定する
+        :type obj: 任意のtimedelta64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: np.timedelta64 | _TD64Codes_All
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
@@ -51,7 +51,7 @@ class NPTimedelta(_ArrayCommonMixin):
     @overload
     def __new__(
         cls,
-        data: sgt._ArrayLikeTD64_co,
+        obj: sgt._ArrayLikeTD64_co,
         /,
         dtype: sgt._DtypeLikeTD = "timedelta64[D]",
         *,
@@ -61,13 +61,13 @@ class NPTimedelta(_ArrayCommonMixin):
         """
         新しい配列オブジェクトインスタンスを生成する
 
-        :param data: 変換する配列を指定する
-        :type data: 任意のtimedelta64型を持つ配列のようなオブジェクト
+        :param obj: 変換する配列を指定する
+        :type obj: 任意のtimedelta64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: np.timedelta64 | _TD64Codes_All
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
@@ -123,7 +123,7 @@ class NPTimedelta(_ArrayCommonMixin):
 
         :param dtype: 変換後に使用するデータ型を指定する
         :type dtype: _DtypeLikeTD
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
@@ -138,7 +138,7 @@ class NPTimedelta(_ArrayCommonMixin):
 
         :param dtype: 変換後に使用するデータ型を指定する
         :type dtype: _DTypeLike[ScalarT]
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
@@ -151,7 +151,7 @@ class NPTimedelta(_ArrayCommonMixin):
 
         :param dtype: 変換後に使用するデータ型を指定する
         :type dtype: DTypeNLike
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる

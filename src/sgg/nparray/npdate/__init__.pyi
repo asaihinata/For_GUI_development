@@ -21,7 +21,7 @@ class NPDate(_ArrayCommonMixin):
     @overload
     def __new__(
         cls,
-        data: sgt._ArrayLikeDT64_co,
+        obj: sgt._ArrayLikeDT64_co,
         /,
         dtype: sgt._DtypeLikeDT = "datetime64[D]",
         localtime: bool = False,
@@ -33,8 +33,8 @@ class NPDate(_ArrayCommonMixin):
         """
         新しい日付の配列オブジェクトインスタンスを生成する
 
-        :param data: 変換する配列を指定する
-        :type data: 任意のdatetime64型を持つ配列のようなオブジェクト
+        :param obj: 変換する配列を指定する
+        :type obj: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
         :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
@@ -43,7 +43,7 @@ class NPDate(_ArrayCommonMixin):
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
@@ -52,7 +52,7 @@ class NPDate(_ArrayCommonMixin):
     @overload
     def __new__(
         cls,
-        data: Any,
+        obj: Any,
         /,
         dtype: Any | sgt._DtypeLikeDT | None = None,
         localtime: bool = False,
@@ -64,8 +64,8 @@ class NPDate(_ArrayCommonMixin):
         """
         新しい日付の配列オブジェクトインスタンスを生成する
 
-        :param data: 変換する配列を指定する
-        :type data: 任意のdatetime64型を持つ配列のようなオブジェクト
+        :param obj: 変換する配列を指定する
+        :type obj: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: Any
         :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
@@ -74,7 +74,7 @@ class NPDate(_ArrayCommonMixin):
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
         :type max_ndim: int | None
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
@@ -83,7 +83,7 @@ class NPDate(_ArrayCommonMixin):
     @overload
     def __new__(
         cls,
-        data: sgt._ArrayLikeDT64_co,
+        obj: sgt._ArrayLikeDT64_co,
         /,
         dtype: sgt._DtypeLikeDT = "datetime64[D]",
         localtime: bool = False,
@@ -94,15 +94,15 @@ class NPDate(_ArrayCommonMixin):
         """
         新しい日付の配列オブジェクトインスタンスを生成する
 
-        :param data: 変換する配列を指定する
-        :type data: 任意のdatetime64型を持つ配列のようなオブジェクト
+        :param obj: 変換する配列を指定する
+        :type obj: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
         :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
         :type localtime: bool
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
@@ -111,7 +111,7 @@ class NPDate(_ArrayCommonMixin):
     @overload
     def __new__(
         cls,
-        data: Any,
+        obj: Any,
         /,
         dtype: Any | sgt._DtypeLikeDT | None = None,
         localtime: bool = False,
@@ -122,15 +122,15 @@ class NPDate(_ArrayCommonMixin):
         """
         新しい日付の配列オブジェクトインスタンスを生成する
 
-        :param data: 変換する配列を指定する
-        :type data: 任意のdatetime64型を持つ配列のようなオブジェクト
+        :param obj: 変換する配列を指定する
+        :type obj: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: Any
         :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
         :type localtime: bool
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
@@ -206,7 +206,7 @@ class NPDate(_ArrayCommonMixin):
 
         :param dtype: 変換後に使用するデータ型を指定する
         :type dtype: _DtypeLikeDT
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
@@ -221,7 +221,7 @@ class NPDate(_ArrayCommonMixin):
 
         :param dtype: 変換後に使用するデータ型を指定する
         :type dtype: _DTypeLike[ScalarT]
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
@@ -234,7 +234,7 @@ class NPDate(_ArrayCommonMixin):
 
         :param dtype: 変換後に使用するデータ型を指定する
         :type dtype: DTypeNLike
-        :param copy: `data`から独立したコピーを作成するか指定する
+        :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる
         :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる

@@ -28,16 +28,16 @@ class _ArrayCommonMixin(np.ndarray):
         size = self.size
         if size == 0:
             raise IndexError("空の配列にはアクセスできません")
-        data = self.data.flatten()
+        obj = self.data.flatten()
         if isinstance(key, int):
             if key == size:
-                return data[size - 1]
+                return obj[size - 1]
             elif -size <= key < size:
-                return data[key]
+                return obj[key]
             else:
-                return data[key % size]
+                return obj[key % size]
         elif isinstance(key, slice):
-            return data[key]
+            return obj[key]
         raise TypeError("keyにはintまたはsliceを指定してください")
 
     def __iter__(self):

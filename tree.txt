@@ -24,7 +24,6 @@ For_GUI_development
  │   └── templates
  │       └── py_document_text.mustache
  ├── pyproject.toml
- ├── pyrightconfig.json
  ├── src
  │   ├── sgg
  │   │   ├── __init__.py
@@ -457,5 +456,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:317
+ファイル数:316
 フォルダ数:141

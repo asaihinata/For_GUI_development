@@ -33,7 +33,7 @@ class _ArrayCommonMixin(np.ndarray):
         `-size <= key < size` の範囲内であれば通常のPythonのインデックス規則
         (負のインデックスは末尾からの参照)に従う。この範囲外のインデックスは
         正負を問わずモジュロ演算(`key % size`)によって折り返してアクセスする。
-        ただし`key == size`の場合のみ,末尾の要素(`data[size - 1]`)を返す
+        ただし`key == size`の場合のみ,末尾の要素(`obj[size - 1]`)を返す
         特別な扱いとする。
 
         :param key: インデックスまたはスライスを指定する

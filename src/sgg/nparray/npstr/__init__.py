@@ -17,7 +17,7 @@ class NPString(_ArrayCommonMixin):
 
     def __new__(
         cls,
-        data,
+        obj,
         /,
         dtype=np.str_,
         *,
@@ -29,11 +29,11 @@ class NPString(_ArrayCommonMixin):
         if not isinstance(copy, bool):
             copy = True
         if dtype is None:
-            obj = np.asarray(data, copy=copy).view(cls)
+            obj = np.asarray(obj, copy=copy).view(cls)
             resolved = obj.dtype
         else:
             resolved = cls._resolve_dtype(dtype)
-            obj = np.asarray(data, dtype=resolved, copy=copy).view(cls)
+            obj = np.asarray(obj, dtype=resolved, copy=copy).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         if isinstance(d_ndim, int):
