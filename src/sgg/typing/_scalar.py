@@ -6,23 +6,23 @@ import numpy as np
 
 __all__ = [
     "_BoolScalar",
-    "_DateArangeScalar",
     "_DateWordScalar",
-    "_FloatLike_co",
-    "_IntLike_co",
+    "_DT64Scalar",
+    "_FloatScalar",
+    "_IntScalar",
     "_NumberScalar",
     "_RealNumeric_co",
-    "_TD64Like_co",
-    "IntScalar",
+    "_StringScalar",
+    "_TD64Scalar",
 ]
 type _BoolScalar = bool | np.bool | np.bool_
-type _IntLike_co = int | SupportsInt | np.integer | _BoolScalar
-type IntScalar = _IntLike_co
-type _FloatLike_co = float | SupportsFloat | np.floating | np.unsignedinteger | _IntLike_co
-type _RealNumeric_co = _FloatLike_co
+type _IntScalar = int | SupportsInt | np.integer | _BoolScalar
+type _FloatScalar = float | SupportsFloat | np.floating | np.unsignedinteger | _IntScalar
+type _RealNumeric_co = _FloatScalar
 type _NumberScalar = Number | SupportsInt | SupportsFloat | SupportsComplex | np.number | _BoolScalar
+type _StringScalar = np.character | str | bytes
 type _DateWordScalar = Literal[
     "TODAY", "today", b"TODAY", b"today", "NOW", "now", b"NOW", b"now"
 ]
-type _DateArangeScalar = _DateWordScalar | str | np.str_ | datetime | date | np.datetime64
-type _TD64Like_co = timedelta | _IntLike_co
+type _DT64Scalar = _DateWordScalar | str | np.str_ | datetime | date | np.datetime64
+type _TD64Scalar = timedelta | _IntScalar

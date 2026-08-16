@@ -171,7 +171,7 @@ class NPNumber(_ArrayCommonMixin):
     def __neg__(self) -> NPNumber: ...
     def __abs__(self) -> NPNumber: ...
     @overload
-    def __getitem__(self, key: sgt.IntScalar) -> np.number:
+    def __getitem__(self, key: sgt._IntScalar) -> np.number:
         """
         インデックスアクセスをカスタマイズする
 
@@ -242,7 +242,7 @@ class NPNumber(_ArrayCommonMixin):
 
     def percentile(
         self,
-        q: npt._FloatLike_co,
+        q: npt._FloatScalar,
         axis: sgt.Typeaxis = None,
         method: TYPEMETHOD = "linear",
     ) -> NPNumber:
@@ -259,7 +259,7 @@ class NPNumber(_ArrayCommonMixin):
 
     def quantile(
         self,
-        q: npt._FloatLike_co,
+        q: npt._FloatScalar,
         axis: sgt.Typeaxis = None,
         method: TYPEMETHOD = "linear",
     ) -> NPNumber:
@@ -589,8 +589,8 @@ class NPNumber(_ArrayCommonMixin):
     def uniform(
         cls,
         /,
-        low: npt._FloatLike_co = 0.0,
-        high: npt._FloatLike_co = 1.0,
+        low: npt._FloatScalar = 0.0,
+        high: npt._FloatScalar = 1.0,
         size: sgt._AnyShape | None = None,
         dtype: sgt._DTypeLikeFloat | None = None,
         seed: sgt._Seed = None,
@@ -609,8 +609,8 @@ class NPNumber(_ArrayCommonMixin):
     def normal(
         cls,
         /,
-        loc: npt._FloatLike_co = 0.0,
-        scale: npt._FloatLike_co = 1.0,
+        loc: npt._FloatScalar = 0.0,
+        scale: npt._FloatScalar = 1.0,
         size: sgt._AnyShape | None = None,
         dtype: sgt._DTypeLikeFloat | None = None,
         seed: sgt._Seed = None,
@@ -651,7 +651,7 @@ class NPNumber(_ArrayCommonMixin):
     def logseries(
         cls,
         /,
-        p: npt._FloatLike_co,
+        p: npt._FloatScalar,
         size: sgt._AnyShape | None = None,
         dtype: sgt._DTypeLikeFloat | None = None,
         seed: sgt._Seed = None,
@@ -667,6 +667,26 @@ class NPNumber(_ArrayCommonMixin):
 
     def tonumpy(self, copy: bool | None = None) -> sgt.NDNumber:
         """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
+
+    @classmethod
+    def full(
+        cls,
+        fill_value: sgt._NumberScalar,
+        shape: sgt._ShapeInt,
+        dtype: sgt._NumericDTypeLike = None,
+    ) -> NPNumber:
+        """
+        指定された形状と配列の型で`fill_value`で埋められた配列のオブジェクトを返す
+
+        :param fill_value: 配列内に埋めるスカラー値を指定する
+        :type fill_value: _NumberScalar
+        :param shape: 配列の形状を指定する
+        :type shape: int | tuple[int, ...]
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: _NumericDTypeLike
+        :raises ValueError: `fill_value`にスカラー値で指定しなかった場合に発生させる
+        :raises ShapeError: `shape`で正しい値ではない場合に発生させる
+        """
     # dtype
     @property
     def types(self) -> type[np.number]: ...

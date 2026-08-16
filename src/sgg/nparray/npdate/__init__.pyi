@@ -24,7 +24,7 @@ class NPDate(_ArrayCommonMixin):
         obj: sgt._ArrayLikeDT64_co,
         /,
         dtype: sgt._DtypeLikeDT = "datetime64[D]",
-        localtime: bool = False,
+        timezone: sgt.Type_Timezone = False,
         *,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -37,8 +37,8 @@ class NPDate(_ArrayCommonMixin):
         :type obj: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
-        :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
-        :type localtime: bool
+        :param timezone: 日付のタイムゾーンを指定する
+        :type timezone: Type_Timezone
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
@@ -180,7 +180,7 @@ class NPDate(_ArrayCommonMixin):
     def __int__(self) -> int | NoReturn: ...
     def __float__(self) -> float | NoReturn: ...
     @overload
-    def __getitem__(self, key: sgt.IntScalar) -> datetime64:
+    def __getitem__(self, key: sgt._IntScalar) -> datetime64:
         """
         インデックスアクセスをカスタマイズする
 
@@ -293,10 +293,10 @@ class NPDate(_ArrayCommonMixin):
     @classmethod
     def arange(
         cls,
-        start: sgt._DateArangeScalar,
-        stop: sgt._DateArangeScalar,
+        start: sgt._DT64Scalar,
+        stop: sgt._DT64Scalar,
         /,
-        step: sgt._TD64Like_co | None = 1,
+        step: sgt._TD64Scalar | None = 1,
         dtype: sgt._DT64Codes_All | None = "D",
         endpoint: bool = False,
     ) -> NPDate:
@@ -319,8 +319,8 @@ class NPDate(_ArrayCommonMixin):
     @classmethod
     def linspace(
         cls,
-        start: sgt._DateArangeScalar,
-        stop: sgt._DateArangeScalar,
+        start: sgt._DT64Scalar,
+        stop: sgt._DT64Scalar,
         /,
         num: SupportsIndex = 50,
         endpoint: bool = True,
@@ -351,8 +351,8 @@ class NPDate(_ArrayCommonMixin):
     @classmethod
     def linspace(
         cls,
-        start: sgt._DateArangeScalar,
-        stop: sgt._DateArangeScalar,
+        start: sgt._DT64Scalar,
+        stop: sgt._DT64Scalar,
         /,
         num: SupportsIndex = 50,
         endpoint: bool = True,
@@ -452,6 +452,29 @@ class NPDate(_ArrayCommonMixin):
 
     def tonumpy(self, copy: bool | None = None) -> sgt.NDDatetime64:
         """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
+
+    @classmethod
+    def full(
+        cls,
+        fill_value: sgt._DT64Scalar,
+        shape: sgt._ShapeInt,
+        dtype: sgt._DtypeLikeDT | None = None,
+        timezone: sgt.Type_Timezone | None = None,
+    ) -> NPDate:
+        """
+        指定された形状と配列の型で`fill_value`で埋められた配列のオブジェクトを返す
+
+        :param fill_value: 配列内に埋めるスカラー値を指定する
+        :type fill_value: _DT64Scalar
+        :param shape: 配列の形状を指定する
+        :type shape: int | tuple[int, ...]
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: _DtypeLikeDT | None
+        :param timezone: 日付のタイムゾーンを指定する
+        :type timezone: Type_Timezone | None
+        :raises ValueError: `fill_value`にスカラー値で指定しなかった場合に発生させる
+        :raises ShapeError: `shape`で正しい値ではない場合に発生させる
+        """
     # random
     def choice(
         self,

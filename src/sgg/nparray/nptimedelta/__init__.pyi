@@ -113,7 +113,7 @@ class NPTimedelta(_ArrayCommonMixin):
     @overload
     def __truediv__(self, value: Any) -> NoReturn: ...
     @overload
-    def __getitem__(self, key: sgt.IntScalar) -> timedelta64:
+    def __getitem__(self, key: sgt._IntScalar) -> timedelta64:
         """
         インデックスアクセスをカスタマイズする
 
@@ -195,6 +195,26 @@ class NPTimedelta(_ArrayCommonMixin):
 
     def tonumpy(self, copy: bool | None = None) -> sgt.NDTimedelta64:
         """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
+
+    @classmethod
+    def full(
+        cls,
+        fill_value: sgt._TD64Scalar,
+        shape: sgt._ShapeInt,
+        dtype: sgt._DtypeLikeTD | None = None,
+    ) -> NPTimedelta:
+        """
+        指定された形状と配列の型で`fill_value`で埋められた配列のオブジェクトを返す
+
+        :param fill_value: 配列内に埋めるスカラー値を指定する
+        :type fill_value: _TD64Scalar
+        :param shape: 配列の形状を指定する
+        :type shape: int | tuple[int, ...]
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: _DtypeLikeTD | None
+        :raises ValueError: `fill_value`にスカラー値で指定しなかった場合に発生させる
+        :raises ShapeError: `shape`で正しい値ではない場合に発生させる
+        """
 
     def choice(
         self,

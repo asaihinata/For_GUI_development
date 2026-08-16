@@ -79,7 +79,7 @@ class NPBool(_ArrayCommonMixin):
         """配列内の真偽値を反転させる"""
 
     @overload
-    def __getitem__(self, key: sgt.IntScalar) -> np.bool | np.bool_:
+    def __getitem__(self, key: sgt._IntScalar) -> np.bool | np.bool_:
         """
         インデックスアクセスをカスタマイズする
 
@@ -137,6 +137,26 @@ class NPBool(_ArrayCommonMixin):
 
     def tonumpy(self, copy: bool | None = None) -> sgt.NDBools:
         """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
+
+    @classmethod
+    def full(
+        cls,
+        fill_value: sgt._BoolScalar,
+        shape: sgt._ShapeInt,
+        dtype: sgt._BoolDTypeLike | None = None,
+    ) -> NPBool:
+        """
+        指定された形状と配列の型で`fill_value`で埋められた配列のオブジェクトを返す
+
+        :param fill_value: 配列内に埋めるスカラー値を指定する
+        :type fill_value: _BoolScalar
+        :param shape: 配列の形状を指定する
+        :type shape: int | tuple[int, ...]
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: _BoolDTypeLike | None
+        :raises ValueError: `fill_value`にスカラー値で指定しなかった場合に発生させる
+        :raises ShapeError: `shape`で正しい値ではない場合に発生させる
+        """
 
     @overload
     def astype(self, dtype: sgt._BoolDTypeLike, copy: bool = True) -> NPBool:

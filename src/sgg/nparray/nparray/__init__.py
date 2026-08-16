@@ -54,17 +54,6 @@ class NPArray(_ArrayCommonMixin):
         return result
 
     @classmethod
-    def full(cls, fill_value, shape, dtype=None):
-        if not _arrisuint(shape):
-            raise ShapeError(shape)
-        result = np.asarray(np.full(shape, fill_value, dtype=dtype)).view(cls)
-        if dtype is None:
-            result._dtype = result.dtype
-        else:
-            result._dtype = dtype
-        return result
-
-    @classmethod
     def sequential(cls, shape):
         if not _arrisuint(shape):
             raise ShapeError(shape)

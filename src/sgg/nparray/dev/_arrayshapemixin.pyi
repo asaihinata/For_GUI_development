@@ -22,7 +22,7 @@ class _ArrayCommonMixin(np.ndarray):
     def __len__(self) -> int: ...
     def __reversed__(self) -> Self: ...
     @overload
-    def __getitem__(self, key: sgt.IntScalar) -> Any:
+    def __getitem__(self, key: sgt._IntScalar) -> Any:
         """
         インデックスアクセスをカスタマイズする
 

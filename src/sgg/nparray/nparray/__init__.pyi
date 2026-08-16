@@ -75,21 +75,6 @@ class NPArray(_ArrayCommonMixin):
         """NPArrayで許可されている型を取得する"""
 
     @classmethod
-    def full(
-        cls, fill_value: Any, shape: sgt._ShapeInt, dtype: _DTypeLike | None = None
-    ) -> NPArray:
-        """
-        指定された形状と配列の型で,`fill_value`で埋める
-
-        :param fill_value: 配列内に埋めるスカラー値を指定する
-        :type fill_value: スカラー値
-        :param shape: 配列の形状を指定する
-        :type shape: int | tuple[int, ...]
-        :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: _DTypeLike | None
-        """
-
-    @classmethod
     def sequential(cls, shape: sgt._ShapeInt) -> NPArray:
         """
         連続した整数値を要素に持つ配列を生成する
@@ -114,6 +99,26 @@ class NPArray(_ArrayCommonMixin):
 
     def EType(self) -> NPArray:
         """配列内の要素の型を調べる"""
+
+    @classmethod
+    def full(
+        cls,
+        fill_value: Any,
+        shape: sgt._ShapeInt,
+        dtype: _DTypeLike | None = None,
+    ) -> NPArray:
+        """
+        指定された形状と配列の型で`fill_value`で埋められた配列のオブジェクトを返す
+
+        :param fill_value: 配列内に埋めるスカラー値を指定する
+        :type fill_value: Any
+        :param shape: 配列の形状を指定する
+        :type shape: int | tuple[int, ...]
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: _DTypeLike | None
+        :raises ValueError: `fill_value`にスカラー値で指定しなかった場合に発生させる
+        :raises ShapeError: `shape`で正しい値ではない場合に発生させる
+        """
 
     @overload
     def astype[ScalarT: np.generic](

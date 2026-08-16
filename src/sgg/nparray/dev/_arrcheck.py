@@ -10,6 +10,7 @@ __all__ = [
     "_arrisuint",
     "_int_co_check",
     "_normalize_axis",
+    "_to_np_scalar",
 ]
 
 
@@ -43,3 +44,10 @@ def _normalize_axis(axis, ndim, argname=None, allow_duplicate=False):
         else:
             raise ValueError("軸が繰り返しです")
     return axis
+
+
+def _to_np_scalar(value):
+    obj = np.asarray(value)
+    if obj.ndim == 0:
+        return obj[()]
+    raise ValueError(f"{value}がスカラー値ではありません")

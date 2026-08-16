@@ -1,6 +1,10 @@
 import numpy as np
 from numpy._core.fromnumeric import _wrapfunc
 
+from sgg.exceptions import ShapeError
+
+from ._arrcheck import _arrisuint, _to_np_scalar
+
 __all__ = ["_ArrayCommonMixin"]
 
 
@@ -176,6 +180,14 @@ class _ArrayCommonMixin(np.ndarray):
     def roll(self, shift, axis=None):
         result = np.roll(np.asarray(self), shift, axis).view(type(self))
         result._dtype = self._dtype
+        return result
+
+    @classmethod
+    def full(cls, fill_value, shape, dtype=None):
+        _to_np_scalar(fill_value)
+        if not _arrisuint(shape):
+            raise ShapeError(shape)
+        result = cls(np.full(shape, fill_value), dtype=dtype)
         return result
 
     def rot90(self, k=1, axes=(0, 1)):

@@ -1,12 +1,14 @@
 from datetime import date, datetime, timedelta
-from typing import Self
 from zoneinfo import ZoneInfo
 
 import numpy as np
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 
-from ..dev import _ArrayCommonMixin, _dt64_unit, _get_dt64_unit, _tm64_unit
+from sgg.exceptions import ShapeError
+
+from ..dev import (_ArrayCommonMixin, _arrisuint, _dt64_unit, _get_dt64_unit,
+                   _tm64_unit, _to_np_scalar)
 
 __all__ = ["NPDate"]
 _Word = [
@@ -38,7 +40,7 @@ class NPDate(_ArrayCommonMixin):
         obj,
         /,
         dtype="datetime64[D]",
-        localtime=False,
+        timezone=None,
         *,
         d_ndim=None,
         min_ndim=None,
@@ -58,15 +60,18 @@ class NPDate(_ArrayCommonMixin):
 
         if not isinstance(copy, bool):
             copy = True
-        resolved = cls._resolve_dtype(_dt64_unit(dtype))
+        if dtype is None:
+            resolved = cls._resolve_dtype("datetime64[D]")
+        else:
+            resolved = cls._resolve_dtype(_dt64_unit(dtype))
         obj = np.vectorize(_func, otypes=[resolved])(np.asarray(obj))
         obj = np.asarray(obj, copy=copy).view(cls)
-        if localtime:
+        obj._dtype = resolved
+        if timezone != ZoneInfo("UTC"):
             try:
-                obj = obj + _local_utc_difference(dtype)
+                obj = obj + _local_utc_difference(resolved, timezone)
             except OverflowError as e:
                 raise OverflowError(e)
-        obj._dtype = resolved
         if isinstance(d_ndim, int):
             cls._validate_ndim(obj, d_ndim, d_ndim)
             obj._min_ndim = obj._max_ndim = d_ndim
@@ -358,6 +363,20 @@ class NPDate(_ArrayCommonMixin):
             return dy
         return dy[(place) : (len(dy) - 1)]
 
+    @classmethod
+    def full(
+        cls,
+        fill_value,
+        shape,
+        dtype="datetime64[D]",
+        timezone=None,
+    ):
+        _to_np_scalar(fill_value)
+        if not _arrisuint(shape):
+            raise ShapeError(shape)
+        result = cls(np.full(shape, fill_value), dtype=dtype, timezone=timezone)
+        return result
+
 
 def _obj_to_datetime64(obj, dtype):
     if isinstance(obj, str):
@@ -383,7 +402,13 @@ def _to_datetime64(value):
     return value
 
 
-def _local_utc_difference(dtype):
-    return np.timedelta64(
-        datetime.now().astimezone().utcoffset(), _get_dt64_unit(dtype)
-    )
+def _local_utc_difference(dtype, timezone=None):
+    if timezone is None:
+        return np.timedelta64(
+            datetime.now().astimezone().utcoffset(), _get_dt64_unit(dtype)
+        )
+    if not isinstance(timezone, str | ZoneInfo):
+        raise TypeError
+    elif isinstance(timezone, str):
+        timezone = ZoneInfo(timezone)
+    return np.timedelta64(datetime.now(timezone).utcoffset(), _get_dt64_unit(dtype))

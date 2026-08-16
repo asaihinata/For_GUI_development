@@ -26,7 +26,10 @@ class NPTimedelta(_ArrayCommonMixin):
     ):
         if not isinstance(copy, bool):
             copy = True
-        resolved = cls._resolve_dtype(_tm64_unit(dtype))
+        if dtype is None:
+            resolved = cls._resolve_dtype("timedelta64[D]")
+        else:
+            resolved = cls._resolve_dtype(_tm64_unit(dtype))
         obj = np.asarray(obj, dtype=resolved, copy=copy).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved

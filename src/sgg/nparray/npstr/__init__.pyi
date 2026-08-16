@@ -102,7 +102,7 @@ class NPString(_ArrayCommonMixin):
     __imul__ = __mul__
     __rmul__ = __mul__
     @overload
-    def __getitem__(self, key: sgt.IntScalar) -> np.character | StringDType:
+    def __getitem__(self, key: sgt._IntScalar) -> np.character | StringDType:
         """
         インデックスアクセスをカスタマイズする
 
@@ -417,6 +417,26 @@ class NPString(_ArrayCommonMixin):
 
     def tonumpy(self, copy: bool | None = None) -> sgt.NDString:
         """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
+
+    @classmethod
+    def full(
+        cls,
+        fill_value: sgt._StringScalar,
+        shape: sgt._ShapeInt,
+        dtype: sgt._StringsDTypeLike | None = None,
+    ) -> NPString:
+        """
+        指定された形状と配列の型で`fill_value`で埋められた配列のオブジェクトを返す
+
+        :param fill_value: 配列内に埋めるスカラー値を指定する
+        :type fill_value: _StringScalar
+        :param shape: 配列の形状を指定する
+        :type shape: int | tuple[int, ...]
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: _StringsDTypeLike | None
+        :raises ValueError: `fill_value`にスカラー値で指定しなかった場合に発生させる
+        :raises ShapeError: `shape`で正しい値ではない場合に発生させる
+        """
     # random
     def choice(
         self,
