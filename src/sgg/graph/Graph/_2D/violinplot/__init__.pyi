@@ -3,7 +3,7 @@ from typing import Callable, Literal
 from matplotlib.collections import Collection
 from matplotlib.mlab import GaussianKDE
 
-from sgg.typing import *
+from sgg._typing import *
 
 from .._2gset import _2Gset
 

@@ -7,7 +7,7 @@ import numpy as np
 from numpy import dtype, timedelta64
 from numpy._typing import NDArray, _DTypeLike
 
-import sgg.typing as sgt
+import sgg._typing as sgt
 
 from ..dev import _ArrayCommonMixin
 from ..npdate import NPDate

@@ -1,6 +1,6 @@
 from matplotlib.container import ErrorbarContainer
 
-from sgg.typing import *
+from sgg._typing import *
 
 from .._2gset import _2Gset
 

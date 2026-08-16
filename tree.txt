@@ -28,6 +28,15 @@ For_GUI_development
  │   ├── sgg
  │   │   ├── __init__.py
  │   │   ├── __init__.pyi
+ │   │   ├── _typing
+ │   │   │   ├── __init__.py
+ │   │   │   ├── _array_date_unit.py
+ │   │   │   ├── _array_dtype.py
+ │   │   │   ├── _arraylike.py
+ │   │   │   ├── _kwarg.py
+ │   │   │   ├── _scalar.py
+ │   │   │   ├── _timezone.py
+ │   │   │   └── _widget.py
  │   │   ├── dev
  │   │   │   ├── __init__.py
  │   │   │   ├── _darray.py
@@ -270,16 +279,8 @@ For_GUI_development
  │   │   │       └── __init__.pyi
  │   │   ├── testing
  │   │   │   ├── __init__.py
- │   │   │   └── _dtype.py
- │   │   ├── typing
- │   │   │   ├── __init__.py
- │   │   │   ├── _array_date_unit.py
- │   │   │   ├── _array_dtype.py
- │   │   │   ├── _arraylike.py
- │   │   │   ├── _kwarg.py
- │   │   │   ├── _scalar.py
- │   │   │   ├── _timezone.py
- │   │   │   └── _widget.py
+ │   │   │   ├── _dtype.py
+ │   │   │   └── _timezone.py
  │   │   ├── version.py
  │   │   └── widget
  │   │       ├── __init__.py
@@ -459,5 +460,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:318
+ファイル数:319
 フォルダ数:142

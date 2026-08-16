@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib.collections import QuadMesh
 from numpy.typing import ArrayLike
 
-from sgg.typing import *
+from sgg._typing import *
 
 from .._2gset import _2Gset
 

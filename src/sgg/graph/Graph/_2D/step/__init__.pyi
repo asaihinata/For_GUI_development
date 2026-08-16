@@ -2,7 +2,7 @@ from typing import Literal
 
 from matplotlib.patches import StepPatch
 
-from sgg.typing import *
+from sgg._typing import *
 
 from .._2gset import _2Gset
 

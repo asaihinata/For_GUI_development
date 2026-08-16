@@ -2,7 +2,7 @@ from typing import overload
 
 from matplotlib.lines import Line2D
 
-from sgg.typing import *
+from sgg._typing import *
 
 from .._Polarset import _polarset
 

@@ -6,7 +6,7 @@ from typing import Any, Callable, Literal, Unpack, overload
 from matplotlib.mlab import GaussianKDE
 from numpy.typing import ArrayLike
 
-import sgg.typing as sgt
+import sgg._typing as sgt
 
 from .dialogs import *
 from .exceptions import *
@@ -20,11 +20,11 @@ from .widget import *
 __all__: list[str] = (
     ["__version__", "Guis", "Getcsv", "Getfont", "Getjosn"]
     + getattr(dialogs, "__all__", [])
+    + getattr(exceptions, "__all__", [])
     + getattr(graph, "__all__", [])
     + getattr(nparray, "__all__", [])
     + getattr(testing, "__all__", [])
     + getattr(widget, "__all__", [])
-    + getattr(exceptions, "__all__", [])
 )
 
 class Guis:

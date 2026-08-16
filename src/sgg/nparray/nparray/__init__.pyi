@@ -3,7 +3,7 @@ from typing import Any, overload
 import numpy as np
 from numpy._typing import _DTypeLike
 
-import sgg.typing as sgt
+import sgg._typing as sgt
 
 from ..dev import _ArrayCommonMixin
 

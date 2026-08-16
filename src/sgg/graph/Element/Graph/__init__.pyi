@@ -10,7 +10,7 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import ndarray
 
 from sgg.graph.style import getLabel
-from sgg.typing import ColorType
+from sgg._typing import ColorType
 
 __all__ = ["GElement"]
 

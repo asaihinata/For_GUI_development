@@ -1,6 +1,6 @@
 from typing import Literal, TypedDict
 
-from sgg.typing import ColorTypeN
+from sgg._typing import ColorTypeN
 
 __all__ = [
     "Dict_G_2DGraph",

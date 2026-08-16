@@ -465,7 +465,7 @@ class NPNumber(_ArrayCommonMixin):
         return result
 
     @classmethod
-    def randint(
+    def integers(
         cls, low, high=None, size=None, dtype=np.int64, endpoint=False, seed=None
     ):
         dtype, kind = _dtype_check(dtype, True)

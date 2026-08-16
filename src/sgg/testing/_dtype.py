@@ -56,20 +56,44 @@ testing_Int16Codes = ["int16", "short", "h", "i2", "|i2", "=i2", "<i2", ">i2"]
 testing_Int32Codes = ["int32", "i4", "|i4", "=i4", "<i4", ">i4"]
 testing_Int64Codes = ["int64", "i8", "|i8", "=i8", "<i8", ">i8"]
 
-testing_UInt8Codes = ["uint8", "ubyte", "B", "u1", "|u1", "=u1", "<u1", ">u1"]
-testing_UInt16Codes = ["uint16", "ushort", "H", "u2", "|u2", "=u2", "<u2", ">u2"]
-testing_UInt32Codes = ["uint32", "u4", "|u4", "=u4", "<u4", ">u4"]
-testing_UInt64Codes = ["uint64", "u8", "|u8", "=u8", "<u8", ">u8"]
-
 testing_IntCCodes = ["intc", "i", "|i", "=i", "<i", ">i"]
 testing_LongCodes = ["long", "l", "|l", "=l", "<l", ">l"]
 testing_LongLongCodes = ["longlong", "q", "|q", "=q", "<q", ">q"]
 testing_IntPCodes = ["intp", "int", "int_", "n", "|n", "=n", "<n", ">n"]
 
+testing_SignedIntegerCodes = (
+    testing_Int8Codes
+    + testing_Int16Codes
+    + testing_Int32Codes
+    + testing_Int64Codes
+    + testing_IntCCodes
+    + testing_LongCodes
+    + testing_LongLongCodes
+    + testing_IntPCodes
+)
+
+testing_UInt8Codes = ["uint8", "ubyte", "B", "u1", "|u1", "=u1", "<u1", ">u1"]
+testing_UInt16Codes = ["uint16", "ushort", "H", "u2", "|u2", "=u2", "<u2", ">u2"]
+testing_UInt32Codes = ["uint32", "u4", "|u4", "=u4", "<u4", ">u4"]
+testing_UInt64Codes = ["uint64", "u8", "|u8", "=u8", "<u8", ">u8"]
+
 testing_UIntCCodes = ["uintc", "I", "|I", "=I", "<I", ">I"]
 testing_ULongCodes = ["ulong", "L", "|L", "=L", "<L", ">L"]
 testing_ULongLongCodes = ["ulonglong", "Q", "|Q", "=Q", "<Q", ">Q"]
 testing_UIntPCodes = ["uintp", "uint", "N", "|N", "=N", "<N", ">N"]
+
+testing_UnsignedIntegerCodes = (
+    testing_UInt8Codes
+    + testing_UInt16Codes
+    + testing_UInt32Codes
+    + testing_UInt64Codes
+    + testing_UIntCCodes
+    + testing_ULongCodes
+    + testing_ULongLongCodes
+    + testing_UIntPCodes
+)
+
+testing_IntegerCodes = testing_UnsignedIntegerCodes + testing_SignedIntegerCodes
 
 testing_Float16Codes = ["float16", "half", "e", "f2", "|f2", "=f2", "<f2", ">f2"]
 testing_Float32Codes = ["float32", "single", "f", "f4", "|f4", "=f4", "<f4", ">f4"]
@@ -87,6 +111,13 @@ testing_Float64Codes = [
 
 testing_LongDoubleCodes = ["longdouble", "g", "|g", "=g", "<g", ">g"]
 
+testing_FloatingCodes = (
+    testing_Float16Codes
+    + testing_Float32Codes
+    + testing_Float64Codes
+    + testing_LongDoubleCodes
+)
+
 testing_Complex64Codes = ["complex64", "csingle", "F", "c8", "|c8", "=c8", "<c8", ">c8"]
 
 testing_Complex128Codes = [
@@ -101,11 +132,25 @@ testing_Complex128Codes = [
     ">c16",
 ]
 
+
 testing_CLongDoubleCodes = ["clongdouble", "G", "|G", "=G", "<G", ">G"]
 
-testing_StrCodes = ["str", "str_", "unicode", "U", "|U", "=U", "<U", ">U"]
+testing_ComplexFloatingCodes = (
+    testing_Complex64Codes + testing_Complex128Codes + testing_CLongDoubleCodes
+)
+
+testing_InexactCodes = testing_FloatingCodes + testing_ComplexFloatingCodes
+testing_NumberCodes = testing_IntegerCodes + testing_InexactCodes
+
 testing_BytesCodes = ["bytes", "bytes_", "S", "|S", "=S", "<S", ">S"]
+testing_StrCodes = ["str", "str_", "unicode", "U", "|U", "=U", "<U", ">U"]
+
+testing_CharacterCodes = testing_BytesCodes + testing_StrCodes
+
 testing_VoidCodes = ["void", "V", "|V", "=V", "<V", ">V"]
+
+testing_FlexibleCodes = testing_CharacterCodes + testing_VoidCodes
+
 testing_ObjectCodes = ["object", "object_", "O", "|O", "=O", "<O", ">O"]
 
 # datetime64
@@ -302,42 +347,6 @@ testing_TD64Codes = (
 )
 
 testing_StringCodes = ["T", "|T", "=T", "<T", ">T"]
-
-testing_SignedIntegerCodes = (
-    testing_Int8Codes
-    + testing_Int16Codes
-    + testing_Int32Codes
-    + testing_Int64Codes
-    + testing_IntCCodes
-    + testing_LongCodes
-    + testing_LongLongCodes
-    + testing_IntPCodes
-)
-testing_UnsignedIntegerCodes = (
-    testing_UInt8Codes
-    + testing_UInt16Codes
-    + testing_UInt32Codes
-    + testing_UInt64Codes
-    + testing_UIntCCodes
-    + testing_ULongCodes
-    + testing_ULongLongCodes
-    + testing_UIntPCodes
-)
-testing_FloatingCodes = (
-    testing_Float16Codes
-    + testing_Float32Codes
-    + testing_Float64Codes
-    + testing_LongDoubleCodes
-)
-testing_ComplexFloatingCodes = (
-    testing_Complex64Codes + testing_Complex128Codes + testing_CLongDoubleCodes
-)
-testing_IntegerCodes = testing_UnsignedIntegerCodes + testing_SignedIntegerCodes
-testing_InexactCodes = testing_FloatingCodes + testing_ComplexFloatingCodes
-testing_NumberCodes = testing_IntegerCodes + testing_InexactCodes
-
-testing_CharacterCodes = testing_BytesCodes + testing_StrCodes
-testing_FlexibleCodes = testing_CharacterCodes + testing_VoidCodes
 
 testing_GenericCodes = (
     testing_BoolCodes

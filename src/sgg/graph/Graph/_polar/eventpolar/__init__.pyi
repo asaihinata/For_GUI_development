@@ -2,7 +2,7 @@ from typing import Literal
 
 from matplotlib.collections import EventCollection
 
-from sgg.typing import *
+from sgg._typing import *
 
 from .._Polarset import _polarset
 

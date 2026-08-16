@@ -1,7 +1,7 @@
 from matplotlib.lines import Line2D
 
 from sgg.graph.graph.dev import *
-from sgg.typing import (ColorType, GetList, Type_Marker, Type_Solid,
+from sgg._typing import (ColorType, GetList, Type_Marker, Type_Solid,
                         TypeArrayLikeNumber)
 
 __all__ = ["RadarLine"]

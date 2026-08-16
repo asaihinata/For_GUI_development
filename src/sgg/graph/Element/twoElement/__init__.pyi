@@ -8,7 +8,7 @@ from numpy.typing import ArrayLike
 
 from sgg.graph.element.graph import GElement
 from sgg.graph.style import getLabel
-from sgg.typing import *
+from sgg._typing import *
 
 __all__ = ["twoElement"]
 

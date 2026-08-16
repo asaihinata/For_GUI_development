@@ -1,6 +1,6 @@
 from typing import Literal
 
-from sgg.typing import Type_icon
+from sgg._typing import Type_icon
 
 __all__ = [
     "popupokcansel",

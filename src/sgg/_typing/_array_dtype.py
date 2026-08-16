@@ -1,7 +1,7 @@
 import numpy as np
 import numpy._typing as npt
 
-from sgg.typing import _DT64Codes_All, _TD64Codes_All
+from sgg._typing import _DT64Codes_All, _TD64Codes_All
 
 __all__ = [
     "_BoolDTypeLike",

@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib.collections import PathCollection
 from numpy.typing import NDArray
 
-from sgg.typing import *
+from sgg._typing import *
 
 from .._2gset import _2Gset
 

@@ -5,16 +5,17 @@ from typing import (Any, Iterable, Iterator, Literal, LiteralString, Self,
 import numpy as np
 from numpy._typing import DTypeLike, NDArray, _DTypeLike, _ShapeLike
 
-import sgg.typing as sgt
+import sgg._typing as sgt
 
 __all__ = ["_ArrayCommonMixin"]
 
 class _ArrayCommonMixin(np.ndarray):
     """次元数制約(min_ndim/max_ndim)を持つ配列クラス向けの共通メソッド"""
-
     _min_ndim: int | None
     _max_ndim: int | None
     _dtype: _DTypeLike | None
+    __doc__:str
+    __name__:str
     def __dir__(self) -> Iterable[str]: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...

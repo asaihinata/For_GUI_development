@@ -1,6 +1,6 @@
 from tkinter import Label
 
-from sgg.typing import ColorType
+from sgg._typing import ColorType
 from sgg.widget.base import _Element
 
 __all__ = ["Texts"]

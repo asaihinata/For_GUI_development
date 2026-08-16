@@ -6,7 +6,7 @@ from dateutil.relativedelta import relativedelta
 from numpy import datetime64, timedelta64
 from numpy._typing import NDArray, _DTypeLike
 
-import sgg.typing as sgt
+import sgg._typing as sgt
 
 from ..dev import _ArrayCommonMixin
 

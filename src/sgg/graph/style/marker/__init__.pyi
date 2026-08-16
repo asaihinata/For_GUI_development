@@ -7,7 +7,7 @@ import numpy as np
 from matplotlib.markers import MarkerStyle
 
 from sgg.nparray import NPArray
-from sgg.typing import Type_Marker
+from sgg._typing import Type_Marker
 
 __all__ = ["Marker", "MarkerList"]
 

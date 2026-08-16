@@ -1,7 +1,7 @@
 from tkinter import Entry
 from typing import Literal
 
-from sgg.typing import ColorType
+from sgg._typing import ColorType
 from sgg.widget.base import _Element
 
 __all__ = ["Input"]

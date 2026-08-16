@@ -5,7 +5,7 @@ from typing import Any, Literal, NoReturn, Sequence, SupportsIndex, overload
 import numpy as np
 import numpy._typing as npt
 
-import sgg.typing as sgt
+import sgg._typing as sgt
 
 from ..dev import _ArrayCommonMixin
 
@@ -626,7 +626,7 @@ class NPNumber(_ArrayCommonMixin):
         """
 
     @classmethod
-    def randint(
+    def integers(
         cls,
         /,
         low: int,

@@ -7,7 +7,7 @@ from numpy import bytes_, str_
 from numpy._typing import NDArray, _DTypeLike
 from numpy.dtypes import StringDType
 
-import sgg.typing as sgt
+import sgg._typing as sgt
 
 from ..dev import _ArrayCommonMixin
 

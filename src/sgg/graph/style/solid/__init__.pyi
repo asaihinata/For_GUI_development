@@ -3,7 +3,7 @@
 from collections.abc import Iterator
 
 from sgg.nparray import NPString
-from sgg.typing import Type_Solid
+from sgg._typing import Type_Solid
 
 __all__ = ["Solid", "Solidlist"]
 

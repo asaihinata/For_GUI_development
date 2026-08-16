@@ -2,7 +2,7 @@ from typing import Any, Literal, NoReturn, overload
 
 import numpy as np
 
-import sgg.typing as sgt
+import sgg._typing as sgt
 
 from ..dev import _ArrayCommonMixin
 

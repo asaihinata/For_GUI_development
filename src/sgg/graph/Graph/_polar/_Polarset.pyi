@@ -1,7 +1,7 @@
 from matplotlib.projections.polar import PolarAxes
 from numpy import ndarray
 
-from sgg.typing import Typetuple_float64
+from sgg._typing import Typetuple_float64
 
 __all__ = ["_polarset"]
 
