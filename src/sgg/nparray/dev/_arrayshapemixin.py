@@ -187,8 +187,7 @@ class _ArrayCommonMixin(np.ndarray):
         _to_np_scalar(fill_value)
         if not _arrisuint(shape):
             raise ShapeError(shape)
-        result = cls(np.full(shape, fill_value), dtype=dtype)
-        return result
+        return cls(np.full(shape, fill_value), dtype=dtype)
 
     def rot90(self, k=1, axes=(0, 1)):
         if self.ndim <= 1:

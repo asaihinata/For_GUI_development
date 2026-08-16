@@ -357,15 +357,21 @@ class NPNumber(_ArrayCommonMixin):
     def logspace(
         cls, start, stop, num=50, endpoint=True, base=10.0, dtype=None, axis=0
     ):
+        dtype = _dtype_check(dtype)
         result = np.logspace(
             start, stop, num=num, endpoint=endpoint, base=base, dtype=dtype, axis=axis
         )
-        return cls(result, dtype=result.dtype)
+        result = np.asarray(result).view(cls)
+        result._dtype = result.dtype
+        return result
 
     @classmethod
     def geomspace(cls, start, stop, num=50, endpoint=True, dtype=None, axis=0):
+        dtype = _dtype_check(dtype)
         result = np.geomspace(start, stop, num, endpoint, dtype=dtype, axis=axis)
-        return cls(result, dtype=result.dtype)
+        result = np.asarray(result).view(cls)
+        result._dtype = result.dtype
+        return result
 
     # 角度
     @property
@@ -436,34 +442,57 @@ class NPNumber(_ArrayCommonMixin):
     # random
     @classmethod
     def random(cls, size=None, dtype=None, seed=None):
+        dtype = _dtype_check(dtype)
         result = default_rng(seed).random(size=size, dtype=dtype)
-        if dtype is None:
-            dtype = np.dtype(type(result)) if np.isscalar(result) else result.dtype
-        return cls(result, dtype=dtype)
+        result = np.asarray(result).view(cls)
+        result._dtype = result.dtype
+        return result
 
     @classmethod
-    def uniform(cls, low=0.0, high=1.0, shape=None, dtype=None, seed=None):
-        result = default_rng(seed).uniform(low, high, size=shape)
-        if dtype is None:
-            dtype = np.dtype(type(result)) if np.isscalar(result) else result.dtype
-        return cls(result, dtype=dtype)
+    def uniform(cls, low=0.0, high=1.0, size=None, dtype=None, seed=None):
+        dtype = _dtype_check(dtype)
+        result = default_rng(seed).uniform(low, high, size=size)
+        result = np.asarray(result, dtype=dtype).view(cls)
+        result._dtype = result.dtype
+        return result
 
     @classmethod
-    def normal(cls, loc=0.0, scale=1.0, shape=None, dtype=None, seed=None):
-        result = default_rng(seed).normal(loc, scale, size=shape)
-        if dtype is None:
-            dtype = np.dtype(type(result)) if np.isscalar(result) else result.dtype
-        return cls(result, dtype=dtype)
+    def normal(cls, loc=0.0, scale=1.0, size=None, dtype=None, seed=None):
+        dtype = _dtype_check(dtype)
+        result = default_rng(seed).normal(loc, scale, size=size)
+        result = np.asarray(result, dtype=dtype).view(cls)
+        result._dtype = result.dtype
+        return result
 
     @classmethod
     def randint(
-        cls, low, high=None, shape=None, dtype=np.int64, endpoint=False, seed=None
+        cls, low, high=None, size=None, dtype=np.int64, endpoint=False, seed=None
     ):
+        dtype, kind = _dtype_check(dtype, True)
+        if kind not in ["u", "i"]:
+            raise TypeError("型が不正です")
         result = default_rng(seed).integers(
-            low, high, size=shape, dtype=dtype, endpoint=endpoint
+            low, high, size=size, dtype=dtype, endpoint=endpoint
         )
-        return cls(result, dtype=result.dtype)
+        result = np.asarray(result).view(cls)
+        result._dtype = result.dtype
+        return result
 
     @classmethod
     def logseries(cls, p, size=None, dtype=np.int64, seed=None):
-        return cls(default_rng(seed).logseries(p, size), dtype=dtype)
+        dtype = _dtype_check(dtype)
+        result = default_rng(seed).logseries(p, size)
+        result = np.asarray(result, dtype=dtype).view(cls)
+        result._dtype = result.dtype
+        return result
+
+
+def _dtype_check(dtype, kind=False):
+    dtypes = np.dtype(dtype)
+    if dtype is None or not np.issubdtype(dtypes, np.number):
+        if kind:
+            return None, dtypes.kind
+        return None
+    if kind:
+        return dtype, dtypes.kind
+    return dtype

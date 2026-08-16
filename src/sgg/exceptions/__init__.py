@@ -1,8 +1,27 @@
-r"""フレームワークで使用する例外のモジュール"""
+"""フレームワークで使用する例外のモジュール"""
 
 from typing import Any
 
-__all__ = ["NoScalarError", "ShapeError", "UIntError"]
+import numpy._typing as npt
+
+__all__ = [
+    "DtypeError",
+    "NoScalarError",
+    "ShapeError",
+    "UIntError",
+]
+
+
+class DtypeError(ValueError, IndexError):
+    """np.ndarrayのdtypeが不正の場合の例外"""
+
+    __dtype: npt.DTypeLike
+
+    def __init__(self, dtype: npt.DTypeLike) -> None:
+        self.__dtype = dtype
+
+    def __str__(self) -> str:
+        return f'"{self.__dtype}"が不正の型です'
 
 
 class UIntError(ValueError, IndexError):

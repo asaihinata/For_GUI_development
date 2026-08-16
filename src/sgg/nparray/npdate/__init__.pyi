@@ -24,7 +24,7 @@ class NPDate(_ArrayCommonMixin):
         obj: sgt._ArrayLikeDT64_co,
         /,
         dtype: sgt._DtypeLikeDT = "datetime64[D]",
-        timezone: sgt.Type_Timezone = False,
+        timezone: sgt._TypeTimezone = False,
         *,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -38,7 +38,7 @@ class NPDate(_ArrayCommonMixin):
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
         :param timezone: 日付のタイムゾーンを指定する
-        :type timezone: Type_Timezone
+        :type timezone: _TypeTimezone
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
@@ -284,7 +284,7 @@ class NPDate(_ArrayCommonMixin):
     def to_str(self) -> sgt.RStr_:
         """配列内の日付を文字列型の配列に変換する"""
 
-    def to_timezone(self, timezone: sgt.Type_Timezone, /) -> NPDate:
+    def to_timezone(self, timezone: sgt._TypeTimezone, /) -> NPDate:
         """配列内の日付のタイムゾーンを指定したタイムゾーン(`timezone`)の日付の配列を作成する"""
 
     def strftime(self, format: str) -> sgt.RStr_:
@@ -459,7 +459,7 @@ class NPDate(_ArrayCommonMixin):
         fill_value: sgt._DT64Scalar,
         shape: sgt._ShapeInt,
         dtype: sgt._DtypeLikeDT | None = None,
-        timezone: sgt.Type_Timezone | None = None,
+        timezone: sgt._TypeTimezone | None = None,
     ) -> NPDate:
         """
         指定された形状と配列の型で`fill_value`で埋められた配列のオブジェクトを返す
@@ -471,7 +471,7 @@ class NPDate(_ArrayCommonMixin):
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: _DtypeLikeDT | None
         :param timezone: 日付のタイムゾーンを指定する
-        :type timezone: Type_Timezone | None
+        :type timezone: _TypeTimezone | ZoneInfo | None
         :raises ValueError: `fill_value`にスカラー値で指定しなかった場合に発生させる
         :raises ShapeError: `shape`で正しい値ではない場合に発生させる
         """

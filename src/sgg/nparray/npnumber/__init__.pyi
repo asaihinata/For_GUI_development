@@ -242,7 +242,7 @@ class NPNumber(_ArrayCommonMixin):
 
     def percentile(
         self,
-        q: npt._FloatScalar,
+        q: sgt._FloatScalar,
         axis: sgt.Typeaxis = None,
         method: TYPEMETHOD = "linear",
     ) -> NPNumber:
@@ -259,7 +259,7 @@ class NPNumber(_ArrayCommonMixin):
 
     def quantile(
         self,
-        q: npt._FloatScalar,
+        q: sgt._FloatScalar,
         axis: sgt.Typeaxis = None,
         method: TYPEMETHOD = "linear",
     ) -> NPNumber:
@@ -573,8 +573,8 @@ class NPNumber(_ArrayCommonMixin):
     @classmethod
     def random(
         cls,
-        size: sgt._AnyShape | None = None,
-        dtype: sgt._DTypeLikeFloat | None = None,
+        size: sgt._ShapeInt | None = None,
+        dtype: sgt._DTypeLikeF64 | sgt._DTypeLikeF32 | None = None,
         seed: sgt._Seed = None,
     ) -> NPNumber:
         """
@@ -589,9 +589,9 @@ class NPNumber(_ArrayCommonMixin):
     def uniform(
         cls,
         /,
-        low: npt._FloatScalar = 0.0,
-        high: npt._FloatScalar = 1.0,
-        size: sgt._AnyShape | None = None,
+        low: sgt._FloatScalar = 0.0,
+        high: sgt._FloatScalar = 1.0,
+        size: sgt._ShapeInt | None = None,
         dtype: sgt._DTypeLikeFloat | None = None,
         seed: sgt._Seed = None,
     ) -> NPNumber:
@@ -600,7 +600,7 @@ class NPNumber(_ArrayCommonMixin):
 
         :param low: 生成する乱数の下限値を指定する
         :param high: 生成する乱数の上限値を指定する
-        :param shape: 生成する配列の形状を指定する
+        :param size: 生成する配列の形状を指定する
         :param dtype: 出力される配列に使用するデータ型を指定する
         :param seed: 乱数のシード値を指定する
         """
@@ -609,9 +609,9 @@ class NPNumber(_ArrayCommonMixin):
     def normal(
         cls,
         /,
-        loc: npt._FloatScalar = 0.0,
-        scale: npt._FloatScalar = 1.0,
-        size: sgt._AnyShape | None = None,
+        loc: sgt._FloatScalar = 0.0,
+        scale: sgt._FloatScalar = 1.0,
+        size: sgt._ShapeInt | None = None,
         dtype: sgt._DTypeLikeFloat | None = None,
         seed: sgt._Seed = None,
     ) -> NPNumber:
@@ -620,7 +620,7 @@ class NPNumber(_ArrayCommonMixin):
 
         :param loc: 分布の平均値を指定する
         :param scale: 分布の標準偏差を指定する
-        :param shape: 生成する配列の形状を指定する
+        :param size: 生成する配列の形状を指定する
         :param dtype: 出力される配列に使用するデータ型を指定する
         :param seed: 乱数のシード値を指定する
         """
@@ -631,8 +631,8 @@ class NPNumber(_ArrayCommonMixin):
         /,
         low: int,
         high: int | None = None,
-        size: sgt._AnyShape | None = None,
-        dtype: sgt._DTypeLikeInt | None = None,
+        size: sgt._ShapeInt | None = None,
+        dtype: sgt._DTypeLikeInt | None = np.int64,
         endpoint: bool = False,
         seed: sgt._Seed = None,
     ) -> NPNumber:
@@ -641,7 +641,7 @@ class NPNumber(_ArrayCommonMixin):
 
         :param low: 生成される範囲の最小値を指定する
         :param high: 生成される範囲の最大値を指定する
-        :param shape: 生成する配列の形状を指定する
+        :param size: 生成する配列の形状を指定する
         :param dtype: 出力される配列に使用するデータ型を指定する
         :param endpoint: 生成される区間の範囲を指定する
         :param seed: 乱数のシード値を指定する
@@ -651,8 +651,8 @@ class NPNumber(_ArrayCommonMixin):
     def logseries(
         cls,
         /,
-        p: npt._FloatScalar,
-        size: sgt._AnyShape | None = None,
+        p: sgt._FloatScalar,
+        size: sgt._ShapeInt | None = None,
         dtype: sgt._DTypeLikeFloat | None = None,
         seed: sgt._Seed = None,
     ) -> NPNumber:

@@ -1,7 +1,8 @@
 from typing import Literal
+from zoneinfo import ZoneInfo
 
-__all__ = ["Type_Timezone"]
-type Type_Timezone = Literal[
+__all__ = ["_TypeTimezone", "_TimezoneLiteral"]
+type _TimezoneLiteral = Literal[
     "Africa/Abidjan",
     "Africa/Accra",
     "Africa/Addis_Ababa",
@@ -436,3 +437,4 @@ type Type_Timezone = Literal[
     "US/Pacific",
     "UTC",
 ]
+type _TypeTimezone = _TimezoneLiteral | ZoneInfo
