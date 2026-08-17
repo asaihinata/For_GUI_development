@@ -56,6 +56,16 @@ class NPNumber(_ArrayCommonMixin):
         cls._validate_ndim(obj, obj._min_ndim, obj._max_ndim)
         return obj
 
+    def __int__(self):
+        lists = self.item()
+        if np.isscalar(lists):
+            return int(lists)
+
+    def __float__(self):
+        lists = self.item()
+        if np.isscalar(lists):
+            return float(lists)
+
     def __eq__(self, value):
         return np.array(np.equal(self, value), dtype=np.bool_)
 

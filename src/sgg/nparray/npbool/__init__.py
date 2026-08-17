@@ -45,6 +45,26 @@ class NPBool(_ArrayCommonMixin):
         result._dtype = self.dtypes
         return result
 
+    def __bool__(self):
+        lists = self.item()
+        if np.isscalar(lists):
+            return bool(lists)
+
+    def __int__(self):
+        lists = self.item()
+        if np.isscalar(lists):
+            return int(lists)
+
+    def __float__(self):
+        lists = self.item()
+        if np.isscalar(lists):
+            return float(lists)
+
+    def __abs__(self):
+        result = np.asarray(np.abs(self)).view(type(self))
+        result._dtype = self.dtypes
+        return result
+
     def __eq__(self, value):
         result = np.asarray(np.equal(self, value)).view(type(self))
         result._dtype = result.dtype

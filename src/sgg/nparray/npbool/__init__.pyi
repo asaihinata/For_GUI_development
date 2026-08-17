@@ -1,6 +1,7 @@
 from typing import Any, Literal, NoReturn, overload
 
 import numpy as np
+from numpy import _DTypeLike
 
 import sgg._typing as sgt
 
@@ -67,6 +68,11 @@ class NPBool(_ArrayCommonMixin):
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
+    def __invert__(self) -> NPBool: ...
+    def __bool__(self) -> bool | NoReturn: ...
+    def __int__(self) -> int | NoReturn: ...
+    def __float__(self) -> float | NoReturn: ...
+    def __abs__(self) -> NPBool: ...
     @overload
     def __eq__(self, value: sgt._ArrayLikeBool_co | NPBool) -> NPBool: ...
     @overload
@@ -75,9 +81,6 @@ class NPBool(_ArrayCommonMixin):
     def __ne__(self, value: sgt._ArrayLikeBool_co | NPBool) -> NPBool: ...
     @overload
     def __ne__(self, value: Any) -> NoReturn: ...
-    def __invert__(self) -> NPBool:
-        """配列内の真偽値を反転させる"""
-
     @overload
     def __getitem__(self, key: sgt._IntScalar) -> np.bool | np.bool_:
         """
@@ -165,6 +168,34 @@ class NPBool(_ArrayCommonMixin):
 
         :param dtype: 変換後に使用するデータ型を指定する
         :type dtype: _BoolDTypeLike
+        :param copy: `obj`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
+        """
+
+    @overload
+    def astype[ScalarT: np.generic](
+        self, dtype: _DTypeLike[ScalarT], copy: bool = True
+    ) -> sgt.NDArray[ScalarT]:
+        """
+        配列の要素の型を変換した新しい配列オブジェクトを生成する
+
+        :param dtype: 変換後に使用するデータ型を指定する
+        :type dtype: _DTypeLike[ScalarT]
+        :param copy: `obj`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 変換後の要素の型がこの配列オブジェクトの`_element_type`と一致しない場合に発生させる
+        """
+
+    @overload
+    def astype(self, dtype: sgt.DTypeNLike, copy: bool = True) -> sgt.NDArray[Any]:
+        """
+        配列の要素の型を変換した新しい配列オブジェクトを生成する
+
+        :param dtype: 変換後に使用するデータ型を指定する
+        :type dtype: DTypeLike | None
         :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる

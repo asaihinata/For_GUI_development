@@ -266,7 +266,7 @@ class NPDate(_ArrayCommonMixin):
         return result
 
     @classmethod
-    def now(cls, localtime=False):
+    def now(cls):
         result = np.asarray(np.datetime64("now"), dtype="datetime64[s]").view(cls)
         result._dtype = result.dtype
         return result

@@ -156,8 +156,6 @@ class _ArrayCommonMixin(np.ndarray):
 
         :param shapes: 比較する`shape`を指定する
         :type shapes: int | tuple[int, ...]
-        :return: `shape`が一致する場合は`True`を返し,一致しない場合は`False`を返す
-        :rtype: bool
         """
 
     def reshape(self, shape: _ShapeLike) -> Self:

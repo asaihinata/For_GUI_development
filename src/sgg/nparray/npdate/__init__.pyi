@@ -222,7 +222,6 @@ class NPDate(_ArrayCommonMixin):
     def isnat(self) -> sgt.RBool_:
         """要素が欠損(Nat)かを判定する"""
     # 変換
-    @overload
     def astype(self, dtype: sgt._DtypeLikeDT, copy: bool = True) -> NPDate:
         """
         配列の要素の型を変換した新しい配列オブジェクトを生成する
