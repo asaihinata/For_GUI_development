@@ -49,6 +49,9 @@ class NPString(_ArrayCommonMixin):
         result._dtype = result.dtype
         return result
 
+    __radd__ = __add__
+    __iadd__ = __add__
+
     def __mul__(self, i):
         _int_co_check(i)
         result = self.__array__(copy=False)
@@ -59,10 +62,15 @@ class NPString(_ArrayCommonMixin):
         result._dtype = result.dtype
         return result
 
-    __radd__ = __add__
-    __iadd__ = __add__
     __rmul__ = __mul__
     __imul__ = __mul__
+
+    def __mod__(self, value):
+        result = np.asarray(nps.mod(self, value)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    __imod__ = __mod__
 
     def __eq__(self, value):
         return np.array(nps.equal(self, value), dtype=np.bool_)
@@ -164,6 +172,24 @@ class NPString(_ArrayCommonMixin):
         result = np.asarray(nps.title(self)).view(type(self))
         result._dtype = result.dtype
         return result
+
+    def find(self, sub, start=0, end=None):
+        result = nps.find(self, sub, start=start, end=end)
+        if np.isscalar(result):
+            return np.int64(result.item())
+        return result.__array__(np.int64)
+
+    def rfind(self, sub, start=0, end=None):
+        result = nps.rfind(self, sub, start=start, end=end)
+        if np.isscalar(result):
+            return np.int64(result.item())
+        return result.__array__(np.int64)
+
+    def count(self, sub, start=0, end=None):
+        result = nps.count(self, sub, start=start, end=end)
+        if np.isscalar(result):
+            return np.uint64(result)
+        return result.__array__(np.uint64)
 
     def decode(self, encoding=None, errors=None):
         if not np.issubdtype(self.dtypes, np.bytes_):

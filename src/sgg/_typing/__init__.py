@@ -1,6 +1,6 @@
 """フレームワーク全体で使用する型を設定しているモジュール"""
 
-from typing import Any
+from typing import Any, Literal
 
 from numpy._typing import _NestedSequence
 from numpy.random import Generator, SeedSequence
@@ -15,8 +15,9 @@ from ._widget import *
 
 type Incomplete = Any
 type _Seed = int | SeedSequence | Generator | None
+type _orderKACF = Literal["K", "A", "C", "F"] | None
 __all__ = (
-    ["_NestedSequence", "_Seed", "Incomplete"]
+    ["_NestedSequence", "_Seed", "Incomplete", "_orderKACF"]
     + getattr(_array_date_unit, "__all__", [])
     + getattr(_array_dtype, "__all__", [])
     + getattr(_arraylike, "__all__", [])

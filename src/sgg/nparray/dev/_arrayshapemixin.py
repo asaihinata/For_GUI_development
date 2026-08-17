@@ -138,11 +138,13 @@ class _ArrayCommonMixin(np.ndarray):
         result._dtype = dtype
         return result
 
+    def ravel(self, order="C"):
+        result = np.asarray(np.ravel(np.asarray(self), order=order)).view(type(self))
+        result._dtype = result.dtype
+        return result
+
     def tonumpy(self, copy=None):
         return self.__array__(copy=copy)
-
-    def isscalar(self):
-        return np.isscalar(self.tolist())
 
     def to_1d(self):
         if self.min_ndim is not None and self.min_ndim > 1:
@@ -211,6 +213,10 @@ class _ArrayCommonMixin(np.ndarray):
     @property
     def max_ndim(self):
         return getattr(self, "_max_ndim", None)
+
+    @property
+    def isscalar(self):
+        return self.ndim == 0
 
     # dtype
     @property

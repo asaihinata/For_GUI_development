@@ -101,6 +101,8 @@ class NPString(_ArrayCommonMixin):
     def __mul__(self, i: Any) -> NoReturn: ...
     __imul__ = __mul__
     __rmul__ = __mul__
+
+    def __mod__(self, value: Any) -> NPString: ...
     @overload
     def __getitem__(self, key: sgt._IntScalar) -> np.character | StringDType:
         """
@@ -368,6 +370,57 @@ class NPString(_ArrayCommonMixin):
 
     def title(self) -> NPString:
         """文字列を要素ごとにタイトルケースに変換する"""
+
+    def find(
+        self,
+        sub: sgt._ArrayLikeString_co,
+        start: sgt._ArrayLikeInt_co = 0,
+        end: sgt._ArrayLikeInt_co | None = None,
+    ) -> sgt.RInt64:
+        """
+        配列の各要素について,[`start`,`end`)の範囲で部分文字列(`sub`)が見つかった文字列内の最小インデックスを返す
+
+        :param sub: 検索する部分文字列を指定する
+        :type sub: _ArrayLikeString_co
+        :param start: 探索範囲の開始位置を指定する
+        :type start: _ArrayLikeInt_co
+        :param end: 探索範囲の終了位置を指定する
+        :type end: _ArrayLikeInt_co | None
+        """
+
+    def rfind(
+        self,
+        sub: sgt._ArrayLikeString_co,
+        start: sgt._ArrayLikeInt_co = 0,
+        end: sgt._ArrayLikeInt_co | None = None,
+    ) -> sgt.RInt64:
+        """
+        配列の各要素について,[`start`,`end`)の範囲で部分文字列(`sub`)が見つかった文字列内の最大インデックスを返す
+
+        :param sub: 検索する部分文字列を指定する
+        :type sub: _ArrayLikeString_co
+        :param start: 探索範囲の開始位置を指定する
+        :type start: _ArrayLikeInt_co
+        :param end: 探索範囲の終了位置を指定する
+        :type end: _ArrayLikeInt_co | None
+        """
+
+    def count(
+        self,
+        sub: sgt._ArrayLikeString_co,
+        start: sgt._ArrayLikeInt_co = 0,
+        end: sgt._ArrayLikeInt_co | None = None,
+    ) -> sgt.RUInt64:
+        """
+        配列の各要素について,[`start`,`end`)の範囲で部分文字列(`sub`)が見つかった回数を返す
+
+        :param sub: カウントする部分文字列を指定する
+        :type sub: _ArrayLikeString_co
+        :param start: 探索範囲の開始位置を指定する
+        :type start: _ArrayLikeInt_co
+        :param end: 探索範囲の終了位置を指定する
+        :type end: _ArrayLikeInt_co | None
+        """
 
     def decode(
         self,

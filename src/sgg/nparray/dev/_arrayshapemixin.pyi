@@ -165,6 +165,9 @@ class _ArrayCommonMixin(np.ndarray):
         :type shape: int | tuple[int, ...]
         """
 
+    def ravel(self, order: sgt._orderKACF = "C") -> Self:
+        """連続した平坦化された配列を返す"""
+
     def tolist(self) -> Any | sgt.NestedList: ...
     def tonumpy(self, copy: bool | None = None) -> NDArray[Any]:
         """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
@@ -212,9 +215,6 @@ class _ArrayCommonMixin(np.ndarray):
         :return: 回転させた配列を返す
         """
 
-    def isscalar(self) -> bool:
-        """配列がスカラー値かを調べる"""
-
     def to_1d(self) -> Self:
         """
         配列を1次元にフラット化した新しい配列オブジェクトを返す
@@ -237,6 +237,10 @@ class _ArrayCommonMixin(np.ndarray):
     @property
     def max_ndim(self) -> int | None:
         """配列オブジェクトが許容する最大次元数を返す"""
+
+    @property
+    def isscalar(self) -> bool:
+        """配列がスカラー値かを調べる"""
     # dtype
     @property
     def types(self) -> type[np.generic | Any]: ...
