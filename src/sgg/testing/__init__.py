@@ -3,4 +3,4 @@
 from ._dtype import *
 from ._timezone import testing_timezone
 
-__all__ = ["testing_timezone"]+getattr(_dtype, "__all__", [])
+__all__ = ["testing_timezone"] + getattr(_dtype, "__all__", [])

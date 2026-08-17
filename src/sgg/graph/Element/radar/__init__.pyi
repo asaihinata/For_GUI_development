@@ -4,8 +4,8 @@ from typing import Literal
 from matplotlib.projections.polar import PolarAxes
 from numpy import dtype, float64, ndarray
 
-from sgg.graph.element.graph import GElement
 from sgg._typing import *
+from sgg.graph.element.graph import GElement
 
 __all__ = ["RadarElement"]
 

@@ -1,5 +1,5 @@
-__all__=["testing_timezone"]
-testing_timezone=[
+__all__ = ["testing_timezone"]
+testing_timezone = [
     "Africa/Abidjan",
     "Africa/Accra",
     "Africa/Addis_Ababa",

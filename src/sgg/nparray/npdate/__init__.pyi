@@ -24,7 +24,6 @@ class NPDate(_ArrayCommonMixin):
         obj: sgt._ArrayLikeDT64_co,
         /,
         dtype: sgt._DtypeLikeDT = "datetime64[D]",
-        timezone: sgt._TypeTimezone = False,
         *,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -37,8 +36,6 @@ class NPDate(_ArrayCommonMixin):
         :type obj: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
-        :param timezone: 日付のタイムゾーンを指定する
-        :type timezone: _TypeTimezone
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
@@ -55,7 +52,6 @@ class NPDate(_ArrayCommonMixin):
         obj: Any,
         /,
         dtype: Any | sgt._DtypeLikeDT | None = None,
-        localtime: bool = False,
         *,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -68,8 +64,6 @@ class NPDate(_ArrayCommonMixin):
         :type obj: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: Any
-        :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
-        :type localtime: bool
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
@@ -86,7 +80,6 @@ class NPDate(_ArrayCommonMixin):
         obj: sgt._ArrayLikeDT64_co,
         /,
         dtype: sgt._DtypeLikeDT = "datetime64[D]",
-        localtime: bool = False,
         *,
         d_ndim: int | None = None,
         copy: bool = True,
@@ -98,8 +91,6 @@ class NPDate(_ArrayCommonMixin):
         :type obj: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: datetime64 | _DT64Codes_All
-        :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
-        :type localtime: bool
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param copy: `obj`から独立したコピーを作成するか指定する
@@ -114,11 +105,10 @@ class NPDate(_ArrayCommonMixin):
         obj: Any,
         /,
         dtype: Any | sgt._DtypeLikeDT | None = None,
-        localtime: bool = False,
         *,
         d_ndim: int | None = None,
         copy: bool = True,
-    ) -> NPDate:
+    ) -> NoReturn:
         """
         新しい日付の配列オブジェクトインスタンスを生成する
 
@@ -126,8 +116,6 @@ class NPDate(_ArrayCommonMixin):
         :type obj: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: Any
-        :param localtime: 生成される時刻をローカル時間かUTC時刻かを指定する
-        :type localtime: bool
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param copy: `obj`から独立したコピーを作成するか指定する
@@ -403,29 +391,11 @@ class NPDate(_ArrayCommonMixin):
         """配列内の日付の月の終わりからの日付の差を求める"""
 
     @classmethod
-    def today(cls, localtime: bool = False) -> NPDate:
-        """
-        現在日付(UTCの日付)を返す
-
-        :param localtime: ローカルの日付かUTCの日付かを指定する
-        :type localtime: bool
-        """
-
-    @classmethod
-    def utctoday(cls) -> NPDate:
+    def today(cls) -> NPDate:
         """現在日付(UTCの日付)を返す"""
 
     @classmethod
-    def now(cls, localtime: bool = False) -> NPDate:
-        """
-        現在時刻(UTC時刻)を返す
-
-        :param localtime: ローカル時刻かUTC時刻かを指定する
-        :type localtime: bool
-        """
-
-    @classmethod
-    def utcnow(cls) -> NPDate:
+    def now(cls) -> NPDate:
         """現在時刻(UTC時刻)を返す"""
 
     @classmethod

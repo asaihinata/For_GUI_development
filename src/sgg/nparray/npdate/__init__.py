@@ -40,7 +40,6 @@ class NPDate(_ArrayCommonMixin):
         obj,
         /,
         dtype="datetime64[D]",
-        timezone=None,
         *,
         d_ndim=None,
         min_ndim=None,
@@ -48,37 +47,33 @@ class NPDate(_ArrayCommonMixin):
         copy=True,
     ):
         def _func(x):
-            try:
-                if x in _Word:
-                    return x
-                elif isinstance(x, str | np.str_):
+            if x in _Word:
+                return x
+            elif isinstance(x, str | np.str_):
+                try:
                     return parse(x)
-                else:
-                    return x
-            except:
-                return None
+                except:
+                    return None
+            elif isinstance(x, bytes | np.bytes_):
+                return _func(x.decode())
+            else:
+                return x
 
         if not isinstance(copy, bool):
             copy = True
-        if dtype is None:
-            resolved = cls._resolve_dtype("datetime64[D]")
-        else:
-            resolved = cls._resolve_dtype(_dt64_unit(dtype))
-        obj = np.vectorize(_func, otypes=[resolved])(np.asarray(obj))
-        obj = np.asarray(obj, copy=copy).view(cls)
+        resolved = cls._resolve_dtype(
+            "datetime64[D]" if dtype is None else _dt64_unit(dtype)
+        )
+        obj = np.asarray(
+            np.vectorize(_func, otypes=[resolved])(np.asarray(obj)), copy=copy
+        ).view(cls)
         obj._dtype = resolved
-        if timezone != ZoneInfo("UTC"):
-            try:
-                obj = obj + _local_utc_difference(resolved, timezone)
-            except OverflowError as e:
-                raise OverflowError(e)
         if isinstance(d_ndim, int):
-            cls._validate_ndim(obj, d_ndim, d_ndim)
             obj._min_ndim = obj._max_ndim = d_ndim
         else:
-            cls._validate_ndim(obj, min_ndim, max_ndim)
             obj._min_ndim = min_ndim
             obj._max_ndim = max_ndim
+        cls._validate_ndim(obj, obj._min_ndim, obj._max_ndim)
         return obj
 
     def __add__(self, value):
@@ -167,13 +162,7 @@ class NPDate(_ArrayCommonMixin):
         except:
             dtype = np.dtype(dtype)
         if dtype.kind == "M":
-            return NPDate(
-                np.asarray(self),
-                dtype=dtype,
-                min_ndim=self.min_ndim,
-                max_ndim=self.max_ndim,
-                copy=copy,
-            )
+            return np.asarray(self, dtype).view(type(self))
         return self.__array__(dtype, copy=copy)
 
     def to_datetime(self):
@@ -271,16 +260,7 @@ class NPDate(_ArrayCommonMixin):
         return (self.astype("datetime64[M]") + 1).astype("datetime64[D]") - 1 - self
 
     @classmethod
-    def today(cls, localtime=False):
-        result = np.asarray(np.datetime64("today"), dtype="datetime64[D]").view(cls)
-        dtype = result.dtype
-        if localtime:
-            result = result + _local_utc_difference(dtype)
-        result._dtype = dtype
-        return result
-
-    @classmethod
-    def utctoday(cls):
+    def today(cls):
         result = np.asarray(np.datetime64("today"), dtype="datetime64[D]").view(cls)
         result._dtype = result.dtype
         return result
@@ -288,10 +268,7 @@ class NPDate(_ArrayCommonMixin):
     @classmethod
     def now(cls, localtime=False):
         result = np.asarray(np.datetime64("now"), dtype="datetime64[s]").view(cls)
-        dtype = result.dtype
-        if localtime:
-            result = result + _local_utc_difference(dtype)
-        result._dtype = dtype
+        result._dtype = result.dtype
         return result
 
     @classmethod
@@ -400,15 +377,3 @@ def _to_datetime64(value):
     if isinstance(value, datetime | date):
         return np.datetime64(value)
     return value
-
-
-def _local_utc_difference(dtype, timezone=None):
-    if timezone is None:
-        return np.timedelta64(
-            datetime.now().astimezone().utcoffset(), _get_dt64_unit(dtype)
-        )
-    if not isinstance(timezone, str | ZoneInfo):
-        raise TypeError
-    elif isinstance(timezone, str):
-        timezone = ZoneInfo(timezone)
-    return np.timedelta64(datetime.now(timezone).utcoffset(), _get_dt64_unit(dtype))

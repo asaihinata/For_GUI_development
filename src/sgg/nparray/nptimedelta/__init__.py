@@ -26,20 +26,18 @@ class NPTimedelta(_ArrayCommonMixin):
     ):
         if not isinstance(copy, bool):
             copy = True
-        if dtype is None:
-            resolved = cls._resolve_dtype("timedelta64[D]")
-        else:
-            resolved = cls._resolve_dtype(_tm64_unit(dtype))
+        resolved = cls._resolve_dtype(
+            "timedelta64[D]" if dtype is None else _tm64_unit(dtype)
+        )
         obj = np.asarray(obj, dtype=resolved, copy=copy).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         if isinstance(d_ndim, int):
-            cls._validate_ndim(obj, d_ndim, d_ndim)
             obj._min_ndim = obj._max_ndim = d_ndim
         else:
-            cls._validate_ndim(obj, min_ndim, max_ndim)
             obj._min_ndim = min_ndim
             obj._max_ndim = max_ndim
+        cls._validate_ndim(obj, obj._min_ndim, obj._max_ndim)
         return obj
 
     def __add__(self, value):
@@ -125,13 +123,7 @@ class NPTimedelta(_ArrayCommonMixin):
         except:
             dtype = np.dtype(dtype)
         if dtype.kind == "M":
-            return NPTimedelta(
-                np.asarray(self),
-                dtype=dtype,
-                min_ndim=self.min_ndim,
-                max_ndim=self.max_ndim,
-                copy=copy,
-            )
+            return np.asarray(self, dtype).view(type(self))
         return self.__array__(dtype, copy=copy)
 
     @property

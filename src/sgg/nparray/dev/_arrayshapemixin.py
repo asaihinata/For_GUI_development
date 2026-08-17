@@ -161,13 +161,7 @@ class _ArrayCommonMixin(np.ndarray):
             copy = True
         dtype = np.dtype(dtype)
         if self._element_type is None or dtype in self._element_type:
-            return type(self)(
-                np.asarray(self),
-                dtype=dtype,
-                min_ndim=self.min_ndim,
-                max_ndim=self.max_ndim,
-                copy=copy,
-            )
+            return np.asarray(self, dtype).view(type(self))
         return self.__array__(dtype, copy=copy)
 
     def unique(self):

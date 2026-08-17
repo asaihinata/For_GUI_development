@@ -6,9 +6,9 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 from numpy import float64, ndarray
 from numpy.typing import ArrayLike
 
+from sgg._typing import *
 from sgg.graph.element.graph import GElement
 from sgg.graph.style import getLabel
-from sgg._typing import *
 
 __all__ = ["threeElement"]
 

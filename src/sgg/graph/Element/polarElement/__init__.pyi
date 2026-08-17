@@ -3,9 +3,9 @@ from typing import overload
 from matplotlib.projections.polar import PolarAxes
 from numpy import float64, ndarray, number
 
+from sgg._typing import *
 from sgg.graph.element.graph import GElement
 from sgg.graph.style import getLabel
-from sgg._typing import *
 
 __all__ = ["polarElement"]
 

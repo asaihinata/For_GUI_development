@@ -116,8 +116,8 @@ type _NaTValue_co = _NestedSequence[_DateWord_NAT]
 type _ArrayDT64 = _NestedSequence[np.datetime64] | np.datetime64
 type _ComparisonDT64 = _ArrayDT64 | datetime | date
 type _ArrayLikeDT64_co = __DualArrayLike[
-    np.dtype[np.bool | np.bool_ | np.integer | np.str_ | np.datetime64],
-    int | bool | str | datetime | date | _DateWordAll,
+    np.dtype[np.bool | np.bool_ | np.integer | np.str_ | np.bytes_ | np.datetime64],
+    int | bool | str | bytes | datetime | date | _DateWordAll,
 ]
 type _ArrayLikeTD64_co = __DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.timedelta64],
