@@ -1,5 +1,7 @@
 """基本的な文字列の操作をするモジュール"""
 
+from re import sub
+
 import numpy as np
 import numpy.strings as nps
 from numpy.dtypes import StringDType
@@ -205,6 +207,7 @@ class NPString(_ArrayCommonMixin):
         result._dtype = result.dtype
         return result
 
+    # 判定
     def istitle(self):
         return np.array(nps.istitle(self), dtype=np.bool_)
 
@@ -222,6 +225,10 @@ class NPString(_ArrayCommonMixin):
 
     def isupper(self):
         return np.array(nps.isupper(self), dtype=np.bool_)
+
+    # 正規表現
+    def sub(self, pattern, repl):
+        return np.vectorize(lambda s: sub(pattern, repl, s))(self)
 
     @classmethod
     def randombytes(cls, length, seed=None):

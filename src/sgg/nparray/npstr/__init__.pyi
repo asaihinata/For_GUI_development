@@ -449,7 +449,7 @@ class NPString(_ArrayCommonMixin):
         :param errors: エンコードエラーの処理方法を指定する
         :type errors: str | None
         """
-
+    # 判定
     def istitle(self) -> sgt.RBool_:
         """要素がタイトルケースの文字列であり,かつ少なくとも1文字が含まれているかを判定する"""
 
@@ -467,6 +467,36 @@ class NPString(_ArrayCommonMixin):
 
     def isupper(self) -> sgt.RBool_:
         """各要素内の文字列内のすべての文字が大文字であり,かつ少なくとも1文字が含まれているかを判定する"""
+    # 正規表現
+    @overload
+    def sub(
+        self,
+        pattern: sgt._PatternStrScalar,
+        repl: sgt._PatternStrScalar,
+    ) -> NPString:
+        """
+        `re.sub`を使って文字列を置換する
+
+        :param pattern: 置き換えたい文字列を指定する
+        :type pattern: str | Pattern[str]
+        :param repl: 置換後の文字列を指定する
+        :type repl: str | Pattern[str]
+        """
+
+    @overload
+    def sub(
+        self,
+        pattern: sgt._PatternBytesScalar,
+        repl: sgt._PatternBytesScalar,
+    ) -> NPString:
+        """
+        `re.sub`を使ってバイト列を置換する
+
+        :param pattern: 置き換えたいバイト列を指定する
+        :type pattern: bytes | Pattern[bytes]
+        :param repl: 置換後のバイト列を指定する
+        :type repl: bytes | Pattern[bytes]
+        """
 
     def tonumpy(self, copy: bool | None = None) -> sgt.NDString:
         """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
