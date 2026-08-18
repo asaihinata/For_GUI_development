@@ -1,14 +1,15 @@
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 
 from sgg import *
 
 
 def test_main():
     data = (
-        Getcsv(Path(__file__).parent / "data" / "japan_population.csv")
-        .get_numpy()[1:4, 2:8]
+        pd.read_csv(Path(__file__).parent / "data" / "japan_population.csv")
+        .to_numpy()[1:4, 2:8]
         .astype(np.int64)
     )
     layout = [

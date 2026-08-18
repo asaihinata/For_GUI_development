@@ -1,14 +1,15 @@
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 
 from sgg import *
 
 
 def test_main():
-    data = Getcsv(
+    data = pd.read_csv(
         Path(__file__).parent / "data" / "school_test_demo_data.csv"
-    ).get_numpy()
+    ).to_numpy()
     layout = []
     for i in range(6):
         tabs = []
