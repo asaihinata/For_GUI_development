@@ -5,10 +5,10 @@ import numpy as np
 from matplotlib.colors import to_hex
 from numpy import array, fromiter, nditer, uint8, where
 
-from sgg.readfile import Getcsv
+from ._color import COLOR_LIST
 
 __all__ = ["Color", "parsecolor"]
-cds = Getcsv(Path(__file__).parent / "color.csv").get_numpy()
+cds = np.array(COLOR_LIST)
 _HEX6_RE = compile(r"^#[0-9a-f]{6}$")
 _HEX3_RE = compile(r"^#[0-9a-f]{3}$")
 _RGB_RE = compile(r"^rgb\((\d+),(\d+),(\d+)\)$")

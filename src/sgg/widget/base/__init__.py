@@ -2,8 +2,7 @@ from re import findall
 from types import FunctionType
 
 from sgg.dev import bols, listchose, num0s, parsecolor
-from sgg.font import TKFont
-from sgg.readfile import Getfont
+from sgg.font import Getfont, TKFont
 
 __all__ = ["Element"]
 

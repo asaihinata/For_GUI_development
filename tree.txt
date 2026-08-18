@@ -43,7 +43,7 @@ For_GUI_development
  │   │   │   ├── _dnumber.py
  │   │   │   └── color
  │   │   │       ├── __init__.py
- │   │   │       └── color.csv
+ │   │   │       └── _color.py
  │   │   ├── dialogs
  │   │   │   ├── __init__.py
  │   │   │   ├── dialog
@@ -83,7 +83,10 @@ For_GUI_development
  │   │   │   └── __init__.py
  │   │   ├── font
  │   │   │   ├── __init__.py
- │   │   │   └── __init__.pyi
+ │   │   │   ├── getfont.py
+ │   │   │   ├── getfont.pyi
+ │   │   │   ├── tkfont.py
+ │   │   │   └── tkfont.pyi
  │   │   ├── graph
  │   │   │   ├── __init__.py
  │   │   │   ├── element
@@ -264,17 +267,6 @@ For_GUI_development
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
  │   │   │   └── nptimedelta
- │   │   │       ├── __init__.py
- │   │   │       └── __init__.pyi
- │   │   ├── readfile
- │   │   │   ├── __init__.py
- │   │   │   ├── rcsv
- │   │   │   │   ├── __init__.py
- │   │   │   │   └── __init__.pyi
- │   │   │   ├── rfont
- │   │   │   │   ├── __init__.py
- │   │   │   │   └── __init__.pyi
- │   │   │   └── rjson
  │   │   │       ├── __init__.py
  │   │   │       └── __init__.pyi
  │   │   ├── testing
@@ -460,5 +452,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:319
-フォルダ数:142
+ファイル数:315
+フォルダ数:138

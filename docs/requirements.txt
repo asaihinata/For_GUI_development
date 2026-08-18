@@ -4,11 +4,8 @@ japanize_matplotlib
 matplotlib
 numpy
 Pillow
-polars
-python-barcode
 python_dateutil
+python-barcode
 qrcode
 Requests
-scipy
-ujson
 validators

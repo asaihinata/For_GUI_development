@@ -4,7 +4,7 @@ from tkinter import Misc
 from tkinter.font import Font
 from typing import Literal, overload
 
-from sgg.readfile import Getfont
+from .getfont import Getfont
 
 __all__ = ["TKFont"]
 
