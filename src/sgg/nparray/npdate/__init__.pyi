@@ -425,22 +425,19 @@ class NPDate(_ArrayCommonMixin):
     @classmethod
     def full(
         cls,
-        fill_value: sgt._DT64Scalar,
+        fill_value: sgt._DT64sScalar,
         shape: sgt._ShapeInt,
-        dtype: sgt._DtypeLikeDT | None = None,
-        timezone: sgt._TypeTimezone | None = None,
+        dtype: sgt._DtypeLikeDT | None = datetime64,
     ) -> NPDate:
         """
         指定された形状と配列の型で`fill_value`で埋められた配列のオブジェクトを返す
 
         :param fill_value: 配列内に埋めるスカラー値を指定する
-        :type fill_value: _DT64Scalar
+        :type fill_value: _DT64sScalar
         :param shape: 配列の形状を指定する
         :type shape: int | tuple[int, ...]
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: _DtypeLikeDT | None
-        :param timezone: 日付のタイムゾーンを指定する
-        :type timezone: _TypeTimezone | ZoneInfo | None
         :raises ValueError: `fill_value`にスカラー値で指定しなかった場合に発生させる
         :raises ShapeError: `shape`で正しい値ではない場合に発生させる
         """
@@ -490,3 +487,25 @@ class NPDate(_ArrayCommonMixin):
     @property
     def nums(self) -> Literal[21]:
         """配列のデータ型固有の番号を返す"""
+
+@overload
+def _func[T: sgt._DT64Scalar](x: T) -> T:
+    """
+    入力された値を`datetime.datetime`に変換する
+
+    :param x: `datetime.datetime`に変換したい値を指定する
+    :type x: _DT64Scalar
+    """
+
+@overload
+def _func[T: sgt._IntScalar | None](x: T) -> T:
+    """
+    入力された値を`datetime.datetime`に変換する
+
+    :param x: `datetime.datetime`に変換したい値を指定する
+    :type x: 整数の値
+    """
+
+@overload
+def _func(x: Any) -> Any:
+    """入力された値を`datetime.datetime`に変換する"""

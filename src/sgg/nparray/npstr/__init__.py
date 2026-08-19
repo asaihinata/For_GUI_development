@@ -228,7 +228,9 @@ class NPString(_ArrayCommonMixin):
 
     # 正規表現
     def sub(self, pattern, repl):
-        return np.vectorize(lambda s: sub(pattern, repl, s))(self)
+        result = np.vectorize(lambda s: sub(pattern, repl, s))(self)
+        result._dtype = result.dtype
+        return result
 
     @classmethod
     def randombytes(cls, length, seed=None):

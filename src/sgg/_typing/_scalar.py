@@ -33,5 +33,5 @@ type _DateWordScalar = Literal[
 ]
 type _PatternStrScalar = str | Pattern[str]
 type _PatternBytesScalar = bytes | Pattern[bytes]
-type _DT64Scalar = _DateWordScalar | str | np.str_ | datetime | date | np.datetime64
+type _DT64Scalar = _DateWordScalar | str | bytes | np.str_ | np.bytes_ | datetime | date | np.datetime64
 type _TD64Scalar = timedelta | _IntScalar

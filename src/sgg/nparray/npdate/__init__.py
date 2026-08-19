@@ -46,19 +46,6 @@ class NPDate(_ArrayCommonMixin):
         max_ndim=None,
         copy=True,
     ):
-        def _func(x):
-            if x in _Word:
-                return x
-            elif isinstance(x, str | np.str_):
-                try:
-                    return parse(x)
-                except:
-                    return None
-            elif isinstance(x, bytes | np.bytes_):
-                return _func(x.decode())
-            else:
-                return x
-
         if not isinstance(copy, bool):
             copy = True
         resolved = cls._resolve_dtype(
@@ -345,14 +332,31 @@ class NPDate(_ArrayCommonMixin):
         cls,
         fill_value,
         shape,
-        dtype="datetime64[D]",
-        timezone=None,
+        dtype=np.datetime64,
     ):
         _to_np_scalar(fill_value)
         if not _arrisuint(shape):
             raise ShapeError(shape)
-        result = cls(np.full(shape, fill_value), dtype=dtype, timezone=timezone)
+        resolved = cls._resolve_dtype(
+            np.datetime64 if dtype is None else _dt64_unit(dtype)
+        )
+        result = np.asarray(np.full(shape, _func(fill_value)), dtype=resolved).view(cls)
+        result._dtype = result.dtype
         return result
+
+
+def _func(x):
+    if x in _Word:
+        return x
+    elif isinstance(x, str | np.str_):
+        try:
+            return parse(x)
+        except:
+            return None
+    elif isinstance(x, bytes | np.bytes_):
+        return _func(x.decode())
+    else:
+        return x
 
 
 def _obj_to_datetime64(obj, dtype):
