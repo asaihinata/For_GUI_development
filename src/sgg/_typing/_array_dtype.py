@@ -1,17 +1,19 @@
 import numpy as np
 import numpy._typing as npt
 
-from sgg._typing import _DT64Codes_All, _TD64Codes_All
+import sgg._typing as sgt
 
 __all__ = [
     "_BoolDTypeLike",
     "_ComplexDtypeLike",
     "_DtypeLikeDT",
+    "_DtypeLikeDTs",
     "_DTypeLikeF32",
     "_DTypeLikeF64",
     "_DTypeLikeFloat",
     "_DTypeLikeInt",
     "_DtypeLikeTD",
+    "_DtypeLikeTDs",
     "_DualArrayLike",
     "_NumericDTypeLike",
     "_RealNumericDTypeLike",
@@ -45,7 +47,9 @@ type _StringsDTypeLike = type[str | bytes] | npt._DTypeLike[
     np.str_ | np.bytes_
 ] | np.dtypes.StringDType | npt._CharacterCodes
 # 日付
-type _DtypeLikeDT = npt._DTypeLike[np.datetime64] | _DT64Codes_All
-type _DtypeLikeTD = npt._DTypeLike[np.timedelta64] | _TD64Codes_All
+type _DtypeLikeDT = npt._DTypeLike[np.datetime64] | sgt._DT64Code_All
+type _DtypeLikeDTs = npt._DTypeLike[np.datetime64] | sgt._DT64Codes_All
+type _DtypeLikeTD = npt._DTypeLike[np.timedelta64] | sgt._TD64Code_All
+type _DtypeLikeTDs = npt._DTypeLike[np.timedelta64] | sgt._TD64Codes_All
 # その他
 type DTypeNLike = npt.DTypeLike | None

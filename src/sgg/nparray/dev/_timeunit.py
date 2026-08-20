@@ -25,7 +25,7 @@ def _to_str(value):
     raise TypeError(f"{value}にはstrまたはbytesを指定してください")
 
 
-def _normalize_unit(unit: str):
+def _normalize_unit(unit):
     return _UNIT_ALIASES.get(unit, unit)
 
 
@@ -38,7 +38,7 @@ def _get_tm64_unit(value):
     normalized = _normalize_unit(s)
     if normalized in _VALID_UNITS:
         return normalized
-    raise ValueError(f"認識できないtimedelta64の単位/dtype文字列です: {value!r}")
+    raise ValueError(f"{value}は認識できないtimedelta64の単位もしくはdtypeの文字列です")
 
 
 def _tm64_unit(value):

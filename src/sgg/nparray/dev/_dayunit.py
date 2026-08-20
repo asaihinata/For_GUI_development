@@ -25,7 +25,7 @@ def _to_str(value):
     raise TypeError(f"{value}にはstrまたはbytesを指定してください")
 
 
-def _normalize_unit(unit: str):
+def _normalize_unit(unit):
     return _UNIT_ALIASES.get(unit, unit)
 
 
@@ -34,11 +34,11 @@ def _get_dt64_unit(value):
     m = _DTYPE_PATTERN.match(s)
     if m is not None:
         unit = m.group("unit")
-        return _normalize_unit(unit) if unit is not None else ""
+        return "" if unit is None else _normalize_unit(unit)
     normalized = _normalize_unit(s)
     if normalized in _VALID_UNITS:
         return normalized
-    raise ValueError(f"認識できないdatetime64の単位/dtype文字列です: {value!r}")
+    raise ValueError(f"{value}は認識できないdatetime64の単位もしくはdtypeの文字列です")
 
 
 def _dt64_unit(value):

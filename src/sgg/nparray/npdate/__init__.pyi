@@ -23,7 +23,7 @@ class NPDate(_ArrayCommonMixin):
         cls,
         obj: sgt._ArrayLikeDT64_co,
         /,
-        dtype: sgt._DtypeLikeDT = "datetime64[D]",
+        dtype: sgt._DtypeLikeDTs = "datetime64[D]",
         *,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -51,7 +51,7 @@ class NPDate(_ArrayCommonMixin):
         cls,
         obj: Any,
         /,
-        dtype: Any | sgt._DtypeLikeDT | None = None,
+        dtype: Any | sgt._DtypeLikeDTs | None = None,
         *,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -79,7 +79,7 @@ class NPDate(_ArrayCommonMixin):
         cls,
         obj: sgt._ArrayLikeDT64_co,
         /,
-        dtype: sgt._DtypeLikeDT = "datetime64[D]",
+        dtype: sgt._DtypeLikeDTs = "datetime64[D]",
         *,
         d_ndim: int | None = None,
         copy: bool = True,
@@ -104,7 +104,7 @@ class NPDate(_ArrayCommonMixin):
         cls,
         obj: Any,
         /,
-        dtype: Any | sgt._DtypeLikeDT | None = None,
+        dtype: Any | sgt._DtypeLikeDTs | None = None,
         *,
         d_ndim: int | None = None,
         copy: bool = True,
@@ -285,7 +285,6 @@ class NPDate(_ArrayCommonMixin):
         /,
         step: sgt._TD64Scalar | None = 1,
         dtype: sgt._DT64Codes_All | None = "D",
-        endpoint: bool = False,
     ) -> NPDate:
         """
         指定された間隔内で等間隔の日付を返す
@@ -295,11 +294,9 @@ class NPDate(_ArrayCommonMixin):
         :param stop: 区間を終了する日付を指定する
         :type stop: Literal["TODAY", "today", "NOW", "now"] | str | np.str_ | datetime | date | np.datetime64
         :param step: 値の間隔を指定する
-        :type step: int | np.timedelta64 | np.integer | np.bool | None
+        :type step: int | bool | np.integer | np.bool | bool | timedelta | np.timedelta64 | None
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: _DT64Codes_All | None
-        :param endpoint: 生成される配列の区間に`stop`を含むか指定する
-        :type endpoint: bool
         """
 
     @overload
@@ -418,6 +415,42 @@ class NPDate(_ArrayCommonMixin):
 
     def leapcount(self) -> int:
         """配列内の閏年の数を数える"""
+    # dtype
+    def dtype_range(self) -> NPDate:
+        """現在配列の配列型(`dtype`)で表現できる最大·最小の日付時刻を求める"""
+
+    def dtype_max(self) -> NPDate:
+        """現在配列の配列型(`dtype`)で表現できる最大の日付時刻を求める"""
+
+    def dtype_min(self) -> NPDate:
+        """現在配列の配列型(`dtype`)で表現できる最小の日付時刻を求める"""
+
+    @classmethod
+    def unit_range(cls, unit: sgt._DtypeLikeDT) -> NPDate:
+        """
+        日付単位(`unit`)が表現できる範囲の最大·最小の日付時刻を求める
+
+        :param unit: 日付単位を指定する
+        :type unit: _DtypeLikeDT
+        """
+
+    @classmethod
+    def unit_max(cls, unit: sgt._DtypeLikeDT) -> NPDate:
+        """
+        日付単位(`unit`)が表現できる範囲の最大の日付時刻を求める
+
+        :param unit: 日付単位を指定する
+        :type unit: _DtypeLikeDT
+        """
+
+    @classmethod
+    def unit_min(cls, unit: sgt._DtypeLikeDT) -> NPDate:
+        """
+        日付単位(`unit`)が表現できる範囲の最小の日付時刻を求める
+
+        :param unit: 日付単位を指定する
+        :type unit: _DtypeLikeDT
+        """
 
     def tonumpy(self, copy: bool | None = None) -> sgt.NDDatetime64:
         """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""
@@ -425,20 +458,21 @@ class NPDate(_ArrayCommonMixin):
     @classmethod
     def full(
         cls,
-        fill_value: sgt._DT64sScalar,
+        fill_value: sgt._DT64Scalar,
         shape: sgt._ShapeInt,
-        dtype: sgt._DtypeLikeDT | None = datetime64,
+        dtype: sgt._DtypeLikeDT | None = None,
     ) -> NPDate:
         """
         指定された形状と配列の型で`fill_value`で埋められた配列のオブジェクトを返す
 
         :param fill_value: 配列内に埋めるスカラー値を指定する
-        :type fill_value: _DT64sScalar
+        :type fill_value: _DT64Scalar
         :param shape: 配列の形状を指定する
         :type shape: int | tuple[int, ...]
         :param dtype: 配列に使用するデータ型を指定する
         :type dtype: _DtypeLikeDT | None
         :raises ValueError: `fill_value`にスカラー値で指定しなかった場合に発生させる
+        :raises ValueError: `dtype`でdatetime64型を指定しなかった場合に発生させる
         :raises ShapeError: `shape`で正しい値ではない場合に発生させる
         """
     # random
@@ -487,25 +521,3 @@ class NPDate(_ArrayCommonMixin):
     @property
     def nums(self) -> Literal[21]:
         """配列のデータ型固有の番号を返す"""
-
-@overload
-def _func[T: sgt._DT64Scalar](x: T) -> T:
-    """
-    入力された値を`datetime.datetime`に変換する
-
-    :param x: `datetime.datetime`に変換したい値を指定する
-    :type x: _DT64Scalar
-    """
-
-@overload
-def _func[T: sgt._IntScalar | None](x: T) -> T:
-    """
-    入力された値を`datetime.datetime`に変換する
-
-    :param x: `datetime.datetime`に変換したい値を指定する
-    :type x: 整数の値
-    """
-
-@overload
-def _func(x: Any) -> Any:
-    """入力された値を`datetime.datetime`に変換する"""

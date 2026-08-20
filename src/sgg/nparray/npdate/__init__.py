@@ -11,22 +11,24 @@ from ..dev import (_ArrayCommonMixin, _arrisuint, _dt64_unit, _get_dt64_unit,
                    _tm64_unit, _to_np_scalar)
 
 __all__ = ["NPDate"]
-_Word = [
-    "NAT",
-    b"NAT",
-    "NaT",
-    b"NaT",
-    "nat",
-    b"nat",
-    "NOW",
-    b"NOW",
-    "now",
-    b"now",
-    "TODAY",
-    b"TODAY",
-    "today",
-    b"today",
-]
+_Word = frozenset(
+    {
+        "NAT",
+        b"NAT",
+        "NaT",
+        b"NaT",
+        "nat",
+        b"nat",
+        "NOW",
+        b"NOW",
+        "now",
+        b"now",
+        "TODAY",
+        b"TODAY",
+        "today",
+        b"today",
+    }
+)
 
 
 class NPDate(_ArrayCommonMixin):
@@ -149,7 +151,7 @@ class NPDate(_ArrayCommonMixin):
         except:
             dtype = np.dtype(dtype)
         if dtype.kind == "M":
-            return np.asarray(self, dtype).view(type(self))
+            return np.asarray(self, dtype=dtype, copy=copy).view(type(self))
         return self.__array__(dtype, copy=copy)
 
     def to_datetime(self):
@@ -180,15 +182,12 @@ class NPDate(_ArrayCommonMixin):
 
     # 範囲
     @classmethod
-    def arange(cls, start, stop, /, step=1, *, dtype="D"):
+    def arange(cls, start, stop, /, step=1, dtype="D"):
         dtype = _get_dt64_unit(dtype)
-        start = _obj_to_datetime64(start, dtype).astype("int64")
-        stop = _obj_to_datetime64(stop, dtype).astype("int64")
-        if stop < start:
-            start, stop = stop, start
+        start = _obj_to_datetime64(start, dtype)
+        stop = _obj_to_datetime64(stop, dtype)
         if isinstance(step, timedelta):
             step = np.timedelta64(step)
-        dtype = _dt64_unit(dtype)
         result = np.asarray(
             np.arange(start, stop, step=step), dtype=_dt64_unit(dtype)
         ).view(cls)
@@ -319,6 +318,7 @@ class NPDate(_ArrayCommonMixin):
             np.count_nonzero((year % 4 == 0) & ((year % 100 != 0) | (year % 400 == 0)))
         )
 
+    # dtype
     @property
     def dtypeunit(self):
         dy = str(self._dtype)
@@ -327,21 +327,57 @@ class NPDate(_ArrayCommonMixin):
             return dy
         return dy[(place) : (len(dy) - 1)]
 
+    def dtype_range(self):
+        iinfo = np.iinfo(np.int64)
+        result = np.asarray([iinfo.min + 1, iinfo.max]).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    def dtype_max(self):
+        result = np.asarray(np.datetime64(np.iinfo(np.int64).max, self.dtypeunit)).view(
+            type(self)
+        )
+        result._dtype = result.dtype
+        return result
+
+    def dtype_min(self):
+        result = np.asarray(
+            np.datetime64(np.iinfo(np.int64).min + 1, self.dtypeunit)
+        ).view(type(self))
+        result._dtype = result.dtype
+        return result
+
+    @classmethod
+    def unit_range(cls, unit):
+        iinfo = np.iinfo(np.int64)
+        result = np.asarray([iinfo.min + 1, iinfo.max], _get_dt64_unit(unit)).view(cls)
+        result._dtype = result.dtype
+        return result
+
+    @classmethod
+    def unit_max(cls, unit):
+        return np.datetime64(np.iinfo(np.int64).max, _get_dt64_unit(unit))
+
+    @classmethod
+    def unit_min(cls, unit):
+        return np.datetime64(np.iinfo(np.int64).min + 1, _get_dt64_unit(unit))
+
     @classmethod
     def full(
         cls,
         fill_value,
         shape,
-        dtype=np.datetime64,
+        dtype=None,
     ):
         _to_np_scalar(fill_value)
         if not _arrisuint(shape):
             raise ShapeError(shape)
-        resolved = cls._resolve_dtype(
-            np.datetime64 if dtype is None else _dt64_unit(dtype)
-        )
-        result = np.asarray(np.full(shape, _func(fill_value)), dtype=resolved).view(cls)
-        result._dtype = result.dtype
+        dtype = _dt64_unit("D" if dtype is None else dtype)
+        resolved = cls._resolve_dtype(dtype)
+        result = np.asarray(
+            np.full(shape, _obj_to_datetime64(fill_value, resolved)), dtype=resolved
+        ).view(cls)
+        result._dtype = resolved
         return result
 
 
@@ -360,21 +396,16 @@ def _func(x):
 
 
 def _obj_to_datetime64(obj, dtype):
-    if isinstance(obj, str):
-        return np.datetime64(
-            obj if obj in ["TODAY", "today", "NOW", "now"] else parse(obj), dtype
-        )
-    elif isinstance(obj, np.str_):
-        obj = str(obj)
-        return np.datetime64(
-            obj if obj in ["TODAY", "today", "NOW", "now"] else parse(obj), dtype
-        )
-    elif isinstance(obj, np.datetime64):
+    if isinstance(obj, np.datetime64):
         return obj.astype(_dt64_unit(dtype))
-    elif isinstance(obj, datetime | date):
-        return np.datetime64(obj).astype(_dt64_unit(dtype))
-    else:
-        raise TypeError
+    dtype = _get_dt64_unit(dtype)
+    if obj in _Word or isinstance(obj, datetime | date | int | np.integer):
+        return np.datetime64(obj, dtype)
+    elif isinstance(obj, str):
+        return np.datetime64(parse(obj), dtype)
+    elif isinstance(obj, np.str_):
+        return np.datetime64(parse(str(obj)), dtype)
+    raise TypeError
 
 
 def _to_datetime64(value):
