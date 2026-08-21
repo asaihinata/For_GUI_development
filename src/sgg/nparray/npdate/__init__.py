@@ -175,10 +175,7 @@ class NPDate(_ArrayCommonMixin):
             return self
 
     def strftime(self, format):
-        def func(arr, format):
-            return arr.strftime(format)
-
-        return np.array(np.vectorize(func)(self.tolist(), format))
+        return np.vectorize(lambda i, format: i.strftime(format))(self.tolist(), format)
 
     # 範囲
     @classmethod

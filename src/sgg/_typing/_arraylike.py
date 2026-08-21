@@ -56,6 +56,8 @@ __all__ = [
     "RBytes_",
     "RCharacter",
     "RDatetime64",
+    "RFloat16",
+    "RFloat64",
     "RInt64",
     "RInt8",
     "RNumber",
@@ -151,6 +153,8 @@ type RInt64 = __ReturnDtype[np.int64]
 type RInt8 = __ReturnDtype[np.int8]
 type RUInt64 = __ReturnDtype[np.uint64]
 type RUInt8 = __ReturnDtype[np.uint8]
+type RFloat16 = __ReturnDtype[np.float16]
+type RFloat64 = __ReturnDtype[np.float64]
 type RStr_ = __ReturnDtype[np.str_]
 type RBytes_ = __ReturnDtype[np.bytes_]
 type RCharacter = __ReturnDtype[np.character]
