@@ -495,6 +495,15 @@ class NPNumber(_ArrayCommonMixin):
         result._dtype = result.dtype
         return result
 
+    def bin(self):
+        if not self.dtype.kind in ["i","u"]:
+            raise TypeError
+        return np.vectorize(lambda i: bin(i))(self.tolist())
+
+    def hex(self):
+        if not self.dtype.kind in ["i","u"]:
+            raise TypeError
+        return np.vectorize(lambda i: hex(i))(self.tolist())
 
 def _dtype_check(dtype, kind=False):
     dtypes = np.dtype(dtype)

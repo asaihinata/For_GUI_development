@@ -2,8 +2,6 @@ from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
 import numpy as np
-from dateutil.parser import parse
-from dateutil.relativedelta import relativedelta
 
 from sgg.exceptions import ShapeError
 
@@ -66,11 +64,13 @@ class NPDate(_ArrayCommonMixin):
         return obj
 
     def __add__(self, value):
-        if isinstance(value, relativedelta):
-            result = np.vectorize(lambda x, val: x + val, otypes=[self.dtype])(
-                self, value
-            )
-        else:
+        try:
+            from dateutil.relativedelta import relativedelta
+            if isinstance(value, relativedelta):
+                result = np.vectorize(lambda x, val: x + val, otypes=[self.dtype])(
+                    self, value
+                )
+        except:
             result = np.add(self, value)
         result = np.asarray(result).view(type(self))
         result._dtype = result.dtype
@@ -79,13 +79,17 @@ class NPDate(_ArrayCommonMixin):
     __iadd__ = __add__
 
     def __sub__(self, value):
-        if isinstance(value, relativedelta):
-            result = np.asarray(
-                np.vectorize(lambda x, val: x - val, otypes=[self.dtype])(self, value)
-            ).view(type(self))
-            result._dtype = result.dtype
-            return result
-        elif isinstance(value, datetime | date):
+        try:
+            from dateutil.relativedelta import relativedelta
+            if isinstance(value, relativedelta):
+                result = np.asarray(
+                    np.vectorize(lambda x, val: x - val, otypes=[self.dtype])(self, value)
+                ).view(type(self))
+                result._dtype = result.dtype
+                return result
+        except:
+            pass
+        if isinstance(value, datetime | date):
             result = np.subtract(self.__array__(), np.datetime64(value))
             if np.ndim(result) == 0:
                 return result
@@ -381,15 +385,20 @@ class NPDate(_ArrayCommonMixin):
 def _func(x):
     if x in _Word:
         return x
-    elif isinstance(x, str | np.str_):
+    if isinstance(x, str):
         try:
-            return parse(x)
+            return np.datetime64(x)
         except:
-            return None
-    elif isinstance(x, bytes | np.bytes_):
+            try:
+                from dateutil.parser import parse
+                return parse(str(x))
+            except:
+                return None
+    if isinstance(x, np.str_):
+        return _func(str(x))
+    if isinstance(x, bytes | np.bytes_):
         return _func(x.decode())
-    else:
-        return x
+    return x
 
 
 def _obj_to_datetime64(obj, dtype):
@@ -398,10 +407,8 @@ def _obj_to_datetime64(obj, dtype):
     dtype = _get_dt64_unit(dtype)
     if obj in _Word or isinstance(obj, datetime | date | int | np.integer):
         return np.datetime64(obj, dtype)
-    elif isinstance(obj, str):
-        return np.datetime64(parse(obj), dtype)
-    elif isinstance(obj, np.str_):
-        return np.datetime64(parse(str(obj)), dtype)
+    elif isinstance(obj, str | np.str_):
+        return np.datetime64(_func(obj), dtype)
     raise TypeError
 
 
