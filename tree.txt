@@ -351,9 +351,6 @@ For_GUI_development
  │   │       │   │       └── __init__.pyi
  │   │       │   └── original
  │   │       │       ├── __init__.py
- │   │       │       ├── barcodes
- │   │       │       │   ├── __init__.py
- │   │       │       │   └── __init__.pyi
  │   │       │       ├── btnpop
  │   │       │       │   ├── btn
  │   │       │       │   │   ├── __init__.py
@@ -376,10 +373,7 @@ For_GUI_development
  │   │       │       ├── imagelink
  │   │       │       │   ├── __init__.py
  │   │       │       │   └── __init__.pyi
- │   │       │       ├── link
- │   │       │       │   ├── __init__.py
- │   │       │       │   └── __init__.pyi
- │   │       │       └── qrimg
+ │   │       │       └── link
  │   │       │           ├── __init__.py
  │   │       │           └── __init__.pyi
  │   │       └── window
@@ -452,5 +446,5 @@ For_GUI_development
  └── .vscode
      ├── extensions.json
      └── settings.shared.json
-ファイル数:315
-フォルダ数:138
+ファイル数:311
+フォルダ数:136

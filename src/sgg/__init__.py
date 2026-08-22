@@ -134,14 +134,6 @@ class Guis:
         return {"count": _counts(), "type": "TProgressbar", **kw}
 
     @staticmethod
-    def Barcode(**kw):
-        return {"count": _counts(), "type": "Barcode", **kw}
-
-    @staticmethod
-    def QRImage(**kw):
-        return {"count": _counts(), "type": "QRImage", **kw}
-
-    @staticmethod
     def LineGraph(**kw):
         return {"count": _counts(), "type": "LineGraph", **kw}
 

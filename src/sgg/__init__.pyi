@@ -1653,65 +1653,6 @@ class Guis:
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
-
-    @staticmethod
-    def Barcode(
-        *,
-        data: str | int,
-        fotmat: Literal[
-            "codabar",
-            "code128",
-            "code39",
-            "ean",
-            "ean13",
-            "ean13-guard",
-            "ean14",
-            "ean8",
-            "ean8-guard",
-            "gs1",
-            "gs1_128",
-            "gtin",
-            "isbn",
-            "isbn10",
-            "isbn13",
-            "issn",
-            "itf",
-            "jan",
-            "nw-7",
-            "pzn",
-            "upc",
-            "upca",
-        ] = "code39",
-        takefocus: bool = ...,
-        key: str | None = ...,
-    ) -> dict[str, Any]:
-        """
-        バーコードを作成する
-
-        :param data: バーコードで表示させる値を指定する
-        :type data: str | int
-        :param format: バーコードの形式を指定する
-        :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
-        :type takefocus: bool
-        :param key: ウィジェット固有の番号を指定する
-        :type key: str | None
-        :raises TypeError: `data`にint型もしくはstr型を指定しなかった場合に発生させる
-        """
-
-    @staticmethod
-    def QRImage(
-        *, text: str = ..., takefocus: bool = ..., key: str | None = ...
-    ) -> dict[str, Any]:
-        """
-        QRコードを作成する
-
-        :param text: QRコードを読み取った際に表示させる値を指定する
-        :type text: str
-        :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
-        :type takefocus: bool
-        :param key: ウィジェット固有の番号を指定する
-        :type key: str | None
-        """
     # 2D Graph
     @staticmethod
     def LineGraph(

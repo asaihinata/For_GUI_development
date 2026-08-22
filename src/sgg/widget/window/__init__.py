@@ -188,10 +188,6 @@ class WindowController:
             widget = Tree(parent, kw)
         elif t == "Slidebar":
             widget = Slidebar(parent, kw)
-        elif t == "Barcode":
-            widget = Barcode(parent, kw)
-        elif t == "QRImage":
-            widget = QRImage(parent, kw)
         elif t == "LineGraph":
             widget = LineGraph(parent, kw)
         elif t == "BarGraph":

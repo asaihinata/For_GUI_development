@@ -66,6 +66,7 @@ class NPDate(_ArrayCommonMixin):
     def __add__(self, value):
         try:
             from dateutil.relativedelta import relativedelta
+
             if isinstance(value, relativedelta):
                 result = np.vectorize(lambda x, val: x + val, otypes=[self.dtype])(
                     self, value
@@ -81,9 +82,12 @@ class NPDate(_ArrayCommonMixin):
     def __sub__(self, value):
         try:
             from dateutil.relativedelta import relativedelta
+
             if isinstance(value, relativedelta):
                 result = np.asarray(
-                    np.vectorize(lambda x, val: x - val, otypes=[self.dtype])(self, value)
+                    np.vectorize(lambda x, val: x - val, otypes=[self.dtype])(
+                        self, value
+                    )
                 ).view(type(self))
                 result._dtype = result.dtype
                 return result
@@ -391,6 +395,7 @@ def _func(x):
         except:
             try:
                 from dateutil.parser import parse
+
                 return parse(str(x))
             except:
                 return None

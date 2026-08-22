@@ -667,21 +667,21 @@ class NPNumber(_ArrayCommonMixin):
         :param seed: 乱数のシード値を指定する
         """
 
-    def bin(self)->sgt.RStr_:
+    def bin(self) -> sgt.RStr_:
         """
         整数を\"0b\"が付いた2進数に変換する
 
         :raises TypeError: `NPNumber`の型が整数型ではない時に発生させる
-        :return: 
+        :return:
         :rtype: np.str_ | NDArray[np.str_]
         """
 
-    def hex(self)->sgt.RStr_:
+    def hex(self) -> sgt.RStr_:
         """
         整数を\"0x\"が付いた小文字の16進数に変換する
 
         :raises TypeError: `NPNumber`の型が整数型ではない時に発生させる
-        :return: 
+        :return:
         :rtype: np.str_ | NDArray[np.str_]
         """
 
