@@ -187,10 +187,10 @@ class NPNumber(_ArrayCommonMixin):
         return 1 + np.log2(self.size)
 
     def dtypeinfo(self):
-        if np.issubdtype(self.dtype, np.integer):
-            return np.iinfo(self.dtype)
+        if np.issubdtype(self._dtype, np.integer):
+            return np.iinfo(self._dtype)
         else:
-            return np.finfo(self.dtype)
+            return np.finfo(self._dtype)
 
     def cussum(self):
         datas = np.ravel(self)
@@ -317,19 +317,34 @@ class NPNumber(_ArrayCommonMixin):
         return result
 
     def isinf(self):
-        return np.array(np.isinf(self), dtype=np.bool_)
+        result = np.isinf(self)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def isnan(self):
-        return np.array(np.isnan(self), dtype=np.bool_)
+        result = np.isnan(self)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def isfinite(self):
-        return np.array(np.isfinite(self), dtype=np.bool_)
+        result = np.isfinite(self)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def isposinf(self):
-        return np.array(np.isposinf(self), dtype=np.bool_)
+        result = np.isposinf(self)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def isreal(self):
-        return np.array(np.isreal(self), dtype=np.bool_)
+        result = np.isreal(self)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def iscomplexobj(self):
         return np.iscomplexobj(self)
@@ -516,11 +531,22 @@ class NPNumber(_ArrayCommonMixin):
     def bin(self):
         if not self.dtype.kind in ["i", "u"]:
             raise TypeError
+        if self.ndim==0:
+            return bin(int(self))
         return np.vectorize(lambda i: bin(i))(self.tolist())
+
+    def oct(self):
+        if not self.dtype.kind in ["i", "u"]:
+            raise TypeError
+        if self.ndim==0:
+            return oct(int(self))
+        return np.vectorize(lambda i: oct(i))(self.tolist())
 
     def hex(self):
         if not self.dtype.kind in ["i", "u"]:
             raise TypeError
+        if self.ndim==0:
+            return hex(int(self))
         return np.vectorize(lambda i: hex(i))(self.tolist())
 
 

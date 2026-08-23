@@ -63,6 +63,7 @@ __all__ = [
     "RInt64",
     "RInt8",
     "RNumber",
+    "RStr",
     "RStr_",
     "RString",
     "RTimedelta64",
@@ -162,6 +163,7 @@ type RUInt64 = __ReturnDtype[np.uint64]
 type RUInt8 = __ReturnDtype[np.uint8]
 type RFloat16 = __ReturnDtype[np.float16]
 type RFloat64 = __ReturnDtype[np.float64]
+type RStr = NDArray[np.str_] | str
 type RStr_ = __ReturnDtype[np.str_]
 type RBytes_ = __ReturnDtype[np.bytes_]
 type RCharacter = __ReturnDtype[np.character]
