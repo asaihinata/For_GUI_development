@@ -51,8 +51,8 @@ class NPString(_ArrayCommonMixin):
         result._dtype = result.dtype
         return result
 
-    __radd__ = __add__
     __iadd__ = __add__
+    __radd__ = __add__
 
     def __mul__(self, i):
         _int_co_check(i)
@@ -64,8 +64,8 @@ class NPString(_ArrayCommonMixin):
         result._dtype = result.dtype
         return result
 
-    __rmul__ = __mul__
     __imul__ = __mul__
+    __rmul__ = __mul__
 
     def __mod__(self, value):
         result = np.asarray(nps.mod(self, value)).view(type(self))

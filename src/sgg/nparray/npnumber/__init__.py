@@ -89,8 +89,8 @@ class NPNumber(_ArrayCommonMixin):
         result._dtype = result.dtype
         return result
 
-    __radd__ = __add__
     __iadd__ = __add__
+    __radd__ = __add__
 
     def __sub__(self, value):
         result = np.asarray(np.subtract(self, value)).view(type(self))
@@ -105,8 +105,8 @@ class NPNumber(_ArrayCommonMixin):
         result._dtype = result.dtype
         return result
 
-    __rmul__ = __mul__
     __imul__ = __mul__
+    __rmul__ = __mul__
 
     def __truediv__(self, value):
         result = np.asarray(np.divide(self, value)).view(type(self))

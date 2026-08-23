@@ -124,8 +124,8 @@ class NPNumber(_ArrayCommonMixin):
     def __add__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
     @overload
     def __add__(self, value: Any) -> NoReturn: ...
-    __radd__ = __add__
     __iadd__ = __add__
+    __radd__ = __add__
     @overload
     def __sub__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
     @overload
@@ -136,8 +136,8 @@ class NPNumber(_ArrayCommonMixin):
     def __mul__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
     @overload
     def __mul__(self, value: Any) -> NoReturn: ...
-    __rmul__ = __mul__
     __imul__ = __mul__
+    __rmul__ = __mul__
     @overload
     def __truediv__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
     @overload
@@ -341,7 +341,7 @@ class NPNumber(_ArrayCommonMixin):
 
     @overload
     def astype[ScalarT: np.generic](
-        self, dtype: npt._DTypeLike[ScalarT], copy: bool = True
+        self, dtype: sgt._DTypeLike[ScalarT], copy: bool = True
     ) -> npt.NDArray[ScalarT]:
         """
         配列の要素の型を変換した新しい配列オブジェクトを生成する

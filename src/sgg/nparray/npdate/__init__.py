@@ -64,50 +64,32 @@ class NPDate(_ArrayCommonMixin):
         return obj
 
     def __add__(self, value):
-        try:
-            from dateutil.relativedelta import relativedelta
-
-            if isinstance(value, relativedelta):
-                result = np.vectorize(lambda x, val: x + val, otypes=[self.dtype])(
-                    self, value
-                )
-        except:
-            result = np.add(self, value)
-        result = np.asarray(result).view(type(self))
+        result = np.asarray(np.add(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
     __iadd__ = __add__
+    __radd__ = __add__
 
     def __sub__(self, value):
-        try:
-            from dateutil.relativedelta import relativedelta
-
-            if isinstance(value, relativedelta):
-                result = np.asarray(
-                    np.vectorize(lambda x, val: x - val, otypes=[self.dtype])(
-                        self, value
-                    )
-                ).view(type(self))
-                result._dtype = result.dtype
-                return result
-        except:
-            pass
         if isinstance(value, datetime | date):
             result = np.subtract(self.__array__(), np.datetime64(value))
             if np.ndim(result) == 0:
                 return result
             return np.array(result)
-        elif isinstance(value, np.ndarray | np.datetime64) and value.dtype.kind == "M":
+        elif isinstance(value, np.datetime64) or (
+            isinstance(value, np.ndarray) and value.dtype.kind == "M"
+        ):
             result = np.subtract(self, value)
             if np.ndim(result) == 0:
                 return result
-            return np.array(result)
+            return result.__array__()
         result = np.asarray(np.subtract(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
     __isub__ = __sub__
+    __rsub__ = __sub__
 
     def __eq__(self, value):
         return np.array(np.equal(self, _to_datetime64(value)), dtype=np.bool_)

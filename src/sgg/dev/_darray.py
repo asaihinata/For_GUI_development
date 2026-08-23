@@ -1,6 +1,7 @@
 import numpy as np
 
 __all__ = [
+    "_tonparray",
     "change_array_like",
     "is_array_like",
     "list2int",
@@ -9,6 +10,26 @@ __all__ = [
     "listchose",
     "tonparray",
 ]
+
+
+def _tonparray(data, *, ndmin=0, ndmax=0):
+    if hasattr(data, "__array__"):
+        data = data.__array__()
+        l = data.ndim
+        if l < 1 or (0 < ndmin and l < ndmin) or (0 < ndmax and ndmax < l):
+            raise TypeError
+    elif isinstance(data, np.ndarray):
+        l = data.ndim
+        if l < 1 or (0 < ndmin and l < ndmin) or (0 < ndmax and ndmax < l):
+            raise TypeError
+    else:
+        kwargs = {}
+        if ndmin:
+            kwargs["ndmin"] = ndmin
+        if ndmax:
+            kwargs["ndmax"] = ndmax
+        return np.array(data, **kwargs)
+    return data
 
 
 def tonparray(data, *, ndmin=0, ndmax=0):

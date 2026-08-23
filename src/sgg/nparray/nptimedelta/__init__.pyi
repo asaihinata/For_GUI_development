@@ -5,7 +5,7 @@ from typing import Any, Literal, NoReturn, overload
 
 import numpy as np
 from numpy import dtype, timedelta64
-from numpy._typing import NDArray, _DTypeLike
+from numpy._typing import NDArray
 
 import sgg._typing as sgt
 
@@ -89,29 +89,38 @@ class NPTimedelta(_ArrayCommonMixin):
     @overload
     def __add__(self, value: sgt._ArrayLikeTD64_co | NPTimedelta) -> NPTimedelta: ...
     @overload
+    def __add__(self, value: NPDate) -> NPDate: ...
+    @overload
+    def __add__(self, value: sgt._ComparisonDT64) -> sgt.RDatetime64: ...
+    @overload
     def __add__(self, value: Any) -> NoReturn: ...
+    __iadd__ = __add__
     __radd__ = __add__
     @overload
     def __sub__(self, value: sgt._ArrayLikeTD64_co | NPTimedelta) -> NPTimedelta: ...
     @overload
-    def __sub__(
-        self, value: NDArray[np.datetime64] | np.datetime64 | NPDate
-    ) -> sgt.RDatetime64: ...
+    def __sub__(self, value: NPDate) -> NPDate: ...
+    @overload
+    def __sub__(self, value: sgt._ComparisonDT64) -> sgt.RDatetime64: ...
     @overload
     def __sub__(self, value: Any) -> NoReturn: ...
+    __isub__ = __sub__
     __rsub__ = __sub__
-    @overload
-    def __mul__(self, value: NPTimedelta) -> NoReturn: ...
-    @overload
     def __mul__(self, value: sgt._ArrayLikeInt_co) -> NPTimedelta: ...
-    @overload
-    def __mul__(self, value: Any) -> NoReturn: ...
+    __imul__ = __mul__
     @overload
     def __truediv__(self, value: timedelta64 | NPTimedelta) -> sgt.RNumber: ...
     @overload
     def __truediv__(self, value: sgt._RealNumeric_co) -> NPTimedelta: ...
     @overload
     def __truediv__(self, value: Any) -> NoReturn: ...
+    __itruediv__ = __truediv__
+    @overload
+    def __rtruediv__(
+        self, value: timedelta64 | timedelta64 | NPTimedelta
+    ) -> sgt.RNumber: ...
+    @overload
+    def __rtruediv__(self, value: Any) -> NoReturn: ...
     @overload
     def __getitem__(self, key: sgt._IntScalar) -> timedelta64:
         """
@@ -167,7 +176,7 @@ class NPTimedelta(_ArrayCommonMixin):
 
     @overload
     def astype[ScalarT: np.generic](
-        self, dtype: _DTypeLike[ScalarT], copy: bool = True
+        self, dtype: sgt._DTypeLike[ScalarT], copy: bool = True
     ) -> NDArray[ScalarT]:
         """
         配列の要素の型を変換した新しい配列オブジェクトを生成する

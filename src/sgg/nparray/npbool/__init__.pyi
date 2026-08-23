@@ -1,7 +1,6 @@
 from typing import Any, Literal, NoReturn, overload
 
 import numpy as np
-from numpy import _DTypeLike
 
 import sgg._typing as sgt
 
@@ -176,7 +175,7 @@ class NPBool(_ArrayCommonMixin):
 
     @overload
     def astype[ScalarT: np.generic](
-        self, dtype: _DTypeLike[ScalarT], copy: bool = True
+        self, dtype: sgt._DTypeLike[ScalarT], copy: bool = True
     ) -> sgt.NDArray[ScalarT]:
         """
         配列の要素の型を変換した新しい配列オブジェクトを生成する

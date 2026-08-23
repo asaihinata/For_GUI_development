@@ -4,7 +4,7 @@ from typing import Any, Literal, NoReturn, overload
 
 import numpy as np
 from numpy import bytes_, str_
-from numpy._typing import NDArray, _DTypeLike
+from numpy._typing import NDArray
 from numpy.dtypes import StringDType
 
 import sgg._typing as sgt
@@ -305,7 +305,7 @@ class NPString(_ArrayCommonMixin):
 
     @overload
     def astype[ScalarT: np.generic](
-        self, dtype: _DTypeLike[ScalarT], copy: bool = True
+        self, dtype: sgt._DTypeLike[ScalarT], copy: bool = True
     ) -> NDArray[ScalarT]:
         """
         配列の要素の型を変換した新しい配列オブジェクトを生成する

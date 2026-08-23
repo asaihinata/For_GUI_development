@@ -1,6 +1,10 @@
 """基本的な時間の差や期間について操作するモジュール"""
 
+from datetime import date, datetime, timedelta
+
 import numpy as np
+
+from sgg.dev import _tonparray
 
 from ..dev import _ArrayCommonMixin, _tm64_unit
 
@@ -41,28 +45,73 @@ class NPTimedelta(_ArrayCommonMixin):
         return obj
 
     def __add__(self, value):
+        if isinstance(value, date | datetime):
+            return np.add(self, np.datetime64(value))
+        elif isinstance(value, np.datetime64) or (
+            isinstance(value, np.ndarray) and value.dtype.kind == "M"
+        ):
+            result = np.add(self, value)
+            if np.ndim(result) == 0:
+                return result
+            return result.__array__()
+        if isinstance(value, timedelta):
+            value = np.timedelta64(value, self.dtypeunit)
         result = np.asarray(np.add(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
+    __iadd__ = __add__
     __radd__ = __add__
 
     def __sub__(self, value):
-        if isinstance(value, np.ndarray | np.datetime64) and value.dtype.kind == "M":
+        if isinstance(value, date | datetime):
+            result = np.subtract(np.datetime64(value), self)
+            if np.ndim(result) == 0:
+                return result
+            return result.__array__()
+        if isinstance(value, np.datetime64) or (
+            isinstance(value, np.ndarray) and value.dtype.kind == "M"
+        ):
             result = np.subtract(value, self)
             if np.ndim(result) == 0:
-                return np.datetime64(result, result.dtype)
-            return np.array(result, result.dtype)
+                return result
+            return result.__array__()
+        if isinstance(value, timedelta):
+            value = np.timedelta64(value, self.dtypeunit)
         result = np.asarray(np.subtract(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
-    __rsub__ = __sub__
+    __isub__ = __sub__
 
-    def __mul__(self, value):
-        result = np.asarray(np.multiply(self, value)).view(type(self))
+    def __rsub__(self, value):
+        if isinstance(value, date | datetime):
+            result = np.subtract(np.datetime64(value), self)
+            if np.ndim(result) == 0:
+                return result
+            return result.__array__()
+        if isinstance(value, np.datetime64) or (
+            isinstance(value, np.ndarray) and value.dtype.kind == "M"
+        ):
+            result = np.subtract(value, self)
+            if np.ndim(result) == 0:
+                return result
+            return result.__array__()
+        if isinstance(value, timedelta):
+            value = np.timedelta64(value, self.dtypeunit)
+        result = np.asarray(np.subtract(value, self)).view(type(self))
         result._dtype = result.dtype
         return result
+
+    def __mul__(self, value):
+        value = _tonparray(value)
+        if value.dtype.kind in ["b", "i", "u", "f"]:
+            result = np.asarray(np.multiply(self, value)).view(type(self))
+            result._dtype = result.dtype
+            return result
+        raise TypeError
+
+    __imul__ = __mul__
 
     def __truediv__(self, value):
         if isinstance(value, np.ndarray | np.timedelta64) and value.dtype.kind == "m":
@@ -70,9 +119,27 @@ class NPTimedelta(_ArrayCommonMixin):
             if np.ndim(result) == 0:
                 return result
             return np.array(result, result.dtype)
-        result = np.asarray(np.true_divide(self, value)).view(type(self))
-        result._dtype = result.dtype
-        return result
+        elif isinstance(value, timedelta):
+            return np.true_divide(self, np.timedelta64(value))
+        value = _tonparray(value)
+        if value.dtype.kind in ["b", "i", "u", "f"]:
+            result = np.asarray(np.true_divide(self, value)).view(type(self))
+            result._dtype = result.dtype
+            return result
+
+    __itruediv__ = __truediv__
+
+    def __rtruediv__(self, value):
+        if isinstance(value, np.timedelta64) or (
+            isinstance(value, np.ndarray) and value.dtype.kind == "m"
+        ):
+            result = np.true_divide(value, self)
+            if np.ndim(result) == 0:
+                return result
+            return result.__array__()
+        elif isinstance(value, timedelta):
+            return np.true_divide(value, self)
+        return NotImplemented
 
     def __int__(self):
         lists = self.item()

@@ -2,9 +2,8 @@ from datetime import date, datetime
 from typing import Any, Literal, NoReturn, SupportsIndex, overload
 
 import numpy as np
-from dateutil.relativedelta import relativedelta
 from numpy import datetime64, timedelta64
-from numpy._typing import NDArray, _DTypeLike
+from numpy._typing import NDArray
 
 import sgg._typing as sgt
 
@@ -124,21 +123,15 @@ class NPDate(_ArrayCommonMixin):
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    @overload
     def __add__(self, value: sgt._ArrayLikeTD64_co) -> NPDate: ...
-    @overload
-    def __add__(self, value: relativedelta) -> NPDate: ...
     __iadd__ = __add__
 
     @overload
-    def __sub__(
-        self, value: datetime | date | datetime64 | NDArray[datetime64] | NPDate
-    ) -> sgt.RTimedelta64: ...
+    def __sub__(self, value: sgt._ComparisonDT64 | NPDate) -> sgt.RTimedelta64: ...
     @overload
     def __sub__(self, value: sgt._ArrayLikeTD64_co) -> NPDate: ...
     @overload
-    def __sub__(self, value: relativedelta) -> NPDate: ...
-
+    def __sub__(self, value: Any) -> NoReturn: ...
     __isub__ = __sub__
 
     @overload
@@ -236,7 +229,7 @@ class NPDate(_ArrayCommonMixin):
 
     @overload
     def astype[ScalarT: np.generic](
-        self, dtype: _DTypeLike[ScalarT], copy: bool = True
+        self, dtype: sgt._DTypeLike[ScalarT], copy: bool = True
     ) -> NDArray[ScalarT]:
         """
         配列の要素の型を変換した新しい配列オブジェクトを生成する

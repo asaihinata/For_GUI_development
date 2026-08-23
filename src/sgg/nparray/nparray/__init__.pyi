@@ -1,7 +1,6 @@
 from typing import Any, overload
 
 import numpy as np
-from numpy._typing import _DTypeLike
 
 import sgg._typing as sgt
 
@@ -20,7 +19,7 @@ class NPArray(_ArrayCommonMixin):
         cls,
         obj: Any,
         /,
-        dtype: _DTypeLike | None = None,
+        dtype: sgt._DTypeLike | None = None,
         *,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -48,7 +47,7 @@ class NPArray(_ArrayCommonMixin):
         cls,
         obj: Any,
         /,
-        dtype: _DTypeLike | None = None,
+        dtype: sgt._DTypeLike | None = None,
         *,
         d_ndim: int | None = None,
         copy: bool = True,
@@ -105,7 +104,7 @@ class NPArray(_ArrayCommonMixin):
         cls,
         fill_value: Any,
         shape: sgt._ShapeInt,
-        dtype: _DTypeLike | None = None,
+        dtype: sgt._DTypeLike | None = None,
     ) -> NPArray:
         """
         指定された形状と配列の型で`fill_value`で埋められた配列のオブジェクトを返す
@@ -122,7 +121,7 @@ class NPArray(_ArrayCommonMixin):
 
     @overload
     def astype[ScalarT: np.generic](
-        self, dtype: _DTypeLike[ScalarT], copy: bool = True
+        self, dtype: sgt._DTypeLike[ScalarT], copy: bool = True
     ) -> NPArray:
         """
         配列の要素の型を変換した新しい配列オブジェクトを生成する
