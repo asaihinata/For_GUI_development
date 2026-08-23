@@ -67,22 +67,40 @@ class NPNumber(_ArrayCommonMixin):
             return float(lists)
 
     def __eq__(self, value):
-        return np.array(np.equal(self, value), dtype=np.bool_)
+        result = np.equal(self, value)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def __ne__(self, value):
-        return np.array(np.not_equal(self, value), dtype=np.bool_)
+        result = np.not_equal(self, value)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def __lt__(self, value):
-        return np.array(np.less(self, value), dtype=np.bool_)
+        result = np.less(self, value)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def __le__(self, value):
-        return np.array(np.less_equal(self, value), dtype=np.bool_)
+        result = np.less_equal(self, value)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def __gt__(self, value):
-        return np.array(np.greater(self, value), dtype=np.bool_)
+        result = np.greater(self, value)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def __ge__(self, value):
-        return np.array(np.greater_equal(self, value), dtype=np.bool_)
+        result = np.greater_equal(self, value)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def __add__(self, value):
         result = np.asarray(np.add(self, value)).view(type(self))

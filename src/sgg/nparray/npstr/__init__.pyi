@@ -147,7 +147,7 @@ class NPString(_ArrayCommonMixin):
     ) -> tuple[type[str], type[bytes], type[str_], type[bytes_], type[StringDType]]:
         """NPStringで許可されている型を取得する"""
 
-    def append(self, value: sgt._ArrayLikeString_co) -> NPString:
+    def append(self, val: sgt._ArrayLikeString_co, /) -> NPString:
         """配列内の要素の文字に`val`を付け加える"""
 
     @property

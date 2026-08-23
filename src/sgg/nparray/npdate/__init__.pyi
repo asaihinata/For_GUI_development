@@ -137,9 +137,13 @@ class NPDate(_ArrayCommonMixin):
     @overload
     def __eq__(self, value: sgt._ComparisonDT64 | NPDate) -> sgt.RBool_: ...
     @overload
+    def __eq__(self, value: None = None) -> sgt.RBool_: ...
+    @overload
     def __eq__(self, value: Any) -> NoReturn: ...
     @overload
     def __ne__(self, value: sgt._ComparisonDT64 | NPDate) -> sgt.RBool_: ...
+    @overload
+    def __ne__(self, value: None = None) -> sgt.RBool_: ...
     @overload
     def __ne__(self, value: Any) -> NoReturn: ...
     @overload
@@ -267,7 +271,7 @@ class NPDate(_ArrayCommonMixin):
     def to_timezone(self, timezone: sgt._TypeTimezone, /) -> NPDate:
         """配列内の日付のタイムゾーンを指定したタイムゾーン(`timezone`)の日付の配列を作成する"""
 
-    def strftime(self, format: str) -> sgt.RStr_:
+    def strftime(self, format: str) -> NDArray[np.str_]:
         """日付のフォーマットを別のフォーマットで変換する"""
     # 範囲
     @classmethod

@@ -118,9 +118,12 @@ class NPTimedelta(_ArrayCommonMixin):
             result = np.true_divide(self, value)
             if np.ndim(result) == 0:
                 return result
-            return np.array(result, result.dtype)
+            return result.__array__()
         elif isinstance(value, timedelta):
-            return np.true_divide(self, np.timedelta64(value))
+            result = np.true_divide(self, value)
+            if np.ndim(result) == 0:
+                return result
+            return super().__array__(np.float64)
         value = _tonparray(value)
         if value.dtype.kind in ["b", "i", "u", "f"]:
             result = np.asarray(np.true_divide(self, value)).view(type(self))
@@ -138,7 +141,10 @@ class NPTimedelta(_ArrayCommonMixin):
                 return result
             return result.__array__()
         elif isinstance(value, timedelta):
-            return np.true_divide(value, self)
+            result = np.true_divide(value, self)
+            if np.ndim(result) == 0:
+                return result
+            return result.__array__(float)
         return NotImplemented
 
     def __int__(self):

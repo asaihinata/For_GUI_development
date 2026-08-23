@@ -223,6 +223,8 @@ class _ArrayCommonMixin(np.ndarray):
         """
 
     @property
+    def __array_priority__(self) -> float: ...
+    @property
     def element_type(self) -> tuple[type, ...] | None:
         """許可されている型を取得する(各サブクラスで戻り値の型を絞り込む想定)"""
 

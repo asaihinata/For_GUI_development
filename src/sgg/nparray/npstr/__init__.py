@@ -6,6 +6,8 @@ import numpy as np
 import numpy.strings as nps
 from numpy.dtypes import StringDType
 
+from sgg.dev import _tonparray
+
 from ..dev import _ArrayCommonMixin, _int_co_check
 
 __all__ = ["NPString"]
@@ -47,6 +49,10 @@ class NPString(_ArrayCommonMixin):
         return obj
 
     def __add__(self, value):
+        if not isinstance(self._dtype, StringDType) and not np.issubdtype(
+            self._dtype, _tonparray(value).dtype
+        ):
+            raise TypeError
         result = np.asarray(nps.add(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
@@ -56,11 +62,11 @@ class NPString(_ArrayCommonMixin):
 
     def __mul__(self, i):
         _int_co_check(i)
-        result = self.__array__(copy=False)
-        if isinstance(self.dtypes, StringDType):
-            result = np.asarray(nps.multiply(result, np.maximum(i, 0))).view(type(self))
+        result = nps.multiply(np.asarray(self), np.maximum(i, 0))
+        if isinstance(self._dtype, StringDType):
+            result = np.asarray(result).view(type(self))
         else:
-            result = nps.multiply(result, np.maximum(i, 0)).view(type(self))
+            result = result.view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -75,13 +81,19 @@ class NPString(_ArrayCommonMixin):
     __imod__ = __mod__
 
     def __eq__(self, value):
-        return np.array(nps.equal(self, value), dtype=np.bool_)
+        result = nps.equal(self, value)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def __ne__(self, value):
-        return np.array(nps.not_equal(self, value), dtype=np.bool_)
+        result = nps.not_equal(self, value)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
-    def append(self, val):
-        result = np.asarray(nps.add(self, val)).view(type(self))
+    def append(self, val, /):
+        result = self.__add__(val)
         result._dtype = result.dtype
         return result
 
@@ -120,7 +132,7 @@ class NPString(_ArrayCommonMixin):
         return np.array(nps.str_len(self), dtype=np.uint64)
 
     def replace(self, old, new):
-        result = nps.replace(np.asarray(self), old, new).view(type(self))
+        result = np.asarray(nps.replace(self.__array__(), old, new)).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -160,10 +172,10 @@ class NPString(_ArrayCommonMixin):
         return result
 
     def endswith(self, suffix, start=0, end=None):
-        return np.array(nps.endswith(self, suffix, start, end), dtype=np.bool_)
+        return nps.endswith(self, suffix, start, end).__array__(np.bool_)
 
     def startswith(self, prefix, start=0, end=None):
-        return np.array(nps.startswith(self, prefix, start, end), dtype=np.bool_)
+        return nps.startswith(self, prefix, start, end).__array__(np.bool_)
 
     def capitalize(self):
         result = np.asarray(nps.capitalize(self)).view(type(self))
@@ -177,31 +189,31 @@ class NPString(_ArrayCommonMixin):
 
     def find(self, sub, start=0, end=None):
         result = nps.find(self, sub, start=start, end=end)
-        if np.isscalar(result):
-            return np.int64(result.item())
-        return result.__array__(np.int64)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__(int)
 
     def rfind(self, sub, start=0, end=None):
         result = nps.rfind(self, sub, start=start, end=end)
-        if np.isscalar(result):
-            return np.int64(result.item())
-        return result.__array__(np.int64)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__(int)
 
     def count(self, sub, start=0, end=None):
         result = nps.count(self, sub, start=start, end=end)
-        if np.isscalar(result):
-            return np.uint64(result)
-        return result.__array__(np.uint64)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__(int)
 
     def decode(self, encoding=None, errors=None):
-        if not np.issubdtype(self.dtypes, np.bytes_):
+        if not np.issubdtype(self._dtype, np.bytes_):
             raise TypeError
         result = np.asarray(nps.decode(self, encoding, errors)).view(type(self))
         result._dtype = result.dtype
         return result
 
     def encode(self, encoding=None, errors=None):
-        if self.dtype.kind not in {"U", "T"}:
+        if self._dtype.kind not in {"U", "T"}:
             raise TypeError
         result = np.asarray(nps.encode(self, encoding, errors)).view(type(self))
         result._dtype = result.dtype
@@ -209,22 +221,40 @@ class NPString(_ArrayCommonMixin):
 
     # 判定
     def istitle(self):
-        return np.array(nps.istitle(self), dtype=np.bool_)
+        result = nps.istitle(self)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def isnumeric(self):
-        return np.array(nps.isnumeric(self), dtype=np.bool_)
+        result = nps.isnumeric(self)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def isdecimal(self):
-        return np.array(nps.isdecimal(self), dtype=np.bool_)
+        result = nps.isdecimal(self)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def isalnum(self):
-        return np.array(nps.isalnum(self), dtype=np.bool_)
+        result = nps.isalnum(self)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def isspace(self):
-        return np.array(nps.isspace(self), dtype=np.bool_)
+        result = nps.isspace(self)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def isupper(self):
-        return np.array(nps.isupper(self), dtype=np.bool_)
+        result = nps.isupper(self)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     # 正規表現
     def sub(self, pattern, repl):

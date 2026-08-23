@@ -92,22 +92,40 @@ class NPDate(_ArrayCommonMixin):
     __rsub__ = __sub__
 
     def __eq__(self, value):
-        return np.array(np.equal(self, _to_datetime64(value)), dtype=np.bool_)
+        result = np.equal(self, _to_datetime64(value))
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def __ne__(self, value):
-        return np.array(np.not_equal(self, _to_datetime64(value)), dtype=np.bool_)
+        result = np.not_equal(self, _to_datetime64(value))
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def __lt__(self, value):
-        return np.array(np.less(self, _to_datetime64(value)), dtype=np.bool_)
+        result = np.less(self, _to_datetime64(value))
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def __le__(self, value):
-        return np.array(np.less_equal(self, _to_datetime64(value)), dtype=np.bool_)
+        result = np.less_equal(self, _to_datetime64(value))
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def __gt__(self, value):
-        return np.array(np.greater(self, _to_datetime64(value)), dtype=np.bool_)
+        result = np.greater(self, _to_datetime64(value))
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def __ge__(self, value):
-        return np.array(np.greater_equal(self, _to_datetime64(value)), dtype=np.bool_)
+        result = np.greater_equal(self, _to_datetime64(value))
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def __int__(self):
         return int(self.astype(int).item())
@@ -130,7 +148,10 @@ class NPDate(_ArrayCommonMixin):
 
     # 判定
     def isnat(self):
-        return np.array(np.isnat(self), np.bool_)
+        result = np.isnat(self)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     # 変換
     def astype(self, dtype, copy=True):
@@ -151,7 +172,10 @@ class NPDate(_ArrayCommonMixin):
         return self.data.astype(date)
 
     def to_str(self):
-        return np.array(np.datetime_as_string(self), dtype=np.str_)
+        result = np.datetime_as_string(self)
+        if np.ndim(result) == 0:
+            return result
+        return result.__array__()
 
     def to_timezone(self, timezone, /):
         try:
@@ -165,7 +189,9 @@ class NPDate(_ArrayCommonMixin):
             return self
 
     def strftime(self, format):
-        return np.vectorize(lambda i, format: i.strftime(format))(self.tolist(), format)
+        return np.vectorize(lambda i, format: i.strftime(format), otypes=[np.str_])(
+            self.tolist(), format
+        )
 
     # 範囲
     @classmethod

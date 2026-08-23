@@ -197,6 +197,10 @@ class _ArrayCommonMixin(np.ndarray):
 
     # property
     @property
+    def __array_priority__(self):
+        return 1.0
+
+    @property
     def element_type(self):
         return self._element_type
 

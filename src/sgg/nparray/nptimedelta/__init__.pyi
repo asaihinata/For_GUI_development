@@ -23,7 +23,7 @@ class NPTimedelta(_ArrayCommonMixin):
     @overload
     def __new__(
         cls,
-        obj: sgt._ArrayLikeTD64_co,
+        obj: sgt._ArrayLikeTD64s_co,
         /,
         dtype: sgt._DtypeLikeTDs = "timedelta64[D]",
         *,
@@ -51,7 +51,7 @@ class NPTimedelta(_ArrayCommonMixin):
     @overload
     def __new__(
         cls,
-        obj: sgt._ArrayLikeTD64_co,
+        obj: sgt._ArrayLikeTD64s_co,
         /,
         dtype: sgt._DtypeLikeTDs = "timedelta64[D]",
         *,
@@ -109,16 +109,18 @@ class NPTimedelta(_ArrayCommonMixin):
     def __mul__(self, value: sgt._ArrayLikeInt_co) -> NPTimedelta: ...
     __imul__ = __mul__
     @overload
-    def __truediv__(self, value: timedelta64 | NPTimedelta) -> sgt.RNumber: ...
+    def __truediv__(self, value: timedelta) -> float | NDArray[np.float64]: ...
     @overload
-    def __truediv__(self, value: sgt._RealNumeric_co) -> NPTimedelta: ...
+    def __truediv__(self, value: timedelta64 | NPTimedelta) -> sgt.RFloat64: ...
+    @overload
+    def __truediv__(self, value: sgt._ArrayLikeRealNumeric_co) -> NPTimedelta: ...
     @overload
     def __truediv__(self, value: Any) -> NoReturn: ...
     __itruediv__ = __truediv__
     @overload
-    def __rtruediv__(
-        self, value: timedelta64 | timedelta64 | NPTimedelta
-    ) -> sgt.RNumber: ...
+    def __rtruediv__(self, value: timedelta) -> float | NDArray[np.float64]: ...
+    @overload
+    def __rtruediv__(self, value: timedelta64 | NPTimedelta) -> sgt.RFloat64: ...
     @overload
     def __rtruediv__(self, value: Any) -> NoReturn: ...
     @overload

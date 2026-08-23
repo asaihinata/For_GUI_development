@@ -18,11 +18,13 @@ __all__ = [
     "_ArrayLikeInt_co",
     "_ArrayLikeNone_co",
     "_ArrayLikeNumber_co",
+    "_ArrayLikeRealNumeric_co",
     "_ArrayLikeStr_co",
     "_ArrayLikeString_co",
     "_ArrayLikeStringDtype_co",
     "_ArrayLikeStrings_co",
     "_ArrayLikeTD64_co",
+    "_ArrayLikeTD64s_co",
     "_ComparisonDT64",
     "_DateWord_NAT",
     "_DateWord_NOW",
@@ -92,6 +94,7 @@ type _ArrayLikeFloat_co = __DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.floating],
     float | bool,
 ]
+type _ArrayLikeRealNumeric_co = _ArrayLikeBool_co | _ArrayLikeInt_co | _ArrayLikeFloat_co
 type _ArrayLikeComplex_co = __DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.number], complex
 ]
@@ -123,7 +126,11 @@ type _ArrayLikeDT64_co = __DualArrayLike[
 ]
 type _ArrayLikeTD64_co = __DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.timedelta64],
-    bool | int | timedelta | _DateWord_NAT,
+    bool | int | timedelta,
+]
+type _ArrayLikeTD64s_co = __DualArrayLike[
+    np.dtype[np.bool | np.bool_ | np.integer | np.timedelta64],
+    bool | int | timedelta | _DateWordAll,
 ]
 # None
 type _ArrayLikeNone_co = __DualArrayLike[
