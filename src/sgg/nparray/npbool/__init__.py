@@ -51,14 +51,14 @@ class NPBool(_ArrayCommonMixin):
             return bool(lists)
 
     def __int__(self):
-        lists = self.item()
-        if np.isscalar(lists):
-            return int(lists)
+        if self.zero_ndim:
+            return self.astype(int).item()
+        raise ValueError
 
     def __float__(self):
-        lists = self.item()
-        if np.isscalar(lists):
-            return float(lists)
+        if self.zero_ndim:
+            return self.astype(float).item()
+        raise ValueError
 
     def __abs__(self):
         result = np.asarray(np.abs(self)).view(type(self))

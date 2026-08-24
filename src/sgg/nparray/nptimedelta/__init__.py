@@ -148,14 +148,14 @@ class NPTimedelta(_ArrayCommonMixin):
         return NotImplemented
 
     def __int__(self):
-        lists = self.item()
-        if np.isscalar(lists):
-            return int(lists)
+        if self.zero_ndim:
+            return self.astype(int).item()
+        raise ValueError
 
     def __float__(self):
-        lists = self.item()
-        if np.isscalar(lists):
-            return float(lists)
+        if self.zero_ndim:
+            return self.astype(float).item()
+        raise ValueError
 
     def __neg__(self):
         result = np.asarray(np.negative(self)).view(type(self))

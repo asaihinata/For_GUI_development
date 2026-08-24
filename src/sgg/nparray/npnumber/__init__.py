@@ -57,14 +57,14 @@ class NPNumber(_ArrayCommonMixin):
         return obj
 
     def __int__(self):
-        lists = self.item()
-        if np.isscalar(lists):
-            return int(lists)
+        if self.zero_ndim:
+            return int(self.item())
+        raise ValueError
 
     def __float__(self):
-        lists = self.item()
-        if np.isscalar(lists):
-            return float(lists)
+        if self.zero_ndim:
+            return float(self.item())
+        raise ValueError
 
     def __eq__(self, value):
         result = np.equal(self, value)
@@ -294,6 +294,7 @@ class NPNumber(_ArrayCommonMixin):
         result._dtype = result.dtype
         return result
 
+    # 生成
     @classmethod
     def zeros(cls, shape, dtype=None):
         result = np.zeros(shape, dtype)
@@ -304,6 +305,7 @@ class NPNumber(_ArrayCommonMixin):
         result = np.ones(shape, dtype)
         return cls(result, result.dtype)
 
+    # 判定
     def zero_check(self):
         return np.array(self == 0, dtype=np.bool_)
 
@@ -481,7 +483,21 @@ class NPNumber(_ArrayCommonMixin):
         result._dtype = result.dtype
         return result
 
-    # random
+    # 変換
+    def baserepr(self, base=2, padding=None):
+        if self._dtype.kind not in ["i", "u"]:
+            raise TypeError
+        elif not 2 <= base <= 36:
+            raise ValueError("baseには2から36の範囲の整数で指定してください")
+        if padding is None:
+            padding = 0
+        if self.zero_ndim:
+            return np.base_repr(self[0], base, padding)
+        return np.vectorize(lambda x, b, p: np.base_repr(x, b, p))(
+            self.__array__(), base, padding
+        )
+
+    # 乱数
     @classmethod
     def random(cls, size=None, dtype=None, seed=None):
         dtype = _dtype_check(dtype)
@@ -531,21 +547,21 @@ class NPNumber(_ArrayCommonMixin):
     def bin(self):
         if not self.dtype.kind in ["i", "u"]:
             raise TypeError
-        if self.ndim==0:
+        if self.ndim == 0:
             return bin(int(self))
         return np.vectorize(lambda i: bin(i))(self.tolist())
 
     def oct(self):
         if not self.dtype.kind in ["i", "u"]:
             raise TypeError
-        if self.ndim==0:
+        if self.ndim == 0:
             return oct(int(self))
         return np.vectorize(lambda i: oct(i))(self.tolist())
 
     def hex(self):
         if not self.dtype.kind in ["i", "u"]:
             raise TypeError
-        if self.ndim==0:
+        if self.ndim == 0:
             return hex(int(self))
         return np.vectorize(lambda i: hex(i))(self.tolist())
 

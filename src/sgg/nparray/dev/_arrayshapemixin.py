@@ -217,8 +217,12 @@ class _ArrayCommonMixin(np.ndarray):
         return getattr(self, "_max_ndim", None)
 
     @property
-    def isscalar(self):
-        return self.ndim == 0
+    def zero_ndim(self):
+        return np.ndim(self) == 0
+
+    @property
+    def one_ndim(self):
+        return np.ndim(self) == 1
 
     # dtype
     @property

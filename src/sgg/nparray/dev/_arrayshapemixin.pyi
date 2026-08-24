@@ -241,8 +241,12 @@ class _ArrayCommonMixin(np.ndarray):
         """配列オブジェクトが許容する最大次元数を返す"""
 
     @property
-    def isscalar(self) -> bool:
-        """配列がスカラー値かを調べる"""
+    def zero_ndim(self) -> bool:
+        """配列の次元数が0の時にTrueを返す"""
+
+    @property
+    def one_ndim(self):
+        """配列の次元数が1の時にTrueを返す"""
     # dtype
     @property
     def types(self) -> type[np.generic | Any]: ...

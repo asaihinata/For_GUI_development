@@ -545,7 +545,19 @@ class NPNumber(_ArrayCommonMixin):
 
     def dtypeinfo(self) -> np.iinfo | np.finfo: ...
 
-    # random
+    # 変換
+    def baserepr(self, base: int = 2, padding: int | None = None) -> sgt.RStr:
+        """
+        配列内の数値を変換された文字列の進数(`base`)に変換する
+
+        :param base: 変換したいの進数を指定する
+        :type base: int
+        :param padding: 文字列の左側に0を埋める桁数を指定する
+        :type padding: int | None
+        :raises TypeError: 配列の型が整数型ではない時に発生させる
+        :raises ValueError: `base`を2から36の整数で指定しない場合に発生させる
+        """
+    # 乱数
     def choice(
         self,
         size: sgt._ShapeInt | None = None,
