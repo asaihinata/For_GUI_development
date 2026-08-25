@@ -126,10 +126,16 @@ class NPString(_ArrayCommonMixin):
         return np.min(nps.str_len(self))
 
     def stringlen(self):
-        return np.array(np.vectorize(len)(self), dtype=np.uint64)
+        result = np.vectorize(len)(self)
+        if self.zero_ndim:
+            return result
+        return result.__array__()
 
     def str_len(self):
-        return np.array(nps.str_len(self), dtype=np.uint64)
+        result = nps.str_len(self)
+        if self.zero_ndim:
+            return result
+        return result.__array__()
 
     def replace(self, old, new):
         result = np.asarray(nps.replace(self.__array__(), old, new)).view(type(self))
@@ -258,7 +264,9 @@ class NPString(_ArrayCommonMixin):
 
     # 正規表現
     def sub(self, pattern, repl):
-        result = np.vectorize(lambda s: sub(pattern, repl, s))(self)
+        result = np.asarray(np.vectorize(lambda s: sub(pattern, repl, s))(self)).view(
+            type(self)
+        )
         result._dtype = result.dtype
         return result
 

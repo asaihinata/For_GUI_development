@@ -2,19 +2,100 @@ from .dialogs import *
 from .exceptions import *
 from .graph import *
 from .nparray import *
-from .testing import *
 from .version import __version__
 from .widget import *
 
-__all__ = (
-    ["__version__", "Guis"]
-    + getattr(dialogs, "__all__", [])
-    + getattr(exceptions, "__all__", [])
-    + getattr(graph, "__all__", [])
-    + getattr(nparray, "__all__", [])
-    + getattr(testing, "__all__", [])
-    + getattr(widget, "__all__", [])
-)
+__all__ = [
+    "__version__",
+    "askcolor",
+    "askdirectory",
+    "askopenfilename",
+    "asksaveasfilename",
+    "BarGraph",
+    "BarhGraph",
+    "Barpolar",
+    "Boxplot",
+    "Buttons",
+    "Checkbox",
+    "Chooser",
+    "Colorbtn",
+    "Column",
+    "Directory",
+    "DScatter",
+    "DtypeError",
+    "Ecdf",
+    "Errorbar",
+    "Errorpolar",
+    "Eventplot",
+    "Eventpolar",
+    "FileLoad",
+    "FolderLoad",
+    "Frames",
+    "Funne",
+    "Guis",
+    "Hatplot",
+    "Hexbin",
+    "Hist",
+    "Hist2d",
+    "Imagebyte",
+    "Imagelink",
+    "Images",
+    "Input",
+    "InputNumber",
+    "Linefill",
+    "LineGraph",
+    "Linepolar",
+    "Link",
+    "Listboxs",
+    "Menubuttons",
+    "Menus",
+    "Multiline",
+    "NoScalarError",
+    "NPArray",
+    "NPBool",
+    "NPDate",
+    "NPNumber",
+    "NPString",
+    "NPTimedelta",
+    "Open",
+    "Pie",
+    "popup",
+    "popuperror",
+    "popuperroryesno",
+    "popupokcansel",
+    "popupquestion",
+    "popuptrys",
+    "popupwarning",
+    "popupwarningyesno",
+    "popupyesno",
+    "popupyesnocansel",
+    "RadarFill",
+    "RadarLine",
+    "Radio",
+    "SaveAs",
+    "Savebtn",
+    "Scatter",
+    "Scatterpolar",
+    "ShapeError",
+    "Slidebar",
+    "Stack",
+    "Stacked",
+    "Stackedh",
+    "Stem",
+    "Stempolar",
+    "Step",
+    "Tab",
+    "Table",
+    "TCombobox",
+    "Texts",
+    "TProgressbar",
+    "Tree",
+    "UIntError",
+    "Violinplot",
+    "Waterfall",
+    "Waterfallh",
+    "WindowController",
+]
 
 
 def _counts():

@@ -132,6 +132,18 @@ class NPTimedelta(_ArrayCommonMixin):
             return result.__array__(float)
         return NotImplemented
 
+    def __pow__(self, value):
+        value = _tonparray(value)
+        if value.dtype.kind in ["b", "i", "u", "f"]:
+            dtype = self._dtype
+            result = np.power(self.__array__(np.int64), value)
+            result = np.asarray(result.astype(dtype)).view(type(self))
+            result._dtype = dtype
+            return result
+        return NotImplemented
+
+    __ipow__ = __pow__
+
     def __int__(self):
         if self.zero_ndim:
             return self.astype(int).item()
