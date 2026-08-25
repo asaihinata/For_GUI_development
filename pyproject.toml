@@ -8,20 +8,15 @@ readme = "README.md"
 requires-python = ">=3.14"
 license = { text = "MIT" }
 dependencies = [
-"barcode_generator",
-"cycler",
-"japanize_matplotlib",
-"matplotlib",
-"numpy",
-"Pillow",
-"polars",
-"python-barcode",
-"python_dateutil",
-"qrcode",
-"Requests",
-"scipy",
-"ujson",
-"validators"
+    "cycler",
+    "japanize_matplotlib",
+    "matplotlib",
+    "numpy",
+    "Pillow",
+    "python-dateutil",
+    "Requests",
+    "setuptools",
+    "validators",
 ]
 
 [project.optional-dependencies]

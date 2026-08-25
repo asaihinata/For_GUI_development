@@ -1,11 +1,9 @@
-barcode_generator
 cycler
 japanize_matplotlib
 matplotlib
 numpy
 Pillow
-python_dateutil
-python-barcode
-qrcode
+python-dateutil
 Requests
+setuptools
 validators
