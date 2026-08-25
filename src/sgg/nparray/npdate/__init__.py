@@ -2,6 +2,7 @@ from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
 import numpy as np
+from dateutil.parser import parse
 
 from sgg.exceptions import ShapeError
 
@@ -406,8 +407,6 @@ def _func(x):
             return np.datetime64(x)
         except:
             try:
-                from dateutil.parser import parse
-
                 return parse(str(x))
             except:
                 return None

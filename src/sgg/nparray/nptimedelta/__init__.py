@@ -46,11 +46,14 @@ class NPTimedelta(_ArrayCommonMixin):
 
     def __add__(self, value):
         if isinstance(value, date | datetime):
-            return np.add(self, np.datetime64(value))
+            result = np.add(self.astype("D"), np.datetime64(value))
+            if np.ndim(result) == 0:
+                return result
+            return result.__array__()
         elif isinstance(value, np.datetime64) or (
             isinstance(value, np.ndarray) and value.dtype.kind == "M"
         ):
-            result = np.add(self, value)
+            result = np.add(self.astype("D"), value)
             if np.ndim(result) == 0:
                 return result
             return result.__array__()
@@ -65,14 +68,14 @@ class NPTimedelta(_ArrayCommonMixin):
 
     def __sub__(self, value):
         if isinstance(value, date | datetime):
-            result = np.subtract(np.datetime64(value), self)
+            result = np.subtract(self.astype("D"), np.datetime64(value))
             if np.ndim(result) == 0:
                 return result
             return result.__array__()
         if isinstance(value, np.datetime64) or (
             isinstance(value, np.ndarray) and value.dtype.kind == "M"
         ):
-            result = np.subtract(value, self)
+            result = np.subtract(self.astype("D"), value)
             if np.ndim(result) == 0:
                 return result
             return result.__array__()
@@ -83,25 +86,7 @@ class NPTimedelta(_ArrayCommonMixin):
         return result
 
     __isub__ = __sub__
-
-    def __rsub__(self, value):
-        if isinstance(value, date | datetime):
-            result = np.subtract(np.datetime64(value), self)
-            if np.ndim(result) == 0:
-                return result
-            return result.__array__()
-        if isinstance(value, np.datetime64) or (
-            isinstance(value, np.ndarray) and value.dtype.kind == "M"
-        ):
-            result = np.subtract(value, self)
-            if np.ndim(result) == 0:
-                return result
-            return result.__array__()
-        if isinstance(value, timedelta):
-            value = np.timedelta64(value, self.dtypeunit)
-        result = np.asarray(np.subtract(value, self)).view(type(self))
-        result._dtype = result.dtype
-        return result
+    __rsub__ = __sub__
 
     def __mul__(self, value):
         value = _tonparray(value)
@@ -201,8 +186,13 @@ class NPTimedelta(_ArrayCommonMixin):
 
     @property
     def dtypeunit(self):
-        dy = str(self._dtype)
-        place = dy.find("[") + 1
-        if place == 0:
-            return dy
-        return dy[(place) : (len(dy) - 1)]
+        return _dtypeunit(str(self._dtype))
+
+
+def _dtypeunit(dy):
+    if not isinstance(dy, str):
+        dy = str(dy)
+    place = dy.find("[") + 1
+    if place == 0:
+        return dy
+    return dy[(place) : (len(dy) - 1)]

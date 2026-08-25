@@ -8,13 +8,11 @@ __all__ = [
     "_ComplexDtypeLike",
     "_DTypeLike",
     "_DtypeLikeDT",
-    "_DtypeLikeDTs",
     "_DTypeLikeF32",
     "_DTypeLikeF64",
     "_DTypeLikeFloat",
     "_DTypeLikeInt",
     "_DtypeLikeTD",
-    "_DtypeLikeTDs",
     "_DualArrayLike",
     "_NumericDTypeLike",
     "_RealNumericDTypeLike",
@@ -52,8 +50,6 @@ type _StringsDTypeLike = type[str | bytes] | _DTypeLike[
 ] | np.dtypes.StringDType | npt._CharacterCodes
 # 日付
 type _DtypeLikeDT = _DTypeLike[np.datetime64] | sgt._DT64Code_All
-type _DtypeLikeDTs = _DTypeLike[np.datetime64] | sgt._DT64Codes_All
 type _DtypeLikeTD = _DTypeLike[np.timedelta64] | sgt._TD64Code_All
-type _DtypeLikeTDs = _DTypeLike[np.timedelta64] | sgt._TD64Codes_All
 # その他
 type DTypeNLike = npt.DTypeLike | None

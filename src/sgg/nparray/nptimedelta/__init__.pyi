@@ -25,7 +25,7 @@ class NPTimedelta(_ArrayCommonMixin):
         cls,
         obj: sgt._ArrayLikeTD64s_co,
         /,
-        dtype: sgt._DtypeLikeTDs = "timedelta64[D]",
+        dtype: sgt._DtypeLikeTD = "timedelta64[D]",
         *,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -53,7 +53,7 @@ class NPTimedelta(_ArrayCommonMixin):
         cls,
         obj: sgt._ArrayLikeTD64s_co,
         /,
-        dtype: sgt._DtypeLikeTDs = "timedelta64[D]",
+        dtype: sgt._DtypeLikeTD = "timedelta64[D]",
         *,
         d_ndim: int | None = None,
         copy: bool = True,
@@ -164,12 +164,12 @@ class NPTimedelta(_ArrayCommonMixin):
         """NPTimedeltaで許可されている型を取得する"""
 
     @overload
-    def astype(self, dtype: sgt._DtypeLikeTDs, copy: bool = True) -> NPTimedelta:
+    def astype(self, dtype: sgt._DtypeLikeTD, copy: bool = True) -> NPTimedelta:
         """
         配列の要素の型を変換した新しい配列オブジェクトを生成する
 
         :param dtype: 変換後に使用するデータ型を指定する
-        :type dtype: _DtypeLikeTDs
+        :type dtype: _DtypeLikeTD
         :param copy: `obj`から独立したコピーを作成するか指定する
         :type copy: bool
         :raises ValueError: 次元数が範囲外の場合に発生させる

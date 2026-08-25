@@ -3,15 +3,11 @@ from typing import Literal
 __all__ = [
     "_DT64Code",
     "_DT64Code_All",
-    "_DT64Codes",
-    "_DT64Codes_All",
     "_DT64Date",
     "_DT64Now",
     "_NaTValue",
     "_TD64Code",
     "_TD64Code_All",
-    "_TD64Codes",
-    "_TD64Codes_All",
     "_TimeByteUnit",
     "_TimeStrUnit",
     "_TimeUnit",
@@ -81,9 +77,7 @@ type _DT64Code = Literal[
     "M8[Y]",
     "M8[μs]",
 ]
-type _DT64Codes = Literal["datetime64", _DT64Code]
 type _DT64Code_All = Literal[_DT64Code, _TimeUnit]
-type _DT64Codes_All = Literal[_DT64Codes, _TimeUnit]
 type _TD64Code = Literal[
     "timedelta64[as]",
     "timedelta64[D]",
@@ -114,6 +108,4 @@ type _TD64Code = Literal[
     "m8[Y]",
     "m8[μs]",
 ]
-type _TD64Codes = Literal["timedelta64", _TD64Code]
 type _TD64Code_All = Literal[_TD64Code, _TimeUnit]
-type _TD64Codes_All = Literal[_TD64Codes, _TimeUnit]

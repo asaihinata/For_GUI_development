@@ -45,4 +45,4 @@ def _dt64_unit(value):
     if isinstance(value, datetime64):
         return value
     unit = _get_dt64_unit(value)
-    return f"datetime64[{unit}]" if unit else "datetime64"
+    return f"datetime64[{unit}]" if unit else "datetime64[D]"

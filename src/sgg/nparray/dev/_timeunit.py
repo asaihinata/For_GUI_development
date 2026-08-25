@@ -45,4 +45,4 @@ def _tm64_unit(value):
     if isinstance(value, timedelta64):
         return value
     unit = _get_tm64_unit(value)
-    return f"timedelta64[{unit}]" if unit else "timedelta64"
+    return f"timedelta64[{unit}]" if unit else "timedelta64[D]"

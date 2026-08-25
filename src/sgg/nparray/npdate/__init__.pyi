@@ -22,7 +22,7 @@ class NPDate(_ArrayCommonMixin):
         cls,
         obj: sgt._ArrayLikeDT64_co,
         /,
-        dtype: sgt._DtypeLikeDTs = "datetime64[D]",
+        dtype: sgt._DtypeLikeDT = "datetime64[D]",
         *,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -34,7 +34,7 @@ class NPDate(_ArrayCommonMixin):
         :param obj: 変換する配列を指定する
         :type obj: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: datetime64 | _DT64Codes_All
+        :type dtype: datetime64 | _DT64Code_All
         :param min_ndim: 許容する最小次元数を指定する
         :type min_ndim: int | None
         :param max_ndim: 許容する最大次元数を指定する
@@ -50,7 +50,7 @@ class NPDate(_ArrayCommonMixin):
         cls,
         obj: Any,
         /,
-        dtype: Any | sgt._DtypeLikeDTs | None = None,
+        dtype: Any | sgt._DtypeLikeDT | None = None,
         *,
         min_ndim: int | None = None,
         max_ndim: int | None = None,
@@ -78,7 +78,7 @@ class NPDate(_ArrayCommonMixin):
         cls,
         obj: sgt._ArrayLikeDT64_co,
         /,
-        dtype: sgt._DtypeLikeDTs = "datetime64[D]",
+        dtype: sgt._DtypeLikeDT = "datetime64[D]",
         *,
         d_ndim: int | None = None,
         copy: bool = True,
@@ -89,7 +89,7 @@ class NPDate(_ArrayCommonMixin):
         :param obj: 変換する配列を指定する
         :type obj: 任意のdatetime64型を持つ配列のようなオブジェクト
         :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: datetime64 | _DT64Codes_All
+        :type dtype: datetime64 | _DT64Code_All
         :param d_ndim: 固定される次元数を指定する
         :type d_ndim: int | None
         :param copy: `obj`から独立したコピーを作成するか指定する
@@ -103,7 +103,7 @@ class NPDate(_ArrayCommonMixin):
         cls,
         obj: Any,
         /,
-        dtype: Any | sgt._DtypeLikeDTs | None = None,
+        dtype: Any | sgt._DtypeLikeDT | None = None,
         *,
         d_ndim: int | None = None,
         copy: bool = True,
@@ -281,7 +281,7 @@ class NPDate(_ArrayCommonMixin):
         stop: sgt._DT64Scalar,
         /,
         step: sgt._TD64Scalar | None = 1,
-        dtype: sgt._DT64Codes_All | None = "D",
+        dtype: sgt._DT64Code_All | None = "D",
     ) -> NPDate:
         """
         指定された間隔内で等間隔の日付を返す
@@ -293,7 +293,7 @@ class NPDate(_ArrayCommonMixin):
         :param step: 値の間隔を指定する
         :type step: int | bool | np.integer | np.bool | bool | timedelta | np.timedelta64 | None
         :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: _DT64Codes_All | None
+        :type dtype: _DT64Code_All | None
         """
 
     @overload
@@ -306,7 +306,7 @@ class NPDate(_ArrayCommonMixin):
         num: SupportsIndex = 50,
         endpoint: bool = True,
         retstep: Literal[False] = False,
-        dtype: sgt._DT64Codes_All = "D",
+        dtype: sgt._DT64Code_All = "D",
         axis: SupportsIndex = 0,
     ) -> NPDate:
         """
@@ -323,7 +323,7 @@ class NPDate(_ArrayCommonMixin):
         :param retstep: 計算された間隔を返すか指定する
         :type retstep: bool
         :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: _DT64Codes_All
+        :type dtype: _DT64Code_All
         :param axis: 結果にサンプルを格納する軸を指定する
         :type axis: int
         """
@@ -338,7 +338,7 @@ class NPDate(_ArrayCommonMixin):
         num: SupportsIndex = 50,
         endpoint: bool = True,
         retstep: Literal[True] = True,
-        dtype: sgt._DT64Codes_All | None = "D",
+        dtype: sgt._DT64Code_All | None = "D",
         axis: SupportsIndex = 0,
     ) -> tuple[NPDate, timedelta64]:
         """
@@ -355,7 +355,7 @@ class NPDate(_ArrayCommonMixin):
         :param retstep: 計算された間隔を返すか指定する
         :type retstep: bool
         :param dtype: 配列に使用するデータ型を指定する
-        :type dtype: _DT64Codes_All | None
+        :type dtype: _DT64Code_All | None
         :param axis: 結果にサンプルを格納する軸を指定する
         :type axis: int
         """
