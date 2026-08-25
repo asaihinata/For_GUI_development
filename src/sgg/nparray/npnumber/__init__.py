@@ -25,13 +25,13 @@ class NPNumber(_ArrayCommonMixin):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
     _element_type = (int, float, complex, np.number)
-    _default_dtype = np.float64
+    _default_dtype = None
 
     def __new__(
         cls,
         obj,
         /,
-        dtype=np.float64,
+        dtype=None,
         *,
         d_ndim=None,
         min_ndim=None,
@@ -191,74 +191,6 @@ class NPNumber(_ArrayCommonMixin):
             return np.iinfo(self._dtype)
         else:
             return np.finfo(self._dtype)
-
-    def cussum(self):
-        datas = np.ravel(self)
-        splices = self.shape[-1]
-        result = (
-            np.array(
-                [
-                    j + np.insert(j, 0, 0)[:-1]
-                    for i in range(0, len(datas), splices)
-                    for j in [datas[i : i + splices]]
-                ]
-            )
-            .view(type(self))
-            .reshape(self.shape)
-        )
-        result._dtype = result.dtype
-        return result
-
-    def cusdiff(self):
-        datas = np.ravel(self)
-        splices = self.shape[-1]
-        result = (
-            np.array(
-                [
-                    j - np.insert(j, 0, 0)[:-1]
-                    for i in range(0, len(datas), splices)
-                    for j in [datas[i : i + splices]]
-                ]
-            )
-            .view(type(self))
-            .reshape(self.shape)
-        )
-        result._dtype = result.dtype
-        return result
-
-    def cusprod(self):
-        datas = np.ravel(self)
-        splices = self.shape[-1]
-        result = (
-            np.array(
-                [
-                    j * np.insert(j, 0, 0)[:-1]
-                    for i in range(0, len(datas), splices)
-                    for j in [datas[i : i + splices]]
-                ]
-            )
-            .view(type(self))
-            .reshape(self.shape)
-        )
-        result._dtype = result.dtype
-        return result
-
-    def cusdiv(self):
-        datas = np.ravel(self)
-        splices = self.shape[-1]
-        result = (
-            np.array(
-                [
-                    np.insert(j, 0, 0)[:-1] / j
-                    for i in range(0, len(datas), splices)
-                    for j in [datas[i : i + splices]]
-                ]
-            )
-            .view(type(self))
-            .reshape(self.shape)
-        )
-        result._dtype = result.dtype
-        return result
 
     def percentile(self, q, axis=None, method="linear"):
         if method not in method_list:

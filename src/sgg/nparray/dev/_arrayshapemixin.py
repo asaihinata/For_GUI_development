@@ -29,8 +29,6 @@ class _ArrayCommonMixin(np.ndarray):
         return super().__len__()
 
     def __getitem__(self, key):
-        if not isinstance(key, int | np.integer | slice):
-            raise TypeError("keyにはint型もしくはslice型を指定してください")
         size = self.size
         if size == 0:
             raise IndexError("空の配列にはアクセスできません")
@@ -42,8 +40,8 @@ class _ArrayCommonMixin(np.ndarray):
                 return obj[key]
             else:
                 return obj[key % size]
-        elif isinstance(key, slice):
-            return self.__array__(copy=False)[key]
+        else:
+            return self.__array__()[key]
 
     def __iter__(self):
         return iter(np.asarray(self))

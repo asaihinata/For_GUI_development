@@ -58,6 +58,8 @@ class _ArrayCommonMixin(np.ndarray):
         :raises IndexError: 配列が空の場合に発生させる
         :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
+    @overload
+    def __getitem__(self, key: Any) -> Any:...
 
     def __array_function__(
         self,

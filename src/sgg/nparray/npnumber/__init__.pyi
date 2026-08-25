@@ -230,18 +230,6 @@ class NPNumber(_ArrayCommonMixin):
     def sturgesval(self) -> np.floating:
         """スタージェスの公式を求める"""
 
-    def cussum(self) -> NPNumber:
-        """一つ前の元の値との和を求める"""
-
-    def cusdiff(self) -> NPNumber:
-        """一つ前の元の値との差を求める"""
-
-    def cusprod(self) -> NPNumber:
-        """一つ前の元の値との積を求める"""
-
-    def cusdiv(self) -> NPNumber:
-        """一つ前の元の値との除算を求める"""
-
     def percentile(
         self,
         q: sgt._FloatScalar,

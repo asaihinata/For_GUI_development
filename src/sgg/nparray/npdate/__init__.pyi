@@ -1,4 +1,3 @@
-from datetime import date, datetime
 from typing import Any, Literal, NoReturn, SupportsIndex, overload
 
 import numpy as np
@@ -16,7 +15,7 @@ class NPDate(_ArrayCommonMixin):
 
     __doc__: str
     _element_type: datetime64
-    _default_dtype: np.dtype[datetime64[date]]
+    _default_dtype: np.dtype[datetime64]
     @overload
     def __new__(
         cls,

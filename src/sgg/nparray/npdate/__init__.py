@@ -307,23 +307,7 @@ class NPDate(_ArrayCommonMixin):
         return dates.weekday()
 
     def week_name(self):
-        week = self.weekday()
-        return np.array(
-            np.select(
-                [week == i for i in range(7)],
-                [
-                    "Sunday",
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                ],
-                default="",
-            ),
-            dtype=np.str_,
-        )
+        return self.strftime("%A")
 
     # 閏年
     def leapyear(self):
