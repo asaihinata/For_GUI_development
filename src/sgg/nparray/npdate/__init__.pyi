@@ -281,7 +281,7 @@ class NPDate(_ArrayCommonMixin):
         stop: sgt._DT64Scalar,
         /,
         step: sgt._TD64Scalar | None = 1,
-        dtype: sgt._DT64Code_All | None = "D",
+        dtype: sgt._DT64Code_All | None = None,
     ) -> NPDate:
         """
         指定された間隔内で等間隔の日付を返す
@@ -423,7 +423,7 @@ class NPDate(_ArrayCommonMixin):
         """現在配列の配列型(`dtype`)で表現できる最小の日付時刻を求める"""
 
     @classmethod
-    def unit_range(cls, unit: sgt._DtypeLikeDT) -> NPDate:
+    def unit_range(cls, unit: sgt._DtypeLikeDT) -> tuple[datetime64, datetime64]:
         """
         日付単位(`unit`)が表現できる範囲の最大·最小の日付時刻を求める
 
@@ -432,7 +432,7 @@ class NPDate(_ArrayCommonMixin):
         """
 
     @classmethod
-    def unit_max(cls, unit: sgt._DtypeLikeDT) -> NPDate:
+    def unit_max(cls, unit: sgt._DtypeLikeDT) -> datetime64:
         """
         日付単位(`unit`)が表現できる範囲の最大の日付時刻を求める
 
@@ -441,7 +441,7 @@ class NPDate(_ArrayCommonMixin):
         """
 
     @classmethod
-    def unit_min(cls, unit: sgt._DtypeLikeDT) -> NPDate:
+    def unit_min(cls, unit: sgt._DtypeLikeDT) -> datetime64:
         """
         日付単位(`unit`)が表現できる範囲の最小の日付時刻を求める
 
