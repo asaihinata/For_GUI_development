@@ -24,7 +24,7 @@ type _IntScalar = int | SupportsInt | np.integer | _BoolScalar
 type _FloatScalar = (
     float | SupportsFloat | np.floating | np.unsignedinteger | _IntScalar
 )
-type _ComplexScalar = complex|np.complex64|np.complex128
+type _ComplexScalar = complex | np.complex64 | np.complex128
 type _RealNumeric_co = _FloatScalar
 type _NumberScalar = (
     Number | SupportsInt | SupportsFloat | SupportsComplex | np.number | _BoolScalar

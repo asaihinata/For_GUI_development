@@ -92,16 +92,6 @@ class NPDate(_ArrayCommonMixin):
     __isub__ = __sub__
     __rsub__ = __sub__
 
-    def __int__(self):
-        if self.zero_ndim:
-            return self.astype(int).item()
-        raise ValueError
-
-    def __float__(self):
-        if self.zero_ndim:
-            return self.astype(float).item()
-        raise ValueError
-
     def __eq__(self, value):
         result = np.equal(self, _to_datetime64(value))
         if np.ndim(result) == 0:

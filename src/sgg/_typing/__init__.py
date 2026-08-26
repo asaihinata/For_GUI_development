@@ -16,7 +16,7 @@ from ._widget import *
 type Incomplete = Any
 type _Seed = int | SeedSequence | Generator | None
 type _orderKACF = Literal["K", "A", "C", "F"] | None
-__all__=[
+__all__ = [
     "_AnyShape",
     "_ArrayDT64",
     "_ArrayLikeBool_co",

@@ -161,8 +161,6 @@ class NPDate(_ArrayCommonMixin):
     def __ge__(self, value: sgt._ComparisonDT64 | NPDate) -> sgt.RBool_: ...
     @overload
     def __ge__(self, value: Any) -> NoReturn: ...
-    def __int__(self) -> int | NoReturn: ...
-    def __float__(self) -> float | NoReturn: ...
     @overload
     def __getitem__(self, key: sgt._IntScalar) -> datetime64:
         """
@@ -198,6 +196,9 @@ class NPDate(_ArrayCommonMixin):
         :raises IndexError: 配列が空の場合に発生させる
         :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
+
+    @overload
+    def __getitem__(self, key: Any) -> Any: ...
     # property
     @property
     def element_type(self) -> type[datetime64]:

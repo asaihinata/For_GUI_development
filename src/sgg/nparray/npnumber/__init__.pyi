@@ -94,8 +94,6 @@ class NPNumber(_ArrayCommonMixin):
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
-    def __int__(self) -> int | NoReturn: ...
-    def __float__(self) -> float | NoReturn: ...
     @overload
     def __eq__(self, value: sgt._ArrayLikeNumber_co | NPNumber) -> sgt.RBool_: ...
     @overload
@@ -208,6 +206,8 @@ class NPNumber(_ArrayCommonMixin):
         :raises TypeError: `key`に`int`型もしくは`slice`型以外を指定した場合に発生させる
         """
 
+    @overload
+    def __getitem__(self, key: Any) -> Any: ...
     @property
     def element_type(
         self,

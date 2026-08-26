@@ -144,16 +144,6 @@ class NPTimedelta(_ArrayCommonMixin):
 
     __ipow__ = __pow__
 
-    def __int__(self):
-        if self.zero_ndim:
-            return self.astype(int).item()
-        raise ValueError
-
-    def __float__(self):
-        if self.zero_ndim:
-            return self.astype(float).item()
-        raise ValueError
-
     def __neg__(self):
         result = np.asarray(np.negative(self)).view(type(self))
         result._dtype = result.dtype
