@@ -7,13 +7,14 @@ import numpy as np
 
 __all__ = [
     "_BoolScalar",
-    "_DT64Scalar",
+    "_ComplexScalar",
     "_DateWordScalar",
+    "_DT64Scalar",
     "_FloatScalar",
     "_IntScalar",
     "_NumberScalar",
-    "_PatternStrScalar",
     "_PatternBytesScalar",
+    "_PatternStrScalar",
     "_RealNumeric_co",
     "_StringScalar",
     "_TD64Scalar",
@@ -23,6 +24,7 @@ type _IntScalar = int | SupportsInt | np.integer | _BoolScalar
 type _FloatScalar = (
     float | SupportsFloat | np.floating | np.unsignedinteger | _IntScalar
 )
+type _ComplexScalar = complex|np.complex64|np.complex128
 type _RealNumeric_co = _FloatScalar
 type _NumberScalar = (
     Number | SupportsInt | SupportsFloat | SupportsComplex | np.number | _BoolScalar

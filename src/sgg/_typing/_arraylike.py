@@ -57,18 +57,23 @@ __all__ = [
     "RBools",
     "RBytes_",
     "RCharacter",
+    "RComplex",
+    "RComplex128",
+    "RComplex64",
     "RDatetime64",
     "RFloat16",
     "RFloat64",
     "RInt64",
     "RInt8",
     "RNumber",
+    "RObject",
     "RStr",
     "RStr_",
     "RString",
     "RTimedelta64",
     "RUInt64",
     "RUInt8",
+    "RVoid",
     "Typeaxis",
 ]
 type __DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
@@ -156,13 +161,16 @@ type NDTimedelta64 = NDArray[np.timedelta64]
 type RBool = __ReturnDtype[np.bool]
 type RBool_ = __ReturnDtype[np.bool_]
 type RBools = __ReturnDtype[np.bool | np.bool_]
-type RNumber = __ReturnDtype[np.number]
-type RInt64 = __ReturnDtype[np.int64]
 type RInt8 = __ReturnDtype[np.int8]
-type RUInt64 = __ReturnDtype[np.uint64]
+type RInt64 = __ReturnDtype[np.int64]
 type RUInt8 = __ReturnDtype[np.uint8]
+type RUInt64 = __ReturnDtype[np.uint64]
 type RFloat16 = __ReturnDtype[np.float16]
 type RFloat64 = __ReturnDtype[np.float64]
+type RComplex64 = __ReturnDtype[np.complex64]
+type RComplex128 = __ReturnDtype[np.complex128]
+type RComplex=__ReturnDtype[np.complex128|np.complex64]
+type RNumber = __ReturnDtype[np.number]
 type RStr = NDArray[np.str_] | str
 type RStr_ = __ReturnDtype[np.str_]
 type RBytes_ = __ReturnDtype[np.bytes_]
@@ -172,6 +180,8 @@ type RString = NDArray[np.str_ | np.bytes_] | np.ndarray[
 ] | np.str_ | np.bytes_ | StringDType
 type RDatetime64 = __ReturnDtype[np.datetime64]
 type RTimedelta64 = __ReturnDtype[np.timedelta64]
+type RObject = __ReturnDtype[np.object_]
+type RVoid = __ReturnDtype[np.void]
 type RAny = NDArray[Any] | Any
 # その他
 type Typeaxis = _ShapeLike | None
