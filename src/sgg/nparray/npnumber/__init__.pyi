@@ -42,7 +42,61 @@ class NPNumber(_ArrayCommonMixin):
 
     __doc__: str
     _element_type: tuple[type[int], type[float], type[complex], type[np.number]]
-    _default_dtype: np.float64
+    _default_dtype: None
+    @overload
+    def __new__(
+        cls,
+        obj: sgt._ArrayLikeBool_co,
+        /,
+        dtype: sgt._NumericDTypeLike | None = None,
+        *,
+        min_ndim: int | None = None,
+        max_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPNumber:
+        """
+        新しい配列オブジェクトインスタンスを生成する
+
+        :param obj: 変換する配列を指定する
+        :type obj: 任意のbool型を持つ配列のようなオブジェクト
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: int | float | complex | np.number
+        :param min_ndim: 許容する最小次元数を指定する
+        :type min_ndim: int | None
+        :param max_ndim: 許容する最大次元数を指定する
+        :type max_ndim: int | None
+        :param copy: `obj`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
+        """
+
+    @overload
+    def __new__(
+        cls,
+        obj: sgt._ArrayLikeBool_co,
+        /,
+        dtype: sgt._NumericDTypeLike | None = None,
+        *,
+        d_ndim: int | None = None,
+        copy: bool = True,
+    ) -> NPNumber:
+        """
+        新しい配列オブジェクトインスタンスを生成する
+
+        :param obj: 変換する配列を指定する
+        :type obj: 任意のbool型を持つ配列のようなオブジェクト
+        :param dtype: 配列に使用するデータ型を指定する
+        :type dtype: int | float | complex | np.number
+        :param d_ndim: 固定される次元数を指定する
+        :type d_ndim: int | None
+        :param copy: `obj`から独立したコピーを作成するか指定する
+        :type copy: bool
+        :raises ValueError: 次元数が範囲外の場合に発生させる
+        :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
+        """
+
+    @overload
     def __new__(
         cls,
         obj: sgt._ArrayLikeNumber_co,
@@ -70,6 +124,7 @@ class NPNumber(_ArrayCommonMixin):
         :raises TypeError: 要素型が`_element_type`と一致しない場合に発生させる
         """
 
+    @overload
     def __new__(
         cls,
         obj: sgt._ArrayLikeNumber_co,
@@ -400,17 +455,117 @@ class NPNumber(_ArrayCommonMixin):
         :param dtype: 出力される配列に使用するデータ型を指定する
         """
 
+    @overload
     @classmethod
     def linspace(
         cls,
-        start: sgt._NumberScalar,
-        stop: sgt._NumberScalar,
+        start: sgt._RealNumeric_co,
+        stop: sgt._RealNumeric_co,
         num: SupportsIndex = 50,
         endpoint: bool = True,
         retstep: Literal[False] = False,
         dtype: sgt._RealNumericDTypeLike | None = None,
         axis: SupportsIndex = 0,
     ) -> NPNumber:
+        """
+        指定された間隔で等間隔​​の数値の配列を作成する
+
+        :param start: 数列の開始値を指定する
+        :param stop:
+        シーケンスの終了値を指定する。
+        ただし `endpoint`が`False` の場合,生成される値の範囲は`[start,stop)`である。
+        `endpoint`が`True` の場合,生成される値の範囲は`[start,stop]`である。
+
+        :param retstep: `retstep`が`True`の場合,戻り値にステップ数を追加する
+        :type retstep: bool
+        :param num: 生成する値の数を指定する
+        :type num: int
+        :param endpoint: 生成させる配列の範囲を指定する
+        :type endpoint: bool
+        :param dtype: 出力する配列に使用するデータ型を指定する
+        :type dtype: 実数型
+        :param axis: 結果にサンプルを格納する軸を指定する
+        :type axis: int
+        """
+
+    @overload
+    @classmethod
+    def linspace(
+        cls,
+        start: sgt._ArrayLikeRealNumeric_co,
+        stop: sgt._ArrayLikeRealNumeric_co,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        retstep: Literal[False] = False,
+        dtype: sgt._RealNumericDTypeLike | None = None,
+        axis: SupportsIndex = 0,
+    ) -> NPNumber:
+        """
+        指定された間隔で等間隔​​の数値の配列を作成する
+
+        :param start: 数列の開始値を指定する
+        :param stop:
+        シーケンスの終了値を指定する。
+        ただし `endpoint`が`False` の場合,生成される値の範囲は`[start,stop)`である。
+        `endpoint`が`True` の場合,生成される値の範囲は`[start,stop]`である。
+
+        :param retstep: `retstep`が`True`の場合,戻り値にステップ数を追加する
+        :type retstep: bool
+        :param num: 生成する値の数を指定する
+        :type num: int
+        :param endpoint: 生成させる配列の範囲を指定する
+        :type endpoint: bool
+        :param dtype: 出力する配列に使用するデータ型を指定する
+        :type dtype: 実数型
+        :param axis: 結果にサンプルを格納する軸を指定する
+        :type axis: int
+        """
+
+    @overload
+    @classmethod
+    def linspace(
+        cls,
+        start: sgt._RealNumeric_co,
+        stop: sgt._RealNumeric_co,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        retstep: Literal[True] = True,
+        dtype: sgt._RealNumericDTypeLike | None = None,
+        axis: SupportsIndex = 0,
+    ) -> tuple[NPNumber, np.float64]:
+        """
+        指定された間隔で等間隔​​の数値の配列を作成する
+
+        :param start: 数列の開始値を指定する
+        :param stop:
+        シーケンスの終了値を指定する。
+        ただし `endpoint`が`False` の場合,生成される値の範囲は`[start,stop)`である。
+        `endpoint`が`True` の場合,生成される値の範囲は`[start,stop]`である。
+
+        :param retstep: `retstep`が`True`の場合,戻り値にステップ数を追加する
+        :type retstep: bool
+        :param num: 生成する値の数を指定する
+        :type num: int
+        :param endpoint: 生成させる配列の範囲を指定する
+        :type endpoint: bool
+        :param dtype: 出力する配列に使用するデータ型を指定する
+        :type dtype: 実数型
+        :param axis: 結果にサンプルを格納する軸を指定する
+        :type axis: int
+        """
+
+    @overload
+    @classmethod
+    def linspace(
+        cls,
+        start: sgt._ArrayLikeRealNumeric_co,
+        stop: sgt._ArrayLikeRealNumeric_co,
+        num: SupportsIndex = 50,
+        endpoint: bool = True,
+        retstep: Literal[True] = True,
+        dtype: sgt._RealNumericDTypeLike | None = None,
+        axis: SupportsIndex = 0,
+    ) -> tuple[NPNumber, npt.NDArray[np.float64]]:
         """
         指定された間隔で等間隔​​の数値の配列を作成する
 

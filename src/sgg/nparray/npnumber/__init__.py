@@ -42,6 +42,8 @@ class NPNumber(_ArrayCommonMixin):
             copy = True
         if dtype is None:
             obj = np.asarray(obj, copy=copy).view(cls)
+            if obj.dtype.kind == "b":
+                obj = obj.astype(int)
             resolved = obj.dtype
         else:
             resolved = cls._resolve_dtype(dtype)
@@ -290,12 +292,17 @@ class NPNumber(_ArrayCommonMixin):
 
     @classmethod
     def arange(cls, start, /, stop=None, step=1, *, dtype=None):
-        if dtype is None:
-            aranges = np.arange(start, stop, step=step)
-            dtype = aranges.dtype
-        else:
-            aranges = np.arange(start, stop, step=step, dtype=dtype)
-        return cls(aranges, dtype=dtype)
+        if dtype is not None and np.dtype(dtype).kind not in ["i", "u", "f"]:
+            raise ValueError
+        if not (np.isscalar(start) and np.asarray(start).dtype.kind in ["i", "u", "f"]):
+            raise ValueError
+        if stop is not None and not (
+            np.isscalar(stop) and np.asarray(stop).dtype.kind in ["i", "u", "f"]
+        ):
+            raise ValueError
+        result = np.asarray(np.arange(start, stop, step=step)).view(cls)
+        result._dtype = result.dtype
+        return result
 
     @classmethod
     def linspace(
@@ -308,34 +315,44 @@ class NPNumber(_ArrayCommonMixin):
         dtype=None,
         axis=0,
     ):
+        if dtype is not None and np.dtype(dtype).kind not in ["i", "u", "f"]:
+            raise ValueError
         result = np.linspace(
             start,
             stop,
             num,
             endpoint,
-            retstep=retstep,
             dtype=dtype,
+            retstep=retstep,
             axis=axis,
         )
-        return cls(result, dtype=result.dtype)
+        if retstep:
+            result, step = result
+        result = np.asarray(result).view(cls)
+        result._dtype = result.dtype
+        if retstep:
+            return result, step
+        else:
+            return result
 
     @classmethod
     def logspace(
         cls, start, stop, num=50, endpoint=True, base=10.0, dtype=None, axis=0
     ):
         dtype = _dtype_check(dtype)
-        result = np.logspace(
-            start, stop, num=num, endpoint=endpoint, base=base, dtype=dtype, axis=axis
-        )
-        result = np.asarray(result).view(cls)
+        result = np.asarray(
+            np.logspace(start, stop, num=num, endpoint=endpoint, base=base, axis=axis),
+            dtype=dtype,
+        ).view(cls)
         result._dtype = result.dtype
         return result
 
     @classmethod
     def geomspace(cls, start, stop, num=50, endpoint=True, dtype=None, axis=0):
         dtype = _dtype_check(dtype)
-        result = np.geomspace(start, stop, num, endpoint, dtype=dtype, axis=axis)
-        result = np.asarray(result).view(cls)
+        result = np.asarray(
+            np.geomspace(start, stop, num, endpoint, axis=axis), dtype
+        ).view(cls)
         result._dtype = result.dtype
         return result
 
