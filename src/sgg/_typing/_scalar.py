@@ -26,9 +26,7 @@ type _FloatScalar = (
 )
 type _ComplexScalar = complex | np.complex64 | np.complex128
 type _RealNumeric_co = _FloatScalar
-type _NumberScalar = (
-    Number | SupportsInt | SupportsFloat | SupportsComplex | np.number | _BoolScalar
-)
+type _NumberScalar = _RealNumeric_co | _ComplexScalar
 type _StringScalar = np.character | str | bytes
 type _DateWordScalar = Literal[
     "TODAY", "today", b"TODAY", b"today", "NOW", "now", b"NOW", b"now"
