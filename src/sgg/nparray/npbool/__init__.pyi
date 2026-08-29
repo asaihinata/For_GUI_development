@@ -12,7 +12,7 @@ class NPBool(_ArrayCommonMixin):
     """`np.ndarray`を継承したbool型の配列クラス"""
 
     __doc__: str
-    _element_type: tuple[type[bool], type[np.bool_], type[np.bool]]
+    _element_type: tuple[type[np.bool_], type[np.bool]]
     _default_dtype: np.bool_
     @overload
     def __new__(

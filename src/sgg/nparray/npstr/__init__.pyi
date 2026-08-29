@@ -17,9 +17,7 @@ class NPString(_ArrayCommonMixin):
     """`np.ndarray`を継承した文字列型の配列クラス"""
 
     __doc__: str
-    _element_type: tuple[
-        type[str], type[bytes], type[str_], type[bytes_], type[StringDType]
-    ]
+    _element_type: tuple[type[str_], type[bytes_], type[StringDType]]
     _default_dtype: str_
     @overload
     def __new__(

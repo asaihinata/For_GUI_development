@@ -16,14 +16,14 @@ __all__ = ["NPString"]
 class NPString(_ArrayCommonMixin):
     """`np.ndarray`を継承した文字列型の配列クラス"""
 
-    _element_type = (str, np.str_, bytes, np.bytes_, StringDType)
+    _element_type = (np.str_, np.bytes_, StringDType)
     _default_dtype = np.str_
 
     def __new__(
         cls,
         obj,
         /,
-        dtype=np.str_,
+        dtype=None,
         *,
         d_ndim=None,
         min_ndim=None,

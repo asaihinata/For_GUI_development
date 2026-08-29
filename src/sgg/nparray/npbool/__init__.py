@@ -8,14 +8,14 @@ __all__ = ["NPBool"]
 class NPBool(_ArrayCommonMixin):
     """`np.ndarray`を継承したbool型の配列クラス"""
 
-    _element_type = (bool, np.bool_, np.bool)
+    _element_type = (np.bool_, np.bool)
     _default_dtype = np.bool_
 
     def __new__(
         cls,
         obj,
         /,
-        dtype=np.bool_,
+        dtype=None,
         *,
         d_ndim=None,
         min_ndim=None,

@@ -24,7 +24,7 @@ method_list = [
 class NPNumber(_ArrayCommonMixin):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
-    _element_type = (int, float, complex, np.number)
+    _element_type = np.number
     _default_dtype = None
 
     def __new__(
