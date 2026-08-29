@@ -45,29 +45,7 @@ class NPBool(_ArrayCommonMixin):
         result._dtype = self.dtypes
         return result
 
-    def __add__(self, value):
-        if hasattr(value, "__radd__"):
-            return self._toval() - value
-        return np.add(self._toval(), value)
-
-    __iadd__ = __add__
-
-    def __radd__(self, value):
-        if hasattr(value, "__add__"):
-            return self._toval() - value
-        return np.add(value, self._toval())
-
-    def __sub__(self, value):
-        if hasattr(value, "__rsub__"):
-            return self._toval() - value
-        return np.subtract(self._toval(), value)
-
-    __isub__ = __sub__
-
-    def __rsub__(self, value):
-        if hasattr(value, "__sub__"):
-            return self._toval() - value
-        return np.subtract(value, self._toval())
+    __not__ = __invert__
 
     def __eq__(self, value):
         result = np.asarray(np.equal(self, value)).view(type(self))

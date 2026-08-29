@@ -68,6 +68,7 @@ class NPBool(_ArrayCommonMixin):
         """
 
     def __invert__(self) -> NPBool: ...
+    __not__ = __invert__
     @overload
     def __eq__(self, value: sgt._ArrayLikeBool_co | NPBool) -> NPBool: ...
     @overload

@@ -1,7 +1,6 @@
 from datetime import date, datetime, timedelta
-from numbers import Number
 from re import Pattern
-from typing import Literal, SupportsComplex, SupportsFloat, SupportsInt
+from typing import Literal, SupportsFloat, SupportsInt
 
 import numpy as np
 
