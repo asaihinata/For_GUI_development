@@ -149,6 +149,7 @@ class _ArrayCommonMixin(np.ndarray):
         :raises TypeError: 許可されていない型の要素が含まれる場合に発生させる
         """
 
+    def _toval(self) -> np.ndarray | Any: ...
     def lengtharange(self) -> sgt.RUInt64:
         """配列オブジェクトと同じ`shape`を持つ,各軸の最終次元インデックスの配列を返す"""
 

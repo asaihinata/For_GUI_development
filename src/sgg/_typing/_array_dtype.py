@@ -12,9 +12,9 @@ __all__ = [
     "_DTypeLikeF64",
     "_DTypeLikeFloat",
     "_DTypeLikeInt",
-    "_DTypeLikeUInt",
     "_DTypeLikeInts",
     "_DtypeLikeTD",
+    "_DTypeLikeUInt",
     "_DualArrayLike",
     "_NumericDTypeLike",
     "_RealNumericDTypeLike",
@@ -33,12 +33,8 @@ type _DualArrayLike[DTypeT: np.dtype, BuiltinT] = (
 # 真偽型
 type _BoolDTypeLike = type[bool] | _DTypeLike[np.bool_ | np.bool] | npt._BoolCodes
 # 数値
-type _DTypeLikeInt= type[int] |_DTypeLike[
-    np.signedinteger
-] | npt._SignedIntegerCodes
-type _DTypeLikeUInt= _DTypeLike[
-    np.unsignedinteger
-] | npt._UnsignedIntegerCodes
+type _DTypeLikeInt = type[int] | _DTypeLike[np.signedinteger] | npt._SignedIntegerCodes
+type _DTypeLikeUInt = _DTypeLike[np.unsignedinteger] | npt._UnsignedIntegerCodes
 type _DTypeLikeInts = _DTypeLikeInt | _DTypeLikeUInt
 type _DTypeLikeFloat = type[float] | _DTypeLike[np.floating] | npt._FloatingCodes
 type _DTypeLikeF32 = _DTypeLike[np.float32] | npt._Float32Codes

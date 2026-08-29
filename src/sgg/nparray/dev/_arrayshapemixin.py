@@ -110,6 +110,11 @@ class _ArrayCommonMixin(np.ndarray):
                     f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
                 )
 
+    def _toval(self):
+        if self.zero_ndim:
+            return self.item()
+        return self.__array__()
+
     def lengtharange(self):
         shapes = self.shape
         lens = len(shapes)
