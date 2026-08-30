@@ -5,22 +5,22 @@ For_GUI_development
  │   ├── css
  │   │   └── style.css
  │   ├── dev
- │   │   └── md
- │   │       ├── development
- │   │       │   ├── markdown
- │   │       │   │   ├── howto_md.md
- │   │       │   │   └── howto_md_math.md
- │   │       │   ├── naming_conventions.md
- │   │       │   └── py_mustache_custom_docstring_templates.md
- │   │       ├── numpy
- │   │       │   ├── numpy_dtype.md
- │   │       │   ├── numpy_glossary.md
- │   │       │   ├── numpy_routines.md
- │   │       │   └── numpy_special_method.md
- │   │       └── other
- │   │           ├── color_table.md
- │   │           ├── format_datetime.md
- │   │           └── youbi.md
+ │   │   ├── development
+ │   │   │   ├── markdown
+ │   │   │   │   ├── howto_md.md
+ │   │   │   │   └── howto_md_math.md
+ │   │   │   ├── naming_conventions.md
+ │   │   │   └── py_mustache_custom_docstring_templates.md
+ │   │   ├── numpy
+ │   │   │   ├── numpy_dtype.md
+ │   │   │   ├── numpy_dtype_kind.md
+ │   │   │   ├── numpy_glossary.md
+ │   │   │   ├── numpy_routines.md
+ │   │   │   └── numpy_special_method.md
+ │   │   └── other
+ │   │       ├── color_table.md
+ │   │       ├── format_datetime.md
+ │   │       └── youbi.md
  │   └── templates
  │       └── py_document_text.mustache
  ├── pyproject.toml
@@ -435,6 +435,7 @@ For_GUI_development
  │           │   └── test_getaddress2.py
  │           └── basic
  │               └── test_all.py
+ ├── tree.txt
  ├── .crossnote
  │   ├── config.js
  │   ├── head.html
@@ -443,9 +444,7 @@ For_GUI_development
  ├── .editorconfig
  ├── .gitattributes
  ├── .gitignore
- ├── .python-version
  └── .vscode
-     ├── extensions.json
-     └── settings.shared.json
+     └── extensions.json
 ファイル数:312
-フォルダ数:136
+フォルダ数:135

@@ -1,0 +1,13 @@
+| kind | type      |
+| ---- | --------- |
+| b    | bool      |
+| i    | int       |
+| u    | uint      |
+| f    | float     |
+| c    | complex   |
+| S    | bytes     |
+| U    | string    |
+| m    | timedelta |
+| M    | datetime  |
+| O    | object    |
+| V    | void      |

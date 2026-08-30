@@ -1,10 +1,13 @@
-# docs
+# ドキュメント
 docs/*
 !docs/css
 !docs/dev
 !docs/templates
 !docs/requirements.txt
-# demo and tests
+docs/_build/
+docs/build/
+
+# デモ・テストコード
 tests/
 *tests_*.py
 */*tests_*.py
@@ -13,35 +16,92 @@ demo.py
 demo*.py
 *demo.py
 *deom*.py
-# Python
-__pycache__
-*.pyc
+
+# Python 本体
+__pycache__/
 *.py
+*.pyc
+*.py[cod]
+*$py.class
 *.pyi
 !src/**/*.py
 !src/**/*.pyi
-# vscode
+
+# パッケージ / ビルド / 配布物
+/*.egg-info
+*.egg-info/
+*.egg
+.eggs/
+build/
+dist/
+wheels/
+*.tar.gz
+*.whl
+pip-log.txt
+pip-wheel-metadata
+**/pip-wheel-metadata
+
+# 仮想環境
+.venv/
+venv/
+env/
+.python-version
+
+# テスト・カバレッジ
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# 型チェック関連 (mypy / pyright)
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyright/
+pyrightconfig.json
+uv.lock
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Node.js
+node_modules
+
+# VSCode / エディタ設定
 my-project.code-workspace
+.vscode/*
+!.vscode/extensions.json
 .vscode/*.local.json
-.vscode/settings.json
-# AI
-# Gemini
-GEMINI.md
-.gemini/
-.geminiignore
-# Claude Code
-CLAUDE.md
-CLAUDE.local.md
-.claude/
-.claudeignore
-# その他
+
+# Git関連
 .git
-*.egg-info
-.venv
+**/.git
+**/git
+.gitmessage
+
+# OS生成ファイル
+.DS_Store
+Thumbs.db
+
+# 環境変数・機密情報
+.env
+.key
+
+# フォントファイル
+.fnt
+.fon
+.otc
+.ttf
+.ttc
+.woff
+.woff2
+.eot
+.dfont
+
+# その他
 .dll
 .exe
 .ini
-.gitmessage
-.DS_Store
-.env
 *.txt
+!tree.txt

@@ -31,6 +31,5 @@ include-package-data = true
 where = ["src"]
 [tool.setuptools.package-data]
 "*" = ["*.pyi", "py.typed"]
-"sgg.dev.color" = ["color.csv"]
 [tool.setuptools.exclude-package-data]
 "*" = ["__pycache__", "*.pyc"]
