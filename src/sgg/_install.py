@@ -2,7 +2,7 @@
 
 from importlib.util import find_spec
 
-__all__ = ["_Required_serch"]
+__all__ = ["_Library_install_check", "_Required_serch"]
 
 Required_dict = {
     "cycler": "cycler",
@@ -15,6 +15,16 @@ Required_dict = {
     "setuptools": "setuptools",
     "validators": "validators",
 }
+
+
+def _Library_install_check(name):
+    try:
+        if find_spec(name) is None:
+            return False
+        else:
+            return True
+    except:
+        return False
 
 
 def _Required_serch():
