@@ -1,6 +1,5 @@
 from types import GenericAlias
-from typing import (Any, Iterable, Iterator, Literal, LiteralString, Self,
-                    overload)
+from typing import Any, Iterable, Iterator, Literal, LiteralString, Self, overload
 
 import numpy as np
 from numpy._typing import DTypeLike, NDArray, _DTypeLike, _ShapeLike

@@ -191,15 +191,19 @@ class NPDate(snd._ArrayCommonMixin):
     @classmethod
     def arange(cls, start, stop, /, step=1, dtype=None):
         if dtype is None:
-            if isinstance(step, np.timedelta64):
-                dtype = _dtypeunit(step.dtype)
-            elif isinstance(step, timedelta):
-                dtype = _dtypeunit(np.timedelta64(step).dtype)
+            if isinstance(step, np.timedelta64 | timedelta):
+                if isinstance(step, np.timedelta64):
+                    dtype = snd._get_dt64_unit(_dtypeunit(step.dtype))
+                elif isinstance(step, timedelta):
+                    dtype = snd._get_dt64_unit(_dtypeunit(np.timedelta64(step).dtype))
+                start = _obj_to_datetime64(start, dtype)
+                stop = _obj_to_datetime64(stop, dtype)
+            else:
+                start = _obj_to_datetime64(start)
+                stop = _obj_to_datetime64(stop)
+                dtype = np.result_type(start.dtype, stop.dtype)
         elif _tonparray(step).dtype.kind not in ["m", "b", "i", "u"]:
             raise TypeError
-        dtype = snd._get_dt64_unit(dtype)
-        start = _obj_to_datetime64(start, dtype)
-        stop = _obj_to_datetime64(stop, dtype)
         if isinstance(step, timedelta):
             step = np.timedelta64(step)
         result = np.asarray(
@@ -391,7 +395,14 @@ def _func(x):
     return x
 
 
-def _obj_to_datetime64(obj, dtype):
+def _obj_to_datetime64(obj, dtype=None):
+    if dtype is None:
+        if obj in _Word or isinstance(obj, datetime | date | int | np.integer):
+            print(np.datetime64(obj).dtype)
+            return np.datetime64(obj)
+        elif isinstance(obj, str | np.str_):
+            return np.datetime64(_func(obj))
+        raise TypeError
     if isinstance(obj, np.datetime64):
         return obj.astype(snd._dt64_unit(dtype))
     dtype = snd._get_dt64_unit(dtype)
