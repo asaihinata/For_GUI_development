@@ -1,3 +1,6 @@
+from sgg._install import _Required_serch
+
+_Required_serch()
 from .dialogs import *
 from .exceptions import *
 from .graph import *
