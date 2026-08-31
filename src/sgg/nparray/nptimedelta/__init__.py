@@ -6,7 +6,7 @@ import numpy as np
 
 from sgg.dev import _tonparray
 
-from ..dev import _ArrayCommonMixin, _tm64_unit
+from ..dev import _ArrayCommonMixin, _tm64_unit,_get_tm64_unit
 
 __all__ = ["NPTimedelta"]
 
@@ -185,6 +185,14 @@ class NPTimedelta(_ArrayCommonMixin):
         if dtype.kind == "M":
             return np.asarray(self, dtype).view(type(self))
         return self.__array__(dtype, copy=copy)
+
+    @classmethod
+    def arange(cls, start,/, stop=None, step=1, dtype=None):
+        result = np.asarray(
+            np.arange(start, stop, step=step,dtype=_tm64_unit(dtype))
+        ).view(cls)
+        result._dtype = result.dtype
+        return result
 
     @property
     def dtypeunit(self):
