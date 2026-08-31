@@ -336,8 +336,8 @@ class NPNumber(_ArrayCommonMixin):
         dtype=None,
         axis=0,
     ):
-        if dtype is not None and np.dtype(dtype).kind not in ["i", "u", "f", "c"]:
-            raise ValueError
+        if dtype is not None and not np.issubdtype(np.dtype(dtype), np.number):
+            raise TypeError
         result = np.linspace(
             start,
             stop,

@@ -8,10 +8,17 @@ from sgg.exceptions import *
 
 __all__ = [
     "_arrisuint",
+    "_get_dtype",
     "_int_co_check",
     "_normalize_axis",
     "_to_np_scalar",
 ]
+
+
+def _get_dtype(value):
+    if isinstance(value, type):
+        return np.dtype(value)
+    return np.asarray(value).dtype
 
 
 def _arrisuint(arr):

@@ -5,7 +5,6 @@ import numpy as np
 from dateutil.parser import parse
 
 import sgg.nparray.dev as snd
-from sgg.dev import _tonparray
 from sgg.exceptions import ShapeError
 
 __all__ = ["NPDate"]
@@ -202,7 +201,7 @@ class NPDate(snd._ArrayCommonMixin):
                 start = _obj_to_datetime64(start)
                 stop = _obj_to_datetime64(stop)
                 dtype = np.result_type(start.dtype, stop.dtype)
-        elif _tonparray(step).dtype.kind not in ["m", "b", "i", "u"]:
+        if np.asarray(step).dtype.kind not in ["m", "b", "i", "u"]:
             raise TypeError
         if isinstance(step, timedelta):
             step = np.timedelta64(step)
@@ -397,8 +396,7 @@ def _func(x):
 
 def _obj_to_datetime64(obj, dtype=None):
     if dtype is None:
-        if obj in _Word or isinstance(obj, datetime | date | int | np.integer):
-            print(np.datetime64(obj).dtype)
+        if obj in _Word or isinstance(obj, datetime | date | int):
             return np.datetime64(obj)
         elif isinstance(obj, str | np.str_):
             return np.datetime64(_func(obj))
