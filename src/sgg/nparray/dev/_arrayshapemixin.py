@@ -68,8 +68,12 @@ class _ArrayCommonMixin(np.ndarray):
 
         if result is NotImplemented:
             return NotImplemented
-
-        if isinstance(result, np.ndarray):
+        judge = False
+        resultdtype = result.dtype
+        for dtype in self._element_type:
+            if np.issubdtype(resultdtype, dtype):
+                judge = True
+        if judge and isinstance(result, np.ndarray) and result.dtype:
             result = result.view(type(self))
             result._dtype = getattr(inputs[0], "_dtype", None)
 
@@ -104,11 +108,13 @@ class _ArrayCommonMixin(np.ndarray):
     def _validate_elements(cls, obj):
         if cls._element_type is None:
             return
-        for elem in obj.flat:
-            if not isinstance(elem, cls._element_type):
-                raise TypeError(
-                    f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
-                )
+        objdtype = obj.dtype
+        for dtype in cls._element_type:
+            if np.issubdtype(objdtype, dtype):
+                return
+        raise TypeError(
+            f"{cls.__name__}の要素は{cls._element_type}のみ許可されています"
+        )
 
     def _toval(self):
         if self.zero_ndim:

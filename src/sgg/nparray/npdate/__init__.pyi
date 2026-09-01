@@ -14,7 +14,7 @@ class NPDate(_ArrayCommonMixin):
     """`np.ndarray`を継承したdatetime64型の配列クラス"""
 
     __doc__: str
-    _element_type: datetime64
+    _element_type: tuple[type[datetime64]]
     _default_dtype: np.dtype[datetime64]
     @overload
     def __new__(

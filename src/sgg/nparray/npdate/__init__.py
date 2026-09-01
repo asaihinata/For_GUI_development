@@ -31,7 +31,7 @@ _Word = frozenset(
 class NPDate(snd._ArrayCommonMixin):
     """`np.ndarray`を継承したdatetime64型の配列クラス"""
 
-    _element_type = np.datetime64
+    _element_type = (np.datetime64,)
     _default_dtype = np.dtype("datetime64[D]")
 
     def __new__(

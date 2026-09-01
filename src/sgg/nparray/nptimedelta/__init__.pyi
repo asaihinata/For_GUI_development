@@ -18,7 +18,7 @@ class NPTimedelta(_ArrayCommonMixin):
     """`np.ndarray`を継承したtimedelta64型の配列クラス"""
 
     __doc__: str
-    _element_type: timedelta64
+    _element_type: tuple[type[timedelta64]]
     _default_dtype: dtype[timedelta64[timedelta]]
     @overload
     def __new__(

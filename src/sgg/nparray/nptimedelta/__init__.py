@@ -14,7 +14,7 @@ __all__ = ["NPTimedelta"]
 class NPTimedelta(_ArrayCommonMixin):
     """`np.ndarray`を継承したtimedelta64型の配列クラス"""
 
-    _element_type = np.timedelta64
+    _element_type = (np.timedelta64,)
     _default_dtype = np.dtype("timedelta64[D]")
 
     def __new__(
@@ -64,7 +64,26 @@ class NPTimedelta(_ArrayCommonMixin):
         return result
 
     __iadd__ = __add__
-    __radd__ = __add__
+
+    def __radd__(self, value):
+        if isinstance(value, date | datetime):
+            result = np.add(np.datetime64(value), self.astype("D"))
+            if np.ndim(result) == 0:
+                return result
+            return result.__array__()
+        elif isinstance(value, np.datetime64) or (
+            isinstance(value, np.ndarray) and value.dtype.kind == "M"
+        ):
+            result = np.add(value, self.astype("D"))
+            print(result)
+            if np.ndim(result) == 0:
+                return result
+            return result.__array__()
+        if isinstance(value, timedelta):
+            value = np.timedelta64(value, self.dtypeunit)
+        result = np.asarray(np.add(value, self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __sub__(self, value):
         if isinstance(value, date | datetime):

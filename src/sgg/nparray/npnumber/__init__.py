@@ -24,7 +24,7 @@ method_list = [
 class NPNumber(_ArrayCommonMixin):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
-    _element_type = np.number
+    _element_type = (np.number,)
     _default_dtype = None
 
     def __new__(
@@ -41,13 +41,13 @@ class NPNumber(_ArrayCommonMixin):
         if not isinstance(copy, bool):
             copy = True
         if dtype is None:
-            obj = np.asarray(obj, copy=copy).view(cls)
+            resolved = cls._resolve_dtype(dtype)
+            obj = np.asarray(obj, dtype=resolved, copy=copy).view(cls)
+        else:
+            obj = np.asarray(obj, dtype=dtype, copy=copy).view(cls)
             if obj.dtype.kind == "b":
                 obj = obj.astype(int)
             resolved = obj.dtype
-        else:
-            resolved = cls._resolve_dtype(dtype)
-            obj = np.asarray(obj, dtype=resolved, copy=copy).view(cls)
         cls._validate_elements(obj)
         obj._dtype = resolved
         if isinstance(d_ndim, int):

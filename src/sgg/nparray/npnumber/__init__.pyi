@@ -41,7 +41,7 @@ class NPNumber(_ArrayCommonMixin):
     """`np.ndarray`を継承した数値型の配列クラス"""
 
     __doc__: str
-    _element_type: type[np.number]
+    _element_type: tuple[type[np.number]]
     _default_dtype: None
     @overload
     def __new__(
