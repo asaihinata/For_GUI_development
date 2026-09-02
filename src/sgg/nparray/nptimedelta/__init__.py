@@ -46,7 +46,7 @@ class NPTimedelta(_ArrayCommonMixin):
 
     def __add__(self, value):
         if isinstance(value, date | datetime):
-            return np.add(self.astype("D"), np.datetime64(value))
+            return np.add(self, np.datetime64(value))
         elif isinstance(value, np.datetime64) or (
             isinstance(value, np.ndarray) and value.dtype.kind == "M"
         ):
@@ -61,7 +61,7 @@ class NPTimedelta(_ArrayCommonMixin):
 
     def __radd__(self, value):
         if isinstance(value, date | datetime):
-            return np.add(np.datetime64(value), self.astype("D"))
+            return np.add(np.datetime64(value), self)
         elif isinstance(value, np.datetime64) or (
             isinstance(value, np.ndarray) and value.dtype.kind == "M"
         ):
@@ -88,7 +88,7 @@ class NPTimedelta(_ArrayCommonMixin):
 
     def __rsub__(self, value):
         if isinstance(value, date | datetime):
-            return np.subtract(np.datetime64(value), self.astype("D"))
+            return np.subtract(np.datetime64(value), self)
         elif isinstance(value, np.datetime64) or (
             isinstance(value, np.ndarray) and value.dtype.kind == "M"
         ):
