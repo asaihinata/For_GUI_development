@@ -69,7 +69,9 @@ class _ArrayCommonMixin(np.ndarray):
         if result is NotImplemented:
             return NotImplemented
         judge = False
-        resultdtype = result.dtype
+        resultdtype = (
+            result.dtype if hasattr(result, "dtype") else np.dtype(type(result))
+        )
         for dtype in self._element_type:
             if np.issubdtype(resultdtype, dtype):
                 judge = True

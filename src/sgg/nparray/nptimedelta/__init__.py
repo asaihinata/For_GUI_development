@@ -46,17 +46,11 @@ class NPTimedelta(_ArrayCommonMixin):
 
     def __add__(self, value):
         if isinstance(value, date | datetime):
-            result = np.add(self.astype("D"), np.datetime64(value))
-            if np.ndim(result) == 0:
-                return result
-            return result.__array__()
+            return np.add(self.astype("D"), np.datetime64(value))
         elif isinstance(value, np.datetime64) or (
             isinstance(value, np.ndarray) and value.dtype.kind == "M"
         ):
-            result = np.add(self.astype("D"), value)
-            if np.ndim(result) == 0:
-                return result
-            return result.__array__()
+            return np.add(self, value)
         if isinstance(value, timedelta):
             value = np.timedelta64(value, self.dtypeunit)
         result = np.asarray(np.add(self, value)).view(type(self))
@@ -67,18 +61,11 @@ class NPTimedelta(_ArrayCommonMixin):
 
     def __radd__(self, value):
         if isinstance(value, date | datetime):
-            result = np.add(np.datetime64(value), self.astype("D"))
-            if np.ndim(result) == 0:
-                return result
-            return result.__array__()
+            return np.add(np.datetime64(value), self.astype("D"))
         elif isinstance(value, np.datetime64) or (
             isinstance(value, np.ndarray) and value.dtype.kind == "M"
         ):
-            result = np.add(value, self.astype("D"))
-            print(result)
-            if np.ndim(result) == 0:
-                return result
-            return result.__array__()
+            return np.add(value, self)
         if isinstance(value, timedelta):
             value = np.timedelta64(value, self.dtypeunit)
         result = np.asarray(np.add(value, self)).view(type(self))
@@ -86,18 +73,11 @@ class NPTimedelta(_ArrayCommonMixin):
         return result
 
     def __sub__(self, value):
-        if isinstance(value, date | datetime):
-            result = np.subtract(self.astype("D"), np.datetime64(value))
-            if np.ndim(result) == 0:
-                return result
-            return result.__array__()
-        if isinstance(value, np.datetime64) or (
-            isinstance(value, np.ndarray) and value.dtype.kind == "M"
+        if not (
+            isinstance(value, timedelta | np.timedelta64)
+            or (isinstance(value, np.ndarray) and value.dtype.kind == "m")
         ):
-            result = np.subtract(self.astype("D"), value)
-            if np.ndim(result) == 0:
-                return result
-            return result.__array__()
+            return NotImplemented
         if isinstance(value, timedelta):
             value = np.timedelta64(value, self.dtypeunit)
         result = np.asarray(np.subtract(self, value)).view(type(self))
@@ -105,7 +85,19 @@ class NPTimedelta(_ArrayCommonMixin):
         return result
 
     __isub__ = __sub__
-    __rsub__ = __sub__
+
+    def __rsub__(self, value):
+        if isinstance(value, date | datetime):
+            return np.subtract(np.datetime64(value), self.astype("D"))
+        elif isinstance(value, np.datetime64) or (
+            isinstance(value, np.ndarray) and value.dtype.kind == "M"
+        ):
+            return np.subtract(value, self)
+        if isinstance(value, timedelta):
+            value = np.timedelta64(value, self.dtypeunit)
+        result = np.asarray(np.subtract(value, self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __mul__(self, value):
         value = _tonparray(value)
@@ -113,46 +105,34 @@ class NPTimedelta(_ArrayCommonMixin):
             result = np.asarray(np.multiply(self, value)).view(type(self))
             result._dtype = result.dtype
             return result
-        raise TypeError
+        return NotImplemented
 
     __imul__ = __mul__
 
     def __truediv__(self, value):
+        if isinstance(value, timedelta):
+            value = np.timedelta64(value)
         if isinstance(value, np.ndarray | np.timedelta64) and value.dtype.kind == "m":
-            result = np.true_divide(self, value)
-            if np.ndim(result) == 0:
-                return result
-            return result.__array__()
-        elif isinstance(value, timedelta):
-            result = np.true_divide(self, value)
-            if np.ndim(result) == 0:
-                return result
-            return super().__array__(np.float64)
-        value = _tonparray(value)
-        if value.dtype.kind in ["b", "i", "u", "f"]:
+            return np.true_divide(self, value)
+        if np.asarray(value).dtype.kind in ["b", "i", "u", "f"]:
             result = np.asarray(np.true_divide(self, value)).view(type(self))
             result._dtype = result.dtype
             return result
+        return NotImplemented
 
     __itruediv__ = __truediv__
 
     def __rtruediv__(self, value):
+        if isinstance(value, timedelta):
+            value = np.timedelta64(value)
         if isinstance(value, np.timedelta64) or (
             isinstance(value, np.ndarray) and value.dtype.kind == "m"
         ):
-            result = np.true_divide(value, self)
-            if np.ndim(result) == 0:
-                return result
-            return result.__array__()
-        elif isinstance(value, timedelta):
-            result = np.true_divide(value, self)
-            if np.ndim(result) == 0:
-                return result
-            return result.__array__(float)
+            return np.true_divide(value, self)
         return NotImplemented
 
     def __pow__(self, value):
-        value = _tonparray(value)
+        value = np.asarray(value)
         if value.dtype.kind in ["b", "i", "u", "f"]:
             dtype = self._dtype
             result = np.power(self.__array__(np.int64), value)
