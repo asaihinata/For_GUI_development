@@ -105,13 +105,12 @@ For_GUI_development
  │   │   │   ├── tkfont.py
  │   │   │   └── tkfont.pyi
  │   │   ├── graph
- │   │   │   ├── __init__.py
- │   │   │   ├── element
- │   │   │   │   ├── __init__.py
- │   │   │   │   ├── graph
+ │   │   │   ├── Element
+ │   │   │   │   ├── Graph
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
- │   │   │   │   ├── polarelement
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── polarElement
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
  │   │   │   │   ├── radar
@@ -119,14 +118,14 @@ For_GUI_development
  │   │   │   │   │   ├── __init__.pyi
  │   │   │   │   │   ├── custom.py
  │   │   │   │   │   └── custom.pyi
- │   │   │   │   ├── threeelement
+ │   │   │   │   ├── threeElement
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── __init__.pyi
- │   │   │   │   └── twoelement
+ │   │   │   │   └── twoElement
  │   │   │   │       ├── __init__.py
  │   │   │   │       └── __init__.pyi
- │   │   │   ├── graph
- │   │   │   │   ├── _2d
+ │   │   │   ├── Graph
+ │   │   │   │   ├── _2D
  │   │   │   │   │   ├── _2gset.pyi
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   ├── bargraph
@@ -198,7 +197,7 @@ For_GUI_development
  │   │   │   │   │   └── waterfallh
  │   │   │   │   │       ├── __init__.py
  │   │   │   │   │       └── __init__.pyi
- │   │   │   │   ├── _3d
+ │   │   │   │   ├── _3D
  │   │   │   │   │   ├── _3gset.pyi
  │   │   │   │   │   ├── __init__.py
  │   │   │   │   │   └── dscatter
@@ -234,6 +233,7 @@ For_GUI_development
  │   │   │   │       └── radarline
  │   │   │   │           ├── __init__.py
  │   │   │   │           └── __init__.pyi
+ │   │   │   ├── __init__.py
  │   │   │   └── style
  │   │   │       ├── __init__.py
  │   │   │       ├── getlabel
@@ -287,91 +287,91 @@ For_GUI_development
  │   │       │   │       ├── __init__.py
  │   │       │   │       └── __init__.pyi
  │   │       │   ├── existing
- │   │       │   │   ├── __init__.py
- │   │       │   │   ├── buttons
+ │   │       │   │   ├── Buttons
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── checkbox
+ │   │       │   │   ├── Checkbox
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── column
+ │   │       │   │   ├── Column
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── frames
+ │   │       │   │   ├── Frames
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── image
+ │   │       │   │   ├── Image
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── input
+ │   │       │   │   ├── Input
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── inputnumber
+ │   │       │   │   ├── InputNumber
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── listboxs
+ │   │       │   │   ├── Listboxs
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── menubuttons
+ │   │       │   │   ├── Menubuttons
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── menus
+ │   │       │   │   ├── Menus
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── multiline
+ │   │       │   │   ├── Multiline
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── radio
+ │   │       │   │   ├── Radio
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── slidebar
+ │   │       │   │   ├── Slidebar
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── tab
+ │   │       │   │   ├── TCombobox
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── table
+ │   │       │   │   ├── TProgressbar
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── tcombobox
+ │   │       │   │   ├── Tab
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── texts
+ │   │       │   │   ├── Table
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── tprogressbar
+ │   │       │   │   ├── Texts
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
- │   │       │   │   └── tree
- │   │       │   │       ├── __init__.py
- │   │       │   │       └── __init__.pyi
+ │   │       │   │   ├── Tree
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
+ │   │       │   │   └── __init__.py
  │   │       │   └── original
+ │   │       │       ├── Imagebyte
+ │   │       │       │   ├── __init__.py
+ │   │       │       │   └── __init__.pyi
+ │   │       │       ├── Imagelink
+ │   │       │       │   ├── __init__.py
+ │   │       │       │   └── __init__.pyi
+ │   │       │       ├── Link
+ │   │       │       │   ├── __init__.py
+ │   │       │       │   └── __init__.pyi
  │   │       │       ├── __init__.py
- │   │       │       ├── btnpop
- │   │       │       │   ├── btn
- │   │       │       │   │   ├── __init__.py
- │   │       │       │   │   └── __init__.pyi
- │   │       │       │   ├── colorbtn
- │   │       │       │   │   ├── __init__.py
- │   │       │       │   │   └── __init__.pyi
- │   │       │       │   ├── fileLoad
- │   │       │       │   │   ├── __init__.py
- │   │       │       │   │   └── __init__.pyi
- │   │       │       │   ├── folderLoad
- │   │       │       │   │   ├── __init__.py
- │   │       │       │   │   └── __init__.pyi
- │   │       │       │   └── savebtn
- │   │       │       │       ├── __init__.py
- │   │       │       │       └── __init__.pyi
- │   │       │       ├── imagebyte
- │   │       │       │   ├── __init__.py
- │   │       │       │   └── __init__.pyi
- │   │       │       ├── imagelink
- │   │       │       │   ├── __init__.py
- │   │       │       │   └── __init__.pyi
- │   │       │       └── link
- │   │       │           ├── __init__.py
- │   │       │           └── __init__.pyi
+ │   │       │       └── btnpop
+ │   │       │           ├── Btn
+ │   │       │           │   ├── __init__.py
+ │   │       │           │   └── __init__.pyi
+ │   │       │           ├── Colorbtn
+ │   │       │           │   ├── __init__.py
+ │   │       │           │   └── __init__.pyi
+ │   │       │           ├── FileLoad
+ │   │       │           │   ├── __init__.py
+ │   │       │           │   └── __init__.pyi
+ │   │       │           ├── FolderLoad
+ │   │       │           │   ├── __init__.py
+ │   │       │           │   └── __init__.pyi
+ │   │       │           └── Savebtn
+ │   │       │               ├── __init__.py
+ │   │       │               └── __init__.pyi
  │   │       └── window
  │   │           ├── __init__.py
  │   │           └── __init__.pyi

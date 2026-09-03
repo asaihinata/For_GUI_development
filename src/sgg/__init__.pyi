@@ -885,6 +885,9 @@ class Guis:
         *,
         text: str = ...,
         group: str = "default",
+        selectcolor: sgt.ColorType = "white",
+        activefg: sgt.ColorTypeN = None,
+        activebg: sgt.ColorTypeN = None,
         bg: sgt.ColorTypeN = ...,
         fg: sgt.ColorTypeN = ...,
         family: str = ...,
@@ -911,6 +914,12 @@ class Guis:
         :type text: str
         :param group: Radioウィジェットのグループを指定する同じ名前にすることで,そのグループ内で排他的な選択を実施する
         :type group: str
+        :param selectcolor: 選択状態の時に表示される色を指定する
+        :type selectcolor: 色名
+        :param activebg: ウィジェットがアクティブ状態の時の背景色を指定する
+        :type activebg: 色名 | None
+        :param activefg: ウィジェットがアクティブ状態の時の文字色を指定する
+        :type activefg: 色名 | None
         :param bg: ウィジェットの背景色を指定する
         :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
@@ -952,6 +961,9 @@ class Guis:
         *,
         text: str = ...,
         default: bool = False,
+        selectcolor: sgt.ColorType = "white",
+        activefg: sgt.ColorTypeN = None,
+        activebg: sgt.ColorTypeN = None,
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = ...,
         padx: int | float = ...,
         pady: int | float = ...,
@@ -976,6 +988,12 @@ class Guis:
         :type text: str
         :param default: 読み込み時,Checkboxウィジェットがチェックするかを指定する
         :type default: bool
+        :param selectcolor: 選択状態の時に表示される色を指定する
+        :type selectcolor: 色名
+        :param activebg: ウィジェットがアクティブ状態の時の背景色を指定する
+        :type activebg: 色名 | None
+        :param activefg: ウィジェットがアクティブ状態の時の文字色を指定する
+        :type activefg: 色名 | None
         :param bg: ウィジェットの背景色を指定する
         :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する

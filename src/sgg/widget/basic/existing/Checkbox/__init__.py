@@ -11,9 +11,15 @@ class Checkbox(Element):
         self.wraplength = num0(kw.get("wraplength"))
         self.text = kw.get("text")
         self.default = bols(kw.get("default"), False)
+        self.selectcolor = parsecolor(kw.get("selectcolor", "white"))
+        self.activebg = parsecolor(kw.get("activebg", None))
+        self.activefg = parsecolor(kw.get("activefg", None))
         self.variable = BooleanVar()
         self.widget = Checkbutton(
             self.master,
+            activebackground=self.activebg,
+            activeforeground=self.activefg,
+            selectcolor=self.selectcolor,
             takefocus=self.takefocus,
             anchor=self.anchor,
             padx=self.padx,

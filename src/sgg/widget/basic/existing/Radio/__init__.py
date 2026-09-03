@@ -1,6 +1,7 @@
 from tkinter import Radiobutton, StringVar
 
-from sgg.widget.basic.common import *
+from sgg.dev import num0, parsecolor
+from sgg.widget.base import Element
 
 __all__ = ["Radio"]
 
@@ -14,7 +15,7 @@ class Radio(Element):
         self.text = kw.get("text")
         self.group = kw.get("group", "default")
         self._count(self.text)
-        self.wraplength = num0(kw.get("wraplength"))
+        self.wraplength = num0(kw.get("wraplength", 0))
         self.value = f"{self.text}{self.text_list.get(self.text)}"
         if self.groups.get(self.group) == None:
             self.groups[self.group] = {
@@ -24,22 +25,28 @@ class Radio(Element):
             }
         group_data = self.groups[self.group]
         self.variable = group_data["var"]
+        self.selectcolor = parsecolor(kw.get("selectcolor", "white"), "white")
+        self.activebg = parsecolor(kw.get("activebg"))
+        self.activefg = parsecolor(kw.get("activefg"))
         self.widget = Radiobutton(
             self.master,
-            variable=self.variable,
+            activebackground=self.activebg,
+            activeforeground=self.activefg,
+            anchor=self.anchor,
             bg=self.bg,
+            borderwidth=self.borderwidth,
+            cursor=self.cursor,
             fg=self.fg,
             font=self.font,
-            takefocus=self.takefocus,
-            anchor=self.anchor,
             padx=self.padx,
             pady=self.pady,
             relief=self.relief,
-            wraplength=self.wraplength,
-            cursor=self.cursor,
+            selectcolor=self.selectcolor,
+            takefocus=self.takefocus,
             text=self.text,
             value=self.value,
-            borderwidth=self.borderwidth,
+            variable=self.variable,
+            wraplength=self.wraplength,
         )
         if not group_data["has_default"]:
             self.variable.set(self.value)

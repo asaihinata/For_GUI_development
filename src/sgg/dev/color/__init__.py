@@ -1,4 +1,3 @@
-from pathlib import Path
 from re import compile, findall
 
 import numpy as np
