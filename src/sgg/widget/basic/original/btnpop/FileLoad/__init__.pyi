@@ -1,4 +1,4 @@
-from ..btn import Btn
+from ..Btn import Btn
 
 __all__ = ["FileLoad"]
 

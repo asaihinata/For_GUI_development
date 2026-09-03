@@ -1,7 +1,7 @@
-from .graph._2d import *
-from .graph._3d import *
-from .graph._polar import *
-from .graph._radar import *
+from .Graph._2D import *
+from .Graph._3D import *
+from .Graph._polar import *
+from .Graph._radar import *
 
 __all__ = [
     "BarGraph",

@@ -2,7 +2,7 @@ from matplotlib.projections.polar import PolarAxes
 from numpy import array, linspace, number, pi
 
 import sgg.dev as sgd
-from sgg.graph.element.graph import GElement
+from sgg.graph.Element.Graph import GElement
 
 __all__ = ["polarElement"]
 

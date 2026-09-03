@@ -1,6 +1,6 @@
 from os import getcwd
 
-from ..btn import Btn, Button, askopenfilename
+from ..Btn import Btn, Button, askopenfilename
 
 __all__ = ["FileLoad"]
 

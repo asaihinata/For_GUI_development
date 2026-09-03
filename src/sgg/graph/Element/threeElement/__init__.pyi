@@ -7,7 +7,7 @@ from numpy import float64, ndarray
 from numpy.typing import ArrayLike
 
 from sgg._typing import *
-from sgg.graph.element.graph import GElement
+from sgg.graph.Element.Graph import GElement
 from sgg.graph.style import getLabel
 
 __all__ = ["threeElement"]

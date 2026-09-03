@@ -4,7 +4,7 @@ from matplotlib.projections.polar import PolarAxes
 from numpy import float64, ndarray, number
 
 from sgg._typing import *
-from sgg.graph.element.graph import GElement
+from sgg.graph.Element.Graph import GElement
 from sgg.graph.style import getLabel
 
 __all__ = ["polarElement"]

@@ -2,7 +2,7 @@ from matplotlib.axes._axes import Axes
 from matplotlib.pyplot import rcParams
 
 from sgg.dev import bols, list2num, listchose, num0s, parsecolor, range_num
-from sgg.graph.element.graph import GElement
+from sgg.graph.Element.Graph import GElement
 from sgg.graph.style import getLabel
 
 __all__ = ["twoElement"]

@@ -1,10 +1,10 @@
-from .btnpop.colorbtn import Colorbtn
-from .btnpop.fileLoad import FileLoad
-from .btnpop.folderLoad import FolderLoad
-from .btnpop.savebtn import Savebtn
-from .imagebyte import Imagebyte
-from .imagelink import Imagelink
-from .link import Link
+from .btnpop.Colorbtn import Colorbtn
+from .btnpop.FileLoad import FileLoad
+from .btnpop.FolderLoad import FolderLoad
+from .btnpop.Savebtn import Savebtn
+from .Imagebyte import Imagebyte
+from .Imagelink import Imagelink
+from .Link import Link
 
 __all__ = [
     "Colorbtn",

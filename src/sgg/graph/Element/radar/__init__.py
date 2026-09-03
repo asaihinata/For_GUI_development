@@ -1,7 +1,7 @@
 import numpy as np
 
 from sgg.dev import bols, num0s, parsecolor, range_num, tonparray
-from sgg.graph.element.graph import GElement
+from sgg.graph.Element.Graph import GElement
 
 from .custom import radar_factory
 
