@@ -1,4 +1,4 @@
-from sgg.graph.graph.dev import *
+from sgg.dev.graph import *
 
 __all__ = ["Stack"]
 
@@ -11,7 +11,7 @@ class Stack(twoElement):
         self.baseline = listchose(
             kw.get("baseline"), ["zero", "sym", "wiggle", "weighted_wiggle"]
         )
-        self.hatch = Hatch(kw.get("hatch"))
+        self.hatch = kw.get("hatch")
         self.__plot(
             self.__x,
             self.__y,
@@ -25,7 +25,7 @@ class Stack(twoElement):
         self.clear()
         self.graphdata = [
             self.ax.stackplot(
-                xs, ys, labels=label, hatch=hatch[i], baseline=baseline, alpha=alpha
+                xs, ys, labels=label, hatch=hatch, baseline=baseline, alpha=alpha
             )
             for i, (xs, ys) in enumerate(
                 TwoArray(x, y, xdtype=np.float64, ydtype=np.float64)
@@ -46,9 +46,7 @@ class Stack(twoElement):
             ["zero", "sym", "wiggle", "weighted_wiggle"],
             self.baseline,
         )
-        hatch = kw.get("hatch")
-        if hatch is not None:
-            self.hatch = Hatch(hatch)
+        self.hatch = kw.get("hatch", self.hatch)
         self.__plot(
             self.__x,
             self.__y,

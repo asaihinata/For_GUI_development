@@ -1,6 +1,6 @@
 import numpy as np
 
-from ..dev import _ArrayCommonMixin
+from sgg.dev.array import _ArrayCommonMixin
 
 __all__ = ["NPBool"]
 

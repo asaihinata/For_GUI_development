@@ -1,6 +1,6 @@
 from matplotlib.ticker import PercentFormatter
 
-from sgg.graph.graph.dev import *
+from sgg.dev.graph import *
 
 __all__ = ["Stackedh"]
 

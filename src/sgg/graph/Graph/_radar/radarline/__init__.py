@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg.graph.graph.dev import Marker, RadarElement, Solid, num0
+from sgg.dev.graph import Marker, RadarElement, Solid, num0
 
 __all__ = ["RadarLine"]
 

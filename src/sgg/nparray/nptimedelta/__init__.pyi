@@ -8,8 +8,8 @@ from numpy import dtype, timedelta64
 from numpy._typing import NDArray
 
 import sgg._typing as sgt
+from sgg.dev.array import _ArrayCommonMixin
 
-from ..dev import _ArrayCommonMixin
 from ..npdate import NPDate
 
 __all__ = ["NPTimedelta"]

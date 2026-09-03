@@ -1,6 +1,6 @@
 from numpy.polynomial.chebyshev import chebfit, chebval
 
-from sgg.graph.graph.dev import *
+from sgg.dev.graph import *
 
 __all__ = ["Scatter"]
 

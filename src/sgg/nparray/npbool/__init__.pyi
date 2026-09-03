@@ -3,8 +3,7 @@ from typing import Any, Literal, NoReturn, overload
 import numpy as np
 
 import sgg._typing as sgt
-
-from ..dev import _ArrayCommonMixin
+from sgg.dev.array import _ArrayCommonMixin
 
 __all__ = ["NPBool"]
 

@@ -7,8 +7,7 @@ import numpy.strings as nps
 from numpy.dtypes import StringDType
 
 from sgg.dev import _tonparray
-
-from ..dev import _ArrayCommonMixin
+from sgg.dev.array import _ArrayCommonMixin
 
 __all__ = ["NPString"]
 

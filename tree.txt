@@ -40,11 +40,27 @@ For_GUI_development
  │   │   │   └── _widget.py
  │   │   ├── dev
  │   │   │   ├── __init__.py
- │   │   │   ├── _darray.py
- │   │   │   ├── _dnumber.py
- │   │   │   └── color
+ │   │   │   ├── array
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   ├── _arrayshapemixin.py
+ │   │   │   │   ├── _arrayshapemixin.pyi
+ │   │   │   │   ├── _arrcheck.py
+ │   │   │   │   ├── _dayunit.py
+ │   │   │   │   └── _timeunit.py
+ │   │   │   ├── color
+ │   │   │   │   ├── __init__.py
+ │   │   │   │   └── _color.py
+ │   │   │   ├── common
+ │   │   │   │   ├── _darray.py
+ │   │   │   │   └── _dnumber.py
+ │   │   │   └── graph
  │   │   │       ├── __init__.py
- │   │   │       └── _color.py
+ │   │   │       ├── threearray
+ │   │   │       │   ├── __init__.py
+ │   │   │       │   └── __init__.pyi
+ │   │   │       └── twoarray
+ │   │   │           ├── __init__.py
+ │   │   │           └── __init__.pyi
  │   │   ├── dialogs
  │   │   │   ├── __init__.py
  │   │   │   ├── dialog
@@ -210,30 +226,16 @@ For_GUI_development
  │   │   │   │   │   └── stempolar
  │   │   │   │   │       ├── __init__.py
  │   │   │   │   │       └── __init__.pyi
- │   │   │   │   ├── _radar
- │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   ├── radarfill
- │   │   │   │   │   │   ├── __init__.py
- │   │   │   │   │   │   └── __init__.pyi
- │   │   │   │   │   └── radarline
- │   │   │   │   │       ├── __init__.py
- │   │   │   │   │       └── __init__.pyi
- │   │   │   │   └── dev
+ │   │   │   │   └── _radar
  │   │   │   │       ├── __init__.py
- │   │   │   │       ├── threearray
+ │   │   │   │       ├── radarfill
  │   │   │   │       │   ├── __init__.py
  │   │   │   │       │   └── __init__.pyi
- │   │   │   │       └── twoarray
+ │   │   │   │       └── radarline
  │   │   │   │           ├── __init__.py
  │   │   │   │           └── __init__.pyi
  │   │   │   └── style
  │   │   │       ├── __init__.py
- │   │   │       ├── composite
- │   │   │       │   ├── __init__.py
- │   │   │       │   ├── capstyle.py
- │   │   │       │   └── hatch.py
- │   │   │       ├── dev
- │   │   │       │   └── __init__.py
  │   │   │       ├── getlabel
  │   │   │       │   ├── __init__.py
  │   │   │       │   └── __init__.pyi
@@ -245,13 +247,6 @@ For_GUI_development
  │   │   │           └── __init__.pyi
  │   │   ├── nparray
  │   │   │   ├── __init__.py
- │   │   │   ├── dev
- │   │   │   │   ├── __init__.py
- │   │   │   │   ├── _arrayshapemixin.py
- │   │   │   │   ├── _arrayshapemixin.pyi
- │   │   │   │   ├── _arrcheck.py
- │   │   │   │   ├── _dayunit.py
- │   │   │   │   └── _timeunit.py
  │   │   │   ├── nparray
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
@@ -446,5 +441,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:312
-フォルダ数:135
+ファイル数:308
+フォルダ数:134

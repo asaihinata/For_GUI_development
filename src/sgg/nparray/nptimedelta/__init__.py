@@ -4,7 +4,7 @@ from datetime import date, datetime, timedelta
 
 import numpy as np
 
-from ..dev import _ArrayCommonMixin, _get_dtype, _tm64_unit
+from sgg.dev.array import _ArrayCommonMixin, _get_dtype, _tm64_unit
 
 __all__ = ["NPTimedelta"]
 

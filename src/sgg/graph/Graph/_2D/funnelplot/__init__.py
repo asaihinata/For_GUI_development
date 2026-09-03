@@ -1,6 +1,6 @@
 from matplotlib.ticker import MaxNLocator
 
-from sgg.graph.graph.dev import *
+from sgg.dev.graph import *
 
 __all__ = ["Funne"]
 

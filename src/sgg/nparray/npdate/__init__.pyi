@@ -5,8 +5,7 @@ from numpy import datetime64, timedelta64
 from numpy._typing import NDArray
 
 import sgg._typing as sgt
-
-from ..dev import _ArrayCommonMixin
+from sgg.dev.array import _ArrayCommonMixin
 
 __all__ = ["NPDate"]
 

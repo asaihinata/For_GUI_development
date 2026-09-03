@@ -8,8 +8,7 @@ from numpy._typing import NDArray
 from numpy.dtypes import StringDType
 
 import sgg._typing as sgt
-
-from ..dev import _ArrayCommonMixin
+from sgg.dev.array import _ArrayCommonMixin
 
 __all__ = ["NPString"]
 

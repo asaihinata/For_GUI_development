@@ -1,8 +1,7 @@
 import numpy as np
 
+from sgg.dev.array import _ArrayCommonMixin, _arrisuint
 from sgg.exceptions import ShapeError
-
-from ..dev import _ArrayCommonMixin, _arrisuint
 
 __all__ = ["NPArray"]
 

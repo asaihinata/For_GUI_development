@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg.graph.graph.dev import RadarElement
+from sgg.dev.graph import RadarElement
 
 __all__ = ["RadarFill"]
 

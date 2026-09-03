@@ -4,7 +4,7 @@ from zoneinfo import ZoneInfo
 import numpy as np
 from dateutil.parser import parse
 
-import sgg.nparray.dev as snd
+import sgg.dev.array as snd
 from sgg.exceptions import ShapeError
 
 __all__ = ["NPDate"]

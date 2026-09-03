@@ -6,8 +6,7 @@ import numpy as np
 import numpy._typing as npt
 
 import sgg._typing as sgt
-
-from ..dev import _ArrayCommonMixin
+from sgg.dev.array import _ArrayCommonMixin
 
 __all__ = ["NPNumber"]
 type _ToFloat64 = float | np.integer | np.bool
