@@ -1,11 +1,9 @@
-from typing import Literal
+from typing import Literal, Unpack
 
-from sgg._typing import Type_icon
+from sgg._typing import Dict_P_Information
 
 __all__ = ["popup"]
 
 def popup(
-    title: str = "Information",
-    message: str = "Information message",
-    icon: Type_icon = "info",
+    **kwargs: Unpack[Dict_P_Information],
 ) -> Literal["ok"]: ...

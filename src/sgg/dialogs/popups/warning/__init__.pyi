@@ -1,16 +1,12 @@
-from typing import Literal
+from typing import Literal, Unpack
 
-from sgg._typing import Type_icon
+from sgg._typing import Dict_P_Warning
 
 __all__ = ["popupwarning", "popupwarningyesno"]
 
 def popupwarning(
-    title: str = "Warning",
-    message: str = "Warning message",
-    icon: Type_icon = "warning",
+    **kwargs: Unpack[Dict_P_Warning],
 ) -> Literal["ok"]: ...
 def popupwarningyesno(
-    title: str = "Warning",
-    message: str = "Warning message",
-    icon: Type_icon = "warning",
+    **kwargs: Unpack[Dict_P_Warning],
 ) -> Literal["yes", "no"]: ...

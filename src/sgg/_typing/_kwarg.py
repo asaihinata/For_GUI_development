@@ -3,6 +3,7 @@ from typing import Literal, TypedDict
 from sgg._typing import ColorTypeN
 
 __all__ = [
+    "Dict_Font",
     "Dict_G_2DGraph",
     "Dict_G_3DGraph",
     "Dict_G_LinefillGraph",
@@ -13,6 +14,17 @@ __all__ = [
     "Dict_P_Question",
     "Dict_P_Warning",
 ]
+
+
+# 基本的なウィジェット
+class Dict_Font(TypedDict):
+    fg: ColorTypeN = (...,)
+    family: str = ...
+    font_size: int | float = 14
+    weight: Literal["normal", "bold"] = ...
+    slant: Literal["roman", "italic"] = ...
+    underline: bool = ...
+    overstrike: bool = ...
 
 
 # 基本的なウィジェットのキーワード引数の型ヒントを保存するオブジェクト

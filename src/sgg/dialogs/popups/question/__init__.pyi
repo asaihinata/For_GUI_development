@@ -1,6 +1,6 @@
-from typing import Literal
+from typing import Literal, Unpack
 
-from sgg._typing import Type_icon
+from sgg._typing import Dict_P_Question
 
 __all__ = [
     "popupokcansel",
@@ -11,27 +11,17 @@ __all__ = [
 ]
 
 def popupokcansel(
-    title: str = "Question",
-    message: str = "Question message",
-    icon: Type_icon = "question",
+    **kwargs: Unpack[Dict_P_Question],
 ) -> bool: ...
 def popupquestion(
-    title: str = "Question",
-    message: str = "Question message",
-    icon: Type_icon = "question",
+    **kwargs: Unpack[Dict_P_Question],
 ) -> Literal["yes", "no"]: ...
 def popuptrys(
-    title: str = "Question",
-    message: str = "Question message",
-    icon: Type_icon = "question",
+    **kwargs: Unpack[Dict_P_Question],
 ) -> bool: ...
 def popupyesno(
-    title: str = "Question",
-    message: str = "Question message",
-    icon: Type_icon = "question",
+    **kwargs: Unpack[Dict_P_Question],
 ) -> bool: ...
 def popupyesnocansel(
-    title: str = "Question",
-    message: str = "Question message",
-    icon: Type_icon = "question",
+    **kwargs: Unpack[Dict_P_Question],
 ) -> bool | None: ...

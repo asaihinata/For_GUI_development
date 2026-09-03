@@ -5,6 +5,8 @@ from typing import Literal, SupportsFloat, SupportsInt
 import numpy as np
 
 __all__ = [
+    "_B_IandFNScalar",
+    "_B_IandFScalar",
     "_BoolScalar",
     "_ComplexScalar",
     "_DateWordScalar",
@@ -18,6 +20,11 @@ __all__ = [
     "_StringScalar",
     "_TD64Scalar",
 ]
+# builtins
+type _B_IandFScalar = int | float
+type _B_IandFNScalar = int | float | None
+
+# numpy
 type _BoolScalar = bool | np.bool | np.bool_
 type _IntScalar = int | SupportsInt | np.integer | _BoolScalar
 type _FloatScalar = (
