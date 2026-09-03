@@ -8,7 +8,7 @@ from numpy.dtypes import StringDType
 
 from sgg.dev import _tonparray
 
-from ..dev import _ArrayCommonMixin, _int_co_check
+from ..dev import _ArrayCommonMixin
 
 __all__ = ["NPString"]
 
@@ -16,7 +16,7 @@ __all__ = ["NPString"]
 class NPString(_ArrayCommonMixin):
     """`np.ndarray`を継承した文字列型の配列クラス"""
 
-    _element_type = (np.str_, np.bytes_, StringDType)
+    _element_type = (np.str_, np.bytes_, StringDType())
     _default_dtype = np.str_
 
     def __new__(
@@ -58,20 +58,27 @@ class NPString(_ArrayCommonMixin):
         return result
 
     __iadd__ = __add__
-    __radd__ = __add__
 
-    def __mul__(self, i):
-        _int_co_check(i)
-        result = nps.multiply(np.asarray(self), np.maximum(i, 0))
-        if isinstance(self._dtype, StringDType):
-            result = np.asarray(result).view(type(self))
-        else:
-            result = result.view(type(self))
+    def __add__(self, value):
+        if not isinstance(self._dtype, StringDType) and not np.issubdtype(
+            self._dtype, _tonparray(value).dtype
+        ):
+            raise TypeError
+        result = np.asarray(nps.add(value, self)).view(type(self))
         result._dtype = result.dtype
         return result
 
+    def __mul__(self, i):
+        if np.asarray(i).dtype.kind in ["b", "i", "u"]:
+            result = nps.multiply(np.asarray(self), np.maximum(i, 0))
+            if np.issubdtype(self._dtype, StringDType()):
+                result = np.asarray(result)
+            result = result.view(type(self))
+            result._dtype = result.dtype
+            return result
+        return NotImplemented
+
     __imul__ = __mul__
-    __rmul__ = __mul__
 
     def __mod__(self, value):
         result = np.asarray(nps.mod(self, value)).view(type(self))
@@ -81,16 +88,10 @@ class NPString(_ArrayCommonMixin):
     __imod__ = __mod__
 
     def __eq__(self, value):
-        result = nps.equal(self, value)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return nps.equal(self, value)
 
     def __ne__(self, value):
-        result = nps.not_equal(self, value)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return nps.not_equal(self, value)
 
     def append(self, val, /):
         result = self.__add__(val)
@@ -132,10 +133,7 @@ class NPString(_ArrayCommonMixin):
         return result.__array__()
 
     def str_len(self):
-        result = nps.str_len(self)
-        if self.zero_ndim:
-            return result
-        return result.__array__()
+        return nps.str_len(self)
 
     def replace(self, old, new):
         result = np.asarray(nps.replace(self.__array__(), old, new)).view(type(self))
@@ -153,17 +151,17 @@ class NPString(_ArrayCommonMixin):
         return result
 
     def center(self, width, fillchar=" "):
-        result = np.asarray(nps.center(self, width, fillchar)).view(type(self))
+        result = nps.center(np.asarray(self), width, fillchar).view(type(self))
         result._dtype = result.dtype
         return result
 
     def left(self, width, fillchar=" "):
-        result = np.asarray(nps.ljust(self, width, fillchar)).view(type(self))
+        result = nps.ljust(np.asarray(self), width, fillchar).view(type(self))
         result._dtype = result.dtype
         return result
 
     def right(self, width, fillchar=" "):
-        result = np.asarray(nps.rjust(self, width, fillchar)).view(type(self))
+        result = nps.rjust(np.asarray(self), width, fillchar).view(type(self))
         result._dtype = result.dtype
         return result
 
@@ -178,10 +176,10 @@ class NPString(_ArrayCommonMixin):
         return result
 
     def endswith(self, suffix, start=0, end=None):
-        return nps.endswith(self, suffix, start, end).__array__(np.bool_)
+        return nps.endswith(self, suffix, start, end)
 
     def startswith(self, prefix, start=0, end=None):
-        return nps.startswith(self, prefix, start, end).__array__(np.bool_)
+        return nps.startswith(self, prefix, start, end)
 
     def capitalize(self):
         result = np.asarray(nps.capitalize(self)).view(type(self))
@@ -194,22 +192,13 @@ class NPString(_ArrayCommonMixin):
         return result
 
     def find(self, sub, start=0, end=None):
-        result = nps.find(self, sub, start=start, end=end)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__(int)
+        return nps.find(self, sub, start=start, end=end)
 
     def rfind(self, sub, start=0, end=None):
-        result = nps.rfind(self, sub, start=start, end=end)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__(int)
+        return nps.rfind(self, sub, start=start, end=end)
 
     def count(self, sub, start=0, end=None):
-        result = nps.count(self, sub, start=start, end=end)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__(int)
+        return nps.count(self, sub, start=start, end=end)
 
     def decode(self, encoding=None, errors=None):
         if not np.issubdtype(self._dtype, np.bytes_):
@@ -219,7 +208,7 @@ class NPString(_ArrayCommonMixin):
         return result
 
     def encode(self, encoding=None, errors=None):
-        if self._dtype.kind not in {"U", "T"}:
+        if self._dtype.kind not in ["U", "T"]:
             raise TypeError
         result = np.asarray(nps.encode(self, encoding, errors)).view(type(self))
         result._dtype = result.dtype
@@ -227,40 +216,22 @@ class NPString(_ArrayCommonMixin):
 
     # 判定
     def istitle(self):
-        result = nps.istitle(self)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return nps.istitle(self)
 
     def isnumeric(self):
-        result = nps.isnumeric(self)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return nps.isnumeric(self)
 
     def isdecimal(self):
-        result = nps.isdecimal(self)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return nps.isdecimal(self)
 
     def isalnum(self):
-        result = nps.isalnum(self)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return nps.isalnum(self)
 
     def isspace(self):
-        result = nps.isspace(self)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return nps.isspace(self)
 
     def isupper(self):
-        result = nps.isupper(self)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return nps.isupper(self)
 
     # 正規表現
     def sub(self, pattern, repl):

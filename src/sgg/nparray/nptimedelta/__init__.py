@@ -4,8 +4,6 @@ from datetime import date, datetime, timedelta
 
 import numpy as np
 
-from sgg.dev import _tonparray
-
 from ..dev import _ArrayCommonMixin, _get_dtype, _tm64_unit
 
 __all__ = ["NPTimedelta"]
@@ -100,8 +98,7 @@ class NPTimedelta(_ArrayCommonMixin):
         return result
 
     def __mul__(self, value):
-        value = _tonparray(value)
-        if value.dtype.kind in ["b", "i", "u", "f"]:
+        if np.asarray(value).dtype.kind in ["b", "i", "u", "f"]:
             result = np.asarray(np.multiply(self, value)).view(type(self))
             result._dtype = result.dtype
             return result
@@ -114,7 +111,7 @@ class NPTimedelta(_ArrayCommonMixin):
             value = np.timedelta64(value)
         if isinstance(value, np.ndarray | np.timedelta64) and value.dtype.kind == "m":
             return np.true_divide(self, value)
-        if np.asarray(value).dtype.kind in ["b", "i", "u", "f"]:
+        elif np.asarray(value).dtype.kind in ["i", "u", "f"]:
             result = np.asarray(np.true_divide(self, value)).view(type(self))
             result._dtype = result.dtype
             return result
@@ -158,23 +155,17 @@ class NPTimedelta(_ArrayCommonMixin):
         result._dtype = result.dtype
         return result
 
-    def __eq__(self, value):
-        return np.array(np.equal(self, value), dtype=np.bool_)
-
-    def __ne__(self, value):
-        return np.array(np.not_equal(self, value), dtype=np.bool_)
-
     def __lt__(self, value):
-        return np.array(np.less(self, value), dtype=np.bool_)
+        return np.less(self, value)
 
     def __le__(self, value):
-        return np.array(np.less_equal(self, value), dtype=np.bool_)
+        return np.less_equal(self, value)
 
     def __gt__(self, value):
-        return np.array(np.greater(self, value), dtype=np.bool_)
+        return np.greater(self, value)
 
     def __ge__(self, value):
-        return np.array(np.greater_equal(self, value), dtype=np.bool_)
+        return np.greater_equal(self, value)
 
     def astype(self, dtype, copy=True):
         try:

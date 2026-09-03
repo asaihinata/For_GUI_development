@@ -43,12 +43,12 @@ class NPArray(_ArrayCommonMixin):
         return obj
 
     def __eq__(self, value):
-        result = np.equal(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.equal(self, value)).view(type(self))
         result._dtype = np.bool_
         return result
 
     def __ne__(self, value):
-        result = np.not_equal(np.asarray(self), value).view(type(self))
+        result = np.asarray(np.not_equal(self, value)).view(type(self))
         result._dtype = np.bool_
         return result
 

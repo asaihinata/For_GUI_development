@@ -183,8 +183,8 @@ class NPNumber(_ArrayCommonMixin):
     def __sub__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
     @overload
     def __sub__(self, value: Any) -> NoReturn: ...
-    __rsub__ = __sub__
     __isub__ = __sub__
+    __rsub__ = __sub__
     @overload
     def __mul__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
     @overload
@@ -195,26 +195,26 @@ class NPNumber(_ArrayCommonMixin):
     def __truediv__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
     @overload
     def __truediv__(self, value: Any) -> NoReturn: ...
-    __rtruediv__ = __truediv__
     __itruediv__ = __truediv__
+    __rtruediv__ = __truediv__
     @overload
     def __floordiv__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
     @overload
     def __floordiv__(self, value: Any) -> NoReturn: ...
-    __rfloordiv__ = __floordiv__
     __ifloordiv__ = __floordiv__
+    __rfloordiv__ = __floordiv__
     @overload
     def __mod__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
     @overload
     def __mod__(self, value: Any) -> NoReturn: ...
-    __rmod__ = __mod__
     __imod__ = __mod__
+    __rmod__ = __mod__
     @overload
     def __pow__(self, value: sgt._ArrayLikeNumber_co) -> NPNumber: ...
     @overload
     def __pow__(self, value: Any) -> NoReturn: ...
-    __rpow__ = __pow__
     __ipow__ = __pow__
+    __rpow__ = __pow__
     @overload
     def __divmod__(
         self, value: sgt._ArrayLikeNumber_co

@@ -58,41 +58,17 @@ class NPNumber(_ArrayCommonMixin):
         cls._validate_ndim(obj, obj._min_ndim, obj._max_ndim)
         return obj
 
-    def __eq__(self, value):
-        result = np.equal(self, value)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
-
-    def __ne__(self, value):
-        result = np.not_equal(self, value)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
-
     def __lt__(self, value):
-        result = np.less(self, value)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.less(self, value)
 
     def __le__(self, value):
-        result = np.less_equal(self, value)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.less_equal(self, value)
 
     def __gt__(self, value):
-        result = np.greater(self, value)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.greater(self, value)
 
     def __ge__(self, value):
-        result = np.greater_equal(self, value)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.greater_equal(self, value)
 
     def __add__(self, value):
         result = np.asarray(np.add(self, value)).view(type(self))
@@ -100,15 +76,23 @@ class NPNumber(_ArrayCommonMixin):
         return result
 
     __iadd__ = __add__
-    __radd__ = __add__
+
+    def __radd__(self, value):
+        result = np.asarray(np.add(value, self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __sub__(self, value):
         result = np.asarray(np.subtract(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
-    __rsub__ = __sub__
     __isub__ = __sub__
+
+    def __rsub__(self, value):
+        result = np.asarray(np.subtract(value, self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __mul__(self, value):
         result = np.asarray(np.multiply(self, value)).view(type(self))
@@ -116,39 +100,59 @@ class NPNumber(_ArrayCommonMixin):
         return result
 
     __imul__ = __mul__
-    __rmul__ = __mul__
+
+    def __mul__(self, value):
+        result = np.asarray(np.multiply(value, self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __truediv__(self, value):
         result = np.asarray(np.divide(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
-    __rtruediv__ = __truediv__
     __itruediv__ = __truediv__
+
+    def __rtruediv__(self, value):
+        result = np.asarray(np.divide(value, self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __floordiv__(self, value):
         result = np.asarray(np.floor_divide(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
-    __rfloordiv__ = __floordiv__
     __ifloordiv__ = __floordiv__
+
+    def __rfloordiv__(self, value):
+        result = np.asarray(np.floor_divide(value, self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __mod__(self, value):
         result = np.asarray(np.mod(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
-    __rmod__ = __mod__
     __imod__ = __mod__
+
+    def __rmod__(self, value):
+        result = np.asarray(np.mod(value, self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __pow__(self, value):
         result = np.asarray(np.pow(self, value)).view(type(self))
         result._dtype = result.dtype
         return result
 
-    __rpow__ = __pow__
     __ipow__ = __pow__
+
+    def __rpow__(self, value):
+        result = np.asarray(np.pow(value, self)).view(type(self))
+        result._dtype = result.dtype
+        return result
 
     def __divmod__(self, value):
         result1, result2 = np.asarray(np.divmod(self, value))
@@ -157,7 +161,12 @@ class NPNumber(_ArrayCommonMixin):
         result2._dtype = result2.dtype
         return result1, result2
 
-    __rdivmod__ = __divmod__
+    def __rdivmod__(self, value):
+        result1, result2 = np.asarray(np.divmod(value, self))
+        result1, result2 = result1.view(type(self)), result2.view(type(self))
+        result1._dtype = result1.dtype
+        result2._dtype = result2.dtype
+        return result1, result2
 
     def __pos__(self):
         result = np.asarray(np.positive(self)).view(type(self))
@@ -252,7 +261,7 @@ class NPNumber(_ArrayCommonMixin):
 
     # 判定
     def zero_check(self):
-        return np.array(self == 0, dtype=np.bool_)
+        return self == 0
 
     def count_nonzero(self, axis=None, keepdims=False):
         if not isinstance(keepdims, bool):
@@ -264,34 +273,19 @@ class NPNumber(_ArrayCommonMixin):
         return result
 
     def isinf(self):
-        result = np.isinf(self)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.isinf(self)
 
     def isnan(self):
-        result = np.isnan(self)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.isnan(self)
 
     def isfinite(self):
-        result = np.isfinite(self)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.isfinite(self)
 
     def isposinf(self):
-        result = np.isposinf(self)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.isposinf(self)
 
     def isreal(self):
-        result = np.isreal(self)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.isreal(self)
 
     def iscomplexobj(self):
         return np.iscomplexobj(self)

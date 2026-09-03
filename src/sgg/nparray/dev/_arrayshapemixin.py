@@ -20,6 +20,12 @@ class _ArrayCommonMixin(np.ndarray):
     def __str__(self):
         return self.__repr__()
 
+    def __eq__(self, value):
+        return np.equal(self, value)
+
+    def __ne__(self, value):
+        return np.not_equal(self, value)
+
     def __contains__(self, value):
         return super().__contains__(value)
 
@@ -72,9 +78,12 @@ class _ArrayCommonMixin(np.ndarray):
         resultdtype = (
             result.dtype if hasattr(result, "dtype") else np.dtype(type(result))
         )
-        for dtype in self._element_type:
-            if np.issubdtype(resultdtype, dtype):
-                judge = True
+        if self._element_type is None:
+            judge = True
+        else:
+            for dtype in self._element_type:
+                if np.issubdtype(resultdtype, dtype):
+                    judge = True
         if judge and isinstance(result, np.ndarray) and result.dtype:
             result = result.view(type(self))
             result._dtype = getattr(inputs[0], "_dtype", None)

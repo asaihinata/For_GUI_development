@@ -68,63 +68,51 @@ class NPDate(snd._ArrayCommonMixin):
         return result
 
     __iadd__ = __add__
-    __radd__ = __add__
 
-    def __sub__(self, value):
-        if isinstance(value, datetime | date):
-            result = np.subtract(self.__array__(), np.datetime64(value))
-            if np.ndim(result) == 0:
-                return result
-            return np.array(result)
-        elif isinstance(value, np.datetime64) or (
-            isinstance(value, np.ndarray) and value.dtype.kind == "M"
-        ):
-            result = np.subtract(self, value)
-            if np.ndim(result) == 0:
-                return result
-            return result.__array__()
-        result = np.asarray(np.subtract(self, value)).view(type(self))
+    def __radd__(self, value):
+        result = np.asarray(np.add(value, self)).view(type(self))
         result._dtype = result.dtype
         return result
 
+    def __sub__(self, value):
+        if isinstance(value, datetime | date):
+            return np.subtract(self, np.datetime64(value))
+        elif isinstance(value, np.datetime64 | np.timedelta64) or (
+            isinstance(value, np.ndarray) and value.dtype.kind in ["M", "m"]
+        ):
+            return np.subtract(self, value)
+        elif isinstance(value, timedelta):
+            return np.subtract(self, np.timedelta64(value, self.dtypeunit))
+        return NotImplemented
+
     __isub__ = __sub__
-    __rsub__ = __sub__
+
+    def __rsub__(self, value):
+        if isinstance(value, datetime | date):
+            return np.subtract(np.datetime64(value), self)
+        elif isinstance(value, np.datetime64) or (
+            isinstance(value, np.ndarray) and value.dtype.kind == "M"
+        ):
+            return np.subtract(value, self)
+        return NotImplemented
 
     def __eq__(self, value):
-        result = np.equal(self, _to_datetime64(value))
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.equal(self, _to_datetime64(value))
 
     def __ne__(self, value):
-        result = np.not_equal(self, _to_datetime64(value))
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.not_equal(self, _to_datetime64(value))
 
     def __lt__(self, value):
-        result = np.less(self, _to_datetime64(value))
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.less(self, _to_datetime64(value))
 
     def __le__(self, value):
-        result = np.less_equal(self, _to_datetime64(value))
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.less_equal(self, _to_datetime64(value))
 
     def __gt__(self, value):
-        result = np.greater(self, _to_datetime64(value))
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.greater(self, _to_datetime64(value))
 
     def __ge__(self, value):
-        result = np.greater_equal(self, _to_datetime64(value))
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.greater_equal(self, _to_datetime64(value))
 
     # 日付
     @property
@@ -141,10 +129,7 @@ class NPDate(snd._ArrayCommonMixin):
 
     # 判定
     def isnat(self):
-        result = np.isnat(self)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+        return np.isnat(self)
 
     # 変換
     def astype(self, dtype, copy=True):

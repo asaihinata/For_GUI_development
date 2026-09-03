@@ -23,6 +23,7 @@ __all__ = [
     "_ArrayLikeString_co",
     "_ArrayLikeStringDtype_co",
     "_ArrayLikeStrings_co",
+    "_ArrayLikeTD64",
     "_ArrayLikeTD64_co",
     "_ArrayLikeTD64s_co",
     "_ComparisonDT64",
@@ -130,6 +131,7 @@ type _ArrayLikeDT64_co = __DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.str_ | np.bytes_ | np.datetime64],
     int | bool | str | bytes | datetime | date | _DateWordAll,
 ]
+type _ArrayLikeTD64 = __DualArrayLike[np.dtype[np.timedelta64], timedelta]
 type _ArrayLikeTD64_co = __DualArrayLike[
     np.dtype[np.bool | np.bool_ | np.integer | np.timedelta64],
     bool | int | timedelta,

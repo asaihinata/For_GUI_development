@@ -124,7 +124,7 @@ class NPDate(_ArrayCommonMixin):
 
     def __add__(self, value: sgt._ArrayLikeTD64_co) -> NPDate: ...
     __iadd__ = __add__
-
+    __radd__ = __add__
     @overload
     def __sub__(self, value: sgt._ComparisonDT64 | NPDate) -> sgt.RTimedelta64: ...
     @overload
@@ -132,7 +132,10 @@ class NPDate(_ArrayCommonMixin):
     @overload
     def __sub__(self, value: Any) -> NoReturn: ...
     __isub__ = __sub__
-
+    @overload
+    def __rsub__(self, value: sgt._ComparisonDT64 | NPDate) -> sgt.RTimedelta64: ...
+    @overload
+    def __rsub__(self, value: Any) -> NoReturn: ...
     @overload
     def __eq__(self, value: sgt._ComparisonDT64 | NPDate) -> sgt.RBool_: ...
     @overload

@@ -32,6 +32,7 @@ __all__ = [
     "_ArrayLikeString_co",
     "_ArrayLikeStringDtype_co",
     "_ArrayLikeStrings_co",
+    "_ArrayLikeTD64",
     "_ArrayLikeTD64_co",
     "_ArrayLikeTD64s_co",
     "_BoolDTypeLike",
