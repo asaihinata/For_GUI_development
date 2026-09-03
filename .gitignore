@@ -17,6 +17,10 @@ demo*.py
 *demo.py
 *deom*.py
 
+# データファイル
+*.json
+*.csv
+
 # Python 本体
 __pycache__/
 *.py
@@ -26,6 +30,8 @@ __pycache__/
 *.pyi
 !src/**/*.py
 !src/**/*.pyi
+!src/**/*.json
+!src/**/*.csv
 
 # パッケージ / ビルド / 配布物
 /*.egg-info
@@ -38,6 +44,7 @@ wheels/
 *.tar.gz
 *.whl
 pip-log.txt
+pip-delete-this-directory.txt
 pip-wheel-metadata
 **/pip-wheel-metadata
 
@@ -87,6 +94,22 @@ Thumbs.db
 # 環境変数・機密情報
 .env
 .key
+
+# 生成AI
+
+# Claude Code
+.claude
+CLAUDE.local.md
+.claude/
+.claudeignore
+
+# OpenAI
+.codex/
+
+# Gemini
+GEMINI.md
+.gemini/
+.geminiignore
 
 # フォントファイル
 .fnt

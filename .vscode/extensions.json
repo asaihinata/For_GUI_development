@@ -1,7 +1,6 @@
 {
     "recommendations": [
         "aaron-bond.better-comments",
-        "doggy8088.netcore-editorconfiggenerator",
         "donjayamanne.githistory",
         "eamodio.gitlens",
         "mhutchie.git-graph",
@@ -12,7 +11,6 @@
         "njpwerner.autodocstring",
         "shd101wyy.markdown-preview-enhanced",
         "Swellaby.workspace-config-plus",
-        "yzane.markdown-pdf",
         "yzhang.markdown-all-in-one",
     ]
 }
