@@ -1,6 +1,6 @@
 from typing import Literal, TypedDict
 
-from sgg._typing import ColorTypeN
+import sgg._typing
 
 __all__ = [
     "Dict_Font",
@@ -18,7 +18,7 @@ __all__ = [
 
 # 基本的なウィジェット
 class Dict_Font(TypedDict):
-    fg: ColorTypeN = (...,)
+    fg: sgg._typing.ColorTypeN = (...,)
     family: str = ...
     font_size: int | float = 14
     weight: Literal["normal", "bold"] = ...
@@ -33,8 +33,8 @@ class _Dict_Graph_base(TypedDict):
     title: str = ...
     size: tuple[int | float, int | float] = (500, 400)
     dpi: int | float = 100
-    fg: ColorTypeN = "#000000"
-    bg: ColorTypeN = "#ffffff"
+    fg: sgg._typing.ColorTypeN = "#000000"
+    bg: sgg._typing.ColorTypeN = "#ffffff"
     tight_layout: bool = True
 
 
@@ -42,7 +42,7 @@ class Dict_G_2DGraph(_Dict_Graph_base):
     alpha: int | float = 1.0
     xlabel: str = ...
     ylabel: str = ...
-    graph_grid: ColorTypeN = "#b7b7b7"
+    graph_grid: sgg._typing.ColorTypeN = "#b7b7b7"
     grid_xy: bool = True
     grid_x: bool = False
     grid_y: bool = False
@@ -60,7 +60,7 @@ class Dict_G_2DGraph(_Dict_Graph_base):
 class Dict_G_LinefillGraph(_Dict_Graph_base):
     xlabel: str = ...
     ylabel: str = ...
-    graph_grid: ColorTypeN = "#b7b7b7"
+    graph_grid: sgg._typing.ColorTypeN = "#b7b7b7"
     grid_xy: bool = True
     grid_x: bool = False
     grid_y: bool = False
@@ -80,7 +80,7 @@ class Dict_G_3DGraph(_Dict_Graph_base):
     xlabel: str = ...
     ylabel: str = ...
     zlabel: str = ...
-    graph_grid: ColorTypeN = "#b7b7b7"
+    graph_grid: sgg._typing.ColorTypeN = "#b7b7b7"
     grid_xyz: bool = True
     grid_x: bool = False
     grid_y: bool = False
@@ -104,7 +104,7 @@ class Dict_G_3DGraph(_Dict_Graph_base):
 
 class Dict_G_Polar(_Dict_Graph_base):
     alpha: int | float = 1.0
-    graph_grid: ColorTypeN = "#b7b7b7"
+    graph_grid: sgg._typing.ColorTypeN = "#b7b7b7"
     grid_xy: bool = True
     grid_x: bool = False
     grid_y: bool = False
@@ -117,7 +117,7 @@ class Dict_G_Polar(_Dict_Graph_base):
 
 class Dict_G_Radar(_Dict_Graph_base):
     alpha: int | float = 1.0
-    graph_grid: ColorTypeN = "#b7b7b7"
+    graph_grid: sgg._typing.ColorTypeN = "#b7b7b7"
     grid_xy: bool = True
     grid_x: bool = False
     grid_y: bool = False

@@ -1,6 +1,7 @@
 from tkinter import Scale
 
-from sgg.widget.basic.common import *
+from sgg.dev import listchose, num0s, nums, parsecolor
+from sgg.widget.base import Element
 
 __all__ = ["Slidebar"]
 

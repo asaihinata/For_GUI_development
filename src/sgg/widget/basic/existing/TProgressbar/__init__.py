@@ -1,6 +1,7 @@
 from tkinter.ttk import Progressbar, Style
 
-from sgg.widget.basic.common import *
+from sgg.dev import listchose, num0
+from sgg.widget.base import Element
 
 __all__ = ["TProgressbar"]
 

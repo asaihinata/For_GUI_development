@@ -1,6 +1,7 @@
 from tkinter.ttk import Combobox, Style
 
-from sgg.widget.basic.common import *
+from sgg.dev import listchose
+from sgg.widget.base import Element
 
 __all__ = ["TCombobox"]
 

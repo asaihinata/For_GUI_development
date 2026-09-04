@@ -1,6 +1,7 @@
 from tkinter.ttk import Style, Treeview
 
-from sgg.widget.basic.common import *
+from sgg.dev import num0s, parsecolor
+from sgg.widget.base import Element
 
 __all__ = ["Table"]
 

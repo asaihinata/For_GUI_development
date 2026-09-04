@@ -1,6 +1,7 @@
 from tkinter import Frame
 
-from sgg.widget.basic.common import *
+from sgg.dev import parsecolor
+from sgg.widget.base import Element
 
 __all__ = ["Column"]
 

@@ -1,6 +1,7 @@
 from tkinter import Label
 
-from sgg.widget.basic.common import *
+from sgg.dev import num0, parsecolor
+from sgg.widget.base import Element
 
 __all__ = ["Texts"]
 

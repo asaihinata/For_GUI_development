@@ -1,6 +1,7 @@
 from tkinter import Menu
 
-from sgg.widget.basic.common import *
+from sgg.dev import bols, parsecolor
+from sgg.widget.base import Element
 
 __all__ = ["Menus"]
 

@@ -4,7 +4,7 @@ from PIL.ImageTk import PhotoImage
 from requests import get
 from requests.exceptions import RequestException
 
-from sgg.widget.basic.common import *
+from sgg.widget.base import Element
 from sgg.widget.basic.dev import Img_byte, linkcheck
 
 __all__ = ["Imagelink"]

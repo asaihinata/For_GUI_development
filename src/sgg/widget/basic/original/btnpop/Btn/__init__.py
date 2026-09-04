@@ -1,7 +1,9 @@
 from tkinter import Button
 
-from sgg.dialogs import *
-from sgg.widget.basic.common import *
+from sgg.dev import listchose, num0, parsecolor
+from sgg.dialogs import (askcolor, askdirectory, askopenfilename,
+                         asksaveasfilename)
+from sgg.widget.base import Element
 
 
 class Btn(Element):

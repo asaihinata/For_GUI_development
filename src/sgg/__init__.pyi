@@ -1,6 +1,5 @@
 from io import BytesIO
 from pathlib import Path, PosixPath, WindowsPath
-from tkinter import _Cursor
 from typing import Any, Callable, Literal, Unpack, overload
 
 from matplotlib.mlab import GaussianKDE
@@ -277,7 +276,7 @@ class Guis:
         padx: int | float = ...,
         pady: int | float = ...,
         wraplength: int | float = 0,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         justify: Literal["left", "center", "right"] = "left",
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = ...,
         relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
@@ -319,7 +318,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param anchor: ウィジェット内の文字の位置を指定する
@@ -339,7 +338,7 @@ class Guis:
         padx: int | float = ...,
         pady: int | float = ...,
         wraplength: int | float = 0,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         borderwidth: int | float = 0,
         bg: sgt.ColorTypeN = ...,
         fg: sgt.ColorTypeN = "#0000ee",
@@ -394,7 +393,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param anchor: ウィジェット内の文字の位置を指定する
@@ -468,7 +467,7 @@ class Guis:
         padx: int | float = ...,
         pady: int | float = ...,
         wraplength: int | float = 0,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         bg: sgt.ColorTypeN = ...,
         fg: sgt.ColorTypeN = ...,
         borderwidth: int | float = 0,
@@ -524,7 +523,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param anchor: ウィジェット内の文字の位置を指定する
         :type anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"]
         :param relief: ウィジェットの周囲に枠線について指定する
@@ -543,7 +542,10 @@ class Guis:
         width: int | float = 20,
         borderwidth: int | float = 0,
         takefocus: bool = ...,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
+        state: Literal["normal", "disabled", "readonly"] = "normal",
+        disabledbg: sgt.ColorTypeN = ...,
+        disabledfg: sgt.ColorTypeN = ...,
         bg: sgt.ColorTypeN = "#e0e0e0",
         fg: sgt.ColorTypeN = ...,
         family: str = ...,
@@ -567,6 +569,12 @@ class Guis:
         :type insertbg: 色名 | None
         :param show: 実際の入力内容の各文字の代わりに表示させる文字を指定する
         :type show: str
+        :param state: Inputウィジェットの操作状況を指定する
+        :type state: Literal["normal", "disabled", "readonly"]
+        :param disabledbg: 無効状態の背景色を指定する
+        :type disabledbg: 色名 | None
+        :param disabledfg: 無効状態の文字色を指定する
+        :type disabledfg: 色名 | None
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
         :param bg: ウィジェットの背景色を指定する
@@ -590,7 +598,7 @@ class Guis:
         :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する
         :type borderwidth: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param relief: ウィジェットの周囲に枠線について指定する
@@ -613,7 +621,7 @@ class Guis:
         takefocus: bool = ...,
         padx: int | float = ...,
         pady: int | float = ...,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         bg: sgt.ColorTypeN = ...,
         fg: sgt.ColorTypeN = ...,
         family: str = ...,
@@ -668,7 +676,7 @@ class Guis:
         :param pady: ウィジェットの外側の上下に空白を入れるサイズを指定する
         :type pady: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param relief: ウィジェットの周囲に枠線について指定する
@@ -784,7 +792,7 @@ class Guis:
         exportselection: bool = False,
         selectmode: Literal["browse", "single", "multiple", "extended"] = "browse",
         state: Literal["normal", "disabled"] = "normal",
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -822,7 +830,7 @@ class Guis:
         :param fg: ウィジェットの文字色を指定する
         :type fg: 色名 | None
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -848,7 +856,7 @@ class Guis:
         default: str = ...,
         state: Literal["normal", "readonly", "disabled"] = "normal",
         takefocus: bool = ...,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -869,7 +877,7 @@ class Guis:
         :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する
         :type borderwidth: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -906,7 +914,7 @@ class Guis:
         padx: int | float = ...,
         pady: int | float = ...,
         relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"] = ...,
         wraplength: int | float = 0,
         borderwidth: int | float = 0,
@@ -953,7 +961,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param anchor: ウィジェット内の文字の位置を指定する
         :type anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"]
         :param relief: ウィジェットの周囲に枠線について指定する
@@ -976,7 +984,7 @@ class Guis:
         relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         wraplength: int | float = 0,
         borderwidth: int | float = 0,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         bg: sgt.ColorTypeN = ...,
         fg: sgt.ColorTypeN = ...,
         family: str = ...,
@@ -1025,7 +1033,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param anchor: ウィジェット内の文字の位置を指定する
         :type anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"]
         :param relief: ウィジェットの周囲に枠線について指定する
@@ -1045,7 +1053,7 @@ class Guis:
         takefocus: bool = ...,
         padx: int | float = ...,
         pady: int | float = ...,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -1094,7 +1102,7 @@ class Guis:
         :param pady: ウィジェットの外側の上下に空白を入れるサイズを指定する
         :type pady: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
@@ -1107,7 +1115,7 @@ class Guis:
         list: list = ...,
         tearoff: bool = False,
         takefocus: bool = ...,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         bg: sgt.ColorTypeN = ...,
         fg: sgt.ColorTypeN = ...,
         borderwidth: int | float = 0,
@@ -1148,7 +1156,7 @@ class Guis:
         :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する
         :type borderwidth: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
@@ -1164,7 +1172,7 @@ class Guis:
         takefocus: bool = ...,
         padx: int | float = ...,
         pady: int | float = ...,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         bg: sgt.ColorTypeN = ...,
         fg: sgt.ColorTypeN = ...,
         family: str = ...,
@@ -1212,7 +1220,7 @@ class Guis:
         :param pady: ウィジェットの外側の上下に空白を入れるサイズを指定する
         :type pady: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param anchor: ウィジェット内の文字の位置を指定する
         :type anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"]
         :param relief: ウィジェットの周囲に枠線について指定する
@@ -1229,7 +1237,7 @@ class Guis:
         takefocus: bool = ...,
         padx: int | float = ...,
         pady: int | float = ...,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         bg: sgt.ColorTypeN = ...,
         relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         key: str | None = ...,
@@ -1251,7 +1259,7 @@ class Guis:
         :param pady: ウィジェットの外側の上下に空白を入れるサイズを指定する
         :type pady: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
@@ -1301,7 +1309,7 @@ class Guis:
         min: int | float = 0,
         max: int | float = 100,
         takefocus: bool = ...,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         insertwidth: int | float = 2,
         insertbg: sgt.ColorTypeN = "#000000",
@@ -1340,7 +1348,7 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
         :param bg: ウィジェットの背景色を指定する
@@ -1374,7 +1382,7 @@ class Guis:
         title: str = "select File",
         padx: int | float = ...,
         pady: int | float = ...,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -1433,7 +1441,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param anchor: ウィジェット内の文字の位置を指定する
@@ -1458,7 +1466,7 @@ class Guis:
         fg: sgt.ColorTypeN = ...,
         padx: int | float = ...,
         pady: int | float = ...,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -1509,7 +1517,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param anchor: ウィジェット内の文字の位置を指定する
@@ -1539,7 +1547,7 @@ class Guis:
         ] = "center",
         padx: int | float = ...,
         pady: int | float = ...,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -1597,7 +1605,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param anchor: ウィジェット内の文字の位置を指定する
@@ -1625,7 +1633,7 @@ class Guis:
         ] = "center",
         padx: int | float = ...,
         pady: int | float = ...,
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         family: str = ...,
         font_size: int | float = 14,
         weight: Literal["normal", "bold"] = ...,
@@ -1676,7 +1684,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param anchor: ウィジェット内の文字の位置を指定する
@@ -1734,7 +1742,7 @@ class Guis:
         length: int | float = 200,
         mode: Literal["determinate", "indeterminate"] = "determinate",
         orient: Literal["horizontal", "vertical"] = "horizontal",
-        cursor: _Cursor = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
         takefocus: bool = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
@@ -1754,7 +1762,7 @@ class Guis:
         :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
         :type takefocus: bool
         :param cursor: マウスカーソルを指定する
-        :type cursor: _Cursor
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """

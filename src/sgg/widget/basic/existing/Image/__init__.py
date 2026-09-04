@@ -3,7 +3,7 @@ from tkinter import Label
 
 from PIL.ImageTk import PhotoImage
 
-from sgg.widget.basic.common import *
+from sgg.widget.base import Element
 from sgg.widget.basic.dev import Img_path
 
 __all__ = ["Images"]

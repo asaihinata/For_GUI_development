@@ -1,6 +1,7 @@
 from tkinter import Listbox, StringVar
 
-from sgg.widget.basic.common import *
+from sgg.dev import bols, listchose, nums, parsecolor
+from sgg.widget.base import Element
 
 __all__ = ["Listboxs"]
 

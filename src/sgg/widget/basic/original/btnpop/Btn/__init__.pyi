@@ -1,7 +1,8 @@
 from tkinter import *
 
 from sgg._typing import ColorType
-from sgg.dialogs import *
+from sgg.dialogs import (askcolor, askdirectory, askopenfilename,
+                         asksaveasfilename)
 from sgg.widget.base import _Element
 from sgg.widget.basic.common import *
 

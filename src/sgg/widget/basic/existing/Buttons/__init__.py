@@ -1,6 +1,7 @@
 from tkinter import Button
 
-from sgg.widget.basic.common import *
+from sgg.dev import listchose, num0, parsecolor
+from sgg.widget.base import Element
 
 __all__ = ["Buttons"]
 
@@ -28,21 +29,21 @@ class Buttons(Element):
         )
         self.widget = Button(
             self.master,
-            takefocus=self.takefocus,
             anchor=self.anchor,
+            bg=self.bg,
+            borderwidth=self.borderwidth,
+            command=lambda: self._exec_funcs(self.funcs),
+            cursor=self.cursor,
+            fg=self.fg,
+            font=self.font,
+            height=self.height,
             padx=self.padx,
             pady=self.pady,
             relief=self.relief,
-            wraplength=self.wraplength,
-            cursor=self.cursor,
+            takefocus=self.takefocus,
             text=self.text,
-            bg=self.bg,
-            fg=self.fg,
-            font=self.font,
-            command=lambda: self._exec_funcs(self.funcs),
             width=self.width,
-            height=self.height,
-            borderwidth=self.borderwidth,
+            wraplength=self.wraplength,
         )
 
     def delta(self):

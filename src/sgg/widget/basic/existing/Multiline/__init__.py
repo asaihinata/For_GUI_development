@@ -1,6 +1,7 @@
 from tkinter import Text
 
-from sgg.widget.basic.common import *
+from sgg.dev import listchose, num0, parsecolor
+from sgg.widget.base import Element
 
 __all__ = ["Multiline"]
 

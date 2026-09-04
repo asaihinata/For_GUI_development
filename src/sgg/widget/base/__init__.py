@@ -1,6 +1,7 @@
 from re import findall
 from types import FunctionType
 
+from sgg._typing import CURSOR_LIST
 from sgg.dev import bols, listchose, num0s, parsecolor
 from sgg.font import Getfont, TKFont
 
@@ -53,6 +54,11 @@ class Element:
         )
         self.width = self._dwh(kw.get("width"))
         self.height = self._dwh(kw.get("height"))
+
+    def _list_cursor(self, name):
+        if name in CURSOR_LIST:
+            return name
+        return None
 
     def _dwh(self, val, other=None):
         if isinstance(val, int | float) and 0 < val:
