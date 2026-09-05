@@ -1,5 +1,7 @@
 from tkinter.ttk import Style, Treeview
 
+import numpy as np
+
 from sgg.dev import num0s, parsecolor
 from sgg.widget.base import Element
 
@@ -8,12 +10,21 @@ __all__ = ["Table"]
 
 class Table(Element):
     def __init__(self, master, kw):
+        def _func(v):
+            return v if 2 <= v.ndim else _func(v[np.newaxis, :])
+
         super().__init__(master, kw)
+        values = kw.get("values")
+        if not isinstance(values, list | tuple | range | np.ndarray):
+            raise TypeError
+        self.values = _func(np.array(values)).tolist()
+        header = kw.get("header", [])
+        if not isinstance(header, list | tuple | range | np.ndarray):
+            raise TypeError
+        self.header = np.array(header, ndmin=1, ndmax=1).tolist()
         self.header_fg = parsecolor(kw.get("header_fg"), "#000000")
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.header_bg = parsecolor(kw.get("header_bg"), "#cccccc")
-        self.values = kw.get("values", [])
-        self.header = kw.get("header", [])
         self.colwidth = num0s(kw.get("colwidth"), 120)
         self.height = num0s(kw.get("height"), max(len(self.values), 1))
         self.rowheight = num0s(kw.get("rowheight"), 50)

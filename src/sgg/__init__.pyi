@@ -2,6 +2,7 @@ from io import BytesIO
 from pathlib import Path, PosixPath, WindowsPath
 from typing import Any, Callable, Literal, Unpack, overload
 
+import numpy as np
 from matplotlib.mlab import GaussianKDE
 from numpy.typing import ArrayLike
 
@@ -690,8 +691,8 @@ class Guis:
         *,
         header_fg: sgt.ColorTypeN = "#000000",
         header_bg: sgt.ColorTypeN = "#cccccc",
-        values: list = ...,
-        header: list = ...,
+        values: list | tuple | range | np.ndarray[tuple[int]] = ...,
+        header: list | tuple | range | np.ndarray[tuple[int]] = ...,
         height: int = 1,
         rowheader: list = ...,
         colwidth: int | float = 120,
@@ -783,7 +784,7 @@ class Guis:
     @staticmethod
     def Listboxs(
         *,
-        values: list | tuple = ...,
+        values: list | tuple | range | np.ndarray[tuple[int]] = ...,
         width: int | float = 20,
         height: int = 5,
         selectfg: sgt.ColorTypeN = "#000000",

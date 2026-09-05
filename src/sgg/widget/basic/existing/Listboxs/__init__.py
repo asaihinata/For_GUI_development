@@ -1,5 +1,7 @@
 from tkinter import Listbox, StringVar
 
+from numpy import ndarray
+
 from sgg.dev import bols, listchose, nums, parsecolor
 from sgg.widget.base import Element
 
@@ -9,9 +11,13 @@ __all__ = ["Listboxs"]
 class Listboxs(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.values = (
-            kw.get("values") if isinstance(kw.get("values"), tuple | list) else []
-        )
+        values = kw.get("values")
+        if isinstance(values, tuple | list | range):
+            self.values = values
+        elif isinstance(values, ndarray):
+            self.values = values.tolist()
+        else:
+            self.values = []
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.selectforeground = parsecolor(kw.get("selectfg"), "#000000")
         self.selectbackground = parsecolor(kw.get("selectbg"), "#1967d2")
