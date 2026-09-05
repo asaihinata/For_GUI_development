@@ -6,11 +6,13 @@ For_GUI_development
  │   │   └── style.css
  │   ├── dev
  │   │   ├── development
+ │   │   │   ├── code_snippets_write.md
  │   │   │   ├── markdown
  │   │   │   │   ├── howto_md.md
  │   │   │   │   └── howto_md_math.md
  │   │   │   ├── naming_conventions.md
- │   │   │   └── py_mustache_custom_docstring_templates.md
+ │   │   │   ├── py_mustache_custom_docstring_templates.md
+ │   │   │   └── regex.md
  │   │   ├── numpy
  │   │   │   ├── numpy_dtype.md
  │   │   │   ├── numpy_dtype_kind.md
@@ -441,5 +443,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:308
+ファイル数:310
 フォルダ数:134

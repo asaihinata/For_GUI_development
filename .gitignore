@@ -80,6 +80,8 @@ my-project.code-workspace
 .vscode/*
 !.vscode/extensions.json
 .vscode/*.local.json
+# .code-snippets
+.vscode/*.code-snippets
 
 # Git関連
 .git
