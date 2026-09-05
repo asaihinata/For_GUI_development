@@ -14,13 +14,14 @@ class TKFont(Font):
     @overload
     def __init__(
         self,
+        root: Misc,
+        /,
         family: str = "Meiryo",
         size: int | float = 14,
         weight: Literal["normal", "bold"] = "normal",
         slant: Literal["roman", "italic"] = "roman",
         underline: bool = False,
         overstrike: bool = False,
-        root: Misc = ...,
     ) -> None:
         """
         :param family: フォント名を指定する

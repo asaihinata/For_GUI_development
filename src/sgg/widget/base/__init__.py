@@ -36,18 +36,18 @@ class Element:
         self.overstrike = kw.get("overstrike")
         if isinstance(font, Getfont):
             self.font = TKFont(
+                self.master,
                 font=font,
-                root=self.master,
             )
         else:
             self.font = TKFont(
+                self.master,
                 self.family,
                 self.font_size,
                 self.weight,
                 self.slant,
                 self.underline,
                 self.overstrike,
-                root=self.master,
             )
         self.anchor = listchose(
             kw.get("anchor"), ["w", "n", "s", "e", "nw", "ne", "se", "sw", "center"]

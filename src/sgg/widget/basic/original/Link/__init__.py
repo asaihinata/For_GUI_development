@@ -18,13 +18,13 @@ class Link(Element):
             raise ValueError("linkにはstr型もしくはPathオブジェクトを指定してください")
         self.underline = kw.get("underline", True)
         self.font = TKFont(
+            master,
             self.family,
             self.font_size,
             self.weight,
             self.slant,
             self.underline,
             self.overstrike,
-            root=master,
         )
         self.fg = parsecolor(kw.get("fg"), "#0000ee")
         self.wraplength = num0(kw.get("wraplength"))
@@ -33,21 +33,21 @@ class Link(Element):
             self.text = self.link_url
         self.widget = Label(
             master,
-            takefocus=self.takefocus,
             anchor=self.anchor,
+            bg=self.bg,
+            borderwidth=self.borderwidth,
+            cursor=self.cursor,
+            fg=self.fg,
+            font=self.font,
+            height=self.height,
+            justify=self.justify,
             padx=self.padx,
             pady=self.pady,
             relief=self.relief,
-            wraplength=self.wraplength,
-            cursor=self.cursor,
+            takefocus=self.takefocus,
             text=self.text,
-            bg=self.bg,
-            fg=self.fg,
-            font=self.font,
             width=self.width,
-            height=self.height,
-            justify=self.justify,
-            borderwidth=self.borderwidth,
+            wraplength=self.wraplength,
         )
         self.widget.bind("<Button-1>", self._link)
 

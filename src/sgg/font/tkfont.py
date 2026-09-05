@@ -18,6 +18,8 @@ class TKFont(Font):
 
     def __init__(
         self,
+        root,
+        /,
         family="Meiryo",
         size=14,
         weight="normal",
@@ -25,7 +27,6 @@ class TKFont(Font):
         underline=False,
         overstrike=False,
         font=None,
-        root=None,
     ):
         rootj = False
         if not isinstance(root, Misc):
