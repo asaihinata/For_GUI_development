@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import *
+from sgg import Guis,Step
 
 rng = np.random.default_rng(seed=42)
 

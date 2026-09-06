@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import *
+from sgg import Guis,BarhGraph
 
 rng = np.random.default_rng(seed=42)
 
@@ -13,27 +13,27 @@ def test_main():
         barhGraph: BarhGraph = win.get("BarhGraph")
         barhGraph.update(x=radomdata)
 
-    bargraphx1 = ["1月", "2月", "3月", "4月", "5月"]
-    bargraphy1 = rng.integers(30, 60, size=5)
-    bargraphx2 = ["1月", "2月", "3月"]
-    bargraphy2 = rng.integers(30, 60, size=(2, 3))
-    print(f"{bargraphx1=}")
-    print(f"{bargraphx2=}")
-    print(f"{bargraphy1=}")
-    print(f"{bargraphy2=}")
+    barhgraphx1 = ["1月", "2月", "3月", "4月", "5月"]
+    barhgraphy1 = rng.integers(30, 60, size=5)
+    barhgraphx2 = ["1月", "2月", "3月"]
+    barhgraphy2 = rng.integers(30, 60, size=(2, 3))
+    print(f"{barhgraphx1=}")
+    print(f"{barhgraphx2=}")
+    print(f"{barhgraphy1=}")
+    print(f"{barhgraphy2=}")
     layout = [
         [
             Guis.BarhGraph(
-                x=bargraphy1,
-                y=bargraphx1,
+                x=barhgraphy1,
+                y=barhgraphx1,
                 title="横向き棒グラフの基本1",
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
                 label=["bar1"],
             ),
             Guis.BarhGraph(
-                x=bargraphy2,
-                y=bargraphx2,
+                x=barhgraphy2,
+                y=barhgraphx2,
                 title="横向き棒グラフの基本2",
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
@@ -42,20 +42,20 @@ def test_main():
         ],
         [
             Guis.BarhGraph(
-                x=bargraphy1, y=bargraphx1, title="x軸を対数スケールにする", logs=True
+                x=barhgraphy1, y=barhgraphx1, title="x軸を対数スケールにする", logs=True
             ),
             Guis.BarhGraph(
-                x=bargraphy1, y=bargraphx1, title="グラフの開始位置の変更", align="edge"
+                x=barhgraphy1, y=barhgraphx1, title="グラフの開始位置の変更", align="edge"
             ),
         ],
         [
             Guis.BarhGraph(
-                x=bargraphy1, y=bargraphx1, title="グラフの幅の変更", height=0.4
+                x=barhgraphy1, y=barhgraphx1, title="グラフの幅の変更", height=0.4
             )
         ],
         [
             Guis.BarhGraph(
-                x=bargraphy1, y=bargraphx1, title="グラフを更新する", key="BarhGraph"
+                x=barhgraphy1, y=barhgraphx1, title="グラフを更新する", key="BarhGraph"
             ),
             Guis.Buttons(text="更新ボタン", function=updates),
         ],

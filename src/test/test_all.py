@@ -2,7 +2,7 @@ import pathlib
 
 import numpy as np
 
-from sgg import *
+from sgg import Guis,WindowController
 
 
 def test_main():

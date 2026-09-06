@@ -11,7 +11,7 @@ import json
 
 import requests
 
-from sgg import *
+from sgg import Input,Listboxs,Guis
 
 
 def test_main():

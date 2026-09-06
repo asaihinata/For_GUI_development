@@ -1,6 +1,6 @@
 import pathlib
 
-from sgg import *
+from sgg import Guis
 
 
 def test_main():

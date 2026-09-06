@@ -267,6 +267,10 @@ For_GUI_development
  │   │   │   └── nptimedelta
  │   │   │       ├── __init__.py
  │   │   │       └── __init__.pyi
+ │   │   ├── testing
+ │   │   │   ├── _cursor.py
+ │   │   │   ├── _dtype.py
+ │   │   │   └── _timezone.py
  │   │   ├── version.py
  │   │   └── widget
  │   │       ├── __init__.py
@@ -427,7 +431,8 @@ For_GUI_development
  │           │   ├── test_getaddress1.py
  │           │   └── test_getaddress2.py
  │           └── basic
- │               └── test_all.py
+ │               ├── test_all.py
+ │               └── test_cursor.py
  ├── tree.txt
  ├── .crossnote
  │   ├── config.js
@@ -439,5 +444,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:307
-フォルダ数:133
+ファイル数:311
+フォルダ数:134

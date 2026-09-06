@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from sgg import *
+from sgg import Guis
 
 
 def test_main():
