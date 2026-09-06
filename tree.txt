@@ -40,6 +40,7 @@ For_GUI_development
  │   │   │   ├── _scalar.py
  │   │   │   ├── _timezone.py
  │   │   │   └── _widget.py
+ │   │   ├── constants.py
  │   │   ├── dev
  │   │   │   ├── __init__.py
  │   │   │   ├── array
@@ -444,5 +445,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:311
+ファイル数:312
 フォルダ数:134
