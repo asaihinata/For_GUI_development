@@ -137,3 +137,29 @@ class Element:
 
     def name(self):
         return self.master.winfo_name()
+
+    def set_fg(self, fg):
+        if hasattr(self, "fg"):
+            self.fg = parsecolor(fg, self.fg)
+            self.widget.config(fg=self.fg)
+        else:
+            raise ValueError
+
+    def set_bg(self, bg):
+        if hasattr(self, "bg"):
+            self.bg = parsecolor(bg, self.bg)
+            self.widget.config(bg=self.bg)
+        else:
+            raise ValueError
+
+    def get_fg(self):
+        if hasattr(self, "fg"):
+            return self.fg
+        else:
+            raise ValueError
+
+    def get_bg(self):
+        if hasattr(self, "bg"):
+            return self.bg
+        else:
+            raise ValueError

@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Hexbin
+from sgg import Guis, Hexbin
 
 rng = np.random.default_rng(seed=42)
 

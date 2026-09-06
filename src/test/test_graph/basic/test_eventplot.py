@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Eventplot
+from sgg import Eventplot, Guis
 
 rng = np.random.default_rng(seed=42)
 

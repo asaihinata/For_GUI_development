@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Waterfall
+from sgg import Guis, Waterfall
 
 rng = np.random.default_rng(seed=42)
 

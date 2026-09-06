@@ -1,6 +1,6 @@
 from tkinter.ttk import Progressbar, Style
 
-from sgg.dev import listchose, num0
+from sgg.dev import listchose, num0, parsecolor
 from sgg.widget.base import Element
 
 __all__ = ["TProgressbar"]
@@ -14,22 +14,22 @@ class TProgressbar(Element):
         self.length = num0(kw.get("length"), 200)
         self.mode = listchose(kw.get("mode"), ["determinate", "indeterminate"])
         self.orient = listchose(kw.get("orient"), ["horizontal", "vertical"])
-        style = Style()
+        self.style = Style()
         self.style_name = (
             f"Custom{kw.get("count")}.Horizontal.TProgressbar"
             if self.orient == "horizontal"
             else f"Custom{kw.get("count")}.Vertical.TProgressbar"
         )
-        style.theme_use("default")
-        style.layout(
+        self.style.theme_use("default")
+        self.style.layout(
             self.style_name,
-            style.layout(
+            self.style.layout(
                 "Horizontal.TProgressbar"
                 if self.orient == "horizontal"
                 else "Vertical.TProgressbar"
             ),
         )
-        style.configure(
+        self.style.configure(
             self.style_name, background=self.fg, troughcolor=self.bg, thickness=20
         )
         self.widget = Progressbar(
@@ -61,3 +61,11 @@ class TProgressbar(Element):
 
     def delta(self):
         self.widget.destroy()
+
+    def set_fg(self, fg):
+        self.fg = parsecolor(fg, self.fg)
+        self.style.configure(self.style_name, background=self.fg, thickness=20)
+
+    def set_bg(self, bg):
+        self.bg = parsecolor(bg, self.bg)
+        self.style.configure(self.style_name, troughcolor=self.bg, thickness=20)

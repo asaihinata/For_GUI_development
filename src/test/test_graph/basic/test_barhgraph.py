@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,BarhGraph
+from sgg import BarhGraph, Guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -45,7 +45,10 @@ def test_main():
                 x=barhgraphy1, y=barhgraphx1, title="x軸を対数スケールにする", logs=True
             ),
             Guis.BarhGraph(
-                x=barhgraphy1, y=barhgraphx1, title="グラフの開始位置の変更", align="edge"
+                x=barhgraphy1,
+                y=barhgraphx1,
+                title="グラフの開始位置の変更",
+                align="edge",
             ),
         ],
         [

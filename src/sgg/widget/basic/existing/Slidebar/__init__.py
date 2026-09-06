@@ -1,6 +1,6 @@
 from tkinter import Scale
 
-from sgg.dev import listchose, num0s, nums, parsecolor
+from sgg.dev import listchose, num0s, nums
 from sgg.widget.base import Element
 
 __all__ = ["Slidebar"]
@@ -47,17 +47,3 @@ class Slidebar(Element):
 
     def delta(self):
         self.widget.destroy()
-
-    def set_fg(self, fg):
-        self.fg = parsecolor(fg, self.fg)
-        self.widget.config(fg=self.fg)
-
-    def set_bg(self, bg):
-        self.bg = parsecolor(bg, self.bg)
-        self.widget.config(bg=self.bg)
-
-    def get_fg(self):
-        return self.fg
-
-    def get_bg(self):
-        return self.bg

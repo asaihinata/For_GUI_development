@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Errorbar
+from sgg import Errorbar, Guis
 
 rng = np.random.default_rng(seed=42)
 

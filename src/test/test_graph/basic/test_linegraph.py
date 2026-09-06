@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,LineGraph
+from sgg import Guis, LineGraph
 
 rng = np.random.default_rng(seed=42)
 

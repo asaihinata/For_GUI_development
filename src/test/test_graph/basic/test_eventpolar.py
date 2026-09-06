@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Eventpolar
+from sgg import Eventpolar, Guis
 
 rng = np.random.default_rng(seed=42)
 

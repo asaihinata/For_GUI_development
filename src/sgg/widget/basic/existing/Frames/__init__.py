@@ -1,6 +1,6 @@
 from tkinter import LabelFrame
 
-from sgg.dev import listchose, num0s, parsecolor
+from sgg.dev import listchose, num0s
 from sgg.widget.base import Element
 
 __all__ = ["Frames"]
@@ -36,17 +36,3 @@ class Frames(Element):
 
     def delta(self):
         self.widget.destroy()
-
-    def set_fg(self, fg):
-        self.fg = parsecolor(fg, self.fg)
-        self.widget.config(fg=self.fg)
-
-    def set_bg(self, bg):
-        self.bg = parsecolor(bg, self.bg)
-        self.widget.config(bg=self.bg)
-
-    def get_fg(self):
-        return self.fg
-
-    def get_bg(self):
-        return self.bg

@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Hist
+from sgg import Guis, Hist
 
 rng = np.random.default_rng(seed=42)
 

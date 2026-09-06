@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Ecdf
+from sgg import Ecdf, Guis
 
 rng = np.random.default_rng(seed=42)
 

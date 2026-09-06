@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Stempolar
+from sgg import Guis, Stempolar
 
 rng = np.random.default_rng(seed=42)
 

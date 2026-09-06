@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,BarGraph
+from sgg import BarGraph, Guis
 
 rng = np.random.default_rng(seed=42)
 

@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,RadarFill
+from sgg import Guis, RadarFill
 
 rng = np.random.default_rng(seed=42)
 

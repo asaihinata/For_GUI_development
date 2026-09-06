@@ -65,17 +65,3 @@ class Input(Element):
         self.text = txt
         self.all_delta()
         self.inserts(self.text)
-
-    def set_fg(self, fg):
-        self.fg = parsecolor(fg, self.fg)
-        self.widget.config(fg=self.fg)
-
-    def set_bg(self, bg):
-        self.bg = parsecolor(bg, self.bg)
-        self.widget.config(bg=self.bg)
-
-    def get_fg(self):
-        return self.fg
-
-    def get_bg(self):
-        return self.bg

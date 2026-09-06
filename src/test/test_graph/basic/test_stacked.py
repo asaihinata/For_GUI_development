@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Stacked
+from sgg import Guis, Stacked
 
 rng = np.random.default_rng(seed=42)
 

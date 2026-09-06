@@ -9,7 +9,7 @@ https://excelapi.org/docs/post/zipcode/
 
 import requests
 
-from sgg import Input,Guis
+from sgg import Guis, Input
 
 
 def test_main():

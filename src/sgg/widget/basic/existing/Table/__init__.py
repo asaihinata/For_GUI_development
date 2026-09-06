@@ -37,15 +37,15 @@ class Table(Element):
             height=self.height,
             takefocus=self.takefocus,
         )
-        style = Style()
-        style.configure(
+        self.style = Style()
+        self.style.configure(
             style=f"{self.stylename}.Heading",
             background=self.header_bg,
             foreground=self.header_fg,
             font=self.font,
         )
         self.widget.configure(style=f"{self.stylename}.Heading")
-        style.configure(
+        self.style.configure(
             style=self.stylename,
             background=self.bg,
             foreground=self.fg,

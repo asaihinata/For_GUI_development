@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Errorpolar
+from sgg import Errorpolar, Guis
 
 rng = np.random.default_rng(seed=42)
 

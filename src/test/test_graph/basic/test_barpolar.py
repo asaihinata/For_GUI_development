@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Barpolar
+from sgg import Barpolar, Guis
 
 rng = np.random.default_rng(seed=42)
 

@@ -1,6 +1,6 @@
 from tkinter import Menu
 
-from sgg.dev import bols, parsecolor
+from sgg.dev import bols
 from sgg.widget.base import Element
 
 __all__ = ["Menus"]
@@ -101,10 +101,3 @@ class Menus(Element):
 
     def delta(self):
         self.widget.destroy()
-
-    def set_bg(self, bg):
-        self.bg = parsecolor(bg, self.bg)
-        self.widget.config(bg=self.bg)
-
-    def get_bg(self):
-        return self.bg

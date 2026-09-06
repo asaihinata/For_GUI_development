@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Linefill
+from sgg import Guis, Linefill
 
 rng = np.random.default_rng(seed=42)
 

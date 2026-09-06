@@ -2,7 +2,7 @@ import pathlib
 
 import numpy as np
 
-from sgg import Guis,WindowController
+from sgg import Guis, WindowController
 
 
 def test_main():
@@ -43,7 +43,6 @@ def test_main():
         ["ヘルプ", [{"label": "バージョン"}]],
     ]
     list_val = ["赤", "青", "黄"]
-    list_val2 = ["赤", "青", "黄", "赤", "青", "黄", "赤", "青", "黄", "赤", "青", "黄"]
     tree_values = [
         "あ行",
         ["あ", "い", "う", "え", "お"],

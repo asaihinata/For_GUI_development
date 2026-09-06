@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Scatter
+from sgg import Guis, Scatter
 
 rng = np.random.default_rng(seed=42)
 

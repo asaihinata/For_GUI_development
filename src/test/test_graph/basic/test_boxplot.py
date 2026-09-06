@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Boxplot
+from sgg import Boxplot, Guis
 
 rng = np.random.default_rng(seed=42)
 

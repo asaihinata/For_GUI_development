@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis,Hatplot
+from sgg import Guis, Hatplot
 
 rng = np.random.default_rng(seed=42)
 
