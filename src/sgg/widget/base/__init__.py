@@ -13,7 +13,7 @@ class Element:
         self.widget = None
         self.master = master
         self.graph = False
-        self.cursor = kw.get("cursor")
+        self.cursor = self._list_cursor(kw.get("cursor"))
         self.back_bg = kw.get("back_bg")
         self.justify = listchose(kw.get("justify"), ["left", "right", "center"])
         self.padx = num0s(kw.get("padx"), 1)

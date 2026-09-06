@@ -119,6 +119,7 @@ class Guis:
         title: str = "window",
         load: function | tuple[function, ...] | None = None,
         bg: str = "#64778d",
+        cursor: sgt.CURSOR_TYPE = ...,
         scroll: bool = ...,
         scroll_x: bool = ...,
         scroll_y: bool = ...,
@@ -140,6 +141,8 @@ class Guis:
         :type load: function | tuple[function,...] | None
         :param bg: ウィンドウの背景を指定する
         :type bg: 色名 | None
+        :param cursor: マウスカーソルを指定する
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param scroll: ウィンドウのx軸,y軸方向にスクロールできるか指定する
         :type scroll: bool
         :param scroll_x: ウィンドウのx軸方向にスクロールできるか指定する
@@ -171,6 +174,7 @@ class Guis:
         title: str = "window",
         load: function | tuple[function, ...] | None = None,
         bg: str = "#64778d",
+        cursor: sgt.CURSOR_TYPE = ...,
         scroll: bool = ...,
         scroll_x: bool = ...,
         scroll_y: bool = ...,
@@ -190,6 +194,8 @@ class Guis:
         :type load: function | tuple[function,...] | None
         :param bg: ウィンドウの背景を指定する
         :type bg: 色名 | None
+        :param cursor: マウスカーソルを指定する
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param scroll: ウィンドウのx軸,y軸方向にスクロールできるか指定する
         :type scroll: bool
         :param scroll_x: ウィンドウのx軸方向にスクロールできるか指定する
@@ -217,6 +223,7 @@ class Guis:
         title: str = "window",
         load: function | tuple[function, ...] | None = None,
         bg: str = "#64778d",
+        cursor: sgt.CURSOR_TYPE = ...,
         scroll: bool = ...,
         scroll_x: bool = ...,
         scroll_y: bool = ...,
@@ -238,6 +245,8 @@ class Guis:
         :type load: function | tuple[function,...] | None
         :param bg: ウィンドウの背景を指定する
         :type bg: 色名 | None
+        :param cursor: マウスカーソルを指定する
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
         :param scroll: ウィンドウのx軸,y軸方向にスクロールできるか指定する
         :type scroll: bool
         :param scroll_x: ウィンドウのx軸方向にスクロールできるか指定する

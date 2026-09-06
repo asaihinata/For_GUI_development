@@ -5,6 +5,7 @@ from types import FunctionType
 
 from PIL import ImageGrab
 
+from sgg._typing import CURSOR_LIST
 from sgg.dev import (bols, is_array_like, listchose, num0s, parsecolor,
                      range_num)
 from sgg.dialogs import asksaveasfilename
@@ -31,6 +32,8 @@ class WindowController:
         self.root = Tk()
         parent = self.root
         self.root.title(self.title)
+        self.cursor = self._list_cursor(kw.get("cursor"))
+        self.root.config(cursor=self.cursor)
         self.root.protocol("WM_DELETE_WINDOW", self._on_window_close)
         self.root.tk_setPalette(background=self.bg)
         self.size = kw.get("size", (None, None))
@@ -296,6 +299,11 @@ class WindowController:
 
     def winclose(self):
         return "winclose"
+
+    def _list_cursor(self, name):
+        if name in CURSOR_LIST:
+            return name
+        return None
 
     def _on_window_close(self):
         self._close_result = "winclose"
