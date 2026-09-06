@@ -267,10 +267,6 @@ For_GUI_development
  │   │   │   └── nptimedelta
  │   │   │       ├── __init__.py
  │   │   │       └── __init__.pyi
- │   │   ├── testing
- │   │   │   ├── __init__.py
- │   │   │   ├── _dtype.py
- │   │   │   └── _timezone.py
  │   │   ├── version.py
  │   │   └── widget
  │   │       ├── __init__.py
@@ -443,5 +439,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:310
-フォルダ数:134
+ファイル数:307
+フォルダ数:133
