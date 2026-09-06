@@ -1277,9 +1277,12 @@ class Guis:
         digits: int = 0,
         resolution: int | float = 1,
         length: int | float = 200,
+        sliderlength: int | float = 30,
         orientation: Literal["horizontal", "vertical"] = "horizontal",
         min: int | float = 0,
         max: int | float = 100,
+        label: str | None = ...,
+        showvalue: bool = True,
         borderwidth: int | float = 1,
         key: str | None = ...,
     ) -> dict[str, Any]:
@@ -1294,6 +1297,12 @@ class Guis:
         :type resolution: int | float
         :param length: Slidebarウィジェットの長さを指定する
         :type length: int | float
+        :param sliderlength: スライダー部分の長さを指定する
+        :type sliderlength: int | float
+        :param label: ラベル文字列を指定する
+        :type label: str | None
+        :param showvalue: 現在の値を表示させるか指定する
+        :type showvalue: bool
         :param orientation: Slidebarウィジェットの向きを指定する
         :type orientation: Literal["horizontal","vertical"]
         :param min: Slidebarウィジェットの数値の最小値を指定する
