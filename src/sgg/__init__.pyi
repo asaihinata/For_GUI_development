@@ -611,9 +611,10 @@ class Guis:
     @staticmethod
     def Multiline(
         *,
-        text: str = ...,
+        text: str | np.str_ | list | tuple | range | sgt.NDStr_ = ...,
         insertbg: sgt.ColorTypeN = "#000000",
         insertwidth: int | float = 2,
+        cursorshow: bool = True,
         state: Literal["normal", "disabled"] = "normal",
         width: int | float = 20,
         height: int | float = 5,
@@ -640,6 +641,8 @@ class Guis:
 
         :param text: Multilineウィジェットに表記させる文字を指定する
         :type text: str
+        :param cursorshow: Multilineウィジェットにカーソルを表示させるか指定する
+        :type cursorshow: bool
         :param insertbg: Multilineウィジェットの入力時の挿入ポイントの色を指定する
         :type insertbg: 色名 | None
         :param insertwidth: Multilineウィジェットの入力時の挿入ポイントの幅を指定する
