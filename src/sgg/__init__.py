@@ -54,7 +54,6 @@ __all__ = [
     "Menus",
     "Multiline",
     "NoScalarError",
-    "NPArray",
     "NPBool",
     "NPDate",
     "NPNumber",
