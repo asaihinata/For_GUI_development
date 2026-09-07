@@ -142,7 +142,6 @@ __all__ = [
     "RUInt64",
     "RUInt8",
     "RVoid",
-    "Type_icon",
     "Type_Marker",
     "Type_Solid",
     "TypeArray2LikeNS",

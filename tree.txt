@@ -254,9 +254,6 @@ For_GUI_development
  │   │   │           └── __init__.pyi
  │   │   ├── nparray
  │   │   │   ├── __init__.py
- │   │   │   ├── nparray
- │   │   │   │   ├── __init__.py
- │   │   │   │   └── __init__.pyi
  │   │   │   ├── npbool
  │   │   │   │   ├── __init__.py
  │   │   │   │   └── __init__.pyi
@@ -449,5 +446,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:315
-フォルダ数:135
+ファイル数:313
+フォルダ数:134

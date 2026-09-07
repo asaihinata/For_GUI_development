@@ -8,7 +8,6 @@ __all__ = [
     "ColorTypeN",
     "CURSOR_TYPE",
     "GetList",
-    "Type_icon",
     "Type_Marker",
     "Type_Solid",
     "TypeArray2LikeNS",
@@ -26,9 +25,6 @@ __all__ = [
 type ColorType = str
 type ColorTypeN = str | None
 type ColorListType = ColorTypeN | tuple[ColorType, ...]
-
-# dialogのアイコン
-type Type_icon = Literal["error", "info", "question", "warning"]
 
 # グラフ
 # 数値
