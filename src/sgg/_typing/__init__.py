@@ -8,9 +8,9 @@ from numpy.random import Generator, SeedSequence
 from ._array_date_unit import *
 from ._array_dtype import *
 from ._arraylike import *
-from ._kwarg._widget import *
 from ._kwarg._graph import *
 from ._kwarg._popup import *
+from ._kwarg._widget import *
 from ._scalar import *
 from ._timezone import *
 from ._widget import *
@@ -98,6 +98,7 @@ __all__ = [
     "Dict_G_LinefillGraph",
     "Dict_G_Polar",
     "Dict_G_Radar",
+    "Dict_Input",
     "Dict_P_Error",
     "Dict_P_Information",
     "Dict_P_Question",

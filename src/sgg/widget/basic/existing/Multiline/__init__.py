@@ -4,7 +4,7 @@ from tkinter import INSERT, Text
 import numpy as np
 import numpy.strings as nps
 
-from sgg.dev import bols, listchose, num0, parsecolor
+from sgg.dev import _is_real, bols, listchose, num0, parsecolor
 from sgg.widget.base import Element
 
 __all__ = ["Multiline"]
@@ -23,13 +23,33 @@ class Multiline(Element):
         self.borderwidth = num0(kw.get("borderwidth"), 1)
         self.state = listchose(kw.get("state"), ["normal", "disabled"])
         self.wrap = listchose(kw.get("wrap"), ["none", "word", "char"])
+        self.selectforeground = parsecolor(kw.get("selectfg"))
+        self.selectbackground = parsecolor(kw.get("selectbg"))
+        selectborderwidth = kw.get("selectborderwidth", 0)
+        if _is_real(selectborderwidth) and 0 <= selectborderwidth:
+            self.selectborderwidth = selectborderwidth
+        else:
+            self.selectborderwidth = 0
         self.insertbackground = parsecolor(kw.get("insertbg"), "#000000")
         self.insertwidth = num0(kw.get("insertwidth"), 2)
+        self.insertontime = num0(kw.get("insertontime"), 600)
+        self.insertofftime = num0(kw.get("insertofftime"), 300)
+        insertborderwidth = kw.get("insertborderwidth", 0)
+        if _is_real(insertborderwidth) and 0 <= insertborderwidth:
+            self.insertborderwidth = insertborderwidth
+        else:
+            self.insertborderwidth = 0
         self.widget = Text(
             self.master,
             takefocus=self.takefocus,
-            insertbackground=self.insertbackground,
+            selectforeground=self.selectforeground,
+            selectbackground=self.selectbackground,
+            selectborderwidth=self.selectborderwidth,
             insertwidth=self.insertwidth,
+            insertontime=self.insertontime,
+            insertofftime=self.insertofftime,
+            insertbackground=self.insertbackground,
+            insertborderwidth=self.insertborderwidth,
             padx=self.padx,
             pady=self.pady,
             relief=self.relief,

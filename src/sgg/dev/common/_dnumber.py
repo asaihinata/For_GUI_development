@@ -1,10 +1,11 @@
-from numbers import Number
+from numbers import Number, Real
 
 import numpy as np
 
 __all__ = [
     "_is_int",
     "_is_number",
+    "_is_real",
     "int0",
     "int0s",
     "int1s",
@@ -21,18 +22,27 @@ __all__ = [
 
 
 def _is_number(value):
-    if isinstance(value, Number):
+    if isinstance(value, Number) or (
+        isinstance(value, np.generic) and np.issubdtype(value.dtype, np.number)
+    ):
         return True
-    if isinstance(value, np.generic):
-        return np.issubdtype(value.dtype, np.number)
     return False
 
 
 def _is_int(value):
-    if isinstance(value, int):
+    if isinstance(value, int) or (
+        isinstance(value, np.generic) and np.issubdtype(value.dtype, np.integer)
+    ):
         return True
-    if isinstance(value, np.generic):
-        return np.issubdtype(value.dtype, np.integer)
+    return False
+
+
+def _is_real(value):
+    if isinstance(value, Real) or (
+        isinstance(value, np.generic)
+        and np.issubdtype(value.dtype, np.integer | np.floating)
+    ):
+        return True
     return False
 
 

@@ -547,8 +547,6 @@ class Guis:
         *,
         text: str = ...,
         show: str = ...,
-        insertwidth: int | float = 2,
-        insertbg: sgt.ColorTypeN = "#000000",
         width: int | float = 20,
         borderwidth: int | float = 0,
         takefocus: bool = ...,
@@ -557,16 +555,9 @@ class Guis:
         disabledbg: sgt.ColorTypeN = ...,
         disabledfg: sgt.ColorTypeN = ...,
         bg: sgt.ColorTypeN = "#e0e0e0",
-        fg: sgt.ColorTypeN = ...,
-        family: str = ...,
-        font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = ...,
-        slant: Literal["roman", "italic"] = ...,
-        underline: bool = ...,
-        overstrike: bool = ...,
         relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         justify: Literal["left", "center", "right"] = "left",
-        key: str | None = ...,
+        **kwargs: Unpack[sgt.Dict_Input],
     ) -> dict[str, Any]:
         """
         入力欄を作成する
@@ -621,8 +612,6 @@ class Guis:
     def Multiline(
         *,
         text: str | np.str_ | list | tuple | range | sgt.NDStr_ = ...,
-        insertbg: sgt.ColorTypeN = "#000000",
-        insertwidth: int | float = 2,
         cursorshow: bool = True,
         state: Literal["normal", "disabled"] = "normal",
         width: int | float = 20,
@@ -634,16 +623,9 @@ class Guis:
         pady: int | float = ...,
         cursor: sgt.CURSOR_TYPE = ...,
         bg: sgt.ColorTypeN = ...,
-        fg: sgt.ColorTypeN = ...,
-        family: str = ...,
-        font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = ...,
-        slant: Literal["roman", "italic"] = ...,
-        underline: bool = ...,
-        overstrike: bool = ...,
         relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
         justify: Literal["left", "center", "right"] = "left",
-        key: str | None = ...,
+        **kwargs: Unpack[sgt.Dict_Input],
     ) -> dict[str, Any]:
         """
         テキストエリアを作成する
@@ -1333,22 +1315,13 @@ class Guis:
         takefocus: bool = ...,
         cursor: sgt.CURSOR_TYPE = ...,
         relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
-        insertwidth: int | float = 2,
-        insertbg: sgt.ColorTypeN = "#000000",
         step: int | float = 1,
         width: int | float = 20,
         wrap: bool = False,
-        family: str = ...,
-        font_size: int | float = 14,
-        weight: Literal["normal", "bold"] = ...,
-        slant: Literal["roman", "italic"] = ...,
-        underline: bool = ...,
-        overstrike: bool = ...,
         bg: sgt.ColorTypeN = "#e0e0e0",
-        fg: sgt.ColorTypeN = ...,
         borderwidth: int | float = 0,
         justify: Literal["left", "center", "right"] = "left",
-        key: str | None = ...,
+        **kwargs: Unpack[sgt.Dict_Input],
     ) -> dict[str, Any]:
         """
         数値専用の入力欄を作成する
@@ -4571,12 +4544,7 @@ class Guis:
         """
 
     @classmethod
-    def Popup(
-        cls,
-        title: str = "Information",
-        message: str = "Information message",
-        icon: Literal["info", "warning", "error", "question"] = "info",
-    ) -> Literal["ok"]:
+    def Popup(cls, **kwargs: Unpack[sgt.Dict_P_Information]) -> Literal["ok"]:
         """
         指定されたタイトルとメッセージを持つ情報メッセージボックスを表示させる
 

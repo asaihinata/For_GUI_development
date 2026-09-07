@@ -1,6 +1,6 @@
 from tkinter import Entry
 
-from sgg.dev import listchose, num0, parsecolor
+from sgg.dev import _is_real, listchose, num0, parsecolor
 from sgg.widget.base import Element
 
 __all__ = ["Input"]
@@ -16,22 +16,38 @@ class Input(Element):
         self.state = listchose(kw.get("state"), ["normal", "disabled", "readonly"])
         self.disabledbg = parsecolor(kw.get("disabledbg"))
         self.disabledfg = parsecolor(kw.get("disabledfg"))
+        self.selectforeground = parsecolor(kw.get("selectfg"))
+        self.selectbackground = parsecolor(kw.get("selectbg"))
+        selectborderwidth = kw.get("selectborderwidth", 0)
+        if _is_real(selectborderwidth) and 0 <= selectborderwidth:
+            self.selectborderwidth = selectborderwidth
+        else:
+            self.selectborderwidth = 0
         self.insertbackground = parsecolor(kw.get("insertbg"), "#000000")
         self.insertwidth = num0(kw.get("insertwidth"), 2)
         self.insertontime = num0(kw.get("insertontime"), 600)
         self.insertofftime = num0(kw.get("insertofftime"), 300)
+        insertborderwidth = kw.get("insertborderwidth", 0)
+        if _is_real(insertborderwidth) and 0 <= insertborderwidth:
+            self.insertborderwidth = insertborderwidth
+        else:
+            self.insertborderwidth = 0
         self.widget = Entry(
             self.master,
+            selectforeground=self.selectforeground,
+            selectbackground=self.selectbackground,
+            selectborderwidth=self.selectborderwidth,
+            insertwidth=self.insertwidth,
+            insertontime=self.insertontime,
+            insertofftime=self.insertofftime,
+            insertbackground=self.insertbackground,
+            insertborderwidth=self.insertborderwidth,
             disabledforeground=self.disabledfg,
             disabledbackground=self.disabledbg,
             state=self.state,
             takefocus=self.takefocus,
             relief=self.relief,
             cursor=self.cursor,
-            insertwidth=self.insertwidth,
-            insertontime=self.insertontime,
-            insertofftime=self.insertofftime,
-            insertbackground=self.insertbackground,
             bg=self.bg,
             fg=self.fg,
             font=self.font,
