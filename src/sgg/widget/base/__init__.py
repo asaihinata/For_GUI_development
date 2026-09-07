@@ -1,7 +1,7 @@
 from re import findall
 from types import FunctionType
 
-from sgg._typing import CURSOR_LIST
+from sgg._list import CURSOR_LIST
 from sgg.dev import bols, listchose, num0s, parsecolor
 from sgg.font import Getfont, TKFont
 

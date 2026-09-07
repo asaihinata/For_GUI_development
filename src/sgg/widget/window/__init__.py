@@ -5,7 +5,7 @@ from types import FunctionType
 
 from PIL import ImageGrab
 
-from sgg._typing import CURSOR_LIST
+from sgg._list import CURSOR_LIST, USE_IMG_LIST
 from sgg.dev import (bols, is_array_like, listchose, num0s, parsecolor,
                      range_num)
 from sgg.dialogs import asksaveasfilename
@@ -372,31 +372,15 @@ class WindowController:
     def geometry(self):
         return [float(i) for i in findall(r"\d+", self.root.winfo_geometry())]
 
-    def tookphoto(self, file="window", ex=".png"):
+    def tookphoto(self, file="window", ex="png"):
+        if not isinstance(ex, str):
+            ex = "png"
         root = self.root
         winx, winy = root.winfo_rootx(), root.winfo_rooty()
         bbox = (winx, winy, winx + root.winfo_width(), winy + root.winfo_height())
         paths = asksaveasfilename(
             title="画像を保存する",
-            defaultextension=listchose(
-                ex,
-                [
-                    ".png",
-                    ".eps",
-                    ".jpg",
-                    ".jpeg",
-                    ".pdf",
-                    ".pgf",
-                    ".ps",
-                    ".raw",
-                    ".rgba",
-                    ".svg",
-                    ".svgz",
-                    ".tif",
-                    ".tiff",
-                    ".webp",
-                ],
-            ),
+            defaultextension=listchose(ex.isupper(), USE_IMG_LIST, "png"),
             initialfile=file,
             initialdir=getcwd(),
         )

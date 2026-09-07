@@ -1,3 +1,5 @@
+import numpy as np
+
 from .color import parsecolor
 from .common._darray import *
 from .common._dnumber import *
@@ -26,12 +28,8 @@ __all__ = [
 
 
 def bols(j, o=True):
-    if isinstance(j, bool):
+    if isinstance(j, bool) or (
+        isinstance(j, np.generic) and np.issubdtype(j, np.bool | np.bool_)
+    ):
         return j
     return o
-
-
-def bol(vals, other=False):
-    if isinstance(vals, bool):
-        return vals
-    return other

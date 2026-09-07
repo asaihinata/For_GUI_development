@@ -15,9 +15,6 @@ from ._scalar import *
 from ._timezone import *
 from ._widget import *
 
-type Incomplete = Any
-type _Seed = int | SeedSequence | Generator | None
-type _orderKACF = Literal["K", "A", "C", "F"] | None
 __all__ = [
     "_AnyShape",
     "_ArrayDT64",
@@ -66,6 +63,7 @@ __all__ = [
     "_DualArrayLike",
     "_FloatScalar",
     "_IntScalar",
+    "_USE_IMG_TYPE",
     "_NaTValue",
     "_NaTValue_co",
     "_NestedSequence",
@@ -159,3 +157,34 @@ __all__ = [
     "Typeaxis",
     "Typetuple_float64",
 ]
+type Incomplete = Any
+type _Seed = int | SeedSequence | Generator | None
+"""乱数のシード値"""
+type _orderKACF = Literal["K", "A", "C", "F"] | None
+type _USE_IMG_TYPE = Literal[
+    "AVIF",
+    "BLP",
+    "BMP",
+    "DDS",
+    "DIB",
+    "EPS",
+    "GIF",
+    "ICNS",
+    "ICO",
+    "IM",
+    "JPEG",
+    "JPEG 2000",
+    "MPO",
+    "MSP",
+    "PCX",
+    "PNG",
+    "PPM",
+    "QOI",
+    "SGI",
+    "SPIDER",
+    "TGA",
+    "TIFF",
+    "WebP",
+    "XBM",
+]
+"""読み込める画像ファイルの拡張子"""
