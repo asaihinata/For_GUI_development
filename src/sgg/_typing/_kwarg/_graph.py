@@ -1,30 +1,6 @@
 from typing import Literal, TypedDict
 
-import sgg._typing
-
-__all__ = [
-    "Dict_Font",
-    "Dict_G_2DGraph",
-    "Dict_G_3DGraph",
-    "Dict_G_LinefillGraph",
-    "Dict_G_Polar",
-    "Dict_G_Radar",
-    "Dict_P_Error",
-    "Dict_P_Information",
-    "Dict_P_Question",
-    "Dict_P_Warning",
-]
-
-
-# 基本的なウィジェット
-class Dict_Font(TypedDict):
-    fg: sgg._typing.ColorTypeN = (...,)
-    family: str = ...
-    font_size: int | float = 14
-    weight: Literal["normal", "bold"] = ...
-    slant: Literal["roman", "italic"] = ...
-    underline: bool = ...
-    overstrike: bool = ...
+import sgg._typing as sgt
 
 
 # 基本的なウィジェットのキーワード引数の型ヒントを保存するオブジェクト
@@ -33,8 +9,8 @@ class _Dict_Graph_base(TypedDict):
     title: str = ...
     size: tuple[int | float, int | float] = (500, 400)
     dpi: int | float = 100
-    fg: sgg._typing.ColorTypeN = "#000000"
-    bg: sgg._typing.ColorTypeN = "#ffffff"
+    fg: sgt.ColorTypeN = "#000000"
+    bg: sgt.ColorTypeN = "#ffffff"
     tight_layout: bool = True
 
 
@@ -42,7 +18,7 @@ class Dict_G_2DGraph(_Dict_Graph_base):
     alpha: int | float = 1.0
     xlabel: str = ...
     ylabel: str = ...
-    graph_grid: sgg._typing.ColorTypeN = "#b7b7b7"
+    graph_grid: sgt.ColorTypeN = "#b7b7b7"
     grid_xy: bool = True
     grid_x: bool = False
     grid_y: bool = False
@@ -60,7 +36,7 @@ class Dict_G_2DGraph(_Dict_Graph_base):
 class Dict_G_LinefillGraph(_Dict_Graph_base):
     xlabel: str = ...
     ylabel: str = ...
-    graph_grid: sgg._typing.ColorTypeN = "#b7b7b7"
+    graph_grid: sgt.ColorTypeN = "#b7b7b7"
     grid_xy: bool = True
     grid_x: bool = False
     grid_y: bool = False
@@ -80,7 +56,7 @@ class Dict_G_3DGraph(_Dict_Graph_base):
     xlabel: str = ...
     ylabel: str = ...
     zlabel: str = ...
-    graph_grid: sgg._typing.ColorTypeN = "#b7b7b7"
+    graph_grid: sgt.ColorTypeN = "#b7b7b7"
     grid_xyz: bool = True
     grid_x: bool = False
     grid_y: bool = False
@@ -104,7 +80,7 @@ class Dict_G_3DGraph(_Dict_Graph_base):
 
 class Dict_G_Polar(_Dict_Graph_base):
     alpha: int | float = 1.0
-    graph_grid: sgg._typing.ColorTypeN = "#b7b7b7"
+    graph_grid: sgt.ColorTypeN = "#b7b7b7"
     grid_xy: bool = True
     grid_x: bool = False
     grid_y: bool = False
@@ -117,35 +93,10 @@ class Dict_G_Polar(_Dict_Graph_base):
 
 class Dict_G_Radar(_Dict_Graph_base):
     alpha: int | float = 1.0
-    graph_grid: sgg._typing.ColorTypeN = "#b7b7b7"
+    graph_grid: sgt.ColorTypeN = "#b7b7b7"
     grid_xy: bool = True
     grid_x: bool = False
     grid_y: bool = False
     ticksshow: bool = False
     xticksshow: bool = False
     yticksshow: bool = False
-
-
-# popup
-class Dict_P_Information(TypedDict):
-    title: str = "Information"
-    message: str = "Information message"
-    icon: Literal["info", "warning", "error", "question"] = "info"
-
-
-class Dict_P_Warning(TypedDict):
-    title: str = "Warning"
-    message: str = "Warning message"
-    icon: Literal["info", "warning", "error", "question"] = "warning"
-
-
-class Dict_P_Error(TypedDict):
-    title: str = "Error"
-    message: str = "Error message"
-    icon: Literal["info", "warning", "error", "question"] = "error"
-
-
-class Dict_P_Question(TypedDict):
-    title: str = "Question"
-    message: str = "Question message"
-    icon: Literal["info", "warning", "error", "question"] = "question"
