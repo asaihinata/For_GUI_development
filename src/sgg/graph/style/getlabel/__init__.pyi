@@ -3,11 +3,11 @@ from typing import Any
 
 import numpy as np
 
-from sgg.nparray import NPArray
+from sgg.nparray import NPString
 
 __all__ = ["getLabel"]
 
-class getLabel(NPArray):
+class getLabel(NPString):
     def __init__(self, label: list | tuple | np.ndarray | None = None) -> None: ...
     def __iter__(self) -> Iterator[Any | None]: ...
     def __getitem__(self, val: int) -> Any: ...

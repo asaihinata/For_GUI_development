@@ -1,6 +1,6 @@
 """グラフの線を設定するモジュール"""
 
-from sgg.nparray import NPArray
+from sgg.nparray import NPString
 
 __all__ = ["Solid", "Solidlist"]
 
@@ -22,7 +22,7 @@ class Solid:
         return self.__solid
 
 
-class Solidlist(NPArray):
+class Solidlist(NPString):
     def __new__(cls, solid):
         if isinstance(solid, str):
             solid = [solid]

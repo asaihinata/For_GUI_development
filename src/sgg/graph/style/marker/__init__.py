@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib.markers import MarkerStyle
 from matplotlib.transforms import Affine2D
 
-from sgg.nparray import NPArray
+from sgg.nparray import NPString
 
 __all__ = ["Marker", "MarkerList"]
 
@@ -77,7 +77,7 @@ class Marker:
         return value in self.marker_list
 
 
-class MarkerList(NPArray):
+class MarkerList(NPString):
     def __new__(cls, marker, fill=None, cap=None, transform=None, join=None):
         marker = [marker] if isinstance(marker, str | int) else marker
         return super().__new__(

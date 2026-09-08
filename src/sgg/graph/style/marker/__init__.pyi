@@ -7,7 +7,7 @@ import numpy as np
 from matplotlib.markers import MarkerStyle
 
 from sgg._typing import Type_Marker
-from sgg.nparray import NPArray
+from sgg.nparray import NPString
 
 __all__ = ["Marker", "MarkerList"]
 
@@ -24,7 +24,7 @@ class Marker:
     ) -> None: ...
     def __contains__(self, value: Any) -> bool: ...
 
-class MarkerList(NPArray):
+class MarkerList(NPString):
     def __init__(
         self,
         marker: str | int | Type_Marker,
