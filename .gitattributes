@@ -2,7 +2,12 @@
 *.png binary
 *.jpg binary
 *.pdf binary
-docs/* linguist-documentation
-.vscode/* linguist-documentation
-test/* linguist-documentation
-demo/* linguist-documentation
+*.icns binary
+*.gif binary
+*.svg binary
+*.svg linguist-language=true
+*.bat eol=crlf
+*.html diff=html
+*.py diff=python
+*.py diff=python
+*.md diff=markdown

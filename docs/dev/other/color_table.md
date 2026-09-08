@@ -1,7 +1,7 @@
 # [色データのデータ(color.csv)](../../../src/sgg/dev/color/_color.py)
 [src/sgg/dev/color/color.csv](../../../src/sgg/dev/color/_color.py)内に保存されている色データとその色の表記
-| 色名                       | 表示                                                      |
-| :------------------------- | :-------------------------------------------------------- |
+| 色名                       | 表示                                                            |
+| :------------------------- | :-------------------------------------------------------------- |
 | aliceblue                  | <div class='color_box' style='background:#f0f8ff;'>&nbsp;</div> |
 | antiquewhite               | <div class='color_box' style='background:#faebd7;'>&nbsp;</div> |
 | antiquewhite1              | <div class='color_box' style='background:#ffefdb;'>&nbsp;</div> |

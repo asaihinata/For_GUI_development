@@ -32,11 +32,11 @@
 
 ## 3. スコープの指定方法
 
-| 種類 | 説明 |
-|---|---|
-| **言語スコープ** | `scope` プロパティに[言語識別子](https://code.visualstudio.com/docs/languages/identifiers)(例: `python`, `javascript`)を指定。省略時は全言語で有効。 |
-| **プロジェクトスコープ** | `.vscode` フォルダ内に配置し,そのプロジェクトを開いている全員と共有可能。 |
-| **ファイルパターンスコープ** | `include`/`exclude` でファイルパターン(globパターン)による絞り込みが可能。両方に一致する場合は `exclude` が優先。 |
+| 種類                         | 説明                                                                                                                                                 |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **言語スコープ**             | `scope` プロパティに[言語識別子](https://code.visualstudio.com/docs/languages/identifiers)(例: `python`, `javascript`)を指定。省略時は全言語で有効。 |
+| **プロジェクトスコープ**     | `.vscode` フォルダ内に配置し,そのプロジェクトを開いている全員と共有可能。                                                                            |
+| **ファイルパターンスコープ** | `include`/`exclude` でファイルパターン(globパターン)による絞り込みが可能。両方に一致する場合は `exclude` が優先。                                    |
 
 ```jsonc
 {
@@ -72,15 +72,15 @@ ${1|one,two,three|}
 
 `$name` または `${name:default}` の形式。主な変数:
 
-| カテゴリ | 変数例 |
-|---|---|
-| 選択・文脈 | `TM_SELECTED_TEXT`, `TM_CURRENT_LINE`, `TM_CURRENT_WORD` |
-| ファイル情報 | `TM_FILENAME`, `TM_FILENAME_BASE`, `TM_DIRECTORY`, `TM_FILEPATH`, `RELATIVE_FILEPATH` |
-| ワークスペース | `WORKSPACE_NAME`, `WORKSPACE_FOLDER` |
-| 日時 | `CURRENT_YEAR`, `CURRENT_MONTH`, `CURRENT_DATE`, `CURRENT_HOUR` など |
-| ランダム値 | `RANDOM`(6桁10進), `RANDOM_HEX`(6桁16進), `UUID` |
-| コメント記法 | `BLOCK_COMMENT_START`, `BLOCK_COMMENT_END`, `LINE_COMMENT`(言語に応じて自動変換) |
-| その他 | `CLIPBOARD`, `CURSOR_INDEX`, `CURSOR_NUMBER` |
+| カテゴリ       | 変数例                                                                                |
+| -------------- | ------------------------------------------------------------------------------------- |
+| 選択・文脈     | `TM_SELECTED_TEXT`, `TM_CURRENT_LINE`, `TM_CURRENT_WORD`                              |
+| ファイル情報   | `TM_FILENAME`, `TM_FILENAME_BASE`, `TM_DIRECTORY`, `TM_FILEPATH`, `RELATIVE_FILEPATH` |
+| ワークスペース | `WORKSPACE_NAME`, `WORKSPACE_FOLDER`                                                  |
+| 日時           | `CURRENT_YEAR`, `CURRENT_MONTH`, `CURRENT_DATE`, `CURRENT_HOUR` など                  |
+| ランダム値     | `RANDOM`(6桁10進), `RANDOM_HEX`(6桁16進), `UUID`                                      |
+| コメント記法   | `BLOCK_COMMENT_START`, `BLOCK_COMMENT_END`, `LINE_COMMENT`(言語に応じて自動変換)      |
+| その他         | `CLIPBOARD`, `CURSOR_INDEX`, `CURSOR_NUMBER`                                          |
 
 ### 変数変換(Variable Transform)
 
@@ -94,11 +94,11 @@ ${TM_FILENAME/(.*)\..+$/$1/}
 
 変換例(ファイル名 `example-123.456-TEST.js` に対して):
 
-| 記述 | 結果 |
-|---|---|
-| `${TM_FILENAME/[\.]/_/}` | `example-123_456-TEST.js`(最初の`.`のみ置換) |
-| `${TM_FILENAME/[\.-]/_/g}` | `example_123_456_TEST_js`(全置換) |
-| `${TM_FILENAME/(.*)/${1:/upcase}/}` | `EXAMPLE-123.456-TEST.JS`(大文字化) |
+| 記述                                | 結果                                         |
+| ----------------------------------- | -------------------------------------------- |
+| `${TM_FILENAME/[\.]/_/}`            | `example-123_456-TEST.js`(最初の`.`のみ置換) |
+| `${TM_FILENAME/[\.-]/_/g}`          | `example_123_456_TEST_js`(全置換)            |
+| `${TM_FILENAME/(.*)/${1:/upcase}/}` | `EXAMPLE-123.456-TEST.JS`(大文字化)          |
 
 書式変換オプション: `/upcase`, `/downcase`, `/capitalize`, `/camelcase`, `/pascalcase`, `/snakecase`, `/kebabcase`
 
