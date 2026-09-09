@@ -79,7 +79,9 @@ class GElement:
             dpi=self.dpi,
             facecolor=self.graph_bg,
         )
-        self.label = getLabel(kw.get("label", None))
+        label = kw.get("label", None)
+        self.label = getLabel(label)
+        self.labels = False if label is None else True
         self.titles = kw.get("title")
         # 目盛り
         self.ticksshow = bols(kw.get("ticksshow"), False)
@@ -165,7 +167,7 @@ class GElement:
             return (500, 400)
 
     def legend(self):
-        if not self.label:
+        if self.labels:
             self.ax.legend()
 
     def _anchor(self, val, other=None):

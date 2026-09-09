@@ -9,7 +9,7 @@ class DScatter(threeElement):
         self.__x = tonparray(kw.get("x"))
         self.__y = tonparray(kw.get("y"))
         self.__z = tonparray(kw.get("z"))
-        self.marker = MarkerList(kw.get("marker", "o"))
+        self.marker = Marker(kw.get("marker", "o"))
         self.s = num1s(kw.get("markersize"), 10)
         self.__plot(
             self.__x,
@@ -25,7 +25,7 @@ class DScatter(threeElement):
         self.clear()
         self.graphdata = [
             self.ax.scatter(
-                xs, ys, zs, label=label[i], marker=marker[i], alpha=alpha, s=s
+                xs, ys, zs, label=label[i], marker=marker.marker, alpha=alpha, s=s
             )
             for i, (xs, ys, zs) in enumerate(ThreeArray(x, y, z))
         ]
@@ -43,7 +43,7 @@ class DScatter(threeElement):
             self.__z = tonparray(z)
         markers = kw.get("marker", None)
         if markers != None:
-            self.marker = MarkerList(markers)
+            self.marker = Marker(markers)
         self.s = num1s(kw.get("markersize"), self.s)
         self.__plot(
             self.__x,

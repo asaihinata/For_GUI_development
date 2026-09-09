@@ -10,7 +10,7 @@ class Scatter(twoElement):
         super().__init__(master, kw)
         self.__x = tonparray(kw.get("x"))
         self.__y = tonparray(kw.get("y"))
-        self.marker = MarkerList(kw.get("marker", "o"))
+        self.marker = Marker(kw.get("marker", "o"))
         self.s = num1s(kw.get("markersize"), 10)
         self.regression_bool = bols(kw.get("regression_bool"), False)
         self.line = Solid(kw.get("linestyle", "-"))
@@ -44,7 +44,7 @@ class Scatter(twoElement):
             scatter = self.ax.scatter(
                 xs,
                 ys,
-                marker=marker[i],
+                marker=marker.marker,
                 s=s,
                 alpha=alpha,
                 label=label[i],
@@ -71,7 +71,7 @@ class Scatter(twoElement):
             self.__y = tonparray(y)
         markers = kw.get("marker", None)
         if markers is not None:
-            self.marker = MarkerList(markers)
+            self.marker = Marker(markers)
         self.s = num1s(kw.get("markersize"), self.s)
         self.alpha = range_num(num0s(kw.get("alpha"), self.alpha), 0, 1, self.alpha)
         self.regression_bool = bols(kw.get("regression_bool"), self.regression_bool)

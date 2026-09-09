@@ -1,15 +1,13 @@
 """マーカーを設定するモジュール"""
 
-from collections.abc import Iterator
 from typing import Any, Literal
 
 import numpy as np
 from matplotlib.markers import MarkerStyle
 
 from sgg._typing import Type_Marker
-from sgg.nparray import NPString
 
-__all__ = ["Marker", "MarkerList"]
+__all__ = ["Marker"]
 
 class Marker:
     marker_list: list[int | str]
@@ -23,17 +21,3 @@ class Marker:
         join: Literal["miter", "round", "bevel"] | None = None,
     ) -> None: ...
     def __contains__(self, value: Any) -> bool: ...
-
-class MarkerList(NPString):
-    def __init__(
-        self,
-        marker: str | int | Type_Marker,
-        fill: Literal["full", "left", "right", "bottom", "top", "none"] | None = None,
-        cap: Literal["butt", "round", "projecting"] | None = None,
-        transform: np.number | None = None,
-        join: Literal["miter", "round", "bevel"] | None = None,
-    ) -> None: ...
-    def __iter__(self) -> Iterator[str]: ...
-    def __getitem__(self, key: int) -> str: ...
-    def __str__(self) -> str: ...
-    def __repr__(self) -> str: ...

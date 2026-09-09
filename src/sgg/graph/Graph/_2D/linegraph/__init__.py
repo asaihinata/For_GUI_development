@@ -8,7 +8,7 @@ class LineGraph(twoElement):
         super().__init__(master, kw)
         self.__x = tonparray(kw.get("x"))
         self.__y = tonparray(kw.get("y"))
-        self.marker = MarkerList(kw.get("marker", "none"))
+        self.marker = Marker(kw.get("marker", "none"))
         self.markersize = num0(kw.get("markersize"), 10)
         self.line = Solidlist(kw.get("linestyle", "-"))
         self.linewidth = num0(kw.get("linewidth"), 2)
@@ -41,7 +41,7 @@ class LineGraph(twoElement):
                 ys,
                 linestyle=linestyle[i],
                 linewidth=linewidth,
-                marker=marker[i],
+                marker=marker.marker,
                 markersize=markersize,
                 alpha=alpha,
                 label=label[i],
@@ -60,7 +60,7 @@ class LineGraph(twoElement):
             self.__y = tonparray(y)
         markers = kw.get("marker")
         if markers is not None:
-            self.marker = MarkerList(markers)
+            self.marker = Marker(markers)
         self.markersize = num0(kw.get("markersize"), self.markersize)
         lines = kw.get("linestyle")
         if lines is not None:

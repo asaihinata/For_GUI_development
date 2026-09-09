@@ -4,9 +4,7 @@ import numpy as np
 from matplotlib.markers import MarkerStyle
 from matplotlib.transforms import Affine2D
 
-from sgg.nparray import NPString
-
-__all__ = ["Marker", "MarkerList"]
+__all__ = ["Marker"]
 
 
 class Marker:
@@ -75,26 +73,3 @@ class Marker:
 
     def __contains__(self, value):
         return value in self.marker_list
-
-
-class MarkerList(NPString):
-    def __new__(cls, marker, fill=None, cap=None, transform=None, join=None):
-        marker = [marker] if isinstance(marker, str | int) else marker
-        return super().__new__(
-            cls,
-            [Marker(i, fill, cap, transform, join).marker for i in marker],
-            dtype=MarkerStyle,
-            max_ndim=1,
-        )
-
-    def __iter__(self):
-        return iter(self.data)
-
-    def __getitem__(self, val):
-        return super().__getitem__(val)
-
-    def __str__(self):
-        return str(self.data[0])
-
-    def __repr__(self):
-        return f"MarkerList({self.data})"
