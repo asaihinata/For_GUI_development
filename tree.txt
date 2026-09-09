@@ -361,9 +361,6 @@ For_GUI_development
  │   │       │       │   └── __init__.pyi
  │   │       │       ├── __init__.py
  │   │       │       └── btnpop
- │   │       │           ├── Btn
- │   │       │           │   ├── __init__.py
- │   │       │           │   └── __init__.pyi
  │   │       │           ├── Colorbtn
  │   │       │           │   ├── __init__.py
  │   │       │           │   └── __init__.pyi
@@ -373,7 +370,10 @@ For_GUI_development
  │   │       │           ├── FolderLoad
  │   │       │           │   ├── __init__.py
  │   │       │           │   └── __init__.pyi
- │   │       │           └── Savebtn
+ │   │       │           ├── Savebtn
+ │   │       │           │   ├── __init__.py
+ │   │       │           │   └── __init__.pyi
+ │   │       │           └── _btn
  │   │       │               ├── __init__.py
  │   │       │               └── __init__.pyi
  │   │       └── window

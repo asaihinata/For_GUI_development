@@ -1,6 +1,7 @@
+from tkinter import DoubleVar, IntVar
 from tkinter.ttk import Progressbar, Style
 
-from sgg.dev import listchose, num0, parsecolor
+from sgg.dev import _is_real, listchose, parsecolor
 from sgg.widget.base import Element
 
 __all__ = ["TProgressbar"]
@@ -9,9 +10,22 @@ __all__ = ["TProgressbar"]
 class TProgressbar(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.value = num0(kw.get("value"))
-        self.maximum = num0(kw.get("max"), 100)
-        self.length = num0(kw.get("length"), 200)
+        value = kw.get("value", 0)
+        if _is_real(value):
+            self.value = value
+        else:
+            raise TypeError
+        self._variable(self.value)
+        maximum = kw.get("max")
+        if _is_real(maximum):
+            self.maximum = maximum
+        else:
+            self.maximum = 200
+        length = kw.get("length")
+        if _is_real(length):
+            self.length = length
+        else:
+            self.length = 200
         self.mode = listchose(kw.get("mode"), ["determinate", "indeterminate"])
         self.orient = listchose(kw.get("orient"), ["horizontal", "vertical"])
         self.style = Style()
@@ -34,6 +48,7 @@ class TProgressbar(Element):
         )
         self.widget = Progressbar(
             master,
+            variable=self.variable,
             takefocus=self.takefocus,
             cursor=self.cursor,
             orient=self.orient,
@@ -42,19 +57,26 @@ class TProgressbar(Element):
             style=self.style_name,
             maximum=self.maximum,
         )
-        self._set(self.value)
-
-    def _set(self, val):
-        try:
-            self.widget["value"] = val
-        except:
-            self.widget["value"] = 0
 
     def get(self):
         return self.widget["value"]
 
-    def start(self):
-        self.widget.start()
+    def set(self, value):
+        if not _is_real(value):
+            raise TypeError
+        self.value = value
+        self._variable(value)
+        self.widget.config(variable=self.variable)
+
+    def start(self, interval=None):
+        if interval is not None and not _is_real(interval):
+            raise TypeError
+        self.widget.start(interval)
+
+    def step(self, amount=None):
+        if amount is not None and not _is_real(amount):
+            raise TypeError
+        self.widget.step(amount)
 
     def stop(self):
         self.widget.stop()
@@ -69,3 +91,9 @@ class TProgressbar(Element):
     def set_bg(self, bg):
         self.bg = parsecolor(bg, self.bg)
         self.style.configure(self.style_name, troughcolor=self.bg, thickness=20)
+
+    def _variable(self, value):
+        if isinstance(value, int):
+            self.variable = IntVar(self.master, int(value))
+        else:
+            self.variable = DoubleVar(self.master, float(value))

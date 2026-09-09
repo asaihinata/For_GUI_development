@@ -1,4 +1,4 @@
-from ..Btn import Btn, Button, askcolor, parsecolor
+from .._btn import Btn, Button, askcolor, parsecolor
 
 __all__ = ["Colorbtn"]
 

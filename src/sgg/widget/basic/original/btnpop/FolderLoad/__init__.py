@@ -1,6 +1,6 @@
 from os import getcwd
 
-from ..Btn import Btn, Button, askdirectory
+from .._btn import Btn, Button, askdirectory
 
 __all__ = ["FolderLoad"]
 
