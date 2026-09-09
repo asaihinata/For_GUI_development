@@ -88,6 +88,7 @@ __all__ = [
     "Step",
     "Tab",
     "Table",
+    "TCheckbox",
     "TCombobox",
     "Texts",
     "TProgressbar",
@@ -175,6 +176,10 @@ class Guis:
     @staticmethod
     def Checkbox(**kw):
         return {"count": _counts(), "type": "Checkbox", **kw}
+
+    @staticmethod
+    def TCheckbox(**kw):
+        return {"count": _counts(), "type": "TCheckbox", **kw}
 
     @staticmethod
     def Frames(**kw):

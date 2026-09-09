@@ -168,6 +168,8 @@ class WindowController:
             widget = Savebtn(parent, kw)
         elif t == "TProgressbar":
             widget = TProgressbar(parent, kw)
+        elif t == "TCheckbox":
+            widget = TCheckbox(parent, kw)
         elif t == "Tab":
             widget = Tab(parent, kw)
             for tab in kw.get("tabs", []):

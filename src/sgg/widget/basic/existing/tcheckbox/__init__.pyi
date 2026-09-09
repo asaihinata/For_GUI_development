@@ -1,11 +1,11 @@
-from tkinter import Checkbutton
+from tkinter.ttk import Checkbutton
 
 from sgg._typing import ColorType
 from sgg.widget.base import _Element
 
-__all__ = ["Checkbox"]
+__all__ = ["TCheckbox"]
 
-class Checkbox(_Element):
+class TCheckbox(_Element):
     widget: Checkbutton
     def delta(self) -> None:
         """ウィジェットを削除する"""
