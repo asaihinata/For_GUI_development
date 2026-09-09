@@ -171,6 +171,15 @@ class Element:
             return _flatten(array)
         elif isinstance(array, range):
             return list(array)
+        elif isinstance(array, np.ndarray):
+            return array.ravel().tolist()
+        raise TypeError(f"{array}には配列を指定してください")
+
+    def _to_str_flat_list(self, array):
+        if isinstance(array, list | tuple):
+            return _flatten(array)
+        elif isinstance(array, range):
+            return list(array)
         elif isinstance(array, np.ndarray) and array.dtype.kind == "U":
             return array.ravel().tolist()
         elif isinstance(array, str):

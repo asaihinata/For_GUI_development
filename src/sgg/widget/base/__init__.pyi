@@ -159,11 +159,10 @@ class Element:
     def name(self) -> str:
         """ウィジェットのインスタンス名を返す"""
 
-    def _to_flat_list(
+    def _to_flat_list(self, array: list | tuple | range | np.ndarray) -> list[str]:
+        """配列を一次元の配列に変換する"""
+
+    def _to_str_flat_list(
         self, array: list | tuple | range | NDStr_ | str | np.str_
     ) -> list[str]:
-        """
-        配列を一次元の配列に変換する
-
-        :raises TypeError: `array`に文字列のみが入った配列を指定した場合に発生させる
-        """
+        """配列を一次元の配列に変換する"""
