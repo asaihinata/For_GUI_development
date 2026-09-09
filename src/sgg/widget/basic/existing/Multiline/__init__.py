@@ -1,10 +1,9 @@
-from itertools import chain
 from tkinter import INSERT, Text
 
 import numpy as np
 import numpy.strings as nps
 
-from sgg.dev import _is_real, bols, listchose, num0, parsecolor
+from sgg.dev import _flatten, _is_real, bols, listchose, num0, parsecolor
 from sgg.widget.base import Element
 
 __all__ = ["Multiline"]
@@ -65,20 +64,13 @@ class Multiline(Element):
         )
         if self.cursorshow:
             self.widget.focus_set()
-        if isinstance(txt, str | list | tuple | range) or (
-            isinstance(txt, np.ndarray) and txt.dtype.kind == "U"
-        ):
-            self.__insert_txt(txt)
-        elif isinstance(txt, np.str_):
-            self.__insert_txt(str(txt))
-        else:
-            raise TypeError
+        self.__insert_txt(self._to_flat_list(txt))
 
     def __insert_txt(self, txt):
         if isinstance(txt, str):
             self.inserts(txt, place="end")
         elif isinstance(txt, list | tuple | range):
-            arr, self.__count = list(chain.from_iterable([txt])), 0
+            arr, self.__count = _flatten(txt), 0
 
             def _func(txt, lens):
                 if lens == self.__count:

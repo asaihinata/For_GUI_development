@@ -1,8 +1,10 @@
 from re import findall
 from types import FunctionType
 
+import numpy as np
+
 from sgg._list import CURSOR_LIST
-from sgg.dev import bols, listchose, num0s, parsecolor
+from sgg.dev import _flatten, bols, listchose, num0s, parsecolor
 from sgg.font import Getfont, TKFont
 
 __all__ = ["Element"]
@@ -163,3 +165,16 @@ class Element:
             return self.bg
         else:
             raise ValueError
+
+    def _to_flat_list(self, array):
+        if isinstance(array, list | tuple):
+            return _flatten(array)
+        elif isinstance(array, range):
+            return list(array)
+        elif isinstance(array, np.ndarray) and array.dtype.kind == "U":
+            return array.ravel().tolist()
+        elif isinstance(array, str):
+            return [array]
+        elif isinstance(array, np.str_):
+            return [str(array)]
+        raise TypeError(f"{array}には文字列のみが入った配列を指定してください")

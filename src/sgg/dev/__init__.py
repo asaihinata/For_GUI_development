@@ -5,6 +5,7 @@ from .common._darray import *
 from .common._dnumber import *
 
 __all__ = [
+    "_flatten",
     "bols",
     "change_array_like",
     "int0",
@@ -33,3 +34,13 @@ def bols(j, o=True):
     ):
         return j
     return o
+
+
+def _flatten(lst):
+    result = []
+    for item in lst:
+        if isinstance(item, list | tuple):
+            result.extend(_flatten(item))
+        else:
+            result.append(item)
+    return result

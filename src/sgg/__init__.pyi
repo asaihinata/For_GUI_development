@@ -846,8 +846,8 @@ class Guis:
     @staticmethod
     def TCombobox(
         *,
-        values: list = ...,
-        default: str = ...,
+        values: list[str] | tuple[str, ...] | range | str | np.str_ | sgt.NDStr_ = ...,
+        text: str = ...,
         state: Literal["normal", "readonly", "disabled"] = "normal",
         takefocus: bool = ...,
         cursor: sgt.CURSOR_TYPE = ...,
@@ -863,9 +863,9 @@ class Guis:
         コンボボックスを作成する
 
         :param values: 選択項目を指定する
-        :type values: list
-        :param default: 入力項目の初期テキストを指定する
-        :type default: str
+        :type values: list[str] | tuple[str,...] | range | str | np.str_ | NDArray[str_]
+        :param text: 入力項目の初期テキストを指定する
+        :type text: str
         :param state: 値の入力制限やTComboboxウィジェットの有効化や無効化について指定する
         :type state: Literal["normal","readonly","disabled"]
         :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する

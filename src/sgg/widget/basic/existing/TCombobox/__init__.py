@@ -9,8 +9,8 @@ __all__ = ["TCombobox"]
 class TCombobox(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.values = kw.get("values", [])
-        self.default = kw.get("default")
+        self.values = self._to_flat_list(kw.get("values"))
+        self.text = kw.get("text")
         self.states = listchose(kw.get("state"), ["normal", "readonly", "disabled"])
         self.style = Style()
         self.stylename = f"Custom{kw.get("count")}.TCombobox"
@@ -30,8 +30,8 @@ class TCombobox(Element):
             font=self.font,
             style=self.stylename,
         )
-        if self.default:
-            self.widget.set(self.default)
+        if self.text:
+            self.widget.set(self.text)
 
     def get_text(self):
         return self.widget.get()
