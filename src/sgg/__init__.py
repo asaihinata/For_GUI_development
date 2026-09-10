@@ -19,6 +19,7 @@ __all__ = [
     "Barpolar",
     "Boxplot",
     "Buttons",
+    "TButtons",
     "Checkbox",
     "Chooser",
     "Colorbtn",
@@ -144,6 +145,10 @@ class Guis:
     @staticmethod
     def Buttons(**kw):
         return {"count": _counts(), "type": "Buttons", **kw}
+
+    @staticmethod
+    def TButtons(**kw):
+        return {"count": _counts(), "type": "TButtons", **kw}
 
     @staticmethod
     def Input(**kw):

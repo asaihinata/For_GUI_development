@@ -26,6 +26,7 @@ __all__ = [
     "Barpolar",
     "Boxplot",
     "Buttons",
+    "TButtons",
     "Checkbox",
     "Chooser",
     "Colorbtn",
@@ -498,9 +499,76 @@ class Guis:
         """
         ボタンを作成する
 
-        :param text: Buttonsウィジェットに表記させる文字を指定する
+        :param text: ウィジェットに表記させる文字を指定する
         :type text: str
-        :param function: Buttonsウィジェットが押された時実行される関数を指定する
+        :param function: ウィジェットが押された時実行される関数を指定する
+        :type function: function | tuple[function,...] | None
+        :param width: ウィジェットの幅を指定する
+        :type width: int | float | None
+        :param height: ウィジェットの高さを指定する
+        :type height: int | float | None
+        :param bg: ウィジェットの背景色を指定する
+        :type bg: 色名 | None
+        :param fg: ウィジェットの文字色を指定する
+        :type fg: 色名 | None
+        :param family: ウィジェットに表示させる文字のフォント名を指定する
+        :type family: str
+        :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
+        :type font_size: int | float
+        :param weight: ウィジェットに表示させる文字のフォントの太さを指定する
+        :type weight: Literal["normal", "bold"]
+        :param slant: ウィジェットに表示させる文字のフォントの斜体にするか指定する
+        :type slant: Literal["roman", "italic"]
+        :param underline: ウィジェットに表示させる文字のフォントの下線を表示させるかを指定する
+        :type underline: bool
+        :param overstrike: ウィジェットに表示させる文字のフォントの取り消し線を加えるか指定する
+        :type overstrike: bool
+        :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
+        :type takefocus: bool
+        :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する
+        :type borderwidth: int | float
+        :param padx: ウィジェットの外側の左右に空白を入れるサイズを指定する
+        :type padx: int | float
+        :param pady: ウィジェットの外側の上下に空白を入れるサイズを指定する
+        :type pady: int | float
+        :param wraplength: テキストの折り返し幅を指定する
+        :type wraplength: int | float
+        :param cursor: マウスカーソルを指定する
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :param anchor: ウィジェット内の文字の位置を指定する
+        :type anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"]
+        :param relief: ウィジェットの周囲に枠線について指定する
+        :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
+        :param key: ウィジェット固有の番号を指定する
+        :type key: str | None
+        """
+
+    @staticmethod
+    def TButtons(
+        *,
+        text: str = ...,
+        function: function | tuple[function, ...] | None = ...,
+        takefocus: bool = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
+        bg: sgt.ColorTypeN = ...,
+        fg: sgt.ColorTypeN = ...,
+        family: str = ...,
+        font_size: int | float = 14,
+        weight: Literal["normal", "bold"] = ...,
+        slant: Literal["roman", "italic"] = ...,
+        underline: bool = ...,
+        overstrike: bool = ...,
+        anchor: Literal[
+            "nw", "n", "ne", "w", "center", "e", "sw", "s", "se"
+        ] = "center",
+        key: str | None = ...,
+    ) -> dict[str, Any]:
+        """
+        ボタンを作成する
+
+        :param text: ウィジェットに表記させる文字を指定する
+        :type text: str
+        :param function: ウィジェットが押された時実行される関数を指定する
         :type function: function | tuple[function,...] | None
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
@@ -1229,9 +1297,9 @@ class Guis:
         """
         メニューボタンを作成する
 
-        :param list: MenuButtonsウィジェットに表示させるメニューを指定する
+        :param list: Menuウィジェットに表示させるメニューを指定する
         :type list: list
-        :param text: MenuButtonsウィジェットのボタンに表記させる文字を指定する
+        :param text: Menuウィジェットのボタンに表記させる文字を指定する
         :type text: str
         :param tearoff: メニューウィジェットを独立したウィンドウにするかを指定する
         :type tearoff: bool

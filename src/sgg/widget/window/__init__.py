@@ -19,6 +19,7 @@ class WindowController:
     """ウィンドウを生成する"""
 
     count = 0
+    _style_name_dict = {}
 
     def __init__(self, kw):
         self.title = kw.get("title", "window")
@@ -144,6 +145,8 @@ class WindowController:
             widget = Imagelink(parent, kw)
         elif t == "Buttons":
             widget = Buttons(parent, kw)
+        elif t == "TButtons":
+            widget = TButtons(parent, kw)
         elif t == "Input":
             widget = Input(parent, kw)
         elif t == "Multiline":
@@ -259,6 +262,11 @@ class WindowController:
             widget = RadarFill(parent, kw)
         else:
             widget = Texts(parent, {"text": f"Unknown element:{t}"})
+        if hasattr(widget, "stylename"):
+            self._style_name_dict[kw["key"]] = {
+                "stylename": widget.stylename,
+                "class": widget.__class__.__name__,
+            }
         if widget:
             if t == "Menus":
                 self.root.config(menu=widget.widget)
@@ -277,6 +285,10 @@ class WindowController:
                 self.widgets[f"widget{self.count}"] = widget
         self.count += 1
 
+    @property
+    def style_name_dict(self):
+        return self._style_name_dict
+
     def get(self, key):
         return self.widgets.get(key)
 
@@ -286,6 +298,9 @@ class WindowController:
     def set_title(self, title):
         self.title = title
         self.root.title(title)
+
+    def get_style(self):
+        return self._style_name_dict
 
     def widgetcount(self):
         return self.count

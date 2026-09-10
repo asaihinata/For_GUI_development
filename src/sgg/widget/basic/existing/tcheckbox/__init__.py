@@ -28,7 +28,6 @@ class TCheckbox(Element):
             text=self.text,
             variable=self.variable,
             style=self.stylename,
-            takefocus=self.takefocus,
         )
 
     def get_value(self):

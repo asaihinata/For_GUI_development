@@ -50,6 +50,7 @@ class WindowController:
     def set_title(self, title: str) -> None:
         """ウィジェットのタイトルを設置する"""
 
+    def get_style(self) -> dict: ...
     def close(self) -> None:
         """windowウィジェットを終了させる"""
 
@@ -132,3 +133,6 @@ class WindowController:
 
     def geometry(self) -> list[float, float, float, float]:
         """ウィンドウの高さと幅,座標を返す"""
+
+    @property
+    def style_name_dict(self) -> dict: ...

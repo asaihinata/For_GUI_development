@@ -13,6 +13,7 @@ from .radio import Radio
 from .slidebar import Slidebar
 from .tab import Tab
 from .table import Table
+from .tbuttons import TButtons
 from .tcheckbox import TCheckbox
 from .tcombobox import TCombobox
 from .texts import Texts
@@ -20,6 +21,7 @@ from .tprogressbar import TProgressbar
 from .tree import Tree
 
 __all__ = [
+    "TButtons",
     "Buttons",
     "Checkbox",
     "Column",

@@ -1,11 +1,12 @@
 from .basic import (Buttons, Checkbox, Colorbtn, Column, FileLoad, FolderLoad,
                     Frames, Imagebyte, Imagelink, Images, Input, InputNumber,
                     Link, Listboxs, Menubuttons, Menus, Multiline, Radio,
-                    Savebtn, Slidebar, Tab, Table, TCheckbox, TCombobox, Texts,
-                    TProgressbar, Tree)
+                    Savebtn, Slidebar, Tab, Table, TButtons, TCheckbox,
+                    TCombobox, Texts, TProgressbar, Tree)
 from .window import WindowController
 
 __all__ = [
+    "TButtons",
     "Buttons",
     "Checkbox",
     "Colorbtn",
