@@ -1,4 +1,4 @@
-from tkinter import Misc, _Cursor
+from tkinter import Misc, _Cursor,Widget
 from typing import Callable
 
 import numpy as np
@@ -13,6 +13,7 @@ class _Element(Element):
     master: Misc
 
 class Element:
+    widget = ...
     master: Misc
     graph: bool = False
     cursor: _Cursor

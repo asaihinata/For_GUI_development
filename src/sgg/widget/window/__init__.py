@@ -6,8 +6,8 @@ from types import FunctionType
 from PIL import ImageGrab
 
 from sgg._list import CURSOR_LIST, USE_IMG_LIST
-from sgg.dev import (bols, is_array_like, listchose, num0s, parsecolor,
-                     range_num)
+from sgg.dev import (_flatten, bols, is_array_like, listchose, num0s,
+                     parsecolor, range_num)
 from sgg.dialogs import asksaveasfilename
 from sgg.graph import *
 from sgg.widget.basic import *
@@ -20,6 +20,7 @@ class WindowController:
 
     count = 0
     _style_name_dict = {}
+    Menu_in_judge=True
 
     def __init__(self, kw):
         self.title = kw.get("title", "window")
@@ -269,7 +270,9 @@ class WindowController:
             }
         if widget:
             if t == "Menus":
-                self.root.config(menu=widget.widget)
+                if self.Menu_in_judge==True:
+                    self.root.config(menu=widget.widget)
+                    self.Menu_in_judge=False
             elif widget.graph == True:
                 widget._pack()
             else:
@@ -358,14 +361,13 @@ class WindowController:
     def win_exec_funcs(self, funcs=None):
         if isinstance(funcs, FunctionType):
             funcs()
-        elif isinstance(funcs, list):
+        elif isinstance(funcs, list | tuple):
+            funcs = _flatten(funcs)
             for f in funcs:
                 if isinstance(f, FunctionType):
                     f()
-                else:
-                    raise TypeError("関数ではありません")
         else:
-            raise TypeError("関数ではありません")
+            return None
 
     def foreground(self, bools=False):
         self.root.attributes("-topmost", bools)
@@ -381,7 +383,7 @@ class WindowController:
         return self.alpha
 
     def deiconify(self):
-        self.root.deiconify()
+        self.root.deiconify
 
     def withdraw(self):
         self.root.withdraw()

@@ -69,19 +69,12 @@ class Element:
 
     def _exec_funcs(self, funcs=None):
         if isinstance(funcs, FunctionType):
-            try:
-                funcs()
-            except NameError as e:
-                raise NameError(f"{e}という関数は見つかりません")
+            funcs()
         elif isinstance(funcs, list | tuple):
+            funcs = _flatten(funcs)
             for f in funcs:
                 if isinstance(f, FunctionType):
-                    try:
-                        f()
-                    except NameError as e:
-                        raise NameError(f"{e}という関数は見つかりません")
-                else:
-                    raise NameError(f"{f}という関数は見つかりません")
+                    f()
         else:
             return None
 

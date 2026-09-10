@@ -15,7 +15,7 @@ class Checkbox(Element):
         self.selectcolor = parsecolor(kw.get("selectcolor", "white"), "white")
         self.activebg = parsecolor(kw.get("activebg"))
         self.activefg = parsecolor(kw.get("activefg"))
-        self.variable = BooleanVar(self.default)
+        self.variable = BooleanVar(master, self.default)
         self.widget = Checkbutton(
             self.master,
             activebackground=self.activebg,
