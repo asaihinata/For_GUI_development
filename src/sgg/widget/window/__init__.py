@@ -20,7 +20,7 @@ class WindowController:
 
     count = 0
     _style_name_dict = {}
-    Menu_in_judge=True
+    Menu_in_judge = True
 
     def __init__(self, kw):
         self.title = kw.get("title", "window")
@@ -270,9 +270,9 @@ class WindowController:
             }
         if widget:
             if t == "Menus":
-                if self.Menu_in_judge==True:
+                if self.Menu_in_judge == True:
                     self.root.config(menu=widget.widget)
-                    self.Menu_in_judge=False
+                    self.Menu_in_judge = False
             elif widget.graph == True:
                 widget._pack()
             else:

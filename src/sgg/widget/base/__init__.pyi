@@ -1,4 +1,4 @@
-from tkinter import Misc, _Cursor,Widget
+from tkinter import Misc, Widget, _Cursor
 from typing import Callable
 
 import numpy as np

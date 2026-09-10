@@ -9,7 +9,10 @@ __all__ = ["Menus"]
 class Menus(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.menu_lists = kw.get("list", [])
+        menu_lists = kw.get("list", [])
+        if not isinstance(menu_lists, list):
+            raise TypeError
+        self.menu_lists = menu_lists
         self.funcs = None
         self.tearoff = bols(kw.get("tearoff"), False)
         self.widget = Menu(
@@ -31,8 +34,6 @@ class Menus(Element):
             if not isinstance(menus, list):
                 continue
             for i in range(0, len(menus), 2):
-                if len(menus) <= i + 1:
-                    break
                 submenu = Menu(
                     self.widget,
                     tearoff=self.tearoff,
@@ -40,7 +41,9 @@ class Menus(Element):
                     fg=self.fg,
                     font=self.font,
                 )
-                self._add_items_recursive(menu=submenu, items=menus[i + 1])
+                self._add_items_recursive(
+                    menu=submenu, items="" if len(menus) <= i + 1 else menus[i + 1]
+                )
                 self.widget.add_cascade(label=menus[i], menu=submenu)
 
     def _add_items_recursive(self, menu: Menu, items):
