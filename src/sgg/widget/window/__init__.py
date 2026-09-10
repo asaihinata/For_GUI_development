@@ -10,6 +10,7 @@ from sgg.dev import (_flatten, bols, is_array_like, listchose, num0s,
                      parsecolor, range_num)
 from sgg.dialogs import asksaveasfilename
 from sgg.graph import *
+from sgg.widget.base import TElement
 from sgg.widget.basic import *
 
 __all__ = ["WindowController"]
@@ -263,9 +264,9 @@ class WindowController:
             widget = RadarFill(parent, kw)
         else:
             widget = Texts(parent, {"text": f"Unknown element:{t}"})
-        if hasattr(widget, "stylename"):
+        if isinstance(widget, TElement):
             self._style_name_dict[kw["key"]] = {
-                "stylename": widget.stylename,
+                "stylename": widget.style_list,
                 "class": widget.__class__.__name__,
             }
         if widget:

@@ -2,12 +2,12 @@ from tkinter import DoubleVar, IntVar
 from tkinter.ttk import Progressbar, Style
 
 from sgg.dev import _is_real, listchose, parsecolor
-from sgg.widget.base import Element
+from sgg.widget.base import TElement
 
 __all__ = ["TProgressbar"]
 
 
-class TProgressbar(Element):
+class TProgressbar(TElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         value = kw.get("value", 0)
@@ -29,14 +29,14 @@ class TProgressbar(Element):
         self.mode = listchose(kw.get("mode"), ["determinate", "indeterminate"])
         self.orient = listchose(kw.get("orient"), ["horizontal", "vertical"])
         self.style = Style()
-        self.style_name = (
-            f"Custom{kw.get("count")}.Horizontal.TProgressbar"
-            if self.orient == "horizontal"
-            else f"Custom{kw.get("count")}.Vertical.TProgressbar"
-        )
+        if self.orient == "horizontal":
+            self.stylename = f"Custom{kw.get("count")}.Horizontal.TProgressbar"
+        else:
+            self.stylename = f"Custom{kw.get("count")}.Vertical.TProgressbar"
+        self.style_list = [self.stylename]
         self.style.theme_use("default")
         self.style.layout(
-            self.style_name,
+            self.stylename,
             self.style.layout(
                 "Horizontal.TProgressbar"
                 if self.orient == "horizontal"
@@ -44,7 +44,7 @@ class TProgressbar(Element):
             ),
         )
         self.style.configure(
-            self.style_name, background=self.fg, troughcolor=self.bg, thickness=20
+            self.stylename, background=self.fg, troughcolor=self.bg, thickness=20
         )
         self.widget = Progressbar(
             master,
@@ -54,7 +54,7 @@ class TProgressbar(Element):
             orient=self.orient,
             length=self.length,
             mode=self.mode,
-            style=self.style_name,
+            style=self.stylename,
             maximum=self.maximum,
         )
 
@@ -86,11 +86,11 @@ class TProgressbar(Element):
 
     def set_fg(self, fg):
         self.fg = parsecolor(fg, self.fg)
-        self.style.configure(self.style_name, background=self.fg, thickness=20)
+        self.style.configure(self.stylename, background=self.fg, thickness=20)
 
     def set_bg(self, bg):
         self.bg = parsecolor(bg, self.bg)
-        self.style.configure(self.style_name, troughcolor=self.bg, thickness=20)
+        self.style.configure(self.stylename, troughcolor=self.bg, thickness=20)
 
     def _variable(self, value):
         if isinstance(value, int):

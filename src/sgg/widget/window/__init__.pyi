@@ -16,6 +16,8 @@ class WindowController:
     __sizeof__: int
     root: Tk
     alpha: float
+    _style_name_dict: dict
+    Menu_in_judge: bool
     def __init__(
         self,
         layout: list = ...,

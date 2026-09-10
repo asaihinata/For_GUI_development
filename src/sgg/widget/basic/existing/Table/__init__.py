@@ -3,12 +3,12 @@ from tkinter.ttk import Style, Treeview
 import numpy as np
 
 from sgg.dev import num0s, parsecolor
-from sgg.widget.base import Element
+from sgg.widget.base import TElement
 
 __all__ = ["Table"]
 
 
-class Table(Element):
+class Table(TElement):
     def __init__(self, master, kw):
         def _func(v):
             return v if 2 <= v.ndim else _func(v[np.newaxis, :])
@@ -30,6 +30,8 @@ class Table(Element):
         self.rowheight = num0s(kw.get("rowheight"), 50)
         self.rowheader = kw.get("rowheader", [])
         self.stylename = f"Table{kw.get("count")}.Treeview"
+        self.styleheadingname = f"{self.stylename}.Heading"
+        self.style_list = [self.stylename, self.styleheadingname]
         self.widget = Treeview(
             self.master,
             show="headings",
@@ -39,12 +41,12 @@ class Table(Element):
         )
         self.style = Style()
         self.style.configure(
-            style=f"{self.stylename}.Heading",
+            style=self.styleheadingname,
             background=self.header_bg,
             foreground=self.header_fg,
             font=self.font,
         )
-        self.widget.configure(style=f"{self.stylename}.Heading")
+        self.widget.configure(style=self.styleheadingname)
         self.style.configure(
             style=self.stylename,
             background=self.bg,

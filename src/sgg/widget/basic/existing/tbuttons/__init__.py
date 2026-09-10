@@ -2,12 +2,12 @@ from tkinter import Variable
 from tkinter.ttk import Button, Style
 
 from sgg.dev import listchose, num0, parsecolor
-from sgg.widget.base import Element
+from sgg.widget.base import TElement
 
 __all__ = ["TButtons"]
 
 
-class TButtons(Element):
+class TButtons(TElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.text = kw.get("text")
@@ -32,6 +32,7 @@ class TButtons(Element):
             ],
         )
         self.stylename = f"Custom{kw.get("count")}.TButton"
+        self.style_list = [self.stylename]
         self.style = Style()
         self.style.configure(
             self.stylename,

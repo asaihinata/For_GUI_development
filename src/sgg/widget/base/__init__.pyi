@@ -1,4 +1,4 @@
-from tkinter import Misc, Widget, _Cursor
+from tkinter import Misc, _Cursor
 from typing import Callable
 
 import numpy as np
@@ -6,9 +6,13 @@ import numpy as np
 from sgg._typing import NDStr_
 from sgg.font import TKFont
 
-__all__ = ["_Element", "Element"]
+__all__ = ["_Element", "_TElement", "Element", "TElement"]
 
 class _Element(Element):
+    widget: None
+    master: Misc
+
+class _TElement(Element):
     widget: None
     master: Misc
 
@@ -167,3 +171,6 @@ class Element:
         self, array: list | tuple | range | NDStr_ | str | np.str_
     ) -> list[str]:
         """配列を一次元の配列に変換する"""
+
+class TElement(Element):
+    style_list: list = []

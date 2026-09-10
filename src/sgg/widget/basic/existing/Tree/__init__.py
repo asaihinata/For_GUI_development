@@ -1,12 +1,12 @@
 from tkinter.ttk import Style, Treeview
 
 from sgg.dev import num0, num0s, parsecolor
-from sgg.widget.base import Element
+from sgg.widget.base import TElement
 
 __all__ = ["Tree"]
 
 
-class Tree(Element):
+class Tree(TElement):
     sums = 1
 
     def __init__(self, master, kw):
@@ -45,13 +45,15 @@ class Tree(Element):
             self.widget.column(c, width=self.colwidth, anchor="w")
         style = Style()
         self.stylename = f"Tree{kw.get("count")}.Treeview"
+        self.styleheadingname = f"{self.stylename}.Heading"
+        self.style_list = [self.stylename, self.styleheadingname]
         style.configure(
-            style=f"{self.stylename}.Heading",
+            style=self.styleheadingname,
             background=self.header_bg,
             foreground=self.header_fg,
             font=self.font,
         )
-        self.widget.configure(style=f"{self.stylename}.Heading")
+        self.widget.configure(style=self.styleheadingname)
         style.configure(
             style=self.stylename,
             background=self.bg,

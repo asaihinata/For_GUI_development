@@ -7,7 +7,7 @@ from sgg._list import CURSOR_LIST
 from sgg.dev import _flatten, bols, listchose, num0s, parsecolor
 from sgg.font import Getfont, TKFont
 
-__all__ = ["Element"]
+__all__ = ["Element", "TElement"]
 
 
 class Element:
@@ -181,3 +181,7 @@ class Element:
         elif isinstance(array, np.str_):
             return [str(array)]
         raise TypeError(f"{array}には文字列のみが入った配列を指定してください")
+
+
+class TElement(Element):
+    style_list = None

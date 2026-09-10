@@ -1,12 +1,12 @@
 from tkinter.ttk import Combobox, Style
 
 from sgg.dev import listchose
-from sgg.widget.base import Element
+from sgg.widget.base import TElement
 
 __all__ = ["TCombobox"]
 
 
-class TCombobox(Element):
+class TCombobox(TElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.values = self._to_flat_list(kw.get("values"))
@@ -14,6 +14,7 @@ class TCombobox(Element):
         self.states = listchose(kw.get("state"), ["normal", "readonly", "disabled"])
         self.style = Style()
         self.stylename = f"Custom{kw.get("count")}.TCombobox"
+        self.style_list = [self.stylename]
         self.style.configure(
             self.stylename,
             foreground=self.fg,

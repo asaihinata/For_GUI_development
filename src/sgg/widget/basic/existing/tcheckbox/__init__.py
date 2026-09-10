@@ -2,18 +2,19 @@ from tkinter import BooleanVar
 from tkinter.ttk import Checkbutton, Style
 
 from sgg.dev import bols
-from sgg.widget.base import Element
+from sgg.widget.base import TElement
 
 __all__ = ["TCheckbox"]
 
 
-class TCheckbox(Element):
+class TCheckbox(TElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.text = kw.get("text")
         self.default = bols(kw.get("default"), False)
         self.variable = BooleanVar(master, value=self.default)
         self.stylename = f"Custom{kw.get("count")}.TCheckbutton"
+        self.style_list = [self.stylename]
         self.style = Style()
         self.style.configure(
             self.stylename,
