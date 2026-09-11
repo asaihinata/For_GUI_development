@@ -1,7 +1,5 @@
 from tkinter import Listbox, StringVar
 
-from numpy import ndarray
-
 from sgg.dev import bols, listchose, nums, parsecolor
 from sgg.widget.base import Element
 
