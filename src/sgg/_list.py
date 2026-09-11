@@ -110,3 +110,31 @@ PLACE_LIST = ["left", "right", "center"]
 ORIENTATION_LIST = ["vertical", "horizontal"]
 # graph
 BIN_HIST_LIST = ["auto", "fd", "doane", "scott", "stone", "rice", "sturges", "sqrt"]
+# nparray
+METHOD_LIST = [
+    "inverted_cdf",
+    "averaged_inverted_cdf",
+    "closest_observation",
+    "interpolated_inverted_cdf",
+    "hazen",
+    "weibull",
+    "linear",
+    "median_unbiased",
+    "normal_unbiased",
+]
+DATE_WORD = [
+    "NAT",
+    b"NAT",
+    "NaT",
+    b"NaT",
+    "nat",
+    b"nat",
+    "NOW",
+    b"NOW",
+    "now",
+    b"now",
+    "TODAY",
+    b"TODAY",
+    "today",
+    b"today",
+]

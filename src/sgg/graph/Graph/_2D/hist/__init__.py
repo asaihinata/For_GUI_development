@@ -1,5 +1,5 @@
 from sgg.dev.graph import *
-
+from sgg._list import BIN_HIST_LIST
 __all__ = ["Hist"]
 
 
@@ -8,16 +8,7 @@ class Hist(twoElement):
         super().__init__(master, kw)
         self.__data = tonparray(kw.get("data"), ndmax=1)
         bins = kw.get("bins")
-        if change_array_like(bins) or bins in [
-            "auto",
-            "fd",
-            "doane",
-            "scott",
-            "stone",
-            "rice",
-            "sturges",
-            "sqrt",
-        ]:
+        if change_array_like(bins) or bins in BIN_HIST_LIST:
             self.bins = bins
         elif isinstance(bins, int):
             self.bins = num1s(bins, round(1 + np.log2(self.__data.size)))
@@ -77,16 +68,7 @@ class Hist(twoElement):
         if change_array_like(data):
             self.__data = tonparray(data, ndmax=1)
         bins = kw.get("bins")
-        if change_array_like(bins) or bins in [
-            "auto",
-            "fd",
-            "doane",
-            "scott",
-            "stone",
-            "rice",
-            "sturges",
-            "sqrt",
-        ]:
+        if change_array_like(bins) or bins in BIN_HIST_LIST:
             self.bins = bins
         elif isinstance(bins, int):
             self.bins = num1s(bins, round(1 + np.log2(self.__data.size)))

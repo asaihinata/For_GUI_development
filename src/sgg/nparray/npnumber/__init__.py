@@ -5,20 +5,8 @@ from numpy.random import default_rng
 
 from sgg.dev.array import _ArrayCommonMixin, _arrisuint
 from sgg.exceptions import ShapeError
-
+from sgg._list import METHOD_LIST
 __all__ = ["NPNumber"]
-method_list = [
-    "inverted_cdf",
-    "averaged_inverted_cdf",
-    "closest_observation",
-    "interpolated_inverted_cdf",
-    "hazen",
-    "weibull",
-    "linear",
-    "median_unbiased",
-    "normal_unbiased",
-]
-
 
 class NPNumber(_ArrayCommonMixin):
     """`np.ndarray`を継承した数値型の配列クラス"""
@@ -193,7 +181,7 @@ class NPNumber(_ArrayCommonMixin):
             return np.finfo(self._dtype)
 
     def percentile(self, q, axis=None, method="linear"):
-        if method not in method_list:
+        if method not in METHOD_LIST:
             method = "linear"
         result = np.percentile(np.asarray(self), q, axis=axis, method=method).view(
             type(self)
@@ -202,7 +190,7 @@ class NPNumber(_ArrayCommonMixin):
         return result
 
     def quantile(self, q, axis=None, method="linear"):
-        if method not in method_list:
+        if method not in METHOD_LIST:
             method = "linear"
         result = np.quantile(np.asarray(self), q, axis=axis, method=method).view(
             type(self)
@@ -211,7 +199,7 @@ class NPNumber(_ArrayCommonMixin):
         return result
 
     def IQR(self, axis=None, method="linear"):
-        if method not in method_list:
+        if method not in METHOD_LIST:
             method = "linear"
         result = np.percentile(
             np.asarray(self), [25, 50, 75], axis=axis, method=method

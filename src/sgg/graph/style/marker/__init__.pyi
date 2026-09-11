@@ -10,7 +10,6 @@ from sgg._typing import Type_Marker
 __all__ = ["Marker"]
 
 class Marker:
-    marker_list: list[int | str]
     marker: MarkerStyle
     def __init__(
         self,

@@ -6,27 +6,9 @@ from dateutil.parser import parse
 
 import sgg.dev.array as snd
 from sgg.exceptions import ShapeError
+from sgg._list import DATE_WORD
 
 __all__ = ["NPDate"]
-_Word = frozenset(
-    {
-        "NAT",
-        b"NAT",
-        "NaT",
-        b"NaT",
-        "nat",
-        b"nat",
-        "NOW",
-        b"NOW",
-        "now",
-        b"now",
-        "TODAY",
-        b"TODAY",
-        "today",
-        b"today",
-    }
-)
-
 
 class NPDate(snd._ArrayCommonMixin):
     """`np.ndarray`を継承したdatetime64型の配列クラス"""
@@ -362,7 +344,7 @@ class NPDate(snd._ArrayCommonMixin):
 
 
 def _func(x):
-    if x in _Word:
+    if x in DATE_WORD:
         return x
     if isinstance(x, str):
         try:
@@ -381,7 +363,7 @@ def _func(x):
 
 def _obj_to_datetime64(obj, dtype=None):
     if dtype is None:
-        if obj in _Word or isinstance(obj, datetime | date | int):
+        if obj in DATE_WORD or isinstance(obj, datetime | date | int):
             return np.datetime64(obj)
         elif isinstance(obj, str | np.str_):
             return np.datetime64(_func(obj))
@@ -389,7 +371,7 @@ def _obj_to_datetime64(obj, dtype=None):
     if isinstance(obj, np.datetime64):
         return obj.astype(snd._dt64_unit(dtype))
     dtype = snd._get_dt64_unit(dtype)
-    if obj in _Word or isinstance(obj, datetime | date | int | np.integer):
+    if obj in DATE_WORD or isinstance(obj, datetime | date | int | np.integer):
         return np.datetime64(obj, dtype)
     elif isinstance(obj, str | np.str_):
         return np.datetime64(_func(obj), dtype)
