@@ -7,15 +7,19 @@ __all__ = ["Checkbox"]
 
 
 class Checkbox(Element):
+    _groups = {}
+
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.wraplength = num0(kw.get("wraplength"))
         self.text = kw.get("text")
-        self.default = bols(kw.get("default"), False)
+        self.check = bols(kw.get("check"), False)
+        group = kw.get("group", "default")
+        self.group = group if isinstance(group, str) else "default"
         self.selectcolor = parsecolor(kw.get("selectcolor", "white"), "white")
         self.activebg = parsecolor(kw.get("activebg"))
         self.activefg = parsecolor(kw.get("activefg"))
-        self.variable = BooleanVar(master, self.default)
+        self.variable = BooleanVar(value=self.check)
         self.widget = Checkbutton(
             self.master,
             activebackground=self.activebg,
@@ -35,17 +39,20 @@ class Checkbox(Element):
             font=self.font,
             borderwidth=self.borderwidth,
         )
+        if self.group not in self._groups:
+            self._groups[self.group] = [self.widget]
+        else:
+            self._groups[self.group].append(self.widget)
+
+    def delta(self):
+        self.widget.destroy()
 
     def get_value(self):
         return self.variable.get()
 
     def set_value(self, value=None):
-        self.variable.set(
-            value if isinstance(value, bool) else (not self.variable.get())
-        )
-
-    def delta(self):
-        self.widget.destroy()
+        if isinstance(value, bool):
+            self.variable.set(value)
 
     def get_text(self):
         return self.text

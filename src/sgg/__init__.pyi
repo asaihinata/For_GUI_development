@@ -127,61 +127,6 @@ class Guis:
         size: tuple[int | float | None, int | float | None] = (None, None),
         maxmine: bool = False,
         location: tuple[int | float, int | float] = (0, 0),
-        resizable: bool | None = ...,
-        resizableswidth: bool = ...,
-        resizablesheight: bool = ...,
-    ) -> WindowController:
-        """
-        ウィンドウを作成する
-
-        :param layout: ウィンドウで表示されるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
-        :type layout: Listlike
-        :param title: ウィンドウに表示されるタイトル名を指定する
-        :type title: str
-        :param load: ウィンドウ表示時に実行される関数を指定する
-        :type load: function | tuple[function,...] | None
-        :param bg: ウィンドウの背景を指定する
-        :type bg: 色名 | None
-        :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
-        :param scroll: ウィンドウのx軸,y軸方向にスクロールできるか指定する
-        :type scroll: bool
-        :param scroll_x: ウィンドウのx軸方向にスクロールできるか指定する
-        :type scroll_x: bool
-        :param scroll_y: ウィンドウのy軸方向にスクロールできるか指定する
-        :type scroll_y: bool
-        :param size: ウィンドウの幅と高さを指定する
-        :type size: tuple[int | float | None,int | float | None]
-        :param maxmine: ウィンドウ表示時最大化するかを指定する
-        :type maxmine: bool
-        :param location: ウィンドウの表示位置を指定する
-        :type location: tuple[int | float,int | float]
-        :param resizable: 幅と高さのサイズ変更の許可を指定する
-        :type resizable: bool | None
-        :param resizableswidth: 幅のサイズ変更の許可を指定する
-        :type resizableswidth: bool
-        :param resizablesheight: 高さのサイズ変更の許可を指定する
-        :type resizablesheight: bool
-        """
-
-    @overload
-    @classmethod
-    def window(
-        cls,
-        layout: list = ...,
-        alpha: int | float = 1,
-        fullscreen: bool = False,
-        topmost: bool = False,
-        title: str = "window",
-        load: function | tuple[function, ...] | None = None,
-        bg: str = "#64778d",
-        cursor: sgt.CURSOR_TYPE = ...,
-        scroll: bool = ...,
-        scroll_x: bool = ...,
-        scroll_y: bool = ...,
-        size: tuple[int | float | None, int | float | None] = (None, None),
-        maxmine: bool = False,
-        location: tuple[int | float, int | float] = (0, 0),
         resizable: bool = ...,
     ) -> WindowController:
         """
@@ -231,7 +176,6 @@ class Guis:
         size: tuple[int | float | None, int | float | None] = (None, None),
         maxmine: bool = False,
         location: tuple[int | float, int | float] = (0, 0),
-        resizable: None = None,
         resizableswidth: bool = ...,
         resizablesheight: bool = ...,
     ) -> WindowController:
@@ -260,8 +204,6 @@ class Guis:
         :type maxmine: bool
         :param location: ウィンドウの表示位置を指定する
         :type location: tuple[int | float,int | float]
-        :param resizable: 幅と高さのサイズ変更の許可を指定する
-        :type resizable: None
         :param resizableswidth: 幅のサイズ変更の許可を指定する
         :type resizableswidth: bool
         :param resizablesheight: 高さのサイズ変更の許可を指定する
@@ -1037,7 +979,8 @@ class Guis:
     def Checkbox(
         *,
         text: str = ...,
-        default: bool = False,
+        check: bool = False,
+        group: str = "default",
         selectcolor: sgt.ColorType = "white",
         activefg: sgt.ColorTypeN = None,
         activebg: sgt.ColorTypeN = None,
@@ -1063,8 +1006,10 @@ class Guis:
 
         :param text: Checkboxウィジェットに表記させる文字を指定する
         :type text: str
-        :param default: 読み込み時,Checkboxウィジェットがチェックするかを指定する
-        :type default: bool
+        :param check: 読み込み時,Checkboxウィジェットがチェックするかを指定する
+        :type check: bool
+        :param group: Checkboxウィンドウにグループ名を指定する
+        :type group: str
         :param selectcolor: 選択状態の時に表示される色を指定する
         :type selectcolor: 色名
         :param activebg: ウィジェットがアクティブ状態の時の背景色を指定する

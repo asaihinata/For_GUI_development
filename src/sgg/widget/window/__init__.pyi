@@ -18,25 +18,6 @@ class WindowController:
     alpha: float
     _style_name_dict: dict
     Menu_in_judge: bool
-    def __init__(
-        self,
-        layout: list = ...,
-        alpha: int | float = 1,
-        fullscreen: bool = False,
-        topmost: bool = False,
-        title: str = "window",
-        load: function | tuple[function, ...] | None = None,
-        bg: str = "#64778d",
-        scroll: bool = ...,
-        scroll_x: bool = ...,
-        scroll_y: bool = ...,
-        size: tuple[int | float | None, int | float | None] = (None, None),
-        maxmine: bool = False,
-        location: tuple[int | float, int | float] = (0, 0),
-        resizable: tuple[bool, bool] = ...,
-        resizableswidth: bool | None = None,
-        resizablesheight: bool | None = None,
-    ) -> None: ...
     def get(self, key: str) -> Any:
         """
         ウィジェットの情報を取得する
@@ -135,6 +116,16 @@ class WindowController:
 
     def geometry(self) -> list[float, float, float, float]:
         """ウィンドウの高さと幅,座標を返す"""
+
+    def resizable(self, width: bool, height: bool) -> None:
+        """
+        ウィンドウのサイズ変更の許可を指定する
+
+        :param width: ウィンドウの幅のサイズを変更できるか指定する
+        :type width: bool
+        :param height: ウィンドウの高さのサイズを変更できるか指定する
+        :type height: bool
+        """
 
     @property
     def style_name_dict(self) -> dict: ...

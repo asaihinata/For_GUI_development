@@ -49,12 +49,12 @@ class WindowController:
         self.set_alpha(self.alpha)
         self.fullscreen(self.fullscreens)
         self.foreground(self.topmost)
-        resizable = bols(kw.get("resizable"), None)
+        resizable = bols(kw.get("resizable"), False)
         if resizable:
-            self.resizableswidth, self.resizablesheight = True, True
+            self.resizableswidth = self.resizablesheight = True
         else:
-            self.resizableswidth = bols(kw.get("resizableswidth"), True)
-            self.resizablesheight = bols(kw.get("resizablesheight"), True)
+            self.resizableswidth = bols(kw.get("resizableswidth"), False)
+            self.resizablesheight = bols(kw.get("resizablesheight"), False)
         self.resizable(self.resizableswidth, self.resizablesheight)
         self.location = kw.get("location", (0, 0))
         self.widgets = {}
@@ -426,17 +426,9 @@ class WindowController:
     def winy(self):
         return self.root.winfo_y()
 
-    def resizable(self, width=None, height=None):
-        if (
-            height == None
-            and is_array_like(width)
-            and len(width) == 2
-            and all(isinstance(i, bool) for i in width)
-        ):
-            width, height = width
-        else:
-            if width is None or not isinstance(width, bool):
-                width = None
-            if height is None or not isinstance(height, bool):
-                height = None
-        self.root.resizable(width=width, height=height)
+    def resizable(self, width, height):
+        if isinstance(width, bool):
+            self.resizableswidth = width
+        if isinstance(height, bool):
+            self.resizablesheight = height
+        self.root.resizable(width=self.resizableswidth, height=self.resizablesheight)
