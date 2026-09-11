@@ -5,10 +5,11 @@ import numpy as np
 from dateutil.parser import parse
 
 import sgg.dev.array as snd
-from sgg.exceptions import ShapeError
 from sgg._list import DATE_WORD
+from sgg.exceptions import ShapeError
 
 __all__ = ["NPDate"]
+
 
 class NPDate(snd._ArrayCommonMixin):
     """`np.ndarray`を継承したdatetime64型の配列クラス"""
@@ -126,16 +127,14 @@ class NPDate(snd._ArrayCommonMixin):
         return self.__array__(dtype, copy=copy)
 
     def to_datetime(self):
-        return self.data.astype(datetime)
+        return self.astype(datetime)
 
     def to_date(self):
-        return self.data.astype(date)
+        return self.astype(date)
 
-    def to_str(self):
-        result = np.datetime_as_string(self)
-        if np.ndim(result) == 0:
-            return result
-        return result.__array__()
+    def to_str(self, unit=None, timezone="naive", casting="same_kind"):
+        unit = unit if unit in ["auto", None] else snd._get_dt64_unit(unit)
+        return np.datetime_as_string(self, unit, timezone, casting)
 
     def to_timezone(self, timezone, /):
         try:
@@ -173,7 +172,7 @@ class NPDate(snd._ArrayCommonMixin):
         if isinstance(step, timedelta):
             step = np.timedelta64(step)
         result = np.asarray(
-            np.arange(start, stop, step=step), dtype=snd._dt64_unit(dtype)
+            np.arange(start, stop, step=step, dtype=snd._dt64_unit(dtype))
         ).view(cls)
         result._dtype = result.dtype
         return result

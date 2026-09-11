@@ -3,7 +3,7 @@ from types import FunctionType
 
 import numpy as np
 
-from sgg._list import CURSOR_LIST
+from sgg._list import ANCHOR_LIST, CURSOR_LIST, RELIEF_LIST
 from sgg.dev import _flatten, bols, listchose, num0s, parsecolor
 from sgg.font import Getfont, TKFont
 
@@ -20,9 +20,7 @@ class Element:
         self.justify = listchose(kw.get("justify"), ["left", "right", "center"])
         self.padx = num0s(kw.get("padx"), 1)
         self.pady = num0s(kw.get("pady"), 1)
-        self.relief = listchose(
-            kw.get("relief"), ["flat", "raised", "sunken", "ridge", "solid", "groove"]
-        )
+        self.relief = listchose(kw.get("relief"), RELIEF_LIST, "flat")
         self.fg = parsecolor(kw.get("fg"), "#000000")
         self.bg = parsecolor(
             kw.get("bg"), "#64778d" if self.back_bg == None else self.back_bg
@@ -51,9 +49,7 @@ class Element:
                 self.underline,
                 self.overstrike,
             )
-        self.anchor = listchose(
-            kw.get("anchor"), ["w", "n", "s", "e", "nw", "ne", "se", "sw", "center"]
-        )
+        self.anchor = listchose(kw.get("anchor"), ANCHOR_LIST)
         self.width = self._dwh(kw.get("width"))
         self.height = self._dwh(kw.get("height"))
 

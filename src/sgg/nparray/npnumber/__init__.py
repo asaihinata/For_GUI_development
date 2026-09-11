@@ -3,10 +3,12 @@
 import numpy as np
 from numpy.random import default_rng
 
+from sgg._list import METHOD_LIST
 from sgg.dev.array import _ArrayCommonMixin, _arrisuint
 from sgg.exceptions import ShapeError
-from sgg._list import METHOD_LIST
+
 __all__ = ["NPNumber"]
+
 
 class NPNumber(_ArrayCommonMixin):
     """`np.ndarray`を継承した数値型の配列クラス"""

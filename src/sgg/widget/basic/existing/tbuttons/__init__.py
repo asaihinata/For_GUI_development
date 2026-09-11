@@ -1,6 +1,7 @@
 from tkinter import Variable
 from tkinter.ttk import Button, Style
 
+from sgg._list import ANCHOR_LIST
 from sgg.dev import listchose, num0, parsecolor
 from sgg.widget.base import TElement
 
@@ -16,21 +17,8 @@ class TButtons(TElement):
         self.wraplength = num0(kw.get("wraplength"))
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.shiftrelief = kw.get("shiftrelief")
-        self.state = listchose(kw.get("anchor"), ["normal", "disabled"])
-        self.anchor = listchose(
-            kw.get("anchor"),
-            [
-                "center",
-                "w",
-                "n",
-                "s",
-                "e",
-                "nw",
-                "ne",
-                "se",
-                "sw",
-            ],
-        )
+        self.state = listchose(kw.get("state"), ["normal", "disabled"])
+        self.anchor = listchose(kw.get("anchor"), ANCHOR_LIST, "center")
         self.stylename = f"Custom{kw.get("count")}.TButton"
         self.style_list = [self.stylename]
         self.style = Style()

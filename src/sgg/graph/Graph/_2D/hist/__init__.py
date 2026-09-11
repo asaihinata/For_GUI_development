@@ -1,5 +1,6 @@
-from sgg.dev.graph import *
 from sgg._list import BIN_HIST_LIST
+from sgg.dev.graph import *
+
 __all__ = ["Hist"]
 
 

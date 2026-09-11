@@ -37,6 +37,7 @@ __all__ = [
     "_Shape",
     "_ShapeInt",
     "_ShapeLike",
+    "CastingKind",
     "NDArray",
     "NDBool",
     "NDBool_",
@@ -186,5 +187,6 @@ type RObject = __ReturnDtype[np.object_]
 type RVoid = __ReturnDtype[np.void]
 type RAny = NDArray[Any] | Any
 # その他
+type CastingKind = Literal["no", "equiv", "safe", "same_kind", "same_value", "unsafe"]
 type Typeaxis = _ShapeLike | None
 """`axis`専用の型ヒント"""

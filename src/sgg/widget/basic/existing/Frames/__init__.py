@@ -1,5 +1,6 @@
 from tkinter import LabelFrame
 
+from sgg._list import LABELANCHOR_LIST, RELIEF_LIST
 from sgg.dev import listchose, num0s
 from sgg.widget.base import Element
 
@@ -11,14 +12,8 @@ class Frames(Element):
         super().__init__(master, kw)
         self.borderwidth = num0s(kw.get("borderwidth"), 1)
         self.title = kw.get("title")
-        self.relief = listchose(
-            kw.get("relief"),
-            ["solid", "flat", "raised", "sunken", "ridge", "groove"],
-        )
-        self.labelanchor = listchose(
-            kw.get("labelanchor"),
-            ["nw", "n", "ne", "en", "e", "es", "se", "s", "sw", "ws", "w", "wn"],
-        )
+        self.relief = listchose(kw.get("relief"), RELIEF_LIST, "solid")
+        self.labelanchor = listchose(kw.get("labelanchor"), LABELANCHOR_LIST)
         self.widget = LabelFrame(
             self.master,
             takefocus=self.takefocus,

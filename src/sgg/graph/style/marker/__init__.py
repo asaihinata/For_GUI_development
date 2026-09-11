@@ -6,7 +6,7 @@ from matplotlib.transforms import Affine2D
 
 __all__ = ["Marker"]
 
-marker_list=[
+marker_list = [
     ".",
     ",",
     "o",
@@ -49,6 +49,8 @@ marker_list=[
     " ",
     "",
 ]
+
+
 class Marker:
     def __init__(self, marker, fill=None, cap=None, transform=None, join=None):
         if fill not in ["full", "left", "right", "bottom", "top", "none"]:

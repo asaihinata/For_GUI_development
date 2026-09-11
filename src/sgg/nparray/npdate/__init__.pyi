@@ -1,3 +1,4 @@
+from datetime import tzinfo
 from typing import Any, Literal, NoReturn, SupportsIndex, overload
 
 import numpy as np
@@ -8,6 +9,8 @@ import sgg._typing as sgt
 from sgg.dev.array import _ArrayCommonMixin
 
 __all__ = ["NPDate"]
+
+type _TimezoneContext = Literal["naive", "UTC", "local"] | tzinfo
 
 class NPDate(_ArrayCommonMixin):
     """`np.ndarray`を継承したdatetime64型の配列クラス"""
@@ -267,7 +270,12 @@ class NPDate(_ArrayCommonMixin):
     def to_date(self) -> np.ndarray:
         """配列内の日付を`datetime.date`の配列に変換する"""
 
-    def to_str(self) -> sgt.RStr_:
+    def to_str(
+        self,
+        unit: Literal["auto"] | None = None,
+        timezone: _TimezoneContext = "naive",
+        casting: sgt.CastingKind = "same_kind",
+    ) -> sgt.RStr_:
         """配列内の日付を文字列型の配列に変換する"""
 
     def to_timezone(self, timezone: sgt._TypeTimezone, /) -> NPDate:

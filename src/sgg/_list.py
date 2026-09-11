@@ -1,3 +1,4 @@
+# ウィジェット
 CURSOR_LIST = [
     "arrow",
     "man",
@@ -138,3 +139,4 @@ DATE_WORD = [
     "today",
     b"today",
 ]
+CASTING_LIST = ["no", "equiv", "safe", "same_kind", "unsafe"]

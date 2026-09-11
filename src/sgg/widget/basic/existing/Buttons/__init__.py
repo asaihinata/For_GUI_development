@@ -1,5 +1,6 @@
 from tkinter import Button
 
+from sgg._list import ANCHOR_LIST
 from sgg.dev import listchose, num0, parsecolor
 from sgg.widget.base import Element
 
@@ -13,20 +14,7 @@ class Buttons(Element):
         self.funcs = kw.get("function")
         self.wraplength = num0(kw.get("wraplength"))
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
-        self.anchor = listchose(
-            kw.get("anchor"),
-            [
-                "center",
-                "w",
-                "n",
-                "s",
-                "e",
-                "nw",
-                "ne",
-                "se",
-                "sw",
-            ],
-        )
+        self.anchor = listchose(kw.get("anchor"), ANCHOR_LIST, "center")
         self.widget = Button(
             self.master,
             anchor=self.anchor,
