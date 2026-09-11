@@ -6,13 +6,9 @@ import numpy as np
 from sgg._typing import NDStr_
 from sgg.font import TKFont
 
-__all__ = ["_Element", "_TElement", "Element", "TElement"]
+__all__ = ["_Element", "Element", "TElement"]
 
 class _Element(Element):
-    widget: None
-    master: Misc
-
-class _TElement(Element):
     widget: None
     master: Misc
 

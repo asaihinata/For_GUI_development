@@ -17,11 +17,11 @@ from .tbuttons import TButtons
 from .tcheckbox import TCheckbox
 from .tcombobox import TCombobox
 from .texts import Texts
+from .tinput import TInput
 from .tprogressbar import TProgressbar
 from .tree import Tree
 
 __all__ = [
-    "TButtons",
     "Buttons",
     "Checkbox",
     "Column",
@@ -37,9 +37,11 @@ __all__ = [
     "Slidebar",
     "Tab",
     "Table",
+    "TButtons",
     "TCheckbox",
     "TCombobox",
     "Texts",
+    "TInput",
     "TProgressbar",
     "Tree",
 ]

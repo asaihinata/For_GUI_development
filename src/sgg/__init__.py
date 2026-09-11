@@ -19,7 +19,6 @@ __all__ = [
     "Barpolar",
     "Boxplot",
     "Buttons",
-    "TButtons",
     "Checkbox",
     "Chooser",
     "Colorbtn",
@@ -89,9 +88,11 @@ __all__ = [
     "Step",
     "Tab",
     "Table",
+    "TButtons",
     "TCheckbox",
     "TCombobox",
     "Texts",
+    "TInput",
     "TProgressbar",
     "Tree",
     "UIntError",
@@ -153,6 +154,10 @@ class Guis:
     @staticmethod
     def Input(**kw):
         return {"count": _counts(), "type": "Input", **kw}
+
+    @staticmethod
+    def TInput(**kw):
+        return {"count": _counts(), "type": "TInput", **kw}
 
     @staticmethod
     def Multiline(**kw):

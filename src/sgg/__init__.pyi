@@ -26,7 +26,6 @@ __all__ = [
     "Barpolar",
     "Boxplot",
     "Buttons",
-    "TButtons",
     "Checkbox",
     "Chooser",
     "Colorbtn",
@@ -96,9 +95,11 @@ __all__ = [
     "Step",
     "Tab",
     "Table",
+    "TButtons",
     "TCheckbox",
     "TCombobox",
     "Texts",
+    "TInput",
     "TProgressbar",
     "Tree",
     "UIntError",
@@ -238,7 +239,7 @@ class Guis:
         """
         テキストを作成する
 
-        :param text: Textsウィジェットに表記させる文字を指定する
+        :param text: ウィジェットに表記させる文字を指定する
         :type text: str
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
@@ -311,9 +312,9 @@ class Guis:
         """
         リンクテキストを作成する
 
-        :param link: Linkウィジェットが押されたときにブラウザで開くURLのリンクもしくはhtmlファイルのパスを指定する
+        :param link: ウィジェットが押されたときにブラウザで開くURLのリンクもしくはhtmlファイルのパスを指定する
         :type link: str | WindowsPath | PosixPath | Path
-        :param text: Linkウィジェットに表記させる文字を指定する
+        :param text: ウィジェットに表記させる文字を指定する
         :type text: str
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
@@ -367,7 +368,7 @@ class Guis:
         """
         画像を作成する
 
-        :param path: Imagesウィジェットに表示させる画像のパスを指定する
+        :param path: ウィジェットに表示させる画像のパスを指定する
         :type path: WindowsPath | PosixPath | Path
         :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
         :type takefocus: bool
@@ -385,7 +386,7 @@ class Guis:
         """
         バイトデータから画像を作成する
 
-        :param byte: Imagebytoに表示させるバイトデータを指定する
+        :param byte: ウィジェットに表示させるバイトデータを指定する
         :type byte: bytes | BytesIO
         :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
         :type takefocus: bool
@@ -572,15 +573,80 @@ class Guis:
         """
         入力欄を作成する
 
-        :param text: Inputウィジェットに表記させる文字を指定する
+        :param text: ウィジェットに表記させる文字を指定する
         :type text: str
-        :param insertwidth: Inputウィジェットの入力時の挿入ポイントの幅を指定する
+        :param insertwidth: ウィジェットの入力時の挿入ポイントの幅を指定する
         :type insertwidth: int | float
-        :param insertbg: Inputウィジェットの入力時の挿入ポイントの色を指定する
+        :param insertbg: ウィジェットの入力時の挿入ポイントの色を指定する
         :type insertbg: 色名 | None
         :param show: 実際の入力内容の各文字の代わりに表示させる文字を指定する
         :type show: str
-        :param state: Inputウィジェットの操作状況を指定する
+        :param state: ウィジェットの操作状況を指定する
+        :type state: Literal["normal", "disabled", "readonly"]
+        :param disabledbg: 無効状態の背景色を指定する
+        :type disabledbg: 色名 | None
+        :param disabledfg: 無効状態の文字色を指定する
+        :type disabledfg: 色名 | None
+        :param width: ウィジェットの幅を指定する
+        :type width: int | float | None
+        :param bg: ウィジェットの背景色を指定する
+        :type bg: 色名 | None
+        :param fg: ウィジェットの文字色を指定する
+        :type fg: 色名 | None
+        :param family: ウィジェットに表示させる文字のフォント名を指定する
+        :type family: str
+        :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
+        :type font_size: int | float
+        :param weight: ウィジェットに表示させる文字のフォントの太さを指定する
+        :type weight: Literal["normal", "bold"]
+        :param slant: ウィジェットに表示させる文字のフォントの斜体にするか指定する
+        :type slant: Literal["roman", "italic"]
+        :param underline: ウィジェットに表示させる文字のフォントの下線を表示させるかを指定する
+        :type underline: bool
+        :param overstrike: ウィジェットに表示させる文字のフォントの取り消し線を加えるか指定する
+        :type overstrike: bool
+        :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
+        :type takefocus: bool
+        :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する
+        :type borderwidth: int | float
+        :param cursor: マウスカーソルを指定する
+        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :param justify: 行揃えを行う方向を指定する
+        :type justify: Literal["left", "center", "right"]
+        :param relief: ウィジェットの周囲に枠線について指定する
+        :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
+        :param key: ウィジェット固有の番号を指定する
+        :type key: str | None
+        """
+    @staticmethod
+    def TInput(
+        *,
+        text: str = ...,
+        show: str = ...,
+        width: int | float = 20,
+        borderwidth: int | float = 0,
+        takefocus: bool = ...,
+        cursor: sgt.CURSOR_TYPE = ...,
+        state: Literal["normal", "disabled", "readonly"] = "normal",
+        disabledbg: sgt.ColorTypeN = ...,
+        disabledfg: sgt.ColorTypeN = ...,
+        bg: sgt.ColorTypeN = "#e0e0e0",
+        relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
+        justify: Literal["left", "center", "right"] = "left",
+        **kwargs: Unpack[sgt.Dict_Input],
+    ) -> dict[str, Any]:
+        """
+        入力欄を作成する
+
+        :param text: ウィジェットに表記させる文字を指定する
+        :type text: str
+        :param insertwidth: ウィジェットの入力時の挿入ポイントの幅を指定する
+        :type insertwidth: int | float
+        :param insertbg: ウィジェットの入力時の挿入ポイントの色を指定する
+        :type insertbg: 色名 | None
+        :param show: 実際の入力内容の各文字の代わりに表示させる文字を指定する
+        :type show: str
+        :param state: ウィジェットの操作状況を指定する
         :type state: Literal["normal", "disabled", "readonly"]
         :param disabledbg: 無効状態の背景色を指定する
         :type disabledbg: 色名 | None
@@ -640,15 +706,15 @@ class Guis:
         """
         テキストエリアを作成する
 
-        :param text: Multilineウィジェットに表記させる文字を指定する
+        :param text: ウィジェットに表記させる文字を指定する
         :type text: str
-        :param cursorshow: Multilineウィジェットにカーソルを表示させるか指定する
+        :param cursorshow: ウィジェットにカーソルを表示させるか指定する
         :type cursorshow: bool
-        :param insertbg: Multilineウィジェットの入力時の挿入ポイントの色を指定する
+        :param insertbg: ウィジェットの入力時の挿入ポイントの色を指定する
         :type insertbg: 色名 | None
-        :param insertwidth: Multilineウィジェットの入力時の挿入ポイントの幅を指定する
+        :param insertwidth: ウィジェットの入力時の挿入ポイントの幅を指定する
         :type insertwidth: int | float
-        :param wrap: Multilineウィジェットの折り返しについて指定する
+        :param wrap: ウィジェットの折り返しについて指定する
         :type wrap: Literal["none", "word", "char"]
         :param state: 選択操作の有無を指定するnormalは操作可能にするdisabledは操作不可能にする
         :type state: Literal["normal","disabled"]
@@ -707,21 +773,21 @@ class Guis:
         """
         表を作成する
 
-        :param header_fg: Tableウィジェットの見出しの文字色を指定する
+        :param header_fg: ウィジェットの見出しの文字色を指定する
         :type header_fg: 色名 | None
-        :param header_bg: Tableウィジェットの見出しの背景色を指定する
+        :param header_bg: ウィジェットの見出しの背景色を指定する
         :type header_bg: 色名 | None
-        :param values: Tableウィジェット本体に表示させる文字の配列を指定する
+        :param values: ウィジェット本体に表示させる文字の配列を指定する
         :type values: list
-        :param header: Tableウィジェット見出しに表示させる文字の配列を指定する
+        :param header: ウィジェット見出しに表示させる文字の配列を指定する
         :type header: list
-        :param rowheader: Tableウィジェットの縦列の見出しを配列で指定し,それを設置する
+        :param rowheader: ウィジェットの縦列の見出しを配列で指定し,それを設置する
         :type rowheader: list
-        :param colwidth: Tableウィジェットの幅を指定する
+        :param colwidth: ウィジェットの幅を指定する
         :type colwidth: int | float
-        :param rowheight: Tableウィジェットのセルの高さを指定する
+        :param rowheight: ウィジェットのセルの高さを指定する
         :type rowheight: int | float
-        :param height: Tableウィジェットに表示できる行を指定する
+        :param height: ウィジェットに表示できる行を指定する
         :type height: int
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
@@ -755,19 +821,19 @@ class Guis:
         """
         ツリーを作成する
 
-        :param header_fg: Treeウィジェットの見出しの文字色を指定する
+        :param header_fg: ウィジェットの見出しの文字色を指定する
         :type header_fg: 色名 | None
-        :param header_bg: Treeウィジェットの見出しの背景色を指定する
+        :param header_bg: ウィジェットの見出しの背景色を指定する
         :type header_bg: 色名 | None
-        :param side_header: Treeウィジェットの階層列のテキストを指定する
+        :param side_header: ウィジェットの階層列のテキストを指定する
         :type side_header: str
-        :param values: Treeウィジェット本体に表示させる文字の配列を指定する
+        :param values: ウィジェット本体に表示させる文字の配列を指定する
         :type values: list
-        :param header: Treeウィジェット見出しに表示させる文字の配列を指定する
+        :param header: ウィジェット見出しに表示させる文字の配列を指定する
         :type header: list
-        :param colwidth: Treeウィジェットの幅を指定する
+        :param colwidth: ウィジェットの幅を指定する
         :type colwidth: int | float
-        :param rowheight: Treeウィジェットのセルの高さを指定する
+        :param rowheight: ウィジェットのセルの高さを指定する
         :type rowheight: int | float
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
@@ -812,11 +878,11 @@ class Guis:
         """
         リストボックスを作成する
 
-        :param values: Listboxウィジェットに表記させるリストを指定する
+        :param values: ウィジェットに表記させるリストを指定する
         :type values: list | tuple
-        :param selectfg: Listboxウィジェットのリストに選択されているリストの文字色を指定する
+        :param selectfg: ウィジェットのリストに選択されているリストの文字色を指定する
         :type selectfg: 色名 | None
-        :param selectbg: Listboxウィジェットのリストに選択されているリストの背景色を指定する
+        :param selectbg: ウィジェットのリストに選択されているリストの背景色を指定する
         :type selectbg: 色名 | None
         :param select: 選択項目の初期値を指定する
         :type select: int
@@ -877,7 +943,7 @@ class Guis:
         :type values: list[str] | tuple[str,...] | range | str | np.str_ | NDArray[str_]
         :param text: 入力項目の初期テキストを指定する
         :type text: str
-        :param state: 値の入力制限やTComboboxウィジェットの有効化や無効化について指定する
+        :param state: 値の入力制限やウィジェットの有効化や無効化について指定する
         :type state: Literal["normal","readonly","disabled"]
         :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する
         :type borderwidth: int | float
@@ -928,10 +994,9 @@ class Guis:
         """
         ラジオボタンを作成する
 
-        読み込み時,グループの最初のRadioウィジェットが選択される
-        :param text: Radioウィジェットに表記させる文字を指定する
+        :param text: ウィジェットに表記させる文字を指定する
         :type text: str
-        :param group: Radioウィジェットのグループを指定する同じ名前にすることで,そのグループ内で排他的な選択を実施する
+        :param group: ウィジェットのグループを指定する同じ名前にすることで,そのグループ内で排他的な選択を実施する
         :type group: str
         :param selectcolor: 選択状態の時に表示される色を指定する
         :type selectcolor: 色名
@@ -1004,11 +1069,11 @@ class Guis:
         """
         チェックボタンを作成する
 
-        :param text: Checkboxウィジェットに表記させる文字を指定する
+        :param text: ウィジェットに表記させる文字を指定する
         :type text: str
-        :param check: 読み込み時,Checkboxウィジェットがチェックするかを指定する
+        :param check: 読み込み時,ウィジェットがチェックするかを指定する
         :type check: bool
-        :param group: Checkboxウィンドウにグループ名を指定する
+        :param group: ウィンドウにグループ名を指定する
         :type group: str
         :param selectcolor: 選択状態の時に表示される色を指定する
         :type selectcolor: 色名
@@ -1124,9 +1189,9 @@ class Guis:
         """
         枠線付きのフレームを作成する
 
-        :param layout: Framesウィジェットに表示させるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
+        :param layout: ウィジェットに表示させるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
         :type layout: list[list]
-        :param title: Framesウィジェットのタイトルを指定する
+        :param title: ウィジェットのタイトルを指定する
         :type title: str
         :param labelanchor: タイトルを表記する場所を指定する
         :type labelanchor: Literal["nw","n","ne","w","center","e","sw","s","se"]
@@ -1184,7 +1249,7 @@ class Guis:
         """
         メニューバーを作成する
 
-        :param list: Menusウィジェットに表示させるメニューを指定する
+        :param list: ウィジェットに表示させるメニューを指定する
         :type list: list
         :param tearoff: メニューウィジェットを独立したウィンドウにするかを指定する
         :type tearoff: bool
@@ -1242,9 +1307,9 @@ class Guis:
         """
         メニューボタンを作成する
 
-        :param list: Menuウィジェットに表示させるメニューを指定する
+        :param list: ウィジェットに表示させるメニューを指定する
         :type list: list
-        :param text: Menuウィジェットのボタンに表記させる文字を指定する
+        :param text: ウィジェットのボタンに表記させる文字を指定する
         :type text: str
         :param tearoff: メニューウィジェットを独立したウィンドウにするかを指定する
         :type tearoff: bool
@@ -1298,7 +1363,7 @@ class Guis:
         """
         フレームを作成する
 
-        :param layout: Columnウィジェットに表示させるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
+        :param layout: ウィジェットに表示させるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
         :type layout: list[list]
         :param bg: ウィジェットの背景色を指定する
         :type bg: 色名 | None
@@ -1338,13 +1403,13 @@ class Guis:
         """
         スライダーを作成する
 
-        :param value: Slidebarウィジェットの読み込み時の初期値を指定する
+        :param value: ウィジェットの読み込み時の初期値を指定する
         :type value: int | float
         :param digits: スケールの値を文字列として取得した際の数値の最大桁数を指定する
         :type digits: int
         :param resolution: スライダーのステップ数を指定する
         :type resolution: int | float
-        :param length: Slidebarウィジェットの長さを指定する
+        :param length: ウィジェットの長さを指定する
         :type length: int | float
         :param sliderlength: スライダー部分の長さを指定する
         :type sliderlength: int | float
@@ -1352,11 +1417,11 @@ class Guis:
         :type label: str | None
         :param showvalue: 現在の値を表示させるか指定する
         :type showvalue: bool
-        :param orientation: Slidebarウィジェットの向きを指定する
+        :param orientation: ウィジェットの向きを指定する
         :type orientation: Literal["horizontal","vertical"]
-        :param min: Slidebarウィジェットの数値の最小値を指定する
+        :param min: ウィジェットの数値の最小値を指定する
         :type min: int | float
-        :param max: Slidebarウィジェットの数値の最大値を指定する
+        :param max: ウィジェットの数値の最大値を指定する
         :type max: int | float
         :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する
         :type borderwidth: int | float
@@ -1386,17 +1451,17 @@ class Guis:
 
         :param wrap: 数値が`max`もしくは`min`で指定した範囲外を選択しようとした場合,`max`より大きい数値の場合は`min`へ`min`より小さい数値の場合は`max`へ移動するかを指定する
         :type wrap: bool
-        :param insertwidth: InputNumberウィジェットの入力時の挿入ポイントの幅を指定する
+        :param insertwidth: ウィジェットの入力時の挿入ポイントの幅を指定する
         :type insertwidth: int | float
-        :param insertbg: InputNumberウィジェットの入力時の挿入ポイントの色を指定する
+        :param insertbg: ウィジェットの入力時の挿入ポイントの色を指定する
         :type insertbg: 色名 | None
         :param step: スライダーのステップ数を指定する
         :type step: int | float
-        :param min: Slidebarウィジェットの数値の最小値を指定する
+        :param min: ウィジェットの数値の最小値を指定する
         :type min: int | float
-        :param max: Slidebarウィジェットの数値の最大値を指定する
+        :param max: ウィジェットの数値の最大値を指定する
         :type max: int | float
-        :param values: Slidebarウィジェットの読み込み時の初期値を指定する
+        :param values: ウィジェットの読み込み時の初期値を指定する
         :type values: int | float
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
@@ -1459,7 +1524,7 @@ class Guis:
         """
         ファイルパスを取得するダイアログを発生させるボタンを作成する
 
-        :param text: FileLoadウィジェットのボタンに表示させる文字を指定する
+        :param text: ウィジェットのボタンに表示させる文字を指定する
         :type text: str
         :param title: ファイルを選択するダイアログのタイトルを指定する
         :type title: str
@@ -1535,7 +1600,7 @@ class Guis:
         """
         ファイルパスを取得するダイアログを発生させるボタンを作成する
 
-        :param text: FolderLoadウィジェットのボタンに表示させる文字を指定する
+        :param text: ウィジェットのボタンに表示させる文字を指定する
         :type text: str
         :param title: フォルダを選択するダイアログのタイトルを指定する
         :type title: str
@@ -1615,7 +1680,7 @@ class Guis:
         """
         ファイルもしくはフォルダを選択し,選択されたパスを取得するダイアログを発生させるボタンを作成する
 
-        :param text: Savebtnウィジェットのボタンに表示させる文字を指定する
+        :param text: ウィジェットのボタンに表示させる文字を指定する
         :type text: str
         :param title: フォルダを選択するダイアログのタイトルを指定する
         :type title: str
@@ -1765,7 +1830,7 @@ class Guis:
         """
         タブを作成する
 
-        :param tabs: Tabウィジェットに表示させるウィジェットを指定する配列の最初の要素にタブ名を,次の要素にTabウィジェットに表示させる`layout`を指定する
+        :param tabs: ウィジェットに表示させるウィジェットを指定する配列の最初の要素にタブ名を,次の要素にウィジェットに表示させる`layout`を指定する
         :type tabs: list[list[str,list[list]]]
         :param bg: ウィジェットの背景色を指定する
         :type bg: 色名 | None
@@ -1802,15 +1867,15 @@ class Guis:
         """
         プログレスバーを作成する
 
-        :param length: TProgressbarウィジェットの長さを指定する
+        :param length: ウィジェットの長さを指定する
         :type length: int | float
-        :param orient: TProgressbarウィジェットの向きを指定する
+        :param orient: ウィジェットの向きを指定する
         :type orient: Literal["horizontal","vertical"]
         :param mode: 決定的モード(determinate)か非決定的モード(indeterminate)かを指定する
         :type mode: Literal["determinate","indeterminate"]
-        :param max: TProgressbarウィジェットの数値の最大値を指定する
+        :param max: ウィジェットの数値の最大値を指定する
         :type max: int | float
-        :param value: TProgressbarウィジェットの読み込み時の初期値を指定する
+        :param value: ウィジェットの読み込み時の初期値を指定する
         :type value: int | float
         :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
         :type takefocus: bool

@@ -150,6 +150,8 @@ class WindowController:
             widget = TButtons(parent, kw)
         elif t == "Input":
             widget = Input(parent, kw)
+        elif t == "TInput":
+            widget = TInput(parent, kw)
         elif t == "Multiline":
             widget = Multiline(parent, kw)
         elif t == "Listboxs":

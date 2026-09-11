@@ -1,11 +1,11 @@
 from tkinter import Widget
 from tkinter.ttk import Notebook
 
-from sgg.widget.base import _TElement
+from sgg.widget.base import _Element
 
 __all__ = ["Tab"]
 
-class Tab(_TElement):
+class Tab(_Element):
     widget: Notebook
     def delta(self) -> None:
         """ウィジェットを削除する"""

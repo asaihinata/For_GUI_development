@@ -349,6 +349,9 @@ For_GUI_development
  │   │       │   │   ├── texts
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
+ │   │       │   │   ├── tinput
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
  │   │       │   │   ├── tprogressbar
  │   │       │   │   │   ├── __init__.py
  │   │       │   │   │   └── __init__.pyi
@@ -452,5 +455,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:317
-フォルダ数:136
+ファイル数:319
+フォルダ数:137
