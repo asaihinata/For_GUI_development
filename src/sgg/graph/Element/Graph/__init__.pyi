@@ -31,7 +31,8 @@ class GElement:
     alpha: int | float
     ax: Axes | Axes3D | PolarAxes
     color: list[str]
-    widget: FigureCanvasTkAgg
+    @property
+    def widget(self) -> FigureCanvasTkAgg: ...
     def set_title(self, title: str) -> None:
         """グラフにタイトルを設置する"""
 

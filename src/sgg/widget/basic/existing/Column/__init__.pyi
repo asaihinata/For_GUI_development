@@ -6,7 +6,8 @@ from sgg.widget.base import _Element
 __all__ = ["Column"]
 
 class Column(_Element):
-    widget: Frame
+    @property
+    def widget(self) -> Frame: ...
     def delta(self) -> None:
         """ウィジェットを削除する"""
 

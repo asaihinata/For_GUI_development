@@ -22,7 +22,7 @@ class TCombobox(TElement):
             fieldbackground=self.bg,
             font=self.font,
         )
-        self.widget = Combobox(
+        self._widget = Combobox(
             master,
             takefocus=self.takefocus,
             cursor=self.cursor,
@@ -32,16 +32,16 @@ class TCombobox(TElement):
             style=self.stylename,
         )
         if self.text:
-            self.widget.set(self.text)
+            self._widget.set(self.text)
 
     def get_text(self):
-        return self.widget.get()
+        return self._widget.get()
 
     def set_text(self, text):
-        self.widget.set(text)
+        self._widget.set(text)
 
     def clear(self):
-        self.widget.set("")
+        self._widget.set("")
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()

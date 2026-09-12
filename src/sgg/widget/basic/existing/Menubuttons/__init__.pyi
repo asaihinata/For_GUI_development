@@ -6,7 +6,8 @@ from sgg.widget.base import _Element
 __all__ = ["Menubuttons"]
 
 class Menubuttons(_Element):
-    widget: Menubutton
+    @property
+    def widget(self) -> Menubutton: ...
     mainmenu: Menu
     def get(self) -> list:
         """

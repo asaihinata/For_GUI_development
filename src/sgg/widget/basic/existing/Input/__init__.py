@@ -32,7 +32,7 @@ class Input(Element):
             self.insertborderwidth = insertborderwidth
         else:
             self.insertborderwidth = 0
-        self.widget = Entry(
+        self._widget = Entry(
             self.master,
             selectforeground=self.selectforeground,
             selectbackground=self.selectbackground,
@@ -60,22 +60,22 @@ class Input(Element):
             self.inserts(self.text)
 
     def inserts(self, text="", place="end"):
-        self.widget.insert(place, text)
+        self._widget.insert(place, text)
 
     def get_text(self):
-        return self.widget.get()
+        return self._widget.get()
 
     def select_judge(self):
-        return self.widget.select_present()
+        return self._widget.select_present()
 
     def select_cansel(self):
-        self.widget.select_clear()
+        self._widget.select_clear()
 
     def all_delta(self):
-        self.widget.delete(0, "end")
+        self._widget.delete(0, "end")
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()
 
     def set_text(self, txt):
         self.text = txt

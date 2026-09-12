@@ -6,7 +6,8 @@ from sgg.widget.base import _Element
 __all__ = ["Checkbox"]
 
 class Checkbox(_Element):
-    widget: Checkbutton
+    @property
+    def widget(self) -> Checkbutton: ...
     def delta(self) -> None:
         """ウィジェットを削除する"""
 

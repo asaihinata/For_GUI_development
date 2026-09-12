@@ -6,7 +6,8 @@ from sgg.widget.base import _Element
 __all__ = ["Radio"]
 
 class Radio(_Element):
-    widget: Radiobutton
+    @property
+    def widget(self) -> Radiobutton: ...
     def delta(self) -> None:
         """ウィジェットを削除する"""
 

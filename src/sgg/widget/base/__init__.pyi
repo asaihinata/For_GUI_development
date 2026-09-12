@@ -1,4 +1,4 @@
-from tkinter import Misc, _Cursor
+from tkinter import Misc, Widget, _Cursor
 from tkinter.ttk import _Padding
 from typing import Callable
 

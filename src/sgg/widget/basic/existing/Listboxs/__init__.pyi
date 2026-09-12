@@ -7,7 +7,8 @@ from sgg.widget.base import _Element
 __all__ = ["Listboxs"]
 
 class Listboxs(_Element):
-    widget: Listbox
+    @property
+    def widget(self) -> Listbox: ...
     def delta(self) -> None:
         """ウィジェットを削除する"""
 

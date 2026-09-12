@@ -12,7 +12,7 @@ __all__ = ["Element", "TElement"]
 
 class Element:
     def __init__(self, master, kw):
-        self.widget = None
+        self._widget = None
         self.master = master
         self.graph = False
         self.cursor = self._list_cursor(kw.get("cursor"))
@@ -53,6 +53,11 @@ class Element:
         self.width = self._dwh(kw.get("width"))
         self.height = self._dwh(kw.get("height"))
 
+    # def mro(self):
+    #     print(self._widget)
+    #     return type(self._widget).__mro__
+    # __mro__=mro
+
     def _list_cursor(self, name):
         if name in CURSOR_LIST:
             return name
@@ -73,6 +78,10 @@ class Element:
                     f()
         else:
             return None
+
+    @property
+    def widget(self):
+        return self._widget
 
     def winsize(self):
         root = self.master
@@ -132,14 +141,14 @@ class Element:
     def set_fg(self, fg):
         if hasattr(self, "fg"):
             self.fg = parsecolor(fg, self.fg)
-            self.widget.config(fg=self.fg)
+            self._widget.config(fg=self.fg)
         else:
             raise ValueError
 
     def set_bg(self, bg):
         if hasattr(self, "bg"):
             self.bg = parsecolor(bg, self.bg)
-            self.widget.config(bg=self.bg)
+            self._widget.config(bg=self.bg)
         else:
             raise ValueError
 

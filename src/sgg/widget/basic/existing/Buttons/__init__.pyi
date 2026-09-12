@@ -6,7 +6,8 @@ from sgg.widget.base import _Element
 __all__ = ["Buttons"]
 
 class Buttons(_Element):
-    widget: Button
+    @property
+    def widget(self) -> Button: ...
     def delta(self) -> None:
         """ウィジェットを削除する"""
 

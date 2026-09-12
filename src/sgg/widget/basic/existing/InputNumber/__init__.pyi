@@ -6,7 +6,8 @@ from sgg.widget.base import _Element
 __all__ = ["InputNumber"]
 
 class InputNumber(_Element):
-    widget: Spinbox
+    @property
+    def widget(self) -> Spinbox: ...
     def delta(self) -> None:
         """ウィジェットを削除する"""
 

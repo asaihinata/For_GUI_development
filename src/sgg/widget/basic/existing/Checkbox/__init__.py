@@ -20,7 +20,7 @@ class Checkbox(Element):
         self.activebg = parsecolor(kw.get("activebg"))
         self.activefg = parsecolor(kw.get("activefg"))
         self.variable = BooleanVar(value=self.check)
-        self.widget = Checkbutton(
+        self._widget = Checkbutton(
             self.master,
             activebackground=self.activebg,
             activeforeground=self.activefg,
@@ -40,12 +40,12 @@ class Checkbox(Element):
             borderwidth=self.borderwidth,
         )
         if self.group not in self._groups:
-            self._groups[self.group] = [self.widget]
+            self._groups[self.group] = [self._widget]
         else:
-            self._groups[self.group].append(self.widget)
+            self._groups[self.group].append(self._widget)
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()
 
     def get_value(self):
         return self.variable.get()
@@ -59,4 +59,4 @@ class Checkbox(Element):
 
     def set_text(self, txt):
         self.text = txt
-        self.widget.config(text=txt)
+        self._widget.config(text=txt)

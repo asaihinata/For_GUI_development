@@ -6,7 +6,8 @@ from sgg.widget.base import _Element
 __all__ = ["Slidebar"]
 
 class Slidebar(_Element):
-    widget: Scale
+    @property
+    def widget(self) -> Scale: ...
     def get(self) -> int | float:
         """
         Slidebarウィジェットの現在の値を取得する

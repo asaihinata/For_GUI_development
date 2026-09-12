@@ -30,7 +30,7 @@ class Tree(TElement):
             else self._calc_max_columns(self.values)
         )
         cols = [f"col{i}" for i in range(1, self.maxcols + 1)]
-        self.widget = Treeview(
+        self._widget = Treeview(
             self.master,
             columns=cols,
             show="tree" if self.header == [] else "tree headings",
@@ -38,11 +38,11 @@ class Tree(TElement):
         if self.header != [] and len(self.header) < self.maxcols:
             for i in range(self.maxcols - len(self.header)):
                 self.header.append("")
-        self.widget.heading("#0", text=kw.get("side_header"))
-        self.widget.column("#0", width=200, anchor="w")
+        self._widget.heading("#0", text=kw.get("side_header"))
+        self._widget.column("#0", width=200, anchor="w")
         for i, c in enumerate(cols):
-            self.widget.heading(c, text="" if self.header == [] else self.header[i])
-            self.widget.column(c, width=self.colwidth, anchor="w")
+            self._widget.heading(c, text="" if self.header == [] else self.header[i])
+            self._widget.column(c, width=self.colwidth, anchor="w")
         style = Style()
         self.stylename = f"Tree{kw.get("count")}.Treeview"
         self.styleheadingname = f"{self.stylename}.Heading"
@@ -53,7 +53,7 @@ class Tree(TElement):
             foreground=self.header_fg,
             font=self.font,
         )
-        self.widget.configure(style=self.styleheadingname)
+        self._widget.configure(style=self.styleheadingname)
         style.configure(
             style=self.stylename,
             background=self.bg,
@@ -62,11 +62,11 @@ class Tree(TElement):
             font=self.font,
             rowheight=self.rowheight,
         )
-        self.widget.configure(style=self.stylename)
-        self.widget.grid_rowconfigure(0, weight=1)
-        self.widget.grid_columnconfigure(0, weight=1)
+        self._widget.configure(style=self.stylename)
+        self._widget.grid_rowconfigure(0, weight=1)
+        self._widget.grid_columnconfigure(0, weight=1)
         self._build_from_values(self.values)
-        self.widget.config(height=min(num0(self.sums, 1), 15))
+        self._widget.config(height=min(num0(self.sums, 1), 15))
 
     def _calc_max_columns(self, vals):
         maxc, i, L = 0, 0, len(vals)
@@ -107,7 +107,7 @@ class Tree(TElement):
             item = vals[i]
             if isinstance(item, str) and i + 1 < L and isinstance(vals[i + 1], list):
                 self._process_data_list(
-                    self.widget.insert(
+                    self._widget.insert(
                         "", "end", text=item, values=("") * self.maxcols
                     ),
                     item,
@@ -121,7 +121,7 @@ class Tree(TElement):
 
     def _process_data_list(self, parent_id, parent_text, data_list):
         summary_values = [x for x in data_list if not isinstance(x, list)]
-        summary_id = self.widget.insert(
+        summary_id = self._widget.insert(
             parent_id,
             "end",
             text=parent_text,
@@ -141,7 +141,7 @@ class Tree(TElement):
                     for y in x:
                         if isinstance(y, list):
                             self._process_data_list(
-                                self.widget.insert(
+                                self._widget.insert(
                                     summary_id,
                                     "end",
                                     text=label,
@@ -159,7 +159,7 @@ class Tree(TElement):
                                 y,
                             )
                 else:
-                    self.widget.insert(
+                    self._widget.insert(
                         summary_id,
                         "end",
                         text=label,
@@ -168,7 +168,7 @@ class Tree(TElement):
                     )
 
     def _get_iid(self, item=None):
-        for child in self.widget.get_children(item):
+        for child in self._widget.get_children(item):
             yield child
             yield from self._get_iid(child)
 
@@ -176,23 +176,23 @@ class Tree(TElement):
         return list(self._get_iid())
 
     def expand(self, iid):
-        self.widget.item(iid, open=True)
+        self._widget.item(iid, open=True)
 
     def collapse(self, iid):
-        self.widget.item(iid, open=False)
+        self._widget.item(iid, open=False)
 
     def get_path(self, iid):
         parts, cur = [], iid
         while cur:
-            txt = self.widget.item(cur, "text")
+            txt = self._widget.item(cur, "text")
             if txt:
                 parts.append(txt)
-            cur = self.widget.parent(cur)
+            cur = self._widget.parent(cur)
         parts.reverse()
         return "/".join(parts)
 
     def add_node(self, parent_iid, text, data_list=None):
-        pid = self.widget.insert(
+        pid = self._widget.insert(
             parent_iid, "end", text=text, values=("") * self.maxcols
         )
         if isinstance(data_list, list):
@@ -200,16 +200,16 @@ class Tree(TElement):
         return pid
 
     def delete_node(self, iid):
-        self.widget.delete(iid)
+        self._widget.delete(iid)
 
     def clear_width(self):
-        columns = self.widget["columns"]
-        self.widget.update_idletasks()
+        columns = self._widget["columns"]
+        self._widget.update_idletasks()
         if 0 < len(columns):
             for col in columns:
-                self.widget.column(
-                    col, width=int(self.widget.winfo_width() / len(columns))
+                self._widget.column(
+                    col, width=int(self._widget.winfo_width() / len(columns))
                 )
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()

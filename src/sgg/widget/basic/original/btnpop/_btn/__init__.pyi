@@ -6,7 +6,8 @@ from sgg.widget.base import _Element
 from sgg.widget.basic.common import *
 
 class Btn(_Element):
-    widget: Button
+    @property
+    def widget(self) -> Button: ...
     wraplength: float | int
     def delta(self) -> None:
         """ウィジェットを削除する"""

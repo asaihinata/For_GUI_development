@@ -49,7 +49,7 @@ class Slidebar(Element):
             self.digits = 0
         self.length = num0s(kw.get("length"), 200)
         self.borderwidth = num0s(kw.get("borderwidth"), 1)
-        self.widget = Scale(
+        self._widget = Scale(
             self.master,
             takefocus=self.takefocus,
             variable=self.value,
@@ -72,10 +72,10 @@ class Slidebar(Element):
 
     def set(self, val):
         if nums(val):
-            self.widget.set(val)
+            self._widget.set(val)
 
     def _get(self):
-        return self.widget.get()
+        return self._widget.get()
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()

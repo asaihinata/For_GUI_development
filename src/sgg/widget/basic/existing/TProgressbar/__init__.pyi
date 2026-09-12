@@ -6,7 +6,8 @@ from sgg.widget.base import _Element
 __all__ = ["TProgressbar"]
 
 class TProgressbar(_Element):
-    widget: Progressbar
+    @property
+    def widget(self) -> Progressbar: ...
     def start(self, interval: Literal["idle"] | int | None = None) -> None:
         """TProgressbarをプログレスバーのバーを変化させる"""
 

@@ -38,7 +38,7 @@ class Multiline(Element):
             self.insertborderwidth = insertborderwidth
         else:
             self.insertborderwidth = 0
-        self.widget = Text(
+        self._widget = Text(
             self.master,
             takefocus=self.takefocus,
             selectforeground=self.selectforeground,
@@ -63,7 +63,7 @@ class Multiline(Element):
             borderwidth=self.borderwidth,
         )
         if self.cursorshow:
-            self.widget.focus_set()
+            self._widget.focus_set()
         self.__insert_txt(self._to_flat_list(txt))
 
     def __insert_txt(self, txt):
@@ -84,13 +84,13 @@ class Multiline(Element):
             return self.__insert_txt(txt.tolist())
 
     def inserts(self, txt, place="end"):
-        self.widget.insert(place, txt)
+        self._widget.insert(place, txt)
 
     def get_txt(self):
-        return self.widget.get(1.0, "end-1c")
+        return self._widget.get(1.0, "end-1c")
 
     def all_delta(self):
-        self.widget.delete(1.0, "end")
+        self._widget.delete(1.0, "end")
 
     @property
     def mark_list(self):
@@ -100,15 +100,15 @@ class Multiline(Element):
         if not isinstance(name, str) or not isinstance(index, str):
             raise TypeError
         self.__Marksetlist = np.append(self.__Marksetlist, name)
-        self.widget.mark_set(name, index)
+        self._widget.mark_set(name, index)
 
     def index(self, name):
         if not isinstance(name, str) or nps.find(self.__Marksetlist, name) == -1:
             return None
-        return self.widget.index(name)
+        return self._widget.index(name)
 
     def focus_set(self):
-        self.widget.focus_set()
+        self._widget.focus_set()
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()

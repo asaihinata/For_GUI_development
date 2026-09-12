@@ -8,8 +8,9 @@ from sgg.widget.base import _Element
 __all__ = ["Imagebyte"]
 
 class Imagebyte(_Element):
+    @property
+    def widget(self) -> Label: ...
     imgs: PhotoImage
-    widget: Label
     def delta(self) -> None:
         """ウィジェットを削除する"""
 

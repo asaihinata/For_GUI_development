@@ -5,7 +5,8 @@ from sgg.widget.base import _Element
 __all__ = ["TCombobox"]
 
 class TCombobox(_Element):
-    widget: Combobox
+    @property
+    def widget(self) -> Combobox: ...
     def get_text(self) -> str:
         """
         TComboboxウィジェットに記載されている文字を取得する

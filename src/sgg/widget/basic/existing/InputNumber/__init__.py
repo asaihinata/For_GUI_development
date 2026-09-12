@@ -35,7 +35,7 @@ class InputNumber(Element):
         self.insertwidth = num0(kw.get("insertwidth"), 2)
         self.values = nums(kw.get("values"), 0)
         self.intval = IntVar(value=self.values)
-        self.widget = Spinbox(
+        self._widget = Spinbox(
             self.master,
             bg=self.bg,
             borderwidth=self.borderwidth,
@@ -62,7 +62,7 @@ class InputNumber(Element):
         )
 
     def get_number(self):
-        return self.widget.get()
+        return self._widget.get()
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()

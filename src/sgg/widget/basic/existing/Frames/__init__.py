@@ -14,7 +14,7 @@ class Frames(Element):
         self.title = kw.get("title")
         self.relief = listchose(kw.get("relief"), RELIEF_LIST, "solid")
         self.labelanchor = listchose(kw.get("labelanchor"), LABELANCHOR_LIST)
-        self.widget = LabelFrame(
+        self._widget = LabelFrame(
             self.master,
             takefocus=self.takefocus,
             padx=self.padx,
@@ -30,4 +30,4 @@ class Frames(Element):
         )
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()

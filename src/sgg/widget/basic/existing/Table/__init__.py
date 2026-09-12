@@ -32,7 +32,7 @@ class Table(TElement):
         self.stylename = f"Table{kw.get("count")}.Treeview"
         self.styleheadingname = f"{self.stylename}.Heading"
         self.style_list = [self.stylename, self.styleheadingname]
-        self.widget = Treeview(
+        self._widget = Treeview(
             self.master,
             show="headings",
             style=self.stylename,
@@ -46,7 +46,7 @@ class Table(TElement):
             foreground=self.header_fg,
             font=self.font,
         )
-        self.widget.configure(style=self.styleheadingname)
+        self._widget.configure(style=self.styleheadingname)
         self.style.configure(
             style=self.stylename,
             background=self.bg,
@@ -55,7 +55,7 @@ class Table(TElement):
             font=self.font,
             rowheight=self.rowheight,
         )
-        self.widget.configure(style=self.stylename)
+        self._widget.configure(style=self.stylename)
         columns = []
         if self.rowheader:
             columns.append("rowheader")
@@ -64,20 +64,20 @@ class Table(TElement):
         else:
             if 0 < len(self.values):
                 columns += [f"col_{str(i)}" for i in range(len(self.values[0]))]
-        self.widget["columns"] = columns
+        self._widget["columns"] = columns
         rows = " " if self.rowheader else "行"
         for col in columns:
-            self.widget.heading(
+            self._widget.heading(
                 col, text=rows if col == "rowheader" else col if self.header else ""
             )
-            self.widget.column(col, anchor="center", width=self.colwidth)
-        self.widget.tag_configure(
+            self._widget.column(col, anchor="center", width=self.colwidth)
+        self._widget.tag_configure(
             "rowheader_tag", background=self.header_bg, foreground=self.header_fg
         )
         if self.rowheader:
             for i, row in enumerate(self.values):
-                self.widget.item(
-                    self.widget.insert(
+                self._widget.item(
+                    self._widget.insert(
                         "",
                         "end",
                         values=[self.rowheader[i] if i < len(self.rowheader) else ""]
@@ -87,19 +87,19 @@ class Table(TElement):
                 )
         else:
             for row in self.values:
-                self.widget.insert("", "end", values=row)
-        self.widget.grid_rowconfigure(0, weight=1)
-        self.widget.grid_columnconfigure(0, weight=1)
+                self._widget.insert("", "end", values=row)
+        self._widget.grid_rowconfigure(0, weight=1)
+        self._widget.grid_columnconfigure(0, weight=1)
 
     def clear_width(self, total_width=None):
-        columns = self.widget["columns"]
+        columns = self._widget["columns"]
         if total_width == None:
-            self.widget.update_idletasks()
-            total_width = self.widget.winfo_width()
+            self._widget.update_idletasks()
+            total_width = self._widget.winfo_width()
         width = int(total_width / len(columns))
         if 0 < len(columns):
             for col in columns:
-                self.widget.column(col, width=width)
+                self._widget.column(col, width=width)
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()

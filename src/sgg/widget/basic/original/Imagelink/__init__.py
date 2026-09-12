@@ -15,19 +15,19 @@ class Imagelink(Element):
         super().__init__(master, kw)
         self.link = kw.get("link")
         if not isinstance(self.link, str):
-            self.widget = Label(master, text="image error", takefocus=self.takefocus)
+            self._widget = Label(master, text="image error", takefocus=self.takefocus)
         elif not linkcheck(self.link):
-            self.widget = Label(master, text="image error", takefocus=self.takefocus)
+            self._widget = Label(master, text="image error", takefocus=self.takefocus)
         else:
             self.__img = Img_byte(_get_link_img(self.link)).asresize().image
             self.imgs = PhotoImage(self.__img)
-            self.widget = Label(
+            self._widget = Label(
                 master, text=None, image=self.imgs, takefocus=self.takefocus
             )
-            self.widget.image = self.imgs
+            self._widget.image = self.imgs
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()
 
     def show(self, title=None):
         self.__img.show(title)

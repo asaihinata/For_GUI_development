@@ -20,7 +20,7 @@ class Listboxs(Element):
         self.width = self._dwh(kw.get("width"), 20)
         self.height = self._dwh(kw.get("height"), min(max(len(self.values), 1), 5))
         self.state = listchose(kw.get("state"), ["normal", "disabled"])
-        self.widget = Listbox(
+        self._widget = Listbox(
             self.master,
             exportselection=self.exportselection,
             selectforeground=self.selectforeground,
@@ -47,30 +47,30 @@ class Listboxs(Element):
                 val = 0
             elif len(self.values) < val:
                 val = len(self.values) - 1
-            self.widget.selection_set(val)
+            self._widget.selection_set(val)
 
     def apend(self, lists=[], place="end"):
         if isinstance(lists, list | tuple):
             for i in lists:
-                self.widget.insert(place, i)
+                self._widget.insert(place, i)
 
     def clear(self):
-        self.widget.delete(0, "end")
+        self._widget.delete(0, "end")
 
     def dele(self, *index):
         if isinstance(index, tuple):
             for i in index:
                 if isinstance(i, int) and not (i < 0 or self.lens() < i):
-                    self.widget.delete(i)
+                    self._widget.delete(i)
 
     def lens(self):
-        return self.widget.size()
+        return self._widget.size()
 
     def select(self):
-        return self.widget.curselection()
+        return self._widget.curselection()
 
     def select_val(self):
-        val = list(self.widget.curselection())
+        val = list(self._widget.curselection())
         if len(val) == 1:
             return self.values[val[0]]
         elif len(val) == 0:
@@ -84,7 +84,7 @@ class Listboxs(Element):
             self.apend(lists, "end")
 
     def set_height(self, height):
-        self.widget.config(height=self._dwh(height, self.height))
+        self._widget.config(height=self._dwh(height, self.height))
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()

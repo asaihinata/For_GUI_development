@@ -46,10 +46,9 @@ class GElement:
 
     def __init__(self, master: Misc, kw):
         self.master = master
-        self.widget = None
+        self._widget = None
         self.graph = True
         self.graphdata = []
-        self.widget = None
         self.max_depth = 1
         # グラフの基盤
         self.fg = parsecolor(kw.get("fg"), "#000000")
@@ -146,12 +145,12 @@ class GElement:
         return self.master.winfo_name()
 
     def _pack(self):
-        self.widget = FigureCanvasTkAgg(self.fig, master=self.master)
-        self.widget.get_tk_widget().pack(side="left", padx=5, pady=5)
+        self._widget = FigureCanvasTkAgg(self.fig, master=self.master)
+        self._widget.get_tk_widget().pack(side="left", padx=5, pady=5)
 
     def _redraw(self):
-        if self.widget is not None:
-            self.widget.draw()
+        if self._widget is not None:
+            self._widget.draw()
 
     def _size(self, sizes=(500, 400)):
         if isinstance(sizes, list | tuple) and len(list(sizes)) == 2:
@@ -205,3 +204,7 @@ class GElement:
         if not isinstance(num, int):
             num = 0
         return np.tile(lin, int(np.ceil(num / len(lin))))[:num]
+
+    @property
+    def widget(self):
+        return self._widget

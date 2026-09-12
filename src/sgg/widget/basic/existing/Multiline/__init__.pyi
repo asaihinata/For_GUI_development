@@ -7,7 +7,8 @@ from sgg.widget.base import _Element
 __all__ = ["Multiline"]
 
 class Multiline(_Element):
-    widget: Text
+    @property
+    def widget(self) -> Text: ...
     def delta(self) -> None:
         """ウィジェットを削除する"""
 

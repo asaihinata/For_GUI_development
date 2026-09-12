@@ -13,7 +13,7 @@ class Menubuttons(Element):
         self.text = kw.get("text")
         self.menu_lists = kw.get("list", [])
         self.tearoff = bols(kw.get("tearoff"), False)
-        self.widget = Menubutton(
+        self._widget = Menubutton(
             self.master,
             takefocus=self.takefocus,
             anchor=self.anchor,
@@ -28,10 +28,10 @@ class Menubuttons(Element):
             borderwidth=self.borderwidth,
         )
         self.mainmenu = Menu(
-            self.widget, tearoff=self.tearoff, bg=self.bg, fg=self.fg, font=self.font
+            self._widget, tearoff=self.tearoff, bg=self.bg, fg=self.fg, font=self.font
         )
         self._create_menu_lists()
-        self.widget["menu"] = self.mainmenu
+        self._widget["menu"] = self.mainmenu
 
     def _create_menu_lists(self):
         for menus in self.menu_lists:
@@ -106,11 +106,11 @@ class Menubuttons(Element):
         self._create_menu_lists(self.menu_lists)
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()
 
     def get_text(self):
         return self.text
 
     def set_text(self, txt):
         self.text = txt
-        self.widget.config(text=txt)
+        self._widget.config(text=txt)

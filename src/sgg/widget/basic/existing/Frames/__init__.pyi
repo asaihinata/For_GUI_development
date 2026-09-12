@@ -6,7 +6,8 @@ from sgg.widget.base import _Element
 __all__ = ["Frames"]
 
 class Frames(_Element):
-    widget: LabelFrame
+    @property
+    def widget(self) -> LabelFrame: ...
     def delta(self) -> None:
         """ウィジェットを削除する"""
 

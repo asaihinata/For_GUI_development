@@ -25,13 +25,13 @@ class Images(Element):
             )
         self.__img = Img_path(self.path).asresize().image
         self.imgs = PhotoImage(image=self.__img)
-        self.widget = Label(
+        self._widget = Label(
             master, text=None, image=self.imgs, takefocus=self.takefocus
         )
-        self.widget.image = self.imgs
+        self._widget.image = self.imgs
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()
 
     def show(self, title=None):
         self.__img.show(title)

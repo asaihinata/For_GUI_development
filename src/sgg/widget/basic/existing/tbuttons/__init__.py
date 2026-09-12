@@ -29,7 +29,7 @@ class TButtons(TElement):
             font=self.font,
             state=self.state,
         )
-        self.widget = Button(
+        self._widget = Button(
             self.master,
             command=lambda: self._exec_funcs(self.funcs),
             cursor=self.cursor,
@@ -39,7 +39,7 @@ class TButtons(TElement):
         )
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()
 
     def get_text(self):
         return self.text
@@ -47,4 +47,4 @@ class TButtons(TElement):
     def set_text(self, txt):
         self.text = txt
         self.textvariable = Variable(self.master, self.text)
-        self.widget.config(textvariable=self.textvariable)
+        self._widget.config(textvariable=self.textvariable)

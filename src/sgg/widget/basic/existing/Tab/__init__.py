@@ -23,17 +23,17 @@ class Tab(TElement):
         )
         self.style.map(self.styletabname, background=[("selected", ("#cccccc"))])
         self.frames = []
-        self.widget = Notebook(
+        self._widget = Notebook(
             self.master, takefocus=self.takefocus, style=self.stylename
         )
-        self.widget.pack(side="left", padx=5, pady=5)
+        self._widget.pack(side="left", padx=5, pady=5)
 
     def _add_tab(self, frame, title):
-        self.widget.add(frame, text=title)
+        self._widget.add(frame, text=title)
         self.frames.append(frame)
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()
 
     def set_fg(self, fg):
         self.fg = parsecolor(fg, self.fg)

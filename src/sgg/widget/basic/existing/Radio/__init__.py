@@ -28,7 +28,7 @@ class Radio(Element):
         self.selectcolor = parsecolor(kw.get("selectcolor", "white"), "white")
         self.activebg = parsecolor(kw.get("activebg"))
         self.activefg = parsecolor(kw.get("activefg"))
-        self.widget = Radiobutton(
+        self._widget = Radiobutton(
             self.master,
             activebackground=self.activebg,
             activeforeground=self.activefg,
@@ -58,11 +58,11 @@ class Radio(Element):
         )
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()
 
     def get_text(self):
         return self.text
 
     def set_text(self, txt):
         self.text = txt
-        self.widget.config(text=txt)
+        self._widget.config(text=txt)

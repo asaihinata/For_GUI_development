@@ -13,7 +13,7 @@ class Savebtn(Btn):
         self.filetypes = kw.get("filetypes", [("All files", "*.*")])
         self.initialfile = kw.get("initialfile")
         self.initialdir = kw.get("initialdir")
-        self.widget = Button(
+        self._widget = Button(
             master,
             takefocus=self.takefocus,
             anchor=self.anchor,

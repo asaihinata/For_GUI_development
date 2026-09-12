@@ -15,7 +15,7 @@ class Menus(Element):
         self.menu_lists = menu_lists
         self.funcs = None
         self.tearoff = bols(kw.get("tearoff"), False)
-        self.widget = Menu(
+        self._widget = Menu(
             self.master,
             takefocus=self.takefocus,
             relief=self.relief,
@@ -29,13 +29,13 @@ class Menus(Element):
         self._create_menu_lists()
 
     def _create_menu_lists(self):
-        self.widget.delete(0, "end")
+        self._widget.delete(0, "end")
         for menus in self.menu_lists:
             if not isinstance(menus, list):
                 continue
             for i in range(0, len(menus), 2):
                 submenu = Menu(
-                    self.widget,
+                    self._widget,
                     tearoff=self.tearoff,
                     bg=self.bg,
                     fg=self.fg,
@@ -44,7 +44,7 @@ class Menus(Element):
                 self._add_items_recursive(
                     menu=submenu, items="" if len(menus) <= i + 1 else menus[i + 1]
                 )
-                self.widget.add_cascade(label=menus[i], menu=submenu)
+                self._widget.add_cascade(label=menus[i], menu=submenu)
 
     def _add_items_recursive(self, menu: Menu, items):
         i = 0
@@ -95,7 +95,7 @@ class Menus(Element):
         return self.menu_lists
 
     def clear(self):
-        self.widget.delete(0, "end")
+        self._widget.delete(0, "end")
         self.menu_lists = []
 
     def addmenu(self, label, submenu_lists):
@@ -103,4 +103,4 @@ class Menus(Element):
         self._create_menu_lists()
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()

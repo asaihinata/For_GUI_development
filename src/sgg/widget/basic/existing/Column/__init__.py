@@ -8,7 +8,7 @@ __all__ = ["Column"]
 class Column(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.widget = Frame(
+        self._widget = Frame(
             self.master,
             takefocus=self.takefocus,
             padx=self.padx,
@@ -20,4 +20,4 @@ class Column(Element):
         )
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()

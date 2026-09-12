@@ -6,7 +6,8 @@ from sgg.widget.base import _Element
 __all__ = ["Menus"]
 
 class Menus(_Element):
-    widget: Menu
+    @property
+    def widget(self) -> Menu: ...
     def get(self) -> list:
         """
         Menusウィジェットで表示されている配列を取得する

@@ -15,7 +15,7 @@ class Buttons(Element):
         self.wraplength = num0(kw.get("wraplength"))
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.anchor = listchose(kw.get("anchor"), ANCHOR_LIST, "center")
-        self.widget = Button(
+        self._widget = Button(
             self.master,
             anchor=self.anchor,
             bg=self.bg,
@@ -35,11 +35,11 @@ class Buttons(Element):
         )
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()
 
     def get_text(self):
         return self.text
 
     def set_text(self, txt):
         self.text = txt
-        self.widget.config(text=txt)
+        self._widget.config(text=txt)

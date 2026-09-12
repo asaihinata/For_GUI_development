@@ -11,7 +11,7 @@ class Texts(Element):
         super().__init__(master, kw)
         self.text = kw.get("text")
         self.wraplength = num0(kw.get("wraplength"))
-        self.widget = Label(
+        self._widget = Label(
             self.master,
             takefocus=self.takefocus,
             borderwidth=self.borderwidth,
@@ -31,11 +31,11 @@ class Texts(Element):
         )
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()
 
     def get_text(self):
         return self.text
 
     def set_text(self, txt):
         self.text = txt
-        self.widget.config(text=txt)
+        self._widget.config(text=txt)

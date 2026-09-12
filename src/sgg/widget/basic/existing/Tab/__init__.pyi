@@ -6,7 +6,8 @@ from sgg.widget.base import _Element
 __all__ = ["Tab"]
 
 class Tab(_Element):
-    widget: Notebook
+    @property
+    def widget(self) -> Notebook: ...
     def delta(self) -> None:
         """ウィジェットを削除する"""
 

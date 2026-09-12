@@ -11,7 +11,7 @@ class FolderLoad(Btn):
         self.__path = None
         self.title = kw.get("title", "select Folder")
         self.text = kw.get("text", "select Folder")
-        self.widget = Button(
+        self._widget = Button(
             master,
             takefocus=self.takefocus,
             anchor=self.anchor,

@@ -11,7 +11,7 @@ class FileLoad(Btn):
         self.__path = None
         self.text = kw.get("text", "select File")
         self.title = kw.get("title", "select File")
-        self.widget = Button(
+        self._widget = Button(
             master,
             takefocus=self.takefocus,
             anchor=self.anchor,

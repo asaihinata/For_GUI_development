@@ -5,7 +5,8 @@ from sgg.widget.base import _Element
 __all__ = ["Images"]
 
 class Images(_Element):
-    widget: Label
+    @property
+    def widget(self) -> Label: ...
     def delta(self) -> None:
         """ウィジェットを削除する"""
 

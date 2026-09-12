@@ -5,7 +5,8 @@ from sgg.widget.base import _Element
 __all__ = ["Tree"]
 
 class Tree(_Element):
-    widget: Treeview
+    @property
+    def widget(self) -> Treeview: ...
     def delta(self) -> None:
         """ウィジェットを削除する"""
 

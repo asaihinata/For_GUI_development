@@ -46,7 +46,7 @@ class TProgressbar(TElement):
         self.style.configure(
             self.stylename, background=self.fg, troughcolor=self.bg, thickness=20
         )
-        self.widget = Progressbar(
+        self._widget = Progressbar(
             master,
             variable=self.variable,
             takefocus=self.takefocus,
@@ -59,30 +59,30 @@ class TProgressbar(TElement):
         )
 
     def get(self):
-        return self.widget["value"]
+        return self._widget["value"]
 
     def set(self, value):
         if not _is_real(value):
             raise TypeError
         self.value = value
         self._variable(value)
-        self.widget.config(variable=self.variable)
+        self._widget.config(variable=self.variable)
 
     def start(self, interval=None):
         if interval is not None and not _is_real(interval):
             raise TypeError
-        self.widget.start(interval)
+        self._widget.start(interval)
 
     def step(self, amount=None):
         if amount is not None and not _is_real(amount):
             raise TypeError
-        self.widget.step(amount)
+        self._widget.step(amount)
 
     def stop(self):
-        self.widget.stop()
+        self._widget.stop()
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()
 
     def set_fg(self, fg):
         self.fg = parsecolor(fg, self.fg)

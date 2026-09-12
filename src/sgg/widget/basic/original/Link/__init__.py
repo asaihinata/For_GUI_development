@@ -31,7 +31,7 @@ class Link(Element):
         self.text = kw.get("text")
         if self.text == None:
             self.text = self.link_url
-        self.widget = Label(
+        self._widget = Label(
             master,
             anchor=self.anchor,
             bg=self.bg,
@@ -49,7 +49,7 @@ class Link(Element):
             width=self.width,
             wraplength=self.wraplength,
         )
-        self.widget.bind("<Button-1>", self._link)
+        self._widget.bind("<Button-1>", self._link)
 
     def _link(self, ev):
         if isinstance(self.link_url, Path):
@@ -59,14 +59,14 @@ class Link(Element):
             open(self.link_url)
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()
 
     def get_text(self):
         return self.text
 
     def set_text(self, txt):
         self.text = txt
-        self.widget.config(text=txt)
+        self._widget.config(text=txt)
 
     def get_link(self):
         return self.link_url

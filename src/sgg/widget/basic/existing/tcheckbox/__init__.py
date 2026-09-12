@@ -22,7 +22,7 @@ class TCheckbox(TElement):
             foreground=self.fg,
             font=self.font,
         )
-        self.widget = Checkbutton(
+        self._widget = Checkbutton(
             self.master,
             takefocus=self.takefocus,
             cursor=self.cursor,
@@ -38,11 +38,11 @@ class TCheckbox(TElement):
         self.variable.set(value if isinstance(value, bool) else self.variable.get())
 
     def delta(self):
-        self.widget.destroy()
+        self._widget.destroy()
 
     def get_text(self):
         return self.text
 
     def set_text(self, txt):
         self.text = txt
-        self.widget.config(text=txt)
+        self._widget.config(text=txt)
