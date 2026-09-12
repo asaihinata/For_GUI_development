@@ -1,4 +1,6 @@
-from tkinter import IntVar, Spinbox
+from tkinter import DoubleVar, IntVar, Spinbox
+
+import numpy as np
 
 from sgg.dev import _is_real, bols, num0, nums, parsecolor
 from sgg.widget.base import Element
@@ -9,10 +11,22 @@ __all__ = ["InputNumber"]
 class InputNumber(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self.values = kw.get("values")
+        if not _is_real(self.values):
+            raise TypeError
+        if isinstance(self.values, int):
+            self.intval = IntVar(value=self.values)
+        elif isinstance(self.values, float):
+            self.intval = DoubleVar(value=self.values)
+        elif isinstance(self.values, np.integer):
+            self.intval = IntVar(value=int(self.values))
+        elif isinstance(self.values, np.floating):
+            self.intval = DoubleVar(value=float(self.values))
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.min = nums(kw.get("min"), 0)
         self.max = nums(kw.get("max"), 100)
-        self.increment = num0(kw.get("step"), 1)
+        increment = kw.get("step", 1)
+        self.increment = num0(kw.get("step"), 1) if _is_real(increment) else 1
         self.wrap = bols(kw.get("wrap"), False)
         self.width = self._dwh(kw.get("width"), 20)
         self.selectforeground = parsecolor(kw.get("selectfg"))
@@ -33,8 +47,10 @@ class InputNumber(Element):
             self.insertborderwidth = 0
         self.insertbackground = parsecolor(kw.get("insertbg"), "#000000")
         self.insertwidth = num0(kw.get("insertwidth"), 2)
-        self.values = nums(kw.get("values"), 0)
-        self.intval = IntVar(value=self.values)
+        formats = kw.get("format", "")
+        if not isinstance(formats, str):
+            raise TypeError
+        self.formats = formats
         self._widget = Spinbox(
             self.master,
             bg=self.bg,
@@ -59,10 +75,17 @@ class InputNumber(Element):
             to=self.max,
             width=self.width,
             wrap=self.wrap,
+            format=self.formats,
         )
 
     def get_number(self):
-        return self._widget.get()
+        return self.intval.get()
 
     def delta(self):
         self._widget.destroy()
+
+    def __int__(self):
+        return int(self.intval.get())
+
+    def __float__(self):
+        return float(self.intval.get())

@@ -25,8 +25,11 @@ class InputNumber(_Element):
 
     def get_number(self) -> int | float:
         """
-        InputNumberウィジェットに入力されている数値を取得する
+        ウィジェットに入力されている数値を取得する
 
-        :return: InputNumberウィジェットに入力されている数値を返す
+        :return: ウィジェットに入力されている数値を返す
         :rtype: int | float
         """
+
+    def __int__(self) -> int: ...
+    def __float__(self) -> float: ...
