@@ -53,11 +53,6 @@ class Element:
         self.width = self._dwh(kw.get("width"))
         self.height = self._dwh(kw.get("height"))
 
-    # def mro(self):
-    #     print(self._widget)
-    #     return type(self._widget).__mro__
-    # __mro__=mro
-
     def _list_cursor(self, name):
         if name in CURSOR_LIST:
             return name
@@ -203,6 +198,15 @@ class Element:
                 else:
                     return val
         raise ValueError
+
+    def _to_number(self, val):
+        if isinstance(val, int | np.integer):
+            return int(val)
+        elif isinstance(val, float | np.floating):
+            return float(val)
+        elif isinstance(val, complex | np.complexfloating):
+            return complex(val)
+        raise TypeError
 
 
 class TElement(Element):

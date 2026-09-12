@@ -2,7 +2,7 @@ from .basic import (Buttons, Checkbox, Colorbtn, Column, FileLoad, FolderLoad,
                     Frames, Imagebyte, Imagelink, Images, Input, InputNumber,
                     Link, Listboxs, Menubuttons, Menus, Multiline, Radio,
                     Savebtn, Slidebar, Tab, Table, TButtons, TCheckbox,
-                    TCombobox, Texts, TInput, TProgressbar, Tree)
+                    TCombobox, Texts, TInput, TProgressbar, Tree, TSlidebar)
 from .window import WindowController
 
 __all__ = [
@@ -10,6 +10,7 @@ __all__ = [
     "Checkbox",
     "Colorbtn",
     "Column",
+    "TSlidebar",
     "FileLoad",
     "FolderLoad",
     "Frames",

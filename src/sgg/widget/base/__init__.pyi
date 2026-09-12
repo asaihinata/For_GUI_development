@@ -1,6 +1,6 @@
-from tkinter import Misc, Widget, _Cursor
+from tkinter import Misc, _Cursor
 from tkinter.ttk import _Padding
-from typing import Callable
+from typing import Any, Callable, overload
 
 import numpy as np
 
@@ -172,6 +172,16 @@ class Element:
     def _unit_point[Value: int | float | np.integer | np.floating | str | np.str_](
         self, val: Value
     ) -> Value: ...
+    @overload
+    def _to_number[value: int | np.integer](self, val: value) -> int: ...
+    @overload
+    def _to_number[value: float | np.floating](self, val: value) -> float: ...
+    @overload
+    def _to_number[value: complex | np.complexfloating](
+        self, val: value
+    ) -> complex: ...
+    @overload
+    def _to_number(self, val: Any) -> None: ...
 
 class TElement(Element):
     style_list: list = []

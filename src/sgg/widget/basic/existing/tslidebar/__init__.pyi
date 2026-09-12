@@ -1,0 +1,40 @@
+from tkinter.ttk import Scale
+
+from sgg._typing import ColorType
+from sgg.widget.base import _Element
+
+__all__ = ["TSlidebar"]
+
+class TSlidebar(_Element):
+    @property
+    def widget(self) -> Scale: ...
+    def get(self) -> int | float:
+        """
+        Slidebarウィジェットの現在の値を取得する
+
+        :return: Slidebarウィジェットの現在の値を返す
+        :rtype: int | float
+        """
+
+    def delta(self) -> None:
+        """ウィジェットを削除する"""
+
+    def get_fg(self) -> ColorType:
+        """ウィジェットが表示している文字色を取得する"""
+
+    def set_fg(self, fg: ColorType) -> None:
+        """ウィジェットが表示している文字色を変更する"""
+
+    def get_bg(self) -> ColorType:
+        """ウィジェットが表示している背景色を取得する"""
+
+    def set_bg(self, bg: ColorType) -> None:
+        """ウィジェットが表示している背景色を変更する"""
+
+    def set(self, val: int | float) -> None:
+        """
+        Slidebarウィジェットの変更後の数値を設定する
+
+        :param val: 変更後の数値を指定する
+        :type val: int | float
+        """

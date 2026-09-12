@@ -14,7 +14,7 @@ class Slidebar(Element):
         if not isinstance(minval, int | float):
             minval = 0
         if not isinstance(maxval, int | float):
-            minval = 100
+            maxval = 100
         if maxval < minval:
             self.maxval = minval
             self.minval = maxval
@@ -28,10 +28,7 @@ class Slidebar(Element):
             value = self.minval
         elif self.maxval < value:
             value = self.maxval
-        if isinstance(value, int):
-            self.value = IntVar(self.master, value)
-        else:
-            self.value = DoubleVar(self.master, value)
+        self.value = DoubleVar(self.master, float(self.value))
         sliderlength = kw.get("sliderlength", 30)
         if isinstance(sliderlength, int | float) and 0 <= sliderlength:
             self.sliderlength = sliderlength
@@ -74,7 +71,7 @@ class Slidebar(Element):
         if nums(val):
             self._widget.set(val)
 
-    def _get(self):
+    def get(self):
         return self._widget.get()
 
     def delta(self):

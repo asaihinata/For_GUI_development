@@ -95,6 +95,7 @@ __all__ = [
     "TInput",
     "TProgressbar",
     "Tree",
+    "TSlidebar",
     "UIntError",
     "Violinplot",
     "Waterfall",
@@ -170,6 +171,10 @@ class Guis:
     @staticmethod
     def Tree(**kw):
         return {"count": _counts(), "type": "Tree", **kw}
+
+    @staticmethod
+    def TSlidebar(**kw):
+        return {"count": _counts(), "type": "TSlidebar", **kw}
 
     @staticmethod
     def Listboxs(**kw):

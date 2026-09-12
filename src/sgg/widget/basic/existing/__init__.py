@@ -20,6 +20,7 @@ from .texts import Texts
 from .tinput import TInput
 from .tprogressbar import TProgressbar
 from .tree import Tree
+from .tslidebar import TSlidebar
 
 __all__ = [
     "Buttons",
@@ -43,5 +44,6 @@ __all__ = [
     "Texts",
     "TInput",
     "TProgressbar",
+    "TSlidebar",
     "Tree",
 ]

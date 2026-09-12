@@ -199,6 +199,8 @@ class WindowController:
             widget = Tree(parent, kw)
         elif t == "Slidebar":
             widget = Slidebar(parent, kw)
+        elif t == "TSlidebar":
+            widget = TSlidebar(parent, kw)
         elif t == "LineGraph":
             widget = LineGraph(parent, kw)
         elif t == "BarGraph":
