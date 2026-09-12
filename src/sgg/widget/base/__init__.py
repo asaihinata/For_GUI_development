@@ -4,7 +4,7 @@ from types import FunctionType
 import numpy as np
 
 from sgg._list import ANCHOR_LIST, CURSOR_LIST, RELIEF_LIST
-from sgg.dev import _flatten, bols, listchose, num0s, parsecolor
+from sgg.dev import _flatten, _is_real, bols, listchose, num0s, parsecolor
 from sgg.font import Getfont, TKFont
 
 __all__ = ["Element", "TElement"]
@@ -178,6 +178,30 @@ class Element:
             return [str(array)]
         raise TypeError(f"{array}には文字列のみが入った配列を指定してください")
 
+    def _unit_point(self, val):
+        if _is_real(val):
+            return val
+        elif isinstance(val, np.str_):
+            return self._unit_point(str(val))
+        elif isinstance(val, str):
+            if val[len(val) - 1] in ["c", "m", "i", "p"]:
+                return val
+            else:
+                try:
+                    float(val)
+                except:
+                    raise ValueError
+                else:
+                    return val
+        raise ValueError
+
 
 class TElement(Element):
     style_list = None
+
+    def _padding(self, args):
+        args = np.array(args)
+        if args.ndim == 1 and args.shape[0] <= 4:
+            return args.tolist()
+        else:
+            raise ValueError

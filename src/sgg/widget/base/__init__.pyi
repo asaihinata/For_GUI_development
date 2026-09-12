@@ -1,4 +1,5 @@
 from tkinter import Misc, _Cursor
+from tkinter.ttk import _Padding
 from typing import Callable
 
 import numpy as np
@@ -168,5 +169,10 @@ class Element:
     ) -> list[str]:
         """配列を一次元の配列に変換する"""
 
+    def _unit_point[Value: int | float | np.integer | np.floating | str | np.str_](
+        self, val: Value
+    ) -> Value: ...
+
 class TElement(Element):
     style_list: list = []
+    def _padding(self, *args) -> _Padding: ...

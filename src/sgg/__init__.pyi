@@ -618,6 +618,7 @@ class Guis:
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
+
     @staticmethod
     def TInput(
         *,
