@@ -80,7 +80,6 @@ class Img_path(Img_conversion):
 
 class Img_byte(Img_conversion):
     def __init__(self, byte):
-        print(byte)
         if isinstance(byte, BytesIO):
             self.byte = byte
         if isinstance(byte, bytes):
