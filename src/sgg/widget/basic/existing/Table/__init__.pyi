@@ -1,10 +1,10 @@
 from tkinter.ttk import Treeview
 
-from sgg.widget.base import _Element
+from sgg.widget.base import TElement
 
 __all__ = ["Table"]
 
-class Table(_Element):
+class Table(TElement):
     @property
     def widget(self) -> Treeview: ...
     def delta(self) -> None:

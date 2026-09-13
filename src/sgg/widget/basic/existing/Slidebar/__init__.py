@@ -1,4 +1,4 @@
-from tkinter import DoubleVar, IntVar, Scale
+from tkinter import DoubleVar, Scale
 
 from sgg.dev import bols, listchose, num0s, nums
 from sgg.widget.base import Element
@@ -28,7 +28,7 @@ class Slidebar(Element):
             value = self.minval
         elif self.maxval < value:
             value = self.maxval
-        self.value = DoubleVar(self.master, float(self.value))
+        self.value = DoubleVar(self.master, float(value))
         sliderlength = kw.get("sliderlength", 30)
         if isinstance(sliderlength, int | float) and 0 <= sliderlength:
             self.sliderlength = sliderlength

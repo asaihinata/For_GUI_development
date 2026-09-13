@@ -278,7 +278,10 @@ For_GUI_development
  │   │       ├── __init__.py
  │   │       ├── base
  │   │       │   ├── __init__.py
- │   │       │   └── __init__.pyi
+ │   │       │   ├── element.py
+ │   │       │   ├── element.pyi
+ │   │       │   ├── telement.py
+ │   │       │   └── telement.pyi
  │   │       ├── basic
  │   │       │   ├── __init__.py
  │   │       │   ├── common.py
@@ -458,5 +461,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:321
+ファイル数:324
 フォルダ数:138

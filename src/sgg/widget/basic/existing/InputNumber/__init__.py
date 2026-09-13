@@ -11,7 +11,7 @@ __all__ = ["InputNumber"]
 class InputNumber(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.values = kw.get("values")
+        self.values = kw.get("values", 0)
         if not _is_real(self.values):
             raise TypeError
         if isinstance(self.values, int):

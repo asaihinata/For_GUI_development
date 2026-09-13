@@ -2,11 +2,11 @@ from tkinter import Listbox
 from typing import Any, Literal
 
 from sgg._typing import ColorType
-from sgg.widget.base import _Element
+from sgg.widget.base import Element
 
 __all__ = ["Listboxs"]
 
-class Listboxs(_Element):
+class Listboxs(Element):
     @property
     def widget(self) -> Listbox: ...
     def delta(self) -> None:

@@ -1,10 +1,10 @@
 from tkinter.ttk import Combobox
 
-from sgg.widget.base import _Element
+from sgg.widget.base import TElement
 
 __all__ = ["TCombobox"]
 
-class TCombobox(_Element):
+class TCombobox(TElement):
     @property
     def widget(self) -> Combobox: ...
     def get_text(self) -> str:

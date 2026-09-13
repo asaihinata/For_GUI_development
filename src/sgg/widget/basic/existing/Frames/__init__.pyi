@@ -1,11 +1,11 @@
 from tkinter import LabelFrame
 
 from sgg._typing import ColorType
-from sgg.widget.base import _Element
+from sgg.widget.base import Element
 
 __all__ = ["Frames"]
 
-class Frames(_Element):
+class Frames(Element):
     @property
     def widget(self) -> LabelFrame: ...
     def delta(self) -> None:

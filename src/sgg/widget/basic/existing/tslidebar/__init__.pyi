@@ -1,11 +1,11 @@
 from tkinter.ttk import Scale
 
 from sgg._typing import ColorType
-from sgg.widget.base import _Element
+from sgg.widget.base import TElement
 
 __all__ = ["TSlidebar"]
 
-class TSlidebar(_Element):
+class TSlidebar(TElement):
     @property
     def widget(self) -> Scale: ...
     def get(self) -> int | float:

@@ -1,5 +1,4 @@
 from tkinter import Misc, _Cursor
-from tkinter.ttk import _Padding
 from typing import Any, Callable, overload
 
 import numpy as np
@@ -7,14 +6,10 @@ import numpy as np
 from sgg._typing import NDStr_
 from sgg.font import TKFont
 
-__all__ = ["_Element", "Element", "TElement"]
-
-class _Element(Element):
-    widget: None
-    master: Misc
+__all__ = ["Element"]
 
 class Element:
-    widget = ...
+    widget: None
     master: Misc
     graph: bool = False
     cursor: _Cursor
@@ -182,7 +177,3 @@ class Element:
     ) -> complex: ...
     @overload
     def _to_number(self, val: Any) -> None: ...
-
-class TElement(Element):
-    style_list: list = []
-    def _padding(self, *args) -> _Padding: ...

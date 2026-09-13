@@ -1,10 +1,10 @@
 from tkinter import Label
 
-from sgg.widget.base import _Element
+from sgg.widget.base import Element
 
 __all__ = ["Images"]
 
-class Images(_Element):
+class Images(Element):
     @property
     def widget(self) -> Label: ...
     def delta(self) -> None:

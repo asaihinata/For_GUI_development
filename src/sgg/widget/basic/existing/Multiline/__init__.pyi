@@ -2,11 +2,11 @@ from tkinter import INSERT, Text
 from typing import Literal
 
 from sgg._typing import ColorType
-from sgg.widget.base import _Element
+from sgg.widget.base import Element
 
 __all__ = ["Multiline"]
 
-class Multiline(_Element):
+class Multiline(Element):
     @property
     def widget(self) -> Text: ...
     def delta(self) -> None:

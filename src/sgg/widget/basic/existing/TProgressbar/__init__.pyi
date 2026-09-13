@@ -1,11 +1,11 @@
 from tkinter.ttk import Progressbar
 from typing import Literal
 
-from sgg.widget.base import _Element
+from sgg.widget.base import TElement
 
 __all__ = ["TProgressbar"]
 
-class TProgressbar(_Element):
+class TProgressbar(TElement):
     @property
     def widget(self) -> Progressbar: ...
     def start(self, interval: Literal["idle"] | int | None = None) -> None:

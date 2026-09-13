@@ -1,11 +1,11 @@
 from tkinter import Menu
 
 from sgg._typing import ColorType
-from sgg.widget.base import _Element
+from sgg.widget.base import Element
 
 __all__ = ["Menus"]
 
-class Menus(_Element):
+class Menus(Element):
     @property
     def widget(self) -> Menu: ...
     def get(self) -> list:

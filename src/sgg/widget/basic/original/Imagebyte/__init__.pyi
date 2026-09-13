@@ -3,11 +3,11 @@ from tkinter import Label
 from PIL.ImageTk import PhotoImage
 
 from sgg._typing import *
-from sgg.widget.base import _Element
+from sgg.widget.base import Element
 
 __all__ = ["Imagebyte"]
 
-class Imagebyte(_Element):
+class Imagebyte(Element):
     @property
     def widget(self) -> Label: ...
     imgs: PhotoImage

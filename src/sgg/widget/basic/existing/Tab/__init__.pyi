@@ -1,11 +1,11 @@
 from tkinter import Widget
 from tkinter.ttk import Notebook
 
-from sgg.widget.base import _Element
+from sgg.widget.base import TElement
 
 __all__ = ["Tab"]
 
-class Tab(_Element):
+class Tab(TElement):
     @property
     def widget(self) -> Notebook: ...
     def delta(self) -> None:

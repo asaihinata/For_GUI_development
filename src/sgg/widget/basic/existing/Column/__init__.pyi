@@ -1,11 +1,11 @@
 from tkinter import Frame
 
 from sgg._typing import ColorType
-from sgg.widget.base import _Element
+from sgg.widget.base import Element
 
 __all__ = ["Column"]
 
-class Column(_Element):
+class Column(Element):
     @property
     def widget(self) -> Frame: ...
     def delta(self) -> None:

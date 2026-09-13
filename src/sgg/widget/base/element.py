@@ -1,0 +1,208 @@
+from re import findall
+from types import FunctionType
+
+import numpy as np
+
+from sgg._list import ANCHOR_LIST, CURSOR_LIST, RELIEF_LIST
+from sgg.dev import _flatten, _is_real, bols, listchose, num0s, parsecolor
+from sgg.font import Getfont, TKFont
+
+__all__ = ["Element"]
+
+
+class Element:
+    def __init__(self, master, kw):
+        self._widget = None
+        self.master = master
+        self.graph = False
+        self.cursor = self._list_cursor(kw.get("cursor"))
+        self.back_bg = kw.get("back_bg")
+        self.justify = listchose(kw.get("justify"), ["left", "right", "center"])
+        self.padx = num0s(kw.get("padx"), 1)
+        self.pady = num0s(kw.get("pady"), 1)
+        self.relief = listchose(kw.get("relief"), RELIEF_LIST, "flat")
+        self.fg = parsecolor(kw.get("fg"), "#000000")
+        self.bg = parsecolor(
+            kw.get("bg"), "#64778d" if self.back_bg == None else self.back_bg
+        )
+        self.borderwidth = num0s(kw.get("borderwidth"))
+        self.takefocus = bols(kw.get("takefocus"))
+        font = kw.get("font", None)
+        self.family = kw.get("family")
+        self.font_size = kw.get("font_size")
+        self.weight = kw.get("weight")
+        self.slant = kw.get("slant")
+        self.underline = kw.get("underline")
+        self.overstrike = kw.get("overstrike")
+        if isinstance(font, Getfont):
+            self.font = TKFont(
+                self.master,
+                font=font,
+            )
+        else:
+            self.font = TKFont(
+                self.master,
+                self.family,
+                self.font_size,
+                self.weight,
+                self.slant,
+                self.underline,
+                self.overstrike,
+            )
+        self.anchor = listchose(kw.get("anchor"), ANCHOR_LIST)
+        self.width = self._dwh(kw.get("width"))
+        self.height = self._dwh(kw.get("height"))
+
+    def _list_cursor(self, name):
+        if name in CURSOR_LIST:
+            return name
+        return None
+
+    def _dwh(self, val, other=None):
+        if isinstance(val, int | float) and 0 < val:
+            return val
+        return other
+
+    def _exec_funcs(self, funcs=None):
+        if isinstance(funcs, FunctionType):
+            funcs()
+        elif isinstance(funcs, list | tuple):
+            funcs = _flatten(funcs)
+            for f in funcs:
+                if isinstance(f, FunctionType):
+                    f()
+        else:
+            return None
+
+    @property
+    def widget(self):
+        return self._widget
+
+    def winsize(self):
+        root = self.master
+        return root.winfo_width(), root.winfo_height()
+
+    def winwidth(self):
+        return self.master.winfo_width()
+
+    def winheight(self):
+        return self.master.winfo_height()
+
+    def winxy(self):
+        root = self.master
+        return root.winfo_x(), root.winfo_y()
+
+    def winx(self):
+        return self.master.winfo_x()
+
+    def winy(self):
+        return self.master.winfo_y()
+
+    def geometry(self):
+        return [float(i) for i in findall(r"\d+", self.master.winfo_geometry())]
+
+    def rootxy(self):
+        root = self.master
+        return root.winfo_rootx(), root.winfo_rooty()
+
+    def rootx(self):
+        return self.master.winfo_rootx()
+
+    def rooty(self):
+        return self.master.winfo_rooty()
+
+    def visual(self):
+        return self.master.winfo_visual()
+
+    def screen(self):
+        return self.master.winfo_screen()
+
+    def reqsize(self):
+        root = self.master
+        return root.winfo_reqwidth(), root.winfo_reqheight()
+
+    def reqwidth(self):
+        return self.master.winfo_reqwidth()
+
+    def reqheight(self):
+        return self.master.winfo_reqheight()
+
+    def id(self):
+        return self.master.winfo_id()
+
+    def name(self):
+        return self.master.winfo_name()
+
+    def set_fg(self, fg):
+        if hasattr(self, "fg"):
+            self.fg = parsecolor(fg, self.fg)
+            self._widget.config(fg=self.fg)
+        else:
+            raise ValueError
+
+    def set_bg(self, bg):
+        if hasattr(self, "bg"):
+            self.bg = parsecolor(bg, self.bg)
+            self._widget.config(bg=self.bg)
+        else:
+            raise ValueError
+
+    def get_fg(self):
+        if hasattr(self, "fg"):
+            return self.fg
+        else:
+            raise ValueError
+
+    def get_bg(self):
+        if hasattr(self, "bg"):
+            return self.bg
+        else:
+            raise ValueError
+
+    def _to_flat_list(self, array):
+        if np.isscalar(array):
+            return [array]
+        elif isinstance(array, list | tuple):
+            return _flatten(array)
+        elif isinstance(array, range):
+            return list(array)
+        elif isinstance(array, np.ndarray):
+            return array.ravel().tolist()
+
+    def _to_str_flat_list(self, array):
+        if isinstance(array, list | tuple):
+            return _flatten(array)
+        elif isinstance(array, range):
+            return list(array)
+        elif isinstance(array, np.ndarray) and array.dtype.kind == "U":
+            return array.ravel().tolist()
+        elif isinstance(array, str):
+            return [array]
+        elif isinstance(array, np.str_):
+            return [str(array)]
+        raise TypeError(f"{array}には文字列のみが入った配列を指定してください")
+
+    def _unit_point(self, val):
+        if _is_real(val):
+            return val
+        elif isinstance(val, np.str_):
+            return self._unit_point(str(val))
+        elif isinstance(val, str):
+            if val[len(val) - 1] in ["c", "m", "i", "p"]:
+                return val
+            else:
+                try:
+                    float(val)
+                except:
+                    raise ValueError
+                else:
+                    return val
+        raise ValueError
+
+    def _to_number(self, val):
+        if isinstance(val, int | np.integer):
+            return int(val)
+        elif isinstance(val, float | np.floating):
+            return float(val)
+        elif isinstance(val, complex | np.complexfloating):
+            return complex(val)

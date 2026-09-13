@@ -1,11 +1,11 @@
 from tkinter import Spinbox
 
 from sgg._typing import ColorType
-from sgg.widget.base import _Element
+from sgg.widget.base import Element
 
 __all__ = ["InputNumber"]
 
-class InputNumber(_Element):
+class InputNumber(Element):
     @property
     def widget(self) -> Spinbox: ...
     def delta(self) -> None:

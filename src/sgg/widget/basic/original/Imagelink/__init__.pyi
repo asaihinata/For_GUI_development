@@ -2,11 +2,11 @@ from tkinter import Label
 
 from PIL.ImageTk import PhotoImage
 
-from sgg.widget.base import _Element
+from sgg.widget.base import Element
 
 __all__ = ["Imagelink"]
 
-class Imagelink(_Element):
+class Imagelink(Element):
     @property
     def widget(self) -> Label: ...
     imgs: PhotoImage

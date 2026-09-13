@@ -1,11 +1,11 @@
 from tkinter import Radiobutton
 
 from sgg._typing import ColorType
-from sgg.widget.base import _Element
+from sgg.widget.base import Element
 
 __all__ = ["Radio"]
 
-class Radio(_Element):
+class Radio(Element):
     @property
     def widget(self) -> Radiobutton: ...
     def delta(self) -> None:

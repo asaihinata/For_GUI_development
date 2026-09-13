@@ -1,11 +1,11 @@
 from tkinter import Label
 
 from sgg._typing import ColorType
-from sgg.widget.base import _Element
+from sgg.widget.base import Element
 
 __all__ = ["Texts"]
 
-class Texts(_Element):
+class Texts(Element):
     @property
     def widget(self) -> Label: ...
     def delta(self) -> None:

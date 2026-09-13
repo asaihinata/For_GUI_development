@@ -1,11 +1,11 @@
 from tkinter import Button
 
 from sgg._typing import ColorType
-from sgg.widget.base import _Element
+from sgg.widget.base import TElement
 
 __all__ = ["TButtons"]
 
-class TButtons(_Element):
+class TButtons(TElement):
     @property
     def widget(self) -> Button: ...
     def delta(self) -> None:

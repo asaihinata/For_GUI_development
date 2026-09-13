@@ -2,10 +2,10 @@ from tkinter import *
 
 from sgg import askcolor, askdirectory, askopenfilename, asksaveasfilename
 from sgg._typing import ColorType
-from sgg.widget.base import _Element
+from sgg.widget.base import Element
 from sgg.widget.basic.common import *
 
-class Btn(_Element):
+class Btn(Element):
     @property
     def widget(self) -> Button: ...
     wraplength: float | int

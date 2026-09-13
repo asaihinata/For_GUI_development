@@ -2,11 +2,11 @@ from tkinter import Entry
 from typing import Literal
 
 from sgg._typing import ColorType
-from sgg.widget.base import _Element
+from sgg.widget.base import Element
 
 __all__ = ["Input"]
 
-class Input(_Element):
+class Input(Element):
     @property
     def widget(self) -> Entry: ...
     def delta(self) -> None:

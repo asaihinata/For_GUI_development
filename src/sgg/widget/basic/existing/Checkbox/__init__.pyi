@@ -1,11 +1,11 @@
 from tkinter import Checkbutton
 
 from sgg._typing import ColorType
-from sgg.widget.base import _Element
+from sgg.widget.base import Element
 
 __all__ = ["Checkbox"]
 
-class Checkbox(_Element):
+class Checkbox(Element):
     @property
     def widget(self) -> Checkbutton: ...
     def delta(self) -> None:
