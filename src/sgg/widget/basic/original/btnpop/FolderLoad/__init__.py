@@ -1,5 +1,7 @@
 from os import getcwd
 
+from sgg import askdirectory
+
 from .._btn import Btn, Button, askdirectory
 
 __all__ = ["FolderLoad"]

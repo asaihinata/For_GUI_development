@@ -6,6 +6,7 @@ __all__ = [
     "_is_int",
     "_is_number",
     "_is_real",
+    "_is_str",
     "int0",
     "int0s",
     "int1s",
@@ -42,6 +43,12 @@ def _is_real(value):
         isinstance(value, np.generic)
         and np.issubdtype(value.dtype, np.integer | np.floating)
     ):
+        return True
+    return False
+
+
+def _is_str(value):
+    if isinstance(value, str | np.str_):
         return True
     return False
 

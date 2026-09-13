@@ -22,6 +22,7 @@ For_GUI_development
  │   │   └── other
  │   │       ├── color_table.md
  │   │       ├── format_datetime.md
+ │   │       ├── use_type_of_tkinter.md
  │   │       └── youbi.md
  │   └── templates
  │       └── py_document_text.mustache
@@ -284,7 +285,6 @@ For_GUI_development
  │   │       │   └── telement.pyi
  │   │       ├── basic
  │   │       │   ├── __init__.py
- │   │       │   ├── common.py
  │   │       │   ├── dev
  │   │       │   │   ├── __init__.py
  │   │       │   │   ├── photo

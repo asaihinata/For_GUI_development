@@ -1,7 +1,7 @@
 from tkinter import DoubleVar, IntVar
 from tkinter.ttk import Progressbar, Style
 
-from sgg.dev import _is_real, listchose, parsecolor
+from sgg.dev import _is_real, bols, listchose, parsecolor
 from sgg.widget.base import TElement
 
 __all__ = ["TProgressbar"]
@@ -16,18 +16,20 @@ class TProgressbar(TElement):
         else:
             raise TypeError
         self._variable(self.value)
-        maximum = kw.get("max")
+        maximum = kw.get("max", 200)
         if _is_real(maximum):
             self.maximum = maximum
         else:
             self.maximum = 200
-        length = kw.get("length")
-        if _is_real(length):
-            self.length = length
-        else:
-            self.length = 200
+        self.length = self._unit_change(kw.get("length", 200))
         self.mode = listchose(kw.get("mode"), ["determinate", "indeterminate"])
         self.orient = listchose(kw.get("orient"), ["horizontal", "vertical"])
+        self.autostart = bols(kw.get("autostart", False), False)
+        interval = kw.get("interval")
+        if interval is None or _is_real(interval):
+            self.interval = interval
+        else:
+            self.interval = None
         self.style = Style()
         if self.orient == "horizontal":
             self.stylename = f"Custom{kw.get("count")}.Horizontal.TProgressbar"
@@ -35,14 +37,16 @@ class TProgressbar(TElement):
             self.stylename = f"Custom{kw.get("count")}.Vertical.TProgressbar"
         self.style_list = [self.stylename]
         self.style.theme_use("default")
-        self.style.layout(
-            self.stylename,
+        if self.orient == "horizontal":
             self.style.layout(
-                "Horizontal.TProgressbar"
-                if self.orient == "horizontal"
-                else "Vertical.TProgressbar"
-            ),
-        )
+                self.stylename,
+                self.style.layout("Horizontal.TProgressbar"),
+            )
+        else:
+            self.style.layout(
+                self.stylename,
+                self.style.layout("Vertical.TProgressbar"),
+            )
         self.style.configure(
             self.stylename, background=self.fg, troughcolor=self.bg, thickness=20
         )
@@ -57,6 +61,8 @@ class TProgressbar(TElement):
             style=self.stylename,
             maximum=self.maximum,
         )
+        if self.autostart:
+            self.start(self.interval)
 
     def get(self):
         return self._widget["value"]
@@ -70,7 +76,7 @@ class TProgressbar(TElement):
 
     def start(self, interval=None):
         if interval is not None and not _is_real(interval):
-            raise TypeError
+            interval = self.interval
         self._widget.start(interval)
 
     def step(self, amount=None):

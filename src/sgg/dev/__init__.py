@@ -6,6 +6,7 @@ from .common._dnumber import *
 
 __all__ = [
     "_flatten",
+    "_is_str",
     "bols",
     "change_array_like",
     "int0",

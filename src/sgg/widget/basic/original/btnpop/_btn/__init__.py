@@ -1,6 +1,5 @@
 from tkinter import Button
 
-from sgg import askcolor, askdirectory, askopenfilename, asksaveasfilename
 from sgg._list import ANCHOR_LIST
 from sgg.dev import listchose, num0, parsecolor
 from sgg.widget.base import Element

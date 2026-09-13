@@ -16,13 +16,13 @@ class WindowController:
     __sizeof__: int
     root: Tk
     alpha: float
-    _style_name_dict: dict
-    Menu_in_judge: bool
+    _STYLE_NAME_DICT: dict
+    MENU_IN_JUDGE: bool
     def get(self, key: str) -> Any:
         """
         ウィジェットの情報を取得する
 
-        :param key: ウィジェットの情報を取得したい,そのウィジェットの指定されたkeyを指定する
+        :param key: ウィジェットの情報を取得したい,そのウィジェットの指定された`key`を指定する
         :type key: str
         :rtype: Any
         """
@@ -54,37 +54,27 @@ class WindowController:
         :type key: str
         """
 
-    def widgetcount(self) -> int:
-        """
-        ウィンドウに表示されているウィジェットの数を返す
-
-        :return: ウィンドウに表示されているウィジェットの数を返す
-        :rtype: int
-        """
+    def numofwidget(self) -> int:
+        """ウィンドウに表示されているウィジェットの数を返す"""
 
     def widgetdict(self) -> dict[str, Any]:
         """
-        ウィジェットの"key"とウィジェットの辞書を返す
+        ウィジェットの`key`とウィジェットの辞書を返す
 
         :return: ウィジェットのキー名とウィジェットの辞書を返す
-        :rtype: dict[str,Any]
+        :rtype: dict[str, Any]
         """
 
     def widgetlist(self) -> list[str]:
         """
-        表示されている全てのウィジェットの"key"名の配列を返す
+        表示されている全てのウィジェットの`key`名の配列を返す
 
         :return: ウィジェットのキー名とウィジェットの辞書を返す
         :rtype: list[str]
         """
 
     def widgetall(self) -> list[Any]:
-        """
-        表示されている全てのウィジェットの配列を返す
-
-        :return: ウィジェットを返す
-        :rtype: list[Any]
-        """
+        """表示されている全てのウィジェットの配列を返す"""
 
     def tookphoto(self, file: str = "window", ex: str = ".png") -> None:
         """

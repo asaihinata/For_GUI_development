@@ -1,4 +1,6 @@
-from .._btn import Btn, Button, askcolor, parsecolor
+from sgg import askcolor
+
+from .._btn import Btn, Button, parsecolor
 
 __all__ = ["Colorbtn"]
 

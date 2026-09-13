@@ -38,7 +38,7 @@ class Slidebar(Element):
         if label is not None and not isinstance(label, str):
             raise TypeError
         self.label = label
-        self.orientation = listchose(kw.get("orientation"), ["horizontal", "vertical"])
+        self.orientation = listchose(kw.get("orientation"), ["vertical", "horizontal"])
         self.resolution = num0s(kw.get("resolution"), 1)
         self.showvalue = bols(kw.get("showvalue"), True)
         self.digits = kw.get("digits", 0)

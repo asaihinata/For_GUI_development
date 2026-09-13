@@ -18,9 +18,9 @@ __all__ = ["WindowController"]
 class WindowController:
     """ウィンドウを生成する"""
 
-    count = 0
-    _style_name_dict = {}
-    Menu_in_judge = True
+    _count = 0
+    _STYLE_NAME_DICT = {}
+    MENU_IN_JUDGE = True
 
     def __init__(self, kw):
         self.title = kw.get("title", "window")
@@ -129,7 +129,7 @@ class WindowController:
         widget = None
         kw["back_bg"] = bgs
         if key == None:
-            kw["key"] = f"widget{self.count}"
+            kw["key"] = f"widget{self._count}"
         if t == "Menus":
             widget = Menus(parent, kw)
         elif t == "Menubuttons":
@@ -268,15 +268,15 @@ class WindowController:
         else:
             widget = Texts(parent, {"text": f"Unknown element:{t}"})
         if isinstance(widget, TElement):
-            self._style_name_dict[kw["key"]] = {
+            self._STYLE_NAME_DICT[kw["key"]] = {
                 "stylename": widget.style_list,
                 "class": widget.__class__.__name__,
             }
         if widget:
             if t == "Menus":
-                if self.Menu_in_judge == True:
+                if self.MENU_IN_JUDGE == True:
                     self.root.config(menu=widget.widget)
-                    self.Menu_in_judge = False
+                    self.MENU_IN_JUDGE = False
             elif widget.graph == True:
                 widget._pack()
             else:
@@ -289,12 +289,12 @@ class WindowController:
             if key:
                 self.widgets[key] = widget
             else:
-                self.widgets[f"widget{self.count}"] = widget
-        self.count += 1
+                self.widgets[f"widget{self._count}"] = widget
+        self._count += 1
 
     @property
     def style_name_dict(self):
-        return self._style_name_dict
+        return self._STYLE_NAME_DICT
 
     def get(self, key):
         return self.widgets.get(key)
@@ -307,10 +307,10 @@ class WindowController:
         self.root.title(title)
 
     def get_style(self):
-        return self._style_name_dict
+        return self._STYLE_NAME_DICT
 
-    def widgetcount(self):
-        return self.count
+    def numofwidget(self):
+        return self._count
 
     def widgetdict(self):
         return self.widgets
@@ -320,9 +320,6 @@ class WindowController:
 
     def widgetall(self):
         return list(self.widgets.values())
-
-    def winclose(self):
-        return "winclose"
 
     def _list_cursor(self, name):
         if name in CURSOR_LIST:
