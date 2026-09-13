@@ -159,6 +159,16 @@ class Element:
         else:
             raise ValueError
 
+    def keys(self):
+        return self.widget.keys()
+
+    def cget(self, key):
+        widget = self.widget
+        if key in widget.keys():
+            return widget.cget(key)
+        else:
+            raise ValueError
+
     def _to_flat_list(self, array):
         if np.isscalar(array):
             return [array]
@@ -206,3 +216,10 @@ class Element:
             return float(val)
         elif isinstance(val, complex | np.complexfloating):
             return complex(val)
+
+    def _is_number(self, val):
+        if isinstance(val, int | float | complex) or (
+            isinstance(val, np.generic) and np.issubdtype(val.dtype, np.number)
+        ):
+            return True
+        return False

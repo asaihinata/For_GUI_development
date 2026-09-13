@@ -12,16 +12,15 @@ class TProgressbar(TElement):
         super().__init__(master, kw)
         value = kw.get("value", 0)
         if _is_real(value):
-            self.value = value
+            self._variable(value)
         else:
             raise TypeError
-        self._variable(self.value)
-        maximum = kw.get("max", 200)
+        maximum = kw.get("max", 100)
         if _is_real(maximum):
             self.maximum = maximum
         else:
-            self.maximum = 200
-        self.length = self._unit_change(kw.get("length", 200))
+            self.maximum = 100
+        self.length = self._unit_change(kw.get("length", 100))
         self.mode = listchose(kw.get("mode"), ["determinate", "indeterminate"])
         self.orient = listchose(kw.get("orient"), ["horizontal", "vertical"])
         self.autostart = bols(kw.get("autostart", False), False)
@@ -65,12 +64,11 @@ class TProgressbar(TElement):
             self.start(self.interval)
 
     def get(self):
-        return self._widget["value"]
+        return self.variable.get()
 
     def set(self, value):
         if not _is_real(value):
             raise TypeError
-        self.value = value
         self._variable(value)
         self._widget.config(variable=self.variable)
 
@@ -100,6 +98,6 @@ class TProgressbar(TElement):
 
     def _variable(self, value):
         if isinstance(value, int):
-            self.variable = IntVar(self.master, int(value))
+            self.variable = IntVar(value=int(value))
         else:
-            self.variable = DoubleVar(self.master, float(value))
+            self.variable = DoubleVar(value=float(value))

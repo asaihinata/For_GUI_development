@@ -1,4 +1,4 @@
-from tkinter import Button
+from tkinter import Button, Variable
 
 from sgg._list import ANCHOR_LIST
 from sgg.dev import listchose, num0, parsecolor
@@ -23,8 +23,11 @@ class Btn(Element):
         self._widget.destroy()
 
     def get_text(self):
-        return self.text
+        return self.textvariable.get()
 
     def set_text(self, txt):
-        self.text = txt
-        self._widget.config(text=txt)
+        self.textvariable.set(txt)
+        self._widget.config(textvariable=self.textvariable)
+
+    def _textvariable(self, txt):
+        self.textvariable = Variable(value=txt)

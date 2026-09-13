@@ -156,6 +156,12 @@ class Element:
     def name(self) -> str:
         """ウィジェットのインスタンス名を返す"""
 
+    def keys(self) -> list[str]:
+        """ウィジェットのオプション名を取得する"""
+
+    def cget(self, key: str) -> Any:
+        """ウィジェットのオプションの値を取得する"""
+
     def _to_flat_list(self, array: list | tuple | range | np.ndarray) -> list[str]:
         """配列を一次元の配列に変換する"""
 

@@ -1,5 +1,5 @@
 from pathlib import Path
-from tkinter import Label
+from tkinter import Label, Variable
 from webbrowser import open
 
 from sgg.dev import num0, parsecolor
@@ -15,7 +15,7 @@ class Link(Element):
         super().__init__(master, kw)
         self.link_url = kw.get("link")
         if not isinstance(self.link_url, str | Path):
-            raise ValueError("linkにはstr型もしくはPathオブジェクトを指定してください")
+            raise ValueError
         self.underline = kw.get("underline", True)
         self.font = TKFont(
             master,
@@ -28,9 +28,7 @@ class Link(Element):
         )
         self.fg = parsecolor(kw.get("fg"), "#0000ee")
         self.wraplength = num0(kw.get("wraplength"))
-        self.text = kw.get("text")
-        if self.text == None:
-            self.text = self.link_url
+        self.textvariable = Variable(value=kw.get("text"))
         self._widget = Label(
             master,
             anchor=self.anchor,
@@ -45,7 +43,7 @@ class Link(Element):
             pady=self.pady,
             relief=self.relief,
             takefocus=self.takefocus,
-            text=self.text,
+            textvariable=self.textvariable,
             width=self.width,
             wraplength=self.wraplength,
         )
@@ -62,11 +60,11 @@ class Link(Element):
         self._widget.destroy()
 
     def get_text(self):
-        return self.text
+        return self.textvariable.get()
 
     def set_text(self, txt):
-        self.text = txt
-        self._widget.config(text=txt)
+        self.textvariable.set(txt)
+        self._widget.config(textvariable=self.textvariable)
 
     def get_link(self):
         return self.link_url

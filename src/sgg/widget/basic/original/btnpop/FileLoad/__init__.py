@@ -11,7 +11,7 @@ class FileLoad(Btn):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.__path = None
-        self.text = kw.get("text", "select File")
+        self._textvariable(kw.get("text", "select File"))
         self.title = kw.get("title", "select File")
         self._widget = Button(
             master,
@@ -22,7 +22,7 @@ class FileLoad(Btn):
             relief=self.relief,
             wraplength=self.wraplength,
             cursor=self.cursor,
-            text=self.text,
+            textvariable=self.textvariable,
             bg=self.bg,
             fg=self.fg,
             font=self.font,

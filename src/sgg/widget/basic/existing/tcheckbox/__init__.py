@@ -1,4 +1,4 @@
-from tkinter import BooleanVar
+from tkinter import BooleanVar, Variable
 from tkinter.ttk import Checkbutton, Style
 
 from sgg.dev import bols
@@ -10,9 +10,9 @@ __all__ = ["TCheckbox"]
 class TCheckbox(TElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.text = kw.get("text")
+        self.textvariable = Variable(value=kw.get("text"))
         self.default = bols(kw.get("default"), False)
-        self.variable = BooleanVar(master, value=self.default)
+        self.variable = BooleanVar(value=self.default)
         self.stylename = f"Custom{kw.get("count")}.TCheckbutton"
         self.style_list = [self.stylename]
         self.style = Style()
@@ -26,7 +26,7 @@ class TCheckbox(TElement):
             self.master,
             takefocus=self.takefocus,
             cursor=self.cursor,
-            text=self.text,
+            textvariable=self.textvariable,
             variable=self.variable,
             style=self.stylename,
         )
@@ -41,8 +41,8 @@ class TCheckbox(TElement):
         self._widget.destroy()
 
     def get_text(self):
-        return self.text
+        return self.textvariable.get()
 
     def set_text(self, txt):
-        self.text = txt
-        self._widget.config(text=txt)
+        self.textvariable.set(txt)
+        self._widget.config(textvariable=self.textvariable)

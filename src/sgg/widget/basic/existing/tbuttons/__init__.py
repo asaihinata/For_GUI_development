@@ -11,9 +11,9 @@ __all__ = ["TButtons"]
 class TButtons(TElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.text = kw.get("text")
-        self.textvariable = Variable(master, self.text)
+        self.textvariable = Variable(value=kw.get("text"))
         self.funcs = kw.get("function")
+        self.default = listchose(kw.get("default"), ["normal", "active", "disabled"])
         self.wraplength = num0(kw.get("wraplength"))
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.shiftrelief = kw.get("shiftrelief")
@@ -31,6 +31,7 @@ class TButtons(TElement):
         )
         self._widget = Button(
             self.master,
+            default=self.default,
             command=lambda: self._exec_funcs(self.funcs),
             cursor=self.cursor,
             takefocus=self.takefocus,
@@ -42,9 +43,8 @@ class TButtons(TElement):
         self._widget.destroy()
 
     def get_text(self):
-        return self.text
+        return self.textvariable.get()
 
     def set_text(self, txt):
-        self.text = txt
-        self.textvariable = Variable(self.master, self.text)
+        self.textvariable.set(txt)
         self._widget.config(textvariable=self.textvariable)

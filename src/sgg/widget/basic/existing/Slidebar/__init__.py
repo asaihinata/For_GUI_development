@@ -1,6 +1,6 @@
 from tkinter import DoubleVar, Scale
 
-from sgg.dev import bols, listchose, num0s, nums
+from sgg.dev import _is_real, bols, listchose, num0s
 from sgg.widget.base import Element
 
 __all__ = ["Slidebar"]
@@ -22,20 +22,20 @@ class Slidebar(Element):
             self.maxval = maxval
             self.minval = minval
         value = kw.get("value", 0)
-        if not isinstance(value, int | float):
+        if not _is_real(value):
             value = 0
         if value < self.minval:
             value = self.minval
         elif self.maxval < value:
             value = self.maxval
-        self.value = DoubleVar(self.master, float(value))
+        self.variable = DoubleVar(value=float(value))
         sliderlength = kw.get("sliderlength", 30)
         if isinstance(sliderlength, int | float) and 0 <= sliderlength:
             self.sliderlength = sliderlength
         else:
             self.sliderlength = 30
-        label = kw.get("label", None)
-        if label is not None and not isinstance(label, str):
+        label = kw.get("label", "")
+        if not isinstance(label, str):
             raise TypeError
         self.label = label
         self.orientation = listchose(kw.get("orientation"), ["vertical", "horizontal"])
@@ -44,12 +44,12 @@ class Slidebar(Element):
         self.digits = kw.get("digits", 0)
         if not isinstance(self.digits, int):
             self.digits = 0
-        self.length = num0s(kw.get("length"), 200)
+        self.length = num0s(kw.get("length"), 100)
         self.borderwidth = num0s(kw.get("borderwidth"), 1)
         self._widget = Scale(
             self.master,
             takefocus=self.takefocus,
-            variable=self.value,
+            variable=self.variable,
             label=self.label,
             sliderlength=self.sliderlength,
             relief=self.relief,
@@ -68,11 +68,11 @@ class Slidebar(Element):
         )
 
     def set(self, val):
-        if nums(val):
-            self._widget.set(val)
+        if _is_real(val):
+            self.variable.set(float(val))
 
     def get(self):
-        return self._widget.get()
+        return self.variable.get()
 
     def delta(self):
         self._widget.destroy()

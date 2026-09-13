@@ -9,7 +9,7 @@ class Savebtn(Btn):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.__path = None
-        self.text = kw.get("text", "Save file")
+        self._textvariable(kw.get("text", "Save file"))
         self.title = kw.get("title", "Save file")
         self.defaultextension = kw.get("defaultextension", ".txt")
         self.filetypes = kw.get("filetypes", [("All files", "*.*")])
@@ -24,7 +24,7 @@ class Savebtn(Btn):
             relief=self.relief,
             wraplength=self.wraplength,
             cursor=self.cursor,
-            text=self.text,
+            textvariable=self.textvariable,
             bg=self.bg,
             fg=self.fg,
             font=self.font,

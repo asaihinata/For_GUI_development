@@ -12,8 +12,7 @@ class TInput(TElement):
         super().__init__(master, kw)
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.width = num0(kw.get("width"), 20)
-        self.text = kw.get("text")
-        self.textvariable = Variable(value=self.text)
+        self.textvariable = Variable(value=kw.get("text"))
         self.show = kw.get("show")
         self.state = listchose(kw.get("state"), ["normal", "disabled", "readonly"])
         self.disabledbg = parsecolor(kw.get("disabledbg"))
@@ -64,7 +63,11 @@ class TInput(TElement):
         self._widget.insert(place, text)
 
     def get_text(self):
-        return self._widget.get()
+        return self.textvariable.get()
+
+    def set_text(self, txt):
+        self.textvariable.set(txt)
+        self._widget.config(textvariable=self.textvariable)
 
     def select_judge(self):
         return self._widget.select_present()
@@ -77,8 +80,3 @@ class TInput(TElement):
 
     def delta(self):
         self._widget.destroy()
-
-    def set_text(self, txt):
-        self.text = txt
-        self.all_delta()
-        self.inserts(self.text)

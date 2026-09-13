@@ -103,10 +103,8 @@ def list4float(lin=None):
 
 
 def listchose(val, arr, other=None):
-    if isinstance(arr, tuple | list) and other == None:
-        other = arr[0]
-    elif not isinstance(arr, tuple | list) and other == None:
-        other = arr
     if val in arr:
         return val
+    elif other is None:
+        return arr[0]
     return other

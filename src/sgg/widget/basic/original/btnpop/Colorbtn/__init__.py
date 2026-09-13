@@ -11,7 +11,7 @@ class Colorbtn(Btn):
         self.__color = (None, None)
         self.colors = parsecolor(kw.get("color"), "#ffffff")
         self.title = kw.get("title", "select color")
-        self.text = kw.get("text", "select color")
+        self._textvariable(kw.get("text", "select color"))
         self._widget = Button(
             master,
             takefocus=self.takefocus,
@@ -21,7 +21,7 @@ class Colorbtn(Btn):
             relief=self.relief,
             wraplength=self.wraplength,
             cursor=self.cursor,
-            text=self.text,
+            textvariable=self.textvariable,
             bg=self.bg,
             fg=self.fg,
             font=self.font,

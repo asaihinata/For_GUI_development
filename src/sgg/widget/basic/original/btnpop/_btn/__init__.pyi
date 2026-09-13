@@ -7,6 +7,7 @@ class Btn(Element):
     @property
     def widget(self) -> Button: ...
     wraplength: float | int
+    textvariable: Variable
     def delta(self) -> None:
         """ウィジェットを削除する"""
 
@@ -38,3 +39,5 @@ class Btn(Element):
 
     def dsettitle(self, titles: str) -> None:
         """ダイアログに表示されるタイトルを変更する"""
+
+    def _textvariable(self, txt: str) -> None: ...

@@ -1,4 +1,4 @@
-from tkinter import Menu, Menubutton
+from tkinter import Menu, Menubutton, Variable
 
 from sgg.dev import bols, parsecolor
 from sgg.widget.base import Element
@@ -10,7 +10,7 @@ class Menubuttons(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
-        self.text = kw.get("text")
+        self.textvariable = Variable(value=kw.get("text"))
         self.menu_lists = kw.get("list", [])
         self.tearoff = bols(kw.get("tearoff"), False)
         self._widget = Menubutton(
@@ -21,7 +21,7 @@ class Menubuttons(Element):
             pady=self.pady,
             relief=self.relief,
             cursor=self.cursor,
-            text=self.text,
+            textvariable=self.textvariable,
             bg=self.bg,
             fg=self.fg,
             font=self.font,
@@ -109,8 +109,8 @@ class Menubuttons(Element):
         self._widget.destroy()
 
     def get_text(self):
-        return self.text
+        return self.textvariable.get()
 
     def set_text(self, txt):
-        self.text = txt
-        self._widget.config(text=txt)
+        self.textvariable.set(txt)
+        self._widget.config(textvariable=self.textvariable)

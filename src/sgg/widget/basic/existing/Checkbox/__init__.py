@@ -1,4 +1,4 @@
-from tkinter import BooleanVar, Checkbutton
+from tkinter import BooleanVar, Checkbutton, Variable
 
 from sgg.dev import bols, num0, parsecolor
 from sgg.widget.base import Element
@@ -12,7 +12,7 @@ class Checkbox(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.wraplength = num0(kw.get("wraplength"))
-        self.text = kw.get("text")
+        self.textvariable = Variable(kw.get("text"))
         self.check = bols(kw.get("check"), False)
         group = kw.get("group", "default")
         self.group = group if isinstance(group, str) else "default"
@@ -32,7 +32,7 @@ class Checkbox(Element):
             relief=self.relief,
             wraplength=self.wraplength,
             cursor=self.cursor,
-            text=self.text,
+            textvariable=self.textvariable,
             variable=self.variable,
             bg=self.bg,
             fg=self.fg,
@@ -55,8 +55,8 @@ class Checkbox(Element):
             self.variable.set(value)
 
     def get_text(self):
-        return self.text
+        return self.textvariable.get()
 
     def set_text(self, txt):
-        self.text = txt
-        self._widget.config(text=txt)
+        self.textvariable.set(txt)
+        self._widget.config(textvariable=self.textvariable)

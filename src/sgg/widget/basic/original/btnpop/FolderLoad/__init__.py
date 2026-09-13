@@ -12,7 +12,7 @@ class FolderLoad(Btn):
         super().__init__(master, kw)
         self.__path = None
         self.title = kw.get("title", "select Folder")
-        self.text = kw.get("text", "select Folder")
+        self._textvariable(kw.get("text", "select Folder"))
         self._widget = Button(
             master,
             takefocus=self.takefocus,
@@ -22,7 +22,7 @@ class FolderLoad(Btn):
             relief=self.relief,
             wraplength=self.wraplength,
             cursor=self.cursor,
-            text=self.text,
+            textvariable=self.textvariable,
             bg=self.bg,
             fg=self.fg,
             font=self.font,

@@ -1,3 +1,4 @@
+from tkinter import Variable
 from tkinter.ttk import Combobox, Style
 
 from sgg.dev import listchose
@@ -10,7 +11,7 @@ class TCombobox(TElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.values = self._to_flat_list(kw.get("values"))
-        self.text = kw.get("text")
+        self.textvariable = Variable(value=kw.get("text"))
         self.states = listchose(kw.get("state"), ["normal", "readonly", "disabled"])
         self.style = Style()
         self.stylename = f"Custom{kw.get("count")}.TCombobox"
@@ -30,15 +31,15 @@ class TCombobox(TElement):
             state=self.states,
             font=self.font,
             style=self.stylename,
+            textvariable=self.textvariable,
         )
-        if self.text:
-            self._widget.set(self.text)
 
     def get_text(self):
-        return self._widget.get()
+        return self.textvariable.get()
 
     def set_text(self, text):
-        self._widget.set(text)
+        self.textvariable.set(text)
+        self._widget.config(textvariable=self.textvariable)
 
     def clear(self):
         self._widget.set("")

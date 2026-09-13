@@ -1,4 +1,4 @@
-from tkinter import Label
+from tkinter import Label, Variable
 
 from sgg.dev import num0
 from sgg.widget.base import Element
@@ -9,7 +9,7 @@ __all__ = ["Texts"]
 class Texts(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.text = kw.get("text")
+        self.textvariable = Variable(value=kw.get("text"))
         self.wraplength = num0(kw.get("wraplength"))
         self._widget = Label(
             self.master,
@@ -21,7 +21,7 @@ class Texts(Element):
             relief=self.relief,
             wraplength=self.wraplength,
             cursor=self.cursor,
-            text=self.text,
+            textvariable=self.textvariable,
             bg=self.bg,
             fg=self.fg,
             font=self.font,
@@ -34,8 +34,8 @@ class Texts(Element):
         self._widget.destroy()
 
     def get_text(self):
-        return self.text
+        return self.textvariable.get()
 
     def set_text(self, txt):
-        self.text = txt
-        self._widget.config(text=txt)
+        self.textvariable.set(value=txt)
+        self._widget.config(textvariable=self.textvariable)

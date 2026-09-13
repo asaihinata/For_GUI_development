@@ -20,7 +20,7 @@ class TSlidebar(TElement):
             self.maxval, self.minval = minval, maxval
         else:
             self.maxval, self.minval = maxval, minval
-        self.value = self._value(kw.get("value", 0))
+        self._value(kw.get("value", 0))
         sliderlength = kw.get("sliderlength", 30)
         if isinstance(sliderlength, int | float) and 0 <= sliderlength:
             self.sliderlength = sliderlength
@@ -46,7 +46,7 @@ class TSlidebar(TElement):
             self.master,
             style=self.stylename,
             takefocus=self.takefocus,
-            variable=self.value,
+            variable=self.variable,
             cursor=self.cursor,
             from_=self.minval,
             to=self.maxval,
@@ -56,20 +56,20 @@ class TSlidebar(TElement):
 
     def set(self, val):
         if _is_real(val):
-            self.value = self._value(val)
-            self._widget.config(variable=self.value)
+            self._value(val)
+            self._widget.config(variable=self.variable)
 
     def get(self):
-        return self.value.get()
+        return self.variable.get()
 
     def delta(self):
         self._widget.destroy()
 
-    def _value(self, value):
-        if not isinstance(value, int | float):
-            value = 0
-        if value < self.minval:
-            value = self.minval
-        if self.maxval < value:
-            value = self.maxval
-        return DoubleVar(self.master, float(value))
+    def _value(self, val):
+        if not _is_real(val):
+            val = 0
+        if val < self.minval:
+            val = self.minval
+        if self.maxval < val:
+            val = self.maxval
+        self.variable = DoubleVar(value=float(val))
