@@ -1,6 +1,7 @@
 from io import BytesIO
 from pathlib import Path, PosixPath, WindowsPath
 
+import numpy as np
 from PIL import Image
 
 __all__ = ["Img_byte", "Img_path"]
@@ -79,10 +80,15 @@ class Img_path(Img_conversion):
 
 class Img_byte(Img_conversion):
     def __init__(self, byte):
-        if not isinstance(byte, bytes | BytesIO):
-            raise TypeError("byteにはbytes型もしくはBytesIO型で指定してください")
+        print(byte)
+        if isinstance(byte, BytesIO):
+            self.byte = byte
         if isinstance(byte, bytes):
             self.byte = BytesIO(byte)
+        elif isinstance(byte, np.bytes_):
+            self.byte = BytesIO(bytes(byte))
+        elif isinstance(byte, np.ndarray) and byte.dtype.kind == "S":
+            self.byte = BytesIO(byte.tobytes())
         else:
-            self.byte = byte
+            raise TypeError
         super().__init__(self.byte)

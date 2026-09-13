@@ -140,8 +140,8 @@ class WindowController:
             widget = Link(parent, kw)
         elif t == "Images":
             widget = Images(parent, kw)
-        elif t == "Imagebyte":
-            widget = Imagebyte(parent, kw)
+        elif t == "Imagebytes":
+            widget = Imagebytes(parent, kw)
         elif t == "Imagelink":
             widget = Imagelink(parent, kw)
         elif t == "Buttons":

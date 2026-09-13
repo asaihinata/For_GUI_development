@@ -2,7 +2,7 @@ from os import getcwd
 
 from sgg import askdirectory
 
-from .._btn import Btn, Button, askdirectory
+from .._btn import Btn, Button
 
 __all__ = ["FolderLoad"]
 

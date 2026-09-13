@@ -1,4 +1,3 @@
-from io import BytesIO
 from tkinter import Label
 
 from PIL.ImageTk import PhotoImage
@@ -6,17 +5,14 @@ from PIL.ImageTk import PhotoImage
 from sgg.widget.base import Element
 from sgg.widget.basic.dev import Img_byte
 
-__all__ = ["Imagebyte"]
+__all__ = ["Imagebytes"]
 
 
-class Imagebyte(Element):
+class Imagebytes(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.byte = kw.get("byte")
-        if not isinstance(self.byte, bytes | BytesIO):
-            raise TypeError("byteにはbytes型もしくはBytesIO型を指定してください")
-        self.__img = Img_byte(self.byte).image
-        self.imgs = PhotoImage(image=self.__img)
+        self.__img = Img_byte(kw.get("bytes"))
+        self.imgs = PhotoImage(image=self.__img.image)
         self._widget = Label(
             master, text=None, image=self.imgs, takefocus=self.takefocus
         )
@@ -25,5 +21,11 @@ class Imagebyte(Element):
     def delta(self):
         self._widget.destroy()
 
-    def show(self, title=None):
-        self.__img.show(title)
+    def show(self):
+        self.__img.image.show()
+
+    def bytesdate(self):
+        return self.__img.byte
+
+    def __bytes__(self):
+        return self.__img.byte

@@ -2,7 +2,7 @@ from os import getcwd
 
 from sgg import askopenfilename
 
-from .._btn import Btn, Button, askopenfilename
+from .._btn import Btn, Button
 
 __all__ = ["FileLoad"]
 

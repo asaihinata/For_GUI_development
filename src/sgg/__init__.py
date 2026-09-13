@@ -40,7 +40,7 @@ __all__ = [
     "Hexbin",
     "Hist",
     "Hist2d",
-    "Imagebyte",
+    "Imagebytes",
     "Imagelink",
     "Images",
     "Input",
@@ -137,8 +137,8 @@ class Guis:
         return {"count": _counts(), "type": "Images", **kw}
 
     @staticmethod
-    def Imagebyte(**kw):
-        return {"count": _counts(), "type": "Imagebyte", **kw}
+    def Imagebytes(**kw):
+        return {"count": _counts(), "type": "Imagebytes", **kw}
 
     @staticmethod
     def Imagelink(**kw):

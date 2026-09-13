@@ -47,7 +47,7 @@ __all__ = [
     "Hexbin",
     "Hist",
     "Hist2d",
-    "Imagebyte",
+    "Imagebytes",
     "Imagelink",
     "Images",
     "Input",
@@ -377,9 +377,9 @@ class Guis:
         """
 
     @staticmethod
-    def Imagebyte(
+    def Imagebytes(
         *,
-        byte: bytes | BytesIO = ...,
+        bytes: bytes | BytesIO | np.bytes_ | sgt.NDBytes_ = ...,
         takefocus: bool = ...,
         key: str | None = ...,
     ) -> dict[str, Any]:
@@ -387,7 +387,7 @@ class Guis:
         バイトデータから画像を作成する
 
         :param byte: ウィジェットに表示させるバイトデータを指定する
-        :type byte: bytes | BytesIO
+        :type byte: bytes | BytesIO | np.bytes_ | NDArray[np.bytes_]
         :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
         :type takefocus: bool
         :param key: ウィジェット固有の番号を指定する

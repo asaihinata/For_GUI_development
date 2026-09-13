@@ -8,7 +8,7 @@
 |   FileLoad   |   tkinter.   |
 |  FolderLoad  |   tkinter.   |
 |    Frames    |   tkinter.   |
-|  Imagebyte   |   tkinter.   |
+|  Imagebytes   |   tkinter.   |
 |  Imagelink   |   tkinter.   |
 |    Images    |   tkinter.   |
 |    Input     |   tkinter.   |

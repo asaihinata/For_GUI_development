@@ -1,5 +1,5 @@
 from .basic import (Buttons, Checkbox, Colorbtn, Column, FileLoad, FolderLoad,
-                    Frames, Imagebyte, Imagelink, Images, Input, InputNumber,
+                    Frames, Imagebytes, Imagelink, Images, Input, InputNumber,
                     Link, Listboxs, Menubuttons, Menus, Multiline, Radio,
                     Savebtn, Slidebar, Tab, Table, TButtons, TCheckbox,
                     TCombobox, Texts, TInput, TProgressbar, Tree, TSlidebar)
@@ -14,7 +14,7 @@ __all__ = [
     "FileLoad",
     "FolderLoad",
     "Frames",
-    "Imagebyte",
+    "Imagebytes",
     "Imagelink",
     "Images",
     "Input",

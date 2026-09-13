@@ -13,10 +13,5 @@ class Imagelink(Element):
     def delta(self) -> None:
         """ウィジェットを削除する"""
 
-    def show(self, title: str | None = None) -> None:
-        """
-        画像を表示させる
-
-        :param title: タイトルを指定する
-        :type title: str | None
-        """
+    def show(self, title) -> None:
+        """画像を表示させる"""

@@ -5,19 +5,16 @@ from PIL.ImageTk import PhotoImage
 from sgg._typing import *
 from sgg.widget.base import Element
 
-__all__ = ["Imagebyte"]
+__all__ = ["Imagebytes"]
 
-class Imagebyte(Element):
+class Imagebytes(Element):
     @property
     def widget(self) -> Label: ...
     imgs: PhotoImage
     def delta(self) -> None:
         """ウィジェットを削除する"""
 
-    def show(self, title: str | None = None) -> None:
-        """
-        画像を表示させる
-
-        :param title: タイトルを指定する
-        :type title: str | None
-        """
+    def show(self) -> None:
+        """画像を表示させる"""
+    def bytesdate(self)->bytes:...
+    def __bytes__(self)->bytes:...

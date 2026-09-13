@@ -29,8 +29,8 @@ class Imagelink(Element):
     def delta(self):
         self._widget.destroy()
 
-    def show(self, title=None):
-        self.__img.show(title)
+    def show(self):
+        self.__img.show()
 
 
 def _get_link_img(link):

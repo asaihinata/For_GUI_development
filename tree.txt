@@ -382,7 +382,7 @@ For_GUI_development
  │   │       │       │   └── savebtn
  │   │       │       │       ├── __init__.py
  │   │       │       │       └── __init__.pyi
- │   │       │       ├── imagebyte
+ │   │       │       ├── imagebytes
  │   │       │       │   ├── __init__.py
  │   │       │       │   └── __init__.pyi
  │   │       │       ├── imagelink
