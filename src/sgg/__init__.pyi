@@ -133,16 +133,16 @@ class Guis:
         """
         ウィンドウを作成する
 
-        :param layout: ウィンドウで表示されるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
+        :param layout: ウィンドウで表示されるウィジェットを指定する各リストがウィンドウのその行に対応し, その中に配置したウィジェットが左から順に並びます
         :type layout: Listlike
         :param title: ウィンドウに表示されるタイトル名を指定する
         :type title: str
         :param load: ウィンドウ表示時に実行される関数を指定する
-        :type load: function | tuple[function,...] | None
+        :type load: function | tuple[function, ...] | None
         :param bg: ウィンドウの背景を指定する
         :type bg: 色名 | None
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param scroll: ウィンドウのx軸,y軸方向にスクロールできるか指定する
         :type scroll: bool
         :param scroll_x: ウィンドウのx軸方向にスクロールできるか指定する
@@ -150,11 +150,11 @@ class Guis:
         :param scroll_y: ウィンドウのy軸方向にスクロールできるか指定する
         :type scroll_y: bool
         :param size: ウィンドウの幅と高さを指定する
-        :type size: tuple[int | float | None,int | float | None]
+        :type size: tuple[int | float | None, int | float | None]
         :param maxmine: ウィンドウ表示時最大化するかを指定する
         :type maxmine: bool
         :param location: ウィンドウの表示位置を指定する
-        :type location: tuple[int | float,int | float]
+        :type location: tuple[int | float, int | float]
         :param resizable: 幅と高さのサイズ変更の許可を指定する
         :type resizable: bool
         """
@@ -183,16 +183,16 @@ class Guis:
         """
         ウィンドウを作成する
 
-        :param layout: ウィンドウで表示されるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
+        :param layout: ウィンドウで表示されるウィジェットを指定する各リストがウィンドウのその行に対応し, その中に配置したウィジェットが左から順に並びます
         :type layout: Listlike
         :param title: ウィンドウに表示されるタイトル名を指定する
         :type title: str
         :param load: ウィンドウ表示時に実行される関数を指定する
-        :type load: function | tuple[function,...] | None
+        :type load: function | tuple[function, ...] | None
         :param bg: ウィンドウの背景を指定する
         :type bg: 色名 | None
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param scroll: ウィンドウのx軸,y軸方向にスクロールできるか指定する
         :type scroll: bool
         :param scroll_x: ウィンドウのx軸方向にスクロールできるか指定する
@@ -200,11 +200,11 @@ class Guis:
         :param scroll_y: ウィンドウのy軸方向にスクロールできるか指定する
         :type scroll_y: bool
         :param size: ウィンドウの幅と高さを指定する
-        :type size: tuple[int | float | None,int | float | None]
+        :type size: tuple[int | float | None, int | float | None]
         :param maxmine: ウィンドウ表示時最大化するかを指定する
         :type maxmine: bool
         :param location: ウィンドウの表示位置を指定する
-        :type location: tuple[int | float,int | float]
+        :type location: tuple[int | float, int | float]
         :param resizableswidth: 幅のサイズ変更の許可を指定する
         :type resizableswidth: bool
         :param resizablesheight: 高さのサイズ変更の許可を指定する
@@ -272,7 +272,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param anchor: ウィジェット内の文字の位置を指定する
@@ -347,7 +347,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param anchor: ウィジェット内の文字の位置を指定する
@@ -445,7 +445,7 @@ class Guis:
         :param text: ウィジェットに表記させる文字を指定する
         :type text: str
         :param function: ウィジェットが押された時実行される関数を指定する
-        :type function: function | tuple[function,...] | None
+        :type function: function | tuple[function, ...] | None
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
         :param height: ウィジェットの高さを指定する
@@ -477,7 +477,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param anchor: ウィジェット内の文字の位置を指定する
         :type anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"]
         :param relief: ウィジェットの周囲に枠線について指定する
@@ -512,7 +512,7 @@ class Guis:
         :param text: ウィジェットに表記させる文字を指定する
         :type text: str
         :param function: ウィジェットが押された時実行される関数を指定する
-        :type function: function | tuple[function,...] | None
+        :type function: function | tuple[function, ...] | None
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
         :param height: ウィジェットの高さを指定する
@@ -544,7 +544,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param anchor: ウィジェット内の文字の位置を指定する
         :type anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"]
         :param relief: ウィジェットの周囲に枠線について指定する
@@ -610,7 +610,7 @@ class Guis:
         :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する
         :type borderwidth: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param relief: ウィジェットの周囲に枠線について指定する
@@ -676,7 +676,7 @@ class Guis:
         :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する
         :type borderwidth: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param relief: ウィジェットの周囲に枠線について指定する
@@ -718,7 +718,7 @@ class Guis:
         :param wrap: ウィジェットの折り返しについて指定する
         :type wrap: Literal["none", "word", "char"]
         :param state: 選択操作の有無を指定するnormalは操作可能にするdisabledは操作不可能にする
-        :type state: Literal["normal","disabled"]
+        :type state: Literal["normal", "disabled"]
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
         :param height: ウィジェットの高さを指定する
@@ -748,7 +748,7 @@ class Guis:
         :param pady: ウィジェットの外側の上下に空白を入れるサイズを指定する
         :type pady: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param relief: ウィジェットの周囲に枠線について指定する
@@ -782,7 +782,7 @@ class Guis:
         :type values: list
         :param header: ウィジェット見出しに表示させる文字の配列を指定する
         :type header: list
-        :param rowheader: ウィジェットの縦列の見出しを配列で指定し,それを設置する
+        :param rowheader: ウィジェットの縦列の見出しを配列で指定し, それを設置する
         :type rowheader: list
         :param colwidth: ウィジェットの幅を指定する
         :type colwidth: int | float
@@ -890,9 +890,9 @@ class Guis:
         :param exportselection: 選択中の項目のコピー操作を指定する
         :type exportselection: bool
         :param state: 選択操作の有無を指定するnormalは操作可能にするdisabledは操作不可能にする
-        :type state: Literal["normal","disabled"]
+        :type state: Literal["normal", "disabled"]
         :param selectmode: 選択可能な項目数と操作方法を指定する
-        :type selectmode: Literal["browse","single","multiple","extended"]
+        :type selectmode: Literal["browse", "single", "multiple", "extended"]
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
         :param height: ウィジェットの高さを指定する
@@ -902,7 +902,7 @@ class Guis:
         :param fg: ウィジェットの文字色を指定する
         :type fg: 色名 | None
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -941,15 +941,15 @@ class Guis:
         コンボボックスを作成する
 
         :param values: 選択項目を指定する
-        :type values: list[str] | tuple[str,...] | range | str | np.str_ | NDArray[str_]
+        :type values: list[str] | tuple[str, ...] | range | str | np.str_ | NDArray[str_]
         :param text: 入力項目の初期テキストを指定する
         :type text: str
         :param state: 値の入力制限やウィジェットの有効化や無効化について指定する
-        :type state: Literal["normal","readonly","disabled"]
+        :type state: Literal["normal", "readonly", "disabled"]
         :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する
         :type borderwidth: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param family: ウィジェットに表示させる文字のフォント名を指定する
         :type family: str
         :param font_size: ウィジェットに表示させる文字のフォントサイズを指定する
@@ -997,7 +997,7 @@ class Guis:
 
         :param text: ウィジェットに表記させる文字を指定する
         :type text: str
-        :param group: ウィジェットのグループを指定する同じ名前にすることで,そのグループ内で排他的な選択を実施する
+        :param group: ウィジェットのグループを指定する同じ名前にすることで, そのグループ内で排他的な選択を実施する
         :type group: str
         :param selectcolor: 選択状態の時に表示される色を指定する
         :type selectcolor: 色名
@@ -1032,7 +1032,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param anchor: ウィジェット内の文字の位置を指定する
         :type anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"]
         :param relief: ウィジェットの周囲に枠線について指定する
@@ -1072,7 +1072,7 @@ class Guis:
 
         :param text: ウィジェットに表記させる文字を指定する
         :type text: str
-        :param check: 読み込み時,ウィジェットがチェックするかを指定する
+        :param check: 読み込み時, ウィジェットがチェックするかを指定する
         :type check: bool
         :param group: ウィンドウにグループ名を指定する
         :type group: str
@@ -1107,7 +1107,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param anchor: ウィジェット内の文字の位置を指定する
         :type anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"]
         :param relief: ウィジェットの周囲に枠線について指定する
@@ -1137,7 +1137,7 @@ class Guis:
 
         :param text: ウィジェットに表記させる文字を指定する
         :type text: str
-        :param default: 読み込み時,ウィジェットがチェックするかを指定する
+        :param default: 読み込み時, ウィジェットがチェックするかを指定する
         :type default: bool
         :param bg: ウィジェットの背景色を指定する
         :type bg: 色名 | None
@@ -1156,7 +1156,7 @@ class Guis:
         :param overstrike: ウィジェットに表示させる文字のフォントの取り消し線を加えるか指定する
         :type overstrike: bool
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -1190,12 +1190,12 @@ class Guis:
         """
         枠線付きのフレームを作成する
 
-        :param layout: ウィジェットに表示させるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
+        :param layout: ウィジェットに表示させるウィジェットを指定する各リストがウィンドウのその行に対応し, その中に配置したウィジェットが左から順に並びます
         :type layout: list[list]
         :param title: ウィジェットのタイトルを指定する
         :type title: str
         :param labelanchor: タイトルを表記する場所を指定する
-        :type labelanchor: Literal["nw","n","ne","w","center","e","sw","s","se"]
+        :type labelanchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"]
         :param bg: ウィジェットの背景色を指定する
         :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
@@ -1221,7 +1221,7 @@ class Guis:
         :param pady: ウィジェットの外側の上下に空白を入れるサイズを指定する
         :type pady: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
@@ -1275,7 +1275,7 @@ class Guis:
         :param borderwidth: ウィジェットの周囲に表示させる枠線の太さを指定する
         :type borderwidth: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
@@ -1339,7 +1339,7 @@ class Guis:
         :param pady: ウィジェットの外側の上下に空白を入れるサイズを指定する
         :type pady: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param anchor: ウィジェット内の文字の位置を指定する
         :type anchor: Literal["nw", "n", "ne", "w", "center", "e", "sw", "s", "se"]
         :param relief: ウィジェットの周囲に枠線について指定する
@@ -1364,7 +1364,7 @@ class Guis:
         """
         フレームを作成する
 
-        :param layout: ウィジェットに表示させるウィジェットを指定する各リストがウィンドウのその行に対応し,その中に配置したウィジェットが左から順に並びます
+        :param layout: ウィジェットに表示させるウィジェットを指定する各リストがウィンドウのその行に対応し, その中に配置したウィジェットが左から順に並びます
         :type layout: list[list]
         :param bg: ウィジェットの背景色を指定する
         :type bg: 色名 | None
@@ -1378,7 +1378,7 @@ class Guis:
         :param pady: ウィジェットの外側の上下に空白を入れるサイズを指定する
         :type pady: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param key: ウィジェット固有の番号を指定する
@@ -1419,7 +1419,7 @@ class Guis:
         :param showvalue: 現在の値を表示させるか指定する
         :type showvalue: bool
         :param orientation: ウィジェットの向きを指定する
-        :type orientation: Literal["horizontal","vertical"]
+        :type orientation: Literal["horizontal", "vertical"]
         :param min: ウィジェットの数値の最小値を指定する
         :type min: int | float
         :param max: ウィジェットの数値の最大値を指定する
@@ -1467,7 +1467,7 @@ class Guis:
         :param relief: ウィジェットの周囲に枠線について指定する
         :type relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"]
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param width: ウィジェットの幅を指定する
         :type width: int | float | None
         :param bg: ウィジェットの背景色を指定する
@@ -1560,7 +1560,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param anchor: ウィジェット内の文字の位置を指定する
@@ -1636,7 +1636,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param anchor: ウィジェット内の文字の位置を指定する
@@ -1679,14 +1679,14 @@ class Guis:
         key: str | None = ...,
     ) -> dict[str, Any]:
         """
-        ファイルもしくはフォルダを選択し,選択されたパスを取得するダイアログを発生させるボタンを作成する
+        ファイルもしくはフォルダを選択し, 選択されたパスを取得するダイアログを発生させるボタンを作成する
 
         :param text: ウィジェットのボタンに表示させる文字を指定する
         :type text: str
         :param title: フォルダを選択するダイアログのタイトルを指定する
         :type title: str
         :param filetypes: 保存できるファイル形式の選択肢を指定する
-        :type filetypes: list[tuple[str,str]]
+        :type filetypes: list[tuple[str, str]]
         :param initialdir: ダイアログを開く初期ディレクトリを指定する
         :type initialdir: str
         :param initialfile: ファイル名フィールドの初期値を指定する
@@ -1724,7 +1724,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param anchor: ウィジェット内の文字の位置を指定する
@@ -1764,7 +1764,7 @@ class Guis:
         relief: Literal["raised", "sunken", "flat", "ridge", "solid", "groove"] = ...,
     ) -> dict[str, Any]:
         """
-        色を選択し,選択された色を取得するダイアログを発生させるボタンを作成する
+        色を選択し, 選択された色を取得するダイアログを発生させるボタンを作成する
 
         :param color: ダイアログで選択される色の初期値を選択する
         :type color: 色名 | None
@@ -1803,7 +1803,7 @@ class Guis:
         :param wraplength: テキストの折り返し幅を指定する
         :type wraplength: int | float
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param justify: 行揃えを行う方向を指定する
         :type justify: Literal["left", "center", "right"]
         :param anchor: ウィジェット内の文字の位置を指定する
@@ -1831,8 +1831,8 @@ class Guis:
         """
         タブを作成する
 
-        :param tabs: ウィジェットに表示させるウィジェットを指定する配列の最初の要素にタブ名を,次の要素にウィジェットに表示させる`layout`を指定する
-        :type tabs: list[list[str,list[list]]]
+        :param tabs: ウィジェットに表示させるウィジェットを指定する配列の最初の要素にタブ名を, 次の要素にウィジェットに表示させる`layout`を指定する
+        :type tabs: list[list[str, list[list]]]
         :param bg: ウィジェットの背景色を指定する
         :type bg: 色名 | None
         :param fg: ウィジェットの文字色を指定する
@@ -1871,9 +1871,9 @@ class Guis:
         :param length: ウィジェットの長さを指定する
         :type length: int | float
         :param orient: ウィジェットの向きを指定する
-        :type orient: Literal["horizontal","vertical"]
+        :type orient: Literal["horizontal", "vertical"]
         :param mode: 決定的モード(determinate)か非決定的モード(indeterminate)かを指定する
-        :type mode: Literal["determinate","indeterminate"]
+        :type mode: Literal["determinate", "indeterminate"]
         :param max: ウィジェットの数値の最大値を指定する
         :type max: int | float
         :param value: ウィジェットの読み込み時の初期値を指定する
@@ -1881,7 +1881,7 @@ class Guis:
         :param takefocus: キーボードによる移動のときにウィンドウがフォーカスを受け入れるかを指定する
         :type takefocus: bool
         :param cursor: マウスカーソルを指定する
-        :type cursor: Literal["arrow","man","based_arrow_down","middlebutton","based_arrow_up","mouse","boat","pencil","bogosity","pirate","bottom_left_corner","plus","bottom_right_corner","question_arrow","bottom_side","right_ptr","bottom_tee","right_side","box_spiral","right_tee","center_ptr","rightbutton","circle","rtl_logo","clock","sailboat","coffee_mug","sb_down_arrow","cross","sb_h_double_arrow","cross_reverse","sb_left_arrow","crosshair","sb_right_arrow","diamond_cross","sb_up_arrow","dot","sb_v_double_arrow","dotbox","shuttle","double_arrow","sizing","draft_large","spider","draft_small","spraycan","draped_box","star","exchange","target","fleur","tcross","gobbler","top_left_arrow","gumby","top_left_corner","hand1","top_right_corner","hand2","top_side","heart","top_tee","icon","trek","iron_cross","ul_angle","left_ptr","umbrella","left_side","ur_angle","left_tee","watch","leftbutton","xterm","ll_angle","X_cursor","lr_angle",]
+        :type cursor: Literal["arrow", "man", "based_arrow_down", "middlebutton", "based_arrow_up", "mouse", "boat", "pencil", "bogosity", "pirate", "bottom_left_corner", "plus", "bottom_right_corner", "question_arrow", "bottom_side", "right_ptr", "bottom_tee", "right_side", "box_spiral", "right_tee", "center_ptr", "rightbutton", "circle", "rtl_logo", "clock", "sailboat", "coffee_mug", "sb_down_arrow", "cross", "sb_h_double_arrow", "cross_reverse", "sb_left_arrow", "crosshair", "sb_right_arrow", "diamond_cross", "sb_up_arrow", "dot", "sb_v_double_arrow", "dotbox", "shuttle", "double_arrow", "sizing", "draft_large", "spider", "draft_small", "spraycan", "draped_box", "star", "exchange", "target", "fleur", "tcross", "gobbler", "top_left_arrow", "gumby", "top_left_corner", "hand1", "top_right_corner", "hand2", "top_side", "heart", "top_tee", "icon", "trek", "iron_cross", "ul_angle", "left_ptr", "umbrella", "left_side", "ur_angle", "left_tee", "watch", "leftbutton", "xterm", "ll_angle", "X_cursor", "lr_angle"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -1917,7 +1917,7 @@ class Guis:
         :param markersize: 折線グラフのマーカーの大きさを指定する
         :type markersize: int | float
         :param marker: 折線グラフのマーカーを指定する
-        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
+        :type marker: Literal[".", ", ", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param linestyle: 折線グラフの線の種類を指定する
         :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""]
         :param title: グラフのタイトルを指定する
@@ -1925,7 +1925,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -1945,9 +1945,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -1959,9 +1959,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -1999,13 +1999,13 @@ class Guis:
         :param width: 棒グラフのバー幅を指定する
         :type width: int | float
         :param align: x軸の棒グラフバーの配置を指定する
-        :type align: Literal["center","edge"]
+        :type align: Literal["center", "edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -2025,9 +2025,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2039,9 +2039,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -2079,13 +2079,13 @@ class Guis:
         :param height: 横向き棒グラフのバーの幅を指定する
         :type height: int | float
         :param align: x軸の横向き棒グラフバーの配置を指定する
-        :type align: Literal["center","edge"]
+        :type align: Literal["center", "edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -2105,9 +2105,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2119,9 +2119,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -2156,13 +2156,13 @@ class Guis:
         :param height: 棒グラフのバーの幅を指定する
         :type height: int | float
         :param align: x軸の棒グラフバーの配置を指定する
-        :type align: Literal["center","edge"]
+        :type align: Literal["center", "edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -2182,9 +2182,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2196,9 +2196,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -2233,7 +2233,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -2253,9 +2253,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2267,9 +2267,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -2304,7 +2304,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -2324,9 +2324,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2338,9 +2338,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -2377,13 +2377,13 @@ class Guis:
         :param labeldistance: 中心からラベルの距離を指定する
         :type labeldistance: int | float
         :param explode: 中心から各セグメントの離す距離を指定する
-        :type explode: list[int,float] | tuple[int,float] | int | float
+        :type explode: list[int, float] | tuple[int, float] | int | float
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -2415,7 +2415,7 @@ class Guis:
 
         :param data: `data`のデータを指定する
         :type data: TypeArraysLikeNumber
-        :param label: 箱ひげ図のデータ名を指定する。指定しなかった場合`box`+データの数になる例)box0,box1
+        :param label: 箱ひげ図のデータ名を指定する。指定しなかった場合`box`+データの数になる例)box0, box1
         :type label: str | list[str] | None
         :param legend: 凡例を表示させるか指定する
         :type legend: bool
@@ -2426,13 +2426,13 @@ class Guis:
         :param showfliers: 外れ値を表示させるか指定する
         :type showfliers: bool
         :param orientation: 箱ひげ図の向きを指定する
-        :type orientation: Literal["horizontal","vertical"]
+        :type orientation: Literal["horizontal", "vertical"]
         :param whis: ヒゲの位置を指定する
-        :type whis: float | tuple[float,float]
+        :type whis: float | tuple[float, float]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -2456,9 +2456,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2470,9 +2470,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -2519,7 +2519,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -2539,9 +2539,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2553,9 +2553,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -2603,7 +2603,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -2623,9 +2623,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2637,9 +2637,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -2672,7 +2672,7 @@ class Guis:
         :param label: ラベルを指定する
         :type label: str | list[str] | None
         :param marker: 散布図のマーカーを指定する
-        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
+        :type marker: Literal[".", ", ", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param markersize: 散布図のマーカーの大きさを指定する
         :type markersize: int | float
         :param regression_bool: 散布図に回帰直線を描画させるか指定する
@@ -2686,7 +2686,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -2706,9 +2706,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2720,9 +2720,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -2754,7 +2754,7 @@ class Guis:
         :param ylabel: y軸のラベルを指定する
         :type ylabel: str
         :param orientation: 茎の向きを指定する
-        :type orientation: Literal["horizontal","vertical"]
+        :type orientation: Literal["horizontal", "vertical"]
         :param bottom: ベースラインの位置を指定する
         :type bottom: int | float
         :param linefmt: 垂直線の色や線種を指定する
@@ -2766,7 +2766,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -2790,9 +2790,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2804,9 +2804,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -2836,13 +2836,13 @@ class Guis:
         :param fill: 階段の下部から`baseline`の間を塗りつぶすかを指定する
         :type fill: bool
         :param orientation: グラフの向きを指定する
-        :type orientation: Literal["horizontal","vertical"]
+        :type orientation: Literal["horizontal", "vertical"]
         :param label: ラベルを指定する
         :type label: str | list[str] | None
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -2862,9 +2862,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2876,11 +2876,11 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する
-        :type y_verwrit: Literal["horizontal","vertical"]
+        :type y_verwrit: Literal["horizontal", "vertical"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -2909,7 +2909,7 @@ class Guis:
         :param color: 色を指定する
         :type color: 色名 | None
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -2929,9 +2929,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -2943,9 +2943,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -2984,7 +2984,7 @@ class Guis:
         :param width: ヒストグラムのバーのサイズを指定する
         :type width: int | float
         :param orientation: ヒストグラムの向きを指定する
-        :type orientation: Literal["horizontal","vertical"]
+        :type orientation: Literal["horizontal", "vertical"]
         :param bottom: ヒストグラムのバーの位置を指定する
         :type bottom: int | float
         :param min: ヒストグラムで表示される最小値を指定する
@@ -2992,13 +2992,13 @@ class Guis:
         :param max: ヒストグラムで表示される最大値を指定する
         :type max: int | float
         :param bins: `bins`を指定する
-        :type bins: int | ArrayLike | Literal["auto","fd","doane","scott","stone","rice","sturges","sqrt"]
+        :type bins: int | ArrayLike | Literal["auto", "fd", "doane", "scott", "stone", "rice", "sturges", "sqrt"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -3018,9 +3018,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3032,11 +3032,11 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param y_verwrit: y軸のラベルを縦書きか横書きかを指定する
-        :type y_verwrit: Literal["horizontal","vertical"]
+        :type y_verwrit: Literal["horizontal", "vertical"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -3062,7 +3062,7 @@ class Guis:
         :param hatch: 塗りつぶし領域内の模様を指定する
         :type hatch: str | None
         :param baseline: 基準値の算出方法を指定する
-        :type baseline: Literal["zero","sym","wiggle","weighted_wiggle"]
+        :type baseline: Literal["zero", "sym", "wiggle", "weighted_wiggle"]
         :param label: ラベルを指定する
         :type label: str | list[str] | None
         :param xlabel: x軸のラベルを指定する
@@ -3074,7 +3074,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -3094,9 +3094,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3108,9 +3108,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -3149,7 +3149,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -3169,9 +3169,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3183,9 +3183,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -3212,7 +3212,7 @@ class Guis:
         :param compress: 同一値のデータをまとめて最適化するかどうか指定する
         :type compress: bool
         :param orientation: プロットの向きを指定する
-        :type orientation: Literal["horizontal","vertical"]
+        :type orientation: Literal["horizontal", "vertical"]
         :param linestyle: 線の種類を指定する
         :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""]
         :param linewidth: 線の太さを指定する
@@ -3228,7 +3228,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -3248,9 +3248,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3262,9 +3262,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -3291,7 +3291,7 @@ class Guis:
         **kwargs: Unpack[sgt.Dict_G_2DGraph],
     ) -> dict[str, Any]:
         """
-        誤差範囲付きの線グラフもしくはマーカーグラフ,あるいはその両方のエラーグラフを作成する
+        誤差範囲付きの線グラフもしくはマーカーグラフ, あるいはその両方のエラーグラフを作成する
 
         :param x: `x`のデータを指定する
         :type x: TypeArraysLikeNumber
@@ -3332,7 +3332,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -3352,9 +3352,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3366,9 +3366,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -3395,9 +3395,9 @@ class Guis:
         :param linelength: 線の合計の高さを指定する
         :type linelength: int | float
         :param linestyle: 線の種類を指定する
-        :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] | tuple[Literal["-", "--", "-.", ":", "None", " ", ""],...]
+        :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""] | tuple[Literal["-", "--", "-.", ":", "None", " ", ""], ...]
         :param orientation: 向きを指定する
-        :type orientation: Literal["horizontal","vertical"]
+        :type orientation: Literal["horizontal", "vertical"]
         :param label: ラベルを指定する
         :type label: str | list[str] | None
         :param xlabel: x軸のラベルを指定する
@@ -3409,7 +3409,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -3429,9 +3429,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3443,9 +3443,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -3498,7 +3498,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -3518,9 +3518,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3532,9 +3532,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :raises TypeError: `x`もしくは`y`もしくはその両方が二次元配列以上の多次元配列の場合に発生させる
         :raises TypeError: `x`と`y`の要素の数が同じではない時に発生させる
         :param key: ウィジェット固有の番号を指定する
@@ -3571,7 +3571,7 @@ class Guis:
         :param y: `orientation`が`horizontal`の時にy軸上にバイオリンが設置される配列を指定する
         :type y: TypeArraysLikeNumber
         :param orientation: バイオリンが設置される軸の向きを指定する
-        :type orientation: Literal["horizontal","vertical"]
+        :type orientation: Literal["horizontal", "vertical"]
         :param width: バイオリンの幅を指定する
         :type width: int | float
         :param showextrema: 極値を線で示すか指定する
@@ -3583,9 +3583,9 @@ class Guis:
         :param points: 各ガウスカーネル密度推定値を評価する点の数を指定する
         :type points: int | float
         :param bw_method: 推定器の帯域幅を計算するために使用されるメソッドを指定する
-        :type bw_method: Literal["scott","silverman"] | float | Callable[[GaussianKDE],float]
+        :type bw_method: Literal["scott", "silverman"] | float | Callable[[GaussianKDE], float]
         :param side: バイオリンの左右対称もしくは左右(上下)のみを描画するか指定する
-        :type side: Literal["both","low","high"]
+        :type side: Literal["both", "low", "high"]
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -3597,7 +3597,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -3617,9 +3617,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3631,9 +3631,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -3664,15 +3664,15 @@ class Guis:
         :param c: 各ポイントの値を指定する
         :type c: TypeArrayLikeNumber | None
         :param gridsize: `bins`の細かさを指定する
-        :type gridsize: int | tuple[int,int]
+        :type gridsize: int | tuple[int, int]
         :param extent: 各ポイントの値を指定する
-        :type extent: tuple[int | float,int | float,int | float,int | float] | None
+        :type extent: tuple[int | float, int | float, int | float, int | float] | None
         :param xscale,yscale: 軸のスケールを指定する
-        :type xscale,yscale: Literal["linear","log"]
+        :type xscale,yscale: Literal["linear", "log"]
         :param mincnt: 描画する`bins`の最小カウント数を指定する
         :type mincnt: int
         :param bins: ビンのカウント方法を指定する
-        :type bins: Literal["log"] | int | tuple[float,...] | None
+        :type bins: Literal["log"] | int | tuple[float, ...] | None
         :param xlabel: x軸のラベルを指定する
         :type xlabel: str
         :param ylabel: y軸のラベルを指定する
@@ -3684,7 +3684,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -3704,9 +3704,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3718,9 +3718,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -3752,7 +3752,7 @@ class Guis:
         :param zlabel: z軸のラベルを指定する
         :type zlabel: str
         :param marker: 散布図のマーカーを指定する
-        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
+        :type marker: Literal[".", ", ", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param markersize: 散布図のマーカーの大きさを指定する
         :type markersize: int | float
         :param title: グラフのタイトルを指定する
@@ -3760,7 +3760,7 @@ class Guis:
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -3782,11 +3782,11 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param zticksrange: z軸の目盛の範囲を変更する
-        :type zticksrange: int | float | tuple[int | float,...]
+        :type zticksrange: int | float | tuple[int | float, ...]
         :param xmajorint: x軸の目盛りを整数で自動調整させるか指定する
         :type xmajorint: bool
         :param ymajorint: y軸の目盛りを整数で自動調整させるか指定する
@@ -3802,9 +3802,9 @@ class Guis:
         :param zticksshow: z軸のグリッド線と目盛り値について表示するかを指定する
         :type zticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param znumticks: z軸の目盛りの数を指定する
         :type znumticks: int | float | None
         :param mouse_rotation: 表示されているグラフをマウスで操作できるか指定する
@@ -3838,13 +3838,13 @@ class Guis:
         :param width: 棒グラフのバー幅を指定する
         :type width: int | float
         :param align: x軸の棒グラフバーの配置を指定する
-        :type align: Literal["center","edge"]
+        :type align: Literal["center", "edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -3864,9 +3864,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -3874,9 +3874,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -3899,13 +3899,13 @@ class Guis:
         :param width: 棒グラフのバー幅を指定する
         :type width: int | float
         :param align: x軸の棒グラフバーの配置を指定する
-        :type align: Literal["center","edge"]
+        :type align: Literal["center", "edge"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param color: 色を指定する
         :type color: ColorListType
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -3925,9 +3925,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -3935,9 +3935,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -3972,7 +3972,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -3992,9 +3992,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4002,9 +4002,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -4036,7 +4036,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -4056,9 +4056,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4066,9 +4066,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -4127,7 +4127,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -4147,9 +4147,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4157,9 +4157,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -4215,7 +4215,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -4235,9 +4235,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4245,9 +4245,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -4276,13 +4276,13 @@ class Guis:
         :param markersize: 極軸折線グラフのマーカーの大きさを指定する
         :type markersize: int | float
         :param marker: 折線グラフのマーカーを指定する
-        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
+        :type marker: Literal[".", ", ", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param linestyle: 折線グラフの線の種類を指定する
-        :type linestyle: Literal["solid","-","dashed","--","dash-dot","-.","dotted",": ","none",None," ",""]
+        :type linestyle: Literal["solid", "-", "dashed", "--", "dash-dot", "-.", "dotted", ":", "none", None, " ", ""]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -4302,9 +4302,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4312,9 +4312,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -4340,13 +4340,13 @@ class Guis:
         :param markersize: 極軸折線グラフのマーカーの大きさを指定する
         :type markersize: int | float
         :param marker: 折線グラフのマーカーを指定する
-        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
+        :type marker: Literal[".", ", ", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param linestyle: 折線グラフの線の種類を指定する
-        :type linestyle: Literal["solid","-","dashed","--","dash-dot","-.","dotted",": ","none",None," ",""]
+        :type linestyle: Literal["solid", "-", "dashed", "--", "dash-dot", "-.", "dotted", ":", "none", None, " ", ""]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -4366,9 +4366,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4376,9 +4376,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -4404,11 +4404,11 @@ class Guis:
         :param linestyle: 線の種類を指定する
         :type linestyle: Literal["-", "--", "-.", ":", "None", " ", ""]
         :param orientation: 向きを指定する
-        :type orientation: Literal["horizontal","vertical"]
+        :type orientation: Literal["horizontal", "vertical"]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -4428,9 +4428,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4438,9 +4438,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -4463,13 +4463,13 @@ class Guis:
         :param y: `y`のデータを指定する
         :type y: TypeArrayLikeNS
         :param marker: 極軸散布図のマーカーを指定する
-        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
+        :type marker: Literal[".", ", ", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param markersize: 極軸散布図のマーカーの大きさを指定する
         :type markersize: int | float
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -4489,9 +4489,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4499,9 +4499,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -4521,13 +4521,13 @@ class Guis:
         :param data: `data`のデータを指定する
         :type data: TypeArrayLikeNS
         :param marker: 極軸散布図のマーカーを指定する
-        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
+        :type marker: Literal[".", ", ", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param markersize: 極軸散布図のマーカーの大きさを指定する
         :type markersize: int | float
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -4547,9 +4547,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
@@ -4557,9 +4557,9 @@ class Guis:
         :param yticksshow: y軸のグリッド線と目盛り値について表示するかを指定する
         :type yticksshow: bool
         :param xticksdirection: x軸の目盛りの向きを指定する
-        :type xticksdirection: Literal["out","in","inout"]
+        :type xticksdirection: Literal["out", "in", "inout"]
         :param yticksdirection: y軸の目盛りの向きを指定する
-        :type yticksdirection: Literal["out","in","inout"]
+        :type yticksdirection: Literal["out", "in", "inout"]
         :param key: ウィジェット固有の番号を指定する
         :type key: str | None
         """
@@ -4585,13 +4585,13 @@ class Guis:
         :param markersize: 折線レーダーチャートのマーカーの大きさを指定する
         :type markersize: int | float
         :param marker: 折線レーダーチャートのマーカーを指定する
-        :type marker: Literal[".", ",", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
+        :type marker: Literal[".", ", ", "o", "v", "^", "<", ">", "1", "2", "3", "4", "8", "s", "p", "*", "h", "H", "+", "x", "D", "d", "|", "_", "P", "X", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "None", "none", " ", ""]
         :param linestyle: 折線グラフの線の種類を指定する
-        :type linestyle: Literal["solid","-","dashed","--","dash-dot","-.","dotted",": ","none",None," ",""]
+        :type linestyle: Literal["solid", "-", "dashed", "--", "dash-dot", "-.", "dotted", ":", "none", None, " ", ""]
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -4634,7 +4634,7 @@ class Guis:
         :param title: グラフのタイトルを指定する
         :type title: str
         :param size: 表示させるグラフの大きさを指定する
-        :type size: tuple[int | float,int | float]
+        :type size: tuple[int | float, int | float]
         :param fg: グラフ内の文字色を指定する
         :type fg: 色名 | None
         :param bg: グラフ内の背景色を指定する
@@ -4654,9 +4654,9 @@ class Guis:
         :param tight_layout: グラフのラベルやタイトルの位置を自動調整するか指定する
         :type tight_layout: bool
         :param xticksrange: x軸の目盛の範囲を変更する
-        :type xticksrange: int | float | tuple[int | float,int | float]
+        :type xticksrange: int | float | tuple[int | float, int | float]
         :param yticksrange: y軸の目盛の範囲を変更する
-        :type yticksrange: int | float | tuple[int | float,int | float]
+        :type yticksrange: int | float | tuple[int | float, int | float]
         :param ticksshow: x軸,y軸のグリッド線と目盛り値について表示するかを指定する
         :type ticksshow: bool
         :param xticksshow: x軸のグリッド線と目盛り値について表示するかを指定する
