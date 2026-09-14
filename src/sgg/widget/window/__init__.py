@@ -6,7 +6,7 @@ import numpy as np
 from _tkinter import TclError
 
 from sgg._list import CURSOR_LIST
-from sgg.dev import _flatten, bols, num0s, parsecolor, range_num
+from sgg.dev import _SET_OBJ, _flatten, bols, num0s, parsecolor, range_num
 from sgg.graph import *
 from sgg.widget.base import TElement
 from sgg.widget.basic import *
@@ -14,7 +14,7 @@ from sgg.widget.basic import *
 __all__ = ["WindowController"]
 
 
-class WindowController:
+class WindowController(_SET_OBJ):
     """ウィンドウを生成する"""
 
     _COUNT = 0
@@ -348,6 +348,11 @@ class WindowController:
     def keys(self):
         return self._root.keys()
 
+    def cget(self, keys):
+        if keys in self.keys():
+            return self._root.cget(keys)
+        raise TypeError
+
     def foreground(self, bools=False):
         self._root.attributes("-topmost", bools)
 
@@ -429,32 +434,6 @@ class WindowController:
         if name in CURSOR_LIST:
             return name
         return None
-
-    def _is_number(self, val):
-        if isinstance(val, int | float | complex) or (
-            isinstance(val, np.generic) and np.issubdtype(val.dtype, np.number)
-        ):
-            return True
-        return False
-
-    def _is_real(self, val):
-        if isinstance(val, int | float) or (
-            isinstance(val, np.generic)
-            and np.issubdtype(val.dtype, np.integer | np.floating)
-        ):
-            return True
-        return False
-
-    def _to_real(self, val):
-        if isinstance(val, int | float):
-            return val
-        elif isinstance(val, np.generic):
-            if np.issubdtype(val.dtype, np.integer):
-                return int(val)
-            elif np.issubdtype(val.dtype, np.floating):
-                return float(val)
-            raise TypeError
-        raise TypeError
 
     def _win_exec_funcs(self, funcs=None):
         if isinstance(funcs, FunctionType):

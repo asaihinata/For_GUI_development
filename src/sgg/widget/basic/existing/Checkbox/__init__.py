@@ -12,7 +12,7 @@ class Checkbox(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.wraplength = num0(kw.get("wraplength"))
-        self.textvariable = Variable(kw.get("text"))
+        self.textvariable = Variable(value=kw.get("text"))
         self.check = bols(kw.get("check"), False)
         group = kw.get("group", "default")
         self.group = group if isinstance(group, str) else "default"

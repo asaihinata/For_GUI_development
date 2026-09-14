@@ -4,13 +4,14 @@ from types import FunctionType
 import numpy as np
 
 from sgg._list import ANCHOR_LIST, CURSOR_LIST, RELIEF_LIST
-from sgg.dev import _flatten, _is_real, bols, listchose, num0s, parsecolor
+from sgg.dev import (_SET_OBJ, _flatten, _is_real, bols, listchose, num0s,
+                     parsecolor)
 from sgg.font import Getfont, TKFont
 
 __all__ = ["Element"]
 
 
-class Element:
+class Element(_SET_OBJ):
     def __init__(self, master, kw):
         self._widget = None
         self.master = master
@@ -173,29 +174,6 @@ class Element:
         infodict = self._widget.info()
         return infodict.get(keys, infodict)
 
-    def _to_flat_list(self, array):
-        if np.isscalar(array):
-            return [array]
-        elif isinstance(array, list | tuple):
-            return _flatten(array)
-        elif isinstance(array, range):
-            return list(array)
-        elif isinstance(array, np.ndarray):
-            return array.ravel().tolist()
-
-    def _to_str_flat_list(self, array):
-        if isinstance(array, list | tuple):
-            return _flatten(array)
-        elif isinstance(array, range):
-            return list(array)
-        elif isinstance(array, np.ndarray) and array.dtype.kind == "U":
-            return array.ravel().tolist()
-        elif isinstance(array, str):
-            return [array]
-        elif isinstance(array, np.str_):
-            return [str(array)]
-        raise TypeError(f"{array}には文字列のみが入った配列を指定してください")
-
     def _unit_point(self, val):
         if _is_real(val):
             return val
@@ -212,18 +190,3 @@ class Element:
                 else:
                     return val
         raise ValueError
-
-    def _to_number(self, val):
-        if isinstance(val, int | np.integer):
-            return int(val)
-        elif isinstance(val, float | np.floating):
-            return float(val)
-        elif isinstance(val, complex | np.complexfloating):
-            return complex(val)
-
-    def _is_number(self, val):
-        if isinstance(val, int | float | complex) or (
-            isinstance(val, np.generic) and np.issubdtype(val.dtype, np.number)
-        ):
-            return True
-        return False

@@ -17,7 +17,7 @@ class WindowController:
     root: Tk
     alpha: float
     _STYLE_NAME_DICT: dict
-    MENU_IN_JUDGE: bool
+    _MENU_IN_JUDGE: bool
     def get(self, key: str) -> Any:
         """
         ウィジェットの情報を取得する
