@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from sgg import Guis
+from sgg import guis
 
 
 def test_main():
@@ -20,7 +20,7 @@ def test_main():
                     datas[0],
                     [
                         [
-                            Guis.BarGraph(
+                            guis.BarGraph(
                                 x=["国語", "社会", "数学", "理科"],
                                 y=datas[1::].astype(np.int64),
                                 title="教科別の点数",
@@ -31,8 +31,8 @@ def test_main():
                     ],
                 ]
             )
-        layout.append([Guis.Tab(tabs=tabs)])
-    win = Guis.window(
+        layout.append([guis.Tab(tabs=tabs)])
+    win = guis.window(
         title="テストの結果(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

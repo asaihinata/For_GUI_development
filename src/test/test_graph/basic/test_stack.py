@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, Stack
+from sgg import Stack, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -19,19 +19,19 @@ def test_main():
     print(f"{stacky=}")
     layout = [
         [
-            Guis.Stack(
+            guis.Stack(
                 x=stackx,
                 y=stacky,
                 title="積み上げグラフの基本",
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
             ),
-            Guis.Stack(
+            guis.Stack(
                 x=stackx, y=stacky, title="塗りつぶす領域内の模様を指定する", hatch="-"
             ),
         ],
         [
-            Guis.Stack(
+            guis.Stack(
                 x=stackx,
                 y=stacky,
                 title="積み上げグラフの積み上げる基準を指定する",
@@ -39,11 +39,11 @@ def test_main():
             )
         ],
         [
-            Guis.Stack(x=stackx, y=stacky, title="グラフを更新する", key="stack"),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Stack(x=stackx, y=stacky, title="グラフを更新する", key="stack"),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="積み上げエリアチャート(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

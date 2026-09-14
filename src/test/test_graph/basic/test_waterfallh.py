@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, Waterfallh
+from sgg import Waterfallh, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -19,26 +19,26 @@ def test_main():
     print(f"{waterfally=}")
     layout = [
         [
-            Guis.Waterfallh(
+            guis.Waterfallh(
                 x=waterfallx,
                 y=waterfally,
                 title="横向き滝グラフの基本",
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
             ),
-            Guis.Waterfallh(
+            guis.Waterfallh(
                 x=waterfallx, y=waterfally, title="バーの幅を変更する", height=0.5
             ),
         ],
         [
-            Guis.Waterfallh(
+            guis.Waterfallh(
                 x=waterfallx,
                 y=waterfally,
                 title="バーとバーを繋ぐ線の種類を変更する",
                 height=0.5,
                 linestyle="dotted",
             ),
-            Guis.Waterfallh(
+            guis.Waterfallh(
                 x=waterfallx,
                 y=waterfally,
                 title="バーとバーを繋ぐ線の色を変更する",
@@ -47,13 +47,13 @@ def test_main():
             ),
         ],
         [
-            Guis.Waterfallh(
+            guis.Waterfallh(
                 x=waterfallx,
                 y=waterfally,
                 title="上昇バーの色を変更する",
                 ucolor="pink",
             ),
-            Guis.Waterfallh(
+            guis.Waterfallh(
                 x=waterfallx,
                 y=waterfally,
                 title="減少バーの色を変更する",
@@ -61,10 +61,10 @@ def test_main():
             ),
         ],
         [
-            Guis.Waterfallh(
+            guis.Waterfallh(
                 x=waterfallx, y=waterfally, title="合計を表示させる", sums=True
             ),
-            Guis.Waterfallh(
+            guis.Waterfallh(
                 x=waterfallx,
                 y=waterfally,
                 title="合計を表示させる",
@@ -73,13 +73,13 @@ def test_main():
             ),
         ],
         [
-            Guis.Waterfallh(
+            guis.Waterfallh(
                 x=waterfallx, y=waterfally, title="グラフを更新する", key="waterfallh"
             ),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="横向き滝グラフ(test)",
         layout=layout,
         scroll=True,

@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, Step
+from sgg import Step, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -17,29 +17,29 @@ def test_main():
     print(f"{stepdata=}")
     layout = [
         [
-            Guis.Step(
+            guis.Step(
                 data=stepdata,
                 title="階段グラフの基本",
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
             ),
-            Guis.Step(data=stepdata, title="階段の範囲を指定する", range=5),
+            guis.Step(data=stepdata, title="階段の範囲を指定する", range=5),
         ],
         [
-            Guis.Step(data=stepdata, title="階段を塗りつぶす", fill=True),
-            Guis.Step(data=stepdata, title="階段の基準を指定する", baseline=3),
+            guis.Step(data=stepdata, title="階段を塗りつぶす", fill=True),
+            guis.Step(data=stepdata, title="階段の基準を指定する", baseline=3),
         ],
         [
-            Guis.Step(
+            guis.Step(
                 data=stepdata, title="階段の向きを変更する", orientation="horizontal"
             )
         ],
         [
-            Guis.Step(data=stepdata, title="グラフを更新する", key="step"),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Step(data=stepdata, title="グラフを更新する", key="step"),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="階段グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

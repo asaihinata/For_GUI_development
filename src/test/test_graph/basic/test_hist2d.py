@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, Hist2d
+from sgg import Hist2d, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -21,14 +21,14 @@ def test_main():
     print(f"{hist2dy}")
     layout = [
         [
-            Guis.Hist2d(
+            guis.Hist2d(
                 x=hist2dx,
                 y=hist2dy,
                 title="2次元ヒストグラムの基本",
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
             ),
-            Guis.Hist2d(
+            guis.Hist2d(
                 x=hist2dx,
                 y=hist2dy,
                 title="2次元ヒストグラムを正規化する",
@@ -36,14 +36,14 @@ def test_main():
             ),
         ],
         [
-            Guis.Hist2d(
+            guis.Hist2d(
                 x=hist2dx,
                 y=hist2dy,
                 title="x軸に表示させる範囲を指定する",
                 xmax=5,
                 xmin=-5,
             ),
-            Guis.Hist2d(
+            guis.Hist2d(
                 x=hist2dx,
                 y=hist2dy,
                 title="y軸に表示させる範囲を指定する",
@@ -51,13 +51,13 @@ def test_main():
                 ymin=-5,
             ),
         ],
-        [Guis.Hist2d(x=hist2dx, y=hist2dy, title="binsを指定する", bins=5)],
+        [guis.Hist2d(x=hist2dx, y=hist2dy, title="binsを指定する", bins=5)],
         [
-            Guis.Hist2d(x=hist2dx, y=hist2dy, title="グラフを更新する", key="hist2d"),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Hist2d(x=hist2dx, y=hist2dy, title="グラフを更新する", key="hist2d"),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="2次元ヒストグラム(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

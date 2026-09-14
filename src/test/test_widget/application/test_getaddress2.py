@@ -11,7 +11,7 @@ import json
 
 import requests
 
-from sgg import Guis, Input, Listboxs
+from sgg import Input, Listboxs, guis
 
 
 def test_main():
@@ -36,18 +36,18 @@ def test_main():
         zyuusyo.set(zyuusyo_txt)
 
     layout = [
-        [Guis.Texts(text="郵便番号から住所")],
+        [guis.Texts(text="郵便番号から住所")],
         [
-            Guis.Texts(text="郵便番号"),
-            Guis.Input(text="1000000", key="yuubin"),
-            Guis.Buttons(text="変換", function=ztoy),
+            guis.Texts(text="郵便番号"),
+            guis.Input(text="1000000", key="yuubin"),
+            guis.Buttons(text="変換", function=ztoy),
         ],
         [
-            Guis.Texts(text="住所"),
-            Guis.Listboxs(values=["東京都千代田区"], height=1, key="zyuusyo"),
+            guis.Texts(text="住所"),
+            guis.Listboxs(values=["東京都千代田区"], height=1, key="zyuusyo"),
         ],
     ]
-    win = Guis.window(layout=layout, maxmine=True, scroll=True)
+    win = guis.window(layout=layout, maxmine=True, scroll=True)
     win.run()
 
 

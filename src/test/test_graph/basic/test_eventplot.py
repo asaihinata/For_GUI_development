@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Eventplot, Guis
+from sgg import Eventplot, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -17,32 +17,32 @@ def test_main():
     print(f"{eventdata=}")
     layout = [
         [
-            Guis.Eventplot(
+            guis.Eventplot(
                 data=eventdata,
                 title="イベントグラフの基本",
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
             ),
-            Guis.Eventplot(
+            guis.Eventplot(
                 data=eventdata, title="ラベルを付ける", label=["a", "b", "c"]
             ),
         ],
         [
-            Guis.Eventplot(
+            guis.Eventplot(
                 data=eventdata, title="向きを指定する", orientation="horizontal"
             ),
-            Guis.Eventplot(data=eventdata, title="線の種類を変更する", linestyle=":"),
+            guis.Eventplot(data=eventdata, title="線の種類を変更する", linestyle=":"),
         ],
         [
-            Guis.Eventplot(data=eventdata, title="線の幅を変更する", linelength=0.5),
-            Guis.Eventplot(data=eventdata, title="線の高さを変更する", linewidth=2),
+            guis.Eventplot(data=eventdata, title="線の幅を変更する", linelength=0.5),
+            guis.Eventplot(data=eventdata, title="線の高さを変更する", linewidth=2),
         ],
         [
-            Guis.Eventplot(data=eventdata, title="グラフを更新する", key="event"),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Eventplot(data=eventdata, title="グラフを更新する", key="event"),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="イベントグラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

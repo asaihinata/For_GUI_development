@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import BarGraph, Guis
+from sgg import BarGraph, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -23,14 +23,14 @@ def test_main():
     print(f"{bargraphy2=}")
     layout = [
         [
-            Guis.BarGraph(
+            guis.BarGraph(
                 x=bargraphx1,
                 y=bargraphy1,
                 title="棒グラフの基本1",
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
             ),
-            Guis.BarGraph(
+            guis.BarGraph(
                 x=bargraphx2,
                 y=bargraphy2,
                 title="棒グラフの基本2",
@@ -39,26 +39,26 @@ def test_main():
             ),
         ],
         [
-            Guis.BarGraph(
+            guis.BarGraph(
                 x=bargraphx1, y=bargraphy1, title="y軸を対数スケールにする", logs=True
             ),
-            Guis.BarGraph(
+            guis.BarGraph(
                 x=bargraphx1, y=bargraphy1, title="グラフの開始位置の変更", align="edge"
             ),
         ],
         [
-            Guis.BarGraph(
+            guis.BarGraph(
                 x=bargraphx1, y=bargraphy1, title="グラフの幅の変更", width=0.4
             )
         ],
         [
-            Guis.BarGraph(
+            guis.BarGraph(
                 x=bargraphx1, y=bargraphy1, title="グラフを更新する", key="BarGraph"
             ),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(title="棒グラフ(test)", layout=layout, scroll=True, maxmine=True)
+    win = guis.window(title="棒グラフ(test)", layout=layout, scroll=True, maxmine=True)
     win.run()
 
 

@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, Scatter
+from sgg import Scatter, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -23,14 +23,14 @@ def test_main():
     print(f"{scattery2=}")
     layout = [
         [
-            Guis.Scatter(
+            guis.Scatter(
                 x=scatterx1,
                 y=scattery1,
                 title="散布図の基本1",
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
             ),
-            Guis.Scatter(
+            guis.Scatter(
                 x=scatterx2,
                 y=scattery2,
                 title="散布図の基本2",
@@ -39,8 +39,8 @@ def test_main():
             ),
         ],
         [
-            Guis.Scatter(x=scatterx1, y=scattery1, title="マーカーの指定", marker="d"),
-            Guis.Scatter(
+            guis.Scatter(x=scatterx1, y=scattery1, title="マーカーの指定", marker="d"),
+            guis.Scatter(
                 x=scatterx1,
                 y=scattery1,
                 title="マーカーサイズの変更",
@@ -49,21 +49,21 @@ def test_main():
             ),
         ],
         [
-            Guis.Scatter(
+            guis.Scatter(
                 x=scatterx1, y=scattery1, title="回帰直線1", regression_bool=True
             ),
-            Guis.Scatter(
+            guis.Scatter(
                 x=scatterx2, y=scattery2, title="回帰直線2", regression_bool=True
             ),
         ],
         [
-            Guis.Scatter(
+            guis.Scatter(
                 x=scatterx1, y=scattery1, title="グラフを更新する", key="scatter"
             ),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(title="散布図(test)", layout=layout, scroll=True, maxmine=True)
+    win = guis.window(title="散布図(test)", layout=layout, scroll=True, maxmine=True)
     win.run()
 
 

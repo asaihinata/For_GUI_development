@@ -42,7 +42,7 @@ __all__ = [
     "FolderLoad",
     "Frames",
     "Funne",
-    "Guis",
+    "guis",
     "Hatplot",
     "Hexbin",
     "Hist",
@@ -109,7 +109,7 @@ __all__ = [
     "WindowController",
 ]
 
-class Guis:
+class guis:
     @overload
     @classmethod
     def window(

@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, Pie
+from sgg import Pie, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -18,16 +18,16 @@ def test_main():
     print(f"{piedata=}")
     layout = [
         [
-            Guis.Pie(data=piedata, title="円グラフの基本", label=pielabel),
-            Guis.Pie(
+            guis.Pie(data=piedata, title="円グラフの基本", label=pielabel),
+            guis.Pie(
                 data=piedata, title="円グラフに影を付ける", label=pielabel, shadow=True
             ),
         ],
         [
-            Guis.Pie(
+            guis.Pie(
                 data=piedata, title="円グラフを90度回す", label=pielabel, startangle=90
             ),
-            Guis.Pie(
+            guis.Pie(
                 data=piedata,
                 title="円グラフをpi/2rad回す",
                 label=pielabel,
@@ -36,13 +36,13 @@ def test_main():
             ),
         ],
         [
-            Guis.Pie(
+            guis.Pie(
                 data=piedata,
                 title="時計回りに表示させる",
                 label=pielabel,
                 counterclock=True,
             ),
-            Guis.Pie(
+            guis.Pie(
                 data=piedata,
                 title="ラベルの表示位置を変更する",
                 label=pielabel,
@@ -50,10 +50,10 @@ def test_main():
             ),
         ],
         [
-            Guis.Pie(
+            guis.Pie(
                 data=piedata, title="全体のウェッジを離す", label=pielabel, explode=0.2
             ),
-            Guis.Pie(
+            guis.Pie(
                 data=piedata,
                 title="一部のウェッジを離す",
                 label=pielabel,
@@ -61,11 +61,11 @@ def test_main():
             ),
         ],
         [
-            Guis.Pie(data=piedata, title="グラフを更新する", label=pielabel, key="pie"),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Pie(data=piedata, title="グラフを更新する", label=pielabel, key="pie"),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(title="円グラフ(test)", layout=layout, scroll=True, maxmine=True)
+    win = guis.window(title="円グラフ(test)", layout=layout, scroll=True, maxmine=True)
     win.run()
 
 

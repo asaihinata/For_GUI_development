@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from sgg import Guis
+from sgg import guis
 
 
 def test_main():
@@ -14,7 +14,7 @@ def test_main():
     )
     layout = [
         [
-            Guis.LineGraph(
+            guis.LineGraph(
                 x=[2015, 2016, 2017, 2018, 2019, 2020],
                 y=data,
                 label=["女", "男", "総合"],
@@ -24,7 +24,7 @@ def test_main():
             )
         ]
     ]
-    win = Guis.window(
+    win = guis.window(
         title="人口の変化(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

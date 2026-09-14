@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, Stempolar
+from sgg import Stempolar, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -21,33 +21,33 @@ def test_main():
     print(f"{stempolardata=}")
     layout = [
         [
-            Guis.Stempolar(x=stempolarx, y=stempolary, title="極軸幹図の基本1"),
-            Guis.Stempolar(data=stempolardata, title="極軸幹図の基本2"),
+            guis.Stempolar(x=stempolarx, y=stempolary, title="極軸幹図の基本1"),
+            guis.Stempolar(data=stempolardata, title="極軸幹図の基本2"),
         ],
         [
-            Guis.Stempolar(
+            guis.Stempolar(
                 x=stempolarx, y=stempolary, title="マーカーを変更する", fmarker="^"
             ),
-            Guis.Stempolar(
+            guis.Stempolar(
                 x=stempolarx, y=stempolary, title="ベースラインを変更する", bottom=30
             ),
         ],
         [
-            Guis.Stempolar(
+            guis.Stempolar(
                 x=stempolarx, y=stempolary, title="極軸幹図の色を変更する", fcolor="b"
             ),
-            Guis.Stempolar(
+            guis.Stempolar(
                 x=stempolarx, y=stempolary, title="極軸幹図の線を変更する", fline="--"
             ),
         ],
         [
-            Guis.Stempolar(
+            guis.Stempolar(
                 x=stempolarx, y=stempolary, title="グラフを更新する", key="stempolar"
             ),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(title="極軸幹図(test)", layout=layout, scroll=True, maxmine=True)
+    win = guis.window(title="極軸幹図(test)", layout=layout, scroll=True, maxmine=True)
     win.run()
 
 

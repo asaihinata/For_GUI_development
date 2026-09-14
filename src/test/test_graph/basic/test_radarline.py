@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, RadarLine
+from sgg import RadarLine, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -19,19 +19,19 @@ def test_main():
     print(f"{radarplotdata2=}")
     layout = [
         [
-            Guis.RadarLine(data=radarplotdata1, title="折線レーダーチャートの基本1"),
-            Guis.RadarLine(data=radarplotdata2, title="折線レーダーチャートの基本2"),
+            guis.RadarLine(data=radarplotdata1, title="折線レーダーチャートの基本1"),
+            guis.RadarLine(data=radarplotdata2, title="折線レーダーチャートの基本2"),
         ],
         [
-            Guis.RadarLine(
+            guis.RadarLine(
                 data=radarplotdata1, linewidth=10, title="線の太さを変更する"
             ),
-            Guis.RadarLine(
+            guis.RadarLine(
                 data=radarplotdata1, marker="+", title="マーカーを表示させる"
             ),
         ],
         [
-            Guis.RadarLine(
+            guis.RadarLine(
                 data=radarplotdata1,
                 marker="+",
                 markersize=20,
@@ -39,13 +39,13 @@ def test_main():
             )
         ],
         [
-            Guis.RadarLine(
+            guis.RadarLine(
                 data=radarplotdata1, title="グラフを更新する", key="radarline"
             ),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="折線レーダーチャート(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, Linefill
+from sgg import Linefill, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -23,7 +23,7 @@ def test_main():
     print(f"{linefillymin=}")
     layout = [
         [
-            Guis.Linefill(
+            guis.Linefill(
                 x=linefillx,
                 ymax=linefillymax,
                 ymin=linefillymin,
@@ -31,7 +31,7 @@ def test_main():
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
             ),
-            Guis.Linefill(
+            guis.Linefill(
                 x=linefillx,
                 ymax=linefillymax,
                 ymin=linefillymin,
@@ -40,17 +40,17 @@ def test_main():
             ),
         ],
         [
-            Guis.Linefill(
+            guis.Linefill(
                 x=linefillx,
                 ymax=linefillymax,
                 ymin=linefillymin,
                 title="グラフを更新する",
                 key="linefill",
             ),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="積上げ面グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

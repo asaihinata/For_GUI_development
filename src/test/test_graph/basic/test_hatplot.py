@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, Hatplot
+from sgg import Hatplot, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -19,7 +19,7 @@ def test_main():
     print(f"{hatplotdata=}")
     layout = [
         [
-            Guis.Hatplot(
+            guis.Hatplot(
                 x=hatplotx,
                 data=hatplotdata,
                 title="ハットグラフの基本",
@@ -27,7 +27,7 @@ def test_main():
                 ylabel="y軸のラベル",
                 yticksrange=5,
             ),
-            Guis.Hatplot(
+            guis.Hatplot(
                 x=hatplotx,
                 data=hatplotdata,
                 title="ハットの色を変える",
@@ -36,22 +36,22 @@ def test_main():
             ),
         ],
         [
-            Guis.Hatplot(
+            guis.Hatplot(
                 x=hatplotx, data=hatplotdata, title="ハットグラフの基本", yticksrange=5
             ),
         ],
         [
-            Guis.Hatplot(
+            guis.Hatplot(
                 x=hatplotx,
                 data=hatplotdata,
                 title="グラフを更新する",
                 yticksrange=5,
                 key="hat",
             ),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="ハットグラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

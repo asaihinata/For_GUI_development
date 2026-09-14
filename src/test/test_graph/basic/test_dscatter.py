@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import DScatter, Guis
+from sgg import DScatter, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -21,7 +21,7 @@ def test_main():
     print(f"{dscatterz=}")
     layout = [
         [
-            Guis.DScatter(
+            guis.DScatter(
                 x=dscatterx,
                 y=dscattery,
                 z=dscatterz,
@@ -30,7 +30,7 @@ def test_main():
                 ylabel="y軸のラベル",
                 zlabel="z軸のラベル",
             ),
-            Guis.DScatter(
+            guis.DScatter(
                 x=dscatterx,
                 y=dscattery,
                 z=dscatterz,
@@ -42,14 +42,14 @@ def test_main():
             ),
         ],
         [
-            Guis.DScatter(
+            guis.DScatter(
                 x=dscatterx,
                 y=dscattery,
                 z=dscatterz,
                 title="マーカーを指定する",
                 marker="*",
             ),
-            Guis.DScatter(
+            guis.DScatter(
                 x=dscatterx,
                 y=dscattery,
                 z=dscatterz,
@@ -59,17 +59,17 @@ def test_main():
             ),
         ],
         [
-            Guis.DScatter(
+            guis.DScatter(
                 x=dscatterx,
                 y=dscattery,
                 z=dscatterz,
                 title="グラフを更新する",
                 key="dscatter",
             ),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="立体散布図(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

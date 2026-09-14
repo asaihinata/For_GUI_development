@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, Stacked
+from sgg import Stacked, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -19,14 +19,14 @@ def test_main():
     print(f"{stackeddataname=}")
     layout = [
         [
-            Guis.Stacked(
+            guis.Stacked(
                 data=stackeddata,
                 dataname=stackeddataname,
                 title="積み上げ棒グラフの基本",
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
             ),
-            Guis.Stacked(
+            guis.Stacked(
                 data=stackeddata,
                 dataname=stackeddataname,
                 title="幅を変更する",
@@ -34,16 +34,16 @@ def test_main():
             ),
         ],
         [
-            Guis.Stacked(
+            guis.Stacked(
                 data=stackeddata,
                 dataname=stackeddataname,
                 title="グラフを更新する",
                 key="stacked",
             ),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="積み上げ棒グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

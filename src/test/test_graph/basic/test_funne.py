@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Funne, Guis
+from sgg import Funne, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -17,20 +17,20 @@ def test_main():
     print(f"{funnedata=}")
     layout = [
         [
-            Guis.Funne(
+            guis.Funne(
                 data=funnedata,
                 title="じょうごグラフの基本",
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
             ),
-            Guis.Funne(data=funnedata, title="高さを変更する", height=0.5),
+            guis.Funne(data=funnedata, title="高さを変更する", height=0.5),
         ],
         [
-            Guis.Funne(data=funnedata, title="グラフを更新する", key="funne"),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Funne(data=funnedata, title="グラフを更新する", key="funne"),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="じょうごグラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

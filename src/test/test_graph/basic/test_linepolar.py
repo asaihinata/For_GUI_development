@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, Linepolar
+from sgg import Linepolar, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -21,14 +21,14 @@ def test_main():
     print(f"{linepolardata=}")
     layout = [
         [
-            Guis.Linepolar(x=linepolarx, y=linepolary, title="極軸折線グラフの基本1"),
-            Guis.Linepolar(data=linepolardata, title="極軸折線グラフの基本2"),
+            guis.Linepolar(x=linepolarx, y=linepolary, title="極軸折線グラフの基本1"),
+            guis.Linepolar(data=linepolardata, title="極軸折線グラフの基本2"),
         ],
         [
-            Guis.Linepolar(
+            guis.Linepolar(
                 x=linepolarx, y=linepolary, title="マーカーを変更する", marker="d"
             ),
-            Guis.Linepolar(
+            guis.Linepolar(
                 x=linepolarx,
                 y=linepolary,
                 title="マーカーの大きさを変更する",
@@ -37,21 +37,21 @@ def test_main():
             ),
         ],
         [
-            Guis.Linepolar(
+            guis.Linepolar(
                 x=linepolarx, y=linepolary, title="線の色の変更", color="red"
             ),
-            Guis.Linepolar(
+            guis.Linepolar(
                 x=linepolarx, y=linepolary, title="線の種類を変更する", linestyle="--"
             ),
         ],
         [
-            Guis.Linepolar(
+            guis.Linepolar(
                 x=linepolarx, y=linepolary, title="グラフを更新する", key="linepolar"
             ),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="極軸折線グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

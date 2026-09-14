@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, Stem
+from sgg import Stem, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -21,14 +21,14 @@ def test_main():
     print(f"{stemy=}")
     layout = [
         [
-            Guis.Stem(
+            guis.Stem(
                 x=stemx1,
                 y=stemy,
                 title="幹図の基本1",
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
             ),
-            Guis.Stem(
+            guis.Stem(
                 x=stemx2,
                 y=stemy,
                 title="幹図の基本2",
@@ -37,8 +37,8 @@ def test_main():
             ),
         ],
         [
-            Guis.Stem(x=stemx1, y=stemy, title="マーカーを変更する", markerfmt="go"),
-            Guis.Stem(
+            guis.Stem(x=stemx1, y=stemy, title="マーカーを変更する", markerfmt="go"),
+            guis.Stem(
                 x=stemx1,
                 y=stemy,
                 title="幹図の向きを指定する",
@@ -46,8 +46,8 @@ def test_main():
             ),
         ],
         [
-            Guis.Stem(x=stemx1, y=stemy, title="ベースラインを変更する", bottom=30),
-            Guis.Stem(
+            guis.Stem(x=stemx1, y=stemy, title="ベースラインを変更する", bottom=30),
+            guis.Stem(
                 x=stemx1,
                 y=stemy,
                 title="ベースラインを変更する",
@@ -56,15 +56,15 @@ def test_main():
             ),
         ],
         [
-            Guis.Stem(x=stemx1, y=stemy, title="幹図の色を変更する", linefmt="g"),
-            Guis.Stem(x=stemx1, y=stemy, title="幹図の線を変更する", basefmt="--"),
+            guis.Stem(x=stemx1, y=stemy, title="幹図の色を変更する", linefmt="g"),
+            guis.Stem(x=stemx1, y=stemy, title="幹図の線を変更する", basefmt="--"),
         ],
         [
-            Guis.Stem(x=stemx2, y=stemy, title="グラフを更新する", key="stem"),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Stem(x=stemx2, y=stemy, title="グラフを更新する", key="stem"),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(title="幹図(test)", layout=layout, scroll=True, maxmine=True)
+    win = guis.window(title="幹図(test)", layout=layout, scroll=True, maxmine=True)
     win.run()
 
 

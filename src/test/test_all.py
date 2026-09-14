@@ -2,7 +2,7 @@ import pathlib
 
 import numpy as np
 
-from sgg import Guis, WindowController
+from sgg import WindowController, guis
 
 
 def test_main():
@@ -10,13 +10,13 @@ def test_main():
         win.get("txt1").set_text("!!!変わった!!!")
 
     def files():
-        Guis.Popup(message=win.get("file_load").get_path())
+        guis.Popup(message=win.get("file_load").get_path())
 
     def folders():
-        Guis.Popup(message=win.get("folder_load").get_path())
+        guis.Popup(message=win.get("folder_load").get_path())
 
     def colors():
-        Guis.Popup(message=win.get("color_select").get_color())
+        guis.Popup(message=win.get("color_select").get_color())
 
     def progress_start():
         win.get("prigress").start()
@@ -112,11 +112,11 @@ def test_main():
     stempolarx = rng.integers(50, 80, size=3)
     stempolary = np.arange(1, 4, 1)
     layout = [
-        [Guis.Menus(list=menus, key="menus")],
-        [Guis.Texts(text="Textウィジェット")],
+        [guis.Menus(list=menus, key="menus")],
+        [guis.Texts(text="Textウィジェット")],
         [
-            Guis.Texts(text="keyがtxt1のTextウィジェット", key="txt1"),
-            Guis.Texts(
+            guis.Texts(text="keyがtxt1のTextウィジェット", key="txt1"),
+            guis.Texts(
                 key="txt2",
                 text="文字色が水色,背景色が赤色,\nサイズが50文字の幅で高さが3文字分の\nTextウィジェット",
                 bg="red",
@@ -124,172 +124,172 @@ def test_main():
                 size=(50, 3),
             ),
         ],
-        [Guis.Buttons(text="ボタンウィジェット", key="btn1")],
+        [guis.Buttons(text="ボタンウィジェット", key="btn1")],
         [
-            Guis.Texts(text="keyがtxt1のTextのテキストを変えるボタン->"),
-            Guis.Buttons(text="!!変える!!", function=[txtchange], key="btn2"),
+            guis.Texts(text="keyがtxt1のTextのテキストを変えるボタン->"),
+            guis.Buttons(text="!!変える!!", function=[txtchange], key="btn2"),
         ],
-        [Guis.Link(link="https://www.google.com/", text="googleのサイトを開く")],
-        [Guis.Link(link=HTMLFILE, text="htmlファイルを開く")],
-        [Guis.Images(path=LENNAPATH)],
-        [Guis.Texts(text="↑画像表示(PGM,PPM,GIF,PNG,XBMでしか表示されない)")],
+        [guis.Link(link="https://www.google.com/", text="googleのサイトを開く")],
+        [guis.Link(link=HTMLFILE, text="htmlファイルを開く")],
+        [guis.Images(path=LENNAPATH)],
+        [guis.Texts(text="↑画像表示(PGM,PPM,GIF,PNG,XBMでしか表示されない)")],
         [
-            Guis.Imagelink(
+            guis.Imagelink(
                 link="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg48GxlSXF_4b4XZmtOALPhe3mD5iREyN-Ks6Q2hdviWeDHOcG_AUOS3nn2i-E9g5jD1_7-2o9PZF5MUQEanceM7b07viAr9M6h4C7jDqGhKdF0LzHzn2IBS_A2Fvpv605wIRf9ohIPiv-HStNDjk8JdN2hU-0GTI-OsjRraMo1HnGkTALf6v7qBbHufj04/s400/pose_galpeace_schoolgirl.png"
             )
         ],
-        [Guis.Texts(text="↑URL画像も読み取れる")],
-        [Guis.Texts(text="入力欄->"), Guis.Input(text="入力欄")],
-        [Guis.Texts(text="パスワード入力->"), Guis.Input(show="※")],
-        [Guis.Texts(text="複数行表示できる入力欄")],
+        [guis.Texts(text="↑URL画像も読み取れる")],
+        [guis.Texts(text="入力欄->"), guis.Input(text="入力欄")],
+        [guis.Texts(text="パスワード入力->"), guis.Input(show="※")],
+        [guis.Texts(text="複数行表示できる入力欄")],
         [
-            Guis.Multiline(text="複数行表示可能の入力欄", key="multiline1"),
-            Guis.Multiline(text=["配列でも", "表示可能"], key="multiline2"),
+            guis.Multiline(text="複数行表示可能の入力欄", key="multiline1"),
+            guis.Multiline(text=["配列でも", "表示可能"], key="multiline2"),
         ],
-        [Guis.Texts(text="赤に選択されたリストボックス")],
-        [Guis.Listboxs(values=list_val, select=0)],
-        [Guis.TCombobox(values=list_val, default="好きな色を選ぼう!")],
-        [Guis.Texts(text="数値入力")],
-        [Guis.InputNumber(key="number")],
-        [Guis.Texts(text="この中で一番好きな色を一つ選ぶ")],
+        [guis.Texts(text="赤に選択されたリストボックス")],
+        [guis.Listboxs(values=list_val, select=0)],
+        [guis.TCombobox(values=list_val, default="好きな色を選ぼう!")],
+        [guis.Texts(text="数値入力")],
+        [guis.InputNumber(key="number")],
+        [guis.Texts(text="この中で一番好きな色を一つ選ぶ")],
         [
-            Guis.Radio(text="赤色", group="color_name"),
-            Guis.Radio(text="黄色", group="color_name"),
-            Guis.Radio(text="緑色", group="color_name"),
-            Guis.Radio(text="黒色", group="color_name"),
-            Guis.Radio(text="その他", group="color_name"),
+            guis.Radio(text="赤色", group="color_name"),
+            guis.Radio(text="黄色", group="color_name"),
+            guis.Radio(text="緑色", group="color_name"),
+            guis.Radio(text="黒色", group="color_name"),
+            guis.Radio(text="その他", group="color_name"),
         ],
-        [Guis.Texts(text="この中で一番好きな色を複数選ぶ")],
+        [guis.Texts(text="この中で一番好きな色を複数選ぶ")],
         [
-            Guis.Checkbox(text="赤色", group="color_name"),
-            Guis.Checkbox(text="黄色", group="color_name"),
-            Guis.Checkbox(text="緑色", group="color_name"),
-            Guis.Checkbox(text="黒色", group="color_name"),
-            Guis.Checkbox(text="その他", group="color_name"),
+            guis.Checkbox(text="赤色", group="color_name"),
+            guis.Checkbox(text="黄色", group="color_name"),
+            guis.Checkbox(text="緑色", group="color_name"),
+            guis.Checkbox(text="黒色", group="color_name"),
+            guis.Checkbox(text="その他", group="color_name"),
         ],
-        [Guis.Texts(text="この中で一番好きな食べ物を一つ選ぶ")],
+        [guis.Texts(text="この中で一番好きな食べ物を一つ選ぶ")],
         [
-            Guis.Radio(text="からあげ", group="food_name"),
-            Guis.Radio(text="蕎麦", default=True, group="food_name"),
-            Guis.Radio(text="おすし", group="food_name"),
-            Guis.Radio(text="おにぎり", group="food_name"),
-            Guis.Radio(text="その他", group="food_name"),
+            guis.Radio(text="からあげ", group="food_name"),
+            guis.Radio(text="蕎麦", default=True, group="food_name"),
+            guis.Radio(text="おすし", group="food_name"),
+            guis.Radio(text="おにぎり", group="food_name"),
+            guis.Radio(text="その他", group="food_name"),
         ],
-        [Guis.Texts(text="この中で一番好きな食べ物を複数選ぶ")],
+        [guis.Texts(text="この中で一番好きな食べ物を複数選ぶ")],
         [
-            Guis.Checkbox(text="からあげ", group="food_name"),
-            Guis.Checkbox(text="蕎麦", default=True, group="food_name"),
-            Guis.Checkbox(text="おすし", group="food_name"),
-            Guis.Checkbox(text="おにぎり", group="food_name"),
-            Guis.Checkbox(text="その他", group="food_name"),
+            guis.Checkbox(text="からあげ", group="food_name"),
+            guis.Checkbox(text="蕎麦", default=True, group="food_name"),
+            guis.Checkbox(text="おすし", group="food_name"),
+            guis.Checkbox(text="おにぎり", group="food_name"),
+            guis.Checkbox(text="その他", group="food_name"),
         ],
-        [Guis.Texts(text="ファイルを選ぶ")],
-        [Guis.FileLoad(key="file_load")],
-        [Guis.Buttons(function=[files], text="選択したファイル")],
-        [Guis.Texts(text="フォルダを選ぶ")],
-        [Guis.FolderLoad(key="folder_load")],
-        [Guis.Buttons(text="選択したフォルダ", function=[folders])],
-        [Guis.Texts(text="色を選ぶ")],
-        [Guis.Colorbtn(key="color_select")],
-        [Guis.Buttons(text="選択した色", function=[colors])],
-        [Guis.Texts(text="タブ")],
+        [guis.Texts(text="ファイルを選ぶ")],
+        [guis.FileLoad(key="file_load")],
+        [guis.Buttons(function=[files], text="選択したファイル")],
+        [guis.Texts(text="フォルダを選ぶ")],
+        [guis.FolderLoad(key="folder_load")],
+        [guis.Buttons(text="選択したフォルダ", function=[folders])],
+        [guis.Texts(text="色を選ぶ")],
+        [guis.Colorbtn(key="color_select")],
+        [guis.Buttons(text="選択した色", function=[colors])],
+        [guis.Texts(text="タブ")],
         [
-            Guis.Tab(
+            guis.Tab(
                 tabs=[
-                    ["tab1", [[Guis.Texts(text="tab1")]]],
-                    ["tab2", [[Guis.Texts(text="tab2")]]],
+                    ["tab1", [[guis.Texts(text="tab1")]]],
+                    ["tab2", [[guis.Texts(text="tab2")]]],
                 ],
                 key="tabs1",
             )
         ],
-        [Guis.Texts(text="スライダー")],
-        [Guis.Slidebar(value=20)],
-        [Guis.Texts(text="プログレスバー")],
-        [Guis.TProgressbar(key="prigress")],
-        [Guis.Texts(text="表(縦見出しあり)")],
+        [guis.Texts(text="スライダー")],
+        [guis.Slidebar(value=20)],
+        [guis.Texts(text="プログレスバー")],
+        [guis.TProgressbar(key="prigress")],
+        [guis.Texts(text="表(縦見出しあり)")],
         [
-            Guis.Table(
+            guis.Table(
                 header=["列A", "列B"],
                 values=[["r1c1", "r1c2"], ["r2c1", "r2c2"]],
                 rowheader=["aa", "bb"],
                 key="table1",
             )
         ],
-        [Guis.Texts(text="表(縦見出しなし)")],
+        [guis.Texts(text="表(縦見出しなし)")],
         [
-            Guis.Table(
+            guis.Table(
                 header=["列A", "列B"],
                 values=[["r1c1", "r1c2"], ["r2c1", "r2c2"]],
                 key="table2",
             )
         ],
-        [Guis.Texts(text="ツリー")],
+        [guis.Texts(text="ツリー")],
         [
-            Guis.Tree(
+            guis.Tree(
                 values=tree_values,
                 side_header="行",
                 header=["あ", "い", "う", "え", "お"],
                 key="tree1",
             )
         ],
-        [Guis.Texts(text="メニューボタン")],
-        [Guis.Menubuttons(list=menus, text="メニューボタン")],
+        [guis.Texts(text="メニューボタン")],
+        [guis.Menubuttons(list=menus, text="メニューボタン")],
         [
-            Guis.Buttons(
+            guis.Buttons(
                 text="Popup(情報)",
-                function=lambda: print(Guis.Popup(message="メッセージ")),
+                function=lambda: print(guis.Popup(message="メッセージ")),
             )
         ],
         [
-            Guis.Buttons(
+            guis.Buttons(
                 text="Popupwarning(注意)",
-                function=lambda: print(Guis.Popupwarning(message="メッセージ")),
+                function=lambda: print(guis.Popupwarning(message="メッセージ")),
             )
         ],
         [
-            Guis.Buttons(
+            guis.Buttons(
                 text="Popupwarningyesno(注意)",
-                function=lambda: print(Guis.Popupwarningyesno(message="メッセージ")),
+                function=lambda: print(guis.Popupwarningyesno(message="メッセージ")),
             )
         ],
         [
-            Guis.Buttons(
+            guis.Buttons(
                 text="Popuperror(エラー)",
-                function=lambda: print(Guis.Popuperror(message="メッセージ")),
+                function=lambda: print(guis.Popuperror(message="メッセージ")),
             )
         ],
         [
-            Guis.Buttons(
+            guis.Buttons(
                 text="Popuperror(エラー)",
-                function=lambda: print(Guis.Popuperroryesno(message="メッセージ")),
+                function=lambda: print(guis.Popuperroryesno(message="メッセージ")),
             )
         ],
         [
-            Guis.Buttons(
+            guis.Buttons(
                 text="Popupyesno(bool型を返す)",
-                function=lambda: print(Guis.Popupyesno(message="メッセージ")),
+                function=lambda: print(guis.Popupyesno(message="メッセージ")),
             )
         ],
         [
-            Guis.Buttons(
+            guis.Buttons(
                 text="Popupokcancel(bool型を返す)",
-                function=lambda: print(Guis.Popupokcancel(message="メッセージ")),
+                function=lambda: print(guis.Popupokcancel(message="メッセージ")),
             )
         ],
         [
-            Guis.Buttons(
+            guis.Buttons(
                 text="Popupquestion(YesかNoを返す)",
-                function=lambda: print(Guis.Popupquestion(message="メッセージ")),
+                function=lambda: print(guis.Popupquestion(message="メッセージ")),
             )
         ],
         [
-            Guis.Buttons(
+            guis.Buttons(
                 text="Popupyesnocancel(bool型とNoneを返す)",
-                function=lambda: print(Guis.Popupyesnocancel(message="メッセージ")),
+                function=lambda: print(guis.Popupyesnocancel(message="メッセージ")),
             )
         ],
         [
-            Guis.LineGraph(
+            guis.LineGraph(
                 x=linex,
                 y=liney1,
                 title="折線グラフ",
@@ -297,9 +297,9 @@ def test_main():
                 ylabel="ylabel",
             )
         ],
-        [Guis.Pie(data=piedata, title="円グラフ", label=pielabel)],
+        [guis.Pie(data=piedata, title="円グラフ", label=pielabel)],
         [
-            Guis.BarGraph(
+            guis.BarGraph(
                 x=bargraphx2,
                 y=bargraphy2,
                 title="棒グラフ(縦)",
@@ -309,7 +309,7 @@ def test_main():
             )
         ],
         [
-            Guis.BarhGraph(
+            guis.BarhGraph(
                 x=bargraphy1,
                 y=bargraphx1,
                 title="棒グラフ(横)",
@@ -319,7 +319,7 @@ def test_main():
             )
         ],
         [
-            Guis.Scatter(
+            guis.Scatter(
                 x=scatterx1,
                 y=scattery1,
                 title="散布図",
@@ -327,9 +327,9 @@ def test_main():
                 ylabel="ylabel",
             )
         ],
-        [Guis.Scatter(x=scatterx2, y=scattery2, title="散布図")],
+        [guis.Scatter(x=scatterx2, y=scattery2, title="散布図")],
         [
-            Guis.DScatter(
+            guis.DScatter(
                 x=dscatterx,
                 y=dscattery,
                 z=dscatterz,
@@ -339,11 +339,11 @@ def test_main():
                 zlabel="z",
             )
         ],
-        [Guis.Hist(data=histdata, title="ヒストグラフ")],
-        [Guis.Stem(x=stemx1, y=stemy, title="ステムグラフ")],
-        [Guis.Boxplot(data=boxdata1, title="箱ひげ図", whis=1.5)],
+        [guis.Hist(data=histdata, title="ヒストグラフ")],
+        [guis.Stem(x=stemx1, y=stemy, title="ステムグラフ")],
+        [guis.Boxplot(data=boxdata1, title="箱ひげ図", whis=1.5)],
         [
-            Guis.Waterfall(
+            guis.Waterfall(
                 x=waterfallx,
                 y=waterfally,
                 width=0.5,
@@ -352,45 +352,45 @@ def test_main():
             )
         ],
         [
-            Guis.Waterfallh(
+            guis.Waterfallh(
                 x=waterfallx, y=waterfally, height=0.5, title="ウォーターフォール"
             )
         ],
-        [Guis.Step(data=stepdata, title="階段グラフ")],
-        [Guis.Stack(x=stackx, y=stacky, title="積み上げグラフ")],
+        [guis.Step(data=stepdata, title="階段グラフ")],
+        [guis.Stack(x=stackx, y=stacky, title="積み上げグラフ")],
         [
-            Guis.Eventplot(
+            guis.Eventplot(
                 data=eventdata,
                 linestyle="dashed",
                 label=["a", "b", "c"],
                 title="イベントグラフ",
             )
         ],
-        [Guis.Errorbar(x=errorbarx, y=errorbary, err=err, title="エラーグラフ")],
+        [guis.Errorbar(x=errorbarx, y=errorbary, err=err, title="エラーグラフ")],
         [
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx, y=errorbary, xerr=xerr, yerr=yerr, title="エラーグラフ"
             )
         ],
-        [Guis.Errorbar(x=errorbarx, y=errorbary, xerr=xerr, title="エラーグラフ")],
-        [Guis.Errorbar(x=errorbarx, y=errorbary, yerr=yerr, title="エラーグラフ")],
-        [Guis.Ecdf(data=ecdfdata, title="経験的累積分布関数のグラフ")],
+        [guis.Errorbar(x=errorbarx, y=errorbary, xerr=xerr, title="エラーグラフ")],
+        [guis.Errorbar(x=errorbarx, y=errorbary, yerr=yerr, title="エラーグラフ")],
+        [guis.Ecdf(data=ecdfdata, title="経験的累積分布関数のグラフ")],
         [
-            Guis.Stacked(
+            guis.Stacked(
                 data=stackeddata,
                 dataname=stackeddataname,
                 title="積み上げ縦棒グラフ",
             )
         ],
         [
-            Guis.Stackedh(
+            guis.Stackedh(
                 data=stackeddata,
                 dataname=stackeddataname,
                 title="積み上げ横棒グラフ",
             )
         ],
         [
-            Guis.Violinplot(
+            guis.Violinplot(
                 data=violindata,
                 title="バイオリングラフ",
                 xlabel="x軸のラベル",
@@ -398,7 +398,7 @@ def test_main():
             )
         ],
         [
-            Guis.Hatplot(
+            guis.Hatplot(
                 x=hatplotx,
                 data=hatplotdata,
                 title="ハットグラフ",
@@ -408,7 +408,7 @@ def test_main():
             )
         ],
         [
-            Guis.Hexbin(
+            guis.Hexbin(
                 x=hexbinx1,
                 y=hexbiny1,
                 title="2次元六角形グラフ",
@@ -417,7 +417,7 @@ def test_main():
             )
         ],
         [
-            Guis.Hist2d(
+            guis.Hist2d(
                 x=hist2dx,
                 y=hist2dy,
                 title="2次元ヒストグラム",
@@ -426,7 +426,7 @@ def test_main():
             )
         ],
         [
-            Guis.Linefill(
+            guis.Linefill(
                 x=linefillx,
                 ymax=linefillymax,
                 ymin=linefillymin,
@@ -435,15 +435,15 @@ def test_main():
                 ylabel="y軸のラベル",
             )
         ],
-        [Guis.Funne(data=funnedata, title="じょうごグラフ")],
-        [Guis.Barpolar(x=barpolarx, y=barpolary, title="極軸棒グラフ")],
+        [guis.Funne(data=funnedata, title="じょうごグラフ")],
+        [guis.Barpolar(x=barpolarx, y=barpolary, title="極軸棒グラフ")],
         [
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx, y=errorpolary, err=polarerr, title="極軸エラーグラフ"
             )
         ],
         [
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 xerr=polarxerr,
@@ -451,14 +451,14 @@ def test_main():
                 title="極軸エラーグラフ",
             )
         ],
-        [Guis.Eventpolar(data=eventdata, title="極軸イベントグラフ")],
-        [Guis.Linepolar(x=linepolarx, y=linepolary, title="極軸折線グラフ")],
-        [Guis.Scatterpolar(x=scatterpolarx, y=scatterpolary, title="極軸散布図")],
-        [Guis.Stempolar(x=stempolarx, y=stempolary, title="極軸幹図")],
-        [Guis.RadarFill(data=radarfilldata, title="塗りつぶしレーダーチャート")],
-        [Guis.RadarLine(data=radarlinedata, title="折線レーダーチャート")],
+        [guis.Eventpolar(data=eventdata, title="極軸イベントグラフ")],
+        [guis.Linepolar(x=linepolarx, y=linepolary, title="極軸折線グラフ")],
+        [guis.Scatterpolar(x=scatterpolarx, y=scatterpolary, title="極軸散布図")],
+        [guis.Stempolar(x=stempolarx, y=stempolary, title="極軸幹図")],
+        [guis.RadarFill(data=radarfilldata, title="塗りつぶしレーダーチャート")],
+        [guis.RadarLine(data=radarlinedata, title="折線レーダーチャート")],
     ]
-    win: WindowController = Guis.window(
+    win: WindowController = guis.window(
         title="デモ", layout=layout, load=[progress_start], scroll=True, maxmine=True
     )
     win.run()

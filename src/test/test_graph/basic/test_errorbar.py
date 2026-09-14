@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Errorbar, Guis
+from sgg import Errorbar, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -25,7 +25,7 @@ def test_main():
     print(f"{yerr=}")
     layout = [
         [
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
@@ -33,7 +33,7 @@ def test_main():
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
             ),
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 xerr=xerr,
@@ -44,14 +44,14 @@ def test_main():
             ),
         ],
         [
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
                 title="xの上向きの誤差に矢印を付ける",
                 xuplims=True,
             ),
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
@@ -60,14 +60,14 @@ def test_main():
             ),
         ],
         [
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
                 title="yの上向きの誤差に矢印を付ける",
                 yuplims=True,
             ),
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
@@ -76,14 +76,14 @@ def test_main():
             ),
         ],
         [
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
                 title="データ点とデータ点を結ぶ線を指定する",
                 linestyle="dashdot",
             ),
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
@@ -92,14 +92,14 @@ def test_main():
             ),
         ],
         [
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
                 title="キャップの長さを指定する",
                 capsize=3,
             ),
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
@@ -109,14 +109,14 @@ def test_main():
             ),
         ],
         [
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
                 title="エラーグラフを表示する頻度を変える",
                 errorevery=3,
             ),
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
@@ -125,7 +125,7 @@ def test_main():
             ),
         ],
         [
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
@@ -134,17 +134,17 @@ def test_main():
             )
         ],
         [
-            Guis.Errorbar(
+            guis.Errorbar(
                 x=errorbarx,
                 y=errorbary,
                 err=err,
                 title="グラフを更新する",
                 key="errorbar",
             ),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="エラーグラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, Scatterpolar
+from sgg import Scatterpolar, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -21,16 +21,16 @@ def test_main():
     print(f"{scatterpolardata=}")
     layout = [
         [
-            Guis.Scatterpolar(
+            guis.Scatterpolar(
                 x=scatterpolarx, y=scatterpolary, title="極軸散布図の基本1"
             ),
-            Guis.Scatterpolar(data=scatterpolardata, title="極軸散布図の基本2"),
+            guis.Scatterpolar(data=scatterpolardata, title="極軸散布図の基本2"),
         ],
         [
-            Guis.Scatterpolar(
+            guis.Scatterpolar(
                 x=scatterpolarx, y=scatterpolary, title="マーカーの指定", marker="d"
             ),
-            Guis.Scatterpolar(
+            guis.Scatterpolar(
                 x=scatterpolarx,
                 y=scatterpolary,
                 title="マーカーサイズの変更",
@@ -39,16 +39,16 @@ def test_main():
             ),
         ],
         [
-            Guis.Scatterpolar(
+            guis.Scatterpolar(
                 x=scatterpolarx,
                 y=scatterpolary,
                 title="グラフを更新する",
                 key="scatterpolor",
             ),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="極軸散布図(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

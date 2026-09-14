@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Errorpolar, Guis
+from sgg import Errorpolar, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -25,13 +25,13 @@ def test_main():
     print(f"{polaryerr=}")
     layout = [
         [
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
                 title="極軸エラーグラフの基本1",
             ),
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 xerr=polarxerr,
@@ -40,14 +40,14 @@ def test_main():
             ),
         ],
         [
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
                 title="xの上向きの誤差に矢印を付ける",
                 xuplims=True,
             ),
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
@@ -56,14 +56,14 @@ def test_main():
             ),
         ],
         [
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
                 title="yの上向きの誤差に矢印を付ける",
                 yuplims=True,
             ),
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
@@ -72,14 +72,14 @@ def test_main():
             ),
         ],
         [
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
                 title="データ点とデータ点を結ぶ線を指定する",
                 linestyle="dashdot",
             ),
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
@@ -88,14 +88,14 @@ def test_main():
             ),
         ],
         [
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
                 title="キャップの長さを指定する",
                 capsize=3,
             ),
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
@@ -105,14 +105,14 @@ def test_main():
             ),
         ],
         [
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
                 title="極軸エラーグラフを表示する頻度を変える",
                 errorevery=3,
             ),
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
@@ -121,7 +121,7 @@ def test_main():
             ),
         ],
         [
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
@@ -130,17 +130,17 @@ def test_main():
             )
         ],
         [
-            Guis.Errorpolar(
+            guis.Errorpolar(
                 x=errorpolarx,
                 y=errorpolary,
                 err=polarerr,
                 title="グラフを更新する",
                 key="errorpolar",
             ),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="極軸エラーグラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

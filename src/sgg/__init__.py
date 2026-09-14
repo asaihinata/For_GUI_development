@@ -35,7 +35,7 @@ __all__ = [
     "FolderLoad",
     "Frames",
     "Funne",
-    "Guis",
+    "guis",
     "Hatplot",
     "Hexbin",
     "Hist",
@@ -105,11 +105,11 @@ __all__ = [
 
 
 def _counts():
-    Guis._count += 1
-    return Guis._count
+    guis._count += 1
+    return guis._count
 
 
-class Guis:
+class guis:
     _count = 0
 
     @classmethod

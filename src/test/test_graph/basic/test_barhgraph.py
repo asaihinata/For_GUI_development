@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import BarhGraph, Guis
+from sgg import BarhGraph, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -23,7 +23,7 @@ def test_main():
     print(f"{barhgraphy2=}")
     layout = [
         [
-            Guis.BarhGraph(
+            guis.BarhGraph(
                 x=barhgraphy1,
                 y=barhgraphx1,
                 title="横向き棒グラフの基本1",
@@ -31,7 +31,7 @@ def test_main():
                 ylabel="y軸のラベル",
                 label=["bar1"],
             ),
-            Guis.BarhGraph(
+            guis.BarhGraph(
                 x=barhgraphy2,
                 y=barhgraphx2,
                 title="横向き棒グラフの基本2",
@@ -41,10 +41,10 @@ def test_main():
             ),
         ],
         [
-            Guis.BarhGraph(
+            guis.BarhGraph(
                 x=barhgraphy1, y=barhgraphx1, title="x軸を対数スケールにする", logs=True
             ),
-            Guis.BarhGraph(
+            guis.BarhGraph(
                 x=barhgraphy1,
                 y=barhgraphx1,
                 title="グラフの開始位置の変更",
@@ -52,18 +52,18 @@ def test_main():
             ),
         ],
         [
-            Guis.BarhGraph(
+            guis.BarhGraph(
                 x=barhgraphy1, y=barhgraphx1, title="グラフの幅の変更", height=0.4
             )
         ],
         [
-            Guis.BarhGraph(
+            guis.BarhGraph(
                 x=barhgraphy1, y=barhgraphx1, title="グラフを更新する", key="BarhGraph"
             ),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="横向き棒グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()

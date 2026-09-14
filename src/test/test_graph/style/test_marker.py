@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis
+from sgg import guis
 
 
 def test_main():
@@ -11,7 +11,7 @@ def test_main():
     y2 = [[count] for count, _ in enumerate(range(1, len(marker2) + 1))]
     layout = [
         [
-            Guis.Scatter(
+            guis.Scatter(
                 x=x,
                 y=y1,
                 label=marker1,
@@ -20,7 +20,7 @@ def test_main():
                 grid_xy=False,
                 ticksshow=True,
             ),
-            Guis.Scatter(
+            guis.Scatter(
                 x=x,
                 y=y2,
                 label=marker2,
@@ -31,7 +31,7 @@ def test_main():
             ),
         ]
     ]
-    win = Guis.window(
+    win = guis.window(
         title="線のスタイルの種類", layout=layout, scroll=True, maxmine=True
     )
     win.run()

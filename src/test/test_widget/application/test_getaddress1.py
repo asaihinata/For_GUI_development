@@ -9,7 +9,7 @@ https://excelapi.org/docs/post/zipcode/
 
 import requests
 
-from sgg import Guis, Input
+from sgg import Input, guis
 
 
 def test_main():
@@ -26,18 +26,18 @@ def test_main():
         yuubin.set_text(yubin_txt)
 
     layout = [
-        [Guis.Texts(text="住所から郵便番号")],
+        [guis.Texts(text="住所から郵便番号")],
         [
-            Guis.Texts(text="住所"),
-            Guis.Input(text="東京都千代田区", key="zyuusyo"),
-            Guis.Buttons(text="変換", function=ytoz),
+            guis.Texts(text="住所"),
+            guis.Input(text="東京都千代田区", key="zyuusyo"),
+            guis.Buttons(text="変換", function=ytoz),
         ],
         [
-            Guis.Texts(text="郵便番号"),
-            Guis.Input(text="1000000", key="yuubin"),
+            guis.Texts(text="郵便番号"),
+            guis.Input(text="1000000", key="yuubin"),
         ],
     ]
-    win = Guis.window(layout=layout, maxmine=True, scroll=True)
+    win = guis.window(layout=layout, maxmine=True, scroll=True)
     win.run()
 
 

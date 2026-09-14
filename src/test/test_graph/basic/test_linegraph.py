@@ -1,6 +1,6 @@
 import numpy as np
 
-from sgg import Guis, LineGraph
+from sgg import LineGraph, guis
 
 rng = np.random.default_rng(seed=42)
 
@@ -21,23 +21,23 @@ def test_main():
     print(f"{liney2=}")
     layout = [
         [
-            Guis.LineGraph(
+            guis.LineGraph(
                 x=linex,
                 y=liney1,
                 title="折り線グラフの基本",
                 xlabel="x軸のラベル",
                 ylabel="y軸のラベル",
             ),
-            Guis.LineGraph(x=linex, y=liney2, title="複数の折り線グラフを表示させる"),
+            guis.LineGraph(x=linex, y=liney2, title="複数の折り線グラフを表示させる"),
         ],
         [
-            Guis.LineGraph(
+            guis.LineGraph(
                 x=linex,
                 y=liney2,
                 title="凡例の表示",
                 label=["label1", "label2", "label3", "label4"],
             ),
-            Guis.LineGraph(
+            guis.LineGraph(
                 x=linex,
                 y=liney2,
                 title="線の色の変更",
@@ -45,8 +45,8 @@ def test_main():
             ),
         ],
         [
-            Guis.LineGraph(x=linex, y=liney1, title="マーカーを変更する", marker="d"),
-            Guis.LineGraph(
+            guis.LineGraph(x=linex, y=liney1, title="マーカーを変更する", marker="d"),
+            guis.LineGraph(
                 x=linex,
                 y=liney1,
                 title="マーカーの大きさを変更する",
@@ -54,13 +54,13 @@ def test_main():
                 markersize=20,
             ),
         ],
-        [Guis.LineGraph(x=linex, y=liney1, title="線の種類を変更する", linestyle="--")],
+        [guis.LineGraph(x=linex, y=liney1, title="線の種類を変更する", linestyle="--")],
         [
-            Guis.LineGraph(x=linex, y=liney2, title="グラフを更新する", key="lineplot"),
-            Guis.Buttons(text="更新ボタン", function=updates),
+            guis.LineGraph(x=linex, y=liney2, title="グラフを更新する", key="lineplot"),
+            guis.Buttons(text="更新ボタン", function=updates),
         ],
     ]
-    win = Guis.window(
+    win = guis.window(
         title="折り線グラフ(test)", layout=layout, scroll=True, maxmine=True
     )
     win.run()
