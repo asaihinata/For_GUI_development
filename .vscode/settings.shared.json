@@ -13,8 +13,10 @@
     "extensions.ignoreRecommendations": false,
     "files.encoding": "utf8",
     "files.exclude": {
+        "**/__pycache__": true,
+        "**/.git": true,
         "**/*.egg-info": true
     },
-    "files.trimTrailingWhitespace": false,
+    "files.trimTrailingWhitespace": true,
     "gitlens.codeLens.enabled": true
 }
