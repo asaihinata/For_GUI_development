@@ -8,8 +8,8 @@ __all__ = ["Colorbtn"]
 class Colorbtn(Btn):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.__color = (None, None)
         self.colors = parsecolor(kw.get("color"), "#ffffff")
+        self.__color = (self._to_dec(self.colors), self.colors)
         self.title = kw.get("title", "select color")
         self._textvariable(kw.get("text", "select color"))
         self._widget = Button(
@@ -40,3 +40,7 @@ class Colorbtn(Btn):
     @property
     def color(self):
         return self.__color
+
+    def _to_dec(self, val):
+        val = val.lstrip("#")
+        return int(val[0:2], 16), int(val[2:4], 16), int(val[4:6], 16)
