@@ -76,16 +76,6 @@ class WindowController:
     def widgetall(self) -> list[Any]:
         """表示されている全てのウィジェットの配列を返す"""
 
-    def tookphoto(self, file: str = "window", ex: str = ".png") -> None:
-        """
-        ウィンドウの画面をスクリーンショットをする
-
-        :param file: ファイル名を指定する
-        :type file: str
-        :param ex: 画像の拡張名を指定する
-        :type ex: str
-        """
-
     def foreground(self, bools: bool = True) -> None:
         """ウィンドウを常に最前面にするか指定する"""
 

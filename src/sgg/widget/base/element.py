@@ -169,6 +169,10 @@ class Element:
         else:
             raise ValueError
 
+    def info(self, keys=None):
+        infodict = self._widget.info()
+        return infodict.get(keys, infodict)
+
     def _to_flat_list(self, array):
         if np.isscalar(array):
             return [array]

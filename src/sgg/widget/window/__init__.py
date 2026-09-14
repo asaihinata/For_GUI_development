@@ -1,13 +1,12 @@
-from os import getcwd
 from re import findall
 from tkinter import Canvas, Frame, Scrollbar, Tk
 from types import FunctionType
 
-from PIL import ImageGrab
+import numpy as np
+from _tkinter import TclError
 
-from sgg._list import CURSOR_LIST, USE_IMG_LIST
-from sgg.dev import _flatten, bols, listchose, num0s, parsecolor, range_num
-from sgg.dialogs import asksaveasfilename
+from sgg._list import CURSOR_LIST
+from sgg.dev import _flatten, bols, num0s, parsecolor, range_num
 from sgg.graph import *
 from sgg.widget.base import TElement
 from sgg.widget.basic import *
@@ -18,9 +17,9 @@ __all__ = ["WindowController"]
 class WindowController:
     """ウィンドウを生成する"""
 
-    _count = 0
+    _COUNT = 0
     _STYLE_NAME_DICT = {}
-    MENU_IN_JUDGE = True
+    _MENU_IN_JUDGE = True
 
     def __init__(self, kw):
         self.title = kw.get("title", "window")
@@ -31,21 +30,21 @@ class WindowController:
         self.scroll = bols(kw.get("scroll"), False)
         self.scroll_x = bols(kw.get("scroll_x"), self.scroll)
         self.scroll_y = bols(kw.get("scroll_y"), self.scroll)
-        self.root = Tk()
-        parent = self.root
-        self.root.title(self.title)
+        self._root = Tk()
+        parent = self._root
+        self._root.title(self.title)
         self.cursor = self._list_cursor(kw.get("cursor"))
-        self.root.config(cursor=self.cursor)
-        self.root.protocol("WM_DELETE_WINDOW", self._on_window_close)
-        self.root.tk_setPalette(background=self.bg)
+        self._root.config(cursor=self.cursor)
+        self._root.protocol("WM_DELETE_WINDOW", self._on_window_close)
+        self._root.tk_setPalette(background=self.bg)
         self.size = kw.get("size", (None, None))
         self.maxmine = bols(kw.get("maxmine"), False)
         if self.maxmine:
             self.maxwin()
-        self.alpha = range_num(num0s(kw.get("alpha"), 1), 0, 1, 1)
+        self.__alpha = range_num(num0s(kw.get("alpha"), 1), 0, 1, 1)
         self.fullscreens = bols(kw.get("fullscreen"), False)
         self.topmost = bols(kw.get("topmost"), False)
-        self.set_alpha(self.alpha)
+        self.set_alpha(self.__alpha)
         self.fullscreen(self.fullscreens)
         self.foreground(self.topmost)
         resizable = bols(kw.get("resizable"), False)
@@ -60,7 +59,7 @@ class WindowController:
         self.closed = False
         self._close_result, self.canvas = None, None
         if self.scroll_y or self.scroll_x:
-            self.canvas = Canvas(self.root, bg=self.bg, highlightthickness=0)
+            self.canvas = Canvas(self._root, bg=self.bg, highlightthickness=0)
             self._inner_frame = Frame(self.canvas, bg=self.bg)
             self.canvas.create_window((0, 0), window=self._inner_frame, anchor="nw")
             self._inner_frame.bind(
@@ -69,13 +68,13 @@ class WindowController:
             )
             if self.scroll_y:
                 ybar = Scrollbar(
-                    self.root, orient="vertical", command=self.canvas.yview
+                    self._root, orient="vertical", command=self.canvas.yview
                 )
                 self.canvas.configure(yscrollcommand=ybar.set)
                 ybar.pack(side="right", fill="y")
             if self.scroll_x:
                 xbar = Scrollbar(
-                    self.root, orient="horizontal", command=self.canvas.xview
+                    self._root, orient="horizontal", command=self.canvas.xview
                 )
                 self.canvas.configure(xscrollcommand=xbar.set)
                 xbar.pack(side="bottom", fill="x")
@@ -84,36 +83,19 @@ class WindowController:
         if self.size == (None, None):
             x, y = self.location
             try:
-                self.root.geometry(f"+{int(x)}+{int(y)}")
+                self._root.geometry(f"+{int(x)}+{int(y)}")
             except:
                 pass
         else:
             w, h = self.size
             x, y = self.location
             try:
-                self.root.geometry(f"{int(w)}x{int(h)}+{int(x)}+{int(y)}")
+                self._root.geometry(f"{int(w)}x{int(h)}+{int(x)}+{int(y)}")
             except:
-                self.root.geometry(f"+{int(x)}+{int(y)}")
+                self._root.geometry(f"+{int(x)}+{int(y)}")
         if self.layout:
             self._build_layout(self.layout, parent)
         self.loadfun = kw.get("load")
-
-    def scroll_to(self, key):
-        w, y = self.widgets.get(key), 0
-        if not self.canvas or not w:
-            return
-        self.root.update_idletasks()
-        try:
-            y = self.canvas.canvasy(w.winfo_rooty() - self.canvas.winfo_rooty())
-        except:
-            return None
-        scroll_region = self.canvas.bbox("all")
-        if not scroll_region:
-            return None
-        total_height = scroll_region[3] - scroll_region[1]
-        if total_height <= 0:
-            return None
-        self.canvas.yview_moveto(y / total_height)
 
     def _build_layout(self, layout, parent, bgcolor=None):
         bg = self.bg if bgcolor == None else bgcolor
@@ -129,7 +111,7 @@ class WindowController:
         widget = None
         kw["back_bg"] = bgs
         if key == None:
-            kw["key"] = f"widget{self._count}"
+            kw["key"] = f"widget{self._COUNT}"
         if t == "Menus":
             widget = Menus(parent, kw)
         elif t == "Menubuttons":
@@ -274,9 +256,9 @@ class WindowController:
             }
         if widget:
             if t == "Menus":
-                if self.MENU_IN_JUDGE == True:
-                    self.root.config(menu=widget.widget)
-                    self.MENU_IN_JUDGE = False
+                if self._MENU_IN_JUDGE == True:
+                    self._root.config(menu=widget.widget)
+                    self._MENU_IN_JUDGE = False
             elif widget.graph == True:
                 widget._pack()
             else:
@@ -289,28 +271,48 @@ class WindowController:
             if key:
                 self.widgets[key] = widget
             else:
-                self.widgets[f"widget{self._count}"] = widget
-        self._count += 1
+                self.widgets[f"widget{self._COUNT}"] = widget
+        self._COUNT += 1
 
-    @property
-    def style_name_dict(self):
-        return self._STYLE_NAME_DICT
+    def _on_window_close(self):
+        self._close_result = "winclose"
+        self.closed = True
+        self._root.destroy()
 
     def get(self, key):
         return self.widgets.get(key)
+
+    def scroll_to(self, key):
+        w, y = self.widgets.get(key), 0
+        if not self.canvas or not w:
+            return
+        self._root.update_idletasks()
+        try:
+            y = self.canvas.canvasy(w.winfo_rooty() - self.canvas.winfo_rooty())
+        except:
+            return None
+        scroll_region = self.canvas.bbox("all")
+        if not scroll_region:
+            return None
+        total_height = scroll_region[3] - scroll_region[1]
+        if total_height <= 0:
+            return None
+        self.canvas.yview_moveto(y / total_height)
 
     def get_title(self):
         return self.title
 
     def set_title(self, title):
+        if not isinstance(title, str):
+            raise TypeError
         self.title = title
-        self.root.title(title)
+        self._root.wm_title(title)
 
     def get_style(self):
         return self._STYLE_NAME_DICT
 
     def numofwidget(self):
-        return self._count
+        return self._COUNT
 
     def widgetdict(self):
         return self.widgets
@@ -321,45 +323,140 @@ class WindowController:
     def widgetall(self):
         return list(self.widgets.values())
 
-    def _list_cursor(self, name):
-        if name in CURSOR_LIST:
-            return name
-        return None
-
-    def _on_window_close(self):
-        self._close_result = "winclose"
-        self.closed = True
-        self.root.destroy()
-
     def close(self):
-        self.root.quit()
+        self._root.quit()
 
     def maxwin(self):
         try:
-            self.root.state("zoomed")
+            self._root.state("zoomed")
         except:
             pass
 
     def minwin(self):
         try:
-            self.root.iconify()
+            self._root.iconify()
         except:
             pass
 
     def run(self):
         if self.loadfun:
-            self.win_exec_funcs(funcs=self.loadfun)
+            self._win_exec_funcs(funcs=self.loadfun)
         if self.canvas:
-            self.root.after(100, self._update_region)
-        self.root.mainloop()
+            self._root.after(100, self._update_region)
+        self._root.mainloop()
 
-    def _update_region(self):
+    def keys(self):
+        return self._root.keys()
+
+    def foreground(self, bools=False):
+        self._root.attributes("-topmost", bools)
+
+    def fullscreen(self, bools=False):
+        self._root.attributes("-fullscreen", bools)
+
+    def set_alpha(self, alpha=1.0):
+        self.__alpha = alpha
+        self._root.attributes("-alpha", self.__alpha)
+
+    def get_alpha(self):
+        return self.__alpha
+
+    def deiconify(self):
+        self._root.deiconify
+
+    def withdraw(self):
+        self._root.withdraw()
+
+    def resizable(self, width, height):
+        if isinstance(width, bool):
+            self.resizableswidth = width
+        if isinstance(height, bool):
+            self.resizablesheight = height
+        self._root.resizable(width=self.resizableswidth, height=self.resizablesheight)
+
+    # ウインドウ情報
+    def geometry(self):
+        return [float(i) for i in findall(r"\d+", self._root.winfo_geometry())]
+
+    def winsize(self):
+        root = self._root
+        return root.winfo_width(), root.winfo_height()
+
+    def winwidth(self):
+        return self._root.winfo_width()
+
+    def winheight(self):
+        return self._root.winfo_height()
+
+    def winxy(self):
+        root = self._root
+        return root.winfo_x(), root.winfo_y()
+
+    def winx(self):
+        return self._root.winfo_x()
+
+    def winy(self):
+        return self._root.winfo_y()
+
+    # クリップボード
+    def get_clipboard(self):
         try:
-            self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+            return self._root.clipboard_get()
         except:
-            pass
+            raise TclError("クリップボードにテキストが存在しません")
 
-    def win_exec_funcs(self, funcs=None):
+    def clear_clipboard(self):
+        self._root.clipboard_clear()
+
+    def add_clipboard(self, string):
+        if not isinstance(string, str | np.str_):
+            raise TypeError
+        elif isinstance(string, np.str_):
+            string = str(string)
+        self._root.clipboard_append(string)
+
+    # プロパティ
+    @property
+    def root(self):
+        return self._root
+
+    @property
+    def style_name_dict(self):
+        return self._STYLE_NAME_DICT
+
+    # WindowControllerオブジェクト内専用のメソッド
+    def _list_cursor(self, name):
+        if name in CURSOR_LIST:
+            return name
+        return None
+
+    def _is_number(self, val):
+        if isinstance(val, int | float | complex) or (
+            isinstance(val, np.generic) and np.issubdtype(val.dtype, np.number)
+        ):
+            return True
+        return False
+
+    def _is_real(self, val):
+        if isinstance(val, int | float) or (
+            isinstance(val, np.generic)
+            and np.issubdtype(val.dtype, np.integer | np.floating)
+        ):
+            return True
+        return False
+
+    def _to_real(self, val):
+        if isinstance(val, int | float):
+            return val
+        elif isinstance(val, np.generic):
+            if np.issubdtype(val.dtype, np.integer):
+                return int(val)
+            elif np.issubdtype(val.dtype, np.floating):
+                return float(val)
+            raise TypeError
+        raise TypeError
+
+    def _win_exec_funcs(self, funcs=None):
         if isinstance(funcs, FunctionType):
             funcs()
         elif isinstance(funcs, list | tuple):
@@ -370,65 +467,8 @@ class WindowController:
         else:
             return None
 
-    def foreground(self, bools=False):
-        self.root.attributes("-topmost", bools)
-
-    def fullscreen(self, bools=False):
-        self.root.attributes("-fullscreen", bools)
-
-    def set_alpha(self, alpha=1.0):
-        self.alpha = alpha
-        self.root.attributes("-alpha", self.alpha)
-
-    def get_alpha(self):
-        return self.alpha
-
-    def deiconify(self):
-        self.root.deiconify
-
-    def withdraw(self):
-        self.root.withdraw()
-
-    def geometry(self):
-        return [float(i) for i in findall(r"\d+", self.root.winfo_geometry())]
-
-    def tookphoto(self, file="window", ex="png"):
-        if not isinstance(ex, str):
-            ex = "png"
-        root = self.root
-        winx, winy = root.winfo_rootx(), root.winfo_rooty()
-        bbox = (winx, winy, winx + root.winfo_width(), winy + root.winfo_height())
-        paths = asksaveasfilename(
-            title="画像を保存する",
-            defaultextension=listchose(ex.isupper(), USE_IMG_LIST, "png"),
-            initialfile=file,
-            initialdir=getcwd(),
-        )
-        ImageGrab.grab(bbox=bbox).save(paths)
-
-    def winsize(self):
-        root = self.root
-        return root.winfo_width(), root.winfo_height()
-
-    def winwidth(self):
-        return self.root.winfo_width()
-
-    def winheight(self):
-        return self.root.winfo_height()
-
-    def winxy(self):
-        root = self.root
-        return root.winfo_x(), root.winfo_y()
-
-    def winx(self):
-        return self.root.winfo_x()
-
-    def winy(self):
-        return self.root.winfo_y()
-
-    def resizable(self, width, height):
-        if isinstance(width, bool):
-            self.resizableswidth = width
-        if isinstance(height, bool):
-            self.resizablesheight = height
-        self.root.resizable(width=self.resizableswidth, height=self.resizablesheight)
+    def _update_region(self):
+        try:
+            self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+        except:
+            pass
