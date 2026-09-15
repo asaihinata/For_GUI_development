@@ -1,11 +1,10 @@
-from re import findall
+from re import findall, search
 from types import FunctionType
 
 import numpy as np
 
 from sgg._list import ANCHOR_LIST, CURSOR_LIST, RELIEF_LIST
-from sgg.dev import (_SET_OBJ, _flatten, _is_real, bols, listchose, num0s,
-                     parsecolor)
+from sgg.dev import _SET_OBJ, bols, listchose, num0s,parsecolor
 from sgg.font import Getfont, TKFont
 
 __all__ = ["Element"]
@@ -68,7 +67,7 @@ class Element(_SET_OBJ):
         if isinstance(funcs, FunctionType):
             funcs()
         elif isinstance(funcs, list | tuple):
-            funcs = _flatten(funcs)
+            funcs = self._flatten(funcs)
             for f in funcs:
                 if isinstance(f, FunctionType):
                     f()
@@ -175,7 +174,7 @@ class Element(_SET_OBJ):
         return infodict.get(keys, infodict)
 
     def _unit_point(self, val):
-        if _is_real(val):
+        if self._is_real(val):
             return val
         elif isinstance(val, np.str_):
             return self._unit_point(str(val))
@@ -190,3 +189,10 @@ class Element(_SET_OBJ):
                 else:
                     return val
         raise ValueError
+
+    def _numpointnum(self, strs):
+        try:
+            strs = search(r"\d+\.\d+", strs).group()
+        except AttributeError as e:
+            raise AttributeError(e)
+        return strs

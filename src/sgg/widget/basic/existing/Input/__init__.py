@@ -1,6 +1,6 @@
 from tkinter import Entry, Variable
 
-from sgg.dev import _is_real, listchose, num0, parsecolor
+from sgg.dev import listchose, num0, parsecolor
 from sgg.widget.base import Element
 
 __all__ = ["Input"]
@@ -13,14 +13,13 @@ class Input(Element):
         self.width = num0(kw.get("width"), 20)
         self.textvariable = Variable(value=kw.get("text"))
         self.show = kw.get("show")
-        # if isinstance(show)
         self.state = listchose(kw.get("state"), ["normal", "disabled", "readonly"])
         self.disabledbg = parsecolor(kw.get("disabledbg"))
         self.disabledfg = parsecolor(kw.get("disabledfg"))
         self.selectforeground = parsecolor(kw.get("selectfg"))
         self.selectbackground = parsecolor(kw.get("selectbg"))
         selectborderwidth = kw.get("selectborderwidth", 0)
-        if _is_real(selectborderwidth) and 0 <= selectborderwidth:
+        if self._is_real(selectborderwidth) and 0 <= selectborderwidth:
             self.selectborderwidth = selectborderwidth
         else:
             self.selectborderwidth = 0
@@ -29,7 +28,7 @@ class Input(Element):
         self.insertontime = num0(kw.get("insertontime"), 600)
         self.insertofftime = num0(kw.get("insertofftime"), 300)
         insertborderwidth = kw.get("insertborderwidth", 0)
-        if _is_real(insertborderwidth) and 0 <= insertborderwidth:
+        if self._is_real(insertborderwidth) and 0 <= insertborderwidth:
             self.insertborderwidth = insertborderwidth
         else:
             self.insertborderwidth = 0
@@ -80,3 +79,23 @@ class Input(Element):
 
     def delta(self):
         self._widget.destroy()
+
+    # select
+    def selection_range(self, start, end):
+        if not (self._is_int(start) or start.isdecimal()):
+            raise TypeError
+        if not (self._is_int(end) or end.isdecimal() or end == "end"):
+            raise TypeError
+        self._widget.selection_range(start, end)
+
+    def selection_present(self):
+        return self._widget.selection_present()
+
+    def selection_clear(self):
+        self._widget.selection_clear()
+
+    def focus_set(self):
+        self._widget.focus_set()
+
+    def selection_set(self):
+        self._widget.focus_set()

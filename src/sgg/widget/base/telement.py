@@ -1,7 +1,5 @@
 import numpy as np
 
-from sgg.dev import _is_real
-
 from .element import Element
 
 __all__ = ["TElement"]
@@ -16,7 +14,7 @@ class TElement(Element):
             raise ValueError
 
     def _unit_change(self, val):
-        if _is_real(val):
+        if self._is_real(val):
             return val
         elif isinstance(val, np.str_):
             return self._unit_point(str(val))

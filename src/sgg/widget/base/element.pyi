@@ -1,14 +1,14 @@
 from tkinter import Misc, _Cursor
-from typing import Any, Callable, overload
+from typing import Any, Callable
 
 import numpy as np
 
-from sgg._typing import NDStr_
+from sgg.dev import _SET_OBJ
 from sgg.font import TKFont
 
 __all__ = ["Element"]
 
-class Element:
+class Element(_SET_OBJ):
     widget: None
     master: Misc
     graph: bool = False
@@ -162,24 +162,7 @@ class Element:
     def cget(self, key: str) -> Any:
         """ウィジェットのオプションの値を取得する"""
 
-    def _to_flat_list(self, array: list | tuple | range | np.ndarray) -> list[str]:
-        """配列を一次元の配列に変換する"""
-
-    def _to_str_flat_list(
-        self, array: list | tuple | range | NDStr_ | str | np.str_
-    ) -> list[str]:
-        """配列を一次元の配列に変換する"""
-
     def _unit_point[Value: int | float | np.integer | np.floating | str | np.str_](
         self, val: Value
     ) -> Value: ...
-    @overload
-    def _to_number[value: int | np.integer](self, val: value) -> int: ...
-    @overload
-    def _to_number[value: float | np.floating](self, val: value) -> float: ...
-    @overload
-    def _to_number[value: complex | np.complexfloating](
-        self, val: value
-    ) -> complex: ...
-    @overload
-    def _to_number(self, val: Any) -> None: ...
+    def _numpointnum(self, strs: str): ...

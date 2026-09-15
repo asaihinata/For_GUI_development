@@ -58,3 +58,20 @@ class Input(Element):
 
     def all_delta(self) -> None:
         """Inputウィジェット内の文字を全て削除する"""
+    # select
+    def selection_range(
+        self, start: str | int, end: str | int | Literal["end"]
+    ) -> None:
+        """選択範囲の開始位置を指定する"""
+
+    def selection_present(self) -> bool:
+        """テキストの選択状態を判定する"""
+
+    def selection_clear(self) -> None:
+        """テキストの選択状態を解除する"""
+
+    def focus_set(self) -> None:
+        """テキストにフォーカスさせる"""
+
+    def selection_set(self) -> None:
+        """テキストにフォーカスさせる"""

@@ -6,7 +6,7 @@ import numpy as np
 from _tkinter import TclError
 
 from sgg._list import CURSOR_LIST
-from sgg.dev import _SET_OBJ, _flatten, bols, num0s, parsecolor, range_num
+from sgg.dev import _SET_OBJ, bols, num0s, parsecolor, range_num
 from sgg.graph import *
 from sgg.widget.base import TElement
 from sgg.widget.basic import *
@@ -439,7 +439,7 @@ class WindowController(_SET_OBJ):
         if isinstance(funcs, FunctionType):
             funcs()
         elif isinstance(funcs, list | tuple):
-            funcs = _flatten(funcs)
+            funcs = self._flatten(funcs)
             for f in funcs:
                 if isinstance(f, FunctionType):
                     f()

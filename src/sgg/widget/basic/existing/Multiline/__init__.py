@@ -3,7 +3,7 @@ from tkinter import INSERT, Text
 import numpy as np
 import numpy.strings as nps
 
-from sgg.dev import _flatten, _is_real, bols, listchose, num0, parsecolor
+from sgg.dev import _is_real, bols, listchose, num0, parsecolor
 from sgg.widget.base import Element
 
 __all__ = ["Multiline"]
@@ -70,7 +70,7 @@ class Multiline(Element):
         if isinstance(txt, str):
             self.inserts(txt, place="end")
         elif isinstance(txt, list | tuple | range):
-            arr, self.__count = _flatten(txt), 0
+            arr, self.__count = self._flatten(txt), 0
 
             def _func(txt, lens):
                 if lens == self.__count:

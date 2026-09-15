@@ -1,7 +1,7 @@
 from tkinter import Variable
 from tkinter.ttk import Entry, Style
 
-from sgg.dev import _is_real, listchose, num0, parsecolor
+from sgg.dev import listchose, num0, parsecolor
 from sgg.widget.base import TElement
 
 __all__ = ["TInput"]
@@ -22,7 +22,7 @@ class TInput(TElement):
         selectborderwidth = kw.get("selectborderwidth", 0)
         self.selectborderwidth = (
             selectborderwidth
-            if _is_real(selectborderwidth) and 0 <= selectborderwidth
+            if self._is_real(selectborderwidth) and 0 <= selectborderwidth
             else 0
         )
         self.insertwidth = num0(kw.get("insertwidth"), 2)
@@ -31,7 +31,7 @@ class TInput(TElement):
         insertborderwidth = kw.get("insertborderwidth", 0)
         self.insertborderwidth = (
             insertborderwidth
-            if _is_real(insertborderwidth) and 0 <= insertborderwidth
+            if self._is_real(insertborderwidth) and 0 <= insertborderwidth
             else 0
         )
         self.style = Style()
@@ -80,3 +80,23 @@ class TInput(TElement):
 
     def delta(self):
         self._widget.destroy()
+
+    # select
+    def selection_range(self, start, end):
+        if not (self._is_int(start) or start.isdecimal()):
+            raise TypeError
+        if not (self._is_int(end) or end.isdecimal() or end == "end"):
+            raise TypeError
+        self._widget.selection_range(start, end)
+
+    def selection_present(self):
+        return self._widget.selection_present()
+
+    def selection_clear(self):
+        self._widget.selection_clear()
+
+    def focus_set(self):
+        self._widget.focus_set()
+
+    def selection_set(self):
+        self._widget.focus_set()
