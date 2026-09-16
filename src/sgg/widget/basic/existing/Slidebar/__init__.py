@@ -1,6 +1,6 @@
 from tkinter import DoubleVar, Scale
 
-from sgg.dev import _is_real, bols, listchose, num0s
+from sgg.dev import bols, listchose, num0s
 from sgg.widget.base import Element
 
 __all__ = ["Slidebar"]
@@ -22,7 +22,7 @@ class Slidebar(Element):
             self.maxval = maxval
             self.minval = minval
         value = kw.get("value", 0)
-        if not _is_real(value):
+        if not self._is_real(value):
             value = 0
         if value < self.minval:
             value = self.minval
@@ -68,7 +68,7 @@ class Slidebar(Element):
         )
 
     def set(self, val):
-        if _is_real(val):
+        if self._is_real(val):
             self.variable.set(float(val))
 
     def get(self):

@@ -4,7 +4,7 @@ from types import FunctionType
 import numpy as np
 
 from sgg._list import ANCHOR_LIST, CURSOR_LIST, RELIEF_LIST
-from sgg.dev import _SET_OBJ, bols, listchose, num0s,parsecolor
+from sgg.dev import _SET_OBJ, bols, listchose, num0s, parsecolor
 from sgg.font import Getfont, TKFont
 
 __all__ = ["Element"]

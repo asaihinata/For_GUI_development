@@ -2,6 +2,7 @@ import numpy as np
 
 __all__ = ["_SET_OBJ"]
 
+
 class _SET_OBJ:
     def _to_str(self, s):
         if isinstance(s, str):
@@ -78,7 +79,7 @@ class _SET_OBJ:
         elif isinstance(array, np.ndarray):
             return array.ravel().tolist()
 
-    def _flatten(self,lst):
+    def _flatten(self, lst):
         result = []
         for item in lst:
             if isinstance(item, list | tuple):

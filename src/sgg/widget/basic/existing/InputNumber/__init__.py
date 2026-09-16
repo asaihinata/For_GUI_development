@@ -1,8 +1,6 @@
 from tkinter import DoubleVar, IntVar, Spinbox
 
-import numpy as np
-
-from sgg.dev import _is_real, bols, num0, nums, parsecolor
+from sgg.dev import bols, num0, nums, parsecolor
 from sgg.widget.base import Element
 
 __all__ = ["InputNumber"]
@@ -11,28 +9,24 @@ __all__ = ["InputNumber"]
 class InputNumber(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
-        self.values = kw.get("values", 0)
-        if not _is_real(self.values):
+        val = kw.get("value", 0)
+        if not self._is_real(val):
             raise TypeError
-        if isinstance(self.values, int):
-            self.intval = IntVar(value=self.values)
-        elif isinstance(self.values, float):
-            self.intval = DoubleVar(value=self.values)
-        elif isinstance(self.values, np.integer):
-            self.intval = IntVar(value=int(self.values))
-        elif isinstance(self.values, np.floating):
-            self.intval = DoubleVar(value=float(self.values))
+        if self._is_int(val):
+            self.intval = IntVar(value=int(val))
+        else:
+            self.intval = DoubleVar(value=float(val))
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.min = nums(kw.get("min"), 0)
         self.max = nums(kw.get("max"), 100)
         increment = kw.get("step", 1)
-        self.increment = num0(kw.get("step"), 1) if _is_real(increment) else 1
+        self.increment = increment if self._is_real(increment) and 1 <= increment else 1
         self.wrap = bols(kw.get("wrap"), False)
         self.width = self._dwh(kw.get("width"), 20)
         self.selectforeground = parsecolor(kw.get("selectfg"))
         self.selectbackground = parsecolor(kw.get("selectbg"))
         selectborderwidth = kw.get("selectborderwidth", 0)
-        if _is_real(selectborderwidth) and 0 <= selectborderwidth:
+        if self._is_real(selectborderwidth) and 0 <= selectborderwidth:
             self.selectborderwidth = selectborderwidth
         else:
             self.selectborderwidth = 0
@@ -41,7 +35,7 @@ class InputNumber(Element):
         self.insertontime = num0(kw.get("insertontime"), 600)
         self.insertofftime = num0(kw.get("insertofftime"), 300)
         insertborderwidth = kw.get("insertborderwidth", 0)
-        if _is_real(insertborderwidth) and 0 <= insertborderwidth:
+        if self._is_real(insertborderwidth) and 0 <= insertborderwidth:
             self.insertborderwidth = insertborderwidth
         else:
             self.insertborderwidth = 0

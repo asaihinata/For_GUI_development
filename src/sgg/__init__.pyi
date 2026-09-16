@@ -1433,7 +1433,7 @@ class guis:
     @staticmethod
     def InputNumber(
         *,
-        values: int | float = 0,
+        value: int | float = 0,
         min: int | float = 0,
         max: int | float = 100,
         takefocus: bool = ...,

@@ -1,7 +1,7 @@
 from tkinter import DoubleVar
 from tkinter.ttk import Scale, Style
 
-from sgg.dev import _is_real, listchose, num0s
+from sgg.dev import listchose, num0s
 from sgg.widget.base import TElement
 
 __all__ = ["TSlidebar"]
@@ -12,9 +12,9 @@ class TSlidebar(TElement):
         super().__init__(master, kw)
         minval = kw.get("min", 0)
         maxval = kw.get("max", 1)
-        if not _is_real(minval):
+        if not self._is_real(minval):
             minval = 0
-        if not _is_real(maxval):
+        if not self._is_real(maxval):
             maxval = 1
         if maxval <= minval:
             self.maxval, self.minval = minval, maxval
@@ -55,7 +55,7 @@ class TSlidebar(TElement):
         )
 
     def set(self, val):
-        if _is_real(val):
+        if self._is_real(val):
             self._value(val)
             self._widget.config(variable=self.variable)
 
@@ -66,7 +66,7 @@ class TSlidebar(TElement):
         self._widget.destroy()
 
     def _value(self, val):
-        if not _is_real(val):
+        if not self._is_real(val):
             val = 0
         if val < self.minval:
             val = self.minval

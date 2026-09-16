@@ -58,7 +58,6 @@ class TInput(TElement):
 
     def all_delta(self) -> None:
         """Inputウィジェット内の文字を全て削除する"""
-
     # select
     def selection_range(
         self, start: str | int, end: str | int | Literal["end"]

@@ -1,7 +1,7 @@
 from tkinter import DoubleVar, IntVar
 from tkinter.ttk import Progressbar, Style
 
-from sgg.dev import _is_real, bols, listchose, parsecolor
+from sgg.dev import bols, listchose, parsecolor
 from sgg.widget.base import TElement
 
 __all__ = ["TProgressbar"]
@@ -11,12 +11,12 @@ class TProgressbar(TElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         value = kw.get("value", 0)
-        if _is_real(value):
+        if self._is_real(value):
             self._variable(value)
         else:
             raise TypeError
         maximum = kw.get("max", 100)
-        if _is_real(maximum):
+        if self._is_real(maximum):
             self.maximum = maximum
         else:
             self.maximum = 100
@@ -25,7 +25,7 @@ class TProgressbar(TElement):
         self.orient = listchose(kw.get("orient"), ["horizontal", "vertical"])
         self.autostart = bols(kw.get("autostart", False), False)
         interval = kw.get("interval")
-        if interval is None or _is_real(interval):
+        if interval is None or self._is_real(interval):
             self.interval = interval
         else:
             self.interval = None
@@ -67,18 +67,18 @@ class TProgressbar(TElement):
         return self.variable.get()
 
     def set(self, value):
-        if not _is_real(value):
+        if not self._is_real(value):
             raise TypeError
         self._variable(value)
         self._widget.config(variable=self.variable)
 
     def start(self, interval=None):
-        if interval is not None and not _is_real(interval):
+        if interval is not None and not self._is_real(interval):
             interval = self.interval
         self._widget.start(interval)
 
     def step(self, amount=None):
-        if amount is not None and not _is_real(amount):
+        if amount is not None and not self._is_real(amount):
             raise TypeError
         self._widget.step(amount)
 
