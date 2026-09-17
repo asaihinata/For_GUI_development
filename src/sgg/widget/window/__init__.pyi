@@ -1,5 +1,7 @@
-from tkinter import Tk
+from tkinter import Tk, Widget
 from typing import Any
+
+from _tkinter import TkappType
 
 from sgg.graph import *
 from sgg.widget.basic import *
@@ -14,10 +16,6 @@ class WindowController:
     __dict__: dict[str, Any]
     __doc__: str
     __sizeof__: int
-    root: Tk
-    alpha: float
-    _STYLE_NAME_DICT: dict
-    _MENU_IN_JUDGE: bool
     def get(self, key: str) -> Any:
         """
         ウィジェットの情報を取得する
@@ -106,6 +104,12 @@ class WindowController:
         :param height: ウィンドウの高さのサイズを変更できるか指定する
         :type height: bool
         """
-
+    # property
+    @property
+    def root(self) -> Tk: ...
     @property
     def style_name_dict(self) -> dict: ...
+    @property
+    def children(self) -> dict[str, Widget]: ...
+    @property
+    def tk(self) -> TkappType: ...

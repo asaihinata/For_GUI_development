@@ -21,7 +21,7 @@ class DtypeError(ValueError, IndexError):
         self.__dtype = dtype
 
     def __str__(self) -> str:
-        return f'"{self.__dtype}"が不正の型です'
+        return f"{self.__dtype}が不正の型です"
 
 
 class UIntError(ValueError, IndexError):

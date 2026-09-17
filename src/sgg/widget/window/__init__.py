@@ -41,10 +41,9 @@ class WindowController(_SET_OBJ):
         self.maxmine = bols(kw.get("maxmine"), False)
         if self.maxmine:
             self.maxwin()
-        self.__alpha = range_num(num0s(kw.get("alpha"), 1), 0, 1, 1)
         self.fullscreens = bols(kw.get("fullscreen"), False)
         self.topmost = bols(kw.get("topmost"), False)
-        self.set_alpha(self.__alpha)
+        self.set_alpha(range_num(num0s(kw.get("alpha"), 1), 0, 1, 1))
         self.fullscreen(self.fullscreens)
         self.foreground(self.topmost)
         resizable = bols(kw.get("resizable"), False)
@@ -55,7 +54,7 @@ class WindowController(_SET_OBJ):
             self.resizablesheight = bols(kw.get("resizablesheight"), False)
         self.resizable(self.resizableswidth, self.resizablesheight)
         self.location = kw.get("location", (0, 0))
-        self.widgets = {}
+        self._widgets = {}
         self.closed = False
         self._close_result, self.canvas = None, None
         if self.scroll_y or self.scroll_x:
@@ -110,7 +109,7 @@ class WindowController(_SET_OBJ):
         key = kw.get("key")
         widget = None
         kw["back_bg"] = bgs
-        if key == None:
+        if not isinstance(key, str):
             kw["key"] = f"widget{self._COUNT}"
         if t == "Menus":
             widget = Menus(parent, kw)
@@ -269,9 +268,9 @@ class WindowController(_SET_OBJ):
                         side="left", padx=5, pady=5
                     )
             if key:
-                self.widgets[key] = widget
+                self._widgets[key] = widget
             else:
-                self.widgets[f"widget{self._COUNT}"] = widget
+                self._widgets[f"widget{self._COUNT}"] = widget
         self._COUNT += 1
 
     def _on_window_close(self):
@@ -280,10 +279,10 @@ class WindowController(_SET_OBJ):
         self._root.destroy()
 
     def get(self, key):
-        return self.widgets.get(key)
+        return self._widgets.get(key)
 
     def scroll_to(self, key):
-        w, y = self.widgets.get(key), 0
+        w, y = self._widgets.get(key), 0
         if not self.canvas or not w:
             return
         self._root.update_idletasks()
@@ -315,13 +314,13 @@ class WindowController(_SET_OBJ):
         return self._COUNT
 
     def widgetdict(self):
-        return self.widgets
+        return self._widgets
 
     def widgetlist(self):
-        return list(self.widgets.keys())
+        return list(self._widgets.keys())
 
     def widgetall(self):
-        return list(self.widgets.values())
+        return list(self._widgets.values())
 
     def close(self):
         self._root.quit()
@@ -360,11 +359,11 @@ class WindowController(_SET_OBJ):
         self._root.attributes("-fullscreen", bools)
 
     def set_alpha(self, alpha=1.0):
-        self.__alpha = alpha
-        self._root.attributes("-alpha", self.__alpha)
+        self._alpha = alpha
+        self._root.attributes("-alpha", self._alpha)
 
     def get_alpha(self):
-        return self.__alpha
+        return self._alpha
 
     def deiconify(self):
         self._root.deiconify
@@ -403,6 +402,15 @@ class WindowController(_SET_OBJ):
     def winy(self):
         return self._root.winfo_y()
 
+    def focus_get(self):
+        return self._root.focus_get()
+
+    def focus_set(self):
+        self._root.focus_set()
+
+    def focus_displayof(self):
+        self._root.focus_displayof()
+
     # クリップボード
     def get_clipboard(self):
         try:
@@ -424,6 +432,14 @@ class WindowController(_SET_OBJ):
     @property
     def root(self):
         return self._root
+
+    @property
+    def children(self):
+        return self._root.children
+
+    @property
+    def tk(self):
+        return self._root.tk
 
     @property
     def style_name_dict(self):

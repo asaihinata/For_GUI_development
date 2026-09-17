@@ -32,6 +32,8 @@ class Slidebar(Element):
             kw.get("orientation"), ["vertical", "horizontal"]
         )
         self.resolution = self._up0s(kw.get("step"), 1)
+        bigincrement = kw.get("bigincrement")
+        self.bigincrement = bigincrement if self._is_real(bigincrement) else 0
         self.showvalue = self._bols(kw.get("showvalue"))
         self.digits = kw.get("digits", 0)
         if not self._is_int(self.digits):
@@ -40,24 +42,24 @@ class Slidebar(Element):
         self.borderwidth = self._up0s(kw.get("borderwidth"), 1)
         self._widget = Scale(
             self.master,
-            takefocus=self.takefocus,
-            variable=self.variable,
-            label=self.label,
-            sliderlength=self.sliderlength,
-            relief=self.relief,
-            cursor=self.cursor,
-            fg=self.fg,
-            bg=self.bg,
-            font=self.font,
-            from_=self.minval,
-            to=self.maxval,
-            orient=self.orientation,
-            showvalue=self.showvalue,
-            resolution=self.resolution,
-            digits=self.digits,
-            length=self.length,
-            borderwidth=self.borderwidth,
-            bigincrement=10,
+            bg = self.bg,
+            bigincrement = self.bigincrement,
+            borderwidth = self.borderwidth,
+            cursor = self.cursor,
+            digits = self.digits,
+            fg = self.fg,
+            font = self.font,
+            from_ = self.minval,
+            label = self.label,
+            length = self.length,
+            orient = self.orientation,
+            relief = self.relief,
+            resolution = self.resolution,
+            showvalue = self.showvalue,
+            sliderlength = self.sliderlength,
+            takefocus = self.takefocus,
+            to = self.maxval,
+            variable = self.variable,
         )
 
     def set(self, val):

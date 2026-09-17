@@ -34,7 +34,7 @@ def _arrisuint(arr):
 
 def _int_co_check(obj):
     if not np.asarray(obj).dtype.kind in ["b", "i", "u"]:
-        raise TypeError(f'"{obj}"には整数型を指定してください')
+        raise TypeError(f"{obj}には整数型を指定してください")
 
 
 @set_module("numpy.lib.array_utils")

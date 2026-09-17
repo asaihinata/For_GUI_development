@@ -4,7 +4,7 @@ from types import FunctionType
 import numpy as np
 
 from sgg._list import ANCHOR_LIST, CURSOR_LIST, RELIEF_LIST
-from sgg.dev import _SET_OBJ, bols, num0s, parsecolor
+from sgg.dev import _SET_OBJ, num0s, parsecolor
 from sgg.font import Getfont, TKFont
 
 __all__ = ["Element"]
@@ -26,7 +26,7 @@ class Element(_SET_OBJ):
             kw.get("bg"), "#64778d" if self.back_bg == None else self.back_bg
         )
         self.borderwidth = num0s(kw.get("borderwidth"))
-        self.takefocus = bols(kw.get("takefocus"))
+        self.takefocus = self._bols(kw.get("takefocus"))
         font = kw.get("font", None)
         self.family = kw.get("family")
         self.font_size = kw.get("font_size")
@@ -78,10 +78,6 @@ class Element(_SET_OBJ):
                     f()
         else:
             return None
-
-    @property
-    def widget(self):
-        return self._widget
 
     def winsize(self):
         root = self.master
@@ -164,6 +160,18 @@ class Element(_SET_OBJ):
         else:
             raise ValueError
 
+    def focus_set(self):
+        if hasattr(self._widget, "focus_set"):
+            self._widget.focus_set()
+
+    def focus_displayof(self):
+        if hasattr(self._widget, "focus_displayof"):
+            self._widget.focus_displayof()
+
+    def focus_get(self):
+        if hasattr(self._widget, "focus_get"):
+            return self._widget.focus_get()
+
     def keys(self):
         return self.widget.keys()
 
@@ -201,3 +209,40 @@ class Element(_SET_OBJ):
         except AttributeError as e:
             raise AttributeError(e)
         return strs
+
+    # property
+    @property
+    def widget(self):
+        return self._widget
+
+    @property
+    def __name__(self):
+        return type(self).__name__
+
+    @property
+    def __bases__(self):
+        return type(self).__bases__
+
+    @property
+    def __base__(self):
+        return type(self).__base__
+
+    @property
+    def __mro__(self):
+        return list(type(self).__mro__)
+
+    @property
+    def __module__(self):
+        return type(self).__module__
+
+    @property
+    def __dictoffset__(self):
+        return type(self).__dictoffset__
+
+    @property
+    def __flags__(self):
+        return type(self).__flags__
+
+    @property
+    def __itemsize__(self):
+        return type(self).__itemsize__

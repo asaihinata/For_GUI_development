@@ -1,3 +1,5 @@
+from re import fullmatch
+
 import numpy as np
 
 from .element import Element
@@ -15,17 +17,9 @@ class TElement(Element):
 
     def _unit_change(self, val):
         if self._is_real(val):
-            return val
+            return self._to_real(val)
         elif isinstance(val, np.str_):
             return self._unit_point(str(val))
         elif isinstance(val, str):
-            if val[len(val) - 1] in ["c", "m", "i", "p"]:
-                return val
-            else:
-                try:
-                    float(val)
-                except:
-                    raise ValueError
-                else:
-                    return val
+            return fullmatch(r"^\d+[icmp]$", val)
         raise ValueError
