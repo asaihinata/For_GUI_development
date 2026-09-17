@@ -140,3 +140,27 @@ DATE_WORD = [
     b"today",
 ]
 CASTING_LIST = ["no", "equiv", "safe", "same_kind", "unsafe"]
+GRAPH_COLOR = [
+    "#4477aa",
+    "#ee7733",
+    "#111211",
+    "#aa66cc",
+    "#77aadd",
+    "#ffa94d",
+    "#55aa55",
+    "#cc3311",
+    "#cc99ff",
+    "#ff8888",
+    "#444444",
+    "#888888",
+    "#332288",
+    "#88ccee",
+    "#44aa99",
+    "#117733",
+    "#999933",
+    "#ddcc77",
+    "#cc6677",
+    "#882255",
+    "#aa4499",
+    "#dddddd",
+]

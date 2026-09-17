@@ -14,7 +14,6 @@ class Element(_SET_OBJ):
     def __init__(self, master, kw):
         self._widget = None
         self.master = master
-        self.graph = False
         self.cursor = self._list_cursor(kw.get("cursor"))
         self.back_bg = kw.get("back_bg")
         self.justify = self.listchose(kw.get("justify"), ["left", "right", "center"])
@@ -52,6 +51,18 @@ class Element(_SET_OBJ):
         self.anchor = self.listchose(kw.get("anchor"), ANCHOR_LIST)
         self.width = self._dwh(kw.get("width"))
         self.height = self._dwh(kw.get("height"))
+
+    def __str__(self):
+        return str(self._widget)
+
+    def __repr__(self):
+        return repr(self._widget)
+
+    def __static_attributes__(self):
+        return type(self).__static_attributes__
+
+    def __firstlineno__(self):
+        return type(self).__firstlineno__
 
     def _list_cursor(self, name):
         if name in CURSOR_LIST:
@@ -173,14 +184,16 @@ class Element(_SET_OBJ):
             return self._widget.focus_get()
 
     def keys(self):
-        return self.widget.keys()
+        return self._widget.keys()
 
     def cget(self, key):
-        widget = self.widget
+        widget = self._widget
         if key in widget.keys():
             return widget.cget(key)
         else:
             raise ValueError
+
+    __getitem__ = cget
 
     def info(self, keys=None):
         infodict = self._widget.info()
@@ -214,6 +227,10 @@ class Element(_SET_OBJ):
     @property
     def widget(self):
         return self._widget
+
+    @property
+    def graph(self):
+        return False
 
     @property
     def __name__(self):

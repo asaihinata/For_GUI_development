@@ -9,36 +9,14 @@ from matplotlib.figure import Figure
 from matplotlib.pyplot import rcParams
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 
+from sgg._list import GRAPH_COLOR
 from sgg.dev import bols, listchose, num0s, num1s, parsecolor, range_num
 from sgg.graph.style import getLabel
 
 __all__ = ["GElement"]
-graph_color = [
-    "#4477aa",
-    "#ee7733",
-    "#111211",
-    "#aa66cc",
-    "#77aadd",
-    "#ffa94d",
-    "#55aa55",
-    "#cc3311",
-    "#cc99ff",
-    "#ff8888",
-    "#444444",
-    "#888888",
-    "#332288",
-    "#88ccee",
-    "#44aa99",
-    "#117733",
-    "#999933",
-    "#ddcc77",
-    "#cc6677",
-    "#882255",
-    "#aa4499",
-    "#dddddd",
-]
+
 rcParams["font.family"] = "Meiryo"
-rcParams["axes.prop_cycle"] = cycler(color=graph_color)
+rcParams["axes.prop_cycle"] = cycler(color=GRAPH_COLOR)
 
 
 class GElement:
@@ -47,17 +25,16 @@ class GElement:
     def __init__(self, master: Misc, kw):
         self.master = master
         self._widget = None
-        self.graph = True
         self.graphdata = []
         self.max_depth = 1
         # グラフの基盤
         self.fg = parsecolor(kw.get("fg"), "#000000")
         self.graph_bg = parsecolor(kw.get("bg"), "#ffffff")
         self.graph_grid = parsecolor(kw.get("graph_grid"), "#b7b7b7")
-        color = kw.get("color", graph_color)
-        relist = graph_color
+        color = kw.get("color", GRAPH_COLOR)
+        relist = GRAPH_COLOR
         if isinstance(color, str):
-            relist = [parsecolor(color, graph_color[0])]
+            relist = [parsecolor(color, GRAPH_COLOR[0])]
         elif isinstance(color, list | tuple):
             set_arr, judge = [], False
             for i in color:
@@ -208,3 +185,7 @@ class GElement:
     @property
     def widget(self):
         return self._widget
+
+    @property
+    def graph(self):
+        return True
