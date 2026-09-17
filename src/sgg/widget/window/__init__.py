@@ -96,6 +96,9 @@ class WindowController(_SET_OBJ):
             self._build_layout(self.layout, parent)
         self.loadfun = kw.get("load")
 
+    def __getattr__(self, attr):
+        return self._root.__getattr__(attr)
+
     def _build_layout(self, layout, parent, bgcolor=None):
         bg = self.bg if bgcolor == None else bgcolor
         for row in layout:

@@ -14,7 +14,7 @@ class Element(_SET_OBJ):
     def __init__(self, master, kw):
         self._widget = None
         self.master = master
-        self.cursor = self._list_cursor(kw.get("cursor"))
+        self.cursor = self._list_cursor(kw.get("cursor"), "")
         self.back_bg = kw.get("back_bg")
         self.justify = self.listchose(kw.get("justify"), ["left", "right", "center"])
         self.padx = num0s(kw.get("padx"), 1)
@@ -64,10 +64,10 @@ class Element(_SET_OBJ):
     def __firstlineno__(self):
         return type(self).__firstlineno__
 
-    def _list_cursor(self, name):
+    def _list_cursor(self, name, other=None):
         if name in CURSOR_LIST:
             return name
-        return None
+        return other
 
     def _dwh(self, val, other=None):
         if isinstance(val, int | float) and 0 < val:

@@ -14,7 +14,7 @@ class Buttons(Element):
     def get_text(self) -> str:
         """ウィジェットが表示している文字を取得する"""
 
-    def set_text(self, txt: str) -> None:
+    def set_text(self, text: str) -> None:
         """ウィジェットが表示している文字を変更する"""
 
     def get_fg(self) -> ColorType:

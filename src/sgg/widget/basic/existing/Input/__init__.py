@@ -9,6 +9,7 @@ __all__ = ["Input"]
 class Input(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self.cursor = self._list_cursor(kw.get("cursor"), "xterm")
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.width = self._dwh_int(kw.get("width"), 20)
         self.textvariable = Variable(value=kw.get("text"))

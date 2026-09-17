@@ -42,6 +42,6 @@ class Buttons(Element):
     def get_text(self):
         return self.textvariable.get()
 
-    def set_text(self, txt):
-        self.textvariable.set(txt)
+    def set_text(self, text):
+        self.textvariable.set(text)
         self._widget.config(textvariable=self.textvariable)

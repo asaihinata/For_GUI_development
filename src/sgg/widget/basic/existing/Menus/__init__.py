@@ -9,6 +9,7 @@ __all__ = ["Menus"]
 class Menus(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self.cursor = self._list_cursor(kw.get("cursor"), "arrow")
         menu_lists = kw.get("list", [])
         if not isinstance(menu_lists, list):
             raise TypeError

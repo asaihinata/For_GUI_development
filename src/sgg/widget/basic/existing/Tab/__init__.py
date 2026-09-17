@@ -24,7 +24,10 @@ class Tab(TElement):
         self.style.map(self.styletabname, background=[("selected", ("#cccccc"))])
         self.frames = []
         self._widget = Notebook(
-            self.master, takefocus=self.takefocus, style=self.stylename
+            self.master,
+            takefocus=self.takefocus,
+            style=self.stylename,
+            cursor=self.cursor,
         )
         self._widget.pack(side="left", padx=5, pady=5)
 

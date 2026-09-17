@@ -74,6 +74,12 @@ class WindowController:
     def widgetall(self) -> list[Any]:
         """表示されている全てのウィジェットの配列を返す"""
 
+    def keys(self) -> list[str]:
+        """ウィジェットのオプション名を取得する"""
+
+    def cget(self, key: str) -> Any:
+        """ウィジェットのオプションの値を取得する"""
+
     def foreground(self, bools: bool = True) -> None:
         """ウィンドウを常に最前面にするか指定する"""
 

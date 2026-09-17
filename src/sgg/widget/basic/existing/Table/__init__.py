@@ -38,6 +38,7 @@ class Table(TElement):
             style=self.stylename,
             height=self.height,
             takefocus=self.takefocus,
+            cursor=self.cursor,
         )
         self.style = Style()
         self.style.configure(

@@ -34,6 +34,7 @@ class Tree(TElement):
             self.master,
             columns=cols,
             show="tree" if self.header == [] else "tree headings",
+            cursor=self.cursor,
         )
         if self.header != [] and len(self.header) < self.maxcols:
             for i in range(self.maxcols - len(self.header)):
