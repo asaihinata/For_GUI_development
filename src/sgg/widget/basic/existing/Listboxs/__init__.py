@@ -1,6 +1,6 @@
 from tkinter import Listbox, StringVar
 
-from sgg.dev import bols, listchose, nums, parsecolor
+from sgg.dev import bols, nums, parsecolor
 from sgg.widget.base import Element
 
 __all__ = ["Listboxs"]
@@ -14,12 +14,12 @@ class Listboxs(Element):
         self.selectforeground = parsecolor(kw.get("selectfg"), "#000000")
         self.selectbackground = parsecolor(kw.get("selectbg"), "#1967d2")
         self.exportselection = bols(kw.get("exportselection"), False)
-        self.selectmode = listchose(
+        self.selectmode = self.listchose(
             kw.get("selectmode"), ["browse", "single", "multiple", "extended"]
         )
         self.width = self._dwh(kw.get("width"), 20)
         self.height = self._dwh(kw.get("height"), min(max(len(self.values), 1), 5))
-        self.state = listchose(kw.get("state"), ["normal", "disabled"])
+        self.state = self.listchose(kw.get("state"), ["normal", "disabled"])
         self._widget = Listbox(
             self.master,
             exportselection=self.exportselection,

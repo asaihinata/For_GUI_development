@@ -1390,7 +1390,7 @@ class guis:
         *,
         value: int | float = 0,
         digits: int = 0,
-        resolution: int | float = 1,
+        step: int | float = 1,
         length: int | float = 200,
         sliderlength: int | float = 30,
         orientation: Literal["horizontal", "vertical"] = "vertical",
@@ -1406,10 +1406,10 @@ class guis:
 
         :param value: ウィジェットの読み込み時の初期値を指定する
         :type value: int | float
-        :param digits: スケールの値を文字列として取得した際の数値の最大桁数を指定する
+        :param digits: スケールの値を文字列として表示した際の数値の最大桁数を指定する
         :type digits: int
-        :param resolution: スライダーのステップ数を指定する
-        :type resolution: int | float
+        :param step: スライダーの増減値を指定する
+        :type step: int | float
         :param length: ウィジェットの長さを指定する
         :type length: int | float
         :param sliderlength: スライダー部分の長さを指定する

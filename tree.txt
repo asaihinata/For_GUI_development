@@ -49,7 +49,6 @@ For_GUI_development
  │   │   ├── dev
  │   │   │   ├── __init__.py
  │   │   │   ├── _set_obj.py
- │   │   │   ├── _set_obj.pyi
  │   │   │   ├── array
  │   │   │   │   ├── __init__.py
  │   │   │   │   ├── _arrayshapemixin.py
@@ -463,5 +462,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:326
+ファイル数:325
 フォルダ数:138

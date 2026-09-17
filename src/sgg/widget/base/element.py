@@ -4,7 +4,7 @@ from types import FunctionType
 import numpy as np
 
 from sgg._list import ANCHOR_LIST, CURSOR_LIST, RELIEF_LIST
-from sgg.dev import _SET_OBJ, bols, listchose, num0s, parsecolor
+from sgg.dev import _SET_OBJ, bols, num0s, parsecolor
 from sgg.font import Getfont, TKFont
 
 __all__ = ["Element"]
@@ -17,10 +17,10 @@ class Element(_SET_OBJ):
         self.graph = False
         self.cursor = self._list_cursor(kw.get("cursor"))
         self.back_bg = kw.get("back_bg")
-        self.justify = listchose(kw.get("justify"), ["left", "right", "center"])
+        self.justify = self.listchose(kw.get("justify"), ["left", "right", "center"])
         self.padx = num0s(kw.get("padx"), 1)
         self.pady = num0s(kw.get("pady"), 1)
-        self.relief = listchose(kw.get("relief"), RELIEF_LIST, "flat")
+        self.relief = self.listchose(kw.get("relief"), RELIEF_LIST, "flat")
         self.fg = parsecolor(kw.get("fg"), "#000000")
         self.bg = parsecolor(
             kw.get("bg"), "#64778d" if self.back_bg == None else self.back_bg
@@ -49,7 +49,7 @@ class Element(_SET_OBJ):
                 self.underline,
                 self.overstrike,
             )
-        self.anchor = listchose(kw.get("anchor"), ANCHOR_LIST)
+        self.anchor = self.listchose(kw.get("anchor"), ANCHOR_LIST)
         self.width = self._dwh(kw.get("width"))
         self.height = self._dwh(kw.get("height"))
 
@@ -60,6 +60,11 @@ class Element(_SET_OBJ):
 
     def _dwh(self, val, other=None):
         if isinstance(val, int | float) and 0 < val:
+            return val
+        return other
+
+    def _dwh_int(self, val, other=None):
+        if self._is_int(val) and 0 < val:
             return val
         return other
 

@@ -31,8 +31,6 @@ __all__ = [
 
 
 def bols(j, o=True):
-    if isinstance(j, bool) or (
-        isinstance(j, np.generic) and np.issubdtype(j, np.bool | np.bool_)
-    ):
+    if isinstance(j, bool) or (isinstance(j, np.generic) and j.dtype.kind is "b"):
         return j
     return o

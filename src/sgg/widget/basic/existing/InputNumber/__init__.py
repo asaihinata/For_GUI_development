@@ -22,7 +22,7 @@ class InputNumber(Element):
         increment = kw.get("step", 1)
         self.increment = increment if self._is_real(increment) and 1 <= increment else 1
         self.wrap = bols(kw.get("wrap"), False)
-        self.width = self._dwh(kw.get("width"), 20)
+        self.width = self._dwh_int(kw.get("width"), 20)
         self.selectforeground = parsecolor(kw.get("selectfg"))
         self.selectbackground = parsecolor(kw.get("selectbg"))
         selectborderwidth = kw.get("selectborderwidth", 0)

@@ -10,6 +10,8 @@ __all__ = ["TCombobox"]
 class TCombobox(TElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self.height = self._dwh_int(kw.get("height"), 10)
+        self.width = self._dwh_int(kw.get("width"), 20)
         self.values = self._to_flat_list(kw.get("values"))
         self.textvariable = Variable(value=kw.get("text"))
         self.states = listchose(kw.get("state"), ["normal", "readonly", "disabled"])
@@ -25,6 +27,7 @@ class TCombobox(TElement):
         )
         self._widget = Combobox(
             master,
+            height=self.height,
             takefocus=self.takefocus,
             cursor=self.cursor,
             values=self.values,

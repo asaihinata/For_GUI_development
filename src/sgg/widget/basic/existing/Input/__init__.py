@@ -1,6 +1,6 @@
 from tkinter import Entry, Variable
 
-from sgg.dev import listchose, num0, parsecolor
+from sgg.dev import num0, parsecolor
 from sgg.widget.base import Element
 
 __all__ = ["Input"]
@@ -10,10 +10,10 @@ class Input(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
-        self.width = num0(kw.get("width"), 20)
+        self.width = self._dwh_int(kw.get("width"), 20)
         self.textvariable = Variable(value=kw.get("text"))
         self.show = kw.get("show")
-        self.state = listchose(kw.get("state"), ["normal", "disabled", "readonly"])
+        self.state = self.listchose(kw.get("state"), ["normal", "disabled", "readonly"])
         self.disabledbg = parsecolor(kw.get("disabledbg"))
         self.disabledfg = parsecolor(kw.get("disabledfg"))
         self.selectforeground = parsecolor(kw.get("selectfg"))

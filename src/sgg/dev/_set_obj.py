@@ -4,6 +4,11 @@ __all__ = ["_SET_OBJ"]
 
 
 class _SET_OBJ:
+    def _bols(self, j, o=True):
+        if isinstance(j, bool) or (isinstance(j, np.generic) and j.dtype.kind == "b"):
+            return j
+        return o
+
     def _to_str(self, s):
         if isinstance(s, str):
             return s
@@ -56,6 +61,16 @@ class _SET_OBJ:
             return True
         return False
 
+    def _is_float(self, val):
+        if isinstance(val, float) or (
+            isinstance(val, np.generic) and np.issubdtype(val.dtype, np.floating)
+        ):
+            return True
+        return False
+
+    def _up0s(self, val, min):
+        return val if self._is_real(val) and 0 <= val else min
+
     def _to_str_flat_list(self, array):
         if isinstance(array, list | tuple):
             return self._flatten(array)
@@ -87,3 +102,10 @@ class _SET_OBJ:
             else:
                 result.append(item)
         return result
+
+    def listchose(self, val, arr, other=None):
+        if val in arr:
+            return val
+        elif other is None:
+            return arr[0]
+        return other
