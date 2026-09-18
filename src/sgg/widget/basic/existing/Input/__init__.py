@@ -33,6 +33,7 @@ class Input(Element):
             self.insertborderwidth = insertborderwidth
         else:
             self.insertborderwidth = 0
+        self.width = self._dwh_int(kw.get("width"), 20)
         self._widget = Entry(
             self.master,
             bg=self.bg,

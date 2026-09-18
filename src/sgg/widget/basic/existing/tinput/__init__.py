@@ -35,6 +35,7 @@ class TInput(TElement):
             if self._is_real(insertborderwidth) and 0 <= insertborderwidth
             else 0
         )
+        self.width = self._dwh_int(kw.get("width"), 20)
         self.style = Style()
         self.stylename = f"Custom{kw.get("count")}.TEntry"
         self.style_list = [self.stylename]

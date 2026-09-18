@@ -17,7 +17,7 @@ class Listboxs(Element):
         self.selectmode = self.listchose(
             kw.get("selectmode"), ["browse", "single", "multiple", "extended"]
         )
-        self.width = self._dwh(kw.get("width"), 20)
+        self.width = self._dwh_int(kw.get("width"), 20)
         self.height = self._dwh_int(kw.get("height"), min(max(len(self.values), 1), 5))
         self.state = self.listchose(kw.get("state"), ["normal", "disabled"])
         self._widget = Listbox(

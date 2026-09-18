@@ -42,6 +42,7 @@ class InputNumber(Element):
             self.insertborderwidth = 0
         self.insertbackground = parsecolor(kw.get("insertbg"), "#000000")
         self.insertwidth = num0(kw.get("insertwidth"), 2)
+        self.width = self._dwh_int(kw.get("width"), 20)
         formats = kw.get("format", "")
         if not isinstance(formats, str):
             raise TypeError

@@ -39,6 +39,7 @@ class Multiline(Element):
             self.insertborderwidth = insertborderwidth
         else:
             self.insertborderwidth = 0
+        self.width = self._dwh_int(kw.get("width"), 80)
         self._widget = Text(
             self.master,
             takefocus=self.takefocus,
