@@ -1,2 +1,2 @@
 from .element import Element
-from .telemet import TElement
+from .telement import TElement

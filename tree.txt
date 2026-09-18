@@ -391,7 +391,7 @@ For_GUI_development
  │   │       │   ├── element
  │   │       │   │   ├── __init__.py
  │   │       │   │   └── __init__.pyi
- │   │       │   └── telemet
+ │   │       │   └── telement
  │   │       │       ├── __init__.py
  │   │       │       └── __init__.pyi
  │   │       └── window
