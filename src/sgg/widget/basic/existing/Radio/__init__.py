@@ -26,8 +26,8 @@ class Radio(Element):
         group_data = self.groups[self.group]
         self.variable = group_data["var"]
         self.selectcolor = parsecolor(kw.get("selectcolor", "white"), "white")
-        self.activebg = parsecolor(kw.get("activebg"))
-        self.activefg = parsecolor(kw.get("activefg"))
+        self.activebg = parsecolor(kw.get("activebg"), "#97a4b3")
+        self.activefg = parsecolor(kw.get("activefg"), "white")
         self._widget = Radiobutton(
             self.master,
             activebackground=self.activebg,

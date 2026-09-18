@@ -22,7 +22,7 @@ class TSlidebar(TElement):
             self.maxval, self.minval = maxval, minval
         self._value(kw.get("value", 0))
         sliderlength = kw.get("sliderlength", 30)
-        if isinstance(sliderlength, int | float) and 0 <= sliderlength:
+        if self._is_real(sliderlength) and 0 <= sliderlength:
             self.sliderlength = sliderlength
         else:
             self.sliderlength = 30

@@ -31,9 +31,9 @@ class Buttons(Element):
             pady=self.pady,
             relief=self.relief,
             takefocus=self.takefocus,
+            textvariable=self.textvariable,
             width=self.width,
             wraplength=self.wraplength,
-            textvariable=self.textvariable,
         )
 
     def delta(self):

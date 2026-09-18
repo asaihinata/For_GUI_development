@@ -17,27 +17,27 @@ class Checkbox(Element):
         group = kw.get("group", "default")
         self.group = group if isinstance(group, str) else "default"
         self.selectcolor = parsecolor(kw.get("selectcolor", "white"), "white")
-        self.activebg = parsecolor(kw.get("activebg"))
-        self.activefg = parsecolor(kw.get("activefg"))
+        self.activebg = parsecolor(kw.get("activebg"), "#97a4b3")
+        self.activefg = parsecolor(kw.get("activefg"), "white")
         self.variable = BooleanVar(value=self.check)
         self._widget = Checkbutton(
             self.master,
             activebackground=self.activebg,
             activeforeground=self.activefg,
-            selectcolor=self.selectcolor,
-            takefocus=self.takefocus,
             anchor=self.anchor,
+            bg=self.bg,
+            borderwidth=self.borderwidth,
+            cursor=self.cursor,
+            fg=self.fg,
+            font=self.font,
             padx=self.padx,
             pady=self.pady,
             relief=self.relief,
-            wraplength=self.wraplength,
-            cursor=self.cursor,
+            selectcolor=self.selectcolor,
+            takefocus=self.takefocus,
             textvariable=self.textvariable,
             variable=self.variable,
-            bg=self.bg,
-            fg=self.fg,
-            font=self.font,
-            borderwidth=self.borderwidth,
+            wraplength=self.wraplength,
         )
         if self.group not in self._groups:
             self._groups[self.group] = [self._widget]
