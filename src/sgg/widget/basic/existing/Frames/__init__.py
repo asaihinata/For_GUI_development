@@ -2,7 +2,7 @@ from tkinter import LabelFrame
 
 from sgg._list import LABELANCHOR_LIST, RELIEF_LIST
 from sgg.dev import listchose, num0s
-from sgg.widget.base import Element
+from sgg.widget.element import Element
 
 __all__ = ["Frames"]
 

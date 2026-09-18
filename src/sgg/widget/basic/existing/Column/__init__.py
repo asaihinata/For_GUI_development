@@ -1,6 +1,6 @@
 from tkinter import Frame
 
-from sgg.widget.base import Element
+from sgg.widget.element import Element
 
 __all__ = ["Column"]
 

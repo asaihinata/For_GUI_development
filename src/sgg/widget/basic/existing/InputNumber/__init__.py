@@ -1,7 +1,7 @@
 from tkinter import DoubleVar, IntVar, Spinbox
 
 from sgg.dev import bols, num0, nums, parsecolor
-from sgg.widget.base import Element
+from sgg.widget.element import Element
 
 __all__ = ["InputNumber"]
 

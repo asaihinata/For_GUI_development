@@ -2,7 +2,7 @@ from tkinter import DoubleVar, IntVar
 from tkinter.ttk import Progressbar, Style
 
 from sgg.dev import bols, listchose, parsecolor
-from sgg.widget.base import TElement
+from sgg.widget.element import TElement
 
 __all__ = ["TProgressbar"]
 

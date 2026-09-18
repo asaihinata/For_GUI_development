@@ -4,8 +4,8 @@ from webbrowser import open
 
 from sgg.dev import num0, parsecolor
 from sgg.font import TKFont
-from sgg.widget.base import Element
 from sgg.widget.basic.dev import linkcheck
+from sgg.widget.element import Element
 
 __all__ = ["Link"]
 

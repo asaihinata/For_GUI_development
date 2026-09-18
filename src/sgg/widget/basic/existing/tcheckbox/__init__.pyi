@@ -1,7 +1,7 @@
 from tkinter.ttk import Checkbutton
 
 from sgg._typing import ColorType
-from sgg.widget.base import TElement
+from sgg.widget.element import TElement
 
 __all__ = ["TCheckbox"]
 

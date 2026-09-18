@@ -1,7 +1,7 @@
 from tkinter.ttk import Notebook, Style
 
 from sgg.dev import parsecolor
-from sgg.widget.base import TElement
+from sgg.widget.element import TElement
 
 __all__ = ["Tab"]
 

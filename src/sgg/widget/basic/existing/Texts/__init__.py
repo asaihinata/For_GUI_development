@@ -1,7 +1,7 @@
 from tkinter import Label, Variable
 
 from sgg.dev import num0
-from sgg.widget.base import Element
+from sgg.widget.element import Element
 
 __all__ = ["Texts"]
 

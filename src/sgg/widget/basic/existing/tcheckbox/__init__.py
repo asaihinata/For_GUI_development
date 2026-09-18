@@ -2,7 +2,7 @@ from tkinter import BooleanVar, Variable
 from tkinter.ttk import Checkbutton, Style
 
 from sgg.dev import bols
-from sgg.widget.base import TElement
+from sgg.widget.element import TElement
 
 __all__ = ["TCheckbox"]
 

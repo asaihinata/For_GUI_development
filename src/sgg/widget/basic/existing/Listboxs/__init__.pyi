@@ -2,7 +2,7 @@ from tkinter import Listbox
 from typing import Any, Literal
 
 from sgg._typing import ColorType
-from sgg.widget.base import Element
+from sgg.widget.element import Element
 
 __all__ = ["Listboxs"]
 

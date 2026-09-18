@@ -3,7 +3,7 @@ from tkinter.ttk import Button, Style
 
 from sgg._list import ANCHOR_LIST
 from sgg.dev import listchose, num0, parsecolor
-from sgg.widget.base import TElement
+from sgg.widget.element import TElement
 
 __all__ = ["TButtons"]
 

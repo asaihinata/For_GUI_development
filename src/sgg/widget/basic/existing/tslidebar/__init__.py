@@ -2,7 +2,7 @@ from tkinter import DoubleVar
 from tkinter.ttk import Scale, Style
 
 from sgg.dev import listchose, num0s
-from sgg.widget.base import TElement
+from sgg.widget.element import TElement
 
 __all__ = ["TSlidebar"]
 

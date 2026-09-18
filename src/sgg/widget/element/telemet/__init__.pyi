@@ -1,4 +1,4 @@
-from .element import Element
+from sgg.widget.element import Element
 
 __all__ = ["TElement"]
 

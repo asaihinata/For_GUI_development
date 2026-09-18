@@ -2,7 +2,7 @@ from tkinter import Label
 
 from PIL.ImageTk import PhotoImage
 
-from sgg.widget.base import Element
+from sgg.widget.element import Element
 
 __all__ = ["Imagelink"]
 

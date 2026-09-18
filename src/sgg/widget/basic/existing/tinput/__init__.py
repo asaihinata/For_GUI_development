@@ -2,7 +2,7 @@ from tkinter import Variable
 from tkinter.ttk import Entry, Style
 
 from sgg.dev import listchose, num0, parsecolor
-from sgg.widget.base import TElement
+from sgg.widget.element import TElement
 
 __all__ = ["TInput"]
 

@@ -1,7 +1,7 @@
 from tkinter.ttk import Progressbar
 from typing import Literal
 
-from sgg.widget.base import TElement
+from sgg.widget.element import TElement
 
 __all__ = ["TProgressbar"]
 

@@ -1,7 +1,7 @@
 from tkinter import Radiobutton, StringVar
 
 from sgg.dev import num0, parsecolor
-from sgg.widget.base import Element
+from sgg.widget.element import Element
 
 __all__ = ["Radio"]
 

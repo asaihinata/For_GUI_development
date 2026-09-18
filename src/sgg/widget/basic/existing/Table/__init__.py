@@ -3,7 +3,7 @@ from tkinter.ttk import Style, Treeview
 import numpy as np
 
 from sgg.dev import num0s, parsecolor
-from sgg.widget.base import TElement
+from sgg.widget.element import TElement
 
 __all__ = ["Table"]
 

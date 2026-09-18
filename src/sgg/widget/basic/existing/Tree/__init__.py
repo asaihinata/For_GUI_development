@@ -1,7 +1,7 @@
 from tkinter.ttk import Style, Treeview
 
 from sgg.dev import num0, num0s, parsecolor
-from sgg.widget.base import TElement
+from sgg.widget.element import TElement
 
 __all__ = ["Tree"]
 

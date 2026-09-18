@@ -278,12 +278,6 @@ For_GUI_development
  │   │   ├── version.py
  │   │   └── widget
  │   │       ├── __init__.py
- │   │       ├── base
- │   │       │   ├── __init__.py
- │   │       │   ├── element.py
- │   │       │   ├── element.pyi
- │   │       │   ├── telement.py
- │   │       │   └── telement.pyi
  │   │       ├── basic
  │   │       │   ├── __init__.py
  │   │       │   ├── dev
@@ -392,6 +386,14 @@ For_GUI_development
  │   │       │       └── link
  │   │       │           ├── __init__.py
  │   │       │           └── __init__.pyi
+ │   │       ├── element
+ │   │       │   ├── __init__.py
+ │   │       │   ├── element
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   └── telemet
+ │   │       │       ├── __init__.py
+ │   │       │       └── __init__.pyi
  │   │       └── window
  │   │           ├── __init__.py
  │   │           └── __init__.pyi
@@ -463,4 +465,4 @@ For_GUI_development
  └── .vscode
      └── extensions.json
 ファイル数:325
-フォルダ数:138
+フォルダ数:140

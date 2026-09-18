@@ -2,7 +2,7 @@ from tkinter.ttk import Entry
 from typing import Literal
 
 from sgg._typing import ColorType
-from sgg.widget.base import TElement
+from sgg.widget.element import TElement
 
 __all__ = ["TInput"]
 

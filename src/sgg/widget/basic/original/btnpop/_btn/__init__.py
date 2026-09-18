@@ -2,7 +2,7 @@ from tkinter import Button, Variable
 
 from sgg._list import ANCHOR_LIST
 from sgg.dev import listchose, num0, parsecolor
-from sgg.widget.base import Element
+from sgg.widget.element import Element
 
 
 class Btn(Element):

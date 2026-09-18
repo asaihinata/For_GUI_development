@@ -1,6 +1,6 @@
 from tkinter.ttk import Treeview
 
-from sgg.widget.base import TElement
+from sgg.widget.element import TElement
 
 __all__ = ["Table"]
 

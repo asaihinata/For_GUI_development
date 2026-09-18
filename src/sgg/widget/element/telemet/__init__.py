@@ -2,7 +2,7 @@ from re import fullmatch
 
 import numpy as np
 
-from .element import Element
+from sgg.widget.element import Element
 
 __all__ = ["TElement"]
 

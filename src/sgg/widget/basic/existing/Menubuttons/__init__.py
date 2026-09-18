@@ -1,7 +1,7 @@
 from tkinter import Menu, Menubutton, Variable
 
 from sgg.dev import bols, parsecolor
-from sgg.widget.base import Element
+from sgg.widget.element import Element
 
 __all__ = ["Menubuttons"]
 

@@ -2,7 +2,7 @@ from tkinter import Variable
 from tkinter.ttk import Combobox, Style
 
 from sgg.dev import listchose
-from sgg.widget.base import TElement
+from sgg.widget.element import TElement
 
 __all__ = ["TCombobox"]
 
