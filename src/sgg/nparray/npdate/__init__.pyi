@@ -458,6 +458,19 @@ class NPDate(_ArrayCommonMixin):
         :param unit: 日付単位を指定する
         :type unit: _DtypeLikeDT
         """
+    # calendar
+    @classmethod
+    def itermonthdates(cls, year: int, month: int, firstweekday: int = 0) -> NPDate:
+        """
+        `year`年`month`月のカレンダーを生成する
+
+        :param year: 生成させるカレンダーの年を指定する
+        :type year: int
+        :param month: 生成させるカレンダーの月を指定する
+        :type month: int
+        :param firstweekday: 週の始まりの曜日を指定する
+        :type firstweekday: int
+        """
 
     def tonumpy(self, copy: bool | None = None) -> sgt.NDDatetime64:
         """配列オブジェクトを`np.ndarray`オブジェクトに変換する"""

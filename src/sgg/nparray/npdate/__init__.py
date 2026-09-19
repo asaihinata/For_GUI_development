@@ -1,3 +1,4 @@
+from calendar import _monthlen, _nextmonth, _prevmonth, monthrange
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -324,6 +325,36 @@ class NPDate(snd._ArrayCommonMixin):
     def unit_min(cls, unit):
         return np.datetime64(np.iinfo(np.int64).min + 1, snd._get_dt64_unit(unit))
 
+    # calendar
+    def _firstweekday(self, firstweekday):
+        if 0 <= firstweekday <= 6:
+            return firstweekday
+        raise ValueError
+
+    @classmethod
+    def itermonthdates(cls, year, month, firstweekday=0):
+        def itermonthdays3(year, month, firstweekday):
+            day1, ndays = monthrange(year, month)
+            days_before = (day1 - firstweekday) % 7
+            days_after = (firstweekday - day1 - ndays) % 7
+            y, m = _prevmonth(year, month)
+            end = _monthlen(y, m) + 1
+            for d in range(end - days_before, end):
+                yield f"{y}-{m:02}-{d:02}"
+            for d in range(1, ndays + 1):
+                yield f"{year}-{month:02}-{d:02}"
+            y, m = _nextmonth(year, month)
+            for d in range(1, days_after + 1):
+                yield f"{y}-{m:02}-{d:02}"
+
+        cls._firstweekday(cls, firstweekday)
+        result = np.asarray(
+            list(itermonthdays3(year, month, firstweekday)), dtype="datetime64[D]"
+        ).view(cls)
+        result._dtype = np.dtype("datetime64[D]")
+        return result
+
+    # その他
     @classmethod
     def full(
         cls,
