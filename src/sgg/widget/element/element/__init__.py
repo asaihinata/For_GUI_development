@@ -26,28 +26,6 @@ class Element(_SET_OBJ):
         )
         self.borderwidth = num0s(kw.get("borderwidth"))
         self.takefocus = self._bols(kw.get("takefocus"))
-        font = kw.get("font", None)
-        self.family = kw.get("family")
-        self.font_size = kw.get("font_size")
-        self.weight = kw.get("weight")
-        self.slant = kw.get("slant")
-        self.underline = kw.get("underline")
-        self.overstrike = kw.get("overstrike")
-        if isinstance(font, Getfont):
-            self.font = TKFont(
-                self.master,
-                font=font,
-            )
-        else:
-            self.font = TKFont(
-                self.master,
-                self.family,
-                self.font_size,
-                self.weight,
-                self.slant,
-                self.underline,
-                self.overstrike,
-            )
         self.anchor = self.listchose(kw.get("anchor"), ANCHOR_LIST)
         self.width = self._dwh(kw.get("width"))
         self.height = self._dwh(kw.get("height"))
@@ -63,6 +41,30 @@ class Element(_SET_OBJ):
 
     def __firstlineno__(self):
         return type(self).__firstlineno__
+
+    def _set_font(self, kw):
+        font = kw.get("font", None)
+        if isinstance(font, Getfont):
+            self.font = TKFont(
+                self.master,
+                font=font,
+            )
+        else:
+            self.family = kw.get("family")
+            self.font_size = kw.get("font_size")
+            self.weight = kw.get("weight")
+            self.slant = kw.get("slant")
+            self.underline = kw.get("underline")
+            self.overstrike = kw.get("overstrike")
+            self.font = TKFont(
+                self.master,
+                self.family,
+                self.font_size,
+                self.weight,
+                self.slant,
+                self.underline,
+                self.overstrike,
+            )
 
     def _list_cursor(self, name, other=None):
         if name in CURSOR_LIST:

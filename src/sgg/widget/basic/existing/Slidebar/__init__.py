@@ -8,6 +8,7 @@ __all__ = ["Slidebar"]
 class Slidebar(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self._set_font(kw)
         value = kw.get("value", 0)
         minval = kw.get("min", 0)
         maxval = kw.get("max", 100)

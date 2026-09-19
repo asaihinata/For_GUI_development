@@ -11,6 +11,7 @@ class Checkbox(Element):
 
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self._set_font(kw)
         self.wraplength = num0(kw.get("wraplength"))
         self.textvariable = Variable(value=kw.get("text"))
         self.check = bols(kw.get("check"), False)

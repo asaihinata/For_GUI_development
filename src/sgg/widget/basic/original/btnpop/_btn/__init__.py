@@ -8,6 +8,7 @@ from sgg.widget.element import Element
 class Btn(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self._set_font(kw)
         self.anchor = listchose(kw.get("anchor"), ANCHOR_LIST, "center")
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.wraplength = num0(kw.get("wraplength"))

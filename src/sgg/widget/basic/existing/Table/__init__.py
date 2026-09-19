@@ -14,6 +14,7 @@ class Table(TElement):
             return v if 2 <= v.ndim else _func(v[np.newaxis, :])
 
         super().__init__(master, kw)
+        self._set_font(kw)
         values = kw.get("values")
         if not isinstance(values, list | tuple | range | np.ndarray):
             raise TypeError

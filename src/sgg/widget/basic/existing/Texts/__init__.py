@@ -9,6 +9,7 @@ __all__ = ["Texts"]
 class Texts(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self._set_font(kw)
         self.textvariable = Variable(value=kw.get("text"))
         self.wraplength = num0(kw.get("wraplength"))
         self._widget = Label(

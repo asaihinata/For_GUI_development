@@ -11,6 +11,7 @@ class Tree(TElement):
 
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self._set_font(kw)
         self.colwidth = num0s(kw.get("colwidth"), 120)
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.header_fg = parsecolor(kw.get("header_fg"), "#000000")

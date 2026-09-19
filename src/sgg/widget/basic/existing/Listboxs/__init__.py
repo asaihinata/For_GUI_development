@@ -9,6 +9,7 @@ __all__ = ["Listboxs"]
 class Listboxs(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self._set_font(kw)
         self.values = self._to_flat_list(kw.get("values"))
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.selectforeground = parsecolor(kw.get("selectfg"), "white")

@@ -10,6 +10,7 @@ __all__ = ["TCombobox"]
 class TCombobox(TElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self._set_font(kw)
         self.height = self._dwh_int(kw.get("height"), 10)
         self.width = self._dwh_int(kw.get("width"), 20)
         self.values = self._to_flat_list(kw.get("values"))

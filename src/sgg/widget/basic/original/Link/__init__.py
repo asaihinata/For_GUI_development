@@ -3,7 +3,7 @@ from tkinter import Label, Variable
 from webbrowser import open
 
 from sgg.dev import num0, parsecolor
-from sgg.font import TKFont
+from sgg.font import Getfont, TKFont
 from sgg.widget.basic.dev import linkcheck
 from sgg.widget.element import Element
 
@@ -16,16 +16,28 @@ class Link(Element):
         self.link_url = kw.get("link")
         if not isinstance(self.link_url, str | Path):
             raise ValueError
-        self.underline = kw.get("underline", True)
-        self.font = TKFont(
-            master,
-            self.family,
-            self.font_size,
-            self.weight,
-            self.slant,
-            self.underline,
-            self.overstrike,
-        )
+        font = kw.get("font", None)
+        if isinstance(font, Getfont):
+            self.font = TKFont(
+                self.master,
+                font=font,
+            )
+        else:
+            self.family = kw.get("family")
+            self.font_size = kw.get("font_size")
+            self.weight = kw.get("weight")
+            self.slant = kw.get("slant")
+            self.underline = kw.get("underline")
+            self.overstrike = kw.get("overstrike")
+            self.font = TKFont(
+                self.master,
+                self.family,
+                self.font_size,
+                self.weight,
+                self.slant,
+                self.underline,
+                self.overstrike,
+            )
         self.fg = parsecolor(kw.get("fg"), "#0000ee")
         self.wraplength = num0(kw.get("wraplength"))
         self.textvariable = Variable(value=kw.get("text"))

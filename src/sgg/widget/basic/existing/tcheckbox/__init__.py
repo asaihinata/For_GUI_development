@@ -10,6 +10,7 @@ __all__ = ["TCheckbox"]
 class TCheckbox(TElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self._set_font(kw)
         self.textvariable = Variable(value=kw.get("text"))
         self.default = bols(kw.get("default"), False)
         self.variable = BooleanVar(value=self.default)

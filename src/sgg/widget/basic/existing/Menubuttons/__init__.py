@@ -9,6 +9,7 @@ __all__ = ["Menubuttons"]
 class Menubuttons(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self._set_font(kw)
         self.bg = parsecolor(kw.get("bg"), "#e0e0e0")
         self.textvariable = Variable(value=kw.get("text"))
         self.menu_lists = kw.get("list", [])

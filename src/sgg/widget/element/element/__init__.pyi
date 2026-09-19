@@ -10,30 +10,10 @@ __all__ = ["Element"]
 
 class Element(_SET_OBJ):
     master: Misc
-    graph: bool = False
-    cursor: _Cursor
-    back_bg: str
-    justify: str
-    padx: int | float
-    pady: int | float
-    relief: str
-    fg: str
-    bg: str
-    borderwidth: int | float
-    takefocus: bool
-    family: str
-    font_size: int | float
-    weight: str
-    slant: str
-    underline: bool
-    overstrike: bool
-    font: TKFont
-    anchor: str
-    width: int
-    height: int
     def __str__(self) -> str: ...
     def __repr__(self) -> str: ...
     def __static_attributes__(self) -> tuple[str, ...]: ...
+    def _set_font(self, kw) -> None: ...
     def _dwh(self, val: int | float, other: int | float | None = None): ...
     def _dwh_int(self, val: int | float, other: int | float | None = None): ...
     def _exec_funcs(

@@ -9,6 +9,7 @@ __all__ = ["Tab"]
 class Tab(TElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self._set_font(kw)
         self.style = Style()
         self.stylename = f"Custom{kw.get("count")}.TNotebook"
         self.styletabname = f"{self.stylename}.Tab"

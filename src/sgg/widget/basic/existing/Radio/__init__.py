@@ -11,6 +11,7 @@ class Radio(Element):
 
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self._set_font(kw)
         self.count += 1
         self.text = kw.get("text")
         self.group = kw.get("group", "default")

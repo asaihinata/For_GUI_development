@@ -11,6 +11,7 @@ __all__ = ["TButtons"]
 class TButtons(TElement):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self._set_font(kw)
         self.textvariable = Variable(value=kw.get("text"))
         self.funcs = kw.get("function")
         self.default = listchose(kw.get("default"), ["normal", "active", "disabled"])

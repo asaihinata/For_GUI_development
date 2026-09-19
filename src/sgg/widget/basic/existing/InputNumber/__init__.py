@@ -9,6 +9,7 @@ __all__ = ["InputNumber"]
 class InputNumber(Element):
     def __init__(self, master, kw):
         super().__init__(master, kw)
+        self._set_font(kw)
         self.cursor = self._list_cursor(kw.get("cursor"), "xterm")
         val = kw.get("value", 0)
         if not self._is_real(val):
