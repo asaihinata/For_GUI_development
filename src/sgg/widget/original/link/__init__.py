@@ -2,9 +2,9 @@ from pathlib import Path
 from tkinter import Label, Variable
 from webbrowser import open
 
-from sgg.dev import num0, parsecolor
+from sgg.dev import bols, num0, parsecolor
 from sgg.font import Getfont, TKFont
-from sgg.widget.basic.dev import linkcheck
+from sgg.widget.dev import linkcheck
 from sgg.widget.element import Element
 
 __all__ = ["Link"]
@@ -27,7 +27,7 @@ class Link(Element):
             self.font_size = kw.get("font_size")
             self.weight = kw.get("weight")
             self.slant = kw.get("slant")
-            self.underline = kw.get("underline")
+            self.underline = bols(kw.get("underline"), True)
             self.overstrike = kw.get("overstrike")
             self.font = TKFont(
                 self.master,

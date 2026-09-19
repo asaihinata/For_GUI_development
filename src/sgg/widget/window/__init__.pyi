@@ -4,7 +4,8 @@ from typing import Any
 from _tkinter import TkappType
 
 from sgg.graph import *
-from sgg.widget.basic import *
+from sgg.widget.existing import *
+from sgg.widget.original import *
 
 __all__ = ["WindowController"]
 

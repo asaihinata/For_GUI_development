@@ -8,8 +8,9 @@ from _tkinter import TclError
 from sgg._list import CURSOR_LIST
 from sgg.dev import _SET_OBJ, bols, num0s, parsecolor, range_num
 from sgg.graph import *
-from sgg.widget.basic import *
 from sgg.widget.element import TElement
+from sgg.widget.existing import *
+from sgg.widget.original import *
 
 __all__ = ["WindowController"]
 

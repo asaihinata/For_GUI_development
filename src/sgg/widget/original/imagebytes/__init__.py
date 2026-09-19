@@ -2,7 +2,7 @@ from tkinter import Label
 
 from PIL.ImageTk import PhotoImage
 
-from sgg.widget.basic.dev import Img_byte
+from sgg.widget.dev import Img_byte
 from sgg.widget.element import Element
 
 __all__ = ["Imagebytes"]

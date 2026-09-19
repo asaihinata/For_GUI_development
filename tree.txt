@@ -278,120 +278,118 @@ For_GUI_development
  │   │   ├── version.py
  │   │   └── widget
  │   │       ├── __init__.py
- │   │       ├── basic
+ │   │       ├── dev
  │   │       │   ├── __init__.py
- │   │       │   ├── dev
+ │   │       │   ├── photo
  │   │       │   │   ├── __init__.py
- │   │       │   │   ├── photo
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   └── urls
- │   │       │   │       ├── __init__.py
- │   │       │   │       └── __init__.pyi
- │   │       │   ├── existing
- │   │       │   │   ├── __init__.py
- │   │       │   │   ├── buttons
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── checkbox
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── column
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── frames
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── image
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── input
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── inputnumber
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── listboxs
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── menubuttons
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── menus
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── multiline
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── radio
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── slidebar
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── tab
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── table
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── tbuttons
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── tcheckbox
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── tcombobox
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── texts
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── tinput
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── tprogressbar
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   ├── tree
- │   │       │   │   │   ├── __init__.py
- │   │       │   │   │   └── __init__.pyi
- │   │       │   │   └── tslidebar
- │   │       │   │       ├── __init__.py
- │   │       │   │       └── __init__.pyi
- │   │       │   └── original
+ │   │       │   │   └── __init__.pyi
+ │   │       │   └── urls
  │   │       │       ├── __init__.py
- │   │       │       ├── btnpop
- │   │       │       │   ├── _btn
- │   │       │       │   │   ├── __init__.py
- │   │       │       │   │   └── __init__.pyi
- │   │       │       │   ├── colorbtn
- │   │       │       │   │   ├── __init__.py
- │   │       │       │   │   └── __init__.pyi
- │   │       │       │   ├── fileload
- │   │       │       │   │   ├── __init__.py
- │   │       │       │   │   └── __init__.pyi
- │   │       │       │   ├── folderload
- │   │       │       │   │   ├── __init__.py
- │   │       │       │   │   └── __init__.pyi
- │   │       │       │   └── savebtn
- │   │       │       │       ├── __init__.py
- │   │       │       │       └── __init__.pyi
- │   │       │       ├── imagebytes
- │   │       │       │   ├── __init__.py
- │   │       │       │   └── __init__.pyi
- │   │       │       ├── imagelink
- │   │       │       │   ├── __init__.py
- │   │       │       │   └── __init__.pyi
- │   │       │       └── link
- │   │       │           ├── __init__.py
- │   │       │           └── __init__.pyi
+ │   │       │       └── __init__.pyi
  │   │       ├── element
  │   │       │   ├── __init__.py
  │   │       │   ├── element
  │   │       │   │   ├── __init__.py
  │   │       │   │   └── __init__.pyi
  │   │       │   └── telement
+ │   │       │       ├── __init__.py
+ │   │       │       └── __init__.pyi
+ │   │       ├── existing
+ │   │       │   ├── __init__.py
+ │   │       │   ├── buttons
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── checkbox
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── column
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── frames
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── image
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── input
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── inputnumber
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── listboxs
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── menubuttons
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── menus
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── multiline
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── radio
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── slidebar
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── tab
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── table
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── tbuttons
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── tcheckbox
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── tcombobox
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── texts
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── tinput
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── tprogressbar
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── tree
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   └── tslidebar
+ │   │       │       ├── __init__.py
+ │   │       │       └── __init__.pyi
+ │   │       ├── original
+ │   │       │   ├── __init__.py
+ │   │       │   ├── btnpop
+ │   │       │   │   ├── _btn
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
+ │   │       │   │   ├── colorbtn
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
+ │   │       │   │   ├── fileload
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
+ │   │       │   │   ├── folderload
+ │   │       │   │   │   ├── __init__.py
+ │   │       │   │   │   └── __init__.pyi
+ │   │       │   │   └── savebtn
+ │   │       │   │       ├── __init__.py
+ │   │       │   │       └── __init__.pyi
+ │   │       │   ├── imagebytes
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   ├── imagelink
+ │   │       │   │   ├── __init__.py
+ │   │       │   │   └── __init__.pyi
+ │   │       │   └── link
  │   │       │       ├── __init__.py
  │   │       │       └── __init__.pyi
  │   │       └── window
@@ -464,5 +462,5 @@ For_GUI_development
  ├── .gitignore
  └── .vscode
      └── extensions.json
-ファイル数:325
-フォルダ数:140
+ファイル数:324
+フォルダ数:139

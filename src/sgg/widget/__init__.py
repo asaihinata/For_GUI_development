@@ -1,8 +1,9 @@
-from .basic import (Buttons, Checkbox, Colorbtn, Column, FileLoad, FolderLoad,
-                    Frames, Imagebytes, Imagelink, Images, Input, InputNumber,
-                    Link, Listboxs, Menubuttons, Menus, Multiline, Radio,
-                    Savebtn, Slidebar, Tab, Table, TButtons, TCheckbox,
-                    TCombobox, Texts, TInput, TProgressbar, Tree, TSlidebar)
+from .existing import (Buttons, Checkbox, Column, Frames, Images, Input,
+                       InputNumber, Listboxs, Menubuttons, Menus, Multiline,
+                       Radio, Slidebar, Tab, Table, TButtons, TCheckbox,
+                       TCombobox, Texts, TInput, TProgressbar, Tree, TSlidebar)
+from .original import (Colorbtn, FileLoad, FolderLoad, Imagebytes, Imagelink,
+                       Link, Savebtn)
 from .window import WindowController
 
 __all__ = [
